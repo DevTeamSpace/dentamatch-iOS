@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LoginTableViewCell" rowHeight="460" id="KGk-i7-Jjw" customClass="LoginTableViewCell" customModule="DentaMatch" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <frame key="frameInset" width="320" height="459"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login using your registered email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B1Q-Xe-ZhA">
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E76-dc-ntn" customClass="RegistrationTextField" customModule="DentaMatch" customModuleProvider="target">
+                        <constraints>
+                            <constraint firstAttribute="height" constant="43" id="JsR-BE-oLT"/>
+                        </constraints>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
+                    </textField>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSa-QE-j10">
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TDG-pV-1N2" customClass="RegistrationTextField" customModule="DentaMatch" customModuleProvider="target">
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
+                    </textField>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUa-xS-F8e">
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B8C-Qw-mG4">
+                        <color key="backgroundColor" red="0.01176470588" green="0.4431372549" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="48" id="Yjj-zJ-dn4"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <state key="normal" title="LOGIN">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hs8-sS-5hx">
+                        <state key="normal" title="ForgotPassword?"/>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="hs8-sS-5hx" firstAttribute="top" secondItem="TDG-pV-1N2" secondAttribute="bottom" constant="8" id="0HB-Ka-jC4"/>
+                    <constraint firstItem="TDG-pV-1N2" firstAttribute="top" secondItem="qUa-xS-F8e" secondAttribute="bottom" constant="8" id="0HM-a6-QHc"/>
+                    <constraint firstItem="qUa-xS-F8e" firstAttribute="leading" secondItem="E76-dc-ntn" secondAttribute="leading" id="2X1-FR-CmL"/>
+                    <constraint firstItem="hSa-QE-j10" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="3IY-V2-l73"/>
+                    <constraint firstAttribute="bottom" secondItem="B8C-Qw-mG4" secondAttribute="bottom" id="7nw-Q1-ZrH"/>
+                    <constraint firstItem="E76-dc-ntn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="BRi-ye-uha"/>
+                    <constraint firstItem="B8C-Qw-mG4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Hf8-lC-nYP"/>
+                    <constraint firstItem="E76-dc-ntn" firstAttribute="top" secondItem="hSa-QE-j10" secondAttribute="bottom" constant="8" id="azY-dX-gOQ"/>
+                    <constraint firstItem="TDG-pV-1N2" firstAttribute="width" secondItem="E76-dc-ntn" secondAttribute="width" id="evZ-EM-8pb"/>
+                    <constraint firstAttribute="trailing" secondItem="E76-dc-ntn" secondAttribute="trailing" constant="20" id="iwB-cm-KRr"/>
+                    <constraint firstItem="qUa-xS-F8e" firstAttribute="top" secondItem="E76-dc-ntn" secondAttribute="bottom" constant="8" id="jbB-Cs-EZS"/>
+                    <constraint firstItem="B1Q-Xe-ZhA" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="oUK-H0-4ST"/>
+                    <constraint firstItem="TDG-pV-1N2" firstAttribute="height" secondItem="E76-dc-ntn" secondAttribute="height" id="obN-jf-sNM"/>
+                    <constraint firstItem="TDG-pV-1N2" firstAttribute="centerX" secondItem="E76-dc-ntn" secondAttribute="centerX" id="qcK-gP-a9M"/>
+                    <constraint firstAttribute="trailing" secondItem="B8C-Qw-mG4" secondAttribute="trailing" id="sLw-B3-FLR"/>
+                    <constraint firstAttribute="trailing" secondItem="hs8-sS-5hx" secondAttribute="trailing" constant="20" id="svT-QL-r2t"/>
+                    <constraint firstItem="hSa-QE-j10" firstAttribute="top" secondItem="B1Q-Xe-ZhA" secondAttribute="bottom" constant="10" id="ukb-ci-chZ"/>
+                    <constraint firstItem="B1Q-Xe-ZhA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="xch-AO-FmP"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="emailTextField" destination="E76-dc-ntn" id="lQu-OH-zZs"/>
+                <outlet property="forgotPasswordButton" destination="hs8-sS-5hx" id="4rz-KU-jha"/>
+                <outlet property="loginButton" destination="B8C-Qw-mG4" id="tJz-vl-Owt"/>
+                <outlet property="passwordTextField" destination="TDG-pV-1N2" id="nzW-kl-Dgr"/>
+            </connections>
+            <point key="canvasLocation" x="68" y="198"/>
+        </tableViewCell>
+    </objects>
+</document>

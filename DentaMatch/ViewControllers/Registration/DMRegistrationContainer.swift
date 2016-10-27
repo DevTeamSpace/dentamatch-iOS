@@ -1,0 +1,108 @@
+//
+//  DMRegistrationContainer.swift
+//  DentaMatch
+//
+//  Created by Rajan Maheshwari on 26/10/16.
+//  Copyright © 2016 Appster. All rights reserved.
+//
+
+import UIKit
+
+class DMRegistrationContainer: DMBaseVC {
+    @IBOutlet weak var topView: UIView!
+
+    @IBOutlet weak var registrationButton: UIButton!
+    @IBOutlet weak var loginButton: UIButton!
+    
+    var registrationVC:DMRegistrationVC?
+    var loginVC:DMLoginVC?
+    var isRegistration = true
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        registrationVC = UIStoryboard.registrationStoryBoard().instantiateViewController(type: DMRegistrationVC.self)!
+        registrationVC?.view.frame = CGRect(x: 0, y: self.topView.frame.size.height, width: self.view.frame.size.width, height: self.view.frame.size.height - self.topView.frame.size.height)
+        
+        loginVC = UIStoryboard.registrationStoryBoard().instantiateViewController(type: DMLoginVC.self)!
+        loginVC?.view.frame = CGRect(x: 0, y: self.topView.frame.size.height, width: self.view.frame.size.width, height: self.view.frame.size.height - self.topView.frame.size.height)
+        
+        self.addChildViewController(loginVC!)
+        self.view.addSubview((loginVC?.view)!)
+        self.addChildViewController(registrationVC!)
+        self.view.addSubview((registrationVC?.view)!)
+        
+        loginVC?.didMove(toParentViewController: self)
+        registrationVC?.didMove(toParentViewController: self)
+        
+        loginVC?.view.alpha = 0.0
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        registrationVC?.view.frame = CGRect(x: 0, y: self.topView.frame.size.height, width: self.view.frame.size.width, height: self.view.frame.size.height - self.topView.frame.size.height)
+        loginVC?.view.frame = CGRect(x: 0, y: self.topView.frame.size.height, width: self.view.frame.size.width, height: self.view.frame.size.height - self.topView.frame.size.height)
+        
+        removeTip(button: registrationButton)
+        removeTip(button: loginButton)
+        
+        if isRegistration {
+            makeTip(button: registrationButton, size: 8, x: registrationButton.frame.midX/2, y: registrationButton.frame.midY)
+        } else {
+            makeTip(button: loginButton, size: 8, x: loginButton.frame.midX/2, y: loginButton.frame.midY)
+        }
+    }
+    
+    @IBAction func loginButtonPressed(_ sender: UIButton) {
+        isRegistration = false
+        removeTip(button: registrationButton)
+        makeTip(button: sender, size: 8, x: sender.frame.midX/2, y: sender.frame.midY)
+        self.view.endEditing(true)
+        self.view.bringSubview(toFront: (self.loginVC?.view)!)
+        UIView.animate(withDuration: 0.5, animations: {
+            self.loginVC?.view.alpha = 1.0
+            self.registrationVC?.view.alpha = 0.0
+        }) { (finished:Bool) in
+        }
+    }
+
+    @IBAction func registrationButtonPressed(_ sender: UIButton) {
+        isRegistration = true
+        removeTip(button: loginButton)
+        makeTip(button: sender, size: 8, x: sender.frame.midX/2, y: sender.frame.midY)
+        self.view.endEditing(true)
+        self.view.bringSubview(toFront: (registrationVC?.view)!)
+        UIView.animate(withDuration: 0.5, animations: {
+            self.registrationVC?.view.alpha = 1.0
+            self.loginVC?.view.alpha = 0.0
+        }) { (finished:Bool) in
+        }
+    }
+    
+    func makeTip(button:UIButton,size: CGFloat, x: CGFloat, y: CGFloat) {
+        let triangleLayer = CAShapeLayer()
+        let trianglePath = UIBezierPath()
+
+        trianglePath.move(to: CGPoint(x: button.bounds.size.width/2 - size , y: button.bounds.size.height))
+        trianglePath.addLine(to: CGPoint(x:button.bounds.size.width/2, y: button.bounds.size.height - size))
+        trianglePath.addLine(to: CGPoint(x:button.bounds.size.width/2 + size , y: button.bounds.size.height))
+
+        trianglePath.close()
+        triangleLayer.path = trianglePath.cgPath
+        triangleLayer.fillColor = UIColor.white.cgColor
+
+        triangleLayer.name = "triangle"
+        triangleLayer.zPosition = 2.0
+        button.layer.addSublayer(triangleLayer)
+    }
+    
+    func removeTip(button:UIButton) {
+        for layer in button.layer.sublayers! {
+            if layer.name == "triangle" {
+                layer.removeFromSuperlayer()
+            }
+        }
+    }
+    
+}
