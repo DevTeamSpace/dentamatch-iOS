@@ -20,7 +20,7 @@ extension UIStoryboard {
     }
     
     class func registrationStoryBoard()->UIStoryboard{
-        return UIStoryboard(name: StoryBoard.registrationStoryboard, bundle: nil)
+        return UIStoryboard(name: Constants.StoryBoard.registrationStoryboard, bundle: nil)
     }
     
     

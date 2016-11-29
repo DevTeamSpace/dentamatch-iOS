@@ -10,6 +10,8 @@ import UIKit
 import CoreData
 import GoogleMaps
 import GooglePlaces
+import Crashlytics
+import Fabric
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,7 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        print(ConfigurationManager.sharedInstance.APIEndpoint())
+        registerForPushNotifications()
+        
         //Network Reachability Notification check
         NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged), name: ReachabilityChangedNotification, object: nil)
         self.reachability = Reachability.init()
@@ -73,6 +76,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             print("Network not reachable")
         }
+    }
+
+    // MARK: - Configure Crashlytics
+    func configureCrashlytics() {
+        Fabric.with([Crashlytics.self])
     }
 
     // MARK: - Core Data stack

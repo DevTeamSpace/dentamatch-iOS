@@ -15,14 +15,14 @@ class UserDefaultsManager: NSObject {
     
     var isLoggedIn:Bool {
         get {
-            if(kUserDefaults.value(forKey: UserDefaultsKeys.isLoggedIn) != nil){
-                return kUserDefaults.value(forKey: UserDefaultsKeys.isLoggedIn) as! Bool
+            if(kUserDefaults.value(forKey: Constants.UserDefaultsKeys.isLoggedIn) != nil){
+                return kUserDefaults.value(forKey: Constants.UserDefaultsKeys.isLoggedIn) as! Bool
             }
             //Default is not logged in
             return false
         }
         set {
-            kUserDefaults.setValue(newValue, forKey: UserDefaultsKeys.isLoggedIn)
+            kUserDefaults.setValue(newValue, forKey: Constants.UserDefaultsKeys.isLoggedIn)
             kUserDefaults.synchronize()
         }
     }
