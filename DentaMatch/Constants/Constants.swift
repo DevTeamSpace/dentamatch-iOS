@@ -47,4 +47,9 @@ struct Limits{
     static let licenseNumberLimit = 16
 }
 
+public let cacheDirectoryURL: URL = {
+    let urls = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)
+    return urls[urls.endIndex - 1]
+}()
+
 
