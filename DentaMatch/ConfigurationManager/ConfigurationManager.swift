@@ -21,7 +21,7 @@ class ConfigurationManager:NSObject {
     
     //Singleton Method
     
-    static let sharedInstance: ConfigurationManager = {
+    static let sharedManager: ConfigurationManager = {
         let instance = ConfigurationManager()
         // setup code
         return instance

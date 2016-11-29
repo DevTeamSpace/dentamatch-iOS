@@ -16,4 +16,14 @@ extension Array where Element : Equatable {
             self.remove(at: index)
         }
     }
+    
+    func containsObject (_ items:[NSNumber], valueToCheck:NSNumber) -> Bool {
+        for (_,value) in items.enumerated() {
+            if (value as Int == valueToCheck as Int) {
+                return true
+            }
+        }
+        return false
+    }
+
 }

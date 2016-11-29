@@ -29,6 +29,9 @@
 		E56B20AA1DC06084000512F6 /* RegistrationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56B20A81DC06084000512F6 /* RegistrationTableViewCell.swift */; };
 		E56B20AB1DC06084000512F6 /* RegistrationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E56B20A91DC06084000512F6 /* RegistrationTableViewCell.xib */; };
 		E56B20AD1DC06972000512F6 /* RegistrationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56B20AC1DC06972000512F6 /* RegistrationTextField.swift */; };
+		E56C9F9E1DED4BD100EAA9DD /* Character+Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C9F9D1DED4BD100EAA9DD /* Character+Addition.swift */; };
+		E56C9FA31DED520B00EAA9DD /* InAppPurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C9FA21DED520B00EAA9DD /* InAppPurchase.swift */; };
+		E56C9FA81DED75D500EAA9DD /* CommonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C9FA71DED75D500EAA9DD /* CommonHelper.swift */; };
 		E56E45C31DAE07C200AD4559 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E56E45C21DAE07C200AD4559 /* Assets.xcassets */; };
 		E56E45C61DAE07C200AD4559 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E56E45C41DAE07C200AD4559 /* LaunchScreen.storyboard */; };
 		E56E45D11DAE099200AD4559 /* Environments.plist in Resources */ = {isa = PBXBuildFile; fileRef = E56E45CF1DAE099200AD4559 /* Environments.plist */; };
@@ -80,6 +83,9 @@
 		E56B20A81DC06084000512F6 /* RegistrationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationTableViewCell.swift; sourceTree = "<group>"; };
 		E56B20A91DC06084000512F6 /* RegistrationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegistrationTableViewCell.xib; sourceTree = "<group>"; };
 		E56B20AC1DC06972000512F6 /* RegistrationTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationTextField.swift; sourceTree = "<group>"; };
+		E56C9F9D1DED4BD100EAA9DD /* Character+Addition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Character+Addition.swift"; sourceTree = "<group>"; };
+		E56C9FA21DED520B00EAA9DD /* InAppPurchase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppPurchase.swift; sourceTree = "<group>"; };
+		E56C9FA71DED75D500EAA9DD /* CommonHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonHelper.swift; sourceTree = "<group>"; };
 		E56E45B81DAE07C200AD4559 /* DentaMatch-Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DentaMatch-Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E56E45C21DAE07C200AD4559 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E56E45C51DAE07C200AD4559 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -152,6 +158,7 @@
 				E55462F41DAE4B9E004163B2 /* UIStoryBoard+Additions.swift */,
 				E55462F61DAE4C6F004163B2 /* UITextField+ToolBar.swift */,
 				E55462F81DAE4DD1004163B2 /* UIView+Additions.swift */,
+				E56C9F9D1DED4BD100EAA9DD /* Character+Addition.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -215,6 +222,7 @@
 		E55462ED1DAE483F004163B2 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				E56C9FA11DED520B00EAA9DD /* IAPManager */,
 				E59029A21DED2C7A00151E9B /* APIManager */,
 				E59029A41DED2C7A00151E9B /* Log Manager */,
 				E59029A61DED2C7A00151E9B /* UserDefaultsManager */,
@@ -260,6 +268,22 @@
 				E5C5F31E1DC1C6DD001A5A3F /* GooglePlacesTableViewCell.swift */,
 			);
 			path = "TableView Cells";
+			sourceTree = "<group>";
+		};
+		E56C9FA11DED520B00EAA9DD /* IAPManager */ = {
+			isa = PBXGroup;
+			children = (
+				E56C9FA21DED520B00EAA9DD /* InAppPurchase.swift */,
+			);
+			path = IAPManager;
+			sourceTree = "<group>";
+		};
+		E56C9FA61DED75D500EAA9DD /* CommonHelper */ = {
+			isa = PBXGroup;
+			children = (
+				E56C9FA71DED75D500EAA9DD /* CommonHelper.swift */,
+			);
+			path = CommonHelper;
 			sourceTree = "<group>";
 		};
 		E56E45AF1DAE07C200AD4559 = {
@@ -392,6 +416,7 @@
 		E5FCBE091DAE109F00F59D05 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				E56C9FA61DED75D500EAA9DD /* CommonHelper */,
 				E55462ED1DAE483F004163B2 /* Managers */,
 				E55462D51DAE2F01004163B2 /* Extensions */,
 			);
@@ -544,6 +569,7 @@
 				E59029A91DED2C7A00151E9B /* LogManager.swift in Sources */,
 				E5C5F31F1DC1C6DD001A5A3F /* GooglePlacesTableViewCell.swift in Sources */,
 				E5C5F3181DC1A723001A5A3F /* LocationManager.swift in Sources */,
+				E56C9FA81DED75D500EAA9DD /* CommonHelper.swift in Sources */,
 				E59029AA1DED2C7A00151E9B /* UserDefaultsManager.swift in Sources */,
 				E55462DB1DAE312C004163B2 /* String+Additons.swift in Sources */,
 				E55462D91DAE3104004163B2 /* Array+Additions.swift in Sources */,
@@ -553,10 +579,12 @@
 				E55462D71DAE2F49004163B2 /* UIColor+HexCode.swift in Sources */,
 				E56B20A21DBF749D000512F6 /* DMRegistrationVC.swift in Sources */,
 				E59029A81DED2C7A00151E9B /* APIManager.swift in Sources */,
+				E56C9FA31DED520B00EAA9DD /* InAppPurchase.swift in Sources */,
 				E55462E61DAE47A9004163B2 /* UIView+Toast.m in Sources */,
 				E56B20A61DC05C74000512F6 /* DMLoginVC.swift in Sources */,
 				E55463001DAE510A004163B2 /* Utilities.swift in Sources */,
 				E55462F71DAE4C6F004163B2 /* UITextField+ToolBar.swift in Sources */,
+				E56C9F9E1DED4BD100EAA9DD /* Character+Addition.swift in Sources */,
 				E56B20AD1DC06972000512F6 /* RegistrationTextField.swift in Sources */,
 				E55462EC1DAE47F5004163B2 /* AppDelegate.swift in Sources */,
 				E53738F21DB373C200967876 /* Reachability.swift in Sources */,

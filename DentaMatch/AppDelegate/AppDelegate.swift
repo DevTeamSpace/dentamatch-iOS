@@ -24,7 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         registerForPushNotifications()
         
-        print(ConfigurationManager.sharedInstance.APIEndpoint())
         //Network Reachability Notification check
         NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged), name: ReachabilityChangedNotification, object: nil)
         self.reachability = Reachability.init()
