@@ -34,8 +34,8 @@
 		E56C9FA81DED75D500EAA9DD /* CommonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C9FA71DED75D500EAA9DD /* CommonHelper.swift */; };
 		E56E45C31DAE07C200AD4559 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E56E45C21DAE07C200AD4559 /* Assets.xcassets */; };
 		E56E45C61DAE07C200AD4559 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E56E45C41DAE07C200AD4559 /* LaunchScreen.storyboard */; };
-		E56E45D11DAE099200AD4559 /* Environments.plist in Resources */ = {isa = PBXBuildFile; fileRef = E56E45CF1DAE099200AD4559 /* Environments.plist */; };
-		E56E45D31DAE09D100AD4559 /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56E45D21DAE09D100AD4559 /* ConfigurationManager.swift */; };
+		E58654FE1DEFEF7F006FEB2D /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58654FC1DEFEF7F006FEB2D /* ConfigurationManager.swift */; };
+		E58654FF1DEFEF7F006FEB2D /* Environments.plist in Resources */ = {isa = PBXBuildFile; fileRef = E58654FD1DEFEF7F006FEB2D /* Environments.plist */; };
 		E590299F1DED25C400151E9B /* AppDelegate+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590299E1DED25C400151E9B /* AppDelegate+Notifications.swift */; };
 		E59029A81DED2C7A00151E9B /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59029A31DED2C7A00151E9B /* APIManager.swift */; };
 		E59029A91DED2C7A00151E9B /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59029A51DED2C7A00151E9B /* LogManager.swift */; };
@@ -89,8 +89,8 @@
 		E56E45B81DAE07C200AD4559 /* DentaMatch-Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DentaMatch-Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E56E45C21DAE07C200AD4559 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E56E45C51DAE07C200AD4559 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		E56E45CF1DAE099200AD4559 /* Environments.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Environments.plist; sourceTree = "<group>"; };
-		E56E45D21DAE09D100AD4559 /* ConfigurationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationManager.swift; sourceTree = "<group>"; };
+		E58654FC1DEFEF7F006FEB2D /* ConfigurationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationManager.swift; sourceTree = "<group>"; };
+		E58654FD1DEFEF7F006FEB2D /* Environments.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Environments.plist; sourceTree = "<group>"; };
 		E590299E1DED25C400151E9B /* AppDelegate+Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Notifications.swift"; sourceTree = "<group>"; };
 		E59029A31DED2C7A00151E9B /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		E59029A51DED2C7A00151E9B /* LogManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
@@ -222,6 +222,7 @@
 		E55462ED1DAE483F004163B2 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				E58654FB1DEFEF7F006FEB2D /* ConfigurationManager */,
 				E56C9FA11DED520B00EAA9DD /* IAPManager */,
 				E59029A21DED2C7A00151E9B /* APIManager */,
 				E59029A41DED2C7A00151E9B /* Log Manager */,
@@ -307,7 +308,6 @@
 		E56E45BA1DAE07C200AD4559 /* DentaMatch */ = {
 			isa = PBXGroup;
 			children = (
-				E56E45CD1DAE099200AD4559 /* ConfigurationManager */,
 				E55462D41DAE1558004163B2 /* Constants */,
 				E55462FE1DAE50FE004163B2 /* Utilities */,
 				E5FCBE091DAE109F00F59D05 /* Helpers */,
@@ -323,11 +323,11 @@
 			path = DentaMatch;
 			sourceTree = "<group>";
 		};
-		E56E45CD1DAE099200AD4559 /* ConfigurationManager */ = {
+		E58654FB1DEFEF7F006FEB2D /* ConfigurationManager */ = {
 			isa = PBXGroup;
 			children = (
-				E56E45CF1DAE099200AD4559 /* Environments.plist */,
-				E56E45D21DAE09D100AD4559 /* ConfigurationManager.swift */,
+				E58654FC1DEFEF7F006FEB2D /* ConfigurationManager.swift */,
+				E58654FD1DEFEF7F006FEB2D /* Environments.plist */,
 			);
 			path = ConfigurationManager;
 			sourceTree = "<group>";
@@ -497,11 +497,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E56E45D11DAE099200AD4559 /* Environments.plist in Resources */,
 				E56B209F1DBF7467000512F6 /* Registration.storyboard in Resources */,
 				E5AE2AF31DAF84AD00C008BD /* Onboarding.storyboard in Resources */,
 				E5C5F3121DC07C6F001A5A3F /* LoginTableViewCell.xib in Resources */,
 				E5C5F30E1DC074C9001A5A3F /* dentamatch.ttf in Resources */,
+				E58654FF1DEFEF7F006FEB2D /* Environments.plist in Resources */,
 				E56E45C61DAE07C200AD4559 /* LaunchScreen.storyboard in Resources */,
 				E56E45C31DAE07C200AD4559 /* Assets.xcassets in Resources */,
 				E56B20AB1DC06084000512F6 /* RegistrationTableViewCell.xib in Resources */,
@@ -573,6 +573,7 @@
 				E59029AA1DED2C7A00151E9B /* UserDefaultsManager.swift in Sources */,
 				E55462DB1DAE312C004163B2 /* String+Additons.swift in Sources */,
 				E55462D91DAE3104004163B2 /* Array+Additions.swift in Sources */,
+				E58654FE1DEFEF7F006FEB2D /* ConfigurationManager.swift in Sources */,
 				E5AE2AF61DAF878900C008BD /* OnboardingCollectionViewCell.swift in Sources */,
 				E5C5F3151DC0AACA001A5A3F /* DMRegisterMapsVC.swift in Sources */,
 				E55462E11DAE41FB004163B2 /* Date+Additions.swift in Sources */,
@@ -591,7 +592,6 @@
 				E56B20AA1DC06084000512F6 /* RegistrationTableViewCell.swift in Sources */,
 				E55462F51DAE4B9E004163B2 /* UIStoryBoard+Additions.swift in Sources */,
 				E5DC3E731DAF2C45002DA20E /* DentaMatch.xcdatamodeld in Sources */,
-				E56E45D31DAE09D100AD4559 /* ConfigurationManager.swift in Sources */,
 				E590299F1DED25C400151E9B /* AppDelegate+Notifications.swift in Sources */,
 				E5C5F3111DC07C6F001A5A3F /* LoginTableViewCell.swift in Sources */,
 				E5C5F31B1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift in Sources */,
