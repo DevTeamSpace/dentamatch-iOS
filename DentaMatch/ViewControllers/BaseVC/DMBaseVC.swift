@@ -9,9 +9,9 @@
 import UIKit
 
 enum ToastPosition {
-    case Top
-    case Bottom
-    case Center
+    case top
+    case bottom
+    case center
 }
 
 class DMBaseVC: UIViewController {
@@ -31,10 +31,10 @@ class DMBaseVC: UIViewController {
     }
     
     func makeToast(toastString:String,duration:TimeInterval,position:ToastPosition){
-        if position == .Top {
+        if position == .top {
             kAppDelegate.window?.makeToast(toastString, duration: duration, position: CSToastPositionTop)
             
-        } else if position == .Center {
+        } else if position == .center {
             kAppDelegate.window?.makeToast(toastString, duration: duration, position: CSToastPositionCenter)
             
         }else {
@@ -78,9 +78,23 @@ class DMBaseVC: UIViewController {
     func printLog(object:AnyObject?) {
         if kLogEnabled {
             if let message = object {
-                print(message)
+                debugPrint(message)
             }
         }
+    }
+    
+    func backBarButton() -> UIBarButtonItem {
+        let customButton = UIButton(type: .system)
+        customButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        customButton.titleLabel?.font = UIFont.designFont(fontSize: 24)!
+        customButton.setTitle("H", for: .normal)
+        customButton.addTarget(self, action: #selector(backBarButtonItemPressed), for: .touchUpInside)
+        let barButton = UIBarButtonItem(customView: customButton)
+        return barButton
+    }
+    
+    func backBarButtonItemPressed() {
+        _ = self.navigationController?.popViewController(animated: true)
     }
     
     func showLoader() {

@@ -75,7 +75,7 @@ class DMRegisterMapsVC: DMBaseVC {
         placesClient.autocompleteQuery(autoCompleteString as String, bounds: nil, filter: filter) { (results:[GMSAutocompletePrediction]?, error:Error?) in
             
             if error != nil {
-                print(error.debugDescription)
+                debugPrint(error.debugDescription)
                 return
             }
             
@@ -98,7 +98,7 @@ class DMRegisterMapsVC: DMBaseVC {
                 return
             }
             if let place = place {
-                print(place)
+                debugPrint(place)
                 OperationQueue.main.addOperation({
                     self.markPlaceOnMap(place: place)
                 })
@@ -154,7 +154,7 @@ extension DMRegisterMapsVC:GMSAutocompleteViewControllerDelegate,GMSMapViewDeleg
     }
     
     func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
-        print(error.localizedDescription)
+        debugPrint(error.localizedDescription)
     }
     
     func viewController(_ viewController: GMSAutocompleteViewController, didSelect prediction: GMSAutocompletePrediction) -> Bool {

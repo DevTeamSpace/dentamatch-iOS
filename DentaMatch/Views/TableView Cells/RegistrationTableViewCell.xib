@@ -14,7 +14,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="467"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="466"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="466.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oGf-Da-ohf" customClass="RegistrationTextField" customModule="DentaMatch" customModuleProvider="target">
@@ -97,6 +97,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="emailTextField" destination="hvL-ql-Nfu" id="8sw-uN-DMZ"/>
+                <outlet property="helpHintLabel" destination="x9c-Dc-oJl" id="acR-lC-6u0"/>
                 <outlet property="locationLabel" destination="L9t-nb-zTm" id="8F8-LQ-xif"/>
                 <outlet property="locationView" destination="Biq-Gz-c0Q" id="0nK-SE-a1E"/>
                 <outlet property="nameTextField" destination="oGf-Da-ohf" id="SUO-ys-TMe"/>

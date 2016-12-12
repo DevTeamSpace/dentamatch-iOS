@@ -23,12 +23,12 @@ extension AppDelegate {
             //token = token + String(format: "%02.2hhx", arguments: [deviceToken[i]])
             token += String(format: "%02.2hhx", deviceToken[i] as CVarArg)
         }
-        print(token)
+        debugPrint(token)
     }
     
     //MARK:- Remote/Local Notification Delegates
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        print(error.localizedDescription)
+        debugPrint(error.localizedDescription)
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {

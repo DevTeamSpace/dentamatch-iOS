@@ -93,23 +93,23 @@ class InAppPurchase: NSObject,SKProductsRequestDelegate, SKPaymentTransactionObs
             switch transaction.transactionState {
                 
             case .purchased:
-                print("Transaction Approved")
-                print("Product Identifier: \(transaction.payment.productIdentifier)")
+                debugPrint("Transaction Approved")
+                debugPrint("Product Identifier: \(transaction.payment.productIdentifier)")
                 //self.deliverProduct(transaction)
                 delegate?.productPurchased(productId: transaction.payment.productIdentifier);
                 SKPaymentQueue.default().finishTransaction(transaction)
                 
             case .failed:
-                print("Transaction Failed")
+                debugPrint("Transaction Failed")
                 delegate?.productPurchaseFailedWithError()
                 SKPaymentQueue.default().finishTransaction(transaction)
                 
             case .restored:
-                print("Transaction Restored")
-                print("Product Identifier: \(transaction.payment.productIdentifier)")
+                debugPrint("Transaction Restored")
+                debugPrint("Product Identifier: \(transaction.payment.productIdentifier)")
                 
             case .deferred:
-                 print("Transaction Deferred")
+                 debugPrint("Transaction Deferred")
 
             default:
                 break
@@ -126,7 +126,7 @@ class InAppPurchase: NSObject,SKProductsRequestDelegate, SKPaymentTransactionObs
         
         for transaction:SKPaymentTransaction in queue.transactions {
                         
-            print(transaction.payment.productIdentifier)
+            debugPrint(transaction.payment.productIdentifier)
         
             delegate?.productRestored(productId: transaction.payment.productIdentifier)
         }
@@ -148,14 +148,14 @@ class InAppPurchase: NSObject,SKProductsRequestDelegate, SKPaymentTransactionObs
     - parameter response: response with product details
     */
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-        print("number of products: \(response.products.count)")
+        debugPrint("number of products: \(response.products.count)")
         let products = response.products
         
         if (products.count != 0) {
             for aProduct in products {
-                print("products found:\(aProduct.productIdentifier)")
-                print("products price:\(aProduct.price)")
-                print("products description:\(aProduct.localizedDescription)")
+                debugPrint("products found:\(aProduct.productIdentifier)")
+                debugPrint("products price:\(aProduct.price)")
+                debugPrint("products description:\(aProduct.localizedDescription)")
                 delegate?.productsList(anArray: products as NSArray)
             }
         }
@@ -163,7 +163,7 @@ class InAppPurchase: NSObject,SKProductsRequestDelegate, SKPaymentTransactionObs
         {
             
             delegate?.invalidProductIDList(anArray: response.invalidProductIdentifiers as NSArray)
-            print("No products found")
+            debugPrint("No products found")
             
             let alert = UIAlertController(title: "Error", message: "Could not fetch product information", preferredStyle: UIAlertControllerStyle.alert)
             

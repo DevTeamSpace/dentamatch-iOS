@@ -21,7 +21,6 @@ class DMForgotPasswordVC: DMBaseVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        self.title = "FORGOT PASSWORD"
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -31,6 +30,8 @@ class DMForgotPasswordVC: DMBaseVC {
     
     func setup() {
         emailTextField.leftViewLabel?.text = "e"
+        self.title = "FORGOT PASSWORD"
+        self.navigationItem.leftBarButtonItem = self.backBarButton()
     }
     
 }

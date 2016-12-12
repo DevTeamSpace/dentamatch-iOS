@@ -21,7 +21,7 @@ class LocationManager: NSObject,CLLocationManagerDelegate {
     }
     
     //Time allowed to fetch the location continuously for accuracy
-    private var locationFetchTimeInSeconds = 1.0
+    private var locationFetchTimeInSeconds = 3.0
     
     typealias LocationClosure = ((_ location:CLLocation?,_ error: NSError?)->Void)
     private var completionHandler: LocationClosure?
@@ -197,7 +197,7 @@ class LocationManager: NSObject,CLLocationManagerDelegate {
                     CLGeocoder().cancelGeocode()
                 }
             }else{
-                print("Problem with the data received from geocoder")
+                debugPrint("Problem with the data received from geocoder")
             }
         })
     }
@@ -256,7 +256,7 @@ class LocationManager: NSObject,CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error.localizedDescription)
+        debugPrint(error.localizedDescription)
         self.didComplete(location: nil, error: error as NSError?)
     }
     

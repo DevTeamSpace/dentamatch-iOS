@@ -21,36 +21,63 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        //Fabric.with([Crashlytics.self])
+
+        //configureCrashlytics()
+        
+        configureGoogleServices()
 
         registerForPushNotifications()
         
         changeNavBarAppearance()
         
-        //Network Reachability Notification check
-        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged), name: ReachabilityChangedNotification, object: nil)
-        self.reachability = Reachability.init()
-        do {
-            try self.reachability.startNotifier()
-        } catch let error {
-            print(error.localizedDescription)
-        }
-        
-        UIApplication.shared.statusBarStyle = .lightContent
-        
-        GMSServices.provideAPIKey(kGoogleAPIKey)
-        GMSPlacesClient.provideAPIKey(kGoogleAPIKey)
+        configureNetworkReachability()
         
         return true
     }
     
     func changeNavBarAppearance() {
-        
+        UIApplication.shared.statusBarStyle = .lightContent
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().barTintColor = UIColor.color(withHexCode: kNavBarColor)
-//        [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
     }
-
+    
+    // MARK: - Configure Crashlytics
+    func configureCrashlytics() {
+        Fabric.with([Crashlytics.self])
+    }
+    
+    // MARK: - Configure GoogleServices
+    func configureGoogleServices() {
+        GMSServices.provideAPIKey(kGoogleAPIKey)
+        GMSPlacesClient.provideAPIKey(kGoogleAPIKey)
+    }
+    
+    // MARK: - Network Reachability Notification Setup
+    func configureNetworkReachability() {
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged), name: ReachabilityChangedNotification, object: nil)
+        self.reachability = Reachability.init()
+        do {
+            try self.reachability.startNotifier()
+        } catch let error {
+            debugPrint(error.localizedDescription)
+        }
+    }
+    
+    func reachabilityChanged(notification:Notification) {
+        let reachability = notification.object as! Reachability
+        if reachability.isReachable {
+            if reachability.isReachableViaWiFi {
+                debugPrint("Reachable via WiFi")
+            } else {
+                debugPrint("Reachable via Cellular")
+            }
+        } else {
+            debugPrint("Network not reachable")
+        }
+    }
+    
+    // MARK: - UIApplication Delegates
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -73,31 +100,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
-    //MARK:- Network Check
-    func reachabilityChanged(notification:Notification) {
-        let reachability = notification.object as! Reachability
-        if reachability.isReachable {
-            if reachability.isReachableViaWiFi {
-                print("Reachable via WiFi")
-            } else {
-                print("Reachable via Cellular")
-            }
-        } else {
-            print("Network not reachable")
-        }
-    }
-
-    // MARK: - Configure Crashlytics
-    func configureCrashlytics() {
-        Fabric.with([Crashlytics.self])
-    }
-
     // MARK: - Core Data stack
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "com.test.CoreData_13Aug" in the application's documents Application Support directory.
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        print(urls)
+        debugPrint(urls)
         return urls[urls.count-1] as NSURL
     }()
     

@@ -64,7 +64,7 @@ extension DMOnboardingVC:UICollectionViewDataSource,UICollectionViewDelegateFlow
         let pageWidth = onboardingCollectionView.frame.size.width;
         let page = floor((onboardingCollectionView.contentOffset.x - pageWidth / 2) / pageWidth) + 1
         pageControl.currentPage = Int(page)
-        print(page)
+        debugPrint(page)
     }
 }
 

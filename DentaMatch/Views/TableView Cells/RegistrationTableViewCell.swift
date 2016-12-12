@@ -14,6 +14,7 @@ import UIKit
 
 class RegistrationTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var helpHintLabel: UILabel!
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var newPasswordTextField: RegistrationTextField!
     @IBOutlet weak var locationLabel: UILabel!
@@ -29,6 +30,7 @@ class RegistrationTableViewCell: UITableViewCell {
         locationView.layer.borderColor = kTextFieldColor.cgColor
         locationView.layer.borderWidth = 1.0
         locationView.layer.cornerRadius = 5.0
+        helpHintLabel.text = "  ⓘ Help Recruiters to find you easily"
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(locationViewTapped))
         self.locationView.addGestureRecognizer(tapGesture)

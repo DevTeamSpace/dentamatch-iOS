@@ -87,9 +87,9 @@ extension DMRegistrationVC:LocationViewTappedDelegate,LocationAddressDelegate {
     
     func locationAddress(address: String) {
         if address.isEmpty {
-            print("Address is empty")
+            debugPrint("Address is empty")
         } else {
-            print(address)
+            debugPrint(address)
         }
     }
 }
