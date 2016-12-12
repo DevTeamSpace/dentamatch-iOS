@@ -16,6 +16,8 @@ class RegistrationTextField: UITextField {
     override func awakeFromNib() {
         leftViewTextField = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: self.frame.size.height))
         leftViewLabel = UILabel(frame:  CGRect(x: 0, y: 0, width: 30, height: self.frame.size.height))
+        
+        leftViewLabel?.textColor = kTextFieldColor
         leftViewLabel?.textAlignment = .center
         leftViewLabel?.font = UIFont.designFont(fontSize: 16.0)
         leftViewLabel?.center = (leftViewTextField?.center)!
@@ -24,7 +26,7 @@ class RegistrationTextField: UITextField {
         self.leftViewMode = .always
         self.layer.cornerRadius = 5.0
         self.layer.borderWidth = 1.0
-        self.layer.borderColor = UIColor.color(withHexCode: kTextFieldColor).cgColor
+        self.layer.borderColor = kTextFieldColor.cgColor
     }
     
     /*

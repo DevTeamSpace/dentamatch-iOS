@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		270886FB07B603FF47668A72 /* Pods_DentaMatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C611E923856ECE4538FA4F38 /* Pods_DentaMatch.framework */; };
+		E5302CD61DFE7AB100984A0B /* DMForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5302CD51DFE7AB100984A0B /* DMForgotPasswordVC.swift */; };
 		E53738F21DB373C200967876 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53738F11DB373C200967876 /* Reachability.swift */; };
 		E55462D71DAE2F49004163B2 /* UIColor+HexCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55462D61DAE2F49004163B2 /* UIColor+HexCode.swift */; };
 		E55462D91DAE3104004163B2 /* Array+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55462D81DAE3104004163B2 /* Array+Additions.swift */; };
@@ -59,6 +60,7 @@
 		5AD8AC4AE71CBA67916D21CE /* Pods-DentaMatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DentaMatch.release.xcconfig"; path = "Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch.release.xcconfig"; sourceTree = "<group>"; };
 		A69AB47303239A016127D8D8 /* Pods-DentaMatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DentaMatch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch.debug.xcconfig"; sourceTree = "<group>"; };
 		C611E923856ECE4538FA4F38 /* Pods_DentaMatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DentaMatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5302CD51DFE7AB100984A0B /* DMForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMForgotPasswordVC.swift; sourceTree = "<group>"; };
 		E53738F11DB373C200967876 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		E55462D01DAE1419004163B2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E55462D61DAE2F49004163B2 /* UIColor+HexCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+HexCode.swift"; sourceTree = "<group>"; };
@@ -139,6 +141,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E5302CD41DFE7A9C00984A0B /* Forgot Password */ = {
+			isa = PBXGroup;
+			children = (
+				E5302CD51DFE7AB100984A0B /* DMForgotPasswordVC.swift */,
+			);
+			path = "Forgot Password";
+			sourceTree = "<group>";
+		};
 		E55462D41DAE1558004163B2 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +211,7 @@
 		E55462E71DAE47C6004163B2 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E5302CD41DFE7A9C00984A0B /* Forgot Password */,
 				E5C5F3191DC1B355001A5A3F /* Terms And Conditions */,
 				E5C5F3131DC0AAA9001A5A3F /* MapsRegistration */,
 				E56B20A01DBF7486000512F6 /* Registration */,
@@ -447,6 +458,7 @@
 				E56E45B61DAE07C200AD4559 /* Resources */,
 				D34E4DE8B9029F6121255E47 /* [CP] Embed Pods Frameworks */,
 				B2B25A4FF61991259351843F /* [CP] Copy Pods Resources */,
+				E5302CD81DFE9CAB00984A0B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -556,6 +568,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E5302CD81DFE9CAB00984A0B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" f35c373cc91e43b381c736551a325bdb3ff6c7bb 02e7963f305f40d64990aea0b2a7509bf3df3c8e341bec080141971b13929f9f";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -568,6 +593,7 @@
 				E55462DF1DAE31EA004163B2 /* UIFont+Additions.swift in Sources */,
 				E59029A91DED2C7A00151E9B /* LogManager.swift in Sources */,
 				E5C5F31F1DC1C6DD001A5A3F /* GooglePlacesTableViewCell.swift in Sources */,
+				E5302CD61DFE7AB100984A0B /* DMForgotPasswordVC.swift in Sources */,
 				E5C5F3181DC1A723001A5A3F /* LocationManager.swift in Sources */,
 				E56C9FA81DED75D500EAA9DD /* CommonHelper.swift in Sources */,
 				E59029AA1DED2C7A00151E9B /* UserDefaultsManager.swift in Sources */,

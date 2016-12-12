@@ -9,8 +9,8 @@
 import UIKit
 
 class DMRegistrationContainer: DMBaseVC {
+    
     @IBOutlet weak var topView: UIView!
-
     @IBOutlet weak var registrationButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     
@@ -60,7 +60,7 @@ class DMRegistrationContainer: DMBaseVC {
         makeTip(button: sender, size: 8, x: sender.frame.midX/2, y: sender.frame.midY)
         self.view.endEditing(true)
         self.view.bringSubview(toFront: (self.loginVC?.view)!)
-        UIView.animate(withDuration: 0.5, animations: {
+        UIView.animate(withDuration: 0.25, animations: {
             self.loginVC?.view.alpha = 1.0
             self.registrationVC?.view.alpha = 0.0
         }) { (finished:Bool) in
@@ -73,7 +73,7 @@ class DMRegistrationContainer: DMBaseVC {
         makeTip(button: sender, size: 8, x: sender.frame.midX/2, y: sender.frame.midY)
         self.view.endEditing(true)
         self.view.bringSubview(toFront: (registrationVC?.view)!)
-        UIView.animate(withDuration: 0.5, animations: {
+        UIView.animate(withDuration: 0.25, animations: {
             self.registrationVC?.view.alpha = 1.0
             self.loginVC?.view.alpha = 0.0
         }) { (finished:Bool) in

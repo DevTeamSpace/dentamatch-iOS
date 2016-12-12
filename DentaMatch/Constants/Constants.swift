@@ -14,8 +14,8 @@ let kAppDelegate = UIApplication.shared.delegate as! AppDelegate
 let kToolbarColor = "EF000C"
 let kLogEnabled = true
 let kGoogleAPIKey = "AIzaSyDFWCamiO9WGTth-iOxfY_L0K6oRBeAu0U"
-let kTextFieldColor = "e4e4e4"
-let kNavBarColor = "0f183f"
+let kTextFieldColor = UIColor.color(withHexCode: "e4e4e4")
+let kNavBarColor = "10193e"
 
 struct Constants {
     

@@ -20,8 +20,28 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>f35c373cc91e43b381c736551a325bdb3ff6c7bb</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>KitInfo</key>
+				<dict/>
+				<key>KitName</key>
+				<string>Crashlytics</string>
+			</dict>
+		</array>
+	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Denta Match use this to track your location and give you the relevant search results.</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>dentamatch.ttf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -38,11 +58,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>UIAppFonts</key>
-	<array>
-		<string>dentamatch.ttf</string>
-	</array>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Denta Match use this to track your location and give you the relevant search results.</string>
 </dict>
 </plist>

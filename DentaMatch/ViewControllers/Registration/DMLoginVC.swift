@@ -15,7 +15,7 @@ class DMLoginVC: UIViewController {
     //MARK:- View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        initialization()
+        setup()
         // Do any additional setup after loading the view.
     }
     
@@ -42,8 +42,14 @@ class DMLoginVC: UIViewController {
     }
 
     //MARK:- Private Methods
-    func initialization() {
+    func setup() {
         self.loginTableView.register(UINib(nibName: "LoginTableViewCell", bundle: nil), forCellReuseIdentifier: "LoginTableViewCell")
+    }
+    
+    func forgotPasswordButtonPressed() {
+        self.view.endEditing(true)
+        let forgotPasswordVC = UIStoryboard.registrationStoryBoard().instantiateViewController(type: DMForgotPasswordVC.self)!
+        self.navigationController?.pushViewController(forgotPasswordVC, animated: true)
     }
     
 }
@@ -57,6 +63,7 @@ extension DMLoginVC:UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "LoginTableViewCell") as! LoginTableViewCell
+        cell.forgotPasswordButton.addTarget(self, action: #selector(forgotPasswordButtonPressed), for: .touchUpInside)
         return cell
     }
     

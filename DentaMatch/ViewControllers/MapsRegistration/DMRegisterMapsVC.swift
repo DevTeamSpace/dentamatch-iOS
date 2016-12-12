@@ -28,14 +28,14 @@ class DMRegisterMapsVC: DMBaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        initialization()
+        setup()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
     
-    func initialization() {
+    func setup() {
         self.placesTableView.rowHeight = UITableViewAutomaticDimension
         self.placesTableView.estimatedRowHeight = 50
         self.placesTableView.isHidden = true

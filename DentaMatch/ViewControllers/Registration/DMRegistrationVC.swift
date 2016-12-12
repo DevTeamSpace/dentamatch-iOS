@@ -15,7 +15,7 @@ class DMRegistrationVC: DMBaseVC,UITextFieldDelegate {
     //MARK:- View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        initialization()
+        setup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,7 +32,7 @@ class DMRegistrationVC: DMBaseVC,UITextFieldDelegate {
     //MARK:- Keyboard Show Hide Observers
     func keyboardWillShow(note: NSNotification) {
         if let keyboardSize = (note.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            registrationTableView.contentInset =  UIEdgeInsetsMake(0, 0, keyboardSize.height+10, 0)
+            registrationTableView.contentInset =  UIEdgeInsetsMake(0, 0, keyboardSize.height+1, 0)
         }
     }
     
@@ -41,13 +41,18 @@ class DMRegistrationVC: DMBaseVC,UITextFieldDelegate {
     }
     
     //MARK:- Private Methods
-    func initialization() {
+    func setup() {
         self.registrationTableView.register(UINib(nibName: "RegistrationTableViewCell", bundle: nil), forCellReuseIdentifier: "RegistrationTableViewCell")
     }
     
     func registerButtonPressed(sender:UIButton) {
         let termsVC = UIStoryboard.registrationStoryBoard().instantiateViewController(type: DMTermsAndConditionsVC.self)!
         self.navigationController?.pushViewController(termsVC, animated: true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
 
@@ -59,6 +64,9 @@ extension DMRegistrationVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RegistrationTableViewCell") as! RegistrationTableViewCell
+        cell.emailTextField.delegate = self
+        cell.newPasswordTextField.delegate = self
+        cell.nameTextField.delegate = self
         cell.delegate = self
         cell.registerButton.addTarget(self, action: #selector(registerButtonPressed), for: .touchUpInside)
         return cell

@@ -26,7 +26,7 @@ class RegistrationTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        locationView.layer.borderColor = UIColor.black.cgColor
+        locationView.layer.borderColor = kTextFieldColor.cgColor
         locationView.layer.borderWidth = 1.0
         locationView.layer.cornerRadius = 5.0
         

@@ -21,8 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+        //Fabric.with([Crashlytics.self])
+
         registerForPushNotifications()
+        
+        changeNavBarAppearance()
         
         //Network Reachability Notification check
         NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged), name: ReachabilityChangedNotification, object: nil)
@@ -39,6 +42,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSPlacesClient.provideAPIKey(kGoogleAPIKey)
         
         return true
+    }
+    
+    func changeNavBarAppearance() {
+        
+        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().barTintColor = UIColor.color(withHexCode: kNavBarColor)
+//        [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
