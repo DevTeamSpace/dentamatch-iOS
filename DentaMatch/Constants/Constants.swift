@@ -38,7 +38,7 @@ struct Constants {
             return BASE_URL + "/" + methodName
         }
     }
-    
+     
     //MARK:- UserDefault Keys
     struct UserDefaultsKeys {
         static let isLoggedIn = "isLoggedIn"
