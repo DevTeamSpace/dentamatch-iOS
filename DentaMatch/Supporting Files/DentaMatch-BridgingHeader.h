@@ -10,5 +10,6 @@
 #define DentaMatch_BridgingHeader_h
 
 #import "UIView+Toast.h"
+#import "UIImageRotate.h"
 
 #endif /* DentaMatch_BridgingHeader_h */

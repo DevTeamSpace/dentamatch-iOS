@@ -24,7 +24,7 @@ protocol InAppPurchaseDelegate{
 class InAppPurchase: NSObject,SKProductsRequestDelegate, SKPaymentTransactionObserver {
     
     enum PurchaseIds: String {
-        case PURCHASE_CARDS   = "com.appster.dentaMatch.purchase"
+        case PURCHASE_CARDS   = "com.appster.dentamatch.purchase"
     }
     
     var delegate:InAppPurchaseDelegate?

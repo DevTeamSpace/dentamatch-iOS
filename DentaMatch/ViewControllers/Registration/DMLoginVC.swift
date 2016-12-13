@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DMLoginVC: UIViewController {
+class DMLoginVC: DMBaseVC {
 
     @IBOutlet weak var loginTableView: UITableView!
     
@@ -50,8 +50,7 @@ class DMLoginVC: UIViewController {
         self.view.endEditing(true)
         let forgotPasswordVC = UIStoryboard.registrationStoryBoard().instantiateViewController(type: DMForgotPasswordVC.self)!
         self.navigationController?.pushViewController(forgotPasswordVC, animated: true)
-    }
-    
+    }    
 }
 
 extension DMLoginVC:UITableViewDataSource,UITableViewDelegate {
@@ -61,7 +60,6 @@ extension DMLoginVC:UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "LoginTableViewCell") as! LoginTableViewCell
         cell.forgotPasswordButton.addTarget(self, action: #selector(forgotPasswordButtonPressed), for: .touchUpInside)
         return cell

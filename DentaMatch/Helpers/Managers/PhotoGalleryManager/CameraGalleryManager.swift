@@ -1,0 +1,160 @@
+//
+//  PhotoGalleryManager.swift
+//  DentaMatch
+//
+//  Created by Rajan Maheshwari on 13/12/16.
+//  Copyright © 2016 Appster. All rights reserved.
+//
+
+import UIKit
+import Photos
+import AVFoundation
+
+class CameraGalleryManager: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+
+    var presentedFromController : UIViewController? = nil
+    var allowsEditing = false
+    
+    enum CameraError: String {
+        case denied = "Camera permissions are turned off. Please turn it on in Settings"
+        case restricted = "Camera permissions are restricted"
+        case notDetermined = "Camera permissions are not determined yet"
+        case unavailable = "Camera not available"
+    }
+    
+    enum GalleryError: String {
+        case denied = "Photo Gallery permissions are turned off. Please turn it on in Settings"
+        case restricted = "Photo Gallery permissions are restricted"
+        case notDetermined = "Photo Gallery permissions are not determined yet"
+    }
+    
+    typealias ImagePickedClosure = (_ image:UIImage?,_ error:NSError?)->()
+    private var completionHandler: ImagePickedClosure?
+    
+    let imagePicker = UIImagePickerController()
+    
+    //MARK:- Singleton Instance
+    static let shared = CameraGalleryManager()
+    
+    //MARK:- View LifeCycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+
+    //MARK:- Permissions
+    func checkGalleryPermission(_ completionHandler:@escaping (_ success:Bool)->()) {
+        PHPhotoLibrary.requestAuthorization({ (status:PHAuthorizationStatus) in
+            if status == .authorized {
+                completionHandler(true)
+            } else if status == .denied {
+                completionHandler(false)
+            } else if status == .notDetermined {
+                completionHandler(false)
+            } else {
+                completionHandler(false)
+            }
+        })
+    }
+    
+    func checkCameraPermission(_ completionHandler:@escaping (_ success:Bool)->()) {
+        if AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo) ==  AVAuthorizationStatus.authorized {
+            // Already Authorized
+            completionHandler(true)
+        } else {
+            AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo, completionHandler: { (granted :Bool) -> Void in
+                if granted == true {
+                    // User granted
+                    OperationQueue.main.addOperation({
+                        completionHandler(true)
+                    })
+                }
+                else {
+                    // User Rejected
+                    completionHandler(false)
+                    print("No permission")
+                }
+            });
+        }
+    }
+
+    //MARK:- Opening Gallery and Camera
+    func openGallery(viewController:UIViewController,allowsEditing:Bool,completionHandler:@escaping ImagePickedClosure) {
+        self.completionHandler = completionHandler
+        presentedFromController = viewController
+        self.allowsEditing = allowsEditing
+        checkGalleryPermission { (success) in
+            if success {
+                self.imagePicker.delegate = self
+                self.imagePicker.allowsEditing = allowsEditing
+                self.imagePicker.sourceType = .photoLibrary
+                OperationQueue.main.addOperation({
+                    viewController.present(self.imagePicker, animated: true, completion: nil)
+                })
+            } else {
+                self.completionHandler?(nil,NSError(domain: "", code: PHPhotoLibrary.authorizationStatus().rawValue, userInfo:
+                    [
+                    NSLocalizedDescriptionKey:GalleryError.denied.rawValue,
+                    NSLocalizedFailureReasonErrorKey:GalleryError.denied.rawValue,
+                    NSLocalizedRecoverySuggestionErrorKey:GalleryError.denied.rawValue
+                    ]))
+            }
+        }
+    }
+    
+    func openCamera(viewController:UIViewController,allowsEditing:Bool,completionHandler:@escaping ImagePickedClosure) {
+        self.completionHandler = completionHandler
+        self.allowsEditing = allowsEditing
+
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            presentedFromController = viewController
+            
+            checkCameraPermission { (success) in
+                if success {
+                    self.imagePicker.allowsEditing = allowsEditing
+                    self.imagePicker.sourceType = .camera
+                    self.imagePicker.delegate = self
+                    OperationQueue.main.addOperation({
+                        self.presentedFromController?.present(self.imagePicker, animated: true, completion: nil)
+                    })
+                } else {
+                    self.completionHandler?(nil,NSError(domain: "", code: AVAuthorizationStatus.denied.rawValue,
+                        userInfo: [
+                        NSLocalizedDescriptionKey:CameraError.denied.rawValue,
+                        NSLocalizedFailureReasonErrorKey:CameraError.denied.rawValue,
+                        NSLocalizedRecoverySuggestionErrorKey:CameraError.denied.rawValue
+                        ]))
+                }
+            }
+        } else {
+            self.completionHandler?(nil,NSError(domain: "", code: 500,
+                        userInfo: [
+                         NSLocalizedDescriptionKey:CameraError.unavailable.rawValue,
+                         NSLocalizedFailureReasonErrorKey:CameraError.unavailable.rawValue,
+                        NSLocalizedRecoverySuggestionErrorKey:CameraError.unavailable.rawValue
+                ]))
+        }
+    }
+    
+    //MARK:- ImagePicker Delegates
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if allowsEditing {
+            if let pickedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
+                var image = pickedImage
+                image = image.rotateImageWithScaling()
+                self.completionHandler?(image,nil)
+            }
+
+        } else {
+            if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+                var image = pickedImage
+                image = image.rotateImageWithScaling()
+                self.completionHandler?(image,nil)
+            }
+        }
+        presentedFromController?.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        presentedFromController?.dismiss(animated: true, completion: nil)
+    }
+}
