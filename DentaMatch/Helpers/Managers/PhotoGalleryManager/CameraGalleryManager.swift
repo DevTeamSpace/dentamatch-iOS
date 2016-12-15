@@ -12,17 +12,18 @@ import AVFoundation
 
 class CameraGalleryManager: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
 
-    var presentedFromController : UIViewController? = nil
-    var allowsEditing = false
+    private var presentedFromController : UIViewController? = nil
+    private var allowsEditing = false
     
-    enum CameraError: String {
+    
+    private enum CameraError: String {
         case denied = "Camera permissions are turned off. Please turn it on in Settings"
         case restricted = "Camera permissions are restricted"
         case notDetermined = "Camera permissions are not determined yet"
         case unavailable = "Camera not available"
     }
     
-    enum GalleryError: String {
+    private enum GalleryError: String {
         case denied = "Photo Gallery permissions are turned off. Please turn it on in Settings"
         case restricted = "Photo Gallery permissions are restricted"
         case notDetermined = "Photo Gallery permissions are not determined yet"
@@ -31,7 +32,7 @@ class CameraGalleryManager: UIViewController,UIImagePickerControllerDelegate,UIN
     typealias ImagePickedClosure = (_ image:UIImage?,_ error:NSError?)->()
     private var completionHandler: ImagePickedClosure?
     
-    let imagePicker = UIImagePickerController()
+    private let imagePicker = UIImagePickerController()
     
     //MARK:- Singleton Instance
     static let shared = CameraGalleryManager()
@@ -42,6 +43,10 @@ class CameraGalleryManager: UIViewController,UIImagePickerControllerDelegate,UIN
     }
 
     //MARK:- Permissions
+    /// Checks the Permission for Photo Gallery
+    ///
+    /// - Parameter completionHandler: Accepts a closure of a success bool variable which is sent back as a completon handler
+    ///   - success: Bool
     func checkGalleryPermission(_ completionHandler:@escaping (_ success:Bool)->()) {
         PHPhotoLibrary.requestAuthorization({ (status:PHAuthorizationStatus) in
             if status == .authorized {
@@ -56,6 +61,10 @@ class CameraGalleryManager: UIViewController,UIImagePickerControllerDelegate,UIN
         })
     }
     
+    /// Checks the Permission for Camera
+    ///
+    /// - Parameter completionHandler: Accepts a closure of a success bool variable which is sent back as a completon handler
+    /// - success: Bool
     func checkCameraPermission(_ completionHandler:@escaping (_ success:Bool)->()) {
         if AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo) ==  AVAuthorizationStatus.authorized {
             // Already Authorized
@@ -78,6 +87,12 @@ class CameraGalleryManager: UIViewController,UIImagePickerControllerDelegate,UIN
     }
 
     //MARK:- Opening Gallery and Camera
+    /// Presents Photo Gallery on the current view
+    ///
+    /// - Parameters:
+    ///   - viewController: Current ViewController from where the gallery is presenting. Generally self.
+    ///   - allowsEditing: bool which allows whether the photo can be edited after picking or not.
+    ///   - completionHandler: returns the UIImage object and NSError in case of error
     func openGallery(viewController:UIViewController,allowsEditing:Bool,completionHandler:@escaping ImagePickedClosure) {
         self.completionHandler = completionHandler
         presentedFromController = viewController
@@ -101,6 +116,12 @@ class CameraGalleryManager: UIViewController,UIImagePickerControllerDelegate,UIN
         }
     }
     
+    /// Presents Camera on the current view
+    ///
+    /// - Parameters:
+    ///   - viewController: Current ViewController from where the camera is presenting. Generally self.
+    ///   - allowsEditing: bool which allows whether the photo can be edited after picking or not.
+    ///   - completionHandler: returns the UIImage object and NSError in case of error
     func openCamera(viewController:UIViewController,allowsEditing:Bool,completionHandler:@escaping ImagePickedClosure) {
         self.completionHandler = completionHandler
         self.allowsEditing = allowsEditing
