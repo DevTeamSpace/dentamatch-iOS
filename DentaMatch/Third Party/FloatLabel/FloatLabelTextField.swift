@@ -14,7 +14,7 @@
 
 import UIKit
 
-@IBDesignable class FloatLabelTextField: UITextField {
+ class FloatLabelTextField: UITextField {
 	let animationDuration = 0.3
 	var title = UILabel()
 	
@@ -53,9 +53,9 @@ import UIKit
 		}
 	}
 	
-	@IBInspectable var hintYPadding:CGFloat = 0.0
+	 var hintYPadding:CGFloat = 0.0
 
-	@IBInspectable var titleYPadding:CGFloat = 0.0 {
+     var titleYPadding:CGFloat = 0.0 {
 		didSet {
 			var r = title.frame
 			r.origin.y = titleYPadding
@@ -63,7 +63,7 @@ import UIKit
 		}
 	}
 	
-	@IBInspectable var titleTextColour:UIColor = UIColor.gray {
+	 var titleTextColour:UIColor = UIColor.gray {
 		didSet {
 			if !isFirstResponder {
 				title.textColor = titleTextColour
@@ -71,7 +71,7 @@ import UIKit
 		}
 	}
 	
-	@IBInspectable var titleActiveTextColour:UIColor! {
+	 var titleActiveTextColour:UIColor! {
 		didSet {
 			if isFirstResponder {
 				title.textColor = titleActiveTextColour
