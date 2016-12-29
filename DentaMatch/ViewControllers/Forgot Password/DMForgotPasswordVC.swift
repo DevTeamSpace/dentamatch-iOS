@@ -29,7 +29,7 @@ class DMForgotPasswordVC: DMBaseVC {
     }
     
     func setup() {
-        emailTextField.leftViewLabel?.text = "e"
+        emailTextField.leftViewLabel?.text = "f"
         self.title = "FORGOT PASSWORD"
         self.navigationItem.leftBarButtonItem = self.backBarButton()
     }

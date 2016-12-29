@@ -38,9 +38,9 @@ class RegistrationTableViewCell: UITableViewCell {
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        nameTextField.leftViewLabel?.text = "B"
-        emailTextField.leftViewLabel?.text = "e"
-        newPasswordTextField.leftViewLabel?.text = "c"
+        nameTextField.leftViewLabel?.text = "m"
+        emailTextField.leftViewLabel?.text = "f"
+        newPasswordTextField.leftViewLabel?.text = "e"
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

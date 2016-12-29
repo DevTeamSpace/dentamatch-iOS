@@ -88,7 +88,7 @@ class DMBaseVC: UIViewController {
         let customButton = UIButton(type: .system)
         customButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         customButton.titleLabel?.font = UIFont.designFont(fontSize: 24)!
-        customButton.setTitle("H", for: .normal)
+        customButton.setTitle("l", for: .normal)
         customButton.addTarget(self, action: #selector(backBarButtonItemPressed), for: .touchUpInside)
         let barButton = UIBarButtonItem(customView: customButton)
         return barButton

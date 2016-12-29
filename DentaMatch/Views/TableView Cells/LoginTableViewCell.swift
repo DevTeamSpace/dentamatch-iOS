@@ -22,8 +22,8 @@ class LoginTableViewCell: UITableViewCell {
 
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        emailTextField.leftViewLabel?.text = "e"
-        passwordTextField.leftViewLabel?.text = "c"
+        emailTextField.leftViewLabel?.text = "f"
+        passwordTextField.leftViewLabel?.text = "e"
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

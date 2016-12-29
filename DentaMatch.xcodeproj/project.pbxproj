@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		270886FB07B603FF47668A72 /* Pods_DentaMatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C611E923856ECE4538FA4F38 /* Pods_DentaMatch.framework */; };
+		E51801D61E14E667006E4E36 /* untitled-font-6.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E51801D51E14E667006E4E36 /* untitled-font-6.ttf */; };
 		E5302CD61DFE7AB100984A0B /* DMForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5302CD51DFE7AB100984A0B /* DMForgotPasswordVC.swift */; };
 		E53738F21DB373C200967876 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53738F11DB373C200967876 /* Reachability.swift */; };
 		E55462D71DAE2F49004163B2 /* UIColor+HexCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55462D61DAE2F49004163B2 /* UIColor+HexCode.swift */; };
@@ -45,7 +46,6 @@
 		E5AE2AF11DAF844C00C008BD /* DMOnboardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE2AF01DAF844C00C008BD /* DMOnboardingVC.swift */; };
 		E5AE2AF31DAF84AD00C008BD /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5AE2AF21DAF84AD00C008BD /* Onboarding.storyboard */; };
 		E5AE2AF61DAF878900C008BD /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE2AF51DAF878900C008BD /* OnboardingCollectionViewCell.swift */; };
-		E5C5F30E1DC074C9001A5A3F /* dentamatch.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5C5F30D1DC074C9001A5A3F /* dentamatch.ttf */; };
 		E5C5F3111DC07C6F001A5A3F /* LoginTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C5F30F1DC07C6F001A5A3F /* LoginTableViewCell.swift */; };
 		E5C5F3121DC07C6F001A5A3F /* LoginTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5C5F3101DC07C6F001A5A3F /* LoginTableViewCell.xib */; };
 		E5C5F3151DC0AACA001A5A3F /* DMRegisterMapsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C5F3141DC0AACA001A5A3F /* DMRegisterMapsVC.swift */; };
@@ -63,6 +63,7 @@
 		5AD8AC4AE71CBA67916D21CE /* Pods-DentaMatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DentaMatch.release.xcconfig"; path = "Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch.release.xcconfig"; sourceTree = "<group>"; };
 		A69AB47303239A016127D8D8 /* Pods-DentaMatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DentaMatch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch.debug.xcconfig"; sourceTree = "<group>"; };
 		C611E923856ECE4538FA4F38 /* Pods_DentaMatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DentaMatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E51801D51E14E667006E4E36 /* untitled-font-6.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "untitled-font-6.ttf"; sourceTree = "<group>"; };
 		E5302CD51DFE7AB100984A0B /* DMForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMForgotPasswordVC.swift; sourceTree = "<group>"; };
 		E53738F11DB373C200967876 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		E538FA7C1DFFD76000AECE26 /* DentaMatch-Dev.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DentaMatch-Dev.entitlements"; sourceTree = "<group>"; };
@@ -105,7 +106,6 @@
 		E5AE2AF01DAF844C00C008BD /* DMOnboardingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMOnboardingVC.swift; sourceTree = "<group>"; };
 		E5AE2AF21DAF84AD00C008BD /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		E5AE2AF51DAF878900C008BD /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
-		E5C5F30D1DC074C9001A5A3F /* dentamatch.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = dentamatch.ttf; sourceTree = "<group>"; };
 		E5C5F30F1DC07C6F001A5A3F /* LoginTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTableViewCell.swift; sourceTree = "<group>"; };
 		E5C5F3101DC07C6F001A5A3F /* LoginTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginTableViewCell.xib; sourceTree = "<group>"; };
 		E5C5F3141DC0AACA001A5A3F /* DMRegisterMapsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMRegisterMapsVC.swift; sourceTree = "<group>"; };
@@ -414,7 +414,7 @@
 		E5C5F30C1DC074C9001A5A3F /* fonts */ = {
 			isa = PBXGroup;
 			children = (
-				E5C5F30D1DC074C9001A5A3F /* dentamatch.ttf */,
+				E51801D51E14E667006E4E36 /* untitled-font-6.ttf */,
 			);
 			path = fonts;
 			sourceTree = "<group>";
@@ -546,11 +546,11 @@
 				E56B209F1DBF7467000512F6 /* Registration.storyboard in Resources */,
 				E5AE2AF31DAF84AD00C008BD /* Onboarding.storyboard in Resources */,
 				E5C5F3121DC07C6F001A5A3F /* LoginTableViewCell.xib in Resources */,
-				E5C5F30E1DC074C9001A5A3F /* dentamatch.ttf in Resources */,
 				E58654FF1DEFEF7F006FEB2D /* Environments.plist in Resources */,
 				E56E45C61DAE07C200AD4559 /* LaunchScreen.storyboard in Resources */,
 				E56E45C31DAE07C200AD4559 /* Assets.xcassets in Resources */,
 				E56B20AB1DC06084000512F6 /* RegistrationTableViewCell.xib in Resources */,
+				E51801D61E14E667006E4E36 /* untitled-font-6.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -794,7 +794,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appster.dentamatch;
 				PRODUCT_NAME = "$(TARGET_NAME)-Dev";
-				PROVISIONING_PROFILE = "40ecc7c2-f470-4b63-ab7e-bb9d0de4f295";
+				PROVISIONING_PROFILE = "39c8370d-8bab-48a5-890d-d72479c5ab13";
 				SWIFT_OBJC_BRIDGING_HEADER = "DentaMatch/Supporting Files/DentaMatch-BridgingHeader.h";
 				SWIFT_VERSION = 3.0;
 			};
@@ -815,7 +815,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appster.dentamatch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "527653bf-df20-4ab7-ab88-a1e0404d9201";
+				PROVISIONING_PROFILE = "d1bc0f91-4cbc-44e5-9d8f-a40877777219";
 				SWIFT_OBJC_BRIDGING_HEADER = "DentaMatch/Supporting Files/DentaMatch-BridgingHeader.h";
 				SWIFT_VERSION = 3.0;
 			};
@@ -890,7 +890,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appster.dentamatch;
 				PRODUCT_NAME = "$(TARGET_NAME)-QA";
-				PROVISIONING_PROFILE = "40ecc7c2-f470-4b63-ab7e-bb9d0de4f295";
+				PROVISIONING_PROFILE = "39c8370d-8bab-48a5-890d-d72479c5ab13";
 				SWIFT_OBJC_BRIDGING_HEADER = "DentaMatch/Supporting Files/DentaMatch-BridgingHeader.h";
 				SWIFT_VERSION = 3.0;
 			};
@@ -958,7 +958,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appster.dentamatch;
 				PRODUCT_NAME = "$(TARGET_NAME)-Staging";
-				PROVISIONING_PROFILE = "40ecc7c2-f470-4b63-ab7e-bb9d0de4f295";
+				PROVISIONING_PROFILE = "39c8370d-8bab-48a5-890d-d72479c5ab13";
 				SWIFT_OBJC_BRIDGING_HEADER = "DentaMatch/Supporting Files/DentaMatch-BridgingHeader.h";
 				SWIFT_VERSION = 3.0;
 			};
