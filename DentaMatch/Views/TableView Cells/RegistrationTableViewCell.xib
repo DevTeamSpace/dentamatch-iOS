@@ -8,8 +8,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="dentamatch.ttf">
-            <string>dentamatch</string>
+        <array key="SF-UI-Text-Medium.otf">
+            <string>SFUIText-Medium</string>
+        </array>
+        <array key="SF-UI-Text-Regular.otf">
+            <string>SFUIText-Regular</string>
         </array>
     </customFonts>
     <objects>
@@ -28,20 +31,26 @@
                             <constraint firstAttribute="height" constant="55" id="FLj-82-Ays"/>
                         </constraints>
                         <nil key="textColor"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
                     </textField>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hvL-ql-Nfu" customClass="RegistrationTextField" customModule="DentaMatch" customModuleProvider="target">
                         <rect key="frame" x="20" y="111" width="280" height="55"/>
                         <nil key="textColor"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                     </textField>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zO8-zm-UsQ" customClass="RegistrationTextField" customModule="DentaMatch" customModuleProvider="target">
                         <rect key="frame" x="20" y="182" width="280" height="55"/>
                         <nil key="textColor"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
+                    </textField>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Preferred Job Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oQl-xj-v9U" customClass="RegistrationTextField" customModule="DentaMatch" customModuleProvider="target">
+                        <rect key="frame" x="20" y="253" width="280" height="55"/>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
+                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                     </textField>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tE8-GN-eFl">
                         <rect key="frame" x="0.0" y="418" width="320" height="48"/>
@@ -49,73 +58,47 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="48" id="ifZ-rW-5lD"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="16"/>
                         <state key="normal" title="REGISTER">
                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help Recruiters to find you easily" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x9c-Dc-oJl">
                         <rect key="frame" x="30" y="318" width="186.5" height="14.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="12"/>
+                        <color key="textColor" red="0.65098039215686276" green="0.65098039215686276" blue="0.65098039215686276" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Biq-Gz-c0Q">
-                        <rect key="frame" x="20" y="253" width="280" height="55"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preferred Job Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L9t-nb-zTm">
-                                <rect key="frame" x="40" y="18.5" width="165.5" height="19.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="d" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0O-DV-OEo">
-                                <rect key="frame" x="14" y="0.0" width="16" height="55"/>
-                                <fontDescription key="fontDescription" name="dentamatch" family="dentamatch" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="L9t-nb-zTm" firstAttribute="centerY" secondItem="Biq-Gz-c0Q" secondAttribute="centerY" id="57E-RX-fxS"/>
-                            <constraint firstItem="P0O-DV-OEo" firstAttribute="leading" secondItem="Biq-Gz-c0Q" secondAttribute="leading" constant="14" id="EHm-Bz-7E8"/>
-                            <constraint firstAttribute="bottom" secondItem="P0O-DV-OEo" secondAttribute="bottom" id="Fh0-ue-nIC"/>
-                            <constraint firstItem="L9t-nb-zTm" firstAttribute="leading" secondItem="P0O-DV-OEo" secondAttribute="trailing" constant="10" id="OVS-1l-1Ip"/>
-                            <constraint firstItem="P0O-DV-OEo" firstAttribute="top" secondItem="Biq-Gz-c0Q" secondAttribute="top" id="WnG-ao-8Qw"/>
-                        </constraints>
-                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="zO8-zm-UsQ" firstAttribute="width" secondItem="hvL-ql-Nfu" secondAttribute="width" id="85h-ye-xJg"/>
+                    <constraint firstItem="oQl-xj-v9U" firstAttribute="centerX" secondItem="zO8-zm-UsQ" secondAttribute="centerX" id="9bH-JR-yHV"/>
                     <constraint firstAttribute="trailing" secondItem="tE8-GN-eFl" secondAttribute="trailing" id="9uH-S5-zgj"/>
                     <constraint firstItem="oGf-Da-ohf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="D3U-ud-QmD"/>
                     <constraint firstItem="zO8-zm-UsQ" firstAttribute="centerX" secondItem="hvL-ql-Nfu" secondAttribute="centerX" id="F1f-SG-2jK"/>
-                    <constraint firstItem="x9c-Dc-oJl" firstAttribute="leading" secondItem="Biq-Gz-c0Q" secondAttribute="leading" constant="10" id="Jaz-FJ-FTK"/>
+                    <constraint firstItem="x9c-Dc-oJl" firstAttribute="leading" secondItem="oQl-xj-v9U" secondAttribute="leading" constant="10" id="KHw-qk-rwr"/>
                     <constraint firstItem="hvL-ql-Nfu" firstAttribute="width" secondItem="oGf-Da-ohf" secondAttribute="width" id="LLV-2o-xiy"/>
                     <constraint firstAttribute="trailing" secondItem="oGf-Da-ohf" secondAttribute="trailing" constant="20" id="SAi-zt-REM"/>
-                    <constraint firstItem="Biq-Gz-c0Q" firstAttribute="top" secondItem="zO8-zm-UsQ" secondAttribute="bottom" constant="16" id="U17-tj-KaI"/>
-                    <constraint firstItem="Biq-Gz-c0Q" firstAttribute="centerX" secondItem="zO8-zm-UsQ" secondAttribute="centerX" id="U1u-gR-Uih"/>
                     <constraint firstItem="zO8-zm-UsQ" firstAttribute="top" secondItem="hvL-ql-Nfu" secondAttribute="bottom" constant="16" id="VcB-SY-SY1"/>
                     <constraint firstItem="hvL-ql-Nfu" firstAttribute="height" secondItem="oGf-Da-ohf" secondAttribute="height" id="dOh-W2-0s4"/>
+                    <constraint firstItem="oQl-xj-v9U" firstAttribute="top" secondItem="zO8-zm-UsQ" secondAttribute="bottom" constant="16" id="dyB-6b-hXj"/>
                     <constraint firstItem="oGf-Da-ohf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="40" id="gJ9-cV-MaF"/>
-                    <constraint firstItem="Biq-Gz-c0Q" firstAttribute="width" secondItem="zO8-zm-UsQ" secondAttribute="width" id="gR6-TM-6oa"/>
                     <constraint firstItem="zO8-zm-UsQ" firstAttribute="height" secondItem="hvL-ql-Nfu" secondAttribute="height" id="hBs-Yf-Jkl"/>
-                    <constraint firstItem="Biq-Gz-c0Q" firstAttribute="height" secondItem="zO8-zm-UsQ" secondAttribute="height" id="hdb-fd-2k4"/>
+                    <constraint firstItem="oQl-xj-v9U" firstAttribute="height" secondItem="zO8-zm-UsQ" secondAttribute="height" id="hIv-e7-47Y"/>
                     <constraint firstItem="tE8-GN-eFl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="mnE-uK-6sq"/>
                     <constraint firstItem="hvL-ql-Nfu" firstAttribute="centerX" secondItem="oGf-Da-ohf" secondAttribute="centerX" id="oIB-Im-tXo"/>
                     <constraint firstItem="hvL-ql-Nfu" firstAttribute="top" secondItem="oGf-Da-ohf" secondAttribute="bottom" constant="16" id="q4I-Cl-Aqc"/>
-                    <constraint firstItem="x9c-Dc-oJl" firstAttribute="top" secondItem="Biq-Gz-c0Q" secondAttribute="bottom" constant="9.5" id="rF1-RG-hV1"/>
+                    <constraint firstItem="x9c-Dc-oJl" firstAttribute="top" secondItem="oQl-xj-v9U" secondAttribute="bottom" constant="10" id="qMm-6V-Sru"/>
+                    <constraint firstItem="oQl-xj-v9U" firstAttribute="width" secondItem="zO8-zm-UsQ" secondAttribute="width" id="rj2-R5-3Dl"/>
                     <constraint firstAttribute="bottom" secondItem="tE8-GN-eFl" secondAttribute="bottom" id="t82-8K-gju"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="emailTextField" destination="hvL-ql-Nfu" id="8sw-uN-DMZ"/>
                 <outlet property="helpHintLabel" destination="x9c-Dc-oJl" id="acR-lC-6u0"/>
-                <outlet property="locationLabel" destination="L9t-nb-zTm" id="8F8-LQ-xif"/>
-                <outlet property="locationView" destination="Biq-Gz-c0Q" id="0nK-SE-a1E"/>
                 <outlet property="nameTextField" destination="oGf-Da-ohf" id="SUO-ys-TMe"/>
                 <outlet property="newPasswordTextField" destination="zO8-zm-UsQ" id="DG3-Kj-qpW"/>
+                <outlet property="preferredLocationTextField" destination="oQl-xj-v9U" id="AQE-KT-HUy"/>
                 <outlet property="registerButton" destination="tE8-GN-eFl" id="dg0-dC-sSJ"/>
             </connections>
             <point key="canvasLocation" x="67" y="265.5"/>

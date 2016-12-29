@@ -16,7 +16,18 @@ extension UIFont{
     }
     
     class func fontRegular(fontSize:CGFloat)->UIFont?{
-        return UIFont(name: "Montserrat-Regular", size: fontSize)
+        return UIFont(name: "SFUIText-Regular", size: fontSize)
     }
     
-}
+    class func fontHeavy(fontSize:CGFloat)->UIFont?{
+        return UIFont(name: "SFUIText-Heavy", size: fontSize)
+    }
+    
+    class func fontLight(fontSize:CGFloat)->UIFont?{
+        return UIFont(name: "SFUIText-Light", size: fontSize)
+    }
+    
+    class func fontSemiBold(fontSize:CGFloat)->UIFont?{
+        return UIFont(name: "SFUIText-Semibold", size: fontSize)
+    }
+ }

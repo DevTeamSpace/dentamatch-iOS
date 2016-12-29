@@ -15,6 +15,7 @@ class RegistrationTextField: FloatLabelTextField {
     
     override func awakeFromNib() {
         self.titleYPadding = 5.0
+        self.titleFont = UIFont.fontRegular(fontSize: 12.0)!
         self.titleActiveTextColour = kTextFieldColor
         leftTextFieldView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: self.frame.size.height))
         leftViewLabel = UILabel(frame:  CGRect(x: 0, y: 0, width: 30, height: self.frame.size.height))

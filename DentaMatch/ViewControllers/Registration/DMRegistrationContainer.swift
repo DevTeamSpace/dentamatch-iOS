@@ -13,6 +13,7 @@ class DMRegistrationContainer: DMBaseVC {
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var registrationButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var registrationHeaderImageView: UIImageView!
     
     var registrationVC:DMRegistrationVC?
     var loginVC:DMLoginVC?
@@ -42,20 +43,27 @@ class DMRegistrationContainer: DMBaseVC {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         registrationVC?.view.frame = CGRect(x: 0, y: self.topView.frame.size.height, width: self.view.frame.size.width, height: self.view.frame.size.height - self.topView.frame.size.height)
+        
         loginVC?.view.frame = CGRect(x: 0, y: self.topView.frame.size.height, width: self.view.frame.size.width, height: self.view.frame.size.height - self.topView.frame.size.height)
         
         removeTip(button: registrationButton)
         removeTip(button: loginButton)
         
         if isRegistration {
+            registrationButton.titleLabel?.font = UIFont.fontSemiBold(fontSize: 14.0)!
+            loginButton.titleLabel?.font = UIFont.fontLight(fontSize: 14.0)!
             makeTip(button: registrationButton, size: 8, x: registrationButton.frame.midX/2, y: registrationButton.frame.midY)
         } else {
+            registrationButton.titleLabel?.font = UIFont.fontLight(fontSize: 14.0)!
+            loginButton.titleLabel?.font = UIFont.fontSemiBold(fontSize: 14.0)!
             makeTip(button: loginButton, size: 8, x: loginButton.frame.midX/2, y: loginButton.frame.midY)
         }
     }
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         isRegistration = false
+        registrationButton.titleLabel?.font = UIFont.fontLight(fontSize: 14.0)!
+        loginButton.titleLabel?.font = UIFont.fontSemiBold(fontSize: 14.0)!
         removeTip(button: registrationButton)
         makeTip(button: sender, size: 8, x: sender.frame.midX/2, y: sender.frame.midY)
         self.view.endEditing(true)
@@ -69,6 +77,8 @@ class DMRegistrationContainer: DMBaseVC {
 
     @IBAction func registrationButtonPressed(_ sender: UIButton) {
         isRegistration = true
+        registrationButton.titleLabel?.font = UIFont.fontSemiBold(fontSize: 14.0)!
+        loginButton.titleLabel?.font = UIFont.fontLight(fontSize: 14.0)!
         removeTip(button: loginButton)
         makeTip(button: sender, size: 8, x: sender.frame.midX/2, y: sender.frame.midY)
         self.view.endEditing(true)

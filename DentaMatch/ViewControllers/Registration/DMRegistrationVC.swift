@@ -11,7 +11,7 @@ import UIKit
 class DMRegistrationVC: DMBaseVC,UITextFieldDelegate {
 
     @IBOutlet weak var registrationTableView: UITableView!
-    
+        
     //MARK:- View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +22,11 @@ class DMRegistrationVC: DMBaseVC,UITextFieldDelegate {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.registrationTableView.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -50,8 +55,22 @@ class DMRegistrationVC: DMBaseVC,UITextFieldDelegate {
         self.navigationController?.pushViewController(termsVC, animated: true)
     }
     
+    //MARK:- TextField Delegates
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if let cell = self.registrationTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as?
+            RegistrationTableViewCell {
+            if textField == cell.preferredLocationTextField {
+                let mapVC = UIStoryboard.registrationStoryBoard().instantiateViewController(type: DMRegisterMapsVC.self)!
+                mapVC.delegate = self
+                self.navigationController?.pushViewController(mapVC, animated: true)
+                return false
+            }
+        }
         return true
     }
 }
@@ -67,28 +86,25 @@ extension DMRegistrationVC: UITableViewDataSource, UITableViewDelegate {
         cell.emailTextField.delegate = self
         cell.newPasswordTextField.delegate = self
         cell.nameTextField.delegate = self
-        cell.delegate = self
+        cell.preferredLocationTextField.delegate = self
         cell.registerButton.addTarget(self, action: #selector(registerButtonPressed), for: .touchUpInside)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 475
+        return self.registrationTableView.frame.size.height
     }
 }
 
-extension DMRegistrationVC:LocationViewTappedDelegate,LocationAddressDelegate {
-    
-    func locationViewDidTap() {
-        let mapVC = UIStoryboard.registrationStoryBoard().instantiateViewController(type: DMRegisterMapsVC.self)!
-        mapVC.delegate = self
-        self.navigationController?.pushViewController(mapVC, animated: true)
-    }
-    
+extension DMRegistrationVC:LocationAddressDelegate {
     func locationAddress(address: String) {
         if address.isEmpty {
             debugPrint("Address is empty")
         } else {
+            if let cell = self.registrationTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as?
+                RegistrationTableViewCell {
+                cell.preferredLocationTextField.text = address
+            }
             debugPrint(address)
         }
     }

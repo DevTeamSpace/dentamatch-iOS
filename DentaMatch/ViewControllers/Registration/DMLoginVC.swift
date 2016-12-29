@@ -11,7 +11,7 @@ import UIKit
 class DMLoginVC: DMBaseVC {
 
     @IBOutlet weak var loginTableView: UITableView!
-    
+        
     //MARK:- View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +23,11 @@ class DMLoginVC: DMBaseVC {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.loginTableView.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -66,7 +71,7 @@ extension DMLoginVC:UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 475
+        return self.loginTableView.frame.size.height
     }
 
 }

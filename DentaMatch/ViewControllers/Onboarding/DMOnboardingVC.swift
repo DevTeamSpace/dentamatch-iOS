@@ -16,6 +16,18 @@ class DMOnboardingVC: DMBaseVC {
     
     var images = ["onBoarding1","onBoarding2","onBoarding3","onBoarding4"]
     
+    let headings = ["Find Jobs For You",
+                    "Set Your Availability",
+                    "Get Quick Assignments",
+                    "Create \nYour Profile"
+                    ]
+    
+    let subHeadings = ["Quis nostrud exercitullamco laboris nisi ut aliquip consequat.quis nostrud exercitullamco laboris nisi ut.",
+                       "Quis nostrud exercitullamco laboris nisi ut aliquip consequat.quis nostrud exercitullamco laboris nisi ut.",
+                       "Quis nostrud exercitullamco laboris nisi ut aliquip consequat.quis nostrud exercitullamco laboris nisi ut.",
+                       "Quis nostrud exercitullamco laboris nisi ut aliquip consequat.quis nostrud exercitullamco laboris nisi ut."
+                       ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false
@@ -24,10 +36,10 @@ class DMOnboardingVC: DMBaseVC {
     }
     
     func setup() {
-        
     }
+    
     @IBAction func skipButtonPressed(_ sender: AnyObject) {
-        //Go to login/Registration
+    //Go to login/Registration
         
      let registrationContainer = UIStoryboard.registrationStoryBoard().instantiateViewController(withIdentifier: "RegistrationNAV") as! UINavigationController
   
@@ -53,6 +65,8 @@ extension DMOnboardingVC:UICollectionViewDataSource,UICollectionViewDelegateFlow
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OnboardingCollectionViewCell", for: indexPath) as! OnboardingCollectionViewCell
         cell.onBoardingImageView.image = UIImage(named: self.images[indexPath.row])
+        cell.headingLabel.text = headings[indexPath.row]
+        cell.subHeadingLabel.text = subHeadings[indexPath.row]
         return cell
     }
     

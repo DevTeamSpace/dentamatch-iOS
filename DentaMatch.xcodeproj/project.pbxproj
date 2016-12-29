@@ -29,7 +29,6 @@
 		E56B20A61DC05C74000512F6 /* DMLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56B20A51DC05C74000512F6 /* DMLoginVC.swift */; };
 		E56B20AA1DC06084000512F6 /* RegistrationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56B20A81DC06084000512F6 /* RegistrationTableViewCell.swift */; };
 		E56B20AB1DC06084000512F6 /* RegistrationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E56B20A91DC06084000512F6 /* RegistrationTableViewCell.xib */; };
-		E56B20AD1DC06972000512F6 /* RegistrationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56B20AC1DC06972000512F6 /* RegistrationTextField.swift */; };
 		E56C9F9E1DED4BD100EAA9DD /* Character+Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C9F9D1DED4BD100EAA9DD /* Character+Addition.swift */; };
 		E56C9FA31DED520B00EAA9DD /* InAppPurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C9FA21DED520B00EAA9DD /* InAppPurchase.swift */; };
 		E56C9FA81DED75D500EAA9DD /* CommonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C9FA71DED75D500EAA9DD /* CommonHelper.swift */; };
@@ -68,6 +67,7 @@
 		E597E58B1E151A99001DDA78 /* SF-UI-Text-UltrathinItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E597E5741E151A99001DDA78 /* SF-UI-Text-UltrathinItalic.otf */; };
 		E597E58F1E151CFF001DDA78 /* FloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E597E58D1E151CFF001DDA78 /* FloatLabelTextField.swift */; };
 		E597E5901E151CFF001DDA78 /* FloatLabelTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E597E58E1E151CFF001DDA78 /* FloatLabelTextView.swift */; };
+		E5A3E8EB1E154BD600B10937 /* RegistrationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A3E8EA1E154BD600B10937 /* RegistrationTextField.swift */; };
 		E5AE2AF11DAF844C00C008BD /* DMOnboardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE2AF01DAF844C00C008BD /* DMOnboardingVC.swift */; };
 		E5AE2AF31DAF84AD00C008BD /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5AE2AF21DAF84AD00C008BD /* Onboarding.storyboard */; };
 		E5AE2AF61DAF878900C008BD /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE2AF51DAF878900C008BD /* OnboardingCollectionViewCell.swift */; };
@@ -113,7 +113,6 @@
 		E56B20A51DC05C74000512F6 /* DMLoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMLoginVC.swift; sourceTree = "<group>"; };
 		E56B20A81DC06084000512F6 /* RegistrationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationTableViewCell.swift; sourceTree = "<group>"; };
 		E56B20A91DC06084000512F6 /* RegistrationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegistrationTableViewCell.xib; sourceTree = "<group>"; };
-		E56B20AC1DC06972000512F6 /* RegistrationTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationTextField.swift; sourceTree = "<group>"; };
 		E56C9F9D1DED4BD100EAA9DD /* Character+Addition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Character+Addition.swift"; sourceTree = "<group>"; };
 		E56C9FA21DED520B00EAA9DD /* InAppPurchase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppPurchase.swift; sourceTree = "<group>"; };
 		E56C9FA71DED75D500EAA9DD /* CommonHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonHelper.swift; sourceTree = "<group>"; };
@@ -153,6 +152,7 @@
 		E597E5741E151A99001DDA78 /* SF-UI-Text-UltrathinItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-UltrathinItalic.otf"; sourceTree = "<group>"; };
 		E597E58D1E151CFF001DDA78 /* FloatLabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatLabelTextField.swift; sourceTree = "<group>"; };
 		E597E58E1E151CFF001DDA78 /* FloatLabelTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatLabelTextView.swift; sourceTree = "<group>"; };
+		E5A3E8EA1E154BD600B10937 /* RegistrationTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationTextField.swift; sourceTree = "<group>"; };
 		E5AE2AF01DAF844C00C008BD /* DMOnboardingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMOnboardingVC.swift; sourceTree = "<group>"; };
 		E5AE2AF21DAF84AD00C008BD /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		E5AE2AF51DAF878900C008BD /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -242,10 +242,10 @@
 		E55462DD1DAE31A1004163B2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E5A3E8E91E154BD600B10937 /* Registration */,
 				E56B20A71DC0606A000512F6 /* TableView Cells */,
 				E5AE2AF41DAF876100C008BD /* CollectionView Cells */,
 				E5AE2AEE1DAF82F500C008BD /* Storyboards */,
-				E56B20AC1DC06972000512F6 /* RegistrationTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -481,6 +481,14 @@
 				E597E58E1E151CFF001DDA78 /* FloatLabelTextView.swift */,
 			);
 			path = FloatLabel;
+			sourceTree = "<group>";
+		};
+		E5A3E8E91E154BD600B10937 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				E5A3E8EA1E154BD600B10937 /* RegistrationTextField.swift */,
+			);
+			path = Registration;
 			sourceTree = "<group>";
 		};
 		E5AE2AEE1DAF82F500C008BD /* Storyboards */ = {
@@ -763,6 +771,7 @@
 				E55462D71DAE2F49004163B2 /* UIColor+HexCode.swift in Sources */,
 				E56B20A21DBF749D000512F6 /* DMRegistrationVC.swift in Sources */,
 				E59029A81DED2C7A00151E9B /* APIManager.swift in Sources */,
+				E5A3E8EB1E154BD600B10937 /* RegistrationTextField.swift in Sources */,
 				E56C9FA31DED520B00EAA9DD /* InAppPurchase.swift in Sources */,
 				E55462E61DAE47A9004163B2 /* UIView+Toast.m in Sources */,
 				E56B20A61DC05C74000512F6 /* DMLoginVC.swift in Sources */,
@@ -770,7 +779,6 @@
 				E56E90801DFF31740096A31B /* CameraGalleryManager.swift in Sources */,
 				E55462F71DAE4C6F004163B2 /* UITextField+ToolBar.swift in Sources */,
 				E56C9F9E1DED4BD100EAA9DD /* Character+Addition.swift in Sources */,
-				E56B20AD1DC06972000512F6 /* RegistrationTextField.swift in Sources */,
 				E55462EC1DAE47F5004163B2 /* AppDelegate.swift in Sources */,
 				E5F47C941E0035B90051C4A1 /* UIImage+Rotations.swift in Sources */,
 				E53738F21DB373C200967876 /* Reachability.swift in Sources */,

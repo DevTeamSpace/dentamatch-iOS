@@ -16,6 +16,7 @@ import GooglePlaces
 
 class DMRegisterMapsVC: DMBaseVC {
 
+    @IBOutlet weak var gpsNavigationButton: UIButton!
     @IBOutlet weak var placeSearchBar: UISearchBar!
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var placesTableView: UITableView!
@@ -36,6 +37,12 @@ class DMRegisterMapsVC: DMBaseVC {
     }
     
     func setup() {
+        self.gpsNavigationButton.layer.cornerRadius = self.gpsNavigationButton.frame.size.width/2
+        self.gpsNavigationButton.layer.shadowColor = UIColor.gray.cgColor;
+        self.gpsNavigationButton.layer.shadowOffset = CGSize(width: 0, height: 1.0)
+        self.gpsNavigationButton.layer.shadowOpacity = 1.0;
+        self.gpsNavigationButton.layer.shadowRadius = 1.0;
+        
         self.placesTableView.rowHeight = UITableViewAutomaticDimension
         self.placesTableView.estimatedRowHeight = 50
         self.placesTableView.isHidden = true
@@ -144,6 +151,8 @@ class DMRegisterMapsVC: DMBaseVC {
                 }
             }
         }
+    }
+    @IBAction func gpsNavigationButtonPressed(_ sender: Any) {
     }
 }
 
