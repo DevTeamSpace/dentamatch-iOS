@@ -15,5 +15,4 @@ pod 'KeychainAccess'
 pod 'GoogleMaps'
 pod 'GooglePlaces'
 pod 'XCGLogger', '~> 4.0.0'
-pod 'IQKeyboardManager'
 end

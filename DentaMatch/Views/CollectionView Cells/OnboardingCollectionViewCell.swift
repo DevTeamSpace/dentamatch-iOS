@@ -9,5 +9,6 @@
 import UIKit
 
 class OnboardingCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var onBoardingImageView: UIImageView!
     
 }

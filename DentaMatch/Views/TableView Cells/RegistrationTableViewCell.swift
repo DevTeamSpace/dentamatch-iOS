@@ -22,6 +22,8 @@ class RegistrationTableViewCell: UITableViewCell {
     @IBOutlet weak var emailTextField: RegistrationTextField!
     @IBOutlet weak var nameTextField: RegistrationTextField!
     
+    var showButton:UIButton!
+    
     var delegate: LocationViewTappedDelegate?
     
     override func awakeFromNib() {
@@ -32,9 +34,34 @@ class RegistrationTableViewCell: UITableViewCell {
         locationView.layer.cornerRadius = 5.0
         helpHintLabel.text = "  ⓘ Help Recruiters to find you easily"
         
+        setupPasswordShowButton()
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(locationViewTapped))
         self.locationView.addGestureRecognizer(tapGesture)
     }
+    
+    func setupPasswordShowButton() {
+        let rightTextFieldView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: self.newPasswordTextField.frame.height))
+        
+        showButton = UIButton(type: .system)
+        showButton.frame = CGRect(x: 0, y: 0, width: 50, height: self.newPasswordTextField.frame.height)
+        showButton.setTitle("Show", for: .normal)
+        showButton.addTarget(self, action: #selector(showPasswordText), for: .touchUpInside)
+        showButton.center = rightTextFieldView.center
+        rightTextFieldView.addSubview(showButton)
+        newPasswordTextField.rightViewMode = .whileEditing
+        newPasswordTextField.rightView = rightTextFieldView
+    }
+    
+    func showPasswordText() {
+        if self.newPasswordTextField.isSecureTextEntry {
+            self.newPasswordTextField.isSecureTextEntry = false
+            showButton.setTitle("Hide", for: .normal)
+        } else {
+            self.newPasswordTextField.isSecureTextEntry = true
+            showButton.setTitle("Show", for: .normal)
+        }
+    }    
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)

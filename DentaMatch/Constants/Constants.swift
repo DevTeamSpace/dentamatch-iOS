@@ -11,10 +11,13 @@ import UIKit
 
 let kUserDefaults = UserDefaults.standard
 let kAppDelegate = UIApplication.shared.delegate as! AppDelegate
+
+let kCustomDesignFont = "dentamatch"
 let kToolbarColor = "EF000C"
 let kLogEnabled = true
 let kGoogleAPIKey = "AIzaSyDFWCamiO9WGTth-iOxfY_L0K6oRBeAu0U"
-let kTextFieldColor = UIColor.color(withHexCode: "e4e4e4")
+let kTextFieldColor = UIColor.color(withHexCode: "aaafb8")
+let kTextFieldBorderColor = UIColor.color(withHexCode: "e4e4e4")
 let kNavBarColor = "10193e"
 
 struct Constants {

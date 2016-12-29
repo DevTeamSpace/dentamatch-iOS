@@ -12,7 +12,7 @@ import UIKit
 extension UIFont{
     
     class func designFont(fontSize:CGFloat)->UIFont?{
-        return UIFont(name: "untitled-font-6", size: fontSize)
+        return UIFont(name: kCustomDesignFont, size: fontSize)
     }
     
     class func fontRegular(fontSize:CGFloat)->UIFont?{

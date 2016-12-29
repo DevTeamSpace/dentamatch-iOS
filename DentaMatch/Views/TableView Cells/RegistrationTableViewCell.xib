@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="dentamatch.ttf">
+            <string>dentamatch</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -14,28 +19,28 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="467"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="466.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="466"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oGf-Da-ohf" customClass="RegistrationTextField" customModule="DentaMatch" customModuleProvider="target">
-                        <rect key="frame" x="20" y="40" width="280" height="50"/>
+                        <rect key="frame" x="20" y="40" width="280" height="55"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="50" id="FLj-82-Ays"/>
+                            <constraint firstAttribute="height" constant="55" id="FLj-82-Ays"/>
                         </constraints>
                         <nil key="textColor"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
                     </textField>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hvL-ql-Nfu" customClass="RegistrationTextField" customModule="DentaMatch" customModuleProvider="target">
-                        <rect key="frame" x="20" y="106" width="280" height="50"/>
+                        <rect key="frame" x="20" y="111" width="280" height="55"/>
                         <nil key="textColor"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                     </textField>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zO8-zm-UsQ" customClass="RegistrationTextField" customModule="DentaMatch" customModuleProvider="target">
-                        <rect key="frame" x="20" y="172" width="280" height="50"/>
+                        <rect key="frame" x="20" y="182" width="280" height="55"/>
                         <nil key="textColor"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                     </textField>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tE8-GN-eFl">
@@ -50,17 +55,23 @@
                         </state>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help Recruiters to find you easily" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x9c-Dc-oJl">
-                        <rect key="frame" x="20" y="297.5" width="199.5" height="16"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <rect key="frame" x="30" y="318" width="186.5" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Biq-Gz-c0Q">
-                        <rect key="frame" x="20" y="238" width="280" height="50"/>
+                        <rect key="frame" x="20" y="253" width="280" height="55"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preferred Job Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L9t-nb-zTm">
-                                <rect key="frame" x="20" y="17" width="147.5" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <rect key="frame" x="33.5" y="18.5" width="165.5" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="d" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0O-DV-OEo">
+                                <rect key="frame" x="14" y="0.0" width="9.5" height="55"/>
+                                <fontDescription key="fontDescription" name="dentamatch" family="dentamatch" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -68,7 +79,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="L9t-nb-zTm" firstAttribute="centerY" secondItem="Biq-Gz-c0Q" secondAttribute="centerY" id="57E-RX-fxS"/>
-                            <constraint firstItem="L9t-nb-zTm" firstAttribute="leading" secondItem="Biq-Gz-c0Q" secondAttribute="leading" constant="20" id="CgF-vD-CCk"/>
+                            <constraint firstItem="P0O-DV-OEo" firstAttribute="leading" secondItem="Biq-Gz-c0Q" secondAttribute="leading" constant="14" id="EHm-Bz-7E8"/>
+                            <constraint firstAttribute="bottom" secondItem="P0O-DV-OEo" secondAttribute="bottom" id="Fh0-ue-nIC"/>
+                            <constraint firstItem="L9t-nb-zTm" firstAttribute="leading" secondItem="P0O-DV-OEo" secondAttribute="trailing" constant="10" id="OVS-1l-1Ip"/>
+                            <constraint firstItem="P0O-DV-OEo" firstAttribute="top" secondItem="Biq-Gz-c0Q" secondAttribute="top" id="WnG-ao-8Qw"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -77,7 +91,7 @@
                     <constraint firstAttribute="trailing" secondItem="tE8-GN-eFl" secondAttribute="trailing" id="9uH-S5-zgj"/>
                     <constraint firstItem="oGf-Da-ohf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="D3U-ud-QmD"/>
                     <constraint firstItem="zO8-zm-UsQ" firstAttribute="centerX" secondItem="hvL-ql-Nfu" secondAttribute="centerX" id="F1f-SG-2jK"/>
-                    <constraint firstItem="x9c-Dc-oJl" firstAttribute="leading" secondItem="Biq-Gz-c0Q" secondAttribute="leading" id="Jaz-FJ-FTK"/>
+                    <constraint firstItem="x9c-Dc-oJl" firstAttribute="leading" secondItem="Biq-Gz-c0Q" secondAttribute="leading" constant="10" id="Jaz-FJ-FTK"/>
                     <constraint firstItem="hvL-ql-Nfu" firstAttribute="width" secondItem="oGf-Da-ohf" secondAttribute="width" id="LLV-2o-xiy"/>
                     <constraint firstAttribute="trailing" secondItem="oGf-Da-ohf" secondAttribute="trailing" constant="20" id="SAi-zt-REM"/>
                     <constraint firstItem="Biq-Gz-c0Q" firstAttribute="top" secondItem="zO8-zm-UsQ" secondAttribute="bottom" constant="16" id="U17-tj-KaI"/>

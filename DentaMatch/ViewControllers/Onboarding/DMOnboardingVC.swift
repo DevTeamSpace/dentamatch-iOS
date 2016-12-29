@@ -10,16 +10,21 @@ import UIKit
 
 class DMOnboardingVC: DMBaseVC {
 
-
     @IBOutlet weak var skipButton: UIButton!
-    
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var onboardingCollectionView: UICollectionView!
+    
+    var images = ["onBoarding1","onBoarding2","onBoarding3","onBoarding4"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false
-
+        setup()
         // Do any additional setup after loading the view.
+    }
+    
+    func setup() {
+        
     }
     @IBAction func skipButtonPressed(_ sender: AnyObject) {
         //Go to login/Registration
@@ -42,11 +47,12 @@ extension DMOnboardingVC:UICollectionViewDataSource,UICollectionViewDelegateFlow
     
     //MARK:- CollectionView Datasource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return self.images.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OnboardingCollectionViewCell", for: indexPath) as! OnboardingCollectionViewCell
+        cell.onBoardingImageView.image = UIImage(named: self.images[indexPath.row])
         return cell
     }
     
