@@ -30,6 +30,12 @@ struct Constants {
     //MARK:- StoryBoards
     struct StoryBoard {
         static let registrationStoryboard  = "Registration"
+        static let profileStoryboard  = "Profile"
+ 
+        struct Identifer {
+            static let profileNav  = "ProfileNAV"
+        }
+
     }
     
     //MARK:- API Urls
