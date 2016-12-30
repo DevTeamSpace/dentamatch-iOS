@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RegistrationTextField: FloatLabelTextField {
+class AnimatedPHTextField: FloatLabelTextField {
 
     private var leftTextFieldView:UIView?
     var leftViewLabel:UILabel?

@@ -11,10 +11,10 @@ import UIKit
 
 class RegistrationTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var nameTextField: RegistrationTextField!
-    @IBOutlet weak var emailTextField: RegistrationTextField!
-    @IBOutlet weak var newPasswordTextField: RegistrationTextField!
-    @IBOutlet weak var preferredLocationTextField: RegistrationTextField!
+    @IBOutlet weak var nameTextField: AnimatedPHTextField!
+    @IBOutlet weak var emailTextField: AnimatedPHTextField!
+    @IBOutlet weak var newPasswordTextField: AnimatedPHTextField!
+    @IBOutlet weak var preferredLocationTextField: AnimatedPHTextField!
     @IBOutlet weak var helpHintLabel: UILabel!
     @IBOutlet weak var registerButton: UIButton!
     

@@ -11,23 +11,23 @@ import UIKit
 
 extension UIFont{
     
-    class func designFont(fontSize:CGFloat)->UIFont?{
+    class func designFont(fontSize:CGFloat)->UIFont? {
         return UIFont(name: kCustomDesignFont, size: fontSize)
     }
     
-    class func fontRegular(fontSize:CGFloat)->UIFont?{
+    class func fontRegular(fontSize:CGFloat)->UIFont? {
         return UIFont(name: "SFUIText-Regular", size: fontSize)
     }
     
-    class func fontHeavy(fontSize:CGFloat)->UIFont?{
+    class func fontHeavy(fontSize:CGFloat)->UIFont? {
         return UIFont(name: "SFUIText-Heavy", size: fontSize)
     }
     
-    class func fontLight(fontSize:CGFloat)->UIFont?{
+    class func fontLight(fontSize:CGFloat)->UIFont? {
         return UIFont(name: "SFUIText-Light", size: fontSize)
     }
     
-    class func fontSemiBold(fontSize:CGFloat)->UIFont?{
+    class func fontSemiBold(fontSize:CGFloat)->UIFont? {
         return UIFont(name: "SFUIText-Semibold", size: fontSize)
     }
  }

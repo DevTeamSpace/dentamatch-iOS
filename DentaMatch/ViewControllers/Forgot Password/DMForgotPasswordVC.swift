@@ -10,7 +10,7 @@ import UIKit
 
 class DMForgotPasswordVC: DMBaseVC {
 
-    @IBOutlet weak var emailTextField: RegistrationTextField!
+    @IBOutlet weak var emailTextField: AnimatedPHTextField!
     
     //MARK:- View LifeCycle
     override func viewDidLoad() {
