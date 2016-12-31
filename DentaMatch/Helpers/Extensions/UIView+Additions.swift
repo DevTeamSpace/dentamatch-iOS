@@ -18,4 +18,29 @@ extension UIView {
         }
         return UINib(nibName: fullName, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as? T
     }
+    
+    static func makeTip(view:UIView,size: CGFloat, x: CGFloat, y: CGFloat) {
+        let triangleLayer = CAShapeLayer()
+        let trianglePath = UIBezierPath()
+        
+        trianglePath.move(to: CGPoint(x: view.bounds.size.width/2 - size , y: view.bounds.size.height))
+        trianglePath.addLine(to: CGPoint(x:view.bounds.size.width/2, y: view.bounds.size.height - size))
+        trianglePath.addLine(to: CGPoint(x:view.bounds.size.width/2 + size , y: view.bounds.size.height))
+        
+        trianglePath.close()
+        triangleLayer.path = trianglePath.cgPath
+        triangleLayer.fillColor = UIColor.white.cgColor
+        
+        triangleLayer.name = "triangle"
+        triangleLayer.zPosition = 2.0
+        view.layer.addSublayer(triangleLayer)
+    }
+    
+    static func removeTip(view:UIView) {
+        for layer in view.layer.sublayers! {
+            if layer.name == "triangle" {
+                layer.removeFromSuperlayer()
+            }
+        }
+    }
 }

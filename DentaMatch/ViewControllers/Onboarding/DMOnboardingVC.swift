@@ -36,22 +36,20 @@ class DMOnboardingVC: DMBaseVC {
     }
     
     func setup() {
+        skipButton.isExclusiveTouch = true
     }
     
     @IBAction func skipButtonPressed(_ sender: AnyObject) {
     //Go to login/Registration
         
-     let registrationContainer = UIStoryboard.registrationStoryBoard().instantiateViewController(withIdentifier: "RegistrationNAV") as! UINavigationController
-  
-    kAppDelegate.window?.rootViewController = registrationContainer
-//        [UIView transitionWithView:self.sourceViewController.view.window
-//            duration:0.5
-//            options:UIViewAnimationOptionTransitionCrossDissolve
-//            animations:^{
-//            self.sourceViewController.view.window.rootViewController = self.destinationViewController;
-//            } completion:^(BOOL finished) {
-//            // Code to run after animation
-//            }];
+     let registrationContainer = UIStoryboard.registrationStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.registrationNav) as! UINavigationController
+        //kAppDelegate.window?.rootViewController = registrationContainer
+
+        UIView.transition(with: self.view.window!, duration: 0.25, options: .transitionCrossDissolve, animations: {
+            kAppDelegate.window?.rootViewController = registrationContainer
+        }) { (bool:Bool) in
+            
+        }
     }
 }
 

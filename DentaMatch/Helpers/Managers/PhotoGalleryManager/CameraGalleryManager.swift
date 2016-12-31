@@ -47,7 +47,7 @@ class CameraGalleryManager: UIViewController,UIImagePickerControllerDelegate,UIN
     ///
     /// - Parameter completionHandler: Accepts a closure of a success bool variable which is sent back as a completon handler
     ///   - success: Bool
-    func checkGalleryPermission(_ completionHandler:@escaping (_ success:Bool)->()) {
+    private func checkGalleryPermission(_ completionHandler:@escaping (_ success:Bool)->()) {
         PHPhotoLibrary.requestAuthorization({ (status:PHAuthorizationStatus) in
             if status == .authorized {
                 completionHandler(true)
@@ -65,7 +65,7 @@ class CameraGalleryManager: UIViewController,UIImagePickerControllerDelegate,UIN
     ///
     /// - Parameter completionHandler: Accepts a closure of a success bool variable which is sent back as a completon handler
     /// - success: Bool
-    func checkCameraPermission(_ completionHandler:@escaping (_ success:Bool)->()) {
+    private func checkCameraPermission(_ completionHandler:@escaping (_ success:Bool)->()) {
         if AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo) ==  AVAuthorizationStatus.authorized {
             // Already Authorized
             completionHandler(true)

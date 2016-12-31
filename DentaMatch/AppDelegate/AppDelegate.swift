@@ -38,8 +38,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func changeNavBarAppearance() {
         UIApplication.shared.statusBarStyle = .lightContent
         UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().isTranslucent = false
         UINavigationBar.appearance().barTintColor = UIColor.color(withHexCode: kNavBarColor)
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white,NSFontAttributeName:UIFont.fontRegular(fontSize: 14.0)!]
     }
     
     // MARK: - Configure Crashlytics

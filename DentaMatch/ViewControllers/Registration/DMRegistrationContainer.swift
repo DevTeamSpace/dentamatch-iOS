@@ -46,17 +46,17 @@ class DMRegistrationContainer: DMBaseVC {
         
         loginVC?.view.frame = CGRect(x: 0, y: self.topView.frame.size.height, width: self.view.frame.size.width, height: self.view.frame.size.height - self.topView.frame.size.height)
         
-        removeTip(button: registrationButton)
-        removeTip(button: loginButton)
+        UIView.removeTip(view: registrationButton)
+        UIView.removeTip(view: loginButton)
         
         if isRegistration {
             registrationButton.titleLabel?.font = UIFont.fontSemiBold(fontSize: 14.0)!
             loginButton.titleLabel?.font = UIFont.fontLight(fontSize: 14.0)!
-            makeTip(button: registrationButton, size: 8, x: registrationButton.frame.midX/2, y: registrationButton.frame.midY)
+            UIView.makeTip(view: registrationButton, size: 8, x: registrationButton.frame.midX/2, y: registrationButton.frame.midY)
         } else {
             registrationButton.titleLabel?.font = UIFont.fontLight(fontSize: 14.0)!
             loginButton.titleLabel?.font = UIFont.fontSemiBold(fontSize: 14.0)!
-            makeTip(button: loginButton, size: 8, x: loginButton.frame.midX/2, y: loginButton.frame.midY)
+            UIView.makeTip(view: loginButton, size: 8, x: loginButton.frame.midX/2, y: loginButton.frame.midY)
         }
     }
     
@@ -64,8 +64,8 @@ class DMRegistrationContainer: DMBaseVC {
         isRegistration = false
         registrationButton.titleLabel?.font = UIFont.fontLight(fontSize: 14.0)!
         loginButton.titleLabel?.font = UIFont.fontSemiBold(fontSize: 14.0)!
-        removeTip(button: registrationButton)
-        makeTip(button: sender, size: 8, x: sender.frame.midX/2, y: sender.frame.midY)
+        UIView.removeTip(view: registrationButton)
+        UIView.makeTip(view: sender, size: 8, x: sender.frame.midX/2, y: sender.frame.midY)
         self.view.endEditing(true)
         self.view.bringSubview(toFront: (self.loginVC?.view)!)
         UIView.animate(withDuration: 0.25, animations: {
@@ -79,8 +79,8 @@ class DMRegistrationContainer: DMBaseVC {
         isRegistration = true
         registrationButton.titleLabel?.font = UIFont.fontSemiBold(fontSize: 14.0)!
         loginButton.titleLabel?.font = UIFont.fontLight(fontSize: 14.0)!
-        removeTip(button: loginButton)
-        makeTip(button: sender, size: 8, x: sender.frame.midX/2, y: sender.frame.midY)
+        UIView.removeTip(view: loginButton)
+        UIView.makeTip(view: sender, size: 8, x: sender.frame.midX/2, y: sender.frame.midY)
         self.view.endEditing(true)
         self.view.bringSubview(toFront: (registrationVC?.view)!)
         UIView.animate(withDuration: 0.25, animations: {
@@ -89,30 +89,4 @@ class DMRegistrationContainer: DMBaseVC {
         }) { (finished:Bool) in
         }
     }
-    
-    func makeTip(button:UIButton,size: CGFloat, x: CGFloat, y: CGFloat) {
-        let triangleLayer = CAShapeLayer()
-        let trianglePath = UIBezierPath()
-
-        trianglePath.move(to: CGPoint(x: button.bounds.size.width/2 - size , y: button.bounds.size.height))
-        trianglePath.addLine(to: CGPoint(x:button.bounds.size.width/2, y: button.bounds.size.height - size))
-        trianglePath.addLine(to: CGPoint(x:button.bounds.size.width/2 + size , y: button.bounds.size.height))
-
-        trianglePath.close()
-        triangleLayer.path = trianglePath.cgPath
-        triangleLayer.fillColor = UIColor.white.cgColor
-
-        triangleLayer.name = "triangle"
-        triangleLayer.zPosition = 2.0
-        button.layer.addSublayer(triangleLayer)
-    }
-    
-    func removeTip(button:UIButton) {
-        for layer in button.layer.sublayers! {
-            if layer.name == "triangle" {
-                layer.removeFromSuperlayer()
-            }
-        }
-    }
-    
 }

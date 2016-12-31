@@ -10,11 +10,11 @@ import UIKit
 
 class DMTermsAndConditionsVC: DMBaseVC {
 
+    @IBOutlet weak var webView: UIWebView!
     override func viewDidLoad() {
         // Do any additional setup after loading the view.
         super.viewDidLoad()
         setup()
-        self.navigationItem.leftBarButtonItem = self.backBarButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -28,11 +28,19 @@ class DMTermsAndConditionsVC: DMBaseVC {
         }
     
     func setup() {
-        self.title = "Terms and Conditions"
+        let request = URLRequest(url: URL(string:"https://www.google.co.in")!)
+        webView.loadRequest(request)
+        self.navigationItem.leftBarButtonItem = self.backBarButton()
+        self.title = "TERMS & CONDITIONS"
         self.navigationController?.navigationBar.barTintColor = UIColor.color(withHexCode: kNavBarColor)
     }
     
-    
     @IBAction func acceptButtonPressed(_ sender: AnyObject) {
+        let jobTitleSectionVC = UIStoryboard.profileStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.profileNav)
+        UIView.transition(with: self.view.window!, duration: 0.5, options: .transitionFlipFromRight, animations: {
+            kAppDelegate.window?.rootViewController = jobTitleSectionVC
+        }) { (bool:Bool) in
+            
+        }
     }
 }

@@ -19,6 +19,7 @@ let kGoogleAPIKey = "AIzaSyDFWCamiO9WGTth-iOxfY_L0K6oRBeAu0U"
 let kTextFieldColor = UIColor.color(withHexCode: "aaafb8")
 let kTextFieldBorderColor = UIColor.color(withHexCode: "e4e4e4")
 let kNavBarColor = "10193e"
+let kOkButtonTitle = "Ok"
 
 struct Constants {
     
@@ -33,9 +34,9 @@ struct Constants {
         static let profileStoryboard  = "Profile"
  
         struct Identifer {
+            static let registrationNav = "RegistrationNAV"
             static let profileNav  = "ProfileNAV"
         }
-
     }
     
     //MARK:- API Urls
@@ -56,7 +57,7 @@ struct Constants {
     //MARK:- Alert Messages
     struct AlertMessages{
         static let invalidEmail = "Please enter correct email ID"
-        
+        static let skipProfile = "Completed job profile will help you in applying for jobs."
         struct AlertTitle {
             static let invalidEmailTitle = ""
         }

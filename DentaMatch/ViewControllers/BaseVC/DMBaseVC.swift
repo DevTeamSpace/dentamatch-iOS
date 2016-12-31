@@ -43,6 +43,27 @@ class DMBaseVC: UIViewController {
         }
     }
     
+    func cameraGalleryOptionActionSheet(title:String,message:String,leftButtonText:String,rightButtonText:String,completionHandler:((_ isCameraButtonPressed:Bool,_ isGalleryButtonPressed:Bool,_ isCancelButtonPressed:Bool)->())?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        let leftButtonAction = UIAlertAction(title: leftButtonText, style: .default) { (action:UIAlertAction) in
+            completionHandler?(true,false,false)
+        }
+        
+        let rightButtonAction = UIAlertAction(title: rightButtonText, style: .default) { (action:UIAlertAction) in
+            completionHandler?(false,true,false)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default) { (action:UIAlertAction) in
+            completionHandler?(false,false,true)
+        }
+        
+        alert.addAction(leftButtonAction)
+        alert.addAction(rightButtonAction)
+        alert.addAction(cancelAction)
+
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func alertMessage(title:String,message:String,buttonText:String,completionHandler:(()->())?) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -64,9 +85,10 @@ class DMBaseVC: UIViewController {
         let rightButtonAction = UIAlertAction(title: rightButtonText, style: .default) { (action:UIAlertAction) in
             completionHandler?(false)
         }
+        
         alert.addAction(leftButtonAction)
         alert.addAction(rightButtonAction)
-        
+
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -76,18 +98,19 @@ class DMBaseVC: UIViewController {
         textfield.attributedPlaceholder = NSAttributedString(string: textfield.placeholder!, attributes: [NSForegroundColorAttributeName : placeholderColor])
     }
     
-    func printLog(object:AnyObject?) {
-        if kLogEnabled {
-            if let message = object {
-                debugPrint(message)
-            }
-        }
-    }
+//    func printLog(object:AnyObject?) {
+//        if kLogEnabled {
+//            if let message = object {
+//                debugPrint(message)
+//            }
+//        }
+//    }
     
     func backBarButton() -> UIBarButtonItem {
         let customButton = UIButton(type: .system)
         customButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        customButton.titleLabel?.font = UIFont.designFont(fontSize: 24)!
+        customButton.titleLabel?.font = UIFont.designFont(fontSize: 19)!
+        customButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0)
         customButton.setTitle("l", for: .normal)
         customButton.addTarget(self, action: #selector(backBarButtonItemPressed), for: .touchUpInside)
         let barButton = UIBarButtonItem(customView: customButton)
@@ -106,5 +129,4 @@ class DMBaseVC: UIViewController {
     
     func hideLoader() {
     }
-    
 }

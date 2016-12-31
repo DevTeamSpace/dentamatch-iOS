@@ -12,6 +12,12 @@
         <array key="SF-UI-Text-Light.otf">
             <string>SFUIText-Light</string>
         </array>
+        <array key="SF-UI-Text-Medium.otf">
+            <string>SFUIText-Medium</string>
+        </array>
+        <array key="SF-UI-Text-Regular.otf">
+            <string>SFUIText-Regular</string>
+        </array>
         <array key="SF-UI-Text-Semibold.otf">
             <string>SFUIText-Semibold</string>
         </array>
@@ -238,11 +244,11 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gwh-NE-5Ig">
                                 <rect key="frame" x="0.0" y="555" width="375" height="48"/>
-                                <color key="backgroundColor" red="0.01176470588" green="0.4431372549" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.015686274509803921" green="0.4392156862745098" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="TZk-yN-369"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="16"/>
                                 <state key="normal" title="ACCEPT">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -268,6 +274,9 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="webView" destination="Yfv-rb-xBR" id="zPj-gj-Ioz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H9o-CE-xnX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -285,28 +294,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter you email address below and we will send you the instructions on how to change your password" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IRT-i0-rz1">
-                                <rect key="frame" x="39" y="94" width="298" height="61"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter you email address below and we'll send you the instructions on how to change your password" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IRT-i0-rz1">
+                                <rect key="frame" x="34" y="94" width="307" height="57.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="307" id="1xS-AL-TUH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
                                 <color key="textColor" red="0.58431372549019611" green="0.58431372549019611" blue="0.58431372549019611" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xlF-WJ-RrJ" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
-                                <rect key="frame" x="44" y="185" width="287" height="55"/>
+                                <rect key="frame" x="22" y="189.5" width="331" height="55"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="l3Q-bt-p4j"/>
+                                    <constraint firstAttribute="height" constant="55" id="a4Q-P5-qVi"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
+                                <connections>
+                                    <outlet property="delegate" destination="JvZ-pA-bC8" id="owH-HP-gc5"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bsL-Ll-rOR">
                                 <rect key="frame" x="0.0" y="619" width="375" height="48"/>
-                                <color key="backgroundColor" red="0.01176470588" green="0.4431372549" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.015686274509803921" green="0.4392156862745098" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="zcv-5d-1gv"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="16"/>
                                 <state key="normal" title="SEND">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -315,15 +330,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="bsL-Ll-rOR" secondAttribute="trailing" id="0CG-uq-fz7"/>
-                            <constraint firstItem="IRT-i0-rz1" firstAttribute="centerX" secondItem="SLx-nh-btb" secondAttribute="centerX" id="0SY-y0-8E8"/>
-                            <constraint firstItem="IRT-i0-rz1" firstAttribute="width" secondItem="SLx-nh-btb" secondAttribute="width" multiplier="0.795" id="3AW-az-fwA"/>
-                            <constraint firstItem="IRT-i0-rz1" firstAttribute="top" secondItem="dHg-yr-3f7" secondAttribute="bottom" constant="30" id="9LS-bn-omq"/>
+                            <constraint firstItem="xlF-WJ-RrJ" firstAttribute="leading" secondItem="SLx-nh-btb" secondAttribute="leading" constant="22" id="7AN-4a-pRS"/>
+                            <constraint firstAttribute="trailing" secondItem="xlF-WJ-RrJ" secondAttribute="trailing" constant="22" id="AUO-F5-OY2"/>
                             <constraint firstItem="diS-tU-7Ig" firstAttribute="top" secondItem="bsL-Ll-rOR" secondAttribute="bottom" id="CfL-57-3hr"/>
+                            <constraint firstItem="IRT-i0-rz1" firstAttribute="top" secondItem="dHg-yr-3f7" secondAttribute="bottom" constant="30" id="F5z-5e-Jt7"/>
+                            <constraint firstItem="IRT-i0-rz1" firstAttribute="centerX" secondItem="SLx-nh-btb" secondAttribute="centerX" id="KWU-FQ-qtf"/>
                             <constraint firstItem="bsL-Ll-rOR" firstAttribute="leading" secondItem="SLx-nh-btb" secondAttribute="leading" id="KfH-AB-N45"/>
-                            <constraint firstItem="xlF-WJ-RrJ" firstAttribute="centerX" secondItem="IRT-i0-rz1" secondAttribute="centerX" id="X7g-ys-sc7"/>
-                            <constraint firstItem="xlF-WJ-RrJ" firstAttribute="leading" secondItem="SLx-nh-btb" secondAttribute="leading" constant="44" id="ddg-hg-6Jh"/>
-                            <constraint firstAttribute="trailing" secondItem="xlF-WJ-RrJ" secondAttribute="trailing" constant="44" id="i5J-IR-jdG"/>
-                            <constraint firstItem="xlF-WJ-RrJ" firstAttribute="top" secondItem="IRT-i0-rz1" secondAttribute="bottom" constant="30" id="v2b-nH-Nx9"/>
+                            <constraint firstItem="xlF-WJ-RrJ" firstAttribute="top" secondItem="IRT-i0-rz1" secondAttribute="bottom" constant="38" id="lGM-7I-P8n"/>
                         </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
@@ -414,7 +427,7 @@
             <objects>
                 <navigationController storyboardIdentifier="RegistrationNAV" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="Ido-Jt-Y82" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="mF5-zQ-7eP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="mF5-zQ-7eP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

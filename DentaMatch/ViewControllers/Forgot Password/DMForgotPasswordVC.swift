@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DMForgotPasswordVC: DMBaseVC {
+class DMForgotPasswordVC: DMBaseVC,UITextFieldDelegate {
 
     @IBOutlet weak var emailTextField: AnimatedPHTextField!
     
@@ -33,5 +33,11 @@ class DMForgotPasswordVC: DMBaseVC {
         self.title = "FORGOT PASSWORD"
         self.navigationItem.leftBarButtonItem = self.backBarButton()
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
     
 }

@@ -5,14 +5,29 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-UI-Text-Bold.otf">
+            <string>SFUIText-Bold</string>
+        </array>
+        <array key="SF-UI-Text-Light.otf">
+            <string>SFUIText-Light</string>
+        </array>
+        <array key="SF-UI-Text-Regular.otf">
+            <string>SFUIText-Regular</string>
+        </array>
+        <array key="SF-UI-Text-Semibold.otf">
+            <string>SFUIText-Semibold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="h2y-8K-0Am">
             <objects>
-                <navigationController storyboardIdentifier="ProfileNAV" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aBo-Dm-4RQ" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="p5y-OV-SJO">
+                <navigationController storyboardIdentifier="ProfileNAV" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="aBo-Dm-4RQ" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="p5y-OV-SJO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -36,16 +51,123 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vog-MF-WY1">
-                                <rect key="frame" x="92" y="276" width="153" height="54"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pY0-aJ-eeT">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="297"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="registrationHeading" translatesAutoresizingMaskIntoConstraints="NO" id="zDd-gX-icS">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="297"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi Jennifer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="6Z1-Io-DBv">
+                                        <rect key="frame" x="106" y="223" width="165" height="36"/>
+                                        <fontDescription key="fontDescription" name="SFUIText-Bold" family="SF UI Text" pointSize="30"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bzg-gA-Lmz">
+                                        <rect key="frame" x="139" y="105" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="7SE-SO-2YP"/>
+                                            <constraint firstAttribute="width" constant="100" id="qEQ-vJ-EM7"/>
+                                        </constraints>
+                                        <state key="normal" image="profileButton"/>
+                                        <connections>
+                                            <action selector="profileButtonPressed:" destination="ZiM-x3-BTI" eventType="touchUpInside" id="zow-xS-Wrm"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="bzg-gA-Lmz" firstAttribute="centerY" secondItem="pY0-aJ-eeT" secondAttribute="centerY" constant="6.5" id="2ac-SO-nG9"/>
+                                    <constraint firstAttribute="bottom" secondItem="zDd-gX-icS" secondAttribute="bottom" id="2w3-5g-8ih"/>
+                                    <constraint firstAttribute="trailing" secondItem="zDd-gX-icS" secondAttribute="trailing" id="P97-BV-8Y6"/>
+                                    <constraint firstItem="6Z1-Io-DBv" firstAttribute="centerX" secondItem="bzg-gA-Lmz" secondAttribute="centerX" id="ViG-jF-Q6S"/>
+                                    <constraint firstItem="6Z1-Io-DBv" firstAttribute="top" secondItem="bzg-gA-Lmz" secondAttribute="bottom" constant="18" id="ZNz-bv-jC4"/>
+                                    <constraint firstItem="bzg-gA-Lmz" firstAttribute="centerX" secondItem="pY0-aJ-eeT" secondAttribute="centerX" constant="1" id="bfL-oP-OpV"/>
+                                    <constraint firstItem="zDd-gX-icS" firstAttribute="leading" secondItem="pY0-aJ-eeT" secondAttribute="leading" id="leZ-K5-q3V"/>
+                                    <constraint firstItem="zDd-gX-icS" firstAttribute="top" secondItem="pY0-aJ-eeT" secondAttribute="top" id="zAp-M7-tjd"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let’s start with creating your profile." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="hos-jx-ofR">
+                                <rect key="frame" x="45" y="335" width="285" height="21"/>
+                                <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m9g-Kp-v3b">
+                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gku-rj-aaj">
+                                        <rect key="frame" x="0.0" y="0.0" width="104" height="49"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="104" id="79m-78-har"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="16"/>
+                                        <state key="normal" title="NOT NOW">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="notNowButtonPressed:" destination="ZiM-x3-BTI" eventType="touchUpInside" id="zLV-FG-bhK"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MkJ-19-BkB">
+                                        <rect key="frame" x="271" y="0.0" width="104" height="49"/>
+                                        <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="16"/>
+                                        <state key="normal" title="NEXT">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="nextButtonPressed:" destination="ZiM-x3-BTI" eventType="touchUpInside" id="Ttz-9D-mo2"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.015686274509803921" green="0.4392156862745098" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="MkJ-19-BkB" firstAttribute="width" secondItem="Gku-rj-aaj" secondAttribute="width" id="0Gd-QZ-s6h"/>
+                                    <constraint firstItem="Gku-rj-aaj" firstAttribute="top" secondItem="m9g-Kp-v3b" secondAttribute="top" id="6UT-Ft-ZO9"/>
+                                    <constraint firstAttribute="bottom" secondItem="Gku-rj-aaj" secondAttribute="bottom" id="DSR-Ky-UbM"/>
+                                    <constraint firstItem="MkJ-19-BkB" firstAttribute="top" secondItem="m9g-Kp-v3b" secondAttribute="top" id="bD4-zE-JrB"/>
+                                    <constraint firstItem="Gku-rj-aaj" firstAttribute="leading" secondItem="m9g-Kp-v3b" secondAttribute="leading" id="i2R-9c-q5a"/>
+                                    <constraint firstAttribute="bottom" secondItem="MkJ-19-BkB" secondAttribute="bottom" id="kOC-jS-Dbq"/>
+                                    <constraint firstAttribute="trailing" secondItem="MkJ-19-BkB" secondAttribute="trailing" id="r2E-u3-YEs"/>
+                                </constraints>
+                            </view>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Current Job Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aZe-k4-DJs" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
+                                <rect key="frame" x="22" y="382" width="331" height="54"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="Qkg-W3-Lux"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="ZiM-x3-BTI" id="9md-R3-bOk"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="aZe-k4-DJs" firstAttribute="centerX" secondItem="hos-jx-ofR" secondAttribute="centerX" id="3HN-d5-XSp"/>
+                            <constraint firstAttribute="trailing" secondItem="pY0-aJ-eeT" secondAttribute="trailing" id="7IR-E0-eyt"/>
+                            <constraint firstItem="P6w-uS-muz" firstAttribute="top" secondItem="m9g-Kp-v3b" secondAttribute="bottom" id="8A6-D9-bSv"/>
+                            <constraint firstAttribute="trailing" secondItem="m9g-Kp-v3b" secondAttribute="trailing" id="CHz-At-qfI"/>
+                            <constraint firstItem="pY0-aJ-eeT" firstAttribute="top" secondItem="JWl-iL-mpX" secondAttribute="top" id="JEC-Gb-k6I"/>
+                            <constraint firstItem="pY0-aJ-eeT" firstAttribute="height" secondItem="JWl-iL-mpX" secondAttribute="height" multiplier="0.445" id="LL8-xL-iTQ"/>
+                            <constraint firstItem="m9g-Kp-v3b" firstAttribute="leading" secondItem="JWl-iL-mpX" secondAttribute="leading" id="Ou8-Mu-NDl"/>
+                            <constraint firstItem="m9g-Kp-v3b" firstAttribute="height" secondItem="JWl-iL-mpX" secondAttribute="height" multiplier="0.074" id="SkR-PD-giR"/>
+                            <constraint firstItem="aZe-k4-DJs" firstAttribute="top" secondItem="hos-jx-ofR" secondAttribute="bottom" constant="26" id="Whv-eE-HVm"/>
+                            <constraint firstItem="hos-jx-ofR" firstAttribute="top" secondItem="pY0-aJ-eeT" secondAttribute="bottom" constant="38" id="bla-aL-yNa"/>
+                            <constraint firstItem="pY0-aJ-eeT" firstAttribute="leading" secondItem="JWl-iL-mpX" secondAttribute="leading" id="fxL-uO-4e2"/>
+                            <constraint firstAttribute="trailing" secondItem="aZe-k4-DJs" secondAttribute="trailing" constant="22" id="iRH-4Z-O7b"/>
+                            <constraint firstItem="hos-jx-ofR" firstAttribute="centerX" secondItem="JWl-iL-mpX" secondAttribute="centerX" id="qxw-qb-IL9"/>
+                            <constraint firstItem="aZe-k4-DJs" firstAttribute="leading" secondItem="JWl-iL-mpX" secondAttribute="leading" constant="22" id="tKn-I1-SMD"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fBf-Yo-3Ab"/>
                     <connections>
+                        <outlet property="currentJobTitleTextField" destination="aZe-k4-DJs" id="iDm-pN-nga"/>
+                        <outlet property="nextButton" destination="MkJ-19-BkB" id="p4f-jg-DgS"/>
+                        <outlet property="notNowButton" destination="Gku-rj-aaj" id="Xtk-rm-RVp"/>
+                        <outlet property="profileButton" destination="bzg-gA-Lmz" id="Cs7-fd-iD0"/>
+                        <outlet property="profileHeaderView" destination="pY0-aJ-eeT" id="g6s-qj-euu"/>
                         <segue destination="aDP-Aa-d1Q" kind="show" identifier="goToLicense" id="QeE-OD-GzG"/>
                     </connections>
                 </viewController>
@@ -120,4 +242,8 @@
             <point key="canvasLocation" x="1437.5999999999999" y="205.54722638680661"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="profileButton" width="99" height="100"/>
+        <image name="registrationHeading" width="375" height="192"/>
+    </resources>
 </document>

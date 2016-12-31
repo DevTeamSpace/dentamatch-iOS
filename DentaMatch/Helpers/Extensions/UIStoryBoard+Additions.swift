@@ -24,6 +24,6 @@ extension UIStoryboard {
     }
     
     class func profileStoryBoard()->UIStoryboard{
-        return UIStoryboard(name: Constants.StoryBoard.profileStoryBoard, bundle: nil)
+        return UIStoryboard(name: Constants.StoryBoard.profileStoryboard, bundle: nil)
     }
 }
