@@ -69,6 +69,8 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate {
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {
+        let licenceSelectionVC = UIStoryboard.profileStoryBoard().instantiateViewController(type: DMLicenseSelectionVC.self)!
+        self.navigationController?.pushViewController(licenceSelectionVC, animated: true)
     }
     
     @IBAction func notNowButtonPressed(_ sender: Any) {

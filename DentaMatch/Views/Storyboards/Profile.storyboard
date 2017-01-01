@@ -178,7 +178,7 @@
         <!--License SelectionVC-->
         <scene sceneID="xWf-sy-p8l">
             <objects>
-                <viewController id="aDP-Aa-d1Q" customClass="DMLicenseSelectionVC" customModule="DentaMatch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DMLicenseSelectionVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aDP-Aa-d1Q" customClass="DMLicenseSelectionVC" customModule="DentaMatch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sVW-zE-oe0"/>
                         <viewControllerLayoutGuide type="bottom" id="61t-Iy-Y6c"/>
