@@ -13,6 +13,13 @@
 		5AE5F50F1E165F09006C328A /* DMLicenseSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE5F50E1E165F09006C328A /* DMLicenseSelectionVC.swift */; };
 		5AE5F5121E1669DA006C328A /* AnimatedPHTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE5F5101E1669DA006C328A /* AnimatedPHTableCell.swift */; };
 		5AE5F5131E1669DA006C328A /* AnimatedPHTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AE5F5111E1669DA006C328A /* AnimatedPHTableCell.xib */; };
+		E50B3F3C1E18E8D2004C5F32 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = E50B3F321E18E8D2004C5F32 /* LICENSE */; };
+		E50B3F3E1E18E8D2004C5F32 /* ZActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50B3F351E18E8D2004C5F32 /* ZActivityIndicatorView.swift */; };
+		E50B3F3F1E18E8D2004C5F32 /* ZAnimationIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50B3F361E18E8D2004C5F32 /* ZAnimationIndicatorView.swift */; };
+		E50B3F401E18E8D2004C5F32 /* ZGradientLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50B3F371E18E8D2004C5F32 /* ZGradientLayer.swift */; };
+		E50B3F411E18E8D2004C5F32 /* ZProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E50B3F381E18E8D2004C5F32 /* ZProgressHUD.bundle */; };
+		E50B3F421E18E8D2004C5F32 /* ZProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50B3F3A1E18E8D2004C5F32 /* ZProgressHUD.swift */; };
+		E50B3F431E18E8D2004C5F32 /* ZProgressIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50B3F3B1E18E8D2004C5F32 /* ZProgressIndicatorView.swift */; };
 		E5302CD61DFE7AB100984A0B /* DMForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5302CD51DFE7AB100984A0B /* DMForgotPasswordVC.swift */; };
 		E53738F21DB373C200967876 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53738F11DB373C200967876 /* Reachability.swift */; };
 		E55462D71DAE2F49004163B2 /* UIColor+HexCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55462D61DAE2F49004163B2 /* UIColor+HexCode.swift */; };
@@ -98,6 +105,14 @@
 		5AE5F5111E1669DA006C328A /* AnimatedPHTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnimatedPHTableCell.xib; sourceTree = "<group>"; };
 		A69AB47303239A016127D8D8 /* Pods-DentaMatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DentaMatch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch.debug.xcconfig"; sourceTree = "<group>"; };
 		C611E923856ECE4538FA4F38 /* Pods_DentaMatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DentaMatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E50B3F321E18E8D2004C5F32 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		E50B3F351E18E8D2004C5F32 /* ZActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZActivityIndicatorView.swift; sourceTree = "<group>"; };
+		E50B3F361E18E8D2004C5F32 /* ZAnimationIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZAnimationIndicatorView.swift; sourceTree = "<group>"; };
+		E50B3F371E18E8D2004C5F32 /* ZGradientLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZGradientLayer.swift; sourceTree = "<group>"; };
+		E50B3F381E18E8D2004C5F32 /* ZProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ZProgressHUD.bundle; sourceTree = "<group>"; };
+		E50B3F391E18E8D2004C5F32 /* ZProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZProgressHUD.h; sourceTree = "<group>"; };
+		E50B3F3A1E18E8D2004C5F32 /* ZProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZProgressHUD.swift; sourceTree = "<group>"; };
+		E50B3F3B1E18E8D2004C5F32 /* ZProgressIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZProgressIndicatorView.swift; sourceTree = "<group>"; };
 		E5302CD51DFE7AB100984A0B /* DMForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMForgotPasswordVC.swift; sourceTree = "<group>"; };
 		E53738F11DB373C200967876 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		E538FA7C1DFFD76000AECE26 /* DentaMatch-Dev.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DentaMatch-Dev.entitlements"; sourceTree = "<group>"; };
@@ -218,6 +233,29 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E50B3F311E18E8D2004C5F32 /* ZProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				E50B3F321E18E8D2004C5F32 /* LICENSE */,
+				E50B3F341E18E8D2004C5F32 /* ZProgressHUD */,
+			);
+			path = ZProgressHUD;
+			sourceTree = "<group>";
+		};
+		E50B3F341E18E8D2004C5F32 /* ZProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				E50B3F351E18E8D2004C5F32 /* ZActivityIndicatorView.swift */,
+				E50B3F361E18E8D2004C5F32 /* ZAnimationIndicatorView.swift */,
+				E50B3F371E18E8D2004C5F32 /* ZGradientLayer.swift */,
+				E50B3F381E18E8D2004C5F32 /* ZProgressHUD.bundle */,
+				E50B3F391E18E8D2004C5F32 /* ZProgressHUD.h */,
+				E50B3F3A1E18E8D2004C5F32 /* ZProgressHUD.swift */,
+				E50B3F3B1E18E8D2004C5F32 /* ZProgressIndicatorView.swift */,
+			);
+			path = ZProgressHUD;
+			sourceTree = "<group>";
+		};
 		E5302CD41DFE7A9C00984A0B /* Forgot Password */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,6 +310,7 @@
 		E55462E21DAE47A9004163B2 /* Third Party */ = {
 			isa = PBXGroup;
 			children = (
+				E50B3F311E18E8D2004C5F32 /* ZProgressHUD */,
 				E597E58C1E151CF3001DDA78 /* FloatLabel */,
 				E55462E31DAE47A9004163B2 /* Toast */,
 			);
@@ -673,6 +712,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E50B3F411E18E8D2004C5F32 /* ZProgressHUD.bundle in Resources */,
 				E597E5881E151A99001DDA78 /* SF-UI-Text-Semibold.otf in Resources */,
 				E597E5841E151A99001DDA78 /* SF-UI-Text-Medium.otf in Resources */,
 				E597E57E1E151A99001DDA78 /* SF-UI-Text-Bold.otf in Resources */,
@@ -681,6 +721,7 @@
 				E597E58B1E151A99001DDA78 /* SF-UI-Text-UltrathinItalic.otf in Resources */,
 				E597E5801E151A99001DDA78 /* SF-UI-Text-Heavy.otf in Resources */,
 				E597E57B1E151A99001DDA78 /* SF-UI-Display-Semibold.otf in Resources */,
+				E50B3F3C1E18E8D2004C5F32 /* LICENSE in Resources */,
 				5AE5F5131E1669DA006C328A /* AnimatedPHTableCell.xib in Resources */,
 				E56B209F1DBF7467000512F6 /* Registration.storyboard in Resources */,
 				E597E57C1E151A99001DDA78 /* SF-UI-Display-Thin.otf in Resources */,
@@ -780,7 +821,11 @@
 				E56B20A41DC0526E000512F6 /* DMRegistrationContainer.swift in Sources */,
 				E55462F91DAE4DD1004163B2 /* UIView+Additions.swift in Sources */,
 				E55462DF1DAE31EA004163B2 /* UIFont+Additions.swift in Sources */,
+				E50B3F3F1E18E8D2004C5F32 /* ZAnimationIndicatorView.swift in Sources */,
+				E50B3F401E18E8D2004C5F32 /* ZGradientLayer.swift in Sources */,
+				E50B3F421E18E8D2004C5F32 /* ZProgressHUD.swift in Sources */,
 				E597E58F1E151CFF001DDA78 /* FloatLabelTextField.swift in Sources */,
+				E50B3F3E1E18E8D2004C5F32 /* ZActivityIndicatorView.swift in Sources */,
 				E59029A91DED2C7A00151E9B /* LogManager.swift in Sources */,
 				E5C5F31F1DC1C6DD001A5A3F /* GooglePlacesTableViewCell.swift in Sources */,
 				E5302CD61DFE7AB100984A0B /* DMForgotPasswordVC.swift in Sources */,
@@ -797,6 +842,7 @@
 				E55462D71DAE2F49004163B2 /* UIColor+HexCode.swift in Sources */,
 				E56B20A21DBF749D000512F6 /* DMRegistrationVC.swift in Sources */,
 				E59029A81DED2C7A00151E9B /* APIManager.swift in Sources */,
+				E50B3F431E18E8D2004C5F32 /* ZProgressIndicatorView.swift in Sources */,
 				E56C9FA31DED520B00EAA9DD /* InAppPurchase.swift in Sources */,
 				E55462E61DAE47A9004163B2 /* UIView+Toast.m in Sources */,
 				E56B20A61DC05C74000512F6 /* DMLoginVC.swift in Sources */,

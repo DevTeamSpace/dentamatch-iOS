@@ -55,7 +55,12 @@ class DMLoginVC: DMBaseVC {
         self.view.endEditing(true)
         let forgotPasswordVC = UIStoryboard.registrationStoryBoard().instantiateViewController(type: DMForgotPasswordVC.self)!
         self.navigationController?.pushViewController(forgotPasswordVC, animated: true)
-    }    
+    }
+    
+    func loginButtonPressed() {
+        self.view.endEditing(true)
+        print("Login API")
+    }
 }
 
 extension DMLoginVC:UITableViewDataSource,UITableViewDelegate {
@@ -66,6 +71,7 @@ extension DMLoginVC:UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LoginTableViewCell") as! LoginTableViewCell
+        cell.loginButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
         cell.forgotPasswordButton.addTarget(self, action: #selector(forgotPasswordButtonPressed), for: .touchUpInside)
         return cell
     }

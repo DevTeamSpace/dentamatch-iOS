@@ -122,11 +122,42 @@ class DMBaseVC: UIViewController {
     }
     
     func showLoader() {
+        let when = DispatchTime.now() + 0.01
+        DispatchQueue.main.asyncAfter(deadline: when) {
+            ZProgressHUD.show()
+        }
     }
     
     func showLoader(text:String) {
+        ZProgressHUD.setFont(UIFont.fontRegular(fontSize: 12.0)!)
+        let when = DispatchTime.now() + 0.01
+        DispatchQueue.main.asyncAfter(deadline: when) {
+            ZProgressHUD.show(text)
+        }
     }
     
+    func showLoaderOnWindow() {
+        ZProgressHUD.setDefault(maskType: .custom)
+        let when = DispatchTime.now() + 0.01
+        DispatchQueue.main.asyncAfter(deadline: when) {
+            ZProgressHUD.show()
+        }
+    }
+    
+    func showLoaderOnWindow(text:String) {
+        ZProgressHUD.setFont(UIFont.fontRegular(fontSize: 12.0)!)
+        ZProgressHUD.setDefault(maskType: .custom)
+        let when = DispatchTime.now() + 0.01
+        DispatchQueue.main.asyncAfter(deadline: when) {
+            ZProgressHUD.show(text)
+        }
+    }
+
     func hideLoader() {
+        ZProgressHUD.dismiss()
+    }
+    
+    func hideLoader(delay:TimeInterval) {
+        ZProgressHUD.dismiss(delay)
     }
 }
