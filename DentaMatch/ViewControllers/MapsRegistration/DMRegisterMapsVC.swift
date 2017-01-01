@@ -10,8 +10,8 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 
-@objc protocol LocationAddressDelegate {
-    @objc optional func locationAddress(address:String)
+protocol LocationAddressDelegate {
+    func locationAddress(address:String?,coordinate:CLLocationCoordinate2D?)
 }
 
 class DMRegisterMapsVC: DMBaseVC {
@@ -23,6 +23,8 @@ class DMRegisterMapsVC: DMBaseVC {
 
     var placesArray = [GMSAutocompletePrediction]()
     var marker:GMSMarker?
+    var coordinateSelected:CLLocationCoordinate2D?
+    var currentLocation:CLLocationCoordinate2D?
     var addressSelected = ""
     var delegate:LocationAddressDelegate?
     
@@ -32,8 +34,9 @@ class DMRegisterMapsVC: DMBaseVC {
         setup()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.hideLoader()
     }
     
     func setup() {
@@ -51,11 +54,23 @@ class DMRegisterMapsVC: DMBaseVC {
         setSearchButtonText(text: "Done", searchBar: placeSearchBar)
         mapView.isMyLocationEnabled = true
         mapView.delegate = self
-        
+        self.showLoader(text: "Getting Location")
         LocationManager.sharedInstance.getLocation { (location:CLLocation?, error:NSError?) in
-            if error == nil {
-                let place = CLLocationCoordinate2D(latitude: (location!.coordinate.latitude), longitude: (location!.coordinate.longitude))
-                self.mapView.camera = GMSCameraPosition(target: place, zoom: 15, bearing: 0, viewingAngle: 0)
+            if error != nil {
+                DispatchQueue.main.async {
+                    self.hideLoader()
+                    self.alertMessage(title: "", message: (error?.localizedDescription)!, buttonText: kOkButtonTitle, completionHandler: nil)
+                }
+                return
+            }
+           
+            let coordinate = CLLocationCoordinate2D(latitude: (location!.coordinate.latitude), longitude: (location!.coordinate.longitude))
+            self.coordinateSelected = coordinate
+            self.currentLocation = coordinate
+            self.reverseGeocodeCoordinate(coordinate: coordinate)
+            DispatchQueue.main.async {
+                self.hideLoader()
+                self.mapView.camera = GMSCameraPosition(target: coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
             }
         }
     }
@@ -107,26 +122,26 @@ class DMRegisterMapsVC: DMBaseVC {
             if let place = place {
                 debugPrint(place)
                 OperationQueue.main.addOperation({
-                    self.markPlaceOnMap(place: place)
+                    self.placeMarkerOnMap(coordinate: place.coordinate, isAnimatingToLocation: true)
                 })
             } else {
             }
         }
     }
     
-    func markPlaceOnMap(place:GMSPlace) {
-        placeMarkerOnMap(coordinate: place.coordinate)
-    }
-    
-    func placeMarkerOnMap(coordinate:CLLocationCoordinate2D) {
+    func placeMarkerOnMap(coordinate:CLLocationCoordinate2D,isAnimatingToLocation:Bool = false) {
         if marker == nil {
             marker = GMSMarker()
+            marker?.isDraggable = true
         }
-        marker?.position = coordinate;
+        marker?.position = coordinate
         //marker.icon = GMSMarker.markerImage(with: UIColor.black)
         //marker.icon = UIImage(named:"ic_pin")
-        marker?.map = self.mapView;
+        marker?.map = self.mapView
+        marker?.appearAnimation = kGMSMarkerAnimationPop
+        if isAnimatingToLocation {
         self.mapView.camera = GMSCameraPosition(target: coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
+        }
     }
     
     func reverseGeocodeCoordinate(coordinate: CLLocationCoordinate2D) {
@@ -135,17 +150,17 @@ class DMRegisterMapsVC: DMBaseVC {
             if let address = response?.firstResult() {
 //                self.placeMarkerOnMap(coordinate: address.coordinate)
                 let lines = address.lines!
-                //let count = response?.results()?.count
-//                self.selectedpostalCode =  ""
-//                for i in 0..<(count)! {
-//                    if let postalCode = response?.results()![i].postalCode {
-//                        self.selectedpostalCode =  postalCode
-//                        break
-//                    }
-//                }
-//                    if let postalCode = address.postalCode {
-//                        self.selectedpostalCode =  postalCode
-//                    }
+                let count = response?.results()?.count
+                
+                for i in 0..<(count)! {
+                    if let postalCode = response?.results()![i].postalCode {
+                        //self.selectedpostalCode =  postalCode
+                        break
+                    }
+                }
+                print(lines.joined(separator: "\n"))
+                self.placeSearchBar.text = lines.joined(separator: "\n")
+
                 DispatchQueue.main.async {
                     self.placeSearchBar.text = lines.joined(separator: "\n")
                 }
@@ -174,8 +189,13 @@ extension DMRegisterMapsVC:GMSAutocompleteViewControllerDelegate,GMSMapViewDeleg
     }
     
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+        print(coordinate)
         self.placeMarkerOnMap(coordinate: coordinate)
         reverseGeocodeCoordinate(coordinate: coordinate)
+    }
+    
+    func mapView(_ mapView: GMSMapView, didEndDragging marker: GMSMarker) {
+        reverseGeocodeCoordinate(coordinate: marker.position)
     }
 }
 
@@ -185,7 +205,7 @@ extension DMRegisterMapsVC:UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         if let delegate = self.delegate {
             self.addressSelected = self.placeSearchBar.text!
-            delegate.locationAddress!(address: addressSelected)
+            delegate.locationAddress(address: addressSelected, coordinate: coordinateSelected)
         }
         _ = self.navigationController?.popViewController(animated: true)
     }

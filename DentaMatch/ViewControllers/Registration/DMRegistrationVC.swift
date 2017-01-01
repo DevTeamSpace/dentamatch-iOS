@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import CoreLocation
 
 class DMRegistrationVC: DMBaseVC {
 
     @IBOutlet weak var registrationTableView: UITableView!
-        
+    var coordinateSelected:CLLocationCoordinate2D?
+    
     //MARK:- View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,20 +50,41 @@ class DMRegistrationVC: DMBaseVC {
     //MARK:- Private Methods
     func setup() {
         self.registrationTableView.register(UINib(nibName: "RegistrationTableViewCell", bundle: nil), forCellReuseIdentifier: "RegistrationTableViewCell")
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.registrationTableView.addGestureRecognizer(tap)
+    }
+    
+    func dismissKeyboard() {
+        self.view.endEditing(true)
     }
     
     func registerButtonPressed(sender:UIButton) {
         let termsVC = UIStoryboard.registrationStoryBoard().instantiateViewController(type: DMTermsAndConditionsVC.self)!
         self.navigationController?.pushViewController(termsVC, animated: true)
     }
-    
 }
 
 //MARK:- Extensions
 extension DMRegistrationVC:UITextFieldDelegate {
     //MARK:- TextField Delegates
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+        
+        switch textField.tag {
+        case 1:
+            if let cell = self.registrationTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as?
+                RegistrationTableViewCell {
+                cell.emailTextField.becomeFirstResponder()
+            }
+        case 2:
+            if let cell = self.registrationTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as?
+                RegistrationTableViewCell {
+                cell.newPasswordTextField.becomeFirstResponder()
+            }
+        case 3:
+            textField.resignFirstResponder()
+        default:
+            break
+        }
         return true
     }
 
@@ -113,15 +136,17 @@ extension DMRegistrationVC: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension DMRegistrationVC:LocationAddressDelegate {
-    func locationAddress(address: String) {
-        if address.isEmpty {
-            debugPrint("Address is empty")
-        } else {
+    
+    func locationAddress(address: String?, coordinate: CLLocationCoordinate2D?) {
+        coordinateSelected = coordinate
+        if let address = address {
             if let cell = self.registrationTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as?
                 RegistrationTableViewCell {
                 cell.preferredLocationTextField.text = address
             }
             debugPrint(address)
+        } else {
+            debugPrint("Address is empty")
         }
     }
 }

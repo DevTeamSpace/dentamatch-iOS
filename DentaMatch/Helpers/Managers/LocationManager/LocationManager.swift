@@ -121,7 +121,7 @@ class LocationManager: NSObject,CLLocationManagerDelegate {
     func getLocation(completionHandler:@escaping LocationClosure) {
         
         //Cancelling the previous selector handlers if any
-        NSObject.cancelPreviousPerformRequests(withTarget: self)
+        //NSObject.cancelPreviousPerformRequests(withTarget: self)
         
         //Resetting last location
         lastLocation = nil
@@ -205,6 +205,7 @@ class LocationManager: NSObject,CLLocationManagerDelegate {
     //MARK:- CLLocationManager Delegates
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         lastLocation = locations.last
+        sendLocation()
         manager.stopUpdatingLocation()
     }
     
@@ -213,13 +214,13 @@ class LocationManager: NSObject,CLLocationManagerDelegate {
         switch status {
             
         case .authorizedWhenInUse,.authorizedAlways:
-            self.locationManager?.startUpdatingLocation()
-            if self.reverseGeocoding {
-                startGeocodeThread()
-            } else {
-                startThread()
-            }
-            
+            //Request Current Location
+            self.locationManager?.requestLocation()
+//            if self.reverseGeocoding {
+//                //startGeocodeThread()
+//            } else {
+//                //startThread()
+//            }
         case .denied:
             let deniedError = NSError(
                 domain: self.classForCoder.description(),
