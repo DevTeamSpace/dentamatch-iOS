@@ -295,7 +295,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter you email address below and we'll send you the instructions on how to change your password" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IRT-i0-rz1">
-                                <rect key="frame" x="34" y="94" width="307" height="57.5"/>
+                                <rect key="frame" x="34" y="94" width="307" height="58"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="307" id="1xS-AL-TUH"/>
                                 </constraints>
@@ -303,8 +303,8 @@
                                 <color key="textColor" red="0.58431372549019611" green="0.58431372549019611" blue="0.58431372549019611" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xlF-WJ-RrJ" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
-                                <rect key="frame" x="22" y="189.5" width="331" height="55"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xlF-WJ-RrJ" customClass="AnimatedLeftViewPHTextField" customModule="DentaMatch" customModuleProvider="target">
+                                <rect key="frame" x="22" y="190" width="331" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="a4Q-P5-qVi"/>
                                 </constraints>
@@ -427,7 +427,7 @@
             <objects>
                 <navigationController storyboardIdentifier="RegistrationNAV" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="Ido-Jt-Y82" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="mF5-zQ-7eP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="mF5-zQ-7eP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

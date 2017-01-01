@@ -11,8 +11,6 @@
 		5AE5F50A1E16563D006C328A /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AE5F5091E16563D006C328A /* Profile.storyboard */; };
 		5AE5F50D1E165DE4006C328A /* DMJobTitleSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE5F50C1E165DE4006C328A /* DMJobTitleSelectionVC.swift */; };
 		5AE5F50F1E165F09006C328A /* DMLicenseSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE5F50E1E165F09006C328A /* DMLicenseSelectionVC.swift */; };
-		5AE5F5121E1669DA006C328A /* AnimatedPHTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE5F5101E1669DA006C328A /* AnimatedPHTableCell.swift */; };
-		5AE5F5131E1669DA006C328A /* AnimatedPHTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AE5F5111E1669DA006C328A /* AnimatedPHTableCell.xib */; };
 		E50B3F3C1E18E8D2004C5F32 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = E50B3F321E18E8D2004C5F32 /* LICENSE */; };
 		E50B3F3E1E18E8D2004C5F32 /* ZActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50B3F351E18E8D2004C5F32 /* ZActivityIndicatorView.swift */; };
 		E50B3F3F1E18E8D2004C5F32 /* ZAnimationIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50B3F361E18E8D2004C5F32 /* ZAnimationIndicatorView.swift */; };
@@ -20,6 +18,13 @@
 		E50B3F411E18E8D2004C5F32 /* ZProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E50B3F381E18E8D2004C5F32 /* ZProgressHUD.bundle */; };
 		E50B3F421E18E8D2004C5F32 /* ZProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50B3F3A1E18E8D2004C5F32 /* ZProgressHUD.swift */; };
 		E50B3F431E18E8D2004C5F32 /* ZProgressIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50B3F3B1E18E8D2004C5F32 /* ZProgressIndicatorView.swift */; };
+		E50B3F4C1E194CD7004C5F32 /* AnimatedPHTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50B3F451E194CD7004C5F32 /* AnimatedPHTableCell.swift */; };
+		E50B3F4D1E194CD7004C5F32 /* AnimatedPHTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E50B3F461E194CD7004C5F32 /* AnimatedPHTableCell.xib */; };
+		E50B3F4E1E194CD7004C5F32 /* LoginTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50B3F481E194CD7004C5F32 /* LoginTableViewCell.swift */; };
+		E50B3F4F1E194CD7004C5F32 /* LoginTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E50B3F491E194CD7004C5F32 /* LoginTableViewCell.xib */; };
+		E50B3F501E194CD7004C5F32 /* RegistrationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50B3F4A1E194CD7004C5F32 /* RegistrationTableViewCell.swift */; };
+		E50B3F511E194CD7004C5F32 /* RegistrationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E50B3F4B1E194CD7004C5F32 /* RegistrationTableViewCell.xib */; };
+		E50B3F531E194EDD004C5F32 /* AnimatedPHTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50B3F521E194EDD004C5F32 /* AnimatedPHTextField.swift */; };
 		E5302CD61DFE7AB100984A0B /* DMForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5302CD51DFE7AB100984A0B /* DMForgotPasswordVC.swift */; };
 		E53738F21DB373C200967876 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53738F11DB373C200967876 /* Reachability.swift */; };
 		E55462D71DAE2F49004163B2 /* UIColor+HexCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55462D61DAE2F49004163B2 /* UIColor+HexCode.swift */; };
@@ -39,8 +44,6 @@
 		E56B20A21DBF749D000512F6 /* DMRegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56B20A11DBF749D000512F6 /* DMRegistrationVC.swift */; };
 		E56B20A41DC0526E000512F6 /* DMRegistrationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56B20A31DC0526E000512F6 /* DMRegistrationContainer.swift */; };
 		E56B20A61DC05C74000512F6 /* DMLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56B20A51DC05C74000512F6 /* DMLoginVC.swift */; };
-		E56B20AA1DC06084000512F6 /* RegistrationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56B20A81DC06084000512F6 /* RegistrationTableViewCell.swift */; };
-		E56B20AB1DC06084000512F6 /* RegistrationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E56B20A91DC06084000512F6 /* RegistrationTableViewCell.xib */; };
 		E56C9F9E1DED4BD100EAA9DD /* Character+Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C9F9D1DED4BD100EAA9DD /* Character+Addition.swift */; };
 		E56C9FA31DED520B00EAA9DD /* InAppPurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C9FA21DED520B00EAA9DD /* InAppPurchase.swift */; };
 		E56C9FA81DED75D500EAA9DD /* CommonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C9FA71DED75D500EAA9DD /* CommonHelper.swift */; };
@@ -79,12 +82,10 @@
 		E597E58B1E151A99001DDA78 /* SF-UI-Text-UltrathinItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E597E5741E151A99001DDA78 /* SF-UI-Text-UltrathinItalic.otf */; };
 		E597E58F1E151CFF001DDA78 /* FloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E597E58D1E151CFF001DDA78 /* FloatLabelTextField.swift */; };
 		E597E5901E151CFF001DDA78 /* FloatLabelTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E597E58E1E151CFF001DDA78 /* FloatLabelTextView.swift */; };
-		E5A3E8EE1E160ABF00B10937 /* AnimatedPHTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A3E8ED1E160ABF00B10937 /* AnimatedPHTextField.swift */; };
+		E5A3E8EE1E160ABF00B10937 /* AnimatedLeftViewPHTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A3E8ED1E160ABF00B10937 /* AnimatedLeftViewPHTextField.swift */; };
 		E5AE2AF11DAF844C00C008BD /* DMOnboardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE2AF01DAF844C00C008BD /* DMOnboardingVC.swift */; };
 		E5AE2AF31DAF84AD00C008BD /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5AE2AF21DAF84AD00C008BD /* Onboarding.storyboard */; };
 		E5AE2AF61DAF878900C008BD /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE2AF51DAF878900C008BD /* OnboardingCollectionViewCell.swift */; };
-		E5C5F3111DC07C6F001A5A3F /* LoginTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C5F30F1DC07C6F001A5A3F /* LoginTableViewCell.swift */; };
-		E5C5F3121DC07C6F001A5A3F /* LoginTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5C5F3101DC07C6F001A5A3F /* LoginTableViewCell.xib */; };
 		E5C5F3151DC0AACA001A5A3F /* DMRegisterMapsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C5F3141DC0AACA001A5A3F /* DMRegisterMapsVC.swift */; };
 		E5C5F3181DC1A723001A5A3F /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C5F3171DC1A723001A5A3F /* LocationManager.swift */; };
 		E5C5F31B1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C5F31A1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift */; };
@@ -101,8 +102,6 @@
 		5AE5F5091E16563D006C328A /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		5AE5F50C1E165DE4006C328A /* DMJobTitleSelectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMJobTitleSelectionVC.swift; sourceTree = "<group>"; };
 		5AE5F50E1E165F09006C328A /* DMLicenseSelectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMLicenseSelectionVC.swift; sourceTree = "<group>"; };
-		5AE5F5101E1669DA006C328A /* AnimatedPHTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedPHTableCell.swift; sourceTree = "<group>"; };
-		5AE5F5111E1669DA006C328A /* AnimatedPHTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnimatedPHTableCell.xib; sourceTree = "<group>"; };
 		A69AB47303239A016127D8D8 /* Pods-DentaMatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DentaMatch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch.debug.xcconfig"; sourceTree = "<group>"; };
 		C611E923856ECE4538FA4F38 /* Pods_DentaMatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DentaMatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E50B3F321E18E8D2004C5F32 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -113,6 +112,13 @@
 		E50B3F391E18E8D2004C5F32 /* ZProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZProgressHUD.h; sourceTree = "<group>"; };
 		E50B3F3A1E18E8D2004C5F32 /* ZProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZProgressHUD.swift; sourceTree = "<group>"; };
 		E50B3F3B1E18E8D2004C5F32 /* ZProgressIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZProgressIndicatorView.swift; sourceTree = "<group>"; };
+		E50B3F451E194CD7004C5F32 /* AnimatedPHTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedPHTableCell.swift; sourceTree = "<group>"; };
+		E50B3F461E194CD7004C5F32 /* AnimatedPHTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnimatedPHTableCell.xib; sourceTree = "<group>"; };
+		E50B3F481E194CD7004C5F32 /* LoginTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTableViewCell.swift; sourceTree = "<group>"; };
+		E50B3F491E194CD7004C5F32 /* LoginTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginTableViewCell.xib; sourceTree = "<group>"; };
+		E50B3F4A1E194CD7004C5F32 /* RegistrationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationTableViewCell.swift; sourceTree = "<group>"; };
+		E50B3F4B1E194CD7004C5F32 /* RegistrationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegistrationTableViewCell.xib; sourceTree = "<group>"; };
+		E50B3F521E194EDD004C5F32 /* AnimatedPHTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedPHTextField.swift; sourceTree = "<group>"; };
 		E5302CD51DFE7AB100984A0B /* DMForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMForgotPasswordVC.swift; sourceTree = "<group>"; };
 		E53738F11DB373C200967876 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		E538FA7C1DFFD76000AECE26 /* DentaMatch-Dev.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DentaMatch-Dev.entitlements"; sourceTree = "<group>"; };
@@ -136,8 +142,6 @@
 		E56B20A11DBF749D000512F6 /* DMRegistrationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMRegistrationVC.swift; sourceTree = "<group>"; };
 		E56B20A31DC0526E000512F6 /* DMRegistrationContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMRegistrationContainer.swift; sourceTree = "<group>"; };
 		E56B20A51DC05C74000512F6 /* DMLoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMLoginVC.swift; sourceTree = "<group>"; };
-		E56B20A81DC06084000512F6 /* RegistrationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationTableViewCell.swift; sourceTree = "<group>"; };
-		E56B20A91DC06084000512F6 /* RegistrationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegistrationTableViewCell.xib; sourceTree = "<group>"; };
 		E56C9F9D1DED4BD100EAA9DD /* Character+Addition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Character+Addition.swift"; sourceTree = "<group>"; };
 		E56C9FA21DED520B00EAA9DD /* InAppPurchase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppPurchase.swift; sourceTree = "<group>"; };
 		E56C9FA71DED75D500EAA9DD /* CommonHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonHelper.swift; sourceTree = "<group>"; };
@@ -177,12 +181,10 @@
 		E597E5741E151A99001DDA78 /* SF-UI-Text-UltrathinItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-UltrathinItalic.otf"; sourceTree = "<group>"; };
 		E597E58D1E151CFF001DDA78 /* FloatLabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatLabelTextField.swift; sourceTree = "<group>"; };
 		E597E58E1E151CFF001DDA78 /* FloatLabelTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatLabelTextView.swift; sourceTree = "<group>"; };
-		E5A3E8ED1E160ABF00B10937 /* AnimatedPHTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedPHTextField.swift; sourceTree = "<group>"; };
+		E5A3E8ED1E160ABF00B10937 /* AnimatedLeftViewPHTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedLeftViewPHTextField.swift; sourceTree = "<group>"; };
 		E5AE2AF01DAF844C00C008BD /* DMOnboardingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMOnboardingVC.swift; sourceTree = "<group>"; };
 		E5AE2AF21DAF84AD00C008BD /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		E5AE2AF51DAF878900C008BD /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
-		E5C5F30F1DC07C6F001A5A3F /* LoginTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTableViewCell.swift; sourceTree = "<group>"; };
-		E5C5F3101DC07C6F001A5A3F /* LoginTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginTableViewCell.xib; sourceTree = "<group>"; };
 		E5C5F3141DC0AACA001A5A3F /* DMRegisterMapsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMRegisterMapsVC.swift; sourceTree = "<group>"; };
 		E5C5F3171DC1A723001A5A3F /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		E5C5F31A1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMTermsAndConditionsVC.swift; sourceTree = "<group>"; };
@@ -254,6 +256,26 @@
 				E50B3F3B1E18E8D2004C5F32 /* ZProgressIndicatorView.swift */,
 			);
 			path = ZProgressHUD;
+			sourceTree = "<group>";
+		};
+		E50B3F441E194CD7004C5F32 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				E50B3F451E194CD7004C5F32 /* AnimatedPHTableCell.swift */,
+				E50B3F461E194CD7004C5F32 /* AnimatedPHTableCell.xib */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		E50B3F471E194CD7004C5F32 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				E50B3F481E194CD7004C5F32 /* LoginTableViewCell.swift */,
+				E50B3F491E194CD7004C5F32 /* LoginTableViewCell.xib */,
+				E50B3F4A1E194CD7004C5F32 /* RegistrationTableViewCell.swift */,
+				E50B3F4B1E194CD7004C5F32 /* RegistrationTableViewCell.xib */,
+			);
+			path = Registration;
 			sourceTree = "<group>";
 		};
 		E5302CD41DFE7A9C00984A0B /* Forgot Password */ = {
@@ -393,13 +415,9 @@
 		E56B20A71DC0606A000512F6 /* TableView Cells */ = {
 			isa = PBXGroup;
 			children = (
-				E56B20A81DC06084000512F6 /* RegistrationTableViewCell.swift */,
-				E56B20A91DC06084000512F6 /* RegistrationTableViewCell.xib */,
-				E5C5F30F1DC07C6F001A5A3F /* LoginTableViewCell.swift */,
-				E5C5F3101DC07C6F001A5A3F /* LoginTableViewCell.xib */,
+				E50B3F441E194CD7004C5F32 /* Profile */,
+				E50B3F471E194CD7004C5F32 /* Registration */,
 				E5C5F31E1DC1C6DD001A5A3F /* GooglePlacesTableViewCell.swift */,
-				5AE5F5101E1669DA006C328A /* AnimatedPHTableCell.swift */,
-				5AE5F5111E1669DA006C328A /* AnimatedPHTableCell.xib */,
 			);
 			path = "TableView Cells";
 			sourceTree = "<group>";
@@ -547,7 +565,8 @@
 		E5A3E8EC1E160ABF00B10937 /* AnimatedTextField */ = {
 			isa = PBXGroup;
 			children = (
-				E5A3E8ED1E160ABF00B10937 /* AnimatedPHTextField.swift */,
+				E5A3E8ED1E160ABF00B10937 /* AnimatedLeftViewPHTextField.swift */,
+				E50B3F521E194EDD004C5F32 /* AnimatedPHTextField.swift */,
 			);
 			path = AnimatedTextField;
 			sourceTree = "<group>";
@@ -720,9 +739,10 @@
 				E597E5751E151A99001DDA78 /* SF-UI-Display-Black.otf in Resources */,
 				E597E58B1E151A99001DDA78 /* SF-UI-Text-UltrathinItalic.otf in Resources */,
 				E597E5801E151A99001DDA78 /* SF-UI-Text-Heavy.otf in Resources */,
+				E50B3F4D1E194CD7004C5F32 /* AnimatedPHTableCell.xib in Resources */,
+				E50B3F4F1E194CD7004C5F32 /* LoginTableViewCell.xib in Resources */,
 				E597E57B1E151A99001DDA78 /* SF-UI-Display-Semibold.otf in Resources */,
 				E50B3F3C1E18E8D2004C5F32 /* LICENSE in Resources */,
-				5AE5F5131E1669DA006C328A /* AnimatedPHTableCell.xib in Resources */,
 				E56B209F1DBF7467000512F6 /* Registration.storyboard in Resources */,
 				E597E57C1E151A99001DDA78 /* SF-UI-Display-Thin.otf in Resources */,
 				E597E5781E151A99001DDA78 /* SF-UI-Display-Light.otf in Resources */,
@@ -731,13 +751,13 @@
 				E5AE2AF31DAF84AD00C008BD /* Onboarding.storyboard in Resources */,
 				E597E58A1E151A99001DDA78 /* SF-UI-Text-Ultrathin.otf in Resources */,
 				E597E57F1E151A99001DDA78 /* SF-UI-Text-BoldItalic.otf in Resources */,
-				E5C5F3121DC07C6F001A5A3F /* LoginTableViewCell.xib in Resources */,
 				E597E5791E151A99001DDA78 /* SF-UI-Display-Medium.otf in Resources */,
 				E58654FF1DEFEF7F006FEB2D /* Environments.plist in Resources */,
 				E597E5891E151A99001DDA78 /* SF-UI-Text-SemiboldItalic.otf in Resources */,
 				E597E5821E151A99001DDA78 /* SF-UI-Text-Light.otf in Resources */,
 				E56E45C61DAE07C200AD4559 /* LaunchScreen.storyboard in Resources */,
 				E597E5761E151A99001DDA78 /* SF-UI-Display-Bold.otf in Resources */,
+				E50B3F511E194CD7004C5F32 /* RegistrationTableViewCell.xib in Resources */,
 				E597E5771E151A99001DDA78 /* SF-UI-Display-Heavy.otf in Resources */,
 				E597E55B1E150638001DDA78 /* dentamatch.ttf in Resources */,
 				E597E5811E151A99001DDA78 /* SF-UI-Text-HeavyItalic.otf in Resources */,
@@ -746,7 +766,6 @@
 				E597E5851E151A99001DDA78 /* SF-UI-Text-MediumItalic.otf in Resources */,
 				E597E5871E151A99001DDA78 /* SF-UI-Text-RegularItalic.otf in Resources */,
 				E597E5861E151A99001DDA78 /* SF-UI-Text-Regular.otf in Resources */,
-				E56B20AB1DC06084000512F6 /* RegistrationTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -829,7 +848,6 @@
 				E59029A91DED2C7A00151E9B /* LogManager.swift in Sources */,
 				E5C5F31F1DC1C6DD001A5A3F /* GooglePlacesTableViewCell.swift in Sources */,
 				E5302CD61DFE7AB100984A0B /* DMForgotPasswordVC.swift in Sources */,
-				5AE5F5121E1669DA006C328A /* AnimatedPHTableCell.swift in Sources */,
 				E5C5F3181DC1A723001A5A3F /* LocationManager.swift in Sources */,
 				E56C9FA81DED75D500EAA9DD /* CommonHelper.swift in Sources */,
 				E59029AA1DED2C7A00151E9B /* UserDefaultsManager.swift in Sources */,
@@ -841,9 +859,11 @@
 				E55462E11DAE41FB004163B2 /* Date+Additions.swift in Sources */,
 				E55462D71DAE2F49004163B2 /* UIColor+HexCode.swift in Sources */,
 				E56B20A21DBF749D000512F6 /* DMRegistrationVC.swift in Sources */,
+				E50B3F531E194EDD004C5F32 /* AnimatedPHTextField.swift in Sources */,
 				E59029A81DED2C7A00151E9B /* APIManager.swift in Sources */,
 				E50B3F431E18E8D2004C5F32 /* ZProgressIndicatorView.swift in Sources */,
 				E56C9FA31DED520B00EAA9DD /* InAppPurchase.swift in Sources */,
+				E50B3F4C1E194CD7004C5F32 /* AnimatedPHTableCell.swift in Sources */,
 				E55462E61DAE47A9004163B2 /* UIView+Toast.m in Sources */,
 				E56B20A61DC05C74000512F6 /* DMLoginVC.swift in Sources */,
 				E55463001DAE510A004163B2 /* Utilities.swift in Sources */,
@@ -852,21 +872,21 @@
 				E56C9F9E1DED4BD100EAA9DD /* Character+Addition.swift in Sources */,
 				E55462EC1DAE47F5004163B2 /* AppDelegate.swift in Sources */,
 				E5F47C941E0035B90051C4A1 /* UIImage+Rotations.swift in Sources */,
+				E50B3F501E194CD7004C5F32 /* RegistrationTableViewCell.swift in Sources */,
 				E53738F21DB373C200967876 /* Reachability.swift in Sources */,
-				E56B20AA1DC06084000512F6 /* RegistrationTableViewCell.swift in Sources */,
 				E55462F51DAE4B9E004163B2 /* UIStoryBoard+Additions.swift in Sources */,
 				E5DC3E731DAF2C45002DA20E /* DentaMatch.xcdatamodeld in Sources */,
 				E590299F1DED25C400151E9B /* AppDelegate+Notifications.swift in Sources */,
-				E5C5F3111DC07C6F001A5A3F /* LoginTableViewCell.swift in Sources */,
 				E597E5901E151CFF001DDA78 /* FloatLabelTextView.swift in Sources */,
 				E5F47C951E0035B90051C4A1 /* UIImageRotate.m in Sources */,
 				5AE5F50F1E165F09006C328A /* DMLicenseSelectionVC.swift in Sources */,
 				E5C5F31B1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift in Sources */,
 				E55462FC1DAE4EA1004163B2 /* DMBaseVC.swift in Sources */,
-				E5A3E8EE1E160ABF00B10937 /* AnimatedPHTextField.swift in Sources */,
+				E5A3E8EE1E160ABF00B10937 /* AnimatedLeftViewPHTextField.swift in Sources */,
 				5AE5F50D1E165DE4006C328A /* DMJobTitleSelectionVC.swift in Sources */,
 				E5AE2AF11DAF844C00C008BD /* DMOnboardingVC.swift in Sources */,
 				E55462F31DAE4A5D004163B2 /* Constants.swift in Sources */,
+				E50B3F4E1E194CD7004C5F32 /* LoginTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DMRegistrationVC: DMBaseVC,UITextFieldDelegate {
+class DMRegistrationVC: DMBaseVC {
 
     @IBOutlet weak var registrationTableView: UITableView!
         
@@ -55,12 +55,16 @@ class DMRegistrationVC: DMBaseVC,UITextFieldDelegate {
         self.navigationController?.pushViewController(termsVC, animated: true)
     }
     
+}
+
+//MARK:- Extensions
+extension DMRegistrationVC:UITextFieldDelegate {
     //MARK:- TextField Delegates
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
-    
+
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if let cell = self.registrationTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as?
             RegistrationTableViewCell {
@@ -68,14 +72,26 @@ class DMRegistrationVC: DMBaseVC,UITextFieldDelegate {
                 let mapVC = UIStoryboard.registrationStoryBoard().instantiateViewController(type: DMRegisterMapsVC.self)!
                 mapVC.delegate = self
                 self.navigationController?.pushViewController(mapVC, animated: true)
+                self.view.endEditing(true)
                 return false
             }
+        }
+        if let textField = textField as? AnimatedLeftViewPHTextField {
+            textField.layer.borderColor = kTextFieldColorSelected.cgColor
+            textField.leftViewLabel?.textColor = kTextFieldColorSelected
+        }
+        return true
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if let textField = textField as? AnimatedLeftViewPHTextField {
+            textField.layer.borderColor = kTextFieldBorderColor.cgColor
+            textField.leftViewLabel?.textColor = kTextFieldLeftViewModeColor
         }
         return true
     }
 }
 
-//MARK:- Extensions
 extension DMRegistrationVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1

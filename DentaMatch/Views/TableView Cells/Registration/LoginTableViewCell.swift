@@ -12,8 +12,8 @@ class LoginTableViewCell: UITableViewCell {
 
     @IBOutlet weak var forgotPasswordButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var emailTextField: AnimatedPHTextField!
-    @IBOutlet weak var passwordTextField: AnimatedPHTextField!
+    @IBOutlet weak var emailTextField: AnimatedLeftViewPHTextField!
+    @IBOutlet weak var passwordTextField: AnimatedLeftViewPHTextField!
     
     override func awakeFromNib() {
         super.awakeFromNib()

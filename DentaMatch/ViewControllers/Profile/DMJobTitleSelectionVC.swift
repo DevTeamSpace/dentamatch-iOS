@@ -27,8 +27,6 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate {
     //MARK:- Private Methods
     func setup() {
         UIView.makeTip(view: profileHeaderView, size: 8, x: profileHeaderView.frame.midX/2, y: profileHeaderView.frame.midY)
-        let leftView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: self.currentJobTitleTextField.frame.size.height))
-        currentJobTitleTextField.leftView = leftView
         self.profileButton.layer.cornerRadius = self.profileButton.frame.size.width/2
         self.profileButton.clipsToBounds = true
         self.profileButton.imageView?.contentMode = .scaleAspectFill
