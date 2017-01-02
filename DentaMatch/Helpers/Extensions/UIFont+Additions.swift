@@ -30,4 +30,9 @@ extension UIFont{
     class func fontSemiBold(fontSize:CGFloat)->UIFont? {
         return UIFont(name: "SFUIText-Semibold", size: fontSize)
     }
+    
+    class func fontMedium(fontSize:CGFloat)->UIFont? {
+        return UIFont(name: "SFUIText-Medium", size: fontSize)
+    }
+
  }
