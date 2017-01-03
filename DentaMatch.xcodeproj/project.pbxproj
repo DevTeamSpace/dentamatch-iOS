@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		270886FB07B603FF47668A72 /* Pods_DentaMatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C611E923856ECE4538FA4F38 /* Pods_DentaMatch.framework */; };
+		5A3FD06A1E1BA7F600360B3C /* DMWorkExperienceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3FD0691E1BA7F600360B3C /* DMWorkExperienceVC.swift */; };
+		5A3FD06E1E1BB0A000360B3C /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3FD06D1E1BB0A000360B3C /* UINavigationBar+Awesome.m */; };
 		5AE5F50A1E16563D006C328A /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AE5F5091E16563D006C328A /* Profile.storyboard */; };
 		5AE5F50D1E165DE4006C328A /* DMJobTitleSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE5F50C1E165DE4006C328A /* DMJobTitleSelectionVC.swift */; };
 		5AE5F50F1E165F09006C328A /* DMLicenseSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE5F50E1E165F09006C328A /* DMLicenseSelectionVC.swift */; };
@@ -15,8 +17,6 @@
 		5AE5F5171E1A3470006C328A /* PhotoNameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AE5F5151E1A3470006C328A /* PhotoNameCell.xib */; };
 		5AE5F51A1E1A5139006C328A /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE5F5181E1A5139006C328A /* PhotoCell.swift */; };
 		5AE5F51B1E1A5139006C328A /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AE5F5191E1A5139006C328A /* PhotoCell.xib */; };
-		5AE5F51F1E1A5EDF006C328A /* DMWorkExperiencePartOneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE5F51E1E1A5EDF006C328A /* DMWorkExperiencePartOneVC.swift */; };
-		5AE5F5211E1A5F24006C328A /* DMWorkExperiencePartTwoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE5F5201E1A5F24006C328A /* DMWorkExperiencePartTwoVC.swift */; };
 		E50B3F3C1E18E8D2004C5F32 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = E50B3F321E18E8D2004C5F32 /* LICENSE */; };
 		E50B3F3E1E18E8D2004C5F32 /* ZActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50B3F351E18E8D2004C5F32 /* ZActivityIndicatorView.swift */; };
 		E50B3F3F1E18E8D2004C5F32 /* ZAnimationIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50B3F361E18E8D2004C5F32 /* ZAnimationIndicatorView.swift */; };
@@ -104,6 +104,9 @@
 /* Begin PBXFileReference section */
 		158450992C392116A74F763C /* Pods-DentaMatch.qa.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DentaMatch.qa.xcconfig"; path = "Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch.qa.xcconfig"; sourceTree = "<group>"; };
 		19F54B802B7D87A34FEE97F2 /* Pods-DentaMatch.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DentaMatch.staging.xcconfig"; path = "Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch.staging.xcconfig"; sourceTree = "<group>"; };
+		5A3FD0691E1BA7F600360B3C /* DMWorkExperienceVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMWorkExperienceVC.swift; sourceTree = "<group>"; };
+		5A3FD06C1E1BB0A000360B3C /* UINavigationBar+Awesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Awesome.h"; sourceTree = "<group>"; };
+		5A3FD06D1E1BB0A000360B3C /* UINavigationBar+Awesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Awesome.m"; sourceTree = "<group>"; };
 		5AD8AC4AE71CBA67916D21CE /* Pods-DentaMatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DentaMatch.release.xcconfig"; path = "Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch.release.xcconfig"; sourceTree = "<group>"; };
 		5AE5F5091E16563D006C328A /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		5AE5F50C1E165DE4006C328A /* DMJobTitleSelectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMJobTitleSelectionVC.swift; sourceTree = "<group>"; };
@@ -112,8 +115,6 @@
 		5AE5F5151E1A3470006C328A /* PhotoNameCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoNameCell.xib; sourceTree = "<group>"; };
 		5AE5F5181E1A5139006C328A /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		5AE5F5191E1A5139006C328A /* PhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
-		5AE5F51E1E1A5EDF006C328A /* DMWorkExperiencePartOneVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMWorkExperiencePartOneVC.swift; sourceTree = "<group>"; };
-		5AE5F5201E1A5F24006C328A /* DMWorkExperiencePartTwoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMWorkExperiencePartTwoVC.swift; sourceTree = "<group>"; };
 		A69AB47303239A016127D8D8 /* Pods-DentaMatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DentaMatch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch.debug.xcconfig"; sourceTree = "<group>"; };
 		C611E923856ECE4538FA4F38 /* Pods_DentaMatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DentaMatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E50B3F321E18E8D2004C5F32 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -230,13 +231,21 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		5A3FD06B1E1BAF9B00360B3C /* ParallaxNav */ = {
+			isa = PBXGroup;
+			children = (
+				5A3FD06C1E1BB0A000360B3C /* UINavigationBar+Awesome.h */,
+				5A3FD06D1E1BB0A000360B3C /* UINavigationBar+Awesome.m */,
+			);
+			path = ParallaxNav;
+			sourceTree = "<group>";
+		};
 		5AE5F50B1E16569B006C328A /* Profile */ = {
 			isa = PBXGroup;
 			children = (
 				5AE5F50C1E165DE4006C328A /* DMJobTitleSelectionVC.swift */,
 				5AE5F50E1E165F09006C328A /* DMLicenseSelectionVC.swift */,
-				5AE5F51E1E1A5EDF006C328A /* DMWorkExperiencePartOneVC.swift */,
-				5AE5F5201E1A5F24006C328A /* DMWorkExperiencePartTwoVC.swift */,
+				5A3FD0691E1BA7F600360B3C /* DMWorkExperienceVC.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -315,6 +324,7 @@
 		E55462D51DAE2F01004163B2 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				5A3FD06B1E1BAF9B00360B3C /* ParallaxNav */,
 				E5F47C901E0035B90051C4A1 /* UIImage+Additions */,
 				E55462D61DAE2F49004163B2 /* UIColor+HexCode.swift */,
 				E55462D81DAE3104004163B2 /* Array+Additions.swift */,
@@ -867,8 +877,10 @@
 				E50B3F3E1E18E8D2004C5F32 /* ZActivityIndicatorView.swift in Sources */,
 				E59029A91DED2C7A00151E9B /* LogManager.swift in Sources */,
 				E5C5F31F1DC1C6DD001A5A3F /* GooglePlacesTableViewCell.swift in Sources */,
+				5A3FD06A1E1BA7F600360B3C /* DMWorkExperienceVC.swift in Sources */,
 				E5302CD61DFE7AB100984A0B /* DMForgotPasswordVC.swift in Sources */,
 				E5C5F3181DC1A723001A5A3F /* LocationManager.swift in Sources */,
+				5A3FD06E1E1BB0A000360B3C /* UINavigationBar+Awesome.m in Sources */,
 				E56C9FA81DED75D500EAA9DD /* CommonHelper.swift in Sources */,
 				E59029AA1DED2C7A00151E9B /* UserDefaultsManager.swift in Sources */,
 				E55462DB1DAE312C004163B2 /* String+Additons.swift in Sources */,
@@ -881,7 +893,6 @@
 				E56B20A21DBF749D000512F6 /* DMRegistrationVC.swift in Sources */,
 				E50B3F531E194EDD004C5F32 /* AnimatedPHTextField.swift in Sources */,
 				E59029A81DED2C7A00151E9B /* APIManager.swift in Sources */,
-				5AE5F5211E1A5F24006C328A /* DMWorkExperiencePartTwoVC.swift in Sources */,
 				E50B3F431E18E8D2004C5F32 /* ZProgressIndicatorView.swift in Sources */,
 				E56C9FA31DED520B00EAA9DD /* InAppPurchase.swift in Sources */,
 				E50B3F4C1E194CD7004C5F32 /* AnimatedPHTableCell.swift in Sources */,
@@ -908,7 +919,6 @@
 				5AE5F50D1E165DE4006C328A /* DMJobTitleSelectionVC.swift in Sources */,
 				E5AE2AF11DAF844C00C008BD /* DMOnboardingVC.swift in Sources */,
 				E55462F31DAE4A5D004163B2 /* Constants.swift in Sources */,
-				5AE5F51F1E1A5EDF006C328A /* DMWorkExperiencePartOneVC.swift in Sources */,
 				5AE5F5161E1A3470006C328A /* PhotoNameCell.swift in Sources */,
 				E50B3F4E1E194CD7004C5F32 /* LoginTableViewCell.swift in Sources */,
 			);

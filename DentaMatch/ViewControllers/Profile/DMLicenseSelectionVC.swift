@@ -11,21 +11,71 @@ import UIKit
 class DMLicenseSelectionVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate {
     @IBOutlet var licenseTableView: UITableView!
     
+    var stateBoardImage:UIImage? = nil
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.licenseTableView.register(UINib(nibName: "AnimatedPHTableCell", bundle: nil), forCellReuseIdentifier: "AnimatedPHTableCell")
-        self.licenseTableView.register(UINib(nibName: "PhotoNameCell", bundle: nil), forCellReuseIdentifier: "PhotoNameCell")
-
-        self.licenseTableView.register(UINib(nibName: "PhotoCell", bundle: nil), forCellReuseIdentifier: "PhotoCell")
-
-        licenseTableView.separatorStyle = .none
-        
-
-        self.licenseTableView.reloadData()
+        setUp()
     }
     
+    func setUp() {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.licenseTableView.register(UINib(nibName: "AnimatedPHTableCell", bundle: nil), forCellReuseIdentifier: "AnimatedPHTableCell")
+        self.licenseTableView.register(UINib(nibName: "PhotoNameCell", bundle: nil), forCellReuseIdentifier: "PhotoNameCell")
+        self.licenseTableView.register(UINib(nibName: "PhotoCell", bundle: nil), forCellReuseIdentifier: "PhotoCell")
+        licenseTableView.separatorStyle = .none
+        self.licenseTableView.reloadData()
+
+    }
     @IBAction func nextButtonClikced(_ sender: Any) {
+        self.performSegue(withIdentifier: "goToWorkExperience", sender: self)
+    }
+    
+    func stateBoardButtonPressed(_ sender: Any) {
+        self.cameraGalleryOptionActionSheet(title: "", message: "Please select", leftButtonText: "Camera", rightButtonText: "Gallery") { (isCameraButtonPressed, isGalleryButtonPressed, isCancelButtonPressed) in
+            if isCancelButtonPressed {
+            } else if isCameraButtonPressed {
+                CameraGalleryManager.shared.openCamera(viewController: self, allowsEditing: false, completionHandler: { (image:UIImage?, error:NSError?) in
+                    if error != nil {
+                        DispatchQueue.main.async {
+                            self.makeToast(toastString: (error?.localizedDescription)!)
+                        }
+                        return
+                    }
+                    self.stateBoardImage = image!
+                    DispatchQueue.main.async {
+//                        self.profileButton.setImage(image, for: .normal)
+                        self.licenseTableView.reloadData()
+                    }
+                })
+            } else {
+                CameraGalleryManager.shared.openGallery(viewController: self, allowsEditing: false, completionHandler: { (image:UIImage?, error:NSError?) in
+                    if error != nil {
+                        DispatchQueue.main.async {
+                            self.makeToast(toastString: (error?.localizedDescription)!)
+                        }
+                        return
+                    }
+                    self.stateBoardImage = image
+                    DispatchQueue.main.async {
+                        self.licenseTableView.reloadData()
+                    }
+                })
+            }
+        }
+    }
+    
+
+    
+    
+    
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -91,6 +141,16 @@ class DMLicenseSelectionVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate {
         case 1:
             print("section 1")
             let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoCell") as! PhotoCell
+            
+            cell.stateBoardPhotoButton.addTarget(self, action: #selector(DMLicenseSelectionVC.stateBoardButtonPressed(_:)), for: .touchUpInside)
+            if self.stateBoardImage == nil{
+                cell.stateBoardPhotoButton .setTitle("h", for: .normal)
+            }else{
+                cell.stateBoardPhotoButton .setTitle("", for: .normal)
+                cell.stateBoardPhotoButton.alpha = 1.0
+                cell.stateBoardPhotoButton.backgroundColor = UIColor.clear
+                cell.stateBoardPhotoButton.setImage(self.stateBoardImage!, for: .normal)
+            }
 
             cell.selectionStyle = .none
             return cell
@@ -110,7 +170,6 @@ class DMLicenseSelectionVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate {
             }else if indexPath.row == 1
             {
                 cell.commonTextFiled.placeholder = "State"
-
                 cell.cellTopSpace.constant = 10.5
                 cell.cellBottomSpace.constant = 41.5
                 cell.layoutIfNeeded()
