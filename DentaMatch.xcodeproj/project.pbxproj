@@ -10,6 +10,8 @@
 		270886FB07B603FF47668A72 /* Pods_DentaMatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C611E923856ECE4538FA4F38 /* Pods_DentaMatch.framework */; };
 		5A3FD06A1E1BA7F600360B3C /* DMWorkExperienceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3FD0691E1BA7F600360B3C /* DMWorkExperienceVC.swift */; };
 		5A3FD06E1E1BB0A000360B3C /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3FD06D1E1BB0A000360B3C /* UINavigationBar+Awesome.m */; };
+		5A3FD0711E1C0C1200360B3C /* ReferenceTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3FD06F1E1C0C1200360B3C /* ReferenceTableCell.swift */; };
+		5A3FD0721E1C0C1200360B3C /* ReferenceTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A3FD0701E1C0C1200360B3C /* ReferenceTableCell.xib */; };
 		5AE5F50A1E16563D006C328A /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AE5F5091E16563D006C328A /* Profile.storyboard */; };
 		5AE5F50D1E165DE4006C328A /* DMJobTitleSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE5F50C1E165DE4006C328A /* DMJobTitleSelectionVC.swift */; };
 		5AE5F50F1E165F09006C328A /* DMLicenseSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE5F50E1E165F09006C328A /* DMLicenseSelectionVC.swift */; };
@@ -107,6 +109,8 @@
 		5A3FD0691E1BA7F600360B3C /* DMWorkExperienceVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMWorkExperienceVC.swift; sourceTree = "<group>"; };
 		5A3FD06C1E1BB0A000360B3C /* UINavigationBar+Awesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Awesome.h"; sourceTree = "<group>"; };
 		5A3FD06D1E1BB0A000360B3C /* UINavigationBar+Awesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Awesome.m"; sourceTree = "<group>"; };
+		5A3FD06F1E1C0C1200360B3C /* ReferenceTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReferenceTableCell.swift; sourceTree = "<group>"; };
+		5A3FD0701E1C0C1200360B3C /* ReferenceTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReferenceTableCell.xib; sourceTree = "<group>"; };
 		5AD8AC4AE71CBA67916D21CE /* Pods-DentaMatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DentaMatch.release.xcconfig"; path = "Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch.release.xcconfig"; sourceTree = "<group>"; };
 		5AE5F5091E16563D006C328A /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		5AE5F50C1E165DE4006C328A /* DMJobTitleSelectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMJobTitleSelectionVC.swift; sourceTree = "<group>"; };
@@ -290,6 +294,8 @@
 				5AE5F5151E1A3470006C328A /* PhotoNameCell.xib */,
 				5AE5F5181E1A5139006C328A /* PhotoCell.swift */,
 				5AE5F5191E1A5139006C328A /* PhotoCell.xib */,
+				5A3FD06F1E1C0C1200360B3C /* ReferenceTableCell.swift */,
+				5A3FD0701E1C0C1200360B3C /* ReferenceTableCell.xib */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -761,6 +767,7 @@
 			files = (
 				E50B3F411E18E8D2004C5F32 /* ZProgressHUD.bundle in Resources */,
 				E597E5881E151A99001DDA78 /* SF-UI-Text-Semibold.otf in Resources */,
+				5A3FD0721E1C0C1200360B3C /* ReferenceTableCell.xib in Resources */,
 				E597E5841E151A99001DDA78 /* SF-UI-Text-Medium.otf in Resources */,
 				E597E57E1E151A99001DDA78 /* SF-UI-Text-Bold.otf in Resources */,
 				E597E57A1E151A99001DDA78 /* SF-UI-Display-Regular.otf in Resources */,
@@ -880,6 +887,7 @@
 				5A3FD06A1E1BA7F600360B3C /* DMWorkExperienceVC.swift in Sources */,
 				E5302CD61DFE7AB100984A0B /* DMForgotPasswordVC.swift in Sources */,
 				E5C5F3181DC1A723001A5A3F /* LocationManager.swift in Sources */,
+				5A3FD0711E1C0C1200360B3C /* ReferenceTableCell.swift in Sources */,
 				5A3FD06E1E1BB0A000360B3C /* UINavigationBar+Awesome.m in Sources */,
 				E56C9FA81DED75D500EAA9DD /* CommonHelper.swift in Sources */,
 				E59029AA1DED2C7A00151E9B /* UserDefaultsManager.swift in Sources */,
