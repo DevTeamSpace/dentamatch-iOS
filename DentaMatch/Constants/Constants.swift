@@ -55,11 +55,11 @@ struct Constants {
         //APIs
         static let registrationAPI = Constants.API.apiURL("register")
         static let loginAPI = Constants.API.apiURL("login")
-        static let termsAndConditionsURL = "https://www.google.co.in"
-        static let privacyPolicyURL = "https://www.google.co.in"
+        static let termsAndConditionsURL = Constants.API.apiURL("term-condition")
+        static let privacyPolicyURL = Constants.API.apiURL("privacy-policy")
 
         static func apiURL(_ methodName: String) -> String {
-            return BASE_URL + "/" + methodName
+            return BASE_URL + methodName
         }
     }
     

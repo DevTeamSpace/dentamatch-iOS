@@ -27,19 +27,31 @@ class DMTermsAndConditionsVC: DMBaseVC {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        }
+        self.hideLoader()
+    }
     
     func setup() {
+        self.title = isPrivacyPolicy ? "PRIVACY POLICY" : "TERMS & CONDITIONS"
         request = isPrivacyPolicy ?
             URLRequest(url: URL(string:Constants.API.privacyPolicyURL)!) :
             URLRequest(url: URL(string:Constants.API.termsAndConditionsURL)!)
-        
+        webView.delegate = self
         webView.loadRequest(request)
         self.navigationItem.leftBarButtonItem = self.backBarButton()
-        self.title = "TERMS & CONDITIONS"
         self.navigationController?.navigationBar.barTintColor = UIColor.color(withHexCode: kNavBarColor)
     }
+}
+
+extension DMTermsAndConditionsVC : UIWebViewDelegate {
+    func webViewDidStartLoad(_ webView: UIWebView) {
+        self.showLoader()
+    }
     
-    @IBAction func acceptButtonPressed(_ sender: AnyObject) {
+    func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
+        self.hideLoader()
+    }
+    
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        self.hideLoader()
     }
 }
