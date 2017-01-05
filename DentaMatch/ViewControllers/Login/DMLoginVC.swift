@@ -11,7 +11,14 @@ import UIKit
 class DMLoginVC: DMBaseVC {
 
     @IBOutlet weak var loginTableView: UITableView!
-        
+    
+    var loginParams = [
+        Constants.ServerKeys.deviceId:"",
+        Constants.ServerKeys.deviceToken:"",
+        Constants.ServerKeys.deviceType:"",
+        Constants.ServerKeys.email:"",
+        Constants.ServerKeys.password:"",
+    ]
     //MARK:- View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +60,20 @@ class DMLoginVC: DMBaseVC {
         self.loginTableView.addGestureRecognizer(tap)
     }
     
+    func validateFields() -> Bool {
+        if loginParams[Constants.ServerKeys.email]!.isValidEmail {
+            if !loginParams[Constants.ServerKeys.password]!.isEmpty {
+                return true
+            } else {
+                self.makeToast(toastString: "Empty Password Error")
+                return false
+            }
+        } else {
+            self.makeToast(toastString: "Invalid Email Error")
+            return false
+        }
+    }
+    
     func dismissKeyboard() {
         self.view.endEditing(true)
     }
@@ -65,59 +86,8 @@ class DMLoginVC: DMBaseVC {
     
     func loginButtonPressed() {
         self.view.endEditing(true)
-        print("Login API")
-    }
-}
-
-extension DMLoginVC:UITextFieldDelegate {
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField.tag == 1 {
-            //Email TextField
-            if let cell = self.loginTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? LoginTableViewCell {
-                cell.passwordTextField.becomeFirstResponder()
-            }
-        } else {
-            //Password TextField
-            textField.resignFirstResponder()
+        if validateFields() {
+            self.loginAPICall(params: loginParams)
         }
-        return true
     }
-    
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if let textField = textField as? AnimatedLeftViewPHTextField {
-            textField.layer.borderColor = kTextFieldColorSelected.cgColor
-            textField.leftViewLabel?.textColor = kTextFieldColorSelected
-        }
-        return true
-    }
-    
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        if let textField = textField as? AnimatedLeftViewPHTextField {
-            textField.layer.borderColor = kTextFieldBorderColor.cgColor
-            textField.leftViewLabel?.textColor = kTextFieldLeftViewModeColor
-        }
-        return true
-    }
-}
-
-extension DMLoginVC:UITableViewDataSource,UITableViewDelegate {
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LoginTableViewCell") as! LoginTableViewCell
-        cell.emailTextField.delegate = self
-        cell.passwordTextField.delegate = self
-        cell.loginButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
-        cell.forgotPasswordButton.addTarget(self, action: #selector(forgotPasswordButtonPressed), for: .touchUpInside)
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return self.loginTableView.frame.size.height
-    }
-
 }

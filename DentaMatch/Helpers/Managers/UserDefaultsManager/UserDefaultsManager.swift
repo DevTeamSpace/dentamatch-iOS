@@ -11,7 +11,7 @@ import Foundation
 
 class UserDefaultsManager: NSObject {
     
-    static let sharedInstance = UserDefaults()
+    static let sharedInstance = UserDefaultsManager()
     
     var isLoggedIn:Bool {
         get {
@@ -23,6 +23,20 @@ class UserDefaultsManager: NSObject {
         }
         set {
             kUserDefaults.setValue(newValue, forKey: Constants.UserDefaultsKeys.isLoggedIn)
+            kUserDefaults.synchronize()
+        }
+    }
+    
+    var deviceToken:String {
+        get {
+            if(kUserDefaults.value(forKey: Constants.UserDefaultsKeys.kDeviceToken) != nil){
+                return kUserDefaults.value(forKey: Constants.UserDefaultsKeys.kDeviceToken) as! String
+            }
+            //Default is not logged in
+            return ""
+        }
+        set {
+            kUserDefaults.setValue(newValue, forKey: Constants.UserDefaultsKeys.kDeviceToken)
             kUserDefaults.synchronize()
         }
     }

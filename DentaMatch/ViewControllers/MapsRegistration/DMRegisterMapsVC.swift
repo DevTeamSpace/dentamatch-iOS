@@ -11,7 +11,13 @@ import GoogleMaps
 import GooglePlaces
 
 protocol LocationAddressDelegate {
-    func locationAddress(address:String?,coordinate:CLLocationCoordinate2D?)
+    func locationAddress(location:Location)
+}
+
+struct Location {
+    var postalCode = ""
+    var coordinateSelected:CLLocationCoordinate2D?
+    var address:String?
 }
 
 class DMRegisterMapsVC: DMBaseVC {
@@ -24,9 +30,11 @@ class DMRegisterMapsVC: DMBaseVC {
     var placesArray = [GMSAutocompletePrediction]()
     var marker:GMSMarker?
     var coordinateSelected:CLLocationCoordinate2D?
+    var postCodeSelected = ""
     var currentLocation:CLLocationCoordinate2D?
     var addressSelected = ""
     var delegate:LocationAddressDelegate?
+    var location = Location()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,7 +73,7 @@ class DMRegisterMapsVC: DMBaseVC {
             }
            
             let coordinate = CLLocationCoordinate2D(latitude: (location!.coordinate.latitude), longitude: (location!.coordinate.longitude))
-            self.coordinateSelected = coordinate
+            self.location.coordinateSelected = coordinate
             self.currentLocation = coordinate
             self.reverseGeocodeCoordinate(coordinate: coordinate)
             DispatchQueue.main.async {
@@ -148,26 +156,28 @@ class DMRegisterMapsVC: DMBaseVC {
         let geocoder = GMSGeocoder()
         geocoder.reverseGeocodeCoordinate(coordinate) { (response:GMSReverseGeocodeResponse?, error:Error?) in
             if let address = response?.firstResult() {
-//                self.placeMarkerOnMap(coordinate: address.coordinate)
                 let lines = address.lines!
                 let count = response?.results()?.count
-                
                 for i in 0..<(count)! {
                     if let postalCode = response?.results()![i].postalCode {
-                        //self.selectedpostalCode =  postalCode
+                        self.location.postalCode =  postalCode
                         break
                     }
                 }
-                print(lines.joined(separator: "\n"))
-                self.placeSearchBar.text = lines.joined(separator: "\n")
-
+                print(lines.joined(separator: " "))
+                self.location.address = lines.joined(separator: " ")
                 DispatchQueue.main.async {
-                    self.placeSearchBar.text = lines.joined(separator: "\n")
+                    self.placeSearchBar.text = lines.joined(separator: " ")
                 }
             }
         }
     }
+    
     @IBAction func gpsNavigationButtonPressed(_ sender: Any) {
+        guard let _ = self.currentLocation else {
+            return
+        }
+        self.mapView.camera = GMSCameraPosition(target: self.currentLocation!, zoom: 15, bearing: 0, viewingAngle: 0)
     }
 }
 
@@ -191,10 +201,12 @@ extension DMRegisterMapsVC:GMSAutocompleteViewControllerDelegate,GMSMapViewDeleg
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         print(coordinate)
         self.placeMarkerOnMap(coordinate: coordinate)
+        self.location.coordinateSelected = coordinate
         reverseGeocodeCoordinate(coordinate: coordinate)
     }
     
     func mapView(_ mapView: GMSMapView, didEndDragging marker: GMSMarker) {
+        self.location.coordinateSelected = marker.position
         reverseGeocodeCoordinate(coordinate: marker.position)
     }
 }
@@ -205,7 +217,7 @@ extension DMRegisterMapsVC:UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         if let delegate = self.delegate {
             self.addressSelected = self.placeSearchBar.text!
-            delegate.locationAddress(address: addressSelected, coordinate: coordinateSelected)
+            delegate.locationAddress(location: location)
         }
         _ = self.navigationController?.popViewController(animated: true)
     }
@@ -241,6 +253,7 @@ extension DMRegisterMapsVC : UITableViewDataSource,UITableViewDelegate {
         let place = placesArray[indexPath.row]
         getPlaceDetails(place)
         self.placeSearchBar.text = place.attributedFullText.string
+        self.location.address = place.attributedFullText.string
         self.placesTableView.isHidden = true
     }
 }

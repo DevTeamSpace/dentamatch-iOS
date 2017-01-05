@@ -11,6 +11,8 @@ import UIKit
 class DMTermsAndConditionsVC: DMBaseVC {
 
     @IBOutlet weak var webView: UIWebView!
+    var isPrivacyPolicy = false
+    var request:URLRequest!
     override func viewDidLoad() {
         // Do any additional setup after loading the view.
         super.viewDidLoad()
@@ -28,7 +30,10 @@ class DMTermsAndConditionsVC: DMBaseVC {
         }
     
     func setup() {
-        let request = URLRequest(url: URL(string:"https://www.google.co.in")!)
+        request = isPrivacyPolicy ?
+            URLRequest(url: URL(string:Constants.API.privacyPolicyURL)!) :
+            URLRequest(url: URL(string:Constants.API.termsAndConditionsURL)!)
+        
         webView.loadRequest(request)
         self.navigationItem.leftBarButtonItem = self.backBarButton()
         self.title = "TERMS & CONDITIONS"
@@ -36,11 +41,5 @@ class DMTermsAndConditionsVC: DMBaseVC {
     }
     
     @IBAction func acceptButtonPressed(_ sender: AnyObject) {
-        let jobTitleSectionVC = UIStoryboard.profileStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.profileNav)
-        UIView.transition(with: self.view.window!, duration: 0.5, options: .transitionFlipFromRight, animations: {
-            kAppDelegate.window?.rootViewController = jobTitleSectionVC
-        }) { (bool:Bool) in
-            
-        }
     }
 }

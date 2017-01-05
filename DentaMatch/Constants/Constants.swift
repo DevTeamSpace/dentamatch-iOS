@@ -32,6 +32,12 @@ struct Constants {
     static func apiBaseURL() -> String {
         return ConfigurationManager.sharedManager.APIEndpoint()
     }
+    
+    struct DesignFont {
+        static let acceptTermsSelected  = "w"
+        static let acceptTermsDeSelected  = "t"
+    }
+    
     //MARK:- StoryBoards
     struct StoryBoard {
         static let registrationStoryboard  = "Registration"
@@ -44,24 +50,45 @@ struct Constants {
     }
     
     //MARK:- API Urls
-    struct APIMethods {
+    struct API {
+    
         //APIs
-        static let registrationAPI = Constants.APIMethods.apiURL("register")
-        
+        static let registrationAPI = Constants.API.apiURL("register")
+        static let loginAPI = Constants.API.apiURL("login")
+        static let termsAndConditionsURL = "https://www.google.co.in"
+        static let privacyPolicyURL = "https://www.google.co.in"
+
         static func apiURL(_ methodName: String) -> String {
             return BASE_URL + "/" + methodName
         }
     }
-     
+    
+    struct ServerKeys {
+        static let deviceId = "deviceId"
+        static let deviceType = "deviceType"
+        static let deviceToken = "deviceToken"
+        static let firstName = "firstName"
+        static let lastName = "lastName"
+        static let email = "email"
+        static let password = "password"
+        static let preferredLocation = "preferedLocation"
+        static let latitude = "latitude"
+        static let longitude = "longitude"
+        static let zipCode = "zipCode"
+        static let userType = "userType"
+    }
+    
     //MARK:- UserDefault Keys
     struct UserDefaultsKeys {
         static let isLoggedIn = "isLoggedIn"
+        static let kDeviceToken = "kDeviceToken"
     }
     
     //MARK:- Alert Messages
     struct AlertMessages{
         static let invalidEmail = "Please enter correct email ID"
         static let skipProfile = "Completed job profile will help you in applying for jobs."
+        static let somethingWentWrong = "Something went wrong"
         struct AlertTitle {
             static let invalidEmailTitle = ""
         }
@@ -75,6 +102,8 @@ struct Constants {
     //MARK:- Hardcoded Limits
     struct Limits{
         static let licenseNumberLimit = 16
+        static let passwordLimit = 6
+
     }
 }
 
