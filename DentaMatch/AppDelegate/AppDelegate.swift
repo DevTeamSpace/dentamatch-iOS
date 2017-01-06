@@ -23,7 +23,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         //configureCrashlytics()
-
+        
+        if UserDefaultsManager.sharedInstance.isLoggedIn {
+            goToProfile()
+        }
+        
         configureGoogleServices()
 
         registerForPushNotifications()
@@ -35,6 +39,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
    
+    
+    func goToProfile() {
+        let profileVC = UIStoryboard.profileStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.profileNav) as! UINavigationController
+        self.window?.rootViewController = profileVC
+    }
     
     func changeNavBarAppearance() {
         UIApplication.shared.statusBarStyle = .lightContent
