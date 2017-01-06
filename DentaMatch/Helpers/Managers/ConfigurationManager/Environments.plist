@@ -5,7 +5,7 @@
 	<key>Development</key>
 	<dict>
 		<key>APIEndPoint</key>
-		<string>https://dev</string>
+		<string>http://52.8.112.211/api/</string>
 		<key>LoggingEnabled</key>
 		<true/>
 		<key>AnalyticsTrackingEnabled</key>

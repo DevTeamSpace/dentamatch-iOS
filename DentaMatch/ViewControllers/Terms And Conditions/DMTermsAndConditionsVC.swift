@@ -11,6 +11,8 @@ import UIKit
 class DMTermsAndConditionsVC: DMBaseVC {
 
     @IBOutlet weak var webView: UIWebView!
+    var isPrivacyPolicy = false
+    var request:URLRequest!
     override func viewDidLoad() {
         // Do any additional setup after loading the view.
         super.viewDidLoad()
@@ -25,22 +27,31 @@ class DMTermsAndConditionsVC: DMBaseVC {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        }
-    
-    func setup() {
-        let request = URLRequest(url: URL(string:"https://www.google.co.in")!)
-        webView.loadRequest(request)
-        self.navigationItem.leftBarButtonItem = self.backBarButton()
-        self.title = "TERMS & CONDITIONS"
-        self.navigationController?.navigationBar.barTintColor = UIColor.color(withHexCode: kNavBarColor)
+        self.hideLoader()
     }
     
-    @IBAction func acceptButtonPressed(_ sender: AnyObject) {
-        let jobTitleSectionVC = UIStoryboard.profileStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.profileNav)
-        UIView.transition(with: self.view.window!, duration: 0.5, options: .transitionFlipFromRight, animations: {
-            kAppDelegate.window?.rootViewController = jobTitleSectionVC
-        }) { (bool:Bool) in
-            
-        }
+    func setup() {
+        self.title = isPrivacyPolicy ? "PRIVACY POLICY" : "TERMS & CONDITIONS"
+        request = isPrivacyPolicy ?
+            URLRequest(url: URL(string:Constants.API.privacyPolicyURL)!) :
+            URLRequest(url: URL(string:Constants.API.termsAndConditionsURL)!)
+        webView.delegate = self
+        webView.loadRequest(request)
+        self.navigationItem.leftBarButtonItem = self.backBarButton()
+        self.navigationController?.navigationBar.barTintColor = UIColor.color(withHexCode: kNavBarColor)
+    }
+}
+
+extension DMTermsAndConditionsVC : UIWebViewDelegate {
+    func webViewDidStartLoad(_ webView: UIWebView) {
+        self.showLoader()
+    }
+    
+    func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
+        self.hideLoader()
+    }
+    
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        self.hideLoader()
     }
 }

@@ -63,19 +63,25 @@
 		E56B209F1DBF7467000512F6 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E56B209E1DBF7467000512F6 /* Registration.storyboard */; };
 		E56B20A21DBF749D000512F6 /* DMRegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56B20A11DBF749D000512F6 /* DMRegistrationVC.swift */; };
 		E56B20A41DC0526E000512F6 /* DMRegistrationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56B20A31DC0526E000512F6 /* DMRegistrationContainer.swift */; };
-		E56B20A61DC05C74000512F6 /* DMLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56B20A51DC05C74000512F6 /* DMLoginVC.swift */; };
 		E56C9F9E1DED4BD100EAA9DD /* Character+Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C9F9D1DED4BD100EAA9DD /* Character+Addition.swift */; };
 		E56C9FA31DED520B00EAA9DD /* InAppPurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C9FA21DED520B00EAA9DD /* InAppPurchase.swift */; };
 		E56C9FA81DED75D500EAA9DD /* CommonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C9FA71DED75D500EAA9DD /* CommonHelper.swift */; };
 		E56E45C31DAE07C200AD4559 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E56E45C21DAE07C200AD4559 /* Assets.xcassets */; };
 		E56E45C61DAE07C200AD4559 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E56E45C41DAE07C200AD4559 /* LaunchScreen.storyboard */; };
 		E56E90801DFF31740096A31B /* CameraGalleryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56E907F1DFF31740096A31B /* CameraGalleryManager.swift */; };
+		E56F78561E1F602200F07814 /* DMForgotPasswordVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56F78551E1F602200F07814 /* DMForgotPasswordVC+Services.swift */; };
 		E58654FE1DEFEF7F006FEB2D /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58654FC1DEFEF7F006FEB2D /* ConfigurationManager.swift */; };
 		E58654FF1DEFEF7F006FEB2D /* Environments.plist in Resources */ = {isa = PBXBuildFile; fileRef = E58654FD1DEFEF7F006FEB2D /* Environments.plist */; };
 		E590299F1DED25C400151E9B /* AppDelegate+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590299E1DED25C400151E9B /* AppDelegate+Notifications.swift */; };
 		E59029A81DED2C7A00151E9B /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59029A31DED2C7A00151E9B /* APIManager.swift */; };
 		E59029A91DED2C7A00151E9B /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59029A51DED2C7A00151E9B /* LogManager.swift */; };
 		E59029AA1DED2C7A00151E9B /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59029A71DED2C7A00151E9B /* UserDefaultsManager.swift */; };
+		E594BE9D1E1DFF4400310AE5 /* DMRegistrationVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E594BE9C1E1DFF4400310AE5 /* DMRegistrationVC+TableViewExtension.swift */; };
+		E594BE9F1E1DFFA900310AE5 /* DMRegistrationVC+TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E594BE9E1E1DFFA900310AE5 /* DMRegistrationVC+TextFieldExtension.swift */; };
+		E594BEA21E1E014F00310AE5 /* DMLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E594BEA11E1E014F00310AE5 /* DMLoginVC.swift */; };
+		E594BEA41E1E076D00310AE5 /* DMLoginVC+TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E594BEA31E1E076D00310AE5 /* DMLoginVC+TextFieldExtension.swift */; };
+		E594BEA61E1E07C900310AE5 /* DMLoginVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E594BEA51E1E07C900310AE5 /* DMLoginVC+TableViewExtension.swift */; };
+		E594BEA81E1E07F500310AE5 /* DMLoginVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E594BEA71E1E07F500310AE5 /* DMLoginVC+Services.swift */; };
 		E597E55B1E150638001DDA78 /* dentamatch.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E597E55A1E150638001DDA78 /* dentamatch.ttf */; };
 		E597E5751E151A99001DDA78 /* SF-UI-Display-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = E597E55D1E151A99001DDA78 /* SF-UI-Display-Black.otf */; };
 		E597E5761E151A99001DDA78 /* SF-UI-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E597E55E1E151A99001DDA78 /* SF-UI-Display-Bold.otf */; };
@@ -113,6 +119,7 @@
 		E5DC3E731DAF2C45002DA20E /* DentaMatch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E5DC3E711DAF2C45002DA20E /* DentaMatch.xcdatamodeld */; };
 		E5F47C941E0035B90051C4A1 /* UIImage+Rotations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F47C911E0035B90051C4A1 /* UIImage+Rotations.swift */; };
 		E5F47C951E0035B90051C4A1 /* UIImageRotate.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F47C931E0035B90051C4A1 /* UIImageRotate.m */; };
+		E5FBE9D91E1CCF940025683C /* DMRegistration+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FBE9D81E1CCF940025683C /* DMRegistration+Services.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -182,7 +189,6 @@
 		E56B209E1DBF7467000512F6 /* Registration.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Registration.storyboard; sourceTree = "<group>"; };
 		E56B20A11DBF749D000512F6 /* DMRegistrationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMRegistrationVC.swift; sourceTree = "<group>"; };
 		E56B20A31DC0526E000512F6 /* DMRegistrationContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMRegistrationContainer.swift; sourceTree = "<group>"; };
-		E56B20A51DC05C74000512F6 /* DMLoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMLoginVC.swift; sourceTree = "<group>"; };
 		E56C9F9D1DED4BD100EAA9DD /* Character+Addition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Character+Addition.swift"; sourceTree = "<group>"; };
 		E56C9FA21DED520B00EAA9DD /* InAppPurchase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppPurchase.swift; sourceTree = "<group>"; };
 		E56C9FA71DED75D500EAA9DD /* CommonHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonHelper.swift; sourceTree = "<group>"; };
@@ -190,12 +196,19 @@
 		E56E45C21DAE07C200AD4559 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E56E45C51DAE07C200AD4559 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E56E907F1DFF31740096A31B /* CameraGalleryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraGalleryManager.swift; sourceTree = "<group>"; };
+		E56F78551E1F602200F07814 /* DMForgotPasswordVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMForgotPasswordVC+Services.swift"; sourceTree = "<group>"; };
 		E58654FC1DEFEF7F006FEB2D /* ConfigurationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationManager.swift; sourceTree = "<group>"; };
 		E58654FD1DEFEF7F006FEB2D /* Environments.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Environments.plist; sourceTree = "<group>"; };
 		E590299E1DED25C400151E9B /* AppDelegate+Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Notifications.swift"; sourceTree = "<group>"; };
 		E59029A31DED2C7A00151E9B /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		E59029A51DED2C7A00151E9B /* LogManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
 		E59029A71DED2C7A00151E9B /* UserDefaultsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		E594BE9C1E1DFF4400310AE5 /* DMRegistrationVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMRegistrationVC+TableViewExtension.swift"; sourceTree = "<group>"; };
+		E594BE9E1E1DFFA900310AE5 /* DMRegistrationVC+TextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMRegistrationVC+TextFieldExtension.swift"; sourceTree = "<group>"; };
+		E594BEA11E1E014F00310AE5 /* DMLoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMLoginVC.swift; sourceTree = "<group>"; };
+		E594BEA31E1E076D00310AE5 /* DMLoginVC+TextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMLoginVC+TextFieldExtension.swift"; sourceTree = "<group>"; };
+		E594BEA51E1E07C900310AE5 /* DMLoginVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMLoginVC+TableViewExtension.swift"; sourceTree = "<group>"; };
+		E594BEA71E1E07F500310AE5 /* DMLoginVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMLoginVC+Services.swift"; sourceTree = "<group>"; };
 		E597E55A1E150638001DDA78 /* dentamatch.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = dentamatch.ttf; sourceTree = "<group>"; };
 		E597E55D1E151A99001DDA78 /* SF-UI-Display-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Black.otf"; sourceTree = "<group>"; };
 		E597E55E1E151A99001DDA78 /* SF-UI-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Bold.otf"; sourceTree = "<group>"; };
@@ -234,6 +247,7 @@
 		E5F47C911E0035B90051C4A1 /* UIImage+Rotations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Rotations.swift"; sourceTree = "<group>"; };
 		E5F47C921E0035B90051C4A1 /* UIImageRotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageRotate.h; sourceTree = "<group>"; };
 		E5F47C931E0035B90051C4A1 /* UIImageRotate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageRotate.m; sourceTree = "<group>"; };
+		E5FBE9D81E1CCF940025683C /* DMRegistration+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMRegistration+Services.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -372,6 +386,7 @@
 			isa = PBXGroup;
 			children = (
 				E5302CD51DFE7AB100984A0B /* DMForgotPasswordVC.swift */,
+				E56F78551E1F602200F07814 /* DMForgotPasswordVC+Services.swift */,
 			);
 			path = "Forgot Password";
 			sourceTree = "<group>";
@@ -437,11 +452,12 @@
 		E55462E71DAE47C6004163B2 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E56B20A01DBF7486000512F6 /* Registration */,
+				E594BEA01E1E014F00310AE5 /* Login */,
 				5AE5F50B1E16569B006C328A /* Profile */,
 				E5302CD41DFE7A9C00984A0B /* Forgot Password */,
 				E5C5F3191DC1B355001A5A3F /* Terms And Conditions */,
 				E5C5F3131DC0AAA9001A5A3F /* MapsRegistration */,
-				E56B20A01DBF7486000512F6 /* Registration */,
 				E5AE2AEF1DAF83F600C008BD /* Onboarding */,
 				E55462FA1DAE4E8C004163B2 /* BaseVC */,
 			);
@@ -492,8 +508,10 @@
 			isa = PBXGroup;
 			children = (
 				E56B20A11DBF749D000512F6 /* DMRegistrationVC.swift */,
+				E5FBE9D81E1CCF940025683C /* DMRegistration+Services.swift */,
 				E56B20A31DC0526E000512F6 /* DMRegistrationContainer.swift */,
-				E56B20A51DC05C74000512F6 /* DMLoginVC.swift */,
+				E594BE9C1E1DFF4400310AE5 /* DMRegistrationVC+TableViewExtension.swift */,
+				E594BE9E1E1DFFA900310AE5 /* DMRegistrationVC+TextFieldExtension.swift */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -600,6 +618,17 @@
 				E59029A71DED2C7A00151E9B /* UserDefaultsManager.swift */,
 			);
 			path = UserDefaultsManager;
+			sourceTree = "<group>";
+		};
+		E594BEA01E1E014F00310AE5 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				E594BEA11E1E014F00310AE5 /* DMLoginVC.swift */,
+				E594BEA31E1E076D00310AE5 /* DMLoginVC+TextFieldExtension.swift */,
+				E594BEA51E1E07C900310AE5 /* DMLoginVC+TableViewExtension.swift */,
+				E594BEA71E1E07F500310AE5 /* DMLoginVC+Services.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		E597E55C1E151A99001DDA78 /* SF-UI-Display */ = {
@@ -935,7 +964,9 @@
 				E55462DF1DAE31EA004163B2 /* UIFont+Additions.swift in Sources */,
 				E50B3F3F1E18E8D2004C5F32 /* ZAnimationIndicatorView.swift in Sources */,
 				E50B3F401E18E8D2004C5F32 /* ZGradientLayer.swift in Sources */,
+				E594BEA21E1E014F00310AE5 /* DMLoginVC.swift in Sources */,
 				E50B3F421E18E8D2004C5F32 /* ZProgressHUD.swift in Sources */,
+				E594BEA61E1E07C900310AE5 /* DMLoginVC+TableViewExtension.swift in Sources */,
 				E597E58F1E151CFF001DDA78 /* FloatLabelTextField.swift in Sources */,
 				E50B3F3E1E18E8D2004C5F32 /* ZActivityIndicatorView.swift in Sources */,
 				E59029A91DED2C7A00151E9B /* LogManager.swift in Sources */,
@@ -948,8 +979,11 @@
 				5A3FD06E1E1BB0A000360B3C /* UINavigationBar+Awesome.m in Sources */,
 				E56C9FA81DED75D500EAA9DD /* CommonHelper.swift in Sources */,
 				E59029AA1DED2C7A00151E9B /* UserDefaultsManager.swift in Sources */,
+				E594BE9D1E1DFF4400310AE5 /* DMRegistrationVC+TableViewExtension.swift in Sources */,
 				E55462DB1DAE312C004163B2 /* String+Additons.swift in Sources */,
 				E55462D91DAE3104004163B2 /* Array+Additions.swift in Sources */,
+				E594BE9F1E1DFFA900310AE5 /* DMRegistrationVC+TextFieldExtension.swift in Sources */,
+				E5FBE9D91E1CCF940025683C /* DMRegistration+Services.swift in Sources */,
 				E58654FE1DEFEF7F006FEB2D /* ConfigurationManager.swift in Sources */,
 				E5AE2AF61DAF878900C008BD /* OnboardingCollectionViewCell.swift in Sources */,
 				E5C5F3151DC0AACA001A5A3F /* DMRegisterMapsVC.swift in Sources */,
@@ -964,13 +998,13 @@
 				E56C9FA31DED520B00EAA9DD /* InAppPurchase.swift in Sources */,
 				E50B3F4C1E194CD7004C5F32 /* AnimatedPHTableCell.swift in Sources */,
 				E55462E61DAE47A9004163B2 /* UIView+Toast.m in Sources */,
-				E56B20A61DC05C74000512F6 /* DMLoginVC.swift in Sources */,
 				E55463001DAE510A004163B2 /* Utilities.swift in Sources */,
 				E56E90801DFF31740096A31B /* CameraGalleryManager.swift in Sources */,
 				E55462F71DAE4C6F004163B2 /* UITextField+ToolBar.swift in Sources */,
 				5AE5F51A1E1A5139006C328A /* PhotoCell.swift in Sources */,
 				E56C9F9E1DED4BD100EAA9DD /* Character+Addition.swift in Sources */,
 				5A2CF6841E1D0D9A008C5336 /* DMWorkExperienceVC+TableViewExtension.swift in Sources */,
+				E594BEA41E1E076D00310AE5 /* DMLoginVC+TextFieldExtension.swift in Sources */,
 				E55462EC1DAE47F5004163B2 /* AppDelegate.swift in Sources */,
 				E5F47C941E0035B90051C4A1 /* UIImage+Rotations.swift in Sources */,
 				5A1E2A1A1E1E47C90055D913 /* EmployeeReferenceModel.swift in Sources */,
@@ -988,6 +1022,8 @@
 				E5A3E8EE1E160ABF00B10937 /* AnimatedLeftViewPHTextField.swift in Sources */,
 				5A2CF6861E1D1018008C5336 /* DMWorkExperienceStart.swift in Sources */,
 				5AE5F50D1E165DE4006C328A /* DMJobTitleSelectionVC.swift in Sources */,
+				E594BEA81E1E07F500310AE5 /* DMLoginVC+Services.swift in Sources */,
+				E56F78561E1F602200F07814 /* DMForgotPasswordVC+Services.swift in Sources */,
 				E5AE2AF11DAF844C00C008BD /* DMOnboardingVC.swift in Sources */,
 				E55462F31DAE4A5D004163B2 /* Constants.swift in Sources */,
 				5AE5F5161E1A3470006C328A /* PhotoNameCell.swift in Sources */,

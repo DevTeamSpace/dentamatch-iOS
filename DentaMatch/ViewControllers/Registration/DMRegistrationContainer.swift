@@ -89,4 +89,19 @@ class DMRegistrationContainer: DMBaseVC {
         }) { (finished:Bool) in
         }
     }
+    
+    func goToLoginAfterRegistration() {
+        isRegistration = false
+        registrationButton.titleLabel?.font = UIFont.fontLight(fontSize: 14.0)!
+        loginButton.titleLabel?.font = UIFont.fontSemiBold(fontSize: 14.0)!
+        UIView.removeTip(view: registrationButton)
+        UIView.makeTip(view: loginButton, size: 8, x: loginButton.frame.midX/2, y: loginButton.frame.midY)
+        self.view.endEditing(true)
+        self.view.bringSubview(toFront: (self.loginVC?.view)!)
+        UIView.animate(withDuration: 0.25, animations: {
+            self.loginVC?.view.alpha = 1.0
+            self.registrationVC?.view.alpha = 0.0
+        }) { (finished:Bool) in
+        }
+    }
 }

@@ -242,34 +242,17 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gwh-NE-5Ig">
-                                <rect key="frame" x="0.0" y="555" width="375" height="48"/>
-                                <color key="backgroundColor" red="0.015686274509803921" green="0.4392156862745098" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="TZk-yN-369"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="16"/>
-                                <state key="normal" title="ACCEPT">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="acceptButtonPressed:" destination="0lD-wd-eXf" eventType="touchUpInside" id="Lwh-do-s5m"/>
-                                </connections>
-                            </button>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yfv-rb-xBR">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="555"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Yfv-rb-xBR" secondAttribute="trailing" id="6Ks-sn-Hso"/>
-                            <constraint firstItem="gwh-NE-5Ig" firstAttribute="top" secondItem="Yfv-rb-xBR" secondAttribute="bottom" id="8J0-a3-yjX"/>
                             <constraint firstItem="Yfv-rb-xBR" firstAttribute="top" secondItem="qfw-gB-ftr" secondAttribute="bottom" id="9QT-Si-kcl"/>
                             <constraint firstItem="Yfv-rb-xBR" firstAttribute="leading" secondItem="kVg-6W-hMB" secondAttribute="leading" id="BOv-8b-GZz"/>
-                            <constraint firstItem="TQX-k3-zt9" firstAttribute="top" secondItem="gwh-NE-5Ig" secondAttribute="bottom" id="HsW-GG-c5c"/>
-                            <constraint firstItem="gwh-NE-5Ig" firstAttribute="leading" secondItem="kVg-6W-hMB" secondAttribute="leading" id="j4D-Za-vEX"/>
-                            <constraint firstAttribute="trailing" secondItem="gwh-NE-5Ig" secondAttribute="trailing" id="mWl-ig-vAY"/>
+                            <constraint firstItem="TQX-k3-zt9" firstAttribute="top" secondItem="Yfv-rb-xBR" secondAttribute="bottom" id="FeE-0V-GCj"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
@@ -295,7 +278,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter you email address below and we'll send you the instructions on how to change your password" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IRT-i0-rz1">
-                                <rect key="frame" x="34" y="94" width="307" height="58"/>
+                                <rect key="frame" x="34" y="94" width="307" height="57.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="307" id="1xS-AL-TUH"/>
                                 </constraints>
@@ -304,7 +287,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xlF-WJ-RrJ" customClass="AnimatedLeftViewPHTextField" customModule="DentaMatch" customModuleProvider="target">
-                                <rect key="frame" x="22" y="190" width="331" height="55"/>
+                                <rect key="frame" x="22" y="189.5" width="331" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="a4Q-P5-qVi"/>
                                 </constraints>
@@ -325,6 +308,9 @@
                                 <state key="normal" title="SEND">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="sendButtonPressed:" destination="JvZ-pA-bC8" eventType="touchUpInside" id="qvL-6n-O2L"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -427,7 +413,7 @@
             <objects>
                 <navigationController storyboardIdentifier="RegistrationNAV" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="Ido-Jt-Y82" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="mF5-zQ-7eP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="mF5-zQ-7eP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
