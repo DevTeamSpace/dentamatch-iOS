@@ -48,7 +48,7 @@ extension DMWorkExperienceVC
             {
                 let index = indexPath.row - 5
                 let height = index == 0 ? (self.currentExperience.references.count > index ? 230 : 257): (self.currentExperience.references.count-1 > index ? 250 : 303)
-                print("row height \(height)")
+                debugPrint("row height \(height)")
                 return CGFloat(height)
             }
             return 65
@@ -76,15 +76,23 @@ extension DMWorkExperienceVC
             {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AddDeleteExperienceCell") as! AddDeleteExperienceCell
                 cell.selectionStyle = .none
+                
+                let tag = indexPath.row - 6
+                cell.addMoreExperienceButton.tag = tag
+                cell.deleteButton.tag = tag
+                
+                
+                cell.deleteButton.addTarget(self, action: #selector(DMWorkExperienceVC.deleteExperience(_:)), for: .touchUpInside)
+                cell.addMoreExperienceButton.addTarget(self, action: #selector(DMWorkExperienceVC.addMoreExperience(_:)), for: .touchUpInside)
+
                 if self.currentExperience.isFirstExperience == true
                 {
                     cell.deleteButton.isHidden = true
                     cell.topSpaceOfAddMoreExperience.constant = 10
-
+                    
                 }else{
                     cell.deleteButton.isHidden = false
                     cell.topSpaceOfAddMoreExperience.constant = 57
-
                     
                 }
                 
@@ -98,16 +106,27 @@ extension DMWorkExperienceVC
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ReferenceTableCell") as! ReferenceTableCell
                 cell.selectionStyle = .none
                 
+                cell.referenceNameLabel.delegate = self
+                cell.referenceMobileNoLabel.delegate = self
+                cell.referenceEmailLabel.delegate = self
+                
+                cell.referenceMobileNoLabel.addTarget(self, action: #selector(textFieldDidChange), for: .allEditingEvents)
+                
+                cell.referenceNameLabel.keyboardType = .default
+                cell.referenceMobileNoLabel.keyboardType = .numberPad
+                cell.referenceEmailLabel.keyboardType = .emailAddress
+
                 cell.referenceNameLabel.placeholder = FieldType.ReferenceName.description
                 cell.referenceMobileNoLabel.placeholder = FieldType.ReferenceMobileNo.description
                 cell.referenceEmailLabel.placeholder = FieldType.ReferenceEmail.description
+                
                 let tag = indexPath.row - 5
                 cell.referenceButtonFirst.tag = tag
                 cell.referenceButtonSecond.tag = tag
                 
 
-                cell.referenceButtonFirst.addTarget(self, action: #selector(DMWorkExperienceVC.deleteExperience(_:)), for: .touchUpInside)
-                cell.referenceButtonSecond.addTarget(self, action: #selector(DMWorkExperienceVC.addMoreExperience(_:)), for: .touchUpInside)
+                cell.referenceButtonFirst.addTarget(self, action: #selector(DMWorkExperienceVC.deleteReference(_:)), for: .touchUpInside)
+                cell.referenceButtonSecond.addTarget(self, action: #selector(DMWorkExperienceVC.addMoreReference(_:)), for: .touchUpInside)
                 if tag == 0
                 {
                     if self.currentExperience.references.count - 1 > tag
@@ -154,7 +173,7 @@ extension DMWorkExperienceVC
                 
                 cell.cellTopSpace.constant = 10
                 cell.cellBottomSpace.constant = 10.5
-                
+                cell.commonTextFiled.delegate = self
                 switch indexPath.row {
                 case 0:
                     cell.commonTextFiled.placeholder = FieldType.CurrentJobTitle.description
@@ -182,6 +201,7 @@ extension DMWorkExperienceVC
 
             
         }else{
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: "ExperienceTableCell") as! ExperienceTableCell
             cell.selectionStyle = .none
             let exp  = self.exprienceArray?[indexPath.row] as! ExperienceModel
@@ -195,12 +215,40 @@ extension DMWorkExperienceVC
         
     }
     
+    
+    func textFieldDidChange(_ textField: UITextField) {
+        
+            if ((textField.text?.characters.count)! <= 13) {
+                if (textField.text?.characters.count==3) {
+                    
+                    let tempStr = "(\(textField.text!))-"
+                    textField.text = tempStr
+                } else if (textField.text?.characters.count==8) {
+                    let tempStr = "\(textField.text!)-"
+                    textField.text = tempStr
+                }
+            }else{
+                var tempStr = textField.text!
+                tempStr = tempStr.dropLast(1)
+                textField.text = tempStr
+        }
+
+    }
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+
+        return true
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.resignFirstResponder()
     }
+    
+    
+
     
     
     
@@ -235,23 +283,47 @@ extension DMWorkExperienceVC
         
     }
     
+    func addMoreReference(_ sender: Any) {
+        let refere = EmployeeReferenceModel()
+        self.currentExperience.references.append(refere)
+        self.workExperienceDetailTable.reloadData()
+        self.reSizeTableViewsAndScrollView()
+
+    }
     func addMoreExperience(_ sender: Any)
     {
         
-        let refere = EmployeeReferenceModel()
-        self.currentExperience.references.append(refere)
+        
+    }
+    func deleteReference(_ sender: Any)
+    {
+        let tag = (sender as AnyObject).tag
+        self.currentExperience.references.remove(at: tag!)
         self.workExperienceDetailTable.reloadData()
         self.reSizeTableViewsAndScrollView()
         
     }
     func deleteExperience(_ sender: Any)
     {
-        let tag = (sender as AnyObject).tag
-        self.currentExperience.references.remove(at: tag!)
-        self.workExperienceDetailTable.reloadData()
-        self.reSizeTableViewsAndScrollView()
+        
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 
     
 }
+
+extension String {
+    public func toPhoneNumber() -> String {
+        return self.replacingOccurrences(of: "(\\d{3})(\\d{3})(\\d+)", with: "($1) $2-$3", options: .regularExpression, range: nil)
+    }
+}
+

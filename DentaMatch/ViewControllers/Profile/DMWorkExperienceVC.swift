@@ -54,6 +54,7 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
     @IBOutlet weak var workExperienceDetailTable: UITableView!
     @IBOutlet weak var hightOfExperienceTable: NSLayoutConstraint!
     @IBOutlet weak var hightOfExperienceDetailTable: NSLayoutConstraint!
+    @IBOutlet weak var heightOfScrollView: NSLayoutConstraint!
 
     
 
@@ -61,6 +62,9 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
         super.viewDidLoad()
         exprienceArray = NSMutableArray()
         exprienceDetailArray = NSMutableArray()
+
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
 
         setup()
         gettingTempData()
@@ -74,6 +78,10 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
     }
     override func viewDidAppear(_ animated: Bool) {
         
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -91,6 +99,17 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
         self.changeNavBarAppearanceForProfiles()
     }
     
+    
+    //MARK:- Keyboard Show Hide Observers
+    func keyboardWillShow(note: NSNotification) {
+        if let keyboardSize = (note.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            self.mainScrollView.contentInset =  UIEdgeInsetsMake(0, 0, keyboardSize.height+10, 0)
+        }
+    }
+    
+    func keyboardWillHide(note: NSNotification) {
+        self.mainScrollView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0)
+    }
     
     func gettingTempData(){
         
