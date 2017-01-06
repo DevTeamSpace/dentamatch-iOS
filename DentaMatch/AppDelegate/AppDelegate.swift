@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-
+        
         //configureCrashlytics()
         
         if UserDefaultsManager.sharedInstance.isLoggedIn {
@@ -38,6 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
+   
     
     func goToProfile() {
         let profileVC = UIStoryboard.profileStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.profileNav) as! UINavigationController
