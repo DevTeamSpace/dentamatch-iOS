@@ -28,7 +28,7 @@
         <scene sceneID="h2y-8K-0Am">
             <objects>
                 <navigationController storyboardIdentifier="ProfileNAV" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="aBo-Dm-4RQ" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="p5y-OV-SJO">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="p5y-OV-SJO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -59,12 +59,12 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="297"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi Jennifer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="6Z1-Io-DBv">
-                                        <rect key="frame" x="106.5" y="223" width="165" height="36"/>
+                                        <rect key="frame" x="107" y="223" width="165" height="36"/>
                                         <fontDescription key="fontDescription" name="SFUIText-Bold" family="SF UI Text" pointSize="30"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bzg-gA-Lmz">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bzg-gA-Lmz" customClass="ProfileImageButton" customModule="DentaMatch" customModuleProvider="target">
                                         <rect key="frame" x="139" y="105" width="100" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="7SE-SO-2YP"/>
@@ -75,20 +75,29 @@
                                             <action selector="profileButtonPressed:" destination="ZiM-x3-BTI" eventType="touchUpInside" id="zow-xS-Wrm"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H53-zM-pdJ">
+                                        <rect key="frame" x="212" y="165" width="31" height="30"/>
+                                        <state key="normal" image="addPhoto"/>
+                                        <connections>
+                                            <action selector="addPhotoButtonPressed:" destination="ZiM-x3-BTI" eventType="touchUpInside" id="XTx-FT-XIK"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="bzg-gA-Lmz" firstAttribute="centerY" secondItem="pY0-aJ-eeT" secondAttribute="centerY" constant="6.5" id="2ac-SO-nG9"/>
                                     <constraint firstAttribute="bottom" secondItem="zDd-gX-icS" secondAttribute="bottom" id="2w3-5g-8ih"/>
+                                    <constraint firstItem="H53-zM-pdJ" firstAttribute="centerX" secondItem="6Z1-Io-DBv" secondAttribute="centerX" constant="39" id="6GZ-kZ-H0T"/>
                                     <constraint firstAttribute="trailing" secondItem="zDd-gX-icS" secondAttribute="trailing" id="P97-BV-8Y6"/>
                                     <constraint firstItem="6Z1-Io-DBv" firstAttribute="centerX" secondItem="bzg-gA-Lmz" secondAttribute="centerX" id="ViG-jF-Q6S"/>
                                     <constraint firstItem="6Z1-Io-DBv" firstAttribute="top" secondItem="bzg-gA-Lmz" secondAttribute="bottom" constant="18" id="ZNz-bv-jC4"/>
                                     <constraint firstItem="bzg-gA-Lmz" firstAttribute="centerX" secondItem="pY0-aJ-eeT" secondAttribute="centerX" constant="1" id="bfL-oP-OpV"/>
                                     <constraint firstItem="zDd-gX-icS" firstAttribute="leading" secondItem="pY0-aJ-eeT" secondAttribute="leading" id="leZ-K5-q3V"/>
+                                    <constraint firstItem="6Z1-Io-DBv" firstAttribute="top" secondItem="H53-zM-pdJ" secondAttribute="bottom" constant="28" id="uyn-Ku-ssc"/>
                                     <constraint firstItem="zDd-gX-icS" firstAttribute="top" secondItem="pY0-aJ-eeT" secondAttribute="top" id="zAp-M7-tjd"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let’s start with creating your profile." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="hos-jx-ofR">
-                                <rect key="frame" x="45.5" y="335" width="285" height="20"/>
+                                <rect key="frame" x="46" y="335" width="285" height="20"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -164,6 +173,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="fBf-Yo-3Ab"/>
                     <connections>
+                        <outlet property="addPhotoButton" destination="H53-zM-pdJ" id="WEs-0B-J8b"/>
                         <outlet property="currentJobTitleTextField" destination="aZe-k4-DJs" id="iDm-pN-nga"/>
                         <outlet property="nextButton" destination="MkJ-19-BkB" id="p4f-jg-DgS"/>
                         <outlet property="notNowButton" destination="Gku-rj-aaj" id="Xtk-rm-RVp"/>
@@ -422,6 +432,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="addPhoto" width="31" height="30"/>
         <image name="profileButton" width="99" height="100"/>
         <image name="registrationHeading" width="375" height="192"/>
     </resources>

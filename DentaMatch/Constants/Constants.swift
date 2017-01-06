@@ -22,6 +22,7 @@ let kTextFieldColor =  UIColor.color(withHexCode: "959595")
 let kTextFieldColorSelected = UIColor.color(withHexCode: "0470c0")
 let kTextFieldBorderColor = UIColor.color(withHexCode: "e4e4e4")
 let kProfileProgressBarColor = UIColor.color(withHexCode: "a3d977")
+let kProfileProgressBarTrackColor = UIColor.color(withHexCode: "f4f4f4")
 let kNavBarColor = "10193e"
 let kNavBarColorForExperienceScreen = "f7f7f7"
 let kNavHeadingForExperienceScreen = UIColor(red: 9.0/255.0, green: 41.0/255.0, blue: 97.0/255.0, alpha: 1)

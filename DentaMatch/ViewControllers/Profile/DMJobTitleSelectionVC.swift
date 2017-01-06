@@ -10,7 +10,8 @@ import UIKit
 
 class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate {
 
-    @IBOutlet weak var profileButton: UIButton!
+    @IBOutlet weak var addPhotoButton: UIButton!
+    @IBOutlet weak var profileButton: ProfileImageButton!
     @IBOutlet weak var notNowButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var currentJobTitleTextField: AnimatedPHTextField!
@@ -24,46 +25,66 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate {
         setup()
     }
     
-    //MARK:- Private Methods
-    func setup() {
-        UIView.makeTip(view: profileHeaderView, size: 8, x: profileHeaderView.frame.midX/2, y: profileHeaderView.frame.midY)
-        self.profileButton.layer.cornerRadius = self.profileButton.frame.size.width/2
-        self.profileButton.clipsToBounds = true
-        self.profileButton.imageView?.contentMode = .scaleAspectFill
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
-    //MARK:- IBActions
-    @IBAction func profileButtonPressed(_ sender: Any) {
+    //MARK:- Private Methods
+    func setup() {
+        self.profileButton.isUserInteractionEnabled = false
+        UIView.makeTip(view: profileHeaderView, size: 8, x: profileHeaderView.frame.midX/2, y: profileHeaderView.frame.midY)
+    }
+    
+    func addPhoto() {
         self.cameraGalleryOptionActionSheet(title: "", message: "Please select", leftButtonText: "Camera", rightButtonText: "Gallery") { (isCameraButtonPressed, isGalleryButtonPressed, isCancelButtonPressed) in
             if isCancelButtonPressed {
             } else if isCameraButtonPressed {
-                CameraGalleryManager.shared.openCamera(viewController: self, allowsEditing: false, completionHandler: { (image:UIImage?, error:NSError?) in
-                    if error != nil {
-                        DispatchQueue.main.async {
-                            self.makeToast(toastString: (error?.localizedDescription)!)
-                        }
-                        return
-                    }
-                    self.profileImage = image
-                    DispatchQueue.main.async {
-                        self.profileButton.setImage(image, for: .normal)
-                    }
-                })
+                self.getPhotoFromCamera()
             } else {
-                CameraGalleryManager.shared.openGallery(viewController: self, allowsEditing: false, completionHandler: { (image:UIImage?, error:NSError?) in
-                    if error != nil {
-                        DispatchQueue.main.async {
-                            self.makeToast(toastString: (error?.localizedDescription)!)
-                        }
-                        return
-                    }
-                    self.profileImage = image
-                    DispatchQueue.main.async {
-                        self.profileButton.setImage(image, for: .normal)
-                    }
-                })
+               self.getPhotoFromGallery()
             }
         }
+    }
+    
+    func getPhotoFromCamera() {
+        CameraGalleryManager.shared.openCamera(viewController: self, allowsEditing: false, completionHandler: { (image:UIImage?, error:NSError?) in
+            if error != nil {
+                DispatchQueue.main.async {
+                    self.makeToast(toastString: (error?.localizedDescription)!)
+                }
+                return
+            }
+            self.profileImage = image
+            DispatchQueue.main.async {
+                self.profileButton.setImage(image, for: .normal)
+            }
+        })
+    }
+    
+    func getPhotoFromGallery() {
+        CameraGalleryManager.shared.openGallery(viewController: self, allowsEditing: false, completionHandler: { (image:UIImage?, error:NSError?) in
+            if error != nil {
+                DispatchQueue.main.async {
+                    self.makeToast(toastString: (error?.localizedDescription)!)
+                }
+                return
+            }
+            self.profileImage = image
+            DispatchQueue.main.async {
+                self.profileButton.setImage(image, for: .normal)
+            }
+        })
+
+    }
+    
+    //MARK:- IBActions
+    
+    @IBAction func addPhotoButtonPressed(_ sender: Any) {
+        addPhoto()
+    }
+    
+    @IBAction func profileButtonPressed(_ sender: Any) {
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {
