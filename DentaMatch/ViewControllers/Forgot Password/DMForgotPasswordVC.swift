@@ -50,10 +50,24 @@ class DMForgotPasswordVC: DMBaseVC,UITextFieldDelegate {
         }
     }
     
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if let textField = textField as? AnimatedLeftViewPHTextField {
+            textField.layer.borderColor = kTextFieldColorSelected.cgColor
+            textField.leftViewLabel?.textColor = kTextFieldColorSelected
+        }
+        return true
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if let textField = textField as? AnimatedLeftViewPHTextField {
+            textField.layer.borderColor = kTextFieldBorderColor.cgColor
+            textField.leftViewLabel?.textColor = kTextFieldLeftViewModeColor
+        }
+        return true
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
-    
-    
 }
