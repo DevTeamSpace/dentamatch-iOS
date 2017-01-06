@@ -73,7 +73,12 @@ class DMRegistrationVC: DMBaseVC {
             if registrationParams[Constants.ServerKeys.email]!.isValidEmail {
                 if registrationParams[Constants.ServerKeys.password]!.characters.count >= Constants.Limits.passwordLimit {
                     if coordinateSelected != nil {
-                        return true
+                        if self.termsAndConditionsAccepted {
+                            return true
+                        } else {
+                            self.makeToast(toastString: "Please accept terms and conditions")
+                            return false
+                        }
                     } else {
                         self.makeToast(toastString: "Preferred Location error")
                         return false
@@ -83,21 +88,12 @@ class DMRegistrationVC: DMBaseVC {
                     return false
                 }
             } else {
-                self.makeToast(toastString: "Email invalid error")
+                self.makeToast(toastString: Constants.AlertMessages.invalidEmail)
                 return false
             }
         } else {
             self.makeToast(toastString: "Name empty error")
             return false
-        }
-    }
-    
-    func openJobTitleSelection() {
-        let jobTitleSectionVC = UIStoryboard.profileStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.profileNav)
-        UIView.transition(with: self.view.window!, duration: 0.5, options: .transitionFlipFromRight, animations: {
-            kAppDelegate.window?.rootViewController = jobTitleSectionVC
-        }) { (bool:Bool) in
-            
         }
     }
     
@@ -114,10 +110,11 @@ class DMRegistrationVC: DMBaseVC {
     //MARK:- IBActions
     func registerButtonPressed(sender:UIButton) {
         dismissKeyboard()
+        registrationParams[Constants.ServerKeys.deviceId] = "test"
         registrationParams[Constants.ServerKeys.deviceType] = "iOS"
         registrationParams[Constants.ServerKeys.deviceToken] = UserDefaultsManager.sharedInstance.deviceToken
         if validateFields() {
-            self.registrationAPI(params:registrationParams)
+            self.registrationAPI(params:self.registrationParams)
         }
     }
     

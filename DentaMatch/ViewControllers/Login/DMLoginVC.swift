@@ -69,13 +69,22 @@ class DMLoginVC: DMBaseVC {
                 return false
             }
         } else {
-            self.makeToast(toastString: "Invalid Email Error")
+            self.makeToast(toastString: Constants.AlertMessages.invalidEmail)
             return false
         }
     }
     
     func dismissKeyboard() {
         self.view.endEditing(true)
+    }
+    
+    func openJobTitleSelection() {
+        let jobTitleSectionVC = UIStoryboard.profileStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.profileNav)
+        UIView.transition(with: self.view.window!, duration: 0.5, options: .transitionFlipFromRight, animations: {
+            kAppDelegate.window?.rootViewController = jobTitleSectionVC
+        }) { (bool:Bool) in
+            
+        }
     }
     
     func forgotPasswordButtonPressed() {
@@ -86,8 +95,11 @@ class DMLoginVC: DMBaseVC {
     
     func loginButtonPressed() {
         self.view.endEditing(true)
+        loginParams[Constants.ServerKeys.deviceId] = "test"
+        loginParams[Constants.ServerKeys.deviceType] = "iOS"
+        loginParams[Constants.ServerKeys.deviceToken] = UserDefaultsManager.sharedInstance.deviceToken
         if validateFields() {
-            self.loginAPICall(params: loginParams)
+            self.loginAPI(params: loginParams)
         }
     }
 }

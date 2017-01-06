@@ -1,20 +1,19 @@
 //
-//  DMLoginVC+Services.swift
+//  DMForgotPasswordVC+Services.swift
 //  DentaMatch
 //
-//  Created by Rajan Maheshwari on 05/01/17.
+//  Created by Rajan Maheshwari on 06/01/17.
 //  Copyright © 2017 Appster. All rights reserved.
 //
 
 import Foundation
 import SwiftyJSON
 
-extension DMLoginVC {
+extension DMForgotPasswordVC {
     
-    func loginAPI(params:[String:String]) {
-        print("Login Parameters\n\(params.description))")
+    func forgotPasswordAPI(params:[String:String]) {
         self.showLoader()
-        APIManager.apiPost(serviceName: Constants.API.loginAPI, parameters: params) { (response:JSON?, error:NSError?) in
+        APIManager.apiPost(serviceName: Constants.API.forgotPasswordAPI, parameters: params) { (response:JSON?, error:NSError?) in
             self.hideLoader()
             if error != nil {
                 self.makeToast(toastString: (error?.localizedDescription)!)
@@ -26,12 +25,11 @@ extension DMLoginVC {
             }
             debugPrint(response!)
             if response![Constants.ServerKeys.status].boolValue {
-                self.openJobTitleSelection()
+                _ = self.navigationController?.popViewController(animated: true)
                 self.makeToast(toastString: response![Constants.ServerKeys.message].stringValue)
             } else {
                 self.makeToast(toastString: response![Constants.ServerKeys.message].stringValue)
             }
-
         }
     }
 }

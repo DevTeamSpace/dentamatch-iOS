@@ -8,6 +8,7 @@
 
 import UIKit
 import Photos
+import SVProgressHUD
 
 enum ToastPosition {
     case top
@@ -121,43 +122,59 @@ class DMBaseVC: UIViewController {
         _ = self.navigationController?.popViewController(animated: true)
     }
     
-    func showLoader() {
+    
+    func delay(time:TimeInterval,completionHandler: @escaping ()->()) {
         let when = DispatchTime.now() + 0.01
         DispatchQueue.main.asyncAfter(deadline: when) {
-            ZProgressHUD.show()
+            completionHandler()
         }
+    }
+    
+    func showLoader() {
+        SVProgressHUD.setDefaultMaskType(.custom)
+        SVProgressHUD.setForegroundColor(UIColor.color(withHexCode: kNavBarColor))
+        SVProgressHUD.setBackgroundColor(UIColor.white)
+        SVProgressHUD.show()
+//        self.delay(time: 0.01) { 
+//            ZProgressHUD.show()
+//        }
     }
     
     func showLoader(text:String) {
-        ZProgressHUD.setFont(UIFont.fontRegular(fontSize: 12.0)!)
-        let when = DispatchTime.now() + 0.01
-        DispatchQueue.main.asyncAfter(deadline: when) {
-            ZProgressHUD.show(text)
-        }
+        SVProgressHUD.setDefaultMaskType(.custom)
+        SVProgressHUD.setForegroundColor(UIColor.color(withHexCode: kNavBarColor))
+        SVProgressHUD.setBackgroundColor(UIColor.white)
+        SVProgressHUD.setFont(UIFont.fontRegular(fontSize: 12.0)!)
+        SVProgressHUD.show(withStatus: text)
+
+//        ZProgressHUD.setFont(UIFont.fontRegular(fontSize: 12.0)!)
+//        self.delay(time: 0.01) {
+//            ZProgressHUD.show(text)
+//        }
     }
     
     func showLoaderOnWindow() {
-        ZProgressHUD.setDefault(maskType: .custom)
-        let when = DispatchTime.now() + 0.01
-        DispatchQueue.main.asyncAfter(deadline: when) {
-            ZProgressHUD.show()
-        }
+//        ZProgressHUD.setDefault(maskType: .custom)
+//        self.delay(time: 0.01) {
+//            ZProgressHUD.show()
+//        }
     }
     
     func showLoaderOnWindow(text:String) {
-        ZProgressHUD.setFont(UIFont.fontRegular(fontSize: 12.0)!)
-        ZProgressHUD.setDefault(maskType: .custom)
-        let when = DispatchTime.now() + 0.01
-        DispatchQueue.main.asyncAfter(deadline: when) {
-            ZProgressHUD.show(text)
-        }
+//        ZProgressHUD.setFont(UIFont.fontRegular(fontSize: 12.0)!)
+//        ZProgressHUD.setDefault(maskType: .custom)
+//        self.delay(time: 0.01) {
+//            ZProgressHUD.show(text)
+//        }
     }
 
     func hideLoader() {
-        ZProgressHUD.dismiss()
+        SVProgressHUD.dismiss()
+        //ZProgressHUD.dismiss()
     }
     
     func hideLoader(delay:TimeInterval) {
-        ZProgressHUD.dismiss(delay)
+        SVProgressHUD.dismiss(withDelay: delay)
+        //ZProgressHUD.dismiss(delay)
     }
 }

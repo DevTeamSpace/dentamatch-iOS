@@ -53,8 +53,9 @@ struct Constants {
     struct API {
     
         //APIs
-        static let registrationAPI = Constants.API.apiURL("register")
-        static let loginAPI = Constants.API.apiURL("login")
+        static let registrationAPI = Constants.API.apiURL("users/sign-up")
+        static let loginAPI = Constants.API.apiURL("users/sign-in")
+        static let forgotPasswordAPI = Constants.API.apiURL("users/forgot-password")
         static let termsAndConditionsURL = Constants.API.apiURL("term-condition")
         static let privacyPolicyURL = Constants.API.apiURL("privacy-policy")
 
@@ -76,6 +77,10 @@ struct Constants {
         static let longitude = "longitude"
         static let zipCode = "zipCode"
         static let userType = "userType"
+        static let status = "status"
+        static let statusCode = "statusCode"
+        static let message = "message"
+        static let userDetails = "userDetails"
     }
     
     //MARK:- UserDefault Keys
