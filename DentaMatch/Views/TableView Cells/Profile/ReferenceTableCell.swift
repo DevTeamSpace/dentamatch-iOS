@@ -9,6 +9,15 @@
 import UIKit
 
 class ReferenceTableCell: UITableViewCell {
+    @IBOutlet weak var referenceNameLabel: AnimatedPHTextField!
+    @IBOutlet weak var referenceMobileNoLabel: AnimatedPHTextField!
+    @IBOutlet weak var referenceEmailLabel: AnimatedPHTextField!
+    
+    @IBOutlet weak var referenceButtonFirst: UIButton!
+    @IBOutlet weak var referenceButtonSecond: UIButton!
+    @IBOutlet weak var referenceLabel: UILabel!
+    @IBOutlet weak var addMoreButtonTopSpace: NSLayoutConstraint!
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()

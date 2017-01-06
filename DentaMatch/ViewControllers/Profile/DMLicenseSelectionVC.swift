@@ -18,16 +18,31 @@ class DMLicenseSelectionVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate {
         super.viewDidLoad()
         setUp()
     }
-    
-    func setUp() {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+        
+    }
+    override func viewDidAppear(_ animated: Bool) {
+
+    }
+    func setUp() {
         self.licenseTableView.register(UINib(nibName: "AnimatedPHTableCell", bundle: nil), forCellReuseIdentifier: "AnimatedPHTableCell")
         self.licenseTableView.register(UINib(nibName: "PhotoNameCell", bundle: nil), forCellReuseIdentifier: "PhotoNameCell")
         self.licenseTableView.register(UINib(nibName: "PhotoCell", bundle: nil), forCellReuseIdentifier: "PhotoCell")
-        licenseTableView.separatorStyle = .none
+        self.licenseTableView.separatorStyle = .none
         self.licenseTableView.reloadData()
+        self.navigationItem.leftBarButtonItem = self.backBarButton()
+
+        self.changeNavBarAppearanceForWithoutHeader()
+        navSetUp()
 
     }
+    func navSetUp()
+    {
+        
+    }
+    
     @IBAction func nextButtonClikced(_ sender: Any) {
         self.performSegue(withIdentifier: "goToWorkExperience", sender: self)
     }
@@ -97,7 +112,7 @@ class DMLicenseSelectionVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate {
         headerLabel.font = UIFont.fontMedium(fontSize: 14)
         headerView.addSubview(headerLabel)
         headerView.backgroundColor = UIColor(red: 248.0/255.0, green: 248.0/255.0, blue: 248.0/255.0, alpha: 1.0)
-        if section == 0
+        if section == 1
         {
             headerLabel.text = "ADD DENTAL STATE BOARD"
         }else{

@@ -120,6 +120,28 @@ class DMBaseVC: UIViewController {
     func backBarButtonItemPressed() {
         _ = self.navigationController?.popViewController(animated: true)
     }
+    func changeNavBarAppearanceForProfiles() {
+        UIApplication.shared.statusBarStyle = .default
+        self.navigationController?.navigationBar.tintColor = kNavHeadingForExperienceScreen
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.barTintColor = UIColor.color(withHexCode: kNavBarColorForExperienceScreen)
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:kNavHeadingForExperienceScreen,NSFontAttributeName:UIFont.fontMedium(fontSize: 14.0)!]
+    }
+    func changeNavBarAppearanceForWithoutHeader() {
+        UIApplication.shared.statusBarStyle = .default
+        self.navigationController?.navigationBar.tintColor = kNavHeadingForExperienceScreen
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.barTintColor = UIColor.white
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:kNavHeadingForExperienceScreen,NSFontAttributeName:UIFont.fontMedium(fontSize: 14.0)!]
+    }
+    func changeNavBarAppearanceForDefault() {
+        UIApplication.shared.statusBarStyle = .lightContent
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.barTintColor = UIColor.color(withHexCode: kNavBarColor)
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white,NSFontAttributeName:UIFont.fontRegular(fontSize: 14.0)!]
+    }
+
     
     func showLoader() {
         let when = DispatchTime.now() + 0.01

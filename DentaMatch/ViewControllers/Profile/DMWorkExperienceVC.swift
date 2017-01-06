@@ -8,41 +8,108 @@
 
 import UIKit
 
-class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate {
+enum FieldType: Int,CustomStringConvertible{
+    
+    case CurrentJobTitle = 1
+    case YearOfExperience = 2
+    case OfficeName = 3
+    case OfficeAddress = 4
+    case CityName = 5
+    case ReferenceName = 6
+    case ReferenceMobileNo = 7
+    case ReferenceEmail = 8
+    
+    var description: String{
+        switch self {
+        case .CurrentJobTitle:
+            return "Current Job Title"
+        case .YearOfExperience:
+            return "Year Of Experience"
+        case .OfficeName:
+            return "Office Name"
+        case .OfficeAddress:
+            return "Office Address"
+        case .CityName:
+            return "City Name"
+        case .ReferenceName:
+            return "Reference Name (Optional)"
+        case .ReferenceMobileNo:
+            return "Reference Mobile No. (Optional)"
+        case .ReferenceEmail:
+            return "Reference Email (Optional)"
+        }
+    }
+    
+}
+
+class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,DMYearExperiencePickerViewDelegate {
+
 
     let NAVBAR_CHANGE_POINT:CGFloat = 64
+    var exprienceArray:NSMutableArray?
+    var exprienceDetailArray:NSMutableArray?
+    var currentExperience:ExperienceModel = ExperienceModel()
+    @IBOutlet weak var mainScrollView: UIScrollView!
     @IBOutlet weak var workExperienceTable: UITableView!
+    @IBOutlet weak var workExperienceDetailTable: UITableView!
+    @IBOutlet weak var hightOfExperienceTable: NSLayoutConstraint!
+    @IBOutlet weak var hightOfExperienceDetailTable: NSLayoutConstraint!
+
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        exprienceArray = NSMutableArray()
+        exprienceDetailArray = NSMutableArray()
 
-        setUp()
+        setup()
+        gettingTempData()
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    func setUp() {
-         self.navigationController!.navigationBar.lt_setBackgroundColor(UIColor.clear)
-        self.workExperienceTable.register(UINib(nibName: "AnimatedPHTableCell", bundle: nil), forCellReuseIdentifier: "AnimatedPHTableCell")
-        self.workExperienceTable.separatorStyle = .none
-        self.workExperienceTable.reloadData()
-
+    func setup() {
+        self.title = "Work Experiense"
+        self.workExperienceDetailTable.register(UINib(nibName: "AnimatedPHTableCell", bundle: nil), forCellReuseIdentifier: "AnimatedPHTableCell")
+        self.workExperienceDetailTable.register(UINib(nibName: "ReferenceTableCell", bundle: nil), forCellReuseIdentifier: "ReferenceTableCell")
+        self.workExperienceDetailTable.register(UINib(nibName: "AddDeleteExperienceCell", bundle: nil), forCellReuseIdentifier: "AddDeleteExperienceCell")
+        self.navigationItem.leftBarButtonItem = self.backBarButton()
+        self.workExperienceDetailTable.separatorStyle = .none
+        self.workExperienceDetailTable.reloadData()
+        self.changeNavBarAppearanceForProfiles()
     }
     
+    
+    func gettingTempData(){
+        
+        let exp = ExperienceModel()
+        self.exprienceDetailArray?.add(exp)
+        self.currentExperience.references.append(EmployeeReferenceModel())
+        self.workExperienceDetailTable.reloadData()
 
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let color = UIColor(red: 248.0/255.0, green: 248.0/255.0, blue: 248.0/255.0, alpha: 1.0)//UIColor(red: CGFloat(155.0 / 255.0), green: CGFloat(255 / 255.0), blue: CGFloat(240 / 255.0), alpha: CGFloat(1))
-        let offsetY: CGFloat = scrollView.contentOffset.y
-        if offsetY > NAVBAR_CHANGE_POINT {
-            let alpha: CGFloat = min(1, 1 - ((NAVBAR_CHANGE_POINT + 64 - offsetY) / 64))
-            self.navigationController!.navigationBar.lt_setBackgroundColor(color.withAlphaComponent(alpha))
-        }
-        else {
-            self.navigationController!.navigationBar.lt_setBackgroundColor(color.withAlphaComponent(0))
-        }
+    reSizeTableViewsAndScrollView()
     }
+    
+    func reSizeTableViewsAndScrollView()  {
+        self.hightOfExperienceTable.constant = self.workExperienceTable.contentSize.height
+        self.hightOfExperienceDetailTable.constant = self.workExperienceDetailTable.contentSize.height
+        self.workExperienceTable.layoutIfNeeded()
+        self.workExperienceDetailTable.layoutIfNeeded()
+        self.mainScrollView.contentSize = CGSize(width: self.view.bounds.size.width, height: self.hightOfExperienceTable.constant + self.hightOfExperienceDetailTable.constant)
+    }
+
     /*
     // MARK: - Navigation
 
@@ -53,52 +120,5 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate {
     }
     */
 
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
-    }
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
-    {
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 45))
-        let headerLabel = UILabel(frame: headerView.frame)
-        headerLabel.frame.origin.x = 20
-        headerLabel.backgroundColor = UIColor.clear
-        headerLabel.font = UIFont.fontMedium(fontSize: 14)
-        headerView.addSubview(headerLabel)
-        headerView.backgroundColor = UIColor(red: 248.0/255.0, green: 248.0/255.0, blue: 248.0/255.0, alpha: 1.0)
-        headerLabel.text = "Work Experiense"
-        
-        return headerView
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        return 65
-        
-    }
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
-    {
-//        if section == 0
-//        {
-//            return 0
-//        }
-        return 45
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AnimatedPHTableCell") as! AnimatedPHTableCell
-
-        cell.cellTopSpace.constant = 10
-        cell.cellBottomSpace.constant = 10.5
-        cell.commonTextFiled.placeholder = "License Number"
-
-        return cell
-    }
-
-    
     
 }
