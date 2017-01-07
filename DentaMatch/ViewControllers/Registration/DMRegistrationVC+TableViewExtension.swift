@@ -24,8 +24,11 @@ extension DMRegistrationVC: UITableViewDataSource, UITableViewDelegate {
         
         if self.termsAndConditionsAccepted {
             cell.acceptTermsButton.setTitle(Constants.DesignFont.acceptTermsSelected, for: .normal)
+            cell.acceptTermsButton.setTitleColor(kTextFieldColorSelected, for: .normal)
         } else {
             cell.acceptTermsButton.setTitle(Constants.DesignFont.acceptTermsDeSelected, for: .normal)
+            cell.acceptTermsButton.setTitleColor(UIColor.color(withHexCode: "979797"), for: .normal)
+
         }
         
         cell.registerButton.addTarget(self, action: #selector(registerButtonPressed), for: .touchUpInside)

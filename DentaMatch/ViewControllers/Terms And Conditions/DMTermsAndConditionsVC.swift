@@ -31,6 +31,7 @@ class DMTermsAndConditionsVC: DMBaseVC {
     }
     
     func setup() {
+        self.showLoader()
         self.title = isPrivacyPolicy ? "PRIVACY POLICY" : "TERMS & CONDITIONS"
         request = isPrivacyPolicy ?
             URLRequest(url: URL(string:Constants.API.privacyPolicyURL)!) :
@@ -44,7 +45,6 @@ class DMTermsAndConditionsVC: DMBaseVC {
 
 extension DMTermsAndConditionsVC : UIWebViewDelegate {
     func webViewDidStartLoad(_ webView: UIWebView) {
-        self.showLoader()
     }
     
     func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {

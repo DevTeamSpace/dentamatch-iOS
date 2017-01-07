@@ -12,5 +12,6 @@
 #import "UIView+Toast.h"
 #import "UIImageRotate.h"
 #import "UINavigationBar+Awesome.h"
+#import "CircleProgressBar.h"
 
 #endif /* DentaMatch_BridgingHeader_h */

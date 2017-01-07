@@ -79,7 +79,7 @@
                         </constraints>
                         <fontDescription key="fontDescription" name="dentamatch" family="dentamatch" pointSize="18"/>
                         <state key="normal" title="t">
-                            <color key="titleColor" red="0.015686274510000001" green="0.43921568630000002" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="titleColor" red="0.59215686274509804" green="0.59215686274509804" blue="0.59215686274509804" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                         <state key="selected" title="t"/>
                     </button>
