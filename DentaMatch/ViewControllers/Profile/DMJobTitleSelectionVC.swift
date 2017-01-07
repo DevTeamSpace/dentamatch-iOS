@@ -93,7 +93,7 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate {
     }
     
     @IBAction func notNowButtonPressed(_ sender: Any) {
-        self.alertMessage(title: "", message: Constants.AlertMessages.skipProfile, leftButtonText: "Cancel", rightButtonText: kOkButtonTitle) { (isLeftButtonPressed:Bool) in
+        self.alertMessage(title: "", message: Constants.AlertMessage.skipProfile, leftButtonText: "Cancel", rightButtonText: kOkButtonTitle) { (isLeftButtonPressed:Bool) in
             if !isLeftButtonPressed {
                 print("Skip Profile")
             }

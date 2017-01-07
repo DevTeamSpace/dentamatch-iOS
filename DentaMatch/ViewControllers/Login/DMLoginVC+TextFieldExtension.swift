@@ -25,25 +25,25 @@ extension DMLoginVC:UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if let textField = textField as? AnimatedLeftViewPHTextField {
-            textField.layer.borderColor = kTextFieldColorSelected.cgColor
-            textField.leftViewLabel?.textColor = kTextFieldColorSelected
+            textField.layer.borderColor = Constants.Color.textFieldColorSelected.cgColor
+            textField.leftViewLabel?.textColor = Constants.Color.textFieldColorSelected
         }
         return true
     }
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         if let textField = textField as? AnimatedLeftViewPHTextField {
-            textField.layer.borderColor = kTextFieldBorderColor.cgColor
-            textField.leftViewLabel?.textColor = kTextFieldLeftViewModeColor
+            textField.layer.borderColor = Constants.Color.textFieldBorderColor.cgColor
+            textField.leftViewLabel?.textColor = Constants.Color.textFieldLeftViewModeColor
         }
         return true
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField.tag == 1 {
-            loginParams[Constants.ServerKeys.email] = textField.text!
+            loginParams[Constants.ServerKey.email] = textField.text!
         } else {
-            loginParams[Constants.ServerKeys.password] = textField.text!
+            loginParams[Constants.ServerKey.password] = textField.text!
         }
     }
 }

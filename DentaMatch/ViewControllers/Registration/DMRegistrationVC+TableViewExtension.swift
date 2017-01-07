@@ -24,10 +24,10 @@ extension DMRegistrationVC: UITableViewDataSource, UITableViewDelegate {
         
         if self.termsAndConditionsAccepted {
             cell.acceptTermsButton.setTitle(Constants.DesignFont.acceptTermsSelected, for: .normal)
-            cell.acceptTermsButton.setTitleColor(kTextFieldColorSelected, for: .normal)
+            cell.acceptTermsButton.setTitleColor(Constants.Color.textFieldColorSelected, for: .normal)
         } else {
             cell.acceptTermsButton.setTitle(Constants.DesignFont.acceptTermsDeSelected, for: .normal)
-            cell.acceptTermsButton.setTitleColor(UIColor.color(withHexCode: "979797"), for: .normal)
+            cell.acceptTermsButton.setTitleColor(Constants.Color.textFieldPlaceHolderColor, for: .normal)
 
         }
         
@@ -37,6 +37,10 @@ extension DMRegistrationVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if Utilities.DeviceType.IS_IPHONE_5 {
+            return 500
+        } else {
         return self.registrationTableView.frame.size.height
+        }
     }
 }

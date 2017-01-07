@@ -396,19 +396,19 @@ extension DMWorkExperienceVC
     func checkValidations() -> Bool  {
         
         if (self.currentExperience?.jobTitle?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty)! {
-            self.makeToast(toastString:Constants.AlertMessages.jobTitle )
+            self.makeToast(toastString:Constants.AlertMessage.jobTitle )
             return false
         }else if  (self.currentExperience?.yearOfExperience?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty)! {
-            self.makeToast(toastString: Constants.AlertMessages.yearOfExperience)
+            self.makeToast(toastString: Constants.AlertMessage.yearOfExperience)
             return false
         }else if  (self.currentExperience?.officeName?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty)! {
-            self.makeToast(toastString: Constants.AlertMessages.officeName)
+            self.makeToast(toastString: Constants.AlertMessage.officeName)
             return false
         }else if  (self.currentExperience?.officeAddress?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty)! {
-            self.makeToast(toastString: Constants.AlertMessages.officeAddress)
+            self.makeToast(toastString: Constants.AlertMessage.officeAddress)
             return false
         }else if  (self.currentExperience?.cityName?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty)! {
-            self.makeToast(toastString: Constants.AlertMessages.CityName)
+            self.makeToast(toastString: Constants.AlertMessage.CityName)
             return false
         }
         

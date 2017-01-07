@@ -15,28 +15,28 @@ class UserDefaultsManager: NSObject {
     
     var isLoggedIn:Bool {
         get {
-            if(kUserDefaults.value(forKey: Constants.UserDefaultsKeys.isLoggedIn) != nil){
-                return kUserDefaults.value(forKey: Constants.UserDefaultsKeys.isLoggedIn) as! Bool
+            if(kUserDefaults.value(forKey: Constants.UserDefaultsKey.isLoggedIn) != nil){
+                return kUserDefaults.value(forKey: Constants.UserDefaultsKey.isLoggedIn) as! Bool
             }
             //Default is not logged in
             return false
         }
         set {
-            kUserDefaults.setValue(newValue, forKey: Constants.UserDefaultsKeys.isLoggedIn)
+            kUserDefaults.setValue(newValue, forKey: Constants.UserDefaultsKey.isLoggedIn)
             kUserDefaults.synchronize()
         }
     }
     
     var deviceToken:String {
         get {
-            if(kUserDefaults.value(forKey: Constants.UserDefaultsKeys.kDeviceToken) != nil){
-                return kUserDefaults.value(forKey: Constants.UserDefaultsKeys.kDeviceToken) as! String
+            if(kUserDefaults.value(forKey: Constants.UserDefaultsKey.kDeviceToken) != nil){
+                return kUserDefaults.value(forKey: Constants.UserDefaultsKey.kDeviceToken) as! String
             }
             //Default is not logged in
             return ""
         }
         set {
-            kUserDefaults.setValue(newValue, forKey: Constants.UserDefaultsKeys.kDeviceToken)
+            kUserDefaults.setValue(newValue, forKey: Constants.UserDefaultsKey.kDeviceToken)
             kUserDefaults.synchronize()
         }
     }

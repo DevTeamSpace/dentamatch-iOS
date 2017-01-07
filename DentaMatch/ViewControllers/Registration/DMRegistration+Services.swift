@@ -21,17 +21,17 @@ extension DMRegistrationVC {
                 return
             }
             guard let _ = response else {
-                self.makeToast(toastString: Constants.AlertMessages.somethingWentWrong)
+                self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
             debugPrint(response!)
             
-            if response![Constants.ServerKeys.status].boolValue {
+            if response![Constants.ServerKey.status].boolValue {
                 self.clearData()
-                self.makeToast(toastString: response![Constants.ServerKeys.message].stringValue)
+                self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
                 self.goToLogin()
             } else {
-                self.makeToast(toastString: response![Constants.ServerKeys.message].stringValue)
+                self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
             }
         }
     }
@@ -57,17 +57,17 @@ extension DMRegistrationVC {
             self.registrationTableView.reloadData()
         }
         registrationParams = [
-            Constants.ServerKeys.deviceId:"",
-            Constants.ServerKeys.deviceToken:"",
-            Constants.ServerKeys.deviceType:"",
-            Constants.ServerKeys.email:"",
-            Constants.ServerKeys.firstName:"",
-            Constants.ServerKeys.lastName:"",
-            Constants.ServerKeys.password:"",
-            Constants.ServerKeys.preferredLocation:"",
-            Constants.ServerKeys.zipCode:"",
-            Constants.ServerKeys.latitude:"",
-            Constants.ServerKeys.longitude:""
+            Constants.ServerKey.deviceId:"",
+            Constants.ServerKey.deviceToken:"",
+            Constants.ServerKey.deviceType:"",
+            Constants.ServerKey.email:"",
+            Constants.ServerKey.firstName:"",
+            Constants.ServerKey.lastName:"",
+            Constants.ServerKey.password:"",
+            Constants.ServerKey.preferredLocation:"",
+            Constants.ServerKey.zipCode:"",
+            Constants.ServerKey.latitude:"",
+            Constants.ServerKey.longitude:""
         ]
     }
 }

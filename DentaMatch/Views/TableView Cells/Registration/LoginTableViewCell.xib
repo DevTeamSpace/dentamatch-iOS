@@ -50,7 +50,7 @@
                         <rect key="frame" x="0.0" y="412" width="320" height="48"/>
                         <color key="backgroundColor" red="0.01176470588" green="0.4431372549" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="48" id="Yjj-zJ-dn4"/>
+                            <constraint firstAttribute="height" constant="48" id="5ZW-Wd-fSa"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="16"/>
                         <state key="normal" title="LOGIN">
@@ -67,17 +67,17 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="hs8-sS-5hx" firstAttribute="top" secondItem="TDG-pV-1N2" secondAttribute="bottom" constant="8" id="0HB-Ka-jC4"/>
-                    <constraint firstAttribute="bottom" secondItem="B8C-Qw-mG4" secondAttribute="bottom" id="7nw-Q1-ZrH"/>
                     <constraint firstItem="TDG-pV-1N2" firstAttribute="top" secondItem="E76-dc-ntn" secondAttribute="bottom" constant="16" id="8LC-mf-ZgI"/>
                     <constraint firstItem="E76-dc-ntn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="BRi-ye-uha"/>
-                    <constraint firstItem="B8C-Qw-mG4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Hf8-lC-nYP"/>
+                    <constraint firstAttribute="bottom" secondItem="B8C-Qw-mG4" secondAttribute="bottom" id="cqQ-WF-8JC"/>
                     <constraint firstItem="TDG-pV-1N2" firstAttribute="width" secondItem="E76-dc-ntn" secondAttribute="width" id="evZ-EM-8pb"/>
                     <constraint firstItem="hs8-sS-5hx" firstAttribute="centerX" secondItem="TDG-pV-1N2" secondAttribute="centerX" id="i2w-gt-oMB"/>
                     <constraint firstAttribute="trailing" secondItem="E76-dc-ntn" secondAttribute="trailing" constant="20" id="iwB-cm-KRr"/>
                     <constraint firstItem="B1Q-Xe-ZhA" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="oUK-H0-4ST"/>
                     <constraint firstItem="TDG-pV-1N2" firstAttribute="height" secondItem="E76-dc-ntn" secondAttribute="height" id="obN-jf-sNM"/>
+                    <constraint firstAttribute="trailing" secondItem="B8C-Qw-mG4" secondAttribute="trailing" id="pfp-zD-izD"/>
                     <constraint firstItem="TDG-pV-1N2" firstAttribute="centerX" secondItem="E76-dc-ntn" secondAttribute="centerX" id="qcK-gP-a9M"/>
-                    <constraint firstAttribute="trailing" secondItem="B8C-Qw-mG4" secondAttribute="trailing" id="sLw-B3-FLR"/>
+                    <constraint firstItem="B8C-Qw-mG4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="uNk-so-Vxx"/>
                     <constraint firstItem="B1Q-Xe-ZhA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="49" id="xch-AO-FmP"/>
                     <constraint firstItem="E76-dc-ntn" firstAttribute="top" secondItem="B1Q-Xe-ZhA" secondAttribute="bottom" constant="32" id="ylP-Hw-bn3"/>
                 </constraints>

@@ -49,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.statusBarStyle = .lightContent
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().isTranslucent = false
-        UINavigationBar.appearance().barTintColor = UIColor.color(withHexCode: kNavBarColor)
+        UINavigationBar.appearance().barTintColor = Constants.Color.navBarColor
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white,NSFontAttributeName:UIFont.fontRegular(fontSize: 14.0)!]
     }
     

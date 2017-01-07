@@ -20,15 +20,15 @@ extension DMForgotPasswordVC {
                 return
             }
             guard let _ = response else {
-                self.makeToast(toastString: Constants.AlertMessages.somethingWentWrong)
+                self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
             debugPrint(response!)
-            if response![Constants.ServerKeys.status].boolValue {
+            if response![Constants.ServerKey.status].boolValue {
                 _ = self.navigationController?.popViewController(animated: true)
-                self.makeToast(toastString: response![Constants.ServerKeys.message].stringValue)
+                self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
             } else {
-                self.makeToast(toastString: response![Constants.ServerKeys.message].stringValue)
+                self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
             }
         }
     }

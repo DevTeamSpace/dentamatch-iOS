@@ -13,19 +13,8 @@ let kUserDefaults = UserDefaults.standard
 let kAppDelegate = UIApplication.shared.delegate as! AppDelegate
 
 let kCustomDesignFont = "dentamatch"
-let kToolbarColor = "EF000C"
 let kLogEnabled = true
 let kGoogleAPIKey = "AIzaSyDFWCamiO9WGTth-iOxfY_L0K6oRBeAu0U"
-let kTextFieldTextColor = UIColor.color(withHexCode: "383838")
-let kTextFieldLeftViewModeColor = UIColor.color(withHexCode: "aaafb8")
-let kTextFieldColor =  UIColor.color(withHexCode: "959595")
-let kTextFieldColorSelected = UIColor.color(withHexCode: "0470c0")
-let kTextFieldBorderColor = UIColor.color(withHexCode: "e4e4e4")
-let kProfileProgressBarColor = UIColor.color(withHexCode: "a3d977")
-let kProfileProgressBarTrackColor = UIColor.color(withHexCode: "f4f4f4")
-let kNavBarColor = "10193e"
-let kNavBarColorForExperienceScreen = "f7f7f7"
-let kNavHeadingForExperienceScreen = UIColor(red: 9.0/255.0, green: 41.0/255.0, blue: 97.0/255.0, alpha: 1)
 
 let kOkButtonTitle = "Ok"
 
@@ -35,6 +24,28 @@ struct Constants {
 
     static func apiBaseURL() -> String {
         return ConfigurationManager.sharedManager.APIEndpoint()
+    }
+    
+    struct Color {
+        
+        static let toolBarColor = UIColor.color(withHexCode: "EF000C")
+        
+        static let textFieldTextColor = UIColor.color(withHexCode: "383838")
+        static let textFieldLeftViewModeColor = UIColor.color(withHexCode: "aaafb8")
+        static let textFieldBorderColor = UIColor.color(withHexCode: "e4e4e4")
+        static let textFieldColorSelected = UIColor.color(withHexCode: "0470c0")
+        static let textFieldPlaceHolderColor =  UIColor.color(withHexCode: "959595")
+        
+        static let profileProgressBarColor = UIColor.color(withHexCode: "a3d977")
+        static let profileProgressBarTrackColor = UIColor.color(withHexCode: "f4f4f4")
+        
+        static let navBarColor = UIColor.color(withHexCode: "10193e")
+        static let navBarColorForExperienceScreen = UIColor.color(withHexCode: "f7f7f7")
+        static let navHeadingForExperienceScreen = UIColor(red: 9.0/255.0, green: 41.0/255.0, blue: 97.0/255.0, alpha: 1)
+        
+        static let loaderRingColor = UIColor.color(withHexCode: "10193e")
+        static let loaderBackgroundColor = UIColor.color(withHexCode: "959595")
+
     }
     
     struct DesignFont {
@@ -62,13 +73,13 @@ struct Constants {
         static let forgotPasswordAPI = Constants.API.apiURL("users/forgot-password")
         static let termsAndConditionsURL = Constants.API.apiURL("term-condition")
         static let privacyPolicyURL = Constants.API.apiURL("privacy-policy")
-
+        
         static func apiURL(_ methodName: String) -> String {
             return BASE_URL + methodName
         }
     }
     
-    struct ServerKeys {
+    struct ServerKey {
         static let deviceId = "deviceId"
         static let deviceType = "deviceType"
         static let deviceToken = "deviceToken"
@@ -85,16 +96,18 @@ struct Constants {
         static let statusCode = "statusCode"
         static let message = "message"
         static let userDetails = "userDetails"
+        static let result = "result"
+        static let accessToken = "userToken"
     }
     
     //MARK:- UserDefault Keys
-    struct UserDefaultsKeys {
+    struct UserDefaultsKey {
         static let isLoggedIn = "isLoggedIn"
         static let kDeviceToken = "kDeviceToken"
     }
     
     //MARK:- Alert Messages
-    struct AlertMessages{
+    struct AlertMessage{
         static let invalidEmail = "Please enter correct email ID"
         static let skipProfile = "Completed job profile will help you in applying for jobs."
         static let somethingWentWrong = "Something went wrong"
@@ -114,8 +127,6 @@ struct Constants {
     struct Strings{
         static let whiteSpace = " "
     }
-    
-    
     
     //MARK:- Hardcoded Limits
     struct Limits{

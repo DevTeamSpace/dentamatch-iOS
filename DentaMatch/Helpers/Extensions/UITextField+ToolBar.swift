@@ -25,7 +25,7 @@ extension UITextField {
     func addLeftToolBarButton(title: String) {
         let keyboardDoneButtonView = UIToolbar()
         keyboardDoneButtonView.sizeToFit()
-        keyboardDoneButtonView.barTintColor = UIColor.color(withHexCode: kToolbarColor)
+        keyboardDoneButtonView.barTintColor = Constants.Color.toolBarColor
         // Setup the buttons to be put in the system.
         let item = UIBarButtonItem(title: title, style: .done, target: self, action: #selector(toolBarButtonPressed))
         item.tag = 1
@@ -42,7 +42,7 @@ extension UITextField {
     func addRightToolBarButton(title: String) {
         let keyboardDoneButtonView = UIToolbar()
         keyboardDoneButtonView.sizeToFit()
-        keyboardDoneButtonView.barTintColor = UIColor.color(withHexCode: kToolbarColor)
+        keyboardDoneButtonView.barTintColor = Constants.Color.toolBarColor
         // Setup the buttons to be put in the system.
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
         

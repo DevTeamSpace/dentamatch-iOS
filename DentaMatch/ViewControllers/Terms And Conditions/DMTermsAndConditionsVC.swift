@@ -39,7 +39,7 @@ class DMTermsAndConditionsVC: DMBaseVC {
         webView.delegate = self
         webView.loadRequest(request)
         self.navigationItem.leftBarButtonItem = self.backBarButton()
-        self.navigationController?.navigationBar.barTintColor = UIColor.color(withHexCode: kNavBarColor)
+        self.navigationController?.navigationBar.barTintColor = Constants.Color.navBarColor
     }
 }
 

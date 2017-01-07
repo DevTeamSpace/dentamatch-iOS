@@ -20,9 +20,9 @@ class ProfileImageButton: UIButton {
         self.imageView?.contentMode = .scaleAspectFill
         self.clipsToBounds = true
         progressBar = CircleProgressBar(frame: CGRect(x: 0, y: 0, width: self.frame.size.width , height: self.frame.size.height ))
-        progressBar.progressBarWidth = 3.0
-        progressBar.progressBarTrackColor = kProfileProgressBarTrackColor
-        progressBar.progressBarProgressColor = kProfileProgressBarColor
+        progressBar.progressBarWidth = 2.5
+        progressBar.progressBarTrackColor = Constants.Color.profileProgressBarTrackColor
+        progressBar.progressBarProgressColor = Constants.Color.profileProgressBarColor
         progressBar.hintHidden = true
         progressBar.backgroundColor = UIColor.clear
         progressBar.startAngle = -90

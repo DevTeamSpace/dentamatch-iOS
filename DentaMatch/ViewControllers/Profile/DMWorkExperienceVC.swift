@@ -92,7 +92,7 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
         // Dispose of any resources that can be recreated.
     }
     func setup() {
-        self.title = "Work Experiense"
+        self.title = "Work Experience"
         self.workExperienceDetailTable.register(UINib(nibName: "AnimatedPHTableCell", bundle: nil), forCellReuseIdentifier: "AnimatedPHTableCell")
         self.workExperienceDetailTable.register(UINib(nibName: "ReferenceTableCell", bundle: nil), forCellReuseIdentifier: "ReferenceTableCell")
         self.workExperienceDetailTable.register(UINib(nibName: "AddDeleteExperienceCell", bundle: nil), forCellReuseIdentifier: "AddDeleteExperienceCell")

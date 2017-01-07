@@ -13,11 +13,11 @@ class DMLoginVC: DMBaseVC {
     @IBOutlet weak var loginTableView: UITableView!
     
     var loginParams = [
-        Constants.ServerKeys.deviceId:"",
-        Constants.ServerKeys.deviceToken:"",
-        Constants.ServerKeys.deviceType:"",
-        Constants.ServerKeys.email:"",
-        Constants.ServerKeys.password:"",
+        Constants.ServerKey.deviceId:"",
+        Constants.ServerKey.deviceToken:"",
+        Constants.ServerKey.deviceType:"",
+        Constants.ServerKey.email:"",
+        Constants.ServerKey.password:"",
     ]
     //MARK:- View LifeCycle
     override func viewDidLoad() {
@@ -45,7 +45,7 @@ class DMLoginVC: DMBaseVC {
     //MARK:- Keyboard Show Hide Observers
     func keyboardWillShow(note: NSNotification) {
         if let keyboardSize = (note.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            loginTableView.contentInset =  UIEdgeInsetsMake(0, 0, keyboardSize.height+10, 0)
+            loginTableView.contentInset =  UIEdgeInsetsMake(0, 0, keyboardSize.height+1, 0)
         }
     }
     
@@ -61,15 +61,15 @@ class DMLoginVC: DMBaseVC {
     }
     
     func validateFields() -> Bool {
-        if loginParams[Constants.ServerKeys.email]!.isValidEmail {
-            if !loginParams[Constants.ServerKeys.password]!.isEmpty {
+        if loginParams[Constants.ServerKey.email]!.isValidEmail {
+            if !loginParams[Constants.ServerKey.password]!.isEmpty {
                 return true
             } else {
                 self.makeToast(toastString: "Empty Password Error")
                 return false
             }
         } else {
-            self.makeToast(toastString: Constants.AlertMessages.invalidEmail)
+            self.makeToast(toastString: Constants.AlertMessage.invalidEmail)
             return false
         }
     }
@@ -95,9 +95,9 @@ class DMLoginVC: DMBaseVC {
     
     func loginButtonPressed() {
         self.view.endEditing(true)
-        loginParams[Constants.ServerKeys.deviceId] = "test"
-        loginParams[Constants.ServerKeys.deviceType] = "iOS"
-        loginParams[Constants.ServerKeys.deviceToken] = UserDefaultsManager.sharedInstance.deviceToken
+        loginParams[Constants.ServerKey.deviceId] = "test"
+        loginParams[Constants.ServerKey.deviceType] = "iOS"
+        loginParams[Constants.ServerKey.deviceToken] = UserDefaultsManager.sharedInstance.deviceToken
         if validateFields() {
             self.loginAPI(params: loginParams)
         }

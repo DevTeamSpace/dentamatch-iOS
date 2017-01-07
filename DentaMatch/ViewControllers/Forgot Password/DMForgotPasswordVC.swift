@@ -13,7 +13,7 @@ class DMForgotPasswordVC: DMBaseVC,UITextFieldDelegate {
     @IBOutlet weak var emailTextField: AnimatedLeftViewPHTextField!
     
     var forgotPasswordParams = [
-        Constants.ServerKeys.email:""
+        Constants.ServerKey.email:""
     ]
     //MARK:- View LifeCycle
     override func viewDidLoad() {
@@ -43,25 +43,25 @@ class DMForgotPasswordVC: DMBaseVC,UITextFieldDelegate {
     @IBAction func sendButtonPressed(_ sender: Any) {
         self.view.endEditing(true)
         if emailTextField.text!.isValidEmail {
-            forgotPasswordParams[Constants.ServerKeys.email] = self.emailTextField.text!
+            forgotPasswordParams[Constants.ServerKey.email] = self.emailTextField.text!
             self.forgotPasswordAPI(params: forgotPasswordParams)
         } else {
-            self.makeToast(toastString: Constants.AlertMessages.invalidEmail)
+            self.makeToast(toastString: Constants.AlertMessage.invalidEmail)
         }
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if let textField = textField as? AnimatedLeftViewPHTextField {
-            textField.layer.borderColor = kTextFieldColorSelected.cgColor
-            textField.leftViewLabel?.textColor = kTextFieldColorSelected
+            textField.layer.borderColor = Constants.Color.textFieldColorSelected.cgColor
+            textField.leftViewLabel?.textColor = Constants.Color.textFieldColorSelected
         }
         return true
     }
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         if let textField = textField as? AnimatedLeftViewPHTextField {
-            textField.layer.borderColor = kTextFieldBorderColor.cgColor
-            textField.leftViewLabel?.textColor = kTextFieldLeftViewModeColor
+            textField.layer.borderColor = Constants.Color.textFieldBorderColor.cgColor
+            textField.leftViewLabel?.textColor = Constants.Color.textFieldLeftViewModeColor
         }
         return true
     }

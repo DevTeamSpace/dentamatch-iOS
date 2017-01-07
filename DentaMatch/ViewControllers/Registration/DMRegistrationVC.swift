@@ -15,17 +15,17 @@ class DMRegistrationVC: DMBaseVC {
     var coordinateSelected:CLLocationCoordinate2D?
     var termsAndConditionsAccepted = false
     var registrationParams = [
-        Constants.ServerKeys.deviceId:"",
-        Constants.ServerKeys.deviceToken:"",
-        Constants.ServerKeys.deviceType:"",
-        Constants.ServerKeys.email:"",
-        Constants.ServerKeys.firstName:"",
-        Constants.ServerKeys.lastName:"",
-        Constants.ServerKeys.password:"",
-        Constants.ServerKeys.preferredLocation:"",
-        Constants.ServerKeys.zipCode:"",
-        Constants.ServerKeys.latitude:"",
-        Constants.ServerKeys.longitude:""
+        Constants.ServerKey.deviceId:"",
+        Constants.ServerKey.deviceToken:"",
+        Constants.ServerKey.deviceType:"",
+        Constants.ServerKey.email:"",
+        Constants.ServerKey.firstName:"",
+        Constants.ServerKey.lastName:"",
+        Constants.ServerKey.password:"",
+        Constants.ServerKey.preferredLocation:"",
+        Constants.ServerKey.zipCode:"",
+        Constants.ServerKey.latitude:"",
+        Constants.ServerKey.longitude:""
         ]
     
     //MARK:- View LifeCycle
@@ -69,9 +69,9 @@ class DMRegistrationVC: DMBaseVC {
     }
     
     func validateFields() -> Bool{
-        if !registrationParams[Constants.ServerKeys.firstName]!.isEmpty {
-            if registrationParams[Constants.ServerKeys.email]!.isValidEmail {
-                if registrationParams[Constants.ServerKeys.password]!.characters.count >= Constants.Limits.passwordLimit {
+        if !registrationParams[Constants.ServerKey.firstName]!.isEmpty {
+            if registrationParams[Constants.ServerKey.email]!.isValidEmail {
+                if registrationParams[Constants.ServerKey.password]!.characters.count >= Constants.Limits.passwordLimit {
                     if coordinateSelected != nil {
                         if self.termsAndConditionsAccepted {
                             return true
@@ -88,7 +88,7 @@ class DMRegistrationVC: DMBaseVC {
                     return false
                 }
             } else {
-                self.makeToast(toastString: Constants.AlertMessages.invalidEmail)
+                self.makeToast(toastString: Constants.AlertMessage.invalidEmail)
                 return false
             }
         } else {
@@ -98,6 +98,7 @@ class DMRegistrationVC: DMBaseVC {
     }
     
     func openTermsAndConditions(isPrivacyPolicy:Bool) {
+        self.view.endEditing(true)
         let termsVC = UIStoryboard.registrationStoryBoard().instantiateViewController(type: DMTermsAndConditionsVC.self)!
         termsVC.isPrivacyPolicy = isPrivacyPolicy
         self.navigationController?.pushViewController(termsVC, animated: true)
@@ -110,9 +111,9 @@ class DMRegistrationVC: DMBaseVC {
     //MARK:- IBActions
     func registerButtonPressed(sender:UIButton) {
         dismissKeyboard()
-        registrationParams[Constants.ServerKeys.deviceId] = "test"
-        registrationParams[Constants.ServerKeys.deviceType] = "iOS"
-        registrationParams[Constants.ServerKeys.deviceToken] = UserDefaultsManager.sharedInstance.deviceToken
+        registrationParams[Constants.ServerKey.deviceId] = "test"
+        registrationParams[Constants.ServerKey.deviceType] = "iOS"
+        registrationParams[Constants.ServerKey.deviceToken] = UserDefaultsManager.sharedInstance.deviceToken
         if validateFields() {
             self.registrationAPI(params:self.registrationParams)
         }
@@ -152,10 +153,10 @@ extension DMRegistrationVC:LocationAddressDelegate {
                 RegistrationTableViewCell {
                 cell.preferredLocationTextField.text = address
                 
-                registrationParams[Constants.ServerKeys.zipCode] = location.postalCode
-                registrationParams[Constants.ServerKeys.preferredLocation] = address
-                registrationParams[Constants.ServerKeys.latitude] = "\((coordinateSelected?.latitude)!)"
-                registrationParams[Constants.ServerKeys.longitude] = "\((coordinateSelected?.longitude)!)"
+                registrationParams[Constants.ServerKey.zipCode] = location.postalCode
+                registrationParams[Constants.ServerKey.preferredLocation] = address
+                registrationParams[Constants.ServerKey.latitude] = "\((coordinateSelected?.latitude)!)"
+                registrationParams[Constants.ServerKey.longitude] = "\((coordinateSelected?.longitude)!)"
             }
             debugPrint(address)
         } else {

@@ -44,16 +44,16 @@ extension DMRegistrationVC:UITextFieldDelegate {
             }
         }
         if let textField = textField as? AnimatedLeftViewPHTextField {
-            textField.layer.borderColor = kTextFieldColorSelected.cgColor
-            textField.leftViewLabel?.textColor = kTextFieldColorSelected
+            textField.layer.borderColor = Constants.Color.textFieldColorSelected.cgColor
+            textField.leftViewLabel?.textColor = Constants.Color.textFieldColorSelected
         }
         return true
     }
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         if let textField = textField as? AnimatedLeftViewPHTextField {
-            textField.layer.borderColor = kTextFieldBorderColor.cgColor
-            textField.leftViewLabel?.textColor = kTextFieldLeftViewModeColor
+            textField.layer.borderColor = Constants.Color.textFieldBorderColor.cgColor
+            textField.leftViewLabel?.textColor = Constants.Color.textFieldLeftViewModeColor
         }
         return true
     }
@@ -62,12 +62,12 @@ extension DMRegistrationVC:UITextFieldDelegate {
         switch textField.tag {
         case 1:
             //FirstName
-            registrationParams[Constants.ServerKeys.firstName] = textField.text!
-            registrationParams[Constants.ServerKeys.lastName] = textField.text!
+            registrationParams[Constants.ServerKey.firstName] = textField.text!
+            registrationParams[Constants.ServerKey.lastName] = textField.text!
         case 2:
-            registrationParams[Constants.ServerKeys.email] = textField.text!
+            registrationParams[Constants.ServerKey.email] = textField.text!
         case 3:
-            registrationParams[Constants.ServerKeys.password] = textField.text!
+            registrationParams[Constants.ServerKey.password] = textField.text!
         default:
             break
         }

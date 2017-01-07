@@ -28,7 +28,7 @@ class RegistrationTableViewCell: UITableViewCell {
         helpHintLabel.text = "  ⓘ Helps Recruiters to find you easily"
         setupPasswordShowButton()
         
-        let attributedString = NSMutableAttributedString(string: "I agree to the Terms and Conditions and Privacy Policy")
+        let attributedString = NSMutableAttributedString(string: "I agree to the Terms and Conditions and Privacy Policy  ")
         attributedString.addAttribute(NSLinkAttributeName, value: "openTermsAndConditions", range: NSRange(location: 14, length: 21))
         attributedString.addAttribute(NSLinkAttributeName, value: "openPrivacyPolicy", range: NSRange(location: 40, length: 14))
         attributedString.addAttributes([NSFontAttributeName:UIFont.fontRegular(fontSize: 14.0)!,NSForegroundColorAttributeName:UIColor.color(withHexCode: "383838")], range: NSRange(location: 0, length: 54))
