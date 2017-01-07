@@ -48,7 +48,9 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
     let NAVBAR_CHANGE_POINT:CGFloat = 64
     var exprienceArray:NSMutableArray?
     var exprienceDetailArray:NSMutableArray?
-    var currentExperience:ExperienceModel = ExperienceModel()
+    var currentExperience:ExperienceModel? = nil
+    var phoneFormatter = PhoneNumberFormatter()
+
     @IBOutlet weak var mainScrollView: UIScrollView!
     @IBOutlet weak var workExperienceTable: UITableView!
     @IBOutlet weak var workExperienceDetailTable: UITableView!
@@ -62,6 +64,7 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
         super.viewDidLoad()
         exprienceArray = NSMutableArray()
         exprienceDetailArray = NSMutableArray()
+        currentExperience = ExperienceModel()
 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -115,7 +118,7 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
         
         let exp = ExperienceModel()
         self.exprienceDetailArray?.add(exp)
-        self.currentExperience.references.append(EmployeeReferenceModel())
+        self.currentExperience?.references.append(EmployeeReferenceModel())
         self.workExperienceDetailTable.reloadData()
 
     reSizeTableViewsAndScrollView()

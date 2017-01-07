@@ -10,8 +10,8 @@ import UIKit
 
 class EmployeeReferenceModel: NSObject {
     
-    let referenceName:String? = ""
-    let mobileNumber:String? = ""
-    let email:String? = ""
+    var referenceName:String? = ""
+    var mobileNumber:String? = ""
+    var email:String? = ""
     
 }

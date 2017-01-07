@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		270886FB07B603FF47668A72 /* Pods_DentaMatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C611E923856ECE4538FA4F38 /* Pods_DentaMatch.framework */; };
+		5A1960FD1E208B67002A5F7C /* PhoneNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1960FB1E208B67002A5F7C /* PhoneNumberFormatter.swift */; };
 		5A1E2A131E1DF9D70055D913 /* DMYearExperiencePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1E2A121E1DF9D70055D913 /* DMYearExperiencePickerView.swift */; };
 		5A1E2A151E1DFF1B0055D913 /* DMYearExperiencePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A1E2A141E1DFF1B0055D913 /* DMYearExperiencePickerView.xib */; };
 		5A1E2A181E1E479B0055D913 /* ExperienceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1E2A171E1E479B0055D913 /* ExperienceModel.swift */; };
@@ -125,6 +126,7 @@
 /* Begin PBXFileReference section */
 		158450992C392116A74F763C /* Pods-DentaMatch.qa.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DentaMatch.qa.xcconfig"; path = "Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch.qa.xcconfig"; sourceTree = "<group>"; };
 		19F54B802B7D87A34FEE97F2 /* Pods-DentaMatch.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DentaMatch.staging.xcconfig"; path = "Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch.staging.xcconfig"; sourceTree = "<group>"; };
+		5A1960FB1E208B67002A5F7C /* PhoneNumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberFormatter.swift; sourceTree = "<group>"; };
 		5A1E2A121E1DF9D70055D913 /* DMYearExperiencePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMYearExperiencePickerView.swift; sourceTree = "<group>"; };
 		5A1E2A141E1DFF1B0055D913 /* DMYearExperiencePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DMYearExperiencePickerView.xib; sourceTree = "<group>"; };
 		5A1E2A171E1E479B0055D913 /* ExperienceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperienceModel.swift; sourceTree = "<group>"; };
@@ -273,6 +275,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		5A1960FA1E208B4B002A5F7C /* PhoneNumber */ = {
+			isa = PBXGroup;
+			children = (
+				5A1960FB1E208B67002A5F7C /* PhoneNumberFormatter.swift */,
+			);
+			path = PhoneNumber;
+			sourceTree = "<group>";
+		};
 		5A1E2A111E1DF9990055D913 /* YearExperiencePicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -402,6 +412,7 @@
 		E55462D51DAE2F01004163B2 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				5A1960FA1E208B4B002A5F7C /* PhoneNumber */,
 				5A3FD06B1E1BAF9B00360B3C /* ParallaxNav */,
 				E5F47C901E0035B90051C4A1 /* UIImage+Additions */,
 				E55462D61DAE2F49004163B2 /* UIColor+HexCode.swift */,
@@ -986,6 +997,7 @@
 				E5FBE9D91E1CCF940025683C /* DMRegistration+Services.swift in Sources */,
 				E58654FE1DEFEF7F006FEB2D /* ConfigurationManager.swift in Sources */,
 				E5AE2AF61DAF878900C008BD /* OnboardingCollectionViewCell.swift in Sources */,
+				5A1960FD1E208B67002A5F7C /* PhoneNumberFormatter.swift in Sources */,
 				E5C5F3151DC0AACA001A5A3F /* DMRegisterMapsVC.swift in Sources */,
 				E55462E11DAE41FB004163B2 /* Date+Additions.swift in Sources */,
 				E55462D71DAE2F49004163B2 /* UIColor+HexCode.swift in Sources */,

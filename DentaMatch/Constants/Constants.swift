@@ -97,6 +97,13 @@ struct Constants {
         static let invalidEmail = "Please enter correct email ID"
         static let skipProfile = "Completed job profile will help you in applying for jobs."
         static let somethingWentWrong = "Something went wrong"
+        
+        static let jobTitle = "please enter job title"
+        static let yearOfExperience = "please enter experience"
+        static let officeName = "please enter office name"
+        static let officeAddress = "please enter office address"
+        static let CityName = "please enter city name"
+
         struct AlertTitle {
             static let invalidEmailTitle = ""
         }
@@ -106,6 +113,8 @@ struct Constants {
     struct Strings{
         static let whiteSpace = " "
     }
+    
+    
     
     //MARK:- Hardcoded Limits
     struct Limits{

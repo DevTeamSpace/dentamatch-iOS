@@ -10,12 +10,13 @@ import UIKit
 
 class ExperienceModel: NSObject {
 
-    let jobTitle:String? = ""
-    let yearOfExperience:String? = ""
-    let officeName:String? = ""
-    let officeAddress:String? = ""
-    let cityName:String? = ""
-    let isFirstExperience = true
+    var jobTitle:String? = ""
+    var yearOfExperience:String? = ""
+    var officeName:String? = ""
+    var officeAddress:String? = ""
+    var cityName:String? = ""
+    var isFirstExperience = true
+    var isEditMode = false
     var references = [EmployeeReferenceModel]()
 
 }
