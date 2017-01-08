@@ -78,6 +78,7 @@ extension DMWorkExperienceStart
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "AnimatedPHTableCell") as! AnimatedPHTableCell
             cell.selectionStyle = .none
+            cell.commonTextFiled.tag = indexPath.row
             switch indexPath.row {
             case 0:
                 cell.commonTextFiled.placeholder = FieldType.CurrentJobTitle.description
@@ -108,7 +109,20 @@ extension DMWorkExperienceStart
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         return true
     }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        switch textField.tag {
+        case 0:
+            self.experienceArray.replaceObject(at: 0, with: textField.text!)
+        case 2:
+            self.experienceArray.replaceObject(at: 2, with: textField.text!)
+        default:
+            print("default")
+            
+        }
+
+    }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
         return true
     }
     func doneButtonAction(year: Int, month: Int) {
