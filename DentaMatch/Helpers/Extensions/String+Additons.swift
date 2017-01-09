@@ -39,6 +39,13 @@ extension String {
         return false
     }
     
+    var isEmptyField:Bool {
+        if self.trimmingCharacters(in: CharacterSet.whitespaces).characters.count == 0 {
+            return true
+        }
+        return false
+    }
+    
     func dropLast(_ n: Int) -> String {
         return String(characters.dropLast(n))
     }

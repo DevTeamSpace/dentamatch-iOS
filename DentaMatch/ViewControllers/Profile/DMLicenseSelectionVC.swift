@@ -8,24 +8,48 @@
 
 import UIKit
 
-class DMLicenseSelectionVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate {
+class DMLicenseSelectionVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate {
     @IBOutlet var licenseTableView: UITableView!
     
     var stateBoardImage:UIImage? = nil
-    
+    var licenseArray:NSMutableArray?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        licenseArray = NSMutableArray()
+
+        licenseArray?.addObjects(from: ["",""])
         setUp()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         
     }
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
 
+        self.licenseTableView.reloadData()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    //MARK:- Keyboard Show Hide Observers
+    func keyboardWillShow(note: NSNotification) {
+        if let keyboardSize = (note.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            licenseTableView.contentInset =  UIEdgeInsetsMake(0, 0, keyboardSize.height+1, 0)
+        }
+    }
+    func keyboardWillHide(note: NSNotification) {
+        licenseTableView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0)
+    }
+    
     func setUp() {
         self.licenseTableView.register(UINib(nibName: "AnimatedPHTableCell", bundle: nil), forCellReuseIdentifier: "AnimatedPHTableCell")
         self.licenseTableView.register(UINib(nibName: "PhotoNameCell", bundle: nil), forCellReuseIdentifier: "PhotoNameCell")
@@ -36,7 +60,6 @@ class DMLicenseSelectionVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate {
 
         self.changeNavBarAppearanceForWithoutHeader()
         navSetUp()
-
     }
     func navSetUp()
     {
@@ -44,6 +67,25 @@ class DMLicenseSelectionVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate {
     }
     
     @IBAction func nextButtonClikced(_ sender: Any) {
+        if self.stateBoardImage == nil{
+            self.makeToast(toastString: "Please select state board certificate")
+            return
+        }
+        for i in 0..<(self.licenseArray?.count)! {
+            let text = self.licenseArray?[i] as! String
+            if i == 0 {
+                if text.isEmptyField {
+                    self.makeToast(toastString: "Please enter license no")
+                    return
+                }
+            }else{
+                if text.isEmptyField {
+                    self.makeToast(toastString: "Please enter state")
+                    return
+                }
+
+            }
+        }
         self.performSegue(withIdentifier: "goToWorkExperience", sender: self)
     }
     
@@ -176,6 +218,9 @@ class DMLicenseSelectionVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AnimatedPHTableCell") as! AnimatedPHTableCell
             cell.selectionStyle = .none
 
+            cell.commonTextFiled.delegate = self
+            cell.commonTextFiled.tag = indexPath.row
+            
             if indexPath.row == 0
             {
                 cell.cellTopSpace.constant = 43.5
@@ -203,6 +248,59 @@ class DMLicenseSelectionVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate {
         
        return UITableViewCell()
     }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+    }
+//    func textField(_ textField: UITextField,
+//                   shouldChangeCharactersIn range: NSRange,
+//                   replacementString string: String) -> Bool {
+//        
+//        // Create an `NSCharacterSet` set which includes everything *but* the digits
+//        let inverseSet = NSCharacterSet(charactersIn:"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ").inverted
+//        
+//        // At every character in this "inverseSet" contained in the string,
+//        // split the string up into components which exclude the characters
+//        // in this inverse set
+//        let components = string.components(separatedBy: inverseSet)
+//        
+//        // Rejoin these components
+//        let filtered = components.joined(separator: "")  // use join("", components) if you are using Swift 1.2
+//        
+//        // If the original string is equal to the filtered string, i.e. if no
+//        // inverse characters were present to be eliminated, the input is valid
+//        // and the statement returns true; else it returns false
+//        return string == filtered
+//    }
+//
+    
+    
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ0123456789")
+        if string.rangeOfCharacter(from: characterset.inverted) != nil {
+            print("string contains special characters")
+            return false
+        }
+        return true
+
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField.tag == 0
+        {
+            self.licenseArray?.replaceObject(at: 0, with: textField.text!)
+        }else{
+            self.licenseArray?.replaceObject(at: 1, with: textField.text!)
+
+        }
+        
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
+    
+
     
 
 }

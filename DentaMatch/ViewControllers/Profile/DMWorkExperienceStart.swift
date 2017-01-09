@@ -15,11 +15,34 @@ class DMWorkExperienceStart: DMBaseVC,UITableViewDataSource,UITableViewDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         experienceArray.addObjects(from: ["","",""])
         setUp()
         // Do any additional setup after loading the view.
     }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+
+        self.workExperienceTable.reloadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    //MARK:- Keyboard Show Hide Observers
+    func keyboardWillShow(note: NSNotification) {
+        if let keyboardSize = (note.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            self.workExperienceTable.contentInset =  UIEdgeInsetsMake(0, 0, keyboardSize.height+1, 0)
+        }
+    }
+    func keyboardWillHide(note: NSNotification) {
+        self.workExperienceTable.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0)
+    }
+    
 
     func setUp() {
         self.workExperienceTable.register(UINib(nibName: "AnimatedPHTableCell", bundle: nil), forCellReuseIdentifier: "AnimatedPHTableCell")
@@ -36,6 +59,27 @@ class DMWorkExperienceStart: DMBaseVC,UITableViewDataSource,UITableViewDelegate,
     }
     //goToExperienceDetail
     @IBAction func nextButtonClicked(_ sender: Any) {
+        
+        for i in 0..<self.experienceArray.count {
+            let text = self.experienceArray[i] as! String
+            if i == 0 {
+                if text.isEmptyField {
+                    self.makeToast(toastString: "Please enter job title")
+                    return
+                }
+            }else if i == 1{
+                if text.isEmptyField {
+                    self.makeToast(toastString: "Please enter experience")
+                    return
+                }
+            }else if i == 2 {
+                if text.isEmptyField {
+                    self.makeToast(toastString: "Please office name")
+                    return
+                }
+            }
+        }
+
         self.performSegue(withIdentifier: "goToExperienceDetail", sender: self)
 
     }
