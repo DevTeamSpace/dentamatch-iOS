@@ -17,6 +17,7 @@ class PhotoCell: UITableViewCell {
         // Initialization code
         self.stateBoardPhotoButton.layer.cornerRadius = self.stateBoardPhotoButton.bounds.size.height/2
         self.stateBoardPhotoButton.clipsToBounds = true
+        self.stateBoardPhotoButton.imageView?.contentMode = .scaleAspectFill
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
