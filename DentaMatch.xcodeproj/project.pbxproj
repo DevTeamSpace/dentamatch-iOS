@@ -76,6 +76,11 @@
 		E587D2CF1E23438B006B7F06 /* DMJobTitleSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2CE1E23438B006B7F06 /* DMJobTitleSelectionVC.swift */; };
 		E587D2D11E2343A5006B7F06 /* DMJobTitleSelectionVC+UIPickerViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2D01E2343A5006B7F06 /* DMJobTitleSelectionVC+UIPickerViewExtension.swift */; };
 		E587D2D31E234CDF006B7F06 /* JobTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2D21E234CDF006B7F06 /* JobTitle.swift */; };
+		E587D2D51E2357A9006B7F06 /* DMJobTitleSelectionVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2D41E2357A9006B7F06 /* DMJobTitleSelectionVC+Services.swift */; };
+		E587D2D71E236B84006B7F06 /* DMRegisterMapsVC+GoogleMapsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2D61E236B84006B7F06 /* DMRegisterMapsVC+GoogleMapsExtension.swift */; };
+		E587D2D91E236EAE006B7F06 /* DMRegisterMapsVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2D81E236EAE006B7F06 /* DMRegisterMapsVC+TableViewExtension.swift */; };
+		E587D2DB1E2395B7006B7F06 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2DA1E2395B7006B7F06 /* User.swift */; };
+		E587D2DD1E2396E9006B7F06 /* JobSelectionPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E587D2DC1E2396E9006B7F06 /* JobSelectionPickerView.xib */; };
 		E590299F1DED25C400151E9B /* AppDelegate+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590299E1DED25C400151E9B /* AppDelegate+Notifications.swift */; };
 		E59029A81DED2C7A00151E9B /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59029A31DED2C7A00151E9B /* APIManager.swift */; };
 		E59029A91DED2C7A00151E9B /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59029A51DED2C7A00151E9B /* LogManager.swift */; };
@@ -209,6 +214,11 @@
 		E587D2CE1E23438B006B7F06 /* DMJobTitleSelectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMJobTitleSelectionVC.swift; sourceTree = "<group>"; };
 		E587D2D01E2343A5006B7F06 /* DMJobTitleSelectionVC+UIPickerViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMJobTitleSelectionVC+UIPickerViewExtension.swift"; sourceTree = "<group>"; };
 		E587D2D21E234CDF006B7F06 /* JobTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobTitle.swift; sourceTree = "<group>"; };
+		E587D2D41E2357A9006B7F06 /* DMJobTitleSelectionVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMJobTitleSelectionVC+Services.swift"; sourceTree = "<group>"; };
+		E587D2D61E236B84006B7F06 /* DMRegisterMapsVC+GoogleMapsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMRegisterMapsVC+GoogleMapsExtension.swift"; sourceTree = "<group>"; };
+		E587D2D81E236EAE006B7F06 /* DMRegisterMapsVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMRegisterMapsVC+TableViewExtension.swift"; sourceTree = "<group>"; };
+		E587D2DA1E2395B7006B7F06 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E587D2DC1E2396E9006B7F06 /* JobSelectionPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobSelectionPickerView.xib; sourceTree = "<group>"; };
 		E590299E1DED25C400151E9B /* AppDelegate+Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Notifications.swift"; sourceTree = "<group>"; };
 		E59029A31DED2C7A00151E9B /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		E59029A51DED2C7A00151E9B /* LogManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
@@ -309,6 +319,7 @@
 				5A1E2A171E1E479B0055D913 /* ExperienceModel.swift */,
 				5A1E2A191E1E47C90055D913 /* EmployeeReferenceModel.swift */,
 				E587D2D21E234CDF006B7F06 /* JobTitle.swift */,
+				E587D2DA1E2395B7006B7F06 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -626,6 +637,7 @@
 			isa = PBXGroup;
 			children = (
 				E587D2CB1E23362C006B7F06 /* JobSelectionPickerView.swift */,
+				E587D2DC1E2396E9006B7F06 /* JobSelectionPickerView.xib */,
 			);
 			path = CustomPicker;
 			sourceTree = "<group>";
@@ -635,6 +647,7 @@
 			children = (
 				E587D2CE1E23438B006B7F06 /* DMJobTitleSelectionVC.swift */,
 				E587D2D01E2343A5006B7F06 /* DMJobTitleSelectionVC+UIPickerViewExtension.swift */,
+				E587D2D41E2357A9006B7F06 /* DMJobTitleSelectionVC+Services.swift */,
 			);
 			path = JobTitleSelection;
 			sourceTree = "<group>";
@@ -786,6 +799,8 @@
 			isa = PBXGroup;
 			children = (
 				E5C5F3141DC0AACA001A5A3F /* DMRegisterMapsVC.swift */,
+				E587D2D61E236B84006B7F06 /* DMRegisterMapsVC+GoogleMapsExtension.swift */,
+				E587D2D81E236EAE006B7F06 /* DMRegisterMapsVC+TableViewExtension.swift */,
 			);
 			path = MapsRegistration;
 			sourceTree = "<group>";
@@ -933,6 +948,7 @@
 				E597E5791E151A99001DDA78 /* SF-UI-Display-Medium.otf in Resources */,
 				E58654FF1DEFEF7F006FEB2D /* Environments.plist in Resources */,
 				E597E5891E151A99001DDA78 /* SF-UI-Text-SemiboldItalic.otf in Resources */,
+				E587D2DD1E2396E9006B7F06 /* JobSelectionPickerView.xib in Resources */,
 				E597E5821E151A99001DDA78 /* SF-UI-Text-Light.otf in Resources */,
 				E56E45C61DAE07C200AD4559 /* LaunchScreen.storyboard in Resources */,
 				E597E5761E151A99001DDA78 /* SF-UI-Display-Bold.otf in Resources */,
@@ -1025,6 +1041,7 @@
 				E55462F91DAE4DD1004163B2 /* UIView+Additions.swift in Sources */,
 				E55462DF1DAE31EA004163B2 /* UIFont+Additions.swift in Sources */,
 				E50B3F3F1E18E8D2004C5F32 /* ZAnimationIndicatorView.swift in Sources */,
+				E587D2D51E2357A9006B7F06 /* DMJobTitleSelectionVC+Services.swift in Sources */,
 				E50B3F401E18E8D2004C5F32 /* ZGradientLayer.swift in Sources */,
 				E594BEA21E1E014F00310AE5 /* DMLoginVC.swift in Sources */,
 				E50B3F421E18E8D2004C5F32 /* ZProgressHUD.swift in Sources */,
@@ -1064,16 +1081,19 @@
 				E50B3F4C1E194CD7004C5F32 /* AnimatedPHTableCell.swift in Sources */,
 				E55462E61DAE47A9004163B2 /* UIView+Toast.m in Sources */,
 				E587D2D11E2343A5006B7F06 /* DMJobTitleSelectionVC+UIPickerViewExtension.swift in Sources */,
+				E587D2D91E236EAE006B7F06 /* DMRegisterMapsVC+TableViewExtension.swift in Sources */,
 				E55463001DAE510A004163B2 /* Utilities.swift in Sources */,
 				E56E90801DFF31740096A31B /* CameraGalleryManager.swift in Sources */,
 				E55462F71DAE4C6F004163B2 /* UITextField+ToolBar.swift in Sources */,
 				5AE5F51A1E1A5139006C328A /* PhotoCell.swift in Sources */,
+				E587D2D71E236B84006B7F06 /* DMRegisterMapsVC+GoogleMapsExtension.swift in Sources */,
 				E56C9F9E1DED4BD100EAA9DD /* Character+Addition.swift in Sources */,
 				5A2CF6841E1D0D9A008C5336 /* DMWorkExperienceVC+TableViewExtension.swift in Sources */,
 				E594BEA41E1E076D00310AE5 /* DMLoginVC+TextFieldExtension.swift in Sources */,
 				E55462EC1DAE47F5004163B2 /* AppDelegate.swift in Sources */,
 				E587D2CC1E23362C006B7F06 /* JobSelectionPickerView.swift in Sources */,
 				E5F47C941E0035B90051C4A1 /* UIImage+Rotations.swift in Sources */,
+				E587D2DB1E2395B7006B7F06 /* User.swift in Sources */,
 				5A1E2A1A1E1E47C90055D913 /* EmployeeReferenceModel.swift in Sources */,
 				E50B3F501E194CD7004C5F32 /* RegistrationTableViewCell.swift in Sources */,
 				5A1E2A1C1E1E77790055D913 /* ExperienceTableCell.swift in Sources */,
