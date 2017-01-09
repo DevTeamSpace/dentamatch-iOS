@@ -48,7 +48,7 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
     let NAVBAR_CHANGE_POINT:CGFloat = 64
     var exprienceArray:NSMutableArray?
     var exprienceDetailArray:NSMutableArray?
-    var currentExperience:ExperienceModel? = nil
+    var currentExperience:ExperienceModel? = ExperienceModel()
     var phoneFormatter = PhoneNumberFormatter()
 
     @IBOutlet weak var mainScrollView: UIScrollView!
@@ -64,7 +64,6 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
         super.viewDidLoad()
         exprienceArray = NSMutableArray()
         exprienceDetailArray = NSMutableArray()
-        currentExperience = ExperienceModel()
 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -98,9 +97,17 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
         self.workExperienceDetailTable.register(UINib(nibName: "AddDeleteExperienceCell", bundle: nil), forCellReuseIdentifier: "AddDeleteExperienceCell")
         self.navigationItem.leftBarButtonItem = self.backBarButton()
         self.workExperienceDetailTable.separatorStyle = .none
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.mainScrollView.addGestureRecognizer(tap)
+
         self.workExperienceDetailTable.reloadData()
         self.changeNavBarAppearanceForProfiles()
     }
+    
+    func dismissKeyboard() {
+        self.view.endEditing(true)
+    }
+
     
     
     //MARK:- Keyboard Show Hide Observers

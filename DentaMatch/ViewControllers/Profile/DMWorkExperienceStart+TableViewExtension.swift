@@ -50,7 +50,7 @@ extension DMWorkExperienceStart
             return 226
             
         }else {
-            return 65
+            return 75
             
         }
         
@@ -87,7 +87,6 @@ extension DMWorkExperienceStart
                 let yearViewObj = DMYearExperiencePickerView.loadExperiencePickerView(withText: self.experienceArray[indexPath.row] as! String)
                 yearViewObj.delegate = self
                 cell.commonTextFiled.inputView = yearViewObj
-
                 
             case 2:
                 cell.commonTextFiled.placeholder = FieldType.OfficeName.description
@@ -97,7 +96,6 @@ extension DMWorkExperienceStart
                 cell.commonTextFiled.placeholder = FieldType.CityName.description
             default:
                 print("default")
-                
             }
 
             cell.commonTextFiled.text = self.experienceArray[indexPath.row] as? String
@@ -107,6 +105,15 @@ extension DMWorkExperienceStart
         }
     }
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if let textField = textField as? AnimatedPHTextField {
+            textField.layer.borderColor = Constants.Color.textFieldColorSelected.cgColor
+        }
+        return true
+    }
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if let textField = textField as? AnimatedPHTextField {
+            textField.layer.borderColor = Constants.Color.textFieldBorderColor.cgColor
+        }
         return true
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -130,20 +137,20 @@ extension DMWorkExperienceStart
         
         var text:String = ""
         
-        if year <= 1
-        {
-            text.append("\(year) year")
+        if year <= 1 {
+            if year != 0 {
+                text.append("\(year) year")
+            }
         }else{
             text.append("\(year) years")
- 
         }
         
-        if month <= 1
-        {
-            text.append(" \(month) month")
-        }else{
+        if month <= 1 {
+            if month != 0 {
+                text.append(" \(month) month")
+            }
+        }else {
             text.append(" \(month) months")
-
         }
 
         self.experienceArray.replaceObject(at: 1, with: text)

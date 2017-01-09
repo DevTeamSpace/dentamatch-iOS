@@ -58,9 +58,17 @@ class DMWorkExperienceStart: DMBaseVC,UITableViewDataSource,UITableViewDelegate,
         self.workExperienceTable.register(UINib(nibName: "AnimatedPHTableCell", bundle: nil), forCellReuseIdentifier: "AnimatedPHTableCell")
         self.workExperienceTable.register(UINib(nibName: "PhotoNameCell", bundle: nil), forCellReuseIdentifier: "PhotoNameCell")
         workExperienceTable.separatorStyle = .none
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.workExperienceTable.addGestureRecognizer(tap)
+
         self.workExperienceTable.reloadData()
         self.navigationItem.leftBarButtonItem = self.backBarButton()
 
+    }
+
+    func dismissKeyboard() {
+        self.view.endEditing(true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -94,14 +102,21 @@ class DMWorkExperienceStart: DMBaseVC,UITableViewDataSource,UITableViewDelegate,
 
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "goToExperienceDetail"
+        {
+            let destinationVC:DMWorkExperienceVC = segue.destination as! DMWorkExperienceVC
+            destinationVC.currentExperience?.jobTitle = self.experienceArray[0] as? String
+            destinationVC.currentExperience?.yearOfExperience = self.experienceArray[1] as? String
+            destinationVC.currentExperience?.officeName = self.experienceArray[2] as? String
+        }
     }
-    */
+
 
 }
