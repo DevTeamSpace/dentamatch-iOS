@@ -13,6 +13,7 @@ extension DMJobTitleSelectionVC:JobSelectionPickerViewDelegate {
     func jobPickerDoneButtonAction(job: JobTitle?) {
         if let jobTitle = job {
             self.currentJobTitleTextField.text = jobTitle.jobTitle
+            self.selectedJobTitle = jobTitle
         }
         self.view.endEditing(true)
     }

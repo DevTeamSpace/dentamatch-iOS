@@ -182,6 +182,12 @@ extension DMWorkExperienceVC
                 case 0:
                     cell.commonTextFiled.placeholder = FieldType.CurrentJobTitle.description
                     cell.commonTextFiled.text = self.currentExperience?.jobTitle
+                    let pickerView = JobSelectionPickerView.loadJobSelectionView(withJobTitles: jobTitles)
+                    cell.commonTextFiled.inputView = pickerView
+                    pickerView.delegate = self
+                    pickerView.pickerView.reloadAllComponents()
+                    pickerView.backgroundColor = UIColor.white
+
 
                 case 1:
                     cell.commonTextFiled.placeholder = FieldType.YearOfExperience.description
@@ -268,8 +274,8 @@ extension DMWorkExperienceVC
     func CommonExperiencelTextFieldDidEnd(_ textField: UITextField) {
         
         switch textField.tag {
-        case 0:
-            self.currentExperience?.jobTitle = textField.text
+//        case 0:
+//            self.currentExperience?.jobTitle = textField.text
         case 2:
             self.currentExperience?.officeName = textField.text
         case 3:

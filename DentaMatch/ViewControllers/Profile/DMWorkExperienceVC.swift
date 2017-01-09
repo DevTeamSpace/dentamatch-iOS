@@ -50,6 +50,7 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
     var exprienceDetailArray:NSMutableArray?
     var currentExperience:ExperienceModel? = ExperienceModel()
     var phoneFormatter = PhoneNumberFormatter()
+    var jobTitles = [JobTitle]()
 
     @IBOutlet weak var mainScrollView: UIScrollView!
     @IBOutlet weak var workExperienceTable: UITableView!
@@ -150,4 +151,21 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
     */
 
     
+}
+
+
+extension DMWorkExperienceVC:JobSelectionPickerViewDelegate {
+    
+    func jobPickerDoneButtonAction(job: JobTitle?) {
+        if let jobTitle = job {
+            self.currentExperience?.jobTitle = jobTitle.jobTitle
+            self.workExperienceDetailTable.reloadData()
+            
+        }
+        self.view.endEditing(true)
+    }
+    
+    func jobPickerCancelButtonAction() {
+        self.view.endEditing(true)
+    }
 }

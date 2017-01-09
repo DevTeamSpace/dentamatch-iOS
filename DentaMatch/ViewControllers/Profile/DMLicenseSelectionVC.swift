@@ -13,6 +13,7 @@ class DMLicenseSelectionVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,U
     
     var stateBoardImage:UIImage? = nil
     var licenseArray:NSMutableArray?
+    var jobTitles = [JobTitle]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -137,6 +138,13 @@ class DMLicenseSelectionVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,U
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "goToWorkExperience"
+        {
+            let destinationVC:DMWorkExperienceStart = segue.destination as! DMWorkExperienceStart
+            destinationVC.jobTitles = self.jobTitles
+        }
+
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -301,3 +309,4 @@ class DMLicenseSelectionVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,U
     
 
 }
+

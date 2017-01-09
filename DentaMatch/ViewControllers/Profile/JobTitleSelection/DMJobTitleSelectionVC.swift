@@ -131,6 +131,7 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
         if profileImage != nil {
             if selectedJobTitle != nil {
                 let licenceSelectionVC = UIStoryboard.profileStoryBoard().instantiateViewController(type: DMLicenseSelectionVC.self)!
+                licenceSelectionVC.jobTitles = jobTitles
                 self.navigationController?.pushViewController(licenceSelectionVC, animated: true)
             } else {
                 self.makeToast(toastString: "Please select current job title")

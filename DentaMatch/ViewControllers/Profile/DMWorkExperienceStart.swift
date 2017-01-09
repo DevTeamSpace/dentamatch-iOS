@@ -12,6 +12,8 @@ class DMWorkExperienceStart: DMBaseVC,UITableViewDataSource,UITableViewDelegate,
     @IBOutlet weak var workExperienceTable: UITableView!
 
     var experienceArray = NSMutableArray()
+    var jobTitles = [JobTitle]()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -114,9 +116,25 @@ class DMWorkExperienceStart: DMBaseVC,UITableViewDataSource,UITableViewDelegate,
             let destinationVC:DMWorkExperienceVC = segue.destination as! DMWorkExperienceVC
             destinationVC.currentExperience?.jobTitle = self.experienceArray[0] as? String
             destinationVC.currentExperience?.yearOfExperience = self.experienceArray[1] as? String
+            destinationVC.jobTitles = self.jobTitles
             destinationVC.currentExperience?.officeName = self.experienceArray[2] as? String
         }
     }
 
 
+}
+
+extension DMWorkExperienceStart:JobSelectionPickerViewDelegate {
+    
+    func jobPickerDoneButtonAction(job: JobTitle?) {
+        if let jobTitle = job {
+            self.experienceArray.replaceObject(at: 0, with: jobTitle.jobTitle)
+            self.workExperienceTable.reloadData()
+        }
+        self.view.endEditing(true)
+    }
+    
+    func jobPickerCancelButtonAction() {
+        self.view.endEditing(true)
+    }
 }

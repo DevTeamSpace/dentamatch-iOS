@@ -79,9 +79,17 @@ extension DMWorkExperienceStart
             let cell = tableView.dequeueReusableCell(withIdentifier: "AnimatedPHTableCell") as! AnimatedPHTableCell
             cell.selectionStyle = .none
             cell.commonTextFiled.tag = indexPath.row
+            cell.commonTextFiled.text = self.experienceArray[indexPath.row] as? String
             switch indexPath.row {
             case 0:
                 cell.commonTextFiled.placeholder = FieldType.CurrentJobTitle.description
+                
+                let pickerView = JobSelectionPickerView.loadJobSelectionView(withJobTitles: jobTitles)
+                cell.commonTextFiled.inputView = pickerView
+                pickerView.delegate = self
+                pickerView.pickerView.reloadAllComponents()
+                pickerView.backgroundColor = UIColor.white
+
             case 1:
                 cell.commonTextFiled.placeholder = FieldType.YearOfExperience.description
                 let yearViewObj = DMYearExperiencePickerView.loadExperiencePickerView(withText: self.experienceArray[indexPath.row] as! String)
@@ -92,8 +100,6 @@ extension DMWorkExperienceStart
                 cell.commonTextFiled.placeholder = FieldType.OfficeName.description
             case 3:
                 cell.commonTextFiled.placeholder = FieldType.OfficeAddress.description
-            case 4:
-                cell.commonTextFiled.placeholder = FieldType.CityName.description
             default:
                 print("default")
             }
@@ -118,8 +124,8 @@ extension DMWorkExperienceStart
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
         switch textField.tag {
-        case 0:
-            self.experienceArray.replaceObject(at: 0, with: textField.text!)
+//        case 0:
+//            self.experienceArray.replaceObject(at: 0, with: textField.text!)
         case 2:
             self.experienceArray.replaceObject(at: 2, with: textField.text!)
         default:
