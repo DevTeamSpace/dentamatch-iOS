@@ -23,7 +23,11 @@ class DMLicenseSelectionVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,U
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        self.changeNavBarAppearanceForWithoutHeader()
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         
     }
@@ -54,38 +58,38 @@ class DMLicenseSelectionVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,U
         self.licenseTableView.register(UINib(nibName: "AnimatedPHTableCell", bundle: nil), forCellReuseIdentifier: "AnimatedPHTableCell")
         self.licenseTableView.register(UINib(nibName: "PhotoNameCell", bundle: nil), forCellReuseIdentifier: "PhotoNameCell")
         self.licenseTableView.register(UINib(nibName: "PhotoCell", bundle: nil), forCellReuseIdentifier: "PhotoCell")
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.licenseTableView.addGestureRecognizer(tap)
+
         self.licenseTableView.separatorStyle = .none
         self.licenseTableView.reloadData()
         self.navigationItem.leftBarButtonItem = self.backBarButton()
 
-        self.changeNavBarAppearanceForWithoutHeader()
-        navSetUp()
     }
-    func navSetUp()
-    {
-        
+    func dismissKeyboard() {
+        self.view.endEditing(true)
     }
-    
     @IBAction func nextButtonClikced(_ sender: Any) {
-        if self.stateBoardImage == nil{
-            self.makeToast(toastString: "Please select state board certificate")
-            return
-        }
-        for i in 0..<(self.licenseArray?.count)! {
-            let text = self.licenseArray?[i] as! String
-            if i == 0 {
-                if text.isEmptyField {
-                    self.makeToast(toastString: "Please enter license no")
-                    return
-                }
-            }else{
-                if text.isEmptyField {
-                    self.makeToast(toastString: "Please enter state")
-                    return
-                }
-
-            }
-        }
+        
+//        if self.stateBoardImage == nil{
+//            self.makeToast(toastString: "Please select state board certificate")
+//            return
+//        }
+//        for i in 0..<(self.licenseArray?.count)! {
+//            let text = self.licenseArray?[i] as! String
+//            if i == 0 {
+//                if text.isEmptyField {
+//                    self.makeToast(toastString: "Please enter license no")
+//                    return
+//                }
+//            }else{
+//                if text.isEmptyField {
+//                    self.makeToast(toastString: "Please enter state")
+//                    return
+//                }
+//
+//            }
+//        }
         self.performSegue(withIdentifier: "goToWorkExperience", sender: self)
     }
     
@@ -174,7 +178,7 @@ class DMLicenseSelectionVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,U
             return 203
             
         }
-        return 99
+        return 109
 
     }
      func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
@@ -248,6 +252,20 @@ class DMLicenseSelectionVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,U
         
        return UITableViewCell()
     }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if let textField = textField as? AnimatedPHTextField {
+            textField.layer.borderColor = Constants.Color.textFieldColorSelected.cgColor
+        }
+        return true
+    }
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if let textField = textField as? AnimatedPHTextField {
+            textField.layer.borderColor = Constants.Color.textFieldBorderColor.cgColor
+        }
+        return true
+    }
+
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
     }

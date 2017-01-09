@@ -41,7 +41,7 @@ extension DMWorkExperienceVC
         {
             if indexPath.row > (self.currentExperience?.references.count)! + 4
             {
-                let height =  self.currentExperience?.isFirstExperience == true ? 60:121
+                let height =  self.currentExperience?.isFirstExperience == true ? 60:130
                 return CGFloat(height)
             }
             if indexPath.row > 4
@@ -51,7 +51,7 @@ extension DMWorkExperienceVC
                 debugPrint("row height \(height)")
                 return CGFloat(height)
             }
-            return 65
+            return 75
 
         }else{
             return 44
@@ -82,12 +82,10 @@ extension DMWorkExperienceVC
                 cell.deleteButton.tag = tag
                 
                 if self.currentExperience?.isEditMode == true {
-                    cell.addMoreExperienceButton.setTitle("Save", for: .normal)
+                    cell.addMoreExperienceButton.setTitle(" Save", for: .normal)
                 }else{
-                    cell.addMoreExperienceButton.setTitle("AddMore Experience", for: .normal)
-
+                    cell.addMoreExperienceButton.setTitle(" Add More Experience", for: .normal)
                 }
-                
                 
                 cell.deleteButton.addTarget(self, action: #selector(DMWorkExperienceVC.deleteExperience(_:)), for: .touchUpInside)
                 cell.addMoreExperienceButton.addTarget(self, action: #selector(DMWorkExperienceVC.addMoreExperience(_:)), for: .touchUpInside)
@@ -109,61 +107,54 @@ extension DMWorkExperienceVC
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ReferenceTableCell") as! ReferenceTableCell
                 cell.selectionStyle = .none
                 
-                cell.referenceNameLabel.delegate = self
-                cell.referenceMobileNoLabel.delegate = self
-                cell.referenceEmailLabel.delegate = self
-                cell.referenceNameLabel.keyboardType = .default
-                cell.referenceMobileNoLabel.keyboardType = .numberPad
-                cell.referenceEmailLabel.keyboardType = .emailAddress
-                cell.referenceNameLabel.placeholder = FieldType.ReferenceName.description
-                cell.referenceMobileNoLabel.placeholder = FieldType.ReferenceMobileNo.description
-                cell.referenceEmailLabel.placeholder = FieldType.ReferenceEmail.description
+                cell.nameTextField.delegate = self
+                cell.mobileNoTextField.delegate = self
+                cell.emailTextField.delegate = self
+                cell.mobileNoTextField.addRightToolBarButton(title: "Done")
                 
                 let tag = indexPath.row - 5
-                cell.referenceButtonFirst.tag = tag
-                cell.referenceButtonSecond.tag = tag
+                cell.deleteButton.tag = tag
+                cell.addMoreReferenceButton.tag = tag
                 
-                cell.referenceNameLabel.tag = tag
-                cell.referenceMobileNoLabel.tag = tag
-                cell.referenceEmailLabel.tag = tag
+                cell.nameTextField.tag = tag
+                cell.mobileNoTextField.tag = tag
+                cell.emailTextField.tag = tag
 
-                cell.referenceNameLabel.addTarget(self, action: #selector(referenceNameTextFieldDidEnd(_:)), for: .editingDidEnd)
-                cell.referenceMobileNoLabel.addTarget(self, action: #selector(referenceMobileNumberTextFieldDidEnd(_:)), for: .editingDidEnd)
-                cell.referenceEmailLabel.addTarget(self, action: #selector(referenceEmailTextFieldDidEnd(_:)), for: .editingDidEnd)
-
+                cell.nameTextField.addTarget(self, action: #selector(referenceNameTextFieldDidEnd(_:)), for: .editingDidEnd)
+                cell.mobileNoTextField.addTarget(self, action: #selector(referenceMobileNumberTextFieldDidEnd(_:)), for: .editingDidEnd)
+                cell.emailTextField.addTarget(self, action: #selector(referenceEmailTextFieldDidEnd(_:)), for: .editingDidEnd)
                 
                 let empRef = self.currentExperience?.references[tag]
                 
                 
-                cell.referenceNameLabel.text = empRef?.referenceName
-                cell.referenceMobileNoLabel.text = empRef?.mobileNumber
-                cell.referenceEmailLabel.text = empRef?.email
+                cell.nameTextField.text = empRef?.referenceName
+                cell.mobileNoTextField.text = empRef?.mobileNumber
+                cell.emailTextField.text = empRef?.email
 
-                cell.referenceMobileNoLabel.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
-                cell.referenceButtonFirst.addTarget(self, action: #selector(DMWorkExperienceVC.deleteReference(_:)), for: .touchUpInside)
-                cell.referenceButtonSecond.addTarget(self, action: #selector(DMWorkExperienceVC.addMoreReference(_:)), for: .touchUpInside)
+                cell.mobileNoTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+                cell.deleteButton.addTarget(self, action: #selector(DMWorkExperienceVC.deleteReference(_:)), for: .touchUpInside)
+                cell.addMoreReferenceButton.addTarget(self, action: #selector(DMWorkExperienceVC.addMoreReference(_:)), for: .touchUpInside)
                 if tag == 0 {
                     if (self.currentExperience?.references.count)! - 1 > tag {
-                        cell.referenceButtonSecond.isHidden = true
+                        cell.addMoreReferenceButton.isHidden = true
                     }else
                     {
-                        cell.referenceButtonSecond.isHidden = false
-
+                        cell.addMoreReferenceButton.isHidden = false
                     }
-                    cell.referenceButtonFirst.isHidden = true
+                    cell.deleteButton.isHidden = true
                     cell.addMoreButtonTopSpace.constant = 0
                     
                 }else{
                     if (self.currentExperience?.references.count)! - 1 > tag {
-                        cell.referenceButtonFirst.isHidden = false
+                        cell.deleteButton.isHidden = false
                         cell.addMoreButtonTopSpace.constant = 0
-                        cell.referenceButtonSecond.isHidden = true
+                        cell.addMoreReferenceButton.isHidden = true
                         
                     }else
                     {
-                        cell.referenceButtonFirst.isHidden = false
+                        cell.deleteButton.isHidden = false
                         cell.addMoreButtonTopSpace.constant = 55
-                        cell.referenceButtonSecond.isHidden = false
+                        cell.addMoreReferenceButton.isHidden = false
                     }
 
                 }
@@ -198,7 +189,7 @@ extension DMWorkExperienceVC
 
                     let yearViewObj = DMYearExperiencePickerView.loadExperiencePickerView(withText: (self.currentExperience?.yearOfExperience!)!)
                     yearViewObj.delegate = self
-                    cell.commonTextFiled.inputAccessoryView = yearViewObj
+                    cell.commonTextFiled.inputView = yearViewObj
                     
                 case 2:
                     cell.commonTextFiled.placeholder = FieldType.OfficeName.description
@@ -254,7 +245,6 @@ extension DMWorkExperienceVC
         let empRef =  self.currentExperience?.references[tag]
         empRef?.referenceName = textField.text
         self.currentExperience?.references[tag] = empRef!
-        self.workExperienceDetailTable.reloadData()
 
     }
     func referenceMobileNumberTextFieldDidEnd(_ textField: UITextField) {
@@ -262,7 +252,6 @@ extension DMWorkExperienceVC
         let empRef =  self.currentExperience?.references[tag]
         empRef?.mobileNumber = textField.text
         self.currentExperience?.references[tag] = empRef!
-        self.workExperienceDetailTable.reloadData()
 
     }
     func referenceEmailTextFieldDidEnd(_ textField: UITextField) {
@@ -270,28 +259,10 @@ extension DMWorkExperienceVC
         let empRef =  self.currentExperience?.references[tag]
         empRef?.email = textField.text
         self.currentExperience?.references[tag] = empRef!
-        self.workExperienceDetailTable.reloadData()
     }
 
     func textFieldDidChange(_ textField: UITextField) {
         textField.text = self.phoneFormatter.format(textField.text!, hash: textField.hash)
-
-        
-//            if ((textField.text?.characters.count)! <= 13) {
-//                if (textField.text?.characters.count==3) {
-//                    
-//                    let tempStr = "(\(textField.text!))-"
-//                    textField.text = tempStr
-//                } else if (textField.text?.characters.count==8) {
-//                    let tempStr = "\(textField.text!)-"
-//                    textField.text = tempStr
-//                }
-//            }else{
-//                var tempStr = textField.text!
-//                tempStr = tempStr.dropLast(1)
-//                textField.text = tempStr
-//        }
-
     }
     
     func CommonExperiencelTextFieldDidEnd(_ textField: UITextField) {
@@ -314,9 +285,17 @@ extension DMWorkExperienceVC
     
     
     
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if let textField = textField as? AnimatedPHTextField {
+            textField.layer.borderColor = Constants.Color.textFieldColorSelected.cgColor
+        }
+        return true
+    }
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if let textField = textField as? AnimatedPHTextField {
+            textField.layer.borderColor = Constants.Color.textFieldBorderColor.cgColor
+        }
+        return true
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -324,9 +303,12 @@ extension DMWorkExperienceVC
         return true
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
-        textField.resignFirstResponder()
+//        textField.resignFirstResponder()
     }
-    
+    func toolBarButtonPressed(position: Position) {
+        self.view.endEditing(true)
+    }
+
     
     func doneButtonAction(year: Int, month: Int) {
         self.workExperienceTable.endEditing(true)
@@ -377,6 +359,7 @@ extension DMWorkExperienceVC
         }
         self.currentExperience = nil
         self.currentExperience = ExperienceModel()
+        self.currentExperience?.isFirstExperience = false
         self.currentExperience?.references.append(EmployeeReferenceModel())
         self.workExperienceTable.reloadData()
         self.workExperienceDetailTable.reloadData()
@@ -386,10 +369,24 @@ extension DMWorkExperienceVC
         self.view.endEditing(true)
         let tag = (sender as AnyObject).tag
         self.currentExperience?.references.remove(at: tag!)
+        self.workExperienceTable.reloadData()
         self.workExperienceDetailTable.reloadData()
         self.reSizeTableViewsAndScrollView()
     }
     func deleteExperience(_ sender: Any) {
+        self.view.endEditing(true)
+
+        if self.currentExperience?.isEditMode == true {
+            self.exprienceArray?.remove(self.currentExperience!)
+        }
+
+        self.currentExperience = nil
+        self.currentExperience = ExperienceModel()
+        self.currentExperience?.isFirstExperience = false
+        self.currentExperience?.references.append(EmployeeReferenceModel())
+        self.workExperienceDetailTable.reloadData()
+        self.reSizeTableViewsAndScrollView()
+
         
     }
     

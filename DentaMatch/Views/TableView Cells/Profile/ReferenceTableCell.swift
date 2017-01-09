@@ -9,12 +9,12 @@
 import UIKit
 
 class ReferenceTableCell: UITableViewCell {
-    @IBOutlet weak var referenceNameLabel: AnimatedPHTextField!
-    @IBOutlet weak var referenceMobileNoLabel: AnimatedPHTextField!
-    @IBOutlet weak var referenceEmailLabel: AnimatedPHTextField!
+    @IBOutlet weak var nameTextField: AnimatedPHTextField!
+    @IBOutlet weak var mobileNoTextField: AnimatedPHTextField!
+    @IBOutlet weak var emailTextField: AnimatedPHTextField!
     
-    @IBOutlet weak var referenceButtonFirst: UIButton!
-    @IBOutlet weak var referenceButtonSecond: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var addMoreReferenceButton: UIButton!
     @IBOutlet weak var referenceLabel: UILabel!
     @IBOutlet weak var addMoreButtonTopSpace: NSLayoutConstraint!
     

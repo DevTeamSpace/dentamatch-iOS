@@ -16,8 +16,18 @@ class DMWorkExperienceStart: DMBaseVC,UITableViewDataSource,UITableViewDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         experienceArray.addObjects(from: ["","",""])
+        self.title = "Work Experience"
         setUp()
         // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.changeNavBarAppearanceForProfiles()
+        
+        self.navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = nil
+        self.navigationController?.navigationBar.isTranslucent = false
+
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -48,9 +58,17 @@ class DMWorkExperienceStart: DMBaseVC,UITableViewDataSource,UITableViewDelegate,
         self.workExperienceTable.register(UINib(nibName: "AnimatedPHTableCell", bundle: nil), forCellReuseIdentifier: "AnimatedPHTableCell")
         self.workExperienceTable.register(UINib(nibName: "PhotoNameCell", bundle: nil), forCellReuseIdentifier: "PhotoNameCell")
         workExperienceTable.separatorStyle = .none
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.workExperienceTable.addGestureRecognizer(tap)
+
         self.workExperienceTable.reloadData()
         self.navigationItem.leftBarButtonItem = self.backBarButton()
-        self.changeNavBarAppearanceForWithoutHeader()
+
+    }
+
+    func dismissKeyboard() {
+        self.view.endEditing(true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,38 +78,45 @@ class DMWorkExperienceStart: DMBaseVC,UITableViewDataSource,UITableViewDelegate,
     //goToExperienceDetail
     @IBAction func nextButtonClicked(_ sender: Any) {
         
-        for i in 0..<self.experienceArray.count {
-            let text = self.experienceArray[i] as! String
-            if i == 0 {
-                if text.isEmptyField {
-                    self.makeToast(toastString: "Please enter job title")
-                    return
-                }
-            }else if i == 1{
-                if text.isEmptyField {
-                    self.makeToast(toastString: "Please enter experience")
-                    return
-                }
-            }else if i == 2 {
-                if text.isEmptyField {
-                    self.makeToast(toastString: "Please office name")
-                    return
-                }
-            }
-        }
+//        for i in 0..<self.experienceArray.count {
+//            let text = self.experienceArray[i] as! String
+//            if i == 0 {
+//                if text.isEmptyField {
+//                    self.makeToast(toastString: "Please enter job title")
+//                    return
+//                }
+//            }else if i == 1{
+//                if text.isEmptyField {
+//                    self.makeToast(toastString: "Please enter experience")
+//                    return
+//                }
+//            }else if i == 2 {
+//                if text.isEmptyField {
+//                    self.makeToast(toastString: "Please office name")
+//                    return
+//                }
+//            }
+//        }
 
         self.performSegue(withIdentifier: "goToExperienceDetail", sender: self)
 
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "goToExperienceDetail"
+        {
+            let destinationVC:DMWorkExperienceVC = segue.destination as! DMWorkExperienceVC
+            destinationVC.currentExperience?.jobTitle = self.experienceArray[0] as? String
+            destinationVC.currentExperience?.yearOfExperience = self.experienceArray[1] as? String
+            destinationVC.currentExperience?.officeName = self.experienceArray[2] as? String
+        }
     }
-    */
+
 
 }

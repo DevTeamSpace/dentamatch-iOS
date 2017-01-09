@@ -45,6 +45,21 @@ class DMYearExperiencePickerView: UIView,UIPickerViewDataSource,UIPickerViewDele
             let secondValue  = Int(list[1])
             self.yearExperiencePickerView.selectRow(firstValue!, inComponent: 0, animated: true)
             self.yearExperiencePickerView.selectRow(secondValue!, inComponent: 1, animated: true)
+        }else if list.count >= 1
+        {
+            if text.range(of: "year") != nil {
+                let firstValue  = Int(list[0])
+                self.yearExperiencePickerView.selectRow(firstValue!, inComponent: 0, animated: true)
+
+               print("year available")
+            }else{
+                let secondValue  = Int(list[1])
+                self.yearExperiencePickerView.selectRow(secondValue!, inComponent: 1, animated: true)
+
+                print("month available")
+
+            }
+            
         }
 
     }

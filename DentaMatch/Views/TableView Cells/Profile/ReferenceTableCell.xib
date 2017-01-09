@@ -11,6 +11,9 @@
         <array key="SF-UI-Text-Bold.otf">
             <string>SFUIText-Bold</string>
         </array>
+        <array key="SF-UI-Text-Regular.otf">
+            <string>SFUIText-Regular</string>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -22,46 +25,52 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="302"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IUj-A0-R8k" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Reference Name (Optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IUj-A0-R8k" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
                         <rect key="frame" x="20" y="36" width="280" height="55"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="55" id="mCr-Ja-ZNj"/>
                         </constraints>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits"/>
+                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                     </textField>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dh8-If-0Eh" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Reference Mobile No. (Optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dh8-If-0Eh" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
                         <rect key="frame" x="20" y="101" width="280" height="55"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="55" id="UdA-oZ-Ldk"/>
                         </constraints>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits"/>
+                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad"/>
                     </textField>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wrw-Yf-3tF" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Reference Email (Optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wrw-Yf-3tF" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
                         <rect key="frame" x="20" y="166" width="280" height="55"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="55" id="3La-0i-fQe"/>
                         </constraints>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits"/>
+                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                     </textField>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qe3-fQ-1fm">
                         <rect key="frame" x="33" y="230" width="233" height="17"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="17" id="Qq5-Gl-P0y"/>
                         </constraints>
-                        <state key="normal" title="Delete reference"/>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="14"/>
+                        <state key="normal" title="Delete reference">
+                            <color key="titleColor" red="0.99607843137254903" green="0.2196078431372549" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HHn-IK-l9A">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HHn-IK-l9A">
                         <rect key="frame" x="33" y="276" width="233" height="17"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="17" id="V19-oQ-U6Q"/>
                         </constraints>
-                        <state key="normal" title="+ add more reference"/>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="14"/>
+                        <state key="normal" title=" Add More Reference" image="addReferencePlus">
+                            <color key="titleColor" red="0.015686274509803921" green="0.4392156862745098" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reference " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fcg-wU-eMT">
                         <rect key="frame" x="20" y="10" width="280" height="16"/>
@@ -96,14 +105,17 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="addMoreButtonTopSpace" destination="4TD-Ub-Ci1" id="Mpa-29-Hxk"/>
-                <outlet property="referenceButtonFirst" destination="qe3-fQ-1fm" id="RwK-Ca-z93"/>
-                <outlet property="referenceButtonSecond" destination="HHn-IK-l9A" id="kcQ-Zu-8lq"/>
-                <outlet property="referenceEmailLabel" destination="Wrw-Yf-3tF" id="ZGX-7U-cjl"/>
+                <outlet property="addMoreReferenceButton" destination="HHn-IK-l9A" id="8d3-Pa-9aN"/>
+                <outlet property="deleteButton" destination="qe3-fQ-1fm" id="JIT-B7-Wh7"/>
+                <outlet property="emailTextField" destination="Wrw-Yf-3tF" id="PzL-46-NLP"/>
+                <outlet property="mobileNoTextField" destination="Dh8-If-0Eh" id="do2-TQ-Zam"/>
+                <outlet property="nameTextField" destination="IUj-A0-R8k" id="Cv9-BL-dW3"/>
                 <outlet property="referenceLabel" destination="Fcg-wU-eMT" id="e3L-JM-9PU"/>
-                <outlet property="referenceMobileNoLabel" destination="Dh8-If-0Eh" id="8iP-Zt-peQ"/>
-                <outlet property="referenceNameLabel" destination="IUj-A0-R8k" id="Ula-Iy-4jA"/>
             </connections>
             <point key="canvasLocation" x="25" y="-41.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="addReferencePlus" width="17" height="18"/>
+    </resources>
 </document>
