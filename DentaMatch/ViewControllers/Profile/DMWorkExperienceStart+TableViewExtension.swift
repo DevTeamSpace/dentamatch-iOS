@@ -86,7 +86,7 @@ extension DMWorkExperienceStart
                 cell.commonTextFiled.placeholder = FieldType.YearOfExperience.description
                 let yearViewObj = DMYearExperiencePickerView.loadExperiencePickerView(withText: self.experienceArray[indexPath.row] as! String)
                 yearViewObj.delegate = self
-                cell.commonTextFiled.inputAccessoryView = yearViewObj
+                cell.commonTextFiled.inputView = yearViewObj
 
                 
             case 2:

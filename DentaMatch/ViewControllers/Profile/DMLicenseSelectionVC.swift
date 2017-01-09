@@ -23,7 +23,11 @@ class DMLicenseSelectionVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,U
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        self.changeNavBarAppearanceForWithoutHeader()
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         
     }
@@ -58,34 +62,28 @@ class DMLicenseSelectionVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,U
         self.licenseTableView.reloadData()
         self.navigationItem.leftBarButtonItem = self.backBarButton()
 
-        self.changeNavBarAppearanceForWithoutHeader()
-        navSetUp()
-    }
-    func navSetUp()
-    {
-        
     }
     
     @IBAction func nextButtonClikced(_ sender: Any) {
-        if self.stateBoardImage == nil{
-            self.makeToast(toastString: "Please select state board certificate")
-            return
-        }
-        for i in 0..<(self.licenseArray?.count)! {
-            let text = self.licenseArray?[i] as! String
-            if i == 0 {
-                if text.isEmptyField {
-                    self.makeToast(toastString: "Please enter license no")
-                    return
-                }
-            }else{
-                if text.isEmptyField {
-                    self.makeToast(toastString: "Please enter state")
-                    return
-                }
-
-            }
-        }
+//        if self.stateBoardImage == nil{
+//            self.makeToast(toastString: "Please select state board certificate")
+//            return
+//        }
+//        for i in 0..<(self.licenseArray?.count)! {
+//            let text = self.licenseArray?[i] as! String
+//            if i == 0 {
+//                if text.isEmptyField {
+//                    self.makeToast(toastString: "Please enter license no")
+//                    return
+//                }
+//            }else{
+//                if text.isEmptyField {
+//                    self.makeToast(toastString: "Please enter state")
+//                    return
+//                }
+//
+//            }
+//        }
         self.performSegue(withIdentifier: "goToWorkExperience", sender: self)
     }
     

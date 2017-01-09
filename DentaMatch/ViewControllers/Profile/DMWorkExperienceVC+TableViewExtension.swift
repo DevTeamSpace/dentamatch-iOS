@@ -115,6 +115,7 @@ extension DMWorkExperienceVC
                 cell.referenceNameLabel.keyboardType = .default
                 cell.referenceMobileNoLabel.keyboardType = .numberPad
                 cell.referenceEmailLabel.keyboardType = .emailAddress
+                cell.referenceMobileNoLabel.addRightToolBarButton(title: "Done")
                 cell.referenceNameLabel.placeholder = FieldType.ReferenceName.description
                 cell.referenceMobileNoLabel.placeholder = FieldType.ReferenceMobileNo.description
                 cell.referenceEmailLabel.placeholder = FieldType.ReferenceEmail.description
@@ -198,7 +199,7 @@ extension DMWorkExperienceVC
 
                     let yearViewObj = DMYearExperiencePickerView.loadExperiencePickerView(withText: (self.currentExperience?.yearOfExperience!)!)
                     yearViewObj.delegate = self
-                    cell.commonTextFiled.inputAccessoryView = yearViewObj
+                    cell.commonTextFiled.inputView = yearViewObj
                     
                 case 2:
                     cell.commonTextFiled.placeholder = FieldType.OfficeName.description
@@ -326,7 +327,10 @@ extension DMWorkExperienceVC
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.resignFirstResponder()
     }
-    
+    func toolBarButtonPressed(position: Position) {
+        self.view.endEditing(true)
+    }
+
     
     func doneButtonAction(year: Int, month: Int) {
         self.workExperienceTable.endEditing(true)
