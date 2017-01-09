@@ -78,7 +78,7 @@ class DMRegisterMapsVC: DMBaseVC {
             self.reverseGeocodeCoordinate(coordinate: coordinate)
             DispatchQueue.main.async {
                 self.hideLoader()
-                self.mapView.camera = GMSCameraPosition(target: coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
+                self.mapView.animate(to: GMSCameraPosition(target: coordinate, zoom: 15, bearing: 0, viewingAngle: 0))
             }
         }
     }
@@ -148,7 +148,7 @@ class DMRegisterMapsVC: DMBaseVC {
         marker?.map = self.mapView
         marker?.appearAnimation = kGMSMarkerAnimationPop
         if isAnimatingToLocation {
-        self.mapView.camera = GMSCameraPosition(target: coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
+            self.mapView.animate(to: GMSCameraPosition(target: coordinate, zoom: 15, bearing: 0, viewingAngle: 0))
         }
     }
     
@@ -177,37 +177,7 @@ class DMRegisterMapsVC: DMBaseVC {
         guard let _ = self.currentLocation else {
             return
         }
-        self.mapView.camera = GMSCameraPosition(target: self.currentLocation!, zoom: 15, bearing: 0, viewingAngle: 0)
-    }
-}
-
-//MARK:- GoogleMaps Autocomplete Delegates
-extension DMRegisterMapsVC:GMSAutocompleteViewControllerDelegate,GMSMapViewDelegate {
-    
-    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-    }
-    
-    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
-        debugPrint(error.localizedDescription)
-    }
-    
-    func viewController(_ viewController: GMSAutocompleteViewController, didSelect prediction: GMSAutocompletePrediction) -> Bool {
-        return true
-    }
-    
-    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
-    }
-    
-    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
-        print(coordinate)
-        self.placeMarkerOnMap(coordinate: coordinate)
-        self.location.coordinateSelected = coordinate
-        reverseGeocodeCoordinate(coordinate: coordinate)
-    }
-    
-    func mapView(_ mapView: GMSMapView, didEndDragging marker: GMSMarker) {
-        self.location.coordinateSelected = marker.position
-        reverseGeocodeCoordinate(coordinate: marker.position)
+        self.mapView.animate(to: GMSCameraPosition(target: self.currentLocation!, zoom: 15, bearing: 0, viewingAngle: 0))
     }
 }
 
@@ -233,27 +203,5 @@ extension DMRegisterMapsVC:UISearchBarDelegate {
 //        autocompleteController.delegate = self
 //        self.present(autocompleteController, animated: true, completion: nil)
         placeAutocomplete(autoCompleteString: searchText as NSString)
-    }
-}
-
-extension DMRegisterMapsVC : UITableViewDataSource,UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return placesArray.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "GooglePlacesTableViewCell") as! GooglePlacesTableViewCell
-        let place = placesArray[indexPath.row]
-        cell.placeLabel.attributedText = place.attributedFullText
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let place = placesArray[indexPath.row]
-        getPlaceDetails(place)
-        self.placeSearchBar.text = place.attributedFullText.string
-        self.location.address = place.attributedFullText.string
-        self.placesTableView.isHidden = true
     }
 }

@@ -73,6 +73,7 @@ struct Constants {
         static let forgotPasswordAPI = Constants.API.apiURL("users/forgot-password")
         static let termsAndConditionsURL = Constants.API.apiURL("term-condition")
         static let privacyPolicyURL = Constants.API.apiURL("privacy-policy")
+        static let getJobTitleAPI = Constants.API.apiURL("list-jobtitle")
         
         static func apiURL(_ methodName: String) -> String {
             return BASE_URL + methodName

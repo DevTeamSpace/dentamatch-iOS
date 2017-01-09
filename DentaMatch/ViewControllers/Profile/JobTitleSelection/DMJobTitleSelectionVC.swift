@@ -25,6 +25,7 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        self.getJobsAPI()
     }
     
     override func viewWillAppear(_ animated: Bool) {

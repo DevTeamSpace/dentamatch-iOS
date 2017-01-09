@@ -71,5 +71,43 @@ class APIManager: NSObject {
             }
         }
     }
-
+    
+    class func apiMultipart(serviceName:String,parameters: [String:Any]?, completionHandler: @escaping (JSON?, NSError?) -> ()) {
+        
+        Alamofire.upload(multipartFormData: { (multipartFormData:MultipartFormData) in
+            for (key, value) in parameters! {
+                if key == "image" {
+                    multipartFormData.append(
+                        value as! Data,
+                        withName: "",
+                        fileName: "",
+                        mimeType: ""
+                    )
+                } else {
+                }
+            }
+        }, usingThreshold: 1, to: serviceName, method: .post, headers: nil) { (encodingResult:SessionManager.MultipartFormDataEncodingResult) in
+            
+            switch encodingResult {
+            case .success(let upload, _, _):
+                upload.responseJSON { response in
+                    if response.result.error != nil {
+                        completionHandler(nil,response.result.error as NSError?)
+                        return
+                    }
+                    print(response.result.value!)
+                    if let data = response.result.value {
+                        let json = JSON(data)
+                        completionHandler(json,nil)
+                    }
+                }
+                break
+                
+            case .failure(let encodingError):
+                print(encodingError)
+                completionHandler(nil,encodingError as NSError?)
+                break
+            }
+        }
+    }
 }
