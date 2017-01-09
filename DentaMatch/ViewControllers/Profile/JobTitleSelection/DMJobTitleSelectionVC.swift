@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate {
+class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate {
 
     @IBOutlet weak var addPhotoButton: UIButton!
     @IBOutlet weak var profileButton: ProfileImageButton!
@@ -18,6 +18,8 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate {
     @IBOutlet weak var profileHeaderView: UIView!
     
     var profileImage:UIImage?
+    var jobSelectionPickerTextField:UITextField!
+    var jobSelectionPickerView:JobSelectionPickerView!
     
     //MARK:- View LifeCycle
     override func viewDidLoad() {
@@ -32,9 +34,42 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate {
     
     //MARK:- Private Methods
     func setup() {
+        self.addJobSelectionPickerView()
+        currentJobTitleTextField.isUserInteractionEnabled = false
+        let jobSelectionView = UIView(frame: self.currentJobTitleTextField.frame)
+        self.view.addSubview(jobSelectionView)
+        jobSelectionView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(openJobSelectionPicker))
+        jobSelectionView.addGestureRecognizer(tap)
         self.profileButton.isUserInteractionEnabled = false
         UIView.makeTip(view: profileHeaderView, size: 8, x: profileHeaderView.frame.midX/2, y: profileHeaderView.frame.midY)
     }
+    
+    func openJobSelectionPicker() {
+        self.jobSelectionPickerTextField.becomeFirstResponder()
+    }
+    
+    func addJobSelectionPickerView(){
+        if(jobSelectionPickerTextField != nil){
+            jobSelectionPickerTextField.removeFromSuperview()
+        }
+        jobSelectionPickerTextField = UITextField(frame: CGRect.zero)
+        self.view.addSubview(jobSelectionPickerTextField)
+        jobSelectionPickerView = JobSelectionPickerView(frame: CGRect(x: 0, y: 0, width: 0, height: 200))
+        jobSelectionPickerView.selectionDelegate = self
+        jobSelectionPickerTextField.inputView = jobSelectionPickerView
+        jobSelectionPickerTextField.spellCheckingType = .no
+        jobSelectionPickerTextField.autocorrectionType = .no
+        jobSelectionPickerTextField.delegate = self
+        jobSelectionPickerView.backgroundColor = UIColor.white
+        jobSelectionPickerTextField.addRightToolBarButton(title: "Done")
+        jobSelectionPickerView.reloadAllComponents()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     
     func addPhoto() {
         self.cameraGalleryOptionActionSheet(title: "", message: "Please select", leftButtonText: "Camera", rightButtonText: "Gallery") { (isCameraButtonPressed, isGalleryButtonPressed, isCancelButtonPressed) in
@@ -100,10 +135,13 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate {
         }
     }
     
+    func toolBarButtonPressed(position: Position) {
+        self.view.endEditing(true)
+    }
+    
     //MARK:- UITextFieldDelegates
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        // TODO: Picker
         debugPrint("Open Picker")
-        return false
+        return true
     }
 }
