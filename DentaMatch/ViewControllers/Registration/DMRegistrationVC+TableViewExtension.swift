@@ -31,7 +31,6 @@ extension DMRegistrationVC: UITableViewDataSource, UITableViewDelegate {
             
         }
         
-        cell.registerButton.addTarget(self, action: #selector(registerButtonPressed), for: .touchUpInside)
         cell.acceptTermsButton.addTarget(self, action: #selector(acceptTermsButtonPressed), for: .touchUpInside)
         return cell
     }

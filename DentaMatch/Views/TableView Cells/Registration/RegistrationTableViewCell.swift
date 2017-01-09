@@ -18,7 +18,6 @@ class RegistrationTableViewCell: UITableViewCell {
     @IBOutlet weak var newPasswordTextField: AnimatedLeftViewPHTextField!
     @IBOutlet weak var preferredLocationTextField: AnimatedLeftViewPHTextField!
     @IBOutlet weak var helpHintLabel: UILabel!
-    @IBOutlet weak var registerButton: UIButton!
     
     var showButton:UIButton!
     

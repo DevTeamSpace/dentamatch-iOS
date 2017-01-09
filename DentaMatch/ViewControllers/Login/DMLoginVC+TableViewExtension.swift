@@ -18,7 +18,6 @@ extension DMLoginVC:UITableViewDataSource,UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LoginTableViewCell") as! LoginTableViewCell
         cell.emailTextField.delegate = self
         cell.passwordTextField.delegate = self
-        cell.loginButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
         cell.forgotPasswordButton.addTarget(self, action: #selector(forgotPasswordButtonPressed), for: .touchUpInside)
         return cell
     }

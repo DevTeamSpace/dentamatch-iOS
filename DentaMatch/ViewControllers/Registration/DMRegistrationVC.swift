@@ -109,7 +109,8 @@ class DMRegistrationVC: DMBaseVC {
     }
     
     //MARK:- IBActions
-    func registerButtonPressed(sender:UIButton) {
+    
+    @IBAction func registerButtonPressed(_ sender: Any) {
         dismissKeyboard()
         registrationParams[Constants.ServerKey.deviceId] = "test"
         registrationParams[Constants.ServerKey.deviceType] = "iOS"
@@ -118,6 +119,16 @@ class DMRegistrationVC: DMBaseVC {
             self.registrationAPI(params:self.registrationParams)
         }
     }
+    
+//    func registerButtonPressed(sender:UIButton) {
+//        dismissKeyboard()
+//        registrationParams[Constants.ServerKey.deviceId] = "test"
+//        registrationParams[Constants.ServerKey.deviceType] = "iOS"
+//        registrationParams[Constants.ServerKey.deviceToken] = UserDefaultsManager.sharedInstance.deviceToken
+//        if validateFields() {
+//            self.registrationAPI(params:self.registrationParams)
+//        }
+//    }
     
     func acceptTermsButtonPressed(sender:UIButton) {
         self.termsAndConditionsAccepted = self.termsAndConditionsAccepted ? false:true

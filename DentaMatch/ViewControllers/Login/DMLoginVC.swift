@@ -93,7 +93,7 @@ class DMLoginVC: DMBaseVC {
         self.navigationController?.pushViewController(forgotPasswordVC, animated: true)
     }
     
-    func loginButtonPressed() {
+    @IBAction func loginButtonPressed(_ sender: Any) {
         self.view.endEditing(true)
         loginParams[Constants.ServerKey.deviceId] = "test"
         loginParams[Constants.ServerKey.deviceType] = "iOS"
