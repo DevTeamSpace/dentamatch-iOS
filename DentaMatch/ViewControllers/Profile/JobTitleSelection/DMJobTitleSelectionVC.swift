@@ -20,12 +20,15 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
     var profileImage:UIImage?
     var jobSelectionPickerTextField:UITextField!
     var jobSelectionPickerView:JobSelectionPickerView!
+    var jobTitles = [JobTitle]()
+    var selectedJobTitle:JobTitle?
     
     //MARK:- View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
         self.getJobsAPI()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,9 +36,14 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
+    func makeTip() {
+        UIView.makeTip(view: profileHeaderView, size: 8, x: profileHeaderView.frame.midX/2, y: profileHeaderView.frame.midY)
+    }
+    
     //MARK:- Private Methods
     func setup() {
-        self.addJobSelectionPickerView()
+        self.addJobSelectionPickerViewTextField()
+        
         currentJobTitleTextField.isUserInteractionEnabled = false
         let jobSelectionView = UIView(frame: self.currentJobTitleTextField.frame)
         self.view.addSubview(jobSelectionView)
@@ -43,28 +51,24 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
         let tap = UITapGestureRecognizer(target: self, action: #selector(openJobSelectionPicker))
         jobSelectionView.addGestureRecognizer(tap)
         self.profileButton.isUserInteractionEnabled = false
-        UIView.makeTip(view: profileHeaderView, size: 8, x: profileHeaderView.frame.midX/2, y: profileHeaderView.frame.midY)
+        self.perform(#selector(makeTip), with: nil, afterDelay: 0.2)
     }
     
     func openJobSelectionPicker() {
         self.jobSelectionPickerTextField.becomeFirstResponder()
     }
     
-    func addJobSelectionPickerView(){
+    func addJobSelectionPickerViewTextField(){
         if(jobSelectionPickerTextField != nil){
             jobSelectionPickerTextField.removeFromSuperview()
         }
+        
         jobSelectionPickerTextField = UITextField(frame: CGRect.zero)
         self.view.addSubview(jobSelectionPickerTextField)
-        jobSelectionPickerView = JobSelectionPickerView(frame: CGRect(x: 0, y: 0, width: 0, height: 200))
-        jobSelectionPickerView.selectionDelegate = self
-        jobSelectionPickerTextField.inputView = jobSelectionPickerView
         jobSelectionPickerTextField.spellCheckingType = .no
         jobSelectionPickerTextField.autocorrectionType = .no
         jobSelectionPickerTextField.delegate = self
-        jobSelectionPickerView.backgroundColor = UIColor.white
-        jobSelectionPickerTextField.addRightToolBarButton(title: "Done")
-        jobSelectionPickerView.reloadAllComponents()
+       
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -124,8 +128,16 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {
-        let licenceSelectionVC = UIStoryboard.profileStoryBoard().instantiateViewController(type: DMLicenseSelectionVC.self)!
-        self.navigationController?.pushViewController(licenceSelectionVC, animated: true)
+        if profileImage != nil {
+            if selectedJobTitle != nil {
+                let licenceSelectionVC = UIStoryboard.profileStoryBoard().instantiateViewController(type: DMLicenseSelectionVC.self)!
+                self.navigationController?.pushViewController(licenceSelectionVC, animated: true)
+            } else {
+                self.makeToast(toastString: "Please select current job title")
+            }
+        } else{
+            self.makeToast(toastString: "Please select profile image")
+        }
     }
     
     @IBAction func notNowButtonPressed(_ sender: Any) {
@@ -136,6 +148,7 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
         }
     }
     
+    //MARK:- ToolBarButton Delegate
     func toolBarButtonPressed(position: Position) {
         self.view.endEditing(true)
     }
@@ -143,6 +156,12 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
     //MARK:- UITextFieldDelegates
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         debugPrint("Open Picker")
+        currentJobTitleTextField.layer.borderColor = Constants.Color.textFieldColorSelected.cgColor
+        return true
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        currentJobTitleTextField.layer.borderColor = Constants.Color.textFieldBorderColor.cgColor
         return true
     }
 }

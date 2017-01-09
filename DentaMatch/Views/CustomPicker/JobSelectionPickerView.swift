@@ -10,66 +10,58 @@ import UIKit
 
 @objc protocol JobSelectionPickerViewDelegate {
     
-    func numberOfComponents(in jobSelectionPickerView: UIPickerView) -> Int
-    func pickerView(_ jobSelectionPickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
-    func pickerView(_ jobSelectionPickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
-    func pickerView(_ jobSelectionPickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+//    func numberOfComponents(in jobSelectionPickerView: UIPickerView) -> Int
+//    func pickerView(_ jobSelectionPickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
+//    func pickerView(_ jobSelectionPickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
+//    func pickerView(_ jobSelectionPickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     
+    func jobPickerDoneButtonAction(job:JobTitle?)
+    func jobPickerCancelButtonAction()
+
 }
 
-class JobSelectionPickerView: UIPickerView,UIPickerViewDataSource,UIPickerViewDelegate {
+class JobSelectionPickerView: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
+
+    @IBOutlet weak var toolBar: UIToolbar!
+    @IBOutlet weak var pickerView: UIPickerView!
     
-    var selectionDelegate:JobSelectionPickerViewDelegate?
+    var jobTitles = [JobTitle]()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.showsSelectionIndicator = true
-        self.dataSource = self
-        self.delegate = self
+    var delegate:JobSelectionPickerViewDelegate?
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
     }
+
+    class func loadJobSelectionView(withJobTitles:[JobTitle]) ->  JobSelectionPickerView{
+        guard let instance = Bundle.main.loadNibNamed("JobSelectionPickerView", owner: self)?.first as? JobSelectionPickerView else {
+            fatalError("Could not instantiate from nib: DMYearExperiencePickerView")
+        }
+        instance.setup(jobTitles: withJobTitles)
+        return instance
+    }
+
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    func setup(jobTitles:[JobTitle]) {
+        self.jobTitles = jobTitles
+        self.pickerView.reloadAllComponents()
     }
     
     //MARK:- Picker View Datasource/Delegates
-    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        
-        if let pickerView = pickerView as? JobSelectionPickerView {
-            if let delegate = selectionDelegate {
-                    return delegate.numberOfComponents(in: pickerView)
-            }
-        }
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if let pickerView = pickerView as? JobSelectionPickerView {
-            if let delegate = selectionDelegate {
-                return delegate.pickerView(pickerView, numberOfRowsInComponent: component)
-            }
-        }
-        return 0
+        return jobTitles.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        
-        if let pickerView = pickerView as? JobSelectionPickerView {
-            if let delegate = selectionDelegate {
-                return delegate.pickerView(pickerView, titleForRow: row, forComponent: component)
-            }
-        }
-        return ""
+        let jobTitle = jobTitles[row]
+        return jobTitle.jobTitle
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-        if let pickerView = pickerView as? JobSelectionPickerView {
-            if let delegate = selectionDelegate {
-                delegate.pickerView(pickerView, didSelectRow: row, inComponent: component)
-            }
-        }
     }
 
     /*
@@ -79,5 +71,15 @@ class JobSelectionPickerView: UIPickerView,UIPickerViewDataSource,UIPickerViewDe
         // Drawing code
     }
     */
+    @IBAction func cancelButtonPressed(_ sender: Any) {
+        if let delegate = delegate {
+            delegate.jobPickerCancelButtonAction()
+        }
+    }
+    @IBAction func doneButtonPressed(_ sender: Any) {
+        if let delegate = delegate {
+            delegate.jobPickerDoneButtonAction(job: jobTitles[self.pickerView.selectedRow(inComponent: 0)])
+        }
+    }
 
 }

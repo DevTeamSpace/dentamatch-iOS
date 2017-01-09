@@ -79,6 +79,8 @@
 		E587D2D51E2357A9006B7F06 /* DMJobTitleSelectionVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2D41E2357A9006B7F06 /* DMJobTitleSelectionVC+Services.swift */; };
 		E587D2D71E236B84006B7F06 /* DMRegisterMapsVC+GoogleMapsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2D61E236B84006B7F06 /* DMRegisterMapsVC+GoogleMapsExtension.swift */; };
 		E587D2D91E236EAE006B7F06 /* DMRegisterMapsVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2D81E236EAE006B7F06 /* DMRegisterMapsVC+TableViewExtension.swift */; };
+		E587D2DB1E2395B7006B7F06 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2DA1E2395B7006B7F06 /* User.swift */; };
+		E587D2DD1E2396E9006B7F06 /* JobSelectionPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E587D2DC1E2396E9006B7F06 /* JobSelectionPickerView.xib */; };
 		E590299F1DED25C400151E9B /* AppDelegate+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590299E1DED25C400151E9B /* AppDelegate+Notifications.swift */; };
 		E59029A81DED2C7A00151E9B /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59029A31DED2C7A00151E9B /* APIManager.swift */; };
 		E59029A91DED2C7A00151E9B /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59029A51DED2C7A00151E9B /* LogManager.swift */; };
@@ -215,6 +217,8 @@
 		E587D2D41E2357A9006B7F06 /* DMJobTitleSelectionVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMJobTitleSelectionVC+Services.swift"; sourceTree = "<group>"; };
 		E587D2D61E236B84006B7F06 /* DMRegisterMapsVC+GoogleMapsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMRegisterMapsVC+GoogleMapsExtension.swift"; sourceTree = "<group>"; };
 		E587D2D81E236EAE006B7F06 /* DMRegisterMapsVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMRegisterMapsVC+TableViewExtension.swift"; sourceTree = "<group>"; };
+		E587D2DA1E2395B7006B7F06 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E587D2DC1E2396E9006B7F06 /* JobSelectionPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobSelectionPickerView.xib; sourceTree = "<group>"; };
 		E590299E1DED25C400151E9B /* AppDelegate+Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Notifications.swift"; sourceTree = "<group>"; };
 		E59029A31DED2C7A00151E9B /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		E59029A51DED2C7A00151E9B /* LogManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
@@ -315,6 +319,7 @@
 				5A1E2A171E1E479B0055D913 /* ExperienceModel.swift */,
 				5A1E2A191E1E47C90055D913 /* EmployeeReferenceModel.swift */,
 				E587D2D21E234CDF006B7F06 /* JobTitle.swift */,
+				E587D2DA1E2395B7006B7F06 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -632,6 +637,7 @@
 			isa = PBXGroup;
 			children = (
 				E587D2CB1E23362C006B7F06 /* JobSelectionPickerView.swift */,
+				E587D2DC1E2396E9006B7F06 /* JobSelectionPickerView.xib */,
 			);
 			path = CustomPicker;
 			sourceTree = "<group>";
@@ -942,6 +948,7 @@
 				E597E5791E151A99001DDA78 /* SF-UI-Display-Medium.otf in Resources */,
 				E58654FF1DEFEF7F006FEB2D /* Environments.plist in Resources */,
 				E597E5891E151A99001DDA78 /* SF-UI-Text-SemiboldItalic.otf in Resources */,
+				E587D2DD1E2396E9006B7F06 /* JobSelectionPickerView.xib in Resources */,
 				E597E5821E151A99001DDA78 /* SF-UI-Text-Light.otf in Resources */,
 				E56E45C61DAE07C200AD4559 /* LaunchScreen.storyboard in Resources */,
 				E597E5761E151A99001DDA78 /* SF-UI-Display-Bold.otf in Resources */,
@@ -1086,6 +1093,7 @@
 				E55462EC1DAE47F5004163B2 /* AppDelegate.swift in Sources */,
 				E587D2CC1E23362C006B7F06 /* JobSelectionPickerView.swift in Sources */,
 				E5F47C941E0035B90051C4A1 /* UIImage+Rotations.swift in Sources */,
+				E587D2DB1E2395B7006B7F06 /* User.swift in Sources */,
 				5A1E2A1A1E1E47C90055D913 /* EmployeeReferenceModel.swift in Sources */,
 				E50B3F501E194CD7004C5F32 /* RegistrationTableViewCell.swift in Sources */,
 				5A1E2A1C1E1E77790055D913 /* ExperienceTableCell.swift in Sources */,

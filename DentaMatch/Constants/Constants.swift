@@ -26,6 +26,20 @@ struct Constants {
         return ConfigurationManager.sharedManager.APIEndpoint()
     }
     
+    struct Heading {
+        static let heading1 = "Find Jobs For You"
+        static let heading2 =  "Set Your Availability"
+        static let heading3 = "Get Quick Assignments"
+        static let heading4 =  "Create \nYour Profile"
+    }
+    
+    struct SubHeading {
+        static let subHeading1 = "Quis nostrud exercitullamco laboris nisi ut aliquip consequat.quis nostrud exercitullamco laboris nisi ut."
+        static let subHeading2 = "Quis nostrud exercitullamco laboris nisi ut aliquip consequat.quis nostrud exercitullamco laboris nisi ut."
+        static let subHeading3 = "Quis nostrud exercitullamco laboris nisi ut aliquip consequat.quis nostrud exercitullamco laboris nisi ut."
+        static let subHeading4 = "Quis nostrud exercitullamco laboris nisi ut aliquip consequat.quis nostrud exercitullamco laboris nisi ut."
+    }
+    
     struct Color {
         
         static let toolBarColor = UIColor.color(withHexCode: "10193e")
@@ -99,6 +113,7 @@ struct Constants {
         static let userDetails = "userDetails"
         static let result = "result"
         static let accessToken = "userToken"
+        static let skillList = "skillList"
     }
     
     //MARK:- UserDefault Keys
