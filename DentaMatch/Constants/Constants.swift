@@ -28,7 +28,7 @@ struct Constants {
     
     struct Color {
         
-        static let toolBarColor = UIColor.color(withHexCode: "EF000C")
+        static let toolBarColor = UIColor.color(withHexCode: "10193e")
         
         static let textFieldTextColor = UIColor.color(withHexCode: "383838")
         static let textFieldLeftViewModeColor = UIColor.color(withHexCode: "aaafb8")
