@@ -8,11 +8,20 @@
 
 import UIKit
 
-class DMCertificationsVC: UIViewController {
+class DMCertificationsVC: DMBaseVC {
 
+    enum Certifications:Int {
+        case profileHeader
+        case certifications
+    }
+    
+    @IBOutlet weak var certificationsTableView: UITableView!
+    
+    let profileProgress:CGFloat = 0.90
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setup()
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -23,7 +32,9 @@ class DMCertificationsVC: UIViewController {
     }
     
     func setup() {
-    
+        self.certificationsTableView.separatorColor = UIColor.clear
+        self.certificationsTableView.register(UINib(nibName: "PhotoNameCell", bundle: nil), forCellReuseIdentifier: "PhotoNameCell")
+        self.certificationsTableView.register(UINib(nibName: "CertificationsCell", bundle: nil), forCellReuseIdentifier: "CertificationsCell")        
     }
 
     override func didReceiveMemoryWarning() {

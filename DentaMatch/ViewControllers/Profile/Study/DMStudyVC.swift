@@ -10,11 +10,16 @@ import UIKit
 
 class DMStudyVC: UIViewController {
 
+    enum Study:Int {
+        case profileHeader
+        case school
+    }
+    
     @IBOutlet weak var studyTableView: UITableView!
     
     let profileProgress:CGFloat = 0.50
     var school = [[String:AnyObject]()]
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()

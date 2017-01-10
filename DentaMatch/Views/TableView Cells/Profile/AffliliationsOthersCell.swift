@@ -19,6 +19,8 @@ class AffliliationsOthersCell: UITableViewCell {
         self.otherAffiliationTextView.layer.cornerRadius = 5.0
         self.otherAffiliationTextView.layer.borderWidth = 1.0
         self.otherAffiliationTextView.layer.borderColor = Constants.Color.textFieldBorderColor.cgColor
+        self.otherAffiliationTextView.textContainer.lineFragmentPadding = 12.0
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
