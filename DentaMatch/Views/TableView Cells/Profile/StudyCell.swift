@@ -14,8 +14,11 @@ class StudyCell: UITableViewCell {
     @IBOutlet weak var yearOfGraduationTextField: ProfileTextField!
     @IBOutlet weak var schoolNameTextField: ProfileTextField!
     override func awakeFromNib() {
-        super.awakeFromNib()
         // Initialization code
+        super.awakeFromNib()
+        self.layoutMargins = UIEdgeInsets.zero
+        self.preservesSuperviewLayoutMargins = false
+        self.clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
