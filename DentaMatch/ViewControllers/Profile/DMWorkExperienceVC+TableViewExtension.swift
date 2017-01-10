@@ -241,6 +241,7 @@ extension DMWorkExperienceVC
             self.currentExperience = nil
             self.currentExperience = self.exprienceArray?[indexPath.row] as? ExperienceModel
             self.currentExperience?.isEditMode = true
+            self.workExperienceTable.reloadData()
             self.workExperienceDetailTable.reloadData()
             self.reSizeTableViewsAndScrollView()
         }
@@ -390,6 +391,7 @@ extension DMWorkExperienceVC
         self.currentExperience = ExperienceModel()
         self.currentExperience?.isFirstExperience = false
         self.currentExperience?.references.append(EmployeeReferenceModel())
+        self.workExperienceTable.reloadData()
         self.workExperienceDetailTable.reloadData()
         self.reSizeTableViewsAndScrollView()
 

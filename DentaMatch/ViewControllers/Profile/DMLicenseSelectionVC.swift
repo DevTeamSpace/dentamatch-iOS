@@ -281,7 +281,7 @@ class DMLicenseSelectionVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,U
     
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ0123456789")
+        let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ0123456789-")
         if string.rangeOfCharacter(from: characterset.inverted) != nil {
             print("string contains special characters")
             return false

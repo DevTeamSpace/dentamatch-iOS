@@ -99,7 +99,8 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
         self.navigationItem.leftBarButtonItem = self.backBarButton()
         self.workExperienceDetailTable.separatorStyle = .none
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        self.mainScrollView.addGestureRecognizer(tap)
+        self.workExperienceDetailTable.addGestureRecognizer(tap)
+//        self.mainScrollView.isExclusiveTouch = true
 
         self.workExperienceDetailTable.reloadData()
         self.changeNavBarAppearanceForProfiles()
