@@ -33,6 +33,7 @@ extension DMLoginVC:UITextFieldDelegate {
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         if let textField = textField as? AnimatedLeftViewPHTextField {
+            textField.text = textField.text!.trim()
             textField.layer.borderColor = Constants.Color.textFieldBorderColor.cgColor
             textField.leftViewLabel?.textColor = Constants.Color.textFieldLeftViewModeColor
         }

@@ -87,6 +87,12 @@
 		E587D2F61E24C0B0006B7F06 /* DMSkillsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2F51E24C0B0006B7F06 /* DMSkillsVC.swift */; };
 		E587D2F81E24C0C0006B7F06 /* DMSelectSkillsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2F71E24C0C0006B7F06 /* DMSelectSkillsVC.swift */; };
 		E587D2FA1E24C102006B7F06 /* DMStudyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2F91E24C102006B7F06 /* DMStudyVC.swift */; };
+		E587D2FD1E24E2E1006B7F06 /* StudyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2FB1E24E2E1006B7F06 /* StudyCell.swift */; };
+		E587D2FE1E24E2E1006B7F06 /* StudyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E587D2FC1E24E2E1006B7F06 /* StudyCell.xib */; };
+		E587D3001E24E5C1006B7F06 /* ProfileTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2FF1E24E5C1006B7F06 /* ProfileTextField.swift */; };
+		E587D3021E24E97B006B7F06 /* DMStudy+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D3011E24E97B006B7F06 /* DMStudy+TableViewExtension.swift */; };
+		E587D3051E24E9F4006B7F06 /* SectionHeadingTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D3031E24E9F4006B7F06 /* SectionHeadingTableCell.swift */; };
+		E587D3061E24E9F4006B7F06 /* SectionHeadingTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E587D3041E24E9F4006B7F06 /* SectionHeadingTableCell.xib */; };
 		E590299F1DED25C400151E9B /* AppDelegate+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590299E1DED25C400151E9B /* AppDelegate+Notifications.swift */; };
 		E59029A81DED2C7A00151E9B /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59029A31DED2C7A00151E9B /* APIManager.swift */; };
 		E59029A91DED2C7A00151E9B /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59029A51DED2C7A00151E9B /* LogManager.swift */; };
@@ -231,6 +237,12 @@
 		E587D2F51E24C0B0006B7F06 /* DMSkillsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMSkillsVC.swift; sourceTree = "<group>"; };
 		E587D2F71E24C0C0006B7F06 /* DMSelectSkillsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMSelectSkillsVC.swift; sourceTree = "<group>"; };
 		E587D2F91E24C102006B7F06 /* DMStudyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMStudyVC.swift; sourceTree = "<group>"; };
+		E587D2FB1E24E2E1006B7F06 /* StudyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyCell.swift; sourceTree = "<group>"; };
+		E587D2FC1E24E2E1006B7F06 /* StudyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudyCell.xib; sourceTree = "<group>"; };
+		E587D2FF1E24E5C1006B7F06 /* ProfileTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTextField.swift; sourceTree = "<group>"; };
+		E587D3011E24E97B006B7F06 /* DMStudy+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMStudy+TableViewExtension.swift"; sourceTree = "<group>"; };
+		E587D3031E24E9F4006B7F06 /* SectionHeadingTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHeadingTableCell.swift; sourceTree = "<group>"; };
+		E587D3041E24E9F4006B7F06 /* SectionHeadingTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionHeadingTableCell.xib; sourceTree = "<group>"; };
 		E590299E1DED25C400151E9B /* AppDelegate+Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Notifications.swift"; sourceTree = "<group>"; };
 		E59029A31DED2C7A00151E9B /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		E59029A51DED2C7A00151E9B /* LogManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
@@ -405,6 +417,10 @@
 				5A1E2A1B1E1E77790055D913 /* ExperienceTableCell.swift */,
 				5A1E2A1D1E1EBC1D0055D913 /* AddDeleteExperienceCell.swift */,
 				5A1E2A1E1E1EBC1D0055D913 /* AddDeleteExperienceCell.xib */,
+				E587D2FB1E24E2E1006B7F06 /* StudyCell.swift */,
+				E587D2FC1E24E2E1006B7F06 /* StudyCell.xib */,
+				E587D3031E24E9F4006B7F06 /* SectionHeadingTableCell.swift */,
+				E587D3041E24E9F4006B7F06 /* SectionHeadingTableCell.xib */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -695,6 +711,7 @@
 			isa = PBXGroup;
 			children = (
 				E587D2F91E24C102006B7F06 /* DMStudyVC.swift */,
+				E587D3011E24E97B006B7F06 /* DMStudy+TableViewExtension.swift */,
 			);
 			path = Study;
 			sourceTree = "<group>";
@@ -821,6 +838,7 @@
 			children = (
 				E5A3E8ED1E160ABF00B10937 /* AnimatedLeftViewPHTextField.swift */,
 				E50B3F521E194EDD004C5F32 /* AnimatedPHTextField.swift */,
+				E587D2FF1E24E5C1006B7F06 /* ProfileTextField.swift */,
 			);
 			path = AnimatedTextField;
 			sourceTree = "<group>";
@@ -1004,6 +1022,7 @@
 				E597E57C1E151A99001DDA78 /* SF-UI-Display-Thin.otf in Resources */,
 				5A1E2A201E1EBC1D0055D913 /* AddDeleteExperienceCell.xib in Resources */,
 				E597E5781E151A99001DDA78 /* SF-UI-Display-Light.otf in Resources */,
+				E587D3061E24E9F4006B7F06 /* SectionHeadingTableCell.xib in Resources */,
 				E597E5831E151A99001DDA78 /* SF-UI-Text-LightItalic.otf in Resources */,
 				E597E57D1E151A99001DDA78 /* SF-UI-Display-Ultralight.otf in Resources */,
 				5AE5F5171E1A3470006C328A /* PhotoNameCell.xib in Resources */,
@@ -1021,6 +1040,7 @@
 				E50B3F511E194CD7004C5F32 /* RegistrationTableViewCell.xib in Resources */,
 				E597E5771E151A99001DDA78 /* SF-UI-Display-Heavy.otf in Resources */,
 				E597E55B1E150638001DDA78 /* dentamatch.ttf in Resources */,
+				E587D2FE1E24E2E1006B7F06 /* StudyCell.xib in Resources */,
 				5AE5F51B1E1A5139006C328A /* PhotoCell.xib in Resources */,
 				E597E5811E151A99001DDA78 /* SF-UI-Text-HeavyItalic.otf in Resources */,
 				5AE5F50A1E16563D006C328A /* Profile.storyboard in Resources */,
@@ -1111,11 +1131,13 @@
 				E587D2EC1E24C021006B7F06 /* DMWorkExperienceStart.swift in Sources */,
 				E50B3F401E18E8D2004C5F32 /* ZGradientLayer.swift in Sources */,
 				E594BEA21E1E014F00310AE5 /* DMLoginVC.swift in Sources */,
+				E587D2FD1E24E2E1006B7F06 /* StudyCell.swift in Sources */,
 				E50B3F421E18E8D2004C5F32 /* ZProgressHUD.swift in Sources */,
 				E587D2F41E24C095006B7F06 /* DMAffiliationsVC.swift in Sources */,
 				E594BEA61E1E07C900310AE5 /* DMLoginVC+TableViewExtension.swift in Sources */,
 				E597E58F1E151CFF001DDA78 /* FloatLabelTextField.swift in Sources */,
 				E50B3F3E1E18E8D2004C5F32 /* ZActivityIndicatorView.swift in Sources */,
+				E587D3051E24E9F4006B7F06 /* SectionHeadingTableCell.swift in Sources */,
 				E59029A91DED2C7A00151E9B /* LogManager.swift in Sources */,
 				E5C5F31F1DC1C6DD001A5A3F /* GooglePlacesTableViewCell.swift in Sources */,
 				5A3FD0751E1CC79700360B3C /* DMProfileHeaderView.swift in Sources */,
@@ -1161,6 +1183,7 @@
 				E594BEA41E1E076D00310AE5 /* DMLoginVC+TextFieldExtension.swift in Sources */,
 				E55462EC1DAE47F5004163B2 /* AppDelegate.swift in Sources */,
 				E587D2CC1E23362C006B7F06 /* JobSelectionPickerView.swift in Sources */,
+				E587D3001E24E5C1006B7F06 /* ProfileTextField.swift in Sources */,
 				E5F47C941E0035B90051C4A1 /* UIImage+Rotations.swift in Sources */,
 				E587D2DB1E2395B7006B7F06 /* User.swift in Sources */,
 				5A1E2A1A1E1E47C90055D913 /* EmployeeReferenceModel.swift in Sources */,
@@ -1182,6 +1205,7 @@
 				E594BEA81E1E07F500310AE5 /* DMLoginVC+Services.swift in Sources */,
 				E56F78561E1F602200F07814 /* DMForgotPasswordVC+Services.swift in Sources */,
 				E587D2FA1E24C102006B7F06 /* DMStudyVC.swift in Sources */,
+				E587D3021E24E97B006B7F06 /* DMStudy+TableViewExtension.swift in Sources */,
 				E5AE2AF11DAF844C00C008BD /* DMOnboardingVC.swift in Sources */,
 				E55462F31DAE4A5D004163B2 /* Constants.swift in Sources */,
 				5AE5F5161E1A3470006C328A /* PhotoNameCell.swift in Sources */,
