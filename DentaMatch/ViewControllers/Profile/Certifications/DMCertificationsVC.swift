@@ -21,6 +21,9 @@ class DMCertificationsVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func nextButtonClicked(_ sender: Any) {
+        self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToExecutiveSummaryVC, sender: self)
+    }
 
     /*
     // MARK: - Navigation
