@@ -76,6 +76,14 @@ struct Constants {
             static let registrationNav = "RegistrationNAV"
             static let profileNav  = "ProfileNAV"
         }
+        
+        struct SegueIdentifier {
+            static let goToStudyVC = "goToStudyVC"
+            static let goToSkillsVC = "goToSkillsVC"
+            static let goToAffiliationsVC = "goToAffiliationsVC"
+            static let goToCertificationsVC = "goToCertificationsVC"
+            static let goToExecutiveSummaryVC = "goToExecutiveSummaryVC"
+        }
     }
     
     //MARK:- API Urls

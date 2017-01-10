@@ -14,10 +14,6 @@
 		5A1E2A1C1E1E77790055D913 /* ExperienceTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1E2A1B1E1E77790055D913 /* ExperienceTableCell.swift */; };
 		5A1E2A1F1E1EBC1D0055D913 /* AddDeleteExperienceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1E2A1D1E1EBC1D0055D913 /* AddDeleteExperienceCell.swift */; };
 		5A1E2A201E1EBC1D0055D913 /* AddDeleteExperienceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A1E2A1E1E1EBC1D0055D913 /* AddDeleteExperienceCell.xib */; };
-		5A2CF6841E1D0D9A008C5336 /* DMWorkExperienceVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2CF6831E1D0D9A008C5336 /* DMWorkExperienceVC+TableViewExtension.swift */; };
-		5A2CF6861E1D1018008C5336 /* DMWorkExperienceStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2CF6851E1D1018008C5336 /* DMWorkExperienceStart.swift */; };
-		5A2CF6881E1D1210008C5336 /* DMWorkExperienceStart+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2CF6871E1D1210008C5336 /* DMWorkExperienceStart+TableViewExtension.swift */; };
-		5A3FD06A1E1BA7F600360B3C /* DMWorkExperienceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3FD0691E1BA7F600360B3C /* DMWorkExperienceVC.swift */; };
 		5A3FD06E1E1BB0A000360B3C /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3FD06D1E1BB0A000360B3C /* UINavigationBar+Awesome.m */; };
 		5A3FD0711E1C0C1200360B3C /* ReferenceTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3FD06F1E1C0C1200360B3C /* ReferenceTableCell.swift */; };
 		5A3FD0721E1C0C1200360B3C /* ReferenceTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A3FD0701E1C0C1200360B3C /* ReferenceTableCell.xib */; };
@@ -26,7 +22,6 @@
 		5AB876501E249B62007818D6 /* ExperiencePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB8764F1E249B62007818D6 /* ExperiencePickerView.swift */; };
 		5AB876521E249C0A007818D6 /* ExperiencePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AB876511E249C0A007818D6 /* ExperiencePickerView.xib */; };
 		5AE5F50A1E16563D006C328A /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AE5F5091E16563D006C328A /* Profile.storyboard */; };
-		5AE5F50F1E165F09006C328A /* DMLicenseSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE5F50E1E165F09006C328A /* DMLicenseSelectionVC.swift */; };
 		5AE5F5161E1A3470006C328A /* PhotoNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE5F5141E1A3470006C328A /* PhotoNameCell.swift */; };
 		5AE5F5171E1A3470006C328A /* PhotoNameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AE5F5151E1A3470006C328A /* PhotoNameCell.xib */; };
 		5AE5F51A1E1A5139006C328A /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE5F5181E1A5139006C328A /* PhotoCell.swift */; };
@@ -81,6 +76,17 @@
 		E587D2D91E236EAE006B7F06 /* DMRegisterMapsVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2D81E236EAE006B7F06 /* DMRegisterMapsVC+TableViewExtension.swift */; };
 		E587D2DB1E2395B7006B7F06 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2DA1E2395B7006B7F06 /* User.swift */; };
 		E587D2DD1E2396E9006B7F06 /* JobSelectionPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E587D2DC1E2396E9006B7F06 /* JobSelectionPickerView.xib */; };
+		E587D2EA1E24C021006B7F06 /* DMLicenseSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2E11E24C021006B7F06 /* DMLicenseSelectionVC.swift */; };
+		E587D2EB1E24C021006B7F06 /* DMWorkExperienceStart+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2E61E24C021006B7F06 /* DMWorkExperienceStart+TableViewExtension.swift */; };
+		E587D2EC1E24C021006B7F06 /* DMWorkExperienceStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2E71E24C021006B7F06 /* DMWorkExperienceStart.swift */; };
+		E587D2ED1E24C021006B7F06 /* DMWorkExperienceVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2E81E24C021006B7F06 /* DMWorkExperienceVC+TableViewExtension.swift */; };
+		E587D2EE1E24C021006B7F06 /* DMWorkExperienceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2E91E24C021006B7F06 /* DMWorkExperienceVC.swift */; };
+		E587D2F01E24C05D006B7F06 /* DMCertificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2EF1E24C05D006B7F06 /* DMCertificationsVC.swift */; };
+		E587D2F21E24C07C006B7F06 /* DMExecutiveSummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2F11E24C07C006B7F06 /* DMExecutiveSummaryVC.swift */; };
+		E587D2F41E24C095006B7F06 /* DMAffiliationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2F31E24C095006B7F06 /* DMAffiliationsVC.swift */; };
+		E587D2F61E24C0B0006B7F06 /* DMSkillsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2F51E24C0B0006B7F06 /* DMSkillsVC.swift */; };
+		E587D2F81E24C0C0006B7F06 /* DMSelectSkillsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2F71E24C0C0006B7F06 /* DMSelectSkillsVC.swift */; };
+		E587D2FA1E24C102006B7F06 /* DMStudyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2F91E24C102006B7F06 /* DMStudyVC.swift */; };
 		E590299F1DED25C400151E9B /* AppDelegate+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590299E1DED25C400151E9B /* AppDelegate+Notifications.swift */; };
 		E59029A81DED2C7A00151E9B /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59029A31DED2C7A00151E9B /* APIManager.swift */; };
 		E59029A91DED2C7A00151E9B /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59029A51DED2C7A00151E9B /* LogManager.swift */; };
@@ -142,10 +148,6 @@
 		5A1E2A1B1E1E77790055D913 /* ExperienceTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperienceTableCell.swift; sourceTree = "<group>"; };
 		5A1E2A1D1E1EBC1D0055D913 /* AddDeleteExperienceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeleteExperienceCell.swift; sourceTree = "<group>"; };
 		5A1E2A1E1E1EBC1D0055D913 /* AddDeleteExperienceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddDeleteExperienceCell.xib; sourceTree = "<group>"; };
-		5A2CF6831E1D0D9A008C5336 /* DMWorkExperienceVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMWorkExperienceVC+TableViewExtension.swift"; sourceTree = "<group>"; };
-		5A2CF6851E1D1018008C5336 /* DMWorkExperienceStart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMWorkExperienceStart.swift; sourceTree = "<group>"; };
-		5A2CF6871E1D1210008C5336 /* DMWorkExperienceStart+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMWorkExperienceStart+TableViewExtension.swift"; sourceTree = "<group>"; };
-		5A3FD0691E1BA7F600360B3C /* DMWorkExperienceVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMWorkExperienceVC.swift; sourceTree = "<group>"; };
 		5A3FD06C1E1BB0A000360B3C /* UINavigationBar+Awesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Awesome.h"; sourceTree = "<group>"; };
 		5A3FD06D1E1BB0A000360B3C /* UINavigationBar+Awesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Awesome.m"; sourceTree = "<group>"; };
 		5A3FD06F1E1C0C1200360B3C /* ReferenceTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReferenceTableCell.swift; sourceTree = "<group>"; };
@@ -156,7 +158,6 @@
 		5AB876511E249C0A007818D6 /* ExperiencePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExperiencePickerView.xib; sourceTree = "<group>"; };
 		5AD8AC4AE71CBA67916D21CE /* Pods-DentaMatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DentaMatch.release.xcconfig"; path = "Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch.release.xcconfig"; sourceTree = "<group>"; };
 		5AE5F5091E16563D006C328A /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
-		5AE5F50E1E165F09006C328A /* DMLicenseSelectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMLicenseSelectionVC.swift; sourceTree = "<group>"; };
 		5AE5F5141E1A3470006C328A /* PhotoNameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoNameCell.swift; sourceTree = "<group>"; };
 		5AE5F5151E1A3470006C328A /* PhotoNameCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoNameCell.xib; sourceTree = "<group>"; };
 		5AE5F5181E1A5139006C328A /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
@@ -219,6 +220,17 @@
 		E587D2D81E236EAE006B7F06 /* DMRegisterMapsVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMRegisterMapsVC+TableViewExtension.swift"; sourceTree = "<group>"; };
 		E587D2DA1E2395B7006B7F06 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E587D2DC1E2396E9006B7F06 /* JobSelectionPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobSelectionPickerView.xib; sourceTree = "<group>"; };
+		E587D2E11E24C021006B7F06 /* DMLicenseSelectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMLicenseSelectionVC.swift; sourceTree = "<group>"; };
+		E587D2E61E24C021006B7F06 /* DMWorkExperienceStart+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMWorkExperienceStart+TableViewExtension.swift"; sourceTree = "<group>"; };
+		E587D2E71E24C021006B7F06 /* DMWorkExperienceStart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMWorkExperienceStart.swift; sourceTree = "<group>"; };
+		E587D2E81E24C021006B7F06 /* DMWorkExperienceVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMWorkExperienceVC+TableViewExtension.swift"; sourceTree = "<group>"; };
+		E587D2E91E24C021006B7F06 /* DMWorkExperienceVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMWorkExperienceVC.swift; sourceTree = "<group>"; };
+		E587D2EF1E24C05D006B7F06 /* DMCertificationsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMCertificationsVC.swift; sourceTree = "<group>"; };
+		E587D2F11E24C07C006B7F06 /* DMExecutiveSummaryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMExecutiveSummaryVC.swift; sourceTree = "<group>"; };
+		E587D2F31E24C095006B7F06 /* DMAffiliationsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMAffiliationsVC.swift; sourceTree = "<group>"; };
+		E587D2F51E24C0B0006B7F06 /* DMSkillsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMSkillsVC.swift; sourceTree = "<group>"; };
+		E587D2F71E24C0C0006B7F06 /* DMSelectSkillsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMSelectSkillsVC.swift; sourceTree = "<group>"; };
+		E587D2F91E24C102006B7F06 /* DMStudyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMStudyVC.swift; sourceTree = "<group>"; };
 		E590299E1DED25C400151E9B /* AppDelegate+Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Notifications.swift"; sourceTree = "<group>"; };
 		E59029A31DED2C7A00151E9B /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		E59029A51DED2C7A00151E9B /* LogManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
@@ -336,12 +348,14 @@
 		5AE5F50B1E16569B006C328A /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				E587D2DE1E24C021006B7F06 /* Affiliations */,
+				E587D2DF1E24C021006B7F06 /* Certifications */,
+				E587D2E01E24C021006B7F06 /* License */,
+				E587D2E21E24C021006B7F06 /* Skills */,
+				E587D2E31E24C021006B7F06 /* Study */,
+				E587D2E41E24C021006B7F06 /* Summary */,
+				E587D2E51E24C021006B7F06 /* WorkExperience */,
 				E587D2CD1E23438B006B7F06 /* JobTitleSelection */,
-				5AE5F50E1E165F09006C328A /* DMLicenseSelectionVC.swift */,
-				5A2CF6851E1D1018008C5336 /* DMWorkExperienceStart.swift */,
-				5A2CF6871E1D1210008C5336 /* DMWorkExperienceStart+TableViewExtension.swift */,
-				5A3FD0691E1BA7F600360B3C /* DMWorkExperienceVC.swift */,
-				5A2CF6831E1D0D9A008C5336 /* DMWorkExperienceVC+TableViewExtension.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -642,6 +656,66 @@
 				E587D2D41E2357A9006B7F06 /* DMJobTitleSelectionVC+Services.swift */,
 			);
 			path = JobTitleSelection;
+			sourceTree = "<group>";
+		};
+		E587D2DE1E24C021006B7F06 /* Affiliations */ = {
+			isa = PBXGroup;
+			children = (
+				E587D2F31E24C095006B7F06 /* DMAffiliationsVC.swift */,
+			);
+			path = Affiliations;
+			sourceTree = "<group>";
+		};
+		E587D2DF1E24C021006B7F06 /* Certifications */ = {
+			isa = PBXGroup;
+			children = (
+				E587D2EF1E24C05D006B7F06 /* DMCertificationsVC.swift */,
+			);
+			path = Certifications;
+			sourceTree = "<group>";
+		};
+		E587D2E01E24C021006B7F06 /* License */ = {
+			isa = PBXGroup;
+			children = (
+				E587D2E11E24C021006B7F06 /* DMLicenseSelectionVC.swift */,
+			);
+			path = License;
+			sourceTree = "<group>";
+		};
+		E587D2E21E24C021006B7F06 /* Skills */ = {
+			isa = PBXGroup;
+			children = (
+				E587D2F51E24C0B0006B7F06 /* DMSkillsVC.swift */,
+				E587D2F71E24C0C0006B7F06 /* DMSelectSkillsVC.swift */,
+			);
+			path = Skills;
+			sourceTree = "<group>";
+		};
+		E587D2E31E24C021006B7F06 /* Study */ = {
+			isa = PBXGroup;
+			children = (
+				E587D2F91E24C102006B7F06 /* DMStudyVC.swift */,
+			);
+			path = Study;
+			sourceTree = "<group>";
+		};
+		E587D2E41E24C021006B7F06 /* Summary */ = {
+			isa = PBXGroup;
+			children = (
+				E587D2F11E24C07C006B7F06 /* DMExecutiveSummaryVC.swift */,
+			);
+			path = Summary;
+			sourceTree = "<group>";
+		};
+		E587D2E51E24C021006B7F06 /* WorkExperience */ = {
+			isa = PBXGroup;
+			children = (
+				E587D2E61E24C021006B7F06 /* DMWorkExperienceStart+TableViewExtension.swift */,
+				E587D2E71E24C021006B7F06 /* DMWorkExperienceStart.swift */,
+				E587D2E81E24C021006B7F06 /* DMWorkExperienceVC+TableViewExtension.swift */,
+				E587D2E91E24C021006B7F06 /* DMWorkExperienceVC.swift */,
+			);
+			path = WorkExperience;
 			sourceTree = "<group>";
 		};
 		E59029A21DED2C7A00151E9B /* APIManager */ = {
@@ -1032,17 +1106,19 @@
 				E55462F91DAE4DD1004163B2 /* UIView+Additions.swift in Sources */,
 				E55462DF1DAE31EA004163B2 /* UIFont+Additions.swift in Sources */,
 				E50B3F3F1E18E8D2004C5F32 /* ZAnimationIndicatorView.swift in Sources */,
+				E587D2EA1E24C021006B7F06 /* DMLicenseSelectionVC.swift in Sources */,
 				E587D2D51E2357A9006B7F06 /* DMJobTitleSelectionVC+Services.swift in Sources */,
+				E587D2EC1E24C021006B7F06 /* DMWorkExperienceStart.swift in Sources */,
 				E50B3F401E18E8D2004C5F32 /* ZGradientLayer.swift in Sources */,
 				E594BEA21E1E014F00310AE5 /* DMLoginVC.swift in Sources */,
 				E50B3F421E18E8D2004C5F32 /* ZProgressHUD.swift in Sources */,
+				E587D2F41E24C095006B7F06 /* DMAffiliationsVC.swift in Sources */,
 				E594BEA61E1E07C900310AE5 /* DMLoginVC+TableViewExtension.swift in Sources */,
 				E597E58F1E151CFF001DDA78 /* FloatLabelTextField.swift in Sources */,
 				E50B3F3E1E18E8D2004C5F32 /* ZActivityIndicatorView.swift in Sources */,
 				E59029A91DED2C7A00151E9B /* LogManager.swift in Sources */,
 				E5C5F31F1DC1C6DD001A5A3F /* GooglePlacesTableViewCell.swift in Sources */,
 				5A3FD0751E1CC79700360B3C /* DMProfileHeaderView.swift in Sources */,
-				5A3FD06A1E1BA7F600360B3C /* DMWorkExperienceVC.swift in Sources */,
 				E5302CD61DFE7AB100984A0B /* DMForgotPasswordVC.swift in Sources */,
 				E5C5F3181DC1A723001A5A3F /* LocationManager.swift in Sources */,
 				5A3FD0711E1C0C1200360B3C /* ReferenceTableCell.swift in Sources */,
@@ -1062,10 +1138,12 @@
 				E5C5F3151DC0AACA001A5A3F /* DMRegisterMapsVC.swift in Sources */,
 				E55462E11DAE41FB004163B2 /* Date+Additions.swift in Sources */,
 				E55462D71DAE2F49004163B2 /* UIColor+HexCode.swift in Sources */,
-				5A2CF6881E1D1210008C5336 /* DMWorkExperienceStart+TableViewExtension.swift in Sources */,
 				E56B20A21DBF749D000512F6 /* DMRegistrationVC.swift in Sources */,
+				E587D2ED1E24C021006B7F06 /* DMWorkExperienceVC+TableViewExtension.swift in Sources */,
 				5A1E2A1F1E1EBC1D0055D913 /* AddDeleteExperienceCell.swift in Sources */,
+				E587D2F21E24C07C006B7F06 /* DMExecutiveSummaryVC.swift in Sources */,
 				E50B3F531E194EDD004C5F32 /* AnimatedPHTextField.swift in Sources */,
+				E587D2EE1E24C021006B7F06 /* DMWorkExperienceVC.swift in Sources */,
 				E59029A81DED2C7A00151E9B /* APIManager.swift in Sources */,
 				E50B3F431E18E8D2004C5F32 /* ZProgressIndicatorView.swift in Sources */,
 				E56C9FA31DED520B00EAA9DD /* InAppPurchase.swift in Sources */,
@@ -1079,29 +1157,31 @@
 				5AE5F51A1E1A5139006C328A /* PhotoCell.swift in Sources */,
 				E587D2D71E236B84006B7F06 /* DMRegisterMapsVC+GoogleMapsExtension.swift in Sources */,
 				E56C9F9E1DED4BD100EAA9DD /* Character+Addition.swift in Sources */,
-				5A2CF6841E1D0D9A008C5336 /* DMWorkExperienceVC+TableViewExtension.swift in Sources */,
+				E587D2F81E24C0C0006B7F06 /* DMSelectSkillsVC.swift in Sources */,
 				E594BEA41E1E076D00310AE5 /* DMLoginVC+TextFieldExtension.swift in Sources */,
 				E55462EC1DAE47F5004163B2 /* AppDelegate.swift in Sources */,
 				E587D2CC1E23362C006B7F06 /* JobSelectionPickerView.swift in Sources */,
 				E5F47C941E0035B90051C4A1 /* UIImage+Rotations.swift in Sources */,
 				E587D2DB1E2395B7006B7F06 /* User.swift in Sources */,
 				5A1E2A1A1E1E47C90055D913 /* EmployeeReferenceModel.swift in Sources */,
+				E587D2F61E24C0B0006B7F06 /* DMSkillsVC.swift in Sources */,
 				E50B3F501E194CD7004C5F32 /* RegistrationTableViewCell.swift in Sources */,
 				5A1E2A1C1E1E77790055D913 /* ExperienceTableCell.swift in Sources */,
 				E53738F21DB373C200967876 /* Reachability.swift in Sources */,
 				E55462F51DAE4B9E004163B2 /* UIStoryBoard+Additions.swift in Sources */,
+				E587D2EB1E24C021006B7F06 /* DMWorkExperienceStart+TableViewExtension.swift in Sources */,
 				5AB876501E249B62007818D6 /* ExperiencePickerView.swift in Sources */,
 				E5DC3E731DAF2C45002DA20E /* DentaMatch.xcdatamodeld in Sources */,
 				E590299F1DED25C400151E9B /* AppDelegate+Notifications.swift in Sources */,
 				E597E5901E151CFF001DDA78 /* FloatLabelTextView.swift in Sources */,
 				E5F47C951E0035B90051C4A1 /* UIImageRotate.m in Sources */,
-				5AE5F50F1E165F09006C328A /* DMLicenseSelectionVC.swift in Sources */,
 				E5C5F31B1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift in Sources */,
+				E587D2F01E24C05D006B7F06 /* DMCertificationsVC.swift in Sources */,
 				E55462FC1DAE4EA1004163B2 /* DMBaseVC.swift in Sources */,
 				E5A3E8EE1E160ABF00B10937 /* AnimatedLeftViewPHTextField.swift in Sources */,
-				5A2CF6861E1D1018008C5336 /* DMWorkExperienceStart.swift in Sources */,
 				E594BEA81E1E07F500310AE5 /* DMLoginVC+Services.swift in Sources */,
 				E56F78561E1F602200F07814 /* DMForgotPasswordVC+Services.swift in Sources */,
+				E587D2FA1E24C102006B7F06 /* DMStudyVC.swift in Sources */,
 				E5AE2AF11DAF844C00C008BD /* DMOnboardingVC.swift in Sources */,
 				E55462F31DAE4A5D004163B2 /* Constants.swift in Sources */,
 				5AE5F5161E1A3470006C328A /* PhotoNameCell.swift in Sources */,
