@@ -147,6 +147,12 @@ struct Constants {
         }
     }
     
+    struct TextFieldMaxLenght {
+        static let commonMaxLenght = 30
+        static let licenseNumber = 15
+        static let passwordLenght = 14
+    }
+    
     //MARK:- Strings
     struct Strings{
         static let whiteSpace = " "

@@ -281,6 +281,22 @@ class DMLicenseSelectionVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,U
     
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard string.characters.count > 0 else {
+            return true
+        }
+        
+        if textField.tag == 0 {
+            if (textField.text?.characters.count)! > Constants.TextFieldMaxLenght.licenseNumber {
+                return false
+            }
+
+        }else{
+            if (textField.text?.characters.count)! > Constants.TextFieldMaxLenght.commonMaxLenght {
+                return false
+            }
+
+        }
+
         let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ0123456789-")
         if string.rangeOfCharacter(from: characterset.inverted) != nil {
             print("string contains special characters")
