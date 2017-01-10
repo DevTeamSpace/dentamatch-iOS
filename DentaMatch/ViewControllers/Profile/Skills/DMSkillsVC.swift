@@ -20,9 +20,13 @@ class DMSkillsVC: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    @IBAction func nextButtonClicked(_ sender: Any) {
+        self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToAffiliationsVC, sender: self)
+
+    }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -30,6 +34,6 @@ class DMSkillsVC: UIViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }

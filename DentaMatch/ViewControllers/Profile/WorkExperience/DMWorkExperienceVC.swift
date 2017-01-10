@@ -111,6 +111,9 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
     }
 
     
+    @IBAction func nextButtonClicked(_ sender: Any) {
+        self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToStudyVC, sender: self)
+    }
     
     //MARK:- Keyboard Show Hide Observers
     func keyboardWillShow(note: NSNotification) {
@@ -124,12 +127,10 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
     }
     
     func gettingTempData(){
-        
         let exp = ExperienceModel()
         self.exprienceDetailArray?.add(exp)
         self.currentExperience?.references.append(EmployeeReferenceModel())
         self.workExperienceDetailTable.reloadData()
-
     reSizeTableViewsAndScrollView()
     }
     
@@ -141,7 +142,7 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
         self.mainScrollView.contentSize = CGSize(width: self.view.bounds.size.width, height: self.hightOfExperienceTable.constant + self.hightOfExperienceDetailTable.constant)
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -149,7 +150,7 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
     
 }

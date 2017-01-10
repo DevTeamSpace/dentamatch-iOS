@@ -31,7 +31,7 @@
         <scene sceneID="h2y-8K-0Am">
             <objects>
                 <navigationController storyboardIdentifier="ProfileNAV" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="aBo-Dm-4RQ" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="p5y-OV-SJO">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="p5y-OV-SJO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -79,7 +79,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CtZ-La-o4v">
-                                        <rect key="frame" x="213" y="165" width="31" height="30"/>
+                                        <rect key="frame" x="214" y="165" width="31" height="30"/>
                                         <state key="normal" image="addPhoto"/>
                                         <connections>
                                             <action selector="addPhotoButtonPressed:" destination="ZiM-x3-BTI" eventType="touchUpInside" id="GrT-M1-qjk"/>
@@ -100,7 +100,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let’s start with creating your profile." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="hos-jx-ofR">
-                                <rect key="frame" x="46" y="335" width="285" height="20"/>
+                                <rect key="frame" x="45" y="335" width="285" height="21"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -144,7 +144,7 @@
                                 </constraints>
                             </view>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Current Job Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aZe-k4-DJs" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
-                                <rect key="frame" x="22" y="381" width="331" height="54"/>
+                                <rect key="frame" x="22" y="382" width="331" height="54"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="Qkg-W3-Lux"/>
                                 </constraints>
@@ -211,6 +211,9 @@
                                 <state key="normal" title="NEXT">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="nextButtonClicked:" destination="hOs-vL-yuf" eventType="touchUpInside" id="eiz-0b-qes"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3ps-qs-Mar">
                                 <rect key="frame" x="0.0" y="20" width="375" height="599"/>
@@ -258,6 +261,9 @@
                                 <state key="normal" title="NEXT">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="nextButtonClicked:" destination="CTM-uI-DFi" eventType="touchUpInside" id="FYm-e6-JX9"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DeN-8W-RI7">
                                 <rect key="frame" x="0.0" y="20" width="375" height="599"/>
@@ -276,7 +282,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="eL1-Hu-WzL" kind="show" identifier="goToAffliationsVC" id="U8l-Ut-Q0B"/>
+                        <segue destination="eL1-Hu-WzL" kind="show" identifier="goToAffiliationsVC" id="U8l-Ut-Q0B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aoS-or-PwV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -305,6 +311,9 @@
                                 <state key="normal" title="NEXT">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="nextButtonClicked:" destination="eL1-Hu-WzL" eventType="touchUpInside" id="akc-DR-eof"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FO0-wn-UZh">
                                 <rect key="frame" x="0.0" y="20" width="375" height="599"/>
@@ -352,6 +361,9 @@
                                 <state key="normal" title="NEXT">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="nextButtonClicked:" destination="4zK-dF-WEd" eventType="touchUpInside" id="NTj-PV-FZi"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="26C-XT-V4S">
                                 <rect key="frame" x="0.0" y="20" width="375" height="599"/>
@@ -399,6 +411,9 @@
                                 <state key="normal" title="NEXT">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="completeProfileButtonClicked:" destination="zgI-T6-SuA" eventType="touchUpInside" id="PMf-c7-4kK"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0KB-mn-lcG">
                                 <rect key="frame" x="0.0" y="20" width="375" height="599"/>
@@ -552,7 +567,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="nextButtonClikced:" destination="aDP-Aa-d1Q" eventType="touchUpInside" id="FYy-as-b4N"/>
+                                    <action selector="nextButtonClicked:" destination="PnT-uO-30T" eventType="touchUpInside" id="DCt-kx-YAs"/>
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WQC-ih-5HP">
@@ -569,7 +584,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gQ6-MV-uz6" id="iUI-BV-vfF">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CAN-M5-Y2I">
