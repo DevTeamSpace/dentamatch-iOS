@@ -27,7 +27,7 @@ struct Constants {
     }
     
     struct Heading {
-        static let heading1 = "Find Jobs For You"
+        static let heading1 = "Find Jobs Near You"
         static let heading2 =  "Set Your Availability"
         static let heading3 = "Get Quick Assignments"
         static let heading4 =  "Create \nYour Profile"
