@@ -134,6 +134,18 @@ extension DMWorkExperienceStart
         }
 
     }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard string.characters.count > 0 else {
+            return true
+        }
+        if (textField.text?.characters.count)! > Constants.TextFieldMaxLenght.commonMaxLenght {
+            return false
+        }
+
+        return true
+        
+    }
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
