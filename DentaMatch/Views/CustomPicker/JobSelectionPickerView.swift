@@ -35,7 +35,7 @@ class JobSelectionPickerView: UIView,UIPickerViewDataSource,UIPickerViewDelegate
 
     class func loadJobSelectionView(withJobTitles:[JobTitle]) ->  JobSelectionPickerView{
         guard let instance = Bundle.main.loadNibNamed("JobSelectionPickerView", owner: self)?.first as? JobSelectionPickerView else {
-            fatalError("Could not instantiate from nib: DMYearExperiencePickerView")
+            fatalError("Could not instantiate from nib: YearExperiencePickerView")
         }
         instance.setup(jobTitles: withJobTitles)
         return instance

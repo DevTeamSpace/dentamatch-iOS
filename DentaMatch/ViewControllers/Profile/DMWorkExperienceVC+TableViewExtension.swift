@@ -193,7 +193,7 @@ extension DMWorkExperienceVC
                     cell.commonTextFiled.placeholder = FieldType.YearOfExperience.description
                     cell.commonTextFiled.text = self.currentExperience?.yearOfExperience!
 
-                    let yearViewObj = DMYearExperiencePickerView.loadExperiencePickerView(withText: (self.currentExperience?.yearOfExperience!)!)
+                    let yearViewObj = ExperiencePickerView.loadExperiencePickerView(withText: (self.currentExperience?.yearOfExperience!)!)
                     yearViewObj.delegate = self
                     cell.commonTextFiled.inputView = yearViewObj
                     

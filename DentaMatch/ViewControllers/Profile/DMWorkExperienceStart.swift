@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DMWorkExperienceStart: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,DMYearExperiencePickerViewDelegate {
+class DMWorkExperienceStart: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,ExperiencePickerViewDelegate {
     @IBOutlet weak var workExperienceTable: UITableView!
 
     var experienceArray = NSMutableArray()

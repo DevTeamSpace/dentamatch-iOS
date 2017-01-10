@@ -1,35 +1,36 @@
 //
-//  DMYearExperiencePickerView.swift
+//  ExperiencePickerView.swift
 //  DentaMatch
 //
-//  Created by Sanjay Kumar Yadav on 05/01/17.
+//  Created by Sanjay Kumar Yadav on 10/01/17.
 //  Copyright © 2017 Appster. All rights reserved.
 //
 
 import UIKit
 
-protocol DMYearExperiencePickerViewDelegate{
+
+protocol ExperiencePickerViewDelegate{
     
     func canceButtonAction()
     func doneButtonAction(year:Int,month:Int)
 }
-class DMYearExperiencePickerView: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
-
+class ExperiencePickerView: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
+    
     @IBOutlet weak var yearExperiencePickerView: UIPickerView!
-    var delegate: DMYearExperiencePickerViewDelegate?
-
+    var delegate: ExperiencePickerViewDelegate?
+    
     
     /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+     // Only override draw() if you perform custom drawing.
+     // An empty implementation adversely affects performance during animation.
+     override func draw(_ rect: CGRect) {
+     // Drawing code
+     }
+     */
     
-    class func loadExperiencePickerView(withText:String) ->  DMYearExperiencePickerView{
-        guard let instance = Bundle.main.loadNibNamed("DMYearExperiencePickerView", owner: self)?.first as? DMYearExperiencePickerView else {
-            fatalError("Could not instantiate from nib: DMYearExperiencePickerView")
+    class func loadExperiencePickerView(withText:String) ->  ExperiencePickerView{
+        guard let instance = Bundle.main.loadNibNamed("ExperiencePickerView", owner: self)?.first as? ExperiencePickerView else {
+            fatalError("Could not instantiate from nib: ExperiencePickerView")
         }
         instance.getPreSelectedValues(text: withText)
         return instance
@@ -50,18 +51,18 @@ class DMYearExperiencePickerView: UIView,UIPickerViewDataSource,UIPickerViewDele
             if text.range(of: "year") != nil {
                 let firstValue  = Int(list[0])
                 self.yearExperiencePickerView.selectRow(firstValue!, inComponent: 0, animated: true)
-
-               debugPrint("year available")
+                
+                debugPrint("year available")
             }else{
                 let secondValue  = Int(list[0])
                 self.yearExperiencePickerView.selectRow(secondValue!, inComponent: 1, animated: true)
-
+                
                 print("month available")
-
+                
             }
             
         }
-
+        
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -93,15 +94,16 @@ class DMYearExperiencePickerView: UIView,UIPickerViewDataSource,UIPickerViewDele
     }
     
     @IBAction func cancelButtonClicked(_ sender: Any) {
-
-    self.delegate?.canceButtonAction()
+        
+        self.delegate?.canceButtonAction()
     }
     @IBAction func DoneButtonClicked(_ sender: Any) {
         let year  = self.yearExperiencePickerView.selectedRow(inComponent: 0)
         let month  = self.yearExperiencePickerView.selectedRow(inComponent: 1)
-
+        
         self.delegate?.doneButtonAction(year: year, month: month)
         
     }
-
+    
 }
+
