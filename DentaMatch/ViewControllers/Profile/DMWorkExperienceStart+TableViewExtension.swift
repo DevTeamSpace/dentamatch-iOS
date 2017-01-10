@@ -139,7 +139,7 @@ extension DMWorkExperienceStart
         return true
     }
     func doneButtonAction(year: Int, month: Int) {
-        self.workExperienceTable.endEditing(true)
+        self.view.endEditing(true)
         
         var text:String = ""
         
@@ -165,7 +165,7 @@ extension DMWorkExperienceStart
         
     }
     func canceButtonAction() {
-        self.workExperienceTable.endEditing(true)
+        self.view.endEditing(true)
 
         
     }
