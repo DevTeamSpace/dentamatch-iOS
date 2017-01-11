@@ -207,7 +207,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="7xb-PP-DHu"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="16"/>
                                 <state key="normal" title="NEXT">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -263,7 +263,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="WNV-m5-cRY"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="16"/>
                                 <state key="normal" title="NEXT">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -313,7 +313,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="4y8-ni-65e"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="16"/>
                                 <state key="normal" title="NEXT">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -369,7 +369,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="xQ1-a0-jri"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="16"/>
                                 <state key="normal" title="NEXT">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -521,7 +521,8 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="kNh-nC-bk7"/>
                                 </constraints>
-                                <state key="normal" title="Next">
+                                <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="16"/>
+                                <state key="normal" title="NEXT">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -567,7 +568,8 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="GTp-Tb-Z9m"/>
                                 </constraints>
-                                <state key="normal" title="Next">
+                                <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="16"/>
+                                <state key="normal" title="NEXT">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -622,7 +624,8 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="nXt-Ja-5YC"/>
                                 </constraints>
-                                <state key="normal" title="Next">
+                                <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="16"/>
+                                <state key="normal" title="NEXT">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -661,7 +664,7 @@
                                                             <color key="textColor" red="0.015686274510000001" green="0.43921568630000002" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2DA-L9-0sU">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_arrow_right" translatesAutoresizingMaskIntoConstraints="NO" id="2DA-L9-0sU">
                                                             <rect key="frame" x="354" y="15" width="8" height="13"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="13" id="Hgw-Eg-1o4"/>
@@ -743,6 +746,7 @@
     </scenes>
     <resources>
         <image name="addPhoto" width="31" height="30"/>
+        <image name="ic_arrow_right" width="13" height="21"/>
         <image name="profileButton" width="99" height="100"/>
         <image name="registrationHeading" width="375" height="192"/>
     </resources>
