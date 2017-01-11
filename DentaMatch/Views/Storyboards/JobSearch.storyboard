@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Lfn-p4-zS8">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Job SearchVC-->
+        <scene sceneID="Oru-wv-RVo">
+            <objects>
+                <viewController storyboardIdentifier="DMJobSearchVC" id="VTU-4g-X5s" customClass="DMJobSearchVC" customModule="DentaMatch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lly-3D-VKP"/>
+                        <viewControllerLayoutGuide type="bottom" id="cxl-aD-P6c"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bII-c8-waP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="noO-rj-m36">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="VTU-4g-X5s" id="esf-9D-ehP"/>
+                                    <outlet property="delegate" destination="VTU-4g-X5s" id="sJG-xN-XI5"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="noO-rj-m36" firstAttribute="leading" secondItem="bII-c8-waP" secondAttribute="leading" id="IiH-tV-Ptl"/>
+                            <constraint firstItem="cxl-aD-P6c" firstAttribute="top" secondItem="noO-rj-m36" secondAttribute="bottom" id="QGQ-jb-hMh"/>
+                            <constraint firstItem="noO-rj-m36" firstAttribute="top" secondItem="lly-3D-VKP" secondAttribute="bottom" id="nds-jd-A7j"/>
+                            <constraint firstAttribute="trailing" secondItem="noO-rj-m36" secondAttribute="trailing" id="nsq-hn-uyK"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Bu7-Vd-XBl"/>
+                    <connections>
+                        <outlet property="tblViewJobSearch" destination="noO-rj-m36" id="fAr-hw-WFM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9wN-3B-Scx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="983.20000000000005" y="49.925037481259373"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="JXa-BO-VnG">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Lfn-p4-zS8" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5xw-k6-Tbw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="VTU-4g-X5s" kind="relationship" relationship="rootViewController" id="Mda-EH-gos"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UjR-g0-FNM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="44" y="49.925037481259373"/>
+        </scene>
+    </scenes>
+</document>

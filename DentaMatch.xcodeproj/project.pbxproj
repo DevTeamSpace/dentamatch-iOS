@@ -101,6 +101,18 @@
 		E5DC3E731DAF2C45002DA20E /* DentaMatch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E5DC3E711DAF2C45002DA20E /* DentaMatch.xcdatamodeld */; };
 		E5F47C941E0035B90051C4A1 /* UIImage+Rotations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F47C911E0035B90051C4A1 /* UIImage+Rotations.swift */; };
 		E5F47C951E0035B90051C4A1 /* UIImageRotate.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F47C931E0035B90051C4A1 /* UIImageRotate.m */; };
+		F2540F4A1E23A81C004B0538 /* JobSeachTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2540F481E23A81C004B0538 /* JobSeachTitleCell.swift */; };
+		F2540F4B1E23A81C004B0538 /* JobSeachTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2540F491E23A81C004B0538 /* JobSeachTitleCell.xib */; };
+		F2540F4E1E23A834004B0538 /* JobSearchTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2540F4C1E23A834004B0538 /* JobSearchTypeCell.swift */; };
+		F2540F4F1E23A834004B0538 /* JobSearchTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2540F4D1E23A834004B0538 /* JobSearchTypeCell.xib */; };
+		F2540F521E23A854004B0538 /* JobSearchPartTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2540F501E23A854004B0538 /* JobSearchPartTimeCell.swift */; };
+		F2540F531E23A854004B0538 /* JobSearchPartTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2540F511E23A854004B0538 /* JobSearchPartTimeCell.xib */; };
+		F2540F561E23A8AE004B0538 /* CurrentLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2540F541E23A8AE004B0538 /* CurrentLocationCell.swift */; };
+		F2540F571E23A8AE004B0538 /* CurrentLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2540F551E23A8AE004B0538 /* CurrentLocationCell.xib */; };
+		F2D03BA51E1F580C0005D3A4 /* JobSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2D03BA41E1F580C0005D3A4 /* JobSearch.storyboard */; };
+		F2D03BA81E1F67BA0005D3A4 /* DMJobSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D03BA71E1F67BA0005D3A4 /* DMJobSearchVC.swift */; };
+		F2D03BAC1E1F6D980005D3A4 /* JobSeachTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D03BAA1E1F6D980005D3A4 /* JobSeachTableViewCell.swift */; };
+		F2D03BAD1E1F6D980005D3A4 /* JobSeachTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2D03BAB1E1F6D980005D3A4 /* JobSeachTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -210,6 +222,18 @@
 		E5F47C911E0035B90051C4A1 /* UIImage+Rotations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Rotations.swift"; sourceTree = "<group>"; };
 		E5F47C921E0035B90051C4A1 /* UIImageRotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageRotate.h; sourceTree = "<group>"; };
 		E5F47C931E0035B90051C4A1 /* UIImageRotate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageRotate.m; sourceTree = "<group>"; };
+		F2540F481E23A81C004B0538 /* JobSeachTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobSeachTitleCell.swift; sourceTree = "<group>"; };
+		F2540F491E23A81C004B0538 /* JobSeachTitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobSeachTitleCell.xib; sourceTree = "<group>"; };
+		F2540F4C1E23A834004B0538 /* JobSearchTypeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobSearchTypeCell.swift; sourceTree = "<group>"; };
+		F2540F4D1E23A834004B0538 /* JobSearchTypeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobSearchTypeCell.xib; sourceTree = "<group>"; };
+		F2540F501E23A854004B0538 /* JobSearchPartTimeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobSearchPartTimeCell.swift; sourceTree = "<group>"; };
+		F2540F511E23A854004B0538 /* JobSearchPartTimeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobSearchPartTimeCell.xib; sourceTree = "<group>"; };
+		F2540F541E23A8AE004B0538 /* CurrentLocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentLocationCell.swift; sourceTree = "<group>"; };
+		F2540F551E23A8AE004B0538 /* CurrentLocationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CurrentLocationCell.xib; sourceTree = "<group>"; };
+		F2D03BA41E1F580C0005D3A4 /* JobSearch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = JobSearch.storyboard; sourceTree = "<group>"; };
+		F2D03BA71E1F67BA0005D3A4 /* DMJobSearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMJobSearchVC.swift; sourceTree = "<group>"; };
+		F2D03BAA1E1F6D980005D3A4 /* JobSeachTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobSeachTableViewCell.swift; sourceTree = "<group>"; };
+		F2D03BAB1E1F6D980005D3A4 /* JobSeachTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobSeachTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -385,6 +409,7 @@
 		E55462E71DAE47C6004163B2 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				F2D03BA61E1F67350005D3A4 /* JobSearch */,
 				5AE5F50B1E16569B006C328A /* Profile */,
 				E5302CD41DFE7A9C00984A0B /* Forgot Password */,
 				E5C5F3191DC1B355001A5A3F /* Terms And Conditions */,
@@ -449,6 +474,7 @@
 		E56B20A71DC0606A000512F6 /* TableView Cells */ = {
 			isa = PBXGroup;
 			children = (
+				F2D03BA91E1F67EB0005D3A4 /* JobSearch */,
 				E50B3F441E194CD7004C5F32 /* Profile */,
 				E50B3F471E194CD7004C5F32 /* Registration */,
 				E5C5F31E1DC1C6DD001A5A3F /* GooglePlacesTableViewCell.swift */,
@@ -611,6 +637,7 @@
 				E5AE2AF21DAF84AD00C008BD /* Onboarding.storyboard */,
 				E56B209E1DBF7467000512F6 /* Registration.storyboard */,
 				5AE5F5091E16563D006C328A /* Profile.storyboard */,
+				F2D03BA41E1F580C0005D3A4 /* JobSearch.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -696,6 +723,31 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		F2D03BA61E1F67350005D3A4 /* JobSearch */ = {
+			isa = PBXGroup;
+			children = (
+				F2D03BA71E1F67BA0005D3A4 /* DMJobSearchVC.swift */,
+			);
+			path = JobSearch;
+			sourceTree = "<group>";
+		};
+		F2D03BA91E1F67EB0005D3A4 /* JobSearch */ = {
+			isa = PBXGroup;
+			children = (
+				F2D03BAA1E1F6D980005D3A4 /* JobSeachTableViewCell.swift */,
+				F2D03BAB1E1F6D980005D3A4 /* JobSeachTableViewCell.xib */,
+				F2540F481E23A81C004B0538 /* JobSeachTitleCell.swift */,
+				F2540F491E23A81C004B0538 /* JobSeachTitleCell.xib */,
+				F2540F4C1E23A834004B0538 /* JobSearchTypeCell.swift */,
+				F2540F4D1E23A834004B0538 /* JobSearchTypeCell.xib */,
+				F2540F501E23A854004B0538 /* JobSearchPartTimeCell.swift */,
+				F2540F511E23A854004B0538 /* JobSearchPartTimeCell.xib */,
+				F2540F541E23A8AE004B0538 /* CurrentLocationCell.swift */,
+				F2540F551E23A8AE004B0538 /* CurrentLocationCell.xib */,
+			);
+			path = JobSearch;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -769,9 +821,11 @@
 				E597E5881E151A99001DDA78 /* SF-UI-Text-Semibold.otf in Resources */,
 				5A3FD0721E1C0C1200360B3C /* ReferenceTableCell.xib in Resources */,
 				E597E5841E151A99001DDA78 /* SF-UI-Text-Medium.otf in Resources */,
+				F2D03BAD1E1F6D980005D3A4 /* JobSeachTableViewCell.xib in Resources */,
 				E597E57E1E151A99001DDA78 /* SF-UI-Text-Bold.otf in Resources */,
 				E597E57A1E151A99001DDA78 /* SF-UI-Display-Regular.otf in Resources */,
 				E597E5751E151A99001DDA78 /* SF-UI-Display-Black.otf in Resources */,
+				F2540F4B1E23A81C004B0538 /* JobSeachTitleCell.xib in Resources */,
 				E597E58B1E151A99001DDA78 /* SF-UI-Text-UltrathinItalic.otf in Resources */,
 				E597E5801E151A99001DDA78 /* SF-UI-Text-Heavy.otf in Resources */,
 				E50B3F4D1E194CD7004C5F32 /* AnimatedPHTableCell.xib in Resources */,
@@ -782,6 +836,8 @@
 				E597E57C1E151A99001DDA78 /* SF-UI-Display-Thin.otf in Resources */,
 				E597E5781E151A99001DDA78 /* SF-UI-Display-Light.otf in Resources */,
 				E597E5831E151A99001DDA78 /* SF-UI-Text-LightItalic.otf in Resources */,
+				F2540F4F1E23A834004B0538 /* JobSearchTypeCell.xib in Resources */,
+				F2D03BA51E1F580C0005D3A4 /* JobSearch.storyboard in Resources */,
 				E597E57D1E151A99001DDA78 /* SF-UI-Display-Ultralight.otf in Resources */,
 				5AE5F5171E1A3470006C328A /* PhotoNameCell.xib in Resources */,
 				E5AE2AF31DAF84AD00C008BD /* Onboarding.storyboard in Resources */,
@@ -797,8 +853,10 @@
 				E597E5771E151A99001DDA78 /* SF-UI-Display-Heavy.otf in Resources */,
 				E597E55B1E150638001DDA78 /* dentamatch.ttf in Resources */,
 				5AE5F51B1E1A5139006C328A /* PhotoCell.xib in Resources */,
+				F2540F571E23A8AE004B0538 /* CurrentLocationCell.xib in Resources */,
 				E597E5811E151A99001DDA78 /* SF-UI-Text-HeavyItalic.otf in Resources */,
 				5AE5F50A1E16563D006C328A /* Profile.storyboard in Resources */,
+				F2540F531E23A854004B0538 /* JobSearchPartTimeCell.xib in Resources */,
 				E56E45C31DAE07C200AD4559 /* Assets.xcassets in Resources */,
 				E597E5851E151A99001DDA78 /* SF-UI-Text-MediumItalic.otf in Resources */,
 				E597E5871E151A99001DDA78 /* SF-UI-Text-RegularItalic.otf in Resources */,
@@ -891,6 +949,8 @@
 				5A3FD06E1E1BB0A000360B3C /* UINavigationBar+Awesome.m in Sources */,
 				E56C9FA81DED75D500EAA9DD /* CommonHelper.swift in Sources */,
 				E59029AA1DED2C7A00151E9B /* UserDefaultsManager.swift in Sources */,
+				F2D03BA81E1F67BA0005D3A4 /* DMJobSearchVC.swift in Sources */,
+				F2540F561E23A8AE004B0538 /* CurrentLocationCell.swift in Sources */,
 				E55462DB1DAE312C004163B2 /* String+Additons.swift in Sources */,
 				E55462D91DAE3104004163B2 /* Array+Additions.swift in Sources */,
 				E58654FE1DEFEF7F006FEB2D /* ConfigurationManager.swift in Sources */,
@@ -898,7 +958,9 @@
 				E5C5F3151DC0AACA001A5A3F /* DMRegisterMapsVC.swift in Sources */,
 				E55462E11DAE41FB004163B2 /* Date+Additions.swift in Sources */,
 				E55462D71DAE2F49004163B2 /* UIColor+HexCode.swift in Sources */,
+				F2540F521E23A854004B0538 /* JobSearchPartTimeCell.swift in Sources */,
 				E56B20A21DBF749D000512F6 /* DMRegistrationVC.swift in Sources */,
+				F2540F4E1E23A834004B0538 /* JobSearchTypeCell.swift in Sources */,
 				E50B3F531E194EDD004C5F32 /* AnimatedPHTextField.swift in Sources */,
 				E59029A81DED2C7A00151E9B /* APIManager.swift in Sources */,
 				E50B3F431E18E8D2004C5F32 /* ZProgressIndicatorView.swift in Sources */,
@@ -908,6 +970,7 @@
 				E56B20A61DC05C74000512F6 /* DMLoginVC.swift in Sources */,
 				E55463001DAE510A004163B2 /* Utilities.swift in Sources */,
 				E56E90801DFF31740096A31B /* CameraGalleryManager.swift in Sources */,
+				F2540F4A1E23A81C004B0538 /* JobSeachTitleCell.swift in Sources */,
 				E55462F71DAE4C6F004163B2 /* UITextField+ToolBar.swift in Sources */,
 				5AE5F51A1E1A5139006C328A /* PhotoCell.swift in Sources */,
 				E56C9F9E1DED4BD100EAA9DD /* Character+Addition.swift in Sources */,
@@ -929,6 +992,7 @@
 				E55462F31DAE4A5D004163B2 /* Constants.swift in Sources */,
 				5AE5F5161E1A3470006C328A /* PhotoNameCell.swift in Sources */,
 				E50B3F4E1E194CD7004C5F32 /* LoginTableViewCell.swift in Sources */,
+				F2D03BAC1E1F6D980005D3A4 /* JobSeachTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

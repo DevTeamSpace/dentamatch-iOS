@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-UI-Text-Medium.otf">
+            <string>SFUIText-Medium</string>
+        </array>
+        <array key="SF-UI-Text-Regular.otf">
+            <string>SFUIText-Regular</string>
+        </array>
+        <array key="dentamatch.ttf">
+            <string>dentamatch</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="CurrentLocationCell" customModule="DentaMatch" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="87"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p4B-ss-fDi">
+                        <rect key="frame" x="-1" y="0.0" width="377" height="87"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CURRENT LOCATION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfr-Dc-f41">
+                                <rect key="frame" x="16" y="36" width="167" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="167" id="3MI-Pt-sL4"/>
+                                    <constraint firstAttribute="height" constant="16" id="Kea-fO-YpZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="14"/>
+                                <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QGt-F1-M94">
+                                <rect key="frame" x="344" y="37" width="13" height="13"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="13" id="Ske-mF-bpQ"/>
+                                    <constraint firstAttribute="width" constant="13" id="qZO-P7-132"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="dentamatch" family="dentamatch" pointSize="13"/>
+                                <state key="normal" title="b">
+                                    <color key="titleColor" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New York" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXL-Kg-Vft">
+                                <rect key="frame" x="16" y="59" width="339" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="IdA-az-1OQ"/>
+                                    <constraint firstAttribute="width" constant="339" id="he5-kw-Bqf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="14"/>
+                                <color key="textColor" red="0.66274509800000003" green="0.66274509800000003" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gfr-Dc-f41" firstAttribute="leading" secondItem="p4B-ss-fDi" secondAttribute="leading" constant="16" id="6I3-Mh-Gbb"/>
+                            <constraint firstItem="lXL-Kg-Vft" firstAttribute="leading" secondItem="p4B-ss-fDi" secondAttribute="leading" constant="16" id="Jgo-Sb-w5O"/>
+                            <constraint firstAttribute="trailing" secondItem="QGt-F1-M94" secondAttribute="trailing" constant="20" id="O9O-gO-Fm5"/>
+                            <constraint firstItem="gfr-Dc-f41" firstAttribute="top" secondItem="p4B-ss-fDi" secondAttribute="top" constant="36" id="ejd-iv-Jib"/>
+                            <constraint firstItem="QGt-F1-M94" firstAttribute="top" secondItem="p4B-ss-fDi" secondAttribute="top" constant="37" id="gZB-Si-GUf"/>
+                            <constraint firstAttribute="bottom" secondItem="lXL-Kg-Vft" secondAttribute="bottom" constant="12" id="xIF-xl-iDQ"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="p4B-ss-fDi" secondAttribute="bottom" id="25i-5d-t03"/>
+                    <constraint firstItem="p4B-ss-fDi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="FGv-YK-ZTN"/>
+                    <constraint firstItem="p4B-ss-fDi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="-1" id="WkG-b8-U0t"/>
+                    <constraint firstAttribute="trailing" secondItem="p4B-ss-fDi" secondAttribute="trailing" constant="-1" id="mHA-k4-a9v"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="lblLocation" destination="lXL-Kg-Vft" id="d0R-bs-i0R"/>
+                <outlet property="viewCurrentLocation" destination="p4B-ss-fDi" id="kFl-RQ-ejA"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

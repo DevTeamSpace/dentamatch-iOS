@@ -32,6 +32,7 @@ struct Constants {
     static func apiBaseURL() -> String {
         return ConfigurationManager.sharedManager.APIEndpoint()
     }
+    
     //MARK:- StoryBoards
     struct StoryBoard {
         static let registrationStoryboard  = "Registration"
