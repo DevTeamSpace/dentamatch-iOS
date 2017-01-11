@@ -79,14 +79,16 @@ class APIManager: NSObject {
                 if key == "image" {
                     multipartFormData.append(
                         value as! Data,
-                        withName: "",
-                        fileName: "",
-                        mimeType: ""
+                        withName: key,
+                        fileName: "profileImage.jpg",
+                        mimeType: "image/jpg"
                     )
                 } else {
+                    //multipartFormData.ap
+                    multipartFormData.append((value as! String).data(using: .utf8)!, withName: key)
                 }
             }
-        }, usingThreshold: 1, to: serviceName, method: .post, headers: nil) { (encodingResult:SessionManager.MultipartFormDataEncodingResult) in
+        }, usingThreshold: 1, to: serviceName, method: .post, headers: [Constants.ServerKey.accessToken:UserDefaultsManager.sharedInstance.accessToken]) { (encodingResult:SessionManager.MultipartFormDataEncodingResult) in
             
             switch encodingResult {
             case .success(let upload, _, _):

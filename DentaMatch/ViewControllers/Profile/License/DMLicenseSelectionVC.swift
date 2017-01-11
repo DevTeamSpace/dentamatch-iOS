@@ -14,6 +14,7 @@ class DMLicenseSelectionVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,U
     var stateBoardImage:UIImage? = nil
     var licenseArray:NSMutableArray?
     var jobTitles = [JobTitle]()
+    var selectedJobTitle:JobTitle!
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -83,6 +83,7 @@ struct Constants {
             static let goToAffiliationsVC = "goToAffiliationsVC"
             static let goToCertificationsVC = "goToCertificationsVC"
             static let goToExecutiveSummaryVC = "goToExecutiveSummaryVC"
+            static let goToLicense = "goToLicense"
         }
     }
     
@@ -96,7 +97,8 @@ struct Constants {
         static let termsAndConditionsURL = Constants.API.apiURL("term-condition")
         static let privacyPolicyURL = Constants.API.apiURL("privacy-policy")
         static let getJobTitleAPI = Constants.API.apiURL("list-jobtitle")
-        
+        static let uploadImageAPI = Constants.API.apiURL("users/upload-image")
+
         static func apiURL(_ methodName: String) -> String {
             return BASE_URL + methodName
         }
@@ -120,14 +122,16 @@ struct Constants {
         static let message = "message"
         static let userDetails = "userDetails"
         static let result = "result"
-        static let accessToken = "userToken"
-        static let skillList = "skillList"
+        static let accessToken = "accessToken"
+        static let skillList = "joblists"
     }
     
     //MARK:- UserDefault Keys
     struct UserDefaultsKey {
         static let isLoggedIn = "isLoggedIn"
-        static let kDeviceToken = "kDeviceToken"
+        static let deviceToken = "kDeviceToken"
+        static let accessToken = "kDeviceToken"
+
     }
     
     //MARK:- Alert Messages
