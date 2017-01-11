@@ -138,7 +138,7 @@ extension DMWorkExperienceStart
         guard string.characters.count > 0 else {
             return true
         }
-        if (textField.text?.characters.count)! > Constants.TextFieldMaxLenght.commonMaxLenght {
+        if (textField.text?.characters.count)! >= Constants.TextFieldMaxLenght.commonMaxLenght {
             return false
         }
 

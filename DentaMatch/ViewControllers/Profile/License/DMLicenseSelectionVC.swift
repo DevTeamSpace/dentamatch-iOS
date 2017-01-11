@@ -286,12 +286,12 @@ class DMLicenseSelectionVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,U
         }
         
         if textField.tag == 0 {
-            if (textField.text?.characters.count)! > Constants.TextFieldMaxLenght.licenseNumber {
+            if (textField.text?.characters.count)! >= Constants.TextFieldMaxLenght.licenseNumber {
                 return false
             }
 
         }else{
-            if (textField.text?.characters.count)! > Constants.TextFieldMaxLenght.commonMaxLenght {
+            if (textField.text?.characters.count)! >= Constants.TextFieldMaxLenght.commonMaxLenght {
                 return false
             }
 
