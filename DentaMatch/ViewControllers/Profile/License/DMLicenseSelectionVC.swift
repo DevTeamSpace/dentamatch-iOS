@@ -146,6 +146,7 @@ class DMLicenseSelectionVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,U
         if segue.identifier == "goToWorkExperience"
         {
             let destinationVC:DMWorkExperienceStart = segue.destination as! DMWorkExperienceStart
+            destinationVC.selectedJobTitle = self.selectedJobTitle
             destinationVC.jobTitles = self.jobTitles
         }
 
@@ -207,7 +208,7 @@ class DMLicenseSelectionVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,U
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoNameCell") as! PhotoNameCell
             cell.nameLabel.text = "Jennifer"
-            cell.jobTitleLabel.text = "Jennifer"
+            cell.jobTitleLabel.text = selectedJobTitle.jobTitle
             cell.photoButton.progressBar.setProgress(profileProgress, animated: true)
             cell.selectionStyle = .none
 

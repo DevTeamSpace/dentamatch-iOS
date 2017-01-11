@@ -12,13 +12,14 @@ class DMWorkExperienceStart: DMBaseVC,UITableViewDataSource,UITableViewDelegate,
     @IBOutlet weak var workExperienceTable: UITableView!
     let profileProgress:CGFloat = 0.25
 
+    var selectedJobTitle:JobTitle!
     var experienceArray = NSMutableArray()
     var jobTitles = [JobTitle]()
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        experienceArray.addObjects(from: ["","",""])
+        experienceArray.addObjects(from: [selectedJobTitle.jobTitle,"",""])
         self.title = "Work Experience"
         setUp()
         // Do any additional setup after loading the view.
@@ -131,6 +132,7 @@ extension DMWorkExperienceStart:JobSelectionPickerViewDelegate {
     
     func jobPickerDoneButtonAction(job: JobTitle?) {
         if let jobTitle = job {
+            self.selectedJobTitle = jobTitle
             self.experienceArray.replaceObject(at: 0, with: jobTitle.jobTitle)
             self.workExperienceTable.reloadData()
         }

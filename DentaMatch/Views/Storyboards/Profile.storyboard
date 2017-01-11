@@ -5,7 +5,6 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -62,7 +61,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="297"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi Jennifer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="6Z1-Io-DBv">
-                                        <rect key="frame" x="107" y="223" width="165" height="36"/>
+                                        <rect key="frame" x="107.5" y="223" width="165" height="36"/>
                                         <fontDescription key="fontDescription" name="SFUIText-Bold" family="SF UI Text" pointSize="30"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -100,7 +99,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let’s start with creating your profile." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="hos-jx-ofR">
-                                <rect key="frame" x="45" y="335" width="285" height="21"/>
+                                <rect key="frame" x="45.5" y="335" width="285" height="20"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -144,7 +143,7 @@
                                 </constraints>
                             </view>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Current Job Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aZe-k4-DJs" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
-                                <rect key="frame" x="22" y="382" width="331" height="54"/>
+                                <rect key="frame" x="22" y="381" width="331" height="54"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="Qkg-W3-Lux"/>
                                 </constraints>
@@ -650,38 +649,46 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CAN-M5-Y2I">
-                                                            <rect key="frame" x="20" y="12" width="243" height="19"/>
+                                                            <rect key="frame" x="20" y="9" width="235" height="21"/>
                                                             <fontDescription key="fontDescription" name="SFUIText-Bold" family="SF UI Text" pointSize="17"/>
                                                             <color key="textColor" red="0.015686274509803921" green="0.4392156862745098" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20 years 11 month" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDO-mX-kDm">
-                                                            <rect key="frame" x="263" y="12" width="83" height="19"/>
+                                                            <rect key="frame" x="263" y="10" width="83" height="20"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="83" id="hzx-z3-D7t"/>
+                                                                <constraint firstAttribute="width" constant="83" id="3hq-jR-g3N"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="SFUIText-Bold" family="SF UI Text" pointSize="16"/>
                                                             <color key="textColor" red="0.015686274510000001" green="0.43921568630000002" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_arrow_right" translatesAutoresizingMaskIntoConstraints="NO" id="2DA-L9-0sU">
-                                                            <rect key="frame" x="354" y="15" width="8" height="13"/>
+                                                            <rect key="frame" x="354" y="14" width="8" height="13"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="13" id="Hgw-Eg-1o4"/>
                                                                 <constraint firstAttribute="width" constant="8" id="bvW-Co-fl1"/>
                                                             </constraints>
                                                         </imageView>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ieu-6l-lsX">
+                                                            <rect key="frame" x="0.0" y="41" width="375" height="2"/>
+                                                            <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="1.5" id="l9J-ff-gp4"/>
+                                                            </constraints>
+                                                        </view>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="RDO-mX-kDm" firstAttribute="top" secondItem="iUI-BV-vfF" secondAttribute="topMargin" constant="4" id="1P4-lA-NO2"/>
-                                                        <constraint firstItem="2DA-L9-0sU" firstAttribute="leading" secondItem="RDO-mX-kDm" secondAttribute="trailing" constant="8" id="4A7-ut-3Qx"/>
-                                                        <constraint firstItem="CAN-M5-Y2I" firstAttribute="leading" secondItem="iUI-BV-vfF" secondAttribute="leadingMargin" constant="12" id="Cqm-s3-dq7"/>
-                                                        <constraint firstAttribute="bottomMargin" secondItem="RDO-mX-kDm" secondAttribute="bottom" constant="4" id="FIf-XP-5YP"/>
+                                                        <constraint firstItem="RDO-mX-kDm" firstAttribute="leading" secondItem="CAN-M5-Y2I" secondAttribute="trailing" constant="8" id="98f-8L-1hJ"/>
+                                                        <constraint firstItem="Ieu-6l-lsX" firstAttribute="leading" secondItem="iUI-BV-vfF" secondAttribute="leading" id="Edh-iz-PA7"/>
+                                                        <constraint firstItem="CAN-M5-Y2I" firstAttribute="leading" secondItem="iUI-BV-vfF" secondAttribute="leading" constant="20" id="HFy-Q4-tyR"/>
+                                                        <constraint firstItem="RDO-mX-kDm" firstAttribute="centerY" secondItem="CAN-M5-Y2I" secondAttribute="centerY" id="IVa-E5-neH"/>
+                                                        <constraint firstItem="2DA-L9-0sU" firstAttribute="leading" secondItem="RDO-mX-kDm" secondAttribute="trailing" constant="8" id="KZH-6z-Ksk"/>
                                                         <constraint firstAttribute="trailing" secondItem="2DA-L9-0sU" secondAttribute="trailing" constant="13" id="T0W-Ex-adP"/>
-                                                        <constraint firstAttribute="bottomMargin" secondItem="CAN-M5-Y2I" secondAttribute="bottom" constant="4" id="frU-uZ-GXN"/>
-                                                        <constraint firstItem="2DA-L9-0sU" firstAttribute="top" secondItem="iUI-BV-vfF" secondAttribute="top" constant="15" id="gbY-fj-fbf"/>
-                                                        <constraint firstItem="RDO-mX-kDm" firstAttribute="leading" secondItem="CAN-M5-Y2I" secondAttribute="trailing" id="nJm-gL-ijQ"/>
-                                                        <constraint firstItem="CAN-M5-Y2I" firstAttribute="top" secondItem="iUI-BV-vfF" secondAttribute="topMargin" constant="4" id="qcd-SO-BPB"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Ieu-6l-lsX" secondAttribute="trailing" id="dEa-xd-NFK"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Ieu-6l-lsX" secondAttribute="bottom" id="dib-ps-Q9P"/>
+                                                        <constraint firstItem="2DA-L9-0sU" firstAttribute="top" secondItem="iUI-BV-vfF" secondAttribute="top" constant="14" id="gbY-fj-fbf"/>
+                                                        <constraint firstItem="CAN-M5-Y2I" firstAttribute="centerY" secondItem="iUI-BV-vfF" secondAttribute="centerY" multiplier="0.9" id="rMO-Lu-Ssf"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
@@ -741,7 +748,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SCS-5a-CC7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2852" y="206"/>
+            <point key="canvasLocation" x="2736.8000000000002" y="152.47376311844079"/>
         </scene>
     </scenes>
     <resources>

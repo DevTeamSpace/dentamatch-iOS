@@ -382,6 +382,7 @@ extension DMWorkExperienceVC
         self.currentExperience?.references.append(EmployeeReferenceModel())
         self.workExperienceTable.reloadData()
         self.workExperienceDetailTable.reloadData()
+        self.makeToast(toastString: "Experience Added")
         self.reSizeTableViewsAndScrollView()
     }
     func deleteReference(_ sender: Any) {
