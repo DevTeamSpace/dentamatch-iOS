@@ -10,6 +10,7 @@ import UIKit
 
 class DMWorkExperienceStart: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,ExperiencePickerViewDelegate {
     @IBOutlet weak var workExperienceTable: UITableView!
+    let profileProgress:CGFloat = 0.25
 
     var experienceArray = NSMutableArray()
     var jobTitles = [JobTitle]()
@@ -60,6 +61,8 @@ class DMWorkExperienceStart: DMBaseVC,UITableViewDataSource,UITableViewDelegate,
         self.workExperienceTable.register(UINib(nibName: "AnimatedPHTableCell", bundle: nil), forCellReuseIdentifier: "AnimatedPHTableCell")
         self.workExperienceTable.register(UINib(nibName: "PhotoNameCell", bundle: nil), forCellReuseIdentifier: "PhotoNameCell")
         workExperienceTable.separatorStyle = .none
+        self.workExperienceTable.register(UINib(nibName: "SectionHeadingTableCell", bundle: nil), forCellReuseIdentifier: "SectionHeadingTableCell")
+
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.workExperienceTable.addGestureRecognizer(tap)
@@ -79,27 +82,27 @@ class DMWorkExperienceStart: DMBaseVC,UITableViewDataSource,UITableViewDelegate,
     }
     //goToExperienceDetail
     @IBAction func nextButtonClicked(_ sender: Any) {
-//        
-//        for i in 0..<self.experienceArray.count {
-//            let text = self.experienceArray[i] as! String
-//            if i == 0 {
-//                if text.isEmptyField {
-//                    self.makeToast(toastString: "Please enter job title")
-//                    return
-//                }
-//            }else if i == 1{
-//                if text.isEmptyField {
-//                    self.makeToast(toastString: "Please enter experience")
-//                    return
-//                }
-//            }else if i == 2 {
-//                if text.isEmptyField {
-//                    self.makeToast(toastString: "Please office name")
-//                    return
-//                }
-//            }
-//        }
-//
+        
+        for i in 0..<self.experienceArray.count {
+            let text = self.experienceArray[i] as! String
+            if i == 0 {
+                if text.isEmptyField {
+                    self.makeToast(toastString: "Please enter job title")
+                    return
+                }
+            }else if i == 1{
+                if text.isEmptyField {
+                    self.makeToast(toastString: "Please enter experience")
+                    return
+                }
+            }else if i == 2 {
+                if text.isEmptyField {
+                    self.makeToast(toastString: "Please office name")
+                    return
+                }
+            }
+        }
+
         self.performSegue(withIdentifier: "goToExperienceDetail", sender: self)
 
     }

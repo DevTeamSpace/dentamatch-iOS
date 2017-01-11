@@ -33,6 +33,13 @@
                             <color key="titleColor" red="0.2196078431372549" green="0.2196078431372549" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oFA-cG-VXE">
+                        <rect key="frame" x="0.0" y="111" width="320" height="1.5"/>
+                        <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1.5" id="HFU-0V-mUv"/>
+                        </constraints>
+                    </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2nM-up-it5">
                         <rect key="frame" x="0.0" y="10" width="320" height="44"/>
                         <constraints>
@@ -47,10 +54,13 @@
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="v3U-Tx-qYf" secondAttribute="trailing" id="24V-Jl-xuN"/>
                     <constraint firstAttribute="trailing" secondItem="2nM-up-it5" secondAttribute="trailing" id="6Az-je-Hbe"/>
+                    <constraint firstItem="oFA-cG-VXE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="8SW-lj-Vu7"/>
                     <constraint firstItem="2nM-up-it5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="MZO-Es-K8f"/>
                     <constraint firstItem="v3U-Tx-qYf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="57" id="Z40-zv-rYd"/>
+                    <constraint firstAttribute="trailing" secondItem="oFA-cG-VXE" secondAttribute="trailing" id="aA7-Te-VfR"/>
                     <constraint firstItem="2nM-up-it5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="cpW-Wy-gdo"/>
                     <constraint firstItem="v3U-Tx-qYf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="j1I-Ix-8xQ"/>
+                    <constraint firstItem="oFA-cG-VXE" firstAttribute="top" secondItem="v3U-Tx-qYf" secondAttribute="bottom" id="l1a-4i-YlR"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

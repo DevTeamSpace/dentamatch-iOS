@@ -26,6 +26,12 @@ class DMCertificationsVC: DMBaseVC {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.changeNavBarAppearanceForWithoutHeader()
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -34,7 +40,9 @@ class DMCertificationsVC: DMBaseVC {
     func setup() {
         self.certificationsTableView.separatorColor = UIColor.clear
         self.certificationsTableView.register(UINib(nibName: "PhotoNameCell", bundle: nil), forCellReuseIdentifier: "PhotoNameCell")
-        self.certificationsTableView.register(UINib(nibName: "CertificationsCell", bundle: nil), forCellReuseIdentifier: "CertificationsCell")        
+        self.certificationsTableView.register(UINib(nibName: "CertificationsCell", bundle: nil), forCellReuseIdentifier: "CertificationsCell")
+        self.navigationItem.leftBarButtonItem = self.backBarButton()
+
     }
 
     override func didReceiveMemoryWarning() {

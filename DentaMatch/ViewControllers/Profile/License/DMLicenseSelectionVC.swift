@@ -10,7 +10,7 @@ import UIKit
 
 class DMLicenseSelectionVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate {
     @IBOutlet var licenseTableView: UITableView!
-    
+    let profileProgress:CGFloat = 0.10
     var stateBoardImage:UIImage? = nil
     var licenseArray:NSMutableArray?
     var jobTitles = [JobTitle]()
@@ -60,8 +60,11 @@ class DMLicenseSelectionVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,U
         self.licenseTableView.register(UINib(nibName: "AnimatedPHTableCell", bundle: nil), forCellReuseIdentifier: "AnimatedPHTableCell")
         self.licenseTableView.register(UINib(nibName: "PhotoNameCell", bundle: nil), forCellReuseIdentifier: "PhotoNameCell")
         self.licenseTableView.register(UINib(nibName: "PhotoCell", bundle: nil), forCellReuseIdentifier: "PhotoCell")
+        self.licenseTableView.register(UINib(nibName: "SectionHeadingTableCell", bundle: nil), forCellReuseIdentifier: "SectionHeadingTableCell")
+
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.licenseTableView.addGestureRecognizer(tap)
+        
 
         self.licenseTableView.separatorStyle = .none
         self.licenseTableView.reloadData()
@@ -73,25 +76,25 @@ class DMLicenseSelectionVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,U
     }
     @IBAction func nextButtonClikced(_ sender: Any) {
         
-//        if self.stateBoardImage == nil{
-//            self.makeToast(toastString: "Please select state board certificate")
-//            return
-//        }
-//        for i in 0..<(self.licenseArray?.count)! {
-//            let text = self.licenseArray?[i] as! String
-//            if i == 0 {
-//                if text.isEmptyField {
-//                    self.makeToast(toastString: "Please enter license no")
-//                    return
-//                }
-//            }else{
-//                if text.isEmptyField {
-//                    self.makeToast(toastString: "Please enter state")
-//                    return
-//                }
-//
-//            }
-//        }
+        if self.stateBoardImage == nil{
+            self.makeToast(toastString: "Please select state board certificate")
+            return
+        }
+        for i in 0..<(self.licenseArray?.count)! {
+            let text = self.licenseArray?[i] as! String
+            if i == 0 {
+                if text.isEmptyField {
+                    self.makeToast(toastString: "Please enter license no")
+                    return
+                }
+            }else{
+                if text.isEmptyField {
+                    self.makeToast(toastString: "Please enter state")
+                    return
+                }
+
+            }
+        }
         self.performSegue(withIdentifier: "goToWorkExperience", sender: self)
     }
     
@@ -148,16 +151,15 @@ class DMLicenseSelectionVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,U
 
     }
 
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 1
     }
+ 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 || section == 1
-        {
-            return 1
-        }
-        return 2
+        return 6
     }
+    /*
      func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
     {
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 45))
@@ -176,40 +178,51 @@ class DMLicenseSelectionVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,U
         
         return headerView
     }
-    
+    */
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        if indexPath.section == 0
-        {
-            return 226
- 
-        }else if indexPath.section == 1        {
+        switch indexPath.row {
+        case 0:
+            return 213
+        case 1,3:
+            return 45
+        case 2:
             return 203
-            
+        case 4,5:
+            return 109
+        default:
+            debugPrint("Text")
         }
         return 109
 
     }
      func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
     {
-        if section == 0
-        {
-            return 0
-        }
-        return 45
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        switch indexPath.section {
+        switch indexPath.row {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoNameCell") as! PhotoNameCell
+            cell.nameLabel.text = "Jennifer"
+            cell.jobTitleLabel.text = "Jennifer"
+            cell.photoButton.progressBar.setProgress(profileProgress, animated: true)
             cell.selectionStyle = .none
 
             return cell
 
-        case 1:
-            print("section 1")
+        case 1,3:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SectionHeadingTableCell") as! SectionHeadingTableCell
+            cell.selectionStyle = .none
+            let text  = indexPath.row == 1 ? "ADD DENTAL STATE BOARD":"LICENSE"
+            cell.headingLabel.text = text
+            return cell
+
+            //SectionHeadingTableCell
+        case 2:
+            debugPrint("row 1")
             let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoCell") as! PhotoCell
             
             cell.stateBoardPhotoButton.addTarget(self, action: #selector(DMLicenseSelectionVC.stateBoardButtonPressed(_:)), for: .touchUpInside)
@@ -225,37 +238,33 @@ class DMLicenseSelectionVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,U
             cell.selectionStyle = .none
             return cell
 
+        case 4,5:
             
-        case 2:
-            print("section 2")
+            debugPrint("row 2")
             let cell = tableView.dequeueReusableCell(withIdentifier: "AnimatedPHTableCell") as! AnimatedPHTableCell
             cell.selectionStyle = .none
 
             cell.commonTextFiled.delegate = self
-            cell.commonTextFiled.tag = indexPath.row
             
-            if indexPath.row == 0
+            if indexPath.row == 4
             {
+                cell.commonTextFiled.tag = 0
                 cell.cellTopSpace.constant = 43.5
                 cell.cellBottomSpace.constant = 10.5
                 cell.commonTextFiled.placeholder = "License Number"
                 cell.layoutIfNeeded()
-            }else if indexPath.row == 1
+            }else if indexPath.row == 5
             {
+                cell.commonTextFiled.tag = 1
                 cell.commonTextFiled.placeholder = "State"
                 cell.cellTopSpace.constant = 10.5
                 cell.cellBottomSpace.constant = 41.5
                 cell.layoutIfNeeded()
             }
             return cell
-
-        case 3:
-            print("section 3")
-
-
             
         default:
-            print("Default")
+            debugPrint("Default")
             
         }
         
@@ -287,6 +296,12 @@ class DMLicenseSelectionVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,U
         }
         
         if textField.tag == 0 {
+            let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ0123456789-")
+            if string.rangeOfCharacter(from: characterset.inverted) != nil {
+                print("string contains special characters")
+                return false
+            }
+
             if (textField.text?.characters.count)! >= Constants.TextFieldMaxLenght.licenseNumber {
                 return false
             }
@@ -298,27 +313,22 @@ class DMLicenseSelectionVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,U
 
         }
 
-        let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ0123456789-")
-        if string.rangeOfCharacter(from: characterset.inverted) != nil {
-            print("string contains special characters")
-            return false
-        }
         return true
 
     }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.text = textField.text?.trim()
         if textField.tag == 0
         {
             self.licenseArray?.replaceObject(at: 0, with: textField.text!)
         }else{
             self.licenseArray?.replaceObject(at: 1, with: textField.text!)
-
         }
-        
     }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        
         return true
     }
     
