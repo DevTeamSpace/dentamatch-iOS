@@ -52,4 +52,18 @@ class UserDefaultsManager: NSObject {
             kUserDefaults.synchronize()
         }
     }
+    
+    var profileImageURL:String {
+        get {
+            if(kUserDefaults.value(forKey: Constants.UserDefaultsKey.profileImageURL) != nil){
+                return kUserDefaults.value(forKey: Constants.UserDefaultsKey.profileImageURL) as! String
+            }
+            return ""
+        }
+        set {
+            kUserDefaults.setValue(newValue, forKey: Constants.UserDefaultsKey.profileImageURL)
+            kUserDefaults.synchronize()
+        }
+    }
+
 }

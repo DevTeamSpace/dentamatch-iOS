@@ -130,8 +130,7 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
     @IBAction func nextButtonPressed(_ sender: Any) {
         if profileImage != nil {
             if selectedJobTitle != nil {
-                //uploadProfileImageAPI()
-                openLicenseScreen()
+                uploadProfileImageAPI()
             } else {
                 self.makeToast(toastString: "Please select current job title")
             }
