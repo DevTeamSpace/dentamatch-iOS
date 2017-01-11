@@ -98,6 +98,7 @@ struct Constants {
         static let privacyPolicyURL = Constants.API.apiURL("privacy-policy")
         static let getJobTitleAPI = Constants.API.apiURL("list-jobtitle")
         static let uploadImageAPI = Constants.API.apiURL("users/upload-image")
+        static let LicenseNumberAndState = Constants.API.apiURL("users/update-license")
 
         static func apiURL(_ methodName: String) -> String {
             return BASE_URL + methodName
