@@ -95,9 +95,14 @@ class DMLicenseSelectionVC: DMBaseVC,UITextFieldDelegate {
 
             }
         }
-        self.performSegue(withIdentifier: "goToWorkExperience", sender: self)
+
+        let  params = ["license":self.licenseArray![0],"state":self.licenseArray![1],"jobTitleId":"\(self.selectedJobTitle.jobId)"]
+        updateLicenseAndStateAPI(params: params as! [String : String])
     }
     
+    func openExperienceFirstScreen() {
+        self.performSegue(withIdentifier: "goToWorkExperience", sender: self)
+    }
     func stateBoardButtonPressed(_ sender: Any) {
         self.cameraGalleryOptionActionSheet(title: "", message: "Please select", leftButtonText: "Camera", rightButtonText: "Gallery") { (isCameraButtonPressed, isGalleryButtonPressed, isCancelButtonPressed) in
             if isCancelButtonPressed {
@@ -113,6 +118,7 @@ class DMLicenseSelectionVC: DMBaseVC,UITextFieldDelegate {
                     DispatchQueue.main.async {
 //                        self.profileButton.setImage(image, for: .normal)
                         self.licenseTableView.reloadData()
+                        self.uploadDentalStateboardImage()
                     }
                 })
             } else {
@@ -126,6 +132,8 @@ class DMLicenseSelectionVC: DMBaseVC,UITextFieldDelegate {
                     self.stateBoardImage = image
                     DispatchQueue.main.async {
                         self.licenseTableView.reloadData()
+                        self.uploadDentalStateboardImage()
+
                     }
                 })
             }

@@ -65,5 +65,18 @@ class UserDefaultsManager: NSObject {
             kUserDefaults.synchronize()
         }
     }
+    
+    var licenseImageURL:String {
+        get {
+            if(kUserDefaults.value(forKey: Constants.UserDefaultsKey.licenseImageURL) != nil){
+                return kUserDefaults.value(forKey: Constants.UserDefaultsKey.licenseImageURL) as! String
+            }
+            return ""
+        }
+        set {
+            kUserDefaults.setValue(newValue, forKey: Constants.UserDefaultsKey.licenseImageURL)
+            kUserDefaults.synchronize()
+        }
+    }
 
 }

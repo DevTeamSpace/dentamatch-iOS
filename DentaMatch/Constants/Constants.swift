@@ -134,6 +134,7 @@ struct Constants {
         static let deviceToken = "kDeviceToken"
         static let accessToken = "kDeviceToken"
         static let profileImageURL = "kProfileImageURL"
+        static let licenseImageURL = "kLicenseImageURL"
 
     }
     

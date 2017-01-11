@@ -34,7 +34,7 @@ class APIManager: NSObject {
     
     class func apiPost(serviceName:String,parameters: [String:Any]?, completionHandler: @escaping (JSON?, NSError?) -> ()) {
         
-        Alamofire.request(serviceName, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseJSON { (response:DataResponse<Any>) in
+        Alamofire.request(serviceName, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: ["accessToken":UserDefaultsManager.sharedInstance.accessToken]).responseJSON { (response:DataResponse<Any>) in
             
             switch(response.result) {
             case .success(_):
@@ -54,7 +54,7 @@ class APIManager: NSObject {
     
     class func apiPut(serviceName:String,parameters: [String:Any]?, completionHandler: @escaping (JSON?, NSError?) -> ()) {
         
-        Alamofire.request(serviceName, method: .put, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseJSON { (response:DataResponse<Any>) in
+        Alamofire.request(serviceName, method: .put, parameters: parameters, encoding: URLEncoding.default, headers: ["accessToken":UserDefaultsManager.sharedInstance.accessToken]).responseJSON { (response:DataResponse<Any>) in
             
             switch(response.result) {
             case .success(_):
