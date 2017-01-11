@@ -51,6 +51,7 @@
 		E5496E061E255B2E00C54288 /* AboutMeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5496E041E255B2E00C54288 /* AboutMeCell.xib */; };
 		E5496E081E25E4AA00C54288 /* DMSchoolListPopOverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5496E071E25E4AA00C54288 /* DMSchoolListPopOverVC.swift */; };
 		E5496E0A1E25E52600C54288 /* DMSchoolListPopOverVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5496E091E25E52600C54288 /* DMSchoolListPopOverVC+TableViewExtension.swift */; };
+		E5496E0C1E26435C00C54288 /* DMLicenseSelectionVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5496E0B1E26435C00C54288 /* DMLicenseSelectionVC+TableViewExtension.swift */; };
 		E55462D71DAE2F49004163B2 /* UIColor+HexCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55462D61DAE2F49004163B2 /* UIColor+HexCode.swift */; };
 		E55462D91DAE3104004163B2 /* Array+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55462D81DAE3104004163B2 /* Array+Additions.swift */; };
 		E55462DB1DAE312C004163B2 /* String+Additons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55462DA1DAE312C004163B2 /* String+Additons.swift */; };
@@ -211,6 +212,7 @@
 		E5496E041E255B2E00C54288 /* AboutMeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutMeCell.xib; sourceTree = "<group>"; };
 		E5496E071E25E4AA00C54288 /* DMSchoolListPopOverVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMSchoolListPopOverVC.swift; sourceTree = "<group>"; };
 		E5496E091E25E52600C54288 /* DMSchoolListPopOverVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMSchoolListPopOverVC+TableViewExtension.swift"; sourceTree = "<group>"; };
+		E5496E0B1E26435C00C54288 /* DMLicenseSelectionVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMLicenseSelectionVC+TableViewExtension.swift"; sourceTree = "<group>"; };
 		E55462D01DAE1419004163B2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E55462D61DAE2F49004163B2 /* UIColor+HexCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+HexCode.swift"; sourceTree = "<group>"; };
 		E55462D81DAE3104004163B2 /* Array+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Additions.swift"; sourceTree = "<group>"; };
@@ -732,6 +734,7 @@
 			isa = PBXGroup;
 			children = (
 				E587D2E11E24C021006B7F06 /* DMLicenseSelectionVC.swift */,
+				E5496E0B1E26435C00C54288 /* DMLicenseSelectionVC+TableViewExtension.swift */,
 				5A5266BC1E26413400C5B7A1 /* DMLicenseSelectionVC+Services.swift */,
 			);
 			path = License;
@@ -1174,6 +1177,7 @@
 				E50B3F3F1E18E8D2004C5F32 /* ZAnimationIndicatorView.swift in Sources */,
 				E587D2EA1E24C021006B7F06 /* DMLicenseSelectionVC.swift in Sources */,
 				E587D2D51E2357A9006B7F06 /* DMJobTitleSelectionVC+Services.swift in Sources */,
+				E5496E0C1E26435C00C54288 /* DMLicenseSelectionVC+TableViewExtension.swift in Sources */,
 				E587D2EC1E24C021006B7F06 /* DMWorkExperienceStart.swift in Sources */,
 				E50B3F401E18E8D2004C5F32 /* ZGradientLayer.swift in Sources */,
 				E594BEA21E1E014F00310AE5 /* DMLoginVC.swift in Sources */,

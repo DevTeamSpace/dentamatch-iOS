@@ -125,6 +125,7 @@ struct Constants {
         static let result = "result"
         static let accessToken = "accessToken"
         static let joblists = "joblists"
+        static let profileImageURL = "img_url"
     }
     
     //MARK:- UserDefault Keys
@@ -132,6 +133,7 @@ struct Constants {
         static let isLoggedIn = "isLoggedIn"
         static let deviceToken = "kDeviceToken"
         static let accessToken = "kDeviceToken"
+        static let profileImageURL = "kProfileImageURL"
 
     }
     
