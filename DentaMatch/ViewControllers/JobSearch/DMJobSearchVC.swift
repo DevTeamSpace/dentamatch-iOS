@@ -11,6 +11,8 @@ import UIKit
 class DMJobSearchVC : DMBaseVC {
     
     @IBOutlet weak var tblViewJobSearch: UITableView!
+    
+    var isPartTimeDayShow : Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +45,12 @@ extension DMJobSearchVC : UITableViewDataSource, UITableViewDelegate {
             return 1
         }
         else if section == 1 {
-            return 2
+            if isPartTimeDayShow == true {
+                return 2
+            }
+            else {
+               return 1
+            }
         }
         else if section == 2 {
             return 2
@@ -55,8 +62,10 @@ extension DMJobSearchVC : UITableViewDataSource, UITableViewDelegate {
         
         let cell = UITableViewCell.init(style: .default, reuseIdentifier: "Blank")
         cell.backgroundColor = UIColor.clear
+        cell.selectionStyle = .none
         if indexPath.section == 0 {
             var cell = tableView.dequeueReusableCell(withIdentifier: "JobSeachTitleCell") as? JobSeachTitleCell
+            cell?.selectionStyle = .none
             if cell == nil {
                 cell = JobSeachTitleCell()
             }
@@ -65,14 +74,18 @@ extension DMJobSearchVC : UITableViewDataSource, UITableViewDelegate {
         }
         else if indexPath.section == 1 {
             if indexPath.row == 0 {
-                var cell = tableView.dequeueReusableCell(withIdentifier: "JobSearchTypeCell")
+                var cell = tableView.dequeueReusableCell(withIdentifier: "JobSearchTypeCell") as? JobSearchTypeCell
+                cell?.delegate = self
+                cell?.selectionStyle = .none
                 if cell == nil {
                     cell = JobSearchTypeCell()
                 }
                 return cell!
             }
             else if  indexPath.row == 1 {
-                var cell = tableView.dequeueReusableCell(withIdentifier: "JobSearchPartTimeCell")
+                var cell = tableView.dequeueReusableCell(withIdentifier: "JobSearchPartTimeCell") as? JobSearchPartTimeCell
+                cell?.delegate = self
+                cell?.selectionStyle = .none
                 if cell == nil {
                     cell = JobSearchPartTimeCell()
                 }
@@ -83,6 +96,7 @@ extension DMJobSearchVC : UITableViewDataSource, UITableViewDelegate {
             
             if indexPath.row == 0 {
                 var cell = tableView.dequeueReusableCell(withIdentifier: "CurrentLocationCell")
+                cell?.selectionStyle = .none
                 if cell == nil {
                     cell = CurrentLocationCell()
                 }
@@ -189,14 +203,21 @@ extension DMJobSearchVC : UITableViewDataSource, UITableViewDelegate {
     
     func tableView (_ tableView:UITableView,  viewForHeaderInSection section:Int)->UIView?
     {
-        let headerView:UIView! = UIView (frame:CGRect (x : 0,y : 0, width : self.tblViewJobSearch.frame.size.width,height : 20.0));
+        var height : CGFloat!
+        if section == 1 {
+            height =  22
+        }
+        else if section == 2 {
+            height =  20
+        }
+        let headerView:UIView! = UIView (frame:CGRect (x : 0,y : 0, width : self.tblViewJobSearch.frame.size.width,height : height));
         headerView.backgroundColor = self.tblViewJobSearch.backgroundColor;
         
         return headerView;
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        tableView.deselectRow(at: indexPath, animated: false)
     }
     
     //MARK : Action Search Method
@@ -206,3 +227,35 @@ extension DMJobSearchVC : UITableViewDataSource, UITableViewDelegate {
     }
 }
 
+extension DMJobSearchVC : JobSearchTypeCellDelegate, JobSearchPartTimeCellDelegate {
+    
+    //MARK : JobSearchTypeCellDelegate Method
+    
+    func selectJobSearchType(selected: Bool, type: String) {
+        if type ==  JobSearchType.PartTime.rawValue {
+            if selected == true  {
+                if isPartTimeDayShow == false {
+                    isPartTimeDayShow = !isPartTimeDayShow
+                    tblViewJobSearch.beginUpdates()
+                    tblViewJobSearch.insertRows(at: [IndexPath(row: 1, section: 1)], with: .top )
+                    tblViewJobSearch.endUpdates()
+                }
+            }
+            else {
+                isPartTimeDayShow = !isPartTimeDayShow
+                tblViewJobSearch.beginUpdates()
+                tblViewJobSearch.deleteRows(at: [IndexPath(row: 1, section: 1)], with: .top)
+                tblViewJobSearch.endUpdates()
+            }
+        }
+        else {
+            
+        }
+    }
+    
+    //MARK : JobSearchPartTimeCellDelegate Method
+    
+    func selectDay(selected: Bool, day: String) {
+        
+    }
+}

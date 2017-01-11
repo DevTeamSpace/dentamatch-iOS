@@ -5,7 +5,6 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,13 +24,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tkh-qE-gSd">
-                        <rect key="frame" x="-1" y="0.0" width="377" height="76.5"/>
+                        <rect key="frame" x="-1" y="-1" width="377" height="77"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LrQ-BC-tdw">
-                                <rect key="frame" x="18" y="21.5" width="34" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="LrQ-BC-tdw" secondAttribute="height" multiplier="1:1" id="0q6-IB-AK8"/>
-                                </constraints>
+                                <rect key="frame" x="30" y="22" width="34" height="34"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="18"/>
                                 <state key="normal" title="Su">
                                     <color key="titleColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -41,7 +37,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3F-YG-5iw">
-                                <rect key="frame" x="70" y="21.5" width="34" height="34"/>
+                                <rect key="frame" x="77.5" y="22" width="34" height="34"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="18"/>
                                 <state key="normal" title="Mo">
                                     <color key="titleColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -51,7 +47,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bNb-vq-rb9" userLabel="Tu">
-                                <rect key="frame" x="122" y="21.5" width="34" height="34"/>
+                                <rect key="frame" x="125" y="22" width="34" height="34"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="18"/>
                                 <state key="normal" title="Tu">
                                     <color key="titleColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -61,7 +57,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S1H-sE-yPh">
-                                <rect key="frame" x="174" y="21.5" width="34" height="34"/>
+                                <rect key="frame" x="172" y="22" width="34" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="Bs9-3W-YBd"/>
+                                    <constraint firstAttribute="width" constant="34" id="baZ-ee-a9D"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="18"/>
                                 <state key="normal" title="We">
                                     <color key="titleColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -71,7 +71,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AkG-0X-xoH">
-                                <rect key="frame" x="226" y="21.5" width="34" height="34"/>
+                                <rect key="frame" x="219" y="22" width="34" height="34"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="18"/>
                                 <state key="normal" title="Th">
                                     <color key="titleColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -81,7 +81,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UWB-f3-J06">
-                                <rect key="frame" x="278" y="21.5" width="34" height="34"/>
+                                <rect key="frame" x="266" y="22" width="34" height="34"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="18"/>
                                 <state key="normal" title="Fr">
                                     <color key="titleColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -91,7 +91,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Tb-5Q-7tE">
-                                <rect key="frame" x="327" y="21.5" width="34" height="34"/>
+                                <rect key="frame" x="313" y="22.5" width="34" height="34"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="18"/>
                                 <state key="normal" title="Sa">
                                     <color key="titleColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -103,34 +103,32 @@
                         </subviews>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="UWB-f3-J06" firstAttribute="leading" secondItem="AkG-0X-xoH" secondAttribute="trailing" constant="18" id="1lK-X5-oUJ"/>
-                            <constraint firstItem="LrQ-BC-tdw" firstAttribute="leading" secondItem="tkh-qE-gSd" secondAttribute="leading" constant="18" id="3Dg-jd-BDE"/>
-                            <constraint firstItem="bNb-vq-rb9" firstAttribute="centerY" secondItem="tkh-qE-gSd" secondAttribute="centerY" id="3ad-El-1RW"/>
-                            <constraint firstItem="AkG-0X-xoH" firstAttribute="height" secondItem="LrQ-BC-tdw" secondAttribute="height" id="6oN-Am-J9U"/>
-                            <constraint firstItem="i3F-YG-5iw" firstAttribute="height" secondItem="LrQ-BC-tdw" secondAttribute="height" id="82g-ij-qaM"/>
-                            <constraint firstItem="S1H-sE-yPh" firstAttribute="height" secondItem="LrQ-BC-tdw" secondAttribute="height" id="ABZ-DM-IRq"/>
-                            <constraint firstItem="UWB-f3-J06" firstAttribute="centerY" secondItem="tkh-qE-gSd" secondAttribute="centerY" id="Fsw-IF-TPI"/>
-                            <constraint firstItem="5Tb-5Q-7tE" firstAttribute="centerY" secondItem="tkh-qE-gSd" secondAttribute="centerY" id="G4F-bZ-4ds"/>
-                            <constraint firstItem="AkG-0X-xoH" firstAttribute="centerY" secondItem="tkh-qE-gSd" secondAttribute="centerY" id="GDB-29-WwT"/>
-                            <constraint firstItem="LrQ-BC-tdw" firstAttribute="width" secondItem="tkh-qE-gSd" secondAttribute="width" multiplier="0.096" constant="-2.0960000000000036" id="LlA-W4-ufj"/>
-                            <constraint firstItem="bNb-vq-rb9" firstAttribute="height" secondItem="LrQ-BC-tdw" secondAttribute="height" id="O6c-8d-C1C"/>
-                            <constraint firstItem="5Tb-5Q-7tE" firstAttribute="width" secondItem="LrQ-BC-tdw" secondAttribute="width" id="Sq8-g0-hZp"/>
-                            <constraint firstItem="S1H-sE-yPh" firstAttribute="leading" secondItem="bNb-vq-rb9" secondAttribute="trailing" constant="18" id="Tmp-xm-Vfz"/>
-                            <constraint firstItem="5Tb-5Q-7tE" firstAttribute="leading" secondItem="UWB-f3-J06" secondAttribute="trailing" constant="15" id="VYe-E1-8QI"/>
-                            <constraint firstItem="i3F-YG-5iw" firstAttribute="centerY" secondItem="tkh-qE-gSd" secondAttribute="centerY" id="XUq-Qr-cL5"/>
-                            <constraint firstItem="UWB-f3-J06" firstAttribute="width" secondItem="LrQ-BC-tdw" secondAttribute="width" id="YS8-Uq-iGj"/>
-                            <constraint firstItem="S1H-sE-yPh" firstAttribute="centerY" secondItem="tkh-qE-gSd" secondAttribute="centerY" id="eKz-Ae-sRv"/>
-                            <constraint firstItem="i3F-YG-5iw" firstAttribute="leading" secondItem="LrQ-BC-tdw" secondAttribute="trailing" constant="18" id="hr3-8a-C9x"/>
-                            <constraint firstItem="LrQ-BC-tdw" firstAttribute="centerY" secondItem="tkh-qE-gSd" secondAttribute="centerY" id="ixc-Mb-XGA"/>
-                            <constraint firstAttribute="trailing" secondItem="5Tb-5Q-7tE" secondAttribute="trailing" constant="30" id="peK-Hd-WtA"/>
-                            <constraint firstItem="5Tb-5Q-7tE" firstAttribute="height" secondItem="LrQ-BC-tdw" secondAttribute="height" id="rEB-MQ-Bgm"/>
-                            <constraint firstItem="UWB-f3-J06" firstAttribute="height" secondItem="LrQ-BC-tdw" secondAttribute="height" id="rIl-cP-q78"/>
-                            <constraint firstItem="AkG-0X-xoH" firstAttribute="width" secondItem="LrQ-BC-tdw" secondAttribute="width" id="sHQ-dP-4GL"/>
-                            <constraint firstItem="AkG-0X-xoH" firstAttribute="leading" secondItem="S1H-sE-yPh" secondAttribute="trailing" constant="18" id="tev-ut-rvb"/>
-                            <constraint firstItem="bNb-vq-rb9" firstAttribute="width" secondItem="LrQ-BC-tdw" secondAttribute="width" id="u7I-eJ-keo"/>
-                            <constraint firstItem="i3F-YG-5iw" firstAttribute="width" secondItem="LrQ-BC-tdw" secondAttribute="width" id="uSx-LK-Xgr"/>
-                            <constraint firstItem="S1H-sE-yPh" firstAttribute="width" secondItem="LrQ-BC-tdw" secondAttribute="width" id="vd6-vv-yrQ"/>
-                            <constraint firstItem="bNb-vq-rb9" firstAttribute="leading" secondItem="i3F-YG-5iw" secondAttribute="trailing" constant="18" id="yIZ-FN-tGu"/>
+                            <constraint firstItem="AkG-0X-xoH" firstAttribute="centerY" secondItem="S1H-sE-yPh" secondAttribute="centerY" id="4pj-KR-fTd"/>
+                            <constraint firstItem="bNb-vq-rb9" firstAttribute="centerX" secondItem="tkh-qE-gSd" secondAttribute="centerX" multiplier="0.75" id="7Fd-9K-mcM"/>
+                            <constraint firstItem="AkG-0X-xoH" firstAttribute="width" secondItem="S1H-sE-yPh" secondAttribute="width" id="7LR-bC-Knq"/>
+                            <constraint firstItem="i3F-YG-5iw" firstAttribute="centerY" secondItem="bNb-vq-rb9" secondAttribute="centerY" id="8Up-dm-Nqi"/>
+                            <constraint firstItem="5Tb-5Q-7tE" firstAttribute="width" secondItem="UWB-f3-J06" secondAttribute="width" id="B0l-n6-GUJ"/>
+                            <constraint firstItem="bNb-vq-rb9" firstAttribute="width" secondItem="S1H-sE-yPh" secondAttribute="width" id="BIw-d4-fwF"/>
+                            <constraint firstItem="5Tb-5Q-7tE" firstAttribute="centerX" secondItem="tkh-qE-gSd" secondAttribute="centerX" multiplier="1.75" id="Bgx-jk-8SL"/>
+                            <constraint firstItem="bNb-vq-rb9" firstAttribute="centerY" secondItem="S1H-sE-yPh" secondAttribute="centerY" id="G8d-4p-6wQ"/>
+                            <constraint firstItem="i3F-YG-5iw" firstAttribute="height" secondItem="bNb-vq-rb9" secondAttribute="height" id="JCs-df-PIQ"/>
+                            <constraint firstItem="AkG-0X-xoH" firstAttribute="centerX" secondItem="tkh-qE-gSd" secondAttribute="centerX" multiplier="1.25" id="MxM-Jc-aex"/>
+                            <constraint firstItem="i3F-YG-5iw" firstAttribute="centerX" secondItem="tkh-qE-gSd" secondAttribute="centerX" multiplier="0.5" id="R0C-Ha-Kcp"/>
+                            <constraint firstItem="LrQ-BC-tdw" firstAttribute="height" secondItem="i3F-YG-5iw" secondAttribute="height" id="Z8c-Wy-jjG"/>
+                            <constraint firstItem="AkG-0X-xoH" firstAttribute="height" secondItem="S1H-sE-yPh" secondAttribute="height" id="c3X-7U-H5e"/>
+                            <constraint firstItem="UWB-f3-J06" firstAttribute="width" secondItem="AkG-0X-xoH" secondAttribute="width" id="dWU-QI-rgK"/>
+                            <constraint firstItem="S1H-sE-yPh" firstAttribute="centerY" secondItem="tkh-qE-gSd" secondAttribute="centerY" id="f4H-zZ-p1d"/>
+                            <constraint firstItem="UWB-f3-J06" firstAttribute="height" secondItem="AkG-0X-xoH" secondAttribute="height" id="j6C-j1-Orp"/>
+                            <constraint firstItem="bNb-vq-rb9" firstAttribute="height" secondItem="S1H-sE-yPh" secondAttribute="height" id="jdj-aR-SWV"/>
+                            <constraint firstItem="5Tb-5Q-7tE" firstAttribute="height" secondItem="UWB-f3-J06" secondAttribute="height" id="khD-fF-qE4"/>
+                            <constraint firstItem="i3F-YG-5iw" firstAttribute="width" secondItem="bNb-vq-rb9" secondAttribute="width" id="pcZ-4f-FnU"/>
+                            <constraint firstItem="S1H-sE-yPh" firstAttribute="centerX" secondItem="tkh-qE-gSd" secondAttribute="centerX" id="ppT-WD-cTy"/>
+                            <constraint firstItem="UWB-f3-J06" firstAttribute="centerY" secondItem="AkG-0X-xoH" secondAttribute="centerY" id="sYC-jg-6fu"/>
+                            <constraint firstItem="LrQ-BC-tdw" firstAttribute="centerY" secondItem="i3F-YG-5iw" secondAttribute="centerY" id="sba-L0-cIr"/>
+                            <constraint firstItem="5Tb-5Q-7tE" firstAttribute="centerY" secondItem="UWB-f3-J06" secondAttribute="centerY" id="tZ6-HH-OOH"/>
+                            <constraint firstItem="LrQ-BC-tdw" firstAttribute="width" secondItem="i3F-YG-5iw" secondAttribute="width" id="waq-oe-wJT"/>
+                            <constraint firstItem="LrQ-BC-tdw" firstAttribute="centerX" secondItem="tkh-qE-gSd" secondAttribute="centerX" multiplier="0.25" id="xwW-2W-MkH"/>
+                            <constraint firstItem="UWB-f3-J06" firstAttribute="centerX" secondItem="tkh-qE-gSd" secondAttribute="centerX" multiplier="1.5" id="yxj-X9-INr"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
@@ -144,7 +142,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="tkh-qE-gSd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="-1" id="FVP-JI-dx6"/>
-                    <constraint firstItem="tkh-qE-gSd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="L3K-XW-wca"/>
+                    <constraint firstItem="tkh-qE-gSd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="-1" id="L3K-XW-wca"/>
                     <constraint firstAttribute="trailing" secondItem="tkh-qE-gSd" secondAttribute="trailing" constant="-1" id="PDX-3d-tFB"/>
                     <constraint firstAttribute="bottom" secondItem="tkh-qE-gSd" secondAttribute="bottom" id="TeK-wv-owB"/>
                 </constraints>
@@ -159,6 +157,7 @@
                 <outlet property="btnWednesday" destination="S1H-sE-yPh" id="NRN-if-VXM"/>
                 <outlet property="viewPartTime" destination="tkh-qE-gSd" id="NMA-ue-R4X"/>
             </connections>
+            <point key="canvasLocation" x="34.5" y="89.5"/>
         </tableViewCell>
     </objects>
 </document>

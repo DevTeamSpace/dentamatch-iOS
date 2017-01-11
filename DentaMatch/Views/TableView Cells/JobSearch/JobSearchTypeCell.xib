@@ -150,7 +150,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="6F2-jK-Ai5" secondAttribute="trailing" constant="-8" id="G1Y-fc-Co6"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="6F2-jK-Ai5" secondAttribute="bottom" constant="-9" id="KGW-OD-VDg"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="6F2-jK-Ai5" secondAttribute="bottom" constant="-8" id="KGW-OD-VDg"/>
                     <constraint firstItem="6F2-jK-Ai5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="cBJ-3o-w0j"/>
                     <constraint firstItem="6F2-jK-Ai5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="xoW-yV-UhH"/>
                 </constraints>

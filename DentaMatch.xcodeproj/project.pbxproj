@@ -111,8 +111,6 @@
 		F2540F571E23A8AE004B0538 /* CurrentLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2540F551E23A8AE004B0538 /* CurrentLocationCell.xib */; };
 		F2D03BA51E1F580C0005D3A4 /* JobSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2D03BA41E1F580C0005D3A4 /* JobSearch.storyboard */; };
 		F2D03BA81E1F67BA0005D3A4 /* DMJobSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D03BA71E1F67BA0005D3A4 /* DMJobSearchVC.swift */; };
-		F2D03BAC1E1F6D980005D3A4 /* JobSeachTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D03BAA1E1F6D980005D3A4 /* JobSeachTableViewCell.swift */; };
-		F2D03BAD1E1F6D980005D3A4 /* JobSeachTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2D03BAB1E1F6D980005D3A4 /* JobSeachTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -232,8 +230,6 @@
 		F2540F551E23A8AE004B0538 /* CurrentLocationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CurrentLocationCell.xib; sourceTree = "<group>"; };
 		F2D03BA41E1F580C0005D3A4 /* JobSearch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = JobSearch.storyboard; sourceTree = "<group>"; };
 		F2D03BA71E1F67BA0005D3A4 /* DMJobSearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMJobSearchVC.swift; sourceTree = "<group>"; };
-		F2D03BAA1E1F6D980005D3A4 /* JobSeachTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobSeachTableViewCell.swift; sourceTree = "<group>"; };
-		F2D03BAB1E1F6D980005D3A4 /* JobSeachTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobSeachTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -734,8 +730,6 @@
 		F2D03BA91E1F67EB0005D3A4 /* JobSearch */ = {
 			isa = PBXGroup;
 			children = (
-				F2D03BAA1E1F6D980005D3A4 /* JobSeachTableViewCell.swift */,
-				F2D03BAB1E1F6D980005D3A4 /* JobSeachTableViewCell.xib */,
 				F2540F481E23A81C004B0538 /* JobSeachTitleCell.swift */,
 				F2540F491E23A81C004B0538 /* JobSeachTitleCell.xib */,
 				F2540F4C1E23A834004B0538 /* JobSearchTypeCell.swift */,
@@ -821,7 +815,6 @@
 				E597E5881E151A99001DDA78 /* SF-UI-Text-Semibold.otf in Resources */,
 				5A3FD0721E1C0C1200360B3C /* ReferenceTableCell.xib in Resources */,
 				E597E5841E151A99001DDA78 /* SF-UI-Text-Medium.otf in Resources */,
-				F2D03BAD1E1F6D980005D3A4 /* JobSeachTableViewCell.xib in Resources */,
 				E597E57E1E151A99001DDA78 /* SF-UI-Text-Bold.otf in Resources */,
 				E597E57A1E151A99001DDA78 /* SF-UI-Display-Regular.otf in Resources */,
 				E597E5751E151A99001DDA78 /* SF-UI-Display-Black.otf in Resources */,
@@ -992,7 +985,6 @@
 				E55462F31DAE4A5D004163B2 /* Constants.swift in Sources */,
 				5AE5F5161E1A3470006C328A /* PhotoNameCell.swift in Sources */,
 				E50B3F4E1E194CD7004C5F32 /* LoginTableViewCell.swift in Sources */,
-				F2D03BAC1E1F6D980005D3A4 /* JobSeachTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

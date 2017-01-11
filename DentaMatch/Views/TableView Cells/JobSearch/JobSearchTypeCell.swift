@@ -8,13 +8,27 @@
 
 import UIKit
 
+enum JobSearchType : String {
+    case FullTime = "FullTime"
+    case PartTime = "PartTime"
+}
 
+@objc protocol JobSearchTypeCellDelegate {
+    
+    @objc optional func selectJobSearchType(selected : Bool,type : String)
+    
+}
 
 class JobSearchTypeCell: UITableViewCell {
     
     @IBOutlet weak var viewJobType: UIView!
     @IBOutlet weak var btnFullTime: UIButton!
     @IBOutlet weak var btnPartTime: UIButton!
+    
+    var isFullTime : Bool! = false
+    var isPartTime : Bool! = false
+    
+    weak var delegate : JobSearchTypeCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,9 +50,27 @@ class JobSearchTypeCell: UITableViewCell {
     //MARK : IBOutlet Action
     
     @IBAction func actionFullTime(_ sender: UIButton) {
+        if isFullTime == true {
+            delegate?.selectJobSearchType!(selected: true, type: JobSearchType.FullTime.rawValue)
+            sender.setTitle("check", for: .normal)
+        }
+        else {
+            delegate?.selectJobSearchType!(selected: false, type: JobSearchType.FullTime.rawValue)
+            sender.setTitle("t", for: .normal)
+        }
+        isFullTime = !isFullTime
     }
     
     @IBAction func actionPartTime(_ sender: UIButton) {
+        if isPartTime == true {
+            delegate?.selectJobSearchType!(selected: false, type: JobSearchType.PartTime.rawValue)
+            sender.setTitle("check", for: .normal)
+        }
+        else {
+            delegate?.selectJobSearchType!(selected: true, type: JobSearchType.PartTime.rawValue)
+            sender.setTitle("t", for: .normal)
+        }
+        isPartTime = !isPartTime
     }
     
     
