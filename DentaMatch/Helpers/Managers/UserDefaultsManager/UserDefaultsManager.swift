@@ -29,14 +29,26 @@ class UserDefaultsManager: NSObject {
     
     var deviceToken:String {
         get {
-            if(kUserDefaults.value(forKey: Constants.UserDefaultsKey.kDeviceToken) != nil){
-                return kUserDefaults.value(forKey: Constants.UserDefaultsKey.kDeviceToken) as! String
+            if(kUserDefaults.value(forKey: Constants.UserDefaultsKey.deviceToken) != nil){
+                return kUserDefaults.value(forKey: Constants.UserDefaultsKey.deviceToken) as! String
             }
-            //Default is not logged in
             return ""
         }
         set {
-            kUserDefaults.setValue(newValue, forKey: Constants.UserDefaultsKey.kDeviceToken)
+            kUserDefaults.setValue(newValue, forKey: Constants.UserDefaultsKey.deviceToken)
+            kUserDefaults.synchronize()
+        }
+    }
+    
+    var accessToken:String {
+        get {
+            if(kUserDefaults.value(forKey: Constants.UserDefaultsKey.accessToken) != nil){
+                return kUserDefaults.value(forKey: Constants.UserDefaultsKey.accessToken) as! String
+            }
+            return ""
+        }
+        set {
+            kUserDefaults.setValue(newValue, forKey: Constants.UserDefaultsKey.accessToken)
             kUserDefaults.synchronize()
         }
     }

@@ -27,7 +27,7 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        //self.getJobsAPI()
+        self.getJobsAPI()
         
     }
     
@@ -128,21 +128,30 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {
-        let licenceSelectionVC = UIStoryboard.profileStoryBoard().instantiateViewController(type: DMLicenseSelectionVC.self)!
-        licenceSelectionVC.jobTitles = jobTitles
-        self.navigationController?.pushViewController(licenceSelectionVC, animated: true)
-//        if profileImage != nil {
-//            if selectedJobTitle != nil {
-//                let licenceSelectionVC = UIStoryboard.profileStoryBoard().instantiateViewController(type: DMLicenseSelectionVC.self)!
-//                licenceSelectionVC.jobTitles = jobTitles
-//                self.navigationController?.pushViewController(licenceSelectionVC, animated: true)
-//            } else {
-//                self.makeToast(toastString: "Please select current job title")
-//            }
-//        } else{
-//            self.makeToast(toastString: "Please select profile image")
-//        }
+        if profileImage != nil {
+            if selectedJobTitle != nil {
+                //uploadProfileImageAPI()
+                openLicenseScreen()
+            } else {
+                self.makeToast(toastString: "Please select current job title")
+            }
+        } else{
+            self.makeToast(toastString: "Please select profile image")
+        }
     }
+    
+    func openLicenseScreen() {
+        self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToLicense, sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Constants.StoryBoard.SegueIdentifier.goToLicense {
+            let destinationVC:DMLicenseSelectionVC = segue.destination as! DMLicenseSelectionVC
+            destinationVC.jobTitles = self.jobTitles
+            destinationVC.selectedJobTitle = self.selectedJobTitle
+        }
+    }
+    
     
     @IBAction func notNowButtonPressed(_ sender: Any) {
         self.alertMessage(title: "", message: Constants.AlertMessage.skipProfile, leftButtonText: "Cancel", rightButtonText: kOkButtonTitle) { (isLeftButtonPressed:Bool) in

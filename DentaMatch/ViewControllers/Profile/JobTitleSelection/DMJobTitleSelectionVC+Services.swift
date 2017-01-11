@@ -29,6 +29,7 @@ extension DMJobTitleSelectionVC {
     }
     
     func handleJobListResponse(response:JSON?) {
+        let pickerView = JobSelectionPickerView.loadJobSelectionView(withJobTitles: [])
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
                 let skillList = response[Constants.ServerKey.result][Constants.ServerKey.skillList].array
@@ -36,8 +37,7 @@ extension DMJobTitleSelectionVC {
                     let job = JobTitle(job: jobObject)
                     jobTitles.append(job)
                 }
-                
-                let pickerView = JobSelectionPickerView.loadJobSelectionView(withJobTitles: jobTitles)
+                pickerView.setup(jobTitles: jobTitles)
                 jobSelectionPickerTextField.inputView = pickerView
                 pickerView.delegate = self
                 pickerView.pickerView.reloadAllComponents()
@@ -47,6 +47,21 @@ extension DMJobTitleSelectionVC {
                 self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
             }
         }
-        
+    }
+    
+    func uploadProfileImageAPI() {
+        var params = [String:AnyObject]()
+        params["type"] = "profile_pic" as AnyObject?
+        if let profileImageData = self.profileImage {
+            if let imageData = UIImageJPEGRepresentation(profileImageData, 0.5) {
+                params["image"] = imageData as AnyObject?
+                APIManager.apiMultipart(serviceName: Constants.API.uploadImageAPI, parameters: params, completionHandler: { (response:JSON?, error:NSError?) in
+                    
+                    print(response!)
+                })
+            } else {
+                self.makeToast(toastString: "Profile Image problem")
+            }
+        }
     }
 }
