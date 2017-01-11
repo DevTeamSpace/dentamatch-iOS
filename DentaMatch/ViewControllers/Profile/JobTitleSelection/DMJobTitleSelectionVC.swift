@@ -27,7 +27,7 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        self.getJobsAPI()
+        //self.getJobsAPI()
         
     }
     
@@ -128,17 +128,20 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {
-        if profileImage != nil {
-            if selectedJobTitle != nil {
-                let licenceSelectionVC = UIStoryboard.profileStoryBoard().instantiateViewController(type: DMLicenseSelectionVC.self)!
-                licenceSelectionVC.jobTitles = jobTitles
-                self.navigationController?.pushViewController(licenceSelectionVC, animated: true)
-            } else {
-                self.makeToast(toastString: "Please select current job title")
-            }
-        } else{
-            self.makeToast(toastString: "Please select profile image")
-        }
+        let licenceSelectionVC = UIStoryboard.profileStoryBoard().instantiateViewController(type: DMLicenseSelectionVC.self)!
+        licenceSelectionVC.jobTitles = jobTitles
+        self.navigationController?.pushViewController(licenceSelectionVC, animated: true)
+//        if profileImage != nil {
+//            if selectedJobTitle != nil {
+//                let licenceSelectionVC = UIStoryboard.profileStoryBoard().instantiateViewController(type: DMLicenseSelectionVC.self)!
+//                licenceSelectionVC.jobTitles = jobTitles
+//                self.navigationController?.pushViewController(licenceSelectionVC, animated: true)
+//            } else {
+//                self.makeToast(toastString: "Please select current job title")
+//            }
+//        } else{
+//            self.makeToast(toastString: "Please select profile image")
+//        }
     }
     
     @IBAction func notNowButtonPressed(_ sender: Any) {

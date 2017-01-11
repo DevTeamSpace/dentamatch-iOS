@@ -1,28 +1,29 @@
 //
-//  PhotoNameCell.swift
+//  CertificationsCell.swift
 //  DentaMatch
 //
-//  Created by Sanjay Kumar Yadav on 02/01/17.
+//  Created by Rajan Maheshwari on 10/01/17.
 //  Copyright © 2017 Appster. All rights reserved.
 //
 
 import UIKit
 
-class PhotoNameCell: UITableViewCell {
-    @IBOutlet var nameLabel: UILabel!
-    @IBOutlet var jobTitleLabel: UILabel!
-    @IBOutlet var photoButton: ProfileImageButton!
+class CertificationsCell: UITableViewCell {
 
+    @IBOutlet weak var photoButton: UIButton!
+    @IBOutlet weak var validityDateTextField: ProfileTextField!
+    @IBOutlet weak var uploadPhotoButton: UIButton!
+    @IBOutlet weak var headingLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.photoButton.layer.cornerRadius = self.photoButton.bounds.size.height/2
+        self.photoButton.layer.cornerRadius = self.photoButton.frame.size.width/2
         self.photoButton.clipsToBounds = true
-
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+
         // Configure the view for the selected state
     }
     

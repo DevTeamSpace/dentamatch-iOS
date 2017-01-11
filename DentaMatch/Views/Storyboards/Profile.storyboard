@@ -31,7 +31,7 @@
         <scene sceneID="h2y-8K-0Am">
             <objects>
                 <navigationController storyboardIdentifier="ProfileNAV" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="aBo-Dm-4RQ" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="p5y-OV-SJO">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="p5y-OV-SJO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -100,7 +100,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let’s start with creating your profile." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="hos-jx-ofR">
-                                <rect key="frame" x="45" y="335" width="285" height="21"/>
+                                <rect key="frame" x="45" y="335" width="285" height="20"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -144,7 +144,7 @@
                                 </constraints>
                             </view>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Current Job Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aZe-k4-DJs" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
-                                <rect key="frame" x="22" y="382" width="331" height="54"/>
+                                <rect key="frame" x="22" y="381" width="331" height="54"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="Qkg-W3-Lux"/>
                                 </constraints>
@@ -218,6 +218,11 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3ps-qs-Mar">
                                 <rect key="frame" x="0.0" y="20" width="375" height="599"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="hOs-vL-yuf" id="VaZ-HM-VSw"/>
+                                    <outlet property="delegate" destination="hOs-vL-yuf" id="4Ug-rq-HO7"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -232,6 +237,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="studyTableView" destination="3ps-qs-Mar" id="RQY-cW-uC0"/>
                         <segue destination="CTM-uI-DFi" kind="show" identifier="goToSkillsVC" id="OAf-Lj-4iO"/>
                     </connections>
                 </viewController>
@@ -315,9 +321,14 @@
                                     <action selector="nextButtonClicked:" destination="eL1-Hu-WzL" eventType="touchUpInside" id="akc-DR-eof"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FO0-wn-UZh">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FO0-wn-UZh">
                                 <rect key="frame" x="0.0" y="20" width="375" height="599"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="eL1-Hu-WzL" id="z8s-Cw-XFJ"/>
+                                    <outlet property="delegate" destination="eL1-Hu-WzL" id="Fh5-cc-Uj8"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -332,6 +343,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="affiliationsTableView" destination="FO0-wn-UZh" id="HHK-Mh-ILa"/>
                         <segue destination="4zK-dF-WEd" kind="show" identifier="goToCertificationsVC" id="Kla-Dd-Qhq"/>
                     </connections>
                 </viewController>
@@ -365,9 +377,14 @@
                                     <action selector="nextButtonClicked:" destination="4zK-dF-WEd" eventType="touchUpInside" id="NTj-PV-FZi"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="26C-XT-V4S">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="26C-XT-V4S">
                                 <rect key="frame" x="0.0" y="20" width="375" height="599"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="4zK-dF-WEd" id="ddn-hi-5W6"/>
+                                    <outlet property="delegate" destination="4zK-dF-WEd" id="kuO-Eb-F2o"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -382,6 +399,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="certificationsTableView" destination="26C-XT-V4S" id="SjJ-EZ-SVR"/>
                         <segue destination="zgI-T6-SuA" kind="show" identifier="goToExecutiveSummaryVC" id="Xtm-Gr-oTF"/>
                     </connections>
                 </viewController>
@@ -408,16 +426,21 @@
                                     <constraint firstAttribute="height" constant="48" id="fAn-0K-Pof"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="16"/>
-                                <state key="normal" title="NEXT">
+                                <state key="normal" title="COMPLETE PROFILE">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="completeProfileButtonClicked:" destination="zgI-T6-SuA" eventType="touchUpInside" id="PMf-c7-4kK"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0KB-mn-lcG">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0KB-mn-lcG">
                                 <rect key="frame" x="0.0" y="20" width="375" height="599"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="zgI-T6-SuA" id="j3k-7z-bVH"/>
+                                    <outlet property="delegate" destination="zgI-T6-SuA" id="858-Lh-WuE"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -431,6 +454,9 @@
                             <constraint firstItem="0KB-mn-lcG" firstAttribute="leading" secondItem="lrK-s0-vpV" secondAttribute="leading" id="hfU-3I-fH8"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="executiveSummaryTableView" destination="0KB-mn-lcG" id="H8x-hw-Day"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ccK-Yd-PjQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

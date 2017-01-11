@@ -1,5 +1,5 @@
 //
-//  SectionHeadingTableCell.swift
+//  AboutMeCell.swift
 //  DentaMatch
 //
 //  Created by Rajan Maheshwari on 10/01/17.
@@ -8,14 +8,17 @@
 
 import UIKit
 
-class SectionHeadingTableCell: UITableViewCell {
+class AboutMeCell: UITableViewCell {
 
-    @IBOutlet weak var headingLabel: UILabel!
+    @IBOutlet weak var aboutMeTextView: UITextView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.layoutMargins = UIEdgeInsets.zero
-        self.preservesSuperviewLayoutMargins = false
+        self.aboutMeTextView.layer.cornerRadius = 5.0
+        self.aboutMeTextView.layer.borderWidth = 1.0
+        self.aboutMeTextView.layer.borderColor = Constants.Color.textFieldBorderColor.cgColor
+        self.aboutMeTextView.textContainer.lineFragmentPadding = 12.0
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -8,22 +8,35 @@
 
 import UIKit
 
-class DMAffiliationsVC: UIViewController {
+class DMAffiliationsVC: DMBaseVC {
 
+    enum Affiliations:Int {
+        case profileHeader
+        case affiliation
+        case affiliationOther
+    }
+    
+    @IBOutlet weak var affiliationsTableView: UITableView!
+    
+    let profileProgress:CGFloat = 0.80
+    var isOtherSelected = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setup()
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func setup() {
+        self.affiliationsTableView.separatorColor = UIColor.clear
+        self.affiliationsTableView.register(UINib(nibName: "PhotoNameCell", bundle: nil), forCellReuseIdentifier: "PhotoNameCell")
+        self.affiliationsTableView.register(UINib(nibName: "SectionHeadingTableCell", bundle: nil), forCellReuseIdentifier: "SectionHeadingTableCell")
+        self.affiliationsTableView.register(UINib(nibName: "AffiliationsCell", bundle: nil), forCellReuseIdentifier: "AffiliationsCell")
+        self.affiliationsTableView.register(UINib(nibName: "AffliliationsOthersCell", bundle: nil), forCellReuseIdentifier: "AffliliationsOthersCell")
     }
     
     @IBAction func nextButtonClicked(_ sender: Any) {
         self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToCertificationsVC, sender: self)
-
     }
 
     /*
