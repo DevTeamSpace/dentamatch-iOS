@@ -32,7 +32,7 @@ extension DMJobTitleSelectionVC {
         let pickerView = JobSelectionPickerView.loadJobSelectionView(withJobTitles: [])
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
-                let skillList = response[Constants.ServerKey.result][Constants.ServerKey.skillList].array
+                let skillList = response[Constants.ServerKey.result][Constants.ServerKey.joblists].array
                 for jobObject in skillList! {
                     let job = JobTitle(job: jobObject)
                     jobTitles.append(job)

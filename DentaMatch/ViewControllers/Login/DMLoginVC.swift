@@ -95,7 +95,7 @@ class DMLoginVC: DMBaseVC {
     
     @IBAction func loginButtonPressed(_ sender: Any) {
         self.view.endEditing(true)
-        loginParams[Constants.ServerKey.deviceId] = "test"
+        loginParams[Constants.ServerKey.deviceId] = Utilities.deviceId()
         loginParams[Constants.ServerKey.deviceType] = "iOS"
         loginParams[Constants.ServerKey.deviceToken] = UserDefaultsManager.sharedInstance.deviceToken
         if validateFields() {

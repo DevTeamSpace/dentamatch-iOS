@@ -11,7 +11,7 @@ import UIKit
 
 let kUserDefaults = UserDefaults.standard
 let kAppDelegate = UIApplication.shared.delegate as! AppDelegate
-
+let kDeviceId = "com.appster.dentamatch.deviceId"
 let kCustomDesignFont = "dentamatch"
 let kLogEnabled = true
 let kGoogleAPIKey = "AIzaSyDFWCamiO9WGTth-iOxfY_L0K6oRBeAu0U"
@@ -123,7 +123,7 @@ struct Constants {
         static let userDetails = "userDetails"
         static let result = "result"
         static let accessToken = "accessToken"
-        static let skillList = "joblists"
+        static let joblists = "joblists"
     }
     
     //MARK:- UserDefault Keys
