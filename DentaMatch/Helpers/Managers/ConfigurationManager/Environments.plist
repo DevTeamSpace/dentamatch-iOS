@@ -28,7 +28,7 @@
 	<key>QA</key>
 	<dict>
 		<key>APIEndPoint</key>
-		<string>https://qa</string>
+		<string>http://52.52.216.246/api/</string>
 		<key>LoggingEnabled</key>
 		<true/>
 		<key>AnalyticsTrackingEnabled</key>

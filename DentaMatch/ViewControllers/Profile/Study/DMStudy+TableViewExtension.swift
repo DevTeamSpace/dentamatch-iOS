@@ -60,8 +60,8 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate {
             
         case .profileHeader:
             switch indexPath.row {
-                
             case 0:
+                //Profile Header
                 let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoNameCell") as! PhotoNameCell
                 cell.nameLabel.text = "Where did you Study?"
                 cell.jobTitleLabel.text = "Lorem Ipsum is simply dummy text for the typing and printing industry"
@@ -69,6 +69,7 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate {
                 return cell
                 
             case 1:
+                //Heading
                 let cell = tableView.dequeueReusableCell(withIdentifier: "SectionHeadingTableCell") as! SectionHeadingTableCell
                 return cell
                 
