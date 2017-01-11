@@ -13,6 +13,20 @@ class DMRegistrationVC: DMBaseVC {
 
     @IBOutlet weak var registrationTableView: UITableView!
     var coordinateSelected:CLLocationCoordinate2D?
+    var termsAndConditionsAccepted = false
+    var registrationParams = [
+        Constants.ServerKey.deviceId:"",
+        Constants.ServerKey.deviceToken:"",
+        Constants.ServerKey.deviceType:"",
+        Constants.ServerKey.email:"",
+        Constants.ServerKey.firstName:"",
+        Constants.ServerKey.lastName:"",
+        Constants.ServerKey.password:"",
+        Constants.ServerKey.preferredLocation:"",
+        Constants.ServerKey.zipCode:"",
+        Constants.ServerKey.latitude:"",
+        Constants.ServerKey.longitude:""
+        ]
     
     //MARK:- View LifeCycle
     override func viewDidLoad() {
@@ -54,95 +68,96 @@ class DMRegistrationVC: DMBaseVC {
         self.registrationTableView.addGestureRecognizer(tap)
     }
     
+    func validateFields() -> Bool{
+        if !registrationParams[Constants.ServerKey.firstName]!.isEmpty {
+            if registrationParams[Constants.ServerKey.email]!.isValidEmail {
+                if registrationParams[Constants.ServerKey.password]!.characters.count >= Constants.Limits.passwordLimit {
+                    if coordinateSelected != nil {
+                        if self.termsAndConditionsAccepted {
+                            return true
+                        } else {
+                            self.makeToast(toastString: "Please accept terms and conditions")
+                            return false
+                        }
+                    } else {
+                        self.makeToast(toastString: "Preferred Location error")
+                        return false
+                    }
+                } else {
+                    self.makeToast(toastString: "Password limit error")
+                    return false
+                }
+            } else {
+                self.makeToast(toastString: Constants.AlertMessage.invalidEmail)
+                return false
+            }
+        } else {
+            self.makeToast(toastString: "Name empty error")
+            return false
+        }
+    }
+    
+    func openTermsAndConditions(isPrivacyPolicy:Bool) {
+        self.view.endEditing(true)
+        let termsVC = UIStoryboard.registrationStoryBoard().instantiateViewController(type: DMTermsAndConditionsVC.self)!
+        termsVC.isPrivacyPolicy = isPrivacyPolicy
+        self.navigationController?.pushViewController(termsVC, animated: true)
+    }
+    
     func dismissKeyboard() {
         self.view.endEditing(true)
     }
     
-    func registerButtonPressed(sender:UIButton) {
-        let termsVC = UIStoryboard.registrationStoryBoard().instantiateViewController(type: DMTermsAndConditionsVC.self)!
-        self.navigationController?.pushViewController(termsVC, animated: true)
+    //MARK:- IBActions
+    
+    @IBAction func registerButtonPressed(_ sender: Any) {
+        dismissKeyboard()
+        registrationParams[Constants.ServerKey.deviceId] = Utilities.deviceId()
+        registrationParams[Constants.ServerKey.deviceType] = "iOS"
+        registrationParams[Constants.ServerKey.deviceToken] = UserDefaultsManager.sharedInstance.deviceToken
+        if validateFields() {
+            self.registrationAPI(params:self.registrationParams)
+        }
     }
+
+    func acceptTermsButtonPressed(sender:UIButton) {
+        self.termsAndConditionsAccepted = self.termsAndConditionsAccepted ? false:true
+        self.registrationTableView.reloadData()
+    }
+    
 }
 
 //MARK:- Extensions
-extension DMRegistrationVC:UITextFieldDelegate {
-    //MARK:- TextField Delegates
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        switch textField.tag {
-        case 1:
-            if let cell = self.registrationTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as?
-                RegistrationTableViewCell {
-                cell.emailTextField.becomeFirstResponder()
-            }
-        case 2:
-            if let cell = self.registrationTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as?
-                RegistrationTableViewCell {
-                cell.newPasswordTextField.becomeFirstResponder()
-            }
-        case 3:
-            textField.resignFirstResponder()
-        default:
-            break
+extension DMRegistrationVC:UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
+        if URL.absoluteString == "openTermsAndConditions" {
+            self.openTermsAndConditions(isPrivacyPolicy: false)
+        } else if URL.absoluteString == "openPrivacyPolicy" {
+            self.openTermsAndConditions(isPrivacyPolicy: true)
         }
-        return true
-    }
-
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if let cell = self.registrationTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as?
-            RegistrationTableViewCell {
-            if textField == cell.preferredLocationTextField {
-                let mapVC = UIStoryboard.registrationStoryBoard().instantiateViewController(type: DMRegisterMapsVC.self)!
-                mapVC.delegate = self
-                self.navigationController?.pushViewController(mapVC, animated: true)
-                self.view.endEditing(true)
-                return false
-            }
-        }
-        if let textField = textField as? AnimatedLeftViewPHTextField {
-            textField.layer.borderColor = kTextFieldColorSelected.cgColor
-            textField.leftViewLabel?.textColor = kTextFieldColorSelected
-        }
-        return true
+        return false
     }
     
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        if let textField = textField as? AnimatedLeftViewPHTextField {
-            textField.layer.borderColor = kTextFieldBorderColor.cgColor
-            textField.leftViewLabel?.textColor = kTextFieldLeftViewModeColor
+    func textViewDidChangeSelection(_ textView: UITextView) {
+        if !NSEqualRanges(textView.selectedRange, NSRange(location: 0, length: 0)) {
+            textView.selectedRange = NSRange(location: 0, length: 0)
         }
-        return true
     }
 }
 
-extension DMRegistrationVC: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RegistrationTableViewCell") as! RegistrationTableViewCell
-        cell.emailTextField.delegate = self
-        cell.newPasswordTextField.delegate = self
-        cell.nameTextField.delegate = self
-        cell.preferredLocationTextField.delegate = self
-        cell.registerButton.addTarget(self, action: #selector(registerButtonPressed), for: .touchUpInside)
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return self.registrationTableView.frame.size.height
-    }
-}
-
+//MARK:- LocationAddress Delegate
 extension DMRegistrationVC:LocationAddressDelegate {
-    
-    func locationAddress(address: String?, coordinate: CLLocationCoordinate2D?) {
-        coordinateSelected = coordinate
-        if let address = address {
+    func locationAddress(location: Location) {
+        coordinateSelected = location.coordinateSelected
+        if let address = location.address {
             if let cell = self.registrationTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as?
                 RegistrationTableViewCell {
                 cell.preferredLocationTextField.text = address
+                
+                registrationParams[Constants.ServerKey.zipCode] = location.postalCode
+                registrationParams[Constants.ServerKey.preferredLocation] = address
+                registrationParams[Constants.ServerKey.latitude] = "\((coordinateSelected?.latitude)!)"
+                registrationParams[Constants.ServerKey.longitude] = "\((coordinateSelected?.longitude)!)"
             }
             debugPrint(address)
         } else {

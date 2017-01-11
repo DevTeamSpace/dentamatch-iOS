@@ -8,6 +8,7 @@
 
 import UIKit
 import Photos
+import SVProgressHUD
 
 enum ToastPosition {
     case top
@@ -120,44 +121,72 @@ class DMBaseVC: UIViewController {
     func backBarButtonItemPressed() {
         _ = self.navigationController?.popViewController(animated: true)
     }
+    func changeNavBarAppearanceForProfiles() {
+        UIApplication.shared.statusBarStyle = .default
+        self.navigationController?.navigationBar.tintColor = Constants.Color.navHeadingForExperienceScreen
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.barTintColor = Constants.Color.navBarColorForExperienceScreen
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:Constants.Color.navHeadingForExperienceScreen,NSFontAttributeName:UIFont.fontMedium(fontSize: 14.0)!]
+    }
+    func changeNavBarAppearanceForWithoutHeader() {
+        UIApplication.shared.statusBarStyle = .default
+        self.navigationController?.navigationBar.tintColor = Constants.Color.navHeadingForExperienceScreen
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.barTintColor = UIColor.white
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:Constants.Color.navHeadingForExperienceScreen,NSFontAttributeName:UIFont.fontMedium(fontSize: 14.0)!]
+    }
+    func changeNavBarAppearanceForDefault() {
+        UIApplication.shared.statusBarStyle = .lightContent
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.barTintColor = Constants.Color.navBarColor
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white,NSFontAttributeName:UIFont.fontRegular(fontSize: 14.0)!]
+    }
+
     
-    func showLoader() {
+    
+    func delay(time:TimeInterval,completionHandler: @escaping ()->()) {
         let when = DispatchTime.now() + 0.01
         DispatchQueue.main.asyncAfter(deadline: when) {
-            ZProgressHUD.show()
+            completionHandler()
         }
+    }
+    
+    func showLoader() {
+        SVProgressHUD.setDefaultMaskType(.black)
+        SVProgressHUD.setForegroundColor(Constants.Color.loaderRingColor)
+        SVProgressHUD.setBackgroundColor(Constants.Color.loaderBackgroundColor)
+        SVProgressHUD.show()
     }
     
     func showLoader(text:String) {
-        ZProgressHUD.setFont(UIFont.fontRegular(fontSize: 12.0)!)
-        let when = DispatchTime.now() + 0.01
-        DispatchQueue.main.asyncAfter(deadline: when) {
-            ZProgressHUD.show(text)
-        }
+        SVProgressHUD.setDefaultMaskType(.black)
+        SVProgressHUD.setForegroundColor(Constants.Color.loaderRingColor)
+        SVProgressHUD.setBackgroundColor(Constants.Color.loaderBackgroundColor)
+        SVProgressHUD.setFont(UIFont.fontRegular(fontSize: 12.0)!)
+        SVProgressHUD.show(withStatus: text)
     }
     
-    func showLoaderOnWindow() {
-        ZProgressHUD.setDefault(maskType: .custom)
-        let when = DispatchTime.now() + 0.01
-        DispatchQueue.main.asyncAfter(deadline: when) {
-            ZProgressHUD.show()
-        }
+    func showLoaderWithInteractionOn() {
+        SVProgressHUD.setDefaultMaskType(.none)
+        SVProgressHUD.setForegroundColor(Constants.Color.loaderRingColor)
+        SVProgressHUD.setBackgroundColor(Constants.Color.loaderBackgroundColor)
+        SVProgressHUD.show()
     }
     
-    func showLoaderOnWindow(text:String) {
-        ZProgressHUD.setFont(UIFont.fontRegular(fontSize: 12.0)!)
-        ZProgressHUD.setDefault(maskType: .custom)
-        let when = DispatchTime.now() + 0.01
-        DispatchQueue.main.asyncAfter(deadline: when) {
-            ZProgressHUD.show(text)
-        }
+    func showLoaderWithInteractionOn(text:String) {
+        SVProgressHUD.setDefaultMaskType(.none)
+        SVProgressHUD.setForegroundColor(Constants.Color.loaderRingColor)
+        SVProgressHUD.setBackgroundColor(Constants.Color.loaderBackgroundColor)
+        SVProgressHUD.setFont(UIFont.fontRegular(fontSize: 12.0)!)
+        SVProgressHUD.show(withStatus: text)
     }
 
     func hideLoader() {
-        ZProgressHUD.dismiss()
+        SVProgressHUD.dismiss()
     }
     
     func hideLoader(delay:TimeInterval) {
-        ZProgressHUD.dismiss(delay)
+        SVProgressHUD.dismiss(withDelay: delay)
     }
 }

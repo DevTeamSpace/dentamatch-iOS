@@ -282,16 +282,19 @@ extension DMJobSearchVC : JobSearchTypeCellDelegate, JobSearchPartTimeCellDelega
 
 extension DMJobSearchVC : LocationAddressDelegate {
     
-    func locationAddress(address: String?, coordinate: CLLocationCoordinate2D?) {
-        coordinateSelected = coordinate
-        if let address = address {
+    func locationAddress(location: Location) {
+        
+        coordinateSelected = location.coordinateSelected
+        if let address = location.address {
             if let cell = self.tblViewJobSearch.cellForRow(at: IndexPath(row: 0, section: 2)) as?
-                CurrentLocationCell {
+                        CurrentLocationCell {
                 cell.lblLocation.text = address
-            }
+        }
+
             debugPrint(address)
         } else {
             debugPrint("Address is empty")
         }
+        
     }
 }

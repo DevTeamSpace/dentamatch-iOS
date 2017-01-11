@@ -8,6 +8,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="SF-UI-Text-Regular.otf">
+            <string>SFUIText-Regular</string>
+        </array>
         <array key="dentamatch.ttf">
             <string>dentamatch</string>
         </array>
@@ -22,8 +25,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="202"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GjB-h0-6Kp">
-                        <rect key="frame" x="97" y="38" width="126" height="126"/>
+                    <button opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GjB-h0-6Kp">
+                        <rect key="frame" x="97" y="27.5" width="126" height="126"/>
                         <color key="backgroundColor" red="0.65490196078431373" green="0.80000000000000004" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="126" id="U9f-wu-XPG"/>
@@ -34,10 +37,23 @@
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XiJ-7H-2vw">
+                        <rect key="frame" x="97" y="158" width="126" height="19"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="19" id="K8x-GX-2cc"/>
+                            <constraint firstAttribute="width" constant="126" id="mh5-xT-Qgm"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
+                        <state key="normal" title="Upload Photo">
+                            <color key="titleColor" red="0.58431372549019611" green="0.58431372549019611" blue="0.58431372549019611" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="GjB-h0-6Kp" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="1Z2-s6-qVA"/>
-                    <constraint firstItem="GjB-h0-6Kp" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="MEX-5O-RBb"/>
+                    <constraint firstItem="GjB-h0-6Kp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="27.5" id="fdK-bh-MHX"/>
+                    <constraint firstItem="XiJ-7H-2vw" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="kLc-bB-lSp"/>
+                    <constraint firstItem="XiJ-7H-2vw" firstAttribute="top" secondItem="GjB-h0-6Kp" secondAttribute="bottom" constant="4.5" id="m63-m7-uam"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

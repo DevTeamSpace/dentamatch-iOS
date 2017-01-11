@@ -21,9 +21,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-
+        
         //configureCrashlytics()
-
+        
+        if UserDefaultsManager.sharedInstance.isLoggedIn {
+            goToProfile()
+        }
+        
         configureGoogleServices()
 
         registerForPushNotifications()
@@ -34,12 +38,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
+   
+    
+    func goToProfile() {
+        let profileVC = UIStoryboard.profileStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.profileNav) as! UINavigationController
+        self.window?.rootViewController = profileVC
+    }
     
     func changeNavBarAppearance() {
         UIApplication.shared.statusBarStyle = .lightContent
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().isTranslucent = false
-        UINavigationBar.appearance().barTintColor = UIColor.color(withHexCode: kNavBarColor)
+        UINavigationBar.appearance().barTintColor = Constants.Color.navBarColor
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white,NSFontAttributeName:UIFont.fontRegular(fontSize: 14.0)!]
     }
     

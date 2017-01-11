@@ -11,7 +11,7 @@ import UIKit
 class PhotoNameCell: UITableViewCell {
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var jobTitleLabel: UILabel!
-    @IBOutlet var photoButton: UIButton!
+    @IBOutlet var photoButton: ProfileImageButton!
 
     override func awakeFromNib() {
         super.awakeFromNib()

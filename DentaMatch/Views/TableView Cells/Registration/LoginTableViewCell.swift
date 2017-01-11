@@ -11,7 +11,6 @@ import UIKit
 class LoginTableViewCell: UITableViewCell {
 
     @IBOutlet weak var forgotPasswordButton: UIButton!
-    @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var emailTextField: AnimatedLeftViewPHTextField!
     @IBOutlet weak var passwordTextField: AnimatedLeftViewPHTextField!
     

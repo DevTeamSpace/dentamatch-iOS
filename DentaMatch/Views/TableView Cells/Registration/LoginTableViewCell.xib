@@ -8,9 +8,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="SF-UI-Text-Medium.otf">
-            <string>SFUIText-Medium</string>
-        </array>
         <array key="SF-UI-Text-Regular.otf">
             <string>SFUIText-Regular</string>
         </array>
@@ -22,7 +19,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="459"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="459.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login using your registered email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B1Q-Xe-ZhA">
@@ -37,28 +34,17 @@
                             <constraint firstAttribute="height" constant="55" id="JsR-BE-oLT"/>
                         </constraints>
                         <nil key="textColor"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
                     </textField>
                     <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TDG-pV-1N2" customClass="AnimatedLeftViewPHTextField" customModule="DentaMatch" customModuleProvider="target">
                         <rect key="frame" x="20" y="169" width="280" height="55"/>
                         <nil key="textColor"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
                     </textField>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B8C-Qw-mG4">
-                        <rect key="frame" x="0.0" y="412" width="320" height="48"/>
-                        <color key="backgroundColor" red="0.01176470588" green="0.4431372549" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="48" id="Yjj-zJ-dn4"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="16"/>
-                        <state key="normal" title="LOGIN">
-                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                    </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hs8-sS-5hx">
-                        <rect key="frame" x="101" y="232" width="118" height="29"/>
+                        <rect key="frame" x="101" y="238" width="118" height="29"/>
                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="14"/>
                         <state key="normal" title="Forgot Password?">
                             <color key="titleColor" red="0.015686274510000001" green="0.43921568630000002" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -66,18 +52,15 @@
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="hs8-sS-5hx" firstAttribute="top" secondItem="TDG-pV-1N2" secondAttribute="bottom" constant="8" id="0HB-Ka-jC4"/>
-                    <constraint firstAttribute="bottom" secondItem="B8C-Qw-mG4" secondAttribute="bottom" id="7nw-Q1-ZrH"/>
+                    <constraint firstItem="hs8-sS-5hx" firstAttribute="top" secondItem="TDG-pV-1N2" secondAttribute="bottom" constant="14" id="0HB-Ka-jC4"/>
                     <constraint firstItem="TDG-pV-1N2" firstAttribute="top" secondItem="E76-dc-ntn" secondAttribute="bottom" constant="16" id="8LC-mf-ZgI"/>
                     <constraint firstItem="E76-dc-ntn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="BRi-ye-uha"/>
-                    <constraint firstItem="B8C-Qw-mG4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Hf8-lC-nYP"/>
                     <constraint firstItem="TDG-pV-1N2" firstAttribute="width" secondItem="E76-dc-ntn" secondAttribute="width" id="evZ-EM-8pb"/>
                     <constraint firstItem="hs8-sS-5hx" firstAttribute="centerX" secondItem="TDG-pV-1N2" secondAttribute="centerX" id="i2w-gt-oMB"/>
                     <constraint firstAttribute="trailing" secondItem="E76-dc-ntn" secondAttribute="trailing" constant="20" id="iwB-cm-KRr"/>
                     <constraint firstItem="B1Q-Xe-ZhA" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="oUK-H0-4ST"/>
                     <constraint firstItem="TDG-pV-1N2" firstAttribute="height" secondItem="E76-dc-ntn" secondAttribute="height" id="obN-jf-sNM"/>
                     <constraint firstItem="TDG-pV-1N2" firstAttribute="centerX" secondItem="E76-dc-ntn" secondAttribute="centerX" id="qcK-gP-a9M"/>
-                    <constraint firstAttribute="trailing" secondItem="B8C-Qw-mG4" secondAttribute="trailing" id="sLw-B3-FLR"/>
                     <constraint firstItem="B1Q-Xe-ZhA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="49" id="xch-AO-FmP"/>
                     <constraint firstItem="E76-dc-ntn" firstAttribute="top" secondItem="B1Q-Xe-ZhA" secondAttribute="bottom" constant="32" id="ylP-Hw-bn3"/>
                 </constraints>
@@ -85,7 +68,6 @@
             <connections>
                 <outlet property="emailTextField" destination="E76-dc-ntn" id="lQu-OH-zZs"/>
                 <outlet property="forgotPasswordButton" destination="hs8-sS-5hx" id="4rz-KU-jha"/>
-                <outlet property="loginButton" destination="B8C-Qw-mG4" id="tJz-vl-Owt"/>
                 <outlet property="passwordTextField" destination="TDG-pV-1N2" id="nzW-kl-Dgr"/>
             </connections>
             <point key="canvasLocation" x="68" y="198"/>

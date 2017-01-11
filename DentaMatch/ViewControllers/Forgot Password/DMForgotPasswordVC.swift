@@ -12,6 +12,9 @@ class DMForgotPasswordVC: DMBaseVC,UITextFieldDelegate {
 
     @IBOutlet weak var emailTextField: AnimatedLeftViewPHTextField!
     
+    var forgotPasswordParams = [
+        Constants.ServerKey.email:""
+    ]
     //MARK:- View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,16 +31,43 @@ class DMForgotPasswordVC: DMBaseVC,UITextFieldDelegate {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     func setup() {
         emailTextField.leftViewLabel?.text = "f"
         self.title = "FORGOT PASSWORD"
         self.navigationItem.leftBarButtonItem = self.backBarButton()
+    }
+    @IBAction func sendButtonPressed(_ sender: Any) {
+        self.view.endEditing(true)
+        if emailTextField.text!.isValidEmail {
+            forgotPasswordParams[Constants.ServerKey.email] = self.emailTextField.text!
+            self.forgotPasswordAPI(params: forgotPasswordParams)
+        } else {
+            self.makeToast(toastString: Constants.AlertMessage.invalidEmail)
+        }
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if let textField = textField as? AnimatedLeftViewPHTextField {
+            textField.layer.borderColor = Constants.Color.textFieldColorSelected.cgColor
+            textField.leftViewLabel?.textColor = Constants.Color.textFieldColorSelected
+        }
+        return true
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if let textField = textField as? AnimatedLeftViewPHTextField {
+            textField.layer.borderColor = Constants.Color.textFieldBorderColor.cgColor
+            textField.leftViewLabel?.textColor = Constants.Color.textFieldLeftViewModeColor
+        }
+        return true
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
-    
-    
 }

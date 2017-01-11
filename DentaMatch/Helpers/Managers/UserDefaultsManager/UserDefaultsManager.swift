@@ -11,18 +11,44 @@ import Foundation
 
 class UserDefaultsManager: NSObject {
     
-    static let sharedInstance = UserDefaults()
+    static let sharedInstance = UserDefaultsManager()
     
     var isLoggedIn:Bool {
         get {
-            if(kUserDefaults.value(forKey: Constants.UserDefaultsKeys.isLoggedIn) != nil){
-                return kUserDefaults.value(forKey: Constants.UserDefaultsKeys.isLoggedIn) as! Bool
+            if(kUserDefaults.value(forKey: Constants.UserDefaultsKey.isLoggedIn) != nil){
+                return kUserDefaults.value(forKey: Constants.UserDefaultsKey.isLoggedIn) as! Bool
             }
             //Default is not logged in
             return false
         }
         set {
-            kUserDefaults.setValue(newValue, forKey: Constants.UserDefaultsKeys.isLoggedIn)
+            kUserDefaults.setValue(newValue, forKey: Constants.UserDefaultsKey.isLoggedIn)
+            kUserDefaults.synchronize()
+        }
+    }
+    
+    var deviceToken:String {
+        get {
+            if(kUserDefaults.value(forKey: Constants.UserDefaultsKey.deviceToken) != nil){
+                return kUserDefaults.value(forKey: Constants.UserDefaultsKey.deviceToken) as! String
+            }
+            return ""
+        }
+        set {
+            kUserDefaults.setValue(newValue, forKey: Constants.UserDefaultsKey.deviceToken)
+            kUserDefaults.synchronize()
+        }
+    }
+    
+    var accessToken:String {
+        get {
+            if(kUserDefaults.value(forKey: Constants.UserDefaultsKey.accessToken) != nil){
+                return kUserDefaults.value(forKey: Constants.UserDefaultsKey.accessToken) as! String
+            }
+            return ""
+        }
+        set {
+            kUserDefaults.setValue(newValue, forKey: Constants.UserDefaultsKey.accessToken)
             kUserDefaults.synchronize()
         }
     }

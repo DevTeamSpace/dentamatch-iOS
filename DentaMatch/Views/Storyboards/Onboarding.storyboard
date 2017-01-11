@@ -97,18 +97,18 @@
                                 </connections>
                             </collectionView>
                             <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="7Tl-dd-GP5">
-                                <rect key="frame" x="25" y="608" width="55" height="37"/>
+                                <rect key="frame" x="25" y="622" width="55" height="37"/>
                                 <color key="pageIndicatorTintColor" red="0.84313725490000002" green="0.84313725490000002" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="currentPageIndicatorTintColor" red="0.0039215686274509803" green="0.80784313725490198" blue="0.90588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ddc-yP-oKV">
-                                <rect key="frame" x="281" y="623" width="94" height="44"/>
+                                <rect key="frame" x="275" y="619" width="100" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="94" id="lMy-jZ-pVK"/>
+                                    <constraint firstAttribute="width" constant="100" id="lMy-jZ-pVK"/>
                                     <constraint firstAttribute="height" constant="44" id="qEQ-2g-YLu"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
-                                <inset key="titleEdgeInsets" minX="6" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="25" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="SKIP">
                                     <color key="titleColor" red="0.0078431372549019607" green="0.73333333333333328" blue="0.83529411764705885" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -116,21 +116,39 @@
                                     <action selector="skipButtonPressed:" destination="OW1-6b-YxR" eventType="touchUpInside" id="5mg-nu-eSn"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QWg-rm-8q8">
+                                <rect key="frame" x="236" y="619" width="139" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="139" id="VVD-Q5-bs4"/>
+                                    <constraint firstAttribute="height" constant="44" id="v7d-DH-8CJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
+                                <inset key="titleEdgeInsets" minX="-6" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="GET STARTED">
+                                    <color key="titleColor" red="0.0078431372550000003" green="0.73333333329999995" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="skipButtonPressed:" destination="OW1-6b-YxR" eventType="touchUpInside" id="vwR-I3-YC7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="I0e-VI-fpG" firstAttribute="top" secondItem="7Tl-dd-GP5" secondAttribute="bottom" constant="22" id="5WA-Hl-PE4"/>
+                            <constraint firstItem="I0e-VI-fpG" firstAttribute="top" secondItem="7Tl-dd-GP5" secondAttribute="bottom" constant="8" id="5WA-Hl-PE4"/>
                             <constraint firstItem="7Tl-dd-GP5" firstAttribute="leading" secondItem="iyp-Fv-mPo" secondAttribute="leading" constant="25" id="Pax-d1-PWE"/>
                             <constraint firstItem="Fcm-PV-9mt" firstAttribute="leading" secondItem="iyp-Fv-mPo" secondAttribute="leading" id="Q9u-qg-NGo"/>
                             <constraint firstAttribute="trailing" secondItem="Fcm-PV-9mt" secondAttribute="trailing" id="TZM-es-9Tt"/>
-                            <constraint firstItem="I0e-VI-fpG" firstAttribute="top" secondItem="Ddc-yP-oKV" secondAttribute="bottom" id="U9M-0y-8vQ"/>
+                            <constraint firstItem="I0e-VI-fpG" firstAttribute="top" secondItem="Ddc-yP-oKV" secondAttribute="bottom" constant="4" id="U9M-0y-8vQ"/>
+                            <constraint firstAttribute="trailing" secondItem="QWg-rm-8q8" secondAttribute="trailing" id="dWj-Ao-wvA"/>
                             <constraint firstItem="Fcm-PV-9mt" firstAttribute="top" secondItem="iyp-Fv-mPo" secondAttribute="top" id="hYI-pK-iei"/>
                             <constraint firstItem="I0e-VI-fpG" firstAttribute="top" secondItem="Fcm-PV-9mt" secondAttribute="bottom" id="lNA-oC-OKA"/>
+                            <constraint firstItem="I0e-VI-fpG" firstAttribute="top" secondItem="QWg-rm-8q8" secondAttribute="bottom" constant="4" id="rya-Il-Bdd"/>
                             <constraint firstAttribute="trailing" secondItem="Ddc-yP-oKV" secondAttribute="trailing" id="x6X-r6-5Jf"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9b2-RU-UES"/>
                     <connections>
+                        <outlet property="getStartedButton" destination="QWg-rm-8q8" id="PTv-Mc-7sG"/>
                         <outlet property="onboardingCollectionView" destination="Fcm-PV-9mt" id="vmk-AM-PmY"/>
                         <outlet property="pageControl" destination="7Tl-dd-GP5" id="RA2-t5-qp2"/>
                         <outlet property="skipButton" destination="Ddc-yP-oKV" id="ZhT-Fr-igv"/>
@@ -145,7 +163,7 @@
             <objects>
                 <navigationController storyboardIdentifier="OnboardingNAV" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="YKv-lx-v7y" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="eMJ-TA-DVb">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eMJ-TA-DVb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
