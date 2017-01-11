@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import CoreLocation
 
 class DMJobSearchVC : DMBaseVC {
     
     @IBOutlet weak var tblViewJobSearch: UITableView!
+    var coordinateSelected:CLLocationCoordinate2D?
     
     var isPartTimeDayShow : Bool = false
 
@@ -123,7 +125,7 @@ extension DMJobSearchVC : UITableViewDataSource, UITableViewDelegate {
         }
         else if indexPath.section == 2 {
             if indexPath.row == 0 {
-                return 88.0
+                return UITableViewAutomaticDimension
             }
             else if indexPath.row == 1 {
                 return self.tblViewJobSearch.frame.size.height - (88 + 189 + 77 + 88)
@@ -217,7 +219,23 @@ extension DMJobSearchVC : UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: false)
+        if indexPath.section == 0 {
+        }
+        else if indexPath.section == 1 {
+            if indexPath.row == 0 {
+            }
+            else if indexPath.row == 1 {
+            }
+        }
+        else if indexPath.section == 2 {
+            if indexPath.row == 0 {
+                let registerMapsVC = UIStoryboard.registrationStoryBoard().instantiateViewController(type: DMRegisterMapsVC.self)!
+                registerMapsVC.delegate = self
+                self.navigationController?.pushViewController(registerMapsVC, animated: true)
+            }
+            else if indexPath.row == 1 {
+            }
+        }
     }
     
     //MARK : Action Search Method
@@ -257,5 +275,23 @@ extension DMJobSearchVC : JobSearchTypeCellDelegate, JobSearchPartTimeCellDelega
     
     func selectDay(selected: Bool, day: String) {
         
+    }
+}
+
+
+
+extension DMJobSearchVC : LocationAddressDelegate {
+    
+    func locationAddress(address: String?, coordinate: CLLocationCoordinate2D?) {
+        coordinateSelected = coordinate
+        if let address = address {
+            if let cell = self.tblViewJobSearch.cellForRow(at: IndexPath(row: 0, section: 2)) as?
+                CurrentLocationCell {
+                cell.lblLocation.text = address
+            }
+            debugPrint(address)
+        } else {
+            debugPrint("Address is empty")
+        }
     }
 }

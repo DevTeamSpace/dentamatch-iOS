@@ -51,7 +51,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Lfn-p4-zS8" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5xw-k6-Tbw">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5xw-k6-Tbw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -63,6 +63,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UjR-g0-FNM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="44" y="49.925037481259373"/>
+        </scene>
+        <!--Job TitleVC-->
+        <scene sceneID="ySc-yj-82U">
+            <objects>
+                <viewController storyboardIdentifier="DMJobTitleVC" id="cgu-vb-fCf" customClass="DMJobTitleVC" customModule="DentaMatch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WRO-lw-m08"/>
+                        <viewControllerLayoutGuide type="bottom" id="61Q-cy-lV2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5H0-Ko-Ezr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="x1s-XZ-rTf">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="cgu-vb-fCf" id="H1X-3i-Vfo"/>
+                                    <outlet property="delegate" destination="cgu-vb-fCf" id="srV-0f-SqQ"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="x1s-XZ-rTf" firstAttribute="top" secondItem="WRO-lw-m08" secondAttribute="bottom" id="2Oc-j1-KDi"/>
+                            <constraint firstAttribute="trailing" secondItem="x1s-XZ-rTf" secondAttribute="trailing" id="DQH-Ah-Tgm"/>
+                            <constraint firstItem="61Q-cy-lV2" firstAttribute="top" secondItem="x1s-XZ-rTf" secondAttribute="bottom" id="OdU-aj-W01"/>
+                            <constraint firstItem="x1s-XZ-rTf" firstAttribute="leading" secondItem="5H0-Ko-Ezr" secondAttribute="leading" id="arS-Uv-lxw"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="hgi-Bl-oNx"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pvm-Ug-HOw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="983.20000000000005" y="49.925037481259373"/>
         </scene>
     </scenes>
 </document>

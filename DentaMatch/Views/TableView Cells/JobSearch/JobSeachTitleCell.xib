@@ -28,10 +28,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i0y-8c-MGU">
-                        <rect key="frame" x="-2" y="0.0" width="379" height="203"/>
+                        <rect key="frame" x="-2" y="0.0" width="379" height="203.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JOB TITLE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="1" translatesAutoresizingMaskIntoConstraints="NO" id="jxz-Yz-Bse">
-                                <rect key="frame" x="16" y="37" width="116" height="37"/>
+                                <rect key="frame" x="16" y="37" width="116" height="37.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="116" id="c83-BO-4Uz"/>
                                 </constraints>
@@ -40,7 +40,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NcS-NG-2SJ">
-                                <rect key="frame" x="329" y="39" width="30" height="30"/>
+                                <rect key="frame" x="329" y="39" width="30" height="30.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="NcS-NG-2SJ" secondAttribute="height" multiplier="1:1" id="6aA-Zc-knZ"/>
                                 </constraints>
@@ -50,7 +50,7 @@
                                 </state>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07G-7Q-G5Z">
-                                <rect key="frame" x="10" y="79" width="359" height="24"/>
+                                <rect key="frame" x="10" y="79.5" width="359" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="yVk-pi-FhQ"/>
                                 </constraints>

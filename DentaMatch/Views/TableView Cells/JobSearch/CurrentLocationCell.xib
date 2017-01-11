@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -52,12 +53,8 @@
                                     <color key="titleColor" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New York" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXL-Kg-Vft">
-                                <rect key="frame" x="16" y="59" width="339" height="16"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="16" id="IdA-az-1OQ"/>
-                                    <constraint firstAttribute="width" constant="339" id="he5-kw-Bqf"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXL-Kg-Vft">
+                                <rect key="frame" x="16" y="59" width="337" height="16"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="14"/>
                                 <color key="textColor" red="0.66274509800000003" green="0.66274509800000003" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -70,6 +67,8 @@
                             <constraint firstAttribute="trailing" secondItem="QGt-F1-M94" secondAttribute="trailing" constant="20" id="O9O-gO-Fm5"/>
                             <constraint firstItem="gfr-Dc-f41" firstAttribute="top" secondItem="p4B-ss-fDi" secondAttribute="top" constant="36" id="ejd-iv-Jib"/>
                             <constraint firstItem="QGt-F1-M94" firstAttribute="top" secondItem="p4B-ss-fDi" secondAttribute="top" constant="37" id="gZB-Si-GUf"/>
+                            <constraint firstItem="lXL-Kg-Vft" firstAttribute="top" secondItem="gfr-Dc-f41" secondAttribute="bottom" constant="7" id="qxe-x9-yc3"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="87" id="wBR-vb-lf3"/>
                             <constraint firstAttribute="bottom" secondItem="lXL-Kg-Vft" secondAttribute="bottom" constant="12" id="xIF-xl-iDQ"/>
                         </constraints>
                     </view>
@@ -77,6 +76,7 @@
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="p4B-ss-fDi" secondAttribute="bottom" id="25i-5d-t03"/>
                     <constraint firstItem="p4B-ss-fDi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="FGv-YK-ZTN"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="lXL-Kg-Vft" secondAttribute="trailing" constant="15" id="MQb-zc-hhw"/>
                     <constraint firstItem="p4B-ss-fDi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="-1" id="WkG-b8-U0t"/>
                     <constraint firstAttribute="trailing" secondItem="p4B-ss-fDi" secondAttribute="trailing" constant="-1" id="mHA-k4-a9v"/>
                 </constraints>

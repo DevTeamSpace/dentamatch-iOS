@@ -109,6 +109,7 @@
 		F2540F531E23A854004B0538 /* JobSearchPartTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2540F511E23A854004B0538 /* JobSearchPartTimeCell.xib */; };
 		F2540F561E23A8AE004B0538 /* CurrentLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2540F541E23A8AE004B0538 /* CurrentLocationCell.swift */; };
 		F2540F571E23A8AE004B0538 /* CurrentLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2540F551E23A8AE004B0538 /* CurrentLocationCell.xib */; };
+		F2540F591E263613004B0538 /* DMJobTitleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2540F581E263613004B0538 /* DMJobTitleVC.swift */; };
 		F2D03BA51E1F580C0005D3A4 /* JobSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2D03BA41E1F580C0005D3A4 /* JobSearch.storyboard */; };
 		F2D03BA81E1F67BA0005D3A4 /* DMJobSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D03BA71E1F67BA0005D3A4 /* DMJobSearchVC.swift */; };
 /* End PBXBuildFile section */
@@ -228,6 +229,7 @@
 		F2540F511E23A854004B0538 /* JobSearchPartTimeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobSearchPartTimeCell.xib; sourceTree = "<group>"; };
 		F2540F541E23A8AE004B0538 /* CurrentLocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentLocationCell.swift; sourceTree = "<group>"; };
 		F2540F551E23A8AE004B0538 /* CurrentLocationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CurrentLocationCell.xib; sourceTree = "<group>"; };
+		F2540F581E263613004B0538 /* DMJobTitleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMJobTitleVC.swift; sourceTree = "<group>"; };
 		F2D03BA41E1F580C0005D3A4 /* JobSearch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = JobSearch.storyboard; sourceTree = "<group>"; };
 		F2D03BA71E1F67BA0005D3A4 /* DMJobSearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMJobSearchVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -723,6 +725,7 @@
 			isa = PBXGroup;
 			children = (
 				F2D03BA71E1F67BA0005D3A4 /* DMJobSearchVC.swift */,
+				F2540F581E263613004B0538 /* DMJobTitleVC.swift */,
 			);
 			path = JobSearch;
 			sourceTree = "<group>";
@@ -978,6 +981,7 @@
 				E5F47C951E0035B90051C4A1 /* UIImageRotate.m in Sources */,
 				5AE5F50F1E165F09006C328A /* DMLicenseSelectionVC.swift in Sources */,
 				E5C5F31B1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift in Sources */,
+				F2540F591E263613004B0538 /* DMJobTitleVC.swift in Sources */,
 				E55462FC1DAE4EA1004163B2 /* DMBaseVC.swift in Sources */,
 				E5A3E8EE1E160ABF00B10937 /* AnimatedLeftViewPHTextField.swift in Sources */,
 				5AE5F50D1E165DE4006C328A /* DMJobTitleSelectionVC.swift in Sources */,
