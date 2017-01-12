@@ -13,7 +13,7 @@ extension DMLicenseSelectionVC {
     func updateLicenseAndStateAPI(params:[String:String]) {
         print("LicenseNumberAndState Parameters\n\(params.description))")
         self.showLoader()
-        APIManager.apiPut(serviceName: Constants.API.LicenseNumberAndState, parameters: params) { (response:JSON?, error:NSError?) in
+        APIManager.apiPut(serviceName: Constants.API.licenseNumberAndState, parameters: params) { (response:JSON?, error:NSError?) in
             self.hideLoader()
             if error != nil {
                 self.makeToast(toastString: (error?.localizedDescription)!)

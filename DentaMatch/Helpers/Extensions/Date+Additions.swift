@@ -56,6 +56,21 @@ extension Date {
         return hour
     }
     
+     static func stringToDate(dateString:String)-> Date{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = dateFormatDDMMYYYYDashed()//"dd MMMM yyyy"
+//        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        return dateFormatter.date(from: dateString)!
+    }
+    static func dateToString(date:Date)-> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = dateFormatDDMMYYYYDashed()//"dd MMMM yyyy"
+        //        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        return dateFormatter.string(from: date)
+    }
+
+    
+    
     
     func minute() -> Int {
         //Get Minute

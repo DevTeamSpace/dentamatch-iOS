@@ -74,7 +74,7 @@
                             <color key="titleColor" red="0.58431372549019611" green="0.58431372549019611" blue="0.58431372549019611" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Validity Date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dvu-Lg-nzB" customClass="ProfileTextField" customModule="DentaMatch" customModuleProvider="target">
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Validity Date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dvu-Lg-nzB" customClass="PickerTextField" customModule="DentaMatch" customModuleProvider="target">
                         <rect key="frame" x="20" y="257" width="280" height="55"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="55" id="23e-Mn-uOW"/>

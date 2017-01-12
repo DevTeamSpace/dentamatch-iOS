@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension DMCertificationsVC : UITableViewDataSource,UITableViewDelegate {
+extension DMCertificationsVC : UITableViewDataSource,UITableViewDelegate , UITextFieldDelegate{
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -54,12 +54,46 @@ extension DMCertificationsVC : UITableViewDataSource,UITableViewDelegate {
             
         case .certifications:
             let cell = tableView.dequeueReusableCell(withIdentifier: "CertificationsCell") as! CertificationsCell
+            cell.validityDateTextField.tag = indexPath.row
+            let dateView = DatePickerView.loadExperiencePickerView(withText:certificateArray[indexPath.row] , tag: indexPath.row)
+            dateView.delegate = self
+            cell.validityDateTextField.inputView = dateView
+            cell.validityDateTextField.delegate = self
+            cell.validityDateTextField.text = certificateArray[indexPath.row]
             return cell
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+//        let dateView = DatePickerView.loadExperiencePickerView(withText:certificateArray[indexPath.row] , tag: indexPath.row)
+//        dateView.delegate = self
+//        dateView.frame = CGRect(x: 0, y: self.view.bounds.size.height - 213, width: self.view.bounds.size.width, height: 213)
+//        self.view.addSubview(dateView)
+//        self.certificationsTableView.contentInset =  UIEdgeInsetsMake(0, 0, 213, 0)
+//        self.certificationsTableView.layoutIfNeeded()
+//        self.view.layoutIfNeeded()
+
+        
     }
 
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if let textField = textField as? PickerTextField {
+            textField.layer.borderColor = Constants.Color.textFieldColorSelected.cgColor
+        }
+        return true
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if let textField = textField as? PickerTextField {
+            textField.layer.borderColor = Constants.Color.textFieldBorderColor.cgColor
+        }
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }

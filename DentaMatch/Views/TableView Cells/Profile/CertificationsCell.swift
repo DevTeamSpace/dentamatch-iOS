@@ -11,7 +11,7 @@ import UIKit
 class CertificationsCell: UITableViewCell {
 
     @IBOutlet weak var photoButton: UIButton!
-    @IBOutlet weak var validityDateTextField: ProfileTextField!
+    @IBOutlet weak var validityDateTextField: PickerTextField!
     @IBOutlet weak var uploadPhotoButton: UIButton!
     @IBOutlet weak var headingLabel: UILabel!
     override func awakeFromNib() {
@@ -19,6 +19,7 @@ class CertificationsCell: UITableViewCell {
         // Initialization code
         self.photoButton.layer.cornerRadius = self.photoButton.frame.size.width/2
         self.photoButton.clipsToBounds = true
+        self.validityDateTextField.tintColor = UIColor.clear
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

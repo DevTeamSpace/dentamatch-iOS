@@ -19,9 +19,15 @@ class DMLicenseSelectionVC: DMBaseVC,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         licenseArray = NSMutableArray()
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
 
         licenseArray?.addObjects(from: ["",""])
         setUp()
+    }
+    override func viewDidLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        self.licenseTableView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0)
+
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -29,15 +35,13 @@ class DMLicenseSelectionVC: DMBaseVC,UITextFieldDelegate {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
-
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-
         self.licenseTableView.reloadData()
     }
     
@@ -64,8 +68,6 @@ class DMLicenseSelectionVC: DMBaseVC,UITextFieldDelegate {
 
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.licenseTableView.addGestureRecognizer(tap)
-        
-
         self.licenseTableView.separatorStyle = .none
         self.licenseTableView.reloadData()
         self.navigationItem.leftBarButtonItem = self.backBarButton()
@@ -76,28 +78,31 @@ class DMLicenseSelectionVC: DMBaseVC,UITextFieldDelegate {
     }
     @IBAction func nextButtonClikced(_ sender: Any) {
         
-        if self.stateBoardImage == nil{
-            self.makeToast(toastString: "Please select state board certificate")
-            return
-        }
-        for i in 0..<(self.licenseArray?.count)! {
-            let text = self.licenseArray?[i] as! String
-            if i == 0 {
-                if text.isEmptyField {
-                    self.makeToast(toastString: "Please enter license no")
-                    return
-                }
-            }else{
-                if text.isEmptyField {
-                    self.makeToast(toastString: "Please enter state")
-                    return
-                }
-
-            }
-        }
-
-        let  params = ["license":self.licenseArray![0],"state":self.licenseArray![1],"jobTitleId":"\(self.selectedJobTitle.jobId)"]
-        updateLicenseAndStateAPI(params: params as! [String : String])
+//        if self.stateBoardImage == nil{
+//            self.makeToast(toastString: "Please select state board certificate")
+//            return
+//        }
+//        for i in 0..<(self.licenseArray?.count)! {
+//            let text = self.licenseArray?[i] as! String
+//            if i == 0 {
+//                if text.isEmptyField {
+//                    self.makeToast(toastString: "Please enter license no")
+//                    return
+//                }
+//            }else{
+//                if text.isEmptyField {
+//                    self.makeToast(toastString: "Please enter state")
+//                    return
+//                }
+//            }
+//        }
+//
+//        let  params = ["license":self.licenseArray![0],"state":self.licenseArray![1],"jobTitleId":"\(self.selectedJobTitle.jobId)"]
+//        updateLicenseAndStateAPI(params: params as! [String : String])
+        
+        
+        //for testing 
+        openExperienceFirstScreen()
     }
     
     func openExperienceFirstScreen() {
