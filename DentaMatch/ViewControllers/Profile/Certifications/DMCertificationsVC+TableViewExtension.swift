@@ -79,14 +79,14 @@ extension DMCertificationsVC : UITableViewDataSource,UITableViewDelegate , UITex
 
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if let textField = textField as? PickerTextField {
+        if let textField = textField as? PickerAnimatedTextField {
             textField.layer.borderColor = Constants.Color.textFieldColorSelected.cgColor
         }
         return true
     }
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        if let textField = textField as? PickerTextField {
+        if let textField = textField as? PickerAnimatedTextField {
             textField.layer.borderColor = Constants.Color.textFieldBorderColor.cgColor
         }
         return true

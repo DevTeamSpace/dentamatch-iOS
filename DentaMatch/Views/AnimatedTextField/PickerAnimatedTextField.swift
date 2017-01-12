@@ -1,5 +1,5 @@
 //
-//  PickerTextField.swift
+//  PickerAnimatedTextField.swift
 //  DentaMatch
 //
 //  Created by Sanjay Kumar Yadav on 12/01/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PickerTextField: FloatLabelTextField {
+class PickerAnimatedTextField: FloatLabelTextField {
 
     private var leftTextFieldView:UIView?
     

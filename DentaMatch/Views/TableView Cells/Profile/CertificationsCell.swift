@@ -11,7 +11,7 @@ import UIKit
 class CertificationsCell: UITableViewCell {
 
     @IBOutlet weak var photoButton: UIButton!
-    @IBOutlet weak var validityDateTextField: PickerTextField!
+    @IBOutlet weak var validityDateTextField: PickerAnimatedTextField!
     @IBOutlet weak var uploadPhotoButton: UIButton!
     @IBOutlet weak var headingLabel: UILabel!
     override func awakeFromNib() {
