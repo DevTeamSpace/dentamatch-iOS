@@ -10,21 +10,30 @@ import Foundation
 
 extension DMRegistrationVC:UITextFieldDelegate {
     
+    enum TextField:Int {
+        case name = 1
+        case email
+        case password
+        case preferredLocation
+    }
+    
     //MARK:- TextField Delegates
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
-        switch textField.tag {
-        case 1:
+        let fieldSelected = TextField(rawValue:textField.tag)!
+
+        switch fieldSelected {
+        case .name:
             if let cell = self.registrationTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as?
                 RegistrationTableViewCell {
                 cell.emailTextField.becomeFirstResponder()
             }
-        case 2:
+        case .email:
             if let cell = self.registrationTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as?
                 RegistrationTableViewCell {
                 cell.newPasswordTextField.becomeFirstResponder()
             }
-        case 3:
+        case .password:
             textField.resignFirstResponder()
         default:
             break
@@ -60,17 +69,45 @@ extension DMRegistrationVC:UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        switch textField.tag {
-        case 1:
+
+        let fieldSelected = TextField(rawValue:textField.tag)!
+
+        switch fieldSelected {
+        case .name:
             //FirstName
             registrationParams[Constants.ServerKey.firstName] = textField.text!
             registrationParams[Constants.ServerKey.lastName] = textField.text!
-        case 2:
+        case .email:
             registrationParams[Constants.ServerKey.email] = textField.text!
-        case 3:
+        case .password:
             registrationParams[Constants.ServerKey.password] = textField.text!
         default:
             break
         }
+    }
+    
+    
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        let fieldSelected = TextField(rawValue:textField.tag)!
+        
+        guard string.characters.count > 0 else {
+            return true
+        }
+        
+        switch fieldSelected {
+        case .name:
+            if textField.text!.characters.count >= Constants.Limit.commonMaxLimit {
+                return false
+            }
+        case .password:
+            if textField.text!.characters.count >= Constants.Limit.maxPasswordLimit {
+                return false
+            }
+        default:
+            return true
+        }
+        return true
     }
 }

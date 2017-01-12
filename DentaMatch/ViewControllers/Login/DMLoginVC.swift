@@ -65,7 +65,7 @@ class DMLoginVC: DMBaseVC {
             if !loginParams[Constants.ServerKey.password]!.isEmpty {
                 return true
             } else {
-                self.makeToast(toastString: "Empty Password Error")
+                self.makeToast(toastString: Constants.AlertMessage.emptyPassword)
                 return false
             }
         } else {

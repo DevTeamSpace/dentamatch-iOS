@@ -9,10 +9,13 @@
 import UIKit
 
 class AnimatedPHTableCell: UITableViewCell {
-    @IBOutlet var commonTextFiled: AnimatedPHTextField!
+    @IBOutlet weak var commonTextField: AnimatedPHTextField!
     @IBOutlet var cellTopSpace: NSLayoutConstraint!
     @IBOutlet var cellBottomSpace: NSLayoutConstraint!
 
+    
+    @IBOutlet weak var accessoryLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

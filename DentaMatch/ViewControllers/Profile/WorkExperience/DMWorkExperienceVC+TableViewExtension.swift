@@ -157,43 +157,43 @@ extension DMWorkExperienceVC
                 
                 cell.cellTopSpace.constant = 10
                 cell.cellBottomSpace.constant = 10.5
-                cell.commonTextFiled.delegate = self
-                cell.commonTextFiled.tag = indexPath.row
+                cell.commonTextField.delegate = self
+                cell.commonTextField.tag = indexPath.row
                 
                 
-                cell.commonTextFiled.addTarget(self, action: #selector(CommonExperiencelTextFieldDidEnd(_:)), for: .editingDidEnd)
+                cell.commonTextField.addTarget(self, action: #selector(CommonExperiencelTextFieldDidEnd(_:)), for: .editingDidEnd)
 
                 //CommonExperiencelTextFieldDidEnd
                 switch indexPath.row {
                 case 0:
-                    cell.commonTextFiled.placeholder = FieldType.CurrentJobTitle.description
-                    cell.commonTextFiled.text = self.currentExperience?.jobTitle
+                    cell.commonTextField.placeholder = FieldType.CurrentJobTitle.description
+                    cell.commonTextField.text = self.currentExperience?.jobTitle
                     let pickerView = JobSelectionPickerView.loadJobSelectionView(withJobTitles: jobTitles)
-                    cell.commonTextFiled.inputView = pickerView
+                    cell.commonTextField.inputView = pickerView
                     pickerView.delegate = self
                     pickerView.pickerView.reloadAllComponents()
                     pickerView.backgroundColor = UIColor.white
 
 
                 case 1:
-                    cell.commonTextFiled.placeholder = FieldType.YearOfExperience.description
-                    cell.commonTextFiled.text = self.currentExperience?.yearOfExperience!
+                    cell.commonTextField.placeholder = FieldType.YearOfExperience.description
+                    cell.commonTextField.text = self.currentExperience?.yearOfExperience!
 
                     let yearViewObj = ExperiencePickerView.loadExperiencePickerView(withText: (self.currentExperience?.yearOfExperience!)!)
                     yearViewObj.delegate = self
-                    cell.commonTextFiled.inputView = yearViewObj
+                    cell.commonTextField.inputView = yearViewObj
                     
                 case 2:
-                    cell.commonTextFiled.placeholder = FieldType.OfficeName.description
-                    cell.commonTextFiled.text = self.currentExperience?.officeName
+                    cell.commonTextField.placeholder = FieldType.OfficeName.description
+                    cell.commonTextField.text = self.currentExperience?.officeName
 
                 case 3:
-                    cell.commonTextFiled.placeholder = FieldType.OfficeAddress.description
-                    cell.commonTextFiled.text = self.currentExperience?.officeAddress
+                    cell.commonTextField.placeholder = FieldType.OfficeAddress.description
+                    cell.commonTextField.text = self.currentExperience?.officeAddress
 
                 case 4:
-                    cell.commonTextFiled.placeholder = FieldType.CityName.description
-                    cell.commonTextFiled.text = self.currentExperience?.cityName
+                    cell.commonTextField.placeholder = FieldType.CityName.description
+                    cell.commonTextField.text = self.currentExperience?.cityName
 
                 default:
                     print("default")
@@ -283,7 +283,7 @@ extension DMWorkExperienceVC
         guard string.characters.count > 0 else {
             return true
         }
-        if (textField.text?.characters.count)! >= Constants.TextFieldMaxLenght.commonMaxLenght {
+        if (textField.text?.characters.count)! >= Constants.Limit.commonMaxLimit {
             return false
         }
         return true
@@ -414,19 +414,19 @@ extension DMWorkExperienceVC
     func checkValidations() -> Bool  {
         
         if (self.currentExperience?.jobTitle?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty)! {
-            self.makeToast(toastString:Constants.AlertMessage.jobTitle )
+            self.makeToast(toastString:Constants.AlertMessage.emptyCurrentJobTitle )
             return false
         }else if  (self.currentExperience?.yearOfExperience?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty)! {
-            self.makeToast(toastString: Constants.AlertMessage.yearOfExperience)
+            self.makeToast(toastString: Constants.AlertMessage.emptyYearOfExperience)
             return false
         }else if  (self.currentExperience?.officeName?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty)! {
-            self.makeToast(toastString: Constants.AlertMessage.officeName)
+            self.makeToast(toastString: Constants.AlertMessage.emptyOfficeName)
             return false
         }else if  (self.currentExperience?.officeAddress?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty)! {
-            self.makeToast(toastString: Constants.AlertMessage.officeAddress)
+            self.makeToast(toastString: Constants.AlertMessage.emptyOfficeAddress)
             return false
         }else if  (self.currentExperience?.cityName?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty)! {
-            self.makeToast(toastString: Constants.AlertMessage.CityName)
+            self.makeToast(toastString: Constants.AlertMessage.emptyCityName)
             return false
         }
         

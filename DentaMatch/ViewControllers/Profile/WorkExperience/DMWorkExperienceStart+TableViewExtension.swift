@@ -83,43 +83,46 @@ extension DMWorkExperienceStart
             return cell
 
         case 1:
-            //PhotoNameCell
+            //Section Heading Cell
             let cell = tableView.dequeueReusableCell(withIdentifier: "SectionHeadingTableCell") as! SectionHeadingTableCell
-            cell.selectionStyle = .none
-            cell.headingLabel.text = "Work Experience"
+            cell.headingLabel.text = "WORK EXPERIENCE"
             
             return cell
 
         case 2,3,4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AnimatedPHTableCell") as! AnimatedPHTableCell
-            cell.selectionStyle = .none
-//            cell.commonTextFiled.text = self.experienceArray[indexPath.row-2] as? String
+            if indexPath.row == 2 {
+                cell.accessoryLabel.isHidden = false
+            } else {
+                cell.accessoryLabel.isHidden = true
+            }
+//            cell.commonTextField.text = self.experienceArray[indexPath.row-2] as? String
             switch indexPath.row {
             case 2:
-                cell.commonTextFiled.placeholder = FieldType.CurrentJobTitle.description
+                cell.commonTextField.placeholder = FieldType.CurrentJobTitle.description
                 
                 let pickerView = JobSelectionPickerView.loadJobSelectionView(withJobTitles: jobTitles)
-                cell.commonTextFiled.inputView = pickerView
+                cell.commonTextField.inputView = pickerView
                 pickerView.delegate = self
-                cell.commonTextFiled.tag = 0
+                cell.commonTextField.tag = 0
                 pickerView.pickerView.reloadAllComponents()
                 pickerView.backgroundColor = UIColor.white
                 
             case 3:
-                cell.commonTextFiled.placeholder = FieldType.YearOfExperience.description
+                cell.commonTextField.placeholder = FieldType.YearOfExperience.description
                 let yearViewObj = ExperiencePickerView.loadExperiencePickerView(withText: self.experienceArray[indexPath.row-2] as! String)
                 yearViewObj.delegate = self
-                cell.commonTextFiled.tag = 1
-                cell.commonTextFiled.inputView = yearViewObj
+                cell.commonTextField.tag = 1
+                cell.commonTextField.inputView = yearViewObj
             case 4:
-                cell.commonTextFiled.placeholder = FieldType.OfficeName.description
-                cell.commonTextFiled.tag = 2
+                cell.commonTextField.placeholder = FieldType.OfficeName.description
+                cell.commonTextField.tag = 2
             default:
                 print("default")
             }
             
-            cell.commonTextFiled.text = self.experienceArray[indexPath.row - 2] as? String
-            cell.commonTextFiled.delegate = self
+            cell.commonTextField.text = self.experienceArray[indexPath.row - 2] as? String
+            cell.commonTextField.delegate = self
             return cell
 
         default: break
@@ -155,7 +158,7 @@ extension DMWorkExperienceStart
         guard string.characters.count > 0 else {
             return true
         }
-        if (textField.text?.characters.count)! >= Constants.TextFieldMaxLenght.commonMaxLenght {
+        if (textField.text?.characters.count)! >= Constants.Limit.commonMaxLimit {
             return false
         }
 

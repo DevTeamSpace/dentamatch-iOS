@@ -171,25 +171,25 @@ struct Constants {
     
     //MARK:- Alert Messages
     struct AlertMessage{
-        static let invalidEmail = "Please enter correct email ID"
+        static let invalidEmail = "Please, provide a valid Email Id."
+        static let passwordRange = "Password should be 6-25 characters long "
+        static let emptyName = "Name text can not be left blank."
+        static let emptyPreferredJobLocation = "Preferred Job Location can not be left blank."
+        static let termsAndConditions = "Please accept terms and conditions/Privacy Policy."
+        static let emptyCurrentJobTitle = "Current Job Title can not be left blank."
+        static let emptyPassword = "Password can not be left blank."
         static let skipProfile = "Completed job profile will help you in applying for jobs."
         static let somethingWentWrong = "Something went wrong"
         
-        static let jobTitle = "please enter job title"
-        static let yearOfExperience = "please enter experience"
-        static let officeName = "please enter office name"
-        static let officeAddress = "please enter office address"
-        static let CityName = "please enter city name"
-
+        static let emptyYearOfExperience = "Please select Year Of Experience."
+        static let emptyOfficeName = "Office Name can not be left blank."
+        static let emptyOfficeAddress = "Office Field can not be left blank."
+        static let emptyCityName = "City Name can not be left blank."
+        static let referenceMobileNumber = "Please, Provide a valid Phone number of 10 digits."
+        
         struct AlertTitle {
             static let invalidEmailTitle = ""
         }
-    }
-    
-    struct TextFieldMaxLenght {
-        static let commonMaxLenght = 30
-        static let licenseNumber = 15
-        static let passwordLenght = 14
     }
     
     //MARK:- Strings
@@ -198,9 +198,12 @@ struct Constants {
     }
     
     //MARK:- Hardcoded Limits
-    struct Limits{
+    struct Limit{
         static let licenseNumberLimit = 16
         static let passwordLimit = 6
+        static let maxPasswordLimit = 25
+        static let commonMaxLimit = 30
+        static let licenseNumber = 15
 
     }
 }

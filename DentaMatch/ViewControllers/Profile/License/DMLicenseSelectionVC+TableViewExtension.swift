@@ -104,21 +104,20 @@ extension DMLicenseSelectionVC : UITableViewDataSource, UITableViewDelegate {
             
             debugPrint("row 2")
             let cell = tableView.dequeueReusableCell(withIdentifier: "AnimatedPHTableCell") as! AnimatedPHTableCell
-            cell.selectionStyle = .none
             
-            cell.commonTextFiled.delegate = self
+            cell.commonTextField.delegate = self
             
             if indexPath.row == 4
             {
-                cell.commonTextFiled.tag = 0
+                cell.commonTextField.tag = 0
                 cell.cellTopSpace.constant = 43.5
                 cell.cellBottomSpace.constant = 10.5
-                cell.commonTextFiled.placeholder = "License Number"
+                cell.commonTextField.placeholder = "License Number"
                 cell.layoutIfNeeded()
             }else if indexPath.row == 5
             {
-                cell.commonTextFiled.tag = 1
-                cell.commonTextFiled.placeholder = "State"
+                cell.commonTextField.tag = 1
+                cell.commonTextField.placeholder = "State"
                 cell.cellTopSpace.constant = 10.5
                 cell.cellBottomSpace.constant = 41.5
                 cell.layoutIfNeeded()
@@ -164,12 +163,12 @@ extension DMLicenseSelectionVC : UITableViewDataSource, UITableViewDelegate {
                 return false
             }
             
-            if (textField.text?.characters.count)! >= Constants.TextFieldMaxLenght.licenseNumber {
+            if (textField.text?.characters.count)! >= Constants.Limit.licenseNumber {
                 return false
             }
             
         }else{
-            if (textField.text?.characters.count)! >= Constants.TextFieldMaxLenght.commonMaxLenght {
+            if (textField.text?.characters.count)! >= Constants.Limit.commonMaxLimit {
                 return false
             }
             
