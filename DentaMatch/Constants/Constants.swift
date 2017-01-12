@@ -49,6 +49,7 @@ struct Constants {
         static let textFieldBorderColor = UIColor.color(withHexCode: "e4e4e4")
         static let textFieldColorSelected = UIColor.color(withHexCode: "0470c0")
         static let textFieldPlaceHolderColor =  UIColor.color(withHexCode: "959595")
+        static let textFieldErrorColor = UIColor.color(withHexCode: "ff0000")
         
         static let profileProgressBarColor = UIColor.color(withHexCode: "a3d977")
         static let profileProgressBarTrackColor = UIColor.color(withHexCode: "f4f4f4")
@@ -91,15 +92,16 @@ struct Constants {
     struct API {
     
         //APIs
-        static let registrationAPI = Constants.API.apiURL("users/sign-up")
-        static let loginAPI = Constants.API.apiURL("users/sign-in")
-        static let forgotPasswordAPI = Constants.API.apiURL("users/forgot-password")
+        static let registration = Constants.API.apiURL("users/sign-up")
+        static let login = Constants.API.apiURL("users/sign-in")
+        static let forgotPassword = Constants.API.apiURL("users/forgot-password")
         static let termsAndConditionsURL = Constants.API.apiURL("term-condition")
         static let privacyPolicyURL = Constants.API.apiURL("privacy-policy")
-        static let getJobTitleAPI = Constants.API.apiURL("list-jobtitle")
-        static let uploadImageAPI = Constants.API.apiURL("users/upload-image")
+        static let getJobTitle = Constants.API.apiURL("list-jobtitle")
+        static let uploadImage = Constants.API.apiURL("users/upload-image")
         static let LicenseNumberAndState = Constants.API.apiURL("users/update-license")
-
+        static let getSkillList = Constants.API.apiURL("list-skills")
+        
         static func apiURL(_ methodName: String) -> String {
             return BASE_URL + methodName
         }

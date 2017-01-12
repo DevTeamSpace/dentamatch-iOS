@@ -52,6 +52,10 @@
 		E5496E081E25E4AA00C54288 /* DMSchoolListPopOverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5496E071E25E4AA00C54288 /* DMSchoolListPopOverVC.swift */; };
 		E5496E0A1E25E52600C54288 /* DMSchoolListPopOverVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5496E091E25E52600C54288 /* DMSchoolListPopOverVC+TableViewExtension.swift */; };
 		E5496E0C1E26435C00C54288 /* DMLicenseSelectionVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5496E0B1E26435C00C54288 /* DMLicenseSelectionVC+TableViewExtension.swift */; };
+		E5496E0E1E273F1D00C54288 /* DMSkillsVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5496E0D1E273F1D00C54288 /* DMSkillsVC+Services.swift */; };
+		E5496E111E27601600C54288 /* SkillsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5496E0F1E27601600C54288 /* SkillsTableCell.swift */; };
+		E5496E121E27601600C54288 /* SkillsTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5496E101E27601600C54288 /* SkillsTableCell.xib */; };
+		E5496E141E2760FC00C54288 /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5496E131E2760FC00C54288 /* Skill.swift */; };
 		E55462D71DAE2F49004163B2 /* UIColor+HexCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55462D61DAE2F49004163B2 /* UIColor+HexCode.swift */; };
 		E55462D91DAE3104004163B2 /* Array+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55462D81DAE3104004163B2 /* Array+Additions.swift */; };
 		E55462DB1DAE312C004163B2 /* String+Additons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55462DA1DAE312C004163B2 /* String+Additons.swift */; };
@@ -213,6 +217,10 @@
 		E5496E071E25E4AA00C54288 /* DMSchoolListPopOverVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMSchoolListPopOverVC.swift; sourceTree = "<group>"; };
 		E5496E091E25E52600C54288 /* DMSchoolListPopOverVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMSchoolListPopOverVC+TableViewExtension.swift"; sourceTree = "<group>"; };
 		E5496E0B1E26435C00C54288 /* DMLicenseSelectionVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMLicenseSelectionVC+TableViewExtension.swift"; sourceTree = "<group>"; };
+		E5496E0D1E273F1D00C54288 /* DMSkillsVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMSkillsVC+Services.swift"; sourceTree = "<group>"; };
+		E5496E0F1E27601600C54288 /* SkillsTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillsTableCell.swift; sourceTree = "<group>"; };
+		E5496E101E27601600C54288 /* SkillsTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SkillsTableCell.xib; sourceTree = "<group>"; };
+		E5496E131E2760FC00C54288 /* Skill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
 		E55462D01DAE1419004163B2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E55462D61DAE2F49004163B2 /* UIColor+HexCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+HexCode.swift"; sourceTree = "<group>"; };
 		E55462D81DAE3104004163B2 /* Array+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Additions.swift"; sourceTree = "<group>"; };
@@ -365,6 +373,7 @@
 				5A1E2A191E1E47C90055D913 /* EmployeeReferenceModel.swift */,
 				E587D2D21E234CDF006B7F06 /* JobTitle.swift */,
 				E587D2DA1E2395B7006B7F06 /* User.swift */,
+				E5496E131E2760FC00C54288 /* Skill.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -459,6 +468,8 @@
 				E5496DFE1E25563100C54288 /* CertificationsCell.xib */,
 				E5496E031E255B2E00C54288 /* AboutMeCell.swift */,
 				E5496E041E255B2E00C54288 /* AboutMeCell.xib */,
+				E5496E0F1E27601600C54288 /* SkillsTableCell.swift */,
+				E5496E101E27601600C54288 /* SkillsTableCell.xib */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -745,6 +756,7 @@
 			children = (
 				E587D2F51E24C0B0006B7F06 /* DMSkillsVC.swift */,
 				E587D2F71E24C0C0006B7F06 /* DMSelectSkillsVC.swift */,
+				E5496E0D1E273F1D00C54288 /* DMSkillsVC+Services.swift */,
 			);
 			path = Skills;
 			sourceTree = "<group>";
@@ -1061,6 +1073,7 @@
 				E597E5751E151A99001DDA78 /* SF-UI-Display-Black.otf in Resources */,
 				E597E58B1E151A99001DDA78 /* SF-UI-Text-UltrathinItalic.otf in Resources */,
 				E597E5801E151A99001DDA78 /* SF-UI-Text-Heavy.otf in Resources */,
+				E5496E121E27601600C54288 /* SkillsTableCell.xib in Resources */,
 				E50B3F4D1E194CD7004C5F32 /* AnimatedPHTableCell.xib in Resources */,
 				E50B3F4F1E194CD7004C5F32 /* LoginTableViewCell.xib in Resources */,
 				E597E57B1E151A99001DDA78 /* SF-UI-Display-Semibold.otf in Resources */,
@@ -1179,6 +1192,7 @@
 				E587D2D51E2357A9006B7F06 /* DMJobTitleSelectionVC+Services.swift in Sources */,
 				E5496E0C1E26435C00C54288 /* DMLicenseSelectionVC+TableViewExtension.swift in Sources */,
 				E587D2EC1E24C021006B7F06 /* DMWorkExperienceStart.swift in Sources */,
+				E5496E111E27601600C54288 /* SkillsTableCell.swift in Sources */,
 				E50B3F401E18E8D2004C5F32 /* ZGradientLayer.swift in Sources */,
 				E594BEA21E1E014F00310AE5 /* DMLoginVC.swift in Sources */,
 				E587D2FD1E24E2E1006B7F06 /* StudyCell.swift in Sources */,
@@ -1210,6 +1224,7 @@
 				E58654FE1DEFEF7F006FEB2D /* ConfigurationManager.swift in Sources */,
 				E5AE2AF61DAF878900C008BD /* OnboardingCollectionViewCell.swift in Sources */,
 				5A1960FD1E208B67002A5F7C /* PhoneNumberFormatter.swift in Sources */,
+				E5496E141E2760FC00C54288 /* Skill.swift in Sources */,
 				E5C5F3151DC0AACA001A5A3F /* DMRegisterMapsVC.swift in Sources */,
 				E55462E11DAE41FB004163B2 /* Date+Additions.swift in Sources */,
 				E55462D71DAE2F49004163B2 /* UIColor+HexCode.swift in Sources */,
@@ -1248,6 +1263,7 @@
 				E587D2F61E24C0B0006B7F06 /* DMSkillsVC.swift in Sources */,
 				E50B3F501E194CD7004C5F32 /* RegistrationTableViewCell.swift in Sources */,
 				5A1E2A1C1E1E77790055D913 /* ExperienceTableCell.swift in Sources */,
+				E5496E0E1E273F1D00C54288 /* DMSkillsVC+Services.swift in Sources */,
 				E53738F21DB373C200967876 /* Reachability.swift in Sources */,
 				E55462F51DAE4B9E004163B2 /* UIStoryBoard+Additions.swift in Sources */,
 				E587D2EB1E24C021006B7F06 /* DMWorkExperienceStart+TableViewExtension.swift in Sources */,

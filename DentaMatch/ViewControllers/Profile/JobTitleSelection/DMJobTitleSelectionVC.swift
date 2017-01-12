@@ -68,7 +68,12 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
         jobSelectionPickerTextField.spellCheckingType = .no
         jobSelectionPickerTextField.autocorrectionType = .no
         jobSelectionPickerTextField.delegate = self
-       
+        
+        //Job Title Picker 
+        jobSelectionPickerView = JobSelectionPickerView.loadJobSelectionView(withJobTitles: [])
+        jobSelectionPickerTextField.inputView = jobSelectionPickerView
+        jobSelectionPickerView.delegate = self
+
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

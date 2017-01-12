@@ -43,7 +43,7 @@ extension DMLicenseSelectionVC {
             if let imageData = UIImageJPEGRepresentation(profileImageData, 0.5) {
                 params["image"] = imageData as AnyObject?
                 self.showLoader()
-                APIManager.apiMultipart(serviceName: Constants.API.uploadImageAPI, parameters: params, completionHandler: { (response:JSON?, error:NSError?) in
+                APIManager.apiMultipart(serviceName: Constants.API.uploadImage, parameters: params, completionHandler: { (response:JSON?, error:NSError?) in
                     self.hideLoader()
                     if error != nil {
                         self.makeToast(toastString: (error?.localizedDescription)!)

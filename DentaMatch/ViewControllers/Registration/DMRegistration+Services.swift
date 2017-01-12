@@ -14,7 +14,7 @@ extension DMRegistrationVC {
     func registrationAPI(params:[String:String]) {
         print("Registration Parameters\n\(params.description))")
         self.showLoader()
-        APIManager.apiPost(serviceName: Constants.API.registrationAPI, parameters: params) { (response:JSON?, error:NSError?) in
+        APIManager.apiPost(serviceName: Constants.API.registration, parameters: params) { (response:JSON?, error:NSError?) in
             self.hideLoader()
             if error != nil {
                 self.makeToast(toastString: (error?.localizedDescription)!)

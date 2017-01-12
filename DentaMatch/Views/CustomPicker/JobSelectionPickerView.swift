@@ -78,7 +78,11 @@ class JobSelectionPickerView: UIView,UIPickerViewDataSource,UIPickerViewDelegate
     }
     @IBAction func doneButtonPressed(_ sender: Any) {
         if let delegate = delegate {
-            delegate.jobPickerDoneButtonAction(job: jobTitles[self.pickerView.selectedRow(inComponent: 0)])
+            if jobTitles.count > 0 {
+                delegate.jobPickerDoneButtonAction(job: jobTitles[self.pickerView.selectedRow(inComponent: 0)])
+            } else {
+                delegate.jobPickerDoneButtonAction(job: nil)
+            }
         }
     }
 

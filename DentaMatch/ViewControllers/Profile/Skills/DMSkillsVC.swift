@@ -8,11 +8,11 @@
 
 import UIKit
 
-class DMSkillsVC: UIViewController {
+class DMSkillsVC: DMBaseVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.getSkillListAPI()
         // Do any additional setup after loading the view.
     }
 
