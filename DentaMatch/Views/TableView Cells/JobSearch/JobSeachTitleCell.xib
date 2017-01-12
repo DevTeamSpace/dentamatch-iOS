@@ -28,11 +28,12 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i0y-8c-MGU">
-                        <rect key="frame" x="-2" y="0.0" width="379" height="203.5"/>
+                        <rect key="frame" x="-2" y="0.0" width="379" height="88"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JOB TITLE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="1" translatesAutoresizingMaskIntoConstraints="NO" id="jxz-Yz-Bse">
-                                <rect key="frame" x="16" y="37" width="116" height="37.5"/>
+                                <rect key="frame" x="16" y="37" width="116" height="16"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="ano-p6-2p4"/>
                                     <constraint firstAttribute="width" constant="116" id="c83-BO-4Uz"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="14"/>
@@ -40,9 +41,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NcS-NG-2SJ">
-                                <rect key="frame" x="329" y="39" width="30" height="30.5"/>
+                                <rect key="frame" x="340" y="37" width="19" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="NcS-NG-2SJ" secondAttribute="height" multiplier="1:1" id="6aA-Zc-knZ"/>
+                                    <constraint firstAttribute="height" constant="20" id="ZtI-kl-8gQ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="dentamatch" family="dentamatch" pointSize="13"/>
                                 <state key="normal" title="b">
@@ -50,9 +52,9 @@
                                 </state>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07G-7Q-G5Z">
-                                <rect key="frame" x="10" y="79.5" width="359" height="24"/>
+                                <rect key="frame" x="10" y="58" width="359" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="yVk-pi-FhQ"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="yVk-pi-FhQ"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -60,11 +62,9 @@
                         <constraints>
                             <constraint firstItem="07G-7Q-G5Z" firstAttribute="top" secondItem="jxz-Yz-Bse" secondAttribute="bottom" constant="5" id="2H2-dO-7Xc"/>
                             <constraint firstAttribute="bottom" secondItem="07G-7Q-G5Z" secondAttribute="bottom" constant="6" id="2YJ-Ym-Mwm"/>
-                            <constraint firstItem="NcS-NG-2SJ" firstAttribute="height" secondItem="i0y-8c-MGU" secondAttribute="height" multiplier="0.1477" id="7f1-VZ-qb6"/>
-                            <constraint firstItem="jxz-Yz-Bse" firstAttribute="height" secondItem="i0y-8c-MGU" secondAttribute="height" multiplier="0.1818" id="9EW-27-by9"/>
                             <constraint firstItem="jxz-Yz-Bse" firstAttribute="top" secondItem="i0y-8c-MGU" secondAttribute="top" multiplier="0.409" constant="37" id="WAN-c3-Gb6"/>
                             <constraint firstItem="07G-7Q-G5Z" firstAttribute="leading" secondItem="i0y-8c-MGU" secondAttribute="leading" constant="10" id="bV7-50-WVF"/>
-                            <constraint firstItem="NcS-NG-2SJ" firstAttribute="top" secondItem="i0y-8c-MGU" secondAttribute="top" constant="39" id="daC-c3-VYB"/>
+                            <constraint firstItem="NcS-NG-2SJ" firstAttribute="top" secondItem="i0y-8c-MGU" secondAttribute="top" constant="37" id="daC-c3-VYB"/>
                             <constraint firstAttribute="trailing" secondItem="07G-7Q-G5Z" secondAttribute="trailing" constant="10" id="dvc-sS-QJz"/>
                             <constraint firstItem="jxz-Yz-Bse" firstAttribute="leading" secondItem="i0y-8c-MGU" secondAttribute="leading" constant="16" id="fvg-Gp-2sp"/>
                             <constraint firstAttribute="trailing" secondItem="NcS-NG-2SJ" secondAttribute="trailing" constant="20" id="oA3-08-Nwf"/>

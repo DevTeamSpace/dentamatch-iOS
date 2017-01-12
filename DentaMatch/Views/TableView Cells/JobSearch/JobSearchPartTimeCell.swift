@@ -41,13 +41,6 @@ class JobSearchPartTimeCell: UITableViewCell {
     
     override func layoutIfNeeded() {
         super.layoutIfNeeded()
-        btnSunday.layer.cornerRadius = btnFriday.frame.size.height / 2
-        btnMonday.layer.cornerRadius = btnFriday.frame.size.height / 2
-        btnTuesday.layer.cornerRadius = btnFriday.frame.size.height / 2
-        btnWednesday.layer.cornerRadius = btnFriday.frame.size.height / 2
-        btnThursday.layer.cornerRadius = btnFriday.frame.size.height / 2
-        btnFriday.layer.cornerRadius = btnFriday.frame.size.height / 2
-        btnSaturday.layer.cornerRadius = btnFriday.frame.size.height / 2
     }
     
     //MARK : Private Methods
@@ -71,6 +64,14 @@ class JobSearchPartTimeCell: UITableViewCell {
         btnFriday.setTitleColor(UIColor.init(colorLiteralRed: 81.0/255.0, green: 81.0/255.0, blue: 81.0/255.0, alpha: 1.0), for: .normal)
         btnSaturday.backgroundColor = UIColor.clear
         btnSaturday.setTitleColor(UIColor.init(colorLiteralRed: 81.0/255.0, green: 81.0/255.0, blue: 81.0/255.0, alpha: 1.0), for: .normal)
+        
+        btnSunday.layer.cornerRadius = btnFriday.frame.size.height / 2
+        btnMonday.layer.cornerRadius = btnFriday.frame.size.height / 2
+        btnTuesday.layer.cornerRadius = btnFriday.frame.size.height / 2
+        btnWednesday.layer.cornerRadius = btnFriday.frame.size.height / 2
+        btnThursday.layer.cornerRadius = btnFriday.frame.size.height / 2
+        btnFriday.layer.cornerRadius = btnFriday.frame.size.height / 2
+        btnSaturday.layer.cornerRadius = btnFriday.frame.size.height / 2
     }
     
     func daySelect(button : UIButton) {

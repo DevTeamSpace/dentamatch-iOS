@@ -16,4 +16,5 @@ pod 'GoogleMaps'
 pod 'GooglePlaces'
 pod 'XCGLogger', '~> 4.0.0'
 pod 'SVProgressHUD'
+pod 'RESideMenu', '~> 4.0.6'
 end

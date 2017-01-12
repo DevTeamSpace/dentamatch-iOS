@@ -13,8 +13,8 @@ class DMJobSearchVC : DMBaseVC {
     
     @IBOutlet weak var tblViewJobSearch: UITableView!
     var coordinateSelected:CLLocationCoordinate2D?
-    
     var isPartTimeDayShow : Bool = false
+    var jobTitles = [JobTitle]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,6 +71,7 @@ extension DMJobSearchVC : UITableViewDataSource, UITableViewDelegate {
             if cell == nil {
                 cell = JobSeachTitleCell()
             }
+            cell?.jobTitles = self.jobTitles
             cell!.updateJobTitle()
             return cell!
         }
@@ -160,12 +161,12 @@ extension DMJobSearchVC : UITableViewDataSource, UITableViewDelegate {
     func tableView( _ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         
         // To Add Search Button
-        let footerView = UIView(frame: CGRect(x : 0.0, y : 0.0, width : tableView.frame.size.width,height : 0.0735 * 667.0))
+        let footerView = UIView(frame: CGRect(x : 0.0, y : 0.0, width : tableView.frame.size.width,height : 49.0))
         footerView.backgroundColor = UIColor.init(colorLiteralRed: 4.0/255.0, green: 112.0/255.0, blue: 192.0/255.0, alpha: 1.0)
         
-        let btnSearch = UIButton.init(frame: CGRect(x : tableView.frame.size.width - 75, y : (0.0735 * 667.0) / 2, width : 150, height : 30.0))
-        btnSearch.titleLabel?.textColor = UIColor.white
-        btnSearch.titleLabel?.text = "SEARCH"
+        let btnSearch = UIButton.init(frame: CGRect(x : 0 , y : 0, width : footerView.frame.size.width, height : footerView.frame.size.height))
+        btnSearch.setTitle("SEARCH", for: .normal)
+        btnSearch.setTitleColor(UIColor.white, for: .normal)
         btnSearch.titleLabel!.font =  UIFont.fontSemiBold(fontSize: 16.0)
         btnSearch.backgroundColor = UIColor.clear
         btnSearch.addTarget(self, action: #selector(actionSearchButton), for: .touchUpInside)
@@ -183,7 +184,7 @@ extension DMJobSearchVC : UITableViewDataSource, UITableViewDelegate {
         }
         else if section == 2 {
             
-            return 0.0735 * 667.0
+            return 49.0
         }
         return 0
     }
@@ -220,7 +221,8 @@ extension DMJobSearchVC : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             let jobTitleVC = UIStoryboard.jobSearchStoryBoard().instantiateViewController(type: DMJobTitleVC.self)!
-            //jobTitleVC.delegate = self
+            jobTitleVC.delegate = self
+            jobTitleVC.selectedJobs = self.jobTitles
             self.navigationController?.pushViewController(jobTitleVC, animated: true)
         }
         else if indexPath.section == 1 {
@@ -280,7 +282,16 @@ extension DMJobSearchVC : JobSearchTypeCellDelegate, JobSearchPartTimeCellDelega
     }
 }
 
-
+extension DMJobSearchVC : DMJobTitleVCDelegate {
+    
+    func setSelectedJobType(jobTitles: [JobTitle]) {
+        self.jobTitles.removeAll()
+        self.jobTitles = jobTitles
+        tblViewJobSearch.beginUpdates()
+        tblViewJobSearch.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
+        tblViewJobSearch.endUpdates()
+    }
+}
 
 extension DMJobSearchVC : LocationAddressDelegate {
     

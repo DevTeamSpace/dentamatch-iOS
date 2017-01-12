@@ -9,13 +9,21 @@
 import UIKit
 import SwiftyJSON
 
+@objc protocol DMJobTitleVCDelegate {
+    
+    @objc optional func setSelectedJobType(jobTitles : [JobTitle])
+    
+}
+
 class DMJobTitleVC: DMBaseVC {
     
     @IBOutlet weak var tblJobTitle: UITableView!
     var jobTitles = [JobTitle]()
+    var selectedJobs = [JobTitle]()
     var rightBarBtn : UIButton = UIButton()
     var rightBarButtonItem : UIBarButtonItem = UIBarButtonItem()
-
+    weak var delegate : DMJobTitleVCDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.getJobsAPI()
@@ -39,6 +47,7 @@ class DMJobTitleVC: DMBaseVC {
     func setRightBarButton()  {
         self.rightBarBtn = UIButton()
         self.rightBarBtn.setTitle("Save", for: .normal)
+        self.rightBarBtn.titleLabel?.font = UIFont.fontRegular(fontSize: 16.0)
         self.rightBarBtn.frame = CGRect(x : 0,y : 0,width: 50,height : 25)
         self.rightBarBtn.imageView?.contentMode = .scaleAspectFit
         self.rightBarBtn.addTarget(self, action: #selector(DMJobTitleVC.actionRightNavigationItem), for: .touchUpInside)
@@ -48,7 +57,14 @@ class DMJobTitleVC: DMBaseVC {
     }
     
     func actionRightNavigationItem() {
-        
+        self.navigationController?.popViewController(animated: true)
+        self.selectedJobs.removeAll()
+        for objTitle in self.jobTitles {
+            if objTitle.jobSelected == true {
+                self.selectedJobs.append(objTitle)
+            }
+        }
+        delegate?.setSelectedJobType!(jobTitles: self.selectedJobs)
     }
     
     func getJobsAPI() {
@@ -72,8 +88,14 @@ class DMJobTitleVC: DMBaseVC {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
                 let skillList = response[Constants.ServerKey.result][Constants.ServerKey.joblists].array
-                for jobObject in skillList! {
+                jobTitles.removeAll()
+                for jobObject in (skillList)! {
                     let job = JobTitle(job: jobObject)
+                    for selectedJob in selectedJobs {
+                        if selectedJob.jobId == job.jobId {
+                            job.jobSelected = true
+                        }
+                    }
                     jobTitles.append(job)
                 }
                 self.tblJobTitle.reloadData()
@@ -95,9 +117,17 @@ extension DMJobTitleVC : UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AffiliationsCell") as! AffiliationsCell
         cell.selectionStyle = .none
         let objJob = jobTitles[indexPath.row]
-        cell.tickButton.isEnabled = false
+        //cell.tickButton.isEnabled = true
         cell.affiliationLabel.textColor = UIColor.init(red: 81.0/255.0, green: 81.0/255.0, blue: 81.0/255.0, alpha: 1.0)
         cell.affiliationLabel.text = objJob.jobTitle
+        if objJob.jobSelected == true {
+            cell.tickButton.setTitle("w", for: .normal)
+            cell.tickButton.setTitleColor(UIColor.init(red: 4.0/255.0, green: 112.0/255.0, blue: 192.0/255.0, alpha: 1.0), for: .normal)
+        }
+        else {
+            cell.tickButton.setTitle("t", for: .normal)
+            cell.tickButton.setTitleColor(UIColor.init(red: 151.0/255.0, green: 151.0/255.0, blue: 151.0/255.0, alpha: 1.0), for: .normal)
+        }
         return cell
     }
     
@@ -122,6 +152,5 @@ extension DMJobTitleVC : UITableViewDataSource, UITableViewDelegate {
             cell?.tickButton.setTitle("t", for: .normal)
             cell?.tickButton.setTitleColor(UIColor.init(red: 151.0/255.0, green: 151.0/255.0, blue: 151.0/255.0, alpha: 1.0), for: .normal)
         }
-        
     }
 }

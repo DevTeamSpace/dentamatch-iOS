@@ -17,8 +17,7 @@ class JobSeachTitleCell: UITableViewCell {
     @IBOutlet weak var constraintScrollViewTop: NSLayoutConstraint!
     @IBOutlet weak var constraintScrollViewBottom: NSLayoutConstraint!
     
-    let jobTitleArr : [NSString] = ["Shailesh","sdfgdfg", "dsfg", "sdfg", "SDfgdfg", "Tyagi"]
-    //let jobTitleArr : [NSString] = []
+    var jobTitles = [JobTitle]()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -48,19 +47,19 @@ class JobSeachTitleCell: UITableViewCell {
         var leftMargin : CGFloat = 5.0
         let rightMargin : CGFloat = 0.0
         var totalHeight : CGFloat = 5.0
-        var widthPadding : CGFloat = 10.0
+        let widthPadding : CGFloat = 10.0
         let heightPadding : CGFloat = 23.0
         
-        if jobTitleArr.count == 0 {
-            constraintScrollViewHeight.constant = 0.2727 * 88
+        if jobTitles.count == 0 {
+            constraintScrollViewHeight.constant = 24.0
             self.layoutIfNeeded()
             return
         }
         
-        for title in jobTitleArr {
+        for objTitle in jobTitles {
             let font = UIFont.fontRegular(fontSize: 14.0)
             let textAttributes = [NSFontAttributeName: font]
-            let textSize = title.boundingRect(with: CGSize(width : self.frame.size.width + 10,height : 14), options: .usesLineFragmentOrigin, attributes: textAttributes, context: nil)
+            let textSize = objTitle.jobTitle.boundingRect(with: CGSize(width : self.frame.size.width + 10,height : 14), options: .usesLineFragmentOrigin, attributes: textAttributes, context: nil)
             let textWidth : CGFloat = textSize.width
             let textHeight : CGFloat = 34.0
             if leftMargin + textSize.width + rightMargin + widthPadding >= self.scrollViewJobTitle.frame.size.width{
@@ -75,7 +74,7 @@ class JobSeachTitleCell: UITableViewCell {
             label.textAlignment = NSTextAlignment.center
             label.font = font
             label.textColor = UIColor(red: 169.0/255.0, green: 169.0/255.0, blue: 169.0/255.0, alpha: 1.0)
-            label.text = title as String
+            label.text = objTitle.jobTitle as String
             label.layer.borderWidth  = 1
             //label.numberOfLines = 0
             label.layer.borderColor = UIColor(red: 169.0/255.0, green: 169.0/255.0, blue: 169.0/255.0, alpha: 1.0).cgColor
@@ -85,7 +84,6 @@ class JobSeachTitleCell: UITableViewCell {
             
             leftMargin = leftMargin + textWidth + widthPadding + 25
             totalHeight =  topMargin + textSize.height + heightPadding
-            
         }
         
         self.scrollViewJobTitle.contentSize = CGSize(width : self.scrollViewJobTitle.frame.size.width,height : totalHeight)

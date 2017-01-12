@@ -27,7 +27,8 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56b-Q2-LUv">
-                        <rect key="frame" x="20" y="8" width="256" height="40"/>
+                        <rect key="frame" x="20" y="8" width="246" height="40"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="39.5" id="vUz-nU-Ow9"/>
                         </constraints>
@@ -36,12 +37,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZS4-sY-HeI">
-                        <rect key="frame" x="276" y="18" width="20" height="20"/>
+                        <rect key="frame" x="266" y="0.0" width="54" height="55"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="20" id="rZr-c6-189"/>
-                            <constraint firstAttribute="width" constant="20" id="yvO-a7-EwC"/>
+                            <constraint firstAttribute="height" constant="55" id="rZr-c6-189"/>
+                            <constraint firstAttribute="width" constant="54" id="yvO-a7-EwC"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="dentamatch" family="dentamatch" pointSize="7"/>
+                        <fontDescription key="fontDescription" name="dentamatch" family="dentamatch" pointSize="20"/>
                         <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="20" maxY="0.0"/>
                         <state key="normal" title="t">
                             <color key="titleColor" red="0.59215686274509804" green="0.59215686274509804" blue="0.59215686274509804" alpha="1" colorSpace="calibratedRGB"/>
@@ -61,7 +63,7 @@
                     <constraint firstItem="56b-Q2-LUv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="12" id="Q54-Oc-D2z"/>
                     <constraint firstAttribute="bottom" secondItem="SQL-eO-bNV" secondAttribute="bottom" id="XDV-Eh-hJY"/>
                     <constraint firstAttribute="bottomMargin" secondItem="56b-Q2-LUv" secondAttribute="bottom" id="b77-7h-mV1"/>
-                    <constraint firstAttribute="trailing" secondItem="ZS4-sY-HeI" secondAttribute="trailing" constant="24" id="cqo-dx-fBg"/>
+                    <constraint firstAttribute="trailing" secondItem="ZS4-sY-HeI" secondAttribute="trailing" id="cqo-dx-fBg"/>
                     <constraint firstItem="ZS4-sY-HeI" firstAttribute="leading" secondItem="56b-Q2-LUv" secondAttribute="trailing" id="eqB-Sh-aG2"/>
                     <constraint firstItem="ZS4-sY-HeI" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="gTU-K1-uxG"/>
                     <constraint firstItem="56b-Q2-LUv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="pjO-W8-MrH"/>
