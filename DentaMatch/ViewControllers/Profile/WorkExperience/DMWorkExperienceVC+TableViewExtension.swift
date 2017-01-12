@@ -20,28 +20,16 @@ extension DMWorkExperienceVC
         {
             return 6 + (self.currentExperience!.references.count)
         }else{
-            return (self.exprienceArray?.count)!
+            return (self.exprienceArray.count)
         }
     }
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
-//    {
-//        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 45))
-//        let headerLabel = UILabel(frame: headerView.frame)
-//        headerLabel.frame.origin.x = 20
-//        headerLabel.backgroundColor = UIColor.clear
-//        headerLabel.font = UIFont.fontMedium(fontSize: 14)
-//        headerView.addSubview(headerLabel)
-//        headerView.backgroundColor = UIColor(red: 248.0/255.0, green: 248.0/255.0, blue: 248.0/255.0, alpha: 1.0)
-//        headerLabel.text = "Work Experiense"
-//        return headerView
-//    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if tableView == self.workExperienceDetailTable
         {
             if indexPath.row > (self.currentExperience?.references.count)! + 4
             {
-                let height =  self.currentExperience?.isFirstExperience == true ? 60:130
+                let height =  self.currentExperience?.isFirstExperience == true ? 80:130
                 return CGFloat(height)
             }
             if indexPath.row > 4
@@ -106,7 +94,6 @@ extension DMWorkExperienceVC
             {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ReferenceTableCell") as! ReferenceTableCell
                 cell.selectionStyle = .none
-                
                 cell.nameTextField.delegate = self
                 cell.mobileNoTextField.delegate = self
                 cell.emailTextField.delegate = self
@@ -115,7 +102,6 @@ extension DMWorkExperienceVC
                 let tag = indexPath.row - 5
                 cell.deleteButton.tag = tag
                 cell.addMoreReferenceButton.tag = tag
-                
                 cell.nameTextField.tag = tag
                 cell.mobileNoTextField.tag = tag
                 cell.emailTextField.tag = tag
@@ -224,7 +210,7 @@ extension DMWorkExperienceVC
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "ExperienceTableCell") as! ExperienceTableCell
             cell.selectionStyle = .none
-            let exp  = self.exprienceArray?[indexPath.row] as! ExperienceModel
+            let exp  = self.exprienceArray[indexPath.row] 
 
             cell.experienceLabel.text = exp.yearOfExperience
             cell.jobTitleLable.text = exp.jobTitle
@@ -238,8 +224,10 @@ extension DMWorkExperienceVC
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if tableView == self.workExperienceTable {
+            let check  = indexPath.row == 0 ? true : false
             self.currentExperience = nil
-            self.currentExperience = self.exprienceArray?[indexPath.row] as? ExperienceModel
+            self.currentExperience = self.exprienceArray[indexPath.row]
+            self.currentExperience?.isFirstExperience = check
             self.currentExperience?.isEditMode = true
             self.workExperienceTable.reloadData()
             self.workExperienceDetailTable.reloadData()
@@ -349,20 +337,27 @@ extension DMWorkExperienceVC
         }else {
             text.append(" \(month) months")
         }
+        let total = (year * 12) + month
         
         self.currentExperience?.yearOfExperience = text
+        self.currentExperience?.experienceInMonth = total
         self.workExperienceDetailTable.reloadData()
-        
     }
     func canceButtonAction() {
         self.workExperienceDetailTable.endEditing(true)
     }
     
     func addMoreReference(_ sender: Any) {
-        let refere = EmployeeReferenceModel()
-        self.currentExperience?.references.append(refere)
-        self.workExperienceDetailTable.reloadData()
-        self.reSizeTableViewsAndScrollView()
+        if (self.currentExperience?.references.count)! < 2
+        {
+            let refere = EmployeeReferenceModel(empty: "")
+            self.currentExperience?.references.append(refere)
+            self.workExperienceDetailTable.reloadData()
+            self.reSizeTableViewsAndScrollView()
+ 
+        }else{
+            self.makeToast(toastString: "you can add only maximum 2 experience")
+        }
     }
     func addMoreExperience(_ sender: Any) {
         self.view.endEditing(true)
@@ -370,16 +365,22 @@ extension DMWorkExperienceVC
         {
             return
         }
+        var param = [String:AnyObject]()
         if self.currentExperience?.isEditMode == true
         {
-            self.exprienceArray?.replaceObject(at: (sender as AnyObject).tag, with: self.currentExperience!)
+            self.exprienceArray[(sender as AnyObject).tag] = self.currentExperience!
+//            self.exprienceArray.replaceObject(at: (sender as AnyObject).tag, with: self.currentExperience!)
+           param = self.getParamsForSaveAndUpdate(isEdit: true)
         }else {
-            self.exprienceArray?.add(self.currentExperience!)
+            self.exprienceArray.append(self.currentExperience!)
+            param = self.getParamsForSaveAndUpdate(isEdit: false)
+
         }
+        saveUpdateExperience(params: param)
         self.currentExperience = nil
-        self.currentExperience = ExperienceModel()
+        self.currentExperience = ExperienceModel(empty: "")
         self.currentExperience?.isFirstExperience = false
-        self.currentExperience?.references.append(EmployeeReferenceModel())
+        self.currentExperience?.references.append(EmployeeReferenceModel(empty: ""))
         self.workExperienceTable.reloadData()
         self.workExperienceDetailTable.reloadData()
         self.makeToast(toastString: "Experience Added")
@@ -397,18 +398,17 @@ extension DMWorkExperienceVC
         self.view.endEditing(true)
 
         if self.currentExperience?.isEditMode == true {
-            self.exprienceArray?.remove(self.currentExperience!)
+            self.exprienceArray.removeObject(object:self.currentExperience!)
+            self.deleteExperience()
         }
 
         self.currentExperience = nil
-        self.currentExperience = ExperienceModel()
+        self.currentExperience = ExperienceModel(empty: "")
         self.currentExperience?.isFirstExperience = false
-        self.currentExperience?.references.append(EmployeeReferenceModel())
+        self.currentExperience?.references.append(EmployeeReferenceModel(empty: ""))
         self.workExperienceTable.reloadData()
         self.workExperienceDetailTable.reloadData()
         self.reSizeTableViewsAndScrollView()
-
-        
     }
     
     func checkValidations() -> Bool  {

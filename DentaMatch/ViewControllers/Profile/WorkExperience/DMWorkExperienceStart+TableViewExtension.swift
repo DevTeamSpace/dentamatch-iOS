@@ -187,6 +187,8 @@ extension DMWorkExperienceStart
         }else {
             text.append(" \(month) months")
         }
+        self.totalExperience = (year * 12) + month
+
 
         self.experienceArray.replaceObject(at: 1, with: text)
         self.workExperienceTable.reloadData()

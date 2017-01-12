@@ -15,6 +15,7 @@ class DMWorkExperienceStart: DMBaseVC,UITableViewDataSource,UITableViewDelegate,
     var selectedJobTitle:JobTitle!
     var experienceArray = NSMutableArray()
     var jobTitles = [JobTitle]()
+    var totalExperience = 0
 
     
     override func viewDidLoad() {
@@ -22,12 +23,12 @@ class DMWorkExperienceStart: DMBaseVC,UITableViewDataSource,UITableViewDelegate,
         experienceArray.addObjects(from: [selectedJobTitle.jobTitle,"",""])
         self.title = "Work Experience"
         setUp()
+        
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.changeNavBarAppearanceForProfiles()
-        
         self.navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = nil
         self.navigationController?.navigationBar.isTranslucent = false
@@ -121,6 +122,7 @@ class DMWorkExperienceStart: DMBaseVC,UITableViewDataSource,UITableViewDelegate,
             destinationVC.currentExperience?.jobTitle = self.experienceArray[0] as? String
             destinationVC.currentExperience?.yearOfExperience = self.experienceArray[1] as? String
             destinationVC.jobTitles = self.jobTitles
+            destinationVC.currentExperience?.experienceInMonth = self.totalExperience
             destinationVC.currentExperience?.officeName = self.experienceArray[2] as? String
         }
     }
