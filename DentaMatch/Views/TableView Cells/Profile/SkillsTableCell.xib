@@ -23,17 +23,28 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ghl-gp-LtK">
-                        <rect key="frame" x="20" y="18.5" width="44" height="19.5"/>
+                        <rect key="frame" x="20" y="19" width="44" height="19"/>
                         <fontDescription key="fontDescription" name="SFUIText-Bold" family="SF UI Text" pointSize="16"/>
                         <color key="textColor" red="0.015686274509803921" green="0.4392156862745098" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DPt-wv-4GJ">
+                        <rect key="frame" x="0.0" y="55.5" width="320" height="1"/>
+                        <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="aif-qr-EG7"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="DPt-wv-4GJ" secondAttribute="trailing" id="Aen-KR-Wfm"/>
+                    <constraint firstItem="DPt-wv-4GJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Npq-GT-4Qb"/>
                     <constraint firstItem="Ghl-gp-LtK" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Pa0-Us-vXa"/>
                     <constraint firstItem="Ghl-gp-LtK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="b1q-Yj-GiE"/>
+                    <constraint firstAttribute="bottom" secondItem="DPt-wv-4GJ" secondAttribute="bottom" id="fZa-mF-34s"/>
                 </constraints>
             </tableViewCellContentView>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="skillLabel" destination="Ghl-gp-LtK" id="Dkj-F1-NIz"/>
             </connections>

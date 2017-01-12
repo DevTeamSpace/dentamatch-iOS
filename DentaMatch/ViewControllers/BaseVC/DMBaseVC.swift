@@ -135,6 +135,14 @@ class DMBaseVC: UIViewController {
         self.navigationController?.navigationBar.barTintColor = UIColor.white
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:Constants.Color.navHeadingForExperienceScreen,NSFontAttributeName:UIFont.fontMedium(fontSize: 14.0)!]
     }
+    
+    func changeNavBarToTransparent() {
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
     func changeNavBarAppearanceForDefault() {
         UIApplication.shared.statusBarStyle = .lightContent
         self.navigationController?.navigationBar.tintColor = UIColor.white
@@ -143,7 +151,6 @@ class DMBaseVC: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white,NSFontAttributeName:UIFont.fontRegular(fontSize: 14.0)!]
     }
 
-    
     
     func delay(time:TimeInterval,completionHandler: @escaping ()->()) {
         let when = DispatchTime.now() + 0.01

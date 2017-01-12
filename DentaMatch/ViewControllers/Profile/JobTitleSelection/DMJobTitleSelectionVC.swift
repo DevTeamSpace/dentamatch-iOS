@@ -133,18 +133,18 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {
-        if profileImage != nil {
-            if selectedJobTitle != nil {
-                uploadProfileImageAPI()
-            } else {
-                self.makeToast(toastString: "Please select current job title")
-            }
-        } else{
-            self.makeToast(toastString: "Please select profile image")
-        }
-        
+//        if profileImage != nil {
+//            if selectedJobTitle != nil {
+//                uploadProfileImageAPI()
+//            } else {
+//                self.makeToast(toastString: "Please select current job title")
+//            }
+//        } else{
+//            self.makeToast(toastString: "Please select profile image")
+//        }
+//        
 //        //for testing 
-//        openLicenseScreen()
+        openLicenseScreen()
     }
     
     func openLicenseScreen() {

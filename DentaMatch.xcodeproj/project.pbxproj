@@ -60,6 +60,7 @@
 		E5496E111E27601600C54288 /* SkillsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5496E0F1E27601600C54288 /* SkillsTableCell.swift */; };
 		E5496E121E27601600C54288 /* SkillsTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5496E101E27601600C54288 /* SkillsTableCell.xib */; };
 		E5496E141E2760FC00C54288 /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5496E131E2760FC00C54288 /* Skill.swift */; };
+		E5496E161E2784D500C54288 /* DMSkillsVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5496E151E2784D500C54288 /* DMSkillsVC+TableViewExtension.swift */; };
 		E55462D71DAE2F49004163B2 /* UIColor+HexCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55462D61DAE2F49004163B2 /* UIColor+HexCode.swift */; };
 		E55462D91DAE3104004163B2 /* Array+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55462D81DAE3104004163B2 /* Array+Additions.swift */; };
 		E55462DB1DAE312C004163B2 /* String+Additons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55462DA1DAE312C004163B2 /* String+Additons.swift */; };
@@ -229,6 +230,7 @@
 		E5496E0F1E27601600C54288 /* SkillsTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillsTableCell.swift; sourceTree = "<group>"; };
 		E5496E101E27601600C54288 /* SkillsTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SkillsTableCell.xib; sourceTree = "<group>"; };
 		E5496E131E2760FC00C54288 /* Skill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
+		E5496E151E2784D500C54288 /* DMSkillsVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMSkillsVC+TableViewExtension.swift"; sourceTree = "<group>"; };
 		E55462D01DAE1419004163B2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E55462D61DAE2F49004163B2 /* UIColor+HexCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+HexCode.swift"; sourceTree = "<group>"; };
 		E55462D81DAE3104004163B2 /* Array+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Additions.swift"; sourceTree = "<group>"; };
@@ -767,6 +769,7 @@
 				E587D2F51E24C0B0006B7F06 /* DMSkillsVC.swift */,
 				E587D2F71E24C0C0006B7F06 /* DMSelectSkillsVC.swift */,
 				E5496E0D1E273F1D00C54288 /* DMSkillsVC+Services.swift */,
+				E5496E151E2784D500C54288 /* DMSkillsVC+TableViewExtension.swift */,
 			);
 			path = Skills;
 			sourceTree = "<group>";
@@ -1295,6 +1298,7 @@
 				E594BEA81E1E07F500310AE5 /* DMLoginVC+Services.swift in Sources */,
 				E5496E021E255A9E00C54288 /* DMExecutiveSummaryVC+TableViewExtension.swift in Sources */,
 				E56F78561E1F602200F07814 /* DMForgotPasswordVC+Services.swift in Sources */,
+				E5496E161E2784D500C54288 /* DMSkillsVC+TableViewExtension.swift in Sources */,
 				E587D2FA1E24C102006B7F06 /* DMStudyVC.swift in Sources */,
 				E587D3021E24E97B006B7F06 /* DMStudy+TableViewExtension.swift in Sources */,
 				E5AE2AF11DAF844C00C008BD /* DMOnboardingVC.swift in Sources */,

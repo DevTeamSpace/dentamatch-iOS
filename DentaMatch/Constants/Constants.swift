@@ -133,6 +133,11 @@ struct Constants {
         static let accessToken = "accessToken"
         static let joblists = "joblists"
         static let profileImageURL = "img_url"
+        static let skillList = "list"
+        static let skillName = "skillName"
+        static let id = "id"
+        static let parentId = "parentId"
+        static let isSkillSelected = "userSkill"
     }
     
     //MARK:- UserDefault Keys

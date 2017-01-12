@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DMStudyVC: UIViewController {
+class DMStudyVC: DMBaseVC {
 
     enum Study:Int {
         case profileHeader
@@ -28,11 +28,13 @@ class DMStudyVC: UIViewController {
     }
     
     func setup() {
+        self.navigationItem.leftBarButtonItem = self.backBarButton()
         self.studyTableView.separatorColor = UIColor.clear
         self.studyTableView.register(UINib(nibName: "PhotoNameCell", bundle: nil), forCellReuseIdentifier: "PhotoNameCell")
         self.studyTableView.register(UINib(nibName: "SectionHeadingTableCell", bundle: nil), forCellReuseIdentifier: "SectionHeadingTableCell")
         self.studyTableView.register(UINib(nibName: "StudyCell", bundle: nil), forCellReuseIdentifier: "StudyCell")
-
+        self.changeNavBarAppearanceForWithoutHeader()
+        self.changeNavBarToTransparent()
     }
     
     func prepareTempData() {
