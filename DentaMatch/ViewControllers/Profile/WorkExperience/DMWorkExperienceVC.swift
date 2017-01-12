@@ -46,9 +46,9 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
 
 
     let NAVBAR_CHANGE_POINT:CGFloat = 64
-    var exprienceArray:NSMutableArray?
+    var exprienceArray = [ExperienceModel]()
     var exprienceDetailArray:NSMutableArray?
-    var currentExperience:ExperienceModel? = ExperienceModel()
+    var currentExperience:ExperienceModel? = ExperienceModel(empty: "")
     var phoneFormatter = PhoneNumberFormatter()
     var jobTitles = [JobTitle]()
 
@@ -63,8 +63,6 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        exprienceArray = NSMutableArray()
-        exprienceDetailArray = NSMutableArray()
 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -72,6 +70,7 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
         setup()
         gettingTempData()
         // Do any additional setup after loading the view.
+        getExperienceAPI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -97,6 +96,7 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
         self.workExperienceDetailTable.register(UINib(nibName: "ReferenceTableCell", bundle: nil), forCellReuseIdentifier: "ReferenceTableCell")
         self.workExperienceDetailTable.register(UINib(nibName: "AddDeleteExperienceCell", bundle: nil), forCellReuseIdentifier: "AddDeleteExperienceCell")
         self.navigationItem.leftBarButtonItem = self.backBarButton()
+        self.workExperienceTable.separatorStyle = .none
         self.workExperienceDetailTable.separatorStyle = .none
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.workExperienceDetailTable.addGestureRecognizer(tap)
@@ -112,10 +112,10 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
 
     
     @IBAction func nextButtonClicked(_ sender: Any) {
-        //self.alertMessage(title: "Alert", message: "Work in progress", buttonText: "Ok") {
+        self.alertMessage(title: "Alert", message: "Work in progress", buttonText: "Ok") {
             
-       // }
-       self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToStudyVC, sender: self)
+        }
+//       self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToStudyVC, sender: self)
     }
     
     //MARK:- Keyboard Show Hide Observers
@@ -130,11 +130,11 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
     }
     
     func gettingTempData(){
-        let exp = ExperienceModel()
+        let exp = ExperienceModel(empty: "")
         self.exprienceDetailArray?.add(exp)
-        self.currentExperience?.references.append(EmployeeReferenceModel())
+        self.currentExperience?.references.append(EmployeeReferenceModel(empty: ""))
         self.workExperienceDetailTable.reloadData()
-    reSizeTableViewsAndScrollView()
+        reSizeTableViewsAndScrollView()
     }
     
     func reSizeTableViewsAndScrollView()  {
@@ -164,6 +164,7 @@ extension DMWorkExperienceVC:JobSelectionPickerViewDelegate {
     func jobPickerDoneButtonAction(job: JobTitle?) {
         if let jobTitle = job {
             self.currentExperience?.jobTitle = jobTitle.jobTitle
+            self.currentExperience?.jobTitleID = jobTitle.jobId
             self.workExperienceDetailTable.reloadData()
             
         }

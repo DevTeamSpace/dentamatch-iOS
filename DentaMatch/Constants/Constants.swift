@@ -106,7 +106,8 @@ struct Constants {
         static let uploadImageAPI = Constants.API.apiURL("users/upload-image")
         static let licenseNumberAndState = Constants.API.apiURL("users/update-license")
         static let workExperienceSave = Constants.API.apiURL("users/work-experience-save")
-
+        static let getWorkExperience = Constants.API.apiURL("users/work-experience-list")
+        static let deleteExperience = Constants.API.apiURL("users/work-experience-delete")
         static func apiURL(_ methodName: String) -> String {
             return BASE_URL + methodName
         }
@@ -133,6 +134,24 @@ struct Constants {
         static let accessToken = "accessToken"
         static let joblists = "joblists"
         static let profileImageURL = "img_url"
+        static let list = "list"
+        
+        static let experienceId = "id"
+        static let userId = "userId"
+        static let jobTitleId = "jobTitleId"
+        static let jobtitleName = "jobtitleName"
+        static let monthsOfExperience = "monthsOfExpereince"
+        static let officeName = "officeName"
+        static let officeAddressExp = "officeAddress"
+        static let cityName = "city"
+
+        static let reference1Name = "reference1Name"
+        static let reference1Mobile = "reference1Mobile"
+        static let reference1Email = "reference1Email"
+        static let reference2Name = "reference2Name"
+        static let reference2Mobile = "reference2Mobile"
+        static let reference2Email = "reference2Email"
+        static let createdAt = "createdAt"
         static let skillList = "list"
         static let skillName = "skillName"
         static let id = "id"
