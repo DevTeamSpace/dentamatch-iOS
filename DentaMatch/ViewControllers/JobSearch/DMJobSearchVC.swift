@@ -190,7 +190,6 @@ extension DMJobSearchVC : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
     {
-        
         if section == 0 {
             return 0
         }
@@ -220,6 +219,9 @@ extension DMJobSearchVC : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
+            let jobTitleVC = UIStoryboard.jobSearchStoryBoard().instantiateViewController(type: DMJobTitleVC.self)!
+            //jobTitleVC.delegate = self
+            self.navigationController?.pushViewController(jobTitleVC, animated: true)
         }
         else if indexPath.section == 1 {
             if indexPath.row == 0 {

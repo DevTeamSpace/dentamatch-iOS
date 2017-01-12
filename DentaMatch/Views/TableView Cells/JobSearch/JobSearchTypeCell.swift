@@ -50,25 +50,29 @@ class JobSearchTypeCell: UITableViewCell {
     //MARK : IBOutlet Action
     
     @IBAction func actionFullTime(_ sender: UIButton) {
-        if isFullTime == true {
-            delegate?.selectJobSearchType!(selected: true, type: JobSearchType.FullTime.rawValue)
-            sender.setTitle("check", for: .normal)
+        if isFullTime == false {
+            sender.setTitle("w", for: .normal)
+            sender.setTitleColor(UIColor.init(red: 4.0/255.0, green: 112.0/255.0, blue: 192.0/255.0, alpha: 1.0), for: .normal)
+            delegate?.selectJobSearchType!(selected: false, type: JobSearchType.FullTime.rawValue)
         }
         else {
-            delegate?.selectJobSearchType!(selected: false, type: JobSearchType.FullTime.rawValue)
             sender.setTitle("t", for: .normal)
+            sender.setTitleColor(UIColor.init(red: 151.0/255.0, green: 151.0/255.0, blue: 151.0/255.0, alpha: 1.0), for: .normal)
+            delegate?.selectJobSearchType!(selected: true, type: JobSearchType.FullTime.rawValue)
         }
         isFullTime = !isFullTime
     }
     
     @IBAction func actionPartTime(_ sender: UIButton) {
-        if isPartTime == true {
-            delegate?.selectJobSearchType!(selected: false, type: JobSearchType.PartTime.rawValue)
-            sender.setTitle("check", for: .normal)
+        if isPartTime == false {
+            sender.setTitle("w", for: .normal)
+            sender.setTitleColor(UIColor.init(red: 4.0/255.0, green: 112.0/255.0, blue: 192.0/255.0, alpha: 1.0), for: .normal)
+            delegate?.selectJobSearchType!(selected: true, type: JobSearchType.PartTime.rawValue)
         }
         else {
-            delegate?.selectJobSearchType!(selected: true, type: JobSearchType.PartTime.rawValue)
             sender.setTitle("t", for: .normal)
+            sender.setTitleColor(UIColor.init(red: 151.0/255.0, green: 151.0/255.0, blue: 151.0/255.0, alpha: 1.0), for: .normal)
+            delegate?.selectJobSearchType!(selected: false, type: JobSearchType.PartTime.rawValue)
         }
         isPartTime = !isPartTime
     }

@@ -71,6 +71,7 @@ struct Constants {
     struct StoryBoard {
         static let registrationStoryboard  = "Registration"
         static let profileStoryboard  = "Profile"
+        static let jobSearchStoryboard  = "JobSearch"
  
         struct Identifer {
             static let registrationNav = "RegistrationNAV"

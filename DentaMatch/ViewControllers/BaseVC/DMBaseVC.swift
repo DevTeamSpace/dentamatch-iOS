@@ -20,7 +20,28 @@ class DMBaseVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        self.setLeftBarButton()
+    }
+    
+    //MARK : Set Left Bar Button
+    func setLeftBarButton()  {
+        if (self.navigationController?.viewControllers.count)! > 1 {
+            var leftBarBtn : UIButton = UIButton()
+            var leftBarButtonItem : UIBarButtonItem = UIBarButtonItem()
+            leftBarBtn = UIButton()
+            leftBarBtn.titleLabel?.font = UIFont.designFont(fontSize: 22)
+            leftBarBtn.setTitle("l", for: .normal)
+            leftBarBtn.frame = CGRect(x : 0,y : 0,width: 25,height : 25)
+            leftBarBtn.imageView?.contentMode = .scaleAspectFit
+            leftBarBtn.addTarget(self, action: #selector(DMJobTitleVC.actionLeftNavigationItem), for: .touchUpInside)
+            leftBarButtonItem = UIBarButtonItem()
+            leftBarButtonItem.customView = leftBarBtn
+            navigationItem.leftBarButtonItem = leftBarButtonItem
+        }
+    }
+    
+    func actionLeftNavigationItem() {
+        self.navigationController?.popViewController(animated: true)
     }
     
     //MARK:- Toasts and Alerts

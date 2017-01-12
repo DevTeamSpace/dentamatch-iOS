@@ -5,8 +5,14 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-UI-Text-Regular.otf">
+            <string>SFUIText-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Job SearchVC-->
         <scene sceneID="Oru-wv-RVo">
@@ -51,7 +57,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Lfn-p4-zS8" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5xw-k6-Tbw">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5xw-k6-Tbw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -76,8 +82,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i9K-aA-lKl">
+                                <rect key="frame" x="0.0" y="20" width="375" height="45"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can select more than one job title." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n7D-ua-QRT">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="13"/>
+                                        <color key="textColor" red="0.058823529411764705" green="0.094117647058823528" blue="0.24313725490196078" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y9p-lp-8mb">
+                                        <rect key="frame" x="0.0" y="43" width="375" height="2"/>
+                                        <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1.5" id="pXM-Dv-irf"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="n7D-ua-QRT" firstAttribute="leading" secondItem="i9K-aA-lKl" secondAttribute="leading" id="1yC-oA-nHR"/>
+                                    <constraint firstAttribute="trailing" secondItem="Y9p-lp-8mb" secondAttribute="trailing" id="60x-5g-bmE"/>
+                                    <constraint firstItem="Y9p-lp-8mb" firstAttribute="leading" secondItem="i9K-aA-lKl" secondAttribute="leading" id="7pK-Q7-tA3"/>
+                                    <constraint firstAttribute="bottom" secondItem="n7D-ua-QRT" secondAttribute="bottom" id="Kyv-Vv-CbZ"/>
+                                    <constraint firstItem="n7D-ua-QRT" firstAttribute="top" secondItem="i9K-aA-lKl" secondAttribute="top" id="bzX-Gj-XWW"/>
+                                    <constraint firstAttribute="bottom" secondItem="Y9p-lp-8mb" secondAttribute="bottom" id="poH-7v-4Rb"/>
+                                    <constraint firstAttribute="trailing" secondItem="n7D-ua-QRT" secondAttribute="trailing" id="wT7-6G-oTk"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="x1s-XZ-rTf">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="65" width="375" height="602"/>
                                 <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="cgu-vb-fCf" id="H1X-3i-Vfo"/>
@@ -87,13 +122,21 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="x1s-XZ-rTf" firstAttribute="top" secondItem="WRO-lw-m08" secondAttribute="bottom" id="2Oc-j1-KDi"/>
-                            <constraint firstAttribute="trailing" secondItem="x1s-XZ-rTf" secondAttribute="trailing" id="DQH-Ah-Tgm"/>
-                            <constraint firstItem="61Q-cy-lV2" firstAttribute="top" secondItem="x1s-XZ-rTf" secondAttribute="bottom" id="OdU-aj-W01"/>
-                            <constraint firstItem="x1s-XZ-rTf" firstAttribute="leading" secondItem="5H0-Ko-Ezr" secondAttribute="leading" id="arS-Uv-lxw"/>
+                            <constraint firstItem="x1s-XZ-rTf" firstAttribute="trailing" secondItem="i9K-aA-lKl" secondAttribute="trailing" id="00Z-Ei-PaS"/>
+                            <constraint firstItem="x1s-XZ-rTf" firstAttribute="top" secondItem="i9K-aA-lKl" secondAttribute="bottom" id="0MY-n2-9ok"/>
+                            <constraint firstItem="x1s-XZ-rTf" firstAttribute="bottom" secondItem="61Q-cy-lV2" secondAttribute="top" id="1cB-wv-btJ"/>
+                            <constraint firstItem="i9K-aA-lKl" firstAttribute="top" secondItem="WRO-lw-m08" secondAttribute="bottom" id="AD0-SE-Zea"/>
+                            <constraint firstItem="i9K-aA-lKl" firstAttribute="leading" secondItem="5H0-Ko-Ezr" secondAttribute="leading" id="BaN-Ad-9Yu"/>
+                            <constraint firstItem="i9K-aA-lKl" firstAttribute="height" secondItem="5H0-Ko-Ezr" secondAttribute="height" multiplier="0.0674" id="fiK-Jv-fuq"/>
+                            <constraint firstAttribute="trailing" secondItem="i9K-aA-lKl" secondAttribute="trailing" id="s2A-8r-HA7"/>
+                            <constraint firstItem="i9K-aA-lKl" firstAttribute="width" secondItem="5H0-Ko-Ezr" secondAttribute="width" id="vM1-Nx-NfT"/>
+                            <constraint firstItem="x1s-XZ-rTf" firstAttribute="leading" secondItem="i9K-aA-lKl" secondAttribute="leading" id="xPg-Lc-qRj"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hgi-Bl-oNx"/>
+                    <connections>
+                        <outlet property="tblJobTitle" destination="x1s-XZ-rTf" id="5sp-4D-TkL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pvm-Ug-HOw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
