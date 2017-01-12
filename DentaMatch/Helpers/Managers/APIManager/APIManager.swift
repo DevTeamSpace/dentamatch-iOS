@@ -14,12 +14,15 @@ class APIManager: NSObject {
 
     class func apiGet(serviceName:String,parameters: [String:Any]?, completionHandler: @escaping (JSON?, NSError?) -> ()) {
         
-        Alamofire.request(serviceName, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseJSON { (response:DataResponse<Any>) in
+        Alamofire.request(serviceName, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: ["accessToken":UserDefaultsManager.sharedInstance.accessToken]).responseJSON { (response:DataResponse<Any>) in
             
             switch(response.result) {
             case .success(_):
                 if let data = response.result.value{
                     let json = JSON(data)
+                    if json[Constants.ServerKey.statusCode].intValue == 204 {
+                        //Invalid Token, Log out
+                    }
                     completionHandler(json,nil)
                 }
                 break
@@ -40,6 +43,9 @@ class APIManager: NSObject {
             case .success(_):
                 if let data = response.result.value{
                     let json = JSON(data)
+                    if json[Constants.ServerKey.statusCode].intValue == 204 {
+                        //Invalid Token, Log out
+                    }
                     completionHandler(json,nil)
                 }
                 break
@@ -60,6 +66,9 @@ class APIManager: NSObject {
             case .success(_):
                 if let data = response.result.value{
                     let json = JSON(data)
+                    if json[Constants.ServerKey.statusCode].intValue == 204 {
+                        //Invalid Token, Log out
+                    }
                     completionHandler(json,nil)
                 }
                 break
@@ -100,6 +109,9 @@ class APIManager: NSObject {
                     print(response.result.value!)
                     if let data = response.result.value {
                         let json = JSON(data)
+                        if json[Constants.ServerKey.statusCode].intValue == 204 {
+                            //Invalid Token, Log out
+                        }
                         completionHandler(json,nil)
                     }
                 }

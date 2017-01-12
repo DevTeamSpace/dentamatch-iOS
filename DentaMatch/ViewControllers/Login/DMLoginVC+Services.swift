@@ -14,7 +14,7 @@ extension DMLoginVC {
     func loginAPI(params:[String:String]) {
         print("Login Parameters\n\(params.description))")
         self.showLoader()
-        APIManager.apiPost(serviceName: Constants.API.loginAPI, parameters: params) { (response:JSON?, error:NSError?) in
+        APIManager.apiPost(serviceName: Constants.API.login, parameters: params) { (response:JSON?, error:NSError?) in
             self.hideLoader()
             if error != nil {
                 self.makeToast(toastString: (error?.localizedDescription)!)

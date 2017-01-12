@@ -19,6 +19,7 @@ class ProfileTextField: UITextField {
         self.layer.borderColor = Constants.Color.textFieldBorderColor.cgColor
         leftTextFieldView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: self.frame.size.height))
         self.leftView =  leftTextFieldView
+        self.textColor = Constants.Color.textFieldTextColor
         self.leftViewMode = .always
 
     }
