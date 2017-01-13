@@ -22,6 +22,7 @@ class APIManager: NSObject {
                     let json = JSON(data)
                     if json[Constants.ServerKey.statusCode].intValue == 204 {
                         //Invalid Token, Log out
+                        Utilities.logOutOfInvalidToken()
                     }
                     completionHandler(json,nil)
                 }
@@ -45,6 +46,7 @@ class APIManager: NSObject {
                     let json = JSON(data)
                     if json[Constants.ServerKey.statusCode].intValue == 204 {
                         //Invalid Token, Log out
+                        Utilities.logOutOfInvalidToken()
                     }
                     completionHandler(json,nil)
                 }
@@ -68,6 +70,7 @@ class APIManager: NSObject {
                     let json = JSON(data)
                     if json[Constants.ServerKey.statusCode].intValue == 204 {
                         //Invalid Token, Log out
+                        Utilities.logOutOfInvalidToken()
                     }
                     completionHandler(json,nil)
                 }
@@ -91,6 +94,7 @@ class APIManager: NSObject {
                     let json = JSON(data)
                     if json[Constants.ServerKey.statusCode].intValue == 204 {
                         //Invalid Token, Log out
+                        Utilities.logOutOfInvalidToken()
                     }
                     completionHandler(json,nil)
                 }
@@ -114,6 +118,7 @@ class APIManager: NSObject {
                     let json = JSON(data)
                     if json[Constants.ServerKey.statusCode].intValue == 204 {
                         //Invalid Token, Log out
+                        Utilities.logOutOfInvalidToken()
                     }
                     completionHandler(json,nil)
                 }
@@ -140,7 +145,7 @@ class APIManager: NSObject {
                         mimeType: "image/jpg"
                     )
                 } else {
-                    //multipartFormData.ap
+                    //multipartFormData
                     multipartFormData.append((value as! String).data(using: .utf8)!, withName: key)
                 }
             }
@@ -158,6 +163,7 @@ class APIManager: NSObject {
                         let json = JSON(data)
                         if json[Constants.ServerKey.statusCode].intValue == 204 {
                             //Invalid Token, Log out
+                            Utilities.logOutOfInvalidToken()
                         }
                         completionHandler(json,nil)
                     }

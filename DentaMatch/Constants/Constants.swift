@@ -146,6 +146,8 @@ struct Constants {
         static let other = "other"
         static let affiliationId = "affiliationId"
         static let otherAffiliation = "otherAffiliation"
+        static let validityDate = "validity_date"
+        static let image = "image"
         
         static let experienceId = "id"
         static let userId = "userId"

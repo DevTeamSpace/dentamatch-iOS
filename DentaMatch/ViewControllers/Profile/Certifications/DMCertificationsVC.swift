@@ -82,7 +82,7 @@ class DMCertificationsVC: DMBaseVC,DatePickerViewDelegate {
     }
     func doneButtonAction(date: String, tag: Int) {
         self.view.endEditing(true)
-        certicates[tag].date = date
+        certicates[tag].validityDate = date
         self.certificationsTableView.reloadData()
     }
 

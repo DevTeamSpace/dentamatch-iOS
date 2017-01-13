@@ -59,12 +59,19 @@ extension DMCertificationsVC : UITableViewDataSource,UITableViewDelegate , UITex
             let cell = tableView.dequeueReusableCell(withIdentifier: "CertificationsCell") as! CertificationsCell
             let certificate = certicates[indexPath.row]
             cell.validityDateTextField.tag = indexPath.row
-            let dateView = DatePickerView.loadExperiencePickerView(withText:certificate.date , tag: indexPath.row)
+            let dateView = DatePickerView.loadExperiencePickerView(withText:certificate.validityDate , tag: indexPath.row)
             dateView.delegate = self
             cell.validityDateTextField.inputView = dateView
             cell.validityDateTextField.delegate = self
-            cell.validityDateTextField.text = certificate.date
+            cell.validityDateTextField.text = certificate.validityDate
             cell.headingLabel.text = certificate.certificationName
+
+            if let imageURL = URL(string: certificate.certificateImageURL!) {
+                if imageURL.absoluteString.isEmpty {
+                } else {
+                cell.photoButton.sd_setImage(with: imageURL, for: .normal, placeholderImage: kPlaceHolderImage)
+                }
+            }
             return cell
         }
     }

@@ -12,7 +12,7 @@ import SwiftyJSON
 class Certification: NSObject {
     var certificationId = ""
     var certificationName = ""
-    var date = ""
+    var validityDate = ""
     var certificateImage:UIImage?
     var certificateImageURL:String?
     
@@ -22,5 +22,7 @@ class Certification: NSObject {
     init(certification:JSON) {
         self.certificationId = certification[Constants.ServerKey.id].stringValue
         self.certificationName = certification[Constants.ServerKey.certificateName].stringValue
+        self.validityDate = certification[Constants.ServerKey.validityDate].stringValue
+        self.certificateImageURL = certification[Constants.ServerKey.image].stringValue
     }
 }

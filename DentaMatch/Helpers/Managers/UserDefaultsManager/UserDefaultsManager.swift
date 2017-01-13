@@ -79,4 +79,7 @@ class UserDefaultsManager: NSObject {
         }
     }
 
+    func clearCache() {
+        UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
+    }
 }
