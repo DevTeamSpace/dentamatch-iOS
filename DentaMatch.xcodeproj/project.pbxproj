@@ -158,6 +158,9 @@
 		E597E58B1E151A99001DDA78 /* SF-UI-Text-UltrathinItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E597E5741E151A99001DDA78 /* SF-UI-Text-UltrathinItalic.otf */; };
 		E597E58F1E151CFF001DDA78 /* FloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E597E58D1E151CFF001DDA78 /* FloatLabelTextField.swift */; };
 		E597E5901E151CFF001DDA78 /* FloatLabelTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E597E58E1E151CFF001DDA78 /* FloatLabelTextView.swift */; };
+		E5A0EADE1E2944D50092E21A /* SSASideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A0EADD1E2944D50092E21A /* SSASideMenu.swift */; };
+		E5A0EAFF1E294F3F0092E21A /* SubSkillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A0EAFD1E294F3F0092E21A /* SubSkillCell.swift */; };
+		E5A0EB001E294F3F0092E21A /* SubSkillCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5A0EAFE1E294F3F0092E21A /* SubSkillCell.xib */; };
 		E5A174C21E201D450044B17E /* CircleProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A174C11E201D450044B17E /* CircleProgressBar.m */; };
 		E5A174C71E201DE40044B17E /* ProfileImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A174C61E201DE40044B17E /* ProfileImageButton.swift */; };
 		E5A3E8EE1E160ABF00B10937 /* AnimatedLeftViewPHTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A3E8ED1E160ABF00B10937 /* AnimatedLeftViewPHTextField.swift */; };
@@ -337,6 +340,9 @@
 		E597E5741E151A99001DDA78 /* SF-UI-Text-UltrathinItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-UltrathinItalic.otf"; sourceTree = "<group>"; };
 		E597E58D1E151CFF001DDA78 /* FloatLabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatLabelTextField.swift; sourceTree = "<group>"; };
 		E597E58E1E151CFF001DDA78 /* FloatLabelTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatLabelTextView.swift; sourceTree = "<group>"; };
+		E5A0EADD1E2944D50092E21A /* SSASideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSASideMenu.swift; sourceTree = "<group>"; };
+		E5A0EAFD1E294F3F0092E21A /* SubSkillCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubSkillCell.swift; sourceTree = "<group>"; };
+		E5A0EAFE1E294F3F0092E21A /* SubSkillCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubSkillCell.xib; sourceTree = "<group>"; };
 		E5A174C01E201D450044B17E /* CircleProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleProgressBar.h; sourceTree = "<group>"; };
 		E5A174C11E201D450044B17E /* CircleProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleProgressBar.m; sourceTree = "<group>"; };
 		E5A174C61E201DE40044B17E /* ProfileImageButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImageButton.swift; sourceTree = "<group>"; };
@@ -491,6 +497,8 @@
 				E5496E041E255B2E00C54288 /* AboutMeCell.xib */,
 				E5496E0F1E27601600C54288 /* SkillsTableCell.swift */,
 				E5496E101E27601600C54288 /* SkillsTableCell.xib */,
+				E5A0EAFD1E294F3F0092E21A /* SubSkillCell.swift */,
+				E5A0EAFE1E294F3F0092E21A /* SubSkillCell.xib */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -600,6 +608,7 @@
 		E55462E21DAE47A9004163B2 /* Third Party */ = {
 			isa = PBXGroup;
 			children = (
+				E5A0EADC1E2944D50092E21A /* SSASideMenu */,
 				E5A174BF1E201D450044B17E /* CircleProgressBar */,
 				E50B3F311E18E8D2004C5F32 /* ZProgressHUD */,
 				E597E58C1E151CF3001DDA78 /* FloatLabel */,
@@ -950,6 +959,14 @@
 			path = FloatLabel;
 			sourceTree = "<group>";
 		};
+		E5A0EADC1E2944D50092E21A /* SSASideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				E5A0EADD1E2944D50092E21A /* SSASideMenu.swift */,
+			);
+			path = SSASideMenu;
+			sourceTree = "<group>";
+		};
 		E5A174BF1E201D450044B17E /* CircleProgressBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -1145,6 +1162,7 @@
 				E597E5881E151A99001DDA78 /* SF-UI-Text-Semibold.otf in Resources */,
 				E587D30C1E25392F006B7F06 /* AffiliationsCell.xib in Resources */,
 				5A3FD0721E1C0C1200360B3C /* ReferenceTableCell.xib in Resources */,
+				E5A0EB001E294F3F0092E21A /* SubSkillCell.xib in Resources */,
 				E597E5841E151A99001DDA78 /* SF-UI-Text-Medium.otf in Resources */,
 				E597E57E1E151A99001DDA78 /* SF-UI-Text-Bold.otf in Resources */,
 				E597E57A1E151A99001DDA78 /* SF-UI-Display-Regular.otf in Resources */,
@@ -1303,6 +1321,7 @@
 				E594BE9F1E1DFFA900310AE5 /* DMRegistrationVC+TextFieldExtension.swift in Sources */,
 				E57EE6CD1E28EBC00090434F /* Affiliation.swift in Sources */,
 				E5FBE9D91E1CCF940025683C /* DMRegistration+Services.swift in Sources */,
+				E5A0EAFF1E294F3F0092E21A /* SubSkillCell.swift in Sources */,
 				E58654FE1DEFEF7F006FEB2D /* ConfigurationManager.swift in Sources */,
 				E5AE2AF61DAF878900C008BD /* OnboardingCollectionViewCell.swift in Sources */,
 				5A1960FD1E208B67002A5F7C /* PhoneNumberFormatter.swift in Sources */,
@@ -1349,6 +1368,7 @@
 				E587D2F61E24C0B0006B7F06 /* DMSkillsVC.swift in Sources */,
 				E50B3F501E194CD7004C5F32 /* RegistrationTableViewCell.swift in Sources */,
 				5A1E2A1C1E1E77790055D913 /* ExperienceTableCell.swift in Sources */,
+				E5A0EADE1E2944D50092E21A /* SSASideMenu.swift in Sources */,
 				E5496E0E1E273F1D00C54288 /* DMSkillsVC+Services.swift in Sources */,
 				E54976F11E28CEDD006F21E5 /* JobTitle.swift in Sources */,
 				E53738F21DB373C200967876 /* Reachability.swift in Sources */,

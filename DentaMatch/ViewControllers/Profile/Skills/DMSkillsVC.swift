@@ -26,6 +26,10 @@ class DMSkillsVC: DMBaseVC {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     func setup() {
         self.navigationItem.leftBarButtonItem = self.backBarButton()
         self.skillsTableView.register(UINib(nibName: "PhotoNameCell", bundle: nil), forCellReuseIdentifier: "PhotoNameCell")
@@ -46,4 +50,17 @@ class DMSkillsVC: DMBaseVC {
     }
     
 
+}
+
+extension DMSkillsVC: SSASideMenuDelegate {
+    
+    func sideMenuWillShowMenuViewController(_ sideMenu: SSASideMenu, menuViewController: UIViewController) {
+    }
+    
+    
+    func sideMenuWillHideMenuViewController(_ sideMenu: SSASideMenu, menuViewController: UIViewController) {
+        if let selectedIndex = self.skillsTableView.indexPathForSelectedRow {
+            self.skillsTableView.deselectRow(at: selectedIndex, animated: true)
+        }
+    }
 }
