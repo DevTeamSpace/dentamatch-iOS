@@ -85,25 +85,25 @@ class DMWorkExperienceStart: DMBaseVC,UITableViewDataSource,UITableViewDelegate,
     //goToExperienceDetail
     @IBAction func nextButtonClicked(_ sender: Any) {
         
-//        for i in 0..<self.experienceArray.count {
-//            let text = self.experienceArray[i] as! String
-//            if i == 0 {
-//                if text.isEmptyField {
-//                    self.makeToast(toastString: "Please enter job title")
-//                    return
-//                }
-//            }else if i == 1{
-//                if text.isEmptyField {
-//                    self.makeToast(toastString: "Please enter experience")
-//                    return
-//                }
-//            }else if i == 2 {
-//                if text.isEmptyField {
-//                    self.makeToast(toastString: "Please office name")
-//                    return
-//                }
-//            }
-//        }
+        for i in 0..<self.experienceArray.count {
+            let text = self.experienceArray[i] as! String
+            if i == 0 {
+                if text.isEmptyField {
+                    self.makeToast(toastString: Constants.AlertMessage.emptyCurrentJobTitle)
+                    return
+                }
+            }else if i == 1{
+                if text.isEmptyField {
+                    self.makeToast(toastString: Constants.AlertMessage.emptyYearOfExperience)
+                    return
+                }
+            }else if i == 2 {
+                if text.isEmptyField {
+                    self.makeToast(toastString: Constants.AlertMessage.emptyOfficeName)
+                    return
+                }
+            }
+        }
 
         self.performSegue(withIdentifier: "goToExperienceDetail", sender: self)
 

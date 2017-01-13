@@ -106,7 +106,7 @@ extension DMLicenseSelectionVC : UITableViewDataSource, UITableViewDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AnimatedPHTableCell") as! AnimatedPHTableCell
             
             cell.commonTextField.delegate = self
-            
+            cell.commonTextField.autocapitalizationType = .sentences
             if indexPath.row == 4
             {
                 cell.commonTextField.tag = 0

@@ -70,7 +70,7 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
         setup()
         gettingTempData()
         // Do any additional setup after loading the view.
-        getExperienceAPI()
+        //getExperienceAPI()
     }
     
     override func viewWillAppear(_ animated: Bool) {

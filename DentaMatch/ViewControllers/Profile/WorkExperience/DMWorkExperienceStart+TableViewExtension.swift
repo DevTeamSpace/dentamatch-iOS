@@ -96,6 +96,7 @@ extension DMWorkExperienceStart
             } else {
                 cell.accessoryLabel.isHidden = true
             }
+            
 //            cell.commonTextField.text = self.experienceArray[indexPath.row-2] as? String
             switch indexPath.row {
             case 2:
@@ -117,6 +118,7 @@ extension DMWorkExperienceStart
             case 4:
                 cell.commonTextField.placeholder = FieldType.OfficeName.description
                 cell.commonTextField.tag = 2
+                cell.commonTextField.autocapitalizationType = .sentences
             default:
                 print("default")
             }

@@ -107,6 +107,7 @@ extension DMWorkExperienceVC
                 cell.emailTextField.tag = tag
 
                 cell.nameTextField.addTarget(self, action: #selector(referenceNameTextFieldDidEnd(_:)), for: .editingDidEnd)
+                cell.nameTextField.autocapitalizationType = .sentences
                 cell.mobileNoTextField.addTarget(self, action: #selector(referenceMobileNumberTextFieldDidEnd(_:)), for: .editingDidEnd)
                 cell.emailTextField.addTarget(self, action: #selector(referenceEmailTextFieldDidEnd(_:)), for: .editingDidEnd)
                 
@@ -160,13 +161,13 @@ extension DMWorkExperienceVC
                 cell.commonTextField.delegate = self
                 cell.commonTextField.tag = indexPath.row
                 
-                
                 cell.commonTextField.addTarget(self, action: #selector(CommonExperiencelTextFieldDidEnd(_:)), for: .editingDidEnd)
 
                 //CommonExperiencelTextFieldDidEnd
                 switch indexPath.row {
                 case 0:
                     cell.commonTextField.placeholder = FieldType.CurrentJobTitle.description
+                    cell.accessoryLabel.isHidden = false
                     cell.commonTextField.text = self.currentExperience?.jobTitle
                     let pickerView = JobSelectionPickerView.loadJobSelectionView(withJobTitles: jobTitles)
                     cell.commonTextField.inputView = pickerView
@@ -186,14 +187,17 @@ extension DMWorkExperienceVC
                 case 2:
                     cell.commonTextField.placeholder = FieldType.OfficeName.description
                     cell.commonTextField.text = self.currentExperience?.officeName
+                    cell.commonTextField.autocapitalizationType = .sentences
 
                 case 3:
                     cell.commonTextField.placeholder = FieldType.OfficeAddress.description
                     cell.commonTextField.text = self.currentExperience?.officeAddress
+                    cell.commonTextField.autocapitalizationType = .sentences
 
                 case 4:
                     cell.commonTextField.placeholder = FieldType.CityName.description
                     cell.commonTextField.text = self.currentExperience?.cityName
+                    cell.commonTextField.autocapitalizationType = .sentences
 
                 default:
                     print("default")
@@ -376,7 +380,7 @@ extension DMWorkExperienceVC
             param = self.getParamsForSaveAndUpdate(isEdit: false)
 
         }
-        saveUpdateExperience(params: param)
+        //saveUpdateExperience(params: param)
         self.currentExperience = nil
         self.currentExperience = ExperienceModel(empty: "")
         self.currentExperience?.isFirstExperience = false
@@ -399,7 +403,7 @@ extension DMWorkExperienceVC
 
         if self.currentExperience?.isEditMode == true {
             self.exprienceArray.removeObject(object:self.currentExperience!)
-            self.deleteExperience()
+            //self.deleteExperience()
         }
 
         self.currentExperience = nil
