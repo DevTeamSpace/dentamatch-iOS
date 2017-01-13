@@ -112,10 +112,10 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
 
     
     @IBAction func nextButtonClicked(_ sender: Any) {
-        self.alertMessage(title: "Alert", message: "Work in progress", buttonText: "Ok") {
-            
-        }
-//       self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToStudyVC, sender: self)
+//        self.alertMessage(title: "Alert", message: "Work in progress", buttonText: "Ok") {
+//            
+//        }
+       self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToStudyVC, sender: self)
     }
     
     //MARK:- Keyboard Show Hide Observers

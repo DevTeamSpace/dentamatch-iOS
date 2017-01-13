@@ -1,0 +1,42 @@
+//
+//  DMCertificationsVC+Services.swift
+//  DentaMatch
+//
+//  Created by Rajan Maheshwari on 13/01/17.
+//  Copyright © 2017 Appster. All rights reserved.
+//
+
+import Foundation
+import SwiftyJSON
+
+extension DMCertificationsVC {
+    
+    func getCertificationListAPI() {
+        
+        APIManager.apiGet(serviceName: Constants.API.getCertificationList, parameters: [:]) { (response:JSON?, error:NSError?) in
+            
+            if error != nil {
+                self.makeToast(toastString: (error?.localizedDescription)!)
+                return
+            }
+            
+            if response == nil {
+                self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
+                return
+            }
+            print(response!)
+            self.handleCertificationListResponse(response: response)
+        }
+    }
+    
+    func handleCertificationListResponse(response:JSON?) {
+        if let response = response {
+            
+            if response[Constants.ServerKey.status].boolValue {
+                
+            } else {
+                self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+            }
+        }
+    }
+}

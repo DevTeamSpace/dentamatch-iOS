@@ -78,24 +78,24 @@ class DMLicenseSelectionVC: DMBaseVC,UITextFieldDelegate {
     }
     @IBAction func nextButtonClikced(_ sender: Any) {
         
-        if self.stateBoardImage == nil{
-            self.makeToast(toastString: "Please select state board certificate")
-            return
-        }
-        for i in 0..<(self.licenseArray?.count)! {
-            let text = self.licenseArray?[i] as! String
-            if i == 0 {
-                if text.isEmptyField {
-                    self.makeToast(toastString: "Please enter license no")
-                    return
-                }
-            }else{
-                if text.isEmptyField {
-                    self.makeToast(toastString: "Please enter state")
-                    return
-                }
-            }
-        }
+//        if self.stateBoardImage == nil{
+//            self.makeToast(toastString: "Please select state board certificate")
+//            return
+//        }
+//        for i in 0..<(self.licenseArray?.count)! {
+//            let text = self.licenseArray?[i] as! String
+//            if i == 0 {
+//                if text.isEmptyField {
+//                    self.makeToast(toastString: "Please enter license no")
+//                    return
+//                }
+//            }else{
+//                if text.isEmptyField {
+//                    self.makeToast(toastString: "Please enter state")
+//                    return
+//                }
+//            }
+//        }
         
         openExperienceFirstScreen()
 //

@@ -101,6 +101,7 @@ struct Constants {
         static let uploadImage = Constants.API.apiURL("users/upload-image")
         static let LicenseNumberAndState = Constants.API.apiURL("users/update-license")
         static let getSkillList = Constants.API.apiURL("list-skills")
+        static let getCertificationList = Constants.API.apiURL("list-certifications")
         
         static let getJobTitleAPI = Constants.API.apiURL("list-jobtitle")
         static let uploadImageAPI = Constants.API.apiURL("users/upload-image")
@@ -157,6 +158,8 @@ struct Constants {
         static let id = "id"
         static let parentId = "parentId"
         static let isSkillSelected = "userSkill"
+        
+        static let certificateName = "certificateName"
     }
     
     //MARK:- UserDefault Keys
