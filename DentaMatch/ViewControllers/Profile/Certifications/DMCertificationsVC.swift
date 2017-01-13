@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DMCertificationsVC: DMBaseVC,datePickerViewDelegate {
+class DMCertificationsVC: DMBaseVC,DatePickerViewDelegate {
 
     enum Certifications:Int {
         case profileHeader
@@ -18,11 +18,12 @@ class DMCertificationsVC: DMBaseVC,datePickerViewDelegate {
     @IBOutlet weak var certificationsTableView: UITableView!
     
     let profileProgress:CGFloat = 0.90
-    var certificateArray:Array = Array(arrayLiteral: "","","","","")
+    var certicates = [Certification]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        self.getCertificationListAPI()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
 
@@ -62,11 +63,6 @@ class DMCertificationsVC: DMBaseVC,datePickerViewDelegate {
         self.navigationItem.leftBarButtonItem = self.backBarButton()
 
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     @IBAction func nextButtonClicked(_ sender: Any) {
         self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToExecutiveSummaryVC, sender: self)
@@ -83,47 +79,11 @@ class DMCertificationsVC: DMBaseVC,datePickerViewDelegate {
     */
     func canceButtonAction() {
         self.view.endEditing(true)
-
-//        self.certificationsTableView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0)
-//        self.view.layoutIfNeeded()
-
     }
     func doneButtonAction(date: String, tag: Int) {
         self.view.endEditing(true)
-        self.certificateArray[tag] = date
+        certicates[tag].date = date
         self.certificationsTableView.reloadData()
-//        self.certificationsTableView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0)
-//        self.view.layoutIfNeeded()
-
     }
 
 }
-
-
-//extension UITextField {
-//    var readonly: Bool {
-//        get {
-//            return self.getAdditions().readonly
-//        }
-//        set {
-//            self.getAdditions().readonly = newValue
-//        }
-//    }
-//    
-//    private func getAdditions() -> UITextFieldAdditions {
-//        var additions = objc_getAssociatedObject(self, &key) as? UITextFieldAdditions
-//        if additions == nil {
-//            additions = UITextFieldAdditions()
-//            objc_setAssociatedObject(self, &key, additions!, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
-//        }
-//        return additions!
-//    }
-//    
-//    public override func targetForAction(action: Selector, withSender sender: AnyObject?) -> AnyObject? {
-//        if ((action == Selector("paste:") || (action == Selector("cut:"))) && self.readonly) {
-//            return nil
-//        }
-//        return super.targetForAction(action, withSender: sender)
-//    }
-//    
-//}

@@ -12,6 +12,12 @@ import SwiftyJSON
 class Certification: NSObject {
     var certificationId = ""
     var certificationName = ""
+    var date = ""
+    var certificateImage:UIImage?
+    var certificateImageURL:String?
+    
+    override init () {
+    }
     
     init(certification:JSON) {
         self.certificationId = certification[Constants.ServerKey.id].stringValue

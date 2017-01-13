@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DMExecutiveSummaryVC: UIViewController {
+class DMExecutiveSummaryVC: DMBaseVC {
 
     enum ExecutiveSummary:Int {
         case profileHeader
@@ -30,20 +30,9 @@ class DMExecutiveSummaryVC: UIViewController {
         self.executiveSummaryTableView.separatorColor = UIColor.clear
         self.executiveSummaryTableView.register(UINib(nibName: "PhotoNameCell", bundle: nil), forCellReuseIdentifier: "PhotoNameCell")
         self.executiveSummaryTableView.register(UINib(nibName: "AboutMeCell", bundle: nil), forCellReuseIdentifier: "AboutMeCell")
-        
     }
     
     @IBAction func completeProfileButtonClicked(_ sender: Any) {
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

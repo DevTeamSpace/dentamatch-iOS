@@ -7,7 +7,7 @@
 //
 
 import UIKit
-protocol datePickerViewDelegate{
+protocol DatePickerViewDelegate{
     
     func canceButtonAction()
     func doneButtonAction(date:String,tag:Int)
@@ -16,7 +16,7 @@ protocol datePickerViewDelegate{
 class DatePickerView: UIView {
 
     @IBOutlet weak var datePicker: UIDatePicker!
-    var delegate: datePickerViewDelegate?
+    var delegate: DatePickerViewDelegate?
     var currentTag:Int?
     /*
     // Only override draw() if you perform custom drawing.

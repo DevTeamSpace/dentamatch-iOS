@@ -25,7 +25,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="350"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="349"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="349.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j9e-c0-HX3">
@@ -39,7 +39,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CBR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQL-D4-FmE">
-                                <rect key="frame" x="20" y="20" width="29" height="17"/>
+                                <rect key="frame" x="20" y="18" width="29" height="17"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="14"/>
                                 <color key="textColor" red="0.2196078431372549" green="0.2196078431372549" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -47,7 +47,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="QQL-D4-FmE" firstAttribute="top" secondItem="j9e-c0-HX3" secondAttribute="top" constant="20" id="Vae-ru-9pQ"/>
+                            <constraint firstItem="QQL-D4-FmE" firstAttribute="top" secondItem="j9e-c0-HX3" secondAttribute="top" constant="18" id="Vae-ru-9pQ"/>
                             <constraint firstItem="QQL-D4-FmE" firstAttribute="leading" secondItem="j9e-c0-HX3" secondAttribute="leading" constant="20" id="fyi-v2-two"/>
                             <constraint firstAttribute="bottom" secondItem="AFc-4O-zgB" secondAttribute="bottom" id="gB6-lA-Dme"/>
                             <constraint firstAttribute="trailing" secondItem="AFc-4O-zgB" secondAttribute="trailing" id="iYP-Ou-utU"/>

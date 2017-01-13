@@ -23,7 +23,7 @@ extension DMCertificationsVC : UITableViewDataSource,UITableViewDelegate , UITex
         case .profileHeader:
             return 1
         case .certifications:
-            return 5
+            return certicates.count
         }
     }
     
@@ -54,27 +54,20 @@ extension DMCertificationsVC : UITableViewDataSource,UITableViewDelegate , UITex
             
         case .certifications:
             let cell = tableView.dequeueReusableCell(withIdentifier: "CertificationsCell") as! CertificationsCell
+            let certificate = certicates[indexPath.row]
             cell.validityDateTextField.tag = indexPath.row
-            let dateView = DatePickerView.loadExperiencePickerView(withText:certificateArray[indexPath.row] , tag: indexPath.row)
+            let dateView = DatePickerView.loadExperiencePickerView(withText:certificate.date , tag: indexPath.row)
             dateView.delegate = self
             cell.validityDateTextField.inputView = dateView
             cell.validityDateTextField.delegate = self
-            cell.validityDateTextField.text = certificateArray[indexPath.row]
+            cell.validityDateTextField.text = certificate.date
+            cell.headingLabel.text = certificate.certificationName
             return cell
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-//        let dateView = DatePickerView.loadExperiencePickerView(withText:certificateArray[indexPath.row] , tag: indexPath.row)
-//        dateView.delegate = self
-//        dateView.frame = CGRect(x: 0, y: self.view.bounds.size.height - 213, width: self.view.bounds.size.width, height: 213)
-//        self.view.addSubview(dateView)
-//        self.certificationsTableView.contentInset =  UIEdgeInsetsMake(0, 0, 213, 0)
-//        self.certificationsTableView.layoutIfNeeded()
-//        self.view.layoutIfNeeded()
-
-        
+  
     }
 
     
