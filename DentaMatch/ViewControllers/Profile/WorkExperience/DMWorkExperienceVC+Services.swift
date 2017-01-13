@@ -10,9 +10,7 @@ import Foundation
 import SwiftyJSON
 
 extension DMWorkExperienceVC {
-   
-    
-    
+
     func getExperienceAPI() {
         self.showLoader()
         APIManager.apiPost(serviceName: Constants.API.getWorkExperience, parameters: [:]) { (response:JSON?, error:NSError?) in

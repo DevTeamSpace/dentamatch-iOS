@@ -19,6 +19,7 @@ class DMExecutiveSummaryVC: DMBaseVC {
     @IBOutlet weak var executiveSummaryTableView: UITableView!
     
     let profileProgress:CGFloat = 1.0
+    var aboutMe = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,6 @@ class DMExecutiveSummaryVC: DMBaseVC {
     }
     
     @IBAction func completeProfileButtonClicked(_ sender: Any) {
+        self.updateAboutMeAPI()
     }
-
 }

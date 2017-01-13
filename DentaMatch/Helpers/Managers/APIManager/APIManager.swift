@@ -58,6 +58,29 @@ class APIManager: NSObject {
         }
     }
     
+    class func apiPostWithJSONEncode(serviceName:String,parameters: [String:Any]?, completionHandler: @escaping (JSON?, NSError?) -> ()) {
+        
+        Alamofire.request(serviceName, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: ["accessToken":UserDefaultsManager.sharedInstance.accessToken]).responseJSON { (response:DataResponse<Any>) in
+            
+            switch(response.result) {
+            case .success(_):
+                if let data = response.result.value{
+                    let json = JSON(data)
+                    if json[Constants.ServerKey.statusCode].intValue == 204 {
+                        //Invalid Token, Log out
+                    }
+                    completionHandler(json,nil)
+                }
+                break
+                
+            case .failure(_):
+                completionHandler(nil,response.result.error as NSError?)
+                break
+                
+            }
+        }
+    }
+    
     class func apiPut(serviceName:String,parameters: [String:Any]?, completionHandler: @escaping (JSON?, NSError?) -> ()) {
         
         Alamofire.request(serviceName, method: .put, parameters: parameters, encoding: URLEncoding.default, headers: ["accessToken":UserDefaultsManager.sharedInstance.accessToken]).responseJSON { (response:DataResponse<Any>) in

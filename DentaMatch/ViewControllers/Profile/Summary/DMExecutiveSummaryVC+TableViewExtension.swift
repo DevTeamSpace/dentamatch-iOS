@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension DMExecutiveSummaryVC : UITableViewDataSource, UITableViewDelegate {
+extension DMExecutiveSummaryVC : UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -41,16 +41,62 @@ extension DMExecutiveSummaryVC : UITableViewDataSource, UITableViewDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoNameCell") as! PhotoNameCell
             cell.nameLabel.text = "Executive Summary"
             cell.jobTitleLabel.text = "Describe about your work and things you are passionate about."
+            if let imageURL = URL(string: UserDefaultsManager.sharedInstance.profileImageURL) {
+                cell.photoButton.sd_setImage(with: imageURL, for: .normal, placeholderImage: kPlaceHolderImage)
+            }
             cell.photoButton.progressBar.setProgress(profileProgress, animated: true)
             return cell
             
         case .aboutMe:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AboutMeCell") as! AboutMeCell
+            cell.aboutMeTextView.delegate = self
             return cell
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+    }
+    
+    
+    // MARK: - TextView Delegates
+    
+    func textViewDidChange(_ textView: UITextView) {
+        if let cell = self.executiveSummaryTableView.cellForRow(at: IndexPath(row: 0, section: 1)) as? AboutMeCell {
+            aboutMe = textView.text
+            if !textView.text.isEmpty {
+                cell.placeHolderLabel.isHidden = true
+            } else {
+                cell.placeHolderLabel.isHidden = false
+            }
+        }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        //        if(text == "\n") {
+        //            textView.resignFirstResponder()
+        //            return false
+        //        }
+        return true
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if let cell = self.executiveSummaryTableView.cellForRow(at: IndexPath(row: 0, section: 1)) as? AboutMeCell {
+            if !textView.text.isEmpty {
+                cell.placeHolderLabel.isHidden = true
+            } else {
+                cell.placeHolderLabel.isHidden = false
+            }
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if let cell = self.executiveSummaryTableView.cellForRow(at: IndexPath(row: 0, section: 1)) as? AboutMeCell {
+            if !textView.text.isEmpty {
+                cell.placeHolderLabel.isHidden = true
+            } else {
+                cell.placeHolderLabel.isHidden = false
+            }
+        }
     }
 }

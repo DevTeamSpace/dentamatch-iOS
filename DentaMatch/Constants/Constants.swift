@@ -14,6 +14,7 @@ let kAppDelegate = UIApplication.shared.delegate as! AppDelegate
 let kDeviceId = "com.appster.dentamatch.deviceId"
 let kCustomDesignFont = "dentamatch"
 let kLogEnabled = true
+let kPlaceHolderImage = UIImage(named: "profileButton")
 let kGoogleAPIKey = "AIzaSyDFWCamiO9WGTth-iOxfY_L0K6oRBeAu0U"
 
 let kOkButtonTitle = "Ok"
@@ -102,6 +103,10 @@ struct Constants {
         static let LicenseNumberAndState = Constants.API.apiURL("users/update-license")
         static let getSkillList = Constants.API.apiURL("list-skills")
         static let getCertificationList = Constants.API.apiURL("list-certifications")
+        static let getAboutMe = Constants.API.apiURL("users/about-me-list")
+        static let saveAboutMe = Constants.API.apiURL("users/about-me-save")
+        static let getAffiliationList = Constants.API.apiURL("users/affiliation-list")
+        static let saveAffiliationList = Constants.API.apiURL("users/affiliation-save")
         
         static let getJobTitleAPI = Constants.API.apiURL("list-jobtitle")
         static let uploadImageAPI = Constants.API.apiURL("users/upload-image")
@@ -136,6 +141,11 @@ struct Constants {
         static let joblists = "joblists"
         static let profileImageURL = "img_url"
         static let list = "list"
+        static let aboutMe = "aboutMe"
+        static let affiliationDataArray = "affiliationDataArray"
+        static let other = "other"
+        static let affiliationId = "affiliationId"
+        static let otherAffiliation = "otherAffiliation"
         
         static let experienceId = "id"
         static let userId = "userId"

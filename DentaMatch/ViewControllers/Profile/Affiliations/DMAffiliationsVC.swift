@@ -20,10 +20,13 @@ class DMAffiliationsVC: DMBaseVC {
     
     let profileProgress:CGFloat = 0.80
     var isOtherSelected = false
+    var otherText = ""
+    var affiliations = [Affiliation]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        self.getAffiliationListAPI()
         // Do any additional setup after loading the view.
     }
 
@@ -36,17 +39,49 @@ class DMAffiliationsVC: DMBaseVC {
     }
     
     @IBAction func nextButtonClicked(_ sender: Any) {
+        makeAffiliationData()
+    }
+    
+    func openCertificationScreen() {
         self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToCertificationsVC, sender: self)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func makeAffiliationData() {
+        self.view.endEditing(true)
+        var params = [String:AnyObject]()
+        var other = [[String:String]]()
+        var otherObject = [String:String]()
+        var selectedAffiliationIds = [String]()
+        for affiliation in affiliations {
+            if affiliation.isSelected {
+                selectedAffiliationIds.append(affiliation.affiliationId)
+            }
+        }
+        
+        //For other affiliation
+        let affiliation = affiliations[affiliations.count - 1]
+        if affiliation.isSelected {
+            if let otherAffiliation = affiliation.otherAffiliation {
+                if otherAffiliation.trim().isEmpty {
+                    self.makeToast(toastString: "Other Affiliation can't be empty")
+                    return
+                }
+            otherObject[Constants.ServerKey.affiliationId] = affiliation.affiliationId
+            otherObject[Constants.ServerKey.otherAffiliation] = otherText
+            other.append(otherObject)
+            }
+        }
+        
+        if !affiliation.isSelected {
+            if selectedAffiliationIds.count == 0 {
+                self.makeToast(toastString: "Please select atleast one affiliation")
+                return
+            }
+        }
+        
+        params[Constants.ServerKey.affiliationDataArray] = selectedAffiliationIds as AnyObject?
+        params[Constants.ServerKey.other] = other as AnyObject?
+        self.saveAffiliationData(params: params)
+        
     }
-    */
-
 }

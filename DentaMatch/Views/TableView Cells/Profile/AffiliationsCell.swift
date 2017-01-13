@@ -10,10 +10,12 @@ import UIKit
 
 class AffiliationsCell: UITableViewCell {
 
+    @IBOutlet weak var tickButton: UIButton!
     @IBOutlet weak var affiliationLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.tickButton.isEnabled = false
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
