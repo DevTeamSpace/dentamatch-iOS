@@ -107,7 +107,8 @@ struct Constants {
         static let saveAboutMe = Constants.API.apiURL("users/about-me-save")
         static let getAffiliationList = Constants.API.apiURL("users/affiliation-list")
         static let saveAffiliationList = Constants.API.apiURL("users/affiliation-save")
-        
+        static let getSchoolListAPI = Constants.API.apiURL("users/school-list")
+        static let addSchoolAPI = Constants.API.apiURL("users/school-add")
         static let getJobTitleAPI = Constants.API.apiURL("list-jobtitle")
         static let uploadImageAPI = Constants.API.apiURL("users/upload-image")
         static let licenseNumberAndState = Constants.API.apiURL("users/update-license")

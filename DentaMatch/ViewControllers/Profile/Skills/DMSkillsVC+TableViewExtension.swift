@@ -84,9 +84,9 @@ extension DMSkillsVC : UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    
-       self.presentRightMenuViewController()
-
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "getSubSkillData"), object: nil, userInfo: ["skill":skills[indexPath.row]])
+        self.presentRightMenuViewController()
+        
     }
     
 }

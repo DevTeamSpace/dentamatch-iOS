@@ -15,6 +15,9 @@ class Skill: NSObject {
     var skillName = ""
     var subSkills = [SubSkill]()
     
+    override init () {
+    }
+    
     init(skills:JSON,subSkills:[SubSkill]) {
         self.skillId = skills["id"].stringValue
         self.skillName = skills["skillName"].stringValue

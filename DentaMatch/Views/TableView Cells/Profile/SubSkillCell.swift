@@ -10,6 +10,7 @@ import UIKit
 
 class SubSkillCell: UITableViewCell {
 
+    @IBOutlet weak var tickButton: UIButton!
     @IBOutlet weak var subSkillLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()

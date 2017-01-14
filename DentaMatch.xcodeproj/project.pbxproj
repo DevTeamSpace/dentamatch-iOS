@@ -161,6 +161,7 @@
 		E5A0EADE1E2944D50092E21A /* SSASideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A0EADD1E2944D50092E21A /* SSASideMenu.swift */; };
 		E5A0EAFF1E294F3F0092E21A /* SubSkillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A0EAFD1E294F3F0092E21A /* SubSkillCell.swift */; };
 		E5A0EB001E294F3F0092E21A /* SubSkillCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5A0EAFE1E294F3F0092E21A /* SubSkillCell.xib */; };
+		E5A0EB021E2A9C760092E21A /* DMStudy+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A0EB011E2A9C760092E21A /* DMStudy+Services.swift */; };
 		E5A174C21E201D450044B17E /* CircleProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A174C11E201D450044B17E /* CircleProgressBar.m */; };
 		E5A174C71E201DE40044B17E /* ProfileImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A174C61E201DE40044B17E /* ProfileImageButton.swift */; };
 		E5A3E8EE1E160ABF00B10937 /* AnimatedLeftViewPHTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A3E8ED1E160ABF00B10937 /* AnimatedLeftViewPHTextField.swift */; };
@@ -343,6 +344,7 @@
 		E5A0EADD1E2944D50092E21A /* SSASideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSASideMenu.swift; sourceTree = "<group>"; };
 		E5A0EAFD1E294F3F0092E21A /* SubSkillCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubSkillCell.swift; sourceTree = "<group>"; };
 		E5A0EAFE1E294F3F0092E21A /* SubSkillCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubSkillCell.xib; sourceTree = "<group>"; };
+		E5A0EB011E2A9C760092E21A /* DMStudy+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMStudy+Services.swift"; sourceTree = "<group>"; };
 		E5A174C01E201D450044B17E /* CircleProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleProgressBar.h; sourceTree = "<group>"; };
 		E5A174C11E201D450044B17E /* CircleProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleProgressBar.m; sourceTree = "<group>"; };
 		E5A174C61E201DE40044B17E /* ProfileImageButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImageButton.swift; sourceTree = "<group>"; };
@@ -852,6 +854,7 @@
 				E587D3011E24E97B006B7F06 /* DMStudy+TableViewExtension.swift */,
 				E5496E071E25E4AA00C54288 /* DMSchoolListPopOverVC.swift */,
 				E5496E091E25E52600C54288 /* DMSchoolListPopOverVC+TableViewExtension.swift */,
+				E5A0EB011E2A9C760092E21A /* DMStudy+Services.swift */,
 			);
 			path = Study;
 			sourceTree = "<group>";
@@ -1383,6 +1386,7 @@
 				E54976F21E28CEDD006F21E5 /* Skill.swift in Sources */,
 				E587D2F01E24C05D006B7F06 /* DMCertificationsVC.swift in Sources */,
 				E55462FC1DAE4EA1004163B2 /* DMBaseVC.swift in Sources */,
+				E5A0EB021E2A9C760092E21A /* DMStudy+Services.swift in Sources */,
 				E5A3E8EE1E160ABF00B10937 /* AnimatedLeftViewPHTextField.swift in Sources */,
 				E594BEA81E1E07F500310AE5 /* DMLoginVC+Services.swift in Sources */,
 				E5496E021E255A9E00C54288 /* DMExecutiveSummaryVC+TableViewExtension.swift in Sources */,
