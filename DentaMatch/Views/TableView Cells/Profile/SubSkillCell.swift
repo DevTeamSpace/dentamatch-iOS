@@ -14,6 +14,9 @@ class SubSkillCell: UITableViewCell {
     @IBOutlet weak var subSkillLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.backgroundColor = UIColor.color(withHexCode: "0470C0")
+        self.contentView.backgroundColor = UIColor.color(withHexCode: "0470C0")
+
         // Initialization code
     }
 

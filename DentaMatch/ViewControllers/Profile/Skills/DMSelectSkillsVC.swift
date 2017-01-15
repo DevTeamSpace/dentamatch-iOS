@@ -38,6 +38,8 @@ class DMSelectSkillsVC: UIViewController {
     }
 
     func setup() {
+        self.view.backgroundColor = UIColor.color(withHexCode: "0470C0")
+        self.subSkillTableView.backgroundColor = UIColor.color(withHexCode: "0470C0")
         self.subSkillTableView.register(UINib(nibName: "SubSkillCell", bundle: nil), forCellReuseIdentifier: "SubSkillCell")
         self.subSkillTableView.rowHeight = UITableViewAutomaticDimension
         self.subSkillTableView.estimatedRowHeight = 50.0
@@ -61,12 +63,9 @@ extension DMSelectSkillsVC:UITableViewDataSource, UITableViewDelegate {
         cell.subSkillLabel.text = subSkills[indexPath.row].subSkillName
         if subSkills[indexPath.row].isSelected {
             cell.tickButton.setTitle(Constants.DesignFont.acceptTermsSelected, for: .normal)
-//            cell.tickButton.setTitleColor(Constants.Color.textFieldColorSelected, for: .normal)
         } else {
             cell.tickButton.setTitle(Constants.DesignFont.acceptTermsDeSelected, for: .normal)
-//            cell.tickButton.setTitleColor(Constants.Color.textFieldPlaceHolderColor, for: .normal)
         }
-
         return cell
     }
     
