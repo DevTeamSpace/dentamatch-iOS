@@ -13,5 +13,6 @@
 #import "UIImageRotate.h"
 #import "UINavigationBar+Awesome.h"
 #import "CircleProgressBar.h"
+#import "ASJTagsView.h"
 
 #endif /* DentaMatch_BridgingHeader_h */

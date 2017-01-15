@@ -162,6 +162,12 @@
 		E5A0EAFF1E294F3F0092E21A /* SubSkillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A0EAFD1E294F3F0092E21A /* SubSkillCell.swift */; };
 		E5A0EB001E294F3F0092E21A /* SubSkillCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5A0EAFE1E294F3F0092E21A /* SubSkillCell.xib */; };
 		E5A0EB021E2A9C760092E21A /* DMStudy+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A0EB011E2A9C760092E21A /* DMStudy+Services.swift */; };
+		E5A0EB051E2BDE680092E21A /* SubSkillCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A0EB031E2BDE680092E21A /* SubSkillCollectionCell.swift */; };
+		E5A0EB061E2BDE680092E21A /* SubSkillCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5A0EB041E2BDE680092E21A /* SubSkillCollectionCell.xib */; };
+		E5A0EB0E1E2BE7C40092E21A /* ASJTag.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A0EB091E2BE7C40092E21A /* ASJTag.m */; };
+		E5A0EB0F1E2BE7C40092E21A /* ASJTag.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5A0EB0A1E2BE7C40092E21A /* ASJTag.xib */; };
+		E5A0EB101E2BE7C40092E21A /* ASJTagsView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A0EB0C1E2BE7C40092E21A /* ASJTagsView.m */; };
+		E5A0EB111E2BE7C40092E21A /* Resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E5A0EB0D1E2BE7C40092E21A /* Resources.bundle */; };
 		E5A174C21E201D450044B17E /* CircleProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A174C11E201D450044B17E /* CircleProgressBar.m */; };
 		E5A174C71E201DE40044B17E /* ProfileImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A174C61E201DE40044B17E /* ProfileImageButton.swift */; };
 		E5A3E8EE1E160ABF00B10937 /* AnimatedLeftViewPHTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A3E8ED1E160ABF00B10937 /* AnimatedLeftViewPHTextField.swift */; };
@@ -345,6 +351,14 @@
 		E5A0EAFD1E294F3F0092E21A /* SubSkillCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubSkillCell.swift; sourceTree = "<group>"; };
 		E5A0EAFE1E294F3F0092E21A /* SubSkillCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubSkillCell.xib; sourceTree = "<group>"; };
 		E5A0EB011E2A9C760092E21A /* DMStudy+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMStudy+Services.swift"; sourceTree = "<group>"; };
+		E5A0EB031E2BDE680092E21A /* SubSkillCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubSkillCollectionCell.swift; sourceTree = "<group>"; };
+		E5A0EB041E2BDE680092E21A /* SubSkillCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubSkillCollectionCell.xib; sourceTree = "<group>"; };
+		E5A0EB081E2BE7C40092E21A /* ASJTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASJTag.h; sourceTree = "<group>"; };
+		E5A0EB091E2BE7C40092E21A /* ASJTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASJTag.m; sourceTree = "<group>"; };
+		E5A0EB0A1E2BE7C40092E21A /* ASJTag.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASJTag.xib; sourceTree = "<group>"; };
+		E5A0EB0B1E2BE7C40092E21A /* ASJTagsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASJTagsView.h; sourceTree = "<group>"; };
+		E5A0EB0C1E2BE7C40092E21A /* ASJTagsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASJTagsView.m; sourceTree = "<group>"; };
+		E5A0EB0D1E2BE7C40092E21A /* Resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Resources.bundle; sourceTree = "<group>"; };
 		E5A174C01E201D450044B17E /* CircleProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleProgressBar.h; sourceTree = "<group>"; };
 		E5A174C11E201D450044B17E /* CircleProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleProgressBar.m; sourceTree = "<group>"; };
 		E5A174C61E201DE40044B17E /* ProfileImageButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImageButton.swift; sourceTree = "<group>"; };
@@ -610,6 +624,7 @@
 		E55462E21DAE47A9004163B2 /* Third Party */ = {
 			isa = PBXGroup;
 			children = (
+				E5A0EB071E2BE7C40092E21A /* ASJTagsView */,
 				E5A0EADC1E2944D50092E21A /* SSASideMenu */,
 				E5A174BF1E201D450044B17E /* CircleProgressBar */,
 				E50B3F311E18E8D2004C5F32 /* ZProgressHUD */,
@@ -970,6 +985,19 @@
 			path = SSASideMenu;
 			sourceTree = "<group>";
 		};
+		E5A0EB071E2BE7C40092E21A /* ASJTagsView */ = {
+			isa = PBXGroup;
+			children = (
+				E5A0EB081E2BE7C40092E21A /* ASJTag.h */,
+				E5A0EB091E2BE7C40092E21A /* ASJTag.m */,
+				E5A0EB0A1E2BE7C40092E21A /* ASJTag.xib */,
+				E5A0EB0B1E2BE7C40092E21A /* ASJTagsView.h */,
+				E5A0EB0C1E2BE7C40092E21A /* ASJTagsView.m */,
+				E5A0EB0D1E2BE7C40092E21A /* Resources.bundle */,
+			);
+			path = ASJTagsView;
+			sourceTree = "<group>";
+		};
 		E5A174BF1E201D450044B17E /* CircleProgressBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -1020,6 +1048,8 @@
 			isa = PBXGroup;
 			children = (
 				E5AE2AF51DAF878900C008BD /* OnboardingCollectionViewCell.swift */,
+				E5A0EB031E2BDE680092E21A /* SubSkillCollectionCell.swift */,
+				E5A0EB041E2BDE680092E21A /* SubSkillCollectionCell.xib */,
 			);
 			path = "CollectionView Cells";
 			sourceTree = "<group>";
@@ -1168,6 +1198,7 @@
 				E5A0EB001E294F3F0092E21A /* SubSkillCell.xib in Resources */,
 				E597E5841E151A99001DDA78 /* SF-UI-Text-Medium.otf in Resources */,
 				E597E57E1E151A99001DDA78 /* SF-UI-Text-Bold.otf in Resources */,
+				E5A0EB0F1E2BE7C40092E21A /* ASJTag.xib in Resources */,
 				E597E57A1E151A99001DDA78 /* SF-UI-Display-Regular.otf in Resources */,
 				E597E5751E151A99001DDA78 /* SF-UI-Display-Black.otf in Resources */,
 				E597E58B1E151A99001DDA78 /* SF-UI-Text-UltrathinItalic.otf in Resources */,
@@ -1184,6 +1215,8 @@
 				E587D3061E24E9F4006B7F06 /* SectionHeadingTableCell.xib in Resources */,
 				E597E5831E151A99001DDA78 /* SF-UI-Text-LightItalic.otf in Resources */,
 				E597E57D1E151A99001DDA78 /* SF-UI-Display-Ultralight.otf in Resources */,
+				E5A0EB111E2BE7C40092E21A /* Resources.bundle in Resources */,
+				E5A0EB061E2BDE680092E21A /* SubSkillCollectionCell.xib in Resources */,
 				5AE5F5171E1A3470006C328A /* PhotoNameCell.xib in Resources */,
 				5AB876521E249C0A007818D6 /* ExperiencePickerView.xib in Resources */,
 				E5AE2AF31DAF84AD00C008BD /* Onboarding.storyboard in Resources */,
@@ -1298,6 +1331,7 @@
 				E594BEA21E1E014F00310AE5 /* DMLoginVC.swift in Sources */,
 				E587D2FD1E24E2E1006B7F06 /* StudyCell.swift in Sources */,
 				E50B3F421E18E8D2004C5F32 /* ZProgressHUD.swift in Sources */,
+				E5A0EB101E2BE7C40092E21A /* ASJTagsView.m in Sources */,
 				E587D2F41E24C095006B7F06 /* DMAffiliationsVC.swift in Sources */,
 				E594BEA61E1E07C900310AE5 /* DMLoginVC+TableViewExtension.swift in Sources */,
 				E54976F01E28CEDD006F21E5 /* Certification.swift in Sources */,
@@ -1316,6 +1350,7 @@
 				5A3FD0711E1C0C1200360B3C /* ReferenceTableCell.swift in Sources */,
 				5A3FD06E1E1BB0A000360B3C /* UINavigationBar+Awesome.m in Sources */,
 				E587D2CF1E23438B006B7F06 /* DMJobTitleSelectionVC.swift in Sources */,
+				E5A0EB051E2BDE680092E21A /* SubSkillCollectionCell.swift in Sources */,
 				E56C9FA81DED75D500EAA9DD /* CommonHelper.swift in Sources */,
 				E59029AA1DED2C7A00151E9B /* UserDefaultsManager.swift in Sources */,
 				E594BE9D1E1DFF4400310AE5 /* DMRegistrationVC+TableViewExtension.swift in Sources */,
@@ -1384,6 +1419,7 @@
 				E5F47C951E0035B90051C4A1 /* UIImageRotate.m in Sources */,
 				E5C5F31B1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift in Sources */,
 				E54976F21E28CEDD006F21E5 /* Skill.swift in Sources */,
+				E5A0EB0E1E2BE7C40092E21A /* ASJTag.m in Sources */,
 				E587D2F01E24C05D006B7F06 /* DMCertificationsVC.swift in Sources */,
 				E55462FC1DAE4EA1004163B2 /* DMBaseVC.swift in Sources */,
 				E5A0EB021E2A9C760092E21A /* DMStudy+Services.swift in Sources */,
