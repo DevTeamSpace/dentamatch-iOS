@@ -373,21 +373,28 @@ extension DMWorkExperienceVC
         if self.currentExperience?.isEditMode == true
         {
             self.exprienceArray[(sender as AnyObject).tag] = self.currentExperience!
-//            self.exprienceArray.replaceObject(at: (sender as AnyObject).tag, with: self.currentExperience!)
            param = self.getParamsForSaveAndUpdate(isEdit: true)
         }else {
             self.exprienceArray.append(self.currentExperience!)
             param = self.getParamsForSaveAndUpdate(isEdit: false)
 
         }
-        //saveUpdateExperience(params: param)
-        self.currentExperience = nil
-        self.currentExperience = ExperienceModel(empty: "")
-        self.currentExperience?.isFirstExperience = false
-        self.currentExperience?.references.append(EmployeeReferenceModel(empty: ""))
+        saveUpdateExperience(params: param, completionHandler: { (result, error) in
+            
+            if result == true {
+                self.currentExperience = nil
+                self.currentExperience = ExperienceModel(empty: "")
+                self.currentExperience?.isFirstExperience = false
+                self.currentExperience?.references.append(EmployeeReferenceModel(empty: ""))
+                self.workExperienceTable.reloadData()
+                self.workExperienceDetailTable.reloadData()
+                self.reSizeTableViewsAndScrollView()
+
+            }
+        })
         self.workExperienceTable.reloadData()
         self.workExperienceDetailTable.reloadData()
-        self.makeToast(toastString: "Experience Added")
+//        self.makeToast(toastString: "Experience Added")
         self.reSizeTableViewsAndScrollView()
     }
     func deleteReference(_ sender: Any) {
@@ -402,17 +409,30 @@ extension DMWorkExperienceVC
         self.view.endEditing(true)
 
         if self.currentExperience?.isEditMode == true {
-            self.exprienceArray.removeObject(object:self.currentExperience!)
-            //self.deleteExperience()
+            self.deleteExperience(completionHandler: { (check, error) in
+                if check == true{
+                    self.exprienceArray.removeObject(object:self.currentExperience!)
+                    self.currentExperience = nil
+                    self.currentExperience = ExperienceModel(empty: "")
+                    self.currentExperience?.isFirstExperience = false
+                    self.currentExperience?.references.append(EmployeeReferenceModel(empty: ""))
+                    self.workExperienceTable.reloadData()
+                    self.workExperienceDetailTable.reloadData()
+                    self.reSizeTableViewsAndScrollView()
+
+                }
+            })
+        }else{
+            self.currentExperience = nil
+            self.currentExperience = ExperienceModel(empty: "")
+            self.currentExperience?.isFirstExperience = false
+            self.currentExperience?.references.append(EmployeeReferenceModel(empty: ""))
+            self.workExperienceTable.reloadData()
+            self.workExperienceDetailTable.reloadData()
+            self.reSizeTableViewsAndScrollView()
+
         }
 
-        self.currentExperience = nil
-        self.currentExperience = ExperienceModel(empty: "")
-        self.currentExperience?.isFirstExperience = false
-        self.currentExperience?.references.append(EmployeeReferenceModel(empty: ""))
-        self.workExperienceTable.reloadData()
-        self.workExperienceDetailTable.reloadData()
-        self.reSizeTableViewsAndScrollView()
     }
     
     func checkValidations() -> Bool  {

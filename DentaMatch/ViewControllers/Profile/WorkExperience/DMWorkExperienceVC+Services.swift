@@ -84,7 +84,7 @@ extension DMWorkExperienceVC {
 
         return params
     }
-    func saveUpdateExperience(params:[String:AnyObject]) {
+    func saveUpdateExperience(params:[String:AnyObject],completionHandler: @escaping (Bool?, NSError?) -> ()) {
         print("Experience Parameters\n\(params.description))")
 
         self.showLoader()
@@ -103,14 +103,18 @@ extension DMWorkExperienceVC {
             if response![Constants.ServerKey.status].boolValue {
                 self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
                 //do next
+                completionHandler(true, error)
+
             } else {
                 self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
+                completionHandler(false, error)
+
             }
         }
     }
 
     
-    func deleteExperience() {
+    func deleteExperience(completionHandler: @escaping (Bool?, NSError?) -> ()) {
         var params = [String:AnyObject]()
         params[Constants.ServerKey.experienceId] = self.currentExperience?.experienceID as AnyObject?
         print("Experience Parameters\n\(params.description))")
@@ -130,9 +134,12 @@ extension DMWorkExperienceVC {
             
             if response![Constants.ServerKey.status].boolValue {
                 self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
+                completionHandler(true, error)
                 //do next
             } else {
                 self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
+                completionHandler(false, error)
+
             }
         }
     }

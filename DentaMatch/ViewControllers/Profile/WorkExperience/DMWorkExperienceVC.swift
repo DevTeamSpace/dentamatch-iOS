@@ -68,9 +68,9 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
 
         setup()
-        gettingTempData()
+        initialDataSetup()
         // Do any additional setup after loading the view.
-        //getExperienceAPI()
+        getExperienceAPI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -129,7 +129,7 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
         self.mainScrollView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0)
     }
     
-    func gettingTempData(){
+    func initialDataSetup(){
         let exp = ExperienceModel(empty: "")
         self.exprienceDetailArray?.add(exp)
         self.currentExperience?.references.append(EmployeeReferenceModel(empty: ""))
