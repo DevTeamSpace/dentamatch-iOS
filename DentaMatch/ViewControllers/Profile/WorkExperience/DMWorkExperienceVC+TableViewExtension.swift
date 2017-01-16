@@ -39,6 +39,9 @@ extension DMWorkExperienceVC
                 debugPrint("row height \(height)")
                 return CGFloat(height)
             }
+            if indexPath.row == 0 {
+                return 95
+            }
             return 75
 
         }else{
@@ -129,12 +132,12 @@ extension DMWorkExperienceVC
                         cell.addMoreReferenceButton.isHidden = false
                     }
                     cell.deleteButton.isHidden = true
-                    cell.addMoreButtonTopSpace.constant = 0
+                    cell.addMoreButtonTopSpace.constant = 5
                     
                 }else{
                     if (self.currentExperience?.references.count)! - 1 > tag {
                         cell.deleteButton.isHidden = false
-                        cell.addMoreButtonTopSpace.constant = 0
+                        cell.addMoreButtonTopSpace.constant = 5
                         cell.addMoreReferenceButton.isHidden = true
                         
                     }else
@@ -155,8 +158,13 @@ extension DMWorkExperienceVC
             }else{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AnimatedPHTableCell") as! AnimatedPHTableCell
                 cell.selectionStyle = .none
+                if indexPath.row == 0 {
+                    cell.cellTopSpace.constant = 30
+                }else{
+                    cell.cellTopSpace.constant = 10
+
+                }
                 
-                cell.cellTopSpace.constant = 10
                 cell.cellBottomSpace.constant = 10.5
                 cell.commonTextField.delegate = self
                 cell.commonTextField.tag = indexPath.row

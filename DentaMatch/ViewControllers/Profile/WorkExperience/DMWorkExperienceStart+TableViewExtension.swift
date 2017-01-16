@@ -51,7 +51,9 @@ extension DMWorkExperienceStart
             return 213
         case 1:
             return 45
-        case 2,3,4:
+        case 2:
+            return 95
+        case 3,4:
             return 75
         default:
             return 0
@@ -93,7 +95,10 @@ extension DMWorkExperienceStart
             let cell = tableView.dequeueReusableCell(withIdentifier: "AnimatedPHTableCell") as! AnimatedPHTableCell
             if indexPath.row == 2 {
                 cell.accessoryLabel.isHidden = false
+                cell.cellTopSpace.constant = 30
             } else {
+                cell.cellTopSpace.constant = 10
+
                 cell.accessoryLabel.isHidden = true
             }
             
