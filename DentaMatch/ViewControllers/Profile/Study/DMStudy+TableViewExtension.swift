@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension DMStudyVC : UITableViewDataSource,UITableViewDelegate {
+extension DMStudyVC : UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate {
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -22,7 +22,7 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate {
         case .profileHeader:
             return 2
         case .school:
-            return school.count
+            return schoolCategories.count
         }
     }
     
@@ -43,8 +43,8 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate {
                 return 0
             }
         case .school:
-            let dict = school[indexPath.row]
-            if !(dict["isOpen"] as? Bool)! {
+            let schoolCategory = schoolCategories[indexPath.row]
+            if !schoolCategory.isOpen {
                 return 60
             } else {
                 return 202
@@ -82,22 +82,24 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate {
 
         case .school:
             let cell = tableView.dequeueReusableCell(withIdentifier: "StudyCell") as! StudyCell
-            let dict = school[indexPath.row]
+            let school = schoolCategories[indexPath.row]
             cell.headingButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+            cell.schoolNameTextField.delegate = self
+            cell.schoolNameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
             cell.headingButton.tag = indexPath.row
-            cell.headingButton.setTitle(dict["name"] as? String, for: .normal)
+            cell.headingButton.setTitle(school.schoolCategoryName, for: .normal)
             return cell
         }
     }
     
     func buttonTapped(sender:UIButton) {
-        var dict = school[sender.tag]
-        if (dict["isOpen"] as? Bool)! {
-            dict["isOpen"] = false as AnyObject?
+        let school = schoolCategories[sender.tag]
+        if school.isOpen {
+            school.isOpen = false
         } else {
-            dict["isOpen"] = true as AnyObject?
+            school.isOpen = true
         }
-        school[sender.tag] = dict
+        //school[sender.tag] = dict
         
         self.studyTableView.reloadRows(at: [IndexPath(row: sender.tag, section: 1)], with: .automatic)
         DispatchQueue.main.async {
@@ -105,4 +107,31 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate {
             
         }
     }
+    
+    func textFieldDidChange(textField:UITextField) {
+        if textField.text!.isEmpty {
+            hideAutoCompleteView()
+        } else {
+            let point = textField.superview?.convert(textField.center, to: self.view)
+            let frame = textField.frame
+            autoCompleteTable.frame = CGRect(x: frame.origin.x, y: (point?.y)! + 25, width: frame.width, height: 200)
+            
+            autoCompleteBackView.isHidden = false
+            autoCompleteTable.isHidden = false
+        }
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        hideAutoCompleteView()
+        return true
+    }
+    
 }

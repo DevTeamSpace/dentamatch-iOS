@@ -19,11 +19,17 @@ class DMStudyVC: DMBaseVC {
     
     let profileProgress:CGFloat = 0.50
     var school = [[String:AnyObject]()]
+    var autoCompleteTable:AutoCompleteTable!
+    let autoCompleteBackView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
 
+    var schoolCategories = [SchoolCategory]()
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        self.getSchoolListAPI()
         prepareTempData()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         // Do any additional setup after loading the view.
     }
     
@@ -35,7 +41,31 @@ class DMStudyVC: DMBaseVC {
         self.studyTableView.register(UINib(nibName: "StudyCell", bundle: nil), forCellReuseIdentifier: "StudyCell")
         self.changeNavBarAppearanceForWithoutHeader()
         self.changeNavBarToTransparent()
+        
+        autoCompleteTable = UIView.instanceFromNib(type: AutoCompleteTable.self)!
+        autoCompleteBackView.backgroundColor = UIColor.clear
+        autoCompleteBackView.isHidden = true
+        autoCompleteTable.isHidden = true
+        self.view.addSubview(autoCompleteBackView)
+        self.view.addSubview(autoCompleteTable)        
     }
+    
+    func hideAutoCompleteView() {
+        autoCompleteBackView.isHidden = true
+        autoCompleteTable.isHidden = true
+    }
+    
+    //MARK:- Keyboard Show Hide Observers
+    func keyboardWillShow(note: NSNotification) {
+        if let keyboardSize = (note.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            studyTableView.contentInset =  UIEdgeInsetsMake(0, 0, keyboardSize.height+200, 0)
+        }
+    }
+    
+    func keyboardWillHide(note: NSNotification) {
+        studyTableView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0)
+    }
+
     
     func prepareTempData() {
         

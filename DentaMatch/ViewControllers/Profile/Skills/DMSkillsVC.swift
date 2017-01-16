@@ -30,6 +30,8 @@ class DMSkillsVC: DMBaseVC {
         super.viewWillAppear(animated)
     }
     
+
+    
     func setup() {
         self.navigationItem.leftBarButtonItem = self.backBarButton()
         self.skillsTableView.register(UINib(nibName: "PhotoNameCell", bundle: nil), forCellReuseIdentifier: "PhotoNameCell")

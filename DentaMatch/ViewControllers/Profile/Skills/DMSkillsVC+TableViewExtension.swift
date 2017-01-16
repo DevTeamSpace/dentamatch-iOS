@@ -43,7 +43,8 @@ extension DMSkillsVC : UITableViewDataSource, UITableViewDelegate {
                 return 0
             }
         case .skills:
-           return 56 + 100
+            return 56
+            //return 56 + 100
         }
     }
 
