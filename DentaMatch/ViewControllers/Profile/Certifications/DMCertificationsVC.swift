@@ -19,6 +19,7 @@ class DMCertificationsVC: DMBaseVC,DatePickerViewDelegate {
     
     let profileProgress:CGFloat = 0.90
     var certicates = [Certification]()
+    var dateView:DatePickerView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,9 @@ class DMCertificationsVC: DMBaseVC,DatePickerViewDelegate {
         self.getCertificationListAPI()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+
+         self.dateView = DatePickerView.loadExperiencePickerView(withText:"" , tag: 0)
+        self.dateView?.delegate = self
 
         // Do any additional setup after loading the view.
     }
@@ -65,8 +69,88 @@ class DMCertificationsVC: DMBaseVC,DatePickerViewDelegate {
     }
     
     @IBAction func nextButtonClicked(_ sender: Any) {
-        self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToExecutiveSummaryVC, sender: self)
+        if checkAllCertitficates() {
+            self.uploadAllValidityDates( completionHandler: { (response, error) in
+                self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToExecutiveSummaryVC, sender: self)
+
+            })
+        }
     }
+    
+    
+    
+    func certificationImageButtonPressed(_ sender: Any) {
+        let button = sender as? UIButton
+        
+        self.cameraGalleryOptionActionSheet(title: "", message: "Please select", leftButtonText: "Camera", rightButtonText: "Gallery") { (isCameraButtonPressed, isGalleryButtonPressed, isCancelButtonPressed) in
+            if isCancelButtonPressed {
+            } else if isCameraButtonPressed {
+                CameraGalleryManager.shared.openCamera(viewController: self, allowsEditing: false, completionHandler: { (image:UIImage?, error:NSError?) in
+                    if error != nil {
+                        DispatchQueue.main.async {
+                            self.makeToast(toastString: (error?.localizedDescription)!)
+                        }
+                        return
+                    }
+//                    self.stateBoardImage = image!
+                     let certObj = self.certicates[button!.tag]
+                    certObj.certificateImage = image!
+//                    self.certicates[button!.tag] = certObj
+                    DispatchQueue.main.async {
+                        //                        self.profileButton.setImage(image, for: .normal)
+//                        self.certificationsTableView.reloadData()
+                        self.uploadCetificatsImage(certObj:certObj, completionHandler: { (response, error) in
+                            
+                            if let response = response {
+                                if response[Constants.ServerKey.status].boolValue {
+                                    certObj.certificateImageURL = response[Constants.ServerKey.result][Constants.ServerKey.imageURLForPostResponse].stringValue
+                                    self.certicates[button!.tag] = certObj
+                                    self.certificationsTableView.reloadData()
+
+                                    
+                                } else {
+//                                    self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+                                }
+                            }
+
+                        })
+
+                    }
+                })
+            } else {
+                CameraGalleryManager.shared.openGallery(viewController: self, allowsEditing: false, completionHandler: { (image:UIImage?, error:NSError?) in
+                    if error != nil {
+                        DispatchQueue.main.async {
+                            self.makeToast(toastString: (error?.localizedDescription)!)
+                        }
+                        return
+                    }
+                    let certObj = self.certicates[button!.tag]
+                    certObj.certificateImage = image!
+//                    self.certicates[button!.tag] = certObj
+                    DispatchQueue.main.async {
+                        self.uploadCetificatsImage(certObj:certObj, completionHandler: { (response, error) in
+                            
+                            if let response = response {
+                                if response[Constants.ServerKey.status].boolValue {
+                                    certObj.certificateImageURL = response[Constants.ServerKey.result][Constants.ServerKey.imageURLForPostResponse].stringValue
+                                    self.certicates[button!.tag] = certObj
+                                    self.certificationsTableView.reloadData()
+                                    
+                                    
+                                } else {
+                                    //                                    self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+                                }
+                            }
+                            
+                        })
+                    }
+                })
+            }
+        }
+    }
+    
+
 
     /*
     // MARK: - Navigation
@@ -77,10 +161,28 @@ class DMCertificationsVC: DMBaseVC,DatePickerViewDelegate {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    // MARK:- Validations
+    func checkAllCertitficates()-> Bool {
+        for index in  0..<self.certicates.count{
+            let certObj = certicates[index]
+            if (certObj.certificateImageURL?.isEmptyField)! {
+                self.makeToast(toastString: "Please upload \(certObj.certificationName) first")
+                return false
+            }else if (certObj.validityDate.isEmptyField) {
+                self.makeToast(toastString: "Please select  \(certObj.certificationName) validity date")
+                return false
+            }
+            
+        }
+        return true
+    }
+    // MARK :- DaatePicker Delegate
     func canceButtonAction() {
         self.view.endEditing(true)
     }
     func doneButtonAction(date: String, tag: Int) {
+        debugPrint("get Tag =\(tag)")
         self.view.endEditing(true)
         certicates[tag].validityDate = date
         self.certificationsTableView.reloadData()

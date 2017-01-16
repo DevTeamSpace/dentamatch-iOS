@@ -59,17 +59,26 @@ extension DMCertificationsVC : UITableViewDataSource,UITableViewDelegate , UITex
             let cell = tableView.dequeueReusableCell(withIdentifier: "CertificationsCell") as! CertificationsCell
             let certificate = certicates[indexPath.row]
             cell.validityDateTextField.tag = indexPath.row
-            let dateView = DatePickerView.loadExperiencePickerView(withText:certificate.validityDate , tag: indexPath.row)
-            dateView.delegate = self
             cell.validityDateTextField.inputView = dateView
             cell.validityDateTextField.delegate = self
             cell.validityDateTextField.text = certificate.validityDate
             cell.headingLabel.text = certificate.certificationName
+            cell.photoButton.tag = indexPath.row
+            cell.photoButton.addTarget(self, action: #selector(DMCertificationsVC.certificationImageButtonPressed(_:)), for: .touchUpInside)
+
 
             if let imageURL = URL(string: certificate.certificateImageURL!) {
                 if imageURL.absoluteString.isEmpty {
+//                    cell.photoButton.setImage(certificate.certificateImage, for: .normal)
                 } else {
-                cell.photoButton.sd_setImage(with: imageURL, for: .normal, placeholderImage: kPlaceHolderImage)
+                cell.photoButton.sd_setImage(with: imageURL, for: .normal, placeholderImage: UIImage(named: ""))
+                }
+            }else{
+                
+                if certificate.certificateImage != nil {
+                    cell.photoButton.setImage(certificate.certificateImage, for: .normal)
+                }else{
+                    cell.photoButton.setImage(UIImage(named: ""), for: .normal)
                 }
             }
             return cell
@@ -82,6 +91,8 @@ extension DMCertificationsVC : UITableViewDataSource,UITableViewDelegate , UITex
 
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        self.dateView?.getPreSelectedValues(dateString: textField.text!, curTag: textField.tag)
+        debugPrint("set Tag =\(textField.tag)")
         if let textField = textField as? PickerAnimatedTextField {
             textField.layer.borderColor = Constants.Color.textFieldColorSelected.cgColor
         }

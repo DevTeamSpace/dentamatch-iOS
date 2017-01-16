@@ -19,6 +19,7 @@ class CertificationsCell: UITableViewCell {
         // Initialization code
         self.photoButton.layer.cornerRadius = self.photoButton.frame.size.width/2
         self.photoButton.clipsToBounds = true
+        self.photoButton.imageView?.contentMode = .scaleAspectFill
         self.validityDateTextField.tintColor = UIColor.clear
     }
 

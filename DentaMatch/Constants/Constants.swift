@@ -116,6 +116,9 @@ struct Constants {
         static let workExperienceSave = Constants.API.apiURL("users/work-experience-save")
         static let getWorkExperience = Constants.API.apiURL("users/work-experience-list")
         static let deleteExperience = Constants.API.apiURL("users/work-experience-delete")
+        static let updateCertificate = Constants.API.apiURL("users/update-certificate")
+        static let updateValidationDates = Constants.API.apiURL("users/update-certificate-validity")
+
         static func apiURL(_ methodName: String) -> String {
             return BASE_URL + methodName
         }
@@ -151,6 +154,9 @@ struct Constants {
         static let validityDate = "validity_date"
         static let image = "image"
         
+        static let imageURL = "imagePath"
+        static let imageURLForPostResponse = "imgUrl"
+
         static let experienceId = "id"
         static let userId = "userId"
         static let jobTitleId = "jobTitleId"

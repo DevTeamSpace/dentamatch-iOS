@@ -55,7 +55,7 @@
                             <constraint firstItem="AFc-4O-zgB" firstAttribute="leading" secondItem="j9e-c0-HX3" secondAttribute="leading" id="rdc-E7-h2C"/>
                         </constraints>
                     </view>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W12-uj-dl0">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W12-uj-dl0">
                         <rect key="frame" x="97" y="83" width="126" height="126"/>
                         <color key="backgroundColor" red="0.65490196078431373" green="0.80000000000000004" blue="0.88627450980392153" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
                         <constraints>

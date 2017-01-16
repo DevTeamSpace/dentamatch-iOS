@@ -23,6 +23,6 @@ class Certification: NSObject {
         self.certificationId = certification[Constants.ServerKey.id].stringValue
         self.certificationName = certification[Constants.ServerKey.certificateName].stringValue
         self.validityDate = certification[Constants.ServerKey.validityDate].stringValue
-        self.certificateImageURL = certification[Constants.ServerKey.image].stringValue
+        self.certificateImageURL = certification[Constants.ServerKey.imageURL].stringValue
     }
 }
