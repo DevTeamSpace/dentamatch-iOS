@@ -107,7 +107,7 @@ extension DMCertificationsVC {
         params["certificateValidition"] = allValidatyDates as AnyObject?
 
         
-            print("certificateValidition Parameters\n\(params.description)")
+            debugPrint("certificateValidition Parameters\n\(params.description)")
             self.showLoader()
             APIManager.apiPostWithJSONEncode(serviceName: Constants.API.updateValidationDates, parameters: params) { (response:JSON?, error:NSError?) in
                 self.hideLoader()

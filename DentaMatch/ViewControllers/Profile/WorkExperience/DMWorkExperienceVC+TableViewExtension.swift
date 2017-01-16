@@ -462,16 +462,24 @@ extension DMWorkExperienceVC
             return false
         }
         
-//        for empRef in (self.currentExperience?.references)! {
-//            if empRef.referenceName?.characters.count == 0 {
-//                
-//            }else if !(empRef.email?.isValidEmail)! {
-//                
-//            }else if self.phoneFormatter.isValid(empRef.mobileNumber!) {
-//                
-//            }
-//            
-//        }
+        for empRef in (self.currentExperience?.references)! {
+            if (empRef.referenceName?.isEmptyField)! {
+                
+            }else if !(empRef.mobileNumber?.isEmptyField)!  {
+                if !self.phoneFormatter.isValid(empRef.mobileNumber!) {
+                    self.makeToast(toastString: Constants.AlertMessage.referenceMobileNumber)
+                    return false
+                }
+                
+            }else if !(empRef.email?.isEmptyField)! {
+                if !(empRef.email?.isValidEmail)! {
+                    self.makeToast(toastString: Constants.AlertMessage.invalidEmail)
+                    return false
+                }
+                
+            }
+            
+        }
         
         return true
     }

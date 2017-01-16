@@ -85,25 +85,25 @@ class DMWorkExperienceStart: DMBaseVC,UITableViewDataSource,UITableViewDelegate,
     //goToExperienceDetail
     @IBAction func nextButtonClicked(_ sender: Any) {
         
-//        for i in 0..<self.experienceArray.count {
-//            let text = self.experienceArray[i] as! String
-//            if i == 0 {
-//                if text.isEmptyField {
-//                    self.makeToast(toastString: Constants.AlertMessage.emptyCurrentJobTitle)
-//                    return
-//                }
-//            }else if i == 1{
-//                if text.isEmptyField {
-//                    self.makeToast(toastString: Constants.AlertMessage.emptyYearOfExperience)
-//                    return
-//                }
-//            }else if i == 2 {
-//                if text.isEmptyField {
-//                    self.makeToast(toastString: Constants.AlertMessage.emptyOfficeName)
-//                    return
-//                }
-//            }
-//        }
+        for i in 0..<self.experienceArray.count {
+            let text = self.experienceArray[i] as! String
+            if i == 0 {
+                if text.isEmptyField {
+                    self.makeToast(toastString: Constants.AlertMessage.emptyCurrentJobTitle)
+                    return
+                }
+            }else if i == 1{
+                if text.isEmptyField {
+                    self.makeToast(toastString: Constants.AlertMessage.emptyYearOfExperience)
+                    return
+                }
+            }else if i == 2 {
+                if text.isEmptyField {
+                    self.makeToast(toastString: Constants.AlertMessage.emptyOfficeName)
+                    return
+                }
+            }
+        }
 
         self.performSegue(withIdentifier: "goToExperienceDetail", sender: self)
 
@@ -119,6 +119,7 @@ class DMWorkExperienceStart: DMBaseVC,UITableViewDataSource,UITableViewDelegate,
         if segue.identifier == "goToExperienceDetail"
         {
             let destinationVC:DMWorkExperienceVC = segue.destination as! DMWorkExperienceVC
+            destinationVC.currentExperience?.jobTitleID = self.selectedJobTitle.jobId
             destinationVC.currentExperience?.jobTitle = self.experienceArray[0] as? String
             destinationVC.currentExperience?.yearOfExperience = self.experienceArray[1] as? String
             destinationVC.jobTitles = self.jobTitles

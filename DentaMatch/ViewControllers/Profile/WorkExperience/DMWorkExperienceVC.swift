@@ -75,11 +75,6 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.changeNavBarAppearanceForProfiles()
-        self.navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = nil
-        self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.setNavigationBarHidden(false, animated: true)
 
     }
@@ -120,7 +115,14 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
 //        self.alertMessage(title: "Alert", message: "Work in progress", buttonText: "Ok") {
 //            
 //        }
-       self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToStudyVC, sender: self)
+        
+        if self.exprienceArray.count > 0
+        {
+            self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToStudyVC, sender: self)
+
+        }else{
+            self.makeToast(toastString: "Please add at least one experience")
+        }
     }
     
     //MARK:- Keyboard Show Hide Observers
