@@ -108,31 +108,30 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate,UITextFieldDeleg
         }
     }
     
-    func textFieldDidChange(textfield:UITextField) {
-        if (textfield.text?.isEmpty)! {
-            chooseArticleDropDown.hide()
-
+    func textFieldDidChange(textField:UITextField) {
+        if textField.text!.isEmpty {
+            hideAutoCompleteView()
         } else {
-            var temp = [String]()
-            for i in schoolCategories[0].universities {
-                temp.append(i.universityName)
-            }
-            chooseArticleDropDown.dataSource = temp
-            chooseArticleDropDown.show()
+            let point = textField.superview?.convert(textField.center, to: self.view)
+            let frame = textField.frame
+            autoCompleteTable.frame = CGRect(x: frame.origin.x, y: (point?.y)! + 25, width: frame.width, height: 200)
             
+            autoCompleteBackView.isHidden = false
+            autoCompleteTable.isHidden = false
         }
-
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        chooseArticleDropDown.direction = .bottom
-        chooseArticleDropDown.bottomOffset = CGPoint(x: 20, y: textField.bounds.height)
-        chooseArticleDropDown.anchorView = textField
-
         return true
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        hideAutoCompleteView()
+        return true
     }
     
 }

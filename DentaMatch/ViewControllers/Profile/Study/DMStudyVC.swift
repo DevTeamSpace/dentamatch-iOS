@@ -19,7 +19,8 @@ class DMStudyVC: DMBaseVC {
     
     let profileProgress:CGFloat = 0.50
     var school = [[String:AnyObject]()]
-    let chooseArticleDropDown = DropDown()
+    var autoCompleteTable:AutoCompleteTable!
+    let autoCompleteBackView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
 
     var schoolCategories = [SchoolCategory]()
     override func viewDidLoad() {
@@ -41,11 +42,17 @@ class DMStudyVC: DMBaseVC {
         self.changeNavBarAppearanceForWithoutHeader()
         self.changeNavBarToTransparent()
         
-        // Action triggered on selection
-        chooseArticleDropDown.selectionAction = { [unowned self] (index, item) in
-            print("index = \(index) and item \(item)")
-        }
-        
+        autoCompleteTable = UIView.instanceFromNib(type: AutoCompleteTable.self)!
+        autoCompleteBackView.backgroundColor = UIColor.clear
+        autoCompleteBackView.isHidden = true
+        autoCompleteTable.isHidden = true
+        self.view.addSubview(autoCompleteBackView)
+        self.view.addSubview(autoCompleteTable)        
+    }
+    
+    func hideAutoCompleteView() {
+        autoCompleteBackView.isHidden = true
+        autoCompleteTable.isHidden = true
     }
     
     //MARK:- Keyboard Show Hide Observers
