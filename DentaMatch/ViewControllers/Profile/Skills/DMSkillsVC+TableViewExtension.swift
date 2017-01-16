@@ -43,7 +43,7 @@ extension DMSkillsVC : UITableViewDataSource, UITableViewDelegate {
                 return 0
             }
         case .skills:
-           return 56
+           return 56 + 100
         }
     }
 
@@ -77,6 +77,12 @@ extension DMSkillsVC : UITableViewDataSource, UITableViewDelegate {
         case .skills:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SkillsTableCell") as! SkillsTableCell
             let skill = skills[indexPath.row]
+            cell.subSkillsTagView.tag = indexPath.row
+            cell.subSkillsTagView.deleteAllTags()
+    
+            cell.subSkillsTagView.reload()
+            //cell.subSkillsTagView.addTag("Rajan")
+
             cell.skillLabel.text = skill.skillName
             return cell
             
