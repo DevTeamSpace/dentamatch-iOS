@@ -8,13 +8,23 @@
 
 import UIKit
 
-class AutoCompleteTable: UIView,UITableViewDataSource {
+@objc protocol AutoCompleteSelectedDelegate {
+    @objc optional func didSelect(schoolCategoryId:String,university:University)
+}
+
+class AutoCompleteTable: UIView,UITableViewDataSource,UITableViewDelegate {
 
     @IBOutlet weak var autoCompleteTableView: UITableView!
     var universities = [University]()
+    var schoolCategoryId = ""
+    
+    var delegate:AutoCompleteSelectedDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.autoCompleteTableView.dataSource = self
+        self.autoCompleteTableView.estimatedRowHeight = 50.0
+        self.autoCompleteTableView.rowHeight = UITableViewAutomaticDimension
         self.autoCompleteTableView.register(UINib(nibName: "AutoCompleteTableViewCell", bundle: nil), forCellReuseIdentifier: "AutoCompleteTableViewCell")
 
     }
@@ -26,12 +36,18 @@ class AutoCompleteTable: UIView,UITableViewDataSource {
     }
     */
     
-    func updateData(universities:[University]) {
+    func updateData(schoolCategoryId:String, universities:[University]) {
         self.universities = universities
+        self.schoolCategoryId = schoolCategoryId
+        self.autoCompleteTableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return universities.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -39,6 +55,13 @@ class AutoCompleteTable: UIView,UITableViewDataSource {
         let university = universities[indexPath.row]
         cell.universityNameLabel.text = university.universityName
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let delegate = delegate {
+            let university = universities[indexPath.row]
+            delegate.didSelect!(schoolCategoryId: schoolCategoryId, university: university)
+        }
     }
     
     

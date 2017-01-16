@@ -85,6 +85,8 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate,UITextFieldDeleg
             let school = schoolCategories[indexPath.row]
             cell.headingButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
             cell.schoolNameTextField.delegate = self
+            cell.schoolNameTextField.tag = Int(school.schoolCategoryId)!
+            
             cell.schoolNameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
             cell.headingButton.tag = indexPath.row
             cell.headingButton.setTitle(school.schoolCategoryName, for: .normal)
@@ -112,6 +114,16 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate,UITextFieldDeleg
         if textField.text!.isEmpty {
             hideAutoCompleteView()
         } else {
+            let schoolId = "\(textField.tag)"
+            
+            var universities = self.schoolCategories.filter({$0.schoolCategoryId == schoolId}).first?.universities
+            
+            universities = universities?.filter({$0.universityName.range(of: textField.text!, options: .caseInsensitive, range: Range(uncheckedBounds: ($0.universityName.startIndex,$0.universityName.endIndex)), locale: nil) != nil })
+            
+            if let universities = universities {
+                autoCompleteTable.updateData(schoolCategoryId: schoolId, universities: universities)
+            }
+            
             let point = textField.superview?.convert(textField.center, to: self.view)
             let frame = textField.frame
             autoCompleteTable.frame = CGRect(x: frame.origin.x, y: (point?.y)! + 25, width: frame.width, height: 200)
