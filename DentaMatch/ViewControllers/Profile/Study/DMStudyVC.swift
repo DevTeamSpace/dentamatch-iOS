@@ -19,11 +19,16 @@ class DMStudyVC: DMBaseVC {
     
     let profileProgress:CGFloat = 0.50
     var school = [[String:AnyObject]()]
+    let chooseArticleDropDown = DropDown()
 
+    var schoolCategories = [SchoolCategory]()
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        self.getSchoolListAPI()
         prepareTempData()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         // Do any additional setup after loading the view.
     }
     
@@ -35,7 +40,25 @@ class DMStudyVC: DMBaseVC {
         self.studyTableView.register(UINib(nibName: "StudyCell", bundle: nil), forCellReuseIdentifier: "StudyCell")
         self.changeNavBarAppearanceForWithoutHeader()
         self.changeNavBarToTransparent()
+        
+        // Action triggered on selection
+        chooseArticleDropDown.selectionAction = { [unowned self] (index, item) in
+            print("index = \(index) and item \(item)")
+        }
+        
     }
+    
+    //MARK:- Keyboard Show Hide Observers
+    func keyboardWillShow(note: NSNotification) {
+        if let keyboardSize = (note.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            studyTableView.contentInset =  UIEdgeInsetsMake(0, 0, keyboardSize.height+200, 0)
+        }
+    }
+    
+    func keyboardWillHide(note: NSNotification) {
+        studyTableView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0)
+    }
+
     
     func prepareTempData() {
         

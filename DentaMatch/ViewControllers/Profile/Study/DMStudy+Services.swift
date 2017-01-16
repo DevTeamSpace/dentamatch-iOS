@@ -14,7 +14,7 @@ extension DMStudyVC {
     func getSchoolListAPI() {
         self.showLoader()
         APIManager.apiGet(serviceName: Constants.API.getSchoolListAPI, parameters: [:]) { (response:JSON?, error:NSError?) in
-            
+            self.hideLoader()
             if error != nil {
                 self.makeToast(toastString: (error?.localizedDescription)!)
                 return
@@ -32,10 +32,31 @@ extension DMStudyVC {
     func handleSchoolListAPIResponse(response:JSON?) {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
-                self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+                let schoolCategoryList = response[Constants.ServerKey.result][Constants.ServerKey.list].arrayValue
+                self.prepareSchoolCategoryListData(schoolCategoryList: schoolCategoryList)
+                self.studyTableView.reloadData()
             } else {
-                self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+                //handle fail case
             }
+            self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+
         }
+    }
+    
+    func prepareSchoolCategoryListData(schoolCategoryList:[JSON]) {
+        for schoolCategoryObj in schoolCategoryList {
+            
+            var universities = [University]()
+            let universitiesArray = schoolCategoryObj[Constants.ServerKey.schoolCategory].arrayValue
+            
+            for universityObj in universitiesArray {
+                let university = University(university: universityObj)
+                universities.append(university)
+            }
+            
+            let schoolCategory = SchoolCategory(school: schoolCategoryObj, universities: universities)
+            schoolCategories.append(schoolCategory)
+        }
+        
     }
 }

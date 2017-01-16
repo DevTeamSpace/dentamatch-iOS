@@ -92,7 +92,6 @@ extension DMAffiliationsVC : UITableViewDataSource,UITableViewDelegate,UITextVie
             let cell = tableView.dequeueReusableCell(withIdentifier: "AffiliationsCell") as! AffiliationsCell
             let affiliation = affiliations[indexPath.row]
             cell.affiliationLabel.text = affiliation.affiliationName
-            
             if affiliation.isSelected {
                 cell.tickButton.setTitle(Constants.DesignFont.acceptTermsSelected, for: .normal)
                 cell.tickButton.setTitleColor(Constants.Color.textFieldColorSelected, for: .normal)
@@ -109,6 +108,7 @@ extension DMAffiliationsVC : UITableViewDataSource,UITableViewDelegate,UITextVie
             let affiliation = affiliations[affiliations.count - 1]
             cell.tickButton.isEnabled = false
             cell.otherAffiliationTextView.delegate = self
+            cell.otherAffiliationTextView.inputAccessoryView = self.addToolBarOnTextView()
             if affiliation.isSelected {
                 cell.otherAffiliationTextView.text = affiliation.otherAffiliation
                 otherText = affiliation.affiliationName
@@ -145,6 +145,21 @@ extension DMAffiliationsVC : UITableViewDataSource,UITableViewDelegate,UITextVie
         default:
             break
         }
+    }
+    
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        
+        self.affiliationsTableView.contentInset =  UIEdgeInsetsMake(0, 0, 200, 0)
+        DispatchQueue.main.async {
+            self.affiliationsTableView.scrollToRow(at: IndexPath(row: 0, section: 2), at: .bottom, animated: true)
+        }
+        return true
+    }
+    
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        self.affiliationsTableView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0)
+
+        return true
     }
     
     func textViewDidChange(_ textView: UITextView) {

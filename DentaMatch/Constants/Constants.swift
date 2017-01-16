@@ -174,6 +174,12 @@ struct Constants {
         static let isSkillSelected = "userSkill"
         
         static let certificateName = "certificateName"
+        static let schoolingId = "schoolingId"
+        static let schoolName = "schoolName"
+        static let schoolCategory = "schoolCategory"
+        static let schoolChildName = "schoolChildName"
+        static let schoolingChildId = "schoolingChildId"
+        static let yearOfGraduation = "yearOfGraduation"
     }
     
     //MARK:- UserDefault Keys

@@ -80,6 +80,15 @@
 		E55462F91DAE4DD1004163B2 /* UIView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55462F81DAE4DD1004163B2 /* UIView+Additions.swift */; };
 		E55462FC1DAE4EA1004163B2 /* DMBaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55462FB1DAE4EA1004163B2 /* DMBaseVC.swift */; };
 		E55463001DAE510A004163B2 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55462FF1DAE510A004163B2 /* Utilities.swift */; };
+		E558D8E01E2C80C200A6DF95 /* SchoolCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E558D8DF1E2C80C200A6DF95 /* SchoolCategory.swift */; };
+		E558D8F01E2CA10600A6DF95 /* DPDConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E558D8E61E2CA10600A6DF95 /* DPDConstants.swift */; };
+		E558D8F11E2CA10600A6DF95 /* DPDKeyboardListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = E558D8E71E2CA10600A6DF95 /* DPDKeyboardListener.swift */; };
+		E558D8F21E2CA10600A6DF95 /* DPDUIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E558D8E81E2CA10600A6DF95 /* DPDUIView+Extension.swift */; };
+		E558D8F31E2CA10600A6DF95 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E558D8E91E2CA10600A6DF95 /* Info.plist */; };
+		E558D8F41E2CA10600A6DF95 /* DropDownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E558D8EB1E2CA10600A6DF95 /* DropDownCell.xib */; };
+		E558D8F51E2CA10600A6DF95 /* DropDown+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = E558D8ED1E2CA10600A6DF95 /* DropDown+Appearance.swift */; };
+		E558D8F61E2CA10600A6DF95 /* DropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = E558D8EE1E2CA10600A6DF95 /* DropDown.swift */; };
+		E558D8F71E2CA10600A6DF95 /* DropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E558D8EF1E2CA10600A6DF95 /* DropDownCell.swift */; };
 		E56B209F1DBF7467000512F6 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E56B209E1DBF7467000512F6 /* Registration.storyboard */; };
 		E56B20A21DBF749D000512F6 /* DMRegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56B20A11DBF749D000512F6 /* DMRegistrationVC.swift */; };
 		E56B20A41DC0526E000512F6 /* DMRegistrationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56B20A31DC0526E000512F6 /* DMRegistrationContainer.swift */; };
@@ -269,6 +278,16 @@
 		E55462FB1DAE4EA1004163B2 /* DMBaseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMBaseVC.swift; sourceTree = "<group>"; };
 		E55462FD1DAE4EDC004163B2 /* DentaMatch-BridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DentaMatch-BridgingHeader.h"; sourceTree = "<group>"; };
 		E55462FF1DAE510A004163B2 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		E558D8DF1E2C80C200A6DF95 /* SchoolCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolCategory.swift; sourceTree = "<group>"; };
+		E558D8E41E2CA10600A6DF95 /* DropDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDown.h; sourceTree = "<group>"; };
+		E558D8E61E2CA10600A6DF95 /* DPDConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DPDConstants.swift; sourceTree = "<group>"; };
+		E558D8E71E2CA10600A6DF95 /* DPDKeyboardListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DPDKeyboardListener.swift; sourceTree = "<group>"; };
+		E558D8E81E2CA10600A6DF95 /* DPDUIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DPDUIView+Extension.swift"; sourceTree = "<group>"; };
+		E558D8E91E2CA10600A6DF95 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E558D8EB1E2CA10600A6DF95 /* DropDownCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DropDownCell.xib; sourceTree = "<group>"; };
+		E558D8ED1E2CA10600A6DF95 /* DropDown+Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DropDown+Appearance.swift"; sourceTree = "<group>"; };
+		E558D8EE1E2CA10600A6DF95 /* DropDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDown.swift; sourceTree = "<group>"; };
+		E558D8EF1E2CA10600A6DF95 /* DropDownCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownCell.swift; sourceTree = "<group>"; };
 		E56B209E1DBF7467000512F6 /* Registration.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Registration.storyboard; sourceTree = "<group>"; };
 		E56B20A11DBF749D000512F6 /* DMRegistrationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMRegistrationVC.swift; sourceTree = "<group>"; };
 		E56B20A31DC0526E000512F6 /* DMRegistrationContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMRegistrationContainer.swift; sourceTree = "<group>"; };
@@ -413,6 +432,7 @@
 		5A1E2A161E1E47340055D913 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E558D8DE1E2C80A800A6DF95 /* School */,
 				E57EE6CB1E28EBA90090434F /* Affiliation */,
 				E54976E51E28CEDD006F21E5 /* Certification */,
 				E54976E71E28CEDD006F21E5 /* JobTitle */,
@@ -627,6 +647,7 @@
 		E55462E21DAE47A9004163B2 /* Third Party */ = {
 			isa = PBXGroup;
 			children = (
+				E558D8E31E2CA10600A6DF95 /* DropDown */,
 				E5A0EB071E2BE7C40092E21A /* ASJTagsView */,
 				E5A0EADC1E2944D50092E21A /* SSASideMenu */,
 				E5A174BF1E201D450044B17E /* CircleProgressBar */,
@@ -699,6 +720,54 @@
 				E55462FF1DAE510A004163B2 /* Utilities.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		E558D8DE1E2C80A800A6DF95 /* School */ = {
+			isa = PBXGroup;
+			children = (
+				E558D8DF1E2C80C200A6DF95 /* SchoolCategory.swift */,
+			);
+			path = School;
+			sourceTree = "<group>";
+		};
+		E558D8E31E2CA10600A6DF95 /* DropDown */ = {
+			isa = PBXGroup;
+			children = (
+				E558D8E41E2CA10600A6DF95 /* DropDown.h */,
+				E558D8E51E2CA10600A6DF95 /* helpers */,
+				E558D8E91E2CA10600A6DF95 /* Info.plist */,
+				E558D8EA1E2CA10600A6DF95 /* resources */,
+				E558D8EC1E2CA10600A6DF95 /* src */,
+			);
+			path = DropDown;
+			sourceTree = "<group>";
+		};
+		E558D8E51E2CA10600A6DF95 /* helpers */ = {
+			isa = PBXGroup;
+			children = (
+				E558D8E61E2CA10600A6DF95 /* DPDConstants.swift */,
+				E558D8E71E2CA10600A6DF95 /* DPDKeyboardListener.swift */,
+				E558D8E81E2CA10600A6DF95 /* DPDUIView+Extension.swift */,
+			);
+			path = helpers;
+			sourceTree = "<group>";
+		};
+		E558D8EA1E2CA10600A6DF95 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				E558D8EB1E2CA10600A6DF95 /* DropDownCell.xib */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		E558D8EC1E2CA10600A6DF95 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E558D8ED1E2CA10600A6DF95 /* DropDown+Appearance.swift */,
+				E558D8EE1E2CA10600A6DF95 /* DropDown.swift */,
+				E558D8EF1E2CA10600A6DF95 /* DropDownCell.swift */,
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 		E56B20A01DBF7486000512F6 /* Registration */ = {
@@ -1201,6 +1270,7 @@
 				E5A0EB001E294F3F0092E21A /* SubSkillCell.xib in Resources */,
 				E597E5841E151A99001DDA78 /* SF-UI-Text-Medium.otf in Resources */,
 				E597E57E1E151A99001DDA78 /* SF-UI-Text-Bold.otf in Resources */,
+				E558D8F31E2CA10600A6DF95 /* Info.plist in Resources */,
 				E5A0EB0F1E2BE7C40092E21A /* ASJTag.xib in Resources */,
 				E597E57A1E151A99001DDA78 /* SF-UI-Display-Regular.otf in Resources */,
 				E597E5751E151A99001DDA78 /* SF-UI-Display-Black.otf in Resources */,
@@ -1230,6 +1300,7 @@
 				E597E5891E151A99001DDA78 /* SF-UI-Text-SemiboldItalic.otf in Resources */,
 				E587D2DD1E2396E9006B7F06 /* JobSelectionPickerView.xib in Resources */,
 				E597E5821E151A99001DDA78 /* SF-UI-Text-Light.otf in Resources */,
+				E558D8F41E2CA10600A6DF95 /* DropDownCell.xib in Resources */,
 				E56E45C61DAE07C200AD4559 /* LaunchScreen.storyboard in Resources */,
 				E597E5761E151A99001DDA78 /* SF-UI-Display-Bold.otf in Resources */,
 				E50B3F511E194CD7004C5F32 /* RegistrationTableViewCell.xib in Resources */,
@@ -1332,15 +1403,19 @@
 				E50B3F401E18E8D2004C5F32 /* ZGradientLayer.swift in Sources */,
 				5AD246971E27799F009350BF /* PickerAnimatedTextField.swift in Sources */,
 				E594BEA21E1E014F00310AE5 /* DMLoginVC.swift in Sources */,
+				E558D8F21E2CA10600A6DF95 /* DPDUIView+Extension.swift in Sources */,
 				5A9A3A971E2B58600002C5B6 /* UserManager.swift in Sources */,
 				E587D2FD1E24E2E1006B7F06 /* StudyCell.swift in Sources */,
 				E50B3F421E18E8D2004C5F32 /* ZProgressHUD.swift in Sources */,
 				E5A0EB101E2BE7C40092E21A /* ASJTagsView.m in Sources */,
+				E558D8F61E2CA10600A6DF95 /* DropDown.swift in Sources */,
 				E587D2F41E24C095006B7F06 /* DMAffiliationsVC.swift in Sources */,
 				E594BEA61E1E07C900310AE5 /* DMLoginVC+TableViewExtension.swift in Sources */,
 				E54976F01E28CEDD006F21E5 /* Certification.swift in Sources */,
 				5A5266BD1E26413400C5B7A1 /* DMLicenseSelectionVC+Services.swift in Sources */,
 				E597E58F1E151CFF001DDA78 /* FloatLabelTextField.swift in Sources */,
+				E558D8E01E2C80C200A6DF95 /* SchoolCategory.swift in Sources */,
+				E558D8F71E2CA10600A6DF95 /* DropDownCell.swift in Sources */,
 				E50B3F3E1E18E8D2004C5F32 /* ZActivityIndicatorView.swift in Sources */,
 				E587D3051E24E9F4006B7F06 /* SectionHeadingTableCell.swift in Sources */,
 				E587D30F1E253E83006B7F06 /* AffliliationsOthersCell.swift in Sources */,
@@ -1396,6 +1471,7 @@
 				E587D2D71E236B84006B7F06 /* DMRegisterMapsVC+GoogleMapsExtension.swift in Sources */,
 				E54976F31E28CEDD006F21E5 /* User.swift in Sources */,
 				E56C9F9E1DED4BD100EAA9DD /* Character+Addition.swift in Sources */,
+				E558D8F51E2CA10600A6DF95 /* DropDown+Appearance.swift in Sources */,
 				E587D2F81E24C0C0006B7F06 /* DMSelectSkillsVC.swift in Sources */,
 				E57EE6CA1E28EB440090434F /* DMAffiliationsVC+Services.swift in Sources */,
 				5AD246911E272E92009350BF /* DMWorkExperienceVC+Services.swift in Sources */,
@@ -1407,6 +1483,8 @@
 				E587D2CC1E23362C006B7F06 /* JobSelectionPickerView.swift in Sources */,
 				E587D3001E24E5C1006B7F06 /* ProfileTextField.swift in Sources */,
 				E5F47C941E0035B90051C4A1 /* UIImage+Rotations.swift in Sources */,
+				E558D8F01E2CA10600A6DF95 /* DPDConstants.swift in Sources */,
+				E558D8F11E2CA10600A6DF95 /* DPDKeyboardListener.swift in Sources */,
 				E587D2F61E24C0B0006B7F06 /* DMSkillsVC.swift in Sources */,
 				E50B3F501E194CD7004C5F32 /* RegistrationTableViewCell.swift in Sources */,
 				5A1E2A1C1E1E77790055D913 /* ExperienceTableCell.swift in Sources */,
