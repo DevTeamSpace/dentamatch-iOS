@@ -23,11 +23,14 @@ class DMStudyVC: DMBaseVC {
     let autoCompleteBackView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
 
     var schoolCategories = [SchoolCategory]()
+    var selectedUniversities = [String:AnyObject]()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+    
         self.getSchoolListAPI()
-        prepareTempData()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         // Do any additional setup after loading the view.
@@ -43,9 +46,12 @@ class DMStudyVC: DMBaseVC {
         self.changeNavBarToTransparent()
         
         autoCompleteTable = UIView.instanceFromNib(type: AutoCompleteTable.self)!
+        autoCompleteTable.delegate = self
         autoCompleteBackView.backgroundColor = UIColor.clear
         autoCompleteBackView.isHidden = true
         autoCompleteTable.isHidden = true
+        autoCompleteTable.layer.cornerRadius = 8.0
+        autoCompleteTable.clipsToBounds = true
         self.view.addSubview(autoCompleteBackView)
         self.view.addSubview(autoCompleteTable)        
     }
@@ -64,41 +70,6 @@ class DMStudyVC: DMBaseVC {
     
     func keyboardWillHide(note: NSNotification) {
         studyTableView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0)
-    }
-
-    
-    func prepareTempData() {
-        
-        school.removeAll()
-        
-        var dict = [String:AnyObject]()
-        dict["id"] = "1" as AnyObject?
-        dict["name"] = "Dental School/Training" as AnyObject?
-        dict["isOpen"] = false as AnyObject
-        
-        school.append(dict)
-        
-        dict["id"] = "2" as AnyObject?
-        dict["name"] = "Hygeine School" as AnyObject?
-        dict["isOpen"] = false as AnyObject
-        
-        school.append(dict)
-
-        
-        dict["id"] = "3" as AnyObject?
-        dict["name"] = "Dental Assisting School" as AnyObject?
-        dict["isOpen"] = false as AnyObject
-        
-        school.append(dict)
-
-        dict["id"] = "4" as AnyObject?
-        dict["name"] = "Dental Lab Tech School" as AnyObject?
-        dict["isOpen"] = false as AnyObject
-        
-        school.append(dict)
-
-        self.studyTableView.reloadData()
-        
     }
 
     
@@ -129,6 +100,11 @@ class DMStudyVC: DMBaseVC {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    
+}
 
+extension DMStudyVC:AutoCompleteSelectedDelegate {
+    func didSelect(university: University) {
+        hideAutoCompleteView()
+        self.studyTableView.reloadData()
+    }
 }

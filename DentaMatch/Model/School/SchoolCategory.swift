@@ -28,11 +28,11 @@ class SchoolCategory: NSObject {
 }
 
 //Same as school category from server
-class University {
+class University : NSObject {
     var universityName = ""
     var universityId = ""
+    var isSelected = false
     var yearOfGraduation = ""
-    
     
     init(university:JSON) {
         self.universityName = university[Constants.ServerKey.schoolChildName].stringValue
