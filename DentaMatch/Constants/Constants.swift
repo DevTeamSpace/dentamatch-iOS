@@ -71,12 +71,16 @@ struct Constants {
     
     //MARK:- StoryBoards
     struct StoryBoard {
+        static let onBoardingStoryboard  = "Onboarding"
+
         static let registrationStoryboard  = "Registration"
         static let profileStoryboard  = "Profile"
- 
+        static let dashboardStoryboard  = "Dashboard"
+
         struct Identifer {
             static let registrationNav = "RegistrationNAV"
             static let profileNav  = "ProfileNAV"
+            static let editProfileNav  = "EditProfileNAV"
         }
         
         struct SegueIdentifier {

@@ -152,6 +152,17 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
         self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToLicense, sender: self)
     }
     
+    func openDashboard() {
+        let dashboardVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: DMDashboardVC.self)!
+        kAppDelegate.window?.rootViewController = dashboardVC
+
+//        UIView.transition(with: self.view.window!, duration: 0.5, options: .transitionCrossDissolve, animations: {
+//            kAppDelegate.window?.rootViewController = dashboardVC
+//        }) { (bool:Bool) in
+//            
+//        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Constants.StoryBoard.SegueIdentifier.goToLicense {
             let destinationVC:DMLicenseSelectionVC = segue.destination as! DMLicenseSelectionVC
@@ -163,8 +174,12 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
     
     @IBAction func notNowButtonPressed(_ sender: Any) {
         self.alertMessage(title: "", message: Constants.AlertMessage.skipProfile, leftButtonText: "Cancel", rightButtonText: kOkButtonTitle) { (isLeftButtonPressed:Bool) in
-            if !isLeftButtonPressed {
-                print("Skip Profile")
+            if isLeftButtonPressed {
+                DispatchQueue.main.async {
+                    self.openDashboard()
+                }
+            } else {
+               //Remain here
             }
         }
     }
