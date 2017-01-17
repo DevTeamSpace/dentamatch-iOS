@@ -50,6 +50,7 @@ extension DMExecutiveSummaryVC : UITableViewDataSource, UITableViewDelegate, UIT
         case .aboutMe:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AboutMeCell") as! AboutMeCell
             cell.aboutMeTextView.delegate = self
+            cell.aboutMeTextView.inputAccessoryView = self.addToolBarOnTextView()
             return cell
         }
     }
@@ -81,6 +82,12 @@ extension DMExecutiveSummaryVC : UITableViewDataSource, UITableViewDelegate, UIT
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
+        
+        self.executiveSummaryTableView.contentInset =  UIEdgeInsetsMake(0, 0, 200, 0)
+        DispatchQueue.main.async {
+            self.executiveSummaryTableView.scrollToRow(at: IndexPath(row: 0, section: 1), at: .bottom, animated: true)
+        }
+        
         if let cell = self.executiveSummaryTableView.cellForRow(at: IndexPath(row: 0, section: 1)) as? AboutMeCell {
             if !textView.text.isEmpty {
                 cell.placeHolderLabel.isHidden = true
@@ -90,7 +97,15 @@ extension DMExecutiveSummaryVC : UITableViewDataSource, UITableViewDelegate, UIT
         }
     }
     
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        self.executiveSummaryTableView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0)
+        
+        return true
+    }
+
+    
     func textViewDidEndEditing(_ textView: UITextView) {
+        
         if let cell = self.executiveSummaryTableView.cellForRow(at: IndexPath(row: 0, section: 1)) as? AboutMeCell {
             if !textView.text.isEmpty {
                 cell.placeHolderLabel.isHidden = true

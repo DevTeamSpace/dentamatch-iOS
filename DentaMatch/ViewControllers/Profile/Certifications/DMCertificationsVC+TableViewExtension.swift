@@ -59,6 +59,7 @@ extension DMCertificationsVC : UITableViewDataSource,UITableViewDelegate , UITex
             let cell = tableView.dequeueReusableCell(withIdentifier: "CertificationsCell") as! CertificationsCell
             let certificate = certicates[indexPath.row]
             cell.validityDateTextField.tag = indexPath.row
+            cell.validityDateTextField.text = certificate.validityDate
             cell.validityDateTextField.inputView = dateView
             cell.validityDateTextField.delegate = self
             cell.validityDateTextField.text = certificate.validityDate

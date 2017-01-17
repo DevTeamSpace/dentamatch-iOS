@@ -78,8 +78,11 @@ extension DMWorkExperienceStart
             let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoNameCell") as! PhotoNameCell
             cell.nameLabel.text = "Where do you work?"
             cell.jobTitleLabel.text = "Relevant work experience strengthens your profile"
-            cell.photoButton.progressBar.setProgress(profileProgress, animated: true)
+            if let imageURL = URL(string: UserDefaultsManager.sharedInstance.profileImageURL) {
+                cell.photoButton.sd_setImage(with: imageURL, for: .normal, placeholderImage: kPlaceHolderImage)
+            }
 
+            cell.photoButton.progressBar.setProgress(profileProgress, animated: true)
             cell.selectionStyle = .none
             
             return cell

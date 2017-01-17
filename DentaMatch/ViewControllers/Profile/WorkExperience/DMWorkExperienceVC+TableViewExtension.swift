@@ -368,7 +368,7 @@ extension DMWorkExperienceVC
             self.reSizeTableViewsAndScrollView()
  
         }else{
-            self.makeToast(toastString: "you can add only maximum 2 experience")
+            self.makeToast(toastString: "More than two references can not be added.")
         }
     }
     func addMoreExperience(_ sender: Any) {

@@ -151,7 +151,7 @@ struct Constants {
         static let other = "other"
         static let affiliationId = "affiliationId"
         static let otherAffiliation = "otherAffiliation"
-        static let validityDate = "validity_date"
+        static let validityDate = "validityDate"
         static let image = "image"
         
         static let imageURL = "imagePath"
