@@ -38,6 +38,10 @@ class DMStudyVC: DMBaseVC {
     
     func setup() {
         self.navigationItem.leftBarButtonItem = self.backBarButton()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.studyTableView.addGestureRecognizer(tap)
+        
         self.studyTableView.separatorColor = UIColor.clear
         self.studyTableView.register(UINib(nibName: "PhotoNameCell", bundle: nil), forCellReuseIdentifier: "PhotoNameCell")
         self.studyTableView.register(UINib(nibName: "SectionHeadingTableCell", bundle: nil), forCellReuseIdentifier: "SectionHeadingTableCell")
@@ -54,6 +58,10 @@ class DMStudyVC: DMBaseVC {
         autoCompleteTable.clipsToBounds = true
         self.view.addSubview(autoCompleteBackView)
         self.view.addSubview(autoCompleteTable)        
+    }
+    
+    func dismissKeyboard() {
+        self.view.endEditing(true)
     }
     
     func hideAutoCompleteView() {
@@ -103,8 +111,12 @@ class DMStudyVC: DMBaseVC {
 }
 
 extension DMStudyVC:AutoCompleteSelectedDelegate {
-    func didSelect(university: University) {
+
+    func didSelect(schoolCategoryId: String, university: University) {
         hideAutoCompleteView()
+        selectedUniversities["other_\(schoolCategoryId)"] = nil
+        selectedUniversities[schoolCategoryId] = university
+        print(selectedUniversities)
         self.studyTableView.reloadData()
     }
 }

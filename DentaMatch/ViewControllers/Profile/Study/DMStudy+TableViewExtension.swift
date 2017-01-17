@@ -84,8 +84,16 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate,UITextFieldDeleg
             let cell = tableView.dequeueReusableCell(withIdentifier: "StudyCell") as! StudyCell
             let school = schoolCategories[indexPath.row]
             cell.headingButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+            cell.schoolNameTextField.text = ""
             cell.schoolNameTextField.delegate = self
+            
             cell.schoolNameTextField.tag = Int(school.schoolCategoryId)!
+            cell.yearOfGraduationTextField.tag = Int(school.schoolCategoryId)!
+            if let university = selectedUniversities[school.schoolCategoryId] {
+                cell.schoolNameTextField.text = (university as! University).universityName
+            } else if let universityOther = selectedUniversities["other_\(school.schoolCategoryId)"] {
+                cell.schoolNameTextField.text = universityOther as? String
+            }
             
             cell.schoolNameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
             cell.headingButton.tag = indexPath.row
@@ -111,6 +119,29 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate,UITextFieldDeleg
     }
     
     func textFieldDidChange(textField:UITextField) {
+        
+        let schoolCategory = schoolCategories.filter({$0.schoolCategoryId == "\(textField.tag)"}).first
+        
+        let university = schoolCategory?.universities.filter({$0.universityName == textField.text})
+        
+        selectedUniversities["\(textField.tag)"] = nil
+        
+        if (university?.count)! > 0 {
+            //Its in the list
+            print("In the list")
+        } else {
+            
+            if textField.text!.isEmpty {
+                selectedUniversities["other_\(textField.tag)"] = nil
+                selectedUniversities["other_date\(textField.tag)"] = nil
+            } else {
+                selectedUniversities["other_date\(textField.tag)"] = "" as AnyObject?
+                selectedUniversities["other_\(textField.tag)"] = textField.text! as AnyObject?
+            }
+        }
+        
+        print(selectedUniversities)
+
         if textField.text!.isEmpty {
             hideAutoCompleteView()
         } else {
@@ -138,6 +169,9 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate,UITextFieldDeleg
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

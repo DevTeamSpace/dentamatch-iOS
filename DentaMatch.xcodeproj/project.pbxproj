@@ -663,6 +663,7 @@
 		E55462E71DAE47C6004163B2 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E558D9011E2E085200A6DF95 /* Dashboard */,
 				E56B20A01DBF7486000512F6 /* Registration */,
 				E594BEA01E1E014F00310AE5 /* Login */,
 				5AE5F50B1E16569B006C328A /* Profile */,
@@ -730,6 +731,13 @@
 				E558D8FB1E2CB5D400A6DF95 /* AutoCompleteTable.swift */,
 			);
 			path = AutoCompleteTable;
+			sourceTree = "<group>";
+		};
+		E558D9011E2E085200A6DF95 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Dashboard;
 			sourceTree = "<group>";
 		};
 		E56B20A01DBF7486000512F6 /* Registration */ = {

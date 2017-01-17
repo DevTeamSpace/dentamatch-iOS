@@ -14,6 +14,7 @@ import UIKit
 
 class AutoCompleteTable: UIView,UITableViewDataSource,UITableViewDelegate {
 
+    @IBOutlet weak var noResultsLabel: UILabel!
     @IBOutlet weak var autoCompleteTableView: UITableView!
     var universities = [University]()
     var schoolCategoryId = ""
@@ -23,6 +24,7 @@ class AutoCompleteTable: UIView,UITableViewDataSource,UITableViewDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.autoCompleteTableView.dataSource = self
+        self.autoCompleteTableView.delegate = self
         self.autoCompleteTableView.estimatedRowHeight = 50.0
         self.autoCompleteTableView.rowHeight = UITableViewAutomaticDimension
         self.autoCompleteTableView.register(UINib(nibName: "AutoCompleteTableViewCell", bundle: nil), forCellReuseIdentifier: "AutoCompleteTableViewCell")
@@ -43,6 +45,7 @@ class AutoCompleteTable: UIView,UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        noResultsLabel.isHidden = universities.count == 0 ? false:true
         return universities.count
     }
     
