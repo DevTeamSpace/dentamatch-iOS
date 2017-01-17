@@ -11,9 +11,12 @@ import UIKit
 
 class RegistrationTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var firstNameTextField: AnimatedLeftViewPHTextField!
+    
+    @IBOutlet weak var lastNameTextField: AnimatedLeftViewPHTextField!
+    
     @IBOutlet weak var acceptTermsButton: UIButton!
     @IBOutlet weak var termsAndConditionsTextView: UITextView!
-    @IBOutlet weak var nameTextField: AnimatedLeftViewPHTextField!
     @IBOutlet weak var emailTextField: AnimatedLeftViewPHTextField!
     @IBOutlet weak var newPasswordTextField: AnimatedLeftViewPHTextField!
     @IBOutlet weak var preferredLocationTextField: AnimatedLeftViewPHTextField!
@@ -62,7 +65,8 @@ class RegistrationTableViewCell: UITableViewCell {
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        nameTextField.leftViewLabel?.text = "m"
+        firstNameTextField.leftViewLabel?.text = "m"
+        lastNameTextField.leftViewLabel?.text = "m"
         emailTextField.leftViewLabel?.text = "f"
         newPasswordTextField.leftViewLabel?.text = "e"
         preferredLocationTextField.leftViewLabel?.text = "d"

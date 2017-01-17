@@ -11,7 +11,8 @@ import Foundation
 extension DMRegistrationVC:UITextFieldDelegate {
     
     enum TextField:Int {
-        case name = 1
+        case firstName = 1
+        case lastName
         case email
         case password
         case preferredLocation
@@ -23,11 +24,18 @@ extension DMRegistrationVC:UITextFieldDelegate {
         let fieldSelected = TextField(rawValue:textField.tag)!
 
         switch fieldSelected {
-        case .name:
+        case .firstName:
+            if let cell = self.registrationTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as?
+                RegistrationTableViewCell {
+                cell.lastNameTextField.becomeFirstResponder()
+            }
+            
+        case .lastName:
             if let cell = self.registrationTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as?
                 RegistrationTableViewCell {
                 cell.emailTextField.becomeFirstResponder()
             }
+            
         case .email:
             if let cell = self.registrationTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as?
                 RegistrationTableViewCell {
@@ -73,9 +81,9 @@ extension DMRegistrationVC:UITextFieldDelegate {
         let fieldSelected = TextField(rawValue:textField.tag)!
 
         switch fieldSelected {
-        case .name:
-            //FirstName
+        case .firstName:
             registrationParams[Constants.ServerKey.firstName] = textField.text!
+        case .lastName:
             registrationParams[Constants.ServerKey.lastName] = textField.text!
         case .email:
             registrationParams[Constants.ServerKey.email] = textField.text!
@@ -97,7 +105,11 @@ extension DMRegistrationVC:UITextFieldDelegate {
         }
         
         switch fieldSelected {
-        case .name:
+        case .firstName:
+            if textField.text!.characters.count >= Constants.Limit.commonMaxLimit {
+                return false
+            }
+        case .lastName:
             if textField.text!.characters.count >= Constants.Limit.commonMaxLimit {
                 return false
             }
