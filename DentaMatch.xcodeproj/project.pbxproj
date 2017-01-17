@@ -18,6 +18,15 @@
 		5A3FD0751E1CC79700360B3C /* DMProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3FD0741E1CC79700360B3C /* DMProfileHeaderView.swift */; };
 		5A3FD0771E1CC7CD00360B3C /* DMProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A3FD0761E1CC7CD00360B3C /* DMProfileHeaderView.xib */; };
 		5A5266BD1E26413400C5B7A1 /* DMLicenseSelectionVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5266BC1E26413400C5B7A1 /* DMLicenseSelectionVC+Services.swift */; };
+		5A85D20F1E2DFAD000AC4C89 /* SeparatorWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A85D2061E2DFAD000AC4C89 /* SeparatorWrapper.swift */; };
+		5A85D2101E2DFAD000AC4C89 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A85D2071E2DFAD000AC4C89 /* Tag.swift */; };
+		5A85D2111E2DFAD000AC4C89 /* TagContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A85D2081E2DFAD000AC4C89 /* TagContent.swift */; };
+		5A85D2121E2DFAD000AC4C89 /* TagContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A85D2091E2DFAD000AC4C89 /* TagContents.swift */; };
+		5A85D2131E2DFAD000AC4C89 /* TagList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A85D20A1E2DFAD000AC4C89 /* TagList.swift */; };
+		5A85D2141E2DFAD000AC4C89 /* TagPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A85D20B1E2DFAD000AC4C89 /* TagPresentable.swift */; };
+		5A85D2151E2DFAD000AC4C89 /* TagPresentables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A85D20C1E2DFAD000AC4C89 /* TagPresentables.swift */; };
+		5A85D2161E2DFAD000AC4C89 /* TagWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A85D20D1E2DFAD000AC4C89 /* TagWrapper.swift */; };
+		5A85D2171E2DFAD000AC4C89 /* TagWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A85D20E1E2DFAD000AC4C89 /* TagWrappers.swift */; };
 		5A9A3A971E2B58600002C5B6 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9A3A961E2B58600002C5B6 /* UserManager.swift */; };
 		5AB876501E249B62007818D6 /* ExperiencePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB8764F1E249B62007818D6 /* ExperiencePickerView.swift */; };
 		5AB876521E249C0A007818D6 /* ExperiencePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AB876511E249C0A007818D6 /* ExperiencePickerView.xib */; };
@@ -204,6 +213,15 @@
 		5A3FD0741E1CC79700360B3C /* DMProfileHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMProfileHeaderView.swift; sourceTree = "<group>"; };
 		5A3FD0761E1CC7CD00360B3C /* DMProfileHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DMProfileHeaderView.xib; sourceTree = "<group>"; };
 		5A5266BC1E26413400C5B7A1 /* DMLicenseSelectionVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMLicenseSelectionVC+Services.swift"; sourceTree = "<group>"; };
+		5A85D2061E2DFAD000AC4C89 /* SeparatorWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatorWrapper.swift; sourceTree = "<group>"; };
+		5A85D2071E2DFAD000AC4C89 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		5A85D2081E2DFAD000AC4C89 /* TagContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagContent.swift; sourceTree = "<group>"; };
+		5A85D2091E2DFAD000AC4C89 /* TagContents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagContents.swift; sourceTree = "<group>"; };
+		5A85D20A1E2DFAD000AC4C89 /* TagList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagList.swift; sourceTree = "<group>"; };
+		5A85D20B1E2DFAD000AC4C89 /* TagPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagPresentable.swift; sourceTree = "<group>"; };
+		5A85D20C1E2DFAD000AC4C89 /* TagPresentables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagPresentables.swift; sourceTree = "<group>"; };
+		5A85D20D1E2DFAD000AC4C89 /* TagWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagWrapper.swift; sourceTree = "<group>"; };
+		5A85D20E1E2DFAD000AC4C89 /* TagWrappers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagWrappers.swift; sourceTree = "<group>"; };
 		5A9A3A961E2B58600002C5B6 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		5AB8764F1E249B62007818D6 /* ExperiencePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperiencePickerView.swift; sourceTree = "<group>"; };
 		5AB876511E249C0A007818D6 /* ExperiencePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExperiencePickerView.xib; sourceTree = "<group>"; };
@@ -452,6 +470,22 @@
 			path = ProfileHeaderView;
 			sourceTree = "<group>";
 		};
+		5A85D2051E2DFA5100AC4C89 /* TagView */ = {
+			isa = PBXGroup;
+			children = (
+				5A85D2061E2DFAD000AC4C89 /* SeparatorWrapper.swift */,
+				5A85D2071E2DFAD000AC4C89 /* Tag.swift */,
+				5A85D2081E2DFAD000AC4C89 /* TagContent.swift */,
+				5A85D2091E2DFAD000AC4C89 /* TagContents.swift */,
+				5A85D20A1E2DFAD000AC4C89 /* TagList.swift */,
+				5A85D20B1E2DFAD000AC4C89 /* TagPresentable.swift */,
+				5A85D20C1E2DFAD000AC4C89 /* TagPresentables.swift */,
+				5A85D20D1E2DFAD000AC4C89 /* TagWrapper.swift */,
+				5A85D20E1E2DFAD000AC4C89 /* TagWrappers.swift */,
+			);
+			path = TagView;
+			sourceTree = "<group>";
+		};
 		5AE5F50B1E16569B006C328A /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -641,6 +675,7 @@
 		E55462E21DAE47A9004163B2 /* Third Party */ = {
 			isa = PBXGroup;
 			children = (
+				5A85D2051E2DFA5100AC4C89 /* TagView */,
 				E5A0EB071E2BE7C40092E21A /* ASJTagsView */,
 				E5A0EADC1E2944D50092E21A /* SSASideMenu */,
 				E5A174BF1E201D450044B17E /* CircleProgressBar */,
@@ -1383,6 +1418,8 @@
 				5A5266BD1E26413400C5B7A1 /* DMLicenseSelectionVC+Services.swift in Sources */,
 				E597E58F1E151CFF001DDA78 /* FloatLabelTextField.swift in Sources */,
 				E558D8E01E2C80C200A6DF95 /* SchoolCategory.swift in Sources */,
+				5A85D2101E2DFAD000AC4C89 /* Tag.swift in Sources */,
+				5A85D2111E2DFAD000AC4C89 /* TagContent.swift in Sources */,
 				E50B3F3E1E18E8D2004C5F32 /* ZActivityIndicatorView.swift in Sources */,
 				E587D3051E24E9F4006B7F06 /* SectionHeadingTableCell.swift in Sources */,
 				E587D30F1E253E83006B7F06 /* AffliliationsOthersCell.swift in Sources */,
@@ -1401,6 +1438,7 @@
 				E59029AA1DED2C7A00151E9B /* UserDefaultsManager.swift in Sources */,
 				E594BE9D1E1DFF4400310AE5 /* DMRegistrationVC+TableViewExtension.swift in Sources */,
 				E55462DB1DAE312C004163B2 /* String+Additons.swift in Sources */,
+				5A85D2161E2DFAD000AC4C89 /* TagWrapper.swift in Sources */,
 				E55462D91DAE3104004163B2 /* Array+Additions.swift in Sources */,
 				E594BE9F1E1DFFA900310AE5 /* DMRegistrationVC+TextFieldExtension.swift in Sources */,
 				E57EE6CD1E28EBC00090434F /* Affiliation.swift in Sources */,
@@ -1431,6 +1469,7 @@
 				E55462E61DAE47A9004163B2 /* UIView+Toast.m in Sources */,
 				E587D2D11E2343A5006B7F06 /* DMJobTitleSelectionVC+UIPickerViewExtension.swift in Sources */,
 				E587D2D91E236EAE006B7F06 /* DMRegisterMapsVC+TableViewExtension.swift in Sources */,
+				5A85D2151E2DFAD000AC4C89 /* TagPresentables.swift in Sources */,
 				E587D30B1E25392F006B7F06 /* AffiliationsCell.swift in Sources */,
 				E55463001DAE510A004163B2 /* Utilities.swift in Sources */,
 				E56E90801DFF31740096A31B /* CameraGalleryManager.swift in Sources */,
@@ -1443,9 +1482,12 @@
 				E57EE6CA1E28EB440090434F /* DMAffiliationsVC+Services.swift in Sources */,
 				5AD246911E272E92009350BF /* DMWorkExperienceVC+Services.swift in Sources */,
 				E5496E081E25E4AA00C54288 /* DMSchoolListPopOverVC.swift in Sources */,
+				5A85D2121E2DFAD000AC4C89 /* TagContents.swift in Sources */,
+				5A85D20F1E2DFAD000AC4C89 /* SeparatorWrapper.swift in Sources */,
 				E594BEA41E1E076D00310AE5 /* DMLoginVC+TextFieldExtension.swift in Sources */,
 				E55462EC1DAE47F5004163B2 /* AppDelegate.swift in Sources */,
 				E587D3081E253719006B7F06 /* DMAffiliationsVC+TableViewExtension.swift in Sources */,
+				5A85D2171E2DFAD000AC4C89 /* TagWrappers.swift in Sources */,
 				E54976F71E28D243006F21E5 /* DMExecutiveSummaryVC+Services.swift in Sources */,
 				E587D2CC1E23362C006B7F06 /* JobSelectionPickerView.swift in Sources */,
 				E587D3001E24E5C1006B7F06 /* ProfileTextField.swift in Sources */,
@@ -1453,6 +1495,7 @@
 				E587D2F61E24C0B0006B7F06 /* DMSkillsVC.swift in Sources */,
 				E50B3F501E194CD7004C5F32 /* RegistrationTableViewCell.swift in Sources */,
 				5A1E2A1C1E1E77790055D913 /* ExperienceTableCell.swift in Sources */,
+				5A85D2141E2DFAD000AC4C89 /* TagPresentable.swift in Sources */,
 				E5A0EADE1E2944D50092E21A /* SSASideMenu.swift in Sources */,
 				E5496E0E1E273F1D00C54288 /* DMSkillsVC+Services.swift in Sources */,
 				E54976F11E28CEDD006F21E5 /* JobTitle.swift in Sources */,
@@ -1466,6 +1509,7 @@
 				E5F47C951E0035B90051C4A1 /* UIImageRotate.m in Sources */,
 				E5C5F31B1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift in Sources */,
 				E54976F21E28CEDD006F21E5 /* Skill.swift in Sources */,
+				5A85D2131E2DFAD000AC4C89 /* TagList.swift in Sources */,
 				E558D8FF1E2CB66800A6DF95 /* AutoCompleteTableViewCell.swift in Sources */,
 				E5A0EB0E1E2BE7C40092E21A /* ASJTag.m in Sources */,
 				E587D2F01E24C05D006B7F06 /* DMCertificationsVC.swift in Sources */,

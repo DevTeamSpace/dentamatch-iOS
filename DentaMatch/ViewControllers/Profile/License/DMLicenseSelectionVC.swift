@@ -97,7 +97,7 @@ class DMLicenseSelectionVC: DMBaseVC,UITextFieldDelegate {
 //            }
 //        }
         
-//        openExperienceFirstScreen()
+        openExperienceFirstScreen()
 //
 //        let  params = ["license":self.licenseArray![0],"state":self.licenseArray![1],"jobTitleId":"\(self.selectedJobTitle.jobId)"]
 //        updateLicenseAndStateAPI(params: params as! [String : String])
