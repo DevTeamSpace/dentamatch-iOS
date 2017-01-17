@@ -40,7 +40,12 @@ class DMSkillsVC: DMBaseVC {
     }
 
     @IBAction func nextButtonClicked(_ sender: Any) {
+        self.updateSkillsAPI(params: prepareSkillUpdateData())
+    }
+    
+    func openAffiliationScreen() {
         self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToAffiliationsVC, sender: self)
+
     }
         
     // MARK: - Navigation
@@ -51,7 +56,6 @@ class DMSkillsVC: DMBaseVC {
         // Pass the selected object to the new view controller.
     }
     
-
 }
 
 extension DMSkillsVC: SSASideMenuDelegate {
@@ -64,5 +68,6 @@ extension DMSkillsVC: SSASideMenuDelegate {
         if let selectedIndex = self.skillsTableView.indexPathForSelectedRow {
             self.skillsTableView.deselectRow(at: selectedIndex, animated: true)
         }
+        self.skillsTableView.reloadData()
     }
 }
