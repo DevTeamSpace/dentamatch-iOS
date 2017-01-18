@@ -12,6 +12,7 @@ import UIKit
 extension UIStoryboard {
     
     func instantiateViewController<T:UIViewController>(type: T.Type) -> T? {
+        debugPrint(type)
         var fullName: String = NSStringFromClass(T.self)
         if let range = fullName.range(of:".", options:.backwards, range:nil, locale: nil){
             fullName = fullName.substring(from: range.upperBound)

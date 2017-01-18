@@ -21,7 +21,7 @@ extension UIColor{
      */
     class func color(withHexCode:String) -> UIColor{
         
-        var cString = withHexCode.trimmingCharacters(in: (CharacterSet.whitespacesAndNewlines)).uppercased()
+        var cString = withHexCode.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).uppercased()
         cString = cString.replacingOccurrences(of: "#", with: "")
         if cString.characters.count < 6 {
             //Return Default Color
@@ -50,6 +50,6 @@ extension UIColor{
         Scanner(string: gString).scanHexInt32(&g)
         Scanner(string: bString).scanHexInt32(&b)
         
-        return UIColor(red: (CGFloat(r)/255.0), green: (CGFloat(g)/255.0), blue: (CGFloat(b)/255.0), alpha: 1.0)
+        return UIColor(red: CGFloat(r)/255.0, green: CGFloat(g)/255.0, blue: CGFloat(b)/255.0, alpha: 1.0)
     }
 }
