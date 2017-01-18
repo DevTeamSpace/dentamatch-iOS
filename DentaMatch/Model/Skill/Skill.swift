@@ -16,6 +16,7 @@ class Skill: NSObject {
     var subSkills = [SubSkill]()
     
     override init () {
+        //for empty object
     }
     
     init(skills:JSON,subSkills:[SubSkill]) {
@@ -31,6 +32,8 @@ class SubSkill:NSObject {
     var isSelected = false
     
     override init() {
+        //for empty object
+
     }
     
     init(subSkill:JSON) {

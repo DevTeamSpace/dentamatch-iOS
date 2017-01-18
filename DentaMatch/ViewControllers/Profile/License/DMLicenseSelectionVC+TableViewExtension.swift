@@ -18,26 +18,7 @@ extension DMLicenseSelectionVC : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 6
     }
-    /*
-     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
-     {
-     let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 45))
-     let headerLabel = UILabel(frame: headerView.frame)
-     headerLabel.frame.origin.x = 20
-     headerLabel.backgroundColor = UIColor.clear
-     headerLabel.font = UIFont.fontMedium(fontSize: 14)
-     headerView.addSubview(headerLabel)
-     headerView.backgroundColor = UIColor(red: 248.0/255.0, green: 248.0/255.0, blue: 248.0/255.0, alpha: 1.0)
-     if section == 1
-     {
-     headerLabel.text = "ADD DENTAL STATE BOARD"
-     }else{
-     headerLabel.text = "LICENSE"
-     }
-     
-     return headerView
-     }
-     */
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         switch indexPath.row {
@@ -65,63 +46,25 @@ extension DMLicenseSelectionVC : UITableViewDataSource, UITableViewDelegate {
         switch indexPath.row {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoNameCell") as! PhotoNameCell
-            cell.nameLabel.text = "Jennifer"
-            cell.jobTitleLabel.text = selectedJobTitle.jobTitle
-            if let imageURL = URL(string: UserManager.shared().activeUser.profileImageURL!) {
-                cell.photoButton.sd_setImage(with: imageURL, for: .normal, placeholderImage: kPlaceHolderImage)
-            }
-            cell.photoButton.progressBar.setProgress(profileProgress, animated: true)
+            cell.updateCellForPhotoNameCell(nametext:UserManager.shared().activeUser.fullName()! ,jobTitleText:selectedJobTitle.jobTitle, profileProgress: profileProgress)
             cell.selectionStyle = .none
-            
             return cell
-            
         case 1,3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SectionHeadingTableCell") as! SectionHeadingTableCell
             cell.selectionStyle = .none
             let text  = indexPath.row == 1 ? "ADD DENTAL STATE BOARD":"LICENSE"
             cell.headingLabel.text = text
             return cell
-            
-        //SectionHeadingTableCell
         case 2:
-            debugPrint("row 1")
             let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoCell") as! PhotoCell
-            
-            cell.stateBoardPhotoButton.addTarget(self, action: #selector(DMLicenseSelectionVC.stateBoardButtonPressed(_:)), for: .touchUpInside)
-            if self.stateBoardImage == nil{
-                cell.stateBoardPhotoButton .setTitle("h", for: .normal)
-            }else{
-                cell.stateBoardPhotoButton .setTitle("", for: .normal)
-                cell.stateBoardPhotoButton.alpha = 1.0
-                cell.stateBoardPhotoButton.backgroundColor = UIColor.clear
-                cell.stateBoardPhotoButton.setImage(self.stateBoardImage!, for: .normal)
-            }
-            
-            cell.selectionStyle = .none
+            updateCellForPhotoCell(cell: cell, indexPath: indexPath)
             return cell
             
         case 4,5:
             
             debugPrint("row 2")
             let cell = tableView.dequeueReusableCell(withIdentifier: "AnimatedPHTableCell") as! AnimatedPHTableCell
-            
-            cell.commonTextField.delegate = self
-            cell.commonTextField.autocapitalizationType = .sentences
-            if indexPath.row == 4
-            {
-                cell.commonTextField.tag = 0
-                cell.cellTopSpace.constant = 43.5
-                cell.cellBottomSpace.constant = 10.5
-                cell.commonTextField.placeholder = "License Number"
-                cell.layoutIfNeeded()
-            }else if indexPath.row == 5
-            {
-                cell.commonTextField.tag = 1
-                cell.commonTextField.placeholder = "State"
-                cell.cellTopSpace.constant = 10.5
-                cell.cellBottomSpace.constant = 41.5
-                cell.layoutIfNeeded()
-            }
+            updateCellForTextField(cell: cell, indexPath: indexPath)
             return cell
             
         default:
@@ -132,6 +75,40 @@ extension DMLicenseSelectionVC : UITableViewDataSource, UITableViewDelegate {
         return UITableViewCell()
     }
     
+    func updateCellForPhotoCell(cell:PhotoCell , indexPath:IndexPath) {
+        
+        cell.stateBoardPhotoButton.tag = indexPath.row
+        cell.stateBoardPhotoButton.addTarget(self, action: #selector(DMLicenseSelectionVC.stateBoardButtonPressed(_:)), for: .touchUpInside)
+        if self.stateBoardImage == nil{
+            cell.stateBoardPhotoButton .setTitle("h", for: .normal)
+        }else{
+            cell.stateBoardPhotoButton .setTitle("", for: .normal)
+            cell.stateBoardPhotoButton.alpha = 1.0
+            cell.stateBoardPhotoButton.backgroundColor = UIColor.clear
+            cell.stateBoardPhotoButton.setImage(self.stateBoardImage!, for: .normal)
+        }
+        cell.selectionStyle = .none
+    }
+    func updateCellForTextField(cell:AnimatedPHTableCell ,indexPath :IndexPath ) {
+        cell.commonTextField.delegate = self
+        cell.commonTextField.autocapitalizationType = .sentences
+        if indexPath.row == 4
+        {
+            cell.commonTextField.tag = 0
+            cell.cellTopSpace.constant = 43.5
+            cell.cellBottomSpace.constant = 10.5
+            cell.commonTextField.placeholder = "License Number"
+            cell.layoutIfNeeded()
+        }else if indexPath.row == 5
+        {
+            cell.commonTextField.tag = 1
+            cell.commonTextField.placeholder = "State"
+            cell.cellTopSpace.constant = 10.5
+            cell.cellBottomSpace.constant = 41.5
+            cell.layoutIfNeeded()
+        }
+
+    }
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if let textField = textField as? AnimatedPHTextField {
             textField.layer.borderColor = Constants.Color.textFieldColorSelected.cgColor
@@ -146,7 +123,7 @@ extension DMLicenseSelectionVC : UITableViewDataSource, UITableViewDelegate {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        
+        //textField did begin
     }
     
     

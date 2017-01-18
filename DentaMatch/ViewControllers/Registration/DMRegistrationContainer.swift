@@ -72,6 +72,8 @@ class DMRegistrationContainer: DMBaseVC {
             self.loginVC?.view.alpha = 1.0
             self.registrationVC?.view.alpha = 0.0
         }) { (finished:Bool) in
+            //completion
+
         }
     }
 
@@ -87,6 +89,7 @@ class DMRegistrationContainer: DMBaseVC {
             self.registrationVC?.view.alpha = 1.0
             self.loginVC?.view.alpha = 0.0
         }) { (finished:Bool) in
+            //completion
         }
     }
     
@@ -102,6 +105,8 @@ class DMRegistrationContainer: DMBaseVC {
             self.loginVC?.view.alpha = 1.0
             self.registrationVC?.view.alpha = 0.0
         }) { (finished:Bool) in
+            //completion
+
         }
     }
 }

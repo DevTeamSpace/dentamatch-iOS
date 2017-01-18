@@ -32,26 +32,28 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate,UITextFieldDeleg
 
         switch studyOption {
         case .profileHeader:
-            switch indexPath.row {
-            case 0:
-                //Profile Header
-                return 233
-            case 1:
-                //Heading
-                return 44
-            default:
-                return 0
-            }
+            return getHeightForProfileHeader(indexPath: indexPath)
         case .school:
             let schoolCategory = schoolCategories[indexPath.row]
             if !schoolCategory.isOpen {
                 return 60
-            } else {
-                return 202
-            }
+            } else { return 202 }
         }
     }
     
+    func getHeightForProfileHeader(indexPath:IndexPath) -> CGFloat {
+        switch indexPath.row {
+        case 0:
+            //Profile Header
+            return 233
+        case 1:
+            //Heading
+            return 44
+        default:
+            return 0
+        }
+
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let studyOption = Study(rawValue: indexPath.section)!
@@ -59,49 +61,50 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate,UITextFieldDeleg
         switch studyOption {
             
         case .profileHeader:
-            switch indexPath.row {
-            case 0:
-                //Profile Header
-                let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoNameCell") as! PhotoNameCell
-                cell.nameLabel.text = "Where did you Study?"
-                cell.jobTitleLabel.text = "Lorem Ipsum is simply dummy text for the typing and printing industry"
-                if let imageURL = URL(string: UserManager.shared().activeUser.profileImageURL!) {
-                    cell.photoButton.sd_setImage(with: imageURL, for: .normal, placeholderImage: kPlaceHolderImage)
-                }
-                cell.photoButton.progressBar.setProgress(profileProgress, animated: true)
-                return cell
-                
-            case 1:
-                //Heading
-                let cell = tableView.dequeueReusableCell(withIdentifier: "SectionHeadingTableCell") as! SectionHeadingTableCell
-                return cell
-                
-            default:
-                return UITableViewCell()
-            }
-
+             return updateCellForProfileHeader(tableView: tableView, indexPath: indexPath)
+            
         case .school:
             let cell = tableView.dequeueReusableCell(withIdentifier: "StudyCell") as! StudyCell
-            let school = schoolCategories[indexPath.row]
-            cell.headingButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-            cell.schoolNameTextField.text = ""
-            cell.schoolNameTextField.delegate = self
-            
-            cell.schoolNameTextField.tag = Int(school.schoolCategoryId)!
-            cell.yearOfGraduationTextField.tag = Int(school.schoolCategoryId)!
-            if let university = selectedUniversities[school.schoolCategoryId] {
-                cell.schoolNameTextField.text = (university as! University).universityName
-            } else if let universityOther = selectedUniversities["other_\(school.schoolCategoryId)"] {
-                cell.schoolNameTextField.text = universityOther as? String
-            }
-            
-            cell.schoolNameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
-            cell.headingButton.tag = indexPath.row
-            cell.headingButton.setTitle(school.schoolCategoryName, for: .normal)
+            updateCellForStudyCell(cell: cell, indexPath: indexPath)
             return cell
         }
     }
     
+    func updateCellForProfileHeader(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        switch indexPath.row {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoNameCell") as! PhotoNameCell
+            cell.updateCellForPhotoNameCell(nametext: "Where did you Study?", jobTitleText: "Lorem Ipsum is simply dummy text for the typing and printing industry", profileProgress: profileProgress)
+            return cell
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SectionHeadingTableCell") as! SectionHeadingTableCell
+            return cell
+            
+        default:
+            return UITableViewCell()
+        }
+ 
+    }
+    
+    func updateCellForStudyCell(cell:StudyCell , indexPath: IndexPath) {
+        let school = schoolCategories[indexPath.row]
+        cell.headingButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        cell.schoolNameTextField.text = ""
+        cell.schoolNameTextField.delegate = self
+        
+        cell.schoolNameTextField.tag = Int(school.schoolCategoryId)!
+        cell.yearOfGraduationTextField.tag = Int(school.schoolCategoryId)!
+        if let university = selectedUniversities[school.schoolCategoryId] {
+            cell.schoolNameTextField.text = (university as! University).universityName
+        } else if let universityOther = selectedUniversities["other_\(school.schoolCategoryId)"] {
+            cell.schoolNameTextField.text = universityOther as? String
+        }
+        
+        cell.schoolNameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        cell.headingButton.tag = indexPath.row
+        cell.headingButton.setTitle(school.schoolCategoryName, for: .normal)
+
+    }
     func buttonTapped(sender:UIButton) {
         let school = schoolCategories[sender.tag]
         if school.isOpen {
@@ -169,9 +172,11 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate,UITextFieldDeleg
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        //textFieldDidBeginEditing
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        //textFieldDidEndEditing
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

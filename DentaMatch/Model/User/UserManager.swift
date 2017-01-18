@@ -14,17 +14,17 @@ let LOGGED_USER_EMAIL_KEY = "userEmail"
 
 class UserManager: NSObject {
     
-    private var _activeUser: User?
+    private var activeUserP: User?
     var callingController:UIViewController?
     
     var activeUser: User! {
         get {
-            return _activeUser
+            return activeUserP
         }
         set {
-            _activeUser = newValue
+            activeUserP = newValue
             
-            if let _ = _activeUser {
+            if let _ = activeUserP {
                 self.saveActiveUser()
             }
         }
@@ -134,5 +134,6 @@ extension UserManager {
     
     func logoutResponseHandler() {
         
+        //logout will be here 
     }
 }

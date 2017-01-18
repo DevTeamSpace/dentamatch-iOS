@@ -25,5 +25,15 @@ class PhotoNameCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
     }
+    func updateCellForPhotoNameCell(nametext:String,jobTitleText:String, profileProgress:CGFloat) {
+        self.nameLabel.text = nametext
+        self.jobTitleLabel.text = jobTitleText
+        if let imageURL = URL(string: UserManager.shared().activeUser.profileImageURL!) {
+            self.photoButton.sd_setImage(with: imageURL, for: .normal, placeholderImage: kPlaceHolderImage)
+        }
+        self.photoButton.progressBar.setProgress(profileProgress, animated: true)
+        
+    }
+
     
 }

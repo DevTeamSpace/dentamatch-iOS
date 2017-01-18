@@ -28,9 +28,7 @@ extension DMAffiliationsVC : UITableViewDataSource,UITableViewDelegate,UITextVie
         case .affiliationOther:
             if affiliations.count > 0 {
                 return 1
-            } else {
-                return 0
-            }
+            } else { return 0 }
         }
     }
     

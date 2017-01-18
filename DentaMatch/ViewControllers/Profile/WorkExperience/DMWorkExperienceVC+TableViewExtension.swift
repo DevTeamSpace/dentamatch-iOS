@@ -27,36 +27,34 @@ extension DMWorkExperienceVC
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if tableView == self.workExperienceDetailTable
         {
-            if indexPath.row > (self.currentExperience?.references.count)! + 4
-            {
-                let height =  self.currentExperience?.isFirstExperience == true ? 80:130
-                return CGFloat(height)
-            }
-            if indexPath.row > 4
-            {
-                let index = indexPath.row - 5
-                let height = index == 0 ? ((self.currentExperience?.references.count)! > index ? 230 : 257): ((self.currentExperience?.references.count)!-1 > index ? 250 : 303)
-                debugPrint("row height \(height)")
-                return CGFloat(height)
-            }
-            if indexPath.row == 0 {
-                return 95
-            }
-            return 75
-
+             return getHeightForworkExperienceDetailTable(indexPath: indexPath)
         }else{
             return 44
         }
         
     }
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
-//    {
-//        if section == 0
-//        {
-//            return 0
-//        }
-//        return 45
-//    }
+    
+    func getHeightForworkExperienceDetailTable(indexPath: IndexPath)  -> CGFloat{
+        
+        if indexPath.row > (self.currentExperience?.references.count)! + 4
+        {
+            let height =  self.currentExperience?.isFirstExperience == true ? 80:130
+            return CGFloat(height)
+        }
+        if indexPath.row > 4
+        {
+            let index = indexPath.row - 5
+            let height = index == 0 ? ((self.currentExperience?.references.count)! > index ? 230 : 257): ((self.currentExperience?.references.count)!-1 > index ? 250 : 303)
+            debugPrint("row height \(height)")
+            return CGFloat(height)
+        }
+        if indexPath.row == 0 {
+            return 95
+        }
+        return 75
+        
+
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -67,59 +65,25 @@ extension DMWorkExperienceVC
             {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AddDeleteExperienceCell") as! AddDeleteExperienceCell
                 cell.selectionStyle = .none
+                self.updateCellForAddDeleteExperienceCell(cell: cell, indexPth:indexPath)
                 
-                let tag = indexPath.row - 5 - (self.currentExperience?.references.count)!
-                cell.addMoreExperienceButton.tag = tag
-                cell.deleteButton.tag = tag
-                
-                if self.currentExperience?.isEditMode == true {
-                    cell.addMoreExperienceButton.setTitle(" Save", for: .normal)
-                }else{
-                    cell.addMoreExperienceButton.setTitle(" Add More Experience", for: .normal)
-                }
-                
-                cell.deleteButton.addTarget(self, action: #selector(DMWorkExperienceVC.deleteExperience(_:)), for: .touchUpInside)
-                cell.addMoreExperienceButton.addTarget(self, action: #selector(DMWorkExperienceVC.addMoreExperience(_:)), for: .touchUpInside)
-
-                if self.currentExperience?.isFirstExperience == true
-                {
-                    cell.deleteButton.isHidden = true
-                    cell.topSpaceOfAddMoreExperience.constant = 10
-                }else{
-                    cell.deleteButton.isHidden = false
-                    cell.topSpaceOfAddMoreExperience.constant = 57
-                }
-                cell.layoutIfNeeded()
                 return cell
             }
             
             if indexPath.row > 4
             {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ReferenceTableCell") as! ReferenceTableCell
+                let tag = indexPath.row - 5
                 cell.selectionStyle = .none
                 cell.nameTextField.delegate = self
                 cell.mobileNoTextField.delegate = self
                 cell.emailTextField.delegate = self
-                cell.mobileNoTextField.addRightToolBarButton(title: "Done")
-                
-                let tag = indexPath.row - 5
-                cell.deleteButton.tag = tag
-                cell.addMoreReferenceButton.tag = tag
-                cell.nameTextField.tag = tag
-                cell.mobileNoTextField.tag = tag
-                cell.emailTextField.tag = tag
-
+                let empRef = self.currentExperience?.references[tag]
+                cell.updateCell(empRef: empRef, tag: tag)
                 cell.nameTextField.addTarget(self, action: #selector(referenceNameTextFieldDidEnd(_:)), for: .editingDidEnd)
                 cell.nameTextField.autocapitalizationType = .sentences
                 cell.mobileNoTextField.addTarget(self, action: #selector(referenceMobileNumberTextFieldDidEnd(_:)), for: .editingDidEnd)
                 cell.emailTextField.addTarget(self, action: #selector(referenceEmailTextFieldDidEnd(_:)), for: .editingDidEnd)
-                
-                let empRef = self.currentExperience?.references[tag]
-                
-                
-                cell.nameTextField.text = empRef?.referenceName
-                cell.mobileNoTextField.text = empRef?.mobileNumber
-                cell.emailTextField.text = empRef?.email
 
                 cell.mobileNoTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
                 cell.deleteButton.addTarget(self, action: #selector(DMWorkExperienceVC.deleteReference(_:)), for: .touchUpInside)
@@ -150,71 +114,15 @@ extension DMWorkExperienceVC
                 }
 
                 cell.layoutIfNeeded()
-
-                
-                
                 return cell
                 
             }else{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AnimatedPHTableCell") as! AnimatedPHTableCell
                 cell.selectionStyle = .none
-                if indexPath.row == 0 {
-                    cell.cellTopSpace.constant = 30
-                }else{
-                    cell.cellTopSpace.constant = 10
 
-                }
-                
-                cell.cellBottomSpace.constant = 10.5
-                cell.commonTextField.delegate = self
-                cell.commonTextField.tag = indexPath.row
-                
-                cell.commonTextField.addTarget(self, action: #selector(CommonExperiencelTextFieldDidEnd(_:)), for: .editingDidEnd)
-
-                //CommonExperiencelTextFieldDidEnd
-                switch indexPath.row {
-                case 0:
-                    cell.commonTextField.placeholder = FieldType.CurrentJobTitle.description
-                    cell.accessoryLabel.isHidden = false
-                    cell.commonTextField.text = self.currentExperience?.jobTitle
-                    let pickerView = JobSelectionPickerView.loadJobSelectionView(withJobTitles: jobTitles)
-                    cell.commonTextField.inputView = pickerView
-                    pickerView.delegate = self
-                    pickerView.pickerView.reloadAllComponents()
-                    pickerView.backgroundColor = UIColor.white
-
-
-                case 1:
-                    cell.commonTextField.placeholder = FieldType.YearOfExperience.description
-                    cell.commonTextField.text = self.currentExperience?.yearOfExperience!
-
-                    let yearViewObj = ExperiencePickerView.loadExperiencePickerView(withText: (self.currentExperience?.yearOfExperience!)!)
-                    yearViewObj.delegate = self
-                    cell.commonTextField.inputView = yearViewObj
-                    
-                case 2:
-                    cell.commonTextField.placeholder = FieldType.OfficeName.description
-                    cell.commonTextField.text = self.currentExperience?.officeName
-                    cell.commonTextField.autocapitalizationType = .sentences
-
-                case 3:
-                    cell.commonTextField.placeholder = FieldType.OfficeAddress.description
-                    cell.commonTextField.text = self.currentExperience?.officeAddress
-                    cell.commonTextField.autocapitalizationType = .sentences
-
-                case 4:
-                    cell.commonTextField.placeholder = FieldType.CityName.description
-                    cell.commonTextField.text = self.currentExperience?.cityName
-                    cell.commonTextField.autocapitalizationType = .sentences
-
-                default:
-                    print("default")
-                    
-                }
+                updateCellForAnimatedPHTableCell(cell: cell, indexPath: indexPath)
                 
                 return cell
-                
-                
             }
 
             
@@ -233,6 +141,84 @@ extension DMWorkExperienceVC
         
     }
     
+    func updateCellForAddDeleteExperienceCell(cell:AddDeleteExperienceCell , indexPth : IndexPath) {
+        let tag = indexPth.row - 5 - (self.currentExperience?.references.count)!
+        cell.addMoreExperienceButton.tag = tag
+        cell.deleteButton.tag = tag
+        
+        if self.currentExperience?.isEditMode == true {
+            cell.addMoreExperienceButton.setTitle(" Save", for: .normal)
+        }else{
+            cell.addMoreExperienceButton.setTitle(" Add More Experience", for: .normal)
+        }
+        
+        cell.deleteButton.addTarget(self, action: #selector(DMWorkExperienceVC.deleteExperience(_:)), for: .touchUpInside)
+        cell.addMoreExperienceButton.addTarget(self, action: #selector(DMWorkExperienceVC.addMoreExperience(_:)), for: .touchUpInside)
+        
+        if self.currentExperience?.isFirstExperience == true
+        {
+            cell.deleteButton.isHidden = true
+            cell.topSpaceOfAddMoreExperience.constant = 10
+        }else{
+            cell.deleteButton.isHidden = false
+            cell.topSpaceOfAddMoreExperience.constant = 57
+        }
+        cell.layoutIfNeeded()
+
+        
+    }
+    func updateCellForAnimatedPHTableCell(cell : AnimatedPHTableCell , indexPath: IndexPath) {
+        
+        if indexPath.row == 0 {
+            cell.cellTopSpace.constant = 30
+        }else{
+            cell.cellTopSpace.constant = 10
+            
+        }
+        cell.cellBottomSpace.constant = 10.5
+        cell.commonTextField.delegate = self
+        cell.commonTextField.tag = indexPath.row
+        
+        cell.commonTextField.addTarget(self, action: #selector(CommonExperiencelTextFieldDidEnd(_:)), for: .editingDidEnd)
+
+        switch indexPath.row {
+        case 0:
+            cell.commonTextField.placeholder = FieldType.CurrentJobTitle.description
+            cell.accessoryLabel.isHidden = false
+            cell.commonTextField.text = self.currentExperience?.jobTitle
+            let pickerView = JobSelectionPickerView.loadJobSelectionView(withJobTitles: jobTitles)
+            cell.commonTextField.inputView = pickerView
+            pickerView.delegate = self
+            pickerView.pickerView.reloadAllComponents()
+            pickerView.backgroundColor = UIColor.white
+        case 1:
+            cell.commonTextField.placeholder = FieldType.YearOfExperience.description
+            cell.commonTextField.text = self.currentExperience?.yearOfExperience!
+            let yearViewObj = ExperiencePickerView.loadExperiencePickerView(withText: (self.currentExperience?.yearOfExperience!)!)
+            yearViewObj.delegate = self
+            cell.commonTextField.inputView = yearViewObj
+            
+        case 2:
+            cell.commonTextField.placeholder = FieldType.OfficeName.description
+            cell.commonTextField.text = self.currentExperience?.officeName
+            cell.commonTextField.autocapitalizationType = .sentences
+            
+        case 3:
+            cell.commonTextField.placeholder = FieldType.OfficeAddress.description
+            cell.commonTextField.text = self.currentExperience?.officeAddress
+            cell.commonTextField.autocapitalizationType = .sentences
+            
+        case 4:
+            cell.commonTextField.placeholder = FieldType.CityName.description
+            cell.commonTextField.text = self.currentExperience?.cityName
+            cell.commonTextField.autocapitalizationType = .sentences
+            
+        default:
+            print("default")
+            
+        }
+
+    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if tableView == self.workExperienceTable {

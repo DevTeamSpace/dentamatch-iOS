@@ -47,47 +47,40 @@ extension DMCertificationsVC : UITableViewDataSource,UITableViewDelegate , UITex
         switch certificationOption {
         case .profileHeader:
             let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoNameCell") as! PhotoNameCell
-            cell.nameLabel.text = "Update Certifications "
-            cell.jobTitleLabel.text = "Lorem Ipsum is simply dummy text for the typing and printing industry"
-            if let imageURL = URL(string: UserManager.shared().activeUser.profileImageURL!) {
-                cell.photoButton.sd_setImage(with: imageURL, for: .normal, placeholderImage: kPlaceHolderImage)
-            }
-            cell.photoButton.progressBar.setProgress(profileProgress, animated: true)
+            cell.updateCellForPhotoNameCell(nametext:"Update Certifications" ,jobTitleText:"Lorem Ipsum is simply dummy text for the typing and printing industry", profileProgress: profileProgress)
             return cell
             
         case .certifications:
             let cell = tableView.dequeueReusableCell(withIdentifier: "CertificationsCell") as! CertificationsCell
-            let certificate = certicates[indexPath.row]
-            cell.validityDateTextField.tag = indexPath.row
-            cell.validityDateTextField.text = certificate.validityDate
-            cell.validityDateTextField.inputView = dateView
-            cell.validityDateTextField.delegate = self
-            cell.validityDateTextField.text = certificate.validityDate
-            cell.headingLabel.text = certificate.certificationName
-            cell.photoButton.tag = indexPath.row
-            cell.photoButton.addTarget(self, action: #selector(DMCertificationsVC.certificationImageButtonPressed(_:)), for: .touchUpInside)
-
-
-            if let imageURL = URL(string: certificate.certificateImageURL!) {
-                if imageURL.absoluteString.isEmpty {
-//                    cell.photoButton.setImage(certificate.certificateImage, for: .normal)
-                } else {
-                cell.photoButton.sd_setImage(with: imageURL, for: .normal, placeholderImage: UIImage(named: ""))
-                }
-            }else{
-                
-                if certificate.certificateImage != nil {
-                    cell.photoButton.setImage(certificate.certificateImage, for: .normal)
-                }else{
-                    cell.photoButton.setImage(UIImage(named: ""), for: .normal)
-                }
-            }
+            updateCellForCertification(cell: cell, indexPath: indexPath)
             return cell
         }
     }
     
+    func updateCellForCertification(cell:CertificationsCell ,indexPath:IndexPath) {
+        let certificate = certicates[indexPath.row]
+        cell.validityDateTextField.tag = indexPath.row
+        cell.validityDateTextField.text = certificate.validityDate
+        cell.validityDateTextField.inputView = dateView
+        cell.validityDateTextField.delegate = self
+        cell.validityDateTextField.text = certificate.validityDate
+        cell.headingLabel.text = certificate.certificationName
+        cell.photoButton.tag = indexPath.row
+        cell.photoButton.addTarget(self, action: #selector(DMCertificationsVC.certificationImageButtonPressed(_:)), for: .touchUpInside)
+        if let imageURL = URL(string: certificate.certificateImageURL!) {
+            cell.photoButton.sd_setImage(with: imageURL, for: .normal, placeholderImage: UIImage(named: ""))
+        }
+        else{
+            if certificate.certificateImage != nil {
+                cell.photoButton.setImage(certificate.certificateImage, for: .normal)
+            }else{
+                cell.photoButton.setImage(UIImage(named: ""), for: .normal)
+            }
+        }
+    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
   
+        //didSelect
     }
 
     

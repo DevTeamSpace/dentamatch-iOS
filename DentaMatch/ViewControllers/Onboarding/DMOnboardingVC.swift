@@ -50,7 +50,7 @@ class DMOnboardingVC: DMBaseVC {
         UIView.transition(with: self.view.window!, duration: 0.25, options: .transitionCrossDissolve, animations: {
             kAppDelegate.window?.rootViewController = registrationContainer
         }) { (bool:Bool) in
-            
+            //completion
         }
     }
 }

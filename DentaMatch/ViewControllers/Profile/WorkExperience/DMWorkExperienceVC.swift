@@ -64,8 +64,6 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
 
         setup()
         initialDataSetup()
@@ -75,7 +73,11 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+        
 
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -112,9 +114,6 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
 
     
     @IBAction func nextButtonClicked(_ sender: Any) {
-//        self.alertMessage(title: "Alert", message: "Work in progress", buttonText: "Ok") {
-//            
-//        }
         
         if self.exprienceArray.count > 0
         {

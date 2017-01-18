@@ -61,6 +61,7 @@ class DMSkillsVC: DMBaseVC {
 extension DMSkillsVC: SSASideMenuDelegate {
     
     func sideMenuWillShowMenuViewController(_ sideMenu: SSASideMenu, menuViewController: UIViewController) {
+        //side menu 
     }
     
     

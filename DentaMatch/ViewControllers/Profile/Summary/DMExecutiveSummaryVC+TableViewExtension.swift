@@ -39,14 +39,8 @@ extension DMExecutiveSummaryVC : UITableViewDataSource, UITableViewDelegate, UIT
             
         case .profileHeader:
             let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoNameCell") as! PhotoNameCell
-            cell.nameLabel.text = "Executive Summary"
-            cell.jobTitleLabel.text = "Describe about your work and things you are passionate about."
-            if let imageURL = URL(string: UserManager.shared().activeUser.profileImageURL!) {
-                cell.photoButton.sd_setImage(with: imageURL, for: .normal, placeholderImage: kPlaceHolderImage)
-            }
-            cell.photoButton.progressBar.setProgress(profileProgress, animated: true)
+            cell.updateCellForPhotoNameCell(nametext: "Executive Summary", jobTitleText: "Describe about your work and things you are passionate about.", profileProgress: profileProgress)
             return cell
-            
         case .aboutMe:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AboutMeCell") as! AboutMeCell
             cell.aboutMeTextView.delegate = self
@@ -56,7 +50,7 @@ extension DMExecutiveSummaryVC : UITableViewDataSource, UITableViewDelegate, UIT
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        //didSelectRowAt
     }
     
     
@@ -74,10 +68,6 @@ extension DMExecutiveSummaryVC : UITableViewDataSource, UITableViewDelegate, UIT
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        //        if(text == "\n") {
-        //            textView.resignFirstResponder()
-        //            return false
-        //        }
         return true
     }
     

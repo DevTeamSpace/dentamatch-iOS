@@ -25,6 +25,8 @@ extension DMRegisterMapsVC:GMSAutocompleteViewControllerDelegate,GMSMapViewDeleg
     }
     
     func wasCancelled(_ viewController: GMSAutocompleteViewController) {
+        debugPrint("viewController")
+
     }
     
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {

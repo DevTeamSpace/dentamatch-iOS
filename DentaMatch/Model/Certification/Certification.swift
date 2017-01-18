@@ -14,9 +14,10 @@ class Certification: NSObject {
     var certificationName = ""
     var validityDate = ""
     var certificateImage:UIImage?
-    var certificateImageURL:String?
+    var certificateImageURL:String? = ""
     
     override init () {
+        // for empty objet
     }
     
     init(certification:JSON) {

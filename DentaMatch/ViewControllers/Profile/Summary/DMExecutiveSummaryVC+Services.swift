@@ -30,7 +30,9 @@ extension DMExecutiveSummaryVC {
     func handleAboutMeResponse(response:JSON?) {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
+                //sucess
             } else {
+                //error
             }
             self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
 

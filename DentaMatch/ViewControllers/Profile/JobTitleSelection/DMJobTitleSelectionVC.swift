@@ -61,7 +61,7 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
     }
     
     func addJobSelectionPickerViewTextField(){
-        if(jobSelectionPickerTextField != nil){
+        if jobSelectionPickerTextField != nil {
             jobSelectionPickerTextField.removeFromSuperview()
         }
         
@@ -86,6 +86,7 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
     func addPhoto() {
         self.cameraGalleryOptionActionSheet(title: "", message: "Please select", leftButtonText: "Camera", rightButtonText: "Gallery") { (isCameraButtonPressed, isGalleryButtonPressed, isCancelButtonPressed) in
             if isCancelButtonPressed {
+                //cancel action
             } else if isCameraButtonPressed {
                 self.getPhotoFromCamera()
             } else {
@@ -132,6 +133,7 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
     }
     
     @IBAction func profileButtonPressed(_ sender: Any) {
+        //profile button action
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {

@@ -29,5 +29,22 @@ class ReferenceTableCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    func updateCell(empRef: EmployeeReferenceModel? , tag:Int) {
+    
+        self.deleteButton.tag = tag
+        self.addMoreReferenceButton.tag = tag
+        self.nameTextField.tag = tag
+        self.mobileNoTextField.tag = tag
+        self.emailTextField.tag = tag
+        self.mobileNoTextField.addRightToolBarButton(title: "Done")
+        
+        self.nameTextField.text = empRef?.referenceName
+        self.mobileNoTextField.text = empRef?.mobileNumber
+        self.emailTextField.text = empRef?.email
+
+
+
+
+    }
     
 }

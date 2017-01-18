@@ -26,7 +26,6 @@ extension DMLoginVC {
             }
             debugPrint(response!)
             self.handleLoginResponse(response: response)
-
         }
     }
     
@@ -36,7 +35,6 @@ extension DMLoginVC {
             if success {
                 self.openJobTitleSelection()
             }
-            
         }
     }
 }

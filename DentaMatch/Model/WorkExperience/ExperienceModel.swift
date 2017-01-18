@@ -26,10 +26,11 @@ class ExperienceModel: NSObject {
     var references = [EmployeeReferenceModel]()
     
     init(empty:String) {
+        //this for empty object
         
     }
     init(json:JSON) {
-        
+        super.init()
         self.experienceID = json[Constants.ServerKey.experienceId].intValue
         self.jobTitleID = json[Constants.ServerKey.jobTitleId].intValue
         self.jobTitle = json[Constants.ServerKey.jobtitleName].stringValue
@@ -38,27 +39,7 @@ class ExperienceModel: NSObject {
         self.officeAddress = json[Constants.ServerKey.officeAddressExp].stringValue
         self.cityName = json[Constants.ServerKey.cityName].stringValue
         
-        let year  = self.experienceInMonth/12
-        let month = self.experienceInMonth%12
-        
-        var text:String = ""
-        
-        if year <= 1 {
-            if year != 0 {
-                text.append("\(year) year")
-            }
-        }else{
-            text.append("\(year) years")
-        }
-        
-        if month <= 1 {
-            if month != 0 {
-                text.append(" \(month) month")
-            }
-        }else {
-            text.append(" \(month) months")
-        }
-        self.yearOfExperience = text
+        self.yearOfExperience = getyearExperience(totalMonths: experienceInMonth)
 
         let reference1Name = json[Constants.ServerKey.reference1Name].stringValue
         let reference1Mobile = json[Constants.ServerKey.reference1Mobile].stringValue
@@ -83,5 +64,29 @@ class ExperienceModel: NSObject {
         }
         
     }
+    
+    func getyearExperience(totalMonths:Int) -> String {
+        let year  = totalMonths/12
+        let month = totalMonths%12
+        
+        var text:String = ""
+        
+        if year <= 1 {
+            if year != 0 {
+                text.append("\(year) year")
+            }
+        }else{
+            text.append("\(year) years")
+        }
+        
+        if month <= 1 {
+            if month != 0 {
+                text.append(" \(month) month")
+            }
+        }else {
+            text.append(" \(month) months")
+        }
 
+        return text
+    }
 }

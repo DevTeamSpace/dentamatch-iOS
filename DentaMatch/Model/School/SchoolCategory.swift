@@ -17,6 +17,7 @@ class SchoolCategory: NSObject {
     var universities = [University]()
     
     override init() {
+        //for empty object
     
     }
     
