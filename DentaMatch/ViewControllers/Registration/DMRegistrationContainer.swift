@@ -101,6 +101,7 @@ class DMRegistrationContainer: DMBaseVC {
         UIView.makeTip(view: loginButton, size: 8, x: loginButton.frame.midX/2, y: loginButton.frame.midY)
         self.view.endEditing(true)
         self.view.bringSubview(toFront: (self.loginVC?.view)!)
+        loginVC?.clearData()
         UIView.animate(withDuration: 0.25, animations: {
             self.loginVC?.view.alpha = 1.0
             self.registrationVC?.view.alpha = 0.0
