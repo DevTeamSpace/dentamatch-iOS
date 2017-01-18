@@ -59,15 +59,10 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
     @IBOutlet weak var hightOfExperienceDetailTable: NSLayoutConstraint!
     @IBOutlet weak var heightOfScrollView: NSLayoutConstraint!
 
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
         setup()
         initialDataSetup()
-        // Do any additional setup after loading the view.
         getExperienceAPI()
     }
     
@@ -77,11 +72,14 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
 
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        
+        self.changeNavBarAppearanceForProfiles()
+        self.navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = nil
+        self.navigationController?.navigationBar.isTranslucent = false
 
     }
     override func viewDidAppear(_ animated: Bool) {
-        
+        super.viewDidAppear(animated)
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)

@@ -30,6 +30,7 @@ class DMSkillsVC: DMBaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
 
@@ -51,6 +52,9 @@ class DMSkillsVC: DMBaseVC {
 
     }
         
+    @IBAction func backButtonPressed(_ sender: Any) {
+        _ = self.navigationController?.popViewController(animated: true)
+    }
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

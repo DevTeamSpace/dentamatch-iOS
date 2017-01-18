@@ -29,8 +29,14 @@ class DMAffiliationsVC: DMBaseVC {
         self.getAffiliationListAPI()
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
 
     func setup() {
+        self.navigationItem.leftBarButtonItem = self.backBarButton()
         self.affiliationsTableView.separatorColor = UIColor.clear
         self.affiliationsTableView.register(UINib(nibName: "PhotoNameCell", bundle: nil), forCellReuseIdentifier: "PhotoNameCell")
         self.affiliationsTableView.register(UINib(nibName: "SectionHeadingTableCell", bundle: nil), forCellReuseIdentifier: "SectionHeadingTableCell")

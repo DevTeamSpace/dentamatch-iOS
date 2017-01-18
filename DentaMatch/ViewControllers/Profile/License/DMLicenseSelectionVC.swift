@@ -34,7 +34,7 @@ class DMLicenseSelectionVC: DMBaseVC,UITextFieldDelegate {
         self.changeNavBarAppearanceForWithoutHeader()
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
