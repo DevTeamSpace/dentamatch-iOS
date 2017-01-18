@@ -160,12 +160,14 @@ struct Constants {
         static let otherAffiliation = "otherAffiliation"
         static let validityDate = "validityDate"
         static let image = "image"
-        
+        static let profilePic = "profilePic"
+
         static let imageURL = "imagePath"
         static let imageURLForPostResponse = "imgUrl"
 
         static let experienceId = "id"
         static let userId = "userId"
+        static let user = "user"
         static let jobTitleId = "jobTitleId"
         static let jobtitleName = "jobtitleName"
         static let monthsOfExperience = "monthsOfExpereince"

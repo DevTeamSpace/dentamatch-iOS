@@ -25,14 +25,24 @@ extension DMEditProfileVC {
             }
             debugPrint(response!)
             self.handleProfileResponse(response: response)
+            self.editProfileTableView.reloadData()
         }
     }
     
     func handleProfileResponse(response:JSON?) {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
+                handleUserResponse(user: response[Constants.ServerKey.result][Constants.ServerKey.user])
             } else {
             }
+        }
+    }
+    
+    func handleUserResponse(user:JSON?) {
+        if let user = user {
+            UserManager.shared().activeUser.firstName = user[Constants.ServerKey.firstName].stringValue
+            UserManager.shared().activeUser.lastName = user[Constants.ServerKey.lastName].stringValue
+            UserManager.shared().activeUser.profileImageURL = user[Constants.ServerKey.profilePic].stringValue
         }
     }
 }

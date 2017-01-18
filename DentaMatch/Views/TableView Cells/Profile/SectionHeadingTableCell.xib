@@ -30,18 +30,28 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mqf-Ri-Bfm">
-                        <rect key="frame" x="0.0" y="45" width="320" height="1.5"/>
+                        <rect key="frame" x="0.0" y="45" width="320" height="2"/>
                         <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1.5" id="abN-l4-VIJ"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SDr-oB-0lr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="1.5"/>
+                        <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1.5" id="5EW-ZD-gEE"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="SDr-oB-0lr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="1DS-eB-34f"/>
                     <constraint firstItem="mqf-Ri-Bfm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="JN3-wO-Mdx"/>
                     <constraint firstItem="Lz0-ge-1Zp" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" multiplier="1.1" id="PvW-E1-YjN"/>
+                    <constraint firstItem="SDr-oB-0lr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Rgr-w7-DYW"/>
                     <constraint firstAttribute="bottom" secondItem="mqf-Ri-Bfm" secondAttribute="bottom" id="YFG-6n-aay"/>
                     <constraint firstAttribute="trailing" secondItem="mqf-Ri-Bfm" secondAttribute="trailing" id="bL4-LJ-SpZ"/>
+                    <constraint firstAttribute="trailing" secondItem="SDr-oB-0lr" secondAttribute="trailing" id="ih6-hd-Qqe"/>
                     <constraint firstItem="Lz0-ge-1Zp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="p9C-Rn-BGo"/>
                 </constraints>
             </tableViewCellContentView>
