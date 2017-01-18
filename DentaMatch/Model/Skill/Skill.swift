@@ -29,6 +29,9 @@ class SubSkill:NSObject {
     var subSkillId = ""
     var subSkillName = ""
     var isSelected = false
+    var isOther = false
+    var isOpenForOther = false
+    var otherText = ""
     
     override init() {
     }
@@ -37,5 +40,8 @@ class SubSkill:NSObject {
         self.subSkillId = subSkill[Constants.ServerKey.id].stringValue
         self.subSkillName = subSkill[Constants.ServerKey.skillName].stringValue
         self.isSelected = subSkill[Constants.ServerKey.isSkillSelected].boolValue
+        if subSkill[Constants.ServerKey.skillName].stringValue.lowercased() == "Other".lowercased() {
+            self.isOther = true
+        }
     }
 }

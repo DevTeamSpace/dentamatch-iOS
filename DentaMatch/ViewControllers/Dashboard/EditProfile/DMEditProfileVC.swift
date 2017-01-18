@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DMEditProfileVC: UIViewController {
+class DMEditProfileVC: DMBaseVC {
     
     enum EditProfileOptions:Int {
         case profileHeader

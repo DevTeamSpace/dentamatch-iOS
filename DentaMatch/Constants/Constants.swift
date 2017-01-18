@@ -122,6 +122,8 @@ struct Constants {
         static let deleteExperience = Constants.API.apiURL("users/work-experience-delete")
         static let updateCertificate = Constants.API.apiURL("users/update-certificate")
         static let updateValidationDates = Constants.API.apiURL("users/update-certificate-validity")
+        static let userProfile = Constants.API.apiURL("users/user-profile")
+
 
         static func apiURL(_ methodName: String) -> String {
             return BASE_URL + methodName

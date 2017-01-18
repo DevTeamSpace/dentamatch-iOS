@@ -115,14 +115,17 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
 //        self.alertMessage(title: "Alert", message: "Work in progress", buttonText: "Ok") {
 //            
 //        }
+//        
+//        if self.exprienceArray.count > 0
+//        {
+//            self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToStudyVC, sender: self)
+//
+//        }else{
+//            self.makeToast(toastString: "Please add at least one experience")
+//        }
         
-        if self.exprienceArray.count > 0
-        {
-            self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToStudyVC, sender: self)
+        self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToStudyVC, sender: self)
 
-        }else{
-            self.makeToast(toastString: "Please add at least one experience")
-        }
     }
     
     //MARK:- Keyboard Show Hide Observers

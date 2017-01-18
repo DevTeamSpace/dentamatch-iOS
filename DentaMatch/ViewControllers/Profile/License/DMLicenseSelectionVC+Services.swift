@@ -27,7 +27,9 @@ extension DMLicenseSelectionVC {
             
             if response![Constants.ServerKey.status].boolValue {
                 self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
-                //do next
+                //Saving current job title and id
+                UserManager.shared().activeUser.jobTitleId = "\(self.selectedJobTitle.jobId)"
+                UserManager.shared().activeUser.jobTitleId = "\(self.selectedJobTitle.jobTitle)"
                 self.openExperienceFirstScreen()
             } else {
                 self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)

@@ -202,6 +202,9 @@
 		E5C5F3181DC1A723001A5A3F /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C5F3171DC1A723001A5A3F /* LocationManager.swift */; };
 		E5C5F31B1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C5F31A1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift */; };
 		E5DC3E731DAF2C45002DA20E /* DentaMatch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E5DC3E711DAF2C45002DA20E /* DentaMatch.xcdatamodeld */; };
+		E5E7CB431E2F39D500D4FB59 /* DMEditProfileVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E7CB421E2F39D500D4FB59 /* DMEditProfileVC+Services.swift */; };
+		E5E7CB461E2F433400D4FB59 /* OtherSubSkillTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E7CB441E2F433400D4FB59 /* OtherSubSkillTableCell.swift */; };
+		E5E7CB471E2F433400D4FB59 /* OtherSubSkillTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5E7CB451E2F433400D4FB59 /* OtherSubSkillTableCell.xib */; };
 		E5F47C941E0035B90051C4A1 /* UIImage+Rotations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F47C911E0035B90051C4A1 /* UIImage+Rotations.swift */; };
 		E5F47C951E0035B90051C4A1 /* UIImageRotate.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F47C931E0035B90051C4A1 /* UIImageRotate.m */; };
 		E5FBE9D91E1CCF940025683C /* DMRegistration+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FBE9D81E1CCF940025683C /* DMRegistration+Services.swift */; };
@@ -417,6 +420,9 @@
 		E5C5F3171DC1A723001A5A3F /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		E5C5F31A1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMTermsAndConditionsVC.swift; sourceTree = "<group>"; };
 		E5DC3E721DAF2C45002DA20E /* DentaMatch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DentaMatch.xcdatamodel; sourceTree = "<group>"; };
+		E5E7CB421E2F39D500D4FB59 /* DMEditProfileVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMEditProfileVC+Services.swift"; sourceTree = "<group>"; };
+		E5E7CB441E2F433400D4FB59 /* OtherSubSkillTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherSubSkillTableCell.swift; sourceTree = "<group>"; };
+		E5E7CB451E2F433400D4FB59 /* OtherSubSkillTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OtherSubSkillTableCell.xib; sourceTree = "<group>"; };
 		E5F47C911E0035B90051C4A1 /* UIImage+Rotations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Rotations.swift"; sourceTree = "<group>"; };
 		E5F47C921E0035B90051C4A1 /* UIImageRotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageRotate.h; sourceTree = "<group>"; };
 		E5F47C931E0035B90051C4A1 /* UIImageRotate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageRotate.m; sourceTree = "<group>"; };
@@ -580,6 +586,8 @@
 				E5A0EAFE1E294F3F0092E21A /* SubSkillCell.xib */,
 				E558D8FD1E2CB66800A6DF95 /* AutoCompleteTableViewCell.swift */,
 				E558D8FE1E2CB66800A6DF95 /* AutoCompleteTableViewCell.xib */,
+				E5E7CB441E2F433400D4FB59 /* OtherSubSkillTableCell.swift */,
+				E5E7CB451E2F433400D4FB59 /* OtherSubSkillTableCell.xib */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -798,6 +806,7 @@
 			children = (
 				E558D9071E2E6FE700A6DF95 /* DMEditProfileVC.swift */,
 				E558D9091E2E7A3200A6DF95 /* DMEditProfileVC+TableViewExtension.swift */,
+				E5E7CB421E2F39D500D4FB59 /* DMEditProfileVC+Services.swift */,
 			);
 			path = EditProfile;
 			sourceTree = "<group>";
@@ -1345,6 +1354,7 @@
 				E5A0EB111E2BE7C40092E21A /* Resources.bundle in Resources */,
 				E5A0EB061E2BDE680092E21A /* SubSkillCollectionCell.xib in Resources */,
 				5AE5F5171E1A3470006C328A /* PhotoNameCell.xib in Resources */,
+				E5E7CB471E2F433400D4FB59 /* OtherSubSkillTableCell.xib in Resources */,
 				5AB876521E249C0A007818D6 /* ExperiencePickerView.xib in Resources */,
 				E5AE2AF31DAF84AD00C008BD /* Onboarding.storyboard in Resources */,
 				E597E58A1E151A99001DDA78 /* SF-UI-Text-Ultrathin.otf in Resources */,
@@ -1520,6 +1530,7 @@
 				E50B3F4C1E194CD7004C5F32 /* AnimatedPHTableCell.swift in Sources */,
 				E5496E051E255B2E00C54288 /* AboutMeCell.swift in Sources */,
 				E55462E61DAE47A9004163B2 /* UIView+Toast.m in Sources */,
+				E5E7CB431E2F39D500D4FB59 /* DMEditProfileVC+Services.swift in Sources */,
 				E587D2D11E2343A5006B7F06 /* DMJobTitleSelectionVC+UIPickerViewExtension.swift in Sources */,
 				E558D90E1E2E871900A6DF95 /* GooglePlacesTableViewCell.swift in Sources */,
 				E587D2D91E236EAE006B7F06 /* DMRegisterMapsVC+TableViewExtension.swift in Sources */,
@@ -1558,6 +1569,7 @@
 				E53738F21DB373C200967876 /* Reachability.swift in Sources */,
 				E55462F51DAE4B9E004163B2 /* UIStoryBoard+Additions.swift in Sources */,
 				E587D2EB1E24C021006B7F06 /* DMWorkExperienceStart+TableViewExtension.swift in Sources */,
+				E5E7CB461E2F433400D4FB59 /* OtherSubSkillTableCell.swift in Sources */,
 				5AB876501E249B62007818D6 /* ExperiencePickerView.swift in Sources */,
 				E5DC3E731DAF2C45002DA20E /* DentaMatch.xcdatamodeld in Sources */,
 				E590299F1DED25C400151E9B /* AppDelegate+Notifications.swift in Sources */,
