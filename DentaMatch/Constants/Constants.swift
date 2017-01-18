@@ -122,6 +122,8 @@ struct Constants {
         static let deleteExperience = Constants.API.apiURL("users/work-experience-delete")
         static let updateCertificate = Constants.API.apiURL("users/update-certificate")
         static let updateValidationDates = Constants.API.apiURL("users/update-certificate-validity")
+        static let userProfile = Constants.API.apiURL("users/user-profile")
+
 
         static func apiURL(_ methodName: String) -> String {
             return BASE_URL + methodName
@@ -158,12 +160,14 @@ struct Constants {
         static let otherAffiliation = "otherAffiliation"
         static let validityDate = "validityDate"
         static let image = "image"
-        
+        static let profilePic = "profilePic"
+
         static let imageURL = "imagePath"
         static let imageURLForPostResponse = "imgUrl"
 
         static let experienceId = "id"
         static let userId = "userId"
+        static let user = "user"
         static let jobTitleId = "jobTitleId"
         static let jobtitleName = "jobtitleName"
         static let monthsOfExperience = "monthsOfExpereince"
@@ -180,6 +184,7 @@ struct Constants {
         static let createdAt = "createdAt"
         static let skillList = "list"
         static let skillName = "skillName"
+        static let otherSkill = "otherSkill"
         static let id = "id"
         static let parentId = "parentId"
         static let isSkillSelected = "userSkill"

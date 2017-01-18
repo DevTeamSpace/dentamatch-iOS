@@ -16,7 +16,9 @@ class User: NSObject , NSCoding {
     var accessToken: String!
     var firstName: String?
     var lastName: String?
-    
+    var jobTitleId:String?
+    var jobTitle:String?
+
     var profileImageURL: String? = ""
     var preferredJobLocation: String?
     
@@ -48,6 +50,9 @@ class User: NSObject , NSCoding {
         self.lastName = aDecoder.decodeObject(forKey: "lastName") as? String
         self.profileImageURL = aDecoder.decodeObject(forKey: "profileImageURL") as? String
         self.preferredJobLocation = aDecoder.decodeObject(forKey: "preferredJobLocation") as? String
+        self.jobTitle = aDecoder.decodeObject(forKey: "jobTitle") as? String
+        self.jobTitleId = aDecoder.decodeObject(forKey: "jobTitleId") as? String
+
     }
     
     func encode(with aCoder: NSCoder) {
@@ -59,5 +64,7 @@ class User: NSObject , NSCoding {
         aCoder.encode(self.lastName, forKey: "lastName")
         aCoder.encode(self.profileImageURL, forKey: "profileImageURL")
         aCoder.encode(self.preferredJobLocation, forKey: "preferredJobLocation")
+        aCoder.encode(self.jobTitle, forKey: "jobTitle")
+        aCoder.encode(self.jobTitleId, forKey: "jobTitleId")
     }
 }

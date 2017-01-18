@@ -82,6 +82,10 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
         switch profileOptions {
         case .profileHeader:
             let cell = tableView.dequeueReusableCell(withIdentifier: "EditProfileHeaderTableCell") as! EditProfileHeaderTableCell
+            cell.nameLabel.text = UserManager.shared().activeUser.fullName()
+            if let imageUrl = URL(string: UserManager.shared().activeUser.profileImageURL!) {
+                cell.profileButton.sd_setImage(with: imageUrl, for: .normal, placeholderImage: kPlaceHolderImage)
+            }
             return cell
         
         case .dentalStateboard:

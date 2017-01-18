@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DMEditProfileVC: UIViewController {
+class DMEditProfileVC: DMBaseVC {
     
     enum EditProfileOptions:Int {
         case profileHeader
@@ -25,6 +25,7 @@ class DMEditProfileVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        self.userProfileAPI()
         // Do any additional setup after loading the view.
     }
     
