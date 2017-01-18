@@ -13,10 +13,12 @@ class DMSkillsVC: DMBaseVC {
     enum Skills:Int {
         case profileHeader
         case skills
+        case other
     }
     
     let profileProgress:CGFloat = 0.65
     var skills = [Skill]()
+    var otherSkill:Skill?
     
     @IBOutlet weak var skillsTableView: UITableView!
     override func viewDidLoad() {
@@ -37,6 +39,7 @@ class DMSkillsVC: DMBaseVC {
         self.skillsTableView.register(UINib(nibName: "PhotoNameCell", bundle: nil), forCellReuseIdentifier: "PhotoNameCell")
         self.skillsTableView.register(UINib(nibName: "SectionHeadingTableCell", bundle: nil), forCellReuseIdentifier: "SectionHeadingTableCell")
         self.skillsTableView.register(UINib(nibName: "SkillsTableCell", bundle: nil), forCellReuseIdentifier: "SkillsTableCell")
+        self.skillsTableView.register(UINib(nibName: "OtherSkillCell", bundle: nil), forCellReuseIdentifier: "OtherSkillCell")
     }
 
     @IBAction func nextButtonClicked(_ sender: Any) {

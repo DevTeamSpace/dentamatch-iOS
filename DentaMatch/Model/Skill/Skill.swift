@@ -13,6 +13,8 @@ class Skill: NSObject {
 
     var skillId = ""
     var skillName = ""
+    var isOther = false
+    var otherText = ""
     var subSkills = [SubSkill]()
     
     override init () {
@@ -22,6 +24,10 @@ class Skill: NSObject {
     init(skills:JSON,subSkills:[SubSkill]) {
         self.skillId = skills["id"].stringValue
         self.skillName = skills["skillName"].stringValue
+        if skills["skillName"].stringValue.lowercased() == "other" {
+            self.isOther = true
+            self.otherText = skills["otherSkill"].stringValue
+        }
         self.subSkills = subSkills
     }
 }

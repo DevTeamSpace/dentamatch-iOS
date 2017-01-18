@@ -146,6 +146,8 @@ struct Constants {
         static let status = "status"
         static let statusCode = "statusCode"
         static let message = "message"
+        static let licenseNumber = "licenseNumber"
+        static let state = "state"
         static let userDetails = "userDetails"
         static let result = "result"
         static let accessToken = "accessToken"

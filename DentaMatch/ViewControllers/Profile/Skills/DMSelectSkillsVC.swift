@@ -112,13 +112,15 @@ extension DMSelectSkillsVC:UITableViewDataSource, UITableViewDelegate {
         case .other:
             let cell = tableView.dequeueReusableCell(withIdentifier: "OtherSubSkillTableCell") as! OtherSubSkillTableCell
             cell.otherTextView.text = otherSkill?.otherText
-            if (otherSkill?.isSelected)! {
-                cell.tickButton.setTitle(Constants.DesignFont.acceptTermsSelected, for: .normal)
-                cell.tickButton.setTitleColor(UIColor.white, for: .normal)
-            } else {
-                cell.tickButton.setTitle(Constants.DesignFont.acceptTermsDeSelected, for: .normal)
-                cell.tickButton.setTitleColor(UIColor.white, for: .normal)
-                
+            if let _ = otherSkill {
+                if (otherSkill?.isSelected)! {
+                    cell.tickButton.setTitle(Constants.DesignFont.acceptTermsSelected, for: .normal)
+                    cell.tickButton.setTitleColor(UIColor.white, for: .normal)
+                } else {
+                    cell.tickButton.setTitle(Constants.DesignFont.acceptTermsDeSelected, for: .normal)
+                    cell.tickButton.setTitleColor(UIColor.white, for: .normal)
+                    
+                }
             }
             cell.otherTextView.delegate = self
             return cell

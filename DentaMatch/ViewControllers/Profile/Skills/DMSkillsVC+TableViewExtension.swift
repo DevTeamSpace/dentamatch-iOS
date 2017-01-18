@@ -11,7 +11,7 @@ import Foundation
 extension DMSkillsVC : UITableViewDataSource, UITableViewDelegate {
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -23,6 +23,9 @@ extension DMSkillsVC : UITableViewDataSource, UITableViewDelegate {
   
         case .skills:
             return skills.count
+        
+        case .other:
+            return 1
         }
     }
     
@@ -47,7 +50,9 @@ extension DMSkillsVC : UITableViewDataSource, UITableViewDelegate {
             
             let height  = self .getHeightOFCellForSkill(subSkills: skills[indexPath.row].subSkills.filter({$0.isSelected == true}))
             return 56 + height
-            //return 56 + 100
+            
+        case .other:
+            return 144
         }
     }
 
@@ -92,12 +97,28 @@ extension DMSkillsVC : UITableViewDataSource, UITableViewDelegate {
             cell.skillLabel.text = skill.skillName
             return cell
             
+        case .other:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "OtherSkillCell") as! OtherSkillCell
+            cell.otherTextView.delegate = self
+            if let _ = otherSkill {
+                cell.otherTextView.text = otherSkill?.otherText
+            }
+            return cell
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "getSubSkillData"), object: nil, userInfo: ["skill":skills[indexPath.row]])
-        self.presentRightMenuViewController()
+        let skillsOption = Skills(rawValue: indexPath.section)!
+
+        switch skillsOption {
+        case .skills:
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "getSubSkillData"), object: nil, userInfo: ["skill":skills[indexPath.row]])
+            self.presentRightMenuViewController()
+
+        default:
+            break
+        }
+       
         
     }
     func getHeightOFCellForSkill(subSkills:[SubSkill]) -> CGFloat {
@@ -134,4 +155,37 @@ extension DMSkillsVC : UITableViewDataSource, UITableViewDelegate {
         
     }
     
+}
+
+extension DMSkillsVC: UITextViewDelegate {
+    
+    func textViewDidChange(_ textView: UITextView) {
+        if let _ = otherSkill {
+            otherSkill?.otherText = textView.text.trim()
+        }
+    }
+    
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+
+        self.skillsTableView.contentInset =  UIEdgeInsetsMake(0, 0, 200, 0)
+        DispatchQueue.main.async {
+            self.skillsTableView.scrollToRow(at: IndexPath(row: 0, section: 2), at: .bottom, animated: true)
+        }
+        return true
+    }
+    
+    
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        self.skillsTableView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0)
+        return true
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+
 }

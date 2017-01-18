@@ -200,6 +200,9 @@
 		E5E7CB471E2F433400D4FB59 /* OtherSubSkillTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5E7CB451E2F433400D4FB59 /* OtherSubSkillTableCell.xib */; };
 		E5E7CB4A1E2F8CDE00D4FB59 /* EditLicenseTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E7CB481E2F8CDE00D4FB59 /* EditLicenseTableCell.swift */; };
 		E5E7CB4B1E2F8CDE00D4FB59 /* EditLicenseTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5E7CB491E2F8CDE00D4FB59 /* EditLicenseTableCell.xib */; };
+		E5E7CB4E1E2F914100D4FB59 /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E7CB4D1E2F914100D4FB59 /* License.swift */; };
+		E5E7CB511E2F973000D4FB59 /* OtherSkillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E7CB4F1E2F973000D4FB59 /* OtherSkillCell.swift */; };
+		E5E7CB521E2F973000D4FB59 /* OtherSkillCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5E7CB501E2F973000D4FB59 /* OtherSkillCell.xib */; };
 		E5F47C941E0035B90051C4A1 /* UIImage+Rotations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F47C911E0035B90051C4A1 /* UIImage+Rotations.swift */; };
 		E5F47C951E0035B90051C4A1 /* UIImageRotate.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F47C931E0035B90051C4A1 /* UIImageRotate.m */; };
 		E5FBE9D91E1CCF940025683C /* DMRegistration+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FBE9D81E1CCF940025683C /* DMRegistration+Services.swift */; };
@@ -412,6 +415,9 @@
 		E5E7CB451E2F433400D4FB59 /* OtherSubSkillTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OtherSubSkillTableCell.xib; sourceTree = "<group>"; };
 		E5E7CB481E2F8CDE00D4FB59 /* EditLicenseTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditLicenseTableCell.swift; sourceTree = "<group>"; };
 		E5E7CB491E2F8CDE00D4FB59 /* EditLicenseTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditLicenseTableCell.xib; sourceTree = "<group>"; };
+		E5E7CB4D1E2F914100D4FB59 /* License.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
+		E5E7CB4F1E2F973000D4FB59 /* OtherSkillCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherSkillCell.swift; sourceTree = "<group>"; };
+		E5E7CB501E2F973000D4FB59 /* OtherSkillCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OtherSkillCell.xib; sourceTree = "<group>"; };
 		E5F47C911E0035B90051C4A1 /* UIImage+Rotations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Rotations.swift"; sourceTree = "<group>"; };
 		E5F47C921E0035B90051C4A1 /* UIImageRotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageRotate.h; sourceTree = "<group>"; };
 		E5F47C931E0035B90051C4A1 /* UIImageRotate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageRotate.m; sourceTree = "<group>"; };
@@ -452,6 +458,7 @@
 		5A1E2A161E1E47340055D913 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E5E7CB4C1E2F913200D4FB59 /* License */,
 				E558D8DE1E2C80A800A6DF95 /* School */,
 				E57EE6CB1E28EBA90090434F /* Affiliation */,
 				E54976E51E28CEDD006F21E5 /* Certification */,
@@ -554,6 +561,8 @@
 				E558D8FE1E2CB66800A6DF95 /* AutoCompleteTableViewCell.xib */,
 				E5E7CB441E2F433400D4FB59 /* OtherSubSkillTableCell.swift */,
 				E5E7CB451E2F433400D4FB59 /* OtherSubSkillTableCell.xib */,
+				E5E7CB4F1E2F973000D4FB59 /* OtherSkillCell.swift */,
+				E5E7CB501E2F973000D4FB59 /* OtherSkillCell.xib */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1191,6 +1200,14 @@
 			path = "Terms And Conditions";
 			sourceTree = "<group>";
 		};
+		E5E7CB4C1E2F913200D4FB59 /* License */ = {
+			isa = PBXGroup;
+			children = (
+				E5E7CB4D1E2F914100D4FB59 /* License.swift */,
+			);
+			path = License;
+			sourceTree = "<group>";
+		};
 		E5F47C901E0035B90051C4A1 /* UIImage+Additions */ = {
 			isa = PBXGroup;
 			children = (
@@ -1327,6 +1344,7 @@
 				E597E57F1E151A99001DDA78 /* SF-UI-Text-BoldItalic.otf in Resources */,
 				E597E5791E151A99001DDA78 /* SF-UI-Display-Medium.otf in Resources */,
 				E58654FF1DEFEF7F006FEB2D /* Environments.plist in Resources */,
+				E5E7CB521E2F973000D4FB59 /* OtherSkillCell.xib in Resources */,
 				E597E5891E151A99001DDA78 /* SF-UI-Text-SemiboldItalic.otf in Resources */,
 				E587D2DD1E2396E9006B7F06 /* JobSelectionPickerView.xib in Resources */,
 				E597E5821E151A99001DDA78 /* SF-UI-Text-Light.otf in Resources */,
@@ -1469,6 +1487,7 @@
 				E558D9031E2E6E3400A6DF95 /* DMDashboardVC.swift in Sources */,
 				E5FBE9D91E1CCF940025683C /* DMRegistration+Services.swift in Sources */,
 				E5A0EAFF1E294F3F0092E21A /* SubSkillCell.swift in Sources */,
+				E5E7CB4E1E2F914100D4FB59 /* License.swift in Sources */,
 				E58654FE1DEFEF7F006FEB2D /* ConfigurationManager.swift in Sources */,
 				E5AE2AF61DAF878900C008BD /* OnboardingCollectionViewCell.swift in Sources */,
 				5A1960FD1E208B67002A5F7C /* PhoneNumberFormatter.swift in Sources */,
@@ -1536,6 +1555,7 @@
 				E5DC3E731DAF2C45002DA20E /* DentaMatch.xcdatamodeld in Sources */,
 				E590299F1DED25C400151E9B /* AppDelegate+Notifications.swift in Sources */,
 				E597E5901E151CFF001DDA78 /* FloatLabelTextView.swift in Sources */,
+				E5E7CB511E2F973000D4FB59 /* OtherSkillCell.swift in Sources */,
 				E5F47C951E0035B90051C4A1 /* UIImageRotate.m in Sources */,
 				E5C5F31B1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift in Sources */,
 				E54976F21E28CEDD006F21E5 /* Skill.swift in Sources */,

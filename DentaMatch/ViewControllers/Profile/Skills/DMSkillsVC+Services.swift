@@ -85,6 +85,9 @@ extension DMSkillsVC {
             let skill = Skill(skills: skillObj, subSkills: subSkills)
             skills.append(skill)
         }
+        
+        otherSkill = skills.filter({$0.isOther == true}).first
+        skills = skills.filter({$0.isOther == false})
     }
     
     
@@ -103,15 +106,23 @@ extension DMSkillsVC {
             let subSkills = skill.subSkills.filter({$0.isSelected == true})
             for subSkill in subSkills {
                 if subSkill.isOther {
-                    var otherSkill = [String:String]()
-                    otherSkill["id"] = subSkill.subSkillId
-                    otherSkill["value"] = subSkill.otherText
-                    others.append(otherSkill as [String : AnyObject])
+                    var otherSubSkill = [String:String]()
+                    otherSubSkill["id"] = subSkill.subSkillId
+                    otherSubSkill["value"] = subSkill.otherText
+                    others.append(otherSubSkill as [String : AnyObject])
                 } else {
                 skillsId.append(subSkill.subSkillId)
                 }
             }
         }
+        
+        if let _ = otherSkill {
+                var other = [String:String]()
+                other["id"] = otherSkill?.skillId
+                other["value"] = otherSkill?.otherText
+                others.append(other as [String : AnyObject])
+        }
+       
         params["skills"] = skillsId as AnyObject?
         params["other"] = others as AnyObject?
         return params
