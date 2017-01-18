@@ -14,7 +14,7 @@ class APIManager: NSObject {
 
     class func apiGet(serviceName:String,parameters: [String:Any]?, completionHandler: @escaping (JSON?, NSError?) -> ()) {
         
-        Alamofire.request(serviceName, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: ["accessToken":UserDefaultsManager.sharedInstance.accessToken]).responseJSON { (response:DataResponse<Any>) in
+        Alamofire.request(serviceName, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: [Constants.ServerKey.accessToken:getAccessToken()]).responseJSON { (response:DataResponse<Any>) in
             
             switch(response.result) {
             case .success(_):
@@ -38,7 +38,7 @@ class APIManager: NSObject {
     
     class func apiPost(serviceName:String,parameters: [String:Any]?, completionHandler: @escaping (JSON?, NSError?) -> ()) {
         
-        Alamofire.request(serviceName, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: ["accessToken":UserDefaultsManager.sharedInstance.accessToken]).responseJSON { (response:DataResponse<Any>) in
+        Alamofire.request(serviceName, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: [Constants.ServerKey.accessToken:getAccessToken()]).responseJSON { (response:DataResponse<Any>) in
             
             switch(response.result) {
             case .success(_):
@@ -62,7 +62,7 @@ class APIManager: NSObject {
     
     class func apiPostWithJSONEncode(serviceName:String,parameters: [String:Any]?, completionHandler: @escaping (JSON?, NSError?) -> ()) {
         
-        Alamofire.request(serviceName, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: ["accessToken":UserDefaultsManager.sharedInstance.accessToken]).responseJSON { (response:DataResponse<Any>) in
+        Alamofire.request(serviceName, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: [Constants.ServerKey.accessToken:getAccessToken()]).responseJSON { (response:DataResponse<Any>) in
             
             switch(response.result) {
             case .success(_):
@@ -86,7 +86,7 @@ class APIManager: NSObject {
     
     class func apiPut(serviceName:String,parameters: [String:Any]?, completionHandler: @escaping (JSON?, NSError?) -> ()) {
         
-        Alamofire.request(serviceName, method: .put, parameters: parameters, encoding: URLEncoding.default, headers: ["accessToken":UserDefaultsManager.sharedInstance.accessToken]).responseJSON { (response:DataResponse<Any>) in
+        Alamofire.request(serviceName, method: .put, parameters: parameters, encoding: URLEncoding.default, headers: [Constants.ServerKey.accessToken:getAccessToken()]).responseJSON { (response:DataResponse<Any>) in
             
             switch(response.result) {
             case .success(_):
@@ -110,7 +110,7 @@ class APIManager: NSObject {
     
     class func apiDelete(serviceName:String,parameters: [String:Any]?, completionHandler: @escaping (JSON?, NSError?) -> ()) {
         
-        Alamofire.request(serviceName, method: .delete, parameters: parameters, encoding: URLEncoding.default, headers: ["accessToken":UserDefaultsManager.sharedInstance.accessToken]).responseJSON { (response:DataResponse<Any>) in
+        Alamofire.request(serviceName, method: .delete, parameters: parameters, encoding: URLEncoding.default, headers: [Constants.ServerKey.accessToken:getAccessToken()]).responseJSON { (response:DataResponse<Any>) in
             
             switch(response.result) {
             case .success(_):
@@ -149,7 +149,7 @@ class APIManager: NSObject {
                     multipartFormData.append((value as! String).data(using: .utf8)!, withName: key)
                 }
             }
-        }, usingThreshold: 1, to: serviceName, method: .post, headers: [Constants.ServerKey.accessToken:UserDefaultsManager.sharedInstance.accessToken]) { (encodingResult:SessionManager.MultipartFormDataEncodingResult) in
+        }, usingThreshold: 1, to: serviceName, method: .post, headers: [Constants.ServerKey.accessToken:getAccessToken()]) { (encodingResult:SessionManager.MultipartFormDataEncodingResult) in
             
             switch encodingResult {
             case .success(let upload, _, _):
@@ -176,5 +176,12 @@ class APIManager: NSObject {
                 break
             }
         }
+    }
+    
+    class func getAccessToken()-> String {
+        if let user = UserManager.shared().activeUser {
+            return user.accessToken
+        }
+        return ""
     }
 }

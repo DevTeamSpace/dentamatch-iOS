@@ -25,15 +25,18 @@ extension DMLoginVC {
                 return
             }
             debugPrint(response!)
-            if response![Constants.ServerKey.status].boolValue {
-                UserDefaultsManager.sharedInstance.accessToken = response![Constants.ServerKey.result][Constants.ServerKey.userDetails][Constants.ServerKey.accessToken].stringValue
-                UserDefaultsManager.sharedInstance.isLoggedIn = true
-                self.openJobTitleSelection()
-                self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
-            } else {
-                self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
-            }
+            self.handleLoginResponse(response: response)
 
+        }
+    }
+    
+    func handleLoginResponse(response:JSON?) {
+        UserManager.shared().loginResponseHandler(response: response) { (success:Bool, message:String) in
+            self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
+            if success {
+                self.openJobTitleSelection()
+            }
+            
         }
     }
 }

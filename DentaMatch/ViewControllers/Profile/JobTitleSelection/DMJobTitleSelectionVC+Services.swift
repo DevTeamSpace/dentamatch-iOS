@@ -79,7 +79,8 @@ extension DMJobTitleSelectionVC {
     func handleUploadProfileResponse(response:JSON?) {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
-                UserDefaultsManager.sharedInstance.profileImageURL = response[Constants.ServerKey.result][Constants.ServerKey.profileImageURL].stringValue
+                UserManager.shared().activeUser.profileImageURL = response[Constants.ServerKey.result][Constants.ServerKey.profileImageURL].stringValue
+//                UserDefaultsManager.sharedInstance.profileImageURL = response[Constants.ServerKey.result][Constants.ServerKey.profileImageURL].stringValue
                 self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
                 openLicenseScreen()
             } else {

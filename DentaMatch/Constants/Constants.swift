@@ -149,6 +149,7 @@ struct Constants {
         static let accessToken = "accessToken"
         static let joblists = "joblists"
         static let profileImageURL = "img_url"
+        static let imageUrl = "imageUrl"
         static let list = "list"
         static let aboutMe = "aboutMe"
         static let affiliationDataArray = "affiliationDataArray"

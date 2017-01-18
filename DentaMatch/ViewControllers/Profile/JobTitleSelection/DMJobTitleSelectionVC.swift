@@ -10,6 +10,7 @@ import UIKit
 
 class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate {
 
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var addPhotoButton: UIButton!
     @IBOutlet weak var profileButton: ProfileImageButton!
     @IBOutlet weak var notNowButton: UIButton!
@@ -42,6 +43,7 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
     
     //MARK:- Private Methods
     func setup() {
+        self.nameLabel.text = "Hi \(UserManager.shared().activeUser.firstName!)"
         self.addJobSelectionPickerViewTextField()
         
         currentJobTitleTextField.isUserInteractionEnabled = false
@@ -174,7 +176,7 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
     
     @IBAction func notNowButtonPressed(_ sender: Any) {
         self.alertMessage(title: "", message: Constants.AlertMessage.skipProfile, leftButtonText: "Cancel", rightButtonText: kOkButtonTitle) { (isLeftButtonPressed:Bool) in
-            if isLeftButtonPressed {
+            if !isLeftButtonPressed {
                 DispatchQueue.main.async {
                     self.openDashboard()
                 }

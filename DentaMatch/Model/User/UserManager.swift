@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 let ACTIVE_USER_KEY = "activeUser"
 let LOGGED_USER_EMAIL_KEY = "userEmail"
@@ -32,7 +33,7 @@ class UserManager: NSObject {
     // MARK: Singleton Instance
     private static let _sharedManager = UserManager()
     
-    class func sharedManager() -> UserManager {
+    class func shared() -> UserManager {
         return _sharedManager
     }
     
@@ -83,11 +84,13 @@ class UserManager: NSObject {
      Save current user data
      */
     func saveActiveUser() {
-        kUserDefaults.set(NSKeyedArchiver.archivedData(withRootObject: self.activeUser), forKey: ACTIVE_USER_KEY)
-        
+        kUserDefaults.set(NSKeyedArchiver.archivedData(withRootObject: self.activeUser) as AnyObject?, forKey: ACTIVE_USER_KEY)
+        kUserDefaults.synchronize()
         if let email = self.activeUser.email {
             kUserDefaults.set(email, forKey: LOGGED_USER_EMAIL_KEY)
         }
+        kUserDefaults.synchronize()
+
         
     }
     
@@ -103,11 +106,33 @@ class UserManager: NSObject {
 }
 
 extension UserManager {
-    func loginHandler() {
-        
-    }
-    func logoutHandler() {
-        
+    func loginResponseHandler(response:JSON?,completionHandler:((_ success:Bool,_ message:String)->())?) {
+        if let response = response {
+            if response[Constants.ServerKey.status].boolValue {
+                let user  = User()
+                let userDetails = response[Constants.ServerKey.result][Constants.ServerKey.userDetails]
+                user.firstName = userDetails[Constants.ServerKey.firstName].stringValue
+                user.lastName = userDetails[Constants.ServerKey.lastName].stringValue
+                user.accessToken = userDetails[Constants.ServerKey.accessToken].stringValue
+                user.email = userDetails[Constants.ServerKey.email].stringValue
+                user.zipCode = userDetails[Constants.ServerKey.zipCode].stringValue
+                user.preferredJobLocation = userDetails[Constants.ServerKey.preferredLocation].stringValue
+                user.profileImageURL = userDetails[Constants.ServerKey.imageUrl].stringValue
+
+                self.activeUser = user
+//                self.saveActiveUser()
+                UserDefaultsManager.sharedInstance.isLoggedIn = true
+
+                completionHandler?(true,response[Constants.ServerKey.message].stringValue)
+            
+            } else {
+                completionHandler?(false,response[Constants.ServerKey.message].stringValue)
+            }
+
+        }
     }
     
+    func logoutResponseHandler() {
+        
+    }
 }

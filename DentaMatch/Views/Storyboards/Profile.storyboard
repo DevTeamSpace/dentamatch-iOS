@@ -65,7 +65,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="297"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi Jennifer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="6Z1-Io-DBv">
-                                        <rect key="frame" x="107.5" y="223" width="165" height="36"/>
+                                        <rect key="frame" x="106.5" y="223" width="165" height="36"/>
                                         <fontDescription key="fontDescription" name="SFUIText-Bold" family="SF UI Text" pointSize="30"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -82,7 +82,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CtZ-La-o4v">
-                                        <rect key="frame" x="214" y="165" width="31" height="30"/>
+                                        <rect key="frame" x="213" y="165" width="31" height="30"/>
                                         <state key="normal" image="addPhoto"/>
                                         <connections>
                                             <action selector="addPhotoButtonPressed:" destination="ZiM-x3-BTI" eventType="touchUpInside" id="GrT-M1-qjk"/>
@@ -189,6 +189,7 @@
                     <connections>
                         <outlet property="addPhotoButton" destination="CtZ-La-o4v" id="4tk-3Y-aMV"/>
                         <outlet property="currentJobTitleTextField" destination="aZe-k4-DJs" id="iDm-pN-nga"/>
+                        <outlet property="nameLabel" destination="6Z1-Io-DBv" id="79T-eD-sWV"/>
                         <outlet property="nextButton" destination="MkJ-19-BkB" id="p4f-jg-DgS"/>
                         <outlet property="notNowButton" destination="Gku-rj-aaj" id="Xtk-rm-RVp"/>
                         <outlet property="profileButton" destination="bzg-gA-Lmz" id="Cs7-fd-iD0"/>

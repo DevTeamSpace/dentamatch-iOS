@@ -65,7 +65,7 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate,UITextFieldDeleg
                 let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoNameCell") as! PhotoNameCell
                 cell.nameLabel.text = "Where did you Study?"
                 cell.jobTitleLabel.text = "Lorem Ipsum is simply dummy text for the typing and printing industry"
-                if let imageURL = URL(string: UserDefaultsManager.sharedInstance.profileImageURL) {
+                if let imageURL = URL(string: UserManager.shared().activeUser.profileImageURL!) {
                     cell.photoButton.sd_setImage(with: imageURL, for: .normal, placeholderImage: kPlaceHolderImage)
                 }
                 cell.photoButton.progressBar.setProgress(profileProgress, animated: true)

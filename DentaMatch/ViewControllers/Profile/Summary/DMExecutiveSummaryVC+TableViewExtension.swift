@@ -41,7 +41,7 @@ extension DMExecutiveSummaryVC : UITableViewDataSource, UITableViewDelegate, UIT
             let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoNameCell") as! PhotoNameCell
             cell.nameLabel.text = "Executive Summary"
             cell.jobTitleLabel.text = "Describe about your work and things you are passionate about."
-            if let imageURL = URL(string: UserDefaultsManager.sharedInstance.profileImageURL) {
+            if let imageURL = URL(string: UserManager.shared().activeUser.profileImageURL!) {
                 cell.photoButton.sd_setImage(with: imageURL, for: .normal, placeholderImage: kPlaceHolderImage)
             }
             cell.photoButton.progressBar.setProgress(profileProgress, animated: true)

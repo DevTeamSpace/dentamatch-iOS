@@ -67,7 +67,7 @@ extension DMLicenseSelectionVC : UITableViewDataSource, UITableViewDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoNameCell") as! PhotoNameCell
             cell.nameLabel.text = "Jennifer"
             cell.jobTitleLabel.text = selectedJobTitle.jobTitle
-            if let imageURL = URL(string: UserDefaultsManager.sharedInstance.profileImageURL) {
+            if let imageURL = URL(string: UserManager.shared().activeUser.profileImageURL!) {
                 cell.photoButton.sd_setImage(with: imageURL, for: .normal, placeholderImage: kPlaceHolderImage)
             }
             cell.photoButton.progressBar.setProgress(profileProgress, animated: true)
