@@ -54,6 +54,14 @@ class SkillsTableCell: UITableViewCell,TagListDelegate {
         tagList.tags.removeAll()
         for subSkill in subSkills {
             
+            //If we want to print Other value, then uncomment this
+//            var subSkillName = ""
+//            if subSkill.isOther {
+//                subSkillName = subSkill.otherText
+//            } else {
+//                subSkillName = subSkill.subSkillName
+//            }
+//            
             let tag = Tag(content: TagPresentableText(subSkill.subSkillName) {
                 $0.label.font = UIFont.systemFont(ofSize: 16)
                 }, onInit: {

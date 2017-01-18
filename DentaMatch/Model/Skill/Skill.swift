@@ -42,6 +42,7 @@ class SubSkill:NSObject {
         self.isSelected = subSkill[Constants.ServerKey.isSkillSelected].boolValue
         if subSkill[Constants.ServerKey.skillName].stringValue.lowercased() == "Other".lowercased() {
             self.isOther = true
+            self.otherText = subSkill[Constants.ServerKey.otherSkill].stringValue
         }
     }
 }

@@ -182,6 +182,7 @@ struct Constants {
         static let createdAt = "createdAt"
         static let skillList = "list"
         static let skillName = "skillName"
+        static let otherSkill = "otherSkill"
         static let id = "id"
         static let parentId = "parentId"
         static let isSkillSelected = "userSkill"

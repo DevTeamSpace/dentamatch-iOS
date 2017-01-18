@@ -25,6 +25,7 @@ class DMEditProfileVC: DMBaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        self.userProfileAPI()
         // Do any additional setup after loading the view.
     }
     

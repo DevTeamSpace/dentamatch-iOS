@@ -11,7 +11,7 @@ import SwiftyJSON
 
 extension DMEditProfileVC {
     
-    func getProfileAPI() {
+    func userProfileAPI() {
         self.showLoader()
         APIManager.apiGet(serviceName: Constants.API.userProfile, parameters: [:]) { (response:JSON?, error:NSError?) in
             self.hideLoader()

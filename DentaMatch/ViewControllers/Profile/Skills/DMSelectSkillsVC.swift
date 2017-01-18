@@ -43,6 +43,9 @@ class DMSelectSkillsVC: UIViewController {
             subSkills = skill.subSkills
             subSkillWithoutOther = subSkills.filter({$0.isOther == false})
             otherSkill = subSkills.filter({$0.isOther == true}).first
+            if let _ = otherSkill {
+                self.otherText = (otherSkill?.otherText)!
+            }
             self.subSkillTableView.reloadData()
         }
     }
@@ -86,7 +89,7 @@ extension DMSelectSkillsVC:UITableViewDataSource, UITableViewDelegate {
         case .other:
             var otherHeight = 0
             if let otherSkill = otherSkill {
-                otherHeight = otherSkill.isOpenForOther ? 120 : 50
+                otherHeight = otherSkill.isSelected ? 120 : 50
             }
             return CGFloat(otherHeight)
         }
@@ -108,6 +111,7 @@ extension DMSelectSkillsVC:UITableViewDataSource, UITableViewDelegate {
             return cell
         case .other:
             let cell = tableView.dequeueReusableCell(withIdentifier: "OtherSubSkillTableCell") as! OtherSubSkillTableCell
+            cell.otherTextView.text = otherSkill?.otherText
             if (otherSkill?.isSelected)! {
                 cell.tickButton.setTitle(Constants.DesignFont.acceptTermsSelected, for: .normal)
                 cell.tickButton.setTitleColor(UIColor.white, for: .normal)
@@ -168,8 +172,8 @@ extension DMSelectSkillsVC : UITextViewDelegate {
         return true
     }
     
-    
     func textViewDidChange(_ textView: UITextView) {
         self.otherText = textView.text
+        otherSkill?.otherText = self.otherText
     }
 }
