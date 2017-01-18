@@ -23,6 +23,7 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
     var jobSelectionPickerView:JobSelectionPickerView!
     var jobTitles = [JobTitle]()
     var selectedJobTitle:JobTitle?
+    var jobSelectionView:UIView?
     
     //MARK:- View LifeCycle
     override func viewDidLoad() {
@@ -37,6 +38,11 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        jobSelectionView?.frame = self.currentJobTitleTextField.frame
+    }
+    
     func makeTip() {
         UIView.makeTip(view: profileHeaderView, size: 8, x: profileHeaderView.frame.midX/2, y: profileHeaderView.frame.midY)
     }
@@ -47,11 +53,11 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
         self.addJobSelectionPickerViewTextField()
         
         currentJobTitleTextField.isUserInteractionEnabled = false
-        let jobSelectionView = UIView(frame: self.currentJobTitleTextField.frame)
-        self.view.addSubview(jobSelectionView)
-        jobSelectionView.isUserInteractionEnabled = true
+        jobSelectionView = UIView(frame: self.currentJobTitleTextField.frame)
+        self.view.addSubview(jobSelectionView!)
+        jobSelectionView?.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(openJobSelectionPicker))
-        jobSelectionView.addGestureRecognizer(tap)
+        jobSelectionView?.addGestureRecognizer(tap)
         self.profileButton.isUserInteractionEnabled = false
         self.perform(#selector(makeTip), with: nil, afterDelay: 0.2)
     }

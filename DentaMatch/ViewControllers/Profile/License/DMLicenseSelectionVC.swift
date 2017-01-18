@@ -79,7 +79,7 @@ class DMLicenseSelectionVC: DMBaseVC,UITextFieldDelegate {
     @IBAction func nextButtonClikced(_ sender: Any) {
         
 //        if self.stateBoardImage == nil{
-//            self.makeToast(toastString: "Please select state board certificate")
+//            self.makeToast(toastString: "Please upload photo for Dental state board")
 //            return
 //        }
 //        for i in 0..<(self.licenseArray?.count)! {
@@ -142,11 +142,7 @@ class DMLicenseSelectionVC: DMBaseVC,UITextFieldDelegate {
             }
         }
     }
-    
 
-    
-    
-    
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation

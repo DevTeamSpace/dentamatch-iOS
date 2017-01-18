@@ -212,13 +212,13 @@ struct Constants {
     
     //MARK:- Alert Messages
     struct AlertMessage{
-        static let invalidEmail = "Please, provide a valid Email Id."
-        static let passwordRange = "Password should be 6-25 characters long "
+        static let invalidEmail = "Please provide a valid Email Id."
+        static let passwordRange = "Password should be 6-25 characters long"
         static let emptyName = "Name text can not be left blank."
         static let emptyPreferredJobLocation = "Preferred Job Location can not be left blank."
         static let termsAndConditions = "Please accept terms and conditions/Privacy Policy."
         static let emptyCurrentJobTitle = "Current Job Title can not be left blank."
-        static let emptyPassword = "Password can not be left blank."
+        static let emptyPassword = "please enter the password"
         static let skipProfile = "Completed job profile will help you in applying for jobs."
         static let somethingWentWrong = "Something went wrong"
         

@@ -84,7 +84,11 @@ class DMRegistrationVC: DMBaseVC {
                         return false
                     }
                 } else {
+                    if registrationParams[Constants.ServerKey.password]!.characters.count == 0 {
+                        self.makeToast(toastString: Constants.AlertMessage.emptyPassword)
+                    } else {
                     self.makeToast(toastString: Constants.AlertMessage.passwordRange)
+                    }
                     return false
                 }
             } else {

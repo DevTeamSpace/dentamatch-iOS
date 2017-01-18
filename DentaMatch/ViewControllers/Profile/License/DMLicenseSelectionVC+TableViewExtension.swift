@@ -135,6 +135,11 @@ extension DMLicenseSelectionVC : UITableViewDataSource, UITableViewDelegate {
         
         if textField.tag == 0 {
             let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ0123456789-")
+            if string == "-" && textField.text?.characters.count == 0 {
+                self.dismissKeyboard()
+                self.makeToast(toastString: "License No can't start with hyphen (-)")
+                return false
+            }
             if string.rangeOfCharacter(from: characterset.inverted) != nil {
                 print("string contains special characters")
                 return false
@@ -150,15 +155,16 @@ extension DMLicenseSelectionVC : UITableViewDataSource, UITableViewDelegate {
             }
             
         }
-        
         return true
-        
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.text = textField.text?.trim()
         if textField.tag == 0
         {
+            if textField.text?.characters.last == "-" {
+                print("Ending with hyphen")
+            }
             self.licenseArray?.replaceObject(at: 0, with: textField.text!)
         }else{
             self.licenseArray?.replaceObject(at: 1, with: textField.text!)
@@ -169,6 +175,4 @@ extension DMLicenseSelectionVC : UITableViewDataSource, UITableViewDelegate {
         textField.resignFirstResponder()
         return true
     }
-    
-    
 }
