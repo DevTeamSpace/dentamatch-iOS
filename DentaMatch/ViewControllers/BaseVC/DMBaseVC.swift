@@ -34,9 +34,10 @@ class DMBaseVC: UIViewController {
             var leftBarBtn : UIButton = UIButton()
             var leftBarButtonItem : UIBarButtonItem = UIBarButtonItem()
             leftBarBtn = UIButton()
-            leftBarBtn.titleLabel?.font = UIFont.designFont(fontSize: 22)
+            leftBarBtn.titleLabel?.font = UIFont.designFont(fontSize: 18)
+            leftBarBtn.titleLabel?.textAlignment = .left
             leftBarBtn.setTitle("l", for: .normal)
-            leftBarBtn.frame = CGRect(x : 0,y : 0,width: 25,height : 25)
+            leftBarBtn.frame = CGRect(x : 0,y : 0,width: 20,height : 25)
             leftBarBtn.imageView?.contentMode = .scaleAspectFit
             leftBarBtn.addTarget(self, action: #selector(DMJobTitleVC.actionLeftNavigationItem), for: .touchUpInside)
             leftBarButtonItem = UIBarButtonItem()

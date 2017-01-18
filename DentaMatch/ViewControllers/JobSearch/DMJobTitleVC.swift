@@ -10,9 +10,7 @@ import UIKit
 import SwiftyJSON
 
 @objc protocol DMJobTitleVCDelegate {
-    
     @objc optional func setSelectedJobType(jobTitles : [JobTitle])
-    
 }
 
 class DMJobTitleVC: DMBaseVC {
@@ -48,7 +46,8 @@ class DMJobTitleVC: DMBaseVC {
         self.rightBarBtn = UIButton()
         self.rightBarBtn.setTitle("Save", for: .normal)
         self.rightBarBtn.titleLabel?.font = UIFont.fontRegular(fontSize: 16.0)
-        self.rightBarBtn.frame = CGRect(x : 0,y : 0,width: 50,height : 25)
+        self.rightBarBtn.frame = CGRect(x : 0,y : 0,width: 40,height : 25)
+        self.rightBarBtn.titleLabel?.textAlignment = .right
         self.rightBarBtn.imageView?.contentMode = .scaleAspectFit
         self.rightBarBtn.addTarget(self, action: #selector(DMJobTitleVC.actionRightNavigationItem), for: .touchUpInside)
         self.rightBarButtonItem = UIBarButtonItem()

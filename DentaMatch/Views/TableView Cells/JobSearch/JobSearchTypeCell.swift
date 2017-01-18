@@ -24,6 +24,8 @@ class JobSearchTypeCell: UITableViewCell {
     @IBOutlet weak var viewJobType: UIView!
     @IBOutlet weak var btnFullTime: UIButton!
     @IBOutlet weak var btnPartTime: UIButton!
+    @IBOutlet weak var lblFullTime: UILabel!
+    @IBOutlet weak var lblPartTime: UILabel!
     
     var isFullTime : Bool! = false
     var isPartTime : Bool! = false
@@ -53,12 +55,14 @@ class JobSearchTypeCell: UITableViewCell {
         if isFullTime == false {
             sender.setTitle("w", for: .normal)
             sender.setTitleColor(UIColor.init(red: 4.0/255.0, green: 112.0/255.0, blue: 192.0/255.0, alpha: 1.0), for: .normal)
-            delegate?.selectJobSearchType!(selected: false, type: JobSearchType.FullTime.rawValue)
+            self.lblFullTime.textColor = UIColor.init(red: 81.0/255.0, green: 81.0/255.0, blue: 81.0/255.0, alpha: 1.0)
+            delegate?.selectJobSearchType!(selected: true, type: JobSearchType.FullTime.rawValue)
         }
         else {
             sender.setTitle("t", for: .normal)
             sender.setTitleColor(UIColor.init(red: 151.0/255.0, green: 151.0/255.0, blue: 151.0/255.0, alpha: 1.0), for: .normal)
-            delegate?.selectJobSearchType!(selected: true, type: JobSearchType.FullTime.rawValue)
+            self.lblFullTime.textColor = UIColor.init(red: 181.0/255.0, green: 181.0/255.0, blue: 181.0/255.0, alpha: 1.0)
+            delegate?.selectJobSearchType!(selected: false, type: JobSearchType.FullTime.rawValue)
         }
         isFullTime = !isFullTime
     }
@@ -67,11 +71,13 @@ class JobSearchTypeCell: UITableViewCell {
         if isPartTime == false {
             sender.setTitle("w", for: .normal)
             sender.setTitleColor(UIColor.init(red: 4.0/255.0, green: 112.0/255.0, blue: 192.0/255.0, alpha: 1.0), for: .normal)
+            self.lblPartTime.textColor = UIColor.init(red: 81.0/255.0, green: 81.0/255.0, blue: 81.0/255.0, alpha: 1.0)
             delegate?.selectJobSearchType!(selected: true, type: JobSearchType.PartTime.rawValue)
         }
         else {
             sender.setTitle("t", for: .normal)
             sender.setTitleColor(UIColor.init(red: 151.0/255.0, green: 151.0/255.0, blue: 151.0/255.0, alpha: 1.0), for: .normal)
+            self.lblPartTime.textColor = UIColor.init(red: 181.0/255.0, green: 181.0/255.0, blue: 181.0/255.0, alpha: 1.0)
             delegate?.selectJobSearchType!(selected: false, type: JobSearchType.PartTime.rawValue)
         }
         isPartTime = !isPartTime

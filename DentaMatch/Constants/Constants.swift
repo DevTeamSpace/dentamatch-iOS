@@ -127,6 +127,20 @@ struct Constants {
         static let joblists = "joblists"
     }
     
+    struct JobDetailKey {
+        static let jobId = "jobId"
+        static let jobTitle = "jobTitle"
+        static let jobType = "jobType"
+        static let jobDays = "jobDays"
+        static let docName = "docName"
+        static let address = "address"
+        static let latitude = "latitude"
+        static let longitude = "longitude"
+        static let postTime = "postTime"
+        static let isFavourite = "isFavourite"
+        static let distance = "distance"
+    }
+    
     //MARK:- UserDefault Keys
     struct UserDefaultsKey {
         static let isLoggedIn = "isLoggedIn"

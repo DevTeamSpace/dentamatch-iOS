@@ -51,7 +51,7 @@ class JobSeachTitleCell: UITableViewCell {
         let heightPadding : CGFloat = 23.0
         
         if jobTitles.count == 0 {
-            constraintScrollViewHeight.constant = 24.0
+            constraintScrollViewHeight.constant = 4.0
             self.layoutIfNeeded()
             return
         }

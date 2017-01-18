@@ -12,9 +12,9 @@ import CoreLocation
 class DMJobSearchVC : DMBaseVC {
     
     @IBOutlet weak var tblViewJobSearch: UITableView!
-    var coordinateSelected:CLLocationCoordinate2D?
     var isPartTimeDayShow : Bool = false
     var jobTitles = [JobTitle]()
+    var location : Location! = Location()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,12 +98,13 @@ extension DMJobSearchVC : UITableViewDataSource, UITableViewDelegate {
         else if indexPath.section == 2 {
             
             if indexPath.row == 0 {
-                var cell = tableView.dequeueReusableCell(withIdentifier: "CurrentLocationCell")
-                cell?.selectionStyle = .none
+                var cell = tableView.dequeueReusableCell(withIdentifier: "CurrentLocationCell") as! CurrentLocationCell
+                cell.selectionStyle = .none
+                cell.lblLocation.text = self.location.address
                 if cell == nil {
                     cell = CurrentLocationCell()
                 }
-                return cell!
+                return cell
             }
             else if  indexPath.row == 1 {
                 return cell
@@ -212,8 +213,8 @@ extension DMJobSearchVC : UITableViewDataSource, UITableViewDelegate {
         else if section == 2 {
             height =  20
         }
-        let headerView:UIView! = UIView (frame:CGRect (x : 0,y : 0, width : self.tblViewJobSearch.frame.size.width,height : height));
-        headerView.backgroundColor = self.tblViewJobSearch.backgroundColor;
+        let headerView:UIView! = UIView (frame:CGRect (x : 0,y : 0, width : self.tblViewJobSearch.frame.size.width,height : height))
+        headerView.backgroundColor = self.tblViewJobSearch.backgroundColor
         
         return headerView;
     }
@@ -245,7 +246,8 @@ extension DMJobSearchVC : UITableViewDataSource, UITableViewDelegate {
     //MARK : Action Search Method
     
     func actionSearchButton() {
-        
+        let jobSearchResultVC = UIStoryboard.jobSearchStoryBoard().instantiateViewController(type: DMJobSearchResultVC.self)!
+        self.navigationController?.pushViewController(jobSearchResultVC, animated: true)
     }
 }
 
@@ -297,15 +299,14 @@ extension DMJobSearchVC : LocationAddressDelegate {
     
     func locationAddress(location: Location) {
         
-        coordinateSelected = location.coordinateSelected
-        if let address = location.address {
-            if let cell = self.tblViewJobSearch.cellForRow(at: IndexPath(row: 0, section: 2)) as?
-                        CurrentLocationCell {
-                cell.lblLocation.text = address
+        self.location = location
+        if location.address != nil {
+                tblViewJobSearch.beginUpdates()
+                tblViewJobSearch.reloadRows(at: [IndexPath(row: 0, section: 2)], with: .none)
+                tblViewJobSearch.endUpdates()
+            debugPrint(self.location.address ?? "Address not found")
         }
-
-            debugPrint(address)
-        } else {
+        else {
             debugPrint("Address is empty")
         }
         

@@ -17,7 +17,7 @@ protocol LocationAddressDelegate {
 struct Location {
     var postalCode = ""
     var coordinateSelected:CLLocationCoordinate2D?
-    var address:String?
+    var address:String? = ""
 }
 
 class DMRegisterMapsVC: DMBaseVC {
@@ -145,6 +145,7 @@ class DMRegisterMapsVC: DMBaseVC {
         marker?.position = coordinate
         //marker.icon = GMSMarker.markerImage(with: UIColor.black)
         //marker.icon = UIImage(named:"ic_pin")
+        
         marker?.map = self.mapView
         marker?.appearAnimation = kGMSMarkerAnimationPop
         if isAnimatingToLocation {
