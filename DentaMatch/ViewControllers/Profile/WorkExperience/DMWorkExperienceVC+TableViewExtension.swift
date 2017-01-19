@@ -18,9 +18,9 @@ extension DMWorkExperienceVC
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == self.workExperienceDetailTable
         {
-            return 6 + (self.currentExperience!.references.count)
+            return 6 + self.currentExperience!.references.count
         }else{
-            return (self.exprienceArray.count)
+            return self.exprienceArray.count
         }
     }
     
@@ -44,7 +44,7 @@ extension DMWorkExperienceVC
         if indexPath.row > 4
         {
             let index = indexPath.row - 5
-            let height = index == 0 ? ((self.currentExperience?.references.count)! > index ? 230 : 257): ((self.currentExperience?.references.count)!-1 > index ? 250 : 303)
+            let height = index == 0 ? ((self.currentExperience?.references.count)! > index ? 250 : 257): ((self.currentExperience?.references.count)!-1 > index ? 260 : 303)
             debugPrint("row height \(height)")
             return CGFloat(height)
         }
@@ -96,14 +96,13 @@ extension DMWorkExperienceVC
                         cell.addMoreReferenceButton.isHidden = false
                     }
                     cell.deleteButton.isHidden = true
-                    cell.addMoreButtonTopSpace.constant = 5
+                    cell.addMoreButtonTopSpace.constant = 10
                     
                 }else{
                     if (self.currentExperience?.references.count)! - 1 > tag {
                         cell.deleteButton.isHidden = false
-                        cell.addMoreButtonTopSpace.constant = 5
+                        cell.addMoreButtonTopSpace.constant = 10
                         cell.addMoreReferenceButton.isHidden = true
-                        
                     }else
                     {
                         cell.deleteButton.isHidden = false
@@ -113,6 +112,8 @@ extension DMWorkExperienceVC
 
                 }
 
+//                cell.addMoreReferenceButton.contentEdgeInsets = UIEdgeInsetsMake(-10, 15, -20, 0);
+                cell.addMoreReferenceButton.layoutIfNeeded()
                 cell.layoutIfNeeded()
                 return cell
                 

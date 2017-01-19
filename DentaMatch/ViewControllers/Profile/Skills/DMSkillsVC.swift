@@ -44,7 +44,24 @@ class DMSkillsVC: DMBaseVC {
     }
 
     @IBAction func nextButtonClicked(_ sender: Any) {
-        self.updateSkillsAPI(params: prepareSkillUpdateData())
+        let params  = prepareSkillUpdateData()
+        let others = params["other"] as! [[String:AnyObject]]
+        let skills = params["skills"] as! [String]
+        
+        if skills.count > 0 {
+            self.updateSkillsAPI(params: params)
+            
+        } else {
+            if others.count > 1 {
+                self.updateSkillsAPI(params: params)
+            } else if others.count == 1 {
+                if otherSkill?.otherText == "" {
+                    self.makeToast(toastString: "Please select atleast one skill")
+                } else {
+                    self.updateSkillsAPI(params: params)
+                }
+            }
+        }
     }
     
     func openAffiliationScreen() {

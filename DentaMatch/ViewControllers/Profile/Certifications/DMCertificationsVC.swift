@@ -164,16 +164,30 @@ class DMCertificationsVC: DMBaseVC,DatePickerViewDelegate {
     
     // MARK:- Validations
     func checkAllCertitficates()-> Bool {
+        var atLeastOneCheck = false
+
         for index in  0..<self.certicates.count{
+            
             let certObj = certicates[index]
-            if (certObj.certificateImageURL?.isEmptyField)! {
-                self.makeToast(toastString: "Please upload \(certObj.certificationName) first")
-                return false
-            }else if (certObj.validityDate.isEmptyField) {
-                self.makeToast(toastString: "Please select  \(certObj.certificationName) validity date")
-                return false
+            if !(certObj.certificateImageURL?.isEmptyField)! {
+//                self.makeToast(toastString: "Please upload \(certObj.certificationName) first")
+//                return false
+                
+                if (certObj.validityDate.isEmptyField) {
+                    self.makeToast(toastString: "Please select  \(certObj.certificationName) validity date")
+                    return false
+                }
+                atLeastOneCheck = true
             }
             
+            
+
+            
+        }
+        if atLeastOneCheck == false {
+            self.makeToast(toastString: "Please upload at least one certificate")
+
+            return false
         }
         return true
     }

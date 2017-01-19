@@ -112,19 +112,16 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
 
     
     @IBAction func nextButtonClicked(_ sender: Any) {
-//        self.alertMessage(title: "Alert", message: "Work in progress", buttonText: "Ok") {
-//            
-//        }
-//        
-//        if self.exprienceArray.count > 0
-//        {
-//            self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToStudyVC, sender: self)
-//
-//        }else{
-//            self.makeToast(toastString: "Please add at least one experience")
-//        }
         
-        self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToStudyVC, sender: self)
+        if self.exprienceArray.count > 0
+        {
+            self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToStudyVC, sender: self)
+
+        }else{
+            self.makeToast(toastString: "Please add at least one experience")
+        }
+        
+//        self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToStudyVC, sender: self)
 
     }
     
