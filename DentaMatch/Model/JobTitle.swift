@@ -17,7 +17,6 @@ class JobTitle: NSObject {
     
     init(job:JSON) {
         self.jobTitle = job["jobtitle_name"].stringValue
-        self.jobTitle = "dgDAGdfGdfgsdfkgiuhfdgiohdsfghjdfshglhdsfilghkldfjghilsdfhghdfglkhdlkfghldhg"
         self.jobId = job["id"].intValue
     }
 }
