@@ -23,7 +23,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="426"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="425.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="425"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="registrationHeading" translatesAutoresizingMaskIntoConstraints="NO" id="Ant-ls-85M">
@@ -47,21 +47,33 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4hg-2h-wrq">
-                        <rect key="frame" x="8" y="239" width="304" height="19"/>
+                        <rect key="frame" x="8" y="239" width="304" height="20"/>
                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tip" translatesAutoresizingMaskIntoConstraints="NO" id="yA5-c1-EgQ">
-                        <rect key="frame" x="149.5" y="290.5" width="21" height="9"/>
+                        <rect key="frame" x="150" y="291" width="21" height="9"/>
                     </imageView>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="hi" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hOf-F1-8Sf">
-                        <rect key="frame" x="0.0" y="300" width="320" height="109.5"/>
+                        <rect key="frame" x="0.0" y="300" width="320" height="109"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="textColor" red="0.57647058823529407" green="0.57647058823529407" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HPh-yt-bRc">
+                        <rect key="frame" x="250" y="0.0" width="70" height="55"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="70" id="OwT-Bo-leb"/>
+                            <constraint firstAttribute="height" constant="55" id="VSi-W1-rc5"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="14"/>
+                        <inset key="titleEdgeInsets" minX="8" minY="20" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" title="Edit">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="two-jR-4bn" secondAttribute="trailing" constant="8" id="09t-hO-ELN"/>
@@ -69,10 +81,12 @@
                     <constraint firstAttribute="trailing" secondItem="Ant-ls-85M" secondAttribute="trailing" id="2qm-UM-HRA"/>
                     <constraint firstItem="yA5-c1-EgQ" firstAttribute="bottom" secondItem="Ant-ls-85M" secondAttribute="bottom" id="7Kd-jB-swg"/>
                     <constraint firstItem="4hg-2h-wrq" firstAttribute="centerX" secondItem="two-jR-4bn" secondAttribute="centerX" id="7T4-md-D5E"/>
+                    <constraint firstAttribute="trailing" secondItem="HPh-yt-bRc" secondAttribute="trailing" id="8hq-rC-aIi"/>
                     <constraint firstAttribute="trailing" secondItem="hOf-F1-8Sf" secondAttribute="trailing" id="CHp-3h-5O3"/>
                     <constraint firstAttribute="trailing" secondItem="4hg-2h-wrq" secondAttribute="trailing" constant="8" id="L5d-SF-Eyg"/>
                     <constraint firstItem="two-jR-4bn" firstAttribute="centerX" secondItem="UiG-3D-BXE" secondAttribute="centerX" id="LA2-JT-WkX"/>
                     <constraint firstItem="Ant-ls-85M" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="PzD-a0-3wR"/>
+                    <constraint firstItem="HPh-yt-bRc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Rsj-Bx-K4E"/>
                     <constraint firstAttribute="bottom" secondItem="hOf-F1-8Sf" secondAttribute="bottom" constant="16" id="VlJ-RH-68D"/>
                     <constraint firstItem="4hg-2h-wrq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="ZXy-AT-PbM"/>
                     <constraint firstItem="hOf-F1-8Sf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Zf9-xH-zCj"/>
@@ -87,6 +101,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="aboutTextView" destination="hOf-F1-8Sf" id="D27-mh-XlW"/>
+                <outlet property="editButton" destination="HPh-yt-bRc" id="hHZ-Ff-GnP"/>
                 <outlet property="nameLabel" destination="two-jR-4bn" id="rau-kZ-DgB"/>
                 <outlet property="placeLabel" destination="4hg-2h-wrq" id="f4i-B7-WY7"/>
                 <outlet property="profileButton" destination="UiG-3D-BXE" id="KdY-kd-dIc"/>

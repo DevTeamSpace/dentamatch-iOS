@@ -85,6 +85,7 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
         case .profileHeader:
             let cell = tableView.dequeueReusableCell(withIdentifier: "EditProfileHeaderTableCell") as! EditProfileHeaderTableCell
             cell.nameLabel.text = UserManager.shared().activeUser.fullName()
+            cell.editButton.addTarget(self, action: #selector(openEditPublicProfileScreen), for: .touchUpInside)
             if let imageUrl = URL(string: UserManager.shared().activeUser.profileImageURL!) {
                 cell.profileButton.sd_setImage(with: imageUrl, for: .normal, placeholderImage: kPlaceHolderImage)
             }
@@ -173,6 +174,21 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
                 }
             }
             
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let profileOptions = EditProfileOptions(rawValue: indexPath.section)!
+
+        switch profileOptions {
+        case .licenseNumber:
+            guard let _ = license else {
+                print("License Not added")
+                return
+            }
+        default:
+            break
         }
     }
 }

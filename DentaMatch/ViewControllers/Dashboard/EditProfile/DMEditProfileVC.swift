@@ -21,16 +21,37 @@ class DMEditProfileVC: DMBaseVC {
     }
     
     @IBOutlet weak var editProfileTableView: UITableView!
+    
+    var dashBoardVC:DMDashboardVC?
+    
     var license:License?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        
+        if let dashBoard = ((UIApplication.shared.delegate) as! AppDelegate).window?.rootViewController as? DMDashboardVC {
+            dashBoardVC = dashBoard
+        }
+
         self.userProfileAPI()
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        dashBoardVC?.tabBar.alpha = 1.0
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIView.animate(withDuration: 0.5) {
+            self.dashBoardVC?.tabBar.alpha = 0.0
+        }
+    }
+    
     func setup() {
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.editProfileTableView.register(UINib(nibName: "EditProfileHeaderTableCell", bundle: nil), forCellReuseIdentifier: "EditProfileHeaderTableCell")
         self.editProfileTableView.register(UINib(nibName: "SectionHeadingTableCell", bundle: nil), forCellReuseIdentifier: "SectionHeadingTableCell")
         self.editProfileTableView.register(UINib(nibName: "AddProfileOptionTableCell", bundle: nil), forCellReuseIdentifier: "AddProfileOptionTableCell")
@@ -39,6 +60,11 @@ class DMEditProfileVC: DMBaseVC {
     
     func openEditLicenseScreen() {
             self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToEditLicense, sender: self)
+    }
+    
+    func openEditPublicProfileScreen() {
+        self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToPublicProfile, sender: self)
+
     }
 
     

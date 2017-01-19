@@ -8,19 +8,30 @@
 
 import UIKit
 
-class DMPublicProfileVC: UIViewController {
+class DMPublicProfileVC: DMBaseVC {
 
+    @IBOutlet weak var publicProfileTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setup()
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func setup() {
+        self.title = "EDIT PROFILE"
+        self.navigationItem.leftBarButtonItem = self.backBarButton()
+        self.publicProfileTableView.register(UINib(nibName: "EditPublicProfileTableCell", bundle: nil), forCellReuseIdentifier: "EditPublicProfileTableCell")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
 
     /*
     // MARK: - Navigation
@@ -31,5 +42,4 @@ class DMPublicProfileVC: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }

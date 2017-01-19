@@ -27,6 +27,7 @@ class DMEditLicenseVC: DMBaseVC {
     }
     
     func setup() {
+        self.title = "EDIT PROFILE"
         self.changeNavBarAppearanceForDefault()
         self.navigationItem.leftBarButtonItem = self.backBarButton()
     }

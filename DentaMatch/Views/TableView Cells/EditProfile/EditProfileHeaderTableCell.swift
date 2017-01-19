@@ -9,6 +9,7 @@
 import UIKit
 
 class EditProfileHeaderTableCell: UITableViewCell {
+    @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var placeLabel: UILabel!
 
     @IBOutlet weak var aboutTextView: UITextView!
