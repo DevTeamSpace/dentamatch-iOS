@@ -86,10 +86,12 @@ struct Constants {
         struct SegueIdentifier {
             static let goToStudyVC = "goToStudyVC"
             static let goToSkillsVC = "goToSkillsVC"
+            static let goToPublicProfile = "goToPublicProfile"
             static let goToAffiliationsVC = "goToAffiliationsVC"
             static let goToCertificationsVC = "goToCertificationsVC"
             static let goToExecutiveSummaryVC = "goToExecutiveSummaryVC"
             static let goToLicense = "goToLicense"
+            static let goToEditLicense = "goToEditLicense"
         }
     }
     
@@ -104,7 +106,6 @@ struct Constants {
         static let privacyPolicyURL = Constants.API.apiURL("privacy-policy")
         static let getJobTitle = Constants.API.apiURL("list-jobtitle")
         static let uploadImage = Constants.API.apiURL("users/upload-image")
-        static let LicenseNumberAndState = Constants.API.apiURL("users/update-license")
         static let getSkillList = Constants.API.apiURL("list-skills")
         static let updateSkillList = Constants.API.apiURL("users/update-skill")
         static let getCertificationList = Constants.API.apiURL("list-certifications")
@@ -163,6 +164,7 @@ struct Constants {
         static let validityDate = "validityDate"
         static let image = "image"
         static let profilePic = "profilePic"
+        static let license = "licence"
 
         static let imageURL = "imagePath"
         static let imageURLForPostResponse = "imgUrl"
@@ -216,6 +218,8 @@ struct Constants {
         static let passwordRange = "Password should be 6-25 characters long"
         static let emptyName = "Name text can not be left blank."
         static let emptyPreferredJobLocation = "Preferred Job Location can not be left blank."
+        static let emptyLicenseNumber = "Please enter license no"
+        static let emptyState = "Please enter state"
         static let termsAndConditions = "Please accept terms and conditions/Privacy Policy."
         static let emptyCurrentJobTitle = "Current Job Title can not be left blank."
         static let emptyPassword = "please enter the password"
@@ -248,6 +252,3 @@ struct Constants {
 
     }
 }
-
-
-

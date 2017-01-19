@@ -14,6 +14,8 @@ class AnimatedPHTextField: FloatLabelTextField {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.autocorrectionType = .no
+        self.autocapitalizationType = .sentences
         self.textColor = Constants.Color.textFieldTextColor
         self.titleYPadding = 5.0
         self.titleFont = UIFont.fontRegular(fontSize: 12.0)!

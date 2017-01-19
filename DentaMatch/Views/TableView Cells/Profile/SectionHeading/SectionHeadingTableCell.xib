@@ -12,6 +12,9 @@
         <array key="SF-UI-Text-Medium.otf">
             <string>SFUIText-Medium</string>
         </array>
+        <array key="SF-UI-Text-Regular.otf">
+            <string>SFUIText-Regular</string>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -43,21 +46,36 @@
                             <constraint firstAttribute="height" constant="1.5" id="5EW-ZD-gEE"/>
                         </constraints>
                     </view>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HEy-sg-5sn">
+                        <rect key="frame" x="266" y="0.0" width="54" height="47"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="54" id="6O1-aZ-QSg"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="14"/>
+                        <inset key="titleEdgeInsets" minX="0.0" minY="3" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" title="Edit">
+                            <color key="titleColor" red="0.015686274509803921" green="0.50196078431372548" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="SDr-oB-0lr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="1DS-eB-34f"/>
+                    <constraint firstAttribute="trailing" secondItem="HEy-sg-5sn" secondAttribute="trailing" id="9EB-rZ-InE"/>
                     <constraint firstItem="mqf-Ri-Bfm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="JN3-wO-Mdx"/>
+                    <constraint firstAttribute="bottom" secondItem="HEy-sg-5sn" secondAttribute="bottom" id="Jpj-6r-ytc"/>
                     <constraint firstItem="Lz0-ge-1Zp" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" multiplier="1.1" id="PvW-E1-YjN"/>
                     <constraint firstItem="SDr-oB-0lr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Rgr-w7-DYW"/>
                     <constraint firstAttribute="bottom" secondItem="mqf-Ri-Bfm" secondAttribute="bottom" id="YFG-6n-aay"/>
                     <constraint firstAttribute="trailing" secondItem="mqf-Ri-Bfm" secondAttribute="trailing" id="bL4-LJ-SpZ"/>
                     <constraint firstAttribute="trailing" secondItem="SDr-oB-0lr" secondAttribute="trailing" id="ih6-hd-Qqe"/>
                     <constraint firstItem="Lz0-ge-1Zp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="p9C-Rn-BGo"/>
+                    <constraint firstItem="HEy-sg-5sn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="zez-ll-4w2"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
+                <outlet property="editButton" destination="HEy-sg-5sn" id="UkQ-lS-Rfr"/>
                 <outlet property="headingLabel" destination="Lz0-ge-1Zp" id="yhh-nV-YNQ"/>
             </connections>
             <point key="canvasLocation" x="97" y="67.5"/>
