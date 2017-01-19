@@ -42,7 +42,7 @@ class JobSeachTitleCell: UITableViewCell {
                 $0.removeFromSuperview()
             }
         })
-        
+
         var topMargin : CGFloat = 0.0
         var leftMargin : CGFloat = 5.0
         let rightMargin : CGFloat = 0.0
@@ -60,11 +60,25 @@ class JobSeachTitleCell: UITableViewCell {
             let font = UIFont.fontRegular(fontSize: 14.0)
             let textAttributes = [NSFontAttributeName: font]
             let textSize = objTitle.jobTitle.boundingRect(with: CGSize(width : self.frame.size.width + 10,height : 14), options: .usesLineFragmentOrigin, attributes: textAttributes, context: nil)
-            let textWidth : CGFloat = textSize.width
+            var textWidth : CGFloat = textSize.width
             let textHeight : CGFloat = 34.0
-            if leftMargin + textSize.width + rightMargin + widthPadding >= self.scrollViewJobTitle.frame.size.width{
+            
+            if textSize.width >= self.scrollViewJobTitle.frame.size.width {
+                leftMargin = 5.0
+                if topMargin == 0.0 {
+                    topMargin = 5.0
+                }
+                else {
+                    topMargin =  topMargin + textSize.height + heightPadding + 5.0
+                }
+                textWidth = self.scrollViewJobTitle.frame.size.width - leftMargin - rightMargin - 15
+                //textHeight = 64.0
+            }
+            else if leftMargin + textSize.width + rightMargin + widthPadding >= self.scrollViewJobTitle.frame.size.width {
                 leftMargin = 5.0
                 topMargin =  topMargin + textSize.height + heightPadding + 5.0
+                
+                //topMargin =  topMargin + textSize.height + heightPadding + 5.0
                 //widthPadding = 20.0
                 //textWidth = self.scrollViewJobTitle.frame.size.width - 20
                 //textHeight = 64.0

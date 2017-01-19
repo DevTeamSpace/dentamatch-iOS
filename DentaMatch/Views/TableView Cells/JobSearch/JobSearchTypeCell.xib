@@ -26,7 +26,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="189"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="188.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="188"/>
                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6F2-jK-Ai5">
@@ -110,7 +110,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F3R-zl-hfp">
-                                <rect key="frame" x="336" y="127" width="40" height="61"/>
+                                <rect key="frame" x="336" y="125" width="40" height="61"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="S2s-Sa-qLc"/>
                                     <constraint firstAttribute="height" constant="61" id="gf3-SA-6Kj"/>
@@ -131,12 +131,12 @@
                             <constraint firstAttribute="bottom" secondItem="BqU-S0-Zy7" secondAttribute="bottom" constant="24" id="Grq-vG-iNd"/>
                             <constraint firstAttribute="trailing" secondItem="F3R-zl-hfp" secondAttribute="trailing" constant="1" id="HU4-FF-Y2l"/>
                             <constraint firstItem="lOn-ZY-MbE" firstAttribute="top" secondItem="beg-Z3-e9e" secondAttribute="bottom" constant="23" id="ITE-DF-7v5"/>
-                            <constraint firstItem="F3R-zl-hfp" firstAttribute="top" secondItem="lOn-ZY-MbE" secondAttribute="bottom" constant="2" id="PSf-8I-uEJ"/>
+                            <constraint firstItem="F3R-zl-hfp" firstAttribute="top" secondItem="lOn-ZY-MbE" secondAttribute="bottom" id="PSf-8I-uEJ"/>
                             <constraint firstItem="beg-Z3-e9e" firstAttribute="leading" secondItem="f9g-EC-Qf3" secondAttribute="trailing" constant="29" id="QXf-Jy-RQT"/>
                             <constraint firstItem="Pbv-pN-MBO" firstAttribute="leading" secondItem="6F2-jK-Ai5" secondAttribute="leading" id="TTL-tS-Sua"/>
                             <constraint firstItem="PNt-AE-HT7" firstAttribute="leading" secondItem="6F2-jK-Ai5" secondAttribute="leading" constant="16" id="WJQ-V0-UWY"/>
                             <constraint firstItem="BqU-S0-Zy7" firstAttribute="leading" secondItem="Pbv-pN-MBO" secondAttribute="trailing" constant="29" id="Wc9-af-PZ1"/>
-                            <constraint firstAttribute="bottom" secondItem="F3R-zl-hfp" secondAttribute="bottom" id="b2Q-41-KVe"/>
+                            <constraint firstAttribute="bottom" secondItem="F3R-zl-hfp" secondAttribute="bottom" constant="2" id="b2Q-41-KVe"/>
                             <constraint firstAttribute="trailing" secondItem="hU5-zo-qbr" secondAttribute="trailing" constant="1" id="bqe-y0-SXp"/>
                             <constraint firstItem="Pbv-pN-MBO" firstAttribute="top" secondItem="f9g-EC-Qf3" secondAttribute="bottom" constant="1" id="dEQ-XB-EbP"/>
                             <constraint firstAttribute="trailing" secondItem="lOn-ZY-MbE" secondAttribute="trailing" id="g0f-8J-RMK"/>

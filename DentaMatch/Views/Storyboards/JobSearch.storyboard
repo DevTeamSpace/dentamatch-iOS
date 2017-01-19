@@ -12,6 +12,9 @@
         <array key="SF-UI-Text-Regular.otf">
             <string>SFUIText-Regular</string>
         </array>
+        <array key="SF-UI-Text-Semibold.otf">
+            <string>SFUIText-Semibold</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Job SearchVC-->
@@ -27,20 +30,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="noO-rj-m36">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="VTU-4g-X5s" id="esf-9D-ehP"/>
                                     <outlet property="delegate" destination="VTU-4g-X5s" id="sJG-xN-XI5"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PB7-NA-IGt">
+                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                                <color key="backgroundColor" red="0.015686274509803921" green="0.4392156862745098" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="25r-wD-KVC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="16"/>
+                                <state key="normal" title="SEARCH">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="actionSearchButton:" destination="VTU-4g-X5s" eventType="touchUpInside" id="3yR-ry-yk4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="noO-rj-m36" firstAttribute="leading" secondItem="bII-c8-waP" secondAttribute="leading" id="IiH-tV-Ptl"/>
-                            <constraint firstItem="cxl-aD-P6c" firstAttribute="top" secondItem="noO-rj-m36" secondAttribute="bottom" id="QGQ-jb-hMh"/>
+                            <constraint firstAttribute="trailing" secondItem="PB7-NA-IGt" secondAttribute="trailing" id="LCz-ir-kYx"/>
+                            <constraint firstItem="PB7-NA-IGt" firstAttribute="leading" secondItem="bII-c8-waP" secondAttribute="leading" id="Nyl-ta-IxN"/>
+                            <constraint firstItem="cxl-aD-P6c" firstAttribute="top" secondItem="PB7-NA-IGt" secondAttribute="bottom" id="kvL-ej-HZ6"/>
                             <constraint firstItem="noO-rj-m36" firstAttribute="top" secondItem="lly-3D-VKP" secondAttribute="bottom" id="nds-jd-A7j"/>
                             <constraint firstAttribute="trailing" secondItem="noO-rj-m36" secondAttribute="trailing" id="nsq-hn-uyK"/>
+                            <constraint firstItem="PB7-NA-IGt" firstAttribute="top" secondItem="noO-rj-m36" secondAttribute="bottom" id="qwh-Sn-dfz"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Bu7-Vd-XBl"/>
