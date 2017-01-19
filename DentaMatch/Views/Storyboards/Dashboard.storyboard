@@ -7,6 +7,17 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-UI-Text-Medium.otf">
+            <string>SFUIText-Medium</string>
+        </array>
+        <array key="SF-UI-Text-Regular.otf">
+            <string>SFUIText-Regular</string>
+        </array>
+        <array key="SF-UI-Text-Semibold.otf">
+            <string>SFUIText-Semibold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Edit ProfileVC-->
         <scene sceneID="Xom-GF-1bp">
@@ -43,11 +54,135 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="editProfileTableView" destination="s5f-pG-lsU" id="40Y-bB-PfS"/>
+                        <segue destination="RGQ-C1-Wkv" kind="show" identifier="goToEditLicense" id="lKN-ed-6xz"/>
+                        <segue destination="6mb-s4-xbn" kind="show" identifier="goToPublicProfile" id="Gk7-rH-NDD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MYo-T3-88e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-271.19999999999999" y="993.55322338830592"/>
+        </scene>
+        <!--Edit LicenseVC-->
+        <scene sceneID="2Sr-G7-Eyb">
+            <objects>
+                <viewController storyboardIdentifier="DMEditLicenseVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RGQ-C1-Wkv" customClass="DMEditLicenseVC" customModule="DentaMatch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sTc-xv-vTk"/>
+                        <viewControllerLayoutGuide type="bottom" id="1ZT-BK-qEY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6zr-gI-65q">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ucU-vr-6cp">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i96-pK-Yc9">
+                                        <rect key="frame" x="0.0" y="44" width="375" height="1"/>
+                                        <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1.5" id="ZVk-48-5ZY"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LICENSE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hCH-2W-d5w">
+                                        <rect key="frame" x="20" y="22" width="59" height="17"/>
+                                        <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="14"/>
+                                        <color key="textColor" red="0.2196078431372549" green="0.2196078431372549" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="i96-pK-Yc9" secondAttribute="trailing" id="SJQ-nL-VVp"/>
+                                    <constraint firstAttribute="height" constant="45" id="ZV5-5h-6NO"/>
+                                    <constraint firstItem="hCH-2W-d5w" firstAttribute="top" secondItem="ucU-vr-6cp" secondAttribute="top" constant="22" id="dVn-y2-dZz"/>
+                                    <constraint firstItem="i96-pK-Yc9" firstAttribute="leading" secondItem="ucU-vr-6cp" secondAttribute="leading" id="o3N-H9-taU"/>
+                                    <constraint firstItem="hCH-2W-d5w" firstAttribute="leading" secondItem="ucU-vr-6cp" secondAttribute="leading" constant="20" id="vBF-Gs-vxv"/>
+                                    <constraint firstAttribute="bottom" secondItem="i96-pK-Yc9" secondAttribute="bottom" id="y4r-5J-9q1"/>
+                                </constraints>
+                            </view>
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="License Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tes-k1-QPG" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
+                                <rect key="frame" x="20" y="69" width="335" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="vdR-IK-UJ6"/>
+                                </constraints>
+                                <color key="textColor" red="0.21960784310000001" green="0.21960784310000001" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="RGQ-C1-Wkv" id="R3f-b6-IZK"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="State" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ufX-Iq-dZm" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
+                                <rect key="frame" x="20" y="144" width="335" height="55"/>
+                                <color key="textColor" red="0.21960784310000001" green="0.21960784310000001" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="RGQ-C1-Wkv" id="1gd-8X-8hr"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="roV-Iz-60h">
+                                <rect key="frame" x="0.0" y="554" width="375" height="49"/>
+                                <color key="backgroundColor" red="0.015686274509803921" green="0.4392156862745098" blue="0.75294117647058822" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="cfQ-SF-CUm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="16"/>
+                                <state key="normal" title="SAVE">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveButtonPressed:" destination="RGQ-C1-Wkv" eventType="touchUpInside" id="hhP-Ek-R5r"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ufX-Iq-dZm" firstAttribute="height" secondItem="tes-k1-QPG" secondAttribute="height" id="0Kg-r1-Z6y"/>
+                            <constraint firstAttribute="trailing" secondItem="roV-Iz-60h" secondAttribute="trailing" id="1eZ-rb-Ic9"/>
+                            <constraint firstItem="roV-Iz-60h" firstAttribute="leading" secondItem="6zr-gI-65q" secondAttribute="leading" id="Aaj-un-7Te"/>
+                            <constraint firstItem="ucU-vr-6cp" firstAttribute="leading" secondItem="6zr-gI-65q" secondAttribute="leading" id="E9D-pQ-Tvq"/>
+                            <constraint firstItem="ufX-Iq-dZm" firstAttribute="leading" secondItem="6zr-gI-65q" secondAttribute="leading" constant="20" id="MdR-1N-K4w"/>
+                            <constraint firstAttribute="trailing" secondItem="ucU-vr-6cp" secondAttribute="trailing" id="Qp9-HE-lhL"/>
+                            <constraint firstItem="ucU-vr-6cp" firstAttribute="top" secondItem="sTc-xv-vTk" secondAttribute="bottom" id="SWb-m8-KXr"/>
+                            <constraint firstAttribute="trailing" secondItem="ufX-Iq-dZm" secondAttribute="trailing" constant="20" id="UaZ-Zx-VQ7"/>
+                            <constraint firstItem="1ZT-BK-qEY" firstAttribute="top" secondItem="roV-Iz-60h" secondAttribute="bottom" id="a4P-TV-0cD"/>
+                            <constraint firstItem="tes-k1-QPG" firstAttribute="top" secondItem="ucU-vr-6cp" secondAttribute="bottom" constant="24" id="dC2-HR-JEq"/>
+                            <constraint firstAttribute="trailing" secondItem="tes-k1-QPG" secondAttribute="trailing" constant="20" id="fj1-yg-BTn"/>
+                            <constraint firstItem="tes-k1-QPG" firstAttribute="leading" secondItem="6zr-gI-65q" secondAttribute="leading" constant="20" id="oYj-rD-eyP"/>
+                            <constraint firstItem="ufX-Iq-dZm" firstAttribute="top" secondItem="tes-k1-QPG" secondAttribute="bottom" constant="20" id="yh5-0x-h26"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="licenseNumberTextField" destination="tes-k1-QPG" id="sSk-CO-48A"/>
+                        <outlet property="stateTextField" destination="ufX-Iq-dZm" id="3Kt-CS-hee"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="psA-2B-hKw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="494" y="1661"/>
+        </scene>
+        <!--Public ProfileVC-->
+        <scene sceneID="iMG-If-ek3">
+            <objects>
+                <viewController storyboardIdentifier="DMPublicProfileVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6mb-s4-xbn" customClass="DMPublicProfileVC" customModule="DentaMatch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="72f-1x-UJR"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ngf-2M-UDs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EKZ-h3-RSd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8wa-hG-fw2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="550" y="878"/>
         </scene>
         <!--Track-->
         <scene sceneID="lhB-j2-650">
@@ -92,7 +227,7 @@
                 <navigationController storyboardIdentifier="EditProfileNAV" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8Ar-Ah-Bfh" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Profile" id="frf-SB-pmR"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" hidden="YES" contentMode="scaleToFill" misplaced="YES" id="lT7-8Y-N7V">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="lT7-8Y-N7V">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

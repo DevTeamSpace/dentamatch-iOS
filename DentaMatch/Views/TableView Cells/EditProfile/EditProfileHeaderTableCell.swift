@@ -11,10 +11,13 @@ import UIKit
 class EditProfileHeaderTableCell: UITableViewCell {
     @IBOutlet weak var placeLabel: UILabel!
 
+    @IBOutlet weak var aboutTextView: UITextView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var profileButton: ProfileImageButton!
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.aboutTextView.textContainer.lineFragmentPadding = 12.0
+
         // Initialization code
     }
 

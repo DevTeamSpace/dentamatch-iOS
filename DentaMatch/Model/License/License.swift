@@ -14,6 +14,9 @@ class License: NSObject {
     var state = ""
     var number = ""
     
+    override init () {
+    }
+    
     init(license:JSON) {
         self.number = license[Constants.ServerKey.licenseNumber].stringValue
         self.state = license[Constants.ServerKey.state].stringValue

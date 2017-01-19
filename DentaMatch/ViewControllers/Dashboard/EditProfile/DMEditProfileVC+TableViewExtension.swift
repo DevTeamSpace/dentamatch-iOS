@@ -18,7 +18,7 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
         let profileOptions = EditProfileOptions(rawValue: indexPath.section)!
         switch profileOptions {
         case .profileHeader:
-            return 298
+            return 426
             
         case .dentalStateboard:
             if indexPath.row == 0 {
@@ -59,9 +59,11 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             if indexPath.row == 0 {
                 return 45
             } else {
+                if let _ = license {
+                    return 87
+                }
                 return 72
             }
-            
         }
     }
     
@@ -92,6 +94,7 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "SectionHeadingTableCell") as! SectionHeadingTableCell
                 cell.headingLabel.text = "DENTAL STATE BOARD"
+                cell.editButton.isHidden = true
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AddProfileOptionTableCell") as! AddProfileOptionTableCell
@@ -103,6 +106,7 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "SectionHeadingTableCell") as! SectionHeadingTableCell
                 cell.headingLabel.text = "EXPERIENCE"
+                cell.editButton.isHidden = true
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AddProfileOptionTableCell") as! AddProfileOptionTableCell
@@ -114,6 +118,7 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "SectionHeadingTableCell") as! SectionHeadingTableCell
                 cell.headingLabel.text = "SCHOOLING AND CERTIFICATION"
+                cell.editButton.isHidden = true
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AddProfileOptionTableCell") as! AddProfileOptionTableCell
@@ -125,6 +130,7 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "SectionHeadingTableCell") as! SectionHeadingTableCell
                 cell.headingLabel.text = "KEY SKILLS"
+                cell.editButton.isHidden = true
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AddProfileOptionTableCell") as! AddProfileOptionTableCell
@@ -135,6 +141,7 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
         case .affiliations:
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "SectionHeadingTableCell") as! SectionHeadingTableCell
+                cell.editButton.isHidden = true
                 cell.headingLabel.text = "PROFESSIONAL AFFILIATIONS"
                 return cell
             } else {
@@ -147,11 +154,23 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "SectionHeadingTableCell") as! SectionHeadingTableCell
                 cell.headingLabel.text = "LICENSE NUMBER"
+                cell.editButton.isHidden = true
+                cell.editButton.addTarget(self, action: #selector(openEditLicenseScreen), for: .touchUpInside)
+                if let _ = license {
+                    cell.editButton.isHidden = false
+                }
                 return cell
             } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "AddProfileOptionTableCell") as! AddProfileOptionTableCell
-                cell.profileOptionLabel.text = "Add license details"
-                return cell
+                if let _ = license {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "EditLicenseTableCell") as! EditLicenseTableCell
+                    cell.stateLabel.text = license?.state
+                    cell.licenceNumberLabel.text = license?.number
+                    return cell
+                } else {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "AddProfileOptionTableCell") as! AddProfileOptionTableCell
+                    cell.profileOptionLabel.text = "Add license details"
+                    return cell
+                }
             }
             
         }

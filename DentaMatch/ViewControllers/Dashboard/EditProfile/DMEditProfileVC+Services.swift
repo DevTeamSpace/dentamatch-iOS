@@ -33,6 +33,7 @@ extension DMEditProfileVC {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
                 handleUserResponse(user: response[Constants.ServerKey.result][Constants.ServerKey.user])
+                handleLicenseResponse(license: response[Constants.ServerKey.result][Constants.ServerKey.license])
             } else {
             }
         }
@@ -43,6 +44,12 @@ extension DMEditProfileVC {
             UserManager.shared().activeUser.firstName = user[Constants.ServerKey.firstName].stringValue
             UserManager.shared().activeUser.lastName = user[Constants.ServerKey.lastName].stringValue
             UserManager.shared().activeUser.profileImageURL = user[Constants.ServerKey.profilePic].stringValue
+        }
+    }
+    
+    func handleLicenseResponse(license:JSON?) {
+        if let license = license {
+            self.license = License(license: license)
         }
     }
 }

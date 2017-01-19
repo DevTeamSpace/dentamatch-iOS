@@ -21,6 +21,7 @@ class DMEditProfileVC: DMBaseVC {
     }
     
     @IBOutlet weak var editProfileTableView: UITableView!
+    var license:License?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,15 +36,23 @@ class DMEditProfileVC: DMBaseVC {
         self.editProfileTableView.register(UINib(nibName: "AddProfileOptionTableCell", bundle: nil), forCellReuseIdentifier: "AddProfileOptionTableCell")
         self.editProfileTableView.register(UINib(nibName: "EditLicenseTableCell", bundle: nil), forCellReuseIdentifier: "EditLicenseTableCell")
     }
+    
+    func openEditLicenseScreen() {
+            self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToEditLicense, sender: self)
+    }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == Constants.StoryBoard.SegueIdentifier.goToEditLicense {
+            let destinationVC:DMEditLicenseVC = segue.destination as! DMEditLicenseVC
+            destinationVC.license = self.license
+        } else if segue.identifier == Constants.StoryBoard.SegueIdentifier.goToPublicProfile {
+            let destinationVC:DMPublicProfileVC = segue.destination as! DMPublicProfileVC
+        }
     }
-    */
+    
 
 }

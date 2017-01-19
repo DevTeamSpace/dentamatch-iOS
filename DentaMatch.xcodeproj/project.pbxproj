@@ -171,7 +171,6 @@
 		E5E7CB431E2F39D500D4FB59 /* DMEditProfileVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E7CB421E2F39D500D4FB59 /* DMEditProfileVC+Services.swift */; };
 		E5E7CB4A1E2F8CDE00D4FB59 /* EditLicenseTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E7CB481E2F8CDE00D4FB59 /* EditLicenseTableCell.swift */; };
 		E5E7CB4B1E2F8CDE00D4FB59 /* EditLicenseTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5E7CB491E2F8CDE00D4FB59 /* EditLicenseTableCell.xib */; };
-		E5E7CB4E1E2F914100D4FB59 /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E7CB4D1E2F914100D4FB59 /* License.swift */; };
 		E5E7CB781E2FA23200D4FB59 /* AboutMeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E7CB541E2FA23200D4FB59 /* AboutMeCell.swift */; };
 		E5E7CB791E2FA23200D4FB59 /* AboutMeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5E7CB551E2FA23200D4FB59 /* AboutMeCell.xib */; };
 		E5E7CB7A1E2FA23200D4FB59 /* AffiliationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E7CB571E2FA23200D4FB59 /* AffiliationsCell.swift */; };
@@ -203,6 +202,12 @@
 		E5E7CB941E2FA23300D4FB59 /* StudyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5E7CB771E2FA23200D4FB59 /* StudyCell.xib */; };
 		E5E7CB981E2FA28000D4FB59 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E7CB961E2FA28000D4FB59 /* PhotoCell.swift */; };
 		E5E7CB991E2FA28000D4FB59 /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5E7CB971E2FA28000D4FB59 /* PhotoCell.xib */; };
+		E5E7CB9F1E306E6300D4FB59 /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E7CB9E1E306E6300D4FB59 /* License.swift */; };
+		E5E7CBA31E3075A200D4FB59 /* DMEditLicenseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E7CBA21E3075A200D4FB59 /* DMEditLicenseVC.swift */; };
+		E5E7CBA51E3089B200D4FB59 /* DMEditLicenseVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E7CBA41E3089B200D4FB59 /* DMEditLicenseVC+Services.swift */; };
+		E5E7CBA81E30970700D4FB59 /* EditPublicProfileTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E7CBA61E30970700D4FB59 /* EditPublicProfileTableCell.swift */; };
+		E5E7CBA91E30970700D4FB59 /* EditPublicProfileTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5E7CBA71E30970700D4FB59 /* EditPublicProfileTableCell.xib */; };
+		E5E7CBAC1E3099DF00D4FB59 /* DMPublicProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E7CBAB1E3099DF00D4FB59 /* DMPublicProfileVC.swift */; };
 		E5F47C941E0035B90051C4A1 /* UIImage+Rotations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F47C911E0035B90051C4A1 /* UIImage+Rotations.swift */; };
 		E5F47C951E0035B90051C4A1 /* UIImageRotate.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F47C931E0035B90051C4A1 /* UIImageRotate.m */; };
 		E5FBE9D91E1CCF940025683C /* DMRegistration+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FBE9D81E1CCF940025683C /* DMRegistration+Services.swift */; };
@@ -386,7 +391,6 @@
 		E5E7CB421E2F39D500D4FB59 /* DMEditProfileVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMEditProfileVC+Services.swift"; sourceTree = "<group>"; };
 		E5E7CB481E2F8CDE00D4FB59 /* EditLicenseTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditLicenseTableCell.swift; sourceTree = "<group>"; };
 		E5E7CB491E2F8CDE00D4FB59 /* EditLicenseTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditLicenseTableCell.xib; sourceTree = "<group>"; };
-		E5E7CB4D1E2F914100D4FB59 /* License.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
 		E5E7CB541E2FA23200D4FB59 /* AboutMeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutMeCell.swift; sourceTree = "<group>"; };
 		E5E7CB551E2FA23200D4FB59 /* AboutMeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutMeCell.xib; sourceTree = "<group>"; };
 		E5E7CB571E2FA23200D4FB59 /* AffiliationsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AffiliationsCell.swift; sourceTree = "<group>"; };
@@ -418,6 +422,12 @@
 		E5E7CB771E2FA23200D4FB59 /* StudyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudyCell.xib; sourceTree = "<group>"; };
 		E5E7CB961E2FA28000D4FB59 /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		E5E7CB971E2FA28000D4FB59 /* PhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
+		E5E7CB9E1E306E6300D4FB59 /* License.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
+		E5E7CBA21E3075A200D4FB59 /* DMEditLicenseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMEditLicenseVC.swift; sourceTree = "<group>"; };
+		E5E7CBA41E3089B200D4FB59 /* DMEditLicenseVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMEditLicenseVC+Services.swift"; sourceTree = "<group>"; };
+		E5E7CBA61E30970700D4FB59 /* EditPublicProfileTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPublicProfileTableCell.swift; sourceTree = "<group>"; };
+		E5E7CBA71E30970700D4FB59 /* EditPublicProfileTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditPublicProfileTableCell.xib; sourceTree = "<group>"; };
+		E5E7CBAB1E3099DF00D4FB59 /* DMPublicProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMPublicProfileVC.swift; sourceTree = "<group>"; };
 		E5F47C911E0035B90051C4A1 /* UIImage+Rotations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Rotations.swift"; sourceTree = "<group>"; };
 		E5F47C921E0035B90051C4A1 /* UIImageRotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageRotate.h; sourceTree = "<group>"; };
 		E5F47C931E0035B90051C4A1 /* UIImageRotate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageRotate.m; sourceTree = "<group>"; };
@@ -458,7 +468,7 @@
 		5A1E2A161E1E47340055D913 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E5E7CB4C1E2F913200D4FB59 /* License */,
+				E5E7CB9D1E306E6300D4FB59 /* License */,
 				E558D8DE1E2C80A800A6DF95 /* School */,
 				E57EE6CB1E28EBA90090434F /* Affiliation */,
 				E54976E51E28CEDD006F21E5 /* Certification */,
@@ -747,6 +757,8 @@
 		E558D9011E2E085200A6DF95 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				E5E7CBAA1E3099CB00D4FB59 /* PublicProfile */,
+				E5E7CBA11E30758E00D4FB59 /* License */,
 				E558D9061E2E6FD800A6DF95 /* EditProfile */,
 				E558D9021E2E6E3400A6DF95 /* DMDashboardVC.swift */,
 			);
@@ -772,6 +784,8 @@
 				E558D9141E2EA47500A6DF95 /* AddProfileOptionTableCell.xib */,
 				E5E7CB481E2F8CDE00D4FB59 /* EditLicenseTableCell.swift */,
 				E5E7CB491E2F8CDE00D4FB59 /* EditLicenseTableCell.xib */,
+				E5E7CBA61E30970700D4FB59 /* EditPublicProfileTableCell.swift */,
+				E5E7CBA71E30970700D4FB59 /* EditPublicProfileTableCell.xib */,
 			);
 			path = EditProfile;
 			sourceTree = "<group>";
@@ -1178,14 +1192,6 @@
 			path = "Terms And Conditions";
 			sourceTree = "<group>";
 		};
-		E5E7CB4C1E2F913200D4FB59 /* License */ = {
-			isa = PBXGroup;
-			children = (
-				E5E7CB4D1E2F914100D4FB59 /* License.swift */,
-			);
-			path = License;
-			sourceTree = "<group>";
-		};
 		E5E7CB531E2FA23200D4FB59 /* AboutMe */ = {
 			isa = PBXGroup;
 			children = (
@@ -1278,6 +1284,31 @@
 				E5E7CB971E2FA28000D4FB59 /* PhotoCell.xib */,
 			);
 			path = Stateboard;
+			sourceTree = "<group>";
+		};
+		E5E7CB9D1E306E6300D4FB59 /* License */ = {
+			isa = PBXGroup;
+			children = (
+				E5E7CB9E1E306E6300D4FB59 /* License.swift */,
+			);
+			path = License;
+			sourceTree = "<group>";
+		};
+		E5E7CBA11E30758E00D4FB59 /* License */ = {
+			isa = PBXGroup;
+			children = (
+				E5E7CBA21E3075A200D4FB59 /* DMEditLicenseVC.swift */,
+				E5E7CBA41E3089B200D4FB59 /* DMEditLicenseVC+Services.swift */,
+			);
+			path = License;
+			sourceTree = "<group>";
+		};
+		E5E7CBAA1E3099CB00D4FB59 /* PublicProfile */ = {
+			isa = PBXGroup;
+			children = (
+				E5E7CBAB1E3099DF00D4FB59 /* DMPublicProfileVC.swift */,
+			);
+			path = PublicProfile;
 			sourceTree = "<group>";
 		};
 		E5F47C901E0035B90051C4A1 /* UIImage+Additions */ = {
@@ -1390,6 +1421,7 @@
 				E597E5751E151A99001DDA78 /* SF-UI-Display-Black.otf in Resources */,
 				E5E7CB901E2FA23300D4FB59 /* SubSkillCell.xib in Resources */,
 				E597E58B1E151A99001DDA78 /* SF-UI-Text-UltrathinItalic.otf in Resources */,
+				E5E7CBA91E30970700D4FB59 /* EditPublicProfileTableCell.xib in Resources */,
 				E597E5801E151A99001DDA78 /* SF-UI-Text-Heavy.otf in Resources */,
 				E50B3F4D1E194CD7004C5F32 /* AnimatedPHTableCell.xib in Resources */,
 				E5E7CB8A1E2FA23200D4FB59 /* OtherSkillCell.xib in Resources */,
@@ -1550,9 +1582,11 @@
 				5A3FD06E1E1BB0A000360B3C /* UINavigationBar+Awesome.m in Sources */,
 				E587D2CF1E23438B006B7F06 /* DMJobTitleSelectionVC.swift in Sources */,
 				E5A0EB051E2BDE680092E21A /* SubSkillCollectionCell.swift in Sources */,
+				E5E7CBA31E3075A200D4FB59 /* DMEditLicenseVC.swift in Sources */,
 				E56C9FA81DED75D500EAA9DD /* CommonHelper.swift in Sources */,
 				E59029AA1DED2C7A00151E9B /* UserDefaultsManager.swift in Sources */,
 				E594BE9D1E1DFF4400310AE5 /* DMRegistrationVC+TableViewExtension.swift in Sources */,
+				E5E7CBA81E30970700D4FB59 /* EditPublicProfileTableCell.swift in Sources */,
 				E55462DB1DAE312C004163B2 /* String+Additons.swift in Sources */,
 				5A85D2161E2DFAD000AC4C89 /* TagWrapper.swift in Sources */,
 				E55462D91DAE3104004163B2 /* Array+Additions.swift in Sources */,
@@ -1560,7 +1594,6 @@
 				E57EE6CD1E28EBC00090434F /* Affiliation.swift in Sources */,
 				E558D9031E2E6E3400A6DF95 /* DMDashboardVC.swift in Sources */,
 				E5FBE9D91E1CCF940025683C /* DMRegistration+Services.swift in Sources */,
-				E5E7CB4E1E2F914100D4FB59 /* License.swift in Sources */,
 				E58654FE1DEFEF7F006FEB2D /* ConfigurationManager.swift in Sources */,
 				E5AE2AF61DAF878900C008BD /* OnboardingCollectionViewCell.swift in Sources */,
 				5A1960FD1E208B67002A5F7C /* PhoneNumberFormatter.swift in Sources */,
@@ -1578,6 +1611,7 @@
 				E587D2EE1E24C021006B7F06 /* DMWorkExperienceVC.swift in Sources */,
 				E54976F41E28CEDD006F21E5 /* EmployeeReferenceModel.swift in Sources */,
 				E59029A81DED2C7A00151E9B /* APIManager.swift in Sources */,
+				E5E7CBA51E3089B200D4FB59 /* DMEditLicenseVC+Services.swift in Sources */,
 				E56C9FA31DED520B00EAA9DD /* InAppPurchase.swift in Sources */,
 				E558D8FC1E2CB5D400A6DF95 /* AutoCompleteTable.swift in Sources */,
 				E50B3F4C1E194CD7004C5F32 /* AnimatedPHTableCell.swift in Sources */,
@@ -1589,6 +1623,7 @@
 				5A85D2151E2DFAD000AC4C89 /* TagPresentables.swift in Sources */,
 				E55463001DAE510A004163B2 /* Utilities.swift in Sources */,
 				E56E90801DFF31740096A31B /* CameraGalleryManager.swift in Sources */,
+				E5E7CBAC1E3099DF00D4FB59 /* DMPublicProfileVC.swift in Sources */,
 				E55462F71DAE4C6F004163B2 /* UITextField+ToolBar.swift in Sources */,
 				E587D2D71E236B84006B7F06 /* DMRegisterMapsVC+GoogleMapsExtension.swift in Sources */,
 				E54976F31E28CEDD006F21E5 /* User.swift in Sources */,
@@ -1631,6 +1666,7 @@
 				E597E5901E151CFF001DDA78 /* FloatLabelTextView.swift in Sources */,
 				E5F47C951E0035B90051C4A1 /* UIImageRotate.m in Sources */,
 				E5C5F31B1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift in Sources */,
+				E5E7CB9F1E306E6300D4FB59 /* License.swift in Sources */,
 				E54976F21E28CEDD006F21E5 /* Skill.swift in Sources */,
 				5A85D2131E2DFAD000AC4C89 /* TagList.swift in Sources */,
 				E5A0EB0E1E2BE7C40092E21A /* ASJTag.m in Sources */,
