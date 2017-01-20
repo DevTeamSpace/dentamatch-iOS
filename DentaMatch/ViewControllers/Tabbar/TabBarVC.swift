@@ -9,6 +9,16 @@
 import UIKit
 
 class TabBarVC: UITabBarController,UITabBarControllerDelegate {
+    
+    enum TabBarOptions:Int {
+        case jobs = 1
+        case track
+        case calender
+        case messages
+        case profile
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,9 +38,28 @@ class TabBarVC: UITabBarController,UITabBarControllerDelegate {
     }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        debugPrint("Selected view controller")
+        self.tabBar.alpha = 1.0
+        let tabBarOptions = TabBarOptions(rawValue: (self.tabBar.selectedItem?.tag)!)!
+        
+        switch tabBarOptions {
+            
+        case .jobs:
+            print("jobs")
+            
+        case .track:
+            print("track")
+
+        case .calender:
+            print("calender")
+
+        case .messages:
+            print("messages")
+
+        case .profile:
+            print("profile")
+
+        }
     }
-    
     
     override func viewWillDisappear(_ animated: Bool) {
         debugPrint("viewWillDisappear")
@@ -55,14 +84,4 @@ class TabBarVC: UITabBarController,UITabBarControllerDelegate {
     {
         return nil
     }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }

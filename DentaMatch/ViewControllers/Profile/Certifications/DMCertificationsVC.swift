@@ -28,7 +28,7 @@ class DMCertificationsVC: DMBaseVC,DatePickerViewDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
 
-         self.dateView = DatePickerView.loadExperiencePickerView(withText:"" , tag: 0)
+        self.dateView = DatePickerView.loadExperiencePickerView(withText:"" , tag: 0)
         self.dateView?.delegate = self
 
         // Do any additional setup after loading the view.
@@ -191,7 +191,7 @@ class DMCertificationsVC: DMBaseVC,DatePickerViewDelegate {
         }
         return true
     }
-    // MARK :- DaatePicker Delegate
+    // MARK :- DatePicker Delegate
     func canceButtonAction() {
         self.view.endEditing(true)
     }

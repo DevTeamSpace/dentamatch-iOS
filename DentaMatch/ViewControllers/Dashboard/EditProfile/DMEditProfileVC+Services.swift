@@ -34,7 +34,9 @@ extension DMEditProfileVC {
             if response[Constants.ServerKey.status].boolValue {
                 handleUserResponse(user: response[Constants.ServerKey.result][Constants.ServerKey.user])
                 handleLicenseResponse(license: response[Constants.ServerKey.result][Constants.ServerKey.license])
+                handleCertificationResponse(certifications: response[Constants.ServerKey.result][Constants.ServerKey.certifications].arrayValue)
             } else {
+                //handle error
             }
         }
     }
@@ -50,6 +52,15 @@ extension DMEditProfileVC {
     func handleLicenseResponse(license:JSON?) {
         if let license = license {
             self.license = License(license: license)
+        }
+    }
+    
+    func handleCertificationResponse(certifications:[JSON]?) {
+        if let certifications = certifications {
+            for certification in certifications {
+                let certification = Certification(certification: certification)
+                self.certifications.append(certification)
+            }
         }
     }
 }

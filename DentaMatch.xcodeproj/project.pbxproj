@@ -63,6 +63,11 @@
 		E54976F41E28CEDD006F21E5 /* EmployeeReferenceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54976EE1E28CEDD006F21E5 /* EmployeeReferenceModel.swift */; };
 		E54976F51E28CEDD006F21E5 /* ExperienceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54976EF1E28CEDD006F21E5 /* ExperienceModel.swift */; };
 		E54976F71E28D243006F21E5 /* DMExecutiveSummaryVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54976F61E28D243006F21E5 /* DMExecutiveSummaryVC+Services.swift */; };
+		E54B9A7C1E326A6C00805D9C /* EditCertificateTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54B9A7A1E326A6C00805D9C /* EditCertificateTableCell.swift */; };
+		E54B9A7D1E326A6C00805D9C /* EditCertificateTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E54B9A7B1E326A6C00805D9C /* EditCertificateTableCell.xib */; };
+		E54B9A801E32729C00805D9C /* EmptyCertificateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54B9A7E1E32729C00805D9C /* EmptyCertificateTableViewCell.swift */; };
+		E54B9A811E32729C00805D9C /* EmptyCertificateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E54B9A7F1E32729C00805D9C /* EmptyCertificateTableViewCell.xib */; };
+		E54B9A841E32870B00805D9C /* DMEditCertificateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54B9A831E32870B00805D9C /* DMEditCertificateVC.swift */; };
 		E55462D71DAE2F49004163B2 /* UIColor+HexCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55462D61DAE2F49004163B2 /* UIColor+HexCode.swift */; };
 		E55462D91DAE3104004163B2 /* Array+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55462D81DAE3104004163B2 /* Array+Additions.swift */; };
 		E55462DB1DAE312C004163B2 /* String+Additons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55462DA1DAE312C004163B2 /* String+Additons.swift */; };
@@ -284,6 +289,11 @@
 		E54976EE1E28CEDD006F21E5 /* EmployeeReferenceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeReferenceModel.swift; sourceTree = "<group>"; };
 		E54976EF1E28CEDD006F21E5 /* ExperienceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperienceModel.swift; sourceTree = "<group>"; };
 		E54976F61E28D243006F21E5 /* DMExecutiveSummaryVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMExecutiveSummaryVC+Services.swift"; sourceTree = "<group>"; };
+		E54B9A7A1E326A6C00805D9C /* EditCertificateTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCertificateTableCell.swift; sourceTree = "<group>"; };
+		E54B9A7B1E326A6C00805D9C /* EditCertificateTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditCertificateTableCell.xib; sourceTree = "<group>"; };
+		E54B9A7E1E32729C00805D9C /* EmptyCertificateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyCertificateTableViewCell.swift; sourceTree = "<group>"; };
+		E54B9A7F1E32729C00805D9C /* EmptyCertificateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyCertificateTableViewCell.xib; sourceTree = "<group>"; };
+		E54B9A831E32870B00805D9C /* DMEditCertificateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMEditCertificateVC.swift; sourceTree = "<group>"; };
 		E55462D01DAE1419004163B2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E55462D61DAE2F49004163B2 /* UIColor+HexCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+HexCode.swift"; sourceTree = "<group>"; };
 		E55462D81DAE3104004163B2 /* Array+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Additions.swift"; sourceTree = "<group>"; };
@@ -679,6 +689,14 @@
 			path = WorkExperience;
 			sourceTree = "<group>";
 		};
+		E54B9A821E3286E700805D9C /* Certificate */ = {
+			isa = PBXGroup;
+			children = (
+				E54B9A831E32870B00805D9C /* DMEditCertificateVC.swift */,
+			);
+			path = Certificate;
+			sourceTree = "<group>";
+		};
 		E55462D41DAE1558004163B2 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
@@ -821,6 +839,7 @@
 		E558D9011E2E085200A6DF95 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				E54B9A821E3286E700805D9C /* Certificate */,
 				E5E7CBAA1E3099CB00D4FB59 /* PublicProfile */,
 				E5E7CBA11E30758E00D4FB59 /* License */,
 				E558D9061E2E6FD800A6DF95 /* EditProfile */,
@@ -849,6 +868,10 @@
 				E5E7CB491E2F8CDE00D4FB59 /* EditLicenseTableCell.xib */,
 				E5E7CBA61E30970700D4FB59 /* EditPublicProfileTableCell.swift */,
 				E5E7CBA71E30970700D4FB59 /* EditPublicProfileTableCell.xib */,
+				E54B9A7A1E326A6C00805D9C /* EditCertificateTableCell.swift */,
+				E54B9A7B1E326A6C00805D9C /* EditCertificateTableCell.xib */,
+				E54B9A7E1E32729C00805D9C /* EmptyCertificateTableViewCell.swift */,
+				E54B9A7F1E32729C00805D9C /* EmptyCertificateTableViewCell.xib */,
 			);
 			path = EditProfile;
 			sourceTree = "<group>";
@@ -1497,6 +1520,7 @@
 				E5E7CB7B1E2FA23200D4FB59 /* AffiliationsCell.xib in Resources */,
 				E597E57C1E151A99001DDA78 /* SF-UI-Display-Thin.otf in Resources */,
 				E597E5781E151A99001DDA78 /* SF-UI-Display-Light.otf in Resources */,
+				E54B9A811E32729C00805D9C /* EmptyCertificateTableViewCell.xib in Resources */,
 				E597E5831E151A99001DDA78 /* SF-UI-Text-LightItalic.otf in Resources */,
 				E597E57D1E151A99001DDA78 /* SF-UI-Display-Ultralight.otf in Resources */,
 				E558D9051E2E6E4C00A6DF95 /* Dashboard.storyboard in Resources */,
@@ -1505,6 +1529,7 @@
 				E5E7CB7F1E2FA23200D4FB59 /* CertificationsCell.xib in Resources */,
 				E5A0EB111E2BE7C40092E21A /* Resources.bundle in Resources */,
 				E5A0EB061E2BDE680092E21A /* SubSkillCollectionCell.xib in Resources */,
+				E54B9A7D1E326A6C00805D9C /* EditCertificateTableCell.xib in Resources */,
 				E5E7CB8E1E2FA23300D4FB59 /* SkillsTableCell.xib in Resources */,
 				5AB876521E249C0A007818D6 /* ExperiencePickerView.xib in Resources */,
 				E5AE2AF31DAF84AD00C008BD /* Onboarding.storyboard in Resources */,
@@ -1622,6 +1647,7 @@
 				E587D2D51E2357A9006B7F06 /* DMJobTitleSelectionVC+Services.swift in Sources */,
 				E5496E0C1E26435C00C54288 /* DMLicenseSelectionVC+TableViewExtension.swift in Sources */,
 				E587D2EC1E24C021006B7F06 /* DMWorkExperienceStart.swift in Sources */,
+				E54B9A801E32729C00805D9C /* EmptyCertificateTableViewCell.swift in Sources */,
 				5AD246971E27799F009350BF /* PickerAnimatedTextField.swift in Sources */,
 				E5E7CB7E1E2FA23200D4FB59 /* CertificationsCell.swift in Sources */,
 				E594BEA21E1E014F00310AE5 /* DMLoginVC.swift in Sources */,
@@ -1701,6 +1727,7 @@
 				E5E7CB8D1E2FA23200D4FB59 /* SkillsTableCell.swift in Sources */,
 				E587D2F81E24C0C0006B7F06 /* DMSelectSkillsVC.swift in Sources */,
 				E57EE6CA1E28EB440090434F /* DMAffiliationsVC+Services.swift in Sources */,
+				E54B9A7C1E326A6C00805D9C /* EditCertificateTableCell.swift in Sources */,
 				5AD246911E272E92009350BF /* DMWorkExperienceVC+Services.swift in Sources */,
 				E5E7CB8F1E2FA23300D4FB59 /* SubSkillCell.swift in Sources */,
 				E5496E081E25E4AA00C54288 /* DMSchoolListPopOverVC.swift in Sources */,
@@ -1750,6 +1777,7 @@
 				E5A3E8EE1E160ABF00B10937 /* AnimatedLeftViewPHTextField.swift in Sources */,
 				E594BEA81E1E07F500310AE5 /* DMLoginVC+Services.swift in Sources */,
 				E5496E021E255A9E00C54288 /* DMExecutiveSummaryVC+TableViewExtension.swift in Sources */,
+				E54B9A841E32870B00805D9C /* DMEditCertificateVC.swift in Sources */,
 				E56F78561E1F602200F07814 /* DMForgotPasswordVC+Services.swift in Sources */,
 				E5496E161E2784D500C54288 /* DMSkillsVC+TableViewExtension.swift in Sources */,
 				E587D2FA1E24C102006B7F06 /* DMStudyVC.swift in Sources */,

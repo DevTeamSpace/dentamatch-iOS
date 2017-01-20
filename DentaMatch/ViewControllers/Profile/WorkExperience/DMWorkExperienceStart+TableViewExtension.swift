@@ -111,6 +111,8 @@ extension DMWorkExperienceStart
                 cell.commonTextField.placeholder = FieldType.CurrentJobTitle.description
                 
                 let pickerView = JobSelectionPickerView.loadJobSelectionView(withJobTitles: jobTitles)
+                cell.commonTextField.type = 1
+                cell.commonTextField.tintColor = UIColor.clear
                 cell.commonTextField.inputView = pickerView
                 pickerView.delegate = self
                 cell.commonTextField.tag = 0
@@ -122,10 +124,14 @@ extension DMWorkExperienceStart
                 let yearViewObj = ExperiencePickerView.loadExperiencePickerView(withText: self.experienceArray[indexPath.row-2] as! String)
                 yearViewObj.delegate = self
                 cell.commonTextField.tag = 1
+                cell.commonTextField.type = 1
+                cell.commonTextField.tintColor = UIColor.clear
                 cell.commonTextField.inputView = yearViewObj
             case 4:
                 cell.commonTextField.placeholder = FieldType.OfficeName.description
                 cell.commonTextField.tag = 2
+                cell.commonTextField.type = 0
+                cell.commonTextField.tintColor = self.view.tintColor
                 cell.commonTextField.autocapitalizationType = .sentences
             default:
                 print("default")

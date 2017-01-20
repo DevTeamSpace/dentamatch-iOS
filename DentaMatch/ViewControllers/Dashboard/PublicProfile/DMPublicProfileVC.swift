@@ -26,13 +26,31 @@ class DMPublicProfileVC: DMBaseVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    //MARK:- Keyboard Show Hide Observers
+    func keyboardWillShow(note: NSNotification) {
+        if let keyboardSize = (note.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            publicProfileTableView.contentInset =  UIEdgeInsetsMake(0, 0, keyboardSize.height+1, 0)
+        }
+    }
+    
+    func keyboardWillHide(note: NSNotification) {
+        publicProfileTableView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0)
     }
 
+
+    @IBAction func saveButtonPressed(_ sender: Any) {
+    }
     /*
     // MARK: - Navigation
 

@@ -60,7 +60,6 @@ extension DMCertificationsVC : UITableViewDataSource,UITableViewDelegate , UITex
     func updateCellForCertification(cell:CertificationsCell ,indexPath:IndexPath) {
         let certificate = certicates[indexPath.row]
         cell.validityDateTextField.tag = indexPath.row
-        cell.validityDateTextField.text = certificate.validityDate
         cell.validityDateTextField.inputView = dateView
         cell.validityDateTextField.delegate = self
         cell.validityDateTextField.text = certificate.validityDate

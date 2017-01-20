@@ -19,11 +19,9 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
     @IBOutlet weak var profileHeaderView: UIView!
     
     var profileImage:UIImage?
-    var jobSelectionPickerTextField:UITextField!
     var jobSelectionPickerView:JobSelectionPickerView!
     var jobTitles = [JobTitle]()
     var selectedJobTitle:JobTitle?
-    var jobSelectionView:UIView?
     
     //MARK:- View LifeCycle
     override func viewDidLoad() {
@@ -40,7 +38,7 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        jobSelectionView?.frame = self.currentJobTitleTextField.frame
+        //jobSelectionView?.frame = self.currentJobTitleTextField.frame
     }
     
     func makeTip() {
@@ -49,39 +47,19 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
     
     //MARK:- Private Methods
     func setup() {
+        currentJobTitleTextField.tintColor = UIColor.clear
         self.nameLabel.text = "Hi \(UserManager.shared().activeUser.firstName!)"
         self.addJobSelectionPickerViewTextField()
-        
-        currentJobTitleTextField.isUserInteractionEnabled = false
-        jobSelectionView = UIView(frame: self.currentJobTitleTextField.frame)
-        self.view.addSubview(jobSelectionView!)
-        jobSelectionView?.isUserInteractionEnabled = true
-        let tap = UITapGestureRecognizer(target: self, action: #selector(openJobSelectionPicker))
-        jobSelectionView?.addGestureRecognizer(tap)
+        currentJobTitleTextField.type = 1
         self.profileButton.isUserInteractionEnabled = false
         self.perform(#selector(makeTip), with: nil, afterDelay: 0.2)
     }
     
-    func openJobSelectionPicker() {
-        self.jobSelectionPickerTextField.becomeFirstResponder()
-    }
-    
     func addJobSelectionPickerViewTextField(){
-        if jobSelectionPickerTextField != nil {
-            jobSelectionPickerTextField.removeFromSuperview()
-        }
-        
-        jobSelectionPickerTextField = UITextField(frame: CGRect.zero)
-        self.view.addSubview(jobSelectionPickerTextField)
-        jobSelectionPickerTextField.spellCheckingType = .no
-        jobSelectionPickerTextField.autocorrectionType = .no
-        jobSelectionPickerTextField.delegate = self
-        
-        //Job Title Picker 
+        //Job Title Picker
         jobSelectionPickerView = JobSelectionPickerView.loadJobSelectionView(withJobTitles: [])
-        jobSelectionPickerTextField.inputView = jobSelectionPickerView
+        currentJobTitleTextField.inputView = jobSelectionPickerView
         jobSelectionPickerView.delegate = self
-
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

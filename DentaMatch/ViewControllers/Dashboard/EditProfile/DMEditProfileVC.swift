@@ -18,6 +18,7 @@ class DMEditProfileVC: DMBaseVC {
         case keySkills
         case affiliations
         case licenseNumber
+        case certifications
     }
     
     @IBOutlet weak var editProfileTableView: UITableView!
@@ -25,6 +26,8 @@ class DMEditProfileVC: DMBaseVC {
     var dashBoardVC:TabBarVC?
     
     var license:License?
+    var certifications = [Certification]()
+    var dentalStateBoardURL = "test"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +59,8 @@ class DMEditProfileVC: DMBaseVC {
         self.editProfileTableView.register(UINib(nibName: "SectionHeadingTableCell", bundle: nil), forCellReuseIdentifier: "SectionHeadingTableCell")
         self.editProfileTableView.register(UINib(nibName: "AddProfileOptionTableCell", bundle: nil), forCellReuseIdentifier: "AddProfileOptionTableCell")
         self.editProfileTableView.register(UINib(nibName: "EditLicenseTableCell", bundle: nil), forCellReuseIdentifier: "EditLicenseTableCell")
+        self.editProfileTableView.register(UINib(nibName: "EmptyCertificateTableViewCell", bundle: nil), forCellReuseIdentifier: "EmptyCertificateTableViewCell")
+        self.editProfileTableView.register(UINib(nibName: "EditCertificateTableCell", bundle: nil), forCellReuseIdentifier: "EditCertificateTableCell")
     }
     
     func openEditLicenseScreen() {
@@ -67,9 +72,15 @@ class DMEditProfileVC: DMBaseVC {
 
     }
 
-    func openSetttingScreen() {
-        self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToPublicProfile, sender: self)
+    func openSettingScreen() {
+        self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToSetting, sender: self)
         
+    }
+    
+    func openCertificateScreen(sender:UIButton) {
+        let editCertificateVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: DMEditCertificateVC.self)!
+        editCertificateVC.certificate = certifications[sender.tag]
+        self.navigationController?.pushViewController(editCertificateVC, animated: true)
     }
     
     // MARK: - Navigation
@@ -77,10 +88,10 @@ class DMEditProfileVC: DMBaseVC {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Constants.StoryBoard.SegueIdentifier.goToEditLicense {
-            let destinationVC:DMEditLicenseVC = segue.destination as! DMEditLicenseVC
+            let destinationVC = segue.destination as! DMEditLicenseVC
             destinationVC.license = self.license
         } else if segue.identifier == Constants.StoryBoard.SegueIdentifier.goToPublicProfile {
-            let destinationVC:DMPublicProfileVC = segue.destination as! DMPublicProfileVC
+            let destinationVC = segue.destination as! DMPublicProfileVC
         }
     }
     

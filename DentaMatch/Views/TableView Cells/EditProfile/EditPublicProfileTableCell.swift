@@ -21,6 +21,13 @@ class EditPublicProfileTableCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.aboutMeTextView.layer.cornerRadius = 5.0
+        self.aboutMeTextView.layer.borderWidth = 1.0
+        self.aboutMeTextView.layer.borderColor = Constants.Color.textFieldBorderColor.cgColor
+        self.aboutMeTextView.textContainer.lineFragmentPadding = 12.0
+        self.jobTitleTextField.type = 1
+        self.jobTitleTextField.tintColor = UIColor.clear
+        self.locationTextField.type = 1
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

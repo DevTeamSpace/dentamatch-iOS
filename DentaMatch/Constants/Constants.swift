@@ -94,6 +94,7 @@ struct Constants {
             static let goToEditLicense = "goToEditLicense"
             static let goToSetting = "goToSetting"
             static let goToChangePassword = "goToChangePassword"
+            static let goToEditCertificate = "goToEditCertificate"
 
         }
     }
@@ -168,6 +169,7 @@ struct Constants {
         static let image = "image"
         static let profilePic = "profilePic"
         static let license = "licence"
+        static let certifications = "certifications"
 
         static let imageURL = "imagePath"
         static let imageURLForPostResponse = "imgUrl"

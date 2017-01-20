@@ -17,7 +17,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EditPublicProfileTableCell" rowHeight="645" id="KGk-i7-Jjw" customClass="EditPublicProfileTableCell" customModule="DentaMatch" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="EditPublicProfileTableCell" rowHeight="645" id="KGk-i7-Jjw" customClass="EditPublicProfileTableCell" customModule="DentaMatch" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="645"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -28,7 +28,7 @@
                         <rect key="frame" x="111" y="25" width="99" height="100"/>
                         <state key="normal" image="profileButton"/>
                     </button>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="24i-3S-8Nu" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="24i-3S-8Nu" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
                         <rect key="frame" x="28" y="164" width="264" height="55"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="55" id="TbI-Sa-Tfn"/>
@@ -37,13 +37,13 @@
                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Job Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DVJ-iw-XgA" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Job Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DVJ-iw-XgA" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
                         <rect key="frame" x="28" y="314" width="264" height="55"/>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Location" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o2G-tl-7Yc" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Location" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o2G-tl-7Yc" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
                         <rect key="frame" x="28" y="389" width="264" height="55"/>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
@@ -63,7 +63,7 @@
                         <rect key="frame" x="182" y="89" width="31" height="30"/>
                         <state key="normal" image="addPhoto"/>
                     </button>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rhf-Hl-X9c" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rhf-Hl-X9c" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
                         <rect key="frame" x="28" y="239" width="264" height="55"/>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
@@ -95,6 +95,7 @@
                     <constraint firstItem="EBs-Au-Mw3" firstAttribute="centerX" secondItem="o2G-tl-7Yc" secondAttribute="centerX" id="zwg-OI-GFi"/>
                 </constraints>
             </tableViewCellContentView>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="aboutMeTextView" destination="EBs-Au-Mw3" id="h88-WQ-avx"/>
                 <outlet property="addEditProfileButton" destination="ffK-Uk-8Is" id="TQu-eA-kLG"/>

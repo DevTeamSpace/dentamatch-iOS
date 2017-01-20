@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-UI-Text-Medium.otf">
+            <string>SFUIText-Medium</string>
+        </array>
+        <array key="SF-UI-Text-Regular.otf">
+            <string>SFUIText-Regular</string>
+        </array>
+        <array key="SF-UI-Text-Semibold.otf">
+            <string>SFUIText-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="EditCertificateTableCell" rowHeight="290" id="KGk-i7-Jjw" customClass="EditCertificateTableCell" customModule="DentaMatch" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="290"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="289"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JI6-Zg-qDC">
+                        <rect key="frame" x="94" y="73" width="132" height="132"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="132" id="EhU-Ws-BiX"/>
+                            <constraint firstAttribute="height" constant="132" id="lwd-cC-cbg"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCv-M4-nUM">
+                        <rect key="frame" x="141" y="219" width="38" height="17"/>
+                        <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHr-Jc-qNV">
+                        <rect key="frame" x="139" y="239" width="42" height="21"/>
+                        <attributedString key="attributedText">
+                            <fragment content="Label">
+                                <attributes>
+                                    <font key="NSFont" metaFont="system" size="17"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="paN-fx-3W7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y1E-WS-NUp">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="2"/>
+                                <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1.5" id="gSO-jp-Rdd"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CRP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PVT-2N-hGO">
+                                <rect key="frame" x="20" y="17" width="29" height="17"/>
+                                <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="14"/>
+                                <color key="textColor" red="0.21960784310000001" green="0.21960784310000001" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AjI-oM-XMG">
+                                <rect key="frame" x="0.0" y="43" width="320" height="2"/>
+                                <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1.5" id="xSs-2s-Ucb"/>
+                                </constraints>
+                            </view>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G3e-7U-6ab">
+                                <rect key="frame" x="266" y="0.0" width="54" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="54" id="JBK-Zl-TTS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="14"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="3" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Edit">
+                                    <color key="titleColor" red="0.015686274510000001" green="0.50196078430000002" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="45" id="2cm-jX-gKp"/>
+                            <constraint firstItem="Y1E-WS-NUp" firstAttribute="leading" secondItem="paN-fx-3W7" secondAttribute="leading" id="3rX-s4-v9e"/>
+                            <constraint firstAttribute="bottom" secondItem="AjI-oM-XMG" secondAttribute="bottom" id="45D-Qj-i2K"/>
+                            <constraint firstAttribute="trailing" secondItem="Y1E-WS-NUp" secondAttribute="trailing" id="7ng-ZZ-X4n"/>
+                            <constraint firstItem="Y1E-WS-NUp" firstAttribute="top" secondItem="paN-fx-3W7" secondAttribute="top" id="Gxg-hl-ID0"/>
+                            <constraint firstAttribute="trailing" secondItem="AjI-oM-XMG" secondAttribute="trailing" id="RNJ-YH-bVR"/>
+                            <constraint firstItem="PVT-2N-hGO" firstAttribute="centerY" secondItem="paN-fx-3W7" secondAttribute="centerY" multiplier="1.1" id="UaJ-kg-QZl"/>
+                            <constraint firstAttribute="bottom" secondItem="G3e-7U-6ab" secondAttribute="bottom" id="WEh-Mi-ngo"/>
+                            <constraint firstItem="PVT-2N-hGO" firstAttribute="leading" secondItem="paN-fx-3W7" secondAttribute="leading" constant="20" id="byH-MC-ReR"/>
+                            <constraint firstAttribute="trailing" secondItem="G3e-7U-6ab" secondAttribute="trailing" id="evj-e1-GiB"/>
+                            <constraint firstItem="AjI-oM-XMG" firstAttribute="leading" secondItem="paN-fx-3W7" secondAttribute="leading" id="uyV-1P-JWN"/>
+                            <constraint firstItem="G3e-7U-6ab" firstAttribute="top" secondItem="paN-fx-3W7" secondAttribute="top" id="yHT-gk-KrP"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="pCv-M4-nUM" firstAttribute="top" secondItem="JI6-Zg-qDC" secondAttribute="bottom" constant="14" id="Kfq-ao-8dd"/>
+                    <constraint firstItem="DHr-Jc-qNV" firstAttribute="top" secondItem="pCv-M4-nUM" secondAttribute="bottom" constant="3" id="LRt-6R-F44"/>
+                    <constraint firstItem="DHr-Jc-qNV" firstAttribute="centerX" secondItem="JI6-Zg-qDC" secondAttribute="centerX" id="OPP-aW-R8O"/>
+                    <constraint firstItem="JI6-Zg-qDC" firstAttribute="top" secondItem="paN-fx-3W7" secondAttribute="bottom" constant="28" id="VUo-qL-wEk"/>
+                    <constraint firstItem="JI6-Zg-qDC" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="X6C-F4-VOn"/>
+                    <constraint firstItem="pCv-M4-nUM" firstAttribute="centerX" secondItem="JI6-Zg-qDC" secondAttribute="centerX" id="hAb-uS-0nj"/>
+                    <constraint firstItem="paN-fx-3W7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="n6w-Zc-wUz"/>
+                    <constraint firstItem="paN-fx-3W7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="xQi-8I-mvt"/>
+                    <constraint firstAttribute="trailing" secondItem="paN-fx-3W7" secondAttribute="trailing" id="ypz-SQ-mwi"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="certificateHeadingLabel" destination="PVT-2N-hGO" id="K4X-PZ-3ab"/>
+                <outlet property="certificateImageView" destination="JI6-Zg-qDC" id="XFV-wE-MMh"/>
+                <outlet property="certificateNameLabel" destination="pCv-M4-nUM" id="H89-NQ-m5Z"/>
+                <outlet property="editButton" destination="G3e-7U-6ab" id="RHn-m2-ouu"/>
+                <outlet property="validityDateAttributedLabel" destination="DHr-Jc-qNV" id="dLK-5Q-Xtu"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="188"/>
+        </tableViewCell>
+    </objects>
+</document>

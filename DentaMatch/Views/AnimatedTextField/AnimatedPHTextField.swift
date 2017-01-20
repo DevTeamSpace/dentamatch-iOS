@@ -9,9 +9,9 @@
 import UIKit
 
 class AnimatedPHTextField: FloatLabelTextField {
-
-    private var leftTextFieldView:UIView?
     
+    private var leftTextFieldView:UIView?
+    var type = 0
     override func awakeFromNib() {
         super.awakeFromNib()
         self.autocorrectionType = .no
@@ -28,6 +28,14 @@ class AnimatedPHTextField: FloatLabelTextField {
         self.layer.borderWidth = 1.0
         self.layer.borderColor = Constants.Color.textFieldBorderColor.cgColor
     }
+    
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        if self.type != 0 || action == #selector(delete(_:)) {
+            return false
+        }
+        return true
+    }
+    
     
     /*
     // Only override draw() if you perform custom drawing.

@@ -11,7 +11,7 @@ import Foundation
 extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 7
+        return 8
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -21,10 +21,14 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             return 426
             
         case .dentalStateboard:
-            if indexPath.row == 0 {
-                return 45
+            if dentalStateBoardURL.isEmpty {
+                if indexPath.row == 0 {
+                    return 45
+                } else {
+                    return 72
+                }
             } else {
-                return 72
+                return 230
             }
             
         case .experience:
@@ -64,9 +68,16 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
                 }
                 return 72
             }
+            
+        case .certifications:
+            let certificate = certifications[indexPath.row]
+            if (certificate.certificateImageForProfileScreen?.isEmpty)! {
+                return 110
+            } else {
+                return 285
+            }
         }
     }
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let profileOptions = EditProfileOptions(rawValue: section)!
@@ -74,6 +85,14 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
         switch profileOptions {
         case .profileHeader:
             return 1
+        case .dentalStateboard:
+            if dentalStateBoardURL.isEmpty {
+                return 2
+            } else {
+                return 1
+            }
+        case .certifications:
+            return certifications.count
         default : return 2
         }
     }
@@ -86,29 +105,33 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EditProfileHeaderTableCell") as! EditProfileHeaderTableCell
             cell.nameLabel.text = UserManager.shared().activeUser.fullName()
             cell.editButton.addTarget(self, action: #selector(openEditPublicProfileScreen), for: .touchUpInside)
-            cell.settingButton.addTarget(self, action: #selector(openSetttingScreen), for: .touchUpInside)
+            cell.settingButton.addTarget(self, action: #selector(openSettingScreen), for: .touchUpInside)
             if let imageUrl = URL(string: UserManager.shared().activeUser.profileImageURL!) {
                 cell.profileButton.sd_setImage(with: imageUrl, for: .normal, placeholderImage: kPlaceHolderImage)
             }
             return cell
-        
+            
         case .dentalStateboard:
-            if indexPath.row == 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "SectionHeadingTableCell") as! SectionHeadingTableCell
-                cell.headingLabel.text = "DENTAL STATE BOARD"
-                cell.editButton.isHidden = true
-                return cell
+            if dentalStateBoardURL.isEmpty {
+                if indexPath.row == 0 {
+                    let cell = makeHeadingCell(heading: "DENTAL STATE BOARD")
+                    return cell
+                }else {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "AddProfileOptionTableCell") as! AddProfileOptionTableCell
+                    cell.profileOptionLabel.text = "Add dental state board"
+                    return cell
+                }
             } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "AddProfileOptionTableCell") as! AddProfileOptionTableCell
-                cell.profileOptionLabel.text = "Add dental state board"
+                let cell = tableView.dequeueReusableCell(withIdentifier: "EditCertificateTableCell") as! EditCertificateTableCell
+                cell.certificateHeadingLabel.text = "DENTAL STATE BOARD"
+                cell.validityDateAttributedLabel.isHidden = true
+                cell.certificateNameLabel.isHidden = true
                 return cell
             }
             
         case .experience:
             if indexPath.row == 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "SectionHeadingTableCell") as! SectionHeadingTableCell
-                cell.headingLabel.text = "EXPERIENCE"
-                cell.editButton.isHidden = true
+                let cell = makeHeadingCell(heading: "EXPERIENCE")
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AddProfileOptionTableCell") as! AddProfileOptionTableCell
@@ -118,9 +141,7 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             
         case .schooling:
             if indexPath.row == 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "SectionHeadingTableCell") as! SectionHeadingTableCell
-                cell.headingLabel.text = "SCHOOLING AND CERTIFICATION"
-                cell.editButton.isHidden = true
+                let cell = makeHeadingCell(heading: "SCHOOLING AND CERTIFICATION")
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AddProfileOptionTableCell") as! AddProfileOptionTableCell
@@ -130,9 +151,7 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             
         case .keySkills:
             if indexPath.row == 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "SectionHeadingTableCell") as! SectionHeadingTableCell
-                cell.headingLabel.text = "KEY SKILLS"
-                cell.editButton.isHidden = true
+                let cell = makeHeadingCell(heading: "KEY SKILLS")
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AddProfileOptionTableCell") as! AddProfileOptionTableCell
@@ -142,9 +161,7 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             
         case .affiliations:
             if indexPath.row == 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "SectionHeadingTableCell") as! SectionHeadingTableCell
-                cell.editButton.isHidden = true
-                cell.headingLabel.text = "PROFESSIONAL AFFILIATIONS"
+                let cell = makeHeadingCell(heading: "PROFESSIONAL AFFILIATIONS")
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AddProfileOptionTableCell") as! AddProfileOptionTableCell
@@ -175,14 +192,42 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
                 }
             }
             
+        case .certifications:
+            let certificate = certifications[indexPath.row]
+            
+            //Certificate not uploaded cell
+            if (certificate.certificateImageForProfileScreen?.isEmpty)! {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyCertificateTableViewCell") as! EmptyCertificateTableViewCell
+                cell.certificateNameLabel.text = certificate.certificationName
+                return cell
+            } else {
+                //Certificate  uploaded cell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "EditCertificateTableCell") as! EditCertificateTableCell
+                cell.certificateNameLabel.text = certificate.certificationName
+                cell.certificateHeadingLabel.text = certificate.certificationName
+                cell.validityDateAttributedLabel.isHidden = false
+                cell.certificateNameLabel.isHidden = false
+                cell.validityDateAttributedLabel.attributedText = cell.createValidityDateAttributedText(date: "2017-12-12")
+                cell.editButton.tag = indexPath.row
+                cell.editButton.isHidden = false
+                cell.editButton.addTarget(self, action: #selector(openCertificateScreen), for: .touchUpInside)
+                if let imageUrl = URL(string:certificate.certificateImageForProfileScreen!) {
+                    cell.certificateImageView.sd_setImage(with: imageUrl, placeholderImage: nil)
+                }
+                return cell
+            }
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let profileOptions = EditProfileOptions(rawValue: indexPath.section)!
-
+        
         switch profileOptions {
+        case .dentalStateboard:
+            if dentalStateBoardURL.isEmpty {
+                print("Open add")
+            }
         case .licenseNumber:
             guard let _ = license else {
                 print("License Not added")
@@ -191,5 +236,12 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
         default:
             break
         }
+    }
+    
+    func makeHeadingCell(heading:String) -> SectionHeadingTableCell {
+        let cell = self.editProfileTableView.dequeueReusableCell(withIdentifier: "SectionHeadingTableCell") as! SectionHeadingTableCell
+        cell.headingLabel.text = heading
+        cell.editButton.isHidden = true
+        return cell
     }
 }
