@@ -12,6 +12,14 @@
 		5A3FD06E1E1BB0A000360B3C /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3FD06D1E1BB0A000360B3C /* UINavigationBar+Awesome.m */; };
 		5A3FD0751E1CC79700360B3C /* DMProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3FD0741E1CC79700360B3C /* DMProfileHeaderView.swift */; };
 		5A3FD0771E1CC7CD00360B3C /* DMProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A3FD0761E1CC7CD00360B3C /* DMProfileHeaderView.xib */; };
+		5A50A2B81E320F6E0010AA31 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A50A2B71E320F6E0010AA31 /* TabBarVC.swift */; };
+		5A50A2BD1E3213A40010AA31 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A50A2BC1E3213A40010AA31 /* SettingVC.swift */; };
+		5A50A2BF1E3213C60010AA31 /* ChangePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A50A2BE1E3213C60010AA31 /* ChangePasswordVC.swift */; };
+		5A50A2C11E3213E90010AA31 /* ChangePasswordVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A50A2C01E3213E90010AA31 /* ChangePasswordVC+Services.swift */; };
+		5A50A2C31E32143C0010AA31 /* ChangePasswordVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A50A2C21E32143C0010AA31 /* ChangePasswordVC+TableViewExtension.swift */; };
+		5A50A2C51E3214600010AA31 /* SettingVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A50A2C41E3214600010AA31 /* SettingVC+TableViewExtension.swift */; };
+		5A50A2CA1E32163D0010AA31 /* SettingTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A50A2C81E32163D0010AA31 /* SettingTableCell.swift */; };
+		5A50A2CB1E32163D0010AA31 /* SettingTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A50A2C91E32163D0010AA31 /* SettingTableCell.xib */; };
 		5A5266BD1E26413400C5B7A1 /* DMLicenseSelectionVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5266BC1E26413400C5B7A1 /* DMLicenseSelectionVC+Services.swift */; };
 		5A85D20F1E2DFAD000AC4C89 /* SeparatorWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A85D2061E2DFAD000AC4C89 /* SeparatorWrapper.swift */; };
 		5A85D2101E2DFAD000AC4C89 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A85D2071E2DFAD000AC4C89 /* Tag.swift */; };
@@ -71,7 +79,6 @@
 		E558D8E01E2C80C200A6DF95 /* SchoolCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E558D8DF1E2C80C200A6DF95 /* SchoolCategory.swift */; };
 		E558D8FA1E2CB5C300A6DF95 /* AutoCompleteTable.xib in Resources */ = {isa = PBXBuildFile; fileRef = E558D8F91E2CB5C300A6DF95 /* AutoCompleteTable.xib */; };
 		E558D8FC1E2CB5D400A6DF95 /* AutoCompleteTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E558D8FB1E2CB5D400A6DF95 /* AutoCompleteTable.swift */; };
-		E558D9031E2E6E3400A6DF95 /* DMDashboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E558D9021E2E6E3400A6DF95 /* DMDashboardVC.swift */; };
 		E558D9051E2E6E4C00A6DF95 /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E558D9041E2E6E4C00A6DF95 /* Dashboard.storyboard */; };
 		E558D9081E2E6FE700A6DF95 /* DMEditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E558D9071E2E6FE700A6DF95 /* DMEditProfileVC.swift */; };
 		E558D90A1E2E7A3200A6DF95 /* DMEditProfileVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E558D9091E2E7A3200A6DF95 /* DMEditProfileVC+TableViewExtension.swift */; };
@@ -222,6 +229,14 @@
 		5A3FD06D1E1BB0A000360B3C /* UINavigationBar+Awesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Awesome.m"; sourceTree = "<group>"; };
 		5A3FD0741E1CC79700360B3C /* DMProfileHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMProfileHeaderView.swift; sourceTree = "<group>"; };
 		5A3FD0761E1CC7CD00360B3C /* DMProfileHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DMProfileHeaderView.xib; sourceTree = "<group>"; };
+		5A50A2B71E320F6E0010AA31 /* TabBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
+		5A50A2BC1E3213A40010AA31 /* SettingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
+		5A50A2BE1E3213C60010AA31 /* ChangePasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordVC.swift; sourceTree = "<group>"; };
+		5A50A2C01E3213E90010AA31 /* ChangePasswordVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ChangePasswordVC+Services.swift"; sourceTree = "<group>"; };
+		5A50A2C21E32143C0010AA31 /* ChangePasswordVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ChangePasswordVC+TableViewExtension.swift"; sourceTree = "<group>"; };
+		5A50A2C41E3214600010AA31 /* SettingVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SettingVC+TableViewExtension.swift"; sourceTree = "<group>"; };
+		5A50A2C81E32163D0010AA31 /* SettingTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableCell.swift; sourceTree = "<group>"; };
+		5A50A2C91E32163D0010AA31 /* SettingTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingTableCell.xib; sourceTree = "<group>"; };
 		5A5266BC1E26413400C5B7A1 /* DMLicenseSelectionVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMLicenseSelectionVC+Services.swift"; sourceTree = "<group>"; };
 		5A85D2061E2DFAD000AC4C89 /* SeparatorWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatorWrapper.swift; sourceTree = "<group>"; };
 		5A85D2071E2DFAD000AC4C89 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
@@ -288,7 +303,6 @@
 		E558D8DF1E2C80C200A6DF95 /* SchoolCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolCategory.swift; sourceTree = "<group>"; };
 		E558D8F91E2CB5C300A6DF95 /* AutoCompleteTable.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AutoCompleteTable.xib; sourceTree = "<group>"; };
 		E558D8FB1E2CB5D400A6DF95 /* AutoCompleteTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteTable.swift; sourceTree = "<group>"; };
-		E558D9021E2E6E3400A6DF95 /* DMDashboardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMDashboardVC.swift; sourceTree = "<group>"; };
 		E558D9041E2E6E4C00A6DF95 /* Dashboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
 		E558D9071E2E6FE700A6DF95 /* DMEditProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMEditProfileVC.swift; sourceTree = "<group>"; };
 		E558D9091E2E7A3200A6DF95 /* DMEditProfileVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMEditProfileVC+TableViewExtension.swift"; sourceTree = "<group>"; };
@@ -500,6 +514,52 @@
 			path = ProfileHeaderView;
 			sourceTree = "<group>";
 		};
+		5A50A2B21E3209970010AA31 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				5A50A2B71E320F6E0010AA31 /* TabBarVC.swift */,
+			);
+			name = TabBar;
+			path = Tabbar;
+			sourceTree = "<group>";
+		};
+		5A50A2B91E3212D10010AA31 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				5A50A2BB1E3213020010AA31 /* Setting */,
+				5A50A2BA1E3212F60010AA31 /* ChangePassword */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		5A50A2BA1E3212F60010AA31 /* ChangePassword */ = {
+			isa = PBXGroup;
+			children = (
+				5A50A2BE1E3213C60010AA31 /* ChangePasswordVC.swift */,
+				5A50A2C21E32143C0010AA31 /* ChangePasswordVC+TableViewExtension.swift */,
+				5A50A2C01E3213E90010AA31 /* ChangePasswordVC+Services.swift */,
+			);
+			path = ChangePassword;
+			sourceTree = "<group>";
+		};
+		5A50A2BB1E3213020010AA31 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				5A50A2BC1E3213A40010AA31 /* SettingVC.swift */,
+				5A50A2C41E3214600010AA31 /* SettingVC+TableViewExtension.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		5A50A2C61E3216010010AA31 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				5A50A2C81E32163D0010AA31 /* SettingTableCell.swift */,
+				5A50A2C91E32163D0010AA31 /* SettingTableCell.xib */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		5A85D2051E2DFA5100AC4C89 /* TagView */ = {
 			isa = PBXGroup;
 			children = (
@@ -686,6 +746,8 @@
 		E55462E71DAE47C6004163B2 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				5A50A2B91E3212D10010AA31 /* Settings */,
+				5A50A2B21E3209970010AA31 /* TabBar */,
 				E558D9011E2E085200A6DF95 /* Dashboard */,
 				E56B20A01DBF7486000512F6 /* Registration */,
 				E594BEA01E1E014F00310AE5 /* Login */,
@@ -762,7 +824,6 @@
 				E5E7CBAA1E3099CB00D4FB59 /* PublicProfile */,
 				E5E7CBA11E30758E00D4FB59 /* License */,
 				E558D9061E2E6FD800A6DF95 /* EditProfile */,
-				E558D9021E2E6E3400A6DF95 /* DMDashboardVC.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -815,6 +876,7 @@
 		E56B20A71DC0606A000512F6 /* TableView Cells */ = {
 			isa = PBXGroup;
 			children = (
+				5A50A2C61E3216010010AA31 /* Setting */,
 				E558D90B1E2E871900A6DF95 /* EditProfile */,
 				E558D90C1E2E871900A6DF95 /* Maps */,
 				E50B3F441E194CD7004C5F32 /* Profile */,
@@ -1471,6 +1533,7 @@
 				E558D8FA1E2CB5C300A6DF95 /* AutoCompleteTable.xib in Resources */,
 				5AD246951E273CE7009350BF /* DatePickerView.xib in Resources */,
 				5A3FD0771E1CC7CD00360B3C /* DMProfileHeaderView.xib in Resources */,
+				5A50A2CB1E32163D0010AA31 /* SettingTableCell.xib in Resources */,
 				E597E5851E151A99001DDA78 /* SF-UI-Text-MediumItalic.otf in Resources */,
 				E558D9121E2E873700A6DF95 /* EditProfileHeaderTableCell.xib in Resources */,
 				E597E5871E151A99001DDA78 /* SF-UI-Text-RegularItalic.otf in Resources */,
@@ -1547,6 +1610,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E56B20A41DC0526E000512F6 /* DMRegistrationContainer.swift in Sources */,
+				5A50A2BD1E3213A40010AA31 /* SettingVC.swift in Sources */,
 				E5E7CB781E2FA23200D4FB59 /* AboutMeCell.swift in Sources */,
 				E5A174C71E201DE40044B17E /* ProfileImageButton.swift in Sources */,
 				E5A174C21E201D450044B17E /* CircleProgressBar.m in Sources */,
@@ -1564,6 +1628,7 @@
 				5A9A3A971E2B58600002C5B6 /* UserManager.swift in Sources */,
 				E5E7CB7C1E2FA23200D4FB59 /* AffliliationsOthersCell.swift in Sources */,
 				E5A0EB101E2BE7C40092E21A /* ASJTagsView.m in Sources */,
+				5A50A2C51E3214600010AA31 /* SettingVC+TableViewExtension.swift in Sources */,
 				E5E7CB911E2FA23300D4FB59 /* AutoCompleteTableViewCell.swift in Sources */,
 				E587D2F41E24C095006B7F06 /* DMAffiliationsVC.swift in Sources */,
 				E594BEA61E1E07C900310AE5 /* DMLoginVC+TableViewExtension.swift in Sources */,
@@ -1595,7 +1660,6 @@
 				E55462D91DAE3104004163B2 /* Array+Additions.swift in Sources */,
 				E594BE9F1E1DFFA900310AE5 /* DMRegistrationVC+TextFieldExtension.swift in Sources */,
 				E57EE6CD1E28EBC00090434F /* Affiliation.swift in Sources */,
-				E558D9031E2E6E3400A6DF95 /* DMDashboardVC.swift in Sources */,
 				E5FBE9D91E1CCF940025683C /* DMRegistration+Services.swift in Sources */,
 				E58654FE1DEFEF7F006FEB2D /* ConfigurationManager.swift in Sources */,
 				E5AE2AF61DAF878900C008BD /* OnboardingCollectionViewCell.swift in Sources */,
@@ -1618,6 +1682,8 @@
 				E56C9FA31DED520B00EAA9DD /* InAppPurchase.swift in Sources */,
 				E558D8FC1E2CB5D400A6DF95 /* AutoCompleteTable.swift in Sources */,
 				E50B3F4C1E194CD7004C5F32 /* AnimatedPHTableCell.swift in Sources */,
+				5A50A2C31E32143C0010AA31 /* ChangePasswordVC+TableViewExtension.swift in Sources */,
+				5A50A2BF1E3213C60010AA31 /* ChangePasswordVC.swift in Sources */,
 				E55462E61DAE47A9004163B2 /* UIView+Toast.m in Sources */,
 				E5E7CB431E2F39D500D4FB59 /* DMEditProfileVC+Services.swift in Sources */,
 				E587D2D11E2343A5006B7F06 /* DMJobTitleSelectionVC+UIPickerViewExtension.swift in Sources */,
@@ -1641,6 +1707,7 @@
 				5A85D2121E2DFAD000AC4C89 /* TagContents.swift in Sources */,
 				5A85D20F1E2DFAD000AC4C89 /* SeparatorWrapper.swift in Sources */,
 				E50FA8131E30A1DA00C20C93 /* DMPublicProfileVC+TableViewExtension.swift in Sources */,
+				5A50A2B81E320F6E0010AA31 /* TabBarVC.swift in Sources */,
 				E594BEA41E1E076D00310AE5 /* DMLoginVC+TextFieldExtension.swift in Sources */,
 				E5E7CB7A1E2FA23200D4FB59 /* AffiliationsCell.swift in Sources */,
 				E55462EC1DAE47F5004163B2 /* AppDelegate.swift in Sources */,
@@ -1653,9 +1720,11 @@
 				E5E7CB801E2FA23200D4FB59 /* AddDeleteExperienceCell.swift in Sources */,
 				E587D3001E24E5C1006B7F06 /* ProfileTextField.swift in Sources */,
 				E5F47C941E0035B90051C4A1 /* UIImage+Rotations.swift in Sources */,
+				5A50A2C11E3213E90010AA31 /* ChangePasswordVC+Services.swift in Sources */,
 				E587D2F61E24C0B0006B7F06 /* DMSkillsVC.swift in Sources */,
 				E50B3F501E194CD7004C5F32 /* RegistrationTableViewCell.swift in Sources */,
 				5A85D2141E2DFAD000AC4C89 /* TagPresentable.swift in Sources */,
+				5A50A2CA1E32163D0010AA31 /* SettingTableCell.swift in Sources */,
 				E558D9081E2E6FE700A6DF95 /* DMEditProfileVC.swift in Sources */,
 				E5A0EADE1E2944D50092E21A /* SSASideMenu.swift in Sources */,
 				E5496E0E1E273F1D00C54288 /* DMSkillsVC+Services.swift in Sources */,

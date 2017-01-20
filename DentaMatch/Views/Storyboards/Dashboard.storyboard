@@ -61,7 +61,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MYo-T3-88e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-271.19999999999999" y="993.55322338830592"/>
+            <point key="canvasLocation" x="106" y="1019"/>
         </scene>
         <!--Edit LicenseVC-->
         <scene sceneID="2Sr-G7-Eyb">
@@ -226,10 +226,10 @@
             </objects>
             <point key="canvasLocation" x="-79" y="-724"/>
         </scene>
-        <!--DashboardVC-->
+        <!--Tab BarVC-->
         <scene sceneID="7BL-0K-nUj">
             <objects>
-                <tabBarController storyboardIdentifier="DMDashboardVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TNO-Jf-uPy" customClass="DMDashboardVC" customModule="DentaMatch" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TNO-Jf-uPy" customClass="TabBarVC" customModule="DentaMatch" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="KsI-uj-d64">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -244,6 +244,45 @@
             </objects>
             <point key="canvasLocation" x="-1031" y="-396"/>
         </scene>
+        <!--SettingVC-->
+        <scene sceneID="Nqh-uf-kIY">
+            <objects>
+                <viewController storyboardIdentifier="SettingVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QwC-wV-hMI" customClass="SettingVC" customModule="DentaMatch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lcM-Wj-dAi"/>
+                        <viewControllerLayoutGuide type="bottom" id="Apu-0P-8wG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5QS-Ri-pRJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="RiE-rr-WZ6" kind="showDetail" identifier="goToChangePassword" id="YqA-ms-8q3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AMg-pm-o5C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-343" y="234"/>
+        </scene>
+        <!--Change PasswordVC-->
+        <scene sceneID="b4t-da-y2b">
+            <objects>
+                <viewController storyboardIdentifier="ChangePasswordVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RiE-rr-WZ6" customClass="ChangePasswordVC" customModule="DentaMatch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SId-UV-bxn"/>
+                        <viewControllerLayoutGuide type="bottom" id="k0H-xG-Whe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1wy-kj-70d">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uiB-zO-6y4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="529" y="489"/>
+        </scene>
         <!--Profile-->
         <scene sceneID="P7V-iT-9Fe">
             <objects>
@@ -257,11 +296,12 @@
                     <nil name="viewControllers"/>
                     <connections>
                         <segue destination="S5D-7C-7Nn" kind="relationship" relationship="rootViewController" id="r9x-1I-F3v"/>
+                        <segue destination="QwC-wV-hMI" kind="showDetail" identifier="goToSetting" id="hXl-MU-kIy"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EFz-uM-9Oe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1031.2" y="993.55322338830592"/>
+            <point key="canvasLocation" x="-967" y="1030"/>
         </scene>
     </scenes>
 </document>

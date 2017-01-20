@@ -47,7 +47,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4hg-2h-wrq">
-                        <rect key="frame" x="8" y="239" width="304" height="20"/>
+                        <rect key="frame" x="8" y="239" width="304" height="19"/>
                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -74,8 +74,17 @@
                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IS9-b7-4ww">
+                        <rect key="frame" x="0.0" y="8" width="49" height="36"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="49" id="7JH-XM-5K5"/>
+                            <constraint firstAttribute="height" constant="36" id="TTy-08-zpN"/>
+                        </constraints>
+                        <state key="normal" title="Setting"/>
+                    </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="IS9-b7-4ww" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="00G-UY-CxS"/>
                     <constraint firstAttribute="trailing" secondItem="two-jR-4bn" secondAttribute="trailing" constant="8" id="09t-hO-ELN"/>
                     <constraint firstItem="UiG-3D-BXE" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="0cl-3v-ohy"/>
                     <constraint firstAttribute="trailing" secondItem="Ant-ls-85M" secondAttribute="trailing" id="2qm-UM-HRA"/>
@@ -90,6 +99,7 @@
                     <constraint firstAttribute="bottom" secondItem="hOf-F1-8Sf" secondAttribute="bottom" constant="16" id="VlJ-RH-68D"/>
                     <constraint firstItem="4hg-2h-wrq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="ZXy-AT-PbM"/>
                     <constraint firstItem="hOf-F1-8Sf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Zf9-xH-zCj"/>
+                    <constraint firstItem="IS9-b7-4ww" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="afW-Zh-2On"/>
                     <constraint firstItem="hOf-F1-8Sf" firstAttribute="top" secondItem="Ant-ls-85M" secondAttribute="bottom" id="bB1-UA-8P0"/>
                     <constraint firstItem="4hg-2h-wrq" firstAttribute="top" secondItem="two-jR-4bn" secondAttribute="bottom" constant="3" id="dsh-20-vZf"/>
                     <constraint firstItem="Ant-ls-85M" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="mmA-ej-Wcf"/>
@@ -105,6 +115,7 @@
                 <outlet property="nameLabel" destination="two-jR-4bn" id="rau-kZ-DgB"/>
                 <outlet property="placeLabel" destination="4hg-2h-wrq" id="f4i-B7-WY7"/>
                 <outlet property="profileButton" destination="UiG-3D-BXE" id="KdY-kd-dIc"/>
+                <outlet property="settingButton" destination="IS9-b7-4ww" id="nox-HS-mX6"/>
             </connections>
             <point key="canvasLocation" x="34" y="147"/>
         </tableViewCell>

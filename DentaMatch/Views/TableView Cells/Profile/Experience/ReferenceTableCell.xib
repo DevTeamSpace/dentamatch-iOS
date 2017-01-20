@@ -53,9 +53,10 @@
                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                     </textField>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qe3-fQ-1fm">
-                        <rect key="frame" x="33" y="230" width="233" height="17"/>
+                        <rect key="frame" x="33" y="230" width="114" height="17"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="17" id="Qq5-Gl-P0y"/>
+                            <constraint firstAttribute="width" constant="114" id="sma-hH-qiX"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="14"/>
                         <state key="normal" title="Delete reference">
@@ -63,9 +64,10 @@
                         </state>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HHn-IK-l9A">
-                        <rect key="frame" x="33" y="276" width="233" height="17"/>
+                        <rect key="frame" x="33" y="276" width="159" height="17"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="17" id="V19-oQ-U6Q"/>
+                            <constraint firstAttribute="width" constant="159" id="twe-E1-cbz"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="14"/>
                         <state key="normal" title=" Add More Reference" image="addReferencePlus">
@@ -84,7 +86,6 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="Dh8-If-0Eh" firstAttribute="top" secondItem="IUj-A0-R8k" secondAttribute="bottom" constant="10" id="0Cw-aB-qvE"/>
-                    <constraint firstAttribute="trailing" secondItem="HHn-IK-l9A" secondAttribute="trailing" constant="54" id="29M-sS-c3E"/>
                     <constraint firstItem="HHn-IK-l9A" firstAttribute="top" secondItem="Wrw-Yf-3tF" secondAttribute="bottom" constant="55" id="4TD-Ub-Ci1"/>
                     <constraint firstItem="Fcg-wU-eMT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="7CU-1P-JkE"/>
                     <constraint firstItem="Wrw-Yf-3tF" firstAttribute="top" secondItem="Dh8-If-0Eh" secondAttribute="bottom" constant="10" id="E1F-4Q-QI2"/>
@@ -99,7 +100,6 @@
                     <constraint firstItem="Wrw-Yf-3tF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="iZZ-Xs-roO"/>
                     <constraint firstItem="IUj-A0-R8k" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="ifA-Da-cl8"/>
                     <constraint firstItem="Fcg-wU-eMT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="k2G-R8-OzF"/>
-                    <constraint firstAttribute="trailing" secondItem="qe3-fQ-1fm" secondAttribute="trailing" constant="54" id="s6J-GP-L1M"/>
                     <constraint firstItem="qe3-fQ-1fm" firstAttribute="top" secondItem="Wrw-Yf-3tF" secondAttribute="bottom" constant="9" id="saq-1h-lrT"/>
                 </constraints>
             </tableViewCellContentView>

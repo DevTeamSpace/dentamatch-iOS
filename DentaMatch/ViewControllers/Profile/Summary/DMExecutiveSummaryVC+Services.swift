@@ -12,6 +12,11 @@ import SwiftyJSON
 extension DMExecutiveSummaryVC {
 
     func updateAboutMeAPI() {
+        
+        if self.aboutMe.isEmptyField {
+            self.makeToast(toastString: "Please add introduction")
+            return
+        }
         self.showLoader()
         APIManager.apiPost(serviceName: Constants.API.saveAboutMe, parameters: [Constants.ServerKey.aboutMe:aboutMe]) { (response:JSON?, error:NSError?) in
             self.hideLoader()

@@ -92,6 +92,9 @@ struct Constants {
             static let goToExecutiveSummaryVC = "goToExecutiveSummaryVC"
             static let goToLicense = "goToLicense"
             static let goToEditLicense = "goToEditLicense"
+            static let goToSetting = "goToSetting"
+            static let goToChangePassword = "goToChangePassword"
+
         }
     }
     

@@ -1,14 +1,14 @@
 //
-//  DMDashboardVC.swift
+//  SettingVC.swift
 //  DentaMatch
 //
-//  Created by Rajan Maheshwari on 17/01/17.
+//  Created by Sanjay Kumar Yadav on 20/01/17.
 //  Copyright © 2017 Appster. All rights reserved.
 //
 
 import UIKit
 
-class DMDashboardVC: UITabBarController {
+class SettingVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,6 +16,11 @@ class DMDashboardVC: UITabBarController {
         // Do any additional setup after loading the view.
     }
 
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
 
     /*
     // MARK: - Navigation

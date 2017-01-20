@@ -163,7 +163,7 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
     }
     
     func openDashboard() {
-        let dashboardVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: DMDashboardVC.self)!
+        let dashboardVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: TabBarVC.self)!
         kAppDelegate.window?.rootViewController = dashboardVC
 
 //        UIView.transition(with: self.view.window!, duration: 0.5, options: .transitionCrossDissolve, animations: {

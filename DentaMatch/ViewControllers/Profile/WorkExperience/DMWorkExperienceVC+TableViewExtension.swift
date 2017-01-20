@@ -472,6 +472,10 @@ extension DMWorkExperienceVC
                     return false
                 }
                 
+                if !(empRef.email?.isValidEmail)! {
+                    self.makeToast(toastString: Constants.AlertMessage.invalidEmail)
+                    return false
+                }
             }else if !(empRef.email?.isEmptyField)! {
                 if !(empRef.email?.isValidEmail)! {
                     self.makeToast(toastString: Constants.AlertMessage.invalidEmail)

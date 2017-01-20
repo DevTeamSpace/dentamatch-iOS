@@ -22,7 +22,7 @@ class DMEditProfileVC: DMBaseVC {
     
     @IBOutlet weak var editProfileTableView: UITableView!
     
-    var dashBoardVC:DMDashboardVC?
+    var dashBoardVC:TabBarVC?
     
     var license:License?
 
@@ -30,7 +30,7 @@ class DMEditProfileVC: DMBaseVC {
         super.viewDidLoad()
         setup()
         
-        if let dashBoard = ((UIApplication.shared.delegate) as! AppDelegate).window?.rootViewController as? DMDashboardVC {
+        if let dashBoard = ((UIApplication.shared.delegate) as! AppDelegate).window?.rootViewController as? TabBarVC {
             dashBoardVC = dashBoard
         }
 
@@ -67,6 +67,10 @@ class DMEditProfileVC: DMBaseVC {
 
     }
 
+    func openSetttingScreen() {
+        self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToPublicProfile, sender: self)
+        
+    }
     
     // MARK: - Navigation
 

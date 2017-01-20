@@ -88,11 +88,25 @@ class DMLicenseSelectionVC: DMBaseVC,UITextFieldDelegate {
                 if text.isEmptyField {
                     self.makeToast(toastString: "Please enter License number")
                     return
+                }else
+                {
+                    let newChar = text.characters.first
+                    if newChar == "-" {
+                        self.makeToast(toastString: "License number can't start with hyphen (-)")
+                        return
+                    }
                 }
             }else{
                 if text.isEmptyField {
                     self.makeToast(toastString: "Please enter State")
                     return
+                }else{
+                    
+                    let newChar = text.characters.first
+                    if newChar == "-" {
+                        self.makeToast(toastString: "State  can't start with hyphen (-)")
+                        return
+                    }
                 }
             }
         }
@@ -106,6 +120,39 @@ class DMLicenseSelectionVC: DMBaseVC,UITextFieldDelegate {
 //        openExperienceFirstScreen()
     }
     
+//    func checkValidationForFirstLetter(text:String, tag:Int) -> Bool {
+//        //tag 0 for license and 1 for state
+//        let check = true
+//        let newChar = text.characters.first
+//        if newChar == "-" {
+//        }
+//
+//        if tag == 0 {
+//            
+//        }else{
+//            
+//        }
+//        return check
+//    
+//    }
+//    
+//    func checkValidationForLastLetter(text:String, tag:Int) -> Bool {
+//        //tag 0 for license and 1 for state
+//        let check = true
+//        let newChar = text.characters.last
+//        if newChar == "-" {
+//        }
+//        
+//        if tag == 0 {
+//            
+//        }else{
+//            
+//        }
+//        return check
+//
+//        
+//    }
+
     func openExperienceFirstScreen() {
         self.performSegue(withIdentifier: "goToWorkExperience", sender: self)
     }
