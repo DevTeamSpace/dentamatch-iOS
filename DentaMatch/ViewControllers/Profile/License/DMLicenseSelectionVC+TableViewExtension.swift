@@ -46,7 +46,7 @@ extension DMLicenseSelectionVC : UITableViewDataSource, UITableViewDelegate {
         switch indexPath.row {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoNameCell") as! PhotoNameCell
-            cell.updateCellForPhotoNameCell(nametext:UserManager.shared().activeUser.fullName()! ,jobTitleText:selectedJobTitle.jobTitle, profileProgress: profileProgress)
+            cell.updateCellForPhotoNameCell(nametext:UserManager.shared().activeUser.firstName! ,jobTitleText:selectedJobTitle.jobTitle, profileProgress: profileProgress)
             cell.selectionStyle = .none
             return cell
         case 1,3:
@@ -137,7 +137,7 @@ extension DMLicenseSelectionVC : UITableViewDataSource, UITableViewDelegate {
             let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ0123456789-")
             if string == "-" && textField.text?.characters.count == 0 {
                 self.dismissKeyboard()
-                self.makeToast(toastString: "License No can't start with hyphen (-)")
+                self.makeToast(toastString: "License number can't start with hyphen (-)")
                 return false
             }
             if string.rangeOfCharacter(from: characterset.inverted) != nil {
@@ -150,6 +150,17 @@ extension DMLicenseSelectionVC : UITableViewDataSource, UITableViewDelegate {
             }
             
         }else{
+            let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ- ")
+            if string == "-" && textField.text?.characters.count == 0 {
+                self.dismissKeyboard()
+                self.makeToast(toastString: "State  can't start with hyphen (-)")
+                return false
+            }
+            if string.rangeOfCharacter(from: characterset.inverted) != nil {
+                print("string contains special characters")
+                return false
+            }
+
             if (textField.text?.characters.count)! >= Constants.Limit.commonMaxLimit {
                 return false
             }

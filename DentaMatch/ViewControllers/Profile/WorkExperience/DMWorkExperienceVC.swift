@@ -51,6 +51,7 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
     var currentExperience:ExperienceModel? = ExperienceModel(empty: "")
     var phoneFormatter = PhoneNumberFormatter()
     var jobTitles = [JobTitle]()
+    var selectedIndex:Int = 0
 
     @IBOutlet weak var mainScrollView: UIScrollView!
     @IBOutlet weak var workExperienceTable: UITableView!

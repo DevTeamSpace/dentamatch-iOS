@@ -223,6 +223,7 @@ extension DMWorkExperienceVC
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if tableView == self.workExperienceTable {
+            selectedIndex = indexPath.row
             let check  = indexPath.row == 0 ? true : false
             self.currentExperience = nil
             self.currentExperience = self.exprienceArray[indexPath.row]
@@ -367,16 +368,29 @@ extension DMWorkExperienceVC
         var param = [String:AnyObject]()
         if self.currentExperience?.isEditMode == true
         {
-            self.exprienceArray[(sender as AnyObject).tag] = self.currentExperience!
            param = self.getParamsForSaveAndUpdate(isEdit: true)
         }else {
-            self.exprienceArray.append(self.currentExperience!)
             param = self.getParamsForSaveAndUpdate(isEdit: false)
 
         }
-        saveUpdateExperience(params: param, completionHandler: { (result, error) in
+        saveUpdateExperience(params: param, completionHandler: { (response, error) in
             
-            if result == true {
+            if response![Constants.ServerKey.status].boolValue {
+                let resultArray = response![Constants.ServerKey.result][Constants.ServerKey.list].array
+                if (resultArray?.count)! > 0
+                {
+                
+                    let dict  = resultArray?[0].dictionary
+                    self.currentExperience?.experienceID = (dict?[Constants.ServerKey.experienceId]?.intValue)!
+                    
+                }
+                if self.currentExperience?.isEditMode == true {
+                    self.exprienceArray[self.selectedIndex] = self.currentExperience!
+
+                }else{
+                    self.exprienceArray.append(self.currentExperience!)
+                    
+                }
                 self.currentExperience = nil
                 self.currentExperience = ExperienceModel(empty: "")
                 self.currentExperience?.isFirstExperience = false

@@ -78,33 +78,32 @@ class DMLicenseSelectionVC: DMBaseVC,UITextFieldDelegate {
     }
     @IBAction func nextButtonClikced(_ sender: Any) {
         
-//        if self.stateBoardImage == nil{
-//            self.makeToast(toastString: "Please upload photo for Dental state board")
-//            return
-//        }
-//        for i in 0..<(self.licenseArray?.count)! {
-//            let text = self.licenseArray?[i] as! String
-//            if i == 0 {
-//                if text.isEmptyField {
-//                    self.makeToast(toastString: "Please enter license no")
-//                    return
-//                }
-//            }else{
-//                if text.isEmptyField {
-//                    self.makeToast(toastString: "Please enter state")
-//                    return
-//                }
-//            }
-//        }
+        if self.stateBoardImage == nil{
+            self.makeToast(toastString: "Please upload photo for Dental state board")
+            return
+        }
+        for i in 0..<(self.licenseArray?.count)! {
+            let text = self.licenseArray?[i] as! String
+            if i == 0 {
+                if text.isEmptyField {
+                    self.makeToast(toastString: "Please enter License number")
+                    return
+                }
+            }else{
+                if text.isEmptyField {
+                    self.makeToast(toastString: "Please enter State")
+                    return
+                }
+            }
+        }
         
-       // openExperienceFirstScreen()
-//
-//        let  params = ["license":self.licenseArray![0],"state":self.licenseArray![1],"jobTitleId":"\(self.selectedJobTitle.jobId)"]
-//        updateLicenseAndStateAPI(params: params as! [String : String])
+
+        let  params = ["license":self.licenseArray![0],"state":self.licenseArray![1],"jobTitleId":"\(self.selectedJobTitle.jobId)"]
+        updateLicenseAndStateAPI(params: params as! [String : String])
         
         
-        //for testing 
-        openExperienceFirstScreen()
+//        //for testing 
+//        openExperienceFirstScreen()
     }
     
     func openExperienceFirstScreen() {
