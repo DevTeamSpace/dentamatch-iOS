@@ -76,6 +76,11 @@ class DMChangePasswordVC: DMBaseVC {
             return
         }
         //do next 
+        self.changePasswordAPI()
+    }
+    func gobackToSetting() {
+    
+        _=self.navigationController?.popViewController(animated: true)
     }
     
     func checkValidation() -> Bool {

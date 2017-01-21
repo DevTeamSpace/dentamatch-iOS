@@ -9,7 +9,8 @@
 import UIKit
 
 class SettingTableCell: UITableViewCell {
-    @IBOutlet weak var iconImageView: UIImageView!
+    
+    @IBOutlet weak var leftIconLabel: UILabel!
     @IBOutlet weak var TextLabel: UILabel!
 
     override func awakeFromNib() {

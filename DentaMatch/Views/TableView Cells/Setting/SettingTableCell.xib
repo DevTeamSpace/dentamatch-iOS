@@ -11,6 +11,9 @@
         <array key="SF-UI-Text-Regular.otf">
             <string>SFUIText-Regular</string>
         </array>
+        <array key="dentamatch.ttf">
+            <string>dentamatch</string>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -22,15 +25,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="57"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3TT-Mp-R8k">
-                        <rect key="frame" x="20" y="18" width="16.5" height="20"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="16.5" id="v1o-vh-N4k"/>
-                            <constraint firstAttribute="height" constant="20" id="wdJ-Nn-Ezc"/>
-                        </constraints>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xVI-nU-Bbb">
-                        <rect key="frame" x="56.5" y="18" width="220.5" height="20"/>
+                        <rect key="frame" x="56" y="18" width="221" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="lvO-Fj-BLE"/>
                         </constraints>
@@ -39,27 +35,36 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ef-HB-zlg">
-                        <rect key="frame" x="0.0" y="56.5" width="320" height="1"/>
+                        <rect key="frame" x="0.0" y="57" width="320" height="1"/>
                         <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="waC-C4-XQV"/>
                         </constraints>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="g" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iDr-uZ-5Zz">
+                        <rect key="frame" x="20" y="21" width="16" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="16" id="eQW-HF-mqa"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="dentamatch" family="dentamatch" pointSize="15"/>
+                        <color key="textColor" red="0.66666666666666663" green="0.68627450980392157" blue="0.72156862745098038" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="xVI-nU-Bbb" secondAttribute="trailing" constant="43" id="0H7-U7-hAc"/>
-                    <constraint firstItem="3TT-Mp-R8k" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="5Cr-Xe-mWC"/>
+                    <constraint firstItem="xVI-nU-Bbb" firstAttribute="leading" secondItem="iDr-uZ-5Zz" secondAttribute="trailing" constant="20" id="0K3-2G-FJk"/>
+                    <constraint firstItem="iDr-uZ-5Zz" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="FTQ-Cr-41a"/>
                     <constraint firstAttribute="trailing" secondItem="3ef-HB-zlg" secondAttribute="trailing" id="Hf1-5M-fzd"/>
                     <constraint firstAttribute="bottom" secondItem="3ef-HB-zlg" secondAttribute="bottom" id="KMI-u4-ot8"/>
-                    <constraint firstItem="3TT-Mp-R8k" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="L7l-9n-mPT"/>
                     <constraint firstItem="xVI-nU-Bbb" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="OPx-Y0-p7c"/>
                     <constraint firstItem="3ef-HB-zlg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ocN-lI-UDW"/>
-                    <constraint firstItem="xVI-nU-Bbb" firstAttribute="leading" secondItem="3TT-Mp-R8k" secondAttribute="trailing" constant="20" id="spR-cb-P61"/>
+                    <constraint firstItem="iDr-uZ-5Zz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="zxR-Xa-2h3"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="TextLabel" destination="xVI-nU-Bbb" id="3rb-mO-6So"/>
-                <outlet property="iconImageView" destination="3TT-Mp-R8k" id="FLp-r0-TiR"/>
+                <outlet property="leftIconLabel" destination="iDr-uZ-5Zz" id="j0F-88-Rwv"/>
             </connections>
             <point key="canvasLocation" x="45" y="111"/>
         </tableViewCell>

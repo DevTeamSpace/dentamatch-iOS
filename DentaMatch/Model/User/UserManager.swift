@@ -103,6 +103,7 @@ class UserManager: NSObject {
         // free user object memory
         self.activeUser = nil
     }
+
 }
 
 extension UserManager {

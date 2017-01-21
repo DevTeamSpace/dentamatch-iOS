@@ -486,7 +486,7 @@
                 <navigationController storyboardIdentifier="EditProfileNAV" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8Ar-Ah-Bfh" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="5" title="Profile" id="frf-SB-pmR"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="lT7-8Y-N7V">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="lT7-8Y-N7V">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

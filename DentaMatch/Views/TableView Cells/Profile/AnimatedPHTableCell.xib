@@ -29,7 +29,7 @@
                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                     </textField>
                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="c" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BNk-bd-4T1">
-                        <rect key="frame" x="265" y="30" width="15" height="15"/>
+                        <rect key="frame" x="265" y="30.5" width="15" height="15"/>
                         <fontDescription key="fontDescription" name="dentamatch" family="dentamatch" pointSize="15"/>
                         <color key="textColor" red="0.62745098039215685" green="0.62745098039215685" blue="0.62745098039215685" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>

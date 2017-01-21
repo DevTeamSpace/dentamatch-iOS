@@ -127,6 +127,8 @@ struct Constants {
         static let deleteExperience = Constants.API.apiURL("users/work-experience-delete")
         static let updateCertificate = Constants.API.apiURL("users/update-certificate")
         static let updateValidationDates = Constants.API.apiURL("users/update-certificate-validity")
+        static let changePassword = Constants.API.apiURL("users/change-password")
+
         static let userProfile = Constants.API.apiURL("users/user-profile")
 
 
@@ -205,6 +207,12 @@ struct Constants {
         static let schoolChildName = "schoolChildName"
         static let schoolingChildId = "schoolingChildId"
         static let yearOfGraduation = "yearOfGraduation"
+        
+        //change password screen
+        static let oldPass = "oldPassword"
+        static let newPass = "newPassword"
+        static let confirmPass = "confirmNewPassword"
+
     }
     
     //MARK:- UserDefault Keys

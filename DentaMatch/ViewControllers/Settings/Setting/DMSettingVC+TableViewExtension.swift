@@ -25,14 +25,21 @@ extension DMSettingVC : UITableViewDataSource,UITableViewDelegate {
         switch indexPath.row {
         case 0:
             cell.TextLabel.text = "Change Home Location"
+            cell.leftIconLabel.text = "d"
         case 1:
             cell.TextLabel.text = "Reset Password"
+            cell.leftIconLabel.text = "e"
         case 2:
             cell.TextLabel.text = "Terms & Conditions"
+            cell.leftIconLabel.text = "i"
+
         case 3:
             cell.TextLabel.text = "Privacy Policy"
+            cell.leftIconLabel.text = "i"
         case 4:
             cell.TextLabel.text = " Logout"
+            cell.leftIconLabel.text = "i"
+
         default: break
             
         }
@@ -49,9 +56,23 @@ extension DMSettingVC : UITableViewDataSource,UITableViewDelegate {
         case 3:
             break
         case 4:
+            //logout
+            openLogin()
             break
         default: break
             
+        }
+        
+    }
+    func openLogin() {
+        
+        UserManager.shared().deleteActiveUser()
+        let registrationContainer = UIStoryboard.registrationStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.registrationNav) as! UINavigationController
+        
+        UIView.transition(with: self.view.window!, duration: 0.25, options: .transitionCrossDissolve, animations: {
+            kAppDelegate.window?.rootViewController = registrationContainer
+        }) { (bool:Bool) in
+            //completion
         }
         
     }
