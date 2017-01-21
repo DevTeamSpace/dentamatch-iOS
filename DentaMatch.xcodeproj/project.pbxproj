@@ -9,15 +9,17 @@
 /* Begin PBXBuildFile section */
 		270886FB07B603FF47668A72 /* Pods_DentaMatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C611E923856ECE4538FA4F38 /* Pods_DentaMatch.framework */; };
 		5A1960FD1E208B67002A5F7C /* PhoneNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1960FB1E208B67002A5F7C /* PhoneNumberFormatter.swift */; };
+		5A3B06C81E3375ED00EFCA6E /* ChangePasswordTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B06C61E3375ED00EFCA6E /* ChangePasswordTableCell.swift */; };
+		5A3B06C91E3375ED00EFCA6E /* ChangePasswordTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A3B06C71E3375ED00EFCA6E /* ChangePasswordTableCell.xib */; };
+		5A3B06CB1E3387DA00EFCA6E /* DMSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B06CA1E3387DA00EFCA6E /* DMSettingVC.swift */; };
+		5A3B06CD1E3387FF00EFCA6E /* DMSettingVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B06CC1E3387FF00EFCA6E /* DMSettingVC+TableViewExtension.swift */; };
+		5A3B06CF1E33881D00EFCA6E /* DMChangePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B06CE1E33881D00EFCA6E /* DMChangePasswordVC.swift */; };
+		5A3B06D11E33883C00EFCA6E /* DMChangePasswordVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B06D01E33883C00EFCA6E /* DMChangePasswordVC+TableViewExtension.swift */; };
+		5A3B06D31E33885A00EFCA6E /* DMChangePasswordVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B06D21E33885A00EFCA6E /* DMChangePasswordVC+Services.swift */; };
 		5A3FD06E1E1BB0A000360B3C /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3FD06D1E1BB0A000360B3C /* UINavigationBar+Awesome.m */; };
 		5A3FD0751E1CC79700360B3C /* DMProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3FD0741E1CC79700360B3C /* DMProfileHeaderView.swift */; };
 		5A3FD0771E1CC7CD00360B3C /* DMProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A3FD0761E1CC7CD00360B3C /* DMProfileHeaderView.xib */; };
 		5A50A2B81E320F6E0010AA31 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A50A2B71E320F6E0010AA31 /* TabBarVC.swift */; };
-		5A50A2BD1E3213A40010AA31 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A50A2BC1E3213A40010AA31 /* SettingVC.swift */; };
-		5A50A2BF1E3213C60010AA31 /* ChangePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A50A2BE1E3213C60010AA31 /* ChangePasswordVC.swift */; };
-		5A50A2C11E3213E90010AA31 /* ChangePasswordVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A50A2C01E3213E90010AA31 /* ChangePasswordVC+Services.swift */; };
-		5A50A2C31E32143C0010AA31 /* ChangePasswordVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A50A2C21E32143C0010AA31 /* ChangePasswordVC+TableViewExtension.swift */; };
-		5A50A2C51E3214600010AA31 /* SettingVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A50A2C41E3214600010AA31 /* SettingVC+TableViewExtension.swift */; };
 		5A50A2CA1E32163D0010AA31 /* SettingTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A50A2C81E32163D0010AA31 /* SettingTableCell.swift */; };
 		5A50A2CB1E32163D0010AA31 /* SettingTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A50A2C91E32163D0010AA31 /* SettingTableCell.xib */; };
 		5A5266BD1E26413400C5B7A1 /* DMLicenseSelectionVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5266BC1E26413400C5B7A1 /* DMLicenseSelectionVC+Services.swift */; };
@@ -230,16 +232,18 @@
 		158450992C392116A74F763C /* Pods-DentaMatch.qa.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DentaMatch.qa.xcconfig"; path = "Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch.qa.xcconfig"; sourceTree = "<group>"; };
 		19F54B802B7D87A34FEE97F2 /* Pods-DentaMatch.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DentaMatch.staging.xcconfig"; path = "Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch.staging.xcconfig"; sourceTree = "<group>"; };
 		5A1960FB1E208B67002A5F7C /* PhoneNumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberFormatter.swift; sourceTree = "<group>"; };
+		5A3B06C61E3375ED00EFCA6E /* ChangePasswordTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordTableCell.swift; sourceTree = "<group>"; };
+		5A3B06C71E3375ED00EFCA6E /* ChangePasswordTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangePasswordTableCell.xib; sourceTree = "<group>"; };
+		5A3B06CA1E3387DA00EFCA6E /* DMSettingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMSettingVC.swift; sourceTree = "<group>"; };
+		5A3B06CC1E3387FF00EFCA6E /* DMSettingVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMSettingVC+TableViewExtension.swift"; sourceTree = "<group>"; };
+		5A3B06CE1E33881D00EFCA6E /* DMChangePasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMChangePasswordVC.swift; sourceTree = "<group>"; };
+		5A3B06D01E33883C00EFCA6E /* DMChangePasswordVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMChangePasswordVC+TableViewExtension.swift"; sourceTree = "<group>"; };
+		5A3B06D21E33885A00EFCA6E /* DMChangePasswordVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMChangePasswordVC+Services.swift"; sourceTree = "<group>"; };
 		5A3FD06C1E1BB0A000360B3C /* UINavigationBar+Awesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Awesome.h"; sourceTree = "<group>"; };
 		5A3FD06D1E1BB0A000360B3C /* UINavigationBar+Awesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Awesome.m"; sourceTree = "<group>"; };
 		5A3FD0741E1CC79700360B3C /* DMProfileHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMProfileHeaderView.swift; sourceTree = "<group>"; };
 		5A3FD0761E1CC7CD00360B3C /* DMProfileHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DMProfileHeaderView.xib; sourceTree = "<group>"; };
 		5A50A2B71E320F6E0010AA31 /* TabBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
-		5A50A2BC1E3213A40010AA31 /* SettingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
-		5A50A2BE1E3213C60010AA31 /* ChangePasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordVC.swift; sourceTree = "<group>"; };
-		5A50A2C01E3213E90010AA31 /* ChangePasswordVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ChangePasswordVC+Services.swift"; sourceTree = "<group>"; };
-		5A50A2C21E32143C0010AA31 /* ChangePasswordVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ChangePasswordVC+TableViewExtension.swift"; sourceTree = "<group>"; };
-		5A50A2C41E3214600010AA31 /* SettingVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SettingVC+TableViewExtension.swift"; sourceTree = "<group>"; };
 		5A50A2C81E32163D0010AA31 /* SettingTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableCell.swift; sourceTree = "<group>"; };
 		5A50A2C91E32163D0010AA31 /* SettingTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingTableCell.xib; sourceTree = "<group>"; };
 		5A5266BC1E26413400C5B7A1 /* DMLicenseSelectionVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMLicenseSelectionVC+Services.swift"; sourceTree = "<group>"; };
@@ -506,6 +510,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		5A3B06C51E3375A200EFCA6E /* ChangePassword */ = {
+			isa = PBXGroup;
+			children = (
+				5A3B06C61E3375ED00EFCA6E /* ChangePasswordTableCell.swift */,
+				5A3B06C71E3375ED00EFCA6E /* ChangePasswordTableCell.xib */,
+			);
+			path = ChangePassword;
+			sourceTree = "<group>";
+		};
 		5A3FD06B1E1BAF9B00360B3C /* ParallaxNav */ = {
 			isa = PBXGroup;
 			children = (
@@ -545,9 +558,9 @@
 		5A50A2BA1E3212F60010AA31 /* ChangePassword */ = {
 			isa = PBXGroup;
 			children = (
-				5A50A2BE1E3213C60010AA31 /* ChangePasswordVC.swift */,
-				5A50A2C21E32143C0010AA31 /* ChangePasswordVC+TableViewExtension.swift */,
-				5A50A2C01E3213E90010AA31 /* ChangePasswordVC+Services.swift */,
+				5A3B06CE1E33881D00EFCA6E /* DMChangePasswordVC.swift */,
+				5A3B06D01E33883C00EFCA6E /* DMChangePasswordVC+TableViewExtension.swift */,
+				5A3B06D21E33885A00EFCA6E /* DMChangePasswordVC+Services.swift */,
 			);
 			path = ChangePassword;
 			sourceTree = "<group>";
@@ -555,8 +568,8 @@
 		5A50A2BB1E3213020010AA31 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				5A50A2BC1E3213A40010AA31 /* SettingVC.swift */,
-				5A50A2C41E3214600010AA31 /* SettingVC+TableViewExtension.swift */,
+				5A3B06CA1E3387DA00EFCA6E /* DMSettingVC.swift */,
+				5A3B06CC1E3387FF00EFCA6E /* DMSettingVC+TableViewExtension.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -899,6 +912,7 @@
 		E56B20A71DC0606A000512F6 /* TableView Cells */ = {
 			isa = PBXGroup;
 			children = (
+				5A3B06C51E3375A200EFCA6E /* ChangePassword */,
 				5A50A2C61E3216010010AA31 /* Setting */,
 				E558D90B1E2E871900A6DF95 /* EditProfile */,
 				E558D90C1E2E871900A6DF95 /* Maps */,
@@ -1504,6 +1518,7 @@
 				E597E5841E151A99001DDA78 /* SF-UI-Text-Medium.otf in Resources */,
 				E597E57E1E151A99001DDA78 /* SF-UI-Text-Bold.otf in Resources */,
 				E5A0EB0F1E2BE7C40092E21A /* ASJTag.xib in Resources */,
+				5A3B06C91E3375ED00EFCA6E /* ChangePasswordTableCell.xib in Resources */,
 				E597E57A1E151A99001DDA78 /* SF-UI-Display-Regular.otf in Resources */,
 				E5E7CB4B1E2F8CDE00D4FB59 /* EditLicenseTableCell.xib in Resources */,
 				E597E5751E151A99001DDA78 /* SF-UI-Display-Black.otf in Resources */,
@@ -1635,7 +1650,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E56B20A41DC0526E000512F6 /* DMRegistrationContainer.swift in Sources */,
-				5A50A2BD1E3213A40010AA31 /* SettingVC.swift in Sources */,
+				5A3B06CF1E33881D00EFCA6E /* DMChangePasswordVC.swift in Sources */,
 				E5E7CB781E2FA23200D4FB59 /* AboutMeCell.swift in Sources */,
 				E5A174C71E201DE40044B17E /* ProfileImageButton.swift in Sources */,
 				E5A174C21E201D450044B17E /* CircleProgressBar.m in Sources */,
@@ -1654,7 +1669,6 @@
 				5A9A3A971E2B58600002C5B6 /* UserManager.swift in Sources */,
 				E5E7CB7C1E2FA23200D4FB59 /* AffliliationsOthersCell.swift in Sources */,
 				E5A0EB101E2BE7C40092E21A /* ASJTagsView.m in Sources */,
-				5A50A2C51E3214600010AA31 /* SettingVC+TableViewExtension.swift in Sources */,
 				E5E7CB911E2FA23300D4FB59 /* AutoCompleteTableViewCell.swift in Sources */,
 				E587D2F41E24C095006B7F06 /* DMAffiliationsVC.swift in Sources */,
 				E594BEA61E1E07C900310AE5 /* DMLoginVC+TableViewExtension.swift in Sources */,
@@ -1689,6 +1703,7 @@
 				E5FBE9D91E1CCF940025683C /* DMRegistration+Services.swift in Sources */,
 				E58654FE1DEFEF7F006FEB2D /* ConfigurationManager.swift in Sources */,
 				E5AE2AF61DAF878900C008BD /* OnboardingCollectionViewCell.swift in Sources */,
+				5A3B06D11E33883C00EFCA6E /* DMChangePasswordVC+TableViewExtension.swift in Sources */,
 				5A1960FD1E208B67002A5F7C /* PhoneNumberFormatter.swift in Sources */,
 				E5C5F3151DC0AACA001A5A3F /* DMRegisterMapsVC.swift in Sources */,
 				E55462E11DAE41FB004163B2 /* Date+Additions.swift in Sources */,
@@ -1708,8 +1723,6 @@
 				E56C9FA31DED520B00EAA9DD /* InAppPurchase.swift in Sources */,
 				E558D8FC1E2CB5D400A6DF95 /* AutoCompleteTable.swift in Sources */,
 				E50B3F4C1E194CD7004C5F32 /* AnimatedPHTableCell.swift in Sources */,
-				5A50A2C31E32143C0010AA31 /* ChangePasswordVC+TableViewExtension.swift in Sources */,
-				5A50A2BF1E3213C60010AA31 /* ChangePasswordVC.swift in Sources */,
 				E55462E61DAE47A9004163B2 /* UIView+Toast.m in Sources */,
 				E5E7CB431E2F39D500D4FB59 /* DMEditProfileVC+Services.swift in Sources */,
 				E587D2D11E2343A5006B7F06 /* DMJobTitleSelectionVC+UIPickerViewExtension.swift in Sources */,
@@ -1721,6 +1734,7 @@
 				E5E7CBAC1E3099DF00D4FB59 /* DMPublicProfileVC.swift in Sources */,
 				E55462F71DAE4C6F004163B2 /* UITextField+ToolBar.swift in Sources */,
 				E587D2D71E236B84006B7F06 /* DMRegisterMapsVC+GoogleMapsExtension.swift in Sources */,
+				5A3B06CD1E3387FF00EFCA6E /* DMSettingVC+TableViewExtension.swift in Sources */,
 				E54976F31E28CEDD006F21E5 /* User.swift in Sources */,
 				E5E7CB831E2FA23200D4FB59 /* ReferenceTableCell.swift in Sources */,
 				E56C9F9E1DED4BD100EAA9DD /* Character+Addition.swift in Sources */,
@@ -1741,13 +1755,13 @@
 				E587D3081E253719006B7F06 /* DMAffiliationsVC+TableViewExtension.swift in Sources */,
 				5A85D2171E2DFAD000AC4C89 /* TagWrappers.swift in Sources */,
 				E558D90A1E2E7A3200A6DF95 /* DMEditProfileVC+TableViewExtension.swift in Sources */,
+				5A3B06D31E33885A00EFCA6E /* DMChangePasswordVC+Services.swift in Sources */,
 				E5E7CB891E2FA23200D4FB59 /* OtherSkillCell.swift in Sources */,
 				E54976F71E28D243006F21E5 /* DMExecutiveSummaryVC+Services.swift in Sources */,
 				E587D2CC1E23362C006B7F06 /* JobSelectionPickerView.swift in Sources */,
 				E5E7CB801E2FA23200D4FB59 /* AddDeleteExperienceCell.swift in Sources */,
 				E587D3001E24E5C1006B7F06 /* ProfileTextField.swift in Sources */,
 				E5F47C941E0035B90051C4A1 /* UIImage+Rotations.swift in Sources */,
-				5A50A2C11E3213E90010AA31 /* ChangePasswordVC+Services.swift in Sources */,
 				E587D2F61E24C0B0006B7F06 /* DMSkillsVC.swift in Sources */,
 				E50B3F501E194CD7004C5F32 /* RegistrationTableViewCell.swift in Sources */,
 				5A85D2141E2DFAD000AC4C89 /* TagPresentable.swift in Sources */,
@@ -1762,6 +1776,7 @@
 				E5E7CB931E2FA23300D4FB59 /* StudyCell.swift in Sources */,
 				5AB876501E249B62007818D6 /* ExperiencePickerView.swift in Sources */,
 				E5DC3E731DAF2C45002DA20E /* DentaMatch.xcdatamodeld in Sources */,
+				5A3B06C81E3375ED00EFCA6E /* ChangePasswordTableCell.swift in Sources */,
 				E590299F1DED25C400151E9B /* AppDelegate+Notifications.swift in Sources */,
 				E597E5901E151CFF001DDA78 /* FloatLabelTextView.swift in Sources */,
 				E5F47C951E0035B90051C4A1 /* UIImageRotate.m in Sources */,
@@ -1779,6 +1794,7 @@
 				E5496E021E255A9E00C54288 /* DMExecutiveSummaryVC+TableViewExtension.swift in Sources */,
 				E54B9A841E32870B00805D9C /* DMEditCertificateVC.swift in Sources */,
 				E56F78561E1F602200F07814 /* DMForgotPasswordVC+Services.swift in Sources */,
+				5A3B06CB1E3387DA00EFCA6E /* DMSettingVC.swift in Sources */,
 				E5496E161E2784D500C54288 /* DMSkillsVC+TableViewExtension.swift in Sources */,
 				E587D2FA1E24C102006B7F06 /* DMStudyVC.swift in Sources */,
 				E587D3021E24E97B006B7F06 /* DMStudy+TableViewExtension.swift in Sources */,

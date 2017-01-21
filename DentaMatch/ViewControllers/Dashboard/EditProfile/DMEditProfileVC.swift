@@ -91,7 +91,12 @@ class DMEditProfileVC: DMBaseVC {
             let destinationVC = segue.destination as! DMEditLicenseVC
             destinationVC.license = self.license
         } else if segue.identifier == Constants.StoryBoard.SegueIdentifier.goToPublicProfile {
-            let destinationVC = segue.destination as! DMPublicProfileVC
+            _ = segue.destination as! DMPublicProfileVC
+        }else if segue.identifier == Constants.StoryBoard.SegueIdentifier.goToSetting
+        {
+            let destinationVC = segue.destination as! DMSettingVC
+            destinationVC.hidesBottomBarWhenPushed = true
+
         }
     }
     

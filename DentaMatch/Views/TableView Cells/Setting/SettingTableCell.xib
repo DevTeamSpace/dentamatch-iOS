@@ -38,12 +38,22 @@
                         <color key="textColor" red="0.58431372549019611" green="0.58431372549019611" blue="0.58431372549019611" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ef-HB-zlg">
+                        <rect key="frame" x="0.0" y="56.5" width="320" height="1"/>
+                        <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="waC-C4-XQV"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="xVI-nU-Bbb" secondAttribute="trailing" constant="43" id="0H7-U7-hAc"/>
                     <constraint firstItem="3TT-Mp-R8k" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="5Cr-Xe-mWC"/>
+                    <constraint firstAttribute="trailing" secondItem="3ef-HB-zlg" secondAttribute="trailing" id="Hf1-5M-fzd"/>
+                    <constraint firstAttribute="bottom" secondItem="3ef-HB-zlg" secondAttribute="bottom" id="KMI-u4-ot8"/>
                     <constraint firstItem="3TT-Mp-R8k" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="L7l-9n-mPT"/>
                     <constraint firstItem="xVI-nU-Bbb" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="OPx-Y0-p7c"/>
+                    <constraint firstItem="3ef-HB-zlg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ocN-lI-UDW"/>
                     <constraint firstItem="xVI-nU-Bbb" firstAttribute="leading" secondItem="3TT-Mp-R8k" secondAttribute="trailing" constant="20" id="spR-cb-P61"/>
                 </constraints>
             </tableViewCellContentView>

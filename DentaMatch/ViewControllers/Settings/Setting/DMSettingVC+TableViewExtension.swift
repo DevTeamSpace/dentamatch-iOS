@@ -1,18 +1,18 @@
 //
-//  SettingVC+TableViewExtension.swift
+//  DMSettingVC+TableViewExtension.swift
 //  DentaMatch
 //
-//  Created by Sanjay Kumar Yadav on 20/01/17.
+//  Created by Sanjay Kumar Yadav on 21/01/17.
 //  Copyright © 2017 Appster. All rights reserved.
 //
 
 import Foundation
 
-extension SettingVC : UITableViewDataSource,UITableViewDelegate {
+extension DMSettingVC : UITableViewDataSource,UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 58
+        return 60
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -37,6 +37,23 @@ extension SettingVC : UITableViewDataSource,UITableViewDelegate {
             
         }
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0:
+            break
+        case 1:
+            self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToChangePassword, sender: self)
+        case 2:
+            break
+        case 3:
+            break
+        case 4:
+            break
+        default: break
+            
+        }
+        
     }
     
 }

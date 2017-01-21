@@ -237,6 +237,13 @@ struct Constants {
         static let emptyCityName = "City Name can not be left blank."
         static let referenceMobileNumber = "Please, Provide a valid Phone number of 10 digits."
         
+        static let emptyOldPassword = "Please enter Old password"
+        static let emptyNewPassword = "Please enter New password"
+        static let emptyConfirmPassword = "Please enter Confirm password"
+        static let matchPassword = "New password and Confirm password not match"
+
+        
+        //change password screen messgaes
         struct AlertTitle {
             static let invalidEmailTitle = ""
         }
