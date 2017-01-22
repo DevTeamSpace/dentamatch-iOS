@@ -7,6 +7,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-UI-Text-Regular.otf">
+            <string>SFUIText-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="4zl-fy-AwR">
@@ -35,7 +40,19 @@
                     <view key="view" contentMode="scaleToFill" id="h9J-3X-rkB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Work in Progress " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mbl-FW-fgD">
+                                <rect key="frame" x="42.5" y="288" width="290.5" height="42"/>
+                                <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mbl-FW-fgD" firstAttribute="centerX" secondItem="h9J-3X-rkB" secondAttribute="centerX" id="6pa-vX-sRh"/>
+                            <constraint firstItem="mbl-FW-fgD" firstAttribute="centerY" secondItem="h9J-3X-rkB" secondAttribute="centerY" id="LkM-Ai-3S6"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Calender" id="MTS-pJ-65n"/>
                     <navigationItem key="navigationItem" id="GAa-Sh-l0o"/>

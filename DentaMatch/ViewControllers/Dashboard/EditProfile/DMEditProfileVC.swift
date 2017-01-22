@@ -51,7 +51,7 @@ class DMEditProfileVC: DMBaseVC {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         UIView.animate(withDuration: 0.5) {
-            self.dashBoardVC?.tabBar.alpha = 0.0
+            self.dashBoardVC?.tabBar.alpha = 1.0
         }
     }
     
