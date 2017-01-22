@@ -130,6 +130,7 @@ struct Constants {
         static let changePassword = Constants.API.apiURL("users/change-password")
 
         static let userProfile = Constants.API.apiURL("users/user-profile")
+        static let signOut = Constants.API.apiURL("users/sign-out")
 
 
         static func apiURL(_ methodName: String) -> String {

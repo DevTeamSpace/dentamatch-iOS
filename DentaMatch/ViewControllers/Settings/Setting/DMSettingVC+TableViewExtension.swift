@@ -72,14 +72,23 @@ extension DMSettingVC : UITableViewDataSource,UITableViewDelegate {
     }
     func openLogin() {
         
-        UserManager.shared().deleteActiveUser()
-        let registrationContainer = UIStoryboard.registrationStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.registrationNav) as! UINavigationController
         
-        UIView.transition(with: self.view.window!, duration: 0.25, options: .transitionCrossDissolve, animations: {
-            kAppDelegate.window?.rootViewController = registrationContainer
-        }) { (bool:Bool) in
-            //completion
+        signOut { (check, error) in
+            
+            if check == true {
+                UserManager.shared().deleteActiveUser()
+                let registrationContainer = UIStoryboard.registrationStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.registrationNav) as! UINavigationController
+                
+                UIView.transition(with: self.view.window!, duration: 0.25, options: .transitionCrossDissolve, animations: {
+                    kAppDelegate.window?.rootViewController = registrationContainer
+                }) { (bool:Bool) in
+                    //completion
+                }
+
+            }
+            
         }
+        
         
     }
     

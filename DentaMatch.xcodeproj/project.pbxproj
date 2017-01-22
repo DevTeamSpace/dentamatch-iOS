@@ -43,6 +43,7 @@
 		5AC714521E34ACD400E433C1 /* DMCalenderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC714511E34ACD400E433C1 /* DMCalenderVC.swift */; };
 		5AC714541E34ACE800E433C1 /* DMTrackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC714531E34ACE800E433C1 /* DMTrackVC.swift */; };
 		5AC714561E34ACFB00E433C1 /* DMMessagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC714551E34ACFB00E433C1 /* DMMessagesVC.swift */; };
+		5AC714581E34F76900E433C1 /* DMSettingVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC714571E34F76900E433C1 /* DMSettingVC+Services.swift */; };
 		5AD246911E272E92009350BF /* DMWorkExperienceVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD246901E272E92009350BF /* DMWorkExperienceVC+Services.swift */; };
 		5AD246931E273CC9009350BF /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD246921E273CC9009350BF /* DatePickerView.swift */; };
 		5AD246951E273CE7009350BF /* DatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AD246941E273CE7009350BF /* DatePickerView.xib */; };
@@ -275,6 +276,7 @@
 		5AC714511E34ACD400E433C1 /* DMCalenderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMCalenderVC.swift; sourceTree = "<group>"; };
 		5AC714531E34ACE800E433C1 /* DMTrackVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMTrackVC.swift; sourceTree = "<group>"; };
 		5AC714551E34ACFB00E433C1 /* DMMessagesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMMessagesVC.swift; sourceTree = "<group>"; };
+		5AC714571E34F76900E433C1 /* DMSettingVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMSettingVC+Services.swift"; sourceTree = "<group>"; };
 		5AD246901E272E92009350BF /* DMWorkExperienceVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMWorkExperienceVC+Services.swift"; sourceTree = "<group>"; };
 		5AD246921E273CC9009350BF /* DatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		5AD246941E273CE7009350BF /* DatePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerView.xib; sourceTree = "<group>"; };
@@ -586,6 +588,7 @@
 			children = (
 				5A3B06CA1E3387DA00EFCA6E /* DMSettingVC.swift */,
 				5A3B06CC1E3387FF00EFCA6E /* DMSettingVC+TableViewExtension.swift */,
+				5AC714571E34F76900E433C1 /* DMSettingVC+Services.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -1825,6 +1828,7 @@
 				E5E7CB801E2FA23200D4FB59 /* AddDeleteExperienceCell.swift in Sources */,
 				E587D3001E24E5C1006B7F06 /* ProfileTextField.swift in Sources */,
 				E5F47C941E0035B90051C4A1 /* UIImage+Rotations.swift in Sources */,
+				5AC714581E34F76900E433C1 /* DMSettingVC+Services.swift in Sources */,
 				E587D2F61E24C0B0006B7F06 /* DMSkillsVC.swift in Sources */,
 				E50B3F501E194CD7004C5F32 /* RegistrationTableViewCell.swift in Sources */,
 				5A85D2141E2DFAD000AC4C89 /* TagPresentable.swift in Sources */,
