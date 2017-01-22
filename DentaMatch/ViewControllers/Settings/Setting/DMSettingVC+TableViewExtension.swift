@@ -48,13 +48,19 @@ extension DMSettingVC : UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            break
+            let mapVC = UIStoryboard.registrationStoryBoard().instantiateViewController(type: DMRegisterMapsVC.self)!
+            mapVC.delegate = self
+            self.navigationController?.pushViewController(mapVC, animated: true)
         case 1:
             self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToChangePassword, sender: self)
         case 2:
-            break
+            let termsVC = UIStoryboard.registrationStoryBoard().instantiateViewController(type: DMTermsAndConditionsVC.self)!
+            termsVC.isPrivacyPolicy = false
+            self.navigationController?.pushViewController(termsVC, animated: true)
         case 3:
-            break
+            let termsVC = UIStoryboard.registrationStoryBoard().instantiateViewController(type: DMTermsAndConditionsVC.self)!
+            termsVC.isPrivacyPolicy = true
+            self.navigationController?.pushViewController(termsVC, animated: true)
         case 4:
             //logout
             openLogin()
@@ -78,3 +84,26 @@ extension DMSettingVC : UITableViewDataSource,UITableViewDelegate {
     }
     
 }
+
+//MARK:- LocationAddress Delegate
+extension DMSettingVC:LocationAddressDelegate {
+    func locationAddress(location: Location) {
+//        coordinateSelected = location.coordinateSelected
+        if let address = location.address {
+            print(address)
+//            if let cell = self.registrationTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as?
+//                RegistrationTableViewCell {
+//                cell.preferredLocationTextField.text = address
+//                
+//                registrationParams[Constants.ServerKey.zipCode] = location.postalCode
+//                registrationParams[Constants.ServerKey.preferredLocation] = address
+//                registrationParams[Constants.ServerKey.latitude] = "\((coordinateSelected?.latitude)!)"
+//                registrationParams[Constants.ServerKey.longitude] = "\((coordinateSelected?.longitude)!)"
+//            }
+//            debugPrint(address)
+        } else {
+            debugPrint("Address is empty")
+        }
+    }
+}
+

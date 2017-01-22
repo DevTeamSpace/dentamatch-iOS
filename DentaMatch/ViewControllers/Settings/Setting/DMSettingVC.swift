@@ -27,6 +27,14 @@ class DMSettingVC: DMBaseVC {
         self.settingTableView.separatorStyle = .none
         self.title = "SETTINGS"
     }
+    override func viewDidAppear(_ animated: Bool) {
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.changeNavBarAppearanceForDefault()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

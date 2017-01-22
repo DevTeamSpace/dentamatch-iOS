@@ -37,29 +37,29 @@ class TabBarVC: UITabBarController,UITabBarControllerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        self.tabBar.alpha = 1.0
-        let tabBarOptions = TabBarOptions(rawValue: (self.tabBar.selectedItem?.tag)!)!
-        
-        switch tabBarOptions {
-            
-        case .jobs:
-            print("jobs")
-            
-        case .track:
-            print("track")
-
-        case .calender:
-            print("calender")
-
-        case .messages:
-            print("messages")
-
-        case .profile:
-            print("profile")
-
-        }
-    }
+//    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+//        self.tabBar.alpha = 1.0
+//        let tabBarOptions = TabBarOptions(rawValue: (self.tabBar.selectedItem?.tag)!)!
+//        
+//        switch tabBarOptions {
+//            
+//        case .jobs:
+//            print("jobs")
+//            
+//        case .track:
+//            print("track")
+//
+//        case .calender:
+//            print("calender")
+//
+//        case .messages:
+//            print("messages")
+//
+//        case .profile:
+//            print("profile")
+//
+//        }
+//    }
     
     override func viewWillDisappear(_ animated: Bool) {
         debugPrint("viewWillDisappear")
