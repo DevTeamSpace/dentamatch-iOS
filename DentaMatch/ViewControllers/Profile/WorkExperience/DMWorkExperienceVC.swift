@@ -119,7 +119,7 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
             self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToStudyVC, sender: self)
 
         }else{
-            self.makeToast(toastString: "Please add at least one experience")
+            self.makeToast(toastString: Constants.AlertMessage.atleastOneExperience)
         }
         
 //        self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToStudyVC, sender: self)

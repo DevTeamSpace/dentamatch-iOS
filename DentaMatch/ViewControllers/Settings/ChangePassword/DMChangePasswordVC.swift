@@ -42,10 +42,15 @@ class DMChangePasswordVC: DMBaseVC {
     
     func setup() {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.changeNavBarAppearanceForDefault()
+        self.navigationItem.leftBarButtonItem = self.backBarButton()
+
         self.changePasswordTableView.register(UINib(nibName: "ChangePasswordTableCell", bundle: nil), forCellReuseIdentifier: "ChangePasswordTableCell")
         self.changePasswordTableView.separatorStyle = .none
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.changePasswordTableView.addGestureRecognizer(tap)
+        self.title = "Reset Password"
+
         
     }
     func dismissKeyboard() {

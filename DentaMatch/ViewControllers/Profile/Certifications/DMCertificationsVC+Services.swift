@@ -80,7 +80,7 @@ extension DMCertificationsVC {
                     
                 })
             } else {
-                self.makeToast(toastString: "Profile Image problem")
+                self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
             }
         }
         
@@ -91,15 +91,6 @@ extension DMCertificationsVC {
 
         var allValidatyDates = [AnyObject]()
         for cetificate in self.certicates {
-            
-//            let dateFormatter = DateFormatter()
-//            dateFormatter.dateFormat = "dd-MM-yyyy"
-////            dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-//
-//            let date = dateFormatter.date(from: cetificate.validityDate)
-//            dateFormatter.dateFormat = Date.dateFormatYYYYMMDDDashed()
-//            let newDate = dateFormatter.string(from: date!)
-//            
             
             let validityDict = ["id":cetificate.certificationId,"value":cetificate.validityDate]
             allValidatyDates.append(validityDict as AnyObject)
@@ -124,7 +115,6 @@ extension DMCertificationsVC {
                 if response![Constants.ServerKey.status].boolValue {
                     self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
                     //do next
-//                    self.openExperienceFirstScreen()
                     completionHandler(response, error)
                 } else {
                     self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)

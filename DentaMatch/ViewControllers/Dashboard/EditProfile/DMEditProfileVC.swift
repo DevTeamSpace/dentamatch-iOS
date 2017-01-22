@@ -43,6 +43,8 @@ class DMEditProfileVC: DMBaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+
         dashBoardVC?.tabBar.alpha = 1.0
     }
     

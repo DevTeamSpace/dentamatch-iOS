@@ -101,7 +101,11 @@ class UserManager: NSObject {
         // remove active user from storage
         kUserDefaults.removeObject(forKey: ACTIVE_USER_KEY)
         // free user object memory
+        kUserDefaults.removeObject(forKey: LOGGED_USER_EMAIL_KEY)
+        kUserDefaults.removeObject(forKey:Constants.UserDefaultsKey.isLoggedIn)
         self.activeUser = nil
+        kUserDefaults.synchronize()
+        
     }
 
 }

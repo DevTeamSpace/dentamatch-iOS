@@ -62,7 +62,7 @@ extension DMLicenseSelectionVC {
                     
                 })
             } else {
-                self.makeToast(toastString: "Profile Image problem")
+                self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
             }
         }
 

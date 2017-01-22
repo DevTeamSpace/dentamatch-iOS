@@ -137,7 +137,7 @@ extension DMLicenseSelectionVC : UITableViewDataSource, UITableViewDelegate {
             let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ0123456789-")
             if string == "-" && textField.text?.characters.count == 0 {
                 self.dismissKeyboard()
-                self.makeToast(toastString: "License number can't start with hyphen (-)")
+                self.makeToast(toastString: Constants.AlertMessage.lienseNoStartError)
                 return false
             }
             if string.rangeOfCharacter(from: characterset.inverted) != nil {
@@ -153,7 +153,7 @@ extension DMLicenseSelectionVC : UITableViewDataSource, UITableViewDelegate {
             let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ- ")
             if string == "-" && textField.text?.characters.count == 0 {
                 self.dismissKeyboard()
-                self.makeToast(toastString: "State  can't start with hyphen (-)")
+                self.makeToast(toastString: Constants.AlertMessage.stateStartError)
                 return false
             }
             if string.rangeOfCharacter(from: characterset.inverted) != nil {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DMSettingVC: UIViewController {
+class DMSettingVC: DMBaseVC {
     @IBOutlet weak var settingTableView: UITableView!
     
     override func viewDidLoad() {
@@ -20,8 +20,12 @@ class DMSettingVC: UIViewController {
     
     func setup() {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.changeNavBarAppearanceForDefault()
+        self.navigationItem.leftBarButtonItem = self.backBarButton()
+
         self.settingTableView.register(UINib(nibName: "SettingTableCell", bundle: nil), forCellReuseIdentifier: "SettingTableCell")
         self.settingTableView.separatorStyle = .none
+        self.title = "SETTINGS"
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

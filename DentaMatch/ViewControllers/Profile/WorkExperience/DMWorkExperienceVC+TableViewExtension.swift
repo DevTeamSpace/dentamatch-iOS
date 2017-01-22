@@ -184,21 +184,9 @@ extension DMWorkExperienceVC
 
         switch indexPath.row {
         case 0:
-            cell.commonTextField.placeholder = FieldType.CurrentJobTitle.description
-            cell.accessoryLabel.isHidden = false
-            cell.commonTextField.text = self.currentExperience?.jobTitle
-            let pickerView = JobSelectionPickerView.loadJobSelectionView(withJobTitles: jobTitles)
-            cell.commonTextField.inputView = pickerView
-            pickerView.delegate = self
-            pickerView.pickerView.reloadAllComponents()
-            pickerView.backgroundColor = UIColor.white
+            cellConfigureForJobSelection(cell: cell, indexPath: indexPath)
         case 1:
-            cell.commonTextField.placeholder = FieldType.YearOfExperience.description
-            cell.commonTextField.text = self.currentExperience?.yearOfExperience!
-            let yearViewObj = ExperiencePickerView.loadExperiencePickerView(withText: (self.currentExperience?.yearOfExperience!)!)
-            yearViewObj.delegate = self
-            cell.commonTextField.inputView = yearViewObj
-            
+            cellConfigureForExperience(cell: cell, indexPath: indexPath)
         case 2:
             cell.commonTextField.placeholder = FieldType.OfficeName.description
             cell.commonTextField.text = self.currentExperience?.officeName
@@ -220,6 +208,35 @@ extension DMWorkExperienceVC
         }
 
     }
+    
+    
+    
+    func cellConfigureForJobSelection(cell:AnimatedPHTableCell, indexPath:IndexPath) {
+        
+        cell.commonTextField.placeholder = FieldType.CurrentJobTitle.description
+        cell.accessoryLabel.isHidden = false
+        cell.commonTextField.text = self.currentExperience?.jobTitle
+        let pickerView = JobSelectionPickerView.loadJobSelectionView(withJobTitles: jobTitles)
+        cell.commonTextField.type = 1
+        cell.commonTextField.tintColor = UIColor.clear
+        cell.commonTextField.inputView = pickerView
+        pickerView.delegate = self
+        pickerView.pickerView.reloadAllComponents()
+        pickerView.backgroundColor = UIColor.white
+        
+    }
+    func cellConfigureForExperience(cell:AnimatedPHTableCell, indexPath:IndexPath) {
+        cell.commonTextField.placeholder = FieldType.YearOfExperience.description
+        cell.commonTextField.text = self.currentExperience?.yearOfExperience!
+        let yearViewObj = ExperiencePickerView.loadExperiencePickerView(withText: (self.currentExperience?.yearOfExperience!)!)
+        yearViewObj.delegate = self
+        cell.commonTextField.type = 1
+        cell.commonTextField.tintColor = UIColor.clear
+        cell.commonTextField.inputView = yearViewObj
+
+        
+    }
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if tableView == self.workExperienceTable {
@@ -356,7 +373,7 @@ extension DMWorkExperienceVC
             self.reSizeTableViewsAndScrollView()
  
         }else{
-            self.makeToast(toastString: "More than two references can not be added.")
+            self.makeToast(toastString: Constants.AlertMessage.morethen2refernce)
         }
     }
     func addMoreExperience(_ sender: Any) {

@@ -79,32 +79,32 @@ class DMLicenseSelectionVC: DMBaseVC,UITextFieldDelegate {
     @IBAction func nextButtonClikced(_ sender: Any) {
         
         if self.stateBoardImage == nil{
-            self.makeToast(toastString: "Please upload photo for Dental state board")
+            self.makeToast(toastString: Constants.AlertMessage.stateCertificate)
             return
         }
         for i in 0..<(self.licenseArray?.count)! {
             let text = self.licenseArray?[i] as! String
             if i == 0 {
                 if text.isEmptyField {
-                    self.makeToast(toastString: "Please enter License number")
+                    self.makeToast(toastString: Constants.AlertMessage.emptyLicenseNumber)
                     return
                 }else
                 {
                     let newChar = text.characters.first
                     if newChar == "-" {
-                        self.makeToast(toastString: "License number can't start with hyphen (-)")
+                        self.makeToast(toastString: Constants.AlertMessage.lienseNoStartError)
                         return
                     }
                 }
             }else{
                 if text.isEmptyField {
-                    self.makeToast(toastString: "Please enter State")
+                    self.makeToast(toastString: Constants.AlertMessage.emptyState)
                     return
                 }else{
                     
                     let newChar = text.characters.first
                     if newChar == "-" {
-                        self.makeToast(toastString: "State  can't start with hyphen (-)")
+                        self.makeToast(toastString: Constants.AlertMessage.stateStartError)
                         return
                     }
                 }
