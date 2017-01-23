@@ -53,7 +53,11 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
                 return 72
             } else {
                 //Brick skill cell height
-                return 74
+                if indexPath.row == self.skills.count {
+                    return (self.getHeightForSkillsRow(indexPath:indexPath) + 55)
+
+                }
+                return (self.getHeightForSkillsRow(indexPath:indexPath) + 35)
             }
             
         case .affiliations:
@@ -181,8 +185,9 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
                 else {
                     //Brick Skill Cell
                     let skill = skills[indexPath.row - 1]
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "AddProfileOptionTableCell") as! AddProfileOptionTableCell
-                    cell.profileOptionLabel.text = "Add skills category"
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "EditProfileSkillBrickCell") as! EditProfileSkillBrickCell
+                    cell.skillLabel.text = skill.skillName
+                    cell.updateSkills(subSkills: skill.subSkills)
                     return cell
                 }
             }
@@ -315,6 +320,36 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
     }
     
     func getHeightForSkillsRow(indexPath:IndexPath) -> CGFloat {
-        return 10.0
+        
+        let subSkills = self.skills[indexPath.row - 1].subSkills
+        let tagList: TagList = {
+            let view = TagList()
+            view.backgroundColor = UIColor(red: 233.0/255.0, green: 233.0/255.0, blue: 233.0/255.0, alpha: 1.0)
+            view.tagMargin = UIEdgeInsets(top: 3, left: 5, bottom: 3, right: 5)
+            //            view.separator.image = UIImage(named: "")!
+            view.separator.size = CGSize(width: 16, height: 16)
+            view.separator.margin = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+            return view
+        }()
+        tagList.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: editProfileTableView.frame.width - 20, height: 0))
+        
+        for subSkill in subSkills {
+            
+            let tag = Tag(content: TagPresentableText(subSkill.subSkillName) {
+                $0.label.font = UIFont.systemFont(ofSize: 16)
+                }, onInit: {
+                    $0.padding = UIEdgeInsets(top: 8, left: 10, bottom: 8, right: 10)
+                    $0.layer.borderColor = UIColor.cyan.cgColor
+                    $0.layer.borderWidth = 2
+                    $0.layer.cornerRadius = 5
+            }, onSelect: {
+                $0.backgroundColor = $0.isSelected ? UIColor.orange : UIColor.white
+            })
+            tagList.tags.append(tag)
+        }
+        
+        debugPrint("Height \(tagList.intrinsicContentSize.height)")
+        return tagList.frame.size.height
+
     }
 }
