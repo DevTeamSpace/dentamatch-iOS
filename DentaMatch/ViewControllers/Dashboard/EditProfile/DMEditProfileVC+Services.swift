@@ -33,13 +33,21 @@ extension DMEditProfileVC {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
                 handleUserResponse(user: response[Constants.ServerKey.result][Constants.ServerKey.user])
+                handleDentalStateboardResponse(dentalStateBoard: response[Constants.ServerKey.result][Constants.ServerKey.dentalStateBoard])
                 handleLicenseResponse(license: response[Constants.ServerKey.result][Constants.ServerKey.license])
                 handleCertificationResponse(certifications: response[Constants.ServerKey.result][Constants.ServerKey.certifications].arrayValue)
                 handleAffiliationResponse(affiliations: response[Constants.ServerKey.result][Constants.ServerKey.affiliations].arrayValue)
                 handleSkillsResponse(skills: response[Constants.ServerKey.result][Constants.ServerKey.skills].arrayValue)
+                handleWorkExperienceResponse(workExperienceArray: response[Constants.ServerKey.result][Constants.ServerKey.workExperience][Constants.ServerKey.list].arrayValue)
             } else {
                 //handle error
             }
+        }
+    }
+    
+    func handleDentalStateboardResponse(dentalStateBoard:JSON?) {
+        if let dentalStateBoard = dentalStateBoard {
+            self.dentalStateBoardURL = dentalStateBoard[Constants.ServerKey.imageUrl].stringValue
         }
     }
     
@@ -70,7 +78,7 @@ extension DMEditProfileVC {
         if let affiliations = affiliations {
             for affiliation in affiliations {
                 let affiliation = Affiliation(affiliation: affiliation)
-                self.affliations.append(affiliation)
+                self.affiliations.append(affiliation)
             }
         }
     }
@@ -91,6 +99,15 @@ extension DMEditProfileVC {
             }
             //otherSkill = skills.filter({$0.isOther == true}).first
             //skills = skills.filter({$0.isOther == false})
+        }
+    }
+    
+    func handleWorkExperienceResponse(workExperienceArray:[JSON]?) {
+        if let workExperienceArray = workExperienceArray {
+            for workExperience in workExperienceArray {
+                let workExperience = ExperienceModel(json: workExperience)
+                self.experiences.append(workExperience)
+            }
         }
     }
 }

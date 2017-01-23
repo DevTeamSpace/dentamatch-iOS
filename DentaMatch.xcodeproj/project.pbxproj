@@ -83,6 +83,8 @@
 		E54B9A801E32729C00805D9C /* EmptyCertificateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54B9A7E1E32729C00805D9C /* EmptyCertificateTableViewCell.swift */; };
 		E54B9A811E32729C00805D9C /* EmptyCertificateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E54B9A7F1E32729C00805D9C /* EmptyCertificateTableViewCell.xib */; };
 		E54B9A841E32870B00805D9C /* DMEditCertificateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54B9A831E32870B00805D9C /* DMEditCertificateVC.swift */; };
+		E54B9A8A1E36119700805D9C /* YearPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E54B9A891E36119700805D9C /* YearPickerView.xib */; };
+		E54B9A8C1E3611A300805D9C /* YearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54B9A8B1E3611A300805D9C /* YearPickerView.swift */; };
 		E55462D71DAE2F49004163B2 /* UIColor+HexCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55462D61DAE2F49004163B2 /* UIColor+HexCode.swift */; };
 		E55462D91DAE3104004163B2 /* Array+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55462D81DAE3104004163B2 /* Array+Additions.swift */; };
 		E55462DB1DAE312C004163B2 /* String+Additons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55462DA1DAE312C004163B2 /* String+Additons.swift */; };
@@ -324,6 +326,8 @@
 		E54B9A7E1E32729C00805D9C /* EmptyCertificateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyCertificateTableViewCell.swift; sourceTree = "<group>"; };
 		E54B9A7F1E32729C00805D9C /* EmptyCertificateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyCertificateTableViewCell.xib; sourceTree = "<group>"; };
 		E54B9A831E32870B00805D9C /* DMEditCertificateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMEditCertificateVC.swift; sourceTree = "<group>"; };
+		E54B9A891E36119700805D9C /* YearPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YearPickerView.xib; sourceTree = "<group>"; };
+		E54B9A8B1E3611A300805D9C /* YearPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearPickerView.swift; sourceTree = "<group>"; };
 		E55462D01DAE1419004163B2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E55462D61DAE2F49004163B2 /* UIColor+HexCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+HexCode.swift"; sourceTree = "<group>"; };
 		E55462D81DAE3104004163B2 /* Array+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Additions.swift"; sourceTree = "<group>"; };
@@ -1076,6 +1080,8 @@
 				E587D2DC1E2396E9006B7F06 /* JobSelectionPickerView.xib */,
 				5AD246921E273CC9009350BF /* DatePickerView.swift */,
 				5AD246941E273CE7009350BF /* DatePickerView.xib */,
+				E54B9A8B1E3611A300805D9C /* YearPickerView.swift */,
+				E54B9A891E36119700805D9C /* YearPickerView.xib */,
 			);
 			path = CustomPicker;
 			sourceTree = "<group>";
@@ -1637,6 +1643,7 @@
 				E597E5761E151A99001DDA78 /* SF-UI-Display-Bold.otf in Resources */,
 				E50B3F511E194CD7004C5F32 /* RegistrationTableViewCell.xib in Resources */,
 				5AC714421E34A9C700E433C1 /* Messages.storyboard in Resources */,
+				E54B9A8A1E36119700805D9C /* YearPickerView.xib in Resources */,
 				E597E5771E151A99001DDA78 /* SF-UI-Display-Heavy.otf in Resources */,
 				E597E55B1E150638001DDA78 /* dentamatch.ttf in Resources */,
 				E5E7CB881E2FA23200D4FB59 /* SectionHeadingTableCell.xib in Resources */,
@@ -1778,6 +1785,7 @@
 				E5E7CBA81E30970700D4FB59 /* EditPublicProfileTableCell.swift in Sources */,
 				E55462DB1DAE312C004163B2 /* String+Additons.swift in Sources */,
 				5A85D2161E2DFAD000AC4C89 /* TagWrapper.swift in Sources */,
+				E54B9A8C1E3611A300805D9C /* YearPickerView.swift in Sources */,
 				E55462D91DAE3104004163B2 /* Array+Additions.swift in Sources */,
 				E594BE9F1E1DFFA900310AE5 /* DMRegistrationVC+TextFieldExtension.swift in Sources */,
 				E57EE6CD1E28EBC00090434F /* Affiliation.swift in Sources */,

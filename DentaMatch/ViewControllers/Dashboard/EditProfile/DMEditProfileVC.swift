@@ -26,10 +26,11 @@ class DMEditProfileVC: DMBaseVC {
     var dashBoardVC:TabBarVC?
     
     var license:License?
-    var affliations = [Affiliation]()
+    var affiliations = [Affiliation]()
     var skills = [Skill]()
     var certifications = [Certification]()
-    var dentalStateBoardURL = "test"
+    var experiences = [ExperienceModel]()
+    var dentalStateBoardURL = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +47,6 @@ class DMEditProfileVC: DMBaseVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        self.editProfileTableView.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -86,7 +86,7 @@ class DMEditProfileVC: DMBaseVC {
         let affiliationVC = UIStoryboard.profileStoryBoard().instantiateViewController(type: DMAffiliationsVC.self)!
         affiliationVC.isEditMode = true
         affiliationVC.hidesBottomBarWhenPushed = true
-        affiliationVC.selectedAffiliationsFromProfile = self.affliations
+        affiliationVC.selectedAffiliationsFromProfile = self.affiliations
         self.navigationController?.pushViewController(affiliationVC, animated: true)
     }
     
@@ -103,7 +103,7 @@ class DMEditProfileVC: DMBaseVC {
     func updateProfileScreen(userInfo:Notification) {
         let dict = userInfo.userInfo
         if let affiliation = dict?["affiliations"] {
-            self.affliations = affiliation as! [Affiliation]
+            self.affiliations = affiliation as! [Affiliation]
         }
         self.editProfileTableView.reloadData()
     }

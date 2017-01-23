@@ -33,6 +33,7 @@ extension DMEditLicenseVC {
             if response[Constants.ServerKey.status].boolValue {
                 license?.number = licenseNumberTextField.text!
                 license?.state = stateTextField.text!
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateProfileScreen"), object: nil, userInfo: nil)
                 _ = self.navigationController?.popViewController(animated: true)
             }
             self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)

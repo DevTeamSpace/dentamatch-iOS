@@ -158,6 +158,7 @@ struct Constants {
         static let state = "state"
         static let userDetails = "userDetails"
         static let result = "result"
+        static let dentalStateBoard = "dentalStateBoard"
         static let accessToken = "accessToken"
         static let joblists = "joblists"
         static let profileImageURL = "img_url"
@@ -188,6 +189,7 @@ struct Constants {
         static let officeName = "officeName"
         static let officeAddressExp = "officeAddress"
         static let cityName = "city"
+        static let workExperience = "workExperience"
 
         static let reference1Name = "reference1Name"
         static let reference1Mobile = "reference1Mobile"
