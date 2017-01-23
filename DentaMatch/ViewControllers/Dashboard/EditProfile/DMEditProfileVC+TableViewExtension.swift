@@ -60,7 +60,8 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
                 return 72
             } else {
                 //Brick affiliation cell height
-                return 72
+               return (self.getHeightForAffilation(affiliations: self.affliations) + 60)
+//                return 72
             }
             
         case .licenseNumber:
@@ -168,6 +169,8 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
         case .affiliations:
             if indexPath.row == 0 {
                 let cell = makeHeadingCell(heading: "PROFESSIONAL AFFILIATIONS")
+                cell.editButton.isHidden = self.affliations.count > 0 ? false:true
+                cell.editButton.addTarget(self, action: #selector(openAffiliationsScreen), for: .touchUpInside)
                 return cell
             } else {
                 if affliations.count == 0 {
@@ -176,8 +179,8 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
                     return cell
                 }else {
                     // Affiliation brick cell
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "AddProfileOptionTableCell") as! AddProfileOptionTableCell
-                    cell.profileOptionLabel.text = "Add professional affiliations"
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "EditProfileAffiliationBrickCell") as! EditProfileAffiliationBrickCell
+                    cell.updateAffiliations(affiliation: self.affliations)
                     return cell
                 }
             }
@@ -256,5 +259,41 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
         cell.headingLabel.text = heading
         cell.editButton.isHidden = true
         return cell
+    }
+    
+    func getHeightForAffilation (affiliations:[Affiliation]) -> CGFloat  {
+        
+        let tagList: TagList = {
+            let view = TagList()
+            view.backgroundColor = UIColor(red: 233.0/255.0, green: 233.0/255.0, blue: 233.0/255.0, alpha: 1.0)
+            view.tagMargin = UIEdgeInsets(top: 3, left: 5, bottom: 3, right: 5)
+            //            view.separator.image = UIImage(named: "")!
+            view.separator.size = CGSize(width: 16, height: 16)
+            view.separator.margin = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+            return view
+        }()
+        tagList.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: editProfileTableView.frame.width - 20, height: 0))
+        
+        for subSkill in affiliations {
+            
+            let tag = Tag(content: TagPresentableText(subSkill.affiliationName) {
+                $0.label.font = UIFont.systemFont(ofSize: 16)
+                }, onInit: {
+                    $0.padding = UIEdgeInsets(top: 8, left: 10, bottom: 8, right: 10)
+                    $0.layer.borderColor = UIColor.cyan.cgColor
+                    $0.layer.borderWidth = 2
+                    $0.layer.cornerRadius = 5
+            }, onSelect: {
+                $0.backgroundColor = $0.isSelected ? UIColor.orange : UIColor.white
+            })
+            tagList.tags.append(tag)
+        }
+        
+        debugPrint("Height \(tagList.intrinsicContentSize.height)")
+        return tagList.frame.size.height
+    }
+    
+    func getHeightForSkillsRow(indexPath:IndexPath) -> CGFloat {
+        return 10.0
     }
 }
