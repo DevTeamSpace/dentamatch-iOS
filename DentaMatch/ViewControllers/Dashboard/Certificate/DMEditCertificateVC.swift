@@ -16,6 +16,7 @@ class DMEditCertificateVC: DMBaseVC,DatePickerViewDelegate {
     
     var certificate:Certification?
     var dateView:DatePickerView?
+    var profileImage:UIImage?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,7 @@ class DMEditCertificateVC: DMBaseVC,DatePickerViewDelegate {
     }
     
     func setup() {
+        self.certificateImageButton.sd_setImage(with: URL(string:(self.certificate?.certificateImageURL)!), for: .normal, placeholderImage: nil)
         self.dateView = DatePickerView.loadExperiencePickerView(withText:"" , tag: 0)
         self.dateView?.delegate = self
         self.validityDatePicker.text = certificate?.validityDate
@@ -50,9 +52,54 @@ class DMEditCertificateVC: DMBaseVC,DatePickerViewDelegate {
     }
 
     @IBAction func certificateImageButtonAction(_ sender: Any) {
+        addPhoto()
     }
     @IBAction func saveButtonPressed(_ sender: Any) {
     }
+    
+    func addPhoto() {
+        self.cameraGalleryOptionActionSheet(title: "", message: "Please select", leftButtonText: "Camera", rightButtonText: "Gallery") { (isCameraButtonPressed, isGalleryButtonPressed, isCancelButtonPressed) in
+            if isCancelButtonPressed {
+                //cancel action
+            } else if isCameraButtonPressed {
+                self.getPhotoFromCamera()
+            } else {
+                self.getPhotoFromGallery()
+            }
+        }
+    }
+    
+    func getPhotoFromCamera() {
+        CameraGalleryManager.shared.openCamera(viewController: self, allowsEditing: false, completionHandler: { (image:UIImage?, error:NSError?) in
+            if error != nil {
+                DispatchQueue.main.async {
+                    self.makeToast(toastString: (error?.localizedDescription)!)
+                }
+                return
+            }
+            self.profileImage = image
+            DispatchQueue.main.async {
+                self.certificateImageButton.setImage(image, for: .normal)
+            }
+        })
+    }
+    
+    func getPhotoFromGallery() {
+        CameraGalleryManager.shared.openGallery(viewController: self, allowsEditing: false, completionHandler: { (image:UIImage?, error:NSError?) in
+            if error != nil {
+                DispatchQueue.main.async {
+                    self.makeToast(toastString: (error?.localizedDescription)!)
+                }
+                return
+            }
+            self.profileImage = image
+            DispatchQueue.main.async {
+                self.certificateImageButton.setImage(image, for: .normal)
+            }
+        })
+        
+    }
+
     
     // MARK :- DatePicker Delegate
     func canceButtonAction() {

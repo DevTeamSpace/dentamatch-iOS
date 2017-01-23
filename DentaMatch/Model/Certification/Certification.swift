@@ -25,13 +25,7 @@ class Certification: NSObject {
     init(certification:JSON) {
         self.certificationId = certification[Constants.ServerKey.id].stringValue
         self.certificationName = certification[Constants.ServerKey.certificateName].stringValue
-        self.validityDate = certification[Constants.ServerKey.validityDate].stringValue
-        
-        // This key is coming in profile creation certificate screen
+        self.validityDate = certification[Constants.ServerKey.validityDate].stringValue        
         self.certificateImageURL = certification[Constants.ServerKey.imageURL].stringValue
-        
-        // This key is coming in user profile api
-        self.certificateImageForProfileScreen = certification[Constants.ServerKey.imageUrl].stringValue
-
     }
 }

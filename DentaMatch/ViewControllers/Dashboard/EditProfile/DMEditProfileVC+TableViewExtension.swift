@@ -55,7 +55,11 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
         case .affiliations:
             if indexPath.row == 0 {
                 return 45
+            }
+            if affliations.count == 0 {
+                return 72
             } else {
+                //Brick affiliation cell height
                 return 72
             }
             
@@ -71,7 +75,7 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             
         case .certifications:
             let certificate = certifications[indexPath.row]
-            if (certificate.certificateImageForProfileScreen?.isEmpty)! {
+            if (certificate.certificateImageURL?.isEmpty)! {
                 return 110
             } else {
                 return 285
@@ -91,6 +95,8 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             } else {
                 return 1
             }
+        case .affiliations:
+            return 2
         case .certifications:
             return certifications.count
         default : return 2
@@ -164,9 +170,16 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
                 let cell = makeHeadingCell(heading: "PROFESSIONAL AFFILIATIONS")
                 return cell
             } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "AddProfileOptionTableCell") as! AddProfileOptionTableCell
-                cell.profileOptionLabel.text = "Add professional affiliations"
-                return cell
+                if affliations.count == 0 {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "AddProfileOptionTableCell") as! AddProfileOptionTableCell
+                    cell.profileOptionLabel.text = "Add professional affiliations"
+                    return cell
+                }else {
+                    // Affiliation brick cell
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "AddProfileOptionTableCell") as! AddProfileOptionTableCell
+                    cell.profileOptionLabel.text = "Add professional affiliations"
+                    return cell
+                }
             }
             
         case .licenseNumber:
@@ -196,7 +209,7 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             let certificate = certifications[indexPath.row]
             
             //Certificate not uploaded cell
-            if (certificate.certificateImageForProfileScreen?.isEmpty)! {
+            if (certificate.certificateImageURL?.isEmpty)! {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyCertificateTableViewCell") as! EmptyCertificateTableViewCell
                 cell.certificateNameLabel.text = certificate.certificationName
                 return cell
@@ -211,7 +224,7 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
                 cell.editButton.tag = indexPath.row
                 cell.editButton.isHidden = false
                 cell.editButton.addTarget(self, action: #selector(openCertificateScreen), for: .touchUpInside)
-                if let imageUrl = URL(string:certificate.certificateImageForProfileScreen!) {
+                if let imageUrl = URL(string:certificate.certificateImageURL!) {
                     cell.certificateImageView.sd_setImage(with: imageUrl, placeholderImage: nil)
                 }
                 return cell

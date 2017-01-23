@@ -13,7 +13,7 @@ extension DMEditLicenseVC {
     
     func updateLicenseDetailsAPI(params:[String:String]) {
         self.showLoader()
-        APIManager.apiPost(serviceName: Constants.API.licenseNumberAndState, parameters: params) { (response:JSON?, error:NSError?) in
+        APIManager.apiPut(serviceName: Constants.API.licenseNumberAndState, parameters: params) { (response:JSON?, error:NSError?) in
             self.hideLoader()
             if error != nil {
                 self.makeToast(toastString: (error?.localizedDescription)!)

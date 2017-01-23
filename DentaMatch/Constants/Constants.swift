@@ -172,6 +172,7 @@ struct Constants {
         static let profilePic = "profilePic"
         static let license = "licence"
         static let certifications = "certifications"
+        static let affiliations = "affiliations"
 
         static let imageURL = "imagePath"
         static let imageURLForPostResponse = "imgUrl"

@@ -26,6 +26,7 @@ class DMEditProfileVC: DMBaseVC {
     var dashBoardVC:TabBarVC?
     
     var license:License?
+    var affliations = [Affiliation]()
     var certifications = [Certification]()
     var dentalStateBoardURL = "test"
 
@@ -44,15 +45,10 @@ class DMEditProfileVC: DMBaseVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-
-        dashBoardVC?.tabBar.alpha = 1.0
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        UIView.animate(withDuration: 0.5) {
-            self.dashBoardVC?.tabBar.alpha = 0.0
-        }
     }
     
     func setup() {
@@ -92,8 +88,11 @@ class DMEditProfileVC: DMBaseVC {
         if segue.identifier == Constants.StoryBoard.SegueIdentifier.goToEditLicense {
             let destinationVC = segue.destination as! DMEditLicenseVC
             destinationVC.license = self.license
+            destinationVC.hidesBottomBarWhenPushed = true
         } else if segue.identifier == Constants.StoryBoard.SegueIdentifier.goToPublicProfile {
-            _ = segue.destination as! DMPublicProfileVC
+            let destinationVC = segue.destination as! DMPublicProfileVC
+            destinationVC.hidesBottomBarWhenPushed = true
+
         }else if segue.identifier == Constants.StoryBoard.SegueIdentifier.goToSetting
         {
             let destinationVC = segue.destination as! DMSettingVC
