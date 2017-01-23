@@ -16,6 +16,8 @@
 		5A3B06CF1E33881D00EFCA6E /* DMChangePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B06CE1E33881D00EFCA6E /* DMChangePasswordVC.swift */; };
 		5A3B06D11E33883C00EFCA6E /* DMChangePasswordVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B06D01E33883C00EFCA6E /* DMChangePasswordVC+TableViewExtension.swift */; };
 		5A3B06D31E33885A00EFCA6E /* DMChangePasswordVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B06D21E33885A00EFCA6E /* DMChangePasswordVC+Services.swift */; };
+		5A3BD4AA1E35D3D800A607AC /* EditProfileAffiliationBrickCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3BD4A81E35D3D800A607AC /* EditProfileAffiliationBrickCell.swift */; };
+		5A3BD4AB1E35D3D800A607AC /* EditProfileAffiliationBrickCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A3BD4A91E35D3D800A607AC /* EditProfileAffiliationBrickCell.xib */; };
 		5A3FD06E1E1BB0A000360B3C /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3FD06D1E1BB0A000360B3C /* UINavigationBar+Awesome.m */; };
 		5A3FD0751E1CC79700360B3C /* DMProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3FD0741E1CC79700360B3C /* DMProfileHeaderView.swift */; };
 		5A3FD0771E1CC7CD00360B3C /* DMProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A3FD0761E1CC7CD00360B3C /* DMProfileHeaderView.xib */; };
@@ -247,6 +249,8 @@
 		5A3B06CE1E33881D00EFCA6E /* DMChangePasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMChangePasswordVC.swift; sourceTree = "<group>"; };
 		5A3B06D01E33883C00EFCA6E /* DMChangePasswordVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMChangePasswordVC+TableViewExtension.swift"; sourceTree = "<group>"; };
 		5A3B06D21E33885A00EFCA6E /* DMChangePasswordVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMChangePasswordVC+Services.swift"; sourceTree = "<group>"; };
+		5A3BD4A81E35D3D800A607AC /* EditProfileAffiliationBrickCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileAffiliationBrickCell.swift; sourceTree = "<group>"; };
+		5A3BD4A91E35D3D800A607AC /* EditProfileAffiliationBrickCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileAffiliationBrickCell.xib; sourceTree = "<group>"; };
 		5A3FD06C1E1BB0A000360B3C /* UINavigationBar+Awesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Awesome.h"; sourceTree = "<group>"; };
 		5A3FD06D1E1BB0A000360B3C /* UINavigationBar+Awesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Awesome.m"; sourceTree = "<group>"; };
 		5A3FD0741E1CC79700360B3C /* DMProfileHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMProfileHeaderView.swift; sourceTree = "<group>"; };
@@ -937,6 +941,8 @@
 				E54B9A7B1E326A6C00805D9C /* EditCertificateTableCell.xib */,
 				E54B9A7E1E32729C00805D9C /* EmptyCertificateTableViewCell.swift */,
 				E54B9A7F1E32729C00805D9C /* EmptyCertificateTableViewCell.xib */,
+				5A3BD4A81E35D3D800A607AC /* EditProfileAffiliationBrickCell.swift */,
+				5A3BD4A91E35D3D800A607AC /* EditProfileAffiliationBrickCell.xib */,
 			);
 			path = EditProfile;
 			sourceTree = "<group>";
@@ -1576,6 +1582,7 @@
 				E5A0EB0F1E2BE7C40092E21A /* ASJTag.xib in Resources */,
 				5A3B06C91E3375ED00EFCA6E /* ChangePasswordTableCell.xib in Resources */,
 				E597E57A1E151A99001DDA78 /* SF-UI-Display-Regular.otf in Resources */,
+				5A3BD4AB1E35D3D800A607AC /* EditProfileAffiliationBrickCell.xib in Resources */,
 				E5E7CB4B1E2F8CDE00D4FB59 /* EditLicenseTableCell.xib in Resources */,
 				E597E5751E151A99001DDA78 /* SF-UI-Display-Black.otf in Resources */,
 				E5E7CB901E2FA23300D4FB59 /* SubSkillCell.xib in Resources */,
@@ -1710,6 +1717,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E56B20A41DC0526E000512F6 /* DMRegistrationContainer.swift in Sources */,
+				5A3BD4AA1E35D3D800A607AC /* EditProfileAffiliationBrickCell.swift in Sources */,
 				5A3B06CF1E33881D00EFCA6E /* DMChangePasswordVC.swift in Sources */,
 				E5E7CB781E2FA23200D4FB59 /* AboutMeCell.swift in Sources */,
 				E5A174C71E201DE40044B17E /* ProfileImageButton.swift in Sources */,
