@@ -48,15 +48,24 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
         case .keySkills:
             if indexPath.row == 0 {
                 return 45
-            } else {
+            }
+            if self.skills.count == 0 {
                 return 72
+            } else {
+                //Brick skill cell height
+                return 74
             }
             
         case .affiliations:
             if indexPath.row == 0 {
                 return 45
-            } else {
+            }
+            if affliations.count == 0 {
                 return 72
+            } else {
+                //Brick affiliation cell height
+               return (self.getHeightForAffilation(affiliations: self.affliations) + 60)
+//                return 72
             }
             
         case .licenseNumber:
@@ -71,7 +80,7 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             
         case .certifications:
             let certificate = certifications[indexPath.row]
-            if (certificate.certificateImageForProfileScreen?.isEmpty)! {
+            if (certificate.certificateImageURL?.isEmpty)! {
                 return 110
             } else {
                 return 285
@@ -91,6 +100,16 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             } else {
                 return 1
             }
+            
+        case .keySkills:
+            if self.skills.count == 0 {
+                return 2
+            } else {
+                return skills.count + 1
+            }
+            
+        case .affiliations:
+            return 2
         case .certifications:
             return certifications.count
         default : return 2
@@ -154,19 +173,37 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
                 let cell = makeHeadingCell(heading: "KEY SKILLS")
                 return cell
             } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "AddProfileOptionTableCell") as! AddProfileOptionTableCell
-                cell.profileOptionLabel.text = "Add skills category"
-                return cell
+                if self.skills.count == 0 {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "AddProfileOptionTableCell") as! AddProfileOptionTableCell
+                    cell.profileOptionLabel.text = "Add skills category"
+                    return cell
+                }
+                else {
+                    //Brick Skill Cell
+                    let skill = skills[indexPath.row - 1]
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "AddProfileOptionTableCell") as! AddProfileOptionTableCell
+                    cell.profileOptionLabel.text = "Add skills category"
+                    return cell
+                }
             }
             
         case .affiliations:
             if indexPath.row == 0 {
                 let cell = makeHeadingCell(heading: "PROFESSIONAL AFFILIATIONS")
+                cell.editButton.isHidden = self.affliations.count > 0 ? false:true
+                cell.editButton.addTarget(self, action: #selector(openAffiliationsScreen), for: .touchUpInside)
                 return cell
             } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "AddProfileOptionTableCell") as! AddProfileOptionTableCell
-                cell.profileOptionLabel.text = "Add professional affiliations"
-                return cell
+                if affliations.count == 0 {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "AddProfileOptionTableCell") as! AddProfileOptionTableCell
+                    cell.profileOptionLabel.text = "Add professional affiliations"
+                    return cell
+                }else {
+                    // Affiliation brick cell
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "EditProfileAffiliationBrickCell") as! EditProfileAffiliationBrickCell
+                    cell.updateAffiliations(affiliation: self.affliations)
+                    return cell
+                }
             }
             
         case .licenseNumber:
@@ -196,7 +233,7 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             let certificate = certifications[indexPath.row]
             
             //Certificate not uploaded cell
-            if (certificate.certificateImageForProfileScreen?.isEmpty)! {
+            if (certificate.certificateImageURL?.isEmpty)! {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyCertificateTableViewCell") as! EmptyCertificateTableViewCell
                 cell.certificateNameLabel.text = certificate.certificationName
                 return cell
@@ -211,7 +248,7 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
                 cell.editButton.tag = indexPath.row
                 cell.editButton.isHidden = false
                 cell.editButton.addTarget(self, action: #selector(openCertificateScreen), for: .touchUpInside)
-                if let imageUrl = URL(string:certificate.certificateImageForProfileScreen!) {
+                if let imageUrl = URL(string:certificate.certificateImageURL!) {
                     cell.certificateImageView.sd_setImage(with: imageUrl, placeholderImage: nil)
                 }
                 return cell
@@ -243,5 +280,41 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
         cell.headingLabel.text = heading
         cell.editButton.isHidden = true
         return cell
+    }
+    
+    func getHeightForAffilation (affiliations:[Affiliation]) -> CGFloat  {
+        
+        let tagList: TagList = {
+            let view = TagList()
+            view.backgroundColor = UIColor(red: 233.0/255.0, green: 233.0/255.0, blue: 233.0/255.0, alpha: 1.0)
+            view.tagMargin = UIEdgeInsets(top: 3, left: 5, bottom: 3, right: 5)
+            //            view.separator.image = UIImage(named: "")!
+            view.separator.size = CGSize(width: 16, height: 16)
+            view.separator.margin = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+            return view
+        }()
+        tagList.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: editProfileTableView.frame.width - 20, height: 0))
+        
+        for subSkill in affiliations {
+            
+            let tag = Tag(content: TagPresentableText(subSkill.affiliationName) {
+                $0.label.font = UIFont.systemFont(ofSize: 16)
+                }, onInit: {
+                    $0.padding = UIEdgeInsets(top: 8, left: 10, bottom: 8, right: 10)
+                    $0.layer.borderColor = UIColor.cyan.cgColor
+                    $0.layer.borderWidth = 2
+                    $0.layer.cornerRadius = 5
+            }, onSelect: {
+                $0.backgroundColor = $0.isSelected ? UIColor.orange : UIColor.white
+            })
+            tagList.tags.append(tag)
+        }
+        
+        debugPrint("Height \(tagList.intrinsicContentSize.height)")
+        return tagList.frame.size.height
+    }
+    
+    func getHeightForSkillsRow(indexPath:IndexPath) -> CGFloat {
+        return 10.0
     }
 }

@@ -37,7 +37,7 @@ extension DMSettingVC : UITableViewDataSource,UITableViewDelegate {
             cell.TextLabel.text = "Privacy Policy"
             cell.leftIconLabel.text = "i"
         case 4:
-            cell.TextLabel.text = " Logout"
+            cell.TextLabel.text = "Logout"
             cell.leftIconLabel.text = "i"
 
         default: break

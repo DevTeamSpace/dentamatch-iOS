@@ -22,11 +22,11 @@ class Skill: NSObject {
     }
     
     init(skills:JSON,subSkills:[SubSkill]) {
-        self.skillId = skills["id"].stringValue
-        self.skillName = skills["skillName"].stringValue
-        if skills["skillName"].stringValue.lowercased() == "other" {
+        self.skillId = skills[Constants.ServerKey.id].stringValue
+        self.skillName = skills[Constants.ServerKey.skillName].stringValue
+        if skills[Constants.ServerKey.skillName].stringValue.lowercased() == "other" {
             self.isOther = true
-            self.otherText = skills["otherSkill"].stringValue
+            self.otherText = skills[Constants.ServerKey.otherSkill].stringValue
         }
         self.subSkills = subSkills
     }

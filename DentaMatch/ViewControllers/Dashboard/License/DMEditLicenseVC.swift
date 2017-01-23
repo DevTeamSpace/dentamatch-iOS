@@ -74,7 +74,8 @@ class DMEditLicenseVC: DMBaseVC {
         if validateFields() {
             let params = [
                 "license":licenseNumberTextField.text!,
-                "state":stateTextField.text!
+                "state":stateTextField.text!,
+                "jobTitleId":""
             ]
             self.updateLicenseDetailsAPI(params: params)
         }
