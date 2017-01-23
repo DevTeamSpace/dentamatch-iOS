@@ -38,7 +38,7 @@ class DMEditProfileVC: DMBaseVC {
         if let dashBoard = ((UIApplication.shared.delegate) as! AppDelegate).window?.rootViewController as? TabBarVC {
             dashBoardVC = dashBoard
         }
-
+        
         self.userProfileAPI()
         // Do any additional setup after loading the view.
     }
@@ -54,6 +54,9 @@ class DMEditProfileVC: DMBaseVC {
     }
     
     func setup() {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateProfileScreen), name: NSNotification.Name(rawValue: "updateProfileScreen"), object: nil)
+        
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.editProfileTableView.register(UINib(nibName: "EditProfileHeaderTableCell", bundle: nil), forCellReuseIdentifier: "EditProfileHeaderTableCell")
         self.editProfileTableView.register(UINib(nibName: "SectionHeadingTableCell", bundle: nil), forCellReuseIdentifier: "SectionHeadingTableCell")
@@ -80,13 +83,29 @@ class DMEditProfileVC: DMBaseVC {
     }
     
     func openAffiliationsScreen() {
-        
+        let affiliationVC = UIStoryboard.profileStoryBoard().instantiateViewController(type: DMAffiliationsVC.self)!
+        affiliationVC.isEditMode = true
+        affiliationVC.hidesBottomBarWhenPushed = true
+        affiliationVC.selectedAffiliationsFromProfile = self.affliations
+        self.navigationController?.pushViewController(affiliationVC, animated: true)
+    }
+    
+    func openSkillsScreen() {
+    
     }
     
     func openCertificateScreen(sender:UIButton) {
         let editCertificateVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: DMEditCertificateVC.self)!
         editCertificateVC.certificate = certifications[sender.tag]
         self.navigationController?.pushViewController(editCertificateVC, animated: true)
+    }
+    
+    func updateProfileScreen(userInfo:Notification) {
+        let dict = userInfo.userInfo
+        if let affiliation = dict?["affiliations"] {
+            self.affliations = affiliation as! [Affiliation]
+        }
+        self.editProfileTableView.reloadData()
     }
     
     // MARK: - Navigation

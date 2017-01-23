@@ -16,12 +16,15 @@ class DMAffiliationsVC: DMBaseVC {
         case affiliationOther
     }
     
+    @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var affiliationsTableView: UITableView!
     
     let profileProgress:CGFloat = 0.80
     var isOtherSelected = false
     var otherText = ""
+    var selectedAffiliationsFromProfile = [Affiliation]()
     var affiliations = [Affiliation]()
+    var isEditMode = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +39,10 @@ class DMAffiliationsVC: DMBaseVC {
     }
 
     func setup() {
+        if isEditMode {
+            self.title = "EDIT PROFILE"
+            self.nextButton.setTitle("SAVE", for: .normal)
+        }
         self.navigationItem.leftBarButtonItem = self.backBarButton()
         self.affiliationsTableView.separatorColor = UIColor.clear
         self.affiliationsTableView.register(UINib(nibName: "PhotoNameCell", bundle: nil), forCellReuseIdentifier: "PhotoNameCell")
@@ -113,6 +120,10 @@ class DMAffiliationsVC: DMBaseVC {
         params[Constants.ServerKey.affiliationDataArray] = selectedAffiliationIds as AnyObject?
         params[Constants.ServerKey.other] = other as AnyObject?
         self.saveAffiliationData(params: params)
-        
+    }
+    
+    //For edit mode from Edit Profile
+    func manageSelectedAffiliations() {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateProfileScreen"), object: nil, userInfo: ["affiliations":affiliations.filter({$0.isSelected == true})])
     }
 }

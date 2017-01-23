@@ -175,6 +175,8 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
         case .keySkills:
             if indexPath.row == 0 {
                 let cell = makeHeadingCell(heading: "KEY SKILLS")
+                cell.editButton.isHidden = self.skills.count > 0 ? false:true
+                cell.editButton.addTarget(self, action: #selector(openSkillsScreen), for: .touchUpInside)
                 return cell
             } else {
                 if self.skills.count == 0 {

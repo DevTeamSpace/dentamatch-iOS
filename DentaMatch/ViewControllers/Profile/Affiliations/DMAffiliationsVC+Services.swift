@@ -71,7 +71,12 @@ extension DMAffiliationsVC {
         
             if response[Constants.ServerKey.status].boolValue {
                 self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
-                openCertificationScreen()
+                if isEditMode {
+                    self.manageSelectedAffiliations()
+                    _ = self.navigationController?.popViewController(animated: true)
+                } else {
+                    openCertificationScreen()
+                }
             } else {
                 self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
             }
