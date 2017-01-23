@@ -20,6 +20,10 @@
 		5A3BD4AB1E35D3D800A607AC /* EditProfileAffiliationBrickCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A3BD4A91E35D3D800A607AC /* EditProfileAffiliationBrickCell.xib */; };
 		5A3BD4AE1E35DB1E00A607AC /* EditProfileSkillBrickCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3BD4AC1E35DB1E00A607AC /* EditProfileSkillBrickCell.swift */; };
 		5A3BD4AF1E35DB1E00A607AC /* EditProfileSkillBrickCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A3BD4AD1E35DB1E00A607AC /* EditProfileSkillBrickCell.xib */; };
+		5A3BD4B21E35FCBA00A607AC /* EditProfileExperienceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3BD4B01E35FCBA00A607AC /* EditProfileExperienceCell.swift */; };
+		5A3BD4B31E35FCBA00A607AC /* EditProfileExperienceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A3BD4B11E35FCBA00A607AC /* EditProfileExperienceCell.xib */; };
+		5A3BD4B61E36065E00A607AC /* EditProfileReferenceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3BD4B41E36065E00A607AC /* EditProfileReferenceCell.swift */; };
+		5A3BD4B71E36065F00A607AC /* EditProfileReferenceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A3BD4B51E36065E00A607AC /* EditProfileReferenceCell.xib */; };
 		5A3FD06E1E1BB0A000360B3C /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3FD06D1E1BB0A000360B3C /* UINavigationBar+Awesome.m */; };
 		5A3FD0751E1CC79700360B3C /* DMProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3FD0741E1CC79700360B3C /* DMProfileHeaderView.swift */; };
 		5A3FD0771E1CC7CD00360B3C /* DMProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A3FD0761E1CC7CD00360B3C /* DMProfileHeaderView.xib */; };
@@ -256,6 +260,10 @@
 		5A3BD4A91E35D3D800A607AC /* EditProfileAffiliationBrickCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileAffiliationBrickCell.xib; sourceTree = "<group>"; };
 		5A3BD4AC1E35DB1E00A607AC /* EditProfileSkillBrickCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileSkillBrickCell.swift; sourceTree = "<group>"; };
 		5A3BD4AD1E35DB1E00A607AC /* EditProfileSkillBrickCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileSkillBrickCell.xib; sourceTree = "<group>"; };
+		5A3BD4B01E35FCBA00A607AC /* EditProfileExperienceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileExperienceCell.swift; sourceTree = "<group>"; };
+		5A3BD4B11E35FCBA00A607AC /* EditProfileExperienceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileExperienceCell.xib; sourceTree = "<group>"; };
+		5A3BD4B41E36065E00A607AC /* EditProfileReferenceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileReferenceCell.swift; sourceTree = "<group>"; };
+		5A3BD4B51E36065E00A607AC /* EditProfileReferenceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileReferenceCell.xib; sourceTree = "<group>"; };
 		5A3FD06C1E1BB0A000360B3C /* UINavigationBar+Awesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Awesome.h"; sourceTree = "<group>"; };
 		5A3FD06D1E1BB0A000360B3C /* UINavigationBar+Awesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Awesome.m"; sourceTree = "<group>"; };
 		5A3FD0741E1CC79700360B3C /* DMProfileHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMProfileHeaderView.swift; sourceTree = "<group>"; };
@@ -952,6 +960,10 @@
 				5A3BD4A91E35D3D800A607AC /* EditProfileAffiliationBrickCell.xib */,
 				5A3BD4AC1E35DB1E00A607AC /* EditProfileSkillBrickCell.swift */,
 				5A3BD4AD1E35DB1E00A607AC /* EditProfileSkillBrickCell.xib */,
+				5A3BD4B01E35FCBA00A607AC /* EditProfileExperienceCell.swift */,
+				5A3BD4B11E35FCBA00A607AC /* EditProfileExperienceCell.xib */,
+				5A3BD4B41E36065E00A607AC /* EditProfileReferenceCell.swift */,
+				5A3BD4B51E36065E00A607AC /* EditProfileReferenceCell.xib */,
 			);
 			path = EditProfile;
 			sourceTree = "<group>";
@@ -1589,6 +1601,7 @@
 				E597E5841E151A99001DDA78 /* SF-UI-Text-Medium.otf in Resources */,
 				E597E57E1E151A99001DDA78 /* SF-UI-Text-Bold.otf in Resources */,
 				E5A0EB0F1E2BE7C40092E21A /* ASJTag.xib in Resources */,
+				5A3BD4B31E35FCBA00A607AC /* EditProfileExperienceCell.xib in Resources */,
 				5A3B06C91E3375ED00EFCA6E /* ChangePasswordTableCell.xib in Resources */,
 				E597E57A1E151A99001DDA78 /* SF-UI-Display-Regular.otf in Resources */,
 				5A3BD4AB1E35D3D800A607AC /* EditProfileAffiliationBrickCell.xib in Resources */,
@@ -1610,6 +1623,7 @@
 				E54B9A811E32729C00805D9C /* EmptyCertificateTableViewCell.xib in Resources */,
 				E597E5831E151A99001DDA78 /* SF-UI-Text-LightItalic.otf in Resources */,
 				E597E57D1E151A99001DDA78 /* SF-UI-Display-Ultralight.otf in Resources */,
+				5A3BD4B71E36065F00A607AC /* EditProfileReferenceCell.xib in Resources */,
 				E558D9051E2E6E4C00A6DF95 /* Dashboard.storyboard in Resources */,
 				E5E7CB8C1E2FA23200D4FB59 /* OtherSubSkillTableCell.xib in Resources */,
 				E5E7CB991E2FA28000D4FB59 /* PhotoCell.xib in Resources */,
@@ -1745,6 +1759,7 @@
 				E54B9A801E32729C00805D9C /* EmptyCertificateTableViewCell.swift in Sources */,
 				5AD246971E27799F009350BF /* PickerAnimatedTextField.swift in Sources */,
 				E5E7CB7E1E2FA23200D4FB59 /* CertificationsCell.swift in Sources */,
+				5A3BD4B21E35FCBA00A607AC /* EditProfileExperienceCell.swift in Sources */,
 				E594BEA21E1E014F00310AE5 /* DMLoginVC.swift in Sources */,
 				5A9A3A971E2B58600002C5B6 /* UserManager.swift in Sources */,
 				E5E7CB7C1E2FA23200D4FB59 /* AffliliationsOthersCell.swift in Sources */,
@@ -1852,6 +1867,7 @@
 				5AC714521E34ACD400E433C1 /* DMCalenderVC.swift in Sources */,
 				E5A0EADE1E2944D50092E21A /* SSASideMenu.swift in Sources */,
 				E5496E0E1E273F1D00C54288 /* DMSkillsVC+Services.swift in Sources */,
+				5A3BD4B61E36065E00A607AC /* EditProfileReferenceCell.swift in Sources */,
 				E54976F11E28CEDD006F21E5 /* JobTitle.swift in Sources */,
 				E53738F21DB373C200967876 /* Reachability.swift in Sources */,
 				E55462F51DAE4B9E004163B2 /* UIStoryBoard+Additions.swift in Sources */,
