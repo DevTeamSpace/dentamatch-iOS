@@ -168,6 +168,7 @@ class DMLicenseSelectionVC: DMBaseVC,UITextFieldDelegate {
                         return
                     }
                     self.stateBoardImage = image!
+                    self.uploadDentalStateboardImage()
                     DispatchQueue.main.async {
                         self.licenseTableView.reloadData()
                     }
@@ -181,6 +182,7 @@ class DMLicenseSelectionVC: DMBaseVC,UITextFieldDelegate {
                         return
                     }
                     self.stateBoardImage = image
+                    self.uploadDentalStateboardImage()
                     DispatchQueue.main.async {
                         self.licenseTableView.reloadData()
                     }

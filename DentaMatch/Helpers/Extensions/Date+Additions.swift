@@ -35,6 +35,10 @@ extension Date {
         return "yyyy-MM-dd"
     }
     
+    public static func dateFormatYYYY()->String {
+        return "yyyy"
+    }
+    
     static func shortDate(date:Date)-> String{
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd MMMM yyyy"
@@ -55,6 +59,13 @@ extension Date {
         let hour = calendar.component(.hour, from: self)
         //Return Hour
         return hour
+    }
+    
+    static func stringToDateForYear(dateString:String)-> Date{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = dateFormatYYYY()//"dd MMMM yyyy"
+        //        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        return dateFormatter.date(from: dateString)!
     }
     
      static func stringToDate(dateString:String)-> Date{

@@ -34,7 +34,12 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
         case .experience:
             if indexPath.row == 0 {
                 return 45
-            } else {
+            }
+            if self.experiences.count == 0 {
+                return 72
+            }
+            else {
+                //Experience Cell
                 return 72
             }
             
@@ -64,11 +69,11 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             if indexPath.row == 0 {
                 return 45
             }
-            if affliations.count == 0 {
+            if affiliations.count == 0 {
                 return 72
             } else {
                 //Brick affiliation cell height
-               return (self.getHeightForAffilation(affiliations: self.affliations) + 60)
+               return (self.getHeightForAffilation(affiliations: self.affiliations) + 60)
 //                return 72
             }
             
@@ -149,6 +154,10 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
                 cell.certificateHeadingLabel.text = "DENTAL STATE BOARD"
                 cell.validityDateAttributedLabel.isHidden = true
                 cell.certificateNameLabel.isHidden = true
+                if let imageUrl = URL(string:dentalStateBoardURL) {
+                    cell.certificateImageView.sd_setImage(with: imageUrl, placeholderImage: nil)
+                }
+
                 return cell
             }
             
@@ -157,9 +166,16 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
                 let cell = makeHeadingCell(heading: "EXPERIENCE")
                 return cell
             } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "AddProfileOptionTableCell") as! AddProfileOptionTableCell
-                cell.profileOptionLabel.text = "Add more experience"
-                return cell
+                if self.experiences.count == 0 {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "AddProfileOptionTableCell") as! AddProfileOptionTableCell
+                    cell.profileOptionLabel.text = "Add more experience"
+                    return cell
+                } else {
+                    //Experience Cell
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "AddProfileOptionTableCell") as! AddProfileOptionTableCell
+                    cell.profileOptionLabel.text = "Add more experience"
+                    return cell
+                }
             }
             
         case .schooling:
@@ -175,6 +191,8 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
         case .keySkills:
             if indexPath.row == 0 {
                 let cell = makeHeadingCell(heading: "KEY SKILLS")
+                cell.editButton.isHidden = self.skills.count > 0 ? false:true
+                cell.editButton.addTarget(self, action: #selector(openSkillsScreen), for: .touchUpInside)
                 return cell
             } else {
                 if self.skills.count == 0 {
@@ -195,18 +213,18 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
         case .affiliations:
             if indexPath.row == 0 {
                 let cell = makeHeadingCell(heading: "PROFESSIONAL AFFILIATIONS")
-                cell.editButton.isHidden = self.affliations.count > 0 ? false:true
+                cell.editButton.isHidden = self.affiliations.count > 0 ? false:true
                 cell.editButton.addTarget(self, action: #selector(openAffiliationsScreen), for: .touchUpInside)
                 return cell
             } else {
-                if affliations.count == 0 {
+                if affiliations.count == 0 {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "AddProfileOptionTableCell") as! AddProfileOptionTableCell
                     cell.profileOptionLabel.text = "Add professional affiliations"
                     return cell
                 }else {
                     // Affiliation brick cell
                     let cell = tableView.dequeueReusableCell(withIdentifier: "EditProfileAffiliationBrickCell") as! EditProfileAffiliationBrickCell
-                    cell.updateAffiliations(affiliation: self.affliations)
+                    cell.updateAffiliations(affiliation: self.affiliations)
                     return cell
                 }
             }
@@ -249,7 +267,7 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
                 cell.certificateHeadingLabel.text = certificate.certificationName
                 cell.validityDateAttributedLabel.isHidden = false
                 cell.certificateNameLabel.isHidden = false
-                cell.validityDateAttributedLabel.attributedText = cell.createValidityDateAttributedText(date: "2017-12-12")
+                cell.validityDateAttributedLabel.attributedText = cell.createValidityDateAttributedText(date: certificate.validityDate)
                 cell.editButton.tag = indexPath.row
                 cell.editButton.isHidden = false
                 cell.editButton.addTarget(self, action: #selector(openCertificateScreen), for: .touchUpInside)
