@@ -46,6 +46,7 @@ class DMEditProfileVC: DMBaseVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.editProfileTableView.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

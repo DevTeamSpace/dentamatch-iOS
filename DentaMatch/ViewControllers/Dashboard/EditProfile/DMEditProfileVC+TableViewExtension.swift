@@ -244,7 +244,7 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
                 cell.certificateHeadingLabel.text = certificate.certificationName
                 cell.validityDateAttributedLabel.isHidden = false
                 cell.certificateNameLabel.isHidden = false
-                cell.validityDateAttributedLabel.attributedText = cell.createValidityDateAttributedText(date: "2017-12-12")
+                cell.validityDateAttributedLabel.attributedText = cell.createValidityDateAttributedText(date: certificate.validityDate)
                 cell.editButton.tag = indexPath.row
                 cell.editButton.isHidden = false
                 cell.editButton.addTarget(self, action: #selector(openCertificateScreen), for: .touchUpInside)
