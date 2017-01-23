@@ -36,6 +36,7 @@ extension DMEditProfileVC {
                 handleLicenseResponse(license: response[Constants.ServerKey.result][Constants.ServerKey.license])
                 handleCertificationResponse(certifications: response[Constants.ServerKey.result][Constants.ServerKey.certifications].arrayValue)
                 handleAffiliationResponse(affiliations: response[Constants.ServerKey.result][Constants.ServerKey.affiliations].arrayValue)
+                handleSkillsResponse(skills: response[Constants.ServerKey.result][Constants.ServerKey.skills].arrayValue)
             } else {
                 //handle error
             }
@@ -71,6 +72,25 @@ extension DMEditProfileVC {
                 let affiliation = Affiliation(affiliation: affiliation)
                 self.affliations.append(affiliation)
             }
+        }
+    }
+    
+    func handleSkillsResponse(skills:[JSON]?) {
+        if let skills = skills {
+            for skillObj in skills {
+                var subSkills = [SubSkill]()
+                let subSkillsArray = skillObj["children"].arrayValue
+                
+                for subSkillObj in subSkillsArray {
+                    let subSkill = SubSkill(subSkill: subSkillObj)
+                     subSkills.append(subSkill)
+                }
+                
+                let skill = Skill(skills: skillObj, subSkills: subSkills)
+                self.skills.append(skill)
+            }
+            //otherSkill = skills.filter({$0.isOther == true}).first
+            //skills = skills.filter({$0.isOther == false})
         }
     }
 }

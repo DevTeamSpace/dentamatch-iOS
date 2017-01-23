@@ -27,6 +27,7 @@ class DMEditProfileVC: DMBaseVC {
     
     var license:License?
     var affliations = [Affiliation]()
+    var skills = [Skill]()
     var certifications = [Certification]()
     var dentalStateBoardURL = "test"
 

@@ -48,8 +48,12 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
         case .keySkills:
             if indexPath.row == 0 {
                 return 45
-            } else {
+            }
+            if self.skills.count == 0 {
                 return 72
+            } else {
+                //Brick skill cell height
+                return 74
             }
             
         case .affiliations:
@@ -95,6 +99,14 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             } else {
                 return 1
             }
+            
+        case .keySkills:
+            if self.skills.count == 0 {
+                return 2
+            } else {
+                return skills.count + 1
+            }
+            
         case .affiliations:
             return 2
         case .certifications:
@@ -160,9 +172,18 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
                 let cell = makeHeadingCell(heading: "KEY SKILLS")
                 return cell
             } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "AddProfileOptionTableCell") as! AddProfileOptionTableCell
-                cell.profileOptionLabel.text = "Add skills category"
-                return cell
+                if self.skills.count == 0 {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "AddProfileOptionTableCell") as! AddProfileOptionTableCell
+                    cell.profileOptionLabel.text = "Add skills category"
+                    return cell
+                }
+                else {
+                    //Brick Skill Cell
+                    let skill = skills[indexPath.row - 1]
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "AddProfileOptionTableCell") as! AddProfileOptionTableCell
+                    cell.profileOptionLabel.text = "Add skills category"
+                    return cell
+                }
             }
             
         case .affiliations:
