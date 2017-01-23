@@ -1,22 +1,14 @@
 //
-//  AboutCell.swift
+//  MapCell.swift
 //  DentaMatch
 //
-//  Created by Shailesh Tyagi on 18/01/17.
+//  Created by Shailesh Tyagi on 20/01/17.
 //  Copyright © 2017 Appster. All rights reserved.
 //
 
 import UIKit
 
-class AboutCell: UITableViewCell {
-    
-    
-    @IBOutlet weak var lblDentistName: UILabel!
-    @IBOutlet weak var lblDistance: UILabel!
-    @IBOutlet weak var lblAddress: UILabel!
-    @IBOutlet weak var lblOfficeType: UILabel!
-    @IBOutlet weak var lblNoOfOpening: UILabel!
-    
+class MapCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,5 +20,5 @@ class AboutCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
 }

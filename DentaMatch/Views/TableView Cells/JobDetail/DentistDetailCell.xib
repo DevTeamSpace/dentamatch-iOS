@@ -26,14 +26,14 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="115"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="114.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="114"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wbG-6Q-eGm">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="114.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="115"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dental Assistance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JiJ-r6-G7B">
-                                <rect key="frame" x="28" y="19" width="196" height="21.5"/>
+                                <rect key="frame" x="28" y="19" width="196" height="22"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="18"/>
                                 <color key="textColor" red="0.015686274510000001" green="0.43921568630000002" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -50,7 +50,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UbB-K9-Quo">
-                                <rect key="frame" x="28" y="47.5" width="61" height="21"/>
+                                <rect key="frame" x="28" y="48" width="61" height="21"/>
                                 <color key="backgroundColor" red="0.94509803921568625" green="0.72156862745098038" blue="0.3529411764705882" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="61" id="O5v-id-HWV"/>
@@ -62,7 +62,7 @@
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunday 06, Monday 09" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbT-hg-hiR">
-                                <rect key="frame" x="105" y="47.5" width="92" height="21"/>
+                                <rect key="frame" x="105" y="48" width="92" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Iof-qK-PA7"/>
                                     <constraint firstAttribute="width" constant="92" id="xm4-Ju-6gH"/>
@@ -72,7 +72,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 DAYS AGO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NOt-83-ba0">
-                                <rect key="frame" x="28" y="87.5" width="150" height="11"/>
+                                <rect key="frame" x="28" y="88" width="150" height="11"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="ah0-Dc-qrV"/>
                                     <constraint firstAttribute="height" constant="11" id="mFe-OS-sAg"/>
@@ -81,8 +81,8 @@
                                 <color key="textColor" red="0.58431372550000005" green="0.58431372550000005" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P41-7v-emu">
-                                <rect key="frame" x="18" y="113.5" width="302" height="1"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P41-7v-emu">
+                                <rect key="frame" x="18" y="114" width="302" height="1"/>
                                 <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="ujf-XN-HpS"/>

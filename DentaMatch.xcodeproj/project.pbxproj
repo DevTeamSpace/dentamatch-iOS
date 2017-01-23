@@ -176,6 +176,15 @@
 		F2F5E0CC1E2F292F0082187C /* DentistDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2F5E0CA1E2F292F0082187C /* DentistDetailCell.xib */; };
 		F2F5E0CF1E2F62080082187C /* AboutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F5E0CD1E2F62080082187C /* AboutCell.swift */; };
 		F2F5E0D01E2F62080082187C /* AboutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2F5E0CE1E2F62080082187C /* AboutCell.xib */; };
+		F2F5E0D31E30CF310082187C /* JobDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F5E0D11E30CF310082187C /* JobDescriptionCell.swift */; };
+		F2F5E0D41E30CF310082187C /* JobDescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2F5E0D21E30CF310082187C /* JobDescriptionCell.xib */; };
+		F2F5E0D71E30D2C80082187C /* OfficeDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F5E0D51E30D2C80082187C /* OfficeDescriptionCell.swift */; };
+		F2F5E0D81E30D2C80082187C /* OfficeDescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2F5E0D61E30D2C80082187C /* OfficeDescriptionCell.xib */; };
+		F2F5E0DA1E31BDD00082187C /* MapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F5E0D91E31BDD00082187C /* MapCell.swift */; };
+		F2F5E0DC1E31BDEC0082187C /* MapCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2F5E0DB1E31BDEC0082187C /* MapCell.xib */; };
+		F2F5E0DE1E31CE2A0082187C /* DMJobDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F5E0DD1E31CE2A0082187C /* DMJobDetailVC.swift */; };
+		F2F5E0E01E31D40E0082187C /* JobDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F5E0DF1E31D40E0082187C /* JobDetailHeaderView.swift */; };
+		F2F5E0E21E31D43A0082187C /* JobDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2F5E0E11E31D43A0082187C /* JobDetailHeaderView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -361,6 +370,15 @@
 		F2F5E0CA1E2F292F0082187C /* DentistDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DentistDetailCell.xib; sourceTree = "<group>"; };
 		F2F5E0CD1E2F62080082187C /* AboutCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutCell.swift; sourceTree = "<group>"; };
 		F2F5E0CE1E2F62080082187C /* AboutCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutCell.xib; sourceTree = "<group>"; };
+		F2F5E0D11E30CF310082187C /* JobDescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobDescriptionCell.swift; sourceTree = "<group>"; };
+		F2F5E0D21E30CF310082187C /* JobDescriptionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobDescriptionCell.xib; sourceTree = "<group>"; };
+		F2F5E0D51E30D2C80082187C /* OfficeDescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfficeDescriptionCell.swift; sourceTree = "<group>"; };
+		F2F5E0D61E30D2C80082187C /* OfficeDescriptionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OfficeDescriptionCell.xib; sourceTree = "<group>"; };
+		F2F5E0D91E31BDD00082187C /* MapCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapCell.swift; sourceTree = "<group>"; };
+		F2F5E0DB1E31BDEC0082187C /* MapCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapCell.xib; sourceTree = "<group>"; };
+		F2F5E0DD1E31CE2A0082187C /* DMJobDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMJobDetailVC.swift; sourceTree = "<group>"; };
+		F2F5E0DF1E31D40E0082187C /* JobDetailHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobDetailHeaderView.swift; sourceTree = "<group>"; };
+		F2F5E0E11E31D43A0082187C /* JobDetailHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobDetailHeaderView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1027,6 +1045,7 @@
 				F2540F581E263613004B0538 /* DMJobTitleVC.swift */,
 				F2540F5C1E274258004B0538 /* DMJobSearchResultVC.swift */,
 				F239E2DF1E28D0890071909E /* JobMarker.swift */,
+				F2F5E0DD1E31CE2A0082187C /* DMJobDetailVC.swift */,
 			);
 			path = JobSearch;
 			sourceTree = "<group>";
@@ -1055,6 +1074,14 @@
 				F2F5E0CA1E2F292F0082187C /* DentistDetailCell.xib */,
 				F2F5E0CD1E2F62080082187C /* AboutCell.swift */,
 				F2F5E0CE1E2F62080082187C /* AboutCell.xib */,
+				F2F5E0D11E30CF310082187C /* JobDescriptionCell.swift */,
+				F2F5E0D21E30CF310082187C /* JobDescriptionCell.xib */,
+				F2F5E0D51E30D2C80082187C /* OfficeDescriptionCell.swift */,
+				F2F5E0D61E30D2C80082187C /* OfficeDescriptionCell.xib */,
+				F2F5E0D91E31BDD00082187C /* MapCell.swift */,
+				F2F5E0DB1E31BDEC0082187C /* MapCell.xib */,
+				F2F5E0DF1E31D40E0082187C /* JobDetailHeaderView.swift */,
+				F2F5E0E11E31D43A0082187C /* JobDetailHeaderView.xib */,
 			);
 			path = JobDetail;
 			sourceTree = "<group>";
@@ -1134,6 +1161,7 @@
 				E587D30C1E25392F006B7F06 /* AffiliationsCell.xib in Resources */,
 				5A3FD0721E1C0C1200360B3C /* ReferenceTableCell.xib in Resources */,
 				E597E5841E151A99001DDA78 /* SF-UI-Text-Medium.otf in Resources */,
+				F2F5E0E21E31D43A0082187C /* JobDetailHeaderView.xib in Resources */,
 				E597E57E1E151A99001DDA78 /* SF-UI-Text-Bold.otf in Resources */,
 				E597E57A1E151A99001DDA78 /* SF-UI-Display-Regular.otf in Resources */,
 				E597E5751E151A99001DDA78 /* SF-UI-Display-Black.otf in Resources */,
@@ -1171,16 +1199,19 @@
 				F2540F611E274360004B0538 /* JobSearchResultCell.xib in Resources */,
 				E587D2FE1E24E2E1006B7F06 /* StudyCell.xib in Resources */,
 				5AE5F51B1E1A5139006C328A /* PhotoCell.xib in Resources */,
+				F2F5E0D41E30CF310082187C /* JobDescriptionCell.xib in Resources */,
 				F2540F571E23A8AE004B0538 /* CurrentLocationCell.xib in Resources */,
 				F2F5E0CC1E2F292F0082187C /* DentistDetailCell.xib in Resources */,
 				E587D3101E253E83006B7F06 /* AffliliationsOthersCell.xib in Resources */,
 				E597E5811E151A99001DDA78 /* SF-UI-Text-HeavyItalic.otf in Resources */,
 				5AE5F50A1E16563D006C328A /* Profile.storyboard in Resources */,
 				F2540F531E23A854004B0538 /* JobSearchPartTimeCell.xib in Resources */,
+				F2F5E0D81E30D2C80082187C /* OfficeDescriptionCell.xib in Resources */,
 				F2F5E0D01E2F62080082187C /* AboutCell.xib in Resources */,
 				E56E45C31DAE07C200AD4559 /* Assets.xcassets in Resources */,
 				5A3FD0771E1CC7CD00360B3C /* DMProfileHeaderView.xib in Resources */,
 				E597E5851E151A99001DDA78 /* SF-UI-Text-MediumItalic.otf in Resources */,
+				F2F5E0DC1E31BDEC0082187C /* MapCell.xib in Resources */,
 				E5496E061E255B2E00C54288 /* AboutMeCell.xib in Resources */,
 				E597E5871E151A99001DDA78 /* SF-UI-Text-RegularItalic.otf in Resources */,
 				E597E5861E151A99001DDA78 /* SF-UI-Text-Regular.otf in Resources */,
@@ -1255,6 +1286,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2F5E0D31E30CF310082187C /* JobDescriptionCell.swift in Sources */,
 				E56B20A41DC0526E000512F6 /* DMRegistrationContainer.swift in Sources */,
 				E5A174C71E201DE40044B17E /* ProfileImageButton.swift in Sources */,
 				E5A174C21E201D450044B17E /* CircleProgressBar.m in Sources */,
@@ -1266,6 +1298,7 @@
 				E587D2EC1E24C021006B7F06 /* DMWorkExperienceStart.swift in Sources */,
 				E50B3F401E18E8D2004C5F32 /* ZGradientLayer.swift in Sources */,
 				E594BEA21E1E014F00310AE5 /* DMLoginVC.swift in Sources */,
+				F2F5E0D71E30D2C80082187C /* OfficeDescriptionCell.swift in Sources */,
 				E587D2FD1E24E2E1006B7F06 /* StudyCell.swift in Sources */,
 				E50B3F421E18E8D2004C5F32 /* ZProgressHUD.swift in Sources */,
 				E587D2F41E24C095006B7F06 /* DMAffiliationsVC.swift in Sources */,
@@ -1304,6 +1337,7 @@
 				F2540F521E23A854004B0538 /* JobSearchPartTimeCell.swift in Sources */,
 				E5496DFF1E25563100C54288 /* CertificationsCell.swift in Sources */,
 				E56B20A21DBF749D000512F6 /* DMRegistrationVC.swift in Sources */,
+				F2F5E0E01E31D40E0082187C /* JobDetailHeaderView.swift in Sources */,
 				F2540F4E1E23A834004B0538 /* JobSearchTypeCell.swift in Sources */,
 				E587D2ED1E24C021006B7F06 /* DMWorkExperienceVC+TableViewExtension.swift in Sources */,
 				5A1E2A1F1E1EBC1D0055D913 /* AddDeleteExperienceCell.swift in Sources */,
@@ -1322,6 +1356,7 @@
 				E55463001DAE510A004163B2 /* Utilities.swift in Sources */,
 				E56E90801DFF31740096A31B /* CameraGalleryManager.swift in Sources */,
 				F2540F4A1E23A81C004B0538 /* JobSeachTitleCell.swift in Sources */,
+				F2F5E0DA1E31BDD00082187C /* MapCell.swift in Sources */,
 				E55462F71DAE4C6F004163B2 /* UITextField+ToolBar.swift in Sources */,
 				5AE5F51A1E1A5139006C328A /* PhotoCell.swift in Sources */,
 				F2F5E0CF1E2F62080082187C /* AboutCell.swift in Sources */,
@@ -1346,6 +1381,7 @@
 				E587D2EB1E24C021006B7F06 /* DMWorkExperienceStart+TableViewExtension.swift in Sources */,
 				F239E2E01E28D0890071909E /* JobMarker.swift in Sources */,
 				5AB876501E249B62007818D6 /* ExperiencePickerView.swift in Sources */,
+				F2F5E0DE1E31CE2A0082187C /* DMJobDetailVC.swift in Sources */,
 				E5DC3E731DAF2C45002DA20E /* DentaMatch.xcdatamodeld in Sources */,
 				E590299F1DED25C400151E9B /* AppDelegate+Notifications.swift in Sources */,
 				E597E5901E151CFF001DDA78 /* FloatLabelTextView.swift in Sources */,

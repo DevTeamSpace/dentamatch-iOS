@@ -1,22 +1,18 @@
 //
-//  AboutCell.swift
+//  JobDescriptionCell.swift
 //  DentaMatch
 //
-//  Created by Shailesh Tyagi on 18/01/17.
+//  Created by Shailesh Tyagi on 19/01/17.
 //  Copyright © 2017 Appster. All rights reserved.
 //
 
 import UIKit
 
-class AboutCell: UITableViewCell {
+class JobDescriptionCell: UITableViewCell {
     
+    @IBOutlet weak var lblDescription: UILabel!
     
-    @IBOutlet weak var lblDentistName: UILabel!
-    @IBOutlet weak var lblDistance: UILabel!
-    @IBOutlet weak var lblAddress: UILabel!
-    @IBOutlet weak var lblOfficeType: UILabel!
-    @IBOutlet weak var lblNoOfOpening: UILabel!
-    
+    @IBOutlet weak var btnReadMore: UIButton!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,5 +24,9 @@ class AboutCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    @IBAction func actionReadMore(_ sender: UIButton) {
+    }
+    
     
 }

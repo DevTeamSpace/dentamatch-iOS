@@ -184,6 +184,8 @@ extension DMJobSearchResultVC : UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let jobDetailVC = UIStoryboard.jobSearchStoryBoard().instantiateViewController(type: DMJobDetailVC.self)!
+        self.navigationController?.pushViewController(jobDetailVC, animated: true)
     }
 }
 

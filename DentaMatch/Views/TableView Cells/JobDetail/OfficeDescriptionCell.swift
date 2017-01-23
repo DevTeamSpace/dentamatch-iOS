@@ -1,23 +1,22 @@
 //
-//  AboutCell.swift
+//  OfficeDescriptionCell.swift
 //  DentaMatch
 //
-//  Created by Shailesh Tyagi on 18/01/17.
+//  Created by Shailesh Tyagi on 19/01/17.
 //  Copyright © 2017 Appster. All rights reserved.
 //
 
 import UIKit
 
-class AboutCell: UITableViewCell {
-    
-    
-    @IBOutlet weak var lblDentistName: UILabel!
-    @IBOutlet weak var lblDistance: UILabel!
-    @IBOutlet weak var lblAddress: UILabel!
-    @IBOutlet weak var lblOfficeType: UILabel!
-    @IBOutlet weak var lblNoOfOpening: UILabel!
-    
+class OfficeDescriptionCell: UITableViewCell {
 
+    @IBOutlet weak var lblWorkingHours: UILabel!
+    
+    @IBOutlet weak var lblDressCode: UILabel!
+    
+    @IBOutlet weak var lblParkingAvail: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

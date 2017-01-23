@@ -5,11 +5,18 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <array key="SF-UI-Text-Medium.otf">
             <string>SFUIText-Medium</string>
+        </array>
+        <array key="SF-UI-Text-Regular.otf">
+            <string>SFUIText-Regular</string>
+        </array>
+        <array key="SF-UI-Text-Semibold.otf">
+            <string>SFUIText-Semibold</string>
         </array>
     </customFonts>
     <objects>
@@ -19,18 +26,126 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="215.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="215"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="OFFICE LOCATION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zl0-28-5Rh">
-                        <rect key="frame" x="16" y="23" width="109" height="14"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OFFICE LOCATION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zl0-28-5Rh">
+                        <rect key="frame" x="15" y="23" width="211" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="0ro-gi-SWq"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="12"/>
                         <color key="textColor" red="0.098039215686274508" green="0.15686274509803921" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dr. Nacy LY " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCd-zC-eFR">
+                        <rect key="frame" x="15" y="42" width="90" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="ObR-KB-DJA"/>
+                            <constraint firstAttribute="width" constant="90" id="lSN-6R-l6O"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="14"/>
+                        <color key="textColor" red="0.2196078431372549" green="0.2196078431372549" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.8 miles" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIU-aG-ttV">
+                        <rect key="frame" x="226" y="21" width="72" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="72" id="NyJ-ta-hFM"/>
+                            <constraint firstAttribute="height" constant="18" id="meM-qM-uV5"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="12"/>
+                        <color key="textColor" red="0.2196078431372549" green="0.2196078431372549" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="628 Vermont Street San Francisco, CA 94107" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dld-NX-eLi">
+                        <rect key="frame" x="15" y="65" width="198" height="49"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="49" id="MyF-bE-46E"/>
+                            <constraint firstAttribute="width" constant="198" id="bRL-p3-PKa"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="13"/>
+                        <color key="textColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OFFICE TYPE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hbn-r3-7Bj">
+                        <rect key="frame" x="15" y="124" width="210" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="PCw-tH-rGv"/>
+                            <constraint firstAttribute="width" constant="210" id="TQq-qd-8da"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="12"/>
+                        <color key="textColor" red="0.098039215690000001" green="0.15686274510000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dental Lab" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SvP-gl-Lhb">
+                        <rect key="frame" x="15" y="143" width="198" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="198" id="IU7-bV-S1X"/>
+                            <constraint firstAttribute="height" constant="22" id="zsv-qt-9cK"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="13"/>
+                        <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TOTAL JOB OPENING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2u-pb-vSy">
+                        <rect key="frame" x="15" y="173" width="210" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="Jen-qJ-zbX"/>
+                            <constraint firstAttribute="width" constant="210" id="vSe-z9-cFe"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="12"/>
+                        <color key="textColor" red="0.098039215690000001" green="0.15686274510000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Clh-xE-dDU">
+                        <rect key="frame" x="15" y="185" width="198" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="198" id="vI7-j1-MYL"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="13"/>
+                        <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0CF-g1-qW3">
+                        <rect key="frame" x="15" y="214.5" width="305" height="1"/>
+                        <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="e1t-Rv-L9P"/>
+                        </constraints>
+                    </view>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="Dld-NX-eLi" firstAttribute="leading" secondItem="zl0-28-5Rh" secondAttribute="leading" id="0kP-F1-p73"/>
+                    <constraint firstItem="zl0-28-5Rh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="15" id="2Sc-M5-cW2"/>
+                    <constraint firstItem="SvP-gl-Lhb" firstAttribute="leading" secondItem="zl0-28-5Rh" secondAttribute="leading" id="39U-JJ-7nW"/>
+                    <constraint firstAttribute="trailing" secondItem="0CF-g1-qW3" secondAttribute="trailing" id="4cE-G3-6X9"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Clh-xE-dDU" secondAttribute="bottom" id="9Fg-CU-Pgf"/>
+                    <constraint firstItem="SvP-gl-Lhb" firstAttribute="top" secondItem="Hbn-r3-7Bj" secondAttribute="bottom" constant="5" id="9l3-a2-Wpo"/>
+                    <constraint firstItem="Dld-NX-eLi" firstAttribute="top" secondItem="YCd-zC-eFR" secondAttribute="bottom" constant="5" id="Dgx-0d-rAW"/>
+                    <constraint firstItem="zl0-28-5Rh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="OPe-Ev-1Yp"/>
+                    <constraint firstAttribute="trailing" secondItem="sIU-aG-ttV" secondAttribute="trailing" constant="22" id="SNe-VC-zm6"/>
+                    <constraint firstItem="Hbn-r3-7Bj" firstAttribute="top" secondItem="Dld-NX-eLi" secondAttribute="bottom" constant="10" id="Soh-Cc-uTZ"/>
+                    <constraint firstAttribute="bottom" secondItem="0CF-g1-qW3" secondAttribute="bottom" id="Sv0-gl-2bV"/>
+                    <constraint firstItem="Clh-xE-dDU" firstAttribute="top" secondItem="v2u-pb-vSy" secondAttribute="bottom" constant="-2" id="Tfh-jK-0Zj"/>
+                    <constraint firstItem="YCd-zC-eFR" firstAttribute="top" secondItem="zl0-28-5Rh" secondAttribute="bottom" constant="5" id="dhl-6c-b49"/>
+                    <constraint firstItem="0CF-g1-qW3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="jhf-Lu-iO5"/>
+                    <constraint firstItem="v2u-pb-vSy" firstAttribute="top" secondItem="SvP-gl-Lhb" secondAttribute="bottom" constant="8" id="l9a-PF-TQe"/>
+                    <constraint firstItem="Clh-xE-dDU" firstAttribute="leading" secondItem="zl0-28-5Rh" secondAttribute="leading" id="lGE-wq-ukc"/>
+                    <constraint firstItem="Hbn-r3-7Bj" firstAttribute="leading" secondItem="zl0-28-5Rh" secondAttribute="leading" id="nba-Oz-BEs"/>
+                    <constraint firstItem="sIU-aG-ttV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="13" id="nyf-sk-GRG"/>
+                    <constraint firstItem="sIU-aG-ttV" firstAttribute="leading" secondItem="zl0-28-5Rh" secondAttribute="trailing" id="qxz-e3-ypz"/>
+                    <constraint firstItem="YCd-zC-eFR" firstAttribute="leading" secondItem="zl0-28-5Rh" secondAttribute="leading" id="rzt-Zr-yF1"/>
+                    <constraint firstItem="v2u-pb-vSy" firstAttribute="leading" secondItem="zl0-28-5Rh" secondAttribute="leading" id="y4o-BE-dxx"/>
+                </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="lblAddress" destination="Dld-NX-eLi" id="b6s-NB-Niq"/>
+                <outlet property="lblDentistName" destination="YCd-zC-eFR" id="PbJ-UY-L62"/>
+                <outlet property="lblDistance" destination="sIU-aG-ttV" id="ZPM-hB-cv2"/>
+                <outlet property="lblNoOfOpening" destination="Clh-xE-dDU" id="biz-Cg-VGr"/>
+                <outlet property="lblOfficeType" destination="SvP-gl-Lhb" id="fO0-GG-gep"/>
+            </connections>
             <point key="canvasLocation" x="90" y="39"/>
         </tableViewCell>
     </objects>
