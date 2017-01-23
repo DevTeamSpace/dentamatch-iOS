@@ -125,6 +125,9 @@
 		E56F78561E1F602200F07814 /* DMForgotPasswordVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56F78551E1F602200F07814 /* DMForgotPasswordVC+Services.swift */; };
 		E57EE6CA1E28EB440090434F /* DMAffiliationsVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57EE6C91E28EB440090434F /* DMAffiliationsVC+Services.swift */; };
 		E57EE6CD1E28EBC00090434F /* Affiliation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57EE6CC1E28EBC00090434F /* Affiliation.swift */; };
+		E57F29DC1E368D070025B9DE /* DMEditCertificateVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57F29DB1E368D070025B9DE /* DMEditCertificateVC+Services.swift */; };
+		E57F29DF1E3695060025B9DE /* DMEditDentalStateBoardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57F29DE1E3695060025B9DE /* DMEditDentalStateBoardVC.swift */; };
+		E57F29E11E3696A60025B9DE /* DMEditDentalStateBoardVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57F29E01E3696A60025B9DE /* DMEditDentalStateBoardVC+Services.swift */; };
 		E58654FE1DEFEF7F006FEB2D /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58654FC1DEFEF7F006FEB2D /* ConfigurationManager.swift */; };
 		E58654FF1DEFEF7F006FEB2D /* Environments.plist in Resources */ = {isa = PBXBuildFile; fileRef = E58654FD1DEFEF7F006FEB2D /* Environments.plist */; };
 		E587D2CC1E23362C006B7F06 /* JobSelectionPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2CB1E23362C006B7F06 /* JobSelectionPickerView.swift */; };
@@ -376,6 +379,9 @@
 		E56F78551E1F602200F07814 /* DMForgotPasswordVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMForgotPasswordVC+Services.swift"; sourceTree = "<group>"; };
 		E57EE6C91E28EB440090434F /* DMAffiliationsVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMAffiliationsVC+Services.swift"; sourceTree = "<group>"; };
 		E57EE6CC1E28EBC00090434F /* Affiliation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Affiliation.swift; sourceTree = "<group>"; };
+		E57F29DB1E368D070025B9DE /* DMEditCertificateVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMEditCertificateVC+Services.swift"; sourceTree = "<group>"; };
+		E57F29DE1E3695060025B9DE /* DMEditDentalStateBoardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMEditDentalStateBoardVC.swift; sourceTree = "<group>"; };
+		E57F29E01E3696A60025B9DE /* DMEditDentalStateBoardVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMEditDentalStateBoardVC+Services.swift"; sourceTree = "<group>"; };
 		E58654FC1DEFEF7F006FEB2D /* ConfigurationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationManager.swift; sourceTree = "<group>"; };
 		E58654FD1DEFEF7F006FEB2D /* Environments.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Environments.plist; sourceTree = "<group>"; };
 		E587D2CB1E23362C006B7F06 /* JobSelectionPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobSelectionPickerView.swift; sourceTree = "<group>"; };
@@ -777,6 +783,7 @@
 			isa = PBXGroup;
 			children = (
 				E54B9A831E32870B00805D9C /* DMEditCertificateVC.swift */,
+				E57F29DB1E368D070025B9DE /* DMEditCertificateVC+Services.swift */,
 			);
 			path = Certificate;
 			sourceTree = "<group>";
@@ -927,6 +934,7 @@
 		E558D9011E2E085200A6DF95 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				E57F29DD1E3694EF0025B9DE /* DentalStateBoard */,
 				E54B9A821E3286E700805D9C /* Certificate */,
 				E5E7CBAA1E3099CB00D4FB59 /* PublicProfile */,
 				E5E7CBA11E30758E00D4FB59 /* License */,
@@ -1072,6 +1080,15 @@
 				E57EE6CC1E28EBC00090434F /* Affiliation.swift */,
 			);
 			path = Affiliation;
+			sourceTree = "<group>";
+		};
+		E57F29DD1E3694EF0025B9DE /* DentalStateBoard */ = {
+			isa = PBXGroup;
+			children = (
+				E57F29DE1E3695060025B9DE /* DMEditDentalStateBoardVC.swift */,
+				E57F29E01E3696A60025B9DE /* DMEditDentalStateBoardVC+Services.swift */,
+			);
+			path = DentalStateBoard;
 			sourceTree = "<group>";
 		};
 		E58654FB1DEFEF7F006FEB2D /* ConfigurationManager */ = {
@@ -1795,6 +1812,7 @@
 				E5A0EB051E2BDE680092E21A /* SubSkillCollectionCell.swift in Sources */,
 				E5E7CBA31E3075A200D4FB59 /* DMEditLicenseVC.swift in Sources */,
 				E56C9FA81DED75D500EAA9DD /* CommonHelper.swift in Sources */,
+				E57F29E11E3696A60025B9DE /* DMEditDentalStateBoardVC+Services.swift in Sources */,
 				E59029AA1DED2C7A00151E9B /* UserDefaultsManager.swift in Sources */,
 				E594BE9D1E1DFF4400310AE5 /* DMRegistrationVC+TableViewExtension.swift in Sources */,
 				E5E7CBA81E30970700D4FB59 /* EditPublicProfileTableCell.swift in Sources */,
@@ -1813,6 +1831,7 @@
 				E55462E11DAE41FB004163B2 /* Date+Additions.swift in Sources */,
 				E55462D71DAE2F49004163B2 /* UIColor+HexCode.swift in Sources */,
 				E56B20A21DBF749D000512F6 /* DMRegistrationVC.swift in Sources */,
+				E57F29DF1E3695060025B9DE /* DMEditDentalStateBoardVC.swift in Sources */,
 				E54976F51E28CEDD006F21E5 /* ExperienceModel.swift in Sources */,
 				E5E7CB981E2FA28000D4FB59 /* PhotoCell.swift in Sources */,
 				E587D2ED1E24C021006B7F06 /* DMWorkExperienceVC+TableViewExtension.swift in Sources */,
@@ -1906,6 +1925,7 @@
 				E587D2FA1E24C102006B7F06 /* DMStudyVC.swift in Sources */,
 				E587D3021E24E97B006B7F06 /* DMStudy+TableViewExtension.swift in Sources */,
 				5A3BD4AE1E35DB1E00A607AC /* EditProfileSkillBrickCell.swift in Sources */,
+				E57F29DC1E368D070025B9DE /* DMEditCertificateVC+Services.swift in Sources */,
 				E5AE2AF11DAF844C00C008BD /* DMOnboardingVC.swift in Sources */,
 				E55462F31DAE4A5D004163B2 /* Constants.swift in Sources */,
 				E5496E0A1E25E52600C54288 /* DMSchoolListPopOverVC+TableViewExtension.swift in Sources */,

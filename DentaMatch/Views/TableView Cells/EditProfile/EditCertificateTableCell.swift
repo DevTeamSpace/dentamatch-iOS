@@ -19,6 +19,8 @@ class EditCertificateTableCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         self.clipsToBounds = true
+        self.certificateImageView.layer.cornerRadius = self.certificateImageView.frame.size.width/2
+        self.certificateImageView.clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

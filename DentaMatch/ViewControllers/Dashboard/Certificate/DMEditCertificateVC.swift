@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class DMEditCertificateVC: DMBaseVC,DatePickerViewDelegate {
 
@@ -16,7 +17,8 @@ class DMEditCertificateVC: DMBaseVC,DatePickerViewDelegate {
     
     var certificate:Certification?
     var dateView:DatePickerView?
-    var profileImage:UIImage?
+    var certificateImage:UIImage?
+    var isEditMode = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +27,9 @@ class DMEditCertificateVC: DMBaseVC,DatePickerViewDelegate {
     }
     
     func setup() {
+        self.certificateImageButton.layer.cornerRadius = self.certificateImageButton.frame.size.width/2
+        self.certificateImageButton.clipsToBounds = true
+        self.certificateImageButton.imageView?.contentMode = .scaleAspectFill
         self.certificateImageButton.sd_setImage(with: URL(string:(self.certificate?.certificateImageURL)!), for: .normal, placeholderImage: nil)
         self.dateView = DatePickerView.loadExperiencePickerView(withText:"" , tag: 0)
         self.dateView?.delegate = self
@@ -55,6 +60,12 @@ class DMEditCertificateVC: DMBaseVC,DatePickerViewDelegate {
         addPhoto()
     }
     @IBAction func saveButtonPressed(_ sender: Any) {
+        self.uploadValidityDate { (response:JSON?, error:NSError?) in
+            if let _ = response {
+                self.updateProfileScreen()
+                _ = self.navigationController?.popViewController(animated: true)
+            }
+        }
     }
     
     func addPhoto() {
@@ -77,9 +88,23 @@ class DMEditCertificateVC: DMBaseVC,DatePickerViewDelegate {
                 }
                 return
             }
-            self.profileImage = image
+            self.certificateImage = image
+          
+            
             DispatchQueue.main.async {
-                self.certificateImageButton.setImage(image, for: .normal)
+                self.uploadCertificateImage(certObj:self.certificate!, completionHandler: { (response, error) in
+                    if let response = response {
+                        if response[Constants.ServerKey.status].boolValue {
+                            self.certificateImageButton.setImage(image, for: .normal)
+                            self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+                            self.certificate!.certificateImageURL = response[Constants.ServerKey.result][Constants.ServerKey.imageURLForPostResponse].stringValue
+                            self.updateProfileScreen()
+                        } else {
+                            self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+                        }
+                    }
+                    
+                })
             }
         })
     }
@@ -92,9 +117,22 @@ class DMEditCertificateVC: DMBaseVC,DatePickerViewDelegate {
                 }
                 return
             }
-            self.profileImage = image
+            self.certificateImage = image
+            
             DispatchQueue.main.async {
-                self.certificateImageButton.setImage(image, for: .normal)
+                self.uploadCertificateImage(certObj:self.certificate!, completionHandler: { (response, error) in
+                    if let response = response {
+                        if response[Constants.ServerKey.status].boolValue {
+                            self.certificateImageButton.setImage(image, for: .normal)
+                            self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+                            self.certificate!.certificateImageURL = response[Constants.ServerKey.result][Constants.ServerKey.imageURLForPostResponse].stringValue
+                            self.updateProfileScreen()
+                        } else {
+                            self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+                        }
+                    }
+                    
+                })
             }
         })
         
@@ -108,19 +146,12 @@ class DMEditCertificateVC: DMBaseVC,DatePickerViewDelegate {
     func doneButtonAction(date: String, tag: Int) {
         self.view.endEditing(true)
         self.validityDatePicker.text = date
+        self.certificate?.validityDate = date
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func updateProfileScreen() {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateProfileScreen"), object: nil, userInfo: ["certification":self.certificate!])
     }
-    */
-
 }
 
 extension DMEditCertificateVC : UITextFieldDelegate {

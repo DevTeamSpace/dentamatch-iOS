@@ -46,6 +46,7 @@ class DMEditProfileVC: DMBaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.editProfileTableView.reloadData()
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
@@ -94,23 +95,48 @@ class DMEditProfileVC: DMBaseVC {
     
     }
     
+    func openDentalStateBoardScreen(sender:UIButton) {
+        let dentalStateboardVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: DMEditDentalStateBoardVC.self)!
+        dentalStateboardVC.dentalStateBoardImageURL = self.dentalStateBoardURL
+        dentalStateboardVC.hidesBottomBarWhenPushed = true
+        dentalStateboardVC.isEditMode = true
+        self.navigationController?.pushViewController(dentalStateboardVC, animated: true)
+    }
+    
     func openCertificateScreen(sender:UIButton) {
         let editCertificateVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: DMEditCertificateVC.self)!
         editCertificateVC.certificate = certifications[sender.tag]
+        editCertificateVC.hidesBottomBarWhenPushed = true
+        editCertificateVC.isEditMode = true
         self.navigationController?.pushViewController(editCertificateVC, animated: true)
     }
     
     func updateProfileScreen(userInfo:Notification) {
         let dict = userInfo.userInfo
+        
+        //Upload for affiliation
         if let affiliation = dict?["affiliations"] {
             self.affiliations = affiliation as! [Affiliation]
+        }
+        
+        //Update for certificate
+        if let certification = dict?["certification"] {
+            let certificateObj = certification as! Certification
+            for certificate in self.certifications {
+                if certificateObj.certificationId == certificate.certificationId {
+                    certificate.certificateImageURL = certificateObj.certificateImageURL
+                }
+            }
+        }
+        
+        if let dentalStateBoardURL = dict?["dentalStateBoardImageURL"] {
+            let url = dentalStateBoardURL as! String
+            self.dentalStateBoardURL = url
         }
         self.editProfileTableView.reloadData()
     }
     
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Constants.StoryBoard.SegueIdentifier.goToEditLicense {
             let destinationVC = segue.destination as! DMEditLicenseVC
@@ -119,14 +145,9 @@ class DMEditProfileVC: DMBaseVC {
         } else if segue.identifier == Constants.StoryBoard.SegueIdentifier.goToPublicProfile {
             let destinationVC = segue.destination as! DMPublicProfileVC
             destinationVC.hidesBottomBarWhenPushed = true
-
-        }else if segue.identifier == Constants.StoryBoard.SegueIdentifier.goToSetting
-        {
+        } else if segue.identifier == Constants.StoryBoard.SegueIdentifier.goToSetting {
             let destinationVC = segue.destination as! DMSettingVC
             destinationVC.hidesBottomBarWhenPushed = true
-
         }
     }
-    
-
 }

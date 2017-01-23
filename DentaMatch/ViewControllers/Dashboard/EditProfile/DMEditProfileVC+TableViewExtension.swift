@@ -154,10 +154,12 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
                 cell.certificateHeadingLabel.text = "DENTAL STATE BOARD"
                 cell.validityDateAttributedLabel.isHidden = true
                 cell.certificateNameLabel.isHidden = true
+                cell.editButton.removeTarget(nil, action: nil, for: .allEvents)
+                cell.editButton.addTarget(self, action: #selector(openDentalStateBoardScreen), for: .touchUpInside)
+                cell.editButton.isHidden = false
                 if let imageUrl = URL(string:dentalStateBoardURL) {
                     cell.certificateImageView.sd_setImage(with: imageUrl, placeholderImage: nil)
                 }
-
                 return cell
             }
             
@@ -270,6 +272,7 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
                 cell.validityDateAttributedLabel.attributedText = cell.createValidityDateAttributedText(date: certificate.validityDate)
                 cell.editButton.tag = indexPath.row
                 cell.editButton.isHidden = false
+                cell.editButton.removeTarget(nil, action: nil, for: .allEvents)
                 cell.editButton.addTarget(self, action: #selector(openCertificateScreen), for: .touchUpInside)
                 if let imageUrl = URL(string:certificate.certificateImageURL!) {
                     cell.certificateImageView.sd_setImage(with: imageUrl, placeholderImage: nil)
