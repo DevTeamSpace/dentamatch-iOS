@@ -18,6 +18,8 @@
 		5A3B06D31E33885A00EFCA6E /* DMChangePasswordVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B06D21E33885A00EFCA6E /* DMChangePasswordVC+Services.swift */; };
 		5A3BD4AA1E35D3D800A607AC /* EditProfileAffiliationBrickCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3BD4A81E35D3D800A607AC /* EditProfileAffiliationBrickCell.swift */; };
 		5A3BD4AB1E35D3D800A607AC /* EditProfileAffiliationBrickCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A3BD4A91E35D3D800A607AC /* EditProfileAffiliationBrickCell.xib */; };
+		5A3BD4AE1E35DB1E00A607AC /* EditProfileSkillBrickCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3BD4AC1E35DB1E00A607AC /* EditProfileSkillBrickCell.swift */; };
+		5A3BD4AF1E35DB1E00A607AC /* EditProfileSkillBrickCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A3BD4AD1E35DB1E00A607AC /* EditProfileSkillBrickCell.xib */; };
 		5A3FD06E1E1BB0A000360B3C /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3FD06D1E1BB0A000360B3C /* UINavigationBar+Awesome.m */; };
 		5A3FD0751E1CC79700360B3C /* DMProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3FD0741E1CC79700360B3C /* DMProfileHeaderView.swift */; };
 		5A3FD0771E1CC7CD00360B3C /* DMProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A3FD0761E1CC7CD00360B3C /* DMProfileHeaderView.xib */; };
@@ -252,6 +254,8 @@
 		5A3B06D21E33885A00EFCA6E /* DMChangePasswordVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMChangePasswordVC+Services.swift"; sourceTree = "<group>"; };
 		5A3BD4A81E35D3D800A607AC /* EditProfileAffiliationBrickCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileAffiliationBrickCell.swift; sourceTree = "<group>"; };
 		5A3BD4A91E35D3D800A607AC /* EditProfileAffiliationBrickCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileAffiliationBrickCell.xib; sourceTree = "<group>"; };
+		5A3BD4AC1E35DB1E00A607AC /* EditProfileSkillBrickCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileSkillBrickCell.swift; sourceTree = "<group>"; };
+		5A3BD4AD1E35DB1E00A607AC /* EditProfileSkillBrickCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileSkillBrickCell.xib; sourceTree = "<group>"; };
 		5A3FD06C1E1BB0A000360B3C /* UINavigationBar+Awesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Awesome.h"; sourceTree = "<group>"; };
 		5A3FD06D1E1BB0A000360B3C /* UINavigationBar+Awesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Awesome.m"; sourceTree = "<group>"; };
 		5A3FD0741E1CC79700360B3C /* DMProfileHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMProfileHeaderView.swift; sourceTree = "<group>"; };
@@ -946,6 +950,8 @@
 				E54B9A7F1E32729C00805D9C /* EmptyCertificateTableViewCell.xib */,
 				5A3BD4A81E35D3D800A607AC /* EditProfileAffiliationBrickCell.swift */,
 				5A3BD4A91E35D3D800A607AC /* EditProfileAffiliationBrickCell.xib */,
+				5A3BD4AC1E35DB1E00A607AC /* EditProfileSkillBrickCell.swift */,
+				5A3BD4AD1E35DB1E00A607AC /* EditProfileSkillBrickCell.xib */,
 			);
 			path = EditProfile;
 			sourceTree = "<group>";
@@ -1642,6 +1648,7 @@
 				E558D8FA1E2CB5C300A6DF95 /* AutoCompleteTable.xib in Resources */,
 				5AC714401E34A9B100E433C1 /* Calender.storyboard in Resources */,
 				5AD246951E273CE7009350BF /* DatePickerView.xib in Resources */,
+				5A3BD4AF1E35DB1E00A607AC /* EditProfileSkillBrickCell.xib in Resources */,
 				5A3FD0771E1CC7CD00360B3C /* DMProfileHeaderView.xib in Resources */,
 				5A50A2CB1E32163D0010AA31 /* SettingTableCell.xib in Resources */,
 				E597E5851E151A99001DDA78 /* SF-UI-Text-MediumItalic.otf in Resources */,
@@ -1874,6 +1881,7 @@
 				E5496E161E2784D500C54288 /* DMSkillsVC+TableViewExtension.swift in Sources */,
 				E587D2FA1E24C102006B7F06 /* DMStudyVC.swift in Sources */,
 				E587D3021E24E97B006B7F06 /* DMStudy+TableViewExtension.swift in Sources */,
+				5A3BD4AE1E35DB1E00A607AC /* EditProfileSkillBrickCell.swift in Sources */,
 				E5AE2AF11DAF844C00C008BD /* DMOnboardingVC.swift in Sources */,
 				E55462F31DAE4A5D004163B2 /* Constants.swift in Sources */,
 				E5496E0A1E25E52600C54288 /* DMSchoolListPopOverVC+TableViewExtension.swift in Sources */,
