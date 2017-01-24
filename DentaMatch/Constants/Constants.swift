@@ -207,10 +207,10 @@ struct Constants {
         
         static let certificateName = "certificateName"
         static let schoolingId = "schoolingId"
+        static let schoolingChildId = "schoolingChildId"
         static let schoolName = "schoolName"
         static let schoolCategory = "schoolCategory"
         static let schoolChildName = "schoolChildName"
-        static let schoolingChildId = "schoolingChildId"
         static let yearOfGraduation = "yearOfGraduation"
         
         //change password screen

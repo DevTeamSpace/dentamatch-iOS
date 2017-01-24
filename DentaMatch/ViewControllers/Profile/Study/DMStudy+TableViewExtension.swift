@@ -114,12 +114,6 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate,UITextFieldDeleg
             }
         }
         
-        if let university = selectedUniversities[school.schoolCategoryId] {
-            cell.schoolNameTextField.text = (university as! University).universityName
-        } else if let universityOther = selectedUniversities["other_\(school.schoolCategoryId)"] {
-            cell.schoolNameTextField.text = universityOther as? String
-        }
-        
         cell.schoolNameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         cell.headingButton.tag = indexPath.row
         cell.headingButton.setTitle(school.schoolCategoryName, for: .normal)

@@ -29,6 +29,25 @@ extension DMStudyVC {
         }
     }
     
+    func addSchoolAPI(params:[String:AnyObject]) {
+        self.showLoader()
+        APIManager.apiPostWithJSONEncode(serviceName: Constants.API.addSchoolAPI, parameters: params) { (response:JSON?, error:NSError?) in
+            
+            self.hideLoader()
+            if error != nil {
+                self.makeToast(toastString: (error?.localizedDescription)!)
+                return
+            }
+            
+            if response == nil {
+                self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
+                return
+            }
+            print(response!)
+
+        }
+    }
+    
     func handleSchoolListAPIResponse(response:JSON?) {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
@@ -58,5 +77,54 @@ extension DMStudyVC {
             schoolCategories.append(schoolCategory)
         }
         
+    }
+    
+    func preparePostSchoolData(schoolsSelected:NSMutableArray) {
+        
+        var params = [String:AnyObject]()
+        let selectedArray = NSMutableArray()
+        for school in schoolsSelected {
+            let dict = school as! NSMutableDictionary
+            self.checkAvailabilityInAutoComplete(dictionary: dict)
+            print(dict)
+            
+            let makeData = NSMutableDictionary()
+            makeData.setObject(dict["schoolId"] as! String, forKey: "schoolingChildId" as NSCopying)
+            makeData.setObject(dict["yearOfGraduation"] as! String, forKey: "yearOfGraduation" as NSCopying)
+            
+            if dict["isOther"] as! Bool {
+                makeData.setObject(dict["other"] as! String, forKey: "otherSchooling" as NSCopying)
+            } else {
+                makeData.setObject("", forKey: "otherSchooling" as NSCopying)
+            }
+
+            selectedArray.add(makeData)
+            
+        }
+        params["schoolDataArray"] = selectedArray as AnyObject
+        
+        
+        print("\nPost School Params\n \(params.description)")
+        addSchoolAPI(params: params)
+    }
+    
+    func checkAvailabilityInAutoComplete(dictionary:NSMutableDictionary) {
+        let dict = dictionary
+        let schoolName = (dict["other"] as! String).trim()
+        let parentId = dict["parentId"] as! String
+        let universities = schoolCategories.filter({$0.schoolCategoryId == parentId}).first?.universities
+        
+        let university = universities?.filter({$0.universityName == schoolName})
+        
+        if (university?.count)! > 0 {
+            if university?.first?.universityName == schoolName {
+                dict["schoolId"] = university!.first!.universityId
+                dict["isOther"] = false
+                dict["other"] = schoolName
+            }
+        } else {
+            dict["other"] = schoolName
+            dict["isOther"] = true
+        }
     }
 }
