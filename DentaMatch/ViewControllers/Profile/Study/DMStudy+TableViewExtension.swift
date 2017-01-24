@@ -90,6 +90,8 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate,UITextFieldDeleg
         let school = schoolCategories[indexPath.row]
         cell.headingButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         cell.schoolNameTextField.text = ""
+        cell.yearOfGraduationTextField.text = ""
+
         cell.schoolNameTextField.delegate = self
         
         cell.schoolNameTextField.tag = Int(school.schoolCategoryId)!

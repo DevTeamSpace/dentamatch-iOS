@@ -39,5 +39,6 @@ class University : NSObject {
         self.universityName = university[Constants.ServerKey.schoolChildName].stringValue
         self.universityId = university[Constants.ServerKey.schoolingChildId].stringValue
         self.yearOfGraduation = university[Constants.ServerKey.yearOfGraduation].stringValue
+        self.isSelected = university[Constants.ServerKey.jobSeekerStatus].boolValue
     }
 }

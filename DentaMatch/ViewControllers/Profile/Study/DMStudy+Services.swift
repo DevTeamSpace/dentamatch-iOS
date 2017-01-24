@@ -45,6 +45,10 @@ extension DMStudyVC {
             }
             print(response!)
 
+            if response![Constants.ServerKey.status].boolValue {
+                self.openSkillsScreen()
+            }
+            self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
         }
     }
     
@@ -77,6 +81,45 @@ extension DMStudyVC {
             schoolCategories.append(schoolCategory)
         }
         
+        for category in schoolCategories {
+            
+            var flag = 0
+            if let university = category.universities.filter({$0.isSelected == true}).first
+            {
+            if selectedData.count == 0 {
+                let dict = NSMutableDictionary()
+                dict["parentId"] = category.schoolCategoryId
+                dict["schoolId"] = category.schoolCategoryId
+                dict["other"] = university.universityName
+                dict["yearOfGraduation"] = university.yearOfGraduation
+                selectedData.add(dict)
+                flag = 1
+            } else {
+                for categoryObj in selectedData {
+                    let dict = categoryObj as! NSMutableDictionary
+                    
+                    if dict["parentId"] as! String == category.schoolCategoryId {
+                        dict["other"] = university.universityName
+                        flag = 1
+                    }
+                }
+            }
+            
+            //Array is > 0 but dict doesnt exists
+            if flag == 0 {
+                let dict = NSMutableDictionary()
+                dict["parentId"] = category.schoolCategoryId
+                dict["schoolId"] = university.universityId as AnyObject?
+                dict["other"] = university.universityName
+                dict["yearOfGraduation"] = university.yearOfGraduation
+                selectedData.add(dict)
+            }
+            
+            print(selectedData)
+
+            }
+            
+        }
     }
     
     func preparePostSchoolData(schoolsSelected:NSMutableArray) {
@@ -85,6 +128,12 @@ extension DMStudyVC {
         let selectedArray = NSMutableArray()
         for school in schoolsSelected {
             let dict = school as! NSMutableDictionary
+            if let _ =  dict["yearOfGraduation"] as? String{
+                //Eveything fine
+            } else {
+                self.makeToast(toastString: "Please enter graduation year for \(dict["other"] as! String)")
+                return
+            }
             self.checkAvailabilityInAutoComplete(dictionary: dict)
             print(dict)
             

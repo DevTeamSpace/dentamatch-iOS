@@ -103,29 +103,24 @@ class DMStudyVC: DMBaseVC {
 
     
     @IBAction func nextButtonClicked(_ sender: Any) {
-        
-        
         self.preparePostSchoolData(schoolsSelected: selectedData)
-//        let skillsVC = UIStoryboard.profileStoryBoard().instantiateViewController(type: DMSkillsVC.self)!
-//        
-//        let selectSkillsVC = UIStoryboard.profileStoryBoard().instantiateViewController(type: DMSelectSkillsVC.self)!
-//
-//        let sideMenu = SSASideMenu(contentViewController: skillsVC, rightMenuViewController: selectSkillsVC)
-//        sideMenu.panGestureEnabled = false
-//        sideMenu.delegate = skillsVC
-//        self.navigationController?.pushViewController(sideMenu, animated: true)
-
+    }
+    
+    func openSkillsScreen() {
+        let skillsVC = UIStoryboard.profileStoryBoard().instantiateViewController(type: DMSkillsVC.self)!
         
+        let selectSkillsVC = UIStoryboard.profileStoryBoard().instantiateViewController(type: DMSelectSkillsVC.self)!
         
-        
-        
+        let sideMenu = SSASideMenu(contentViewController: skillsVC, rightMenuViewController: selectSkillsVC)
+        sideMenu.panGestureEnabled = false
+        sideMenu.delegate = skillsVC
+        self.navigationController?.pushViewController(sideMenu, animated: true)
         //sideMenu.configure(SSASideMenu.MenuViewEffect(fade: true, scale: true, scaleBackground: false))
         //sideMenu.configure(SSASideMenu.ContentViewEffect(alpha: 1.0, scale: 0.7))
         //sideMenu.configure(SSASideMenu.ContentViewShadow(enabled: true, color: UIColor.black, opacity: 0.6, radius: 6.0))
         
         
         //self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToSkillsVC, sender: self)
-
     }
 
     

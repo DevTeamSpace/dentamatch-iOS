@@ -212,6 +212,7 @@ struct Constants {
         static let schoolCategory = "schoolCategory"
         static let schoolChildName = "schoolChildName"
         static let yearOfGraduation = "yearOfGraduation"
+        static let jobSeekerStatus = "jobSeekerStatus"
         
         //change password screen
         static let oldPass = "oldPassword"
