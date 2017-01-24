@@ -79,5 +79,4 @@ extension DMLicenseSelectionVC {
             }
         }
     }
-    
 }

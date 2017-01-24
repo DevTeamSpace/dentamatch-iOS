@@ -126,6 +126,10 @@ extension DMStudyVC {
         
         var params = [String:AnyObject]()
         let selectedArray = NSMutableArray()
+        if schoolsSelected.count == 0 {
+            self.makeToast(toastString: "Please select your school")
+            return
+        }
         for school in schoolsSelected {
             let dict = school as! NSMutableDictionary
             if let _ =  dict["yearOfGraduation"] as? String{
