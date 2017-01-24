@@ -60,9 +60,8 @@ extension DMStudyVC {
                 self.studyTableView.reloadData()
             } else {
                 //handle fail case
+                self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
             }
-            self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
-
         }
     }
     
