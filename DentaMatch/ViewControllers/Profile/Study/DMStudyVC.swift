@@ -17,6 +17,7 @@ class DMStudyVC: DMBaseVC {
     
     @IBOutlet weak var studyTableView: UITableView!
     
+    var isFilledFromAutoComplete = false
     let profileProgress:CGFloat = 0.50
     var school = [[String:AnyObject]()]
     var autoCompleteTable:AutoCompleteTable!
@@ -25,7 +26,9 @@ class DMStudyVC: DMBaseVC {
     var schoolCategories = [SchoolCategory]()
     var selectedUniversities = [String:AnyObject]()
     
-    
+    var selectedData = NSMutableArray()
+    var yearPicker:YearPickerView?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -47,6 +50,11 @@ class DMStudyVC: DMBaseVC {
     }
     
     func setup() {
+        
+        
+        self.yearPicker = YearPickerView.loadYearPickerView(withText: "", withTag: 0)
+        self.yearPicker?.delegate = self
+
         self.navigationItem.leftBarButtonItem = self.backBarButton()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -67,11 +75,15 @@ class DMStudyVC: DMBaseVC {
         autoCompleteTable.layer.cornerRadius = 8.0
         autoCompleteTable.clipsToBounds = true
         self.view.addSubview(autoCompleteBackView)
+        autoCompleteBackView.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        autoCompleteBackView.addGestureRecognizer(tapGesture)
         self.view.addSubview(autoCompleteTable)        
     }
     
     func dismissKeyboard() {
         self.view.endEditing(true)
+        hideAutoCompleteView()
     }
     
     func hideAutoCompleteView() {
@@ -124,9 +136,78 @@ extension DMStudyVC:AutoCompleteSelectedDelegate {
 
     func didSelect(schoolCategoryId: String, university: University) {
         hideAutoCompleteView()
-        selectedUniversities["other_\(schoolCategoryId)"] = nil
-        selectedUniversities[schoolCategoryId] = university
-        print(selectedUniversities)
+        
+        isFilledFromAutoComplete = true
+        var flag = 0
+        
+        if selectedData.count == 0 {
+            let dict = NSMutableDictionary()
+            dict["parentId"] = "\(schoolCategoryId)"
+            dict["schoolId"] = "\(university.universityId)"
+            dict["other"] = university.universityName
+            selectedData.add(dict)
+            flag = 1
+        } else {
+            for category in selectedData {
+                let dict = category as! NSMutableDictionary
+                if dict["parentId"] as! String == "\(schoolCategoryId)" {
+                    dict["other"] = university.universityName 
+                    flag = 1
+                }
+            }
+        }
+        
+        //Array is > 0 but dict doesnt exists
+        if flag == 0 {
+            let dict = NSMutableDictionary()
+            dict["parentId"] = schoolCategoryId as AnyObject?
+            dict["schoolId"] = university.universityId as AnyObject?
+            dict["other"] = university.universityName
+            dict["yearOfGraduation"] = ""
+            selectedData.add(dict)
+        }
+        
+        print(selectedData)
+        
+        self.studyTableView.reloadData()
+    }
+}
+
+extension DMStudyVC : YearPickerViewDelegate {
+    
+    func canceButtonAction() {
+        self.view.endEditing(true)
+    }
+    
+    func doneButtonAction(year: Int, tag: Int) {
+        var flag = 0
+        
+        if selectedData.count == 0 {
+            let dict = NSMutableDictionary()
+            dict["parentId"] = "\(tag)"
+            dict["schoolId"] = "\(tag)"
+            dict["yearOfGraduation"] = "\(year)"
+            selectedData.add(dict)
+            flag = 1
+        } else {
+            for category in selectedData {
+                let dict = category as! NSMutableDictionary
+                if dict["parentId"] as! String == "\(tag)" {
+                    dict["yearOfGraduation"] = "\(year)"
+                    flag = 1
+                }
+            }
+        }
+        
+        //Array is > 0 but dict doesnt exists
+        if flag == 0 {
+            let dict = NSMutableDictionary()
+            dict["parentId"] = "\(tag)"
+            dict["schoolId"] = "\(tag)"
+            dict["yearOfGraduation"] = "\(year)"
+            selectedData.add(dict)
+        }
+        print(selectedData)
         self.studyTableView.reloadData()
     }
 }

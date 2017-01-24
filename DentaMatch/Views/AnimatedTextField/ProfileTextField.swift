@@ -11,6 +11,7 @@ import UIKit
 class ProfileTextField: UITextField {
 
     private var leftTextFieldView:UIView?
+    var type = 0
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,6 +23,13 @@ class ProfileTextField: UITextField {
         self.textColor = Constants.Color.textFieldTextColor
         self.leftViewMode = .always
 
+    }
+    
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        if self.type != 0 || action == #selector(delete(_:)) {
+            return false
+        }
+        return true
     }
     
     

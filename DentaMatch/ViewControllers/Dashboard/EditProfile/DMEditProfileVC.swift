@@ -92,7 +92,19 @@ class DMEditProfileVC: DMBaseVC {
     }
     
     func openSkillsScreen() {
-    
+        let skillsVC = UIStoryboard.profileStoryBoard().instantiateViewController(type: DMSkillsVC.self)!
+        skillsVC.selectedSkills = self.skills
+        skillsVC.isEditMode = true
+        
+        let selectSkillsVC = UIStoryboard.profileStoryBoard().instantiateViewController(type: DMSelectSkillsVC.self)!
+        
+        let sideMenu = SSASideMenu(contentViewController: skillsVC, rightMenuViewController: selectSkillsVC)
+        sideMenu.panGestureEnabled = false
+        sideMenu.delegate = skillsVC
+        sideMenu.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(sideMenu, animated: true)
+        
+
     }
     
     func openDentalStateBoardScreen(sender:UIButton) {

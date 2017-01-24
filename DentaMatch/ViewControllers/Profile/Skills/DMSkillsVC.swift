@@ -21,6 +21,10 @@ class DMSkillsVC: DMBaseVC {
     var otherSkill:Skill?
     
     @IBOutlet weak var skillsTableView: UITableView!
+    
+    var isEditMode = false
+    var selectedSkills = [Skill]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()

@@ -12,6 +12,7 @@ class AnimatedPHTextField: FloatLabelTextField {
     
     private var leftTextFieldView:UIView?
     var type = 0
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.autocorrectionType = .no

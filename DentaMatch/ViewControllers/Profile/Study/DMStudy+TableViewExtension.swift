@@ -94,6 +94,26 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate,UITextFieldDeleg
         
         cell.schoolNameTextField.tag = Int(school.schoolCategoryId)!
         cell.yearOfGraduationTextField.tag = Int(school.schoolCategoryId)!
+        cell.schoolNameTextField.returnKeyType = .done
+        cell.yearOfGraduationTextField.inputView = yearPicker
+        cell.yearOfGraduationTextField.delegate = self
+        cell.yearOfGraduationTextField.tintColor = UIColor.clear
+        cell.yearOfGraduationTextField.type = 1
+        cell.yearOfGraduationTextField.returnKeyType = .done
+
+        
+        for dict in selectedData {
+            let selectedDict = dict as! NSDictionary
+            if selectedDict["parentId"] as! String == "\(school.schoolCategoryId)" {
+                if let schoolName = selectedDict["other"] as? String {
+                    cell.schoolNameTextField.text = schoolName
+                }
+                if let yearOfGraduation = selectedDict["yearOfGraduation"] as? String {
+                    cell.yearOfGraduationTextField.text = yearOfGraduation
+                }
+            }
+        }
+        
         if let university = selectedUniversities[school.schoolCategoryId] {
             cell.schoolNameTextField.text = (university as! University).universityName
         } else if let universityOther = selectedUniversities["other_\(school.schoolCategoryId)"] {
@@ -127,23 +147,23 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate,UITextFieldDeleg
         
         let university = schoolCategory?.universities.filter({$0.universityName == textField.text})
         
-        selectedUniversities["\(textField.tag)"] = nil
+        //selectedUniversities["\(textField.tag)"] = nil
         
         if (university?.count)! > 0 {
             //Its in the list
             print("In the list")
         } else {
             
-            if textField.text!.isEmpty {
-                selectedUniversities["other_\(textField.tag)"] = nil
-                selectedUniversities["other_date\(textField.tag)"] = nil
-            } else {
-                selectedUniversities["other_date\(textField.tag)"] = "" as AnyObject?
-                selectedUniversities["other_\(textField.tag)"] = textField.text! as AnyObject?
-            }
+//            if textField.text!.isEmpty {
+//                selectedUniversities["other_\(textField.tag)"] = nil
+//                selectedUniversities["other_date\(textField.tag)"] = nil
+//            } else {
+//                selectedUniversities["other_date\(textField.tag)"] = "" as AnyObject?
+//                selectedUniversities["other_\(textField.tag)"] = textField.text! as AnyObject?
+//            }
         }
         
-        print(selectedUniversities)
+        //print(selectedUniversities)
 
         if textField.text!.isEmpty {
             hideAutoCompleteView()
@@ -168,6 +188,8 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate,UITextFieldDeleg
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        self.yearPicker?.getPreSelectedValues(dateString: "", curTag: textField.tag)
+
         return true
     }
     
@@ -177,6 +199,46 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate,UITextFieldDeleg
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         //textFieldDidEndEditing
+        print("textFieldDidEndEditing")
+        
+        if textField.inputView is YearPickerView {
+            print("year picker")
+        }
+        else {
+        if !isFilledFromAutoComplete {
+            var flag = 0
+            
+            if selectedData.count == 0 {
+                let dict = NSMutableDictionary()
+                dict["parentId"] = "\(textField.tag)"
+                dict["schoolId"] = "\(textField.tag)"
+                dict["other"] = textField.text!
+                selectedData.add(dict)
+                flag = 1
+            } else {
+                for category in selectedData {
+                    let dict = category as! NSMutableDictionary
+                    
+                    if dict["parentId"] as! String == "\(textField.tag)" {
+                        dict["other"] = textField.text!
+                        flag = 1
+                    }
+                }
+            }
+            
+            //Array is > 0 but dict doesnt exists
+            if flag == 0 {
+                let dict = NSMutableDictionary()
+                dict["parentId"] = "\(textField.tag)"
+                dict["schoolId"] = "\(textField.tag)"
+                dict["other"] = textField.text!
+                selectedData.add(dict)
+            }
+            
+            print(selectedData)
+        }
+        isFilledFromAutoComplete = false
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
