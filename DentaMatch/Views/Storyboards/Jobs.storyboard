@@ -13,10 +13,12 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Jobs-->
         <scene sceneID="Dby-kM-scK">
             <objects>
-                <navigationController id="CsO-Vw-JQB" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="jobsNav" useStoryboardIdentifierAsRestorationIdentifier="YES" id="CsO-Vw-JQB" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Jobs" id="B8r-TJ-Qbn"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="oDh-u2-Gs3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -29,7 +31,7 @@
             </objects>
             <point key="canvasLocation" x="-3182" y="-609"/>
         </scene>
-        <!--Jobs-->
+        <!--JobsVC-->
         <scene sceneID="lhB-j2-650">
             <objects>
                 <viewController storyboardIdentifier="DMJobsVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gHL-mC-Fsi" customClass="DMJobsVC" customModule="DentaMatch" customModuleProvider="target" sceneMemberID="viewController">
@@ -54,7 +56,6 @@
                             <constraint firstItem="Y7Z-g1-VZw" firstAttribute="centerY" secondItem="yD1-4L-j9J" secondAttribute="centerY" id="cu1-Th-oHP"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="1" title="Jobs" id="VFV-H9-RYE"/>
                     <navigationItem key="navigationItem" id="t7j-0e-mKv"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                 </viewController>

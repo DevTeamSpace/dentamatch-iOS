@@ -8,12 +8,13 @@
 
 import UIKit
 
-class DMCalenderVC: UIViewController {
+class DMCalenderVC: DMBaseVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setup()
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,6 +22,11 @@ class DMCalenderVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func setup() {
+        self.title = "Calender"
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+
+    }
 
     /*
     // MARK: - Navigation
