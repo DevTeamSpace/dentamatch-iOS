@@ -127,6 +127,7 @@ class DMEditProfileVC: DMBaseVC {
         let workExpVC = UIStoryboard.profileStoryBoard().instantiateViewController(type: DMWorkExperienceVC.self)!
         workExpVC.hidesBottomBarWhenPushed = true
         workExpVC.isEditMode = true
+        workExpVC.jobTitles = self.jobTitles
         workExpVC.exprienceArray = self.experiences
         self.navigationController?.pushViewController(workExpVC, animated: true)
     }
