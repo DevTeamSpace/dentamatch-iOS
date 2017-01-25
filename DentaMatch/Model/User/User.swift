@@ -20,7 +20,7 @@ class User: NSObject , NSCoding {
     var jobTitle:String? = ""
 
     var profileImageURL: String? = ""
-    var preferredJobLocation: String?
+    var preferredJobLocation: String? = ""
     
     func fullName() -> String? {
         if let _ = firstName, let _ = lastName {

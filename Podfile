@@ -18,4 +18,5 @@ pod 'XCGLogger', '~> 4.0.0'
 pod 'SVProgressHUD'
 pod 'FSCalendar'
 
+pod 'RESideMenu', '~> 4.0.6'
 end

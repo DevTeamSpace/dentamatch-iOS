@@ -78,11 +78,14 @@ struct Constants {
 
         static let registrationStoryboard  = "Registration"
         static let profileStoryboard  = "Profile"
+        static let jobSearchStoryboard  = "JobSearch"
+ 
         static let dashboardStoryboard  = "Dashboard"
 
         struct Identifer {
             static let registrationNav = "RegistrationNAV"
             static let profileNav  = "ProfileNAV"
+            static let jobSearchNav  = "JobSearchNav"
             static let editProfileNav  = "EditProfileNAV"
         }
         
@@ -124,6 +127,9 @@ struct Constants {
         static let addSchoolAPI = Constants.API.apiURL("users/school-add")
         static let getJobTitleAPI = Constants.API.apiURL("list-jobtitle")
         static let uploadImageAPI = Constants.API.apiURL("users/upload-image")
+        static let JobSearchResultAPI = Constants.API.apiURL("users/search-jobs")
+        static let updateUserProfile = Constants.API.apiURL("users/user-profile-update")
+        
         static let licenseNumberAndState = Constants.API.apiURL("users/update-license")
         static let workExperienceSave = Constants.API.apiURL("users/work-experience-save")
         static let getWorkExperience = Constants.API.apiURL("users/work-experience-list")
@@ -150,6 +156,7 @@ struct Constants {
         static let email = "email"
         static let password = "password"
         static let preferredLocation = "preferedLocation"
+        static let preferredJobLocation = "preferredJobLocation"
         static let latitude = "latitude"
         static let longitude = "longitude"
         static let zipCode = "zipCode"
@@ -164,6 +171,7 @@ struct Constants {
         static let dentalStateBoard = "dentalStateBoard"
         static let accessToken = "accessToken"
         static let joblists = "joblists"
+        static let joblist = "list"
         static let profileImageURL = "img_url"
         static let imageUrl = "imageUrl"
         static let list = "list"
@@ -187,6 +195,7 @@ struct Constants {
         static let userId = "userId"
         static let user = "user"
         static let jobTitleId = "jobTitleId"
+        static let jobTitileId = "jobTitileId"
         static let jobTitle = "jobTitle"
         static let jobtitleName = "jobtitleName"
         static let monthsOfExperience = "monthsOfExpereince"
@@ -223,6 +232,17 @@ struct Constants {
         static let newPass = "newPassword"
         static let confirmPass = "confirmNewPassword"
 
+    }
+    
+    struct JobDetailKey {
+        static let lat = "lat"
+        static let lng = "lng"
+        static let zipCode = "zipCode"
+        static let jobTitle = "jobTitle"
+        static let page = "page"
+        static let isFulltime = "isFulltime"
+        static let isParttime = "isParttime"
+        static let parttimeDays = "parttimeDays"
     }
     
     //MARK:- UserDefault Keys

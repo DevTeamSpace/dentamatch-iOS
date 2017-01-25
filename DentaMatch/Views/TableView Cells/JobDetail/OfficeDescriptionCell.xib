@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-UI-Text-Medium.otf">
+            <string>SFUIText-Medium</string>
+        </array>
+        <array key="SF-UI-Text-Regular.otf">
+            <string>SFUIText-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="qop-Ux-avN" customClass="OfficeDescriptionCell" customModule="DentaMatch" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="175"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qop-Ux-avN" id="CKn-2J-hT2">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="174"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WORKING HOURS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jwu-Ae-Ang">
+                        <rect key="frame" x="19" y="16" width="105" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="MTr-cm-SkR"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="12"/>
+                        <color key="textColor" red="0.098039215690000001" green="0.15686274510000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9am - 4am" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="snT-kY-M7y">
+                        <rect key="frame" x="19" y="33" width="198" height="13"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="13" id="Rlw-m6-d1W"/>
+                            <constraint firstAttribute="width" constant="198" id="YaK-GL-9y2"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="13"/>
+                        <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DRESS CODE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8n-FH-4cV">
+                        <rect key="frame" x="19" y="73" width="210" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="210" id="HzV-UO-dlw"/>
+                            <constraint firstAttribute="height" constant="14" id="KpA-tf-cXR"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="12"/>
+                        <color key="textColor" red="0.098039215690000001" green="0.15686274510000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="White" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="peP-Z3-bl8">
+                        <rect key="frame" x="19" y="90" width="198" height="13"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="13" id="Ah4-zX-wvE"/>
+                            <constraint firstAttribute="width" constant="198" id="kEZ-IW-gWL"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="13"/>
+                        <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PARKING AVAILABILITY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fC1-wV-d6N">
+                        <rect key="frame" x="19" y="131.5" width="210" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="210" id="3IN-Zr-oLG"/>
+                            <constraint firstAttribute="height" constant="14" id="Ebe-It-t9M"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="12"/>
+                        <color key="textColor" red="0.098039215690000001" green="0.15686274510000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yes" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iTW-vQ-TPf">
+                        <rect key="frame" x="19" y="148.5" width="198" height="13"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="13" id="Mfb-ju-Juq"/>
+                            <constraint firstAttribute="width" constant="198" id="jY6-LG-0gT"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="13"/>
+                        <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E6n-0s-gkc">
+                        <rect key="frame" x="15" y="173.5" width="305" height="1"/>
+                        <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="HMe-lR-SmG"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottomMargin" secondItem="iTW-vQ-TPf" secondAttribute="bottom" constant="5" id="1cZ-bm-Uuf"/>
+                    <constraint firstItem="Jwu-Ae-Ang" firstAttribute="leading" secondItem="CKn-2J-hT2" secondAttribute="leading" constant="19" id="2BP-db-VpT"/>
+                    <constraint firstAttribute="bottom" secondItem="E6n-0s-gkc" secondAttribute="bottom" id="2Ki-qq-m8b"/>
+                    <constraint firstItem="fC1-wV-d6N" firstAttribute="leading" secondItem="Jwu-Ae-Ang" secondAttribute="leading" id="ALl-lG-c7g"/>
+                    <constraint firstItem="snT-kY-M7y" firstAttribute="leading" secondItem="Jwu-Ae-Ang" secondAttribute="leading" id="I8p-vQ-JJd"/>
+                    <constraint firstAttribute="trailing" secondItem="E6n-0s-gkc" secondAttribute="trailing" id="IFk-7d-5ob"/>
+                    <constraint firstItem="peP-Z3-bl8" firstAttribute="leading" secondItem="Jwu-Ae-Ang" secondAttribute="leading" id="Imi-8i-MMj"/>
+                    <constraint firstItem="K8n-FH-4cV" firstAttribute="leading" secondItem="Jwu-Ae-Ang" secondAttribute="leading" id="M3W-zp-RqU"/>
+                    <constraint firstItem="Jwu-Ae-Ang" firstAttribute="top" secondItem="CKn-2J-hT2" secondAttribute="top" constant="16" id="UGV-Qe-ARp"/>
+                    <constraint firstItem="peP-Z3-bl8" firstAttribute="top" secondItem="K8n-FH-4cV" secondAttribute="bottom" constant="3" id="XJU-J8-6Sa"/>
+                    <constraint firstItem="snT-kY-M7y" firstAttribute="leading" secondItem="Jwu-Ae-Ang" secondAttribute="leading" id="awy-1q-CdY"/>
+                    <constraint firstItem="iTW-vQ-TPf" firstAttribute="leading" secondItem="Jwu-Ae-Ang" secondAttribute="leading" id="csN-kX-lVH"/>
+                    <constraint firstItem="K8n-FH-4cV" firstAttribute="top" secondItem="snT-kY-M7y" secondAttribute="bottom" constant="27" id="g7b-ak-bZj"/>
+                    <constraint firstItem="snT-kY-M7y" firstAttribute="top" secondItem="Jwu-Ae-Ang" secondAttribute="bottom" constant="3" id="gbn-GQ-Vkj"/>
+                    <constraint firstItem="E6n-0s-gkc" firstAttribute="leading" secondItem="CKn-2J-hT2" secondAttribute="leading" constant="15" id="qxe-7x-2zy"/>
+                    <constraint firstItem="iTW-vQ-TPf" firstAttribute="top" secondItem="fC1-wV-d6N" secondAttribute="bottom" constant="3" id="uEV-bZ-3p1"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="lblDressCode" destination="peP-Z3-bl8" id="4WW-LP-mNx"/>
+                <outlet property="lblParkingAvail" destination="iTW-vQ-TPf" id="rOe-NI-BIV"/>
+                <outlet property="lblWorkingHours" destination="snT-kY-M7y" id="hgy-7T-OfE"/>
+            </connections>
+            <point key="canvasLocation" x="90" y="38.5"/>
+        </tableViewCell>
+    </objects>
+</document>

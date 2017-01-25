@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if UserDefaultsManager.sharedInstance.isLoggedIn {
             goToProfile()
+            //goToSearch()
         }
         
         configureGoogleServices()
@@ -44,6 +45,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let profileVC = UIStoryboard.profileStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.profileNav) as! UINavigationController
         self.window?.rootViewController = profileVC
     }
+//    
+//    func goToSearch() {
+//        let jobSearchVC = UIStoryboard.jobSearchStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.jobSearchNav) as! UINavigationController
+//        self.window?.rootViewController = jobSearchVC
+//    }
     
     func changeNavBarAppearance() {
         UIApplication.shared.statusBarStyle = .lightContent

@@ -31,6 +31,7 @@ class DMEditProfileVC: DMBaseVC {
     var certifications = [Certification]()
     var experiences = [ExperienceModel]()
     var dentalStateBoardURL = ""
+    var jobTitles = [JobTitle]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -175,6 +176,7 @@ class DMEditProfileVC: DMBaseVC {
             destinationVC.hidesBottomBarWhenPushed = true
         } else if segue.identifier == Constants.StoryBoard.SegueIdentifier.goToPublicProfile {
             let destinationVC = segue.destination as! DMPublicProfileVC
+            destinationVC.jobTitles = jobTitles
             destinationVC.hidesBottomBarWhenPushed = true
         } else if segue.identifier == Constants.StoryBoard.SegueIdentifier.goToSetting {
             let destinationVC = segue.destination as! DMSettingVC

@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Lfn-p4-zS8">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-UI-Text-Regular.otf">
+            <string>SFUIText-Regular</string>
+        </array>
+        <array key="SF-UI-Text-Semibold.otf">
+            <string>SFUIText-Semibold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Job SearchVC-->
+        <scene sceneID="Oru-wv-RVo">
+            <objects>
+                <viewController storyboardIdentifier="DMJobSearchVC" id="VTU-4g-X5s" customClass="DMJobSearchVC" customModule="DentaMatch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lly-3D-VKP"/>
+                        <viewControllerLayoutGuide type="bottom" id="cxl-aD-P6c"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bII-c8-waP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="JobSearchNav" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="noO-rj-m36">
+                                <rect key="frame" x="0.0" y="64" width="375" height="505"/>
+                                <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="VTU-4g-X5s" id="esf-9D-ehP"/>
+                                    <outlet property="delegate" destination="VTU-4g-X5s" id="sJG-xN-XI5"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PB7-NA-IGt">
+                                <rect key="frame" x="0.0" y="569" width="375" height="49"/>
+                                <color key="backgroundColor" red="0.015686274509803921" green="0.4392156862745098" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="25r-wD-KVC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="16"/>
+                                <state key="normal" title="SEARCH">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="actionSearchButton:" destination="VTU-4g-X5s" eventType="touchUpInside" id="3yR-ry-yk4"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="noO-rj-m36" firstAttribute="leading" secondItem="bII-c8-waP" secondAttribute="leading" id="IiH-tV-Ptl"/>
+                            <constraint firstAttribute="trailing" secondItem="PB7-NA-IGt" secondAttribute="trailing" id="LCz-ir-kYx"/>
+                            <constraint firstItem="PB7-NA-IGt" firstAttribute="leading" secondItem="bII-c8-waP" secondAttribute="leading" id="Nyl-ta-IxN"/>
+                            <constraint firstItem="cxl-aD-P6c" firstAttribute="top" secondItem="PB7-NA-IGt" secondAttribute="bottom" id="kvL-ej-HZ6"/>
+                            <constraint firstItem="noO-rj-m36" firstAttribute="top" secondItem="lly-3D-VKP" secondAttribute="bottom" id="nds-jd-A7j"/>
+                            <constraint firstAttribute="trailing" secondItem="noO-rj-m36" secondAttribute="trailing" id="nsq-hn-uyK"/>
+                            <constraint firstItem="PB7-NA-IGt" firstAttribute="top" secondItem="noO-rj-m36" secondAttribute="bottom" id="qwh-Sn-dfz"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Bu7-Vd-XBl"/>
+                    <connections>
+                        <outlet property="tblViewJobSearch" destination="noO-rj-m36" id="fAr-hw-WFM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9wN-3B-Scx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="727" y="50"/>
+        </scene>
+        <!--Jobs-->
+        <scene sceneID="JXa-BO-VnG">
+            <objects>
+                <navigationController storyboardIdentifier="JobSearchNav" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Lfn-p4-zS8" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Jobs" image="jobs" id="PdF-HD-BTv"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5xw-k6-Tbw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="VTU-4g-X5s" kind="relationship" relationship="rootViewController" id="Mda-EH-gos"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UjR-g0-FNM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="44" y="49.925037481259373"/>
+        </scene>
+        <!--Job TitleVC-->
+        <scene sceneID="ySc-yj-82U">
+            <objects>
+                <viewController storyboardIdentifier="DMJobTitleVC" id="cgu-vb-fCf" customClass="DMJobTitleVC" customModule="DentaMatch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WRO-lw-m08"/>
+                        <viewControllerLayoutGuide type="bottom" id="61Q-cy-lV2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5H0-Ko-Ezr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i9K-aA-lKl">
+                                <rect key="frame" x="0.0" y="20" width="375" height="45"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can select more than one job title." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n7D-ua-QRT">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="13"/>
+                                        <color key="textColor" red="0.058823529411764705" green="0.094117647058823528" blue="0.24313725490196078" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y9p-lp-8mb">
+                                        <rect key="frame" x="0.0" y="43" width="375" height="2"/>
+                                        <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1.5" id="pXM-Dv-irf"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="n7D-ua-QRT" firstAttribute="leading" secondItem="i9K-aA-lKl" secondAttribute="leading" id="1yC-oA-nHR"/>
+                                    <constraint firstAttribute="trailing" secondItem="Y9p-lp-8mb" secondAttribute="trailing" id="60x-5g-bmE"/>
+                                    <constraint firstItem="Y9p-lp-8mb" firstAttribute="leading" secondItem="i9K-aA-lKl" secondAttribute="leading" id="7pK-Q7-tA3"/>
+                                    <constraint firstAttribute="bottom" secondItem="n7D-ua-QRT" secondAttribute="bottom" id="Kyv-Vv-CbZ"/>
+                                    <constraint firstItem="n7D-ua-QRT" firstAttribute="top" secondItem="i9K-aA-lKl" secondAttribute="top" id="bzX-Gj-XWW"/>
+                                    <constraint firstAttribute="bottom" secondItem="Y9p-lp-8mb" secondAttribute="bottom" id="poH-7v-4Rb"/>
+                                    <constraint firstAttribute="trailing" secondItem="n7D-ua-QRT" secondAttribute="trailing" id="wT7-6G-oTk"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="x1s-XZ-rTf">
+                                <rect key="frame" x="0.0" y="65" width="375" height="602"/>
+                                <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="cgu-vb-fCf" id="H1X-3i-Vfo"/>
+                                    <outlet property="delegate" destination="cgu-vb-fCf" id="srV-0f-SqQ"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="x1s-XZ-rTf" firstAttribute="trailing" secondItem="i9K-aA-lKl" secondAttribute="trailing" id="00Z-Ei-PaS"/>
+                            <constraint firstItem="x1s-XZ-rTf" firstAttribute="top" secondItem="i9K-aA-lKl" secondAttribute="bottom" id="0MY-n2-9ok"/>
+                            <constraint firstItem="x1s-XZ-rTf" firstAttribute="bottom" secondItem="61Q-cy-lV2" secondAttribute="top" id="1cB-wv-btJ"/>
+                            <constraint firstItem="i9K-aA-lKl" firstAttribute="top" secondItem="WRO-lw-m08" secondAttribute="bottom" id="AD0-SE-Zea"/>
+                            <constraint firstItem="i9K-aA-lKl" firstAttribute="leading" secondItem="5H0-Ko-Ezr" secondAttribute="leading" id="BaN-Ad-9Yu"/>
+                            <constraint firstItem="i9K-aA-lKl" firstAttribute="height" secondItem="5H0-Ko-Ezr" secondAttribute="height" multiplier="0.0674" id="fiK-Jv-fuq"/>
+                            <constraint firstAttribute="trailing" secondItem="i9K-aA-lKl" secondAttribute="trailing" id="s2A-8r-HA7"/>
+                            <constraint firstItem="i9K-aA-lKl" firstAttribute="width" secondItem="5H0-Ko-Ezr" secondAttribute="width" id="vM1-Nx-NfT"/>
+                            <constraint firstItem="x1s-XZ-rTf" firstAttribute="leading" secondItem="i9K-aA-lKl" secondAttribute="leading" id="xPg-Lc-qRj"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="hgi-Bl-oNx"/>
+                    <connections>
+                        <outlet property="tblJobTitle" destination="x1s-XZ-rTf" id="5sp-4D-TkL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pvm-Ug-HOw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1422" y="50"/>
+        </scene>
+        <!--Job Search ResultVC-->
+        <scene sceneID="JxG-qy-eeQ">
+            <objects>
+                <viewController storyboardIdentifier="DMJobSearchResultVC" id="VbB-48-aza" customClass="DMJobSearchResultVC" customModule="DentaMatch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0tZ-o3-vk0"/>
+                        <viewControllerLayoutGuide type="bottom" id="WOJ-Nk-bOV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7JX-NO-s69">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NRE-fb-aTV">
+                                <rect key="frame" x="0.0" y="20" width="375" height="32"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20 results found" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vjm-2c-xgg">
+                                        <rect key="frame" x="20" y="0.0" width="355" height="32"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="13"/>
+                                        <color key="textColor" red="0.058823529409999999" green="0.094117647060000004" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I8O-Bm-mPI">
+                                        <rect key="frame" x="0.0" y="30" width="375" height="2"/>
+                                        <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1.5" id="gjU-20-66E"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Vjm-2c-xgg" secondAttribute="bottom" id="B2b-1r-vda"/>
+                                    <constraint firstItem="I8O-Bm-mPI" firstAttribute="leading" secondItem="NRE-fb-aTV" secondAttribute="leading" id="FwF-Eg-ACz"/>
+                                    <constraint firstAttribute="bottom" secondItem="I8O-Bm-mPI" secondAttribute="bottom" id="aHn-g1-FiS"/>
+                                    <constraint firstAttribute="trailing" secondItem="Vjm-2c-xgg" secondAttribute="trailing" id="hhC-nT-EkH"/>
+                                    <constraint firstItem="Vjm-2c-xgg" firstAttribute="leading" secondItem="NRE-fb-aTV" secondAttribute="leading" constant="20" id="k6n-5s-zPS"/>
+                                    <constraint firstItem="Vjm-2c-xgg" firstAttribute="top" secondItem="NRE-fb-aTV" secondAttribute="top" id="n6k-bu-ZSK"/>
+                                    <constraint firstAttribute="trailing" secondItem="I8O-Bm-mPI" secondAttribute="trailing" id="z9g-F6-XQI"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hUs-Hx-1cO">
+                                <rect key="frame" x="0.0" y="52" width="375" height="615"/>
+                                <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="VbB-48-aza" id="2t6-8d-k9O"/>
+                                    <outlet property="delegate" destination="VbB-48-aza" id="pkY-H8-bqR"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SWm-JO-UtE" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="NRE-fb-aTV" secondAttribute="trailing" id="6Yx-4l-ve4"/>
+                            <constraint firstAttribute="trailing" secondItem="SWm-JO-UtE" secondAttribute="trailing" id="AC0-ha-PX8"/>
+                            <constraint firstItem="NRE-fb-aTV" firstAttribute="width" secondItem="7JX-NO-s69" secondAttribute="width" id="GWo-M2-7c1"/>
+                            <constraint firstItem="NRE-fb-aTV" firstAttribute="leading" secondItem="7JX-NO-s69" secondAttribute="leading" id="NWp-nf-wZ4"/>
+                            <constraint firstItem="SWm-JO-UtE" firstAttribute="top" secondItem="0tZ-o3-vk0" secondAttribute="bottom" id="Ptx-Rd-P91"/>
+                            <constraint firstItem="WOJ-Nk-bOV" firstAttribute="top" secondItem="SWm-JO-UtE" secondAttribute="bottom" id="UBk-u4-5ci"/>
+                            <constraint firstItem="hUs-Hx-1cO" firstAttribute="trailing" secondItem="NRE-fb-aTV" secondAttribute="trailing" id="Vin-6P-HHx"/>
+                            <constraint firstItem="hUs-Hx-1cO" firstAttribute="leading" secondItem="NRE-fb-aTV" secondAttribute="leading" id="a7I-4h-guJ"/>
+                            <constraint firstItem="SWm-JO-UtE" firstAttribute="leading" secondItem="7JX-NO-s69" secondAttribute="leading" id="bAL-th-35H"/>
+                            <constraint firstItem="NRE-fb-aTV" firstAttribute="height" secondItem="7JX-NO-s69" secondAttribute="height" multiplier="0.0479" id="jcs-rH-iF1"/>
+                            <constraint firstItem="hUs-Hx-1cO" firstAttribute="top" secondItem="NRE-fb-aTV" secondAttribute="bottom" id="oTJ-AL-abV"/>
+                            <constraint firstItem="NRE-fb-aTV" firstAttribute="top" secondItem="0tZ-o3-vk0" secondAttribute="bottom" id="unR-0X-sYq"/>
+                            <constraint firstItem="hUs-Hx-1cO" firstAttribute="bottom" secondItem="WOJ-Nk-bOV" secondAttribute="top" id="x3F-cb-krq"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="bha-nN-R4F"/>
+                    <connections>
+                        <outlet property="constraintTblViewSearchResultTop" destination="oTJ-AL-abV" id="Axh-36-wYe"/>
+                        <outlet property="lblResultCount" destination="Vjm-2c-xgg" id="T1a-h8-wab"/>
+                        <outlet property="mapViewSearchResult" destination="SWm-JO-UtE" id="pG6-er-2Jy"/>
+                        <outlet property="tblJobSearchResult" destination="hUs-Hx-1cO" id="v2t-jR-aKr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6QG-Rh-cm0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2055" y="50"/>
+        </scene>
+        <!--Job DetailVC-->
+        <scene sceneID="Dzh-aS-xVF">
+            <objects>
+                <viewController storyboardIdentifier="DMJobDetailVC" id="iqq-Fg-qoE" customClass="DMJobDetailVC" customModule="DentaMatch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ixQ-R4-yUs"/>
+                        <viewControllerLayoutGuide type="bottom" id="lQ7-aW-gP0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zbk-eL-dMO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wgg-9a-mNv">
+                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="iqq-Fg-qoE" id="Th2-IK-2AC"/>
+                                    <outlet property="delegate" destination="iqq-Fg-qoE" id="IFe-DS-A5m"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gwU-qZ-Lfz">
+                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                                <color key="backgroundColor" red="0.015686274510000001" green="0.43921568630000002" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="Aba-rw-sOd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="16"/>
+                                <state key="normal" title="APPLY FOR JOB">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="actionApplyForJob:" destination="iqq-Fg-qoE" eventType="touchUpInside" id="nlL-S1-ekb"/>
+                                    <action selector="actionSearchButton:" destination="VTU-4g-X5s" eventType="touchUpInside" id="xix-MT-wcX"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="gwU-qZ-Lfz" secondAttribute="bottom" id="1y1-h2-IdY"/>
+                            <constraint firstItem="gwU-qZ-Lfz" firstAttribute="top" secondItem="wgg-9a-mNv" secondAttribute="bottom" id="Cef-UH-BN3"/>
+                            <constraint firstAttribute="trailing" secondItem="gwU-qZ-Lfz" secondAttribute="trailing" id="WA1-uQ-ytG"/>
+                            <constraint firstItem="gwU-qZ-Lfz" firstAttribute="leading" secondItem="zbk-eL-dMO" secondAttribute="leading" id="ZoD-Dh-dzA"/>
+                            <constraint firstItem="wgg-9a-mNv" firstAttribute="leading" secondItem="zbk-eL-dMO" secondAttribute="leading" id="mMw-a1-kV8"/>
+                            <constraint firstAttribute="trailing" secondItem="wgg-9a-mNv" secondAttribute="trailing" id="mP9-h6-9oU"/>
+                            <constraint firstItem="wgg-9a-mNv" firstAttribute="top" secondItem="ixQ-R4-yUs" secondAttribute="bottom" id="oEh-KB-dch"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btnApplyForJob" destination="gwU-qZ-Lfz" id="SME-h4-Idm"/>
+                        <outlet property="tblJobDetail" destination="wgg-9a-mNv" id="qL9-eO-xyB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I8x-gS-bfo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2744.8000000000002" y="49.925037481259373"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="jobs" width="24" height="22"/>
+    </resources>
+</document>
