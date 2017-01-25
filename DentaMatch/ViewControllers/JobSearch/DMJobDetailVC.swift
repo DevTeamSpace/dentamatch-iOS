@@ -9,7 +9,7 @@
 import UIKit
 
 class DMJobDetailVC: DMBaseVC {
-
+    
     @IBOutlet weak var tblJobDetail: UITableView!
     @IBOutlet weak var btnApplyForJob: UIButton!
     
@@ -17,7 +17,7 @@ class DMJobDetailVC: DMBaseVC {
         super.viewDidLoad()
         self.setup()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

@@ -161,14 +161,12 @@ class DMJobSearchResultVC : DMBaseVC {
 extension DMJobSearchResultVC : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return jobSearchResult.count
+        return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "JobSearchResultCell") as! JobSearchResultCell
-        let objJobDetail = jobSearchResult[indexPath.row]
-        cell.setCellData(jobSearchResult : objJobDetail)
         return cell
     }
     

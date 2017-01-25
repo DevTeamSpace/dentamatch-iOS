@@ -279,6 +279,8 @@
 		F2F5E0E21E31D43A0082187C /* JobDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2F5E0E11E31D43A0082187C /* JobDetailHeaderView.xib */; };
 		F2F5E0E61E35DE390082187C /* DMJobSearchVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F5E0E51E35DE390082187C /* DMJobSearchVC+Services.swift */; };
 		F2F5E0EA1E36216A0082187C /* JobSearchResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F5E0E91E36216A0082187C /* JobSearchResultModel.swift */; };
+		F2F9B97B1E38978200639716 /* JobTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F9B9791E38978200639716 /* JobTitleCell.swift */; };
+		F2F9B97C1E38978200639716 /* JobTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2F9B97A1E38978200639716 /* JobTitleCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -568,6 +570,8 @@
 		F2F5E0E11E31D43A0082187C /* JobDetailHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobDetailHeaderView.xib; sourceTree = "<group>"; };
 		F2F5E0E51E35DE390082187C /* DMJobSearchVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMJobSearchVC+Services.swift"; sourceTree = "<group>"; };
 		F2F5E0E91E36216A0082187C /* JobSearchResultModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobSearchResultModel.swift; sourceTree = "<group>"; };
+		F2F9B9791E38978200639716 /* JobTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobTitleCell.swift; sourceTree = "<group>"; };
+		F2F9B97A1E38978200639716 /* JobTitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobTitleCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -612,10 +616,6 @@
 				E54976E91E28CEDD006F21E5 /* Skill */,
 				E54976EB1E28CEDD006F21E5 /* User */,
 				E54976ED1E28CEDD006F21E5 /* WorkExperience */,
-				5A1E2A171E1E479B0055D913 /* ExperienceModel.swift */,
-				5A1E2A191E1E47C90055D913 /* EmployeeReferenceModel.swift */,
-				E587D2D21E234CDF006B7F06 /* JobTitle.swift */,
-				E587D2DA1E2395B7006B7F06 /* User.swift */,
 				F239E2DD1E28C65D0071909E /* JobDetails.swift */,
 				F2F5E0E91E36216A0082187C /* JobSearchResultModel.swift */,
 			);
@@ -1072,6 +1072,7 @@
 		E56B20A71DC0606A000512F6 /* TableView Cells */ = {
 			isa = PBXGroup;
 			children = (
+				F2F9B9781E38976100639716 /* JobTitle */,
 				5A3B06C51E3375A200EFCA6E /* ChangePassword */,
 				5A50A2C61E3216010010AA31 /* Setting */,
 				E558D90B1E2E871900A6DF95 /* EditProfile */,
@@ -1671,6 +1672,15 @@
 			path = JobDetail;
 			sourceTree = "<group>";
 		};
+		F2F9B9781E38976100639716 /* JobTitle */ = {
+			isa = PBXGroup;
+			children = (
+				F2F9B9791E38978200639716 /* JobTitleCell.swift */,
+				F2F9B97A1E38978200639716 /* JobTitleCell.xib */,
+			);
+			path = JobTitle;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1790,6 +1800,7 @@
 				E597E5791E151A99001DDA78 /* SF-UI-Display-Medium.otf in Resources */,
 				E5E7CB941E2FA23300D4FB59 /* StudyCell.xib in Resources */,
 				E58654FF1DEFEF7F006FEB2D /* Environments.plist in Resources */,
+				F2F9B97C1E38978200639716 /* JobTitleCell.xib in Resources */,
 				E597E5891E151A99001DDA78 /* SF-UI-Text-SemiboldItalic.otf in Resources */,
 				E5E7CB921E2FA23300D4FB59 /* AutoCompleteTableViewCell.xib in Resources */,
 				E5E7CB811E2FA23200D4FB59 /* AddDeleteExperienceCell.xib in Resources */,
@@ -1805,12 +1816,9 @@
 				E5E7CB881E2FA23200D4FB59 /* SectionHeadingTableCell.xib in Resources */,
 				E5E7CB861E2FA23200D4FB59 /* PhotoNameCell.xib in Resources */,
 				F2540F611E274360004B0538 /* JobSearchResultCell.xib in Resources */,
-				E587D2FE1E24E2E1006B7F06 /* StudyCell.xib in Resources */,
-				5AE5F51B1E1A5139006C328A /* PhotoCell.xib in Resources */,
 				F2F5E0D41E30CF310082187C /* JobDescriptionCell.xib in Resources */,
 				F2540F571E23A8AE004B0538 /* CurrentLocationCell.xib in Resources */,
 				F2F5E0CC1E2F292F0082187C /* DentistDetailCell.xib in Resources */,
-				E587D3101E253E83006B7F06 /* AffliliationsOthersCell.xib in Resources */,
 				E597E5811E151A99001DDA78 /* SF-UI-Text-HeavyItalic.otf in Resources */,
 				5AC7143E1E34A90700E433C1 /* Jobs.storyboard in Resources */,
 				5AE5F50A1E16563D006C328A /* Profile.storyboard in Resources */,
@@ -1827,7 +1835,6 @@
 				E597E5851E151A99001DDA78 /* SF-UI-Text-MediumItalic.otf in Resources */,
 				E558D9121E2E873700A6DF95 /* EditProfileHeaderTableCell.xib in Resources */,
 				F2F5E0DC1E31BDEC0082187C /* MapCell.xib in Resources */,
-				E5496E061E255B2E00C54288 /* AboutMeCell.xib in Resources */,
 				E597E5871E151A99001DDA78 /* SF-UI-Text-RegularItalic.otf in Resources */,
 				E597E5861E151A99001DDA78 /* SF-UI-Text-Regular.otf in Resources */,
 			);
@@ -1928,8 +1935,6 @@
 				E5A0EB101E2BE7C40092E21A /* ASJTagsView.m in Sources */,
 				E5E7CB911E2FA23300D4FB59 /* AutoCompleteTableViewCell.swift in Sources */,
 				F2F5E0D71E30D2C80082187C /* OfficeDescriptionCell.swift in Sources */,
-				E587D2FD1E24E2E1006B7F06 /* StudyCell.swift in Sources */,
-				E50B3F421E18E8D2004C5F32 /* ZProgressHUD.swift in Sources */,
 				E587D2F41E24C095006B7F06 /* DMAffiliationsVC.swift in Sources */,
 				F2F5E0CB1E2F292F0082187C /* DentistDetailCell.swift in Sources */,
 				E594BEA61E1E07C900310AE5 /* DMLoginVC+TableViewExtension.swift in Sources */,
@@ -1976,7 +1981,6 @@
 				E55462E11DAE41FB004163B2 /* Date+Additions.swift in Sources */,
 				E55462D71DAE2F49004163B2 /* UIColor+HexCode.swift in Sources */,
 				F2540F521E23A854004B0538 /* JobSearchPartTimeCell.swift in Sources */,
-				E5496DFF1E25563100C54288 /* CertificationsCell.swift in Sources */,
 				E56B20A21DBF749D000512F6 /* DMRegistrationVC.swift in Sources */,
 				E57F29DF1E3695060025B9DE /* DMEditDentalStateBoardVC.swift in Sources */,
 				E54976F51E28CEDD006F21E5 /* ExperienceModel.swift in Sources */,
@@ -2007,7 +2011,6 @@
 				F2540F4A1E23A81C004B0538 /* JobSeachTitleCell.swift in Sources */,
 				F2F5E0DA1E31BDD00082187C /* MapCell.swift in Sources */,
 				E55462F71DAE4C6F004163B2 /* UITextField+ToolBar.swift in Sources */,
-				5AE5F51A1E1A5139006C328A /* PhotoCell.swift in Sources */,
 				F2F5E0CF1E2F62080082187C /* AboutCell.swift in Sources */,
 				E587D2D71E236B84006B7F06 /* DMRegisterMapsVC+GoogleMapsExtension.swift in Sources */,
 				5A3B06CD1E3387FF00EFCA6E /* DMSettingVC+TableViewExtension.swift in Sources */,
@@ -2049,7 +2052,6 @@
 				E5496E0E1E273F1D00C54288 /* DMSkillsVC+Services.swift in Sources */,
 				5A3BD4B61E36065E00A607AC /* EditProfileReferenceCell.swift in Sources */,
 				E54976F11E28CEDD006F21E5 /* JobTitle.swift in Sources */,
-				5A1E2A1C1E1E77790055D913 /* ExperienceTableCell.swift in Sources */,
 				F2540F5D1E274258004B0538 /* DMJobSearchResultVC.swift in Sources */,
 				E53738F21DB373C200967876 /* Reachability.swift in Sources */,
 				E55462F51DAE4B9E004163B2 /* UIStoryBoard+Additions.swift in Sources */,
@@ -2066,6 +2068,7 @@
 				E5C5F31B1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift in Sources */,
 				E5E7CB9F1E306E6300D4FB59 /* License.swift in Sources */,
 				E54976F21E28CEDD006F21E5 /* Skill.swift in Sources */,
+				F2F9B97B1E38978200639716 /* JobTitleCell.swift in Sources */,
 				5A85D2131E2DFAD000AC4C89 /* TagList.swift in Sources */,
 				E5A0EB0E1E2BE7C40092E21A /* ASJTag.m in Sources */,
 				F2540F591E263613004B0538 /* DMJobTitleVC.swift in Sources */,
@@ -2155,7 +2158,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "3e4f5465-7281-45db-918b-8e49cf06b279";
 				PROVISIONING_PROFILE = "e88a372a-37fa-4987-a6f1-dafdcfb47925";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -2204,7 +2206,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = NO;
-				PROVISIONING_PROFILE = "a3f711a3-567c-46fd-920a-7699ed536163";
 				PROVISIONING_PROFILE = "83634547-93c0-4dc0-9583-d606d962a4fa";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -2306,7 +2307,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "3e4f5465-7281-45db-918b-8e49cf06b279";
 				PROVISIONING_PROFILE = "83634547-93c0-4dc0-9583-d606d962a4fa";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -2379,7 +2379,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = NO;
-				PROVISIONING_PROFILE = "3e4f5465-7281-45db-918b-8e49cf06b279";
 				PROVISIONING_PROFILE = "83634547-93c0-4dc0-9583-d606d962a4fa";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
