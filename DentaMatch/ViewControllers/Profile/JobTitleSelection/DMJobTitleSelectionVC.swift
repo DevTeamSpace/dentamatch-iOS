@@ -164,8 +164,8 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
         self.alertMessage(title: "", message: Constants.AlertMessage.skipProfile, leftButtonText: "Cancel", rightButtonText: kOkButtonTitle) { (isLeftButtonPressed:Bool) in
             if !isLeftButtonPressed {
                 DispatchQueue.main.async {
-                    self.makeToast(toastString: "Coming soon...")
-                    //self.openDashboard()
+//                    self.makeToast(toastString: "Coming soon...")
+                    self.openDashboard()
                 }
             } else {
                //Remain here

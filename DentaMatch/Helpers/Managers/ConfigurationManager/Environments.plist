@@ -5,7 +5,7 @@
 	<key>Development</key>
 	<dict>
 		<key>APIEndPoint</key>
-		<string>http://52.8.112.211/api/</string>
+		<string>http://dev.dentamatch.co/api/</string>
 		<key>LoggingEnabled</key>
 		<true/>
 		<key>AnalyticsTrackingEnabled</key>
@@ -28,7 +28,7 @@
 	<key>QA</key>
 	<dict>
 		<key>APIEndPoint</key>
-		<string>http://52.52.216.246/api/</string>
+		<string>http://qa.dentamatch.co/api/</string>
 		<key>LoggingEnabled</key>
 		<true/>
 		<key>AnalyticsTrackingEnabled</key>
@@ -51,7 +51,7 @@
 	<key>Staging</key>
 	<dict>
 		<key>APIEndPoint</key>
-		<string>https://staging</string>
+		<string>http://staging.dentamatch.co/api/</string>
 		<key>LoggingEnabled</key>
 		<false/>
 		<key>AnalyticsTrackingEnabled</key>

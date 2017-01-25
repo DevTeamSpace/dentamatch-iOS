@@ -40,6 +40,21 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             }
             else {
                 //Experience Cell
+                let row  =  indexPath.row - 1
+                let references = experiences[row].references.count
+                
+
+                
+                if references == 0 {
+                    return 128
+                }else if references == 1 {
+                    let height = checkReferenceIsAvaialble(ref: experiences[row].references[0]) == true ? 200 : 128
+                    return CGFloat(height)
+
+
+                }else if references == 2 {
+                    return 280
+                }
                 return 72
             }
             
@@ -121,6 +136,12 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             return 2
         case .certifications:
             return certifications.count
+        case .experience:
+            if self.experiences.count > 0 {
+                return self.experiences.count + 1
+            }else {
+                return 2
+            }
         default : return 2
         }
     }
@@ -167,6 +188,9 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
         case .experience:
             if indexPath.row == 0 {
                 let cell = makeHeadingCell(heading: "EXPERIENCE")
+                cell.editButton.isHidden = self.experiences.count > 0 ? false:true
+                cell.editButton.removeTarget(nil, action: nil, for: .allEvents)
+                cell.editButton.addTarget(self, action: #selector(openWorkExperienceScreen), for: .touchUpInside)
                 return cell
             } else {
                 if self.experiences.count == 0 {
@@ -175,8 +199,29 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
                     return cell
                 } else {
                     //Experience Cell
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "AddProfileOptionTableCell") as! AddProfileOptionTableCell
-                    cell.profileOptionLabel.text = "Add more experience"
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "EditProfileExperienceCell") as! EditProfileExperienceCell
+                    
+                    let experience  =  self.experiences[indexPath.row - 1]
+                    cell.jobTitleLabel.text = experience.jobTitle
+                    let yearExp:Float = Float(experience.experienceInMonth/12)
+                    cell.yearOfExperienceLabel.text = "\(yearExp)"
+                    cell.officeNameLabel.text = experience.officeName
+                    cell.officeAddressLabel.text = "\(experience.officeAddress!) \n\(experience.cityName!)"
+                    if experience.references.count > 0 {
+                        let reference  = experience.references[0]
+                        cell.reference1Name.text = (reference.referenceName?.trim().characters.count)! > 0 ? reference.referenceName : "N/A"
+                        cell.reference1Email.text = (reference.email?.trim().characters.count)! > 0 ? reference.email : "N/A"
+                        cell.reference1Mobile.text = (reference.mobileNumber?.trim().characters.count)! > 0 ? reference.mobileNumber : "N/A"
+                    }
+                    if experience.references.count > 1 {
+                        let reference  = experience.references[1]
+                        cell.reference2Name.text = (reference.referenceName?.trim().characters.count)! > 0 ? reference.referenceName : "N/A"
+                        cell.reference2Email.text = (reference.email?.trim().characters.count)! > 0 ? reference.email : "N/A"
+                        cell.reference2Mobile.text = (reference.mobileNumber?.trim().characters.count)! > 0 ? reference.mobileNumber : "N/A"
+                    }
+
+                    
+                    
                     return cell
                 }
             }
@@ -184,6 +229,7 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
         case .schooling:
             if indexPath.row == 0 {
                 let cell = makeHeadingCell(heading: "SCHOOLING AND CERTIFICATION")
+                cell.editButton.removeTarget(nil, action: nil, for: .allEvents)
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AddProfileOptionTableCell") as! AddProfileOptionTableCell
@@ -195,6 +241,7 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             if indexPath.row == 0 {
                 let cell = makeHeadingCell(heading: "KEY SKILLS")
                 cell.editButton.isHidden = self.skills.count > 0 ? false:true
+                cell.editButton.removeTarget(nil, action: nil, for: .allEvents)
                 cell.editButton.addTarget(self, action: #selector(openSkillsScreen), for: .touchUpInside)
                 return cell
             } else {
@@ -217,6 +264,7 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             if indexPath.row == 0 {
                 let cell = makeHeadingCell(heading: "PROFESSIONAL AFFILIATIONS")
                 cell.editButton.isHidden = self.affiliations.count > 0 ? false:true
+                cell.editButton.removeTarget(nil, action: nil, for: .allEvents)
                 cell.editButton.addTarget(self, action: #selector(openAffiliationsScreen), for: .touchUpInside)
                 return cell
             } else {
@@ -237,6 +285,7 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "SectionHeadingTableCell") as! SectionHeadingTableCell
                 cell.headingLabel.text = "LICENSE NUMBER"
                 cell.editButton.isHidden = true
+                cell.editButton.removeTarget(nil, action: nil, for: .allEvents)
                 cell.editButton.addTarget(self, action: #selector(openEditLicenseScreen), for: .touchUpInside)
                 if let _ = license {
                     cell.editButton.isHidden = false
@@ -308,6 +357,20 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
         cell.headingLabel.text = heading
         cell.editButton.isHidden = true
         return cell
+    }
+    func checkReferenceIsAvaialble(ref:EmployeeReferenceModel) -> Bool {
+        if ((ref.email?.trim())?.characters.count)! > 0 || ((ref.mobileNumber?.trim())?.characters.count)! > 0 || ((ref.referenceName?.trim())?.characters.count)! > 0 {
+            return true
+        }
+        return false
+    }
+    func getHeightForExperience(indexPath:IndexPath) {
+        let experience  = self.experiences[indexPath.row-1]
+        for ref in experience.references {
+            if (ref.email?.characters.count)! > 0 || (ref.mobileNumber?.characters.count)! > 0 || (ref.referenceName?.characters.count)! > 0 {
+                
+            }
+        }
     }
     
     func getHeightForAffilation (affiliations:[Affiliation]) -> CGFloat  {

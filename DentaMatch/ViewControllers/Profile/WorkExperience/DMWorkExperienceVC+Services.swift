@@ -67,7 +67,7 @@ extension DMWorkExperienceVC {
                 
             }else {
                 params[Constants.ServerKey.reference2Name] = refObj?.referenceName as AnyObject?
-                params[Constants.ServerKey.reference1Mobile] = refObj?.mobileNumber as AnyObject?
+                params[Constants.ServerKey.reference2Mobile] = refObj?.mobileNumber as AnyObject?
                 params[Constants.ServerKey.reference2Email] = refObj?.email as AnyObject?
             }
             

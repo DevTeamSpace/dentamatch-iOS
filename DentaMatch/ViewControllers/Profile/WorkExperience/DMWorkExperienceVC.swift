@@ -53,7 +53,9 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
     var jobTitles = [JobTitle]()
     var selectedIndex:Int = 0
     var isHiddenExperienceTable :Bool = false
+    var isEditMode = false
 
+    @IBOutlet weak var nextButton: UIButton!
 
     @IBOutlet weak var mainScrollView: UIScrollView!
     @IBOutlet weak var workExperienceTable: UITableView!
@@ -66,7 +68,11 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
         super.viewDidLoad()
         setup()
         initialDataSetup()
-        getExperienceAPI()
+        if isEditMode != true {
+            getExperienceAPI()
+        }else{
+            nextButton.setTitle("Save", for: .normal)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -118,7 +124,20 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
         
         if self.exprienceArray.count > 0
         {
-            self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToStudyVC, sender: self)
+            if checkAllFieldIsEmpty() {
+                if isEditMode == true {
+                    _ = self.navigationController?.popViewController(animated: true)
+                }else{
+                    self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToStudyVC, sender: self)
+                    
+                }
+
+                
+            }else{
+                saveDataOnNextButton()
+                
+            }
+            
 
         }else{
             self.makeToast(toastString: Constants.AlertMessage.atleastOneExperience)
@@ -143,6 +162,7 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
         let exp = ExperienceModel(empty: "")
         self.exprienceDetailArray?.add(exp)
         self.currentExperience?.references.append(EmployeeReferenceModel(empty: ""))
+        self.workExperienceTable.reloadData()
         self.workExperienceDetailTable.reloadData()
         reSizeTableViewsAndScrollView()
     }
@@ -161,6 +181,64 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
         self.workExperienceTable.layoutIfNeeded()
         self.workExperienceDetailTable.layoutIfNeeded()
         self.mainScrollView.contentSize = CGSize(width: self.view.bounds.size.width, height: self.hightOfExperienceTable.constant + self.hightOfExperienceDetailTable.constant)
+    }
+    
+    func saveDataOnNextButton() {
+        
+        self.view.endEditing(true)
+        if !checkValidations()
+        {
+            return
+        }
+        var param = [String:AnyObject]()
+        if self.currentExperience?.isEditMode == true
+        {
+            param = self.getParamsForSaveAndUpdate(isEdit: true)
+        }else {
+            param = self.getParamsForSaveAndUpdate(isEdit: false)
+            
+        }
+        saveUpdateExperience(params: param, completionHandler: { (response, error) in
+            
+            if response![Constants.ServerKey.status].boolValue {
+                let resultArray = response![Constants.ServerKey.result][Constants.ServerKey.list].array
+                if (resultArray?.count)! > 0
+                {
+                    
+                    let dict  = resultArray?[0].dictionary
+                    self.currentExperience?.experienceID = (dict?[Constants.ServerKey.experienceId]?.intValue)!
+                    
+                }
+                if self.currentExperience?.isEditMode == true {
+                    self.exprienceArray[self.selectedIndex] = self.currentExperience!
+                    
+                }else{
+                    self.exprienceArray.append(self.currentExperience!)
+                    
+                }
+                self.isHiddenExperienceTable = false
+                
+                self.currentExperience = nil
+                self.currentExperience = ExperienceModel(empty: "")
+                self.currentExperience?.isFirstExperience = false
+                self.currentExperience?.references.append(EmployeeReferenceModel(empty: ""))
+                self.workExperienceTable.reloadData()
+                self.workExperienceDetailTable.reloadData()
+                self.reSizeTableViewsAndScrollView()
+                
+            }
+        })
+        self.workExperienceTable.reloadData()
+        self.workExperienceDetailTable.reloadData()
+        //        self.makeToast(toastString: "Experience Added")
+        self.reSizeTableViewsAndScrollView()
+
+        if isEditMode == true {
+            _ = self.navigationController?.popViewController(animated: true)
+        }else{
+            self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToStudyVC, sender: self)
+        }
+        
     }
 
     

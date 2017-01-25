@@ -122,6 +122,14 @@ class DMEditProfileVC: DMBaseVC {
         self.navigationController?.pushViewController(dentalStateboardVC, animated: true)
     }
     
+    func openWorkExperienceScreen() {
+        let workExpVC = UIStoryboard.profileStoryBoard().instantiateViewController(type: DMWorkExperienceVC.self)!
+        workExpVC.hidesBottomBarWhenPushed = true
+        workExpVC.isEditMode = true
+        workExpVC.exprienceArray = self.experiences
+        self.navigationController?.pushViewController(workExpVC, animated: true)
+    }
+    
     func openCertificateScreen(sender:UIButton) {
         let editCertificateVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: DMEditCertificateVC.self)!
         editCertificateVC.certificate = certifications[sender.tag]
