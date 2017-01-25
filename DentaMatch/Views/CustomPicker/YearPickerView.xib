@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-UI-Text-Semibold.otf">
+            <string>SFUIText-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="YearPickerView" customModule="DentaMatch" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="218"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o9k-wF-ZJw">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="nB3-8i-b6T"/>
+                    </constraints>
+                    <items>
+                        <barButtonItem style="plain" id="cDL-OX-LN2">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0X6-Tl-Set">
+                                <rect key="frame" x="16" y="7" width="73" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="15"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="canceButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="h1P-ba-MgT"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Zh6-2H-xdD"/>
+                        <barButtonItem style="plain" id="7l8-w8-4zN">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="GEv-Co-HIF">
+                                <rect key="frame" x="302" y="7" width="57" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="15"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="doneButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="hsL-df-h2c"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </items>
+                </toolbar>
+                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6mB-Qn-BOr">
+                    <rect key="frame" x="0.0" y="44" width="375" height="174"/>
+                    <connections>
+                        <outlet property="dataSource" destination="iN0-l3-epB" id="N3a-yJ-qQI"/>
+                        <outlet property="delegate" destination="iN0-l3-epB" id="RvJ-Ff-8al"/>
+                    </connections>
+                </pickerView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="6mB-Qn-BOr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3Rw-dT-a3J"/>
+                <constraint firstItem="6mB-Qn-BOr" firstAttribute="top" secondItem="o9k-wF-ZJw" secondAttribute="bottom" id="9J8-Pl-SF4"/>
+                <constraint firstAttribute="bottom" secondItem="6mB-Qn-BOr" secondAttribute="bottom" id="JgI-ii-HlQ"/>
+                <constraint firstItem="o9k-wF-ZJw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="NiY-7D-NXh"/>
+                <constraint firstAttribute="trailing" secondItem="6mB-Qn-BOr" secondAttribute="trailing" id="Wqu-YF-dQm"/>
+                <constraint firstItem="o9k-wF-ZJw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ZdR-v7-gzi"/>
+                <constraint firstAttribute="trailing" secondItem="o9k-wF-ZJw" secondAttribute="trailing" id="dpe-Ns-HZa"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="yearPickerView" destination="6mB-Qn-BOr" id="mA7-R0-2rv"/>
+            </connections>
+            <point key="canvasLocation" x="64.5" y="-99"/>
+        </view>
+    </objects>
+</document>

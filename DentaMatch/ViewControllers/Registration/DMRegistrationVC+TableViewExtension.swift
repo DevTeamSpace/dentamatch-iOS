@@ -18,7 +18,8 @@ extension DMRegistrationVC: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RegistrationTableViewCell") as! RegistrationTableViewCell
         cell.emailTextField.delegate = self
         cell.newPasswordTextField.delegate = self
-        cell.nameTextField.delegate = self
+        cell.firstNameTextField.delegate = self
+        cell.lastNameTextField.delegate = self
         cell.preferredLocationTextField.delegate = self
         cell.termsAndConditionsTextView.delegate = self
         
@@ -36,10 +37,6 @@ extension DMRegistrationVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if Utilities.DeviceType.IS_IPHONE_5 {
-            return 500
-        } else {
-        return self.registrationTableView.frame.size.height
-        }
+        return 520
     }
 }

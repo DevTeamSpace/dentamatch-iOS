@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DMExecutiveSummaryVC: UIViewController {
+class DMExecutiveSummaryVC: DMBaseVC {
 
     enum ExecutiveSummary:Int {
         case profileHeader
@@ -19,6 +19,7 @@ class DMExecutiveSummaryVC: UIViewController {
     @IBOutlet weak var executiveSummaryTableView: UITableView!
     
     let profileProgress:CGFloat = 1.0
+    var aboutMe = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,20 +31,45 @@ class DMExecutiveSummaryVC: UIViewController {
         self.executiveSummaryTableView.separatorColor = UIColor.clear
         self.executiveSummaryTableView.register(UINib(nibName: "PhotoNameCell", bundle: nil), forCellReuseIdentifier: "PhotoNameCell")
         self.executiveSummaryTableView.register(UINib(nibName: "AboutMeCell", bundle: nil), forCellReuseIdentifier: "AboutMeCell")
+    }
+    
+    func openDashboard() {
+        let dashboardVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: TabBarVC.self)!
+        kAppDelegate.window?.rootViewController = dashboardVC
         
+//        UIView.transition(with: self.view.window!, duration: 0.5, options: .curveEaseInOut, animations: {
+//            kAppDelegate.window?.rootViewController = dashboardVC
+//        }) { (bool:Bool) in
+//            
+//        }
+    }
+    
+    func addToolBarOnTextView() -> UIToolbar {
+        let keyboardDoneButtonView = UIToolbar()
+        keyboardDoneButtonView.sizeToFit()
+        keyboardDoneButtonView.barTintColor = Constants.Color.toolBarColor
+        // Setup the buttons to be put in the system.
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
+        
+        let item = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(toolBarButtonPressed))
+        item.tag = 2
+        item.setTitleTextAttributes([NSFontAttributeName: UIFont.fontRegular(fontSize: 20.0)!], for: UIControlState.normal)
+        
+        item.tintColor = UIColor.white
+        
+        let toolbarButtons = [flexibleSpace,item]
+        
+        //Put the buttons into the ToolBar and display the tool bar
+        keyboardDoneButtonView.setItems(toolbarButtons, animated: false)
+        
+        return keyboardDoneButtonView
+    }
+    
+    func toolBarButtonPressed() {
+        self.view.endEditing(true)
     }
     
     @IBAction func completeProfileButtonClicked(_ sender: Any) {
+        self.updateAboutMeAPI()
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

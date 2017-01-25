@@ -13,7 +13,7 @@ extension DMJobTitleSelectionVC {
     
     func getJobsAPI() {
         self.showLoader()
-        APIManager.apiGet(serviceName: Constants.API.getJobTitleAPI, parameters: [:]) { (response:JSON?, error:NSError?) in
+        APIManager.apiGet(serviceName: Constants.API.getJobTitle, parameters: [:]) { (response:JSON?, error:NSError?) in
             self.hideLoader()
             if error != nil {
                 self.makeToast(toastString: (error?.localizedDescription)!)
@@ -29,7 +29,7 @@ extension DMJobTitleSelectionVC {
     }
     
     func handleJobListResponse(response:JSON?) {
-        let pickerView = JobSelectionPickerView.loadJobSelectionView(withJobTitles: [])
+
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
                 let skillList = response[Constants.ServerKey.result][Constants.ServerKey.joblists].array
@@ -37,11 +37,9 @@ extension DMJobTitleSelectionVC {
                     let job = JobTitle(job: jobObject)
                     jobTitles.append(job)
                 }
-                pickerView.setup(jobTitles: jobTitles)
-                jobSelectionPickerTextField.inputView = pickerView
-                pickerView.delegate = self
-                pickerView.pickerView.reloadAllComponents()
-                pickerView.backgroundColor = UIColor.white
+                jobSelectionPickerView.setup(jobTitles: jobTitles)
+                jobSelectionPickerView.pickerView.reloadAllComponents()
+                jobSelectionPickerView.backgroundColor = UIColor.white
                 
             } else {
                 self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
@@ -55,12 +53,38 @@ extension DMJobTitleSelectionVC {
         if let profileImageData = self.profileImage {
             if let imageData = UIImageJPEGRepresentation(profileImageData, 0.5) {
                 params["image"] = imageData as AnyObject?
-                APIManager.apiMultipart(serviceName: Constants.API.uploadImageAPI, parameters: params, completionHandler: { (response:JSON?, error:NSError?) in
+                self.showLoader()
+                APIManager.apiMultipart(serviceName: Constants.API.uploadImage, parameters: params, completionHandler: { (response:JSON?, error:NSError?) in
+                    self.hideLoader()
+                    if error != nil {
+                        self.makeToast(toastString: (error?.localizedDescription)!)
+                        return
+                    }
+                    if response == nil {
+                        self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
+                        return
+                    }
                     
                     print(response!)
+                    self.handleUploadProfileResponse(response: response)
+                    
+                    
                 })
             } else {
                 self.makeToast(toastString: "Profile Image problem")
+            }
+        }
+    }
+    
+    func handleUploadProfileResponse(response:JSON?) {
+        if let response = response {
+            if response[Constants.ServerKey.status].boolValue {
+                UserManager.shared().activeUser.profileImageURL = response[Constants.ServerKey.result][Constants.ServerKey.profileImageURL].stringValue
+//                UserDefaultsManager.sharedInstance.profileImageURL = response[Constants.ServerKey.result][Constants.ServerKey.profileImageURL].stringValue
+                self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+                openLicenseScreen()
+            } else {
+                self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
             }
         }
     }

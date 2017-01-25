@@ -15,7 +15,7 @@ class UserDefaultsManager: NSObject {
     
     var isLoggedIn:Bool {
         get {
-            if(kUserDefaults.value(forKey: Constants.UserDefaultsKey.isLoggedIn) != nil){
+            if kUserDefaults.value(forKey: Constants.UserDefaultsKey.isLoggedIn) != nil {
                 return kUserDefaults.value(forKey: Constants.UserDefaultsKey.isLoggedIn) as! Bool
             }
             //Default is not logged in
@@ -29,7 +29,7 @@ class UserDefaultsManager: NSObject {
     
     var deviceToken:String {
         get {
-            if(kUserDefaults.value(forKey: Constants.UserDefaultsKey.deviceToken) != nil){
+            if kUserDefaults.value(forKey: Constants.UserDefaultsKey.deviceToken) != nil {
                 return kUserDefaults.value(forKey: Constants.UserDefaultsKey.deviceToken) as! String
             }
             return ""
@@ -42,7 +42,7 @@ class UserDefaultsManager: NSObject {
     
     var accessToken:String {
         get {
-            if(kUserDefaults.value(forKey: Constants.UserDefaultsKey.accessToken) != nil){
+            if kUserDefaults.value(forKey: Constants.UserDefaultsKey.accessToken) != nil {
                 return kUserDefaults.value(forKey: Constants.UserDefaultsKey.accessToken) as! String
             }
             return ""
@@ -51,5 +51,35 @@ class UserDefaultsManager: NSObject {
             kUserDefaults.setValue(newValue, forKey: Constants.UserDefaultsKey.accessToken)
             kUserDefaults.synchronize()
         }
+    }
+    
+    var profileImageURL:String {
+        get {
+            if kUserDefaults.value(forKey: Constants.UserDefaultsKey.profileImageURL) != nil {
+                return kUserDefaults.value(forKey: Constants.UserDefaultsKey.profileImageURL) as! String
+            }
+            return ""
+        }
+        set {
+            kUserDefaults.setValue(newValue, forKey: Constants.UserDefaultsKey.profileImageURL)
+            kUserDefaults.synchronize()
+        }
+    }
+    
+    var licenseImageURL:String {
+        get {
+            if kUserDefaults.value(forKey: Constants.UserDefaultsKey.licenseImageURL) != nil {
+                return kUserDefaults.value(forKey: Constants.UserDefaultsKey.licenseImageURL) as! String
+            }
+            return ""
+        }
+        set {
+            kUserDefaults.setValue(newValue, forKey: Constants.UserDefaultsKey.licenseImageURL)
+            kUserDefaults.synchronize()
+        }
+    }
+
+    func clearCache() {
+        UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
     }
 }

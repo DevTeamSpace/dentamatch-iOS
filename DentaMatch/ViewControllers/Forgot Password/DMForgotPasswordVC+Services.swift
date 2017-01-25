@@ -13,7 +13,7 @@ extension DMForgotPasswordVC {
     
     func forgotPasswordAPI(params:[String:String]) {
         self.showLoader()
-        APIManager.apiPut(serviceName: Constants.API.forgotPasswordAPI, parameters: params) { (response:JSON?, error:NSError?) in
+        APIManager.apiPut(serviceName: Constants.API.forgotPassword, parameters: params) { (response:JSON?, error:NSError?) in
             self.hideLoader()
             if error != nil {
                 self.makeToast(toastString: (error?.localizedDescription)!)

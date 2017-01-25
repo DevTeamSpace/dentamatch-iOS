@@ -11,6 +11,7 @@ import UIKit
 class ProfileTextField: UITextField {
 
     private var leftTextFieldView:UIView?
+    var type = 0
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,9 +20,18 @@ class ProfileTextField: UITextField {
         self.layer.borderColor = Constants.Color.textFieldBorderColor.cgColor
         leftTextFieldView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: self.frame.size.height))
         self.leftView =  leftTextFieldView
+        self.textColor = Constants.Color.textFieldTextColor
         self.leftViewMode = .always
 
     }
+    
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        if self.type != 0 || action == #selector(delete(_:)) {
+            return false
+        }
+        return true
+    }
+    
     
     /*
     // Only override draw() if you perform custom drawing.

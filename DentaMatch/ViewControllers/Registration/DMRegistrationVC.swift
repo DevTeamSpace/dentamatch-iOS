@@ -71,20 +71,24 @@ class DMRegistrationVC: DMBaseVC {
     func validateFields() -> Bool{
         if !registrationParams[Constants.ServerKey.firstName]!.isEmpty {
             if registrationParams[Constants.ServerKey.email]!.isValidEmail {
-                if registrationParams[Constants.ServerKey.password]!.characters.count >= Constants.Limits.passwordLimit {
+                if registrationParams[Constants.ServerKey.password]!.characters.count >= Constants.Limit.passwordLimit {
                     if coordinateSelected != nil {
                         if self.termsAndConditionsAccepted {
                             return true
                         } else {
-                            self.makeToast(toastString: "Please accept terms and conditions")
+                            self.makeToast(toastString: Constants.AlertMessage.termsAndConditions)
                             return false
                         }
                     } else {
-                        self.makeToast(toastString: "Preferred Location error")
+                        self.makeToast(toastString: Constants.AlertMessage.emptyPreferredJobLocation)
                         return false
                     }
                 } else {
-                    self.makeToast(toastString: "Password limit error")
+                    if registrationParams[Constants.ServerKey.password]!.characters.count == 0 {
+                        self.makeToast(toastString: Constants.AlertMessage.emptyPassword)
+                    } else {
+                    self.makeToast(toastString: Constants.AlertMessage.passwordRange)
+                    }
                     return false
                 }
             } else {
@@ -92,7 +96,7 @@ class DMRegistrationVC: DMBaseVC {
                 return false
             }
         } else {
-            self.makeToast(toastString: "Name empty error")
+            self.makeToast(toastString: Constants.AlertMessage.emptyName)
             return false
         }
     }

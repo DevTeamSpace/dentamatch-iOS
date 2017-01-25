@@ -16,8 +16,10 @@ extension AppDelegate {
         UIApplication.shared.registerForRemoteNotifications()
     }
 
-    //MARK:- Device Token
+    
+    //MARK:- UIApplicationDelegate
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        // application is unused
         var token = ""
         for i in 0..<deviceToken.count {
             //token = token + String(format: "%02.2hhx", arguments: [deviceToken[i]])
@@ -28,6 +30,7 @@ extension AppDelegate {
     
     //MARK:- Remote/Local Notification Delegates
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        //
         debugPrint(error.localizedDescription)
     }
     

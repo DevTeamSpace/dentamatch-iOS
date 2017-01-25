@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension DMStudyVC : UITableViewDataSource,UITableViewDelegate {
+extension DMStudyVC : UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate {
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -22,7 +22,7 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate {
         case .profileHeader:
             return 2
         case .school:
-            return school.count
+            return schoolCategories.count
         }
     }
     
@@ -32,26 +32,28 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate {
 
         switch studyOption {
         case .profileHeader:
-            switch indexPath.row {
-            case 0:
-                //Profile Header
-                return 233
-            case 1:
-                //Heading
-                return 44
-            default:
-                return 0
-            }
+            return getHeightForProfileHeader(indexPath: indexPath)
         case .school:
-            let dict = school[indexPath.row]
-            if !(dict["isOpen"] as? Bool)! {
+            let schoolCategory = schoolCategories[indexPath.row]
+            if !schoolCategory.isOpen {
                 return 60
-            } else {
-                return 202
-            }
+            } else { return 202 }
         }
     }
     
+    func getHeightForProfileHeader(indexPath:IndexPath) -> CGFloat {
+        switch indexPath.row {
+        case 0:
+            //Profile Header
+            return 233
+        case 1:
+            //Heading
+            return 44
+        default:
+            return 0
+        }
+
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let studyOption = Study(rawValue: indexPath.section)!
@@ -59,42 +61,74 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate {
         switch studyOption {
             
         case .profileHeader:
-            switch indexPath.row {
-            case 0:
-                //Profile Header
-                let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoNameCell") as! PhotoNameCell
-                cell.nameLabel.text = "Where did you Study?"
-                cell.jobTitleLabel.text = "Lorem Ipsum is simply dummy text for the typing and printing industry"
-                cell.photoButton.progressBar.setProgress(profileProgress, animated: true)
-                return cell
-                
-            case 1:
-                //Heading
-                let cell = tableView.dequeueReusableCell(withIdentifier: "SectionHeadingTableCell") as! SectionHeadingTableCell
-                return cell
-                
-            default:
-                return UITableViewCell()
-            }
-
+             return updateCellForProfileHeader(tableView: tableView, indexPath: indexPath)
+            
         case .school:
             let cell = tableView.dequeueReusableCell(withIdentifier: "StudyCell") as! StudyCell
-            let dict = school[indexPath.row]
-            cell.headingButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-            cell.headingButton.tag = indexPath.row
-            cell.headingButton.setTitle(dict["name"] as? String, for: .normal)
+            updateCellForStudyCell(cell: cell, indexPath: indexPath)
             return cell
         }
     }
     
-    func buttonTapped(sender:UIButton) {
-        var dict = school[sender.tag]
-        if (dict["isOpen"] as? Bool)! {
-            dict["isOpen"] = false as AnyObject?
-        } else {
-            dict["isOpen"] = true as AnyObject?
+    func updateCellForProfileHeader(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        switch indexPath.row {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoNameCell") as! PhotoNameCell
+            cell.updateCellForPhotoNameCell(nametext: "Where did you Study?", jobTitleText: "Lorem Ipsum is simply dummy text for the typing and printing industry", profileProgress: profileProgress)
+            return cell
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SectionHeadingTableCell") as! SectionHeadingTableCell
+            return cell
+            
+        default:
+            return UITableViewCell()
         }
-        school[sender.tag] = dict
+ 
+    }
+    
+    func updateCellForStudyCell(cell:StudyCell , indexPath: IndexPath) {
+        let school = schoolCategories[indexPath.row]
+        cell.headingButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        cell.schoolNameTextField.text = ""
+        cell.yearOfGraduationTextField.text = ""
+
+        cell.schoolNameTextField.delegate = self
+        
+        cell.schoolNameTextField.tag = Int(school.schoolCategoryId)!
+        cell.yearOfGraduationTextField.tag = Int(school.schoolCategoryId)!
+        cell.schoolNameTextField.returnKeyType = .done
+        cell.yearOfGraduationTextField.inputView = yearPicker
+        cell.yearOfGraduationTextField.delegate = self
+        cell.yearOfGraduationTextField.tintColor = UIColor.clear
+        cell.yearOfGraduationTextField.type = 1
+        cell.yearOfGraduationTextField.returnKeyType = .done
+
+        
+        for dict in selectedData {
+            let selectedDict = dict as! NSDictionary
+            if selectedDict["parentId"] as! String == "\(school.schoolCategoryId)" {
+                if let schoolName = selectedDict["other"] as? String {
+                    cell.schoolNameTextField.text = schoolName
+                }
+                if let yearOfGraduation = selectedDict["yearOfGraduation"] as? String {
+                    cell.yearOfGraduationTextField.text = yearOfGraduation
+                }
+            }
+        }
+        
+        cell.schoolNameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        cell.headingButton.tag = indexPath.row
+        cell.headingButton.setTitle(school.schoolCategoryName, for: .normal)
+
+    }
+    func buttonTapped(sender:UIButton) {
+        let school = schoolCategories[sender.tag]
+        if school.isOpen {
+            school.isOpen = false
+        } else {
+            school.isOpen = true
+        }
+        //school[sender.tag] = dict
         
         self.studyTableView.reloadRows(at: [IndexPath(row: sender.tag, section: 1)], with: .automatic)
         DispatchQueue.main.async {
@@ -102,4 +136,111 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate {
             
         }
     }
+    
+    func textFieldDidChange(textField:UITextField) {
+        
+        let schoolCategory = schoolCategories.filter({$0.schoolCategoryId == "\(textField.tag)"}).first
+        
+        let university = schoolCategory?.universities.filter({$0.universityName == textField.text})
+        
+        //selectedUniversities["\(textField.tag)"] = nil
+        
+        if (university?.count)! > 0 {
+            //Its in the list
+            print("In the list")
+        } else {
+            
+//            if textField.text!.isEmpty {
+//                selectedUniversities["other_\(textField.tag)"] = nil
+//                selectedUniversities["other_date\(textField.tag)"] = nil
+//            } else {
+//                selectedUniversities["other_date\(textField.tag)"] = "" as AnyObject?
+//                selectedUniversities["other_\(textField.tag)"] = textField.text! as AnyObject?
+//            }
+        }
+        
+        //print(selectedUniversities)
+
+        if textField.text!.isEmpty {
+            hideAutoCompleteView()
+        } else {
+            let schoolId = "\(textField.tag)"
+            
+            var universities = self.schoolCategories.filter({$0.schoolCategoryId == schoolId}).first?.universities
+            
+            universities = universities?.filter({$0.universityName.range(of: textField.text!, options: .caseInsensitive, range: Range(uncheckedBounds: ($0.universityName.startIndex,$0.universityName.endIndex)), locale: nil) != nil })
+            
+            if let universities = universities {
+                autoCompleteTable.updateData(schoolCategoryId: schoolId, universities: universities)
+            }
+            
+            let point = textField.superview?.convert(textField.center, to: self.view)
+            let frame = textField.frame
+            autoCompleteTable.frame = CGRect(x: frame.origin.x, y: (point?.y)! + 25, width: frame.width, height: 200)
+            
+            autoCompleteBackView.isHidden = false
+            autoCompleteTable.isHidden = false
+        }
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        self.yearPicker?.getPreSelectedValues(dateString: "", curTag: textField.tag)
+
+        return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        //textFieldDidBeginEditing
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        //textFieldDidEndEditing
+        print("textFieldDidEndEditing")
+        
+        if textField.inputView is YearPickerView {
+            print("year picker")
+        }
+        else {
+        if !isFilledFromAutoComplete {
+            var flag = 0
+            
+            if selectedData.count == 0 {
+                let dict = NSMutableDictionary()
+                dict["parentId"] = "\(textField.tag)"
+                dict["schoolId"] = "\(textField.tag)"
+                dict["other"] = textField.text!
+                selectedData.add(dict)
+                flag = 1
+            } else {
+                for category in selectedData {
+                    let dict = category as! NSMutableDictionary
+                    
+                    if dict["parentId"] as! String == "\(textField.tag)" {
+                        dict["other"] = textField.text!
+                        flag = 1
+                    }
+                }
+            }
+            
+            //Array is > 0 but dict doesnt exists
+            if flag == 0 {
+                let dict = NSMutableDictionary()
+                dict["parentId"] = "\(textField.tag)"
+                dict["schoolId"] = "\(textField.tag)"
+                dict["other"] = textField.text!
+                selectedData.add(dict)
+            }
+            
+            print(selectedData)
+        }
+        isFilledFromAutoComplete = false
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        hideAutoCompleteView()
+        return true
+    }
+    
 }

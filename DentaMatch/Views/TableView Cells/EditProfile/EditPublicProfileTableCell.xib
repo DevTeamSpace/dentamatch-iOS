@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-UI-Text-Regular.otf">
+            <string>SFUIText-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="EditPublicProfileTableCell" rowHeight="645" id="KGk-i7-Jjw" customClass="EditPublicProfileTableCell" customModule="DentaMatch" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="645"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="644"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="onA-2d-Xbc">
+                        <rect key="frame" x="111" y="25" width="99" height="100"/>
+                        <state key="normal" image="profileButton"/>
+                    </button>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="24i-3S-8Nu" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
+                        <rect key="frame" x="28" y="164" width="264" height="55"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="55" id="TbI-Sa-Tfn"/>
+                        </constraints>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Job Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DVJ-iw-XgA" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
+                        <rect key="frame" x="28" y="314" width="264" height="55"/>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Location" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o2G-tl-7Yc" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
+                        <rect key="frame" x="28" y="389" width="264" height="55"/>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Hi" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EBs-Au-Mw3">
+                        <rect key="frame" x="28" y="464" width="264" height="152"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="152" id="ugc-d9-HXV"/>
+                        </constraints>
+                        <color key="textColor" red="0.21960784310000001" green="0.21960784310000001" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffK-Uk-8Is">
+                        <rect key="frame" x="182" y="89" width="31" height="30"/>
+                        <state key="normal" image="addPhoto"/>
+                    </button>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rhf-Hl-X9c" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
+                        <rect key="frame" x="28" y="239" width="264" height="55"/>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="EBs-Au-Mw3" firstAttribute="top" secondItem="o2G-tl-7Yc" secondAttribute="bottom" constant="20" id="148-C0-vGc"/>
+                    <constraint firstItem="24i-3S-8Nu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="20" id="96Z-RW-hVg"/>
+                    <constraint firstItem="o2G-tl-7Yc" firstAttribute="centerX" secondItem="DVJ-iw-XgA" secondAttribute="centerX" id="FAe-Sn-1yz"/>
+                    <constraint firstItem="onA-2d-Xbc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="Map-EZ-sr8"/>
+                    <constraint firstItem="EBs-Au-Mw3" firstAttribute="width" secondItem="o2G-tl-7Yc" secondAttribute="width" id="NF6-c1-rDo"/>
+                    <constraint firstItem="rhf-Hl-X9c" firstAttribute="top" secondItem="24i-3S-8Nu" secondAttribute="bottom" constant="20" id="Nhw-gl-X7K"/>
+                    <constraint firstItem="ffK-Uk-8Is" firstAttribute="centerX" secondItem="onA-2d-Xbc" secondAttribute="centerX" multiplier="1.23" id="Nnh-Si-39Y"/>
+                    <constraint firstItem="o2G-tl-7Yc" firstAttribute="height" secondItem="DVJ-iw-XgA" secondAttribute="height" id="OlQ-9y-A52"/>
+                    <constraint firstItem="o2G-tl-7Yc" firstAttribute="top" secondItem="DVJ-iw-XgA" secondAttribute="bottom" constant="20" id="Pyt-2Z-yoI"/>
+                    <constraint firstItem="DVJ-iw-XgA" firstAttribute="width" secondItem="rhf-Hl-X9c" secondAttribute="width" id="TSo-Rn-Aao"/>
+                    <constraint firstItem="rhf-Hl-X9c" firstAttribute="centerX" secondItem="24i-3S-8Nu" secondAttribute="centerX" id="VfJ-ko-Cnf"/>
+                    <constraint firstItem="24i-3S-8Nu" firstAttribute="top" secondItem="ffK-Uk-8Is" secondAttribute="bottom" constant="45" id="aUX-JB-z3H"/>
+                    <constraint firstItem="DVJ-iw-XgA" firstAttribute="height" secondItem="rhf-Hl-X9c" secondAttribute="height" id="fPT-jH-5f1"/>
+                    <constraint firstItem="DVJ-iw-XgA" firstAttribute="centerX" secondItem="rhf-Hl-X9c" secondAttribute="centerX" id="jVG-Uh-lvm"/>
+                    <constraint firstItem="DVJ-iw-XgA" firstAttribute="top" secondItem="rhf-Hl-X9c" secondAttribute="bottom" constant="20" id="k8l-T2-qKz"/>
+                    <constraint firstItem="rhf-Hl-X9c" firstAttribute="height" secondItem="24i-3S-8Nu" secondAttribute="height" id="kym-Tg-ATo"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="24i-3S-8Nu" secondAttribute="trailing" constant="20" id="lhz-2O-BZX"/>
+                    <constraint firstItem="rhf-Hl-X9c" firstAttribute="width" secondItem="24i-3S-8Nu" secondAttribute="width" id="oo4-Cc-f0n"/>
+                    <constraint firstItem="onA-2d-Xbc" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="pF7-BW-782"/>
+                    <constraint firstItem="o2G-tl-7Yc" firstAttribute="width" secondItem="DVJ-iw-XgA" secondAttribute="width" id="tOs-ip-Z8B"/>
+                    <constraint firstItem="24i-3S-8Nu" firstAttribute="top" secondItem="onA-2d-Xbc" secondAttribute="bottom" constant="39" id="weK-W3-TAj"/>
+                    <constraint firstItem="EBs-Au-Mw3" firstAttribute="centerX" secondItem="o2G-tl-7Yc" secondAttribute="centerX" id="zwg-OI-GFi"/>
+                </constraints>
+            </tableViewCellContentView>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+            <connections>
+                <outlet property="aboutMeTextView" destination="EBs-Au-Mw3" id="h88-WQ-avx"/>
+                <outlet property="addEditProfileButton" destination="ffK-Uk-8Is" id="TQu-eA-kLG"/>
+                <outlet property="firstNameTextField" destination="24i-3S-8Nu" id="yDC-jM-kvb"/>
+                <outlet property="jobTitleTextField" destination="DVJ-iw-XgA" id="1XK-PX-kjt"/>
+                <outlet property="lastNameTextField" destination="rhf-Hl-X9c" id="KLm-Gf-Oz6"/>
+                <outlet property="locationTextField" destination="o2G-tl-7Yc" id="7hK-Lc-cIg"/>
+                <outlet property="profileButton" destination="onA-2d-Xbc" id="czs-8A-ewV"/>
+            </connections>
+            <point key="canvasLocation" x="27" y="313.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="addPhoto" width="31" height="30"/>
+        <image name="profileButton" width="99" height="100"/>
+    </resources>
+</document>

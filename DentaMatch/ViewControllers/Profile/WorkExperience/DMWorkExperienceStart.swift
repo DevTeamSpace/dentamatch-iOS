@@ -15,6 +15,7 @@ class DMWorkExperienceStart: DMBaseVC,UITableViewDataSource,UITableViewDelegate,
     var selectedJobTitle:JobTitle!
     var experienceArray = NSMutableArray()
     var jobTitles = [JobTitle]()
+    var totalExperience = 0
 
     
     override func viewDidLoad() {
@@ -22,12 +23,14 @@ class DMWorkExperienceStart: DMBaseVC,UITableViewDataSource,UITableViewDelegate,
         experienceArray.addObjects(from: [selectedJobTitle.jobTitle,"",""])
         self.title = "Work Experience"
         setUp()
+        
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         self.changeNavBarAppearanceForProfiles()
-        
         self.navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = nil
         self.navigationController?.navigationBar.isTranslucent = false
@@ -36,8 +39,6 @@ class DMWorkExperienceStart: DMBaseVC,UITableViewDataSource,UITableViewDelegate,
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
 
         self.workExperienceTable.reloadData()
     }
@@ -88,17 +89,17 @@ class DMWorkExperienceStart: DMBaseVC,UITableViewDataSource,UITableViewDelegate,
             let text = self.experienceArray[i] as! String
             if i == 0 {
                 if text.isEmptyField {
-                    self.makeToast(toastString: "Please enter job title")
+                    self.makeToast(toastString: Constants.AlertMessage.emptyCurrentJobTitle)
                     return
                 }
             }else if i == 1{
                 if text.isEmptyField {
-                    self.makeToast(toastString: "Please enter experience")
+                    self.makeToast(toastString: Constants.AlertMessage.emptyYearOfExperience)
                     return
                 }
             }else if i == 2 {
                 if text.isEmptyField {
-                    self.makeToast(toastString: "Please office name")
+                    self.makeToast(toastString: Constants.AlertMessage.emptyOfficeName)
                     return
                 }
             }
@@ -118,9 +119,11 @@ class DMWorkExperienceStart: DMBaseVC,UITableViewDataSource,UITableViewDelegate,
         if segue.identifier == "goToExperienceDetail"
         {
             let destinationVC:DMWorkExperienceVC = segue.destination as! DMWorkExperienceVC
+            destinationVC.currentExperience?.jobTitleID = self.selectedJobTitle.jobId
             destinationVC.currentExperience?.jobTitle = self.experienceArray[0] as? String
             destinationVC.currentExperience?.yearOfExperience = self.experienceArray[1] as? String
             destinationVC.jobTitles = self.jobTitles
+            destinationVC.currentExperience?.experienceInMonth = self.totalExperience
             destinationVC.currentExperience?.officeName = self.experienceArray[2] as? String
         }
     }

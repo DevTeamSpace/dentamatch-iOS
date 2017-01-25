@@ -19,7 +19,6 @@ protocol ToolBarButtonDelegate {
 }
 
 var delegate: ToolBarButtonDelegate?
-var constraint: NSLayoutConstraint?
 
 extension UITextField {
     func addLeftToolBarButton(title: String) {

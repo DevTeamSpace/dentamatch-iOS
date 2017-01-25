@@ -12,6 +12,7 @@ import UIKit
 extension UIStoryboard {
     
     func instantiateViewController<T:UIViewController>(type: T.Type) -> T? {
+        debugPrint(type)
         var fullName: String = NSStringFromClass(T.self)
         if let range = fullName.range(of:".", options:.backwards, range:nil, locale: nil){
             fullName = fullName.substring(from: range.upperBound)
@@ -29,5 +30,13 @@ extension UIStoryboard {
     
     class func jobSearchStoryBoard()->UIStoryboard{
         return UIStoryboard(name: Constants.StoryBoard.jobSearchStoryboard, bundle: nil)
+    }
+    
+    class func onBoardingStoryBoard()->UIStoryboard{
+        return UIStoryboard(name: Constants.StoryBoard.onBoardingStoryboard, bundle: nil)
+    }
+    
+    class func dashBoardStoryBoard()->UIStoryboard{
+        return UIStoryboard(name: Constants.StoryBoard.dashboardStoryboard, bundle: nil)
     }
 }

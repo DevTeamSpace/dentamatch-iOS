@@ -14,7 +14,7 @@ extension DMLoginVC {
     func loginAPI(params:[String:String]) {
         print("Login Parameters\n\(params.description))")
         self.showLoader()
-        APIManager.apiPost(serviceName: Constants.API.loginAPI, parameters: params) { (response:JSON?, error:NSError?) in
+        APIManager.apiPost(serviceName: Constants.API.login, parameters: params) { (response:JSON?, error:NSError?) in
             self.hideLoader()
             if error != nil {
                 self.makeToast(toastString: (error?.localizedDescription)!)
@@ -25,16 +25,16 @@ extension DMLoginVC {
                 return
             }
             debugPrint(response!)
-            if response![Constants.ServerKey.status].boolValue {
-                UserDefaultsManager.sharedInstance.accessToken = response![Constants.ServerKey.result][Constants.ServerKey.userDetails][Constants.ServerKey.accessToken].stringValue
-                UserDefaultsManager.sharedInstance.isLoggedIn = true
-                
+            self.handleLoginResponse(response: response)
+        }
+    }
+    
+    func handleLoginResponse(response:JSON?) {
+        UserManager.shared().loginResponseHandler(response: response) { (success:Bool, message:String) in
+            self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
+            if success {
                 self.openJobTitleSelection()
-                self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
-            } else {
-                self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
             }
-
         }
     }
 }

@@ -14,6 +14,10 @@ let kAppDelegate = UIApplication.shared.delegate as! AppDelegate
 let kDeviceId = "com.appster.dentamatch.deviceId"
 let kCustomDesignFont = "dentamatch"
 let kLogEnabled = true
+let kPlaceHolderImage = UIImage(named: "profileButton")
+let kCertificatePlaceHolder = UIImage(named: "certificatePlaceholder")
+
+
 let kGoogleAPIKey = "AIzaSyDFWCamiO9WGTth-iOxfY_L0K6oRBeAu0U"
 
 let kOkButtonTitle = "Ok"
@@ -49,6 +53,7 @@ struct Constants {
         static let textFieldBorderColor = UIColor.color(withHexCode: "e4e4e4")
         static let textFieldColorSelected = UIColor.color(withHexCode: "0470c0")
         static let textFieldPlaceHolderColor =  UIColor.color(withHexCode: "959595")
+        static let textFieldErrorColor = UIColor.color(withHexCode: "ff0000")
         
         static let profileProgressBarColor = UIColor.color(withHexCode: "a3d977")
         static let profileProgressBarTrackColor = UIColor.color(withHexCode: "f4f4f4")
@@ -69,23 +74,34 @@ struct Constants {
     
     //MARK:- StoryBoards
     struct StoryBoard {
+        static let onBoardingStoryboard  = "Onboarding"
+
         static let registrationStoryboard  = "Registration"
         static let profileStoryboard  = "Profile"
         static let jobSearchStoryboard  = "JobSearch"
  
+        static let dashboardStoryboard  = "Dashboard"
+
         struct Identifer {
             static let registrationNav = "RegistrationNAV"
             static let profileNav  = "ProfileNAV"
             static let jobSearchNav  = "JobSearchNav"
+            static let editProfileNav  = "EditProfileNAV"
         }
         
         struct SegueIdentifier {
             static let goToStudyVC = "goToStudyVC"
             static let goToSkillsVC = "goToSkillsVC"
+            static let goToPublicProfile = "goToPublicProfile"
             static let goToAffiliationsVC = "goToAffiliationsVC"
             static let goToCertificationsVC = "goToCertificationsVC"
             static let goToExecutiveSummaryVC = "goToExecutiveSummaryVC"
             static let goToLicense = "goToLicense"
+            static let goToEditLicense = "goToEditLicense"
+            static let goToSetting = "goToSetting"
+            static let goToChangePassword = "goToChangePassword"
+            static let goToEditCertificate = "goToEditCertificate"
+
         }
     }
     
@@ -93,15 +109,38 @@ struct Constants {
     struct API {
     
         //APIs
-        static let registrationAPI = Constants.API.apiURL("users/sign-up")
-        static let loginAPI = Constants.API.apiURL("users/sign-in")
-        static let forgotPasswordAPI = Constants.API.apiURL("users/forgot-password")
+        static let registration = Constants.API.apiURL("users/sign-up")
+        static let login = Constants.API.apiURL("users/sign-in")
+        static let forgotPassword = Constants.API.apiURL("users/forgot-password")
         static let termsAndConditionsURL = Constants.API.apiURL("term-condition")
         static let privacyPolicyURL = Constants.API.apiURL("privacy-policy")
+        static let getJobTitle = Constants.API.apiURL("list-jobtitle")
+        static let uploadImage = Constants.API.apiURL("users/upload-image")
+        static let getSkillList = Constants.API.apiURL("list-skills")
+        static let updateSkillList = Constants.API.apiURL("users/update-skill")
+        static let getCertificationList = Constants.API.apiURL("list-certifications")
+        static let getAboutMe = Constants.API.apiURL("users/about-me-list")
+        static let saveAboutMe = Constants.API.apiURL("users/about-me-save")
+        static let getAffiliationList = Constants.API.apiURL("users/affiliation-list")
+        static let saveAffiliationList = Constants.API.apiURL("users/affiliation-save")
+        static let getSchoolListAPI = Constants.API.apiURL("users/school-list")
+        static let addSchoolAPI = Constants.API.apiURL("users/school-add")
         static let getJobTitleAPI = Constants.API.apiURL("list-jobtitle")
         static let uploadImageAPI = Constants.API.apiURL("users/upload-image")
         static let JobSearchResultAPI = Constants.API.apiURL("users/search-jobs")
         
+        static let licenseNumberAndState = Constants.API.apiURL("users/update-license")
+        static let workExperienceSave = Constants.API.apiURL("users/work-experience-save")
+        static let getWorkExperience = Constants.API.apiURL("users/work-experience-list")
+        static let deleteExperience = Constants.API.apiURL("users/work-experience-delete")
+        static let updateCertificate = Constants.API.apiURL("users/update-certificate")
+        static let updateValidationDates = Constants.API.apiURL("users/update-certificate-validity")
+        static let changePassword = Constants.API.apiURL("users/change-password")
+
+        static let userProfile = Constants.API.apiURL("users/user-profile")
+        static let signOut = Constants.API.apiURL("users/sign-out")
+
+
         static func apiURL(_ methodName: String) -> String {
             return BASE_URL + methodName
         }
@@ -123,11 +162,73 @@ struct Constants {
         static let status = "status"
         static let statusCode = "statusCode"
         static let message = "message"
+        static let licenseNumber = "licenseNumber"
+        static let state = "state"
         static let userDetails = "userDetails"
         static let result = "result"
+        static let dentalStateBoard = "dentalStateBoard"
         static let accessToken = "accessToken"
         static let joblists = "joblists"
         static let joblist = "list"
+        static let profileImageURL = "img_url"
+        static let imageUrl = "imageUrl"
+        static let list = "list"
+        static let aboutMe = "aboutMe"
+        static let affiliationDataArray = "affiliationDataArray"
+        static let other = "other"
+        static let affiliationId = "affiliationId"
+        static let otherAffiliation = "otherAffiliation"
+        static let validityDate = "validityDate"
+        static let image = "image"
+        static let profilePic = "profilePic"
+        static let license = "licence"
+        static let certifications = "certifications"
+        static let affiliations = "affiliations"
+        static let skills = "skills"
+
+        static let imageURL = "imagePath"
+        static let imageURLForPostResponse = "imgUrl"
+
+        static let experienceId = "id"
+        static let userId = "userId"
+        static let user = "user"
+        static let jobTitleId = "jobTitleId"
+        static let jobTitle = "jobTitle"
+        static let jobtitleName = "jobtitleName"
+        static let monthsOfExperience = "monthsOfExpereince"
+        static let officeName = "officeName"
+        static let officeAddressExp = "officeAddress"
+        static let cityName = "city"
+        static let workExperience = "workExperience"
+
+        static let reference1Name = "reference1Name"
+        static let reference1Mobile = "reference1Mobile"
+        static let reference1Email = "reference1Email"
+        static let reference2Name = "reference2Name"
+        static let reference2Mobile = "reference2Mobile"
+        static let reference2Email = "reference2Email"
+        static let createdAt = "createdAt"
+        static let skillList = "list"
+        static let skillName = "skillName"
+        static let otherSkill = "otherSkill"
+        static let id = "id"
+        static let parentId = "parentId"
+        static let isSkillSelected = "userSkill"
+        
+        static let certificateName = "certificateName"
+        static let schoolingId = "schoolingId"
+        static let schoolingChildId = "schoolingChildId"
+        static let schoolName = "schoolName"
+        static let schoolCategory = "schoolCategory"
+        static let schoolChildName = "schoolChildName"
+        static let yearOfGraduation = "yearOfGraduation"
+        static let jobSeekerStatus = "jobSeekerStatus"
+        
+        //change password screen
+        static let oldPass = "oldPassword"
+        static let newPass = "newPassword"
+        static let confirmPass = "confirmNewPassword"
+
     }
     
     struct JobDetailKey {
@@ -146,30 +247,50 @@ struct Constants {
         static let isLoggedIn = "isLoggedIn"
         static let deviceToken = "kDeviceToken"
         static let accessToken = "kDeviceToken"
+        static let profileImageURL = "kProfileImageURL"
+        static let licenseImageURL = "kLicenseImageURL"
 
     }
     
     //MARK:- Alert Messages
     struct AlertMessage{
-        static let invalidEmail = "Please enter correct email ID"
+        static let invalidEmail = "Please provide a valid Email Id."
+        static let passwordRange = "Password should be 6-25 characters long"
+        static let emptyName = "Name text can not be left blank."
+        static let emptyPreferredJobLocation = "Preferred Job Location can not be left blank."
+        //license no screen
+        static let emptyLicenseNumber = "Please enter License number"
+        static let emptyState = "Please enter State"
+        static let stateCertificate = "Please upload photo for Dental state board"
+        static let lienseNoStartError = "License number can't start with hyphen (-)"
+        static let stateStartError = "State  can't start with hyphen (-)"
+        
+        static let termsAndConditions = "Please accept terms and conditions/Privacy Policy."
+        static let emptyCurrentJobTitle = "Current Job Title can not be left blank."
+        static let emptyPassword = "please enter the password"
         static let skipProfile = "Completed job profile will help you in applying for jobs."
         static let somethingWentWrong = "Something went wrong"
         
-        static let jobTitle = "please enter job title"
-        static let yearOfExperience = "please enter experience"
-        static let officeName = "please enter office name"
-        static let officeAddress = "please enter office address"
-        static let CityName = "please enter city name"
+        //Experience
+        static let emptyYearOfExperience = "Please select Year Of Experience."
+        static let emptyOfficeName = "Office Name can not be left blank."
+        static let emptyOfficeAddress = "Office Field can not be left blank."
+        static let emptyCityName = "City Name can not be left blank."
+        static let referenceMobileNumber = "Please, Provide a valid Phone number of 10 digits."
+        static let atleastOneExperience  = "Please add at least one experience"
+        
+        static let morethen2refernce = "More than two references can not be added."
+        
+        static let emptyOldPassword = "Please enter Old password"
+        static let emptyNewPassword = "Please enter New password"
+        static let emptyConfirmPassword = "Please enter Confirm password"
+        static let matchPassword = "New password and Confirm password not match"
 
+        
+        //change password screen messgaes
         struct AlertTitle {
             static let invalidEmailTitle = ""
         }
-    }
-    
-    struct TextFieldMaxLenght {
-        static let commonMaxLenght = 30
-        static let licenseNumber = 15
-        static let passwordLenght = 14
     }
     
     //MARK:- Strings
@@ -178,12 +299,12 @@ struct Constants {
     }
     
     //MARK:- Hardcoded Limits
-    struct Limits{
+    struct Limit{
         static let licenseNumberLimit = 16
         static let passwordLimit = 6
+        static let maxPasswordLimit = 25
+        static let commonMaxLimit = 30
+        static let licenseNumber = 15
 
     }
 }
-
-
-

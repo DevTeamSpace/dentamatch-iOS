@@ -46,12 +46,11 @@ class DMOnboardingVC: DMBaseVC {
     //Go to login/Registration
         
      let registrationContainer = UIStoryboard.registrationStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.registrationNav) as! UINavigationController
-        //kAppDelegate.window?.rootViewController = registrationContainer
-
+        
         UIView.transition(with: self.view.window!, duration: 0.25, options: .transitionCrossDissolve, animations: {
             kAppDelegate.window?.rootViewController = registrationContainer
         }) { (bool:Bool) in
-            
+            //completion
         }
     }
 }

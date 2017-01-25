@@ -60,12 +60,19 @@ class DMLoginVC: DMBaseVC {
         self.loginTableView.addGestureRecognizer(tap)
     }
     
+    func clearData() {
+        if let cell = self.loginTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? LoginTableViewCell {
+            cell.emailTextField.text = ""
+            cell.passwordTextField.text = ""
+        }
+    }
+    
     func validateFields() -> Bool {
         if loginParams[Constants.ServerKey.email]!.isValidEmail {
             if !loginParams[Constants.ServerKey.password]!.isEmpty {
                 return true
             } else {
-                self.makeToast(toastString: "Empty Password Error")
+                self.makeToast(toastString: Constants.AlertMessage.emptyPassword)
                 return false
             }
         } else {

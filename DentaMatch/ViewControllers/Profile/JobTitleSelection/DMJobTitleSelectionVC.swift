@@ -10,6 +10,7 @@ import UIKit
 
 class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate {
 
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var addPhotoButton: UIButton!
     @IBOutlet weak var profileButton: ProfileImageButton!
     @IBOutlet weak var notNowButton: UIButton!
@@ -18,7 +19,6 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
     @IBOutlet weak var profileHeaderView: UIView!
     
     var profileImage:UIImage?
-    var jobSelectionPickerTextField:UITextField!
     var jobSelectionPickerView:JobSelectionPickerView!
     var jobTitles = [JobTitle]()
     var selectedJobTitle:JobTitle?
@@ -36,39 +36,30 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        //jobSelectionView?.frame = self.currentJobTitleTextField.frame
+    }
+    
     func makeTip() {
         UIView.makeTip(view: profileHeaderView, size: 8, x: profileHeaderView.frame.midX/2, y: profileHeaderView.frame.midY)
     }
     
     //MARK:- Private Methods
     func setup() {
+        currentJobTitleTextField.tintColor = UIColor.clear
+        self.nameLabel.text = "Hi \(UserManager.shared().activeUser.firstName!)"
         self.addJobSelectionPickerViewTextField()
-        
-        currentJobTitleTextField.isUserInteractionEnabled = false
-        let jobSelectionView = UIView(frame: self.currentJobTitleTextField.frame)
-        self.view.addSubview(jobSelectionView)
-        jobSelectionView.isUserInteractionEnabled = true
-        let tap = UITapGestureRecognizer(target: self, action: #selector(openJobSelectionPicker))
-        jobSelectionView.addGestureRecognizer(tap)
+        currentJobTitleTextField.type = 1
         self.profileButton.isUserInteractionEnabled = false
         self.perform(#selector(makeTip), with: nil, afterDelay: 0.2)
     }
     
-    func openJobSelectionPicker() {
-        self.jobSelectionPickerTextField.becomeFirstResponder()
-    }
-    
     func addJobSelectionPickerViewTextField(){
-        if(jobSelectionPickerTextField != nil){
-            jobSelectionPickerTextField.removeFromSuperview()
-        }
-        
-        jobSelectionPickerTextField = UITextField(frame: CGRect.zero)
-        self.view.addSubview(jobSelectionPickerTextField)
-        jobSelectionPickerTextField.spellCheckingType = .no
-        jobSelectionPickerTextField.autocorrectionType = .no
-        jobSelectionPickerTextField.delegate = self
-       
+        //Job Title Picker
+        jobSelectionPickerView = JobSelectionPickerView.loadJobSelectionView(withJobTitles: [])
+        currentJobTitleTextField.inputView = jobSelectionPickerView
+        jobSelectionPickerView.delegate = self
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -79,6 +70,7 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
     func addPhoto() {
         self.cameraGalleryOptionActionSheet(title: "", message: "Please select", leftButtonText: "Camera", rightButtonText: "Gallery") { (isCameraButtonPressed, isGalleryButtonPressed, isCancelButtonPressed) in
             if isCancelButtonPressed {
+                //cancel action
             } else if isCameraButtonPressed {
                 self.getPhotoFromCamera()
             } else {
@@ -125,23 +117,38 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
     }
     
     @IBAction func profileButtonPressed(_ sender: Any) {
+        //profile button action
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {
         if profileImage != nil {
             if selectedJobTitle != nil {
-                //uploadProfileImageAPI()
-                openLicenseScreen()
+                //openLicenseScreen()
+                uploadProfileImageAPI()
             } else {
-                self.makeToast(toastString: "Please select current job title")
+                self.makeToast(toastString: Constants.AlertMessage.emptyCurrentJobTitle)
             }
         } else{
             self.makeToast(toastString: "Please select profile image")
         }
+        
+//        //For testing
+        //openLicenseScreen()
     }
     
     func openLicenseScreen() {
         self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToLicense, sender: self)
+    }
+    
+    func openDashboard() {
+        let dashboardVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: TabBarVC.self)!
+        kAppDelegate.window?.rootViewController = dashboardVC
+
+//        UIView.transition(with: self.view.window!, duration: 0.5, options: .transitionCrossDissolve, animations: {
+//            kAppDelegate.window?.rootViewController = dashboardVC
+//        }) { (bool:Bool) in
+//            
+//        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -156,7 +163,12 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
     @IBAction func notNowButtonPressed(_ sender: Any) {
         self.alertMessage(title: "", message: Constants.AlertMessage.skipProfile, leftButtonText: "Cancel", rightButtonText: kOkButtonTitle) { (isLeftButtonPressed:Bool) in
             if !isLeftButtonPressed {
-                print("Skip Profile")
+                DispatchQueue.main.async {
+                    self.makeToast(toastString: "Coming soon...")
+                    //self.openDashboard()
+                }
+            } else {
+               //Remain here
             }
         }
     }

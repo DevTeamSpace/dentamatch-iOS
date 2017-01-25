@@ -14,7 +14,7 @@ extension DMRegistrationVC {
     func registrationAPI(params:[String:String]) {
         print("Registration Parameters\n\(params.description))")
         self.showLoader()
-        APIManager.apiPost(serviceName: Constants.API.registrationAPI, parameters: params) { (response:JSON?, error:NSError?) in
+        APIManager.apiPost(serviceName: Constants.API.registration, parameters: params) { (response:JSON?, error:NSError?) in
             self.hideLoader()
             if error != nil {
                 self.makeToast(toastString: (error?.localizedDescription)!)
@@ -50,7 +50,8 @@ extension DMRegistrationVC {
         if let cell = self.registrationTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as?
             RegistrationTableViewCell {
             cell.emailTextField.text = ""
-            cell.nameTextField.text = ""
+            cell.firstNameTextField.text = ""
+            cell.lastNameTextField.text = ""
             cell.preferredLocationTextField.text = ""
             cell.newPasswordTextField.text = ""
             self.termsAndConditionsAccepted = false

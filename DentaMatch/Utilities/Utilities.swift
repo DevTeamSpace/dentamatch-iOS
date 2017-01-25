@@ -53,4 +53,20 @@ class Utilities: NSObject {
             return keychain[kDeviceId]!
         }
     }
+    
+    class func logOutOfInvalidToken() {
+        UserDefaultsManager.sharedInstance.clearCache()
+        let registrationContainer = UIStoryboard.registrationStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.registrationNav) as! UINavigationController
+        
+        UIView.transition(with: (UIApplication.shared.keyWindow?.rootViewController?.view.window)!, duration: 0.25, options: .transitionCrossDissolve, animations: {
+            kAppDelegate.window?.rootViewController = registrationContainer
+        }) { (bool:Bool) in
+
+            let alert = UIAlertController(title: "Logged Out", message: "Invalid Token", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
+            }
+            alert.addAction(action)
+            UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+        }
+    }
 }

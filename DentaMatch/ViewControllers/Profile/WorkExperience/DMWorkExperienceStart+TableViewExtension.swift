@@ -18,31 +18,7 @@ extension DMWorkExperienceStart
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
-//        if section == 0
-//        {
-//            return 1
-//        }else{
-//            return 3
-//        }
     }
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
-//    {
-//        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 45))
-//        let headerLabel = UILabel(frame: headerView.frame)
-//        headerLabel.frame.origin.x = 20
-//        headerLabel.backgroundColor = UIColor.clear
-//        headerLabel.font = UIFont.fontMedium(fontSize: 14)
-//        headerView.addSubview(headerLabel)
-//        headerView.backgroundColor = UIColor(red: 248.0/255.0, green: 248.0/255.0, blue: 248.0/255.0, alpha: 1.0)
-//        if section == 0
-//        {
-//            headerLabel.text = ""
-//        }else{
-//            headerLabel.text = "Work Experience"
-//        }
-//        
-//        return headerView
-//    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
@@ -51,7 +27,9 @@ extension DMWorkExperienceStart
             return 213
         case 1:
             return 45
-        case 2,3,4:
+        case 2:
+            return 95
+        case 3,4:
             return 75
         default:
             return 0
@@ -74,52 +52,21 @@ extension DMWorkExperienceStart
         case 0:
             //PhotoNameCell
             let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoNameCell") as! PhotoNameCell
-            cell.nameLabel.text = "Where do you work?"
-            cell.jobTitleLabel.text = "Relevant work experience strengthens your profile"
-            cell.photoButton.progressBar.setProgress(profileProgress, animated: true)
-
+            cell.updateCellForPhotoNameCell(nametext: "Where do you work?", jobTitleText: "Relevant work experience strengthens your profile", profileProgress: profileProgress)
             cell.selectionStyle = .none
             
             return cell
 
         case 1:
-            //PhotoNameCell
+            //Section Heading Cell
             let cell = tableView.dequeueReusableCell(withIdentifier: "SectionHeadingTableCell") as! SectionHeadingTableCell
-            cell.selectionStyle = .none
-            cell.headingLabel.text = "Work Experience"
+            cell.headingLabel.text = "WORK EXPERIENCE"
             
             return cell
 
         case 2,3,4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AnimatedPHTableCell") as! AnimatedPHTableCell
-            cell.selectionStyle = .none
-//            cell.commonTextFiled.text = self.experienceArray[indexPath.row-2] as? String
-            switch indexPath.row {
-            case 2:
-                cell.commonTextFiled.placeholder = FieldType.CurrentJobTitle.description
-                
-                let pickerView = JobSelectionPickerView.loadJobSelectionView(withJobTitles: jobTitles)
-                cell.commonTextFiled.inputView = pickerView
-                pickerView.delegate = self
-                cell.commonTextFiled.tag = 0
-                pickerView.pickerView.reloadAllComponents()
-                pickerView.backgroundColor = UIColor.white
-                
-            case 3:
-                cell.commonTextFiled.placeholder = FieldType.YearOfExperience.description
-                let yearViewObj = ExperiencePickerView.loadExperiencePickerView(withText: self.experienceArray[indexPath.row-2] as! String)
-                yearViewObj.delegate = self
-                cell.commonTextFiled.tag = 1
-                cell.commonTextFiled.inputView = yearViewObj
-            case 4:
-                cell.commonTextFiled.placeholder = FieldType.OfficeName.description
-                cell.commonTextFiled.tag = 2
-            default:
-                print("default")
-            }
-            
-            cell.commonTextFiled.text = self.experienceArray[indexPath.row - 2] as? String
-            cell.commonTextFiled.delegate = self
+            updateCellForWorkeExperienceStart(cell: cell, indexPath: indexPath)
             return cell
 
         default: break
@@ -127,6 +74,59 @@ extension DMWorkExperienceStart
 
         return UITableViewCell()
     }
+    
+    func updateCellForWorkeExperienceStart(cell:AnimatedPHTableCell, indexPath:IndexPath) {
+        if indexPath.row == 2 {
+            cell.accessoryLabel.isHidden = false
+            cell.cellTopSpace.constant = 30
+        } else {
+            cell.cellTopSpace.constant = 10
+            cell.accessoryLabel.isHidden = true
+        }
+        
+        switch indexPath.row {
+        case 2:
+            cellConfigureForJobSelection(cell: cell, indexPath: indexPath)
+        case 3:
+            cellConfigureForExperience(cell: cell, indexPath: indexPath)
+        case 4:
+            cell.commonTextField.placeholder = FieldType.OfficeName.description
+            cell.commonTextField.tag = 2
+            cell.commonTextField.type = 0
+            cell.commonTextField.tintColor = self.view.tintColor
+            cell.commonTextField.autocapitalizationType = .sentences
+        default:
+            print("default")
+        }
+        cell.commonTextField.text = self.experienceArray[indexPath.row - 2] as? String
+        cell.commonTextField.delegate = self
+
+    }
+    
+    func cellConfigureForJobSelection(cell:AnimatedPHTableCell, indexPath:IndexPath) {
+    
+        cell.commonTextField.placeholder = FieldType.CurrentJobTitle.description
+        let pickerView = JobSelectionPickerView.loadJobSelectionView(withJobTitles: jobTitles)
+        cell.commonTextField.type = 1
+        cell.commonTextField.tintColor = UIColor.clear
+        cell.commonTextField.inputView = pickerView
+        pickerView.delegate = self
+        cell.commonTextField.tag = 0
+        pickerView.pickerView.reloadAllComponents()
+        pickerView.backgroundColor = UIColor.white
+
+    }
+    func cellConfigureForExperience(cell:AnimatedPHTableCell, indexPath:IndexPath) {
+        cell.commonTextField.placeholder = FieldType.YearOfExperience.description
+        let yearViewObj = ExperiencePickerView.loadExperiencePickerView(withText: self.experienceArray[indexPath.row-2] as! String)
+        yearViewObj.delegate = self
+        cell.commonTextField.tag = 1
+        cell.commonTextField.type = 1
+        cell.commonTextField.tintColor = UIColor.clear
+        cell.commonTextField.inputView = yearViewObj
+
+    }
+
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if let textField = textField as? AnimatedPHTextField {
             textField.layer.borderColor = Constants.Color.textFieldColorSelected.cgColor
@@ -155,7 +155,7 @@ extension DMWorkExperienceStart
         guard string.characters.count > 0 else {
             return true
         }
-        if (textField.text?.characters.count)! >= Constants.TextFieldMaxLenght.commonMaxLenght {
+        if (textField.text?.characters.count)! >= Constants.Limit.commonMaxLimit {
             return false
         }
 
@@ -187,6 +187,8 @@ extension DMWorkExperienceStart
         }else {
             text.append(" \(month) months")
         }
+        self.totalExperience = (year * 12) + month
+
 
         self.experienceArray.replaceObject(at: 1, with: text)
         self.workExperienceTable.reloadData()

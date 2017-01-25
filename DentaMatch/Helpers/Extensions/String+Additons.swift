@@ -153,5 +153,11 @@ extension String {
         let test = NSPredicate(format:"SELF MATCHES %@", pattern)
         return test.evaluate(with: self)
     }
+    
+    func widthWithConstraintHeight(height: CGFloat, font: UIFont) -> CGFloat {
+        let constraintRect = CGSize(width: .greatestFiniteMagnitude, height: height)
+        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
+        return boundingBox.width
+    }
 
 }

@@ -46,11 +46,14 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
 
 
     let NAVBAR_CHANGE_POINT:CGFloat = 64
-    var exprienceArray:NSMutableArray?
+    var exprienceArray = [ExperienceModel]()
     var exprienceDetailArray:NSMutableArray?
-    var currentExperience:ExperienceModel? = ExperienceModel()
+    var currentExperience:ExperienceModel? = ExperienceModel(empty: "")
     var phoneFormatter = PhoneNumberFormatter()
     var jobTitles = [JobTitle]()
+    var selectedIndex:Int = 0
+    var isHiddenExperienceTable :Bool = false
+
 
     @IBOutlet weak var mainScrollView: UIScrollView!
     @IBOutlet weak var workExperienceTable: UITableView!
@@ -59,28 +62,27 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
     @IBOutlet weak var hightOfExperienceDetailTable: NSLayoutConstraint!
     @IBOutlet weak var heightOfScrollView: NSLayoutConstraint!
 
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        exprienceArray = NSMutableArray()
-        exprienceDetailArray = NSMutableArray()
-
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-
         setup()
-        gettingTempData()
-        // Do any additional setup after loading the view.
+        initialDataSetup()
+        getExperienceAPI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.changeNavBarAppearanceForProfiles()
+        self.navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = nil
+        self.navigationController?.navigationBar.isTranslucent = false
 
     }
     override func viewDidAppear(_ animated: Bool) {
-        
+        super.viewDidAppear(animated)
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -97,6 +99,7 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
         self.workExperienceDetailTable.register(UINib(nibName: "ReferenceTableCell", bundle: nil), forCellReuseIdentifier: "ReferenceTableCell")
         self.workExperienceDetailTable.register(UINib(nibName: "AddDeleteExperienceCell", bundle: nil), forCellReuseIdentifier: "AddDeleteExperienceCell")
         self.navigationItem.leftBarButtonItem = self.backBarButton()
+        self.workExperienceTable.separatorStyle = .none
         self.workExperienceDetailTable.separatorStyle = .none
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.workExperienceDetailTable.addGestureRecognizer(tap)
@@ -112,10 +115,17 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
 
     
     @IBAction func nextButtonClicked(_ sender: Any) {
-        self.alertMessage(title: "Alert", message: "Work in progress", buttonText: "Ok") { 
-            
+        
+        if self.exprienceArray.count > 0
+        {
+            self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToStudyVC, sender: self)
+
+        }else{
+            self.makeToast(toastString: Constants.AlertMessage.atleastOneExperience)
         }
+        
 //        self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToStudyVC, sender: self)
+
     }
     
     //MARK:- Keyboard Show Hide Observers
@@ -129,16 +139,24 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
         self.mainScrollView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0)
     }
     
-    func gettingTempData(){
-        let exp = ExperienceModel()
+    func initialDataSetup(){
+        let exp = ExperienceModel(empty: "")
         self.exprienceDetailArray?.add(exp)
-        self.currentExperience?.references.append(EmployeeReferenceModel())
+        self.currentExperience?.references.append(EmployeeReferenceModel(empty: ""))
         self.workExperienceDetailTable.reloadData()
-    reSizeTableViewsAndScrollView()
+        reSizeTableViewsAndScrollView()
     }
     
     func reSizeTableViewsAndScrollView()  {
-        self.hightOfExperienceTable.constant = self.workExperienceTable.contentSize.height
+        
+        if self.isHiddenExperienceTable == true {
+            self.hightOfExperienceTable.constant = 0
+            
+
+        }else{
+            self.hightOfExperienceTable.constant = self.workExperienceTable.contentSize.height
+
+        }
         self.hightOfExperienceDetailTable.constant = self.workExperienceDetailTable.contentSize.height
         self.workExperienceTable.layoutIfNeeded()
         self.workExperienceDetailTable.layoutIfNeeded()
@@ -164,6 +182,7 @@ extension DMWorkExperienceVC:JobSelectionPickerViewDelegate {
     func jobPickerDoneButtonAction(job: JobTitle?) {
         if let jobTitle = job {
             self.currentExperience?.jobTitle = jobTitle.jobTitle
+            self.currentExperience?.jobTitleID = jobTitle.jobId
             self.workExperienceDetailTable.reloadData()
             
         }

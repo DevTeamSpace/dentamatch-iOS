@@ -21,6 +21,7 @@ extension Date {
     public static func dateFormatDDMMYYYYDashed() ->String {
         return "dd-MM-yyyy"
     }
+    
     public static func dateFormatDDMMYYYYSlashed() ->String {
         return "dd/MM/yyyy"
     }
@@ -32,6 +33,10 @@ extension Date {
     }
     public static func dateFormatYYYYMMDDDashed() ->String {
         return "yyyy-MM-dd"
+    }
+    
+    public static func dateFormatYYYY()->String {
+        return "yyyy"
     }
     
     static func shortDate(date:Date)-> String{
@@ -55,6 +60,28 @@ extension Date {
         //Return Hour
         return hour
     }
+    
+    static func stringToDateForYear(dateString:String)-> Date{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = dateFormatYYYY()//"dd MMMM yyyy"
+        //        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        return dateFormatter.date(from: dateString)!
+    }
+    
+     static func stringToDate(dateString:String)-> Date{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = dateFormatYYYYMMDDDashed()//"dd MMMM yyyy"
+//        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        return dateFormatter.date(from: dateString)!
+    }
+    static func dateToString(date:Date)-> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = dateFormatYYYYMMDDDashed()//"dd MMMM yyyy"
+        //        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        return dateFormatter.string(from: date)
+    }
+
+    
     
     
     func minute() -> Int {
@@ -86,44 +113,6 @@ extension Date {
     }
 
     
-//    static func getCurrentDate() -> NSDate {
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-//        dateFormatter.timeZone = NSTimeZone.local
-//        let todaysDate = NSDate()
-//        let dateString = dateFormatter.stringFromDate(todaysDate as Date)
-//        dateFormatter.timeZone = NSTimeZone(abbreviation: "GMT")
-//        return dateFormatter.dateFromString(dateString)!
-//    }
-    
-//    static func getDayOfWeek(date:NSDate)->String?
-//    {
-//        let myCalendar = NSCalendar.currentCalendar()
-//        myCalendar.timeZone = NSTimeZone(abbreviation: "GMT")!
-//        let myComponents = myCalendar.components(.Weekday, fromDate: date)
-//        let weekDay = myComponents.weekday
-//        let weekdayString:String?
-//        switch weekDay {
-//        case 1:
-//            weekdayString = "SUNDAY"
-//        case 2:
-//            weekdayString = "MONDAY"
-//        case 3:
-//            weekdayString = "TUESDAY"
-//        case 4:
-//            weekdayString = "WEDNESDAY"
-//        case 5:
-//            weekdayString = "THURSDAY"
-//        case 6:
-//            weekdayString = "FRIDAY"
-//        case 7:
-//            weekdayString = "SATURDAY"
-//            
-//        default:
-//            weekdayString = "INVALID DAY"
-//        }
-//        return weekdayString
-//    }
     
     //MARK:- Current time in milliseconds
     static func currentTimeMillis() -> Int64{
@@ -133,10 +122,10 @@ extension Date {
     
 }
 
-public func ==(lhs: NSDate, rhs: NSDate) -> Bool {
+public func == (lhs: NSDate, rhs: NSDate) -> Bool {
     return lhs === rhs || lhs.compare(rhs as Date) == .orderedSame
 }
 
-public func <(lhs: NSDate, rhs: NSDate) -> Bool {
+public func < (lhs: NSDate, rhs: NSDate) -> Bool {
     return lhs.compare(rhs as Date) == .orderedAscending
 }

@@ -39,6 +39,8 @@ class DMRegisterMapsVC: DMBaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+
         setup()
     }
     
@@ -72,7 +74,7 @@ class DMRegisterMapsVC: DMBaseVC {
                 return
             }
            
-            let coordinate = CLLocationCoordinate2D(latitude: (location!.coordinate.latitude), longitude: (location!.coordinate.longitude))
+            let coordinate = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
             self.location.coordinateSelected = coordinate
             self.currentLocation = coordinate
             self.reverseGeocodeCoordinate(coordinate: coordinate)
@@ -86,11 +88,9 @@ class DMRegisterMapsVC: DMBaseVC {
     func setSearchButtonText(text:String,searchBar:UISearchBar) {
         for subview in searchBar.subviews {
             for innerSubViews in subview.subviews {
-                if innerSubViews is UIButton {
-                    if let cancelButton = innerSubViews as? UIButton {
-                        cancelButton.setTitleColor(UIColor.white, for: .normal)
-                        cancelButton.setTitle(text, for: .normal)
-                    }
+                if let cancelButton = innerSubViews as? UIButton {
+                    cancelButton.setTitleColor(UIColor.white, for: .normal)
+                    cancelButton.setTitle(text, for: .normal)
                 }
             }
         }
