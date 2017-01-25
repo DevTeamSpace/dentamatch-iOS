@@ -121,19 +121,19 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {
-//        if profileImage != nil {
-//            if selectedJobTitle != nil {
-//                //openLicenseScreen()
-//                uploadProfileImageAPI()
-//            } else {
-//                self.makeToast(toastString: Constants.AlertMessage.emptyCurrentJobTitle)
-//            }
-//        } else{
-//            self.makeToast(toastString: "Please select profile image")
-//        }
+        if profileImage != nil {
+            if selectedJobTitle != nil {
+                //openLicenseScreen()
+                uploadProfileImageAPI()
+            } else {
+                self.makeToast(toastString: Constants.AlertMessage.emptyCurrentJobTitle)
+            }
+        } else{
+            self.makeToast(toastString: "Please select profile image")
+        }
         
 //        //For testing
-        openLicenseScreen()
+        //openLicenseScreen()
     }
     
     func openLicenseScreen() {
@@ -164,7 +164,8 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
         self.alertMessage(title: "", message: Constants.AlertMessage.skipProfile, leftButtonText: "Cancel", rightButtonText: kOkButtonTitle) { (isLeftButtonPressed:Bool) in
             if !isLeftButtonPressed {
                 DispatchQueue.main.async {
-                    self.openDashboard()
+                    self.makeToast(toastString: "Coming soon...")
+                    //self.openDashboard()
                 }
             } else {
                //Remain here

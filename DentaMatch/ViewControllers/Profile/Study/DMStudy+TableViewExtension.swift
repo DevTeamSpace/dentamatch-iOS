@@ -90,6 +90,8 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate,UITextFieldDeleg
         let school = schoolCategories[indexPath.row]
         cell.headingButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         cell.schoolNameTextField.text = ""
+        cell.yearOfGraduationTextField.text = ""
+
         cell.schoolNameTextField.delegate = self
         
         cell.schoolNameTextField.tag = Int(school.schoolCategoryId)!
@@ -112,12 +114,6 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate,UITextFieldDeleg
                     cell.yearOfGraduationTextField.text = yearOfGraduation
                 }
             }
-        }
-        
-        if let university = selectedUniversities[school.schoolCategoryId] {
-            cell.schoolNameTextField.text = (university as! University).universityName
-        } else if let universityOther = selectedUniversities["other_\(school.schoolCategoryId)"] {
-            cell.schoolNameTextField.text = universityOther as? String
         }
         
         cell.schoolNameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)

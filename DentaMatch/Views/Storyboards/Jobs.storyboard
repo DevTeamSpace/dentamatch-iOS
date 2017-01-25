@@ -17,9 +17,9 @@
         <scene sceneID="Dby-kM-scK">
             <objects>
                 <navigationController storyboardIdentifier="jobsNav" useStoryboardIdentifierAsRestorationIdentifier="YES" id="CsO-Vw-JQB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Jobs" id="B8r-TJ-Qbn"/>
+                    <tabBarItem key="tabBarItem" title="Jobs" image="jobs" id="B8r-TJ-Qbn"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="oDh-u2-Gs3">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oDh-u2-Gs3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -64,4 +64,7 @@
             <point key="canvasLocation" x="-2450.4000000000001" y="-609.44527736131943"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="jobs" width="24" height="22"/>
+    </resources>
 </document>

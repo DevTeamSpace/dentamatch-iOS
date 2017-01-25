@@ -19,6 +19,7 @@ class DMSkillsVC: DMBaseVC {
     let profileProgress:CGFloat = 0.65
     var skills = [Skill]()
     var otherSkill:Skill?
+    var whiteView:UIView!
     
     @IBOutlet weak var skillsTableView: UITableView!
     
@@ -40,6 +41,11 @@ class DMSkillsVC: DMBaseVC {
 
     
     func setup() {
+        whiteView = UIView(frame: CGRect(x: 0, y: 0, width: Utilities.ScreenSize.SCREEN_WIDTH, height: Utilities.ScreenSize.SCREEN_HEIGHT))
+        whiteView.backgroundColor = UIColor.white
+        self.view.addSubview(whiteView)
+        whiteView.isHidden = true
+        
         self.navigationItem.leftBarButtonItem = self.backBarButton()
         self.skillsTableView.register(UINib(nibName: "PhotoNameCell", bundle: nil), forCellReuseIdentifier: "PhotoNameCell")
         self.skillsTableView.register(UINib(nibName: "SectionHeadingTableCell", bundle: nil), forCellReuseIdentifier: "SectionHeadingTableCell")
@@ -89,11 +95,15 @@ class DMSkillsVC: DMBaseVC {
 extension DMSkillsVC: SSASideMenuDelegate {
     
     func sideMenuWillShowMenuViewController(_ sideMenu: SSASideMenu, menuViewController: UIViewController) {
-        //side menu 
+        //side menu
+//        whiteView.isHidden = false
+
     }
     
     
     func sideMenuWillHideMenuViewController(_ sideMenu: SSASideMenu, menuViewController: UIViewController) {
+//        whiteView.isHidden = true
+
         if let selectedIndex = self.skillsTableView.indexPathForSelectedRow {
             self.skillsTableView.deselectRow(at: selectedIndex, animated: true)
         }

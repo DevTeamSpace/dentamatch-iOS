@@ -30,7 +30,7 @@ class DMEditCertificateVC: DMBaseVC,DatePickerViewDelegate {
         self.certificateImageButton.layer.cornerRadius = self.certificateImageButton.frame.size.width/2
         self.certificateImageButton.clipsToBounds = true
         self.certificateImageButton.imageView?.contentMode = .scaleAspectFill
-        self.certificateImageButton.sd_setImage(with: URL(string:(self.certificate?.certificateImageURL)!), for: .normal, placeholderImage: nil)
+        self.certificateImageButton.sd_setImage(with: URL(string:(self.certificate?.certificateImageURL)!), for: .normal, placeholderImage: kCertificatePlaceHolder)
         self.dateView = DatePickerView.loadExperiencePickerView(withText:"" , tag: 0)
         self.dateView?.delegate = self
         self.validityDatePicker.text = certificate?.validityDate

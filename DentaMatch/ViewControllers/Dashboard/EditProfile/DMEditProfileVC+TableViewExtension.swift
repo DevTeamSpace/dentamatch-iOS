@@ -132,6 +132,7 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
         case .profileHeader:
             let cell = tableView.dequeueReusableCell(withIdentifier: "EditProfileHeaderTableCell") as! EditProfileHeaderTableCell
             cell.nameLabel.text = UserManager.shared().activeUser.fullName()
+            cell.placeLabel.attributedText = cell.fillPlaceAndJobTitle(jobTitle: UserManager.shared().activeUser.jobTitle!, place: "New Delhi")
             cell.editButton.addTarget(self, action: #selector(openEditPublicProfileScreen), for: .touchUpInside)
             cell.settingButton.addTarget(self, action: #selector(openSettingScreen), for: .touchUpInside)
             if let imageUrl = URL(string: UserManager.shared().activeUser.profileImageURL!) {
@@ -158,7 +159,7 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
                 cell.editButton.addTarget(self, action: #selector(openDentalStateBoardScreen), for: .touchUpInside)
                 cell.editButton.isHidden = false
                 if let imageUrl = URL(string:dentalStateBoardURL) {
-                    cell.certificateImageView.sd_setImage(with: imageUrl, placeholderImage: nil)
+                    cell.certificateImageView.sd_setImage(with: imageUrl, placeholderImage: kCertificatePlaceHolder)
                 }
                 return cell
             }
@@ -275,7 +276,7 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
                 cell.editButton.removeTarget(nil, action: nil, for: .allEvents)
                 cell.editButton.addTarget(self, action: #selector(openCertificateScreen), for: .touchUpInside)
                 if let imageUrl = URL(string:certificate.certificateImageURL!) {
-                    cell.certificateImageView.sd_setImage(with: imageUrl, placeholderImage: nil)
+                    cell.certificateImageView.sd_setImage(with: imageUrl, placeholderImage: kCertificatePlaceHolder)
                 }
                 return cell
             }
@@ -289,11 +290,12 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
         switch profileOptions {
         case .dentalStateboard:
             if dentalStateBoardURL.isEmpty {
-                print("Open add")
+                openDentalStateBoardScreen(isEditMode: false)
             }
         case .licenseNumber:
             guard let _ = license else {
                 print("License Not added")
+                openEditLicenseScreen(editMode: false)
                 return
             }
         default:

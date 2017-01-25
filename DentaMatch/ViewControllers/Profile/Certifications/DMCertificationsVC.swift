@@ -70,6 +70,7 @@ class DMCertificationsVC: DMBaseVC,DatePickerViewDelegate {
     
     @IBAction func nextButtonClicked(_ sender: Any) {
         if checkAllCertitficates() {
+            
             self.uploadAllValidityDates( completionHandler: { (response, error) in
                 self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToExecutiveSummaryVC, sender: self)
 
@@ -169,15 +170,21 @@ class DMCertificationsVC: DMBaseVC,DatePickerViewDelegate {
         for index in  0..<self.certicates.count{
             
             let certObj = certicates[index]
+            
             if !(certObj.certificateImageURL?.isEmptyField)! {
-//                self.makeToast(toastString: "Please upload \(certObj.certificationName) first")
-//                return false
-                
                 if (certObj.validityDate.isEmptyField) {
                     self.makeToast(toastString: "Please select  \(certObj.certificationName) validity date")
                     return false
                 }
                 atLeastOneCheck = true
+            }
+            
+            
+            if !(certObj.validityDate.isEmptyField) {
+                if (certObj.certificateImageURL?.isEmptyField)! {
+                    self.makeToast(toastString: "Please select certificate for \(certObj.certificationName)")
+                    return false
+                }
             }
             
             

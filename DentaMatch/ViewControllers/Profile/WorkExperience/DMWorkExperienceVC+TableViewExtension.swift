@@ -240,6 +240,7 @@ extension DMWorkExperienceVC
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if tableView == self.workExperienceTable {
+            self.isHiddenExperienceTable = true
             selectedIndex = indexPath.row
             let check  = indexPath.row == 0 ? true : false
             self.currentExperience = nil
@@ -408,6 +409,8 @@ extension DMWorkExperienceVC
                     self.exprienceArray.append(self.currentExperience!)
                     
                 }
+                self.isHiddenExperienceTable = false
+
                 self.currentExperience = nil
                 self.currentExperience = ExperienceModel(empty: "")
                 self.currentExperience?.isFirstExperience = false

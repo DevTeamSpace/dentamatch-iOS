@@ -16,8 +16,8 @@ class User: NSObject , NSCoding {
     var accessToken: String!
     var firstName: String?
     var lastName: String?
-    var jobTitleId:String?
-    var jobTitle:String?
+    var jobTitleId:String? = ""
+    var jobTitle:String? = ""
 
     var profileImageURL: String? = ""
     var preferredJobLocation: String?

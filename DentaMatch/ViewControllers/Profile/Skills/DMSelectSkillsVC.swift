@@ -45,9 +45,17 @@ class DMSelectSkillsVC: UIViewController {
             otherSkill = subSkills.filter({$0.isOther == true}).first
             if let _ = otherSkill {
                 self.otherText = (otherSkill?.otherText)!
+                if self.otherText.isEmptyField {
+                    self.otherSkill?.isSelected = false
+                    self.otherSkill?.otherText = ""
+                }
             }
             self.subSkillTableView.reloadData()
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
     }
 
     func setup() {
@@ -175,7 +183,7 @@ extension DMSelectSkillsVC : UITextViewDelegate {
     }
     
     func textViewDidChange(_ textView: UITextView) {
-        self.otherText = textView.text
+        self.otherText = textView.text.trim()
         otherSkill?.otherText = self.otherText
     }
 }
