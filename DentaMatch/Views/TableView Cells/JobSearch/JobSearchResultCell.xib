@@ -28,7 +28,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="169"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="168"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="168.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uPo-7X-os1">
@@ -64,7 +64,7 @@
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18.5 miles" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6k3-LB-8Mx">
-                                <rect key="frame" x="238" y="44" width="60" height="14"/>
+                                <rect key="frame" x="238.5" y="44" width="59.5" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="14" id="6c6-o5-9KQ"/>
                                 </constraints>
@@ -161,14 +161,14 @@ San Francisco, CA 94107628</string>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
             <connections>
+                <outlet property="btnFavourite" destination="kFR-7Q-dkX" id="1Dp-sY-uHG"/>
+                <outlet property="btnType" destination="1ZF-kL-maa" id="HrJ-Gr-S0O"/>
                 <outlet property="lblAddress" destination="FGO-fW-AIo" id="Pmo-k9-4fV"/>
                 <outlet property="lblDays" destination="Qkt-U2-9Ax" id="V0O-cY-q5l"/>
                 <outlet property="lblDistance" destination="6k3-LB-8Mx" id="H0F-Vc-8D6"/>
                 <outlet property="lblDocName" destination="AYw-Gd-ePH" id="C3n-FM-LIn"/>
-                <outlet property="lblFavourite" destination="kFR-7Q-dkX" id="pJ7-aE-7Vc"/>
                 <outlet property="lblJobPostTime" destination="95O-Tl-7uR" id="ccC-Av-p9J"/>
                 <outlet property="lblJobTitle" destination="MAg-4J-NbD" id="EVa-D9-eb3"/>
-                <outlet property="lblType" destination="1ZF-kL-maa" id="JI8-g7-TJC"/>
             </connections>
             <point key="canvasLocation" x="34" y="100.5"/>
         </tableViewCell>

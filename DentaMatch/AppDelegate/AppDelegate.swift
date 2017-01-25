@@ -25,7 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //configureCrashlytics()
         
         if UserDefaultsManager.sharedInstance.isLoggedIn {
-            goToProfile()
+            //goToProfile()
+            goToSearch()
         }
         
         configureGoogleServices()
@@ -43,6 +44,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func goToProfile() {
         let profileVC = UIStoryboard.profileStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.profileNav) as! UINavigationController
         self.window?.rootViewController = profileVC
+    }
+    
+    func goToSearch() {
+        let jobSearchVC = UIStoryboard.jobSearchStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.jobSearchNav) as! UINavigationController
+        self.window?.rootViewController = jobSearchVC
     }
     
     func changeNavBarAppearance() {

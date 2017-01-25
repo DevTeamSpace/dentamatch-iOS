@@ -14,7 +14,7 @@ class DMJobSearchResultVC : DMBaseVC {
     @IBOutlet weak var tblJobSearchResult: UITableView!
     @IBOutlet weak var mapViewSearchResult: GMSMapView!
     @IBOutlet weak var constraintTblViewSearchResultTop: NSLayoutConstraint!
-    
+    @IBOutlet weak var lblResultCount: UILabel!
     
     var rightBarBtn : UIButton = UIButton()
     var rightBarButtonItem : UIBarButtonItem = UIBarButtonItem()
@@ -23,7 +23,8 @@ class DMJobSearchResultVC : DMBaseVC {
     var btnList : UIButton!
     var btnMap : UIButton!
     var currentCoordinate : CLLocationCoordinate2D! = CLLocationCoordinate2D(latitude : 0.00, longitude : 0.00)
-    var arrMarkers  = [JobDetails]()
+    var arrMarkers  = [JobMarker]()
+    var jobSearchResult = [JobSearchResultModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,14 +48,8 @@ class DMJobSearchResultVC : DMBaseVC {
         self.setUpSegmentControl()
         self.mapViewSearchResult.delegate = self
         self.mapViewSearchResult.isMyLocationEnabled = true
-        self.arrMarkers = [JobDetails]()
-        let objMarker = JobDetails(JobDetails: "")
-        objMarker.latitude = "28.5006637"
-        objMarker.latitude = "77.0687053"
-        self.arrMarkers.append(objMarker)
-        objMarker.latitude = "28.5006637"
-        objMarker.latitude = "77.0687053"
-        self.arrMarkers.append(objMarker)
+        self.lblResultCount.text = String(self.jobSearchResult.count) + " results found"
+        
     }
     
     //MARK : Setup Left Bar Button
@@ -156,7 +151,7 @@ class DMJobSearchResultVC : DMBaseVC {
             let coordinate = CLLocationCoordinate2D(latitude: (location!.coordinate.latitude), longitude: (location!.coordinate.longitude))
             self.currentCoordinate = coordinate
             DispatchQueue.main.async {
-                self.hideLoader()
+                //self.hideLoader()
                 self.mapViewSearchResult.animate(to: GMSCameraPosition(target: coordinate, zoom: 15, bearing: 0, viewingAngle: 0))
             }
         }
@@ -166,12 +161,14 @@ class DMJobSearchResultVC : DMBaseVC {
 extension DMJobSearchResultVC : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return jobSearchResult.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "JobSearchResultCell") as! JobSearchResultCell
+        let objJobDetail = jobSearchResult[indexPath.row]
+        cell.setCellData(jobSearchResult : objJobDetail)
         return cell
     }
     
@@ -194,6 +191,7 @@ extension DMJobSearchResultVC : GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         // Just hiding the card and restoring markers.
         self.restoreAllMarkers()
+        self.mapViewSearchResult.animate(to: GMSCameraPosition(target: self.currentCoordinate, zoom: 15, bearing: 0, viewingAngle: 0))
     }
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
@@ -204,22 +202,29 @@ extension DMJobSearchResultVC : GMSMapViewDelegate {
     }
     
     func moveToMarker(marker: JobMarker) {
+        let objJobSearch =  JobSearchResultModel.init()
+        objJobSearch.jobId = marker.job_id!
         
+        //let arrIDs = self.arrMarkers.valueForKey("user_id")
+        //let index = arrIDs.indexOfObject(marker.user_id!)
+        
+        self.mapViewSearchResult.animate(to: GMSCameraPosition(target: self.currentCoordinate, zoom: 15, bearing: 0, viewingAngle: 0))
     }
     
     func restoreAllMarkers() {
-        for objMarker in self.arrMarkers {
-            let latStr = objMarker.latitude as NSString
+        for objJobSearch in self.jobSearchResult {
+            let latStr = objJobSearch.latitude as NSString
             let latDbl : Double  = Double(latStr.intValue)
-            let langStr = objMarker.longitude as NSString
+            let langStr = objJobSearch.longitude as NSString
             let langDbl : Double = Double(langStr.intValue)
-            var location = CLLocationCoordinate2D(latitude : latDbl, longitude : langDbl)
-            var marker = JobMarker()
+            //var location = CLLocationCoordinate2D(latitude : latDbl, longitude : langDbl)
+            let marker = JobMarker()
+            marker.job_id = objJobSearch.jobId
             marker.isDraggable = false
             marker.position = CLLocationCoordinate2DMake(latDbl,langDbl )
             marker.icon = UIImage(named: "pinPoint")
             marker.map = self.mapViewSearchResult
-            self.mapViewSearchResult.animate(to: GMSCameraPosition(target: self.currentCoordinate, zoom: 15, bearing: 0, viewingAngle: 0))
+            //self.mapViewSearchResult.animate(to: GMSCameraPosition(target: self.currentCoordinate, zoom: 15, bearing: 0, viewingAngle: 0))
         }
     }
     

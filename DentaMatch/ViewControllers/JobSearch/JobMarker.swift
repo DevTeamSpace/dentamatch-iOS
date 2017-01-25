@@ -10,5 +10,5 @@ import UIKit
 import GoogleMaps
 
 class JobMarker: GMSMarker {
-    var job_id: NSNumber?
+    var job_id: Int?
 }

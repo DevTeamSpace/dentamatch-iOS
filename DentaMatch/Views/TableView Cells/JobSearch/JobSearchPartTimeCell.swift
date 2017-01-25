@@ -74,52 +74,55 @@ class JobSearchPartTimeCell: UITableViewCell {
         btnSaturday.layer.cornerRadius = btnFriday.frame.size.height / 2
     }
     
-    func daySelect(button : UIButton) {
-        button.backgroundColor = UIColor.init(colorLiteralRed: 142.0/255.0, green: 207.0/255.0, blue: 125.0/255.0, alpha: 1.0)
-        button.setTitleColor(UIColor.white, for: .normal)
-    }
-    
-    func dayDeselect(button : UIButton) {
-        button.backgroundColor = UIColor.clear
-        button.setTitleColor(UIColor.init(colorLiteralRed: 81.0/255.0, green: 81.0/255.0, blue: 81.0/255.0, alpha: 1.0), for: .normal)
-    }
-    
-    func checkToSelectOrDeselectButton(button : UIButton) {
-        if button.backgroundColor == UIColor.clear {
-            self.daySelect(button: button)
-        }
-        else {
-            self.dayDeselect(button: button)
-        }
-    }
-    
     //MARK : IBOutlet Actions
     
     @IBAction func actionSunday(_ sender: UIButton) {
-        self.checkToSelectOrDeselectButton(button: sender)
+        self.checkToSelectOrDeselectButton(button: sender, day: "sunday")
     }
     
     @IBAction func actionMonday(_ sender: UIButton) {
-        self.checkToSelectOrDeselectButton(button: sender)
+        self.checkToSelectOrDeselectButton(button: sender, day: "monday")
     }
     
     @IBAction func actionTuesday(_ sender: UIButton) {
-        self.checkToSelectOrDeselectButton(button: sender)
+        self.checkToSelectOrDeselectButton(button: sender, day: "tuesday")
     }
     
     @IBAction func actionWednesday(_ sender: UIButton) {
-        self.checkToSelectOrDeselectButton(button: sender)
+        self.checkToSelectOrDeselectButton(button: sender, day: "wednesday")
     }
     
     @IBAction func btnThursday(_ sender: UIButton) {
-        self.checkToSelectOrDeselectButton(button: sender)
+        self.checkToSelectOrDeselectButton(button: sender, day: "thursday")
     }
     
     @IBAction func actionFriday(_ sender: UIButton) {
-        self.checkToSelectOrDeselectButton(button: sender)
+        self.checkToSelectOrDeselectButton(button: sender, day: "friday")
     }
     
     @IBAction func actionSaturday(_ sender: UIButton) {
-        self.checkToSelectOrDeselectButton(button: sender)
+        self.checkToSelectOrDeselectButton(button: sender, day: "saturday")
+    }
+    
+    func checkToSelectOrDeselectButton(button : UIButton, day : String) {
+        if button.backgroundColor == UIColor.clear {
+            self.daySelect(button: button, day: day)
+        }
+        else {
+            self.dayDeselect(button: button, day: day)
+        }
+    }
+    
+    func daySelect(button : UIButton, day : String) {
+        button.backgroundColor = UIColor.init(colorLiteralRed: 142.0/255.0, green: 207.0/255.0, blue: 125.0/255.0, alpha: 1.0)
+        button.setTitleColor(UIColor.white, for: .normal)
+        delegate?.selectDay!(selected: true, day: day)
+    }
+    
+    func dayDeselect(button : UIButton, day : String) {
+        button.backgroundColor = UIColor.clear
+        button.setTitleColor(UIColor.init(colorLiteralRed: 81.0/255.0, green: 81.0/255.0, blue: 81.0/255.0, alpha: 1.0), for: .normal)
+        delegate?.selectDay!(selected: false, day: day)
+        
     }
 }

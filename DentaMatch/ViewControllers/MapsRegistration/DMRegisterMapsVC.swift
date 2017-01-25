@@ -129,6 +129,8 @@ class DMRegisterMapsVC: DMBaseVC {
             }
             if let place = place {
                 debugPrint(place)
+                self.location.coordinateSelected = place.coordinate
+                self.reverseGeocodeCoordinate(coordinate: place.coordinate)
                 OperationQueue.main.addOperation({
                     self.placeMarkerOnMap(coordinate: place.coordinate, isAnimatingToLocation: true)
                 })

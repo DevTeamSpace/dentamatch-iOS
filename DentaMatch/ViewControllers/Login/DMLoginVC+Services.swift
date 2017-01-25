@@ -28,6 +28,7 @@ extension DMLoginVC {
             if response![Constants.ServerKey.status].boolValue {
                 UserDefaultsManager.sharedInstance.accessToken = response![Constants.ServerKey.result][Constants.ServerKey.userDetails][Constants.ServerKey.accessToken].stringValue
                 UserDefaultsManager.sharedInstance.isLoggedIn = true
+                
                 self.openJobTitleSelection()
                 self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
             } else {

@@ -76,6 +76,7 @@ struct Constants {
         struct Identifer {
             static let registrationNav = "RegistrationNAV"
             static let profileNav  = "ProfileNAV"
+            static let jobSearchNav  = "JobSearchNav"
         }
         
         struct SegueIdentifier {
@@ -99,7 +100,8 @@ struct Constants {
         static let privacyPolicyURL = Constants.API.apiURL("privacy-policy")
         static let getJobTitleAPI = Constants.API.apiURL("list-jobtitle")
         static let uploadImageAPI = Constants.API.apiURL("users/upload-image")
-
+        static let JobSearchResultAPI = Constants.API.apiURL("users/search-jobs")
+        
         static func apiURL(_ methodName: String) -> String {
             return BASE_URL + methodName
         }
@@ -125,20 +127,18 @@ struct Constants {
         static let result = "result"
         static let accessToken = "accessToken"
         static let joblists = "joblists"
+        static let joblist = "list"
     }
     
     struct JobDetailKey {
-        static let jobId = "jobId"
+        static let lat = "lat"
+        static let lng = "lng"
+        static let zipCode = "zipCode"
         static let jobTitle = "jobTitle"
-        static let jobType = "jobType"
-        static let jobDays = "jobDays"
-        static let docName = "docName"
-        static let address = "address"
-        static let latitude = "latitude"
-        static let longitude = "longitude"
-        static let postTime = "postTime"
-        static let isFavourite = "isFavourite"
-        static let distance = "distance"
+        static let page = "page"
+        static let isFulltime = "isFulltime"
+        static let isParttime = "isParttime"
+        static let parttimeDays = "parttimeDays"
     }
     
     //MARK:- UserDefault Keys

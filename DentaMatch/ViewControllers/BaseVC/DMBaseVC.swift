@@ -30,7 +30,7 @@ class DMBaseVC: UIViewController {
     
     //MARK : Setup Left Bar Button
     func setLeftBarButton()  {
-        if (self.navigationController?.viewControllers.count)! > 1 {
+        if self.navigationController?.viewControllers.count != nil && (self.navigationController?.viewControllers.count)! > 1 {
             var leftBarBtn : UIButton = UIButton()
             var leftBarButtonItem : UIBarButtonItem = UIBarButtonItem()
             leftBarBtn = UIButton()

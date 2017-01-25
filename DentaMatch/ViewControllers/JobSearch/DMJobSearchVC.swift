@@ -8,18 +8,35 @@
 
 import UIKit
 import CoreLocation
+import GoogleMaps
+import GooglePlaces
 
 class DMJobSearchVC : DMBaseVC {
     
     @IBOutlet weak var tblViewJobSearch: UITableView!
     var isPartTimeDayShow : Bool = false
     var jobTitles = [JobTitle]()
+    var jobSearchResult = [JobSearchResultModel]()
+    var partTimeJobDays = [String]()
     var location : Location! = Location()
+    var isJobTypeFullTime : String! = "0"
+    var isJobTypePartTime : String! = "0"
+    var searchParams = [
+        Constants.JobDetailKey.lat:"",
+        Constants.JobDetailKey.lng:"",
+        Constants.JobDetailKey.zipCode:"",
+        Constants.JobDetailKey.isFulltime:"",
+        Constants.JobDetailKey.isParttime:"",
+        Constants.JobDetailKey.parttimeDays:[],
+        Constants.JobDetailKey.jobTitle:[],
+        Constants.JobDetailKey.page:""
+        ] as [String : Any]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "SEARCH JOB"
         self.setup()
+        self.getLocation()
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,7 +54,96 @@ class DMJobSearchVC : DMBaseVC {
     
     
     @IBAction func actionSearchButton(_ sender: UIButton) {
-        self.actionSearchButton()
+        if self.validateFields() {
+            self.actionSearchButton()
+        }
+    }
+    
+    func validateFields() -> Bool {
+        if self.jobTitles.count > 0 {
+            if self.isJobTypeFullTime == "1" || self.isJobTypePartTime == "1" {
+                if self.isJobTypePartTime == "1" {
+                    if self.partTimeJobDays.count > 0 {
+                        if self.location.coordinateSelected != nil {
+                            return true
+                        }
+                        else {
+                            self.makeToast(toastString: "Please select job location")
+                            return false
+                        }
+                    }
+                    else {
+                        self.makeToast(toastString: "Please select a day")
+                        return false
+                    }
+                }
+                return true
+            }
+            else {
+                self.makeToast(toastString: "Please select job Type")
+                return false
+            }
+        }
+        else {
+            self.makeToast(toastString: "Please select atleast one job title")
+            return false
+        }
+        return false
+    }
+    
+    func getLocation() {
+        LocationManager.sharedInstance.getLocation { (location:CLLocation?, error:NSError?) in
+            if error != nil {
+                DispatchQueue.main.async {
+                    //self.hideLoader()
+                    self.alertMessage(title: "", message: (error?.localizedDescription)!, buttonText: kOkButtonTitle, completionHandler: nil)
+                }
+                return
+            }
+            
+            let coordinate = CLLocationCoordinate2D(latitude: (location!.coordinate.latitude), longitude: (location!.coordinate.longitude))
+            self.location.coordinateSelected = coordinate
+            self.reverseGeocodeCoordinate(coordinate: coordinate)
+        }
+    }
+    
+    func reverseGeocodeCoordinate(coordinate: CLLocationCoordinate2D) {
+        let geocoder = GMSGeocoder()
+        geocoder.reverseGeocodeCoordinate(coordinate) { (response:GMSReverseGeocodeResponse?, error:Error?) in
+            if let address = response?.firstResult() {
+                let lines = address.lines!
+                let count = response?.results()?.count
+                for i in 0..<(count)! {
+                    if let postalCode = response?.results()![i].postalCode {
+                        self.location.postalCode =  postalCode
+                        break
+                    }
+                }
+                print(lines.joined(separator: " "))
+                self.location.address = lines.joined(separator: " ")
+                DispatchQueue.main.async {
+                    if self.location.address != nil {
+                        self.tblViewJobSearch.beginUpdates()
+                        self.tblViewJobSearch.reloadRows(at: [IndexPath(row: 0, section: 2)], with: .bottom)
+                        self.tblViewJobSearch.endUpdates()
+                        self.tblViewJobSearch.scrollToRow(at: IndexPath(row: 0, section: 2), at: UITableViewScrollPosition.none, animated: false)
+                        debugPrint(self.location.address ?? "Address not found")
+                    }
+                    else {
+                        debugPrint("Address is empty")
+                    }
+                }
+            }
+        }
+    }
+    
+    func goToSearchResult() {
+        
+        if self.jobSearchResult.count > 0 {
+            let jobSearchResultVC = UIStoryboard.jobSearchStoryBoard().instantiateViewController(type: DMJobSearchResultVC.self)!
+            jobSearchResultVC.jobSearchResult = self.jobSearchResult
+            self.navigationController?.pushViewController(jobSearchResultVC, animated: true)
+        }
     }
     
 }
@@ -94,6 +200,7 @@ extension DMJobSearchVC : UITableViewDataSource, UITableViewDelegate {
             else if  indexPath.row == 1 {
                 var cell = tableView.dequeueReusableCell(withIdentifier: "JobSearchPartTimeCell") as? JobSearchPartTimeCell
                 cell?.delegate = self
+                cell?.setUp()
                 cell?.selectionStyle = .none
                 if cell == nil {
                     cell = JobSearchPartTimeCell()
@@ -165,37 +272,6 @@ extension DMJobSearchVC : UITableViewDataSource, UITableViewDelegate {
         return 0
     }
     
-//    func tableView( _ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//        
-//        // To Add Search Button
-//        let footerView = UIView(frame: CGRect(x : 0.0, y : 0.0, width : tableView.frame.size.width,height : 49.0))
-//        footerView.backgroundColor = UIColor.init(colorLiteralRed: 4.0/255.0, green: 112.0/255.0, blue: 192.0/255.0, alpha: 1.0)
-//        
-//        let btnSearch = UIButton.init(frame: CGRect(x : 0 , y : 0, width : footerView.frame.size.width, height : footerView.frame.size.height))
-//        btnSearch.setTitle("SEARCH", for: .normal)
-//        btnSearch.setTitleColor(UIColor.white, for: .normal)
-//        btnSearch.titleLabel!.font =  UIFont.fontSemiBold(fontSize: 16.0)
-//        btnSearch.backgroundColor = UIColor.clear
-//        btnSearch.addTarget(self, action: #selector(actionSearchButton), for: .touchUpInside)
-//        footerView.addSubview(btnSearch)
-//        
-//        return footerView
-//    }
-//    
-//     func tableView( _ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        if section == 0 {
-//            return 0
-//        }
-//        else if section == 1 {
-//            return 0
-//        }
-//        else if section == 2 {
-//            
-//            return 49.0
-//        }
-//        return 0
-//    }
-//    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
     {
         if section == 0 {
@@ -252,8 +328,27 @@ extension DMJobSearchVC : UITableViewDataSource, UITableViewDelegate {
     //MARK : Action Search Method
     
     func actionSearchButton() {
-        let jobSearchResultVC = UIStoryboard.jobSearchStoryBoard().instantiateViewController(type: DMJobSearchResultVC.self)!
-        self.navigationController?.pushViewController(jobSearchResultVC, animated: true)
+        self.view.endEditing(true)
+        
+        var jobTitleIds = [Int]()
+        
+        for job in jobTitles {
+            jobTitleIds.append(job.jobId)
+        }
+        if location.coordinateSelected?.latitude != nil {
+            searchParams[Constants.JobDetailKey.lat] = String(describing: location.coordinateSelected!.latitude)
+        }
+        if location.coordinateSelected?.longitude != nil {
+            searchParams[Constants.JobDetailKey.lng] = String(describing: location.coordinateSelected!.longitude)
+        }
+        searchParams[Constants.JobDetailKey.zipCode] = location.postalCode
+        searchParams[Constants.JobDetailKey.isFulltime] = self.isJobTypeFullTime
+        searchParams[Constants.JobDetailKey.isParttime] = self.isJobTypePartTime
+        searchParams[Constants.JobDetailKey.parttimeDays] = partTimeJobDays
+        searchParams[Constants.JobDetailKey.jobTitle] = jobTitleIds
+        searchParams[Constants.JobDetailKey.page] = 1
+        
+        self.fetchSearchResultAPI(params: searchParams)
     }
 }
 
@@ -271,6 +366,7 @@ extension DMJobSearchVC : JobSearchTypeCellDelegate, JobSearchPartTimeCellDelega
                     tblViewJobSearch.endUpdates()
                     tblViewJobSearch.scrollToRow(at: IndexPath(row: 1, section: 1), at: UITableViewScrollPosition.none, animated: false)
                 }
+                isJobTypePartTime = "1"
             }
             else {
                 isPartTimeDayShow = !isPartTimeDayShow
@@ -278,17 +374,35 @@ extension DMJobSearchVC : JobSearchTypeCellDelegate, JobSearchPartTimeCellDelega
                 tblViewJobSearch.deleteRows(at: [IndexPath(row: 1, section: 1)], with: .none)
                 tblViewJobSearch.endUpdates()
                 tblViewJobSearch.scrollToRow(at: IndexPath(row: 0, section: 1), at: UITableViewScrollPosition.none, animated: false)
+                isJobTypePartTime = "0"
             }
         }
         else {
-            
+            if selected == true  {
+                isJobTypeFullTime = "1"
+            }
+            else {
+                isJobTypeFullTime = "0"
+            }
         }
     }
     
     //MARK : JobSearchPartTimeCellDelegate Method
     
     func selectDay(selected: Bool, day: String) {
-        
+        if selected == true {
+            if partTimeJobDays.contains(day) {
+                
+            }
+            else {
+                partTimeJobDays.append(day)
+            }
+        }
+        else {
+            if partTimeJobDays.contains(day) {
+                partTimeJobDays.remove(at: partTimeJobDays.index(of: day)!)
+            }
+        }
     }
 }
 
