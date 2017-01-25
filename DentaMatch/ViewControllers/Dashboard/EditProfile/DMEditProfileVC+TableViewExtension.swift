@@ -298,6 +298,15 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
                 openEditLicenseScreen(editMode: false)
                 return
             }
+            
+        case .affiliations:
+            openAffiliationsScreen()
+            
+        case .certifications:
+            let button = UIButton()
+            button.tag = indexPath.row
+            openCertificateScreen(sender: button)
+            
         default:
             break
         }

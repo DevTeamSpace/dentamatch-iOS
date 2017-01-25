@@ -20,7 +20,7 @@ class DMBaseVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setUpControls()
+        //self.setUpControls()
     }
     
     func setUpControls() {
