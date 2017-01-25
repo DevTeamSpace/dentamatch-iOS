@@ -173,9 +173,6 @@ extension DMLicenseSelectionVC : UITableViewDataSource, UITableViewDelegate {
         textField.text = textField.text?.trim()
         if textField.tag == 0
         {
-            if textField.text?.characters.last == "-" {
-                print("Ending with hyphen")
-            }
             self.licenseArray?.replaceObject(at: 0, with: textField.text!)
         }else{
             self.licenseArray?.replaceObject(at: 1, with: textField.text!)

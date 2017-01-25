@@ -69,8 +69,12 @@ class DMEditProfileVC: DMBaseVC {
         self.editProfileTableView.register(UINib(nibName: "EditProfileSkillBrickCell", bundle: nil), forCellReuseIdentifier: "EditProfileSkillBrickCell")
     }
     
-    func openEditLicenseScreen() {
-            self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToEditLicense, sender: self)
+    func openEditLicenseScreen(editMode:Bool = false) {
+        let editLicenseVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: DMEditLicenseVC.self)!
+        editLicenseVC.isEditMode = editMode
+        editLicenseVC.license = self.license
+        editLicenseVC.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(editLicenseVC, animated: true)
     }
     
     func openEditPublicProfileScreen() {
@@ -107,11 +111,11 @@ class DMEditProfileVC: DMBaseVC {
 
     }
     
-    func openDentalStateBoardScreen(sender:UIButton) {
+    func openDentalStateBoardScreen(isEditMode:Bool = true) {
         let dentalStateboardVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: DMEditDentalStateBoardVC.self)!
         dentalStateboardVC.dentalStateBoardImageURL = self.dentalStateBoardURL
         dentalStateboardVC.hidesBottomBarWhenPushed = true
-        dentalStateboardVC.isEditMode = true
+        dentalStateboardVC.isEditMode = isEditMode
         self.navigationController?.pushViewController(dentalStateboardVC, animated: true)
     }
     
@@ -125,6 +129,10 @@ class DMEditProfileVC: DMBaseVC {
     
     func updateProfileScreen(userInfo:Notification) {
         let dict = userInfo.userInfo
+        
+        if let license = dict?["license"] {
+            self.license = license as? License
+        }
         
         //Upload for affiliation
         if let affiliation = dict?["affiliations"] {

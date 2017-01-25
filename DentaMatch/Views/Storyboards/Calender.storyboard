@@ -17,7 +17,7 @@
         <scene sceneID="4zl-fy-AwR">
             <objects>
                 <navigationController storyboardIdentifier="CanederNav" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NUS-Px-Ne8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Calender" id="GmI-ki-020"/>
+                    <tabBarItem key="tabBarItem" title="Calender" image="calender" id="GmI-ki-020"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="B76-yd-D1j">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -65,4 +65,7 @@
             <point key="canvasLocation" x="177" y="128"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="calender" width="22" height="22"/>
+    </resources>
 </document>

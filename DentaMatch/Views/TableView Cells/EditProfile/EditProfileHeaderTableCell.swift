@@ -29,4 +29,23 @@ class EditProfileHeaderTableCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func fillPlaceAndJobTitle(jobTitle:String,place:String) -> NSMutableAttributedString {
+        
+        if jobTitle.isEmptyField {
+            let attributedString = NSMutableAttributedString()
+            let placeText = NSAttributedString(string: place, attributes: [NSFontAttributeName:UIFont.fontRegular(fontSize: 16.0)!,NSForegroundColorAttributeName:UIColor.white])
+            attributedString.append(placeText)
+            return attributedString
+        } else {
+            let attributedString = NSMutableAttributedString()
+            let jobTitleText = NSAttributedString(string: jobTitle, attributes: [NSFontAttributeName:UIFont.fontSemiBold(fontSize: 16.0)!,NSForegroundColorAttributeName:UIColor.white])
+            let placeText = NSAttributedString(string: place, attributes: [NSFontAttributeName:UIFont.fontRegular(fontSize: 16.0)!,NSForegroundColorAttributeName:UIColor.white])
+            attributedString.append(jobTitleText)
+            attributedString.append(NSAttributedString(string: "\n"))
+            attributedString.append(placeText)
+            return attributedString
+        }
+        
+    }
+    
 }

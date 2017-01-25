@@ -18,6 +18,7 @@ class DMEditLicenseVC: DMBaseVC {
     @IBOutlet weak var stateTextField: AnimatedPHTextField!
     @IBOutlet weak var licenseNumberTextField: AnimatedPHTextField!
     
+    var isEditMode = false
     var license:License?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,7 @@ class DMEditLicenseVC: DMBaseVC {
     
     func setup() {
         self.title = "EDIT PROFILE"
+        stateTextField.autocapitalizationType = .words
         self.changeNavBarAppearanceForDefault()
         self.navigationItem.leftBarButtonItem = self.backBarButton()
     }
@@ -49,28 +51,33 @@ class DMEditLicenseVC: DMBaseVC {
     func validateFields() -> Bool {
         licenseNumberTextField.text = licenseNumberTextField.text?.trim()
         stateTextField.text = stateTextField.text?.trim()
-        if (licenseNumberTextField.text?.isEmpty)! {
+        
+        if (licenseNumberTextField.text?.isEmptyField)! {
             self.makeToast(toastString: Constants.AlertMessage.emptyLicenseNumber)
             return false
+        } else {
+            let newChar = licenseNumberTextField.text?.characters.first
+            if newChar == "-" {
+                self.makeToast(toastString: Constants.AlertMessage.lienseNoStartError)
+                return false
+            }
         }
         
-        if (stateTextField.text?.isEmpty)! {
+        if (stateTextField.text?.isEmptyField)! {
             self.makeToast(toastString: Constants.AlertMessage.emptyState)
             return false
+        } else {
+            let newChar = stateTextField.text?.characters.first
+            if newChar == "-" {
+                self.makeToast(toastString: Constants.AlertMessage.stateStartError)
+                return false
+            }
         }
         return true
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     @IBAction func saveButtonPressed(_ sender: Any) {
+        self.view.endEditing(true)
         if validateFields() {
             let params = [
                 "license":licenseNumberTextField.text!,
@@ -84,24 +91,24 @@ class DMEditLicenseVC: DMBaseVC {
 
 extension DMEditLicenseVC : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+        if textField.tag == 0 {
+            self.stateTextField.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
         return true
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-        let textFieldOptions = TextFieldOptions(rawValue: textField.tag)!
-
         guard string.characters.count > 0 else {
             return true
         }
         
-        switch textFieldOptions {
-        case .licenseNumber:
+        if textField.tag == 0 {
             let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ0123456789-")
             if string == "-" && textField.text?.characters.count == 0 {
                 self.view.endEditing(true)
-                self.makeToast(toastString: "License No can't start with hyphen (-)")
+                self.makeToast(toastString: Constants.AlertMessage.lienseNoStartError)
                 return false
             }
             if string.rangeOfCharacter(from: characterset.inverted) != nil {
@@ -112,10 +119,23 @@ extension DMEditLicenseVC : UITextFieldDelegate {
             if (textField.text?.characters.count)! >= Constants.Limit.licenseNumber {
                 return false
             }
-        case .state:
+            
+        }else{
+            let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ- ")
+            if string == "-" && textField.text?.characters.count == 0 {
+                self.view.endEditing(true)
+                self.makeToast(toastString: Constants.AlertMessage.stateStartError)
+                return false
+            }
+            if string.rangeOfCharacter(from: characterset.inverted) != nil {
+                print("string contains special characters")
+                return false
+            }
+            
             if (textField.text?.characters.count)! >= Constants.Limit.commonMaxLimit {
                 return false
             }
+            
         }
         return true
     }
@@ -135,15 +155,6 @@ extension DMEditLicenseVC : UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        let textFieldOptions = TextFieldOptions(rawValue: textField.tag)!
         textField.text = textField.text?.trim()
-        switch textFieldOptions {
-        case .licenseNumber:
-            if textField.text?.characters.last == "-" {
-                print("Ending with hyphen")
-            }
-        case .state:
-            break
-        }
     }
 }

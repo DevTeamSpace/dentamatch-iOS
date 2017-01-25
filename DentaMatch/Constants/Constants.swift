@@ -15,6 +15,9 @@ let kDeviceId = "com.appster.dentamatch.deviceId"
 let kCustomDesignFont = "dentamatch"
 let kLogEnabled = true
 let kPlaceHolderImage = UIImage(named: "profileButton")
+let kCertificatePlaceHolder = UIImage(named: "certificatePlaceholder")
+
+
 let kGoogleAPIKey = "AIzaSyDFWCamiO9WGTth-iOxfY_L0K6oRBeAu0U"
 
 let kOkButtonTitle = "Ok"
@@ -184,6 +187,7 @@ struct Constants {
         static let userId = "userId"
         static let user = "user"
         static let jobTitleId = "jobTitleId"
+        static let jobTitle = "jobTitle"
         static let jobtitleName = "jobtitleName"
         static let monthsOfExperience = "monthsOfExpereince"
         static let officeName = "officeName"

@@ -55,13 +55,17 @@ extension DMEditProfileVC {
         if let user = user {
             UserManager.shared().activeUser.firstName = user[Constants.ServerKey.firstName].stringValue
             UserManager.shared().activeUser.lastName = user[Constants.ServerKey.lastName].stringValue
+            UserManager.shared().activeUser.jobTitle = user[Constants.ServerKey.jobTitle].stringValue
+            UserManager.shared().activeUser.jobTitleId = user[Constants.ServerKey.jobTitleId].stringValue
             UserManager.shared().activeUser.profileImageURL = user[Constants.ServerKey.profilePic].stringValue
         }
     }
     
     func handleLicenseResponse(license:JSON?) {
-        if let license = license {
-            self.license = License(license: license)
+        if !(license?[Constants.ServerKey.licenseNumber].stringValue.isEmptyField)! {
+            if let license = license {
+                self.license = License(license: license)
+            }
         }
     }
     
