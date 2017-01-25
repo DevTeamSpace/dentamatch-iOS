@@ -11,6 +11,12 @@ import UIKit
 class DMPublicProfileVC: DMBaseVC {
 
     @IBOutlet weak var publicProfileTableView: UITableView!
+    
+    var profileImage:UIImage?
+    var jobSelectionPickerView:JobSelectionPickerView!
+    var jobTitles = [JobTitle]()
+    var selectedJobTitleId = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -18,6 +24,11 @@ class DMPublicProfileVC: DMBaseVC {
     }
 
     func setup() {
+        selectedJobTitleId = UserManager.shared().activeUser.jobTitleId!
+        jobSelectionPickerView = JobSelectionPickerView.loadJobSelectionView(withJobTitles: jobTitles)
+        jobSelectionPickerView.delegate = self
+        jobSelectionPickerView.pickerView.reloadAllComponents()
+
         self.title = "EDIT PROFILE"
         self.navigationItem.leftBarButtonItem = self.backBarButton()
         self.publicProfileTableView.register(UINib(nibName: "EditPublicProfileTableCell", bundle: nil), forCellReuseIdentifier: "EditPublicProfileTableCell")
@@ -51,13 +62,61 @@ class DMPublicProfileVC: DMBaseVC {
 
     @IBAction func saveButtonPressed(_ sender: Any) {
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func addPhoto() {
+        self.cameraGalleryOptionActionSheet(title: "", message: "Please select", leftButtonText: "Camera", rightButtonText: "Gallery") { (isCameraButtonPressed, isGalleryButtonPressed, isCancelButtonPressed) in
+            if isCancelButtonPressed {
+                //cancel action
+            } else if isCameraButtonPressed {
+                self.getPhotoFromCamera()
+            } else {
+                self.getPhotoFromGallery()
+            }
+        }
     }
-    */
+    
+    func getPhotoFromCamera() {
+        CameraGalleryManager.shared.openCamera(viewController: self, allowsEditing: false, completionHandler: { (image:UIImage?, error:NSError?) in
+            if error != nil {
+                DispatchQueue.main.async {
+                    self.makeToast(toastString: (error?.localizedDescription)!)
+                }
+                return
+            }
+            self.profileImage = image
+            self.uploadProfileImageAPI()
+            self.publicProfileTableView.reloadData()
+        })
+    }
+    
+    
+    func getPhotoFromGallery() {
+        CameraGalleryManager.shared.openGallery(viewController: self, allowsEditing: false, completionHandler: { (image:UIImage?, error:NSError?) in
+            if error != nil {
+                DispatchQueue.main.async {
+                    self.makeToast(toastString: (error?.localizedDescription)!)
+                }
+                return
+            }
+            self.profileImage = image
+            self.uploadProfileImageAPI()
+            self.publicProfileTableView.reloadData()
+        })
+        
+    }
+}
+
+extension DMPublicProfileVC : JobSelectionPickerViewDelegate {
+    
+    func jobPickerDoneButtonAction(job: JobTitle?) {
+        if let cell = self.publicProfileTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? EditPublicProfileTableCell {
+            cell.jobTitleTextField.text = job?.jobTitle
+            selectedJobTitleId = "\(job?.jobId)"
+        }
+        self.view.endEditing(true)
+    }
+    
+    func jobPickerCancelButtonAction() {
+        self.view.endEditing(true)
+    }
 }

@@ -25,9 +25,39 @@ extension DMPublicProfileVC : UITableViewDataSource,UITableViewDelegate,UITextVi
         cell.lastNameTextField.delegate = self
         cell.jobTitleTextField.delegate = self
         cell.locationTextField.delegate = self
+        
+        cell.firstNameTextField.text = UserManager.shared().activeUser.firstName
+        cell.lastNameTextField.text = UserManager.shared().activeUser.lastName
+        cell.jobTitleTextField.text = UserManager.shared().activeUser.jobTitle
+        cell.jobTitleTextField.type = 1
+        cell.jobTitleTextField.tintColor = UIColor.clear
+        cell.jobTitleTextField.inputView = jobSelectionPickerView
 
+        cell.locationTextField.type = 2
+        cell.locationTextField.text = UserManager.shared().activeUser.preferredJobLocation
+        cell.addEditProfileButton.addTarget(self, action: #selector(addPhoto), for: .touchUpInside)
+        if profileImage == nil {
+            cell.profileButton.sd_setImage(with: URL(string: UserManager.shared().activeUser.profileImageURL!)!, for: .normal, placeholderImage: kPlaceHolderImage)
+        } else {
+            cell.profileButton.setImage(self.profileImage, for: .normal)
+        }
         return cell
     }
+    
+    func cellConfigureForJobSelection(cell:AnimatedPHTableCell, indexPath:IndexPath) {
+        
+       /* cell.commonTextField.placeholder = FieldType.CurrentJobTitle.description
+        let pickerView = JobSelectionPickerView.loadJobSelectionView(withJobTitles: jobTitles!)
+        cell.commonTextField.type = 1
+        cell.commonTextField.tintColor = UIColor.clear
+        cell.commonTextField.inputView = pickerView
+        pickerView.delegate = self
+        cell.commonTextField.tag = 0
+        pickerView.pickerView.reloadAllComponents()
+        pickerView.backgroundColor = UIColor.white*/
+        
+    }
+    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -35,6 +65,17 @@ extension DMPublicProfileVC : UITableViewDataSource,UITableViewDelegate,UITextVi
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if let cell = self.publicProfileTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as?
+            EditPublicProfileTableCell {
+            if textField == cell.locationTextField {
+                let mapVC = UIStoryboard.registrationStoryBoard().instantiateViewController(type: DMRegisterMapsVC.self)!
+                mapVC.delegate = self
+                self.navigationController?.pushViewController(mapVC, animated: true)
+                self.view.endEditing(true)
+                return false
+            }
+        }
+        
         if let textField = textField as? AnimatedPHTextField {
             textField.layer.borderColor = Constants.Color.textFieldColorSelected.cgColor
         }
@@ -65,5 +106,26 @@ extension DMPublicProfileVC : UITableViewDataSource,UITableViewDelegate,UITextVi
     
     func textViewDidChange(_ textView: UITextView) {
     
+    }
+}
+
+//MARK:- LocationAddress Delegate
+extension DMPublicProfileVC:LocationAddressDelegate {
+    func locationAddress(location: Location) {
+        //coordinateSelected = location.coordinateSelected
+        if let address = location.address {
+            if let cell = self.publicProfileTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as?
+                EditPublicProfileTableCell {
+                cell.locationTextField.text = address
+                
+                /*registrationParams[Constants.ServerKey.zipCode] = location.postalCode
+                registrationParams[Constants.ServerKey.preferredLocation] = address
+                registrationParams[Constants.ServerKey.latitude] = "\((coordinateSelected?.latitude)!)"
+                registrationParams[Constants.ServerKey.longitude] = "\((coordinateSelected?.longitude)!)"*/
+            }
+            debugPrint(address)
+        } else {
+            debugPrint("Address is empty")
+        }
     }
 }

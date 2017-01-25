@@ -12,13 +12,13 @@ import SwiftyJSON
 class JobTitle: NSObject {
 
     var jobTitle = ""
+    var jobTitleName = ""
     var jobId = 0
     var jobSelected = false
     
     init(job:JSON) {
         self.jobTitle = job["jobtitle_name"].stringValue
+        self.jobTitle = job["jobtitleName"].stringValue
         self.jobId = job["id"].intValue
     }
 }
-
-

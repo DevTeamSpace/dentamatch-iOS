@@ -58,6 +58,9 @@ class JobSelectionPickerView: UIView,UIPickerViewDataSource,UIPickerViewDelegate
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         let jobTitle = jobTitles[row]
+        if jobTitle.jobTitle.isEmpty {
+            return jobTitle.jobTitleName
+        }
         return jobTitle.jobTitle
     }
     

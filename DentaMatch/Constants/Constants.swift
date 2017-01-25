@@ -128,6 +128,7 @@ struct Constants {
         static let getJobTitleAPI = Constants.API.apiURL("list-jobtitle")
         static let uploadImageAPI = Constants.API.apiURL("users/upload-image")
         static let JobSearchResultAPI = Constants.API.apiURL("users/search-jobs")
+        static let updateUserProfile = Constants.API.apiURL("users/user-profile-update")
         
         static let licenseNumberAndState = Constants.API.apiURL("users/update-license")
         static let workExperienceSave = Constants.API.apiURL("users/work-experience-save")
@@ -155,6 +156,7 @@ struct Constants {
         static let email = "email"
         static let password = "password"
         static let preferredLocation = "preferedLocation"
+        static let preferredJobLocation = "preferredJobLocation"
         static let latitude = "latitude"
         static let longitude = "longitude"
         static let zipCode = "zipCode"
@@ -193,6 +195,7 @@ struct Constants {
         static let userId = "userId"
         static let user = "user"
         static let jobTitleId = "jobTitleId"
+        static let jobTitileId = "jobTitileId"
         static let jobTitle = "jobTitle"
         static let jobtitleName = "jobtitleName"
         static let monthsOfExperience = "monthsOfExpereince"
