@@ -52,6 +52,8 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
     var phoneFormatter = PhoneNumberFormatter()
     var jobTitles = [JobTitle]()
     var selectedIndex:Int = 0
+    var isHiddenExperienceTable :Bool = false
+
 
     @IBOutlet weak var mainScrollView: UIScrollView!
     @IBOutlet weak var workExperienceTable: UITableView!
@@ -146,7 +148,15 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
     }
     
     func reSizeTableViewsAndScrollView()  {
-        self.hightOfExperienceTable.constant = self.workExperienceTable.contentSize.height
+        
+        if self.isHiddenExperienceTable == true {
+            self.hightOfExperienceTable.constant = 0
+            
+
+        }else{
+            self.hightOfExperienceTable.constant = self.workExperienceTable.contentSize.height
+
+        }
         self.hightOfExperienceDetailTable.constant = self.workExperienceDetailTable.contentSize.height
         self.workExperienceTable.layoutIfNeeded()
         self.workExperienceDetailTable.layoutIfNeeded()

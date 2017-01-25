@@ -36,7 +36,7 @@ extension DMExecutiveSummaryVC {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
                 DispatchQueue.main.async {
-                    self.openDashboard()
+                    //self.openDashboard()
                 }
             } else {
             }
