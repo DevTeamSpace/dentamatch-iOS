@@ -119,6 +119,8 @@
 		E56C9F9E1DED4BD100EAA9DD /* Character+Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C9F9D1DED4BD100EAA9DD /* Character+Addition.swift */; };
 		E56C9FA31DED520B00EAA9DD /* InAppPurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C9FA21DED520B00EAA9DD /* InAppPurchase.swift */; };
 		E56C9FA81DED75D500EAA9DD /* CommonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C9FA71DED75D500EAA9DD /* CommonHelper.swift */; };
+		E56E315D1E3A8275009FF0FC /* EditProfileSchoolCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56E315B1E3A8275009FF0FC /* EditProfileSchoolCell.swift */; };
+		E56E315E1E3A8275009FF0FC /* EditProfileSchoolCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E56E315C1E3A8275009FF0FC /* EditProfileSchoolCell.xib */; };
 		E56E45C31DAE07C200AD4559 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E56E45C21DAE07C200AD4559 /* Assets.xcassets */; };
 		E56E45C61DAE07C200AD4559 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E56E45C41DAE07C200AD4559 /* LaunchScreen.storyboard */; };
 		E56E90801DFF31740096A31B /* CameraGalleryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56E907F1DFF31740096A31B /* CameraGalleryManager.swift */; };
@@ -407,6 +409,8 @@
 		E56C9F9D1DED4BD100EAA9DD /* Character+Addition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Character+Addition.swift"; sourceTree = "<group>"; };
 		E56C9FA21DED520B00EAA9DD /* InAppPurchase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppPurchase.swift; sourceTree = "<group>"; };
 		E56C9FA71DED75D500EAA9DD /* CommonHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonHelper.swift; sourceTree = "<group>"; };
+		E56E315B1E3A8275009FF0FC /* EditProfileSchoolCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileSchoolCell.swift; sourceTree = "<group>"; };
+		E56E315C1E3A8275009FF0FC /* EditProfileSchoolCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileSchoolCell.xib; sourceTree = "<group>"; };
 		E56E45B81DAE07C200AD4559 /* DentaMatch-Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DentaMatch-Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E56E45C21DAE07C200AD4559 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E56E45C51DAE07C200AD4559 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -1050,6 +1054,8 @@
 				5A3BD4B11E35FCBA00A607AC /* EditProfileExperienceCell.xib */,
 				5A3BD4B41E36065E00A607AC /* EditProfileReferenceCell.swift */,
 				5A3BD4B51E36065E00A607AC /* EditProfileReferenceCell.xib */,
+				E56E315B1E3A8275009FF0FC /* EditProfileSchoolCell.swift */,
+				E56E315C1E3A8275009FF0FC /* EditProfileSchoolCell.xib */,
 			);
 			path = EditProfile;
 			sourceTree = "<group>";
@@ -1839,6 +1845,7 @@
 				5A50A2CB1E32163D0010AA31 /* SettingTableCell.xib in Resources */,
 				E597E5851E151A99001DDA78 /* SF-UI-Text-MediumItalic.otf in Resources */,
 				E558D9121E2E873700A6DF95 /* EditProfileHeaderTableCell.xib in Resources */,
+				E56E315E1E3A8275009FF0FC /* EditProfileSchoolCell.xib in Resources */,
 				F2F5E0DC1E31BDEC0082187C /* MapCell.xib in Resources */,
 				E597E5871E151A99001DDA78 /* SF-UI-Text-RegularItalic.otf in Resources */,
 				E597E5861E151A99001DDA78 /* SF-UI-Text-Regular.otf in Resources */,
@@ -2100,6 +2107,7 @@
 				E57F29DC1E368D070025B9DE /* DMEditCertificateVC+Services.swift in Sources */,
 				E5AE2AF11DAF844C00C008BD /* DMOnboardingVC.swift in Sources */,
 				E55462F31DAE4A5D004163B2 /* Constants.swift in Sources */,
+				E56E315D1E3A8275009FF0FC /* EditProfileSchoolCell.swift in Sources */,
 				E5496E0A1E25E52600C54288 /* DMSchoolListPopOverVC+TableViewExtension.swift in Sources */,
 				E50B3F4E1E194CD7004C5F32 /* LoginTableViewCell.swift in Sources */,
 			);

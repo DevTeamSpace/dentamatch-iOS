@@ -64,7 +64,8 @@ class EditProfileAffiliationBrickCell: UITableViewCell,TagListDelegate {
         tagList.tags.removeAll()
         for subSkill in affiliation {
             let tag = Tag(content: TagPresentableText(subSkill.affiliationName) {
-                $0.label.font = UIFont.systemFont(ofSize: 16)
+                $0.label.font = UIFont.fontRegular(fontSize: 14.0)
+                $0.label.textColor = Constants.Color.brickTextColor
                 }, onInit: {
                     $0.padding = UIEdgeInsets(top: 8, left: 10, bottom: 8, right: 10)
                     $0.layer.borderColor = UIColor.clear.cgColor

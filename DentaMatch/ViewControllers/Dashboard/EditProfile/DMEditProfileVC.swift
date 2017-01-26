@@ -28,6 +28,7 @@ class DMEditProfileVC: DMBaseVC {
     var license:License?
     var affiliations = [Affiliation]()
     var skills = [Skill]()
+    var schoolCategories = [SelectedSchool]()
     var certifications = [Certification]()
     var experiences = [ExperienceModel]()
     var dentalStateBoardURL = ""
@@ -64,6 +65,7 @@ class DMEditProfileVC: DMBaseVC {
         self.editProfileTableView.register(UINib(nibName: "SectionHeadingTableCell", bundle: nil), forCellReuseIdentifier: "SectionHeadingTableCell")
         self.editProfileTableView.register(UINib(nibName: "AddProfileOptionTableCell", bundle: nil), forCellReuseIdentifier: "AddProfileOptionTableCell")
         self.editProfileTableView.register(UINib(nibName: "EditLicenseTableCell", bundle: nil), forCellReuseIdentifier: "EditLicenseTableCell")
+        self.editProfileTableView.register(UINib(nibName: "EditProfileSchoolCell", bundle: nil), forCellReuseIdentifier: "EditProfileSchoolCell")
         self.editProfileTableView.register(UINib(nibName: "EmptyCertificateTableViewCell", bundle: nil), forCellReuseIdentifier: "EmptyCertificateTableViewCell")
         self.editProfileTableView.register(UINib(nibName: "EditCertificateTableCell", bundle: nil), forCellReuseIdentifier: "EditCertificateTableCell")
         self.editProfileTableView.register(UINib(nibName: "EditProfileAffiliationBrickCell", bundle: nil), forCellReuseIdentifier: "EditProfileAffiliationBrickCell")
@@ -97,6 +99,9 @@ class DMEditProfileVC: DMBaseVC {
         affiliationVC.hidesBottomBarWhenPushed = true
         affiliationVC.selectedAffiliationsFromProfile = self.affiliations
         self.navigationController?.pushViewController(affiliationVC, animated: true)
+    }
+    
+    func openSchoolsScreen() {
     }
     
     func openSkillsScreen() {

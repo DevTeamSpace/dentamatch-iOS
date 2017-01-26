@@ -42,3 +42,28 @@ class University : NSObject {
         self.isSelected = university[Constants.ServerKey.jobSeekerStatus].boolValue
     }
 }
+
+class SelectedSchool : NSObject {
+    var schoolCategoryId = ""
+    var schoolCategoryName = ""
+    var universityId = ""
+    var universityName = ""
+    var isOther = false
+    var otherSchooling = ""
+    var yearOfGraduation = ""
+    
+    override init() {
+        //for empty object
+    }
+    init(school:JSON) {
+        self.schoolCategoryId = school[Constants.ServerKey.parentId].stringValue
+        self.schoolCategoryName = school[Constants.ServerKey.schoolName].stringValue
+        self.universityId = school[Constants.ServerKey.childId].stringValue
+        self.universityName = school[Constants.ServerKey.schoolChildName].stringValue
+        self.yearOfGraduation = school[Constants.ServerKey.yearOfGraduation].stringValue
+        if !school[Constants.ServerKey.otherSchooling].stringValue.isEmpty {
+            self.otherSchooling = school[Constants.ServerKey.otherSchooling].stringValue
+            self.isOther = true
+        }
+    }
+}

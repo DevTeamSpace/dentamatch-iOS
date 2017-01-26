@@ -37,6 +37,7 @@ extension DMEditProfileVC {
                 handleLicenseResponse(license: response[Constants.ServerKey.result][Constants.ServerKey.license])
                 handleCertificationResponse(certifications: response[Constants.ServerKey.result][Constants.ServerKey.certifications].arrayValue)
                 handleAffiliationResponse(affiliations: response[Constants.ServerKey.result][Constants.ServerKey.affiliations].arrayValue)
+                handleSchoolListResponse(schoolsCategories: response[Constants.ServerKey.result][Constants.ServerKey.school].arrayValue)
                 handleSkillsResponse(skills: response[Constants.ServerKey.result][Constants.ServerKey.skills].arrayValue)
                 handleWorkExperienceResponse(workExperienceArray: response[Constants.ServerKey.result][Constants.ServerKey.workExperience][Constants.ServerKey.list].arrayValue)
                 handleJobListResponse(jobLists: response[Constants.ServerKey.result][Constants.ServerKey.joblists].arrayValue)
@@ -81,6 +82,15 @@ extension DMEditProfileVC {
         if !(license?[Constants.ServerKey.licenseNumber].stringValue.isEmptyField)! {
             if let license = license {
                 self.license = License(license: license)
+            }
+        }
+    }
+    
+    func handleSchoolListResponse(schoolsCategories:[JSON]?) {
+        if let schoolsCategories = schoolsCategories {
+            for schoolCategory in schoolsCategories {
+                let school = SelectedSchool(school: schoolCategory)
+                self.schoolCategories.append(school)
             }
         }
     }
