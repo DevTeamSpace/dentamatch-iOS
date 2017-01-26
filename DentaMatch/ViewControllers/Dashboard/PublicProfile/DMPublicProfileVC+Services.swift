@@ -59,6 +59,7 @@ extension DMPublicProfileVC {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
                 UserManager.shared().activeUser.profileImageURL = response[Constants.ServerKey.result][Constants.ServerKey.profileImageURL].stringValue
+                UserManager.shared().saveActiveUser()
                 self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
                 self.updateProfileScreen()
                 DispatchQueue.main.async {

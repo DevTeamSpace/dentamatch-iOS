@@ -26,6 +26,7 @@ class EditProfileAffiliationBrickCell: UITableViewCell,TagListDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.tagScrollView.clipsToBounds = true
         tagScrollView.addSubview(tagList)
         tagList.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: UIScreen.main.bounds.width - 30, height: 0))
         

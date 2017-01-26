@@ -100,9 +100,8 @@ class DMEditProfileVC: DMBaseVC {
     }
     
     func openSkillsScreen() {
-        let skillsVC = UIStoryboard.profileStoryBoard().instantiateViewController(type: DMSkillsVC.self)!
+        let skillsVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: DMEditSkillsVC.self)!
         skillsVC.selectedSkills = self.skills
-        skillsVC.isEditMode = true
         
         let selectSkillsVC = UIStoryboard.profileStoryBoard().instantiateViewController(type: DMSelectSkillsVC.self)!
         
@@ -149,6 +148,11 @@ class DMEditProfileVC: DMBaseVC {
         //Upload for affiliation
         if let affiliation = dict?["affiliations"] {
             self.affiliations = affiliation as! [Affiliation]
+        }
+        
+        //For Skills
+        if let skills = dict?["skills"] {
+            self.skills = skills as! [Skill]
         }
         
         //Update for certificate
