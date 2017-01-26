@@ -10,11 +10,6 @@ import UIKit
 
 class DMEditLicenseVC: DMBaseVC {
     
-    enum TextFieldOptions:Int {
-        case licenseNumber = 1
-        case state
-    }
-    
     @IBOutlet weak var stateTextField: AnimatedPHTextField!
     @IBOutlet weak var licenseNumberTextField: AnimatedPHTextField!
     

@@ -16,6 +16,10 @@ class JobTitle: NSObject {
     var jobId = 0
     var jobSelected = false
     
+    override init() {
+        
+    }
+    
     init(job:JSON) {
         self.jobTitle = job["jobtitle_name"].stringValue
         self.jobTitle = job["jobtitleName"].stringValue

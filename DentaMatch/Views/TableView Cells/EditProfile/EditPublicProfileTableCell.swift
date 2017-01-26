@@ -21,6 +21,9 @@ class EditPublicProfileTableCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.profileButton.layer.cornerRadius = self.profileButton.frame.size.width/2
+        self.profileButton.imageView?.contentMode = .scaleAspectFill
+        self.profileButton.clipsToBounds = true
         self.aboutMeTextView.layer.cornerRadius = 5.0
         self.aboutMeTextView.layer.borderWidth = 1.0
         self.aboutMeTextView.layer.borderColor = Constants.Color.textFieldBorderColor.cgColor

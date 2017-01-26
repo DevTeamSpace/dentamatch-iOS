@@ -7,15 +7,35 @@
 //
 
 import UIKit
+import CoreLocation
 
 class DMPublicProfileVC: DMBaseVC {
 
+    enum ProfileOptions:Int {
+        case firstName = 1
+        case lastName
+        case jobTitle
+        case preferredJobLocation
+    }
+    
     @IBOutlet weak var publicProfileTableView: UITableView!
+    
+    var editProfileParams = [
+        Constants.ServerKey.firstName:"",
+        Constants.ServerKey.lastName:"",
+        "zipcode":"",
+        Constants.ServerKey.latitude:"",
+        Constants.ServerKey.longitude:"",
+        Constants.ServerKey.preferredJobLocation:"",
+        "jobTitileId":"",
+        Constants.ServerKey.aboutMe:""
+    ]
     
     var profileImage:UIImage?
     var jobSelectionPickerView:JobSelectionPickerView!
     var jobTitles = [JobTitle]()
     var selectedJobTitleId = ""
+    var selectedLocationCoordinate:CLLocationCoordinate2D?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +44,17 @@ class DMPublicProfileVC: DMBaseVC {
     }
 
     func setup() {
+        editProfileParams[Constants.ServerKey.firstName] = UserManager.shared().activeUser.firstName
+        editProfileParams[Constants.ServerKey.lastName] = UserManager.shared().activeUser.lastName
+        editProfileParams["jobTitileId"] = selectedJobTitleId
+        editProfileParams[Constants.ServerKey.latitude] = UserManager.shared().activeUser.latitude
+        editProfileParams[Constants.ServerKey.longitude] = UserManager.shared().activeUser.longitude
+        editProfileParams[Constants.ServerKey.preferredJobLocation] = UserManager.shared().activeUser.preferredJobLocation
+        editProfileParams["zipcode"] = UserManager.shared().activeUser.zipCode
+        editProfileParams[Constants.ServerKey.aboutMe] = UserManager.shared().activeUser.aboutMe
+        editProfileParams["jobTitileId"] = selectedJobTitleId
+
+        selectedLocationCoordinate = CLLocationCoordinate2D(latitude: Double(UserManager.shared().activeUser.latitude!)!, longitude: Double(UserManager.shared().activeUser.longitude!)!)
         selectedJobTitleId = UserManager.shared().activeUser.jobTitleId!
         jobSelectionPickerView = JobSelectionPickerView.loadJobSelectionView(withJobTitles: jobTitles)
         jobSelectionPickerView.delegate = self
@@ -33,6 +64,7 @@ class DMPublicProfileVC: DMBaseVC {
         self.navigationItem.leftBarButtonItem = self.backBarButton()
         self.publicProfileTableView.register(UINib(nibName: "EditPublicProfileTableCell", bundle: nil), forCellReuseIdentifier: "EditPublicProfileTableCell")
     }
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -61,6 +93,8 @@ class DMPublicProfileVC: DMBaseVC {
 
 
     @IBAction func saveButtonPressed(_ sender: Any) {
+        self.view.endEditing(true)
+        self.updatePublicProfileAPI(params: editProfileParams)
     }
     
     func addPhoto() {
@@ -85,7 +119,6 @@ class DMPublicProfileVC: DMBaseVC {
             }
             self.profileImage = image
             self.uploadProfileImageAPI()
-            self.publicProfileTableView.reloadData()
         })
     }
     
@@ -100,9 +133,80 @@ class DMPublicProfileVC: DMBaseVC {
             }
             self.profileImage = image
             self.uploadProfileImageAPI()
-            self.publicProfileTableView.reloadData()
         })
         
+    }
+    
+    func openMapsScreen() {
+        let mapVC = UIStoryboard.registrationStoryBoard().instantiateViewController(type: DMRegisterMapsVC.self)!
+        mapVC.delegate = self
+        mapVC.userSelectedCoordinate = selectedLocationCoordinate
+        mapVC.fromEditProfile = true
+        self.navigationController?.pushViewController(mapVC, animated: true)
+        self.view.endEditing(true)
+    }
+    
+    func updateProfileScreen() {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateProfileScreen"), object: nil, userInfo: nil)
+    }
+}
+
+extension DMPublicProfileVC:UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let profileOptions = ProfileOptions(rawValue: textField.tag)!
+        switch profileOptions {
+        case .firstName:
+            if let cell = self.publicProfileTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as?
+                EditPublicProfileTableCell {
+                cell.lastNameTextField.becomeFirstResponder()
+            }
+        case .lastName:
+            textField.resignFirstResponder()
+        default:
+            self.view.endEditing(true)
+        }
+        return true
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        
+        if let cell = self.publicProfileTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as?
+            EditPublicProfileTableCell {
+            if textField == cell.locationTextField {
+                openMapsScreen()
+                return false
+            }
+        }
+        
+        if let textField = textField as? AnimatedPHTextField {
+            textField.layer.borderColor = Constants.Color.textFieldColorSelected.cgColor
+        }
+        return true
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        textField.text = textField.text!.trim()
+        if let textField = textField as? AnimatedPHTextField {
+            textField.layer.borderColor = Constants.Color.textFieldBorderColor.cgColor
+        }
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        let profileOptions = ProfileOptions(rawValue: textField.tag)!
+        
+        switch profileOptions {
+        case .firstName:
+            editProfileParams[Constants.ServerKey.firstName] = textField.text!
+        case .lastName:
+            editProfileParams[Constants.ServerKey.lastName] = textField.text!
+        case .preferredJobLocation:
+            editProfileParams[Constants.ServerKey.preferredJobLocation] = textField.text!
+        default:
+            break
+        }
     }
 }
 
@@ -111,12 +215,33 @@ extension DMPublicProfileVC : JobSelectionPickerViewDelegate {
     func jobPickerDoneButtonAction(job: JobTitle?) {
         if let cell = self.publicProfileTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? EditPublicProfileTableCell {
             cell.jobTitleTextField.text = job?.jobTitle
-            selectedJobTitleId = "\(job?.jobId)"
+            selectedJobTitleId = "\(job!.jobId)"
+            editProfileParams["jobTitileId"] = selectedJobTitleId
         }
         self.view.endEditing(true)
     }
     
     func jobPickerCancelButtonAction() {
         self.view.endEditing(true)
+    }
+}
+
+//MARK:- LocationAddress Delegate
+extension DMPublicProfileVC:LocationAddressDelegate {
+    func locationAddress(location: Location) {
+        //coordinateSelected = location.coordinateSelected
+        if let address = location.address {
+            if let cell = self.publicProfileTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as?
+                EditPublicProfileTableCell {
+                cell.locationTextField.text = address
+                editProfileParams[Constants.ServerKey.latitude] = "\(location.coordinateSelected?.latitude)"
+                editProfileParams[Constants.ServerKey.longitude] = "\(location.coordinateSelected?.longitude)"
+                editProfileParams[Constants.ServerKey.preferredJobLocation] = address
+                editProfileParams["zipCode"] = location.postalCode
+            }
+            debugPrint(address)
+        } else {
+            debugPrint("Address is empty")
+        }
     }
 }

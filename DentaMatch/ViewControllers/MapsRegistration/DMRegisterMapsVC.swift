@@ -33,6 +33,8 @@ class DMRegisterMapsVC: DMBaseVC {
     var postCodeSelected = ""
     var currentLocation:CLLocationCoordinate2D?
     var addressSelected = ""
+    var fromEditProfile = false
+    var userSelectedCoordinate:CLLocationCoordinate2D?
     var delegate:LocationAddressDelegate?
     var location = Location()
     
@@ -40,7 +42,6 @@ class DMRegisterMapsVC: DMBaseVC {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-
         setup()
     }
     
@@ -64,6 +65,10 @@ class DMRegisterMapsVC: DMBaseVC {
         setSearchButtonText(text: "Done", searchBar: placeSearchBar)
         mapView.isMyLocationEnabled = true
         mapView.delegate = self
+        if let userSelectedCoordinate = userSelectedCoordinate {
+            placeMarkerOnMap(coordinate: userSelectedCoordinate)
+            location.coordinateSelected = userSelectedCoordinate
+        }
         self.showLoader(text: "Getting Location")
         LocationManager.sharedInstance.getLocation { (location:CLLocation?, error:NSError?) in
             if error != nil {
@@ -75,6 +80,9 @@ class DMRegisterMapsVC: DMBaseVC {
             }
            
             let coordinate = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
+            //if self.userSelectedCoordinate == nil {
+            //    self.location.coordinateSelected = coordinate
+            //}
             self.location.coordinateSelected = coordinate
             self.currentLocation = coordinate
             self.reverseGeocodeCoordinate(coordinate: coordinate)
