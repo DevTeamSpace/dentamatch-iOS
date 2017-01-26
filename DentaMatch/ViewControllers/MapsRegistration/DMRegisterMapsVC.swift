@@ -68,7 +68,22 @@ class DMRegisterMapsVC: DMBaseVC {
         if let userSelectedCoordinate = userSelectedCoordinate {
             placeMarkerOnMap(coordinate: userSelectedCoordinate)
             location.coordinateSelected = userSelectedCoordinate
+            self.location.address = UserManager.shared().activeUser.preferredJobLocation
+            self.placeSearchBar.text = UserManager.shared().activeUser.preferredJobLocation
+            self.mapView.animate(to: GMSCameraPosition(target: userSelectedCoordinate, zoom: 15, bearing: 0, viewingAngle: 0))
         }
+        if !fromEditProfile {
+            getCurrentLocation()
+        }
+    }
+    
+    func goBack() {
+        DispatchQueue.main.async {
+            _ = self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    func getCurrentLocation() {
         self.showLoader(text: "Getting Location")
         LocationManager.sharedInstance.getLocation { (location:CLLocation?, error:NSError?) in
             if error != nil {
@@ -78,7 +93,7 @@ class DMRegisterMapsVC: DMBaseVC {
                 }
                 return
             }
-           
+            
             let coordinate = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
             //if self.userSelectedCoordinate == nil {
             //    self.location.coordinateSelected = coordinate
@@ -185,10 +200,14 @@ class DMRegisterMapsVC: DMBaseVC {
     }
     
     @IBAction func gpsNavigationButtonPressed(_ sender: Any) {
-        guard let _ = self.currentLocation else {
-            return
+        if fromEditProfile {
+            getCurrentLocation()
+        } else {
+            guard let _ = self.currentLocation else {
+                return
+            }
+            self.mapView.animate(to: GMSCameraPosition(target: self.currentLocation!, zoom: 15, bearing: 0, viewingAngle: 0))
         }
-        self.mapView.animate(to: GMSCameraPosition(target: self.currentLocation!, zoom: 15, bearing: 0, viewingAngle: 0))
     }
 }
 
@@ -196,11 +215,29 @@ class DMRegisterMapsVC: DMBaseVC {
 extension DMRegisterMapsVC:UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        if let delegate = self.delegate {
-            self.addressSelected = self.placeSearchBar.text!
-            delegate.locationAddress(location: location)
+        if fromEditProfile {
+            if UserManager.shared().activeUser.preferredJobLocation != self.location.address! {
+                self.alertMessage(title: "Change Location", message: "Are you sure you want to change the location", leftButtonText: "No", rightButtonText: "Yes", completionHandler: { (isLeft:Bool) in
+                    if !isLeft {
+                        if let delegate = self.delegate {
+                            self.addressSelected = self.placeSearchBar.text!
+                            delegate.locationAddress(location: self.location)
+                        }
+                        self.goBack()
+                    } else {
+                        self.goBack()
+                    }
+                })
+            } else {
+                goBack()
+            }
+        } else {
+            if let delegate = self.delegate {
+                self.addressSelected = self.placeSearchBar.text!
+                delegate.locationAddress(location: location)
+            }
+            goBack()
         }
-        _ = self.navigationController?.popViewController(animated: true)
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

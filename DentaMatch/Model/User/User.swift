@@ -74,7 +74,7 @@ class User: NSObject , NSCoding {
         aCoder.encode(self.jobTitleId, forKey: "jobTitleId")
         aCoder.encode(self.latitude, forKey: "latitude")
         aCoder.encode(self.longitude, forKey: "longitude")
-        aCoder.encode(self.longitude, forKey: "aboutMe")
+        aCoder.encode(self.aboutMe, forKey: "aboutMe")
 
     }
 }

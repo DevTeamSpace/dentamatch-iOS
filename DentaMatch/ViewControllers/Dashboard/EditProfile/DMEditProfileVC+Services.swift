@@ -71,6 +71,9 @@ extension DMEditProfileVC {
             UserManager.shared().activeUser.preferredJobLocation = user[Constants.ServerKey.preferredJobLocation].stringValue
             UserManager.shared().activeUser.latitude = user[Constants.ServerKey.latitude].stringValue
             UserManager.shared().activeUser.longitude = user[Constants.ServerKey.longitude].stringValue
+            UserManager.shared().activeUser.aboutMe = user[Constants.ServerKey.aboutMe].stringValue
+            UserManager.shared().saveActiveUser()
+
         }
     }
     

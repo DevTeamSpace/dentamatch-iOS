@@ -156,6 +156,7 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             cell.placeLabel.attributedText = cell.fillPlaceAndJobTitle(jobTitle: UserManager.shared().activeUser.jobTitle!, place: "New Delhi")
             cell.editButton.addTarget(self, action: #selector(openEditPublicProfileScreen), for: .touchUpInside)
             cell.settingButton.addTarget(self, action: #selector(openSettingScreen), for: .touchUpInside)
+            cell.aboutTextView.text = UserManager.shared().activeUser.aboutMe
             cell.profileButton.progressBar.progressBarTrackColor = UIColor.clear
             cell.profileButton.progressBar.progressBarProgressColor = UIColor.clear
             if let imageUrl = URL(string: UserManager.shared().activeUser.profileImageURL!) {

@@ -25,9 +25,10 @@ extension DMPublicProfileVC : UITableViewDataSource,UITableViewDelegate,UITextVi
         cell.lastNameTextField.delegate = self
         cell.jobTitleTextField.delegate = self
         cell.locationTextField.delegate = self
-        
-        cell.firstNameTextField.text = UserManager.shared().activeUser.firstName
-        cell.lastNameTextField.text = UserManager.shared().activeUser.lastName
+        cell.aboutMeTextView.delegate = self
+        cell.aboutMeTextView.text = editProfileParams[Constants.ServerKey.aboutMe]
+        cell.firstNameTextField.text = editProfileParams[Constants.ServerKey.firstName]
+        cell.lastNameTextField.text = editProfileParams[Constants.ServerKey.lastName]
         cell.jobTitleTextField.text = UserManager.shared().activeUser.jobTitle
         cell.jobTitleTextField.type = 1
         cell.jobTitleTextField.tintColor = UIColor.clear
@@ -57,11 +58,11 @@ extension DMPublicProfileVC : UITableViewDataSource,UITableViewDelegate,UITextVi
     
     func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
         self.publicProfileTableView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0)
-        
+        editProfileParams[Constants.ServerKey.aboutMe] = textView.text
         return true
     }
     
     func textViewDidChange(_ textView: UITextView) {
-    
+        editProfileParams[Constants.ServerKey.aboutMe] = textView.text
     }
 }
