@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -114,6 +114,7 @@
                             <constraint firstItem="i3F-YG-5iw" firstAttribute="height" secondItem="bNb-vq-rb9" secondAttribute="height" id="JCs-df-PIQ"/>
                             <constraint firstItem="AkG-0X-xoH" firstAttribute="centerX" secondItem="tkh-qE-gSd" secondAttribute="centerX" multiplier="1.25" id="MxM-Jc-aex"/>
                             <constraint firstItem="i3F-YG-5iw" firstAttribute="centerX" secondItem="tkh-qE-gSd" secondAttribute="centerX" multiplier="0.5" id="R0C-Ha-Kcp"/>
+                            <constraint firstAttribute="height" constant="77" id="Udn-Og-HYh"/>
                             <constraint firstItem="LrQ-BC-tdw" firstAttribute="height" secondItem="i3F-YG-5iw" secondAttribute="height" id="Z8c-Wy-jjG"/>
                             <constraint firstItem="AkG-0X-xoH" firstAttribute="height" secondItem="S1H-sE-yPh" secondAttribute="height" id="c3X-7U-H5e"/>
                             <constraint firstItem="UWB-f3-J06" firstAttribute="width" secondItem="AkG-0X-xoH" secondAttribute="width" id="dWU-QI-rgK"/>

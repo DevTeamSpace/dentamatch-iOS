@@ -33,11 +33,10 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         self.calendar?.delegate = self;
         self.calendar?.allowsMultipleSelection = false
         self.calendar?.swipeToChooseGesture.isEnabled = false
-//        self.calendar?.backgroundColor = UIColor.white
+        self.calendar?.appearance.headerMinimumDissolvedAlpha = 0
+        self.calendar?.appearance.caseOptions = .headerUsesUpperCase
         self.calendar?.pagingEnabled = true
         self.calendar?.placeholderType = .none
-//        self.calendar?.appearance.todayColor = UIColor.orange
-//        self.calendar?.select(Data())
         self.view.addSubview(self.calendar!)
 
     }
@@ -82,5 +81,9 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         return UIColor.clear
     }
 
+    @IBAction func setAvailablityButtonClicked(_ sender: Any) {
+        let termsVC = UIStoryboard.calenderStoryBoard().instantiateViewController(type: DMCalendarSetAvailabillityVC.self)!
+        self.navigationController?.pushViewController(termsVC, animated: true)
+    }
 
 }

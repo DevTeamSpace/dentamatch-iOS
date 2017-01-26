@@ -204,7 +204,7 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
                     let experience  =  self.experiences[indexPath.row - 1]
                     cell.jobTitleLabel.text = experience.jobTitle
                     let yearExp:Float = Float(experience.experienceInMonth/12)
-                    cell.yearOfExperienceLabel.text = "\(yearExp)"
+                    cell.yearOfExperienceLabel.text = "\(yearExp) year"
                     cell.officeNameLabel.text = experience.officeName
                     cell.officeAddressLabel.text = "\(experience.officeAddress!) \n\(experience.cityName!)"
                     if experience.references.count > 0 {
