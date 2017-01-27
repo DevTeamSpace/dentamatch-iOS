@@ -369,6 +369,12 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
                 openEditLicenseScreen(editMode: false)
                 return
             }
+        
+        case .experience:
+            openWorkExperienceScreen()
+            
+        case .schooling:
+            openSchoolsScreen()
             
         case .keySkills:
             if self.skills.count == 0 {
