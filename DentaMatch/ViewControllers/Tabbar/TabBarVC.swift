@@ -30,6 +30,7 @@ class TabBarVC: UITabBarController,UITabBarControllerDelegate {
         let attributesSelected: [String: AnyObject] = [NSFontAttributeName:UIFont.fontRegular(fontSize: 10)!, NSForegroundColorAttributeName: UIColor(red:4.0/255.0, green: 128.0/255.0, blue: 220.0/255.0, alpha: 1)]
         appearance.setTitleTextAttributes(attributesSelected, for: .selected)
         self.delegate=self
+        self.tabBar.tintColor = UIColor(red:4.0/255.0, green: 128.0/255.0, blue: 220.0/255.0, alpha: 1)
     }
     
     override func didReceiveMemoryWarning() {

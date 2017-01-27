@@ -8,19 +8,45 @@
 
 import UIKit
 
-class DMTrackVC: UIViewController {
+class DMTrackVC: DMBaseVC {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    enum SegmentControlOption:Int {
+        case saved
+        case applied
+        case shortlisted
     }
     
+    @IBOutlet weak var segmentedControl: CustomSegmentControl!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let params = [
+            "type":"1",
+            "page":"1",
+            "lat":"\(UserManager.shared().activeUser.latitude!)",
+            "lng":"\(UserManager.shared().activeUser.longitude!)"
+        ]
+        self.getJobList(params: params)
+        setup()
+        // Do any additional setup after loading the view.
+    }
+    
+    func setup() {
+    
+    }
+
+    @IBAction func segmentControlValueChanged(_ sender: UISegmentedControl) {
+        let segmentControlOptions = SegmentControlOption(rawValue: sender.selectedSegmentIndex)!
+        
+        switch segmentControlOptions {
+            
+        case .saved:
+            print("saved")
+        case .applied:
+            print("applied")
+        case .shortlisted:
+            print("shortlisted")
+        }
+    }
 
     /*
     // MARK: - Navigation
