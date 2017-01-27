@@ -46,14 +46,15 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         
         self.calendar?.appearance.adjustsFontSizeToFitContentSize = true
         self.calendar?.appearance.adjustTitleIfNecessary()
-        //        calenderView.appearance.preferredTitleFont = UIFont.fontRegular(fontSize: 16)
+//                calenderView.appearance.preferredTitleFont = UIFont.fontRegular(fontSize: 16)
         
         self.calendar?.appearance.headerTitleColor = UIColor(red: 81.0/255.0, green: 81.0/255.0, blue: 81.0/255.0, alpha: 1)
         self.calendar?.appearance.weekdayTextColor = UIColor(red: 81.0/255.0, green: 81.0/255.0, blue: 81.0/255.0, alpha: 0.5)
         self.calendar?.appearance.titleDefaultColor = UIColor(red: 81.0/255.0, green: 81.0/255.0, blue: 81.0/255.0, alpha: 1)
         self.calendar?.appearance.selectionColor = UIColor(red: 15.0/255.0, green: 24.0/255.0, blue: 62.0/255.0, alpha: 1)
 
-        
+//        self.calendar?.appearance.borderRadius = 0.0
+        self.calendar?.appearance.eventOffset = CGPoint(x: 0, y: -10)
         
         self.view.addSubview(self.calendar!)
 
@@ -72,11 +73,7 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
     */
     //MARK:- Calender Methods 
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        let newDate = Date()
-        if date == newDate {
-            return 3
-        }
-        return 0
+        return 3
     }
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, borderRadiusFor date: Date) -> CGFloat {
         return 1.0
