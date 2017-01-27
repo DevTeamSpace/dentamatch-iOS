@@ -81,7 +81,7 @@ San Francisco, CA 94107</string>
                             <constraint firstAttribute="height" constant="14" id="AH1-Bm-eGC"/>
                             <constraint firstAttribute="width" constant="159" id="WtF-TO-M5b"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="12"/>
                         <color key="textColor" red="0.098039215686274508" green="0.15686274509803921" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
