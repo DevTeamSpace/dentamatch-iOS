@@ -114,7 +114,6 @@
                             <constraint firstItem="i3F-YG-5iw" firstAttribute="height" secondItem="bNb-vq-rb9" secondAttribute="height" id="JCs-df-PIQ"/>
                             <constraint firstItem="AkG-0X-xoH" firstAttribute="centerX" secondItem="tkh-qE-gSd" secondAttribute="centerX" multiplier="1.25" id="MxM-Jc-aex"/>
                             <constraint firstItem="i3F-YG-5iw" firstAttribute="centerX" secondItem="tkh-qE-gSd" secondAttribute="centerX" multiplier="0.5" id="R0C-Ha-Kcp"/>
-                            <constraint firstAttribute="height" constant="77" id="Udn-Og-HYh"/>
                             <constraint firstItem="LrQ-BC-tdw" firstAttribute="height" secondItem="i3F-YG-5iw" secondAttribute="height" id="Z8c-Wy-jjG"/>
                             <constraint firstItem="AkG-0X-xoH" firstAttribute="height" secondItem="S1H-sE-yPh" secondAttribute="height" id="c3X-7U-H5e"/>
                             <constraint firstItem="UWB-f3-J06" firstAttribute="width" secondItem="AkG-0X-xoH" secondAttribute="width" id="dWU-QI-rgK"/>
