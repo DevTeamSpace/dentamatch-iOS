@@ -83,6 +83,7 @@ extension DMCalendarSetAvailabillityVC : UITableViewDataSource, UITableViewDeleg
             case 2:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TemporyJobCalenderCell") as? TemporyJobCalenderCell
                 cell?.selectionStyle = .none
+                cell?.delegate = self
                 return cell!
                 
                 
@@ -130,6 +131,8 @@ extension DMCalendarSetAvailabillityVC : UITableViewDataSource, UITableViewDeleg
                 case 1:
                     let cell = tableView.dequeueReusableCell(withIdentifier: "TemporyJobCalenderCell") as? TemporyJobCalenderCell
                     cell?.selectionStyle = .none
+                    cell?.delegate = self
+
                     return cell!
                     
                 default:
@@ -214,12 +217,14 @@ extension DMCalendarSetAvailabillityVC : UITableViewDataSource, UITableViewDeleg
     
 }
 
-extension DMCalendarSetAvailabillityVC : JobSearchTypeCellDelegate,TemporyJobCellDelegate, JobSearchPartTimeCellDelegate {
+extension DMCalendarSetAvailabillityVC : JobSearchTypeCellDelegate,TemporyJobCellDelegate, JobSearchPartTimeCellDelegate,TemporyJobCalenderCellDelegate {
     
     //MARK : JobSearchTypeCellDelegate Method
     
     func selectJobSearchType(selected: Bool, type: String) {
         if type ==  JobSearchType.PartTime.rawValue {
+            partTimeJobDays.removeAll()
+
             if selected == true  {
                 if isPartTimeDayShow == false {
                     isPartTimeDayShow = !isPartTimeDayShow
@@ -252,6 +257,7 @@ extension DMCalendarSetAvailabillityVC : JobSearchTypeCellDelegate,TemporyJobCel
     func selectTempJobType(selected: Bool) {
         isTemporyAvail = !isTemporyAvail
 
+        tempJobDays.removeAll()
        if selected == true  {
         if isPartTimeDayShow == true {
             let path = IndexPath(row: 2, section: 1)
@@ -308,6 +314,19 @@ extension DMCalendarSetAvailabillityVC : JobSearchTypeCellDelegate,TemporyJobCel
             calenderTableView.endUpdates()
             calenderTableView.scrollToRow(at: IndexPath(row: 0, section: 1), at: UITableViewScrollPosition.none, animated: false)
         }
+    }
+    func selectTempJobDate(selected: Date) {
+        tempJobDays.append(Date.dateToString(date: selected))
+        print(tempJobDays)
+
+    }
+    
+    func deSelectTempJobDate(deSelected: Date) {
+        if tempJobDays.contains(Date.dateToString(date: deSelected)) {
+            tempJobDays.remove(at: tempJobDays.index(of: Date.dateToString(date: deSelected))!)
+        }
+        print(tempJobDays)
+
     }
     
 }

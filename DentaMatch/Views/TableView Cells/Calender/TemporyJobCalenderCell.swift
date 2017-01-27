@@ -8,12 +8,17 @@
 
 import UIKit
 import FSCalendar
+@objc protocol TemporyJobCalenderCellDelegate {
+    @objc optional func selectTempJobDate(selected : Date)
+    @objc optional func deSelectTempJobDate(deSelected : Date)
 
-class TemporyJobCalenderCell: UITableViewCell {
+}
+class TemporyJobCalenderCell: UITableViewCell, FSCalendarDelegate {
     @IBOutlet weak var calenderView: FSCalendar!
     @IBOutlet weak var previouseButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
-    
+    weak var delegate : TemporyJobCalenderCellDelegate?
+
     var gregorian:NSCalendar?
 
     override func awakeFromNib() {
@@ -40,7 +45,6 @@ class TemporyJobCalenderCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        
         // Configure the view for the selected state
     }
     @IBAction func previouseButtonClicked(_ sender: Any) {
@@ -57,6 +61,14 @@ class TemporyJobCalenderCell: UITableViewCell {
         let currentMonth:Date = self.calenderView.currentPage
         let previousMonth:Date = (self.gregorian?.date(byAdding: .month, value: 1, to: currentMonth, options: .matchFirst))!
         self.calenderView.setCurrentPage(previousMonth, animated: true)
+
+    }
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        delegate?.selectTempJobDate!(selected: date)
+        print(date)
+    }
+    func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        delegate?.deSelectTempJobDate!(deSelected: date)
 
     }
     

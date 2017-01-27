@@ -14,6 +14,8 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
     var isTemporyAvail : Bool = false
 
     var partTimeJobDays = [String]()
+    var tempJobDays = [String]()
+
     var isJobTypeFullTime : String! = "0"
     var isJobTypePartTime : String! = "0"
 
