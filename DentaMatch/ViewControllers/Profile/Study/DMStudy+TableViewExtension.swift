@@ -196,45 +196,63 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate,UITextFieldDeleg
     func textFieldDidEndEditing(_ textField: UITextField) {
         //textFieldDidEndEditing
         print("textFieldDidEndEditing")
-        
+        let school = schoolCategories.filter({$0.schoolCategoryId == "\(textField.tag)"}).first
+
         if textField.inputView is YearPickerView {
             print("year picker")
         }
         else {
-        if !isFilledFromAutoComplete {
-            var flag = 0
-            
-            if selectedData.count == 0 {
-                let dict = NSMutableDictionary()
-                dict["parentId"] = "\(textField.tag)"
-                dict["schoolId"] = "\(textField.tag)"
-                dict["other"] = textField.text!
-                selectedData.add(dict)
-                flag = 1
-            } else {
-                for category in selectedData {
-                    let dict = category as! NSMutableDictionary
-                    
-                    if dict["parentId"] as! String == "\(textField.tag)" {
-                        dict["other"] = textField.text!
-                        flag = 1
+            if !isFilledFromAutoComplete {
+                var flag = 0
+                
+                if selectedData.count == 0 {
+                    let dict = NSMutableDictionary()
+                    dict["parentId"] = "\(textField.tag)"
+                    dict["schoolId"] = "\(textField.tag)"
+                    dict["other"] = textField.text!
+                    dict["parentName"] = school?.schoolCategoryName
+                    selectedData.add(dict)
+                    flag = 1
+                } else {
+                    for category in selectedData {
+                        let dict = category as! NSMutableDictionary
+                        
+                        if dict["parentId"] as! String == "\(textField.tag)" {
+                            dict["other"] = textField.text!
+                            flag = 1
+                        }
                     }
                 }
+                
+                //Array is > 0 but dict doesnt exists
+                if flag == 0 {
+                    let dict = NSMutableDictionary()
+                    dict["parentId"] = "\(textField.tag)"
+                    dict["schoolId"] = "\(textField.tag)"
+                    dict["other"] = textField.text!
+                    dict["parentName"] = school?.schoolCategoryName
+                    selectedData.add(dict)
+                }
+                
+                print(selectedData)
             }
-            
-            //Array is > 0 but dict doesnt exists
-            if flag == 0 {
-                let dict = NSMutableDictionary()
-                dict["parentId"] = "\(textField.tag)"
-                dict["schoolId"] = "\(textField.tag)"
-                dict["other"] = textField.text!
-                selectedData.add(dict)
+            isFilledFromAutoComplete = false
+        }
+        checkForEmptySchoolField()
+    }
+    
+    func checkForEmptySchoolField() {
+        let emptyData = NSMutableArray()
+        for category in selectedData {
+            let dict = category as! NSMutableDictionary
+            if (dict["other"] as! String).isEmptyField {
+                emptyData.add(dict)
             }
-            
-            print(selectedData)
         }
-        isFilledFromAutoComplete = false
-        }
+        selectedData.removeObjects(in: emptyData as [AnyObject])
+        print(selectedData)
+        self.studyTableView.reloadData()
+        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

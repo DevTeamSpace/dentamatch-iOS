@@ -90,10 +90,28 @@ class DMEditStudyVC: DMBaseVC {
         autoCompleteTable.isHidden = true
     }
     
-
-    @IBAction func saveButtonPressed(_ sender: Any) {
+    func updateProfileScreen() {
+        self.selectedSchoolCategories.removeAll()
+        for school in selectedData {
+            let dict = school as! NSMutableDictionary
+            let selectedSchool = SelectedSchool()
+            selectedSchool.schoolCategoryId = dict["parentId"] as! String
+            selectedSchool.universityId = dict["schoolId"] as! String
+            selectedSchool.universityName = dict["other"] as! String
+            selectedSchool.yearOfGraduation = dict["yearOfGraduation"] as! String
+            selectedSchool.schoolCategoryName = dict["parentName"] as! String
+            self.selectedSchoolCategories.append(selectedSchool)
+        }
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateProfileScreen"), object: nil, userInfo: ["school":self.selectedSchoolCategories])
     }
 
+    @IBAction func saveButtonPressed(_ sender: Any) {
+        if selectedData.count == 0 {
+            self.makeToast(toastString: "Please fill atleast one school")
+            return
+        }
+        self.preparePostSchoolData(schoolsSelected: selectedData)
+    }
 }
 
 extension DMEditStudyVC:AutoCompleteSelectedDelegate {

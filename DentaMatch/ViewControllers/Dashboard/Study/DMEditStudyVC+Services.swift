@@ -47,7 +47,8 @@ extension DMEditStudyVC {
             print(response!)
             
             if response![Constants.ServerKey.status].boolValue {
-                //self.openSkillsScreen()
+                self.updateProfileScreen()
+                _ = self.navigationController?.popViewController(animated: true)
             }
             self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
         }
@@ -92,6 +93,7 @@ extension DMEditStudyVC {
                     dict["schoolId"] = category.schoolCategoryId
                     dict["other"] = university.universityName
                     dict["yearOfGraduation"] = university.yearOfGraduation
+                    dict["parentName"] = category.schoolCategoryName
                     selectedData.add(dict)
                     flag = 1
                 } else {
@@ -112,6 +114,7 @@ extension DMEditStudyVC {
                     dict["schoolId"] = university.universityId as AnyObject?
                     dict["other"] = university.universityName
                     dict["yearOfGraduation"] = university.yearOfGraduation
+                    dict["parentName"] = category.schoolCategoryName
                     selectedData.add(dict)
                 }
                 
@@ -132,8 +135,12 @@ extension DMEditStudyVC {
         }
         for school in schoolsSelected {
             let dict = school as! NSMutableDictionary
-            if let _ =  dict["yearOfGraduation"] as? String{
-                //Eveything fine
+            if let yearOfGraduation =  dict["yearOfGraduation"] as? String{
+                //Everything fine
+                if yearOfGraduation.isEmpty {
+                    self.makeToast(toastString: "Please enter graduation year for \(dict["other"] as! String)")
+                    return
+                }
             } else {
                 self.makeToast(toastString: "Please enter graduation year for \(dict["other"] as! String)")
                 return

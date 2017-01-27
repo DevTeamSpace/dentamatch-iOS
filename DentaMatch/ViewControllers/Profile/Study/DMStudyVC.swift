@@ -103,6 +103,10 @@ class DMStudyVC: DMBaseVC {
 
     
     @IBAction func nextButtonClicked(_ sender: Any) {
+        if selectedData.count == 0 {
+            self.makeToast(toastString: "Please fill atleast one school")
+            return
+        }
         self.preparePostSchoolData(schoolsSelected: selectedData)
     }
     

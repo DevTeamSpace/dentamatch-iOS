@@ -160,6 +160,11 @@ class DMEditProfileVC: DMBaseVC {
             self.affiliations = affiliation as! [Affiliation]
         }
         
+        //For Schools
+        if let schools = dict?["school"] {
+            self.schoolCategories = schools as! [SelectedSchool]
+        }
+        
         //For Skills
         if let skills = dict?["skills"] {
             self.skills = skills as! [Skill]

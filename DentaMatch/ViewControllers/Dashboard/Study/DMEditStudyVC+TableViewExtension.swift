@@ -139,6 +139,9 @@ extension DMEditStudyVC:UITableViewDataSource,UITableViewDelegate,UITextFieldDel
         //textFieldDidEndEditing
         print("textFieldDidEndEditing")
         
+        let school = schoolCategories.filter({$0.schoolCategoryId == "\(textField.tag)"}).first
+
+        
         if textField.inputView is YearPickerView {
             print("year picker")
         }
@@ -151,6 +154,7 @@ extension DMEditStudyVC:UITableViewDataSource,UITableViewDelegate,UITextFieldDel
                     dict["parentId"] = "\(textField.tag)"
                     dict["schoolId"] = "\(textField.tag)"
                     dict["other"] = textField.text!
+                    dict["parentName"] = school?.schoolCategoryName
                     selectedData.add(dict)
                     flag = 1
                 } else {
@@ -170,13 +174,28 @@ extension DMEditStudyVC:UITableViewDataSource,UITableViewDelegate,UITextFieldDel
                     dict["parentId"] = "\(textField.tag)"
                     dict["schoolId"] = "\(textField.tag)"
                     dict["other"] = textField.text!
+                    dict["parentName"] = school?.schoolCategoryName
                     selectedData.add(dict)
                 }
                 
-                print(selectedData)
             }
             isFilledFromAutoComplete = false
         }
+        checkForEmptySchoolField()
+    }
+    
+    func checkForEmptySchoolField() {
+        let emptyData = NSMutableArray()
+        for category in selectedData {
+            let dict = category as! NSMutableDictionary
+            if (dict["other"] as! String).isEmptyField {
+                emptyData.add(dict)
+            }
+        }
+        selectedData.removeObjects(in: emptyData as [AnyObject])
+        print(selectedData)
+        self.studyTableView.reloadData()
+
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
