@@ -141,10 +141,10 @@ struct Constants {
         static let updateCertificate = Constants.API.apiURL("users/update-certificate")
         static let updateValidationDates = Constants.API.apiURL("users/update-certificate-validity")
         static let changePassword = Constants.API.apiURL("users/change-password")
-
         static let userProfile = Constants.API.apiURL("users/user-profile")
         static let signOut = Constants.API.apiURL("users/sign-out")
-
+        
+        static let jobList = Constants.API.apiURL("users/job-list")
 
         static func apiURL(_ methodName: String) -> String {
             return BASE_URL + methodName
