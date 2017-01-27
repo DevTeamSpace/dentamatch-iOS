@@ -159,6 +159,7 @@ class DMPublicProfileVC: DMBaseVC {
         let mapVC = UIStoryboard.registrationStoryBoard().instantiateViewController(type: DMRegisterMapsVC.self)!
         mapVC.delegate = self
         mapVC.userSelectedCoordinate = selectedLocationCoordinate
+        mapVC.addressSelectedFromProfile = editProfileParams[Constants.ServerKey.preferredJobLocation]!
         mapVC.fromEditProfile = true
         self.navigationController?.pushViewController(mapVC, animated: true)
         self.view.endEditing(true)
@@ -252,6 +253,7 @@ extension DMPublicProfileVC:LocationAddressDelegate {
             if let cell = self.publicProfileTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as?
                 EditPublicProfileTableCell {
                 cell.locationTextField.text = address
+                selectedLocationCoordinate = location.coordinateSelected
                 editProfileParams[Constants.ServerKey.latitude] = "\(location.coordinateSelected!.latitude)"
                 editProfileParams[Constants.ServerKey.longitude] = "\(location.coordinateSelected!.longitude)"
                 editProfileParams[Constants.ServerKey.preferredJobLocation] = address
