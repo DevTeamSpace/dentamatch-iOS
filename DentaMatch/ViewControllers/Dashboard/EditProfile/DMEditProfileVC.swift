@@ -155,13 +155,18 @@ class DMEditProfileVC: DMBaseVC {
             self.license = license as? License
         }
         
+        //For Work Experience
+        if let experiences = dict?["workExperiences"] {
+            self.experiences = experiences as! [ExperienceModel]
+        }
+        
         //Upload for affiliation
         if let affiliation = dict?["affiliations"] {
             self.affiliations = affiliation as! [Affiliation]
         }
         
         //For Schools
-        if let schools = dict?["school"] {
+        if let schools = dict?["schools"] {
             self.schoolCategories = schools as! [SelectedSchool]
         }
         

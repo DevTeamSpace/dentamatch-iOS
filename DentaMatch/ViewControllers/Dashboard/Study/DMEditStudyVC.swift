@@ -102,7 +102,7 @@ class DMEditStudyVC: DMBaseVC {
             selectedSchool.schoolCategoryName = dict["parentName"] as! String
             self.selectedSchoolCategories.append(selectedSchool)
         }
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateProfileScreen"), object: nil, userInfo: ["school":self.selectedSchoolCategories])
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateProfileScreen"), object: nil, userInfo: ["schools":self.selectedSchoolCategories])
     }
 
     @IBAction func saveButtonPressed(_ sender: Any) {
@@ -119,6 +119,8 @@ extension DMEditStudyVC:AutoCompleteSelectedDelegate {
     func didSelect(schoolCategoryId: String, university: University) {
         hideAutoCompleteView()
         
+        let school = schoolCategories.filter({$0.schoolCategoryId == schoolCategoryId}).first
+ 
         isFilledFromAutoComplete = true
         var flag = 0
         
@@ -127,6 +129,8 @@ extension DMEditStudyVC:AutoCompleteSelectedDelegate {
             dict["parentId"] = "\(schoolCategoryId)"
             dict["schoolId"] = "\(university.universityId)"
             dict["other"] = university.universityName
+            dict["parentName"] = school?.schoolCategoryName
+
             selectedData.add(dict)
             flag = 1
         } else {
@@ -134,6 +138,7 @@ extension DMEditStudyVC:AutoCompleteSelectedDelegate {
                 let dict = category as! NSMutableDictionary
                 if dict["parentId"] as! String == "\(schoolCategoryId)" {
                     dict["other"] = university.universityName
+                    dict["parentName"] = school?.schoolCategoryName
                     flag = 1
                 }
             }
@@ -145,6 +150,7 @@ extension DMEditStudyVC:AutoCompleteSelectedDelegate {
             dict["parentId"] = schoolCategoryId as AnyObject?
             dict["schoolId"] = university.universityId as AnyObject?
             dict["other"] = university.universityName
+            dict["parentName"] = school?.schoolCategoryName
             dict["yearOfGraduation"] = ""
             selectedData.add(dict)
         }

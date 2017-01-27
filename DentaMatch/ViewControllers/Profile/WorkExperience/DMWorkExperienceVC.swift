@@ -81,7 +81,6 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
 
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        self.changeNavBarAppearanceForProfiles()
         self.navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = nil
         self.navigationController?.navigationBar.isTranslucent = false
@@ -100,7 +99,6 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
         // Dispose of any resources that can be recreated.
     }
     func setup() {
-        self.title = "Work Experience"
         self.workExperienceDetailTable.register(UINib(nibName: "AnimatedPHTableCell", bundle: nil), forCellReuseIdentifier: "AnimatedPHTableCell")
         self.workExperienceDetailTable.register(UINib(nibName: "ReferenceTableCell", bundle: nil), forCellReuseIdentifier: "ReferenceTableCell")
         self.workExperienceDetailTable.register(UINib(nibName: "AddDeleteExperienceCell", bundle: nil), forCellReuseIdentifier: "AddDeleteExperienceCell")
@@ -112,7 +110,13 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
 //        self.mainScrollView.isExclusiveTouch = true
 
         self.workExperienceDetailTable.reloadData()
-        self.changeNavBarAppearanceForProfiles()
+        if self.isEditMode {
+            self.title = "EDIT PROFILE"
+            self.changeNavBarAppearanceForDefault()
+        } else {
+            self.changeNavBarAppearanceForProfiles()
+            self.title = "Work Experience"
+        }
     }
     
     func dismissKeyboard() {
@@ -219,6 +223,7 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
                 self.workExperienceDetailTable.reloadData()
                 self.reSizeTableViewsAndScrollView()
                 
+                self.updateProfileScreen()
             }
         })
         self.workExperienceTable.reloadData()
@@ -234,6 +239,9 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
         
     }
 
+    func updateProfileScreen() {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateProfileScreen"), object: nil, userInfo: ["workExperiences":self.exprienceArray])
+    }
     
     // MARK: - Navigation
 

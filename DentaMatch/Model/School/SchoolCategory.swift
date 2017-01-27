@@ -16,6 +16,9 @@ class SchoolCategory: NSObject {
     var isOpen = false
     var universities = [University]()
     
+    //This may or may not come. Only comes if user has entered a school which is not present in the list
+    var othersArray:[JSON]?
+    
     override init() {
         //for empty object
     
@@ -24,6 +27,7 @@ class SchoolCategory: NSObject {
     init(school:JSON,universities:[University]) {
         self.schoolCategoryId = school[Constants.ServerKey.schoolingId].stringValue
         self.schoolCategoryName = school[Constants.ServerKey.schoolName].stringValue
+        self.othersArray = school[Constants.ServerKey.other].array
         self.universities = universities
     }
 }
