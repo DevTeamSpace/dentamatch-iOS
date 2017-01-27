@@ -418,6 +418,7 @@ extension DMWorkExperienceVC
                 self.workExperienceTable.reloadData()
                 self.workExperienceDetailTable.reloadData()
                 self.reSizeTableViewsAndScrollView()
+                self.updateProfileScreen()
 
             }
         })
