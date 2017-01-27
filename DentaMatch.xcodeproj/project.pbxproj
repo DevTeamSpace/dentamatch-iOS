@@ -66,6 +66,9 @@
 		E50B3F531E194EDD004C5F32 /* AnimatedPHTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50B3F521E194EDD004C5F32 /* AnimatedPHTextField.swift */; };
 		E50FA8131E30A1DA00C20C93 /* DMPublicProfileVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50FA8121E30A1DA00C20C93 /* DMPublicProfileVC+TableViewExtension.swift */; };
 		E514E5BA1E28B472005F6712 /* DMCertificationsVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E514E5B91E28B472005F6712 /* DMCertificationsVC+Services.swift */; };
+		E51D4EF31E3AFCA700ACC631 /* DMEditStudyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4EF21E3AFCA700ACC631 /* DMEditStudyVC.swift */; };
+		E51D4EF51E3AFEA600ACC631 /* DMEditStudyVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4EF41E3AFEA600ACC631 /* DMEditStudyVC+Services.swift */; };
+		E51D4EF71E3B029D00ACC631 /* DMEditStudyVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4EF61E3B029D00ACC631 /* DMEditStudyVC+TableViewExtension.swift */; };
 		E5302CD61DFE7AB100984A0B /* DMForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5302CD51DFE7AB100984A0B /* DMForgotPasswordVC.swift */; };
 		E53738F21DB373C200967876 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53738F11DB373C200967876 /* Reachability.swift */; };
 		E5496DFC1E25547300C54288 /* DMCertificationsVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5496DFB1E25547300C54288 /* DMCertificationsVC+TableViewExtension.swift */; };
@@ -352,6 +355,9 @@
 		E50B3F521E194EDD004C5F32 /* AnimatedPHTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedPHTextField.swift; sourceTree = "<group>"; };
 		E50FA8121E30A1DA00C20C93 /* DMPublicProfileVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMPublicProfileVC+TableViewExtension.swift"; sourceTree = "<group>"; };
 		E514E5B91E28B472005F6712 /* DMCertificationsVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMCertificationsVC+Services.swift"; sourceTree = "<group>"; };
+		E51D4EF21E3AFCA700ACC631 /* DMEditStudyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMEditStudyVC.swift; sourceTree = "<group>"; };
+		E51D4EF41E3AFEA600ACC631 /* DMEditStudyVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMEditStudyVC+Services.swift"; sourceTree = "<group>"; };
+		E51D4EF61E3B029D00ACC631 /* DMEditStudyVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMEditStudyVC+TableViewExtension.swift"; sourceTree = "<group>"; };
 		E5302CD51DFE7AB100984A0B /* DMForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMForgotPasswordVC.swift; sourceTree = "<group>"; };
 		E53738F11DB373C200967876 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		E538FA7C1DFFD76000AECE26 /* DentaMatch-Dev.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DentaMatch-Dev.entitlements"; sourceTree = "<group>"; };
@@ -804,6 +810,16 @@
 			path = Registration;
 			sourceTree = "<group>";
 		};
+		E51D4EEF1E3AFC7500ACC631 /* Study */ = {
+			isa = PBXGroup;
+			children = (
+				E51D4EF21E3AFCA700ACC631 /* DMEditStudyVC.swift */,
+				E51D4EF41E3AFEA600ACC631 /* DMEditStudyVC+Services.swift */,
+				E51D4EF61E3B029D00ACC631 /* DMEditStudyVC+TableViewExtension.swift */,
+			);
+			path = Study;
+			sourceTree = "<group>";
+		};
 		E5302CD41DFE7A9C00984A0B /* Forgot Password */ = {
 			isa = PBXGroup;
 			children = (
@@ -1011,6 +1027,7 @@
 		E558D9011E2E085200A6DF95 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				E51D4EEF1E3AFC7500ACC631 /* Study */,
 				E57681971E3A233100D912EA /* Skills */,
 				E57F29DD1E3694EF0025B9DE /* DentalStateBoard */,
 				E54B9A821E3286E700805D9C /* Certificate */,
@@ -1967,6 +1984,7 @@
 				E5302CD61DFE7AB100984A0B /* DMForgotPasswordVC.swift in Sources */,
 				F2540F601E274360004B0538 /* JobSearchResultCell.swift in Sources */,
 				E5C5F3181DC1A723001A5A3F /* LocationManager.swift in Sources */,
+				E51D4EF51E3AFEA600ACC631 /* DMEditStudyVC+Services.swift in Sources */,
 				E5E7CB851E2FA23200D4FB59 /* PhotoNameCell.swift in Sources */,
 				5AC714501E34ACC300E433C1 /* DMJobsVC.swift in Sources */,
 				5A3FD06E1E1BB0A000360B3C /* UINavigationBar+Awesome.m in Sources */,
@@ -2047,6 +2065,7 @@
 				E55462EC1DAE47F5004163B2 /* AppDelegate.swift in Sources */,
 				E587D3081E253719006B7F06 /* DMAffiliationsVC+TableViewExtension.swift in Sources */,
 				5A85D2171E2DFAD000AC4C89 /* TagWrappers.swift in Sources */,
+				E51D4EF31E3AFCA700ACC631 /* DMEditStudyVC.swift in Sources */,
 				E558D90A1E2E7A3200A6DF95 /* DMEditProfileVC+TableViewExtension.swift in Sources */,
 				5A3B06D31E33885A00EFCA6E /* DMChangePasswordVC+Services.swift in Sources */,
 				E5E7CB891E2FA23200D4FB59 /* OtherSkillCell.swift in Sources */,
@@ -2086,6 +2105,7 @@
 				5A85D2131E2DFAD000AC4C89 /* TagList.swift in Sources */,
 				E5A0EB0E1E2BE7C40092E21A /* ASJTag.m in Sources */,
 				F2540F591E263613004B0538 /* DMJobTitleVC.swift in Sources */,
+				E51D4EF71E3B029D00ACC631 /* DMEditStudyVC+TableViewExtension.swift in Sources */,
 				E57681991E3A234700D912EA /* DMEditSkillsVC.swift in Sources */,
 				E587D2F01E24C05D006B7F06 /* DMCertificationsVC.swift in Sources */,
 				E55462FC1DAE4EA1004163B2 /* DMBaseVC.swift in Sources */,

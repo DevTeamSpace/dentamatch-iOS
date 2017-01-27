@@ -102,6 +102,10 @@ class DMEditProfileVC: DMBaseVC {
     }
     
     func openSchoolsScreen() {
+        let studyVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: DMEditStudyVC.self)!
+        studyVC.hidesBottomBarWhenPushed = true
+        studyVC.selectedSchoolCategories = self.schoolCategories
+        self.navigationController?.pushViewController(studyVC, animated: true)
     }
     
     func openSkillsScreen() {
