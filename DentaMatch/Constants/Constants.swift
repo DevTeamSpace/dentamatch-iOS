@@ -83,6 +83,8 @@ struct Constants {
         static let jobSearchStoryboard  = "JobSearch"
  
         static let dashboardStoryboard  = "Dashboard"
+        static let calenderStoryboard  = "Calender"
+
 
         struct Identifer {
             static let registrationNav = "RegistrationNAV"

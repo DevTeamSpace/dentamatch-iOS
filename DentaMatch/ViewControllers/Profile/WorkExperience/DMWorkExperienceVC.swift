@@ -127,24 +127,17 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
             if checkAllFieldIsEmpty() {
                 if isEditMode == true {
                     _ = self.navigationController?.popViewController(animated: true)
-                }else{
+                }else {
                     self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToStudyVC, sender: self)
-                    
                 }
-
-                
-            }else{
+            }else {
                 saveDataOnNextButton()
-                
             }
-            
-
-        }else{
+        }else {
             self.makeToast(toastString: Constants.AlertMessage.atleastOneExperience)
         }
         
-//        self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToStudyVC, sender: self)
-
+        
     }
     
     //MARK:- Keyboard Show Hide Observers

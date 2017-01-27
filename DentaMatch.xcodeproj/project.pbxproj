@@ -40,6 +40,12 @@
 		5A85D2151E2DFAD000AC4C89 /* TagPresentables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A85D20C1E2DFAD000AC4C89 /* TagPresentables.swift */; };
 		5A85D2161E2DFAD000AC4C89 /* TagWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A85D20D1E2DFAD000AC4C89 /* TagWrapper.swift */; };
 		5A85D2171E2DFAD000AC4C89 /* TagWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A85D20E1E2DFAD000AC4C89 /* TagWrappers.swift */; };
+		5A8F62A31E399A080037C4A2 /* DMCalendarSetAvailabillityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8F62A21E399A080037C4A2 /* DMCalendarSetAvailabillityVC.swift */; };
+		5A8F62A51E399A550037C4A2 /* DMCalendarSetAvailabillityVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8F62A41E399A550037C4A2 /* DMCalendarSetAvailabillityVC+TableViewExtension.swift */; };
+		5A8F62A91E39EAB70037C4A2 /* TemporyJobCalenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8F62A71E39EAB70037C4A2 /* TemporyJobCalenderCell.swift */; };
+		5A8F62AA1E39EAB70037C4A2 /* TemporyJobCalenderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8F62A81E39EAB70037C4A2 /* TemporyJobCalenderCell.xib */; };
+		5A8F62AD1E39F2550037C4A2 /* TemporyJobCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8F62AB1E39F2550037C4A2 /* TemporyJobCell.swift */; };
+		5A8F62AE1E39F2550037C4A2 /* TemporyJobCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8F62AC1E39F2550037C4A2 /* TemporyJobCell.xib */; };
 		5A9A3A971E2B58600002C5B6 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9A3A961E2B58600002C5B6 /* UserManager.swift */; };
 		5AB876501E249B62007818D6 /* ExperiencePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB8764F1E249B62007818D6 /* ExperiencePickerView.swift */; };
 		5AB876521E249C0A007818D6 /* ExperiencePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AB876511E249C0A007818D6 /* ExperiencePickerView.xib */; };
@@ -326,6 +332,12 @@
 		5A85D20C1E2DFAD000AC4C89 /* TagPresentables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagPresentables.swift; sourceTree = "<group>"; };
 		5A85D20D1E2DFAD000AC4C89 /* TagWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagWrapper.swift; sourceTree = "<group>"; };
 		5A85D20E1E2DFAD000AC4C89 /* TagWrappers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagWrappers.swift; sourceTree = "<group>"; };
+		5A8F62A21E399A080037C4A2 /* DMCalendarSetAvailabillityVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMCalendarSetAvailabillityVC.swift; sourceTree = "<group>"; };
+		5A8F62A41E399A550037C4A2 /* DMCalendarSetAvailabillityVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMCalendarSetAvailabillityVC+TableViewExtension.swift"; sourceTree = "<group>"; };
+		5A8F62A71E39EAB70037C4A2 /* TemporyJobCalenderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemporyJobCalenderCell.swift; sourceTree = "<group>"; };
+		5A8F62A81E39EAB70037C4A2 /* TemporyJobCalenderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemporyJobCalenderCell.xib; sourceTree = "<group>"; };
+		5A8F62AB1E39F2550037C4A2 /* TemporyJobCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemporyJobCell.swift; sourceTree = "<group>"; };
+		5A8F62AC1E39F2550037C4A2 /* TemporyJobCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemporyJobCell.xib; sourceTree = "<group>"; };
 		5A9A3A961E2B58600002C5B6 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		5AB8764F1E249B62007818D6 /* ExperiencePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperiencePickerView.swift; sourceTree = "<group>"; };
 		5AB876511E249C0A007818D6 /* ExperiencePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExperiencePickerView.xib; sourceTree = "<group>"; };
@@ -726,6 +738,17 @@
 			path = TagView;
 			sourceTree = "<group>";
 		};
+		5A8F62A61E39EA7E0037C4A2 /* Calender */ = {
+			isa = PBXGroup;
+			children = (
+				5A8F62A71E39EAB70037C4A2 /* TemporyJobCalenderCell.swift */,
+				5A8F62A81E39EAB70037C4A2 /* TemporyJobCalenderCell.xib */,
+				5A8F62AB1E39F2550037C4A2 /* TemporyJobCell.swift */,
+				5A8F62AC1E39F2550037C4A2 /* TemporyJobCell.xib */,
+			);
+			path = Calender;
+			sourceTree = "<group>";
+		};
 		5AC714431E34AB2500E433C1 /* Jobs */ = {
 			isa = PBXGroup;
 			children = (
@@ -738,6 +761,8 @@
 			isa = PBXGroup;
 			children = (
 				5AC714511E34ACD400E433C1 /* DMCalenderVC.swift */,
+				5A8F62A21E399A080037C4A2 /* DMCalendarSetAvailabillityVC.swift */,
+				5A8F62A41E399A550037C4A2 /* DMCalendarSetAvailabillityVC+TableViewExtension.swift */,
 			);
 			path = Calender;
 			sourceTree = "<group>";
@@ -1100,6 +1125,7 @@
 		E56B20A71DC0606A000512F6 /* TableView Cells */ = {
 			isa = PBXGroup;
 			children = (
+				5A8F62A61E39EA7E0037C4A2 /* Calender */,
 				5A3B06C51E3375A200EFCA6E /* ChangePassword */,
 				5A50A2C61E3216010010AA31 /* Setting */,
 				E558D90B1E2E871900A6DF95 /* EditProfile */,
@@ -1832,6 +1858,8 @@
 				E597E5891E151A99001DDA78 /* SF-UI-Text-SemiboldItalic.otf in Resources */,
 				E5E7CB921E2FA23300D4FB59 /* AutoCompleteTableViewCell.xib in Resources */,
 				E5E7CB811E2FA23200D4FB59 /* AddDeleteExperienceCell.xib in Resources */,
+				5A8F62AA1E39EAB70037C4A2 /* TemporyJobCalenderCell.xib in Resources */,
+				5A8F62AE1E39F2550037C4A2 /* TemporyJobCell.xib in Resources */,
 				E587D2DD1E2396E9006B7F06 /* JobSelectionPickerView.xib in Resources */,
 				E597E5821E151A99001DDA78 /* SF-UI-Text-Light.otf in Resources */,
 				E56E45C61DAE07C200AD4559 /* LaunchScreen.storyboard in Resources */,
@@ -1997,9 +2025,11 @@
 				F2D03BA81E1F67BA0005D3A4 /* DMJobSearchVC.swift in Sources */,
 				F2540F561E23A8AE004B0538 /* CurrentLocationCell.swift in Sources */,
 				E594BE9D1E1DFF4400310AE5 /* DMRegistrationVC+TableViewExtension.swift in Sources */,
+				5A8F62AD1E39F2550037C4A2 /* TemporyJobCell.swift in Sources */,
 				E5E7CBA81E30970700D4FB59 /* EditPublicProfileTableCell.swift in Sources */,
 				E55462DB1DAE312C004163B2 /* String+Additons.swift in Sources */,
 				5A85D2161E2DFAD000AC4C89 /* TagWrapper.swift in Sources */,
+				5A8F62A91E39EAB70037C4A2 /* TemporyJobCalenderCell.swift in Sources */,
 				E54B9A8C1E3611A300805D9C /* YearPickerView.swift in Sources */,
 				E55462D91DAE3104004163B2 /* Array+Additions.swift in Sources */,
 				E594BE9F1E1DFFA900310AE5 /* DMRegistrationVC+TextFieldExtension.swift in Sources */,
@@ -2075,6 +2105,7 @@
 				E587D3001E24E5C1006B7F06 /* ProfileTextField.swift in Sources */,
 				E5F47C941E0035B90051C4A1 /* UIImage+Rotations.swift in Sources */,
 				E576819D1E3A289D00D912EA /* DMEditSkillsVC+TableViewExtension.swift in Sources */,
+				5A8F62A51E399A550037C4A2 /* DMCalendarSetAvailabillityVC+TableViewExtension.swift in Sources */,
 				5AC714581E34F76900E433C1 /* DMSettingVC+Services.swift in Sources */,
 				E587D2F61E24C0B0006B7F06 /* DMSkillsVC.swift in Sources */,
 				E50B3F501E194CD7004C5F32 /* RegistrationTableViewCell.swift in Sources */,
@@ -2085,6 +2116,7 @@
 				E5A0EADE1E2944D50092E21A /* SSASideMenu.swift in Sources */,
 				E5496E0E1E273F1D00C54288 /* DMSkillsVC+Services.swift in Sources */,
 				5A3BD4B61E36065E00A607AC /* EditProfileReferenceCell.swift in Sources */,
+				5A8F62A31E399A080037C4A2 /* DMCalendarSetAvailabillityVC.swift in Sources */,
 				E54976F11E28CEDD006F21E5 /* JobTitle.swift in Sources */,
 				F2540F5D1E274258004B0538 /* DMJobSearchResultVC.swift in Sources */,
 				E53738F21DB373C200967876 /* Reachability.swift in Sources */,
