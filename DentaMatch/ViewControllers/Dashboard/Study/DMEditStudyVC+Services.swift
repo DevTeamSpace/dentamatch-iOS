@@ -1,15 +1,16 @@
 //
-//  DMStudy+Services.swift
+//  DMEditStudyVC+Services.swift
 //  DentaMatch
 //
-//  Created by Rajan Maheshwari on 14/01/17.
+//  Created by Rajan Maheshwari on 27/01/17.
 //  Copyright © 2017 Appster. All rights reserved.
 //
 
 import Foundation
 import SwiftyJSON
 
-extension DMStudyVC {
+extension DMEditStudyVC {
+    
     
     func getSchoolListAPI() {
         self.showLoader()
@@ -44,9 +45,10 @@ extension DMStudyVC {
                 return
             }
             print(response!)
-
+            
             if response![Constants.ServerKey.status].boolValue {
-                self.openSkillsScreen()
+                self.updateProfileScreen()
+                _ = self.navigationController?.popViewController(animated: true)
             }
             self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
         }
@@ -85,41 +87,82 @@ extension DMStudyVC {
             var flag = 0
             if let university = category.universities.filter({$0.isSelected == true}).first
             {
-            if selectedData.count == 0 {
-                let dict = NSMutableDictionary()
-                dict["parentId"] = category.schoolCategoryId
-                dict["schoolId"] = category.schoolCategoryId
-                dict["other"] = university.universityName
-                dict["yearOfGraduation"] = university.yearOfGraduation
-                dict["parentName"] = category.schoolCategoryName
-                selectedData.add(dict)
-                flag = 1
-            } else {
-                for categoryObj in selectedData {
-                    let dict = categoryObj as! NSMutableDictionary
-                    
-                    if dict["parentId"] as! String == category.schoolCategoryId {
-                        dict["other"] = university.universityName
-                        flag = 1
+                //If university selected exists
+                if selectedData.count == 0 {
+                    let dict = NSMutableDictionary()
+                    dict["parentId"] = category.schoolCategoryId
+                    dict["schoolId"] = category.schoolCategoryId
+                    dict["other"] = university.universityName
+                    dict["yearOfGraduation"] = university.yearOfGraduation
+                    dict["parentName"] = category.schoolCategoryName
+                    selectedData.add(dict)
+                    flag = 1
+                } else {
+                    for categoryObj in selectedData {
+                        let dict = categoryObj as! NSMutableDictionary
+                        
+                        if dict["parentId"] as! String == category.schoolCategoryId {
+                            dict["other"] = university.universityName
+                            flag = 1
+                        }
                     }
                 }
+                
+                //Array is > 0 but dict doesnt exists
+                if flag == 0 {
+                    let dict = NSMutableDictionary()
+                    dict["parentId"] = category.schoolCategoryId
+                    dict["schoolId"] = university.universityId as AnyObject?
+                    dict["other"] = university.universityName
+                    dict["yearOfGraduation"] = university.yearOfGraduation
+                    dict["parentName"] = category.schoolCategoryName
+                    selectedData.add(dict)
+                }
+                
+                print(selectedData)
+                
+            } else {
+                if selectedData.count == 0 {
+                    let dict = NSMutableDictionary()
+                    dict["parentId"] = category.schoolCategoryId
+                    dict["schoolId"] = category.schoolCategoryId
+                    dict["other"] = ""
+                    if let other = category.othersArray {
+                        dict["other"] = other[0][Constants.ServerKey.otherSchooling].stringValue
+                        dict["yearOfGraduation"] = other[0][Constants.ServerKey.yearOfGraduation].stringValue
+                    }
+                    dict["parentName"] = category.schoolCategoryName
+                    selectedData.add(dict)
+                    flag = 1
+                } else {
+                    for categoryObj in selectedData {
+                        let dict = categoryObj as! NSMutableDictionary
+                        
+                        if dict["parentId"] as! String == category.schoolCategoryId {
+                            if let other = category.othersArray {
+                                dict["other"] = other[0][Constants.ServerKey.otherSchooling].stringValue
+                            }
+                            flag = 1
+                        }
+                    }
+                }
+                
+                //Array is > 0 but dict doesnt exists
+                if flag == 0 {
+                    let dict = NSMutableDictionary()
+                    dict["parentId"] = category.schoolCategoryId
+                    dict["schoolId"] = category.schoolCategoryId
+                    dict["other"] = ""
+                    if let other = category.othersArray {
+                        dict["other"] = other[0][Constants.ServerKey.otherSchooling].stringValue
+                        dict["yearOfGraduation"] = other[0][Constants.ServerKey.yearOfGraduation].stringValue
+                    }
+                    dict["parentName"] = category.schoolCategoryName
+                    selectedData.add(dict)
+                }
+                
+                print(selectedData)
             }
-            
-            //Array is > 0 but dict doesnt exists
-            if flag == 0 {
-                let dict = NSMutableDictionary()
-                dict["parentId"] = category.schoolCategoryId
-                dict["schoolId"] = university.universityId as AnyObject?
-                dict["other"] = university.universityName
-                dict["yearOfGraduation"] = university.yearOfGraduation
-                dict["parentName"] = category.schoolCategoryName
-                selectedData.add(dict)
-            }
-            
-            print(selectedData)
-
-            }
-            
         }
     }
     
@@ -139,7 +182,6 @@ extension DMStudyVC {
                     self.makeToast(toastString: "Please enter graduation year for \(dict["other"] as! String)")
                     return
                 }
-
             } else {
                 self.makeToast(toastString: "Please enter graduation year for \(dict["other"] as! String)")
                 return
@@ -156,7 +198,7 @@ extension DMStudyVC {
             } else {
                 makeData.setObject("", forKey: "otherSchooling" as NSCopying)
             }
-
+            
             selectedArray.add(makeData)
             
         }

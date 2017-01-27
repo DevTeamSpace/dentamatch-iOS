@@ -53,6 +53,8 @@ struct Constants {
         static let textFieldBorderColor = UIColor.color(withHexCode: "e4e4e4")
         static let textFieldColorSelected = UIColor.color(withHexCode: "0470c0")
         static let textFieldPlaceHolderColor =  UIColor.color(withHexCode: "959595")
+        static let brickTextColor =  UIColor.color(withHexCode: "959595")
+
         static let textFieldErrorColor = UIColor.color(withHexCode: "ff0000")
         
         static let profileProgressBarColor = UIColor.color(withHexCode: "a3d977")
@@ -218,13 +220,16 @@ struct Constants {
         static let otherSkill = "otherSkill"
         static let id = "id"
         static let parentId = "parentId"
+        static let childId = "childId"
         static let isSkillSelected = "userSkill"
         
         static let certificateName = "certificateName"
         static let schoolingId = "schoolingId"
         static let schoolingChildId = "schoolingChildId"
         static let schoolName = "schoolName"
+        static let school = "school"
         static let schoolCategory = "schoolCategory"
+        static let otherSchooling = "otherSchooling"
         static let schoolChildName = "schoolChildName"
         static let yearOfGraduation = "yearOfGraduation"
         static let jobSeekerStatus = "jobSeekerStatus"

@@ -1,89 +1,30 @@
 //
-//  DMStudy+TableViewExtension.swift
+//  DMEditStudyVC+TableViewExtension.swift
 //  DentaMatch
 //
-//  Created by Rajan Maheshwari on 10/01/17.
+//  Created by Rajan Maheshwari on 27/01/17.
 //  Copyright © 2017 Appster. All rights reserved.
 //
 
 import Foundation
 
-extension DMStudyVC : UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate {
-
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-    
+extension DMEditStudyVC:UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate {
+        
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       
-        let studyOption = Study(rawValue: section)!
-
-        switch studyOption {
-        case .profileHeader:
-            return 2
-        case .school:
-            return schoolCategories.count
-        }
+        return schoolCategories.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        let studyOption = Study(rawValue: indexPath.section)!
-
-        switch studyOption {
-        case .profileHeader:
-            return getHeightForProfileHeader(indexPath: indexPath)
-        case .school:
-            let schoolCategory = schoolCategories[indexPath.row]
-            if !schoolCategory.isOpen {
-                return 60
-            } else { return 202 }
-        }
+        let schoolCategory = schoolCategories[indexPath.row]
+        if !schoolCategory.isOpen {
+            return 60
+        } else { return 202 }
     }
     
-    func getHeightForProfileHeader(indexPath:IndexPath) -> CGFloat {
-        switch indexPath.row {
-        case 0:
-            //Profile Header
-            return 233
-        case 1:
-            //Heading
-            return 44
-        default:
-            return 0
-        }
-
-    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let studyOption = Study(rawValue: indexPath.section)!
-
-        switch studyOption {
-            
-        case .profileHeader:
-             return updateCellForProfileHeader(tableView: tableView, indexPath: indexPath)
-            
-        case .school:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "StudyCell") as! StudyCell
-            updateCellForStudyCell(cell: cell, indexPath: indexPath)
-            return cell
-        }
-    }
-    
-    func updateCellForProfileHeader(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.row {
-        case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoNameCell") as! PhotoNameCell
-            cell.updateCellForPhotoNameCell(nametext: "Where did you Study?", jobTitleText: "Lorem Ipsum is simply dummy text for the typing and printing industry", profileProgress: profileProgress)
-            return cell
-        case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SectionHeadingTableCell") as! SectionHeadingTableCell
-            return cell
-            
-        default:
-            return UITableViewCell()
-        }
- 
+        let cell = tableView.dequeueReusableCell(withIdentifier: "StudyCell") as! StudyCell
+        updateCellForStudyCell(cell: cell, indexPath: indexPath)
+        return cell
     }
     
     func updateCellForStudyCell(cell:StudyCell , indexPath: IndexPath) {
@@ -91,7 +32,7 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate,UITextFieldDeleg
         cell.headingButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         cell.schoolNameTextField.text = ""
         cell.yearOfGraduationTextField.text = ""
-
+        
         cell.schoolNameTextField.delegate = self
         
         cell.schoolNameTextField.tag = Int(school.schoolCategoryId)!
@@ -102,7 +43,7 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate,UITextFieldDeleg
         cell.yearOfGraduationTextField.tintColor = UIColor.clear
         cell.yearOfGraduationTextField.type = 1
         cell.yearOfGraduationTextField.returnKeyType = .done
-
+        
         
         for dict in selectedData {
             let selectedDict = dict as! NSDictionary
@@ -119,8 +60,9 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate,UITextFieldDeleg
         cell.schoolNameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         cell.headingButton.tag = indexPath.row
         cell.headingButton.setTitle(school.schoolCategoryName, for: .normal)
-
+        
     }
+    
     func buttonTapped(sender:UIButton) {
         let school = schoolCategories[sender.tag]
         if school.isOpen {
@@ -130,9 +72,9 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate,UITextFieldDeleg
         }
         //school[sender.tag] = dict
         
-        self.studyTableView.reloadRows(at: [IndexPath(row: sender.tag, section: 1)], with: .automatic)
+        self.studyTableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .automatic)
         DispatchQueue.main.async {
-            self.studyTableView.scrollToRow(at: IndexPath(row: sender.tag, section: 1), at: .bottom, animated: true)
+            self.studyTableView.scrollToRow(at: IndexPath(row: sender.tag, section: 0), at: .bottom, animated: true)
             
         }
     }
@@ -150,17 +92,17 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate,UITextFieldDeleg
             print("In the list")
         } else {
             
-//            if textField.text!.isEmpty {
-//                selectedUniversities["other_\(textField.tag)"] = nil
-//                selectedUniversities["other_date\(textField.tag)"] = nil
-//            } else {
-//                selectedUniversities["other_date\(textField.tag)"] = "" as AnyObject?
-//                selectedUniversities["other_\(textField.tag)"] = textField.text! as AnyObject?
-//            }
+            //            if textField.text!.isEmpty {
+            //                selectedUniversities["other_\(textField.tag)"] = nil
+            //                selectedUniversities["other_date\(textField.tag)"] = nil
+            //            } else {
+            //                selectedUniversities["other_date\(textField.tag)"] = "" as AnyObject?
+            //                selectedUniversities["other_\(textField.tag)"] = textField.text! as AnyObject?
+            //            }
         }
         
         //print(selectedUniversities)
-
+        
         if textField.text!.isEmpty {
             hideAutoCompleteView()
         } else {
@@ -185,7 +127,7 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate,UITextFieldDeleg
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         self.yearPicker?.getPreSelectedValues(dateString: "", curTag: textField.tag)
-
+        
         return true
     }
     
@@ -196,8 +138,10 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate,UITextFieldDeleg
     func textFieldDidEndEditing(_ textField: UITextField) {
         //textFieldDidEndEditing
         print("textFieldDidEndEditing")
+        
         let school = schoolCategories.filter({$0.schoolCategoryId == "\(textField.tag)"}).first
 
+        
         if textField.inputView is YearPickerView {
             print("year picker")
         }
@@ -234,7 +178,6 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate,UITextFieldDeleg
                     selectedData.add(dict)
                 }
                 
-                print(selectedData)
             }
             isFilledFromAutoComplete = false
         }
@@ -252,7 +195,7 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate,UITextFieldDeleg
         selectedData.removeObjects(in: emptyData as [AnyObject])
         print(selectedData)
         self.studyTableView.reloadData()
-        
+
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -261,4 +204,5 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate,UITextFieldDeleg
         return true
     }
     
+
 }

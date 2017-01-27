@@ -18,13 +18,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9KO-Hp-rX6">
-                        <rect key="frame" x="10" y="30" width="300" height="31.5"/>
+                        <rect key="frame" x="15" y="30" width="290" height="31.5"/>
                     </scrollView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="9KO-Hp-rX6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="N0w-0o-9by"/>
-                    <constraint firstItem="9KO-Hp-rX6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="NLc-fc-BHH"/>
-                    <constraint firstAttribute="trailing" secondItem="9KO-Hp-rX6" secondAttribute="trailing" constant="10" id="bXH-mn-Lf7"/>
+                    <constraint firstItem="9KO-Hp-rX6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="NLc-fc-BHH"/>
+                    <constraint firstAttribute="trailing" secondItem="9KO-Hp-rX6" secondAttribute="trailing" constant="15" id="bXH-mn-Lf7"/>
                     <constraint firstAttribute="bottom" secondItem="9KO-Hp-rX6" secondAttribute="bottom" constant="30" id="iwl-3Y-uGl"/>
                 </constraints>
             </tableViewCellContentView>

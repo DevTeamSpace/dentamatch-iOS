@@ -32,17 +32,17 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9od-Y9-tSk">
-                        <rect key="frame" x="20" y="35" width="280" height="39.5"/>
+                        <rect key="frame" x="15" y="35" width="290" height="39.5"/>
                     </scrollView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="9od-Y9-tSk" secondAttribute="bottom" id="12t-w1-Nlr"/>
-                    <constraint firstItem="9od-Y9-tSk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="2mZ-CJ-NiG"/>
+                    <constraint firstItem="9od-Y9-tSk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="2mZ-CJ-NiG"/>
                     <constraint firstItem="9od-Y9-tSk" firstAttribute="top" secondItem="rgl-yb-0GV" secondAttribute="bottom" id="KkB-hE-Nz3"/>
                     <constraint firstItem="rgl-yb-0GV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Xf5-Zs-ATw"/>
                     <constraint firstItem="rgl-yb-0GV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="a9v-ee-yJj"/>
                     <constraint firstAttribute="trailing" secondItem="rgl-yb-0GV" secondAttribute="trailing" constant="20" id="qPJ-ak-rFc"/>
-                    <constraint firstAttribute="trailing" secondItem="9od-Y9-tSk" secondAttribute="trailing" constant="20" id="r0C-OZ-RqW"/>
+                    <constraint firstAttribute="trailing" secondItem="9od-Y9-tSk" secondAttribute="trailing" constant="15" id="r0C-OZ-RqW"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

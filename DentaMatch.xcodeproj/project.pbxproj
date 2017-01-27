@@ -72,6 +72,9 @@
 		E50B3F531E194EDD004C5F32 /* AnimatedPHTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50B3F521E194EDD004C5F32 /* AnimatedPHTextField.swift */; };
 		E50FA8131E30A1DA00C20C93 /* DMPublicProfileVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50FA8121E30A1DA00C20C93 /* DMPublicProfileVC+TableViewExtension.swift */; };
 		E514E5BA1E28B472005F6712 /* DMCertificationsVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E514E5B91E28B472005F6712 /* DMCertificationsVC+Services.swift */; };
+		E51D4EF31E3AFCA700ACC631 /* DMEditStudyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4EF21E3AFCA700ACC631 /* DMEditStudyVC.swift */; };
+		E51D4EF51E3AFEA600ACC631 /* DMEditStudyVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4EF41E3AFEA600ACC631 /* DMEditStudyVC+Services.swift */; };
+		E51D4EF71E3B029D00ACC631 /* DMEditStudyVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4EF61E3B029D00ACC631 /* DMEditStudyVC+TableViewExtension.swift */; };
 		E5302CD61DFE7AB100984A0B /* DMForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5302CD51DFE7AB100984A0B /* DMForgotPasswordVC.swift */; };
 		E53738F21DB373C200967876 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53738F11DB373C200967876 /* Reachability.swift */; };
 		E5496DFC1E25547300C54288 /* DMCertificationsVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5496DFB1E25547300C54288 /* DMCertificationsVC+TableViewExtension.swift */; };
@@ -125,11 +128,16 @@
 		E56C9F9E1DED4BD100EAA9DD /* Character+Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C9F9D1DED4BD100EAA9DD /* Character+Addition.swift */; };
 		E56C9FA31DED520B00EAA9DD /* InAppPurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C9FA21DED520B00EAA9DD /* InAppPurchase.swift */; };
 		E56C9FA81DED75D500EAA9DD /* CommonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C9FA71DED75D500EAA9DD /* CommonHelper.swift */; };
+		E56E315D1E3A8275009FF0FC /* EditProfileSchoolCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56E315B1E3A8275009FF0FC /* EditProfileSchoolCell.swift */; };
+		E56E315E1E3A8275009FF0FC /* EditProfileSchoolCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E56E315C1E3A8275009FF0FC /* EditProfileSchoolCell.xib */; };
 		E56E45C31DAE07C200AD4559 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E56E45C21DAE07C200AD4559 /* Assets.xcassets */; };
 		E56E45C61DAE07C200AD4559 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E56E45C41DAE07C200AD4559 /* LaunchScreen.storyboard */; };
 		E56E90801DFF31740096A31B /* CameraGalleryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56E907F1DFF31740096A31B /* CameraGalleryManager.swift */; };
 		E56F78561E1F602200F07814 /* DMForgotPasswordVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56F78551E1F602200F07814 /* DMForgotPasswordVC+Services.swift */; };
 		E57681961E38A1DA00D912EA /* DMPublicProfileVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57681951E38A1DA00D912EA /* DMPublicProfileVC+Services.swift */; };
+		E57681991E3A234700D912EA /* DMEditSkillsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57681981E3A234700D912EA /* DMEditSkillsVC.swift */; };
+		E576819B1E3A25F100D912EA /* DMEditSkillsVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E576819A1E3A25F100D912EA /* DMEditSkillsVC+Services.swift */; };
+		E576819D1E3A289D00D912EA /* DMEditSkillsVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E576819C1E3A289D00D912EA /* DMEditSkillsVC+TableViewExtension.swift */; };
 		E57EE6CA1E28EB440090434F /* DMAffiliationsVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57EE6C91E28EB440090434F /* DMAffiliationsVC+Services.swift */; };
 		E57EE6CD1E28EBC00090434F /* Affiliation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57EE6CC1E28EBC00090434F /* Affiliation.swift */; };
 		E57F29DC1E368D070025B9DE /* DMEditCertificateVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57F29DB1E368D070025B9DE /* DMEditCertificateVC+Services.swift */; };
@@ -359,6 +367,9 @@
 		E50B3F521E194EDD004C5F32 /* AnimatedPHTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedPHTextField.swift; sourceTree = "<group>"; };
 		E50FA8121E30A1DA00C20C93 /* DMPublicProfileVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMPublicProfileVC+TableViewExtension.swift"; sourceTree = "<group>"; };
 		E514E5B91E28B472005F6712 /* DMCertificationsVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMCertificationsVC+Services.swift"; sourceTree = "<group>"; };
+		E51D4EF21E3AFCA700ACC631 /* DMEditStudyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMEditStudyVC.swift; sourceTree = "<group>"; };
+		E51D4EF41E3AFEA600ACC631 /* DMEditStudyVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMEditStudyVC+Services.swift"; sourceTree = "<group>"; };
+		E51D4EF61E3B029D00ACC631 /* DMEditStudyVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMEditStudyVC+TableViewExtension.swift"; sourceTree = "<group>"; };
 		E5302CD51DFE7AB100984A0B /* DMForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMForgotPasswordVC.swift; sourceTree = "<group>"; };
 		E53738F11DB373C200967876 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		E538FA7C1DFFD76000AECE26 /* DentaMatch-Dev.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DentaMatch-Dev.entitlements"; sourceTree = "<group>"; };
@@ -416,12 +427,17 @@
 		E56C9F9D1DED4BD100EAA9DD /* Character+Addition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Character+Addition.swift"; sourceTree = "<group>"; };
 		E56C9FA21DED520B00EAA9DD /* InAppPurchase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppPurchase.swift; sourceTree = "<group>"; };
 		E56C9FA71DED75D500EAA9DD /* CommonHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonHelper.swift; sourceTree = "<group>"; };
+		E56E315B1E3A8275009FF0FC /* EditProfileSchoolCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileSchoolCell.swift; sourceTree = "<group>"; };
+		E56E315C1E3A8275009FF0FC /* EditProfileSchoolCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileSchoolCell.xib; sourceTree = "<group>"; };
 		E56E45B81DAE07C200AD4559 /* DentaMatch-Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DentaMatch-Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E56E45C21DAE07C200AD4559 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E56E45C51DAE07C200AD4559 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E56E907F1DFF31740096A31B /* CameraGalleryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraGalleryManager.swift; sourceTree = "<group>"; };
 		E56F78551E1F602200F07814 /* DMForgotPasswordVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMForgotPasswordVC+Services.swift"; sourceTree = "<group>"; };
 		E57681951E38A1DA00D912EA /* DMPublicProfileVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMPublicProfileVC+Services.swift"; sourceTree = "<group>"; };
+		E57681981E3A234700D912EA /* DMEditSkillsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMEditSkillsVC.swift; sourceTree = "<group>"; };
+		E576819A1E3A25F100D912EA /* DMEditSkillsVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMEditSkillsVC+Services.swift"; sourceTree = "<group>"; };
+		E576819C1E3A289D00D912EA /* DMEditSkillsVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMEditSkillsVC+TableViewExtension.swift"; sourceTree = "<group>"; };
 		E57EE6C91E28EB440090434F /* DMAffiliationsVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMAffiliationsVC+Services.swift"; sourceTree = "<group>"; };
 		E57EE6CC1E28EBC00090434F /* Affiliation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Affiliation.swift; sourceTree = "<group>"; };
 		E57F29DB1E368D070025B9DE /* DMEditCertificateVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMEditCertificateVC+Services.swift"; sourceTree = "<group>"; };
@@ -819,6 +835,16 @@
 			path = Registration;
 			sourceTree = "<group>";
 		};
+		E51D4EEF1E3AFC7500ACC631 /* Study */ = {
+			isa = PBXGroup;
+			children = (
+				E51D4EF21E3AFCA700ACC631 /* DMEditStudyVC.swift */,
+				E51D4EF41E3AFEA600ACC631 /* DMEditStudyVC+Services.swift */,
+				E51D4EF61E3B029D00ACC631 /* DMEditStudyVC+TableViewExtension.swift */,
+			);
+			path = Study;
+			sourceTree = "<group>";
+		};
 		E5302CD41DFE7A9C00984A0B /* Forgot Password */ = {
 			isa = PBXGroup;
 			children = (
@@ -1026,6 +1052,8 @@
 		E558D9011E2E085200A6DF95 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				E51D4EEF1E3AFC7500ACC631 /* Study */,
+				E57681971E3A233100D912EA /* Skills */,
 				E57F29DD1E3694EF0025B9DE /* DentalStateBoard */,
 				E54B9A821E3286E700805D9C /* Certificate */,
 				E5E7CBAA1E3099CB00D4FB59 /* PublicProfile */,
@@ -1068,6 +1096,8 @@
 				5A3BD4B11E35FCBA00A607AC /* EditProfileExperienceCell.xib */,
 				5A3BD4B41E36065E00A607AC /* EditProfileReferenceCell.swift */,
 				5A3BD4B51E36065E00A607AC /* EditProfileReferenceCell.xib */,
+				E56E315B1E3A8275009FF0FC /* EditProfileSchoolCell.swift */,
+				E56E315C1E3A8275009FF0FC /* EditProfileSchoolCell.xib */,
 			);
 			path = EditProfile;
 			sourceTree = "<group>";
@@ -1167,6 +1197,16 @@
 				E56E907F1DFF31740096A31B /* CameraGalleryManager.swift */,
 			);
 			path = PhotoGalleryManager;
+			sourceTree = "<group>";
+		};
+		E57681971E3A233100D912EA /* Skills */ = {
+			isa = PBXGroup;
+			children = (
+				E57681981E3A234700D912EA /* DMEditSkillsVC.swift */,
+				E576819A1E3A25F100D912EA /* DMEditSkillsVC+Services.swift */,
+				E576819C1E3A289D00D912EA /* DMEditSkillsVC+TableViewExtension.swift */,
+			);
+			path = Skills;
 			sourceTree = "<group>";
 		};
 		E57EE6CB1E28EBA90090434F /* Affiliation */ = {
@@ -1850,6 +1890,7 @@
 				5A50A2CB1E32163D0010AA31 /* SettingTableCell.xib in Resources */,
 				E597E5851E151A99001DDA78 /* SF-UI-Text-MediumItalic.otf in Resources */,
 				E558D9121E2E873700A6DF95 /* EditProfileHeaderTableCell.xib in Resources */,
+				E56E315E1E3A8275009FF0FC /* EditProfileSchoolCell.xib in Resources */,
 				F2F5E0DC1E31BDEC0082187C /* MapCell.xib in Resources */,
 				E597E5871E151A99001DDA78 /* SF-UI-Text-RegularItalic.otf in Resources */,
 				E597E5861E151A99001DDA78 /* SF-UI-Text-Regular.otf in Resources */,
@@ -1953,6 +1994,7 @@
 				F2F5E0D71E30D2C80082187C /* OfficeDescriptionCell.swift in Sources */,
 				E587D2F41E24C095006B7F06 /* DMAffiliationsVC.swift in Sources */,
 				F2F5E0CB1E2F292F0082187C /* DentistDetailCell.swift in Sources */,
+				E576819B1E3A25F100D912EA /* DMEditSkillsVC+Services.swift in Sources */,
 				E594BEA61E1E07C900310AE5 /* DMLoginVC+TableViewExtension.swift in Sources */,
 				E54976F01E28CEDD006F21E5 /* Certification.swift in Sources */,
 				5A5266BD1E26413400C5B7A1 /* DMLicenseSelectionVC+Services.swift in Sources */,
@@ -1970,6 +2012,7 @@
 				E5302CD61DFE7AB100984A0B /* DMForgotPasswordVC.swift in Sources */,
 				F2540F601E274360004B0538 /* JobSearchResultCell.swift in Sources */,
 				E5C5F3181DC1A723001A5A3F /* LocationManager.swift in Sources */,
+				E51D4EF51E3AFEA600ACC631 /* DMEditStudyVC+Services.swift in Sources */,
 				E5E7CB851E2FA23200D4FB59 /* PhotoNameCell.swift in Sources */,
 				5AC714501E34ACC300E433C1 /* DMJobsVC.swift in Sources */,
 				5A3FD06E1E1BB0A000360B3C /* UINavigationBar+Awesome.m in Sources */,
@@ -2052,6 +2095,7 @@
 				E55462EC1DAE47F5004163B2 /* AppDelegate.swift in Sources */,
 				E587D3081E253719006B7F06 /* DMAffiliationsVC+TableViewExtension.swift in Sources */,
 				5A85D2171E2DFAD000AC4C89 /* TagWrappers.swift in Sources */,
+				E51D4EF31E3AFCA700ACC631 /* DMEditStudyVC.swift in Sources */,
 				E558D90A1E2E7A3200A6DF95 /* DMEditProfileVC+TableViewExtension.swift in Sources */,
 				5A3B06D31E33885A00EFCA6E /* DMChangePasswordVC+Services.swift in Sources */,
 				E5E7CB891E2FA23200D4FB59 /* OtherSkillCell.swift in Sources */,
@@ -2060,6 +2104,7 @@
 				E5E7CB801E2FA23200D4FB59 /* AddDeleteExperienceCell.swift in Sources */,
 				E587D3001E24E5C1006B7F06 /* ProfileTextField.swift in Sources */,
 				E5F47C941E0035B90051C4A1 /* UIImage+Rotations.swift in Sources */,
+				E576819D1E3A289D00D912EA /* DMEditSkillsVC+TableViewExtension.swift in Sources */,
 				5A8F62A51E399A550037C4A2 /* DMCalendarSetAvailabillityVC+TableViewExtension.swift in Sources */,
 				5AC714581E34F76900E433C1 /* DMSettingVC+Services.swift in Sources */,
 				E587D2F61E24C0B0006B7F06 /* DMSkillsVC.swift in Sources */,
@@ -2092,6 +2137,8 @@
 				5A85D2131E2DFAD000AC4C89 /* TagList.swift in Sources */,
 				E5A0EB0E1E2BE7C40092E21A /* ASJTag.m in Sources */,
 				F2540F591E263613004B0538 /* DMJobTitleVC.swift in Sources */,
+				E51D4EF71E3B029D00ACC631 /* DMEditStudyVC+TableViewExtension.swift in Sources */,
+				E57681991E3A234700D912EA /* DMEditSkillsVC.swift in Sources */,
 				E587D2F01E24C05D006B7F06 /* DMCertificationsVC.swift in Sources */,
 				E55462FC1DAE4EA1004163B2 /* DMBaseVC.swift in Sources */,
 				E5A0EB021E2A9C760092E21A /* DMStudy+Services.swift in Sources */,
@@ -2112,6 +2159,7 @@
 				E57F29DC1E368D070025B9DE /* DMEditCertificateVC+Services.swift in Sources */,
 				E5AE2AF11DAF844C00C008BD /* DMOnboardingVC.swift in Sources */,
 				E55462F31DAE4A5D004163B2 /* Constants.swift in Sources */,
+				E56E315D1E3A8275009FF0FC /* EditProfileSchoolCell.swift in Sources */,
 				E5496E0A1E25E52600C54288 /* DMSchoolListPopOverVC+TableViewExtension.swift in Sources */,
 				E50B3F4E1E194CD7004C5F32 /* LoginTableViewCell.swift in Sources */,
 			);

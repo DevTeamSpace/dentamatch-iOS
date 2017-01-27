@@ -90,8 +90,6 @@ class UserManager: NSObject {
             kUserDefaults.set(email, forKey: LOGGED_USER_EMAIL_KEY)
         }
         kUserDefaults.synchronize()
-
-        
     }
     
     /**

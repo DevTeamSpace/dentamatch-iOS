@@ -18,6 +18,9 @@ class User: NSObject , NSCoding {
     var lastName: String?
     var jobTitleId:String? = ""
     var jobTitle:String? = ""
+    var latitude:String? = ""
+    var longitude:String? = ""
+    var aboutMe:String? = ""
 
     var profileImageURL: String? = ""
     var preferredJobLocation: String? = ""
@@ -52,6 +55,9 @@ class User: NSObject , NSCoding {
         self.preferredJobLocation = aDecoder.decodeObject(forKey: "preferredJobLocation") as? String
         self.jobTitle = aDecoder.decodeObject(forKey: "jobTitle") as? String
         self.jobTitleId = aDecoder.decodeObject(forKey: "jobTitleId") as? String
+        self.latitude = aDecoder.decodeObject(forKey: "latitude") as? String
+        self.longitude = aDecoder.decodeObject(forKey: "longitude") as? String
+        self.aboutMe = aDecoder.decodeObject(forKey: "aboutMe") as? String
 
     }
     
@@ -66,5 +72,9 @@ class User: NSObject , NSCoding {
         aCoder.encode(self.preferredJobLocation, forKey: "preferredJobLocation")
         aCoder.encode(self.jobTitle, forKey: "jobTitle")
         aCoder.encode(self.jobTitleId, forKey: "jobTitleId")
+        aCoder.encode(self.latitude, forKey: "latitude")
+        aCoder.encode(self.longitude, forKey: "longitude")
+        aCoder.encode(self.aboutMe, forKey: "aboutMe")
+
     }
 }

@@ -1,37 +1,27 @@
 //
-//  DMStudyVC.swift
+//  DMEditStudyVC.swift
 //  DentaMatch
 //
-//  Created by Rajan Maheshwari on 10/01/17.
+//  Created by Rajan Maheshwari on 27/01/17.
 //  Copyright © 2017 Appster. All rights reserved.
 //
 
 import UIKit
 
-class DMStudyVC: DMBaseVC {
-
-    enum Study:Int {
-        case profileHeader
-        case school
-    }
-    
+class DMEditStudyVC: DMBaseVC {
     @IBOutlet weak var studyTableView: UITableView!
-    
-    var isFilledFromAutoComplete = false
-    let profileProgress:CGFloat = 0.50
-    var school = [[String:AnyObject]()]
-    var autoCompleteTable:AutoCompleteTable!
-    let autoCompleteBackView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
 
+    var isFilledFromAutoComplete = false
     var schoolCategories = [SchoolCategory]()
-    
+    var selectedSchoolCategories = [SelectedSchool]()
+    var autoCompleteTable:AutoCompleteTable!
     var selectedData = NSMutableArray()
+    let autoCompleteBackView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
     var yearPicker:YearPickerView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-    
         self.getSchoolListAPI()
         // Do any additional setup after loading the view.
     }
@@ -48,12 +38,24 @@ class DMStudyVC: DMBaseVC {
         NotificationCenter.default.removeObserver(self)
     }
     
-    func setup() {
-        
-        
+    //MARK:- Keyboard Show Hide Observers
+    func keyboardWillShow(note: NSNotification) {
+        if let keyboardSize = (note.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            studyTableView.contentInset =  UIEdgeInsetsMake(0, 0, keyboardSize.height+200, 0)
+        }
+    }
+    
+    func keyboardWillHide(note: NSNotification) {
+        studyTableView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0)
+    }
+
+
+    func setup() {        
         self.yearPicker = YearPickerView.loadYearPickerView(withText: "", withTag: 0)
         self.yearPicker?.delegate = self
-
+        self.studyTableView.register(UINib(nibName: "StudyCell", bundle: nil), forCellReuseIdentifier: "StudyCell")
+        self.title = "EDIT PROFILE"
+        self.changeNavBarAppearanceForDefault()
         self.navigationItem.leftBarButtonItem = self.backBarButton()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -63,8 +65,6 @@ class DMStudyVC: DMBaseVC {
         self.studyTableView.register(UINib(nibName: "PhotoNameCell", bundle: nil), forCellReuseIdentifier: "PhotoNameCell")
         self.studyTableView.register(UINib(nibName: "SectionHeadingTableCell", bundle: nil), forCellReuseIdentifier: "SectionHeadingTableCell")
         self.studyTableView.register(UINib(nibName: "StudyCell", bundle: nil), forCellReuseIdentifier: "StudyCell")
-        self.changeNavBarAppearanceForWithoutHeader()
-        self.changeNavBarToTransparent()
         
         autoCompleteTable = UIView.instanceFromNib(type: AutoCompleteTable.self)!
         autoCompleteTable.delegate = self
@@ -77,7 +77,7 @@ class DMStudyVC: DMBaseVC {
         autoCompleteBackView.isUserInteractionEnabled = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         autoCompleteBackView.addGestureRecognizer(tapGesture)
-        self.view.addSubview(autoCompleteTable)        
+        self.view.addSubview(autoCompleteTable)
     }
     
     func dismissKeyboard() {
@@ -90,58 +90,37 @@ class DMStudyVC: DMBaseVC {
         autoCompleteTable.isHidden = true
     }
     
-    //MARK:- Keyboard Show Hide Observers
-    func keyboardWillShow(note: NSNotification) {
-        if let keyboardSize = (note.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            studyTableView.contentInset =  UIEdgeInsetsMake(0, 0, keyboardSize.height+200, 0)
+    func updateProfileScreen() {
+        self.selectedSchoolCategories.removeAll()
+        for school in selectedData {
+            let dict = school as! NSMutableDictionary
+            let selectedSchool = SelectedSchool()
+            selectedSchool.schoolCategoryId = dict["parentId"] as! String
+            selectedSchool.universityId = dict["schoolId"] as! String
+            selectedSchool.universityName = dict["other"] as! String
+            selectedSchool.yearOfGraduation = dict["yearOfGraduation"] as! String
+            selectedSchool.schoolCategoryName = dict["parentName"] as! String
+            self.selectedSchoolCategories.append(selectedSchool)
         }
-    }
-    
-    func keyboardWillHide(note: NSNotification) {
-        studyTableView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateProfileScreen"), object: nil, userInfo: ["schools":self.selectedSchoolCategories])
     }
 
-    
-    @IBAction func nextButtonClicked(_ sender: Any) {
+    @IBAction func saveButtonPressed(_ sender: Any) {
         if selectedData.count == 0 {
             self.makeToast(toastString: "Please fill atleast one school")
             return
         }
         self.preparePostSchoolData(schoolsSelected: selectedData)
     }
-    
-    func openSkillsScreen() {
-        let skillsVC = UIStoryboard.profileStoryBoard().instantiateViewController(type: DMSkillsVC.self)!
-        
-        let selectSkillsVC = UIStoryboard.profileStoryBoard().instantiateViewController(type: DMSelectSkillsVC.self)!
-        
-        let sideMenu = SSASideMenu(contentViewController: skillsVC, rightMenuViewController: selectSkillsVC)
-        sideMenu.panGestureEnabled = false
-        sideMenu.delegate = skillsVC
-        self.navigationController?.pushViewController(sideMenu, animated: true)
-        //sideMenu.configure(SSASideMenu.MenuViewEffect(fade: true, scale: true, scaleBackground: false))
-        //sideMenu.configure(SSASideMenu.ContentViewEffect(alpha: 1.0, scale: 0.7))
-        //sideMenu.configure(SSASideMenu.ContentViewShadow(enabled: true, color: UIColor.black, opacity: 0.6, radius: 6.0))
-        
-        
-        //self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToSkillsVC, sender: self)
-    }
-
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
 }
 
-extension DMStudyVC:AutoCompleteSelectedDelegate {
-
+extension DMEditStudyVC:AutoCompleteSelectedDelegate {
+    
     func didSelect(schoolCategoryId: String, university: University) {
-        let school = schoolCategories.filter({$0.schoolCategoryId == schoolCategoryId}).first
+        hideAutoCompleteView()
         
+        let school = schoolCategories.filter({$0.schoolCategoryId == schoolCategoryId}).first
+ 
         isFilledFromAutoComplete = true
         var flag = 0
         
@@ -151,7 +130,7 @@ extension DMStudyVC:AutoCompleteSelectedDelegate {
             dict["schoolId"] = "\(university.universityId)"
             dict["other"] = university.universityName
             dict["parentName"] = school?.schoolCategoryName
-            
+
             selectedData.add(dict)
             flag = 1
         } else {
@@ -182,7 +161,7 @@ extension DMStudyVC:AutoCompleteSelectedDelegate {
     }
 }
 
-extension DMStudyVC : YearPickerViewDelegate {
+extension DMEditStudyVC : YearPickerViewDelegate {
     
     func canceButtonAction() {
         self.view.endEditing(true)
