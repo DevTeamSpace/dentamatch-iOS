@@ -27,6 +27,7 @@ extension DMPublicProfileVC : UITableViewDataSource,UITableViewDelegate,UITextVi
         cell.locationTextField.delegate = self
         cell.aboutMeTextView.delegate = self
         cell.aboutMeTextView.text = editProfileParams[Constants.ServerKey.aboutMe]
+        cell.placeHolderLabel.isHidden = editProfileParams[Constants.ServerKey.aboutMe]!.isEmpty ? false : true
         cell.firstNameTextField.text = editProfileParams[Constants.ServerKey.firstName]
         cell.lastNameTextField.text = editProfileParams[Constants.ServerKey.lastName]
         cell.jobTitleTextField.text = UserManager.shared().activeUser.jobTitle
@@ -56,6 +57,16 @@ extension DMPublicProfileVC : UITableViewDataSource,UITableViewDelegate,UITextVi
         return true
     }
     
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if let cell = self.publicProfileTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? EditPublicProfileTableCell {
+            if !textView.text.isEmpty {
+                cell.placeHolderLabel.isHidden = true
+            } else {
+                cell.placeHolderLabel.isHidden = false
+            }
+        }
+    }
+    
     func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
         self.publicProfileTableView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0)
         editProfileParams[Constants.ServerKey.aboutMe] = textView.text
@@ -64,5 +75,22 @@ extension DMPublicProfileVC : UITableViewDataSource,UITableViewDelegate,UITextVi
     
     func textViewDidChange(_ textView: UITextView) {
         editProfileParams[Constants.ServerKey.aboutMe] = textView.text
+        if let cell = self.publicProfileTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? EditPublicProfileTableCell {
+            if !textView.text.isEmpty {
+                cell.placeHolderLabel.isHidden = true
+            } else {
+                cell.placeHolderLabel.isHidden = false
+            }
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if let cell = self.publicProfileTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? EditPublicProfileTableCell {
+            if !textView.text.isEmpty {
+                cell.placeHolderLabel.isHidden = true
+            } else {
+                cell.placeHolderLabel.isHidden = false
+            }
+        }
     }
 }

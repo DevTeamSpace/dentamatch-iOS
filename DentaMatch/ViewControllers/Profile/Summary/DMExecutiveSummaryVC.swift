@@ -28,6 +28,7 @@ class DMExecutiveSummaryVC: DMBaseVC {
     }
 
     func setup() {
+        self.navigationItem.leftBarButtonItem = self.backBarButton()
         self.executiveSummaryTableView.separatorColor = UIColor.clear
         self.executiveSummaryTableView.register(UINib(nibName: "PhotoNameCell", bundle: nil), forCellReuseIdentifier: "PhotoNameCell")
         self.executiveSummaryTableView.register(UINib(nibName: "AboutMeCell", bundle: nil), forCellReuseIdentifier: "AboutMeCell")

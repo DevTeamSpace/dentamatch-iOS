@@ -107,12 +107,31 @@ class DMPublicProfileVC: DMBaseVC {
     func keyboardWillHide(note: NSNotification) {
         publicProfileTableView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0)
     }
+    
+    func validateFields() -> Bool {
+        if editProfileParams[Constants.ServerKey.firstName]!.isEmptyField {
+            self.makeToast(toastString: Constants.AlertMessage.emptyFirstName)
+            return false
+        }
+        
+        if editProfileParams[Constants.ServerKey.lastName]!.isEmptyField {
+            self.makeToast(toastString: Constants.AlertMessage.emptyLastName)
+            return false
+        }
+        if editProfileParams[Constants.ServerKey.aboutMe]!.isEmptyField {
+            self.makeToast(toastString: Constants.AlertMessage.emptyAboutMe)
+            return false
+        }
+        return true
+    }
 
 
     @IBAction func saveButtonPressed(_ sender: Any) {
         self.view.endEditing(true)
-        print("Edit Profile Params\n\(editProfileParams)")
-        self.updatePublicProfileAPI(params: editProfileParams)
+        if validateFields() {
+            print("Edit Profile Params\n\(editProfileParams)")
+            self.updatePublicProfileAPI(params: editProfileParams)
+        }
     }
     
     func addPhoto() {

@@ -267,6 +267,10 @@ struct Constants {
         static let invalidEmail = "Please provide a valid Email Id."
         static let passwordRange = "Password should be 6-25 characters long"
         static let emptyName = "Name text can not be left blank."
+        static let emptyFirstName = "First Name text can not be left blank."
+        static let emptyLastName = "Last Name text can not be left blank."
+        static let emptyAboutMe = "About Me text can not be left blank."
+
         static let emptyPreferredJobLocation = "Preferred Job Location can not be left blank."
         //license no screen
         static let emptyLicenseNumber = "Please enter License number"

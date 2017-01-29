@@ -18,6 +18,8 @@ class EditPublicProfileTableCell: UITableViewCell {
     @IBOutlet weak var profileButton: UIButton!
     @IBOutlet weak var aboutMeTextView: UITextView!
 
+    var placeHolderLabel:UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -31,7 +33,17 @@ class EditPublicProfileTableCell: UITableViewCell {
         self.jobTitleTextField.type = 1
         self.jobTitleTextField.tintColor = UIColor.clear
         self.locationTextField.type = 1
+        addPlaceHolderLabel()
     }
+    
+    func addPlaceHolderLabel() {
+        placeHolderLabel = UILabel(frame: CGRect(x: 10, y: 10, width: 200, height: 20))
+        placeHolderLabel.font = UIFont.fontRegular(fontSize: 16.0)
+        placeHolderLabel.textColor = UIColor.color(withHexCode: "939393")
+        placeHolderLabel.text = "Write a brief introduction"
+        self.aboutMeTextView.addSubview(placeHolderLabel)
+    }
+
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

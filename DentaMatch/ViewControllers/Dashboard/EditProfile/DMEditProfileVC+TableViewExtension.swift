@@ -374,7 +374,9 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             openWorkExperienceScreen()
             
         case .schooling:
-            openSchoolsScreen()
+            if self.schoolCategories.count == 0 {
+                openSchoolsScreen()
+            }
             
         case .keySkills:
             if self.skills.count == 0 {
@@ -382,12 +384,18 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             }
             
         case .affiliations:
-            openAffiliationsScreen()
+            if self.affiliations.count == 0 {
+                openAffiliationsScreen()
+            }
             
         case .certifications:
             let button = UIButton()
             button.tag = indexPath.row
-            openCertificateScreen(sender: button)
+            
+            //Only open on cell touch when no certificate is there for the category
+            if (certifications[indexPath.row].certificateImageURL?.isEmpty)! {
+                openCertificateScreen(sender: button)
+            }
             
         default:
             break
