@@ -530,8 +530,28 @@ extension DMWorkExperienceVC
         return true
 
     }
-
     
+    func checkAllFieldsAreFilled() -> Bool {
+        if (self.currentExperience?.jobTitle?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty)! {
+            return false
+        }
+        if (self.currentExperience?.yearOfExperience?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty)! {
+            return false
+        }
+        if (self.currentExperience?.officeName?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty)! {
+            self.makeToast(toastString: Constants.AlertMessage.emptyOfficeName)
+            return false
+        }
+        if (self.currentExperience?.officeAddress?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty)! {
+            return false
+        }
+        if (self.currentExperience?.cityName?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty)! {
+            return false
+        }
+        return true
+        
+    }
+
     
 }
 

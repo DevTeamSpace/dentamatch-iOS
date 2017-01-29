@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		270886FB07B603FF47668A72 /* Pods_DentaMatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C611E923856ECE4538FA4F38 /* Pods_DentaMatch.framework */; };
 		5A1960FD1E208B67002A5F7C /* PhoneNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1960FB1E208B67002A5F7C /* PhoneNumberFormatter.swift */; };
+		5A2CEF4B1E3C2F9600836654 /* DMCalendarSetAvailabillityVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2CEF4A1E3C2F9600836654 /* DMCalendarSetAvailabillityVC+Services.swift */; };
 		5A3B06C81E3375ED00EFCA6E /* ChangePasswordTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B06C61E3375ED00EFCA6E /* ChangePasswordTableCell.swift */; };
 		5A3B06C91E3375ED00EFCA6E /* ChangePasswordTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A3B06C71E3375ED00EFCA6E /* ChangePasswordTableCell.xib */; };
 		5A3B06CB1E3387DA00EFCA6E /* DMSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B06CA1E3387DA00EFCA6E /* DMSettingVC.swift */; };
@@ -302,6 +303,7 @@
 		158450992C392116A74F763C /* Pods-DentaMatch.qa.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DentaMatch.qa.xcconfig"; path = "Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch.qa.xcconfig"; sourceTree = "<group>"; };
 		19F54B802B7D87A34FEE97F2 /* Pods-DentaMatch.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DentaMatch.staging.xcconfig"; path = "Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch.staging.xcconfig"; sourceTree = "<group>"; };
 		5A1960FB1E208B67002A5F7C /* PhoneNumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberFormatter.swift; sourceTree = "<group>"; };
+		5A2CEF4A1E3C2F9600836654 /* DMCalendarSetAvailabillityVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMCalendarSetAvailabillityVC+Services.swift"; sourceTree = "<group>"; };
 		5A3B06C61E3375ED00EFCA6E /* ChangePasswordTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordTableCell.swift; sourceTree = "<group>"; };
 		5A3B06C71E3375ED00EFCA6E /* ChangePasswordTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangePasswordTableCell.xib; sourceTree = "<group>"; };
 		5A3B06CA1E3387DA00EFCA6E /* DMSettingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMSettingVC.swift; sourceTree = "<group>"; };
@@ -767,6 +769,7 @@
 				5AC714511E34ACD400E433C1 /* DMCalenderVC.swift */,
 				5A8F62A21E399A080037C4A2 /* DMCalendarSetAvailabillityVC.swift */,
 				5A8F62A41E399A550037C4A2 /* DMCalendarSetAvailabillityVC+TableViewExtension.swift */,
+				5A2CEF4A1E3C2F9600836654 /* DMCalendarSetAvailabillityVC+Services.swift */,
 			);
 			path = Calender;
 			sourceTree = "<group>";
@@ -2036,6 +2039,7 @@
 				E56C9FA81DED75D500EAA9DD /* CommonHelper.swift in Sources */,
 				E51D4EFC1E3B818400ACC631 /* CustomSegmentControl.swift in Sources */,
 				E57F29E11E3696A60025B9DE /* DMEditDentalStateBoardVC+Services.swift in Sources */,
+				5A2CEF4B1E3C2F9600836654 /* DMCalendarSetAvailabillityVC+Services.swift in Sources */,
 				E59029AA1DED2C7A00151E9B /* UserDefaultsManager.swift in Sources */,
 				F2D03BA81E1F67BA0005D3A4 /* DMJobSearchVC.swift in Sources */,
 				F2540F561E23A8AE004B0538 /* CurrentLocationCell.swift in Sources */,

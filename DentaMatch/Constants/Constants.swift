@@ -143,8 +143,8 @@ struct Constants {
         static let changePassword = Constants.API.apiURL("users/change-password")
         static let userProfile = Constants.API.apiURL("users/user-profile")
         static let signOut = Constants.API.apiURL("users/sign-out")
-        
         static let jobList = Constants.API.apiURL("users/job-list")
+        static let setAvailabality = Constants.API.apiURL("users/update-availability")
 
         static func apiURL(_ methodName: String) -> String {
             return BASE_URL + methodName
@@ -288,14 +288,19 @@ struct Constants {
         static let emptyCityName = "City Name can not be left blank."
         static let referenceMobileNumber = "Please, Provide a valid Phone number of 10 digits."
         static let atleastOneExperience  = "Please add at least one experience"
-        
+        static let partialFill  = "You have partially filled experience. Do you want to Discard this?"
+
         static let morethen2refernce = "More than two references can not be added."
         
         static let emptyOldPassword = "Please enter Old password"
         static let emptyNewPassword = "Please enter New password"
         static let emptyConfirmPassword = "Please enter Confirm password"
         static let matchPassword = "New password and Confirm password not match"
-
+        
+        //setAvailability
+        static let selectAvailableDay = "Please select at least one day"
+        static let selectDate = "Please select at least date"
+        static let selectOneAvailableOption = "Please select at least one Avaialbe Option"
         
         //change password screen messgaes
         struct AlertTitle {

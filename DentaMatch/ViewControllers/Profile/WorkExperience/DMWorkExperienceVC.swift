@@ -126,22 +126,62 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
     
     @IBAction func nextButtonClicked(_ sender: Any) {
         
-        if self.exprienceArray.count > 0
-        {
-            if checkAllFieldIsEmpty() {
-                if isEditMode == true {
-                    _ = self.navigationController?.popViewController(animated: true)
-                }else {
-                    self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToStudyVC, sender: self)
-                }
-            }else {
-                saveDataOnNextButton()
-            }
+        
+        
+        
+        if checkAllFieldsAreFilled() {
+            saveDataOnNextButton()
+        }else if self.exprienceArray.count > 0 && checkAllFieldIsEmpty() {
+            navigateAction()
         }else {
-            self.makeToast(toastString: Constants.AlertMessage.atleastOneExperience)
+            //alert here for
+            
+            
+            let alert = UIAlertController(title: title, message: Constants.AlertMessage.partialFill, preferredStyle: .alert)
+            let leftButtonAction = UIAlertAction(title: "Discard", style: .default) { (action:UIAlertAction) in
+                alert.dismiss(animated: true, completion: nil)
+                self.navigateAction()
+
+            }
+            
+            let rightButtonAction = UIAlertAction(title: "Save", style: .default) { (action:UIAlertAction) in
+                alert.dismiss(animated: true, completion: nil)
+
+                self.saveDataOnNextButton()
+
+            }
+            
+            alert.addAction(leftButtonAction)
+            alert.addAction(rightButtonAction)
+            
+            self.present(alert, animated: true, completion: nil)
+
         }
         
+//        if self.exprienceArray.count > 0
+//        {
+//            if checkAllFieldIsEmpty() {
+//                if isEditMode == true {
+//                    _ = self.navigationController?.popViewController(animated: true)
+//                }else {
+//                    self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToStudyVC, sender: self)
+//                }
+//            }else {
+//                saveDataOnNextButton()
+//            }
+//        }else {
+//            self.makeToast(toastString: Constants.AlertMessage.atleastOneExperience)
+//        }
         
+        
+    }
+    
+    func navigateAction() {
+        if isEditMode == true {
+            _ = self.navigationController?.popViewController(animated: true)
+        }else {
+            self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToStudyVC, sender: self)
+        }
     }
     
     //MARK:- Keyboard Show Hide Observers
