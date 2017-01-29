@@ -137,7 +137,7 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
             //alert here for
             
             
-            let alert = UIAlertController(title: title, message: "", preferredStyle: .alert)
+            let alert = UIAlertController(title: title, message: Constants.AlertMessage.partialFill, preferredStyle: .alert)
             let leftButtonAction = UIAlertAction(title: "Discard", style: .default) { (action:UIAlertAction) in
                 alert.dismiss(animated: true, completion: nil)
                 self.navigateAction()
