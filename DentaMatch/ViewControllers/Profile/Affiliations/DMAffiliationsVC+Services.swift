@@ -50,6 +50,7 @@ extension DMAffiliationsVC {
         }
     }
     
+    //MARK:- Response Handling
     func handleAffiliationListResponse(response: JSON?) {
         if let response = response {
             

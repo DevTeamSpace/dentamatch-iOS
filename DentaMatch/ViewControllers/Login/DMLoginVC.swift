@@ -94,6 +94,7 @@ class DMLoginVC: DMBaseVC {
         }
     }
     
+    //MARK:- IBActions
     func forgotPasswordButtonPressed() {
         self.view.endEditing(true)
         let forgotPasswordVC = UIStoryboard.registrationStoryBoard().instantiateViewController(type: DMForgotPasswordVC.self)!

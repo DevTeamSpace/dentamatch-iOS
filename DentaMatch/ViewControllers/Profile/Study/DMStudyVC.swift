@@ -28,6 +28,7 @@ class DMStudyVC: DMBaseVC {
     var selectedData = NSMutableArray()
     var yearPicker:YearPickerView?
 
+    //MARK:- View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -48,8 +49,8 @@ class DMStudyVC: DMBaseVC {
         NotificationCenter.default.removeObserver(self)
     }
     
+    //MARK:- Private Methods
     func setup() {
-        
         
         self.yearPicker = YearPickerView.loadYearPickerView(withText: "", withTag: 0)
         self.yearPicker?.delegate = self
@@ -101,7 +102,7 @@ class DMStudyVC: DMBaseVC {
         studyTableView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0)
     }
 
-    
+    //MARK:- IBActions
     @IBAction func nextButtonClicked(_ sender: Any) {
         if selectedData.count == 0 {
             self.makeToast(toastString: "Please fill atleast one school")
@@ -119,26 +120,12 @@ class DMStudyVC: DMBaseVC {
         sideMenu.panGestureEnabled = false
         sideMenu.delegate = skillsVC
         self.navigationController?.pushViewController(sideMenu, animated: true)
-        //sideMenu.configure(SSASideMenu.MenuViewEffect(fade: true, scale: true, scaleBackground: false))
-        //sideMenu.configure(SSASideMenu.ContentViewEffect(alpha: 1.0, scale: 0.7))
-        //sideMenu.configure(SSASideMenu.ContentViewShadow(enabled: true, color: UIColor.black, opacity: 0.6, radius: 6.0))
-        
-        
-        //self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToSkillsVC, sender: self)
-    }
-
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
 }
 
 extension DMStudyVC:AutoCompleteSelectedDelegate {
 
+    //MARK:- AutoComplete List Delegates
     func didSelect(schoolCategoryId: String, university: University) {
         let school = schoolCategories.filter({$0.schoolCategoryId == schoolCategoryId}).first
         

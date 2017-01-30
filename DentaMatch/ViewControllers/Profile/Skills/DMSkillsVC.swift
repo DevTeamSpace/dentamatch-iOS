@@ -26,6 +26,7 @@ class DMSkillsVC: DMBaseVC {
     var isEditMode = false
     var selectedSkills = [Skill]()
     
+    //MARK:- View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -37,9 +38,8 @@ class DMSkillsVC: DMBaseVC {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
-    
 
-    
+    //MARK:- Private Methods
     func setup() {
         whiteView = UIView(frame: CGRect(x: 0, y: 0, width: Utilities.ScreenSize.SCREEN_WIDTH, height: Utilities.ScreenSize.SCREEN_HEIGHT))
         whiteView.backgroundColor = UIColor.white
@@ -53,6 +53,7 @@ class DMSkillsVC: DMBaseVC {
         self.skillsTableView.register(UINib(nibName: "OtherSkillCell", bundle: nil), forCellReuseIdentifier: "OtherSkillCell")
     }
 
+    //MARK:- IBActions
     @IBAction func nextButtonClicked(_ sender: Any) {
         let params  = prepareSkillUpdateData()
         let others = params["other"] as! [[String:AnyObject]]
@@ -82,20 +83,13 @@ class DMSkillsVC: DMBaseVC {
     @IBAction func backButtonPressed(_ sender: Any) {
         _ = self.navigationController?.popViewController(animated: true)
     }
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    
 }
 
 extension DMSkillsVC: SSASideMenuDelegate {
     
     func sideMenuWillShowMenuViewController(_ sideMenu: SSASideMenu, menuViewController: UIViewController) {
         //side menu
+        //TODO:- Will See
 //        whiteView.isHidden = false
 
     }
@@ -103,7 +97,6 @@ extension DMSkillsVC: SSASideMenuDelegate {
     
     func sideMenuWillHideMenuViewController(_ sideMenu: SSASideMenu, menuViewController: UIViewController) {
 //        whiteView.isHidden = true
-
         if let selectedIndex = self.skillsTableView.indexPathForSelectedRow {
             self.skillsTableView.deselectRow(at: selectedIndex, animated: true)
         }

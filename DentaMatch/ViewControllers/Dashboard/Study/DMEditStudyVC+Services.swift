@@ -11,7 +11,6 @@ import SwiftyJSON
 
 extension DMEditStudyVC {
     
-    
     func getSchoolListAPI() {
         self.showLoader()
         APIManager.apiGet(serviceName: Constants.API.getSchoolListAPI, parameters: [:]) { (response:JSON?, error:NSError?) in

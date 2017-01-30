@@ -29,6 +29,7 @@ class DMOnboardingVC: DMBaseVC {
                        Constants.SubHeading.subHeading4
                     ]
     
+    //MARK:- View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false
@@ -36,12 +37,14 @@ class DMOnboardingVC: DMBaseVC {
         // Do any additional setup after loading the view.
     }
     
+    //MARK:- Private Methods
     func setup() {
         skipButton.isExclusiveTouch = true
         getStartedButton.isHidden = true
         getStartedButton.isExclusiveTouch = true
     }
     
+    //MARK:- IBActions
     @IBAction func skipButtonPressed(_ sender: AnyObject) {
     //Go to login/Registration
         

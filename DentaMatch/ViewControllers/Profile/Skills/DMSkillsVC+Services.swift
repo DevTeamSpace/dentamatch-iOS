@@ -48,6 +48,7 @@ extension DMSkillsVC {
         }
     }
     
+    //MARK:- Response Handling
     func handleSkillListResponse(response:JSON?) {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
