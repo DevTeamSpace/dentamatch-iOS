@@ -19,6 +19,7 @@ class DMRegistrationContainer: DMBaseVC {
     var loginVC:DMLoginVC?
     var isRegistration = true
     
+    //MARK:- View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -60,6 +61,7 @@ class DMRegistrationContainer: DMBaseVC {
         }
     }
     
+    //MARK:- IBActions
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         isRegistration = false
         registrationButton.titleLabel?.font = UIFont.fontLight(fontSize: 14.0)!

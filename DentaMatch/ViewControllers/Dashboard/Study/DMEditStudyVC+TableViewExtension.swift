@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension DMEditStudyVC:UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate {
+extension DMEditStudyVC:UITableViewDataSource,UITableViewDelegate {
         
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return schoolCategories.count
@@ -78,7 +78,24 @@ extension DMEditStudyVC:UITableViewDataSource,UITableViewDelegate,UITextFieldDel
             
         }
     }
-    
+   
+    func checkForEmptySchoolField() {
+        let emptyData = NSMutableArray()
+        for category in selectedData {
+            let dict = category as! NSMutableDictionary
+            if (dict["other"] as! String).isEmptyField {
+                emptyData.add(dict)
+            }
+        }
+        selectedData.removeObjects(in: emptyData as [AnyObject])
+        print(selectedData)
+        self.studyTableView.reloadData()
+        
+    }
+
+}
+
+extension DMEditStudyVC : UITextFieldDelegate {
     func textFieldDidChange(textField:UITextField) {
         
         let schoolCategory = schoolCategories.filter({$0.schoolCategoryId == "\(textField.tag)"}).first
@@ -140,7 +157,7 @@ extension DMEditStudyVC:UITableViewDataSource,UITableViewDelegate,UITextFieldDel
         print("textFieldDidEndEditing")
         
         let school = schoolCategories.filter({$0.schoolCategoryId == "\(textField.tag)"}).first
-
+        
         
         if textField.inputView is YearPickerView {
             print("year picker")
@@ -184,25 +201,9 @@ extension DMEditStudyVC:UITableViewDataSource,UITableViewDelegate,UITextFieldDel
         checkForEmptySchoolField()
     }
     
-    func checkForEmptySchoolField() {
-        let emptyData = NSMutableArray()
-        for category in selectedData {
-            let dict = category as! NSMutableDictionary
-            if (dict["other"] as! String).isEmptyField {
-                emptyData.add(dict)
-            }
-        }
-        selectedData.removeObjects(in: emptyData as [AnyObject])
-        print(selectedData)
-        self.studyTableView.reloadData()
-
-    }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         hideAutoCompleteView()
         return true
     }
-    
-
 }

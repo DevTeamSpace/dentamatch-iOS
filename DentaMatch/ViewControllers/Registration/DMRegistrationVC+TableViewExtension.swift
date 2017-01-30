@@ -10,6 +10,8 @@ import Foundation
 
 //MARK:- TableView Datasource/Delegates
 extension DMRegistrationVC: UITableViewDataSource, UITableViewDelegate {
+    
+    //MARK:- TableView Datasource/Delegates
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }

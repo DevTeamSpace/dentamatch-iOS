@@ -41,7 +41,6 @@ extension DMExecutiveSummaryVC {
             } else {
             }
             self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
-
         }
     }
 }

@@ -11,6 +11,7 @@ import Foundation
 
 extension DMRegisterMapsVC : UITableViewDataSource,UITableViewDelegate {
     
+    //MARK:- TableView DataSource/Delegates
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return placesArray.count
     }

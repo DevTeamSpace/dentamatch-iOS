@@ -185,7 +185,7 @@ class DMPublicProfileVC: DMBaseVC {
     }
     
     func updateProfileScreen() {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateProfileScreen"), object: nil, userInfo: nil)
+        NotificationCenter.default.post(name: .updateProfileScreen, object: nil, userInfo: nil)
     }
 }
 

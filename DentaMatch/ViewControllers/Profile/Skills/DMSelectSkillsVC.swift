@@ -21,19 +21,13 @@ class DMSelectSkillsVC: UIViewController {
     var subSkillWithoutOther = [SubSkill]()
     var otherSkill:SubSkill?
     var otherText = ""
+    
+    //MARK:- View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
         NotificationCenter.default.addObserver(self, selector: #selector(getSubSkillData), name: NSNotification.Name(rawValue: "getSubSkillData"), object: nil)
         // Do any additional setup after loading the view.
-    }
-    
-    func getSubSkillData(info:Notification) {
-        let userInfo = info.userInfo
-        skill = userInfo?["skill"] as? Skill
-        subSkills.removeAll()
-        subSkills = (skill?.subSkills)!
-        self.subSkillTableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,6 +52,15 @@ class DMSelectSkillsVC: UIViewController {
         super.viewWillDisappear(animated)
     }
 
+    //MARK:- Private Methods
+    func getSubSkillData(info:Notification) {
+        let userInfo = info.userInfo
+        skill = userInfo?["skill"] as? Skill
+        subSkills.removeAll()
+        subSkills = (skill?.subSkills)!
+        self.subSkillTableView.reloadData()
+    }
+    
     func setup() {
         self.view.backgroundColor = UIColor.color(withHexCode: "0470C0")
         self.subSkillTableView.backgroundColor = UIColor.color(withHexCode: "0470C0")

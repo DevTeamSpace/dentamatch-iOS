@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DMForgotPasswordVC: DMBaseVC,UITextFieldDelegate {
+class DMForgotPasswordVC: DMBaseVC {
 
     @IBOutlet weak var emailTextField: AnimatedLeftViewPHTextField!
     
@@ -35,11 +35,14 @@ class DMForgotPasswordVC: DMBaseVC,UITextFieldDelegate {
         self.view.endEditing(true)
     }
     
+    //MARK:- Private Methods
     func setup() {
         emailTextField.leftViewLabel?.text = "f"
         self.title = Constants.ScreenTitleNames.forgotPassword
         self.navigationItem.leftBarButtonItem = self.backBarButton()
     }
+    
+    //MARK:- IBActions
     @IBAction func sendButtonPressed(_ sender: Any) {
         self.view.endEditing(true)
         if emailTextField.text!.isValidEmail {
@@ -49,7 +52,11 @@ class DMForgotPasswordVC: DMBaseVC,UITextFieldDelegate {
             self.makeToast(toastString: Constants.AlertMessage.invalidEmail)
         }
     }
+}
+
+extension DMForgotPasswordVC: UITextFieldDelegate {
     
+    //MARK:- TextField Delegates
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if let textField = textField as? AnimatedLeftViewPHTextField {
             textField.layer.borderColor = Constants.Color.textFieldColorSelected.cgColor

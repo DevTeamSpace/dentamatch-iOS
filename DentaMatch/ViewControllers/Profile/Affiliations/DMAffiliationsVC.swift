@@ -26,6 +26,7 @@ class DMAffiliationsVC: DMBaseVC {
     var affiliations = [Affiliation]()
     var isEditMode = false
     
+    //MARK:- View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -38,6 +39,7 @@ class DMAffiliationsVC: DMBaseVC {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
 
+    //MARK:- Private Methods
     func setup() {
         if isEditMode {
             self.title = "EDIT PROFILE"
@@ -72,18 +74,20 @@ class DMAffiliationsVC: DMBaseVC {
         return keyboardDoneButtonView
     }
     
-    func toolBarButtonPressed() {
-        self.view.endEditing(true)
-    }
-    
-    @IBAction func nextButtonClicked(_ sender: Any) {
-        makeAffiliationData()
-    }
-    
     func openCertificationScreen() {
         self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToCertificationsVC, sender: self)
     }
     
+    func toolBarButtonPressed() {
+        self.view.endEditing(true)
+    }
+    
+    //MARK:- IBActions
+    @IBAction func nextButtonClicked(_ sender: Any) {
+        makeAffiliationData()
+    }
+    
+    //Making the post data for affiliation post API
     func makeAffiliationData() {
         self.view.endEditing(true)
         var params = [String:AnyObject]()
@@ -124,6 +128,31 @@ class DMAffiliationsVC: DMBaseVC {
     
     //For edit mode from Edit Profile
     func manageSelectedAffiliations() {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateProfileScreen"), object: nil, userInfo: ["affiliations":affiliations.filter({$0.isSelected == true})])
+        NotificationCenter.default.post(name: .updateProfileScreen, object: nil, userInfo: ["affiliations":affiliations.filter({$0.isSelected == true})])
+    }
+}
+
+
+extension DMAffiliationsVC: UITextViewDelegate {
+    
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        
+        self.affiliationsTableView.contentInset =  UIEdgeInsetsMake(0, 0, 200, 0)
+        DispatchQueue.main.async {
+            self.affiliationsTableView.scrollToRow(at: IndexPath(row: 0, section: 2), at: .bottom, animated: true)
+        }
+        return true
+    }
+    
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        self.affiliationsTableView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0)
+        
+        return true
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        let affiliation = affiliations[affiliations.count - 1]
+        affiliation.otherAffiliation = textView.text!
+        otherText = textView.text
     }
 }

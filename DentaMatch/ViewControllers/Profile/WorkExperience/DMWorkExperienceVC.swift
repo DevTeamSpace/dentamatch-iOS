@@ -280,7 +280,7 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
     }
 
     func updateProfileScreen() {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateProfileScreen"), object: nil, userInfo: ["workExperiences":self.exprienceArray])
+        NotificationCenter.default.post(name: .updateProfileScreen, object: nil, userInfo: ["workExperiences":self.exprienceArray])
     }
     
     // MARK: - Navigation

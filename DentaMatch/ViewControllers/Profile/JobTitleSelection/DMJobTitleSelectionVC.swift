@@ -131,9 +131,6 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
         } else{
             self.makeToast(toastString: "Please select profile image")
         }
-        
-//        //For testing
-        //openLicenseScreen()
     }
     
     func openLicenseScreen() {

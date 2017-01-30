@@ -46,6 +46,7 @@ extension DMRegistrationVC {
         }
     }
     
+    //Clearing Data when registration is completed and user is navigated to login screen of same container.
     func clearData() {
         if let cell = self.registrationTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as?
             RegistrationTableViewCell {

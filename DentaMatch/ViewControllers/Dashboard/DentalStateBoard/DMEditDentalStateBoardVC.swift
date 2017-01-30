@@ -52,7 +52,7 @@ class DMEditDentalStateBoardVC: DMBaseVC {
     }
     
     func updateProfileScreen() {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateProfileScreen"), object: nil, userInfo: ["dentalStateBoardImageURL":dentalStateBoardImageURL])
+        NotificationCenter.default.post(name: .updateProfileScreen, object: nil, userInfo: ["dentalStateBoardImageURL":dentalStateBoardImageURL])
     }
 
     func addPhoto() {
