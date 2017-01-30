@@ -27,19 +27,19 @@ class DMJobTitleVC: DMBaseVC {
         self.getJobsAPI()
         self.setUp()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     //MARK : Private Method
     
     func setUp() {
         self.setRightBarButton()
         self.title = "JOB TITLE"
         self.tblJobTitle.rowHeight = UITableViewAutomaticDimension
-            self.tblJobTitle.register(UINib(nibName: "AffiliationsCell", bundle: nil), forCellReuseIdentifier: "AffiliationsCell")
+        self.tblJobTitle.register(UINib(nibName: "JobTitleCell", bundle: nil), forCellReuseIdentifier: "JobTitleCell")
     }
     
     func setRightBarButton()  {
@@ -113,19 +113,19 @@ extension DMJobTitleVC : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AffiliationsCell") as! AffiliationsCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "JobTitleCell") as! JobTitleCell
         cell.selectionStyle = .none
         let objJob = jobTitles[indexPath.row]
         //cell.tickButton.isEnabled = true
-        cell.affiliationLabel.textColor = UIColor.init(red: 81.0/255.0, green: 81.0/255.0, blue: 81.0/255.0, alpha: 1.0)
-        cell.affiliationLabel.text = objJob.jobTitle
+        cell.lblJobTitle.textColor = UIColor.init(red: 81.0/255.0, green: 81.0/255.0, blue: 81.0/255.0, alpha: 1.0)
+        cell.lblJobTitle.text = objJob.jobTitle
         if objJob.jobSelected == true {
-            cell.tickButton.setTitle("w", for: .normal)
-            cell.tickButton.setTitleColor(UIColor.init(red: 4.0/255.0, green: 112.0/255.0, blue: 192.0/255.0, alpha: 1.0), for: .normal)
+            cell.btnTick.setTitle("w", for: .normal)
+            cell.btnTick.setTitleColor(UIColor.init(red: 4.0/255.0, green: 112.0/255.0, blue: 192.0/255.0, alpha: 1.0), for: .normal)
         }
         else {
-            cell.tickButton.setTitle("t", for: .normal)
-            cell.tickButton.setTitleColor(UIColor.init(red: 151.0/255.0, green: 151.0/255.0, blue: 151.0/255.0, alpha: 1.0), for: .normal)
+            cell.btnTick.setTitle("t", for: .normal)
+            cell.btnTick.setTitleColor(UIColor.init(red: 151.0/255.0, green: 151.0/255.0, blue: 151.0/255.0, alpha: 1.0), for: .normal)
         }
         return cell
     }
@@ -139,17 +139,17 @@ extension DMJobTitleVC : UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as? AffiliationsCell
+        let cell = tableView.cellForRow(at: indexPath) as? JobTitleCell
         let objJob = jobTitles[indexPath.row]
         if objJob.jobSelected == false {
             objJob.jobSelected = true
-            cell?.tickButton.setTitle("w", for: .normal)
-            cell?.tickButton.setTitleColor(UIColor.init(red: 4.0/255.0, green: 112.0/255.0, blue: 192.0/255.0, alpha: 1.0), for: .normal)
+            cell?.btnTick.setTitle("w", for: .normal)
+            cell?.btnTick.setTitleColor(UIColor.init(red: 4.0/255.0, green: 112.0/255.0, blue: 192.0/255.0, alpha: 1.0), for: .normal)
         }
         else {
             objJob.jobSelected = false
-            cell?.tickButton.setTitle("t", for: .normal)
-            cell?.tickButton.setTitleColor(UIColor.init(red: 151.0/255.0, green: 151.0/255.0, blue: 151.0/255.0, alpha: 1.0), for: .normal)
+            cell?.btnTick.setTitle("t", for: .normal)
+            cell?.btnTick.setTitleColor(UIColor.init(red: 151.0/255.0, green: 151.0/255.0, blue: 151.0/255.0, alpha: 1.0), for: .normal)
         }
     }
 }

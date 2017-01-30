@@ -31,10 +31,10 @@ class JobSearchResultCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setCellData(jobSearchResult : JobSearchResultModel) {
-        self.lblJobTitle.text = jobSearchResult.jobtitle
+    func setCellData(job : Job) {
+        self.lblJobTitle.text = job.jobtitle
         //self.btnFavourite.titleLabel?.text = jobSearchResult.jobtitle
-        if jobSearchResult.jobType == 1 {
+        if job.jobType == 1 {
             self.btnType.titleLabel?.text = "Full Time"
             self.btnType.backgroundColor = UIColor.init(red: 69.0/255.0, green: 177.0/255.0 , blue: 179.0/255.0, alpha: 1.0)
         }
@@ -42,10 +42,10 @@ class JobSearchResultCell: UITableViewCell {
             self.btnType.titleLabel?.text = "Part Time"
             self.btnType.backgroundColor = UIColor.init(red: 142.0/255.0, green: 207.0/255.0, blue: 126.0/255.0, alpha: 1.0)
         }
-        self.lblDistance.text = String(format: "%.1f", jobSearchResult.distance) + " miles"
-        self.lblDays.text = jobSearchResult.jobtitle
-        self.lblDocName.text = jobSearchResult.officeName
-        self.lblAddress.text = jobSearchResult.address
-        self.lblJobPostTime.text = jobSearchResult.postTime
+        self.lblDistance.text = String(format: "%.1f", job.distance) + " miles"
+        self.lblDays.text = job.jobtitle
+        self.lblDocName.text = job.officeName
+        self.lblAddress.text = job.address
+        self.lblJobPostTime.text = job.postTime
     }
 }

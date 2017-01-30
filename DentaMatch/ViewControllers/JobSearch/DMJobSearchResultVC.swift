@@ -24,7 +24,7 @@ class DMJobSearchResultVC : DMBaseVC {
     var btnMap : UIButton!
     var currentCoordinate : CLLocationCoordinate2D! = CLLocationCoordinate2D(latitude : 0.00, longitude : 0.00)
     var arrMarkers  = [JobMarker]()
-    var jobSearchResult = [JobSearchResultModel]()
+    var jobSearchResult = [Job]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -161,14 +161,14 @@ class DMJobSearchResultVC : DMBaseVC {
 extension DMJobSearchResultVC : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return jobSearchResult.count
+        return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "JobSearchResultCell") as! JobSearchResultCell
-        let objJobDetail = jobSearchResult[indexPath.row]
-        cell.setCellData(jobSearchResult : objJobDetail)
+        //let objJob = jobSearchResult[indexPath.row]
+        //cell.setCellData(job: objJob)
         return cell
     }
     
@@ -202,7 +202,7 @@ extension DMJobSearchResultVC : GMSMapViewDelegate {
     }
     
     func moveToMarker(marker: JobMarker) {
-        let objJobSearch =  JobSearchResultModel.init()
+        let objJobSearch =  Job.init()
         objJobSearch.jobId = marker.job_id!
         
         //let arrIDs = self.arrMarkers.valueForKey("user_id")
