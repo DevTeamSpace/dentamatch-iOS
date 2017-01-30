@@ -80,6 +80,7 @@
 		E51D4EF91E3B7F8E00ACC631 /* DMTrackVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4EF81E3B7F8E00ACC631 /* DMTrackVC+Services.swift */; };
 		E51D4EFC1E3B818400ACC631 /* CustomSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4EFB1E3B818400ACC631 /* CustomSegmentControl.swift */; };
 		E51D4F001E3F207F00ACC631 /* Notifications+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4EFF1E3F207F00ACC631 /* Notifications+Name.swift */; };
+		E51D4F021E3F514200ACC631 /* DMTrackVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4F011E3F514200ACC631 /* DMTrackVC+TableViewExtension.swift */; };
 		E5302CD61DFE7AB100984A0B /* DMForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5302CD51DFE7AB100984A0B /* DMForgotPasswordVC.swift */; };
 		E53738F21DB373C200967876 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53738F11DB373C200967876 /* Reachability.swift */; };
 		E5496DFC1E25547300C54288 /* DMCertificationsVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5496DFB1E25547300C54288 /* DMCertificationsVC+TableViewExtension.swift */; };
@@ -386,6 +387,7 @@
 		E51D4EF81E3B7F8E00ACC631 /* DMTrackVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMTrackVC+Services.swift"; sourceTree = "<group>"; };
 		E51D4EFB1E3B818400ACC631 /* CustomSegmentControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegmentControl.swift; sourceTree = "<group>"; };
 		E51D4EFF1E3F207F00ACC631 /* Notifications+Name.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Notifications+Name.swift"; sourceTree = "<group>"; };
+		E51D4F011E3F514200ACC631 /* DMTrackVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMTrackVC+TableViewExtension.swift"; sourceTree = "<group>"; };
 		E5302CD51DFE7AB100984A0B /* DMForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMForgotPasswordVC.swift; sourceTree = "<group>"; };
 		E53738F11DB373C200967876 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		E538FA7C1DFFD76000AECE26 /* DentaMatch-Dev.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DentaMatch-Dev.entitlements"; sourceTree = "<group>"; };
@@ -803,6 +805,7 @@
 			children = (
 				5AC714531E34ACE800E433C1 /* DMTrackVC.swift */,
 				E51D4EF81E3B7F8E00ACC631 /* DMTrackVC+Services.swift */,
+				E51D4F011E3F514200ACC631 /* DMTrackVC+TableViewExtension.swift */,
 			);
 			path = Track;
 			sourceTree = "<group>";
@@ -2108,6 +2111,7 @@
 				E5FBE9D91E1CCF940025683C /* DMRegistration+Services.swift in Sources */,
 				E58654FE1DEFEF7F006FEB2D /* ConfigurationManager.swift in Sources */,
 				E5AE2AF61DAF878900C008BD /* OnboardingCollectionViewCell.swift in Sources */,
+				E51D4F021E3F514200ACC631 /* DMTrackVC+TableViewExtension.swift in Sources */,
 				5A3B06D11E33883C00EFCA6E /* DMChangePasswordVC+TableViewExtension.swift in Sources */,
 				5A1960FD1E208B67002A5F7C /* PhoneNumberFormatter.swift in Sources */,
 				E5C5F3151DC0AACA001A5A3F /* DMRegisterMapsVC.swift in Sources */,
