@@ -24,7 +24,7 @@ class DMJobSearchResultVC : DMBaseVC {
     var btnMap : UIButton!
     var currentCoordinate : CLLocationCoordinate2D! = CLLocationCoordinate2D(latitude : 0.00, longitude : 0.00)
     var arrMarkers  = [JobMarker]()
-    var jobSearchResult = [JobSearchResultModel]()
+    var jobSearchResult = [Job]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -200,7 +200,7 @@ extension DMJobSearchResultVC : GMSMapViewDelegate {
     }
     
     func moveToMarker(marker: JobMarker) {
-        let objJobSearch =  JobSearchResultModel.init()
+        let objJobSearch =  Job.init()
         objJobSearch.jobId = marker.job_id!
         
         //let arrIDs = self.arrMarkers.valueForKey("user_id")

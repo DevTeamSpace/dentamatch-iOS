@@ -31,7 +31,7 @@ class JobSearchResultCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setCellData(jobSearchResult : JobSearchResultModel) {
+    func setCellData(jobSearchResult : Job) {
         self.lblJobTitle.text = jobSearchResult.jobtitle
         //self.btnFavourite.titleLabel?.text = jobSearchResult.jobtitle
         if jobSearchResult.jobType == 1 {
