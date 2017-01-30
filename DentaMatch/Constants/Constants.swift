@@ -280,6 +280,7 @@ struct Constants {
         static let emptyFirstName = "First Name text can not be left blank."
         static let emptyLastName = "Last Name text can not be left blank."
         static let emptyAboutMe = "About Me text can not be left blank."
+        static let emptyValidityDate = "Please enter the validity date"
 
         static let emptyPreferredJobLocation = "Preferred Job Location can not be left blank."
         //license no screen
