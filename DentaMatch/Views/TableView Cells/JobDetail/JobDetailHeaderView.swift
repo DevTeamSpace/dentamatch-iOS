@@ -12,7 +12,6 @@ class JobDetailHeaderView: UIView {
     
     @IBOutlet weak var btnIcon: UIButton!
     @IBOutlet weak var lblDescription: UILabel!
-    
     @IBOutlet weak var viewParent: UIView!
     
     override init(frame: CGRect) {
@@ -28,8 +27,6 @@ class JobDetailHeaderView: UIView {
     private func setup() {
         let nib =  Bundle.main.loadNibNamed("JobDetailHeaderView", owner: self, options: nil)
         self.addSubview(nib?.last as! UIView)
-        //self.viewParent.layer.borderWidth = 1.0
-        //self.viewParent.layer.borderColor = UIColor.init(colorLiteralRed: 229.0/255.0, green: 229.0/255.0, blue: 229.0/255.0, alpha: 1.0).cgColor
     }
     
     func setHeaderData(iconText : String, headerText : String) {

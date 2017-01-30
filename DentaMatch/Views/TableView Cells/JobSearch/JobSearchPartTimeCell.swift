@@ -11,13 +11,11 @@ import UIKit
 @objc protocol JobSearchPartTimeCellDelegate {
     
     @objc optional func selectDay(selected : Bool, day : String)
-    
 }
 
 class JobSearchPartTimeCell: UITableViewCell {
 
     @IBOutlet weak var viewPartTime: UIView!
-    
     @IBOutlet weak var btnSunday: UIButton!
     @IBOutlet weak var btnMonday: UIButton!
     @IBOutlet weak var btnTuesday: UIButton!

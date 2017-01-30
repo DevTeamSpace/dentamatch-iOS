@@ -266,7 +266,9 @@
 		E5F47C941E0035B90051C4A1 /* UIImage+Rotations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F47C911E0035B90051C4A1 /* UIImage+Rotations.swift */; };
 		E5F47C951E0035B90051C4A1 /* UIImageRotate.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F47C931E0035B90051C4A1 /* UIImageRotate.m */; };
 		E5FBE9D91E1CCF940025683C /* DMRegistration+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FBE9D81E1CCF940025683C /* DMRegistration+Services.swift */; };
-		F239E2DE1E28C65D0071909E /* JobDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = F239E2DD1E28C65D0071909E /* JobDetails.swift */; };
+		F22359151E3F351C00E984FC /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22359141E3F351C00E984FC /* Job.swift */; };
+		F22359171E3F3E3300E984FC /* DMJobSearchVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22359161E3F3E3300E984FC /* DMJobSearchVC+TableViewExtension.swift */; };
+		F22359191E3F3F2100E984FC /* DMJobSearchVC+TableViewCellDelegateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22359181E3F3F2100E984FC /* DMJobSearchVC+TableViewCellDelegateExtension.swift */; };
 		F239E2E01E28D0890071909E /* JobMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F239E2DF1E28D0890071909E /* JobMarker.swift */; };
 		F2540F4A1E23A81C004B0538 /* JobSeachTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2540F481E23A81C004B0538 /* JobSeachTitleCell.swift */; };
 		F2540F4B1E23A81C004B0538 /* JobSeachTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2540F491E23A81C004B0538 /* JobSeachTitleCell.xib */; };
@@ -296,7 +298,6 @@
 		F2F5E0E01E31D40E0082187C /* JobDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F5E0DF1E31D40E0082187C /* JobDetailHeaderView.swift */; };
 		F2F5E0E21E31D43A0082187C /* JobDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2F5E0E11E31D43A0082187C /* JobDetailHeaderView.xib */; };
 		F2F5E0E61E35DE390082187C /* DMJobSearchVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F5E0E51E35DE390082187C /* DMJobSearchVC+Services.swift */; };
-		F2F5E0EA1E36216A0082187C /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F5E0E91E36216A0082187C /* Job.swift */; };
 		F2F9B97B1E38978200639716 /* JobTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F9B9791E38978200639716 /* JobTitleCell.swift */; };
 		F2F9B97C1E38978200639716 /* JobTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2F9B97A1E38978200639716 /* JobTitleCell.xib */; };
 /* End PBXBuildFile section */
@@ -575,7 +576,9 @@
 		E5F47C921E0035B90051C4A1 /* UIImageRotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageRotate.h; sourceTree = "<group>"; };
 		E5F47C931E0035B90051C4A1 /* UIImageRotate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageRotate.m; sourceTree = "<group>"; };
 		E5FBE9D81E1CCF940025683C /* DMRegistration+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMRegistration+Services.swift"; sourceTree = "<group>"; };
-		F239E2DD1E28C65D0071909E /* JobDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobDetails.swift; sourceTree = "<group>"; };
+		F22359141E3F351C00E984FC /* Job.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
+		F22359161E3F3E3300E984FC /* DMJobSearchVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMJobSearchVC+TableViewExtension.swift"; sourceTree = "<group>"; };
+		F22359181E3F3F2100E984FC /* DMJobSearchVC+TableViewCellDelegateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMJobSearchVC+TableViewCellDelegateExtension.swift"; sourceTree = "<group>"; };
 		F239E2DF1E28D0890071909E /* JobMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobMarker.swift; sourceTree = "<group>"; };
 		F2540F481E23A81C004B0538 /* JobSeachTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobSeachTitleCell.swift; sourceTree = "<group>"; };
 		F2540F491E23A81C004B0538 /* JobSeachTitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobSeachTitleCell.xib; sourceTree = "<group>"; };
@@ -605,7 +608,6 @@
 		F2F5E0DF1E31D40E0082187C /* JobDetailHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobDetailHeaderView.swift; sourceTree = "<group>"; };
 		F2F5E0E11E31D43A0082187C /* JobDetailHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobDetailHeaderView.xib; sourceTree = "<group>"; };
 		F2F5E0E51E35DE390082187C /* DMJobSearchVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMJobSearchVC+Services.swift"; sourceTree = "<group>"; };
-		F2F5E0E91E36216A0082187C /* Job.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
 		F2F9B9791E38978200639716 /* JobTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobTitleCell.swift; sourceTree = "<group>"; };
 		F2F9B97A1E38978200639716 /* JobTitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobTitleCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -644,6 +646,7 @@
 		5A1E2A161E1E47340055D913 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F22359131E3F346600E984FC /* Job */,
 				E5E7CB9D1E306E6300D4FB59 /* License */,
 				E558D8DE1E2C80A800A6DF95 /* School */,
 				E57EE6CB1E28EBA90090434F /* Affiliation */,
@@ -652,8 +655,6 @@
 				E54976E91E28CEDD006F21E5 /* Skill */,
 				E54976EB1E28CEDD006F21E5 /* User */,
 				E54976ED1E28CEDD006F21E5 /* WorkExperience */,
-				F239E2DD1E28C65D0071909E /* JobDetails.swift */,
-				F2F5E0E91E36216A0082187C /* Job.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1709,10 +1710,20 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		F22359131E3F346600E984FC /* Job */ = {
+			isa = PBXGroup;
+			children = (
+				F22359141E3F351C00E984FC /* Job.swift */,
+			);
+			path = Job;
+			sourceTree = "<group>";
+		};
 		F2D03BA61E1F67350005D3A4 /* JobSearch */ = {
 			isa = PBXGroup;
 			children = (
 				F2D03BA71E1F67BA0005D3A4 /* DMJobSearchVC.swift */,
+				F22359181E3F3F2100E984FC /* DMJobSearchVC+TableViewCellDelegateExtension.swift */,
+				F22359161E3F3E3300E984FC /* DMJobSearchVC+TableViewExtension.swift */,
 				F2F5E0E51E35DE390082187C /* DMJobSearchVC+Services.swift */,
 				F2540F581E263613004B0538 /* DMJobTitleVC.swift */,
 				F2540F5C1E274258004B0538 /* DMJobSearchResultVC.swift */,
@@ -1999,6 +2010,7 @@
 			files = (
 				F2F5E0D31E30CF310082187C /* JobDescriptionCell.swift in Sources */,
 				E56B20A41DC0526E000512F6 /* DMRegistrationContainer.swift in Sources */,
+				F22359191E3F3F2100E984FC /* DMJobSearchVC+TableViewCellDelegateExtension.swift in Sources */,
 				5A3BD4AA1E35D3D800A607AC /* EditProfileAffiliationBrickCell.swift in Sources */,
 				5A3B06CF1E33881D00EFCA6E /* DMChangePasswordVC.swift in Sources */,
 				E5E7CB781E2FA23200D4FB59 /* AboutMeCell.swift in Sources */,
@@ -2105,6 +2117,7 @@
 				E56E90801DFF31740096A31B /* CameraGalleryManager.swift in Sources */,
 				E5E7CBAC1E3099DF00D4FB59 /* DMPublicProfileVC.swift in Sources */,
 				F2540F4A1E23A81C004B0538 /* JobSeachTitleCell.swift in Sources */,
+				F22359171E3F3E3300E984FC /* DMJobSearchVC+TableViewExtension.swift in Sources */,
 				F2F5E0DA1E31BDD00082187C /* MapCell.swift in Sources */,
 				E55462F71DAE4C6F004163B2 /* UITextField+ToolBar.swift in Sources */,
 				F2F5E0CF1E2F62080082187C /* AboutCell.swift in Sources */,
@@ -2178,11 +2191,9 @@
 				E55462FC1DAE4EA1004163B2 /* DMBaseVC.swift in Sources */,
 				E5A0EB021E2A9C760092E21A /* DMStudy+Services.swift in Sources */,
 				E5E7CB8B1E2FA23200D4FB59 /* OtherSubSkillTableCell.swift in Sources */,
-				F239E2DE1E28C65D0071909E /* JobDetails.swift in Sources */,
 				F2F5E0E61E35DE390082187C /* DMJobSearchVC+Services.swift in Sources */,
 				E5A3E8EE1E160ABF00B10937 /* AnimatedLeftViewPHTextField.swift in Sources */,
 				E51D4EF91E3B7F8E00ACC631 /* DMTrackVC+Services.swift in Sources */,
-				F2F5E0EA1E36216A0082187C /* Job.swift in Sources */,
 				E594BEA81E1E07F500310AE5 /* DMLoginVC+Services.swift in Sources */,
 				E5496E021E255A9E00C54288 /* DMExecutiveSummaryVC+TableViewExtension.swift in Sources */,
 				E54B9A841E32870B00805D9C /* DMEditCertificateVC.swift in Sources */,
@@ -2198,6 +2209,7 @@
 				E56E315D1E3A8275009FF0FC /* EditProfileSchoolCell.swift in Sources */,
 				E5496E0A1E25E52600C54288 /* DMSchoolListPopOverVC+TableViewExtension.swift in Sources */,
 				E50B3F4E1E194CD7004C5F32 /* LoginTableViewCell.swift in Sources */,
+				F22359151E3F351C00E984FC /* Job.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

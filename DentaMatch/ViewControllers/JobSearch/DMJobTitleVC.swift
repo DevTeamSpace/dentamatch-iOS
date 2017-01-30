@@ -36,6 +36,7 @@ class DMJobTitleVC: DMBaseVC {
     //MARK : Private Method
     
     func setUp() {
+        self.navigationItem.leftBarButtonItem = super.backBarButton()
         self.setRightBarButton()
         self.title = "JOB TITLE"
         self.tblJobTitle.rowHeight = UITableViewAutomaticDimension

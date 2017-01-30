@@ -27,13 +27,11 @@ class JobSearchResultCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
     
     func setCellData(job : Job) {
         self.lblJobTitle.text = job.jobtitle
-        //self.btnFavourite.titleLabel?.text = jobSearchResult.jobtitle
         if job.jobType == 1 {
             self.btnType.titleLabel?.text = "Full Time"
             self.btnType.backgroundColor = UIColor.init(red: 69.0/255.0, green: 177.0/255.0 , blue: 179.0/255.0, alpha: 1.0)

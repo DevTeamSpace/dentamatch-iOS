@@ -72,16 +72,10 @@ class JobSeachTitleCell: UITableViewCell {
                     topMargin =  topMargin + textSize.height + heightPadding + 5.0
                 }
                 textWidth = self.scrollViewJobTitle.frame.size.width - leftMargin - rightMargin - 15
-                //textHeight = 64.0
             }
             else if leftMargin + textSize.width + rightMargin + widthPadding >= self.scrollViewJobTitle.frame.size.width {
                 leftMargin = 5.0
                 topMargin =  topMargin + textSize.height + heightPadding + 5.0
-                
-                //topMargin =  topMargin + textSize.height + heightPadding + 5.0
-                //widthPadding = 20.0
-                //textWidth = self.scrollViewJobTitle.frame.size.width - 20
-                //textHeight = 64.0
             }
             
             let label = UILabel(frame: CGRect(x : leftMargin,y : topMargin,width : textWidth + widthPadding + 15,height :  textHeight))
@@ -90,7 +84,6 @@ class JobSeachTitleCell: UITableViewCell {
             label.textColor = UIColor(red: 169.0/255.0, green: 169.0/255.0, blue: 169.0/255.0, alpha: 1.0)
             label.text = objTitle.jobTitle as String
             label.layer.borderWidth  = 1
-            //label.numberOfLines = 0
             label.layer.borderColor = UIColor(red: 169.0/255.0, green: 169.0/255.0, blue: 169.0/255.0, alpha: 1.0).cgColor
             label.layer.cornerRadius = 15.0
             label.clipsToBounds = true
@@ -105,7 +98,6 @@ class JobSeachTitleCell: UITableViewCell {
         // Set scrollview height equals to Total Height
         
         constraintScrollViewHeight.constant = totalHeight
-        //self.layoutIfNeeded()
     }
     
 }
