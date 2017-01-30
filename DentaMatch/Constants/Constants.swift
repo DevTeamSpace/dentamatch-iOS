@@ -55,6 +55,8 @@ struct Constants {
         static let textFieldPlaceHolderColor =  UIColor.color(withHexCode: "959595")
         static let brickTextColor =  UIColor.color(withHexCode: "959595")
 
+        static let saveJobColor = UIColor.color(withHexCode: "0470c0")
+
         static let textFieldErrorColor = UIColor.color(withHexCode: "ff0000")
         
         static let profileProgressBarColor = UIColor.color(withHexCode: "a3d977")
@@ -157,6 +159,8 @@ struct Constants {
         static let userProfile = Constants.API.apiURL("users/user-profile")
         static let signOut = Constants.API.apiURL("users/sign-out")
         static let jobList = Constants.API.apiURL("users/job-list")
+        static let saveJob = Constants.API.apiURL("users/save-job")
+
         static let setAvailabality = Constants.API.apiURL("users/update-availability")
 
         static func apiURL(_ methodName: String) -> String {
@@ -211,6 +215,7 @@ struct Constants {
         static let experienceId = "id"
         static let userId = "userId"
         static let user = "user"
+        static let jobId = "jobId"
         static let jobTitleId = "jobTitleId"
         static let jobTitileId = "jobTitileId"
         static let jobTitle = "jobTitle"

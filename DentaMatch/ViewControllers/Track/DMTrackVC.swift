@@ -16,13 +16,20 @@ class DMTrackVC: DMBaseVC {
         case shortlisted
     }
     
+    var loadingMoreSaveJobs = false
+    var loadingMoreAppliedJobs = false
+    var loadingMoreShortListedJobs = false
+
     var savedJobs = [Job]()
     var appliedJobs = [Job]()
     var shortListedJobs = [Job]()
     var savedJobsPageNo = 1
     var appliedJobsPageNo = 1
     var shortListedJobsPageNo = 1
-    
+    var totalSavedJobsFromServer = 0
+    var totalAppliedJobsFromServer = 0
+    var totalShortListedJobsFromServer = 0
+
     var jobParams = [String:String]()
 
     @IBOutlet weak var savedJobsTableView: UITableView!

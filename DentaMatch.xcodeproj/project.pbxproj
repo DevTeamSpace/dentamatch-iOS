@@ -81,6 +81,8 @@
 		E51D4EFC1E3B818400ACC631 /* CustomSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4EFB1E3B818400ACC631 /* CustomSegmentControl.swift */; };
 		E51D4F001E3F207F00ACC631 /* Notifications+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4EFF1E3F207F00ACC631 /* Notifications+Name.swift */; };
 		E51D4F021E3F514200ACC631 /* DMTrackVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4F011E3F514200ACC631 /* DMTrackVC+TableViewExtension.swift */; };
+		E51D4F051E3FABA300ACC631 /* LoadMoreView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E51D4F041E3FABA300ACC631 /* LoadMoreView.xib */; };
+		E51D4F071E3FABB400ACC631 /* LoadMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4F061E3FABB400ACC631 /* LoadMoreView.swift */; };
 		E5302CD61DFE7AB100984A0B /* DMForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5302CD51DFE7AB100984A0B /* DMForgotPasswordVC.swift */; };
 		E53738F21DB373C200967876 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53738F11DB373C200967876 /* Reachability.swift */; };
 		E5496DFC1E25547300C54288 /* DMCertificationsVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5496DFB1E25547300C54288 /* DMCertificationsVC+TableViewExtension.swift */; };
@@ -388,6 +390,8 @@
 		E51D4EFB1E3B818400ACC631 /* CustomSegmentControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegmentControl.swift; sourceTree = "<group>"; };
 		E51D4EFF1E3F207F00ACC631 /* Notifications+Name.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Notifications+Name.swift"; sourceTree = "<group>"; };
 		E51D4F011E3F514200ACC631 /* DMTrackVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMTrackVC+TableViewExtension.swift"; sourceTree = "<group>"; };
+		E51D4F041E3FABA300ACC631 /* LoadMoreView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadMoreView.xib; sourceTree = "<group>"; };
+		E51D4F061E3FABB400ACC631 /* LoadMoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadMoreView.swift; sourceTree = "<group>"; };
 		E5302CD51DFE7AB100984A0B /* DMForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMForgotPasswordVC.swift; sourceTree = "<group>"; };
 		E53738F11DB373C200967876 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		E538FA7C1DFFD76000AECE26 /* DentaMatch-Dev.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DentaMatch-Dev.entitlements"; sourceTree = "<group>"; };
@@ -888,6 +892,15 @@
 			path = SegmentControl;
 			sourceTree = "<group>";
 		};
+		E51D4F031E3FAB9100ACC631 /* LoadMore */ = {
+			isa = PBXGroup;
+			children = (
+				E51D4F041E3FABA300ACC631 /* LoadMoreView.xib */,
+				E51D4F061E3FABB400ACC631 /* LoadMoreView.swift */,
+			);
+			path = LoadMore;
+			sourceTree = "<group>";
+		};
 		E5302CD41DFE7A9C00984A0B /* Forgot Password */ = {
 			isa = PBXGroup;
 			children = (
@@ -979,6 +992,7 @@
 		E55462DD1DAE31A1004163B2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E51D4F031E3FAB9100ACC631 /* LoadMore */,
 				E51D4EFA1E3B816B00ACC631 /* SegmentControl */,
 				E558D8F81E2CB5B500A6DF95 /* AutoCompleteTable */,
 				E587D2CA1E2334F2006B7F06 /* CustomPicker */,
@@ -1932,6 +1946,7 @@
 				E587D2DD1E2396E9006B7F06 /* JobSelectionPickerView.xib in Resources */,
 				E597E5821E151A99001DDA78 /* SF-UI-Text-Light.otf in Resources */,
 				E56E45C61DAE07C200AD4559 /* LaunchScreen.storyboard in Resources */,
+				E51D4F051E3FABA300ACC631 /* LoadMoreView.xib in Resources */,
 				E597E5761E151A99001DDA78 /* SF-UI-Display-Bold.otf in Resources */,
 				E50B3F511E194CD7004C5F32 /* RegistrationTableViewCell.xib in Resources */,
 				5AC714421E34A9C700E433C1 /* Messages.storyboard in Resources */,
@@ -2126,6 +2141,7 @@
 				F2540F4E1E23A834004B0538 /* JobSearchTypeCell.swift in Sources */,
 				E587D2ED1E24C021006B7F06 /* DMWorkExperienceVC+TableViewExtension.swift in Sources */,
 				E587D2F21E24C07C006B7F06 /* DMExecutiveSummaryVC.swift in Sources */,
+				E51D4F071E3FABB400ACC631 /* LoadMoreView.swift in Sources */,
 				E50B3F531E194EDD004C5F32 /* AnimatedPHTextField.swift in Sources */,
 				E5E7CB4A1E2F8CDE00D4FB59 /* EditLicenseTableCell.swift in Sources */,
 				E514E5BA1E28B472005F6712 /* DMCertificationsVC+Services.swift in Sources */,
