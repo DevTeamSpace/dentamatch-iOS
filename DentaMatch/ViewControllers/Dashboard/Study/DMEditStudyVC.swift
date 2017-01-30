@@ -102,7 +102,7 @@ class DMEditStudyVC: DMBaseVC {
             selectedSchool.schoolCategoryName = dict["parentName"] as! String
             self.selectedSchoolCategories.append(selectedSchool)
         }
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateProfileScreen"), object: nil, userInfo: ["schools":self.selectedSchoolCategories])
+        NotificationCenter.default.post(name: .updateProfileScreen, object: nil, userInfo: ["schools":self.selectedSchoolCategories])
     }
 
     @IBAction func saveButtonPressed(_ sender: Any) {

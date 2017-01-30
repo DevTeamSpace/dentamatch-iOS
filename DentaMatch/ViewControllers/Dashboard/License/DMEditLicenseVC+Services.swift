@@ -34,7 +34,7 @@ extension DMEditLicenseVC {
                 if license == nil { license = License()}
                 license?.number = licenseNumberTextField.text!
                 license?.state = stateTextField.text!
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateProfileScreen"), object: nil, userInfo: ["license":license!])
+                NotificationCenter.default.post(name: .updateProfileScreen, object: nil, userInfo: ["license":license!])
                 _ = self.navigationController?.popViewController(animated: true)
             }
             self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)

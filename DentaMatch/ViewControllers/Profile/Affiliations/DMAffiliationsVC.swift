@@ -128,7 +128,7 @@ class DMAffiliationsVC: DMBaseVC {
     
     //For edit mode from Edit Profile
     func manageSelectedAffiliations() {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateProfileScreen"), object: nil, userInfo: ["affiliations":affiliations.filter({$0.isSelected == true})])
+        NotificationCenter.default.post(name: .updateProfileScreen, object: nil, userInfo: ["affiliations":affiliations.filter({$0.isSelected == true})])
     }
 }
 

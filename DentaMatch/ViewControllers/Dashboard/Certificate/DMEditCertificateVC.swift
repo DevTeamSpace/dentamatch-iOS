@@ -158,7 +158,7 @@ class DMEditCertificateVC: DMBaseVC,DatePickerViewDelegate {
     }
     
     func updateProfileScreen() {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateProfileScreen"), object: nil, userInfo: ["certification":self.certificate!])
+        NotificationCenter.default.post(name: .updateProfileScreen, object: nil, userInfo: ["certification":self.certificate!])
     }
 }
 

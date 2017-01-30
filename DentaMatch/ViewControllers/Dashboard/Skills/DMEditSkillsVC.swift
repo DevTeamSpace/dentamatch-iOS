@@ -53,7 +53,7 @@ class DMEditSkillsVC: DMBaseVC {
                 self.selectedSkills.append(skill)
             }
         }
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateProfileScreen"), object: nil, userInfo: ["skills":self.selectedSkills])
+        NotificationCenter.default.post(name: .updateProfileScreen, object: nil, userInfo: ["skills":self.selectedSkills])
     }
     
     @IBAction func backButtonPressed(_ sender: Any) {

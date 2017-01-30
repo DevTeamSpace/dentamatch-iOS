@@ -58,7 +58,7 @@ class DMEditProfileVC: DMBaseVC {
     
     func setup() {
         
-        NotificationCenter.default.addObserver(self, selector: #selector(updateProfileScreen), name: NSNotification.Name(rawValue: "updateProfileScreen"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateProfileScreen), name: .updateProfileScreen, object: nil)
         
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.editProfileTableView.register(UINib(nibName: "EditProfileHeaderTableCell", bundle: nil), forCellReuseIdentifier: "EditProfileHeaderTableCell")
