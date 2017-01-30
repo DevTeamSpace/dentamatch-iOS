@@ -12,6 +12,7 @@ import SwiftyJSON
 class Job: NSObject {
 
     var jobId = 0
+    var isSaved = 0
     var jobType = 0
     var isMonday = 0
     var isTuesday = 0
@@ -28,6 +29,7 @@ class Job: NSObject {
     var longitude = ""
     var distance = 0.0
     var postTime = ""
+    var days = ""
     
     override init() {
         
@@ -35,6 +37,7 @@ class Job: NSObject {
     
     init(job:JSON) {
         self.jobId = job["id"].intValue
+        self.isSaved = job["isSaved"].intValue
         self.jobType = job["jobType"].intValue
         self.isMonday = job["isMonday"].intValue
         self.isTuesday = job["isTuesday"].intValue
@@ -51,5 +54,6 @@ class Job: NSObject {
         self.distance = Double(job["distance"].floatValue)
         self.zipcode = job["zipcode"].intValue
         self.postTime = job["createdAt"].stringValue
+        self.days = job["days"].stringValue
     }
 }
