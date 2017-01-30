@@ -53,7 +53,9 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
     var jobTitles = [JobTitle]()
     var selectedIndex:Int = 0
     var isHiddenExperienceTable :Bool = false
+    var isEditMode = false
 
+    @IBOutlet weak var nextButton: UIButton!
 
     @IBOutlet weak var mainScrollView: UIScrollView!
     @IBOutlet weak var workExperienceTable: UITableView!
@@ -66,7 +68,11 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
         super.viewDidLoad()
         setup()
         initialDataSetup()
-        getExperienceAPI()
+        if isEditMode != true {
+            getExperienceAPI()
+        }else{
+            nextButton.setTitle("Save", for: .normal)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,7 +81,6 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
 
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        self.changeNavBarAppearanceForProfiles()
         self.navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = nil
         self.navigationController?.navigationBar.isTranslucent = false
@@ -94,7 +99,6 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
         // Dispose of any resources that can be recreated.
     }
     func setup() {
-        self.title = "Work Experience"
         self.workExperienceDetailTable.register(UINib(nibName: "AnimatedPHTableCell", bundle: nil), forCellReuseIdentifier: "AnimatedPHTableCell")
         self.workExperienceDetailTable.register(UINib(nibName: "ReferenceTableCell", bundle: nil), forCellReuseIdentifier: "ReferenceTableCell")
         self.workExperienceDetailTable.register(UINib(nibName: "AddDeleteExperienceCell", bundle: nil), forCellReuseIdentifier: "AddDeleteExperienceCell")
@@ -106,7 +110,13 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
 //        self.mainScrollView.isExclusiveTouch = true
 
         self.workExperienceDetailTable.reloadData()
-        self.changeNavBarAppearanceForProfiles()
+        if self.isEditMode {
+            self.title = "EDIT PROFILE"
+            self.changeNavBarAppearanceForDefault()
+        } else {
+            self.changeNavBarAppearanceForProfiles()
+            self.title = "Work Experience"
+        }
     }
     
     func dismissKeyboard() {
@@ -116,16 +126,62 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
     
     @IBAction func nextButtonClicked(_ sender: Any) {
         
-        if self.exprienceArray.count > 0
-        {
-            self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToStudyVC, sender: self)
+        
+        
+        
+        if checkAllFieldsAreFilled() {
+            saveDataOnNextButton()
+        }else if self.exprienceArray.count > 0 && checkAllFieldIsEmpty() {
+            navigateAction()
+        }else {
+            //alert here for
+            
+            
+            let alert = UIAlertController(title: title, message: Constants.AlertMessage.partialFill, preferredStyle: .alert)
+            let leftButtonAction = UIAlertAction(title: "Discard", style: .default) { (action:UIAlertAction) in
+                alert.dismiss(animated: true, completion: nil)
+                self.navigateAction()
 
-        }else{
-            self.makeToast(toastString: Constants.AlertMessage.atleastOneExperience)
+            }
+            
+            let rightButtonAction = UIAlertAction(title: "Save", style: .default) { (action:UIAlertAction) in
+                alert.dismiss(animated: true, completion: nil)
+
+                self.saveDataOnNextButton()
+
+            }
+            
+            alert.addAction(leftButtonAction)
+            alert.addAction(rightButtonAction)
+            
+            self.present(alert, animated: true, completion: nil)
+
         }
         
-//        self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToStudyVC, sender: self)
-
+//        if self.exprienceArray.count > 0
+//        {
+//            if checkAllFieldIsEmpty() {
+//                if isEditMode == true {
+//                    _ = self.navigationController?.popViewController(animated: true)
+//                }else {
+//                    self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToStudyVC, sender: self)
+//                }
+//            }else {
+//                saveDataOnNextButton()
+//            }
+//        }else {
+//            self.makeToast(toastString: Constants.AlertMessage.atleastOneExperience)
+//        }
+        
+        
+    }
+    
+    func navigateAction() {
+        if isEditMode == true {
+            _ = self.navigationController?.popViewController(animated: true)
+        }else {
+            self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToStudyVC, sender: self)
+        }
     }
     
     //MARK:- Keyboard Show Hide Observers
@@ -143,6 +199,7 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
         let exp = ExperienceModel(empty: "")
         self.exprienceDetailArray?.add(exp)
         self.currentExperience?.references.append(EmployeeReferenceModel(empty: ""))
+        self.workExperienceTable.reloadData()
         self.workExperienceDetailTable.reloadData()
         reSizeTableViewsAndScrollView()
     }
@@ -162,7 +219,69 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
         self.workExperienceDetailTable.layoutIfNeeded()
         self.mainScrollView.contentSize = CGSize(width: self.view.bounds.size.width, height: self.hightOfExperienceTable.constant + self.hightOfExperienceDetailTable.constant)
     }
+    
+    func saveDataOnNextButton() {
+        
+        self.view.endEditing(true)
+        if !checkValidations()
+        {
+            return
+        }
+        var param = [String:AnyObject]()
+        if self.currentExperience?.isEditMode == true
+        {
+            param = self.getParamsForSaveAndUpdate(isEdit: true)
+        }else {
+            param = self.getParamsForSaveAndUpdate(isEdit: false)
+            
+        }
+        saveUpdateExperience(params: param, completionHandler: { (response, error) in
+            
+            if response![Constants.ServerKey.status].boolValue {
+                let resultArray = response![Constants.ServerKey.result][Constants.ServerKey.list].array
+                if (resultArray?.count)! > 0
+                {
+                    
+                    let dict  = resultArray?[0].dictionary
+                    self.currentExperience?.experienceID = (dict?[Constants.ServerKey.experienceId]?.intValue)!
+                    
+                }
+                if self.currentExperience?.isEditMode == true {
+                    self.exprienceArray[self.selectedIndex] = self.currentExperience!
+                    
+                }else{
+                    self.exprienceArray.append(self.currentExperience!)
+                    
+                }
+                self.isHiddenExperienceTable = false
+                
+                self.currentExperience = nil
+                self.currentExperience = ExperienceModel(empty: "")
+                self.currentExperience?.isFirstExperience = false
+                self.currentExperience?.references.append(EmployeeReferenceModel(empty: ""))
+                self.workExperienceTable.reloadData()
+                self.workExperienceDetailTable.reloadData()
+                self.reSizeTableViewsAndScrollView()
+                
+                self.updateProfileScreen()
+            }
+        })
+        self.workExperienceTable.reloadData()
+        self.workExperienceDetailTable.reloadData()
+        //        self.makeToast(toastString: "Experience Added")
+        self.reSizeTableViewsAndScrollView()
 
+        if isEditMode == true {
+            _ = self.navigationController?.popViewController(animated: true)
+        }else{
+            self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToStudyVC, sender: self)
+        }
+        
+    }
+
+    func updateProfileScreen() {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateProfileScreen"), object: nil, userInfo: ["workExperiences":self.exprienceArray])
+    }
     
     // MARK: - Navigation
 

@@ -32,11 +32,29 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         self.calendar?.delegate = self;
         self.calendar?.allowsMultipleSelection = false
         self.calendar?.swipeToChooseGesture.isEnabled = false
-//        self.calendar?.backgroundColor = UIColor.white
+        self.calendar?.appearance.headerMinimumDissolvedAlpha = 0
+        self.calendar?.appearance.caseOptions = .headerUsesUpperCase
         self.calendar?.pagingEnabled = true
         self.calendar?.placeholderType = .none
-//        self.calendar?.appearance.todayColor = UIColor.orange
-//        self.calendar?.select(Data())
+        
+        self.calendar?.appearance.todayColor = UIColor.blue
+        
+        self.calendar?.appearance.headerTitleFont = UIFont.fontRegular(fontSize: 12)
+        self.calendar?.appearance.titleFont = UIFont.fontRegular(fontSize: 16)
+        self.calendar?.appearance.weekdayFont = UIFont.fontRegular(fontSize: 16)
+        
+        self.calendar?.appearance.adjustsFontSizeToFitContentSize = true
+        self.calendar?.appearance.adjustTitleIfNecessary()
+//                calenderView.appearance.preferredTitleFont = UIFont.fontRegular(fontSize: 16)
+        
+        self.calendar?.appearance.headerTitleColor = UIColor(red: 81.0/255.0, green: 81.0/255.0, blue: 81.0/255.0, alpha: 1)
+        self.calendar?.appearance.weekdayTextColor = UIColor(red: 81.0/255.0, green: 81.0/255.0, blue: 81.0/255.0, alpha: 0.5)
+        self.calendar?.appearance.titleDefaultColor = UIColor(red: 81.0/255.0, green: 81.0/255.0, blue: 81.0/255.0, alpha: 1)
+        self.calendar?.appearance.selectionColor = UIColor(red: 15.0/255.0, green: 24.0/255.0, blue: 62.0/255.0, alpha: 1)
+
+//        self.calendar?.appearance.borderRadius = 0.0
+        self.calendar?.appearance.eventOffset = CGPoint(x: 0, y: -10)
+        
         self.view.addSubview(self.calendar!)
 
     }
@@ -54,11 +72,7 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
     */
     //MARK:- Calender Methods 
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        let newDate = Date()
-        if date == newDate {
-            return 3
-        }
-        return 0
+        return 3
     }
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, borderRadiusFor date: Date) -> CGFloat {
         return 1.0
@@ -74,12 +88,17 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         return [UIColor.red,UIColor.green,UIColor.blue]
         
     }
-    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillDefaultColorFor date: Date) -> UIColor? {
-        return UIColor.clear
-    }
+//    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillDefaultColorFor date: Date) -> UIColor? {
+//        return UIColor.clear
+//    }
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, borderDefaultColorFor date: Date) -> UIColor? {
         return UIColor.clear
     }
 
+    @IBAction func setAvailablityButtonClicked(_ sender: Any) {
+        let termsVC = UIStoryboard.calenderStoryBoard().instantiateViewController(type: DMCalendarSetAvailabillityVC.self)!
+        termsVC.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(termsVC, animated: true)
+    }
 
 }

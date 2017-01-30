@@ -57,8 +57,7 @@ class JobSelectionPickerView: UIView,UIPickerViewDataSource,UIPickerViewDelegate
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        let jobTitle = jobTitles[row]
-        return jobTitle.jobTitle
+        return jobTitles[row].jobTitle
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {

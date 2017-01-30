@@ -103,6 +103,10 @@ class DMStudyVC: DMBaseVC {
 
     
     @IBAction func nextButtonClicked(_ sender: Any) {
+        if selectedData.count == 0 {
+            self.makeToast(toastString: "Please fill atleast one school")
+            return
+        }
         self.preparePostSchoolData(schoolsSelected: selectedData)
     }
     
@@ -136,7 +140,7 @@ class DMStudyVC: DMBaseVC {
 extension DMStudyVC:AutoCompleteSelectedDelegate {
 
     func didSelect(schoolCategoryId: String, university: University) {
-        hideAutoCompleteView()
+        let school = schoolCategories.filter({$0.schoolCategoryId == schoolCategoryId}).first
         
         isFilledFromAutoComplete = true
         var flag = 0
@@ -146,13 +150,16 @@ extension DMStudyVC:AutoCompleteSelectedDelegate {
             dict["parentId"] = "\(schoolCategoryId)"
             dict["schoolId"] = "\(university.universityId)"
             dict["other"] = university.universityName
+            dict["parentName"] = school?.schoolCategoryName
+            
             selectedData.add(dict)
             flag = 1
         } else {
             for category in selectedData {
                 let dict = category as! NSMutableDictionary
                 if dict["parentId"] as! String == "\(schoolCategoryId)" {
-                    dict["other"] = university.universityName 
+                    dict["other"] = university.universityName
+                    dict["parentName"] = school?.schoolCategoryName
                     flag = 1
                 }
             }
@@ -164,6 +171,7 @@ extension DMStudyVC:AutoCompleteSelectedDelegate {
             dict["parentId"] = schoolCategoryId as AnyObject?
             dict["schoolId"] = university.universityId as AnyObject?
             dict["other"] = university.universityName
+            dict["parentName"] = school?.schoolCategoryName
             dict["yearOfGraduation"] = ""
             selectedData.add(dict)
         }

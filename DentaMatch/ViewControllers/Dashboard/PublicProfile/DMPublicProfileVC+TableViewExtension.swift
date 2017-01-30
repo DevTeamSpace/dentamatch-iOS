@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension DMPublicProfileVC : UITableViewDataSource,UITableViewDelegate,UITextViewDelegate,UITextFieldDelegate {
+extension DMPublicProfileVC : UITableViewDataSource,UITableViewDelegate,UITextViewDelegate {
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -25,27 +25,27 @@ extension DMPublicProfileVC : UITableViewDataSource,UITableViewDelegate,UITextVi
         cell.lastNameTextField.delegate = self
         cell.jobTitleTextField.delegate = self
         cell.locationTextField.delegate = self
+        cell.aboutMeTextView.delegate = self
+        cell.aboutMeTextView.text = editProfileParams[Constants.ServerKey.aboutMe]
+        cell.placeHolderLabel.isHidden = editProfileParams[Constants.ServerKey.aboutMe]!.isEmpty ? false : true
+        cell.firstNameTextField.text = editProfileParams[Constants.ServerKey.firstName]
+        cell.lastNameTextField.text = editProfileParams[Constants.ServerKey.lastName]
+        cell.jobTitleTextField.text = UserManager.shared().activeUser.jobTitle
+        cell.jobTitleTextField.type = 1
+        cell.jobTitleTextField.tintColor = UIColor.clear
+        cell.jobTitleTextField.inputView = jobSelectionPickerView
 
+        cell.locationTextField.type = 2
+        cell.locationTextField.text = UserManager.shared().activeUser.preferredJobLocation
+        cell.addEditProfileButton.addTarget(self, action: #selector(addPhoto), for: .touchUpInside)
+        if profileImage == nil {
+            if let imageUrl = URL(string: UserManager.shared().activeUser.profileImageURL!) {
+                cell.profileButton.sd_setImage(with: imageUrl, for: .normal, placeholderImage: kPlaceHolderImage)
+            }
+        } else {
+            cell.profileButton.setImage(self.profileImage, for: .normal)
+        }
         return cell
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if let textField = textField as? AnimatedPHTextField {
-            textField.layer.borderColor = Constants.Color.textFieldColorSelected.cgColor
-        }
-        return true
-    }
-    
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        if let textField = textField as? AnimatedPHTextField {
-            textField.layer.borderColor = Constants.Color.textFieldBorderColor.cgColor
-        }
-        return true
     }
     
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
@@ -57,13 +57,40 @@ extension DMPublicProfileVC : UITableViewDataSource,UITableViewDelegate,UITextVi
         return true
     }
     
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if let cell = self.publicProfileTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? EditPublicProfileTableCell {
+            if !textView.text.isEmpty {
+                cell.placeHolderLabel.isHidden = true
+            } else {
+                cell.placeHolderLabel.isHidden = false
+            }
+        }
+    }
+    
     func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
         self.publicProfileTableView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0)
-        
+        editProfileParams[Constants.ServerKey.aboutMe] = textView.text
         return true
     }
     
     func textViewDidChange(_ textView: UITextView) {
+        editProfileParams[Constants.ServerKey.aboutMe] = textView.text
+        if let cell = self.publicProfileTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? EditPublicProfileTableCell {
+            if !textView.text.isEmpty {
+                cell.placeHolderLabel.isHidden = true
+            } else {
+                cell.placeHolderLabel.isHidden = false
+            }
+        }
+    }
     
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if let cell = self.publicProfileTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? EditPublicProfileTableCell {
+            if !textView.text.isEmpty {
+                cell.placeHolderLabel.isHidden = true
+            } else {
+                cell.placeHolderLabel.isHidden = false
+            }
+        }
     }
 }

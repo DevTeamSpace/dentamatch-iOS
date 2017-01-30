@@ -9,6 +9,17 @@
 import UIKit
 
 class EditProfileExperienceCell: UITableViewCell {
+    @IBOutlet weak var jobTitleLabel: UILabel!
+    @IBOutlet weak var yearOfExperienceLabel: UILabel!
+    @IBOutlet weak var officeNameLabel: UILabel!
+    @IBOutlet weak var officeAddressLabel: UILabel!
+    @IBOutlet weak var contactInformationLabel: UILabel!
+    @IBOutlet weak var reference1Name: UILabel!
+    @IBOutlet weak var reference1Mobile: UILabel!
+    @IBOutlet weak var reference1Email: UILabel!
+    @IBOutlet weak var reference2Name: UILabel!
+    @IBOutlet weak var reference2Mobile: UILabel!
+    @IBOutlet weak var reference2Email: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -28,9 +28,11 @@ class DMEditProfileVC: DMBaseVC {
     var license:License?
     var affiliations = [Affiliation]()
     var skills = [Skill]()
+    var schoolCategories = [SelectedSchool]()
     var certifications = [Certification]()
     var experiences = [ExperienceModel]()
     var dentalStateBoardURL = ""
+    var jobTitles = [JobTitle]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +65,7 @@ class DMEditProfileVC: DMBaseVC {
         self.editProfileTableView.register(UINib(nibName: "SectionHeadingTableCell", bundle: nil), forCellReuseIdentifier: "SectionHeadingTableCell")
         self.editProfileTableView.register(UINib(nibName: "AddProfileOptionTableCell", bundle: nil), forCellReuseIdentifier: "AddProfileOptionTableCell")
         self.editProfileTableView.register(UINib(nibName: "EditLicenseTableCell", bundle: nil), forCellReuseIdentifier: "EditLicenseTableCell")
+        self.editProfileTableView.register(UINib(nibName: "EditProfileSchoolCell", bundle: nil), forCellReuseIdentifier: "EditProfileSchoolCell")
         self.editProfileTableView.register(UINib(nibName: "EmptyCertificateTableViewCell", bundle: nil), forCellReuseIdentifier: "EmptyCertificateTableViewCell")
         self.editProfileTableView.register(UINib(nibName: "EditCertificateTableCell", bundle: nil), forCellReuseIdentifier: "EditCertificateTableCell")
         self.editProfileTableView.register(UINib(nibName: "EditProfileAffiliationBrickCell", bundle: nil), forCellReuseIdentifier: "EditProfileAffiliationBrickCell")
@@ -98,10 +101,16 @@ class DMEditProfileVC: DMBaseVC {
         self.navigationController?.pushViewController(affiliationVC, animated: true)
     }
     
+    func openSchoolsScreen() {
+        let studyVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: DMEditStudyVC.self)!
+        studyVC.hidesBottomBarWhenPushed = true
+        studyVC.selectedSchoolCategories = self.schoolCategories
+        self.navigationController?.pushViewController(studyVC, animated: true)
+    }
+    
     func openSkillsScreen() {
-        let skillsVC = UIStoryboard.profileStoryBoard().instantiateViewController(type: DMSkillsVC.self)!
+        let skillsVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: DMEditSkillsVC.self)!
         skillsVC.selectedSkills = self.skills
-        skillsVC.isEditMode = true
         
         let selectSkillsVC = UIStoryboard.profileStoryBoard().instantiateViewController(type: DMSelectSkillsVC.self)!
         
@@ -122,6 +131,15 @@ class DMEditProfileVC: DMBaseVC {
         self.navigationController?.pushViewController(dentalStateboardVC, animated: true)
     }
     
+    func openWorkExperienceScreen() {
+        let workExpVC = UIStoryboard.profileStoryBoard().instantiateViewController(type: DMWorkExperienceVC.self)!
+        workExpVC.hidesBottomBarWhenPushed = true
+        workExpVC.isEditMode = true
+        workExpVC.jobTitles = self.jobTitles
+        workExpVC.exprienceArray = self.experiences
+        self.navigationController?.pushViewController(workExpVC, animated: true)
+    }
+    
     func openCertificateScreen(sender:UIButton) {
         let editCertificateVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: DMEditCertificateVC.self)!
         editCertificateVC.certificate = certifications[sender.tag]
@@ -137,9 +155,24 @@ class DMEditProfileVC: DMBaseVC {
             self.license = license as? License
         }
         
+        //For Work Experience
+        if let experiences = dict?["workExperiences"] {
+            self.experiences = experiences as! [ExperienceModel]
+        }
+        
         //Upload for affiliation
         if let affiliation = dict?["affiliations"] {
             self.affiliations = affiliation as! [Affiliation]
+        }
+        
+        //For Schools
+        if let schools = dict?["schools"] {
+            self.schoolCategories = schools as! [SelectedSchool]
+        }
+        
+        //For Skills
+        if let skills = dict?["skills"] {
+            self.skills = skills as! [Skill]
         }
         
         //Update for certificate
@@ -167,6 +200,7 @@ class DMEditProfileVC: DMBaseVC {
             destinationVC.hidesBottomBarWhenPushed = true
         } else if segue.identifier == Constants.StoryBoard.SegueIdentifier.goToPublicProfile {
             let destinationVC = segue.destination as! DMPublicProfileVC
+            destinationVC.jobTitles = jobTitles
             destinationVC.hidesBottomBarWhenPushed = true
         } else if segue.identifier == Constants.StoryBoard.SegueIdentifier.goToSetting {
             let destinationVC = segue.destination as! DMSettingVC

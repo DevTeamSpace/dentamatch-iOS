@@ -38,7 +38,10 @@ class DMEditDentalStateBoardVC: DMBaseVC {
         self.dentalStateBoardImageButton.imageView?.contentMode = .scaleAspectFill
         dentalStateBoardImageButton.layer.cornerRadius = self.dentalStateBoardImageButton.frame.size.width/2
         dentalStateBoardImageButton.clipsToBounds = true
-        dentalStateBoardImageButton.sd_setImage(with: URL(string:self.dentalStateBoardImageURL)!, for: .normal)
+        if let imageUrl = URL(string: dentalStateBoardImageURL){
+            dentalStateBoardImageButton.sd_setImage(with: imageUrl, for: .normal)
+
+        }
     }
     
     @IBAction func dentalStateBoardImageButtonPressed(_ sender: Any) {

@@ -53,6 +53,8 @@ struct Constants {
         static let textFieldBorderColor = UIColor.color(withHexCode: "e4e4e4")
         static let textFieldColorSelected = UIColor.color(withHexCode: "0470c0")
         static let textFieldPlaceHolderColor =  UIColor.color(withHexCode: "959595")
+        static let brickTextColor =  UIColor.color(withHexCode: "959595")
+
         static let textFieldErrorColor = UIColor.color(withHexCode: "ff0000")
         
         static let profileProgressBarColor = UIColor.color(withHexCode: "a3d977")
@@ -81,6 +83,8 @@ struct Constants {
         static let jobSearchStoryboard  = "JobSearch"
  
         static let dashboardStoryboard  = "Dashboard"
+        static let calenderStoryboard  = "Calender"
+
 
         struct Identifer {
             static let registrationNav = "RegistrationNAV"
@@ -128,6 +132,7 @@ struct Constants {
         static let getJobTitleAPI = Constants.API.apiURL("list-jobtitle")
         static let uploadImageAPI = Constants.API.apiURL("users/upload-image")
         static let JobSearchResultAPI = Constants.API.apiURL("users/search-jobs")
+        static let updateUserProfile = Constants.API.apiURL("users/user-profile-update")
         
         static let licenseNumberAndState = Constants.API.apiURL("users/update-license")
         static let workExperienceSave = Constants.API.apiURL("users/work-experience-save")
@@ -136,10 +141,10 @@ struct Constants {
         static let updateCertificate = Constants.API.apiURL("users/update-certificate")
         static let updateValidationDates = Constants.API.apiURL("users/update-certificate-validity")
         static let changePassword = Constants.API.apiURL("users/change-password")
-
         static let userProfile = Constants.API.apiURL("users/user-profile")
         static let signOut = Constants.API.apiURL("users/sign-out")
-
+        static let jobList = Constants.API.apiURL("users/job-list")
+        static let setAvailabality = Constants.API.apiURL("users/update-availability")
 
         static func apiURL(_ methodName: String) -> String {
             return BASE_URL + methodName
@@ -155,6 +160,7 @@ struct Constants {
         static let email = "email"
         static let password = "password"
         static let preferredLocation = "preferedLocation"
+        static let preferredJobLocation = "preferredJobLocation"
         static let latitude = "latitude"
         static let longitude = "longitude"
         static let zipCode = "zipCode"
@@ -193,6 +199,7 @@ struct Constants {
         static let userId = "userId"
         static let user = "user"
         static let jobTitleId = "jobTitleId"
+        static let jobTitileId = "jobTitileId"
         static let jobTitle = "jobTitle"
         static let jobtitleName = "jobtitleName"
         static let monthsOfExperience = "monthsOfExpereince"
@@ -213,13 +220,16 @@ struct Constants {
         static let otherSkill = "otherSkill"
         static let id = "id"
         static let parentId = "parentId"
+        static let childId = "childId"
         static let isSkillSelected = "userSkill"
         
         static let certificateName = "certificateName"
         static let schoolingId = "schoolingId"
         static let schoolingChildId = "schoolingChildId"
         static let schoolName = "schoolName"
+        static let school = "school"
         static let schoolCategory = "schoolCategory"
+        static let otherSchooling = "otherSchooling"
         static let schoolChildName = "schoolChildName"
         static let yearOfGraduation = "yearOfGraduation"
         static let jobSeekerStatus = "jobSeekerStatus"
@@ -257,6 +267,10 @@ struct Constants {
         static let invalidEmail = "Please provide a valid Email Id."
         static let passwordRange = "Password should be 6-25 characters long"
         static let emptyName = "Name text can not be left blank."
+        static let emptyFirstName = "First Name text can not be left blank."
+        static let emptyLastName = "Last Name text can not be left blank."
+        static let emptyAboutMe = "About Me text can not be left blank."
+
         static let emptyPreferredJobLocation = "Preferred Job Location can not be left blank."
         //license no screen
         static let emptyLicenseNumber = "Please enter License number"
@@ -278,14 +292,19 @@ struct Constants {
         static let emptyCityName = "City Name can not be left blank."
         static let referenceMobileNumber = "Please, Provide a valid Phone number of 10 digits."
         static let atleastOneExperience  = "Please add at least one experience"
-        
+        static let partialFill  = "You have partially filled experience. Do you want to Discard this?"
+
         static let morethen2refernce = "More than two references can not be added."
         
         static let emptyOldPassword = "Please enter Old password"
         static let emptyNewPassword = "Please enter New password"
         static let emptyConfirmPassword = "Please enter Confirm password"
         static let matchPassword = "New password and Confirm password not match"
-
+        
+        //setAvailability
+        static let selectAvailableDay = "Please select at least one day"
+        static let selectDate = "Please select at least date"
+        static let selectOneAvailableOption = "Please select at least one Avaialbe Option"
         
         //change password screen messgaes
         struct AlertTitle {

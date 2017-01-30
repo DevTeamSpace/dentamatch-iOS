@@ -19,7 +19,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="459.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="459"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login using your registered email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B1Q-Xe-ZhA">
@@ -68,7 +68,7 @@
             <connections>
                 <outlet property="emailTextField" destination="E76-dc-ntn" id="lQu-OH-zZs"/>
                 <outlet property="forgotPasswordButton" destination="hs8-sS-5hx" id="4rz-KU-jha"/>
-                <outlet property="passwordTextField" destination="TDG-pV-1N2" id="nzW-kl-Dgr"/>
+                <outlet property="passwordTextField" destination="TDG-pV-1N2" id="KoZ-NV-EhM"/>
             </connections>
             <point key="canvasLocation" x="68" y="198"/>
         </tableViewCell>

@@ -37,8 +37,10 @@ extension DMEditProfileVC {
                 handleLicenseResponse(license: response[Constants.ServerKey.result][Constants.ServerKey.license])
                 handleCertificationResponse(certifications: response[Constants.ServerKey.result][Constants.ServerKey.certifications].arrayValue)
                 handleAffiliationResponse(affiliations: response[Constants.ServerKey.result][Constants.ServerKey.affiliations].arrayValue)
+                handleSchoolListResponse(schoolsCategories: response[Constants.ServerKey.result][Constants.ServerKey.school].arrayValue)
                 handleSkillsResponse(skills: response[Constants.ServerKey.result][Constants.ServerKey.skills].arrayValue)
                 handleWorkExperienceResponse(workExperienceArray: response[Constants.ServerKey.result][Constants.ServerKey.workExperience][Constants.ServerKey.list].arrayValue)
+                handleJobListResponse(jobLists: response[Constants.ServerKey.result][Constants.ServerKey.joblists].arrayValue)
             } else {
                 //handle error
             }
@@ -51,13 +53,28 @@ extension DMEditProfileVC {
         }
     }
     
+    func handleJobListResponse(jobLists:[JSON]?) {
+        if let jobLists = jobLists {
+            for jobList in jobLists {
+                let jobTitle = JobTitle(job: jobList)
+                self.jobTitles.append(jobTitle)
+            }
+        }
+    }
+    
     func handleUserResponse(user:JSON?) {
         if let user = user {
             UserManager.shared().activeUser.firstName = user[Constants.ServerKey.firstName].stringValue
             UserManager.shared().activeUser.lastName = user[Constants.ServerKey.lastName].stringValue
             UserManager.shared().activeUser.jobTitle = user[Constants.ServerKey.jobTitle].stringValue
-            UserManager.shared().activeUser.jobTitleId = user[Constants.ServerKey.jobTitleId].stringValue
+            UserManager.shared().activeUser.jobTitleId = user[Constants.ServerKey.jobTitileId].stringValue
             UserManager.shared().activeUser.profileImageURL = user[Constants.ServerKey.profilePic].stringValue
+            UserManager.shared().activeUser.preferredJobLocation = user[Constants.ServerKey.preferredJobLocation].stringValue
+            UserManager.shared().activeUser.latitude = user[Constants.ServerKey.latitude].stringValue
+            UserManager.shared().activeUser.longitude = user[Constants.ServerKey.longitude].stringValue
+            UserManager.shared().activeUser.aboutMe = user[Constants.ServerKey.aboutMe].stringValue
+            UserManager.shared().saveActiveUser()
+
         }
     }
     
@@ -65,6 +82,15 @@ extension DMEditProfileVC {
         if !(license?[Constants.ServerKey.licenseNumber].stringValue.isEmptyField)! {
             if let license = license {
                 self.license = License(license: license)
+            }
+        }
+    }
+    
+    func handleSchoolListResponse(schoolsCategories:[JSON]?) {
+        if let schoolsCategories = schoolsCategories {
+            for schoolCategory in schoolsCategories {
+                let school = SelectedSchool(school: schoolCategory)
+                self.schoolCategories.append(school)
             }
         }
     }

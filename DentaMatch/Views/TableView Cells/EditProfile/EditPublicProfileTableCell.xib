@@ -25,10 +25,14 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="onA-2d-Xbc">
-                        <rect key="frame" x="111" y="25" width="99" height="100"/>
+                        <rect key="frame" x="110" y="25" width="100" height="100"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="mtv-sw-Uec"/>
+                            <constraint firstAttribute="height" constant="100" id="s6g-cn-vPQ"/>
+                        </constraints>
                         <state key="normal" image="profileButton"/>
                     </button>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="24i-3S-8Nu" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
+                    <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="24i-3S-8Nu" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
                         <rect key="frame" x="28" y="164" width="264" height="55"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="55" id="TbI-Sa-Tfn"/>
@@ -37,13 +41,13 @@
                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Job Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DVJ-iw-XgA" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
+                    <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Job Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DVJ-iw-XgA" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
                         <rect key="frame" x="28" y="314" width="264" height="55"/>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Location" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o2G-tl-7Yc" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
+                    <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Location" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o2G-tl-7Yc" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
                         <rect key="frame" x="28" y="389" width="264" height="55"/>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
@@ -57,13 +61,13 @@
                         </constraints>
                         <color key="textColor" red="0.21960784310000001" green="0.21960784310000001" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
-                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no"/>
                     </textView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffK-Uk-8Is">
-                        <rect key="frame" x="182" y="89" width="31" height="30"/>
+                        <rect key="frame" x="179" y="89" width="31" height="30"/>
                         <state key="normal" image="addPhoto"/>
                     </button>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rhf-Hl-X9c" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
+                    <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rhf-Hl-X9c" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
                         <rect key="frame" x="28" y="239" width="264" height="55"/>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
@@ -77,7 +81,7 @@
                     <constraint firstItem="onA-2d-Xbc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="Map-EZ-sr8"/>
                     <constraint firstItem="EBs-Au-Mw3" firstAttribute="width" secondItem="o2G-tl-7Yc" secondAttribute="width" id="NF6-c1-rDo"/>
                     <constraint firstItem="rhf-Hl-X9c" firstAttribute="top" secondItem="24i-3S-8Nu" secondAttribute="bottom" constant="20" id="Nhw-gl-X7K"/>
-                    <constraint firstItem="ffK-Uk-8Is" firstAttribute="centerX" secondItem="onA-2d-Xbc" secondAttribute="centerX" multiplier="1.23" id="Nnh-Si-39Y"/>
+                    <constraint firstItem="ffK-Uk-8Is" firstAttribute="centerX" secondItem="onA-2d-Xbc" secondAttribute="centerX" multiplier="1.22" id="Nnh-Si-39Y"/>
                     <constraint firstItem="o2G-tl-7Yc" firstAttribute="height" secondItem="DVJ-iw-XgA" secondAttribute="height" id="OlQ-9y-A52"/>
                     <constraint firstItem="o2G-tl-7Yc" firstAttribute="top" secondItem="DVJ-iw-XgA" secondAttribute="bottom" constant="20" id="Pyt-2Z-yoI"/>
                     <constraint firstItem="DVJ-iw-XgA" firstAttribute="width" secondItem="rhf-Hl-X9c" secondAttribute="width" id="TSo-Rn-Aao"/>
