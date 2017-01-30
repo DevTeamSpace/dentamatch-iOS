@@ -20,12 +20,24 @@ class DMEditCertificateVC: DMBaseVC,DatePickerViewDelegate {
     var certificateImage:UIImage?
     var isEditMode = false
 
+    //MARK:- View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    //MARK:- Private Methods
     func setup() {
         self.certificateImageButton.layer.cornerRadius = self.certificateImageButton.frame.size.width/2
         self.certificateImageButton.clipsToBounds = true
@@ -46,16 +58,6 @@ class DMEditCertificateVC: DMBaseVC,DatePickerViewDelegate {
         certificateNameLabel.text = certificate?.certificationName
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-    }
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
@@ -63,12 +65,18 @@ class DMEditCertificateVC: DMBaseVC,DatePickerViewDelegate {
     @IBAction func certificateImageButtonAction(_ sender: Any) {
         addPhoto()
     }
+    
+    //MARK:- IBActions
     @IBAction func saveButtonPressed(_ sender: Any) {
-        self.uploadValidityDate { (response:JSON?, error:NSError?) in
-            if let _ = response {
-                self.updateProfileScreen()
-                _ = self.navigationController?.popViewController(animated: true)
+        if !self.validityDatePicker.text!.isEmptyField {
+            self.uploadValidityDate { (response:JSON?, error:NSError?) in
+                if let _ = response {
+                    self.updateProfileScreen()
+                    _ = self.navigationController?.popViewController(animated: true)
+                }
             }
+        } else {
+            self.makeToast(toastString: Constants.AlertMessage.emptyValidityDate)
         }
     }
     
@@ -154,7 +162,7 @@ class DMEditCertificateVC: DMBaseVC,DatePickerViewDelegate {
     }
     
     func updateProfileScreen() {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateProfileScreen"), object: nil, userInfo: ["certification":self.certificate!])
+        NotificationCenter.default.post(name: .updateProfileScreen, object: nil, userInfo: ["certification":self.certificate!])
     }
 }
 

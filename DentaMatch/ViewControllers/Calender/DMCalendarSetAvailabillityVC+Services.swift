@@ -29,7 +29,7 @@ extension DMCalendarSetAvailabillityVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            debugPrint(response!)
+//            debugPrint(response!)
             
             if response![Constants.ServerKey.status].boolValue {
                 //                let resultArray = response![Constants.ServerKey.result][Constants.ServerKey.list].array

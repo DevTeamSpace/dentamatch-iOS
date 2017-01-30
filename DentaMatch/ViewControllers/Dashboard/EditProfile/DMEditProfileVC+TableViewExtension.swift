@@ -261,7 +261,7 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             
         case .keySkills:
             if indexPath.row == 0 {
-                let cell = makeHeadingCell(heading: "KEY SKILLS")
+                let cell = makeHeadingCell(heading: "SKILLS AND EXPERIENCE")
                 cell.editButton.isHidden = self.skills.count > 0 ? false:true
                 cell.editButton.removeTarget(nil, action: nil, for: .allEvents)
                 cell.editButton.addTarget(self, action: #selector(openSkillsScreen), for: .touchUpInside)
@@ -371,7 +371,9 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             }
         
         case .experience:
-            openWorkExperienceScreen()
+            if self.experiences.count == 0 {
+                openWorkExperienceScreen()
+            }
             
         case .schooling:
             if self.schoolCategories.count == 0 {

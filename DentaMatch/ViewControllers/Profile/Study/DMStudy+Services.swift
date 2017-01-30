@@ -118,6 +118,47 @@ extension DMStudyVC {
             
             print(selectedData)
 
+            } else {
+                if selectedData.count == 0 {
+                    let dict = NSMutableDictionary()
+                    dict["parentId"] = category.schoolCategoryId
+                    dict["schoolId"] = category.schoolCategoryId
+                    dict["other"] = ""
+                    if let other = category.othersArray {
+                        dict["other"] = other[0][Constants.ServerKey.otherSchooling].stringValue
+                        dict["yearOfGraduation"] = other[0][Constants.ServerKey.yearOfGraduation].stringValue
+                    }
+                    dict["parentName"] = category.schoolCategoryName
+                    selectedData.add(dict)
+                    flag = 1
+                } else {
+                    for categoryObj in selectedData {
+                        let dict = categoryObj as! NSMutableDictionary
+                        
+                        if dict["parentId"] as! String == category.schoolCategoryId {
+                            if let other = category.othersArray {
+                                dict["other"] = other[0][Constants.ServerKey.otherSchooling].stringValue
+                            }
+                            flag = 1
+                        }
+                    }
+                }
+                
+                //Array is > 0 but dict doesnt exists
+                if flag == 0 {
+                    let dict = NSMutableDictionary()
+                    dict["parentId"] = category.schoolCategoryId
+                    dict["schoolId"] = category.schoolCategoryId
+                    dict["other"] = ""
+                    if let other = category.othersArray {
+                        dict["other"] = other[0][Constants.ServerKey.otherSchooling].stringValue
+                        dict["yearOfGraduation"] = other[0][Constants.ServerKey.yearOfGraduation].stringValue
+                    }
+                    dict["parentName"] = category.schoolCategoryName
+                    selectedData.add(dict)
+                }
+                
+                print(selectedData)
             }
             
         }

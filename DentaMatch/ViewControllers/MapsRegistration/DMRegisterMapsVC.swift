@@ -41,6 +41,7 @@ class DMRegisterMapsVC: DMBaseVC {
     var delegate:LocationAddressDelegate?
     var location = Location()
     
+    //MARK:- View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -53,6 +54,7 @@ class DMRegisterMapsVC: DMBaseVC {
         self.hideLoader()
     }
     
+    //MARK:- Private Methods
     func setup() {
         self.gpsNavigationButton.layer.cornerRadius = self.gpsNavigationButton.frame.size.width/2
         self.gpsNavigationButton.layer.shadowColor = UIColor.gray.cgColor;
@@ -95,6 +97,18 @@ class DMRegisterMapsVC: DMBaseVC {
         }
     }
     
+    func setSearchButtonText(text:String,searchBar:UISearchBar) {
+        for subview in searchBar.subviews {
+            for innerSubViews in subview.subviews {
+                if let cancelButton = innerSubViews as? UIButton {
+                    cancelButton.setTitleColor(UIColor.white, for: .normal)
+                    cancelButton.setTitle(text, for: .normal)
+                }
+            }
+        }
+    }
+    
+    //MARK:- For Current Location
     func getCurrentLocation() {
         self.showLoader(text: "Getting Location")
         LocationManager.sharedInstance.getLocation { (location:CLLocation?, error:NSError?) in
@@ -117,17 +131,7 @@ class DMRegisterMapsVC: DMBaseVC {
         }
     }
     
-    func setSearchButtonText(text:String,searchBar:UISearchBar) {
-        for subview in searchBar.subviews {
-            for innerSubViews in subview.subviews {
-                if let cancelButton = innerSubViews as? UIButton {
-                    cancelButton.setTitleColor(UIColor.white, for: .normal)
-                    cancelButton.setTitle(text, for: .normal)
-                }
-            }
-        }
-    }
-    
+    //MARK:- Google Auto Complete API
     func placeAutocomplete(autoCompleteString:NSString) {
         
         let filter = GMSAutocompleteFilter()
@@ -152,6 +156,7 @@ class DMRegisterMapsVC: DMBaseVC {
         }
     }
     
+    //MARK:- Google Place Details API
     func getPlaceDetails(_ prediction:GMSAutocompletePrediction) {
         let placesClient = GMSPlacesClient()
         //let placesClient = GMSPlacesClient.shared()
@@ -187,6 +192,7 @@ class DMRegisterMapsVC: DMBaseVC {
         }
     }
     
+    //MARK:- Reverse Geocoding
     func reverseGeocodeCoordinate(coordinate: CLLocationCoordinate2D) {
         let geocoder = GMSGeocoder()
         geocoder.reverseGeocodeCoordinate(coordinate) { (response:GMSReverseGeocodeResponse?, error:Error?) in
@@ -208,6 +214,7 @@ class DMRegisterMapsVC: DMBaseVC {
         }
     }
     
+    //MARK:- IBActions
     @IBAction func gpsNavigationButtonPressed(_ sender: Any) {
         if fromEditProfile {
             getCurrentLocation()
@@ -256,9 +263,11 @@ extension DMRegisterMapsVC:UISearchBarDelegate {
             self.placesTableView.isHidden = false
         }
         
+        //For Google Auto Complete Controller
 //        let autocompleteController = GMSAutocompleteViewController()
 //        autocompleteController.delegate = self
 //        self.present(autocompleteController, animated: true, completion: nil)
+        
         placeAutocomplete(autoCompleteString: searchText as NSString)
     }
 }

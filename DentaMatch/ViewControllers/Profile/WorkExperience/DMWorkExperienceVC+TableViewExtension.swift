@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension DMWorkExperienceVC
+extension DMWorkExperienceVC: UITableViewDataSource,UITableViewDelegate
 {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -297,39 +297,6 @@ extension DMWorkExperienceVC
     }
     
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard string.characters.count > 0 else {
-            return true
-        }
-        if (textField.text?.characters.count)! >= Constants.Limit.commonMaxLimit {
-            return false
-        }
-        return true
-        
-    }
-
-    
-    
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if let textField = textField as? AnimatedPHTextField {
-            textField.layer.borderColor = Constants.Color.textFieldColorSelected.cgColor
-        }
-        return true
-    }
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        if let textField = textField as? AnimatedPHTextField {
-            textField.layer.borderColor = Constants.Color.textFieldBorderColor.cgColor
-        }
-        return true
-    }
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-
-        return true
-    }
-    func textFieldDidEndEditing(_ textField: UITextField) {
-//        textField.resignFirstResponder()
-    }
     func toolBarButtonPressed(position: Position) {
         self.view.endEditing(true)
     }
@@ -554,7 +521,41 @@ extension DMWorkExperienceVC
 
     
 }
+extension DMWorkExperienceVC :UITextFieldDelegate  {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard string.characters.count > 0 else {
+            return true
+        }
+        if (textField.text?.characters.count)! >= Constants.Limit.commonMaxLimit {
+            return false
+        }
+        return true
+        
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if let textField = textField as? AnimatedPHTextField {
+            textField.layer.borderColor = Constants.Color.textFieldColorSelected.cgColor
+        }
+        return true
+    }
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if let textField = textField as? AnimatedPHTextField {
+            textField.layer.borderColor = Constants.Color.textFieldBorderColor.cgColor
+        }
+        return true
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        //        textField.resignFirstResponder()
+    }
 
+}
 extension String {
     public func toPhoneNumber() -> String {
         return self.replacingOccurrences(of: "(\\d{3})(\\d{3})(\\d+)", with: "($1) $2-$3", options: .regularExpression, range: nil)

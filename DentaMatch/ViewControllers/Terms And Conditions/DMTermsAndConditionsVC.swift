@@ -13,6 +13,8 @@ class DMTermsAndConditionsVC: DMBaseVC {
     @IBOutlet weak var webView: UIWebView!
     var isPrivacyPolicy = false
     var request:URLRequest!
+    
+    //MARK:- View LifeCycle
     override func viewDidLoad() {
         // Do any additional setup after loading the view.
         super.viewDidLoad()
@@ -30,6 +32,7 @@ class DMTermsAndConditionsVC: DMBaseVC {
         self.hideLoader()
     }
     
+    //MARK:- Private Methods
     func setup() {
         self.showLoader()
         self.title = isPrivacyPolicy ? "PRIVACY POLICY" : "TERMS & CONDITIONS"
@@ -44,6 +47,8 @@ class DMTermsAndConditionsVC: DMBaseVC {
 }
 
 extension DMTermsAndConditionsVC : UIWebViewDelegate {
+    
+    //MARK:- WebView Delegates
     func webViewDidStartLoad(_ webView: UIWebView) {
     }
     

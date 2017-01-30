@@ -25,7 +25,7 @@ class DMSettingVC: DMBaseVC {
 
         self.settingTableView.register(UINib(nibName: "SettingTableCell", bundle: nil), forCellReuseIdentifier: "SettingTableCell")
         self.settingTableView.separatorStyle = .none
-        self.title = "SETTINGS"
+        self.title = Constants.ScreenTitleNames.settings
     }
     override func viewDidAppear(_ animated: Bool) {
         

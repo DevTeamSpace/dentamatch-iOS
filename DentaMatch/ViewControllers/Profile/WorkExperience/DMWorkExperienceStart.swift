@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DMWorkExperienceStart: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,ExperiencePickerViewDelegate {
+class DMWorkExperienceStart: DMBaseVC,ExperiencePickerViewDelegate {
     @IBOutlet weak var workExperienceTable: UITableView!
     let profileProgress:CGFloat = 0.25
 
@@ -21,7 +21,7 @@ class DMWorkExperienceStart: DMBaseVC,UITableViewDataSource,UITableViewDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         experienceArray.addObjects(from: [selectedJobTitle.jobTitle,"",""])
-        self.title = "Work Experience"
+        self.title = Constants.ScreenTitleNames.workExperience
         setUp()
         
         // Do any additional setup after loading the view.

@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension DMAffiliationsVC : UITableViewDataSource,UITableViewDelegate,UITextViewDelegate {
+extension DMAffiliationsVC : UITableViewDataSource,UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
@@ -143,26 +143,5 @@ extension DMAffiliationsVC : UITableViewDataSource,UITableViewDelegate,UITextVie
         default:
             break
         }
-    }
-    
-    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-        
-        self.affiliationsTableView.contentInset =  UIEdgeInsetsMake(0, 0, 200, 0)
-        DispatchQueue.main.async {
-            self.affiliationsTableView.scrollToRow(at: IndexPath(row: 0, section: 2), at: .bottom, animated: true)
-        }
-        return true
-    }
-    
-    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
-        self.affiliationsTableView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0)
-
-        return true
-    }
-    
-    func textViewDidChange(_ textView: UITextView) {
-        let affiliation = affiliations[affiliations.count - 1]
-        affiliation.otherAffiliation = textView.text!
-        otherText = textView.text
     }
 }

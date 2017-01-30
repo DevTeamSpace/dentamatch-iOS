@@ -42,7 +42,7 @@ enum FieldType: Int,CustomStringConvertible{
     
 }
 
-class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,ExperiencePickerViewDelegate,ToolBarButtonDelegate {
+class DMWorkExperienceVC: DMBaseVC,ExperiencePickerViewDelegate,ToolBarButtonDelegate {
 
 
     let NAVBAR_CHANGE_POINT:CGFloat = 64
@@ -115,7 +115,7 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
             self.changeNavBarAppearanceForDefault()
         } else {
             self.changeNavBarAppearanceForProfiles()
-            self.title = "Work Experience"
+            self.title = Constants.ScreenTitleNames.workExperience
         }
     }
     
@@ -280,7 +280,7 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
     }
 
     func updateProfileScreen() {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateProfileScreen"), object: nil, userInfo: ["workExperiences":self.exprienceArray])
+        NotificationCenter.default.post(name: .updateProfileScreen, object: nil, userInfo: ["workExperiences":self.exprienceArray])
     }
     
     // MARK: - Navigation

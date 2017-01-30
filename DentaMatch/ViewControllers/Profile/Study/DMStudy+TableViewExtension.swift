@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension DMStudyVC : UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate {
+extension DMStudyVC : UITableViewDataSource,UITableViewDelegate {
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -137,6 +137,23 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate,UITextFieldDeleg
         }
     }
     
+    func checkForEmptySchoolField() {
+        let emptyData = NSMutableArray()
+        for category in selectedData {
+            let dict = category as! NSMutableDictionary
+            if (dict["other"] as! String).isEmptyField {
+                emptyData.add(dict)
+            }
+        }
+        selectedData.removeObjects(in: emptyData as [AnyObject])
+        print(selectedData)
+        self.studyTableView.reloadData()
+        
+    }
+}
+
+
+extension DMStudyVC: UITextFieldDelegate {
     func textFieldDidChange(textField:UITextField) {
         
         let schoolCategory = schoolCategories.filter({$0.schoolCategoryId == "\(textField.tag)"}).first
@@ -150,17 +167,17 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate,UITextFieldDeleg
             print("In the list")
         } else {
             
-//            if textField.text!.isEmpty {
-//                selectedUniversities["other_\(textField.tag)"] = nil
-//                selectedUniversities["other_date\(textField.tag)"] = nil
-//            } else {
-//                selectedUniversities["other_date\(textField.tag)"] = "" as AnyObject?
-//                selectedUniversities["other_\(textField.tag)"] = textField.text! as AnyObject?
-//            }
+            //            if textField.text!.isEmpty {
+            //                selectedUniversities["other_\(textField.tag)"] = nil
+            //                selectedUniversities["other_date\(textField.tag)"] = nil
+            //            } else {
+            //                selectedUniversities["other_date\(textField.tag)"] = "" as AnyObject?
+            //                selectedUniversities["other_\(textField.tag)"] = textField.text! as AnyObject?
+            //            }
         }
         
         //print(selectedUniversities)
-
+        
         if textField.text!.isEmpty {
             hideAutoCompleteView()
         } else {
@@ -185,7 +202,7 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate,UITextFieldDeleg
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         self.yearPicker?.getPreSelectedValues(dateString: "", curTag: textField.tag)
-
+        
         return true
     }
     
@@ -197,7 +214,7 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate,UITextFieldDeleg
         //textFieldDidEndEditing
         print("textFieldDidEndEditing")
         let school = schoolCategories.filter({$0.schoolCategoryId == "\(textField.tag)"}).first
-
+        
         if textField.inputView is YearPickerView {
             print("year picker")
         }
@@ -241,24 +258,9 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate,UITextFieldDeleg
         checkForEmptySchoolField()
     }
     
-    func checkForEmptySchoolField() {
-        let emptyData = NSMutableArray()
-        for category in selectedData {
-            let dict = category as! NSMutableDictionary
-            if (dict["other"] as! String).isEmptyField {
-                emptyData.add(dict)
-            }
-        }
-        selectedData.removeObjects(in: emptyData as [AnyObject])
-        print(selectedData)
-        self.studyTableView.reloadData()
-        
-    }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         hideAutoCompleteView()
         return true
     }
-    
 }

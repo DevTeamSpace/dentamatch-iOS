@@ -21,6 +21,7 @@ class DMCertificationsVC: DMBaseVC,DatePickerViewDelegate {
     var certicates = [Certification]()
     var dateView:DatePickerView?
     
+    //MARK:- View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -59,7 +60,7 @@ class DMCertificationsVC: DMBaseVC,DatePickerViewDelegate {
         certificationsTableView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0)
     }
 
-    
+    //MARK:- Private Methods
     func setup() {
         self.certificationsTableView.separatorColor = UIColor.clear
         self.certificationsTableView.register(UINib(nibName: "PhotoNameCell", bundle: nil), forCellReuseIdentifier: "PhotoNameCell")
@@ -68,6 +69,7 @@ class DMCertificationsVC: DMBaseVC,DatePickerViewDelegate {
 
     }
     
+    //MARK:- IBActions
     @IBAction func nextButtonClicked(_ sender: Any) {
         if checkAllCertitficates() {
             
@@ -150,18 +152,6 @@ class DMCertificationsVC: DMBaseVC,DatePickerViewDelegate {
             }
         }
     }
-    
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     // MARK:- Validations
     func checkAllCertitficates()-> Bool {

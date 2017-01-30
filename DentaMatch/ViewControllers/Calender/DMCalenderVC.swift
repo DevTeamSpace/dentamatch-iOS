@@ -10,8 +10,11 @@ import UIKit
 import FSCalendar
 
 class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarDelegateAppearance {
+    @IBOutlet weak var viewForCalender: UIView!
+    @IBOutlet weak var bookedJobsTableView: UITableView!
 
     var calendar:FSCalendar?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +28,13 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
     }
     
     func setup() {
-        self.title = "Calender"
+        self.title = Constants.ScreenTitleNames.calendar
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.navigationItem.rightBarButtonItem = self.rightBarButton()
+        self.bookedJobsTableView.separatorStyle = .none
+        self.bookedJobsTableView.register(UINib(nibName: "SectionHeadingTableCell", bundle: nil), forCellReuseIdentifier: "SectionHeadingTableCell")
+
+
         self.calendar = FSCalendar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 311))
         self.calendar?.dataSource = self;
         self.calendar?.delegate = self;
@@ -37,29 +45,37 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         self.calendar?.pagingEnabled = true
         self.calendar?.placeholderType = .none
         
-        self.calendar?.appearance.todayColor = UIColor.blue
-        
+        self.calendar?.appearance.todayColor = UIColor.lightGray
         self.calendar?.appearance.headerTitleFont = UIFont.fontRegular(fontSize: 12)
         self.calendar?.appearance.titleFont = UIFont.fontRegular(fontSize: 16)
         self.calendar?.appearance.weekdayFont = UIFont.fontRegular(fontSize: 16)
-        
         self.calendar?.appearance.adjustsFontSizeToFitContentSize = true
         self.calendar?.appearance.adjustTitleIfNecessary()
-//                calenderView.appearance.preferredTitleFont = UIFont.fontRegular(fontSize: 16)
+        self.calendar?.appearance.headerTitleColor = Constants.Color.headerTitleColor
+        self.calendar?.appearance.weekdayTextColor = Constants.Color.weekdayTextColor
+        self.calendar?.appearance.titleDefaultColor = Constants.Color.headerTitleColor
+        self.calendar?.appearance.selectionColor = Constants.Color.CalendarSelectionColor
         
-        self.calendar?.appearance.headerTitleColor = UIColor(red: 81.0/255.0, green: 81.0/255.0, blue: 81.0/255.0, alpha: 1)
-        self.calendar?.appearance.weekdayTextColor = UIColor(red: 81.0/255.0, green: 81.0/255.0, blue: 81.0/255.0, alpha: 0.5)
-        self.calendar?.appearance.titleDefaultColor = UIColor(red: 81.0/255.0, green: 81.0/255.0, blue: 81.0/255.0, alpha: 1)
-        self.calendar?.appearance.selectionColor = UIColor(red: 15.0/255.0, green: 24.0/255.0, blue: 62.0/255.0, alpha: 1)
-
-//        self.calendar?.appearance.borderRadius = 0.0
         self.calendar?.appearance.eventOffset = CGPoint(x: 0, y: -10)
-        
-        self.view.addSubview(self.calendar!)
+        self.viewForCalender.addSubview(self.calendar!)
+
 
     }
     
     
+    func rightBarButton() -> UIBarButtonItem {
+        let customButton = UIButton(type: .system)
+        customButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        customButton.titleLabel?.font = UIFont.designFont(fontSize: 30)
+        customButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0)
+        customButton.setImage(UIImage(named: "plusSymbol"), for: .normal)
+        customButton.addTarget(self, action: #selector(setAvailablityButtonClicked(_:)), for: .touchUpInside)
+        let barButton = UIBarButtonItem(customView: customButton)
+        return barButton
+    }
+
+
+
 
     /*
     // MARK: - Navigation
@@ -88,14 +104,13 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         return [UIColor.red,UIColor.green,UIColor.blue]
         
     }
-//    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillDefaultColorFor date: Date) -> UIColor? {
-//        return UIColor.clear
-//    }
+    
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, borderDefaultColorFor date: Date) -> UIColor? {
         return UIColor.clear
     }
 
-    @IBAction func setAvailablityButtonClicked(_ sender: Any) {
+    //pluse button Action
+    func setAvailablityButtonClicked(_ sender: Any) {
         let termsVC = UIStoryboard.calenderStoryBoard().instantiateViewController(type: DMCalendarSetAvailabillityVC.self)!
         termsVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(termsVC, animated: true)

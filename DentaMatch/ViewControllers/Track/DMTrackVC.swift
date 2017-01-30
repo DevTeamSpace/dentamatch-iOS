@@ -16,6 +16,10 @@ class DMTrackVC: DMBaseVC {
         case shortlisted
     }
     
+    let savedJobs = [Job]()
+    let appliedJobs = [Job]()
+    let shortListedJobs = [Job]()
+    
     @IBOutlet weak var segmentedControl: CustomSegmentControl!
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -19,6 +19,7 @@ class TabBarVC: UITabBarController,UITabBarControllerDelegate {
 
     }
     
+    //MARK:- View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,11 +34,17 @@ class TabBarVC: UITabBarController,UITabBarControllerDelegate {
         self.tabBar.tintColor = UIColor(red:4.0/255.0, green: 128.0/255.0, blue: 220.0/255.0, alpha: 1)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillDisappear(_ animated: Bool) {
+        debugPrint("viewWillDisappear")
+        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        debugPrint("viewWillAppear")
+        
+    }
+    
+    //TODO:- Will Implement Later
 //    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
 //        self.tabBar.alpha = 1.0
 //        let tabBarOptions = TabBarOptions(rawValue: (self.tabBar.selectedItem?.tag)!)!
@@ -61,16 +68,6 @@ class TabBarVC: UITabBarController,UITabBarControllerDelegate {
 //
 //        }
 //    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        debugPrint("viewWillDisappear")
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        debugPrint("viewWillAppear")
-        
-    }
     
     override func viewDidLayoutSubviews() {
         debugPrint("viewDidLayoutSubviews")
