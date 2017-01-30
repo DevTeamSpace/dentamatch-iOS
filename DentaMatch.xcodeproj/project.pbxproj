@@ -10,6 +10,7 @@
 		270886FB07B603FF47668A72 /* Pods_DentaMatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C611E923856ECE4538FA4F38 /* Pods_DentaMatch.framework */; };
 		5A1960FD1E208B67002A5F7C /* PhoneNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1960FB1E208B67002A5F7C /* PhoneNumberFormatter.swift */; };
 		5A2CEF4B1E3C2F9600836654 /* DMCalendarSetAvailabillityVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2CEF4A1E3C2F9600836654 /* DMCalendarSetAvailabillityVC+Services.swift */; };
+		5A3525CD1E3F372A0018EB4A /* DMCalenderVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3525CC1E3F372A0018EB4A /* DMCalenderVC+TableViewExtension.swift */; };
 		5A3B06C81E3375ED00EFCA6E /* ChangePasswordTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B06C61E3375ED00EFCA6E /* ChangePasswordTableCell.swift */; };
 		5A3B06C91E3375ED00EFCA6E /* ChangePasswordTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A3B06C71E3375ED00EFCA6E /* ChangePasswordTableCell.xib */; };
 		5A3B06CB1E3387DA00EFCA6E /* DMSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B06CA1E3387DA00EFCA6E /* DMSettingVC.swift */; };
@@ -305,6 +306,7 @@
 		19F54B802B7D87A34FEE97F2 /* Pods-DentaMatch.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DentaMatch.staging.xcconfig"; path = "Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch.staging.xcconfig"; sourceTree = "<group>"; };
 		5A1960FB1E208B67002A5F7C /* PhoneNumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberFormatter.swift; sourceTree = "<group>"; };
 		5A2CEF4A1E3C2F9600836654 /* DMCalendarSetAvailabillityVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMCalendarSetAvailabillityVC+Services.swift"; sourceTree = "<group>"; };
+		5A3525CC1E3F372A0018EB4A /* DMCalenderVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMCalenderVC+TableViewExtension.swift"; sourceTree = "<group>"; };
 		5A3B06C61E3375ED00EFCA6E /* ChangePasswordTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordTableCell.swift; sourceTree = "<group>"; };
 		5A3B06C71E3375ED00EFCA6E /* ChangePasswordTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangePasswordTableCell.xib; sourceTree = "<group>"; };
 		5A3B06CA1E3387DA00EFCA6E /* DMSettingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMSettingVC.swift; sourceTree = "<group>"; };
@@ -777,6 +779,7 @@
 			isa = PBXGroup;
 			children = (
 				5AC714511E34ACD400E433C1 /* DMCalenderVC.swift */,
+				5A3525CC1E3F372A0018EB4A /* DMCalenderVC+TableViewExtension.swift */,
 				5A8F62A21E399A080037C4A2 /* DMCalendarSetAvailabillityVC.swift */,
 				5A8F62A41E399A550037C4A2 /* DMCalendarSetAvailabillityVC+TableViewExtension.swift */,
 				5A2CEF4A1E3C2F9600836654 /* DMCalendarSetAvailabillityVC+Services.swift */,
@@ -2020,6 +2023,7 @@
 				E5A0EB101E2BE7C40092E21A /* ASJTagsView.m in Sources */,
 				E5E7CB911E2FA23300D4FB59 /* AutoCompleteTableViewCell.swift in Sources */,
 				F2F5E0D71E30D2C80082187C /* OfficeDescriptionCell.swift in Sources */,
+				5A3525CD1E3F372A0018EB4A /* DMCalenderVC+TableViewExtension.swift in Sources */,
 				E587D2F41E24C095006B7F06 /* DMAffiliationsVC.swift in Sources */,
 				F2F5E0CB1E2F292F0082187C /* DentistDetailCell.swift in Sources */,
 				E576819B1E3A25F100D912EA /* DMEditSkillsVC+Services.swift in Sources */,

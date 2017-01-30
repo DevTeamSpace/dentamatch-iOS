@@ -42,7 +42,7 @@ enum FieldType: Int,CustomStringConvertible{
     
 }
 
-class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,ExperiencePickerViewDelegate,ToolBarButtonDelegate {
+class DMWorkExperienceVC: DMBaseVC,ExperiencePickerViewDelegate,ToolBarButtonDelegate {
 
 
     let NAVBAR_CHANGE_POINT:CGFloat = 64

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension DMWorkExperienceStart
+extension DMWorkExperienceStart: UITableViewDataSource,UITableViewDelegate
 {
     
     
@@ -127,44 +127,6 @@ extension DMWorkExperienceStart
 
     }
 
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if let textField = textField as? AnimatedPHTextField {
-            textField.layer.borderColor = Constants.Color.textFieldColorSelected.cgColor
-        }
-        return true
-    }
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        if let textField = textField as? AnimatedPHTextField {
-            textField.layer.borderColor = Constants.Color.textFieldBorderColor.cgColor
-        }
-        return true
-    }
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        switch textField.tag {
-        case 2:
-            self.experienceArray.replaceObject(at: 2, with: textField.text!)
-        default:
-            print("default")
-            
-        }
-
-    }
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard string.characters.count > 0 else {
-            return true
-        }
-        if (textField.text?.characters.count)! >= Constants.Limit.commonMaxLimit {
-            return false
-        }
-
-        return true
-        
-    }
-
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
     func doneButtonAction(year: Int, month: Int) {
         self.view.endEditing(true)
         
@@ -202,4 +164,46 @@ extension DMWorkExperienceStart
     
 
     
+}
+extension DMWorkExperienceStart: UITextFieldDelegate {
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if let textField = textField as? AnimatedPHTextField {
+            textField.layer.borderColor = Constants.Color.textFieldColorSelected.cgColor
+        }
+        return true
+    }
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if let textField = textField as? AnimatedPHTextField {
+            textField.layer.borderColor = Constants.Color.textFieldBorderColor.cgColor
+        }
+        return true
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        switch textField.tag {
+        case 2:
+            self.experienceArray.replaceObject(at: 2, with: textField.text!)
+        default:
+            print("default")
+            
+        }
+        
+    }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard string.characters.count > 0 else {
+            return true
+        }
+        if (textField.text?.characters.count)! >= Constants.Limit.commonMaxLimit {
+            return false
+        }
+        
+        return true
+        
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+
 }

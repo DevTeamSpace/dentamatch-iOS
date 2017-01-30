@@ -101,12 +101,6 @@ extension DMWorkExperienceVC {
             debugPrint(response!)
             
             if response![Constants.ServerKey.status].boolValue {
-//                let resultArray = response![Constants.ServerKey.result][Constants.ServerKey.list].array
-//                if (resultArray?.count)! > 0
-//                {
-//                    let dict  = resultArray?[0].dictionary
-//                    self.currentExperience?.experienceID = (dict?[Constants.ServerKey.experienceId]?.intValue)!
-//                }
                 
                 self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
                 //do next
@@ -124,7 +118,7 @@ extension DMWorkExperienceVC {
     func deleteExperience(completionHandler: @escaping (Bool?, NSError?) -> ()) {
         var params = [String:AnyObject]()
         params[Constants.ServerKey.experienceId] = self.currentExperience?.experienceID as AnyObject?
-        print("Experience Parameters\n\(params.description))")
+        debugPrint("Experience Parameters\n\(params.description))")
         
         self.showLoader()
         APIManager.apiDelete(serviceName: Constants.API.deleteExperience, parameters: params) { (response:JSON?, error:NSError?) in

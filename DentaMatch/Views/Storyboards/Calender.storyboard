@@ -14,7 +14,7 @@
                 <navigationController storyboardIdentifier="CanederNav" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NUS-Px-Ne8" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Calender" image="calender" id="GmI-ki-020"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="B76-yd-D1j">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="B76-yd-D1j">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -48,6 +48,10 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VEq-HL-k4t">
                                 <rect key="frame" x="0.0" y="375" width="375" height="243"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="XWc-W3-0AS" id="PIP-nq-AyV"/>
+                                    <outlet property="delegate" destination="XWc-W3-0AS" id="xBp-pM-dhd"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

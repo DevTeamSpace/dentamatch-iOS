@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DMWorkExperienceStart: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,ExperiencePickerViewDelegate {
+class DMWorkExperienceStart: DMBaseVC,ExperiencePickerViewDelegate {
     @IBOutlet weak var workExperienceTable: UITableView!
     let profileProgress:CGFloat = 0.25
 
