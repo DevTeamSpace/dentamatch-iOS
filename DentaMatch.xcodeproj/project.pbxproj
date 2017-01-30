@@ -298,7 +298,9 @@
 		F2F5E0E01E31D40E0082187C /* JobDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F5E0DF1E31D40E0082187C /* JobDetailHeaderView.swift */; };
 		F2F5E0E21E31D43A0082187C /* JobDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2F5E0E11E31D43A0082187C /* JobDetailHeaderView.xib */; };
 		F2F5E0E61E35DE390082187C /* DMJobSearchVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F5E0E51E35DE390082187C /* DMJobSearchVC+Services.swift */; };
-		F2F5E0EA1E36216A0082187C /* JobSearchResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F5E0E91E36216A0082187C /* JobSearchResultModel.swift */; };
+		F2F5E0EA1E36216A0082187C /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F5E0E91E36216A0082187C /* Job.swift */; };
+		F2F9B97B1E38978200639716 /* JobTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F9B9791E38978200639716 /* JobTitleCell.swift */; };
+		F2F9B97C1E38978200639716 /* JobTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2F9B97A1E38978200639716 /* JobTitleCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -607,7 +609,9 @@
 		F2F5E0DF1E31D40E0082187C /* JobDetailHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobDetailHeaderView.swift; sourceTree = "<group>"; };
 		F2F5E0E11E31D43A0082187C /* JobDetailHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobDetailHeaderView.xib; sourceTree = "<group>"; };
 		F2F5E0E51E35DE390082187C /* DMJobSearchVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMJobSearchVC+Services.swift"; sourceTree = "<group>"; };
-		F2F5E0E91E36216A0082187C /* JobSearchResultModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobSearchResultModel.swift; sourceTree = "<group>"; };
+		F2F5E0E91E36216A0082187C /* Job.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
+		F2F9B9791E38978200639716 /* JobTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobTitleCell.swift; sourceTree = "<group>"; };
+		F2F9B97A1E38978200639716 /* JobTitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobTitleCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -653,7 +657,7 @@
 				E54976EB1E28CEDD006F21E5 /* User */,
 				E54976ED1E28CEDD006F21E5 /* WorkExperience */,
 				F239E2DD1E28C65D0071909E /* JobDetails.swift */,
-				F2F5E0E91E36216A0082187C /* JobSearchResultModel.swift */,
+				F2F5E0E91E36216A0082187C /* Job.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1157,6 +1161,7 @@
 			isa = PBXGroup;
 			children = (
 				5A8F62A61E39EA7E0037C4A2 /* Calender */,
+				F2F9B9781E38976100639716 /* JobTitle */,
 				5A3B06C51E3375A200EFCA6E /* ChangePassword */,
 				5A50A2C61E3216010010AA31 /* Setting */,
 				E558D90B1E2E871900A6DF95 /* EditProfile */,
@@ -1767,6 +1772,15 @@
 			path = JobDetail;
 			sourceTree = "<group>";
 		};
+		F2F9B9781E38976100639716 /* JobTitle */ = {
+			isa = PBXGroup;
+			children = (
+				F2F9B9791E38978200639716 /* JobTitleCell.swift */,
+				F2F9B97A1E38978200639716 /* JobTitleCell.xib */,
+			);
+			path = JobTitle;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1886,6 +1900,7 @@
 				E597E5791E151A99001DDA78 /* SF-UI-Display-Medium.otf in Resources */,
 				E5E7CB941E2FA23300D4FB59 /* StudyCell.xib in Resources */,
 				E58654FF1DEFEF7F006FEB2D /* Environments.plist in Resources */,
+				F2F9B97C1E38978200639716 /* JobTitleCell.xib in Resources */,
 				E597E5891E151A99001DDA78 /* SF-UI-Text-SemiboldItalic.otf in Resources */,
 				E5E7CB921E2FA23300D4FB59 /* AutoCompleteTableViewCell.xib in Resources */,
 				E5E7CB811E2FA23200D4FB59 /* AddDeleteExperienceCell.xib in Resources */,
@@ -2169,6 +2184,7 @@
 				E5C5F31B1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift in Sources */,
 				E5E7CB9F1E306E6300D4FB59 /* License.swift in Sources */,
 				E54976F21E28CEDD006F21E5 /* Skill.swift in Sources */,
+				F2F9B97B1E38978200639716 /* JobTitleCell.swift in Sources */,
 				5A85D2131E2DFAD000AC4C89 /* TagList.swift in Sources */,
 				E5A0EB0E1E2BE7C40092E21A /* ASJTag.m in Sources */,
 				F2540F591E263613004B0538 /* DMJobTitleVC.swift in Sources */,
@@ -2182,7 +2198,7 @@
 				F2F5E0E61E35DE390082187C /* DMJobSearchVC+Services.swift in Sources */,
 				E5A3E8EE1E160ABF00B10937 /* AnimatedLeftViewPHTextField.swift in Sources */,
 				E51D4EF91E3B7F8E00ACC631 /* DMTrackVC+Services.swift in Sources */,
-				F2F5E0EA1E36216A0082187C /* JobSearchResultModel.swift in Sources */,
+				F2F5E0EA1E36216A0082187C /* Job.swift in Sources */,
 				E594BEA81E1E07F500310AE5 /* DMLoginVC+Services.swift in Sources */,
 				E5496E021E255A9E00C54288 /* DMExecutiveSummaryVC+TableViewExtension.swift in Sources */,
 				E54B9A841E32870B00805D9C /* DMEditCertificateVC.swift in Sources */,

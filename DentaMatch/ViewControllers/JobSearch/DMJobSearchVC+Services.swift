@@ -41,7 +41,7 @@ extension DMJobSearchVC {
                 let skillList = response[Constants.ServerKey.result][Constants.ServerKey.joblist].array
                 self.jobSearchResult.removeAll()
                 for jobObject in (skillList)! {
-                    let job = JobSearchResultModel(jobDetail: jobObject)
+                    let job = Job(job: jobObject)
                     self.jobSearchResult.append(job)
                 }
                 self.goToSearchResult()

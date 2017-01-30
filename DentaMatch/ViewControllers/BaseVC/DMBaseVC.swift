@@ -24,7 +24,7 @@ class DMBaseVC: UIViewController {
     }
     
     func setUpControls() {
-        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName : UIFont.fontRegular(fontSize: 14.0), NSForegroundColorAttributeName:UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName : UIFont.fontRegular(fontSize: 14.0)!, NSForegroundColorAttributeName:UIColor.white]
         self.setLeftBarButton()
     }
     

@@ -16,7 +16,7 @@ class DMJobSearchVC : DMBaseVC {
     @IBOutlet weak var tblViewJobSearch: UITableView!
     var isPartTimeDayShow : Bool = false
     var jobTitles = [JobTitle]()
-    var jobSearchResult = [JobSearchResultModel]()
+    var jobSearchResult = [Job]()
     var partTimeJobDays = [String]()
     var location : Location! = Location()
     var isJobTypeFullTime : String! = "0"

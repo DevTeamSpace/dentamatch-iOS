@@ -160,8 +160,11 @@ extension DMRegistrationVC:LocationAddressDelegate {
                 
                 registrationParams[Constants.ServerKey.zipCode] = location.postalCode
                 registrationParams[Constants.ServerKey.preferredLocation] = address
-                registrationParams[Constants.ServerKey.latitude] = "\((coordinateSelected?.latitude)!)"
-                registrationParams[Constants.ServerKey.longitude] = "\((coordinateSelected?.longitude)!)"
+                if let _ = coordinateSelected {
+                    registrationParams[Constants.ServerKey.latitude] = "\((coordinateSelected?.latitude)!)"
+                    registrationParams[Constants.ServerKey.longitude] = "\((coordinateSelected?.longitude)!)"
+                }
+               
             }
             debugPrint(address)
         } else {

@@ -26,6 +26,10 @@ class DMEditDentalStateBoardVC: DMBaseVC {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -36,11 +40,12 @@ class DMEditDentalStateBoardVC: DMBaseVC {
         self.changeNavBarAppearanceForDefault()
         self.navigationItem.leftBarButtonItem = self.backBarButton()
         self.dentalStateBoardImageButton.imageView?.contentMode = .scaleAspectFill
-        dentalStateBoardImageButton.layer.cornerRadius = self.dentalStateBoardImageButton.frame.size.width/2
+        dentalStateBoardImageButton.layer.cornerRadius = self.dentalStateBoardImageButton.frame.size.height/2
         dentalStateBoardImageButton.clipsToBounds = true
-        if let imageUrl = URL(string: dentalStateBoardImageURL){
-            dentalStateBoardImageButton.sd_setImage(with: imageUrl, for: .normal)
-
+        if let imageUrl = URL(string: dentalStateBoardImageURL){            
+            dentalStateBoardImageButton.setTitle("", for: .normal)
+            dentalStateBoardImageButton.sd_setImage(with: imageUrl, for: .normal, placeholderImage: kCertificatePlaceHolder)
+            self.dentalStateBoardImageButton.layoutIfNeeded()
         }
     }
     

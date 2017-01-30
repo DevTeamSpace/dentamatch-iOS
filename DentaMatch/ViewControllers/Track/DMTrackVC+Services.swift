@@ -32,7 +32,9 @@ extension DMTrackVC {
         if let response = response {
             print("type returned = \(type)")
             if response[Constants.ServerKey.status].boolValue {
-                
+                if type == "1" {
+                    //Saved Job List
+                }
             }
             self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
         }

@@ -68,11 +68,15 @@ class DMEditCertificateVC: DMBaseVC,DatePickerViewDelegate {
     
     //MARK:- IBActions
     @IBAction func saveButtonPressed(_ sender: Any) {
-        self.uploadValidityDate { (response:JSON?, error:NSError?) in
-            if let _ = response {
-                self.updateProfileScreen()
-                _ = self.navigationController?.popViewController(animated: true)
+        if !self.validityDatePicker.text!.isEmptyField {
+            self.uploadValidityDate { (response:JSON?, error:NSError?) in
+                if let _ = response {
+                    self.updateProfileScreen()
+                    _ = self.navigationController?.popViewController(animated: true)
+                }
             }
+        } else {
+            self.makeToast(toastString: Constants.AlertMessage.emptyValidityDate)
         }
     }
     
