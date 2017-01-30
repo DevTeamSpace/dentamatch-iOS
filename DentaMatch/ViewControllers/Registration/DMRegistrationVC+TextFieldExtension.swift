@@ -55,6 +55,7 @@ extension DMRegistrationVC:UITextFieldDelegate {
             if textField == cell.preferredLocationTextField {
                 let mapVC = UIStoryboard.registrationStoryBoard().instantiateViewController(type: DMRegisterMapsVC.self)!
                 mapVC.delegate = self
+                mapVC.fromRegistration = true
                 self.navigationController?.pushViewController(mapVC, animated: true)
                 self.view.endEditing(true)
                 return false

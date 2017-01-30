@@ -31,12 +31,40 @@ extension DMTrackVC {
     func handleJobListResponse(response:JSON?,type:String) {
         if let response = response {
             print("type returned = \(type)")
+            
             if response[Constants.ServerKey.status].boolValue {
                 if type == "1" {
-                    //Saved Job List
+                    //Saved Jobs
+                    let jobsArray = response[Constants.ServerKey.result][Constants.ServerKey.list].arrayValue
+                    for job in jobsArray {
+                        let job = Job(job: job)
+                        self.savedJobs.append(job)
+                        self.savedJobsTableView.reloadData()
+                    }
+                    savedJobsPageNo += 1
+                } else if type == "2"{
+                    //Applied jons
+                    let jobsArray = response[Constants.ServerKey.result][Constants.ServerKey.list].arrayValue
+                    for job in jobsArray {
+                        let job = Job(job: job)
+                        self.appliedJobs.append(job)
+                    }
+                    appliedJobsPageNo += 1
+                } else if type == "3" {
+                    //Shortlisted jobs
+                    let jobsArray = response[Constants.ServerKey.result][Constants.ServerKey.list].arrayValue
+                    for job in jobsArray {
+                        let job = Job(job: job)
+                        self.shortListedJobs.append(job)
+                    }
+                    shortListedJobsPageNo += 1
                 }
+            } else {
+                self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+
             }
-            self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+        } else {
+            self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
         }
     }
 }
