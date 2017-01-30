@@ -16,7 +16,6 @@ enum JobSearchType : String {
 @objc protocol JobSearchTypeCellDelegate {
     
     @objc optional func selectJobSearchType(selected : Bool,type : String)
-    
 }
 
 class JobSearchTypeCell: UITableViewCell {
@@ -82,6 +81,4 @@ class JobSearchTypeCell: UITableViewCell {
         }
         isPartTime = !isPartTime
     }
-    
-    
 }

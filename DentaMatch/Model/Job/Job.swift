@@ -10,7 +10,7 @@ import UIKit
 import SwiftyJSON
 
 class Job: NSObject {
-
+    
     var jobId = 0
     var isSaved = 0
     var jobType = 0
@@ -20,7 +20,7 @@ class Job: NSObject {
     var isThursday = 0
     var isFriday = 0
     var isSaturday = 0
-    var isSunday = 0 
+    var isSunday = 0
     var jobtitle = ""
     var officeName = ""
     var address = ""

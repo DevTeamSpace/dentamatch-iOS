@@ -11,7 +11,6 @@ import UIKit
 class JobDescriptionCell: UITableViewCell {
     
     @IBOutlet weak var lblDescription: UILabel!
-    
     @IBOutlet weak var btnReadMore: UIButton!
 
     override func awakeFromNib() {
