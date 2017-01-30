@@ -37,7 +37,7 @@ class DMForgotPasswordVC: DMBaseVC,UITextFieldDelegate {
     
     func setup() {
         emailTextField.leftViewLabel?.text = "f"
-        self.title = "FORGOT PASSWORD"
+        self.title = Constants.ScreenTitleNames.forgotPassword
         self.navigationItem.leftBarButtonItem = self.backBarButton()
     }
     @IBAction func sendButtonPressed(_ sender: Any) {

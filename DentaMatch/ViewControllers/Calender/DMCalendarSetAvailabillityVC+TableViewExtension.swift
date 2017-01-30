@@ -330,16 +330,3 @@ extension DMCalendarSetAvailabillityVC : JobSearchTypeCellDelegate,TemporyJobCel
     }
     
 }
-
-
-
-extension DMCalendarSetAvailabillityVC : DMJobTitleVCDelegate {
-    
-//    func setSelectedJobType(jobTitles: [JobTitle]) {
-//        self.jobTitles.removeAll()
-//        self.jobTitles = jobTitles
-//        calenderTableView.beginUpdates()
-//        calenderTableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .top)
-//        calenderTableView.endUpdates()
-//    }
-}

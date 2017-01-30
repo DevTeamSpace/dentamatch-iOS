@@ -49,7 +49,7 @@ class DMChangePasswordVC: DMBaseVC {
         self.changePasswordTableView.separatorStyle = .none
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.changePasswordTableView.addGestureRecognizer(tap)
-        self.title = "Reset Password"
+        self.title = Constants.ScreenTitleNames.resetPassword
 
         
     }

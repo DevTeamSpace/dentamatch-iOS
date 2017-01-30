@@ -64,6 +64,16 @@ struct Constants {
         static let navBarColorForExperienceScreen = UIColor.color(withHexCode: "f7f7f7")
         static let navHeadingForExperienceScreen = UIColor(red: 9.0/255.0, green: 41.0/255.0, blue: 97.0/255.0, alpha: 1)
         
+         static let headerTitleColor = UIColor(red: 81.0/255.0, green: 81.0/255.0, blue: 81.0/255.0, alpha: 1)
+        static let weekdayTextColor = UIColor(red: 81.0/255.0, green: 81.0/255.0, blue: 81.0/255.0, alpha: 0.5)
+        
+        static let selectionColor = UIColor(red: 241.0/255.0, green: 184.0/255.0, blue: 90.0/255.0, alpha: 1)
+        
+        static let CalendarSelectionColor = UIColor(red: 15.0/255.0, green: 24.0/255.0, blue: 62.0/255.0, alpha: 1)
+        
+        //static let
+
+        
         static let loaderRingColor = UIColor.color(withHexCode: "10193e")
         static let loaderBackgroundColor = UIColor.color(withHexCode: "959595")
 
@@ -310,6 +320,16 @@ struct Constants {
         struct AlertTitle {
             static let invalidEmailTitle = ""
         }
+    }
+    
+    struct ScreenTitleNames{
+        static let calendar = "Calendar"
+        static let resetPassword = "Reset Password"
+        static let setAvailibility = "SET AVAILABILITY"
+        static let settings = "SETTINGS"
+        static let workExperience = "Work Experience"
+        static let forgotPassword = "FORGOT PASSWORD"
+
     }
     
     //MARK:- Strings

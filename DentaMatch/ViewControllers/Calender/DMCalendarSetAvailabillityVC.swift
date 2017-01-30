@@ -33,7 +33,7 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
     }
     
     func setup() {
-        self.title = "SET AVAILABILITY"
+        self.title = Constants.ScreenTitleNames.setAvailibility
         self.calenderTableView.rowHeight = UITableViewAutomaticDimension
         self.calenderTableView.separatorStyle = .none
         self.calenderTableView.register(UINib(nibName: "JobSearchTypeCell", bundle: nil), forCellReuseIdentifier: "JobSearchTypeCell")

@@ -31,13 +31,13 @@ class TemporyJobCalenderCell: UITableViewCell, FSCalendarDelegate {
 
         calenderView.appearance.adjustsFontSizeToFitContentSize = true
         calenderView.appearance.adjustTitleIfNecessary()
-//        calenderView.appearance.preferredTitleFont = UIFont.fontRegular(fontSize: 16)
 
-        calenderView.appearance.headerTitleColor = UIColor(red: 81.0/255.0, green: 81.0/255.0, blue: 81.0/255.0, alpha: 1)
-        calenderView.appearance.weekdayTextColor = UIColor(red: 81.0/255.0, green: 81.0/255.0, blue: 81.0/255.0, alpha: 0.5)
-        calenderView.appearance.titleDefaultColor = UIColor(red: 81.0/255.0, green: 81.0/255.0, blue: 81.0/255.0, alpha: 1)
+        calenderView.appearance.headerTitleColor = Constants.Color.headerTitleColor
+        calenderView.appearance.weekdayTextColor = Constants.Color.weekdayTextColor
+        calenderView.appearance.titleDefaultColor = Constants.Color.headerTitleColor
 
-        calenderView.appearance.selectionColor = UIColor(red: 241.0/255.0, green: 184.0/255.0, blue: 90.0/255.0, alpha: 1)
+        calenderView.appearance.selectionColor = Constants.Color.selectionColor
+        calenderView.appearance.todayColor = UIColor.clear
 
 
     }
@@ -51,11 +51,6 @@ class TemporyJobCalenderCell: UITableViewCell, FSCalendarDelegate {
         let currentMonth:Date = self.calenderView.currentPage
         let previousMonth:Date = (self.gregorian?.date(byAdding: .month, value: -1, to: currentMonth, options: .matchFirst))!
         self.calenderView.setCurrentPage(previousMonth, animated: true)
-
-//        NSDate *currentMonth = self.calendar.currentPage;
-//        NSDate *previousMonth = [self.gregorian dateByAddingUnit:NSCalendarUnitMonth value:-1 toDate:currentMonth options:0];
-//        [self.calendar setCurrentPage:previousMonth animated:YES];
-
     }
     @IBAction func nextButtonClicked(_ sender: Any) {
         let currentMonth:Date = self.calenderView.currentPage
@@ -65,7 +60,6 @@ class TemporyJobCalenderCell: UITableViewCell, FSCalendarDelegate {
     }
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         delegate?.selectTempJobDate!(selected: date)
-        print(date)
     }
     func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
         delegate?.deSelectTempJobDate!(deSelected: date)

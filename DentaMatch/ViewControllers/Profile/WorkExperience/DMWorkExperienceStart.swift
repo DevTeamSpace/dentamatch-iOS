@@ -21,7 +21,7 @@ class DMWorkExperienceStart: DMBaseVC,UITableViewDataSource,UITableViewDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         experienceArray.addObjects(from: [selectedJobTitle.jobTitle,"",""])
-        self.title = "Work Experience"
+        self.title = Constants.ScreenTitleNames.workExperience
         setUp()
         
         // Do any additional setup after loading the view.

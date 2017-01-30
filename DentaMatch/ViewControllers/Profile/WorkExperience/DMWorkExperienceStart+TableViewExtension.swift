@@ -141,8 +141,6 @@ extension DMWorkExperienceStart
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
         switch textField.tag {
-//        case 0:
-//            self.experienceArray.replaceObject(at: 0, with: textField.text!)
         case 2:
             self.experienceArray.replaceObject(at: 2, with: textField.text!)
         default:

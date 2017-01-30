@@ -654,6 +654,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		5A2CEF4C1E3F030400836654 /* Entitlements */ = {
+			isa = PBXGroup;
+			children = (
+				E538FA7C1DFFD76000AECE26 /* DentaMatch-Dev.entitlements */,
+			);
+			name = Entitlements;
+			sourceTree = "<group>";
+		};
 		5A3B06C51E3375A200EFCA6E /* ChangePassword */ = {
 			isa = PBXGroup;
 			children = (
@@ -1192,7 +1200,7 @@
 		E56E45BA1DAE07C200AD4559 /* DentaMatch */ = {
 			isa = PBXGroup;
 			children = (
-				E538FA7C1DFFD76000AECE26 /* DentaMatch-Dev.entitlements */,
+				5A2CEF4C1E3F030400836654 /* Entitlements */,
 				E55462D41DAE1558004163B2 /* Constants */,
 				E55462FE1DAE50FE004163B2 /* Utilities */,
 				E5FCBE091DAE109F00F59D05 /* Helpers */,

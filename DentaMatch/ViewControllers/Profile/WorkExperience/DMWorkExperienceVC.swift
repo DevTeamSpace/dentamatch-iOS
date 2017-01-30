@@ -115,7 +115,7 @@ class DMWorkExperienceVC: DMBaseVC,UITableViewDataSource,UITableViewDelegate,UIT
             self.changeNavBarAppearanceForDefault()
         } else {
             self.changeNavBarAppearanceForProfiles()
-            self.title = "Work Experience"
+            self.title = Constants.ScreenTitleNames.workExperience
         }
     }
     
