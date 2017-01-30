@@ -31,10 +31,16 @@ class DMJobSearchVC : DMBaseVC {
         Constants.JobDetailKey.jobTitle:[],
         Constants.JobDetailKey.page:""
         ] as [String : Any]
+    
+    enum TableViewCellHeight: CGFloat {
+        case jobTitleAndLocation = 88.0
+        case jobType = 189.0
+        case jobTypePartTime = 76.0
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "SEARCH JOB"
+        self.title = Constants.ScreenTitleNames.jobSearch
         self.setup()
         self.getLocation()
     }
@@ -61,19 +67,19 @@ class DMJobSearchVC : DMBaseVC {
     
     func validateFields() -> Bool {
         if self.jobTitles.count == 0 {
-            self.makeToast(toastString: "Please select atleast one job title")
+            self.makeToast(toastString: Constants.AlertMessage.selectTitle)
             return false
         }
         if self.isJobTypeFullTime == "0" && self.isJobTypePartTime == "0" {
-            self.makeToast(toastString: "Please select job Type")
+            self.makeToast(toastString: Constants.AlertMessage.selectOneAvailableOption)
             return false
         }
         if self.isJobTypePartTime == "1" && self.partTimeJobDays.count == 0 {
-            self.makeToast(toastString: "Please select a day")
+            self.makeToast(toastString: Constants.AlertMessage.selectAvailableDay)
             return false
         }
         if self.location.coordinateSelected == nil {
-            self.makeToast(toastString: "Please select job location")
+            self.makeToast(toastString: Constants.AlertMessage.selectLocation)
             return false
         }
         return true
@@ -125,7 +131,6 @@ class DMJobSearchVC : DMBaseVC {
     }
     
     func goToSearchResult() {
-        
         if self.jobSearchResult.count > 0 {
             let jobSearchResultVC = UIStoryboard.jobSearchStoryBoard().instantiateViewController(type: DMJobSearchResultVC.self)!
             jobSearchResultVC.jobSearchResult = self.jobSearchResult
@@ -135,9 +140,7 @@ class DMJobSearchVC : DMBaseVC {
     
     func actionSearchButton() {
         self.view.endEditing(true)
-        
         var jobTitleIds = [Int]()
-        
         for job in jobTitles {
             jobTitleIds.append(job.jobId)
         }
@@ -153,7 +156,6 @@ class DMJobSearchVC : DMBaseVC {
         searchParams[Constants.JobDetailKey.parttimeDays] = partTimeJobDays
         searchParams[Constants.JobDetailKey.jobTitle] = jobTitleIds
         searchParams[Constants.JobDetailKey.page] = 1
-        
         self.fetchSearchResultAPI(params: searchParams)
     }
 }

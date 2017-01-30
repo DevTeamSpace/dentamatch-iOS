@@ -22,19 +22,17 @@ extension DMJobSearchVC : DMJobTitleVCDelegate {
 extension DMJobSearchVC : LocationAddressDelegate {
     
     func locationAddress(location: Location) {
-        
         self.location = location
         if location.address != nil {
             tblViewJobSearch.beginUpdates()
             tblViewJobSearch.reloadRows(at: [IndexPath(row: 0, section: 2)], with: .bottom)
             tblViewJobSearch.endUpdates()
             tblViewJobSearch.scrollToRow(at: IndexPath(row: 0, section: 2), at: UITableViewScrollPosition.none, animated: false)
-            debugPrint(self.location.address ?? "Address not found")
+            debugPrint(self.location.address!)
         }
         else {
             debugPrint("Address is empty")
         }
-        
     }
 }
 
@@ -43,15 +41,9 @@ extension DMJobSearchVC : JobSearchTypeCellDelegate, JobSearchPartTimeCellDelega
     //MARK : JobSearchTypeCellDelegate Method
     func selectJobSearchType(selected: Bool, type: String) {
         if type ==  JobSearchType.PartTime.rawValue {
-            if selected == true  {
-                if isPartTimeDayShow == false {
-                    isPartTimeDayShow = !isPartTimeDayShow
-                    tblViewJobSearch.beginUpdates()
-                    tblViewJobSearch.insertRows(at: [IndexPath(row: 1, section: 1)], with: .none )
-                    tblViewJobSearch.endUpdates()
-                    tblViewJobSearch.scrollToRow(at: IndexPath(row: 1, section: 1), at: UITableViewScrollPosition.none, animated: false)
-                }
+            if selected == true {
                 isJobTypePartTime = "1"
+                isPartTimeDayShow = true
             }
             else {
                 isPartTimeDayShow = !isPartTimeDayShow
@@ -59,7 +51,15 @@ extension DMJobSearchVC : JobSearchTypeCellDelegate, JobSearchPartTimeCellDelega
                 tblViewJobSearch.deleteRows(at: [IndexPath(row: 1, section: 1)], with: .none)
                 tblViewJobSearch.endUpdates()
                 tblViewJobSearch.scrollToRow(at: IndexPath(row: 0, section: 1), at: UITableViewScrollPosition.none, animated: false)
+                isPartTimeDayShow = false
                 isJobTypePartTime = "0"
+                partTimeJobDays.removeAll()
+            }
+            if isPartTimeDayShow == true {
+                tblViewJobSearch.beginUpdates()
+                tblViewJobSearch.insertRows(at: [IndexPath(row: 1, section: 1)], with: .none )
+                tblViewJobSearch.endUpdates()
+                tblViewJobSearch.scrollToRow(at: IndexPath(row: 1, section: 1), at: UITableViewScrollPosition.none, animated: false)
             }
         }
         else {

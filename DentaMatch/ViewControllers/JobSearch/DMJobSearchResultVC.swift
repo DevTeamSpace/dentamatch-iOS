@@ -25,6 +25,7 @@ class DMJobSearchResultVC : DMBaseVC {
     var currentCoordinate : CLLocationCoordinate2D! = CLLocationCoordinate2D(latitude : 0.00, longitude : 0.00)
     var arrMarkers  = [JobMarker]()
     var jobSearchResult = [Job]()
+    var rightBarButtonWidth : CGFloat = 25.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,54 +39,23 @@ class DMJobSearchResultVC : DMBaseVC {
     }
     
     //MARK : Private Method
-    
     func setUp() {
         self.mapViewSearchResult.isHidden = true
         self.tblJobSearchResult.rowHeight = UITableViewAutomaticDimension
         self.tblJobSearchResult.register(UINib(nibName: "JobSearchResultCell", bundle: nil), forCellReuseIdentifier: "JobSearchResultCell")
-        self.setLeftBarButton()
-        self.setRightBarButton()
-        self.setUpSegmentControl()
         self.mapViewSearchResult.delegate = self
         self.mapViewSearchResult.isMyLocationEnabled = true
-        self.lblResultCount.text = String(self.jobSearchResult.count) + " results found"
-        
-    }
-    
-    //MARK : Setup Left Bar Button
-    override func setLeftBarButton()  {
-        var leftBarBtn : UIButton = UIButton()
-        var leftBarButtonItem : UIBarButtonItem = UIBarButtonItem()
-        leftBarBtn = UIButton()
-        leftBarBtn.titleLabel?.font = UIFont.designFont(fontSize: 22.0)
-        leftBarBtn.titleLabel?.textColor = UIColor.white
-        leftBarBtn.setTitle("a", for: .normal)
-        leftBarBtn.frame = CGRect(x : 0,y : 0,width: 25,height : 25)
-        leftBarBtn.imageView?.contentMode = .scaleAspectFit
-        leftBarBtn.addTarget(self, action: #selector(DMJobSearchResultVC.actionLeftNavigationItem), for: .touchUpInside)
-        leftBarButtonItem = UIBarButtonItem()
-        leftBarButtonItem.customView = leftBarBtn
-        navigationItem.leftBarButtonItem = leftBarButtonItem
-    }
-    
-    func setRightBarButton()  {
-        self.rightBarBtn = UIButton()
-        self.rightBarBtn.setTitle("y", for: .normal)
-        self.rightBarBtn.titleLabel?.font = UIFont.designFont(fontSize: 22.0)
-        self.rightBarBtn.frame = CGRect(x : 0,y : 0,width: 25,height : 25)
-        self.rightBarBtn.imageView?.contentMode = .scaleAspectFit
-        self.rightBarBtn.addTarget(self, action: #selector(DMJobSearchResultVC.actionRightNavigationItem), for: .touchUpInside)
-        self.rightBarButtonItem = UIBarButtonItem()
-        self.rightBarButtonItem.customView = self.rightBarBtn
-        self.navigationItem.rightBarButtonItem = rightBarButtonItem
+        self.lblResultCount.text = String(self.jobSearchResult.count) + " " + Constants.Strings.resultsFound
+        self.setLeftBarButton(title: Constants.DesignFont.notification)
+        self.setRightBarButton(title: Constants.DesignFont.search, width : rightBarButtonWidth)
+        self.setUpSegmentControl()
     }
     
     override func actionLeftNavigationItem() {
-        
     }
     
-    func actionRightNavigationItem() {
-        self.navigationController?.popViewController(animated: true)
+    override func actionRightNavigationItem() {
+        _ = self.navigationController?.popViewController(animated: true)
     }
     
     func setUpSegmentControl() {
@@ -151,81 +121,8 @@ class DMJobSearchResultVC : DMBaseVC {
             let coordinate = CLLocationCoordinate2D(latitude: (location!.coordinate.latitude), longitude: (location!.coordinate.longitude))
             self.currentCoordinate = coordinate
             DispatchQueue.main.async {
-                //self.hideLoader()
                 self.mapViewSearchResult.animate(to: GMSCameraPosition(target: coordinate, zoom: 15, bearing: 0, viewingAngle: 0))
             }
         }
     }
-}
-
-extension DMJobSearchResultVC : UITableViewDataSource, UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "JobSearchResultCell") as! JobSearchResultCell
-        //let objJob = jobSearchResult[indexPath.row]
-        //cell.setCellData(job: objJob)
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
-    }
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 189.0
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let jobDetailVC = UIStoryboard.jobSearchStoryBoard().instantiateViewController(type: DMJobDetailVC.self)!
-        self.navigationController?.pushViewController(jobDetailVC, animated: true)
-    }
-}
-
-extension DMJobSearchResultVC : GMSMapViewDelegate {
-    
-    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
-        // Just hiding the card and restoring markers.
-        self.restoreAllMarkers()
-        self.mapViewSearchResult.animate(to: GMSCameraPosition(target: self.currentCoordinate, zoom: 15, bearing: 0, viewingAngle: 0))
-    }
-    
-    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        
-        let marker = marker as! JobMarker
-        self.moveToMarker(marker: marker)
-        return false
-    }
-    
-    func moveToMarker(marker: JobMarker) {
-        let objJobSearch =  Job.init()
-        objJobSearch.jobId = marker.job_id!
-        
-        //let arrIDs = self.arrMarkers.valueForKey("user_id")
-        //let index = arrIDs.indexOfObject(marker.user_id!)
-        
-        self.mapViewSearchResult.animate(to: GMSCameraPosition(target: self.currentCoordinate, zoom: 15, bearing: 0, viewingAngle: 0))
-    }
-    
-    func restoreAllMarkers() {
-        for objJobSearch in self.jobSearchResult {
-            let latStr = objJobSearch.latitude as NSString
-            let latDbl : Double  = Double(latStr.intValue)
-            let langStr = objJobSearch.longitude as NSString
-            let langDbl : Double = Double(langStr.intValue)
-            //var location = CLLocationCoordinate2D(latitude : latDbl, longitude : langDbl)
-            let marker = JobMarker()
-            marker.job_id = objJobSearch.jobId
-            marker.isDraggable = false
-            marker.position = CLLocationCoordinate2DMake(latDbl,langDbl )
-            marker.icon = UIImage(named: "pinPoint")
-            marker.map = self.mapViewSearchResult
-            //self.mapViewSearchResult.animate(to: GMSCameraPosition(target: self.currentCoordinate, zoom: 15, bearing: 0, viewingAngle: 0))
-        }
-    }
-    
 }

@@ -20,6 +20,8 @@ class DMJobTitleVC: DMBaseVC {
     var selectedJobs = [JobTitle]()
     var rightBarBtn : UIButton = UIButton()
     var rightBarButtonItem : UIBarButtonItem = UIBarButtonItem()
+    var cellHeight : CGFloat = 56.0
+    var rightBarButtonWidth : CGFloat = 40.0
     weak var delegate : DMJobTitleVCDelegate?
     
     override func viewDidLoad() {
@@ -34,30 +36,29 @@ class DMJobTitleVC: DMBaseVC {
     }
     
     //MARK : Private Method
-    
     func setUp() {
-        self.navigationItem.leftBarButtonItem = super.backBarButton()
-        self.setRightBarButton()
-        self.title = "JOB TITLE"
+        self.navigationItem.leftBarButtonItem = self.backBarButton()
+        self.title = Constants.ScreenTitleNames.jobTitle
         self.tblJobTitle.rowHeight = UITableViewAutomaticDimension
         self.tblJobTitle.register(UINib(nibName: "JobTitleCell", bundle: nil), forCellReuseIdentifier: "JobTitleCell")
+        self.setRightBarButton(title: Constants.Strings.save, width : rightBarButtonWidth)
     }
     
-    func setRightBarButton()  {
-        self.rightBarBtn = UIButton()
-        self.rightBarBtn.setTitle("Save", for: .normal)
-        self.rightBarBtn.titleLabel?.font = UIFont.fontRegular(fontSize: 16.0)
-        self.rightBarBtn.frame = CGRect(x : 0,y : 0,width: 40,height : 25)
-        self.rightBarBtn.titleLabel?.textAlignment = .right
-        self.rightBarBtn.imageView?.contentMode = .scaleAspectFit
-        self.rightBarBtn.addTarget(self, action: #selector(DMJobTitleVC.actionRightNavigationItem), for: .touchUpInside)
-        self.rightBarButtonItem = UIBarButtonItem()
-        self.rightBarButtonItem.customView = self.rightBarBtn
-        self.navigationItem.rightBarButtonItem = rightBarButtonItem
-    }
+//    func setRightBarButton()  {
+//        self.rightBarBtn = UIButton()
+//        self.rightBarBtn.setTitle("Save", for: .normal)
+//        self.rightBarBtn.titleLabel?.font = UIFont.fontRegular(fontSize: 16.0)
+//        self.rightBarBtn.frame = CGRect(x : 0,y : 0,width: 40,height : 25)
+//        self.rightBarBtn.titleLabel?.textAlignment = .right
+//        self.rightBarBtn.imageView?.contentMode = .scaleAspectFit
+//        self.rightBarBtn.addTarget(self, action: #selector(DMJobTitleVC.actionRightNavigationItem), for: .touchUpInside)
+//        self.rightBarButtonItem = UIBarButtonItem()
+//        self.rightBarButtonItem.customView = self.rightBarBtn
+//        self.navigationItem.rightBarButtonItem = rightBarButtonItem
+//    }
     
-    func actionRightNavigationItem() {
-        self.navigationController?.popViewController(animated: true)
+    override func actionRightNavigationItem() {
+        _ =  self.navigationController?.popViewController(animated: true)
         self.selectedJobs.removeAll()
         for objTitle in self.jobTitles {
             if objTitle.jobSelected == true {
@@ -79,7 +80,7 @@ class DMJobTitleVC: DMBaseVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            print(response!)
+            debugPrint(response!)
             self.handleJobListResponse(response: response!)
         }
     }
@@ -117,7 +118,6 @@ extension DMJobTitleVC : UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "JobTitleCell") as! JobTitleCell
         cell.selectionStyle = .none
         let objJob = jobTitles[indexPath.row]
-        //cell.tickButton.isEnabled = true
         cell.lblJobTitle.textColor = UIColor.init(red: 81.0/255.0, green: 81.0/255.0, blue: 81.0/255.0, alpha: 1.0)
         cell.lblJobTitle.text = objJob.jobTitle
         if objJob.jobSelected == true {
@@ -136,7 +136,7 @@ extension DMJobTitleVC : UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 56.0
+        return cellHeight
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

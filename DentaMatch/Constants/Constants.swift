@@ -73,15 +73,18 @@ struct Constants {
         
         //static let
 
-        
         static let loaderRingColor = UIColor.color(withHexCode: "10193e")
         static let loaderBackgroundColor = UIColor.color(withHexCode: "959595")
+        
+        
 
     }
     
     struct DesignFont {
         static let acceptTermsSelected  = "w"
         static let acceptTermsDeSelected  = "t"
+        static let notification  = "a"
+        static let search  = "y"
     }
     
     //MARK:- StoryBoards
@@ -317,6 +320,10 @@ struct Constants {
         static let selectDate = "Please select at least date"
         static let selectOneAvailableOption = "Please select at least one Avaialbe Option"
         
+        //Job Search
+        static let selectTitle = "Please select at least one title"
+        static let selectLocation = "Please select location"
+        
         //change password screen messgaes
         struct AlertTitle {
             static let invalidEmailTitle = ""
@@ -330,12 +337,16 @@ struct Constants {
         static let settings = "SETTINGS"
         static let workExperience = "Work Experience"
         static let forgotPassword = "FORGOT PASSWORD"
-
+        static let jobSearch = "SEARCH JOB"
+        static let jobTitle = "JOB TITLE"
+        static let jobDetail = "JOB DETAIL"
     }
     
     //MARK:- Strings
     struct Strings{
         static let whiteSpace = " "
+        static let resultsFound = "results found"
+        static let save = "Save"
     }
     
     //MARK:- Hardcoded Limits

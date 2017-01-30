@@ -80,18 +80,15 @@ extension DMJobSearchVC : UITableViewDataSource, UITableViewDelegate {
         }
         else if indexPath.section == 1 {
             if indexPath.row == 0 {
-                return 189.0
+                return TableViewCellHeight.jobType.rawValue
             }
             else if indexPath.row == 1 {
-                return 76.0
+                return TableViewCellHeight.jobTypePartTime.rawValue
             }
         }
         else if indexPath.section == 2 {
             if indexPath.row == 0 {
                 return UITableViewAutomaticDimension
-            }
-            else if indexPath.row == 1 {
-                return self.tblViewJobSearch.frame.size.height - (88 + 189 + 77 + 88)
             }
         }
         return 0
@@ -99,22 +96,19 @@ extension DMJobSearchVC : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 88.0
+            return TableViewCellHeight.jobTitleAndLocation.rawValue
         }
         else if indexPath.section == 1 {
             if indexPath.row == 0 {
-                return 189.0
+                return TableViewCellHeight.jobType.rawValue
             }
             else if indexPath.row == 1 {
-                return 76.0
+                return TableViewCellHeight.jobTypePartTime.rawValue
             }
         }
         else if indexPath.section == 2 {
             if indexPath.row == 0 {
-                return 88.0
-            }
-            else if indexPath.row == 1 {
-                return self.tblViewJobSearch.frame.size.height - (88 + 189 + 77 + 88)
+                return TableViewCellHeight.jobTitleAndLocation.rawValue
             }
         }
         return 0
