@@ -56,7 +56,7 @@ struct Constants {
         static let brickTextColor =  UIColor.color(withHexCode: "959595")
 
         static let saveJobColor = UIColor.color(withHexCode: "0470c0")
-
+        static let cancelJobDeleteColor = UIColor.color(withHexCode: "fe3824")
         static let textFieldErrorColor = UIColor.color(withHexCode: "ff0000")
         
         static let profileProgressBarColor = UIColor.color(withHexCode: "a3d977")

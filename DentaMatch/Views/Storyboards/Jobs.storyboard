@@ -19,7 +19,7 @@
                 <navigationController storyboardIdentifier="jobsNav" useStoryboardIdentifierAsRestorationIdentifier="YES" id="CsO-Vw-JQB" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Jobs" image="jobs" id="B8r-TJ-Qbn"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oDh-u2-Gs3">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="oDh-u2-Gs3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

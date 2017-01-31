@@ -34,43 +34,62 @@ extension DMTrackVC:UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == savedJobs.count - 2 {
-            callLoadMore(type: 1)
+            if indexPath.row == savedJobs.count - 2 {
+                callLoadMore(type: 1)
         }
     }
     
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let segmentControlOptions = SegmentControlOption(rawValue: self.segmentedControl.selectedSegmentIndex)!
-
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "JobSearchResultCell") as! JobSearchResultCell
-        let job = savedJobs[indexPath.row]
+        
+        switch segmentControlOptions {
+        case .saved:
+            let job = savedJobs[indexPath.row]
+            self.populateJobCellData(cell: cell, job: job)
+            cell.btnFavourite.setImage(UIImage(named:"saveStar"), for: .normal)
+            cell.btnFavourite.addTarget(self, action: #selector(removeFavouriteJobButtonPressed), for: .touchUpInside)
+            cell.btnFavourite.tag = indexPath.row
+            
+            
+        case .applied:
+            let job = appliedJobs[indexPath.row]
+            self.populateJobCellData(cell: cell, job: job)
+            
+        case .shortlisted:
+            let job = shortListedJobs[indexPath.row]
+            self.populateJobCellData(cell: cell, job: job)
+            
+        }
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let segmentControlOptions = SegmentControlOption(rawValue: self.segmentedControl.selectedSegmentIndex)!
+        
+        switch segmentControlOptions {
+        case .applied:
+            let deleteAction = UITableViewRowAction(style: .normal, title: "Cancel Job", handler: { (action:UITableViewRowAction, indexPath:IndexPath) in
+                self.appliedJobsTableView.setEditing(false, animated: true)
+            })
+            deleteAction.backgroundColor = Constants.Color.cancelJobDeleteColor
+            return [ deleteAction]
+        default:
+                return nil
+        }
+
+    }
+    
+    func populateJobCellData(cell:JobSearchResultCell,job:Job) {
         cell.lblJobTitle.text = job.jobtitle
         cell.lblDocName.text = job.officeName
         cell.lblAddress.text = job.address
         cell.lblDistance.text = String(format: "%.2f", job.distance) + " miles"
         cell.btnType.setTitle(getJobTypeText(jobType: job.jobType), for: .normal)
-        cell.btnFavourite.tag = indexPath.row
-        
-        switch segmentControlOptions {
-            case .saved:
-                if job.isSaved == 0 {
-                    cell.btnFavourite.setTitleColor(UIColor.black, for: .normal)
-
-                } else {
-                    cell.btnFavourite.setTitleColor(Constants.Color.saveJobColor, for: .normal)
-                }
-                cell.btnFavourite.addTarget(self, action: #selector(addFavouriteJobButtonPressed), for: .touchUpInside)
-            
-            case .applied:
-            print("")
-            
-            case .shortlisted:
-            print("")
-            
-        }
-        
-        return cell
     }
     
     func getJobTypeText(jobType:Int)-> String {
@@ -83,17 +102,25 @@ extension DMTrackVC:UITableViewDataSource,UITableViewDelegate {
         }
     }
     
-    func addFavouriteJobButtonPressed(sender:UIButton) {
-        let job = savedJobs[sender.tag]
-        saveUnsaveJob(saveStatus: job.isSaved == 0 ? 1 : 0, jobId: job.jobId) { (response:JSON?, error:NSError?) in
-            if let response = response {
-                if response[Constants.ServerKey.status].boolValue {
-                    //Save Unsave success
-                    print(response)
-                    job.isSaved = job.isSaved == 0 ? 1 : 0
-                    
-                    DispatchQueue.main.async {
-                        self.savedJobsTableView.reloadData()
+    func removeFavouriteJobButtonPressed(sender:UIButton) {
+        self.alertMessage(title: "Confirm your action", message: "Are you sure you want to unsave the job?", leftButtonText: "Cancel", rightButtonText: "Ok") { (isLeftButton:Bool) in
+            if !isLeftButton {
+                let job = self.savedJobs[sender.tag]
+                self.saveUnsaveJob(saveStatus: 0, jobId: job.jobId) { (response:JSON?, error:NSError?) in
+                    if let response = response {
+                        if response[Constants.ServerKey.status].boolValue {
+                            //Save Unsave success
+                            print(response)
+                            job.isSaved = 0
+                            self.savedJobs.remove(at: sender.tag)
+                            if self.savedJobs.count == 0 {
+                                self.savedJobsPageNo = 1
+                            }
+                            self.totalSavedJobsFromServer -= 1
+                            DispatchQueue.main.async {
+                                self.savedJobsTableView.reloadData()
+                            }
+                        }
                     }
                 }
             }
@@ -102,13 +129,13 @@ extension DMTrackVC:UITableViewDataSource,UITableViewDelegate {
     
     func callLoadMore(type:Int) {
         if type == 1 {
-            if loadingMoreSaveJobs == true {
+            if loadingMoreSavedJobs == true {
                 return
             }
             else{
                 if self.totalSavedJobsFromServer > self.savedJobs.count {
                     setupLoadingMoreOnTable(tableView: self.savedJobsTableView)
-                    loadingMoreSaveJobs = true
+                    loadingMoreSavedJobs = true
                     jobParams["type"] = "\(type)"
                     jobParams["page"] = "\(self.savedJobsPageNo)"
                     self.getJobList(params: jobParams)
