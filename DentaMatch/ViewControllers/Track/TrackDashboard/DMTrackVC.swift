@@ -62,6 +62,13 @@ class DMTrackVC: DMBaseVC {
 
         pullToRefreshSavedJobs.addTarget(self, action: #selector(pullToRefreshForSavedJobs), for: .valueChanged)
         self.savedJobsTableView.addSubview(pullToRefreshSavedJobs)
+        
+        pullToRefreshAppliedJobs.addTarget(self, action: #selector(pullToRefreshForAppliedJobs), for: .valueChanged)
+        self.appliedJobsTableView.addSubview(pullToRefreshAppliedJobs)
+
+        pullToRefreshShortListedJobs.addTarget(self, action: #selector(pullToRefreshForShortListedJobs), for: .valueChanged)
+        self.shortListedJobsTableView.addSubview(pullToRefreshShortListedJobs)
+
 
         savedJobsTableView.isHidden = false
         appliedJobsTableView.isHidden = true
@@ -79,6 +86,7 @@ class DMTrackVC: DMBaseVC {
         self.getJobList(params: jobParams)
         pullToRefreshSavedJobs.endRefreshing()
     }
+    
     
     func pullToRefreshForAppliedJobs() {
         self.savedJobsPageNo = 1
