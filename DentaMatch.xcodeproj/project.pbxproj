@@ -84,6 +84,7 @@
 		E51D4F0E1E40744C00ACC631 /* DMTrackVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4F0B1E40744C00ACC631 /* DMTrackVC+TableViewExtension.swift */; };
 		E51D4F0F1E40744C00ACC631 /* DMTrackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4F0C1E40744C00ACC631 /* DMTrackVC.swift */; };
 		E51D4F111E40745A00ACC631 /* DMCancelJobVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4F101E40745A00ACC631 /* DMCancelJobVC.swift */; };
+		E51D4F131E4086BD00ACC631 /* DMCancelJobVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4F121E4086BD00ACC631 /* DMCancelJobVC+Services.swift */; };
 		E5302CD61DFE7AB100984A0B /* DMForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5302CD51DFE7AB100984A0B /* DMForgotPasswordVC.swift */; };
 		E53738F21DB373C200967876 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53738F11DB373C200967876 /* Reachability.swift */; };
 		E5496DFC1E25547300C54288 /* DMCertificationsVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5496DFB1E25547300C54288 /* DMCertificationsVC+TableViewExtension.swift */; };
@@ -394,6 +395,7 @@
 		E51D4F0B1E40744C00ACC631 /* DMTrackVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMTrackVC+TableViewExtension.swift"; sourceTree = "<group>"; };
 		E51D4F0C1E40744C00ACC631 /* DMTrackVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMTrackVC.swift; sourceTree = "<group>"; };
 		E51D4F101E40745A00ACC631 /* DMCancelJobVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMCancelJobVC.swift; sourceTree = "<group>"; };
+		E51D4F121E4086BD00ACC631 /* DMCancelJobVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMCancelJobVC+Services.swift"; sourceTree = "<group>"; };
 		E5302CD51DFE7AB100984A0B /* DMForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMForgotPasswordVC.swift; sourceTree = "<group>"; };
 		E53738F11DB373C200967876 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		E538FA7C1DFFD76000AECE26 /* DentaMatch-Dev.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DentaMatch-Dev.entitlements"; sourceTree = "<group>"; };
@@ -906,6 +908,7 @@
 			isa = PBXGroup;
 			children = (
 				E51D4F101E40745A00ACC631 /* DMCancelJobVC.swift */,
+				E51D4F121E4086BD00ACC631 /* DMCancelJobVC+Services.swift */,
 			);
 			path = CancelJob;
 			sourceTree = "<group>";
@@ -2276,6 +2279,7 @@
 				E55462F31DAE4A5D004163B2 /* Constants.swift in Sources */,
 				E56E315D1E3A8275009FF0FC /* EditProfileSchoolCell.swift in Sources */,
 				E5496E0A1E25E52600C54288 /* DMSchoolListPopOverVC+TableViewExtension.swift in Sources */,
+				E51D4F131E4086BD00ACC631 /* DMCancelJobVC+Services.swift in Sources */,
 				E50B3F4E1E194CD7004C5F32 /* LoginTableViewCell.swift in Sources */,
 				F22359151E3F351C00E984FC /* Job.swift in Sources */,
 			);

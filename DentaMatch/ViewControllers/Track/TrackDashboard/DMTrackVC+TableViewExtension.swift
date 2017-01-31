@@ -50,6 +50,8 @@ extension DMTrackVC:UITableViewDataSource,UITableViewDelegate {
             let job = savedJobs[indexPath.row]
             self.populateJobCellData(cell: cell, job: job)
             cell.btnFavourite.setImage(UIImage(named:"saveStar"), for: .normal)
+            cell.btnFavourite.setTitle("", for: .normal)
+            cell.btnFavourite.removeTarget(nil, action: nil, for: .allEvents)
             cell.btnFavourite.addTarget(self, action: #selector(removeFavouriteJobButtonPressed), for: .touchUpInside)
             cell.btnFavourite.tag = indexPath.row
             cell.btnFavourite.isHidden = false
@@ -57,12 +59,19 @@ extension DMTrackVC:UITableViewDataSource,UITableViewDelegate {
         case .applied:
             let job = appliedJobs[indexPath.row]
             self.populateJobCellData(cell: cell, job: job)
+            cell.btnFavourite.removeTarget(nil, action: nil, for: .allEvents)
             cell.btnFavourite.isHidden = true
             
         case .shortlisted:
             let job = shortListedJobs[indexPath.row]
             self.populateJobCellData(cell: cell, job: job)
-            cell.btnFavourite.isHidden = true
+            cell.btnFavourite.isHidden = false
+            cell.btnFavourite.imageView?.image = nil
+            cell.btnFavourite.tag = indexPath.row
+            cell.btnFavourite.setTitle("n", for: .normal)
+            cell.btnFavourite.removeTarget(nil, action: nil, for: .allEvents)
+            cell.btnFavourite.addTarget(self, action: #selector(goToChatButton), for: .touchUpInside)
+
         }
         
         return cell
@@ -75,19 +84,31 @@ extension DMTrackVC:UITableViewDataSource,UITableViewDelegate {
         case .applied:
             let deleteAction = UITableViewRowAction(style: .normal, title: "Cancel Job", handler: { (action:UITableViewRowAction, indexPath:IndexPath) in
                 let job = self.appliedJobs[indexPath.row]
-                self.openCancelJob(jobId: job.jobId)
+                self.openCancelJob(job: job,fromApplied:true)
                 self.appliedJobsTableView.setEditing(false, animated: true)
             })
             deleteAction.backgroundColor = Constants.Color.cancelJobDeleteColor
             return [ deleteAction]
+            
+        case .shortlisted:
+                let deleteAction = UITableViewRowAction(style: .normal, title: "Cancel Job", handler: { (action:UITableViewRowAction, indexPath:IndexPath) in
+                    let job = self.shortListedJobs[indexPath.row]
+                    self.openCancelJob(job: job,fromApplied:false)
+                    self.shortListedJobsTableView.setEditing(false, animated: true)
+                })
+                deleteAction.backgroundColor = Constants.Color.cancelJobDeleteColor
+                return [ deleteAction]
+            
         default:
                 return nil
         }
     }
     
-    func openCancelJob(jobId:Int) {
+    func openCancelJob(job:Job,fromApplied:Bool) {
         let cancelJobVC = UIStoryboard.trackStoryBoard().instantiateViewController(type: DMCancelJobVC.self)!
-        cancelJobVC.jobId = jobId
+        cancelJobVC.job = job
+        cancelJobVC.fromApplied = fromApplied
+        cancelJobVC.delegate = self
         self.navigationController?.pushViewController(cancelJobVC, animated: true)
     }
     
@@ -132,6 +153,10 @@ extension DMTrackVC:UITableViewDataSource,UITableViewDelegate {
                 }
             }
         }
+    }
+    
+    func goToChatButton(sender:UIButton) {
+        let job = self.shortListedJobs[sender.tag]
     }
     
     func callLoadMore(type:Int) {
@@ -183,5 +208,23 @@ extension DMTrackVC:UITableViewDataSource,UITableViewDelegate {
         footer?.layoutIfNeeded();
         footer?.activityIndicator.startAnimating();
         tableView.tableFooterView = footer;
+    }
+}
+
+extension DMTrackVC : CancelledJobDelegate {
+    func cancelledJob(job: Job, fromApplied: Bool) {
+        if fromApplied {
+            self.appliedJobs.removeObject(object: job)
+            self.appliedJobsTableView.reloadData()
+            if self.appliedJobs.count == 0 {
+                self.appliedJobsPageNo = 1
+            }
+        } else {
+            self.shortListedJobs.removeObject(object: job)
+            self.shortListedJobsTableView.reloadData()
+            if self.shortListedJobs.count == 0 {
+                self.shortListedJobsPageNo = 1
+            }
+        }
     }
 }

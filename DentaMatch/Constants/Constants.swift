@@ -166,6 +166,7 @@ struct Constants {
         static let signOut = Constants.API.apiURL("users/sign-out")
         static let jobList = Constants.API.apiURL("users/job-list")
         static let saveJob = Constants.API.apiURL("users/save-job")
+        static let cancelJob = Constants.API.apiURL("users/cancel-job")
 
         static let setAvailabality = Constants.API.apiURL("users/update-availability")
 
@@ -214,6 +215,7 @@ struct Constants {
         static let certifications = "certifications"
         static let affiliations = "affiliations"
         static let skills = "skills"
+        static let cancelReason = "cancelReason"
 
         static let imageURL = "imagePath"
         static let imageURLForPostResponse = "imgUrl"
@@ -295,6 +297,7 @@ struct Constants {
         static let emptyLastName = "Last Name text can not be left blank."
         static let emptyAboutMe = "About Me text can not be left blank."
         static let emptyValidityDate = "Please enter the validity date"
+        static let emptyCancelReason = "Please enter the reason for cancellation"
 
         static let emptyPreferredJobLocation = "Preferred Job Location can not be left blank."
         //license no screen

@@ -17,6 +17,9 @@
         <array key="SF-UI-Text-Semibold.otf">
             <string>SFUIText-Semibold</string>
         </array>
+        <array key="dentamatch.ttf">
+            <string>dentamatch</string>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -43,9 +46,11 @@
                                     <constraint firstAttribute="width" constant="45" id="91t-ce-nRC"/>
                                     <constraint firstAttribute="height" constant="41" id="YI4-rJ-0Pm"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="dentamatch" family="dentamatch" pointSize="20"/>
+                                <inset key="titleEdgeInsets" minX="-8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="-8" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" image="saveStar">
-                                    <color key="titleColor" red="0.43529411764705883" green="0.43529411764705883" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="n">
+                                    <color key="titleColor" red="0.015686274510000001" green="0.43921568630000002" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ZF-kL-maa">
@@ -152,7 +157,4 @@ San Francisco, CA 94107628</string>
             <point key="canvasLocation" x="34" y="102"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="saveStar" width="20" height="19"/>
-    </resources>
 </document>
