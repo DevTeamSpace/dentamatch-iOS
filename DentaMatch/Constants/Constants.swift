@@ -72,6 +72,9 @@ struct Constants {
         static let selectionColor = UIColor(red: 241.0/255.0, green: 184.0/255.0, blue: 90.0/255.0, alpha: 1)
         
         static let CalendarSelectionColor = UIColor(red: 15.0/255.0, green: 24.0/255.0, blue: 62.0/255.0, alpha: 1)
+        static let availabilitySeletedColor = UIColor(red: 4.0/255.0, green: 112.0/255.0, blue: 192.0/255.0, alpha: 1.0)
+        static let availabilityUnseletedColor = UIColor(red: 151.0/255.0, green: 151.0/255.0, blue: 151.0/255.0, alpha: 1.0)
+
         
         //static let
 

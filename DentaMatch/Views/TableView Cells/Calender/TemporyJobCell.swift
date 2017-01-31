@@ -32,12 +32,12 @@ class TemporyJobCell: UITableViewCell {
     @IBAction func TemporyButtonClicked(_ sender: Any) {
         if isTemporaryTime == false {
             temporyButton.setTitle("w", for: .normal)
-            temporyButton.setTitleColor(UIColor.init(red: 4.0/255.0, green: 112.0/255.0, blue: 192.0/255.0, alpha: 1.0), for: .normal)
+            temporyButton.setTitleColor(Constants.Color.availabilitySeletedColor, for: .normal)
             delegate?.selectTempJobType!(selected: true)
         }
         else {
             temporyButton.setTitle("t", for: .normal)
-            temporyButton.setTitleColor(UIColor.init(red: 151.0/255.0, green: 151.0/255.0, blue: 151.0/255.0, alpha: 1.0), for: .normal)
+            temporyButton.setTitleColor(Constants.Color.availabilityUnseletedColor, for: .normal)
             delegate?.selectTempJobType!(selected: false)
         }
         isTemporaryTime = !isTemporaryTime
