@@ -33,17 +33,46 @@ class JobSearchResultCell: UITableViewCell {
     func setCellData(job : Job) {
         self.lblJobTitle.text = job.jobtitle
         if job.jobType == 1 {
-            self.btnType.titleLabel?.text = "Full Time"
+            self.btnType.titleLabel?.text = Constants.Strings.fullTime
             self.btnType.backgroundColor = Constants.Color.fullTimeBackgroundColor
         }
         else {
-            self.btnType.titleLabel?.text = "Part Time"
+            self.btnType.titleLabel?.text = Constants.Strings.partTime
             self.btnType.backgroundColor = Constants.Color.partTimeDaySelectColor
         }
-        self.lblDistance.text = String(format: "%.1f", job.distance) + " miles"
-        self.lblDays.text = job.jobtitle
+        self.lblDistance.text = String(format: "%.1f", job.distance) + Constants.Strings.whiteSpace + Constants.Strings.miles
         self.lblDocName.text = job.officeName
         self.lblAddress.text = job.address
-        self.lblJobPostTime.text = job.postTime
+        var partTimeJobDays = [String]()
+        if job.isSunday == 1 {
+            partTimeJobDays.append(Constants.Days.sunday)
+        }
+        if job.isMonday == 1 {
+            partTimeJobDays.append(Constants.Days.monday)
+        }
+        if job.isTuesday == 1 {
+            partTimeJobDays.append(Constants.Days.tuesday)
+        }
+        if job.isWednesday == 1 {
+            partTimeJobDays.append(Constants.Days.wednesday)
+        }
+        if job.isThursday == 1 {
+            partTimeJobDays.append(Constants.Days.thursday)
+        }
+        if job.isFriday == 1 {
+            partTimeJobDays.append(Constants.Days.friday)
+        }
+        if job.isSaturday == 1 {
+            partTimeJobDays.append(Constants.Days.saturday)
+        }
+        
+        self.lblDays.text = partTimeJobDays.joined(separator: Constants.Strings.comma)
+        
+        if job.days == Constants.Strings.zero {
+            self.lblJobPostTime.text = Constants.Strings.save
+        }
+        else {
+            self.lblJobPostTime.text = job.days + Constants.Strings.daysAgo
+        }
     }
 }

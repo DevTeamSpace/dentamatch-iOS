@@ -26,7 +26,7 @@ class DMJobSearchResultVC : DMBaseVC {
     var arrMarkers  = [JobMarker]()
     var jobs = [Job]()
     var rightBarButtonWidth : CGFloat = 25.0
-    var cellHeight : CGFloat = 189.0
+    var cellHeight : CGFloat = 172.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +42,8 @@ class DMJobSearchResultVC : DMBaseVC {
     //MARK : Private Method
     func setUp() {
         self.mapViewSearchResult.isHidden = true
-        self.tblJobSearchResult.rowHeight = UITableViewAutomaticDimension
+//        self.tblJobSearchResult.rowHeight = UITableViewAutomaticDimension
+//        self.tblJobSearchResult.estimatedRowHeight = cellHeight
         self.tblJobSearchResult.register(UINib(nibName: "JobSearchResultCell", bundle: nil), forCellReuseIdentifier: "JobSearchResultCell")
         self.mapViewSearchResult.delegate = self
         self.mapViewSearchResult.isMyLocationEnabled = true

@@ -351,6 +351,24 @@ struct Constants {
         static let whiteSpace = " "
         static let resultsFound = "results found"
         static let save = "Save"
+        static let today = "Today"
+        static let daysAgo = "DAYS AGO"
+        static let comma = ","
+        static let miles = "miles"
+        static let partTime = "Part Time"
+        static let fullTime = "Full Time"
+        static let zero = "0"
+    }
+    
+    //MARK:- Weak Days
+    struct Days{
+        static let sunday = "Su"
+        static let monday = "Mo"
+        static let tuesday = "Tu"
+        static let wednesday = "We"
+        static let thursday = "Th"
+        static let friday = "Fr"
+        static let saturday = "Sa"
     }
     
     //MARK:- Hardcoded Limits
