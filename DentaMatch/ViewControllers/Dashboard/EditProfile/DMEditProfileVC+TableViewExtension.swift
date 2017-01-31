@@ -215,8 +215,10 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
                     
                     let experience  =  self.experiences[indexPath.row - 1]
                     cell.jobTitleLabel.text = experience.jobTitle
-                    let yearExp:Float = Float(experience.experienceInMonth/12)
-                    cell.yearOfExperienceLabel.text = "\(yearExp) year"
+//                    let yearExp:Double = Double(experience.experienceInMonth)/12
+                    let expInText = self.calculateMothsAndYear(expInMoth: experience.experienceInMonth)
+//                    let roundValue = yearExp.roundTo(places: 3)
+                    cell.yearOfExperienceLabel.text = expInText
                     cell.officeNameLabel.text = experience.officeName
                     cell.officeAddressLabel.text = "\(experience.officeAddress!) \n\(experience.cityName!)"
                     if experience.references.count > 0 {
@@ -231,8 +233,6 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
                         cell.reference2Email.text = (reference.email?.trim().characters.count)! > 0 ? reference.email : "N/A"
                         cell.reference2Mobile.text = (reference.mobileNumber?.trim().characters.count)! > 0 ? reference.mobileNumber : "N/A"
                     }
-
-                    
                     
                     return cell
                 }
@@ -352,6 +352,31 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
                 return cell
             }
         }
+    }
+    
+    func calculateMothsAndYear(expInMoth:Int)->String {
+        
+        let year = expInMoth/12
+        let month = expInMoth%12
+        var text:String = ""
+        
+        if year <= 1 {
+            if year != 0 {
+                text.append("\(year) yr")
+            }
+        }else{
+            text.append("\(year) yr")
+        }
+        
+        if month <= 1 {
+            if month != 0 {
+                text.append(" \(month) mo")
+            }
+        }else {
+            text.append(" \(month) mo")
+        }
+        
+        return text
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -489,5 +514,12 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
         debugPrint("Height \(tagList.intrinsicContentSize.height)")
         return tagList.frame.size.height
 
+    }
+}
+extension Double {
+    /// Rounds the double to decimal places value
+    func roundTo(places:Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return (self * divisor).rounded() / divisor
     }
 }

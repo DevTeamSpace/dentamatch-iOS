@@ -29,7 +29,7 @@ class TemporyJobCalenderCell: UITableViewCell, FSCalendarDelegate {
         calenderView.appearance.titleFont = UIFont.fontRegular(fontSize: 16)
         calenderView.appearance.weekdayFont = UIFont.fontRegular(fontSize: 16)
 
-        calenderView.appearance.adjustsFontSizeToFitContentSize = true
+        calenderView.appearance.adjustsFontSizeToFitContentSize = false
         calenderView.appearance.adjustTitleIfNecessary()
 
         calenderView.appearance.headerTitleColor = Constants.Color.headerTitleColor
