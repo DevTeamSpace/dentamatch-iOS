@@ -34,11 +34,11 @@ class JobSearchResultCell: UITableViewCell {
         self.lblJobTitle.text = job.jobtitle
         if job.jobType == 1 {
             self.btnType.titleLabel?.text = "Full Time"
-            self.btnType.backgroundColor = UIColor.init(red: 69.0/255.0, green: 177.0/255.0 , blue: 179.0/255.0, alpha: 1.0)
+            self.btnType.backgroundColor = Constants.Color.fullTimeBackgroundColor
         }
         else {
             self.btnType.titleLabel?.text = "Part Time"
-            self.btnType.backgroundColor = UIColor.init(red: 142.0/255.0, green: 207.0/255.0, blue: 126.0/255.0, alpha: 1.0)
+            self.btnType.backgroundColor = Constants.Color.partTimeDaySelectColor
         }
         self.lblDistance.text = String(format: "%.1f", job.distance) + " miles"
         self.lblDays.text = job.jobtitle

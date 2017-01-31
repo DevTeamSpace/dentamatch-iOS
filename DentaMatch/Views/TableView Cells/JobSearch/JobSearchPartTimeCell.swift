@@ -45,23 +45,23 @@ class JobSearchPartTimeCell: UITableViewCell {
     
     func setUp() {
     
-        viewPartTime.layer.borderColor = UIColor.init(colorLiteralRed: 229.0/255.0, green: 229.0/255.0, blue: 229.0/255.0, alpha: 1.0).cgColor
+        viewPartTime.layer.borderColor = Constants.Color.jobSearchBorderColor.cgColor
         viewPartTime.layer.borderWidth = 1.0
         
         btnSunday.backgroundColor = UIColor.clear
-        btnSunday.setTitleColor(UIColor.init(colorLiteralRed: 81.0/255.0, green: 81.0/255.0, blue: 81.0/255.0, alpha: 1.0), for: .normal)
+        btnSunday.setTitleColor(Constants.Color.headerTitleColor, for: .normal)
         btnMonday.backgroundColor = UIColor.clear
-        btnMonday.setTitleColor(UIColor.init(colorLiteralRed: 81.0/255.0, green: 81.0/255.0, blue: 81.0/255.0, alpha: 1.0), for: .normal)
+        btnMonday.setTitleColor(Constants.Color.headerTitleColor, for: .normal)
         btnTuesday.backgroundColor = UIColor.clear
-        btnTuesday.setTitleColor(UIColor.init(colorLiteralRed: 81.0/255.0, green: 81.0/255.0, blue: 81.0/255.0, alpha: 1.0), for: .normal)
+        btnTuesday.setTitleColor(Constants.Color.headerTitleColor, for: .normal)
         btnWednesday.backgroundColor = UIColor.clear
-        btnWednesday.setTitleColor(UIColor.init(colorLiteralRed: 81.0/255.0, green: 81.0/255.0, blue: 81.0/255.0, alpha: 1.0), for: .normal)
+        btnWednesday.setTitleColor(Constants.Color.headerTitleColor, for: .normal)
         btnThursday.backgroundColor = UIColor.clear
-        btnThursday.setTitleColor(UIColor.init(colorLiteralRed: 81.0/255.0, green: 81.0/255.0, blue: 81.0/255.0, alpha: 1.0), for: .normal)
+        btnThursday.setTitleColor(Constants.Color.headerTitleColor, for: .normal)
         btnFriday.backgroundColor = UIColor.clear
-        btnFriday.setTitleColor(UIColor.init(colorLiteralRed: 81.0/255.0, green: 81.0/255.0, blue: 81.0/255.0, alpha: 1.0), for: .normal)
+        btnFriday.setTitleColor(Constants.Color.headerTitleColor, for: .normal)
         btnSaturday.backgroundColor = UIColor.clear
-        btnSaturday.setTitleColor(UIColor.init(colorLiteralRed: 81.0/255.0, green: 81.0/255.0, blue: 81.0/255.0, alpha: 1.0), for: .normal)
+        btnSaturday.setTitleColor(Constants.Color.headerTitleColor, for: .normal)
         
         btnSunday.layer.cornerRadius = btnFriday.frame.size.height / 2
         btnMonday.layer.cornerRadius = btnFriday.frame.size.height / 2
@@ -112,14 +112,14 @@ class JobSearchPartTimeCell: UITableViewCell {
     }
     
     func daySelect(button : UIButton, day : String) {
-        button.backgroundColor = UIColor.init(colorLiteralRed: 142.0/255.0, green: 207.0/255.0, blue: 125.0/255.0, alpha: 1.0)
+        button.backgroundColor = Constants.Color.partTimeDaySelectColor
         button.setTitleColor(UIColor.white, for: .normal)
         delegate?.selectDay!(selected: true, day: day)
     }
     
     func dayDeselect(button : UIButton, day : String) {
         button.backgroundColor = UIColor.clear
-        button.setTitleColor(UIColor.init(colorLiteralRed: 81.0/255.0, green: 81.0/255.0, blue: 81.0/255.0, alpha: 1.0), for: .normal)
+        button.setTitleColor(Constants.Color.headerTitleColor, for: .normal)
         delegate?.selectDay!(selected: false, day: day)
         
     }

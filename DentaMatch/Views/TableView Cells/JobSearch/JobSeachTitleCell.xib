@@ -86,6 +86,7 @@
                 <outlet property="scrollViewJobTitle" destination="07G-7Q-G5Z" id="IKl-dD-SeF"/>
                 <outlet property="viewJobSearchTitle" destination="i0y-8c-MGU" id="ZwU-Tm-m6V"/>
             </connections>
+            <point key="canvasLocation" x="149" y="45"/>
         </tableViewCell>
     </objects>
 </document>

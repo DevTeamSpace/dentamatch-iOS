@@ -18,7 +18,6 @@ extension DMJobSearchResultVC : GMSMapViewDelegate {
     }
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        
         let marker = marker as! JobMarker
         self.moveToMarker(marker: marker)
         return false
@@ -35,7 +34,7 @@ extension DMJobSearchResultVC : GMSMapViewDelegate {
     }
     
     func restoreAllMarkers() {
-        for objJobSearch in self.jobSearchResult {
+        for objJobSearch in self.jobs {
             let latStr = objJobSearch.latitude as NSString
             let latDbl : Double  = Double(latStr.intValue)
             let langStr = objJobSearch.longitude as NSString
