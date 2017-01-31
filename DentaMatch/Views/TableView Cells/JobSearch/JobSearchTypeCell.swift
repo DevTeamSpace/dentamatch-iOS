@@ -44,7 +44,7 @@ class JobSearchTypeCell: UITableViewCell {
     
     
     func setUp() {
-        viewJobType.layer.borderColor = UIColor.init(colorLiteralRed: 229.0/255.0, green: 229.0/255.0, blue: 229.0/255.0, alpha: 1.0).cgColor
+        viewJobType.layer.borderColor = Constants.Color.jobSearchTitleLocationColor.cgColor
         viewJobType.layer.borderWidth = 1.0
     }
     
@@ -53,14 +53,14 @@ class JobSearchTypeCell: UITableViewCell {
     @IBAction func actionFullTime(_ sender: UIButton) {
         if isFullTime == false {
             sender.setTitle("w", for: .normal)
-            sender.setTitleColor(UIColor.init(red: 4.0/255.0, green: 112.0/255.0, blue: 192.0/255.0, alpha: 1.0), for: .normal)
-            self.lblFullTime.textColor = UIColor.init(red: 81.0/255.0, green: 81.0/255.0, blue: 81.0/255.0, alpha: 1.0)
+            sender.setTitleColor(Constants.Color.availabilitySeletedColor, for: .normal)
+            self.lblFullTime.textColor = Constants.Color.jobSearchSelectedLabel
             delegate?.selectJobSearchType!(selected: true, type: JobSearchType.FullTime.rawValue)
         }
         else {
             sender.setTitle("t", for: .normal)
-            sender.setTitleColor(UIColor.init(red: 151.0/255.0, green: 151.0/255.0, blue: 151.0/255.0, alpha: 1.0), for: .normal)
-            self.lblFullTime.textColor = UIColor.init(red: 181.0/255.0, green: 181.0/255.0, blue: 181.0/255.0, alpha: 1.0)
+            sender.setTitleColor(Constants.Color.availabilityUnseletedColor, for: .normal)
+            self.lblFullTime.textColor = Constants.Color.jobSearchUnSelectedLabel
             delegate?.selectJobSearchType!(selected: false, type: JobSearchType.FullTime.rawValue)
         }
         isFullTime = !isFullTime
@@ -69,14 +69,14 @@ class JobSearchTypeCell: UITableViewCell {
     @IBAction func actionPartTime(_ sender: UIButton) {
         if isPartTime == false {
             sender.setTitle("w", for: .normal)
-            sender.setTitleColor(UIColor.init(red: 4.0/255.0, green: 112.0/255.0, blue: 192.0/255.0, alpha: 1.0), for: .normal)
-            self.lblPartTime.textColor = UIColor.init(red: 81.0/255.0, green: 81.0/255.0, blue: 81.0/255.0, alpha: 1.0)
+            sender.setTitleColor(Constants.Color.availabilitySeletedColor, for: .normal)
+            self.lblPartTime.textColor = Constants.Color.jobSearchSelectedLabel
             delegate?.selectJobSearchType!(selected: true, type: JobSearchType.PartTime.rawValue)
         }
         else {
             sender.setTitle("t", for: .normal)
-            sender.setTitleColor(UIColor.init(red: 151.0/255.0, green: 151.0/255.0, blue: 151.0/255.0, alpha: 1.0), for: .normal)
-            self.lblPartTime.textColor = UIColor.init(red: 181.0/255.0, green: 181.0/255.0, blue: 181.0/255.0, alpha: 1.0)
+            sender.setTitleColor(Constants.Color.availabilityUnseletedColor, for: .normal)
+            self.lblPartTime.textColor = Constants.Color.jobSearchUnSelectedLabel
             delegate?.selectJobSearchType!(selected: false, type: JobSearchType.PartTime.rawValue)
         }
         isPartTime = !isPartTime

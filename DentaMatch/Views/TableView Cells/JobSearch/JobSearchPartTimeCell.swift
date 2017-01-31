@@ -45,7 +45,7 @@ class JobSearchPartTimeCell: UITableViewCell {
     
     func setUp() {
     
-        viewPartTime.layer.borderColor = UIColor.init(colorLiteralRed: 229.0/255.0, green: 229.0/255.0, blue: 229.0/255.0, alpha: 1.0).cgColor
+        viewPartTime.layer.borderColor = Constants.Color.jobSearchTitleLocationColor.cgColor
         viewPartTime.layer.borderWidth = 1.0
         
         btnSunday.backgroundColor = UIColor.clear

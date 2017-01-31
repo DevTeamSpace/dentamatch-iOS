@@ -52,6 +52,7 @@ class DMJobSearchResultVC : DMBaseVC {
     }
     
     override func actionLeftNavigationItem() {
+        //will implement
     }
     
     override func actionRightNavigationItem() {
@@ -62,7 +63,7 @@ class DMJobSearchResultVC : DMBaseVC {
         let segmentView : UIView! = UIView(frame:CGRect (x : 0,y : 0, width : 152,height : 29))
         segmentView.backgroundColor = UIColor.clear
         segmentView.layer.cornerRadius = 4.0
-        segmentView.layer.borderColor = UIColor.init(red: 42/255.0, green: 85/255.0, blue: 169.0/255.0, alpha: 1.0).cgColor
+        segmentView.layer.borderColor = Constants.Color.segmentViewBgColor.cgColor
         segmentView.layer.borderWidth = 1.0
         segmentView.layer.masksToBounds = true
         
@@ -70,7 +71,7 @@ class DMJobSearchResultVC : DMBaseVC {
         self.btnList.setTitle("List", for: .normal)
         self.btnList.setTitleColor(UIColor.white, for: .normal)
         self.btnList.titleLabel!.font =  UIFont.fontLight(fontSize: 13.0)
-        self.btnList.backgroundColor = UIColor.init(red: 4/255.0, green: 112/255.0, blue: 191.0/255.0, alpha: 1.0)
+        self.btnList.backgroundColor = Constants.Color.mapButtonBackGroundColor
         self.btnList.addTarget(self, action: #selector(actionListButton), for: .touchUpInside)
         
         self.btnMap = UIButton.init(frame: CGRect(x : 76 , y : 1, width : 75, height : 27))
@@ -87,7 +88,7 @@ class DMJobSearchResultVC : DMBaseVC {
     
     func actionListButton() {
         if isListShow == false {
-            self.btnList.backgroundColor = UIColor.init(red: 4/255.0, green: 112/255.0, blue: 191.0/255.0, alpha: 1.0)
+            self.btnList.backgroundColor = Constants.Color.mapButtonBackGroundColor
             self.btnList.titleLabel!.font =  UIFont.fontSemiBold(fontSize: 13.0)
             self.btnMap.titleLabel!.font =  UIFont.fontLight(fontSize: 13.0)
             self.btnMap.backgroundColor = UIColor.clear
@@ -98,7 +99,7 @@ class DMJobSearchResultVC : DMBaseVC {
     
     func actionMapButton() {
         if isMapShow == false {
-            self.btnMap.backgroundColor = UIColor.init(red: 4/255.0, green: 112/255.0, blue: 191.0/255.0, alpha: 1.0)
+            self.btnMap.backgroundColor = Constants.Color.mapButtonBackGroundColor
             self.btnMap.titleLabel!.font =  UIFont.fontSemiBold(fontSize: 13.0)
             self.btnList.titleLabel!.font =  UIFont.fontLight(fontSize: 13.0)
             self.btnList.backgroundColor = UIColor.clear

@@ -26,11 +26,11 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="280"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="279"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="279.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dental Assistance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c7R-Dg-JDn">
-                        <rect key="frame" x="20" y="15" width="224" height="21"/>
+                        <rect key="frame" x="20" y="15" width="196" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="Dn7-6D-mAr"/>
                         </constraints>
@@ -39,10 +39,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3.5 years" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t8a-kv-LeQ">
-                        <rect key="frame" x="245" y="19" width="67" height="14"/>
+                        <rect key="frame" x="217" y="19" width="95" height="14"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="14" id="1ty-h6-ve0"/>
-                            <constraint firstAttribute="width" constant="67" id="iHg-i1-dnz"/>
+                            <constraint firstAttribute="width" constant="95" id="iHg-i1-dnz"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="12"/>
                         <color key="textColor" red="0.21960784310000001" green="0.21960784310000001" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -193,7 +193,7 @@ San Francisco, CA 94107</string>
                 <outlet property="reference2Name" destination="c13-Fx-Jhd" id="g1B-PQ-dD8"/>
                 <outlet property="yearOfExperienceLabel" destination="t8a-kv-LeQ" id="eS9-wG-FfT"/>
             </connections>
-            <point key="canvasLocation" x="57" y="74.5"/>
+            <point key="canvasLocation" x="57" y="74"/>
         </tableViewCell>
     </objects>
 </document>

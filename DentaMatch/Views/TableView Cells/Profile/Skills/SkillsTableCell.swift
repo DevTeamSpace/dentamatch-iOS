@@ -71,7 +71,7 @@ class SkillsTableCell: UITableViewCell,TagListDelegate {
                     $0.layer.borderWidth = 1
                     $0.layer.cornerRadius = 2
             }, onSelect: {
-                $0.backgroundColor = UIColor(red: 233.0/255.0, green: 233.0/255.0, blue: 233.0/255.0, alpha: 1.0) //$0.isSelected ? UIColor.orange : UIColor.white
+                $0.backgroundColor = Constants.Color.jobSkillBrickColor //$0.isSelected ? UIColor.orange : UIColor.white
             })
             tagList.tags.append(tag)
         }
@@ -87,53 +87,7 @@ class SkillsTableCell: UITableViewCell,TagListDelegate {
     }
     
     func tagActionTriggered(tagList: TagList, action: TagAction, content: TagPresentable, index: Int) {
-//        if tagList != selectedTagList {
-//            selectedTagList.tags = tagList.selectedTagPresentables().map({ (tag) -> Tag in
-//                Tag(content: TagPresentableText(tag.tag) {
-//                    $0.label.font = UIFont.systemFont(ofSize: 16)
-//                    }, onInit: {
-//                        $0.padding = UIEdgeInsets(top: 3, left: 5, bottom: 3, right: 5)
-//                        $0.layer.borderColor = UIColor.cyan.cgColor
-//                        $0.layer.borderWidth = 2
-//                        $0.layer.cornerRadius = 5
-//                })
-//            })
-//        }
     }
 
     
-//    func setCollectionViewHeight()  {
-//        self.subSkillCollectionViewHeight.constant = self.subSkillsCollectionView.contentSize.height
-//        self.subSkillsCollectionView.layoutIfNeeded()
-//        self.layoutIfNeeded()
-//    }
-//    
-//    func updateCollectionViewData() {
-//        self.subSkillsCollectionView.reloadData()
-//        self.setCollectionViewHeight()
-//    }
-//    
-//    func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        return 1;
-//    }
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return 10
-//    }
-//    
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SubSkillCollectionCell", for: indexPath) as! SubSkillCollectionCell
-//        cell.subSkillLabel.text = "Rajan"
-//        return cell
-//    }
-//    
-//    func collectionView(_ collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        
-//       // let text = self.arrAllData[indexPath.row] as? String
-//        let width = "Rajan".widthWithConstraintHeight(height: 25, font: UIFont.fontRegular(fontSize: 14.0)!)
-//        return CGSize(width: width+25, height: 25)
-//    }
-//    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return 5
-//    }
 }

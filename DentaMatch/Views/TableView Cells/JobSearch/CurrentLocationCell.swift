@@ -25,7 +25,7 @@ class CurrentLocationCell: UITableViewCell {
     }
     
     func setUp() {
-        viewCurrentLocation.layer.borderColor = UIColor.init(colorLiteralRed: 229.0/255.0, green: 229.0/255.0, blue: 229.0/255.0, alpha: 1.0).cgColor
+        viewCurrentLocation.layer.borderColor = Constants.Color.jobSearchTitleLocationColor.cgColor
         viewCurrentLocation.layer.borderWidth = 1.0
     }
 }

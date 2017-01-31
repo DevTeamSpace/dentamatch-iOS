@@ -76,7 +76,7 @@ extension DMJobSearchVC : JobSearchTypeCellDelegate, JobSearchPartTimeCellDelega
     func selectDay(selected: Bool, day: String) {
         if selected == true {
             if partTimeJobDays.contains(day) {
-                
+                //will implement
             }
             else {
                 partTimeJobDays.append(day)
