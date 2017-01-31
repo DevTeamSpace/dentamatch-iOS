@@ -8,19 +8,38 @@
 
 import UIKit
 
-class DMCancelJobVC: UIViewController {
+class DMCancelJobVC: DMBaseVC {
+    @IBOutlet weak var reasonTextView: UITextView!
  
+    var jobId = 0
+    
+    //MARK:- View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setup()
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    func setup() {
+        self.title = "CANCEL JOB"
+        self.changeNavBarAppearanceForDefault()
+        self.navigationItem.leftBarButtonItem = self.backBarButton()
+    }
+
+
+    @IBAction func submitButtonPressed(_ sender: Any) {
+    }
+  
 
     /*
     // MARK: - Navigation

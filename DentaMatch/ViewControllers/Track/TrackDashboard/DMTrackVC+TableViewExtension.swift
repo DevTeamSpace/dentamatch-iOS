@@ -52,16 +52,17 @@ extension DMTrackVC:UITableViewDataSource,UITableViewDelegate {
             cell.btnFavourite.setImage(UIImage(named:"saveStar"), for: .normal)
             cell.btnFavourite.addTarget(self, action: #selector(removeFavouriteJobButtonPressed), for: .touchUpInside)
             cell.btnFavourite.tag = indexPath.row
-            
+            cell.btnFavourite.isHidden = false
             
         case .applied:
             let job = appliedJobs[indexPath.row]
             self.populateJobCellData(cell: cell, job: job)
+            cell.btnFavourite.isHidden = true
             
         case .shortlisted:
             let job = shortListedJobs[indexPath.row]
             self.populateJobCellData(cell: cell, job: job)
-            
+            cell.btnFavourite.isHidden = true
         }
         
         return cell
@@ -73,6 +74,8 @@ extension DMTrackVC:UITableViewDataSource,UITableViewDelegate {
         switch segmentControlOptions {
         case .applied:
             let deleteAction = UITableViewRowAction(style: .normal, title: "Cancel Job", handler: { (action:UITableViewRowAction, indexPath:IndexPath) in
+                let job = self.appliedJobs[indexPath.row]
+                self.openCancelJob(jobId: job.jobId)
                 self.appliedJobsTableView.setEditing(false, animated: true)
             })
             deleteAction.backgroundColor = Constants.Color.cancelJobDeleteColor
@@ -80,7 +83,12 @@ extension DMTrackVC:UITableViewDataSource,UITableViewDelegate {
         default:
                 return nil
         }
-
+    }
+    
+    func openCancelJob(jobId:Int) {
+        let cancelJobVC = UIStoryboard.trackStoryBoard().instantiateViewController(type: DMCancelJobVC.self)!
+        cancelJobVC.jobId = jobId
+        self.navigationController?.pushViewController(cancelJobVC, animated: true)
     }
     
     func populateJobCellData(cell:JobSearchResultCell,job:Job) {

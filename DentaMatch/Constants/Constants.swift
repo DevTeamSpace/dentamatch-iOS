@@ -100,6 +100,8 @@ struct Constants {
         static let registrationStoryboard  = "Registration"
         static let profileStoryboard  = "Profile"
         static let jobSearchStoryboard  = "JobSearch"
+        static let trackStoryboard  = "Track"
+
  
         static let dashboardStoryboard  = "Dashboard"
         static let calenderStoryboard  = "Calender"
