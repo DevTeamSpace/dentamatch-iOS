@@ -25,29 +25,42 @@ class DMBaseVC: UIViewController {
     
     func setUpControls() {
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName : UIFont.fontRegular(fontSize: 14.0)!, NSForegroundColorAttributeName:UIColor.white]
-        self.setLeftBarButton()
     }
     
     //MARK : Setup Left Bar Button
-    func setLeftBarButton()  {
-        if self.navigationController?.viewControllers.count != nil && (self.navigationController?.viewControllers.count)! > 1 {
-            var leftBarBtn : UIButton = UIButton()
-            var leftBarButtonItem : UIBarButtonItem = UIBarButtonItem()
-            leftBarBtn = UIButton()
-            leftBarBtn.titleLabel?.font = UIFont.designFont(fontSize: 18)
-            leftBarBtn.titleLabel?.textAlignment = .left
-            leftBarBtn.setTitle("l", for: .normal)
-            leftBarBtn.frame = CGRect(x : 0,y : 0,width: 20,height : 25)
-            leftBarBtn.imageView?.contentMode = .scaleAspectFit
-            leftBarBtn.addTarget(self, action: #selector(DMJobTitleVC.actionLeftNavigationItem), for: .touchUpInside)
-            leftBarButtonItem = UIBarButtonItem()
-            leftBarButtonItem.customView = leftBarBtn
-            navigationItem.leftBarButtonItem = leftBarButtonItem
-        }
+    func setLeftBarButton(title : String)  {
+        var leftBarBtn : UIButton = UIButton()
+        var leftBarButtonItem : UIBarButtonItem = UIBarButtonItem()
+        leftBarBtn = UIButton()
+        leftBarBtn.titleLabel?.font = UIFont.designFont(fontSize: 18)
+        leftBarBtn.titleLabel?.textAlignment = .left
+        leftBarBtn.setTitle(title, for: .normal)
+        leftBarBtn.frame = CGRect(x : 0,y : 0,width: 20,height : 25)
+        leftBarBtn.imageView?.contentMode = .scaleAspectFit
+        leftBarBtn.addTarget(self, action: #selector(DMJobTitleVC.actionLeftNavigationItem), for: .touchUpInside)
+        leftBarButtonItem = UIBarButtonItem()
+        leftBarButtonItem.customView = leftBarBtn
+        navigationItem.leftBarButtonItem = leftBarButtonItem
+    }
+    
+    func setRightBarButton(title : String, width : CGFloat)  {
+        var rightBarBtn : UIButton = UIButton()
+        var rightBarButtonItem : UIBarButtonItem = UIBarButtonItem()
+        rightBarBtn = UIButton()
+        rightBarBtn.setTitle(title, for: .normal)
+        rightBarBtn.titleLabel?.font = UIFont.designFont(fontSize: 22.0)
+        rightBarBtn.frame = CGRect(x : 0,y : 0,width: width,height : 25)
+        rightBarBtn.imageView?.contentMode = .scaleAspectFit
+        rightBarBtn.addTarget(self, action: #selector(DMJobSearchResultVC.actionRightNavigationItem), for: .touchUpInside)
+        rightBarButtonItem = UIBarButtonItem()
+        rightBarButtonItem.customView = rightBarBtn
+        self.navigationItem.rightBarButtonItem = rightBarButtonItem
     }
     
     func actionLeftNavigationItem() {
-        self.navigationController?.popViewController(animated: true)
+    }
+    
+    func actionRightNavigationItem() {
     }
     
     //MARK:- Toasts and Alerts

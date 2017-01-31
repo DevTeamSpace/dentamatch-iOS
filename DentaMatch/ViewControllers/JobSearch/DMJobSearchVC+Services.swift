@@ -25,12 +25,6 @@ extension DMJobSearchVC {
                 return
             }
             debugPrint(response!)
-            if response![Constants.ServerKey.status].boolValue {
-                //self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
-            } else {
-                self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
-            }
-            print(response!)
             self.handleJobSearchResponse(response: response!)
         }
     }

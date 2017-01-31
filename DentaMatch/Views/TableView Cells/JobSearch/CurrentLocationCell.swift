@@ -9,9 +9,10 @@
 import UIKit
 
 class CurrentLocationCell: UITableViewCell {
+    
     @IBOutlet weak var viewCurrentLocation: UIView!
-
     @IBOutlet weak var lblLocation: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,7 +21,6 @@ class CurrentLocationCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
     

@@ -10,7 +10,6 @@ import UIKit
 
 class AboutCell: UITableViewCell {
     
-    
     @IBOutlet weak var lblDentistName: UILabel!
     @IBOutlet weak var lblDistance: UILabel!
     @IBOutlet weak var lblAddress: UILabel!
@@ -25,7 +24,6 @@ class AboutCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
     

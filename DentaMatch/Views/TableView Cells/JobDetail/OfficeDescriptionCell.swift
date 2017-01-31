@@ -11,9 +11,7 @@ import UIKit
 class OfficeDescriptionCell: UITableViewCell {
 
     @IBOutlet weak var lblWorkingHours: UILabel!
-    
     @IBOutlet weak var lblDressCode: UILabel!
-    
     @IBOutlet weak var lblParkingAvail: UILabel!
     
     

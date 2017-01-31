@@ -55,6 +55,8 @@ struct Constants {
         static let textFieldPlaceHolderColor =  UIColor.color(withHexCode: "959595")
         static let brickTextColor =  UIColor.color(withHexCode: "959595")
 
+        static let saveJobColor = UIColor.color(withHexCode: "0470c0")
+
         static let textFieldErrorColor = UIColor.color(withHexCode: "ff0000")
         
         static let profileProgressBarColor = UIColor.color(withHexCode: "a3d977")
@@ -73,15 +75,18 @@ struct Constants {
         
         //static let
 
-        
         static let loaderRingColor = UIColor.color(withHexCode: "10193e")
         static let loaderBackgroundColor = UIColor.color(withHexCode: "959595")
+        
+        
 
     }
     
     struct DesignFont {
         static let acceptTermsSelected  = "w"
         static let acceptTermsDeSelected  = "t"
+        static let notification  = "a"
+        static let search  = "y"
     }
     
     //MARK:- StoryBoards
@@ -154,6 +159,8 @@ struct Constants {
         static let userProfile = Constants.API.apiURL("users/user-profile")
         static let signOut = Constants.API.apiURL("users/sign-out")
         static let jobList = Constants.API.apiURL("users/job-list")
+        static let saveJob = Constants.API.apiURL("users/save-job")
+
         static let setAvailabality = Constants.API.apiURL("users/update-availability")
 
         static func apiURL(_ methodName: String) -> String {
@@ -208,6 +215,7 @@ struct Constants {
         static let experienceId = "id"
         static let userId = "userId"
         static let user = "user"
+        static let jobId = "jobId"
         static let jobTitleId = "jobTitleId"
         static let jobTitileId = "jobTitileId"
         static let jobTitle = "jobTitle"
@@ -317,6 +325,10 @@ struct Constants {
         static let selectDate = "Please select at least date"
         static let selectOneAvailableOption = "Please select at least one Avaialbe Option"
         
+        //Job Search
+        static let selectTitle = "Please select at least one title"
+        static let selectLocation = "Please select location"
+        
         //change password screen messgaes
         struct AlertTitle {
             static let invalidEmailTitle = ""
@@ -330,12 +342,16 @@ struct Constants {
         static let settings = "SETTINGS"
         static let workExperience = "Work Experience"
         static let forgotPassword = "FORGOT PASSWORD"
-
+        static let jobSearch = "SEARCH JOB"
+        static let jobTitle = "JOB TITLE"
+        static let jobDetail = "JOB DETAIL"
     }
     
     //MARK:- Strings
     struct Strings{
         static let whiteSpace = " "
+        static let resultsFound = "results found"
+        static let save = "Save"
     }
     
     //MARK:- Hardcoded Limits

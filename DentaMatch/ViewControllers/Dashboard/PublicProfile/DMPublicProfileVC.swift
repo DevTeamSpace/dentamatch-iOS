@@ -276,7 +276,7 @@ extension DMPublicProfileVC:LocationAddressDelegate {
                 editProfileParams[Constants.ServerKey.latitude] = "\(location.coordinateSelected!.latitude)"
                 editProfileParams[Constants.ServerKey.longitude] = "\(location.coordinateSelected!.longitude)"
                 editProfileParams[Constants.ServerKey.preferredJobLocation] = address
-                editProfileParams["zipCode"] = location.postalCode
+                editProfileParams["zipcode"] = location.postalCode
             }
             debugPrint(address)
         } else {
