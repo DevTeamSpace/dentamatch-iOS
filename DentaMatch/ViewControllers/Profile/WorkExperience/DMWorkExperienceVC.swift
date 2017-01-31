@@ -264,6 +264,12 @@ class DMWorkExperienceVC: DMBaseVC,ExperiencePickerViewDelegate,ToolBarButtonDel
                 self.reSizeTableViewsAndScrollView()
                 
                 self.updateProfileScreen()
+                if self.isEditMode == true {
+                    _ = self.navigationController?.popViewController(animated: true)
+                }else{
+                    self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToStudyVC, sender: self)
+                }
+
             }
         })
         self.workExperienceTable.reloadData()
@@ -271,11 +277,6 @@ class DMWorkExperienceVC: DMBaseVC,ExperiencePickerViewDelegate,ToolBarButtonDel
         //        self.makeToast(toastString: "Experience Added")
         self.reSizeTableViewsAndScrollView()
 
-        if isEditMode == true {
-            _ = self.navigationController?.popViewController(animated: true)
-        }else{
-            self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToStudyVC, sender: self)
-        }
         
     }
 

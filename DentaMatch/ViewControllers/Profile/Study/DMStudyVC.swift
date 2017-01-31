@@ -127,6 +127,7 @@ extension DMStudyVC:AutoCompleteSelectedDelegate {
 
     //MARK:- AutoComplete List Delegates
     func didSelect(schoolCategoryId: String, university: University) {
+        hideAutoCompleteView()
         let school = schoolCategories.filter({$0.schoolCategoryId == schoolCategoryId}).first
         
         isFilledFromAutoComplete = true

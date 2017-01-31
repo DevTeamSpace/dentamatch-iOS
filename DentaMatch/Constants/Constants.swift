@@ -55,6 +55,8 @@ struct Constants {
         static let textFieldPlaceHolderColor =  UIColor.color(withHexCode: "959595")
         static let brickTextColor =  UIColor.color(withHexCode: "959595")
 
+        static let saveJobColor = UIColor.color(withHexCode: "0470c0")
+        static let cancelJobDeleteColor = UIColor.color(withHexCode: "fe3824")
         static let textFieldErrorColor = UIColor.color(withHexCode: "ff0000")
         
         static let profileProgressBarColor = UIColor.color(withHexCode: "a3d977")
@@ -98,6 +100,8 @@ struct Constants {
         static let registrationStoryboard  = "Registration"
         static let profileStoryboard  = "Profile"
         static let jobSearchStoryboard  = "JobSearch"
+        static let trackStoryboard  = "Track"
+
  
         static let dashboardStoryboard  = "Dashboard"
         static let calenderStoryboard  = "Calender"
@@ -161,6 +165,9 @@ struct Constants {
         static let userProfile = Constants.API.apiURL("users/user-profile")
         static let signOut = Constants.API.apiURL("users/sign-out")
         static let jobList = Constants.API.apiURL("users/job-list")
+        static let saveJob = Constants.API.apiURL("users/save-job")
+        static let cancelJob = Constants.API.apiURL("users/cancel-job")
+
         static let setAvailabality = Constants.API.apiURL("users/update-availability")
 
         static func apiURL(_ methodName: String) -> String {
@@ -208,6 +215,7 @@ struct Constants {
         static let certifications = "certifications"
         static let affiliations = "affiliations"
         static let skills = "skills"
+        static let cancelReason = "cancelReason"
 
         static let imageURL = "imagePath"
         static let imageURLForPostResponse = "imgUrl"
@@ -215,6 +223,7 @@ struct Constants {
         static let experienceId = "id"
         static let userId = "userId"
         static let user = "user"
+        static let jobId = "jobId"
         static let jobTitleId = "jobTitleId"
         static let jobTitileId = "jobTitileId"
         static let jobTitle = "jobTitle"
@@ -288,6 +297,7 @@ struct Constants {
         static let emptyLastName = "Last Name text can not be left blank."
         static let emptyAboutMe = "About Me text can not be left blank."
         static let emptyValidityDate = "Please enter the validity date"
+        static let emptyCancelReason = "Please enter the reason for cancellation"
 
         static let emptyPreferredJobLocation = "Preferred Job Location can not be left blank."
         //license no screen

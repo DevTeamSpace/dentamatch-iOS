@@ -45,17 +45,19 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         self.calendar?.pagingEnabled = true
         self.calendar?.placeholderType = .none
         
-        self.calendar?.appearance.todayColor = UIColor.lightGray
+        self.calendar?.appearance.todayColor = UIColor.clear
+        self.calendar?.appearance.titleTodayColor = Constants.Color.headerTitleColor
         self.calendar?.appearance.headerTitleFont = UIFont.fontRegular(fontSize: 12)
         self.calendar?.appearance.titleFont = UIFont.fontRegular(fontSize: 16)
         self.calendar?.appearance.weekdayFont = UIFont.fontRegular(fontSize: 16)
-        self.calendar?.appearance.adjustsFontSizeToFitContentSize = true
+        self.calendar?.appearance.adjustsFontSizeToFitContentSize = false
         self.calendar?.appearance.adjustTitleIfNecessary()
         self.calendar?.appearance.headerTitleColor = Constants.Color.headerTitleColor
         self.calendar?.appearance.weekdayTextColor = Constants.Color.weekdayTextColor
         self.calendar?.appearance.titleDefaultColor = Constants.Color.headerTitleColor
         self.calendar?.appearance.selectionColor = Constants.Color.CalendarSelectionColor
         
+//        self.calendar?.appearance.titleOffset = CGPoint(x: 0, y: 10)
         self.calendar?.appearance.eventOffset = CGPoint(x: 0, y: -10)
         self.viewForCalender.addSubview(self.calendar!)
 
