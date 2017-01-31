@@ -26,6 +26,7 @@ class DMJobSearchResultVC : DMBaseVC {
     var arrMarkers  = [JobMarker]()
     var jobs = [Job]()
     var rightBarButtonWidth : CGFloat = 25.0
+    var cellHeight : CGFloat = 189.0
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -14,8 +14,6 @@ class JobSeachTitleCell: UITableViewCell {
     @IBOutlet weak var scrollViewJobTitle: UIScrollView!
     @IBOutlet weak var viewJobSearchTitle: UIView!
     @IBOutlet weak var constraintScrollViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var constraintScrollViewTop: NSLayoutConstraint!
-    @IBOutlet weak var constraintScrollViewBottom: NSLayoutConstraint!
     
     var jobTitles = [JobTitle]()
     
@@ -98,6 +96,7 @@ class JobSeachTitleCell: UITableViewCell {
         // Set scrollview height equals to Total Height
         
         constraintScrollViewHeight.constant = totalHeight
+        self.needsUpdateConstraints()
     }
     
 }
