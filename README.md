@@ -23,8 +23,6 @@ This README would normally document whatever steps are necessary to get your app
 ###Code review###
 * Tool Used: SonarQube
 
-* Other guidelines
-
 ### Who do I talk to? ###
 
 * Nishant Tyagi (nishant.tyagi@appster.com.au)
