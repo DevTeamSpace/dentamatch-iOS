@@ -12,7 +12,6 @@ This README would normally document whatever steps are necessary to get your app
 * Clone Repository
 * Install cocoa pods in the project
 * Build and Run Project
-* Configuration
 
 ###Dependencies###
 * Cocoapods is being used as dependency manager.
