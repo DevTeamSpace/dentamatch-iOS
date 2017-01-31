@@ -9,7 +9,7 @@
 import UIKit
 
 class DMTrackVC: DMBaseVC {
-
+  
     enum SegmentControlOption:Int {
         case saved
         case applied
