@@ -163,6 +163,8 @@ extension DMEditStudyVC {
                 print(selectedData)
             }
         }
+        checkForEmptySchoolField()
+
     }
     
     func preparePostSchoolData(schoolsSelected:NSMutableArray) {

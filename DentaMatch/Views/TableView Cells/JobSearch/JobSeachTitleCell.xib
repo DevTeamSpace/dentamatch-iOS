@@ -6,7 +6,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -33,7 +32,6 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JOB TITLE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="1" translatesAutoresizingMaskIntoConstraints="NO" id="jxz-Yz-Bse">
                                 <rect key="frame" x="16" y="37" width="116" height="16"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="16" id="ano-p6-2p4"/>
                                     <constraint firstAttribute="width" constant="116" id="c83-BO-4Uz"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="14"/>
@@ -54,7 +52,7 @@
                             <scrollView multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07G-7Q-G5Z">
                                 <rect key="frame" x="10" y="68" width="359" height="4"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="4" id="yVk-pi-FhQ"/>
+                                    <constraint firstAttribute="height" constant="4" id="yVk-pi-FhQ"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -62,7 +60,7 @@
                         <constraints>
                             <constraint firstItem="07G-7Q-G5Z" firstAttribute="top" secondItem="jxz-Yz-Bse" secondAttribute="bottom" constant="15" id="2H2-dO-7Xc"/>
                             <constraint firstAttribute="bottom" secondItem="07G-7Q-G5Z" secondAttribute="bottom" constant="16" id="2YJ-Ym-Mwm"/>
-                            <constraint firstItem="jxz-Yz-Bse" firstAttribute="top" secondItem="i0y-8c-MGU" secondAttribute="top" multiplier="0.409" constant="37" id="WAN-c3-Gb6"/>
+                            <constraint firstItem="jxz-Yz-Bse" firstAttribute="top" secondItem="i0y-8c-MGU" secondAttribute="top" constant="37" id="WAN-c3-Gb6"/>
                             <constraint firstItem="07G-7Q-G5Z" firstAttribute="leading" secondItem="i0y-8c-MGU" secondAttribute="leading" constant="10" id="bV7-50-WVF"/>
                             <constraint firstItem="NcS-NG-2SJ" firstAttribute="top" secondItem="i0y-8c-MGU" secondAttribute="top" constant="37" id="daC-c3-VYB"/>
                             <constraint firstAttribute="trailing" secondItem="07G-7Q-G5Z" secondAttribute="trailing" constant="10" id="dvc-sS-QJz"/>
@@ -79,13 +77,12 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="constraintScrollViewBottom" destination="2YJ-Ym-Mwm" id="5NT-EV-cC9"/>
                 <outlet property="constraintScrollViewHeight" destination="yVk-pi-FhQ" id="62Z-2Q-EYD"/>
-                <outlet property="constraintScrollViewTop" destination="2H2-dO-7Xc" id="mdn-Gn-Plz"/>
                 <outlet property="lblJobTitle" destination="jxz-Yz-Bse" id="tX6-Oa-rbv"/>
                 <outlet property="scrollViewJobTitle" destination="07G-7Q-G5Z" id="IKl-dD-SeF"/>
                 <outlet property="viewJobSearchTitle" destination="i0y-8c-MGU" id="ZwU-Tm-m6V"/>
             </connections>
+            <point key="canvasLocation" x="-22" y="-75"/>
         </tableViewCell>
     </objects>
 </document>

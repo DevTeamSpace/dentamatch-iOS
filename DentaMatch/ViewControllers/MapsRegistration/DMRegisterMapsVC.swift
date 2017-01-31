@@ -51,6 +51,7 @@ class DMRegisterMapsVC: DMBaseVC {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.hideLoader()
     }
     
@@ -235,11 +236,15 @@ extension DMRegisterMapsVC:UISearchBarDelegate {
             if UserManager.shared().activeUser.preferredJobLocation != self.location.address! {
                 self.alertMessage(title: "Change Location", message: "Are you sure you want to change the location", leftButtonText: "No", rightButtonText: "Yes", completionHandler: { (isLeft:Bool) in
                     if !isLeft {
-                        if let delegate = self.delegate {
-                            self.addressSelected = self.placeSearchBar.text!
-                            delegate.locationAddress(location: self.location)
+                        if self.fromSettings {
+                            self.locationUpdateAPI(location: self.location)
+                        } else {
+                            if let delegate = self.delegate {
+                                self.addressSelected = self.placeSearchBar.text!
+                                delegate.locationAddress(location: self.location)
+                            }
+                            self.goBack()
                         }
-                        self.goBack()
                     } else {
                         self.goBack()
                     }

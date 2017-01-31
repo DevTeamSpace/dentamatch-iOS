@@ -89,10 +89,7 @@ extension DMSettingVC : UITableViewDataSource,UITableViewDelegate {
             }
             
         }
-        
-        
     }
-    
 }
 
 //MARK:- LocationAddress Delegate

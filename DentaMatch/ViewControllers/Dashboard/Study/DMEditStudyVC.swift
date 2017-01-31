@@ -175,6 +175,11 @@ extension DMEditStudyVC : YearPickerViewDelegate {
             dict["parentId"] = "\(tag)"
             dict["schoolId"] = "\(tag)"
             dict["yearOfGraduation"] = "\(year)"
+            if let _ = dict["other"] {
+            } else {
+                self.makeToast(toastString: "Please enter school name first")
+                dict["other"] = ""
+            }
             selectedData.add(dict)
             flag = 1
         } else {
@@ -182,6 +187,11 @@ extension DMEditStudyVC : YearPickerViewDelegate {
                 let dict = category as! NSMutableDictionary
                 if dict["parentId"] as! String == "\(tag)" {
                     dict["yearOfGraduation"] = "\(year)"
+                    if let _ = dict["other"] {
+                    } else {
+                        self.makeToast(toastString: "Please enter school name first")
+                        dict["other"] = ""
+                    }
                     flag = 1
                 }
             }
@@ -193,6 +203,11 @@ extension DMEditStudyVC : YearPickerViewDelegate {
             dict["parentId"] = "\(tag)"
             dict["schoolId"] = "\(tag)"
             dict["yearOfGraduation"] = "\(year)"
+            if let _ = dict["other"] {
+            } else {
+                self.makeToast(toastString: "Please enter school name first")
+                dict["other"] = ""
+            }
             selectedData.add(dict)
         }
         print(selectedData)

@@ -33,10 +33,10 @@ extension DMJobSearchVC {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
                 let skillList = response[Constants.ServerKey.result][Constants.ServerKey.joblist].array
-                self.jobSearchResult.removeAll()
+                self.jobs.removeAll()
                 for jobObject in (skillList)! {
                     let job = Job(job: jobObject)
-                    self.jobSearchResult.append(job)
+                    self.jobs.append(job)
                 }
                 self.goToSearchResult()
             } else {

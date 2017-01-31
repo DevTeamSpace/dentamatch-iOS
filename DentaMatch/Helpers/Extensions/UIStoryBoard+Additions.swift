@@ -32,6 +32,10 @@ extension UIStoryboard {
         return UIStoryboard(name: Constants.StoryBoard.profileStoryboard, bundle: nil)
     }
     
+    class func trackStoryBoard()->UIStoryboard{
+        return UIStoryboard(name: Constants.StoryBoard.trackStoryboard, bundle: nil)
+    }
+    
     class func jobSearchStoryBoard()->UIStoryboard{
         return UIStoryboard(name: Constants.StoryBoard.jobSearchStoryboard, bundle: nil)
     }

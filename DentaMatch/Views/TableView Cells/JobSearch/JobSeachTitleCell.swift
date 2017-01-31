@@ -14,8 +14,6 @@ class JobSeachTitleCell: UITableViewCell {
     @IBOutlet weak var scrollViewJobTitle: UIScrollView!
     @IBOutlet weak var viewJobSearchTitle: UIView!
     @IBOutlet weak var constraintScrollViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var constraintScrollViewTop: NSLayoutConstraint!
-    @IBOutlet weak var constraintScrollViewBottom: NSLayoutConstraint!
     
     var jobTitles = [JobTitle]()
     
@@ -31,7 +29,7 @@ class JobSeachTitleCell: UITableViewCell {
     }
     
     func setUp() {
-        viewJobSearchTitle.layer.borderColor = UIColor.init(colorLiteralRed: 229.0/255.0, green: 229.0/255.0, blue: 229.0/255.0, alpha: 1.0).cgColor
+        viewJobSearchTitle.layer.borderColor = Constants.Color.jobSearchBorderColor.cgColor
         viewJobSearchTitle.layer.borderWidth = 1.0
     }
     
@@ -81,10 +79,10 @@ class JobSeachTitleCell: UITableViewCell {
             let label = UILabel(frame: CGRect(x : leftMargin,y : topMargin,width : textWidth + widthPadding + 15,height :  textHeight))
             label.textAlignment = NSTextAlignment.center
             label.font = font
-            label.textColor = UIColor(red: 169.0/255.0, green: 169.0/255.0, blue: 169.0/255.0, alpha: 1.0)
+            label.textColor = Constants.Color.jobTitleBricksColor
             label.text = objTitle.jobTitle as String
             label.layer.borderWidth  = 1
-            label.layer.borderColor = UIColor(red: 169.0/255.0, green: 169.0/255.0, blue: 169.0/255.0, alpha: 1.0).cgColor
+            label.layer.borderColor = Constants.Color.jobTitleBricksColor.cgColor
             label.layer.cornerRadius = 15.0
             label.clipsToBounds = true
             self.scrollViewJobTitle.addSubview(label)
@@ -98,6 +96,7 @@ class JobSeachTitleCell: UITableViewCell {
         // Set scrollview height equals to Total Height
         
         constraintScrollViewHeight.constant = totalHeight
+        self.needsUpdateConstraints()
     }
     
 }

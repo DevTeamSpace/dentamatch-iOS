@@ -66,7 +66,7 @@ struct Constants {
         static let navBarColorForExperienceScreen = UIColor.color(withHexCode: "f7f7f7")
         static let navHeadingForExperienceScreen = UIColor(red: 9.0/255.0, green: 41.0/255.0, blue: 97.0/255.0, alpha: 1)
         
-         static let headerTitleColor = UIColor(red: 81.0/255.0, green: 81.0/255.0, blue: 81.0/255.0, alpha: 1)
+        static let headerTitleColor = UIColor(red: 81.0/255.0, green: 81.0/255.0, blue: 81.0/255.0, alpha: 1)
         static let weekdayTextColor = UIColor(red: 81.0/255.0, green: 81.0/255.0, blue: 81.0/255.0, alpha: 0.5)
         
         static let selectionColor = UIColor(red: 241.0/255.0, green: 184.0/255.0, blue: 90.0/255.0, alpha: 1)
@@ -76,13 +76,17 @@ struct Constants {
         static let availabilityUnseletedColor = UIColor(red: 151.0/255.0, green: 151.0/255.0, blue: 151.0/255.0, alpha: 1.0)
 
         
-        //static let
-
         static let loaderRingColor = UIColor.color(withHexCode: "10193e")
+        
         static let loaderBackgroundColor = UIColor.color(withHexCode: "959595")
         
-        
-
+        static let tickSelectColor = UIColor.init(red: 4.0/255.0, green: 112.0/255.0, blue: 192.0/255.0, alpha: 1.0)
+        static let tickDeselectColor = UIColor.init(red: 151.0/255.0, green: 151.0/255.0, blue: 151.0/255.0, alpha: 1.0)
+        static let jobSearchBorderColor = UIColor.init(red: 229.0/255.0, green: 229.0/255.0, blue: 229.0/255.0, alpha: 1.0)
+        static let jobTitleBricksColor = UIColor.init(red: 169.0/255.0, green: 169.0/255.0, blue: 169.0/255.0, alpha: 1.0)
+        static let jobTypeLabelDeselectedColor = UIColor.init(red: 181.0/255.0, green: 181.0/255.0, blue: 181.0/255.0, alpha: 1.0)
+        static let partTimeDaySelectColor = UIColor.init(colorLiteralRed: 142.0/255.0, green: 207.0/255.0, blue: 125.0/255.0, alpha: 1.0)
+        static let fullTimeBackgroundColor = UIColor.init(red: 69.0/255.0, green: 177.0/255.0 , blue: 179.0/255.0, alpha: 1.0)
     }
     
     struct DesignFont {
@@ -99,6 +103,8 @@ struct Constants {
         static let registrationStoryboard  = "Registration"
         static let profileStoryboard  = "Profile"
         static let jobSearchStoryboard  = "JobSearch"
+        static let trackStoryboard  = "Track"
+
  
         static let dashboardStoryboard  = "Dashboard"
         static let calenderStoryboard  = "Calender"
@@ -159,10 +165,12 @@ struct Constants {
         static let updateCertificate = Constants.API.apiURL("users/update-certificate")
         static let updateValidationDates = Constants.API.apiURL("users/update-certificate-validity")
         static let changePassword = Constants.API.apiURL("users/change-password")
+        static let updateHomeLocation = Constants.API.apiURL("users/user-location-update")
         static let userProfile = Constants.API.apiURL("users/user-profile")
         static let signOut = Constants.API.apiURL("users/sign-out")
         static let jobList = Constants.API.apiURL("users/job-list")
         static let saveJob = Constants.API.apiURL("users/save-job")
+        static let cancelJob = Constants.API.apiURL("users/cancel-job")
 
         static let setAvailabality = Constants.API.apiURL("users/update-availability")
 
@@ -211,6 +219,7 @@ struct Constants {
         static let certifications = "certifications"
         static let affiliations = "affiliations"
         static let skills = "skills"
+        static let cancelReason = "cancelReason"
 
         static let imageURL = "imagePath"
         static let imageURLForPostResponse = "imgUrl"
@@ -292,6 +301,7 @@ struct Constants {
         static let emptyLastName = "Last Name text can not be left blank."
         static let emptyAboutMe = "About Me text can not be left blank."
         static let emptyValidityDate = "Please enter the validity date"
+        static let emptyCancelReason = "Please enter the reason for cancellation"
 
         static let emptyPreferredJobLocation = "Preferred Job Location can not be left blank."
         //license no screen
@@ -355,6 +365,24 @@ struct Constants {
         static let whiteSpace = " "
         static let resultsFound = "results found"
         static let save = "Save"
+        static let today = "Today"
+        static let daysAgo = "DAYS AGO"
+        static let comma = ","
+        static let miles = "miles"
+        static let partTime = "Part Time"
+        static let fullTime = "Full Time"
+        static let zero = "0"
+    }
+    
+    //MARK:- Weak Days
+    struct Days{
+        static let sunday = "Su"
+        static let monday = "Mo"
+        static let tuesday = "Tu"
+        static let wednesday = "We"
+        static let thursday = "Th"
+        static let friday = "Fr"
+        static let saturday = "Sa"
     }
     
     //MARK:- Hardcoded Limits

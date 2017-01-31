@@ -9,7 +9,7 @@
 import UIKit
 
 class DMTrackVC: DMBaseVC {
-
+  
     enum SegmentControlOption:Int {
         case saved
         case applied
@@ -62,6 +62,13 @@ class DMTrackVC: DMBaseVC {
 
         pullToRefreshSavedJobs.addTarget(self, action: #selector(pullToRefreshForSavedJobs), for: .valueChanged)
         self.savedJobsTableView.addSubview(pullToRefreshSavedJobs)
+        
+        pullToRefreshAppliedJobs.addTarget(self, action: #selector(pullToRefreshForAppliedJobs), for: .valueChanged)
+        self.appliedJobsTableView.addSubview(pullToRefreshAppliedJobs)
+
+        pullToRefreshShortListedJobs.addTarget(self, action: #selector(pullToRefreshForShortListedJobs), for: .valueChanged)
+        self.shortListedJobsTableView.addSubview(pullToRefreshShortListedJobs)
+
 
         savedJobsTableView.isHidden = false
         appliedJobsTableView.isHidden = true
@@ -79,6 +86,7 @@ class DMTrackVC: DMBaseVC {
         self.getJobList(params: jobParams)
         pullToRefreshSavedJobs.endRefreshing()
     }
+    
     
     func pullToRefreshForAppliedJobs() {
         self.savedJobsPageNo = 1
@@ -102,32 +110,32 @@ class DMTrackVC: DMBaseVC {
         switch segmentControlOptions {
             
         case .saved:
-            if self.savedJobsPageNo == 1 {
-                jobParams["type"] = "2"
-                jobParams["page"] = "1"
-                self.getJobList(params: jobParams)
-            }
             savedJobsTableView.isHidden = false
             appliedJobsTableView.isHidden = true
             shortListedJobsTableView.isHidden = true
+            if self.savedJobsPageNo == 1 {
+                jobParams["type"] = "1"
+                jobParams["page"] = "1"
+                self.getJobList(params: jobParams)
+            }
         case .applied:
+            savedJobsTableView.isHidden = true
+            shortListedJobsTableView.isHidden = true
+            appliedJobsTableView.isHidden = false
             if appliedJobsPageNo == 1 {
                 jobParams["type"] = "2"
                 jobParams["page"] = "1"
                 self.getJobList(params: jobParams)
             }
-            savedJobsTableView.isHidden = true
-            appliedJobsTableView.isHidden = false
-            shortListedJobsTableView.isHidden = true
         case .shortlisted:
+            savedJobsTableView.isHidden = true
+            appliedJobsTableView.isHidden = true
+            shortListedJobsTableView.isHidden = false
             if shortListedJobsPageNo == 1 {
                 jobParams["type"] = "3"
                 jobParams["page"] = "1"
                 self.getJobList(params: jobParams)
             }
-            savedJobsTableView.isHidden = true
-            appliedJobsTableView.isHidden = true
-            shortListedJobsTableView.isHidden = false
         }
     }
 
