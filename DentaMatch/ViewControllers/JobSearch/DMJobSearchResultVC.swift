@@ -24,7 +24,7 @@ class DMJobSearchResultVC : DMBaseVC {
     var btnMap : UIButton!
     var currentCoordinate : CLLocationCoordinate2D! = CLLocationCoordinate2D(latitude : 0.00, longitude : 0.00)
     var arrMarkers  = [JobMarker]()
-    var jobSearchResult = [Job]()
+    var jobs = [Job]()
     var rightBarButtonWidth : CGFloat = 25.0
     
     override func viewDidLoad() {
@@ -45,9 +45,9 @@ class DMJobSearchResultVC : DMBaseVC {
         self.tblJobSearchResult.register(UINib(nibName: "JobSearchResultCell", bundle: nil), forCellReuseIdentifier: "JobSearchResultCell")
         self.mapViewSearchResult.delegate = self
         self.mapViewSearchResult.isMyLocationEnabled = true
-        self.lblResultCount.text = String(self.jobSearchResult.count) + " " + Constants.Strings.resultsFound
+        self.lblResultCount.text = String(self.jobs.count) + " " + Constants.Strings.resultsFound
         self.setLeftBarButton(title: Constants.DesignFont.notification)
-        self.setRightBarButton(title: Constants.DesignFont.search, width : rightBarButtonWidth)
+        self.setRightBarButton(title: Constants.DesignFont.search, width : rightBarButtonWidth, font: UIFont.designFont(fontSize: 16.0)!)
         self.setUpSegmentControl()
     }
     

@@ -35,28 +35,6 @@ class DMJobTitleVC: DMBaseVC {
         // Dispose of any resources that can be recreated.
     }
     
-    //MARK : Private Method
-    func setUp() {
-        self.navigationItem.leftBarButtonItem = self.backBarButton()
-        self.title = Constants.ScreenTitleNames.jobTitle
-        self.tblJobTitle.rowHeight = UITableViewAutomaticDimension
-        self.tblJobTitle.register(UINib(nibName: "JobTitleCell", bundle: nil), forCellReuseIdentifier: "JobTitleCell")
-        self.setRightBarButton(title: Constants.Strings.save, width : rightBarButtonWidth)
-    }
-    
-//    func setRightBarButton()  {
-//        self.rightBarBtn = UIButton()
-//        self.rightBarBtn.setTitle("Save", for: .normal)
-//        self.rightBarBtn.titleLabel?.font = UIFont.fontRegular(fontSize: 16.0)
-//        self.rightBarBtn.frame = CGRect(x : 0,y : 0,width: 40,height : 25)
-//        self.rightBarBtn.titleLabel?.textAlignment = .right
-//        self.rightBarBtn.imageView?.contentMode = .scaleAspectFit
-//        self.rightBarBtn.addTarget(self, action: #selector(DMJobTitleVC.actionRightNavigationItem), for: .touchUpInside)
-//        self.rightBarButtonItem = UIBarButtonItem()
-//        self.rightBarButtonItem.customView = self.rightBarBtn
-//        self.navigationItem.rightBarButtonItem = rightBarButtonItem
-//    }
-    
     override func actionRightNavigationItem() {
         _ =  self.navigationController?.popViewController(animated: true)
         self.selectedJobs.removeAll()
@@ -66,6 +44,15 @@ class DMJobTitleVC: DMBaseVC {
             }
         }
         delegate?.setSelectedJobType!(jobTitles: self.selectedJobs)
+    }
+    
+    //MARK : Private Method
+    func setUp() {
+        self.title = Constants.ScreenTitleNames.jobTitle
+        self.tblJobTitle.rowHeight = UITableViewAutomaticDimension
+        self.tblJobTitle.register(UINib(nibName: "JobTitleCell", bundle: nil), forCellReuseIdentifier: "JobTitleCell")
+        self.navigationItem.leftBarButtonItem = self.backBarButton()
+        self.setRightBarButton(title: Constants.Strings.save, width : rightBarButtonWidth, font : UIFont.fontRegular(fontSize: 16.0)!)
     }
     
     func getJobsAPI() {
@@ -121,12 +108,12 @@ extension DMJobTitleVC : UITableViewDataSource, UITableViewDelegate {
         cell.lblJobTitle.textColor = UIColor.init(red: 81.0/255.0, green: 81.0/255.0, blue: 81.0/255.0, alpha: 1.0)
         cell.lblJobTitle.text = objJob.jobTitle
         if objJob.jobSelected == true {
-            cell.btnTick.setTitle("w", for: .normal)
-            cell.btnTick.setTitleColor(UIColor.init(red: 4.0/255.0, green: 112.0/255.0, blue: 192.0/255.0, alpha: 1.0), for: .normal)
+            cell.btnTick.setTitle(Constants.DesignFont.acceptTermsSelected, for: .normal)
+            cell.btnTick.setTitleColor(Constants.Color.tickSelectColor, for: .normal)
         }
         else {
-            cell.btnTick.setTitle("t", for: .normal)
-            cell.btnTick.setTitleColor(UIColor.init(red: 151.0/255.0, green: 151.0/255.0, blue: 151.0/255.0, alpha: 1.0), for: .normal)
+            cell.btnTick.setTitle(Constants.DesignFont.acceptTermsDeSelected, for: .normal)
+            cell.btnTick.setTitleColor(Constants.Color.tickDeselectColor, for: .normal)
         }
         return cell
     }
@@ -144,13 +131,13 @@ extension DMJobTitleVC : UITableViewDataSource, UITableViewDelegate {
         let objJob = jobTitles[indexPath.row]
         if objJob.jobSelected == false {
             objJob.jobSelected = true
-            cell?.btnTick.setTitle("w", for: .normal)
-            cell?.btnTick.setTitleColor(UIColor.init(red: 4.0/255.0, green: 112.0/255.0, blue: 192.0/255.0, alpha: 1.0), for: .normal)
+            cell?.btnTick.setTitle(Constants.DesignFont.acceptTermsSelected, for: .normal)
+            cell?.btnTick.setTitleColor(Constants.Color.tickSelectColor, for: .normal)
         }
         else {
             objJob.jobSelected = false
-            cell?.btnTick.setTitle("t", for: .normal)
-            cell?.btnTick.setTitleColor(UIColor.init(red: 151.0/255.0, green: 151.0/255.0, blue: 151.0/255.0, alpha: 1.0), for: .normal)
+            cell?.btnTick.setTitle(Constants.DesignFont.acceptTermsDeSelected, for: .normal)
+            cell?.btnTick.setTitleColor(Constants.Color.tickDeselectColor, for: .normal)
         }
     }
 }

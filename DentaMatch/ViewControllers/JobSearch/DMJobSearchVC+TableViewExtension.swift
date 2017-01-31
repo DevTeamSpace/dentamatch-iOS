@@ -37,14 +37,14 @@ extension DMJobSearchVC : UITableViewDataSource, UITableViewDelegate {
         let cell = UITableViewCell.init(style: .default, reuseIdentifier: "Blank")
         cell.backgroundColor = UIColor.clear
         cell.selectionStyle = .none
-        if indexPath.section == 0 {
+        switch indexPath.section {
+        case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "JobSeachTitleCell") as? JobSeachTitleCell
             cell?.selectionStyle = .none
             cell?.jobTitles = self.jobTitles
             cell!.updateJobTitle()
             return cell!
-        }
-        else if indexPath.section == 1 {
+        case 1:
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "JobSearchTypeCell") as? JobSearchTypeCell
                 cell?.delegate = self
@@ -58,9 +58,7 @@ extension DMJobSearchVC : UITableViewDataSource, UITableViewDelegate {
                 cell?.selectionStyle = .none
                 return cell!
             }
-        }
-        else if indexPath.section == 2 {
-            
+        case 2:
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "CurrentLocationCell") as! CurrentLocationCell
                 cell.selectionStyle = .none
@@ -69,7 +67,9 @@ extension DMJobSearchVC : UITableViewDataSource, UITableViewDelegate {
             }
             else if  indexPath.row == 1 {
                 return cell
-            }
+            }  
+        default:
+            break
         }
         return cell
     }
