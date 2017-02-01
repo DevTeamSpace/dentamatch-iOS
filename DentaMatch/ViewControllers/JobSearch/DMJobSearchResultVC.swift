@@ -33,6 +33,11 @@ class DMJobSearchResultVC : DMBaseVC {
     var totalJobsFromServer = 0
     var jobsPageNo = 1
     var searchParams = [String : Any]()
+    var markers = [JobMarker]()
+    
+    var indexOfSelectedMarker: Int?
+    var selectedMarker: JobMarker?
+    
     //var stylebarAndNavigationbarHeight = s
     
     override func viewDidLoad() {

@@ -41,7 +41,7 @@ extension DMJobSearchResultVC : UITableViewDataSource, UITableViewDelegate, JobS
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath)
     {
-        if indexPath.row == self.jobs.count - 10 {
+        if indexPath.row < self.jobs.count - 3 {
             self.callLoadMore()
         }
     }

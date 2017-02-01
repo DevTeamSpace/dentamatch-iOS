@@ -44,8 +44,8 @@ class JobSearchResultCell: UITableViewCell {
             self.btnFavourite.titleLabel?.textColor = Constants.Color.unSaveJobColor
         }
         else {
-            self.btnFavourite.setTitle(Constants.DesignFont.favourite, for: .normal)
-            self.btnFavourite.titleLabel?.textColor = Constants.Color.saveJobColor
+            self.btnFavourite.setImage(UIImage(named:"saveStar"), for: .normal)
+            self.btnFavourite.setTitle("", for: .normal)
         }
         if job.jobType == 1 {
             self.btnType.setTitle(Constants.Strings.fullTime, for: .normal)

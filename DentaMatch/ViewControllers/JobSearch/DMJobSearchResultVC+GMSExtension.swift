@@ -13,20 +13,36 @@ extension DMJobSearchResultVC : GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         // Just hiding the card and restoring markers.
-        self.restoreAllMarkers()
+        //self.restoreAllMarkers()
+        self.deselectMarker()
         self.hideCard()
     }
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         let marker = marker as! JobMarker
+        
+        if let index = indexOfSelectedMarker {
+            if marker.index != index {
+                deselectMarker()
+            }
+        }
         marker.icon = UIImage(named: "mapLPin")
-        self.moveToMarker(marker: marker)
+        self.indexOfSelectedMarker = marker.index
+        self.selectedMarker = marker
         self.showCard(index: marker.index!)
         return true
     }
     
     func moveToMarker(marker: JobMarker) {
         self.mapViewSearchResult.selectedMarker = marker
+    }
+    
+    func deselectMarker() {
+        if let marker = self.selectedMarker {
+            marker.icon = UIImage(named: "pinPoint")
+        }
+        self.indexOfSelectedMarker = nil
+        self.selectedMarker = nil
     }
     
     func restoreAllMarkers() {
