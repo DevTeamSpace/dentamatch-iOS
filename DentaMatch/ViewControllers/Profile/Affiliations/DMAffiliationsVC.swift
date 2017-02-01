@@ -96,7 +96,9 @@ class DMAffiliationsVC: DMBaseVC {
         var selectedAffiliationIds = [String]()
         for affiliation in affiliations {
             if affiliation.isSelected {
-                selectedAffiliationIds.append(affiliation.affiliationId)
+                if !affiliation.isOther {
+                    selectedAffiliationIds.append(affiliation.affiliationId)
+                }
             }
         }
         

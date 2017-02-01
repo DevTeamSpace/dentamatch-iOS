@@ -24,18 +24,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //configureCrashlytics()
         
-        if UserDefaultsManager.sharedInstance.isLoggedIn {
-            goToProfile()
-            //goToSearch()
-        }
-        
         configureGoogleServices()
-
+        
         registerForPushNotifications()
         
         changeNavBarAppearance()
         
         configureNetworkReachability()
+        
+        if UserDefaultsManager.sharedInstance.isProfileCompleted {
+            self.goToDashBoard()
+            return true
+        }
+        
+        if !UserDefaultsManager.sharedInstance.isProfileSkipped {
+            if UserDefaultsManager.sharedInstance.isLoggedIn {
+                self.goToProfile()
+                //goToSearch()
+            }
+        } else {
+            self.goToDashBoard()
+        }
         
         return true
     }
@@ -44,6 +53,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func goToProfile() {
         let profileVC = UIStoryboard.profileStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.profileNav) as! UINavigationController
         self.window?.rootViewController = profileVC
+    }
+    
+    func goToDashBoard() {
+        let dashboardVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: TabBarVC.self)!
+        self.window?.rootViewController = dashboardVC
     }
 //    
 //    func goToSearch() {

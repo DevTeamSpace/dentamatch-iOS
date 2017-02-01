@@ -97,7 +97,6 @@ extension DMEditSkillsVC {
             "skills":[] as AnyObject
         ]
         
-        
         var skillsId = [String]()
         var others = [[String:AnyObject]]()
         
@@ -119,12 +118,12 @@ extension DMEditSkillsVC {
             var other = [String:String]()
             other["id"] = otherSkill?.skillId
             other["value"] = otherSkill?.otherText
-            others.append(other as [String : AnyObject])
+            if !(otherSkill?.otherText.isEmptyField)! {
+                others.append(other as [String : AnyObject])
+            }
         }
-        
         params["skills"] = skillsId as AnyObject?
         params["other"] = others as AnyObject?
         return params
     }
-
 }
