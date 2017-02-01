@@ -53,6 +53,22 @@ class DMEditSkillsVC: DMBaseVC {
                 self.selectedSkills.append(skill)
             }
         }
+        
+        if let otherSkill = otherSkill {
+            let skill = Skill()
+            skill.skillId = otherSkill.skillId
+            skill.skillName = otherSkill.skillName
+            let subSkill = SubSkill()
+            subSkill.subSkillName = otherSkill.otherText
+            skill.subSkills = [subSkill]
+            skill.isOther = otherSkill.isOther
+            skill.otherText = otherSkill.otherText
+            if !skill.otherText.isEmptyField {
+                self.selectedSkills.append(skill)
+
+            }
+        }
+        
         NotificationCenter.default.post(name: .updateProfileScreen, object: nil, userInfo: ["skills":self.selectedSkills])
     }
     

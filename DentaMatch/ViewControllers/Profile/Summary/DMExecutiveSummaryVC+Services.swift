@@ -35,6 +35,7 @@ extension DMExecutiveSummaryVC {
     func handleAboutMeResponse(response:JSON?) {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
+                UserDefaultsManager.sharedInstance.isProfileCompleted = true
                 DispatchQueue.main.async {
                     self.openDashboard()
                 }

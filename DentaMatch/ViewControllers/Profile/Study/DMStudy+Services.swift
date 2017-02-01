@@ -162,6 +162,7 @@ extension DMStudyVC {
             }
             
         }
+        checkForEmptySchoolField()
     }
     
     func preparePostSchoolData(schoolsSelected:NSMutableArray) {

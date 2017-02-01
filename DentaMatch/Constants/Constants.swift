@@ -286,6 +286,8 @@ struct Constants {
     struct UserDefaultsKey {
         static let isLoggedIn = "isLoggedIn"
         static let deviceToken = "kDeviceToken"
+        static let isProfileSkipped = "kIsProfileSkipped"
+        static let isProfileCompleted = "kIsProfileCompleted"
         static let accessToken = "kDeviceToken"
         static let profileImageURL = "kProfileImageURL"
         static let licenseImageURL = "kLicenseImageURL"
