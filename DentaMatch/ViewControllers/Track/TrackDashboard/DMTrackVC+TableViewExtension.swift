@@ -156,7 +156,7 @@ extension DMTrackVC:UITableViewDataSource,UITableViewDelegate {
     }
     
     func goToChatButton(sender:UIButton) {
-        let job = self.shortListedJobs[sender.tag]
+        _ = self.shortListedJobs[sender.tag]
     }
     
     func callLoadMore(type:Int) {

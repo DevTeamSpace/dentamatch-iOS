@@ -45,6 +45,8 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         self.calendar?.pagingEnabled = true
         self.calendar?.placeholderType = .none
         
+        self.calendar?.calendarHeaderView.frame.size = CGSize(width: (self.calendar?.calendarHeaderView.frame.size.width)!, height: 161)
+        
         self.calendar?.appearance.todayColor = UIColor.clear
         self.calendar?.appearance.titleTodayColor = Constants.Color.headerTitleColor
         self.calendar?.appearance.headerTitleFont = UIFont.fontRegular(fontSize: 12)
@@ -90,7 +92,7 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
     */
     //MARK:- Calender Methods 
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        return 3
+        return 2
     }
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, borderRadiusFor date: Date) -> CGFloat {
         return 1.0
@@ -109,6 +111,9 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, borderDefaultColorFor date: Date) -> UIColor? {
         return UIColor.clear
+    }
+    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
+        
     }
 
     //pluse button Action
