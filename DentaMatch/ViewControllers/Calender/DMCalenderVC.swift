@@ -14,7 +14,12 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
     @IBOutlet weak var bookedJobsTableView: UITableView!
 
     var calendar:FSCalendar?
+    @IBOutlet weak var fulltimeJobIndicatorView: UIView!
     
+    @IBOutlet weak var viewForHeader: UIView!
+    @IBOutlet weak var monthTitleLabel: UILabel!
+    
+    var gregorian:NSCalendar?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +34,8 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
     
     func setup() {
         self.title = Constants.ScreenTitleNames.calendar
+        gregorian = NSCalendar(calendarIdentifier: .gregorian)
+        self.monthTitleLabel.text = Date.dateToStringForFormatter(date: Date(), dateFormate: Date.dateFormatMMMMYYYY())
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationItem.rightBarButtonItem = self.rightBarButton()
         self.bookedJobsTableView.separatorStyle = .none
@@ -44,9 +51,12 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         self.calendar?.appearance.caseOptions = .headerUsesUpperCase
         self.calendar?.pagingEnabled = true
         self.calendar?.placeholderType = .none
+        self.calendar?.calendarHeaderView.isHidden = true
+        self.calendar?.calendarWeekdayView.isHidden = false
         
-        self.calendar?.calendarHeaderView.frame.size = CGSize(width: (self.calendar?.calendarHeaderView.frame.size.width)!, height: 161)
-        
+//        self.calendar?.calendarHeaderView.frame.size = CGSize(width: (self.calendar?.calendarHeaderView.frame.size.width)!, height: 161)
+        self.calendar?.headerHeight = 60
+        self.calendar?.weekdayHeight = 30
         self.calendar?.appearance.todayColor = UIColor.clear
         self.calendar?.appearance.titleTodayColor = Constants.Color.headerTitleColor
         self.calendar?.appearance.headerTitleFont = UIFont.fontRegular(fontSize: 12)
@@ -59,9 +69,11 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         self.calendar?.appearance.titleDefaultColor = Constants.Color.headerTitleColor
         self.calendar?.appearance.selectionColor = Constants.Color.CalendarSelectionColor
         
+//        self.calendar?.calendarWeekdayView.backgroundColor = UIColor.red
 //        self.calendar?.appearance.titleOffset = CGPoint(x: 0, y: 10)
-        self.calendar?.appearance.eventOffset = CGPoint(x: 0, y: -10)
+        self.calendar?.appearance.eventOffset = CGPoint(x: 0, y: -8)
         self.viewForCalender.addSubview(self.calendar!)
+        self.viewForCalender.bringSubview(toFront: self.viewForHeader)
 
 
     }
@@ -121,6 +133,22 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         let termsVC = UIStoryboard.calenderStoryBoard().instantiateViewController(type: DMCalendarSetAvailabillityVC.self)!
         termsVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(termsVC, animated: true)
+    }
+    @IBAction func nextButtonClicked(_ sender: Any) {
+        let currentMonth:Date = self.calendar!.currentPage
+        let previousMonth:Date = (self.gregorian?.date(byAdding: .month, value: 1, to: currentMonth, options: .matchFirst))!
+        self.monthTitleLabel.text = Date.dateToStringForFormatter(date: previousMonth, dateFormate: Date.dateFormatMMMMYYYY())
+
+        self.calendar?.setCurrentPage(previousMonth, animated: true)
+
+    }
+    @IBAction func previouseButtonClicked(_ sender: Any) {
+        let currentMonth:Date = self.calendar!.currentPage
+        let previousMonth:Date = (self.gregorian?.date(byAdding: .month, value: -1, to: currentMonth, options: .matchFirst))!
+        self.monthTitleLabel.text = Date.dateToStringForFormatter(date: previousMonth, dateFormate: Date.dateFormatMMMMYYYY())
+
+        self.calendar?.setCurrentPage(previousMonth, animated: true)
+
     }
 
 }

@@ -15,6 +15,9 @@ extension Date {
     public static func dateFormatCCCCDDMMMMYYYY() ->String {
         return "cccc, dd MMMM yyyy"
     }
+    public static func dateFormatMMMMYYYY() ->String {
+        return "MMMM, yyyy"
+    }
     public static func dateFormatDDMMMYYYY() ->String {
         return "dd MMM yyyy"
     }
@@ -68,6 +71,7 @@ extension Date {
         return dateFormatter.date(from: dateString)!
     }
     
+    
      static func stringToDate(dateString:String)-> Date{
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = dateFormatYYYYMMDDDashed()//"dd MMMM yyyy"
@@ -81,6 +85,12 @@ extension Date {
         return dateFormatter.string(from: date)
     }
 
+    static func dateToStringForFormatter(date:Date,dateFormate:String)-> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = dateFormate//"dd MMMM yyyy"
+        //        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        return dateFormatter.string(from: date)
+    }
     
     
     
