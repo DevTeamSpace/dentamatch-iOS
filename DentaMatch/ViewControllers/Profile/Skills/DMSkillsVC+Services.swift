@@ -91,14 +91,11 @@ extension DMSkillsVC {
         skills = skills.filter({$0.isOther == false})
     }
     
-    
-    
     func prepareSkillUpdateData() -> [String:AnyObject] {
         var params = [
             "other":[] as AnyObject,
             "skills":[] as AnyObject
             ]
-        
         
         var skillsId = [String]()
         var others = [[String:AnyObject]]()
@@ -118,15 +115,15 @@ extension DMSkillsVC {
         }
         
         if let _ = otherSkill {
-                var other = [String:String]()
-                other["id"] = otherSkill?.skillId
-                other["value"] = otherSkill?.otherText
+            var other = [String:String]()
+            other["id"] = otherSkill?.skillId
+            other["value"] = otherSkill?.otherText
+            if !(otherSkill?.otherText.isEmptyField)! {
                 others.append(other as [String : AnyObject])
+            }
         }
-       
         params["skills"] = skillsId as AnyObject?
         params["other"] = others as AnyObject?
         return params
     }
-    
 }

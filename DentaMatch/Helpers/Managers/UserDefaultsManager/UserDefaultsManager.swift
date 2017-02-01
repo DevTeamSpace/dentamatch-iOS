@@ -27,6 +27,32 @@ class UserDefaultsManager: NSObject {
         }
     }
     
+    var isProfileSkipped:Bool {
+        get {
+            if kUserDefaults.value(forKey: Constants.UserDefaultsKey.isProfileSkipped) != nil {
+                return kUserDefaults.value(forKey: Constants.UserDefaultsKey.isProfileSkipped) as! Bool
+            }
+            return false
+        }
+        set {
+            kUserDefaults.setValue(newValue, forKey: Constants.UserDefaultsKey.isProfileSkipped)
+            kUserDefaults.synchronize()
+        }
+    }
+    
+    var isProfileCompleted:Bool {
+        get {
+            if kUserDefaults.value(forKey: Constants.UserDefaultsKey.isProfileCompleted) != nil {
+                return kUserDefaults.value(forKey: Constants.UserDefaultsKey.isProfileCompleted) as! Bool
+            }
+            return false
+        }
+        set {
+            kUserDefaults.setValue(newValue, forKey: Constants.UserDefaultsKey.isProfileCompleted)
+            kUserDefaults.synchronize()
+        }
+    }
+    
     var deviceToken:String {
         get {
             if kUserDefaults.value(forKey: Constants.UserDefaultsKey.deviceToken) != nil {
