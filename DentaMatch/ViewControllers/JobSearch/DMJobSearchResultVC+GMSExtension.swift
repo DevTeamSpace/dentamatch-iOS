@@ -14,40 +14,55 @@ extension DMJobSearchResultVC : GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         // Just hiding the card and restoring markers.
         self.restoreAllMarkers()
-        self.mapViewSearchResult.animate(to: GMSCameraPosition(target: self.currentCoordinate, zoom: 15, bearing: 0, viewingAngle: 0))
+        self.hideCard()
     }
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         let marker = marker as! JobMarker
+        marker.icon = UIImage(named: "mapLPin")
         self.moveToMarker(marker: marker)
-        return false
+        self.showCard(index: marker.index!)
+        return true
     }
     
     func moveToMarker(marker: JobMarker) {
-        let objJobSearch =  Job.init()
-        objJobSearch.jobId = marker.job_id!
-        
-        //let arrIDs = self.arrMarkers.valueForKey("user_id")
-        //let index = arrIDs.indexOfObject(marker.user_id!)
-        
-        self.mapViewSearchResult.animate(to: GMSCameraPosition(target: self.currentCoordinate, zoom: 15, bearing: 0, viewingAngle: 0))
+        self.mapViewSearchResult.selectedMarker = marker
     }
     
     func restoreAllMarkers() {
-        for objJobSearch in self.jobs {
-            let latStr = objJobSearch.latitude as NSString
+        self.mapViewSearchResult.selectedMarker = nil
+        self.mapViewSearchResult.clear()
+        for (index, objJob) in self.jobs.enumerated() {
+            let latStr = objJob.latitude as NSString
             let latDbl : Double  = Double(latStr.intValue)
-            let langStr = objJobSearch.longitude as NSString
+            let langStr = objJob.longitude as NSString
             let langDbl : Double = Double(langStr.intValue)
-            //var location = CLLocationCoordinate2D(latitude : latDbl, longitude : langDbl)
             let marker = JobMarker()
-            marker.job_id = objJobSearch.jobId
+            marker.index = index
             marker.isDraggable = false
             marker.position = CLLocationCoordinate2DMake(latDbl,langDbl )
             marker.icon = UIImage(named: "pinPoint")
             marker.map = self.mapViewSearchResult
-            //self.mapViewSearchResult.animate(to: GMSCameraPosition(target: self.currentCoordinate, zoom: 15, bearing: 0, viewingAngle: 0))
         }
     }
     
+    func showCard(index : Int) {
+        self.constraintTblViewSearchResultHeight.constant = cellHeight
+        UIView.animate(withDuration: 0.5, animations: {
+            self.view.layoutIfNeeded()
+        }) { (complete: Bool) in
+            DispatchQueue.main.async {
+                self.tblJobSearchResult.scrollToRow(at: IndexPath(row: index, section: 0), at: .none, animated: false)
+                self.tblJobSearchResult.isScrollEnabled = false
+            }
+        }
+    }
+    
+    func hideCard() {
+        self.constraintTblViewSearchResultHeight.constant = 0.0
+        UIView.animate(withDuration: 0.5, animations: {
+            self.view.layoutIfNeeded()
+        }) { (complete: Bool) in
+            self.tblJobSearchResult.isScrollEnabled = true        }
+    }
 }

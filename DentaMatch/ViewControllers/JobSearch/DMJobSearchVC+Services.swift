@@ -38,6 +38,7 @@ extension DMJobSearchVC {
                     let job = Job(job: jobObject)
                     self.jobs.append(job)
                 }
+                self.totalJobsFromServer = response[Constants.ServerKey.result]["total"].intValue
                 self.goToSearchResult()
             } else {
                 self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)

@@ -21,16 +21,8 @@ class DMJobSearchVC : DMBaseVC {
     var location : Location! = Location()
     var isJobTypeFullTime : String! = "0"
     var isJobTypePartTime : String! = "0"
-    var searchParams = [
-        Constants.JobDetailKey.lat:"",
-        Constants.JobDetailKey.lng:"",
-        Constants.JobDetailKey.zipCode:"",
-        Constants.JobDetailKey.isFulltime:"",
-        Constants.JobDetailKey.isParttime:"",
-        Constants.JobDetailKey.parttimeDays:[],
-        Constants.JobDetailKey.jobTitle:[],
-        Constants.JobDetailKey.page:""
-        ] as [String : Any]
+    var searchParams = [String : Any]()
+    var totalJobsFromServer = 0
     
     enum TableViewCellHeight: CGFloat {
         case jobTitleAndLocation = 88.0
@@ -63,6 +55,16 @@ class DMJobSearchVC : DMBaseVC {
         self.tblViewJobSearch.register(UINib(nibName: "JobSearchTypeCell", bundle: nil), forCellReuseIdentifier: "JobSearchTypeCell")
         self.tblViewJobSearch.register(UINib(nibName: "JobSearchPartTimeCell", bundle: nil), forCellReuseIdentifier: "JobSearchPartTimeCell")
         self.tblViewJobSearch.register(UINib(nibName: "CurrentLocationCell", bundle: nil), forCellReuseIdentifier: "CurrentLocationCell")
+        searchParams = [
+            Constants.JobDetailKey.lat:"",
+            Constants.JobDetailKey.lng:"",
+            Constants.JobDetailKey.zipCode:"",
+            Constants.JobDetailKey.isFulltime:"",
+            Constants.JobDetailKey.isParttime:"",
+            Constants.JobDetailKey.parttimeDays:[],
+            Constants.JobDetailKey.jobTitle:[],
+            Constants.JobDetailKey.page:""
+        ]
     }
     
     func validateFields() -> Bool {
@@ -134,7 +136,12 @@ class DMJobSearchVC : DMBaseVC {
         if self.jobs.count > 0 {
             let jobSearchResultVC = UIStoryboard.jobSearchStoryBoard().instantiateViewController(type: DMJobSearchResultVC.self)!
             jobSearchResultVC.jobs = self.jobs
+            jobSearchResultVC.searchParams = self.searchParams
+            jobSearchResultVC.totalJobsFromServer = self.totalJobsFromServer
             self.navigationController?.pushViewController(jobSearchResultVC, animated: true)
+        }
+        else {
+            self.makeToast(toastString: Constants.Strings.zero + Constants.Strings.resultsFound)
         }
     }
     

@@ -54,7 +54,7 @@ struct Constants {
         static let textFieldColorSelected = UIColor.color(withHexCode: "0470c0")
         static let textFieldPlaceHolderColor =  UIColor.color(withHexCode: "959595")
         static let brickTextColor =  UIColor.color(withHexCode: "959595")
-
+        static let unSaveJobColor = UIColor.color(withHexCode: "6F6F6F")
         static let saveJobColor = UIColor.color(withHexCode: "0470c0")
         static let cancelJobDeleteColor = UIColor.color(withHexCode: "fe3824")
         static let textFieldErrorColor = UIColor.color(withHexCode: "ff0000")
@@ -84,19 +84,22 @@ struct Constants {
         static let jobTypeLabelDeselectedColor = UIColor.init(red: 181.0/255.0, green: 181.0/255.0, blue: 181.0/255.0, alpha: 1.0)
         static let partTimeDaySelectColor = UIColor.init(colorLiteralRed: 142.0/255.0, green: 207.0/255.0, blue: 125.0/255.0, alpha: 1.0)
         static let fullTimeBackgroundColor = UIColor.init(red: 69.0/255.0, green: 177.0/255.0 , blue: 179.0/255.0, alpha: 1.0)
+        static let segmentControlBorderColor = UIColor.init(red: 42/255.0, green: 85/255.0, blue: 169.0/255.0, alpha: 1.0)
+        static let segmentControlSelectionColor = UIColor.init(red: 4/255.0, green: 112/255.0, blue: 191.0/255.0, alpha: 1.0)
     }
     
     struct DesignFont {
-        static let acceptTermsSelected  = "w"
-        static let acceptTermsDeSelected  = "t"
-        static let notification  = "a"
-        static let search  = "y"
+        static let acceptTermsSelected = "w"
+        static let acceptTermsDeSelected = "t"
+        static let notification = "a"
+        static let search = "y"
+        static let notFavourite = "r"
+        static let favourite = "z"
     }
     
     //MARK:- StoryBoards
     struct StoryBoard {
         static let onBoardingStoryboard  = "Onboarding"
-
         static let registrationStoryboard  = "Registration"
         static let profileStoryboard  = "Profile"
         static let jobSearchStoryboard  = "JobSearch"
