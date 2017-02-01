@@ -48,11 +48,19 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
                 if references == 0 {
                     return 128
                 }else if references == 1 {
+                    //200 if one reference is present 
+                    //128 if no reference is present
                     let height = checkReferenceIsAvaialble(ref: experiences[row].references[0]) == true ? 200 : 128
+                    
+                    if indexPath.row == self.experiences.count {
+                        //maintain space to bottom
+                        return CGFloat(height + 20)
+                    }
                     return CGFloat(height)
 
 
                 }else if references == 2 {
+                    //2 reference
                     return 280
                 }
                 return 72
@@ -221,13 +229,29 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
                     cell.yearOfExperienceLabel.text = expInText
                     cell.officeNameLabel.text = experience.officeName
                     cell.officeAddressLabel.text = "\(experience.officeAddress!) \n\(experience.cityName!)"
+                    cell.reference1Name.isHidden = true
+                    cell.reference1Email.isHidden = true
+                    cell.reference1Mobile.isHidden = true
+
+                    cell.reference2Name.isHidden = true
+                    cell.reference2Email.isHidden = true
+                    cell.reference2Mobile.isHidden = true
+
                     if experience.references.count > 0 {
+                        cell.reference1Name.isHidden = false
+                        cell.reference1Email.isHidden = false
+                        cell.reference1Mobile.isHidden = false
+
                         let reference  = experience.references[0]
                         cell.reference1Name.text = (reference.referenceName?.trim().characters.count)! > 0 ? reference.referenceName : "N/A"
                         cell.reference1Email.text = (reference.email?.trim().characters.count)! > 0 ? reference.email : "N/A"
                         cell.reference1Mobile.text = (reference.mobileNumber?.trim().characters.count)! > 0 ? reference.mobileNumber : "N/A"
                     }
                     if experience.references.count > 1 {
+                        cell.reference2Name.isHidden = false
+                        cell.reference2Email.isHidden = false
+                        cell.reference2Mobile.isHidden = false
+
                         let reference  = experience.references[1]
                         cell.reference2Name.text = (reference.referenceName?.trim().characters.count)! > 0 ? reference.referenceName : "N/A"
                         cell.reference2Email.text = (reference.email?.trim().characters.count)! > 0 ? reference.email : "N/A"
@@ -365,15 +389,15 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
                 text.append("\(year) yr")
             }
         }else{
-            text.append("\(year) yr")
+            text.append("\(year) yrs")
         }
         
         if month <= 1 {
             if month != 0 {
-                text.append(" \(month) mo")
+                text.append(" \(month) month")
             }
         }else {
-            text.append(" \(month) mo")
+            text.append(" \(month) months")
         }
         
         return text
@@ -454,7 +478,7 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
         
         let tagList: TagList = {
             let view = TagList()
-            view.backgroundColor = UIColor(red: 233.0/255.0, green: 233.0/255.0, blue: 233.0/255.0, alpha: 1.0)
+            view.backgroundColor = Constants.Color.jobSkillBrickColor
             view.tagMargin = UIEdgeInsets(top: 3, left: 5, bottom: 3, right: 5)
             //            view.separator.image = UIImage(named: "")!
             view.separator.size = CGSize(width: 16, height: 16)
@@ -487,7 +511,7 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
         let subSkills = self.skills[indexPath.row - 1].subSkills
         let tagList: TagList = {
             let view = TagList()
-            view.backgroundColor = UIColor(red: 233.0/255.0, green: 233.0/255.0, blue: 233.0/255.0, alpha: 1.0)
+            view.backgroundColor = Constants.Color.jobSkillBrickColor
             view.tagMargin = UIEdgeInsets(top: 3, left: 5, bottom: 3, right: 5)
             //            view.separator.image = UIImage(named: "")!
             view.separator.size = CGSize(width: 16, height: 16)

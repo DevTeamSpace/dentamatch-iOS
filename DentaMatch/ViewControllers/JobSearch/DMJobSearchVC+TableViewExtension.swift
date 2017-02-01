@@ -152,8 +152,10 @@ extension DMJobSearchVC : UITableViewDataSource, UITableViewDelegate {
         }
         else if indexPath.section == 1 {
             if indexPath.row == 0 {
+                //will implement
             }
             else if indexPath.row == 1 {
+                //will implement
             }
         }
         else if indexPath.section == 2 {
@@ -163,6 +165,7 @@ extension DMJobSearchVC : UITableViewDataSource, UITableViewDelegate {
                 self.navigationController?.pushViewController(registerMapsVC, animated: true)
             }
             else if indexPath.row == 1 {
+                //will implement
             }
         }
     }

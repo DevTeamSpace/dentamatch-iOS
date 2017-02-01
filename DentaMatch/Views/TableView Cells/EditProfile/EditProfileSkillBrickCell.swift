@@ -55,7 +55,7 @@ class EditProfileSkillBrickCell: UITableViewCell,TagListDelegate {
                     $0.layer.borderWidth = 1
                     $0.layer.cornerRadius = 2
             }, onSelect: {
-                $0.backgroundColor = UIColor(red: 233.0/255.0, green: 233.0/255.0, blue: 233.0/255.0, alpha: 1.0) //$0.isSelected ? UIColor.orange : UIColor.white
+                $0.backgroundColor = Constants.Color.jobSkillBrickColor //$0.isSelected ? UIColor.orange : UIColor.white
             })
             tagList.tags.append(tag)
         }

@@ -105,7 +105,7 @@ extension DMJobTitleVC : UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "JobTitleCell") as! JobTitleCell
         cell.selectionStyle = .none
         let objJob = jobTitles[indexPath.row]
-        cell.lblJobTitle.textColor = UIColor.init(red: 81.0/255.0, green: 81.0/255.0, blue: 81.0/255.0, alpha: 1.0)
+        cell.lblJobTitle.textColor = Constants.Color.jobSearchSelectedLabel
         cell.lblJobTitle.text = objJob.jobTitle
         if objJob.jobSelected == true {
             cell.btnTick.setTitle(Constants.DesignFont.acceptTermsSelected, for: .normal)

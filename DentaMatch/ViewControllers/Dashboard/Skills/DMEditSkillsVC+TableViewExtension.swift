@@ -82,7 +82,7 @@ extension DMEditSkillsVC : UITableViewDataSource, UITableViewDelegate{
         
         let tagList: TagList = {
             let view = TagList()
-            view.backgroundColor = UIColor(red: 233.0/255.0, green: 233.0/255.0, blue: 233.0/255.0, alpha: 1.0)
+            view.backgroundColor = Constants.Color.jobSkillBrickColor
             view.tagMargin = UIEdgeInsets(top: 3, left: 5, bottom: 3, right: 5)
             //            view.separator.image = UIImage(named: "")!
             view.separator.size = CGSize(width: 16, height: 16)

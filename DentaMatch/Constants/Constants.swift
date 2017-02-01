@@ -74,6 +74,13 @@ struct Constants {
         static let CalendarSelectionColor = UIColor(red: 15.0/255.0, green: 24.0/255.0, blue: 62.0/255.0, alpha: 1)
         static let availabilitySeletedColor = UIColor(red: 4.0/255.0, green: 112.0/255.0, blue: 192.0/255.0, alpha: 1.0)
         static let availabilityUnseletedColor = UIColor(red: 151.0/255.0, green: 151.0/255.0, blue: 151.0/255.0, alpha: 1.0)
+        static let jobSearchUnSelectedLabel = UIColor(red: 181.0/255.0, green: 181.0/255.0, blue: 181.0/255.0, alpha: 1.0)
+        static let jobSearchSelectedLabel = UIColor(red: 81.0/255.0, green: 81.0/255.0, blue: 81.0/255.0, alpha: 1.0)
+        static let jobSearchTitleLocationColor = UIColor(colorLiteralRed: 229.0/255.0, green: 229.0/255.0, blue: 229.0/255.0, alpha: 1.0)
+        static let jobTitleLabelColor = UIColor(red: 169.0/255.0, green: 169.0/255.0, blue: 169.0/255.0, alpha: 1.0)
+        static let jobSkillBrickColor = UIColor(red: 233.0/255.0, green: 233.0/255.0, blue: 233.0/255.0, alpha: 1.0)
+        static let mapButtonBackGroundColor = UIColor(red: 4/255.0, green: 112/255.0, blue: 191.0/255.0, alpha: 1.0)
+        static let segmentViewBgColor = UIColor(red: 42/255.0, green: 85/255.0, blue: 169.0/255.0, alpha: 1.0)
 
         
         static let loaderRingColor = UIColor.color(withHexCode: "10193e")
