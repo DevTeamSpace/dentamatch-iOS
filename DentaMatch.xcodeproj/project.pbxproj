@@ -34,7 +34,7 @@
 		5A50A2CB1E32163D0010AA31 /* SettingTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A50A2C91E32163D0010AA31 /* SettingTableCell.xib */; };
 		5A5266BD1E26413400C5B7A1 /* DMLicenseSelectionVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5266BC1E26413400C5B7A1 /* DMLicenseSelectionVC+Services.swift */; };
 		5A60A8561E42FF1800789D14 /* DMCalenderVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A60A8551E42FF1800789D14 /* DMCalenderVC+Services.swift */; };
-		5A60A8591E43014F00789D14 /* UserCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A60A8581E43014F00789D14 /* UserCalendar.swift */; };
+		5A60A85B1E43309100789D14 /* UserAvailability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A60A85A1E43309100789D14 /* UserAvailability.swift */; };
 		5A85D20F1E2DFAD000AC4C89 /* SeparatorWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A85D2061E2DFAD000AC4C89 /* SeparatorWrapper.swift */; };
 		5A85D2101E2DFAD000AC4C89 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A85D2071E2DFAD000AC4C89 /* Tag.swift */; };
 		5A85D2111E2DFAD000AC4C89 /* TagContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A85D2081E2DFAD000AC4C89 /* TagContent.swift */; };
@@ -346,7 +346,7 @@
 		5A50A2C91E32163D0010AA31 /* SettingTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingTableCell.xib; sourceTree = "<group>"; };
 		5A5266BC1E26413400C5B7A1 /* DMLicenseSelectionVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMLicenseSelectionVC+Services.swift"; sourceTree = "<group>"; };
 		5A60A8551E42FF1800789D14 /* DMCalenderVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMCalenderVC+Services.swift"; sourceTree = "<group>"; };
-		5A60A8581E43014F00789D14 /* UserCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCalendar.swift; sourceTree = "<group>"; };
+		5A60A85A1E43309100789D14 /* UserAvailability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAvailability.swift; sourceTree = "<group>"; };
 		5A85D2061E2DFAD000AC4C89 /* SeparatorWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatorWrapper.swift; sourceTree = "<group>"; };
 		5A85D2071E2DFAD000AC4C89 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		5A85D2081E2DFAD000AC4C89 /* TagContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagContent.swift; sourceTree = "<group>"; };
@@ -773,7 +773,7 @@
 		5A60A8571E43012A00789D14 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				5A60A8581E43014F00789D14 /* UserCalendar.swift */,
+				5A60A85A1E43309100789D14 /* UserAvailability.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -2100,7 +2100,6 @@
 				F223591D1E3F5F4900E984FC /* DMJobSearchResultVC+TableViewExtension.swift in Sources */,
 				E5E7CB781E2FA23200D4FB59 /* AboutMeCell.swift in Sources */,
 				E5A174C71E201DE40044B17E /* ProfileImageButton.swift in Sources */,
-				5A60A8591E43014F00789D14 /* UserCalendar.swift in Sources */,
 				E5A174C21E201D450044B17E /* CircleProgressBar.m in Sources */,
 				E55462F91DAE4DD1004163B2 /* UIView+Additions.swift in Sources */,
 				E51D4F0D1E40744C00ACC631 /* DMTrackVC+Services.swift in Sources */,
@@ -2214,6 +2213,7 @@
 				F2F5E0CF1E2F62080082187C /* AboutCell.swift in Sources */,
 				E587D2D71E236B84006B7F06 /* DMRegisterMapsVC+GoogleMapsExtension.swift in Sources */,
 				5A3B06CD1E3387FF00EFCA6E /* DMSettingVC+TableViewExtension.swift in Sources */,
+				5A60A85B1E43309100789D14 /* UserAvailability.swift in Sources */,
 				E54976F31E28CEDD006F21E5 /* User.swift in Sources */,
 				E5E7CB831E2FA23200D4FB59 /* ReferenceTableCell.swift in Sources */,
 				E51D4F151E41070700ACC631 /* DMRegisterMapsVC+Services.swift in Sources */,
