@@ -92,6 +92,9 @@ class DentistDetailCell: UITableViewCell {
         if job.days == Constants.Strings.zero {
             self.lblPostTime.text = Constants.Strings.today
         }
+        else if job.days == Constants.Strings.one{
+            self.lblPostTime.text = job.days + Constants.Strings.whiteSpace + Constants.Strings.dayAgo
+        }
         else {
             self.lblPostTime.text = job.jobPostedTimeGap + Constants.Strings.whiteSpace + Constants.Strings.daysAgo
         }

@@ -36,6 +36,7 @@ class DMRegisterMapsVC: DMBaseVC {
     var fromEditProfile = false
     var fromSettings = false
     var fromRegistration = false
+    var fromJobSearch = false
     var userSelectedCoordinate:CLLocationCoordinate2D?
     var addressSelectedFromProfile = ""
     var delegate:LocationAddressDelegate?
@@ -87,7 +88,11 @@ class DMRegisterMapsVC: DMBaseVC {
             self.mapView.animate(to: GMSCameraPosition(target: coordinate, zoom: 15, bearing: 0, viewingAngle: 0))
         }
         
-        if fromRegistration {
+        if fromRegistration  {
+            getCurrentLocation()
+        }
+        
+        if fromJobSearch  {
             getCurrentLocation()
         }
     }

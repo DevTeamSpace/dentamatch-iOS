@@ -20,7 +20,7 @@ class DMJobSearchResultVC : DMBaseVC {
     
     var rightBarBtn : UIButton = UIButton()
     var rightBarButtonItem : UIBarButtonItem = UIBarButtonItem()
-    var isListShow : Bool = true
+    var isListShow : Bool = false
     var isMapShow : Bool = false
     var btnList : UIButton!
     var btnMap : UIButton!
@@ -137,6 +137,7 @@ class DMJobSearchResultVC : DMBaseVC {
             self.btnCurrentLocation.isHidden = true
         }
         isListShow = !isListShow
+        isMapShow = false
     }
     
     func actionMapButton() {
@@ -151,6 +152,7 @@ class DMJobSearchResultVC : DMBaseVC {
             self.btnCurrentLocation.isHidden = false
         }
         isMapShow = !isMapShow
+        isListShow = false
         self.getLocation()
         self.restoreAllMarkers()
     }

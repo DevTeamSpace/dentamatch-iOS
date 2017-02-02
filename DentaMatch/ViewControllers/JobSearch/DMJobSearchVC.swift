@@ -24,6 +24,8 @@ class DMJobSearchVC : DMBaseVC {
     var searchParams = [String : Any]()
     var totalJobsFromServer = 0
     
+    var checkParams = SearchParameters()
+    
     enum TableViewCellHeight: CGFloat {
         case jobTitleAndLocation = 88.0
         case jobType = 189.0
@@ -136,6 +138,13 @@ class DMJobSearchVC : DMBaseVC {
         //if self.jobs.count > 0 {
             let jobSearchResultVC = UIStoryboard.jobSearchStoryBoard().instantiateViewController(type: DMJobSearchResultVC.self)!
             jobSearchResultVC.jobs = self.jobs
+        UserDefaultsManager.sharedInstance.saveSearchParameter(seachParam: searchParams as Any)
+        
+        let check = UserDefaultsManager.sharedInstance.loadSearchParameter()
+        
+        print(check)
+        
+        
             jobSearchResultVC.searchParams = self.searchParams
             jobSearchResultVC.totalJobsFromServer = self.totalJobsFromServer
             self.navigationController?.pushViewController(jobSearchResultVC, animated: true)
@@ -164,6 +173,12 @@ class DMJobSearchVC : DMBaseVC {
         searchParams[Constants.JobDetailKey.jobTitle] = jobTitleIds
         searchParams[Constants.JobDetailKey.page] = 1
         //self.fetchSearchResultAPI(params: searchParams)
+        
+        // TO Save Search Parameter in UserDefault
+        let encodedData = NSKeyedArchiver.archivedData(withRootObject: searchParams)
+        kUserDefaults.set(encodedData, forKey: "SearchParameter")
+        kUserDefaults.synchronize()
+        
         self.goToSearchResult()
     }
 }

@@ -86,6 +86,9 @@ class JobSearchResultCell: UITableViewCell {
         if job.days == Constants.Strings.zero {
             self.lblJobPostTime.text = Constants.Strings.today
         }
+        else if job.days == Constants.Strings.one{
+            self.lblJobPostTime.text = job.days + Constants.Strings.whiteSpace + Constants.Strings.dayAgo
+        }
         else {
             self.lblJobPostTime.text = job.days + Constants.Strings.whiteSpace + Constants.Strings.daysAgo
         }
