@@ -32,10 +32,22 @@ class EditCertificateTableCell: UITableViewCell {
     func createValidityDateAttributedText(date:String) -> NSMutableAttributedString {
         let attributedString = NSMutableAttributedString()
         let validityDateText = NSAttributedString(string: "Validity date ", attributes: [NSFontAttributeName:UIFont.fontRegular(fontSize: 14.0)!,NSForegroundColorAttributeName:Constants.Color.textFieldTextColor])
-        let dateString = NSAttributedString(string: date, attributes: [NSFontAttributeName:UIFont.fontSemiBold(fontSize: 14.0)!,NSForegroundColorAttributeName:Constants.Color.textFieldTextColor])
+        let convertedDate = self.getCertificateDateFormat(dateString: date)
+        let dateString = NSAttributedString(string: convertedDate, attributes: [NSFontAttributeName:UIFont.fontSemiBold(fontSize: 14.0)!,NSForegroundColorAttributeName:Constants.Color.textFieldTextColor])
         attributedString.append(validityDateText)
         attributedString.append(dateString)
         return attributedString
+    }
+    
+    func getCertificateDateFormat(dateString:String) -> String {
+        if !dateString.isEmptyField {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat =  Date.dateFormatYYYYMMDDDashed()
+            let date = dateFormatter.date(from: dateString)
+            dateFormatter.dateFormat = Date.dateFormatDDMMMYYYY()
+            return dateFormatter.string(from: date!)
+        }
+        return ""
     }
     
 }

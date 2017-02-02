@@ -18,7 +18,11 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
         let profileOptions = EditProfileOptions(rawValue: indexPath.section)!
         switch profileOptions {
         case .profileHeader:
-            return 426
+            if (UserManager.shared().activeUser.aboutMe?.isEmptyField)! {
+                return 300
+            }
+            let aboutTextHeight = EditProfileHeaderTableCell.calculateHeight(text: UserManager.shared().activeUser.aboutMe!)
+            return 300 + aboutTextHeight
             
         case .dentalStateboard:
             if dentalStateBoardURL.isEmpty {

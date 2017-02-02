@@ -22,6 +22,7 @@ extension DMSettingVC : UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingTableCell") as! SettingTableCell
         cell.selectionStyle = .none
+        cell.leftIconImageView.isHidden = true
         switch indexPath.row {
         case 0:
             cell.TextLabel.text = "Change Home Location"
@@ -38,7 +39,9 @@ extension DMSettingVC : UITableViewDataSource,UITableViewDelegate {
             cell.leftIconLabel.text = "i"
         case 4:
             cell.TextLabel.text = "Logout"
-            cell.leftIconLabel.text = "i"
+            cell.leftIconLabel.text = ""
+            cell.leftIconImageView.isHidden = false
+
 
         default: break
             

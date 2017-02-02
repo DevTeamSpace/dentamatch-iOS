@@ -19,6 +19,7 @@ class DMEditCertificateVC: DMBaseVC,DatePickerViewDelegate {
     var dateView:DatePickerView?
     var certificateImage:UIImage?
     var isEditMode = false
+    var dateSelected = ""
 
     //MARK:- View LifeCycle
     override func viewDidLoad() {
@@ -49,13 +50,29 @@ class DMEditCertificateVC: DMBaseVC,DatePickerViewDelegate {
         
         self.dateView = DatePickerView.loadExperiencePickerView(withText:"" , tag: 0)
         self.dateView?.delegate = self
-        self.validityDatePicker.text = certificate?.validityDate
+        if let date = certificate?.validityDate {
+            dateSelected = date
+        }
+        self.validityDatePicker.text = self.getCertificateDateFormat(dateString: dateSelected)
+        
         self.validityDatePicker.inputView = dateView
         self.validityDatePicker.tintColor = UIColor.clear
         self.title = "EDIT PROFILE"
         self.changeNavBarAppearanceForDefault()
         self.navigationItem.leftBarButtonItem = self.backBarButton()
         certificateNameLabel.text = certificate?.certificationName
+    }
+    
+    
+    func getCertificateDateFormat(dateString:String) -> String {
+        if !dateString.isEmptyField {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat =  Date.dateFormatYYYYMMDDDashed()
+            let date = dateFormatter.date(from: dateString)
+            dateFormatter.dateFormat = Date.dateFormatDDMMMYYYY()
+            return dateFormatter.string(from: date!)
+        }
+        return ""
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -157,8 +174,9 @@ class DMEditCertificateVC: DMBaseVC,DatePickerViewDelegate {
     }
     func doneButtonAction(date: String, tag: Int) {
         self.view.endEditing(true)
-        self.validityDatePicker.text = date
-        self.certificate?.validityDate = date
+        self.dateSelected = date
+        self.certificate?.validityDate = dateSelected
+        self.validityDatePicker.text = self.getCertificateDateFormat(dateString: dateSelected)
     }
     
     func updateProfileScreen() {
@@ -169,7 +187,7 @@ class DMEditCertificateVC: DMBaseVC,DatePickerViewDelegate {
 extension DMEditCertificateVC : UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        self.dateView?.getPreSelectedValues(dateString: textField.text!, curTag: textField.tag)
+        self.dateView?.getPreSelectedValues(dateString: dateSelected, curTag: textField.tag)
         debugPrint("set Tag =\(textField.tag)")
         if let textField = textField as? PickerAnimatedTextField {
             textField.layer.borderColor = Constants.Color.textFieldColorSelected.cgColor
