@@ -19,7 +19,7 @@ class EditProfileHeaderTableCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.aboutTextView.textContainer.lineFragmentPadding = 12.0
-
+        self.clipsToBounds = true
         // Initialization code
     }
 
@@ -48,4 +48,23 @@ class EditProfileHeaderTableCell: UITableViewCell {
         
     }
     
+    class func calculateHeight(text:String) -> CGFloat {
+        let textView = UITextView()
+        textView.font = UIFont.fontRegular(fontSize: 16.0)!
+        var newFrame:CGRect!
+        textView.text = text
+        
+        let fixedWidth = UIScreen.main.bounds.width - 40
+        textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
+        let newSize = textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
+        newFrame = textView.frame
+        newFrame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
+
+        print("height \(newFrame.height)")
+        if newFrame.height + 10 > 109 {
+            return 109
+        } else {
+            return newFrame.height + 10
+        }
+    }
 }

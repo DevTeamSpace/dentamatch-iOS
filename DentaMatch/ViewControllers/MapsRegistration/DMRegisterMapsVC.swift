@@ -36,6 +36,7 @@ class DMRegisterMapsVC: DMBaseVC {
     var fromEditProfile = false
     var fromSettings = false
     var fromRegistration = false
+    var fromJobSearch = false
     var userSelectedCoordinate:CLLocationCoordinate2D?
     var addressSelectedFromProfile = ""
     var delegate:LocationAddressDelegate?
@@ -51,7 +52,9 @@ class DMRegisterMapsVC: DMBaseVC {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        if !fromRegistration {
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
+        }
         self.hideLoader()
     }
     
