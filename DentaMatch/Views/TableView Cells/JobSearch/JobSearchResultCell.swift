@@ -83,6 +83,8 @@ class JobSearchResultCell: UITableViewCell {
     }
     
     func handlePartTimeLabel(job:Job) {
+        var partTimeJobDays = [String]()
+
         let jobType = JobType(rawValue: job.jobType)!
         switch jobType {
         case .fullTime:
@@ -91,6 +93,41 @@ class JobSearchResultCell: UITableViewCell {
             self.lblDays.isHidden = false
         case .temporary:
             self.lblDays.isHidden = false
+        }
+        
+        if job.isSunday == 1 {
+            partTimeJobDays.append(Constants.Days.sunday)
+        }
+        if job.isMonday == 1 {
+            partTimeJobDays.append(Constants.Days.monday)
+        }
+        if job.isTuesday == 1 {
+            partTimeJobDays.append(Constants.Days.tuesday)
+        }
+        if job.isWednesday == 1 {
+            partTimeJobDays.append(Constants.Days.wednesday)
+        }
+        if job.isThursday == 1 {
+            partTimeJobDays.append(Constants.Days.thursday)
+        }
+        if job.isFriday == 1 {
+            partTimeJobDays.append(Constants.Days.friday)
+        }
+        if job.isSaturday == 1 {
+            partTimeJobDays.append(Constants.Days.saturday)
+        }
+
+        self.lblDays.text = partTimeJobDays.joined(separator: Constants.Strings.comma + Constants.Strings.whiteSpace)
+        
+        if job.days == Constants.Strings.zero {
+            self.lblJobPostTime.text = Constants.Strings.today
+        }
+        else {
+            if job.days == "1" {
+                self.lblJobPostTime.text = job.days + Constants.Strings.whiteSpace + "DAY AGO"
+            } else {
+            self.lblJobPostTime.text = job.days + Constants.Strings.whiteSpace + Constants.Strings.daysAgo
+            }
         }
     }
 }
