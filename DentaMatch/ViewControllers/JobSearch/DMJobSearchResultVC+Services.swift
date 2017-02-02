@@ -24,7 +24,7 @@ extension DMJobSearchResultVC {
     }
     
     func fetchSearchResultAPI(params:[String:Any]) {
-        print("Search Parameters\n\(params.description))")
+        debugPrint("Search Parameters\n\(params.description))")
         self.showLoader()
         APIManager.apiPost(serviceName: Constants.API.JobSearchResultAPI, parameters: params) { (response:JSON?, error:NSError?) in
             self.hideLoader()
@@ -45,7 +45,6 @@ extension DMJobSearchResultVC {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
                 let skillList = response[Constants.ServerKey.result][Constants.ServerKey.joblist].array
-                self.jobs.removeAll()
                 for jobObject in (skillList)! {
                     let job = Job(job: jobObject)
                     self.jobs.append(job)
@@ -56,7 +55,7 @@ extension DMJobSearchResultVC {
                 DispatchQueue.main.async {
                     self.tblJobSearchResult.reloadData()
                     self.tblJobSearchResult.tableFooterView = nil
-                    self.lblResultCount.text = String(self.totalJobsFromServer) + Constants.Strings.whiteSpace + Constants.Strings.resultsFound
+                    self.lblResultCount.text = String(self.jobs.count) + Constants.Strings.whiteSpace + Constants.Strings.resultsFound
                 }
             } else {
                 self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)

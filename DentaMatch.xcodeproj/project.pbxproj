@@ -293,6 +293,7 @@
 		F2540F5D1E274258004B0538 /* DMJobSearchResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2540F5C1E274258004B0538 /* DMJobSearchResultVC.swift */; };
 		F2540F601E274360004B0538 /* JobSearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2540F5E1E274360004B0538 /* JobSearchResultCell.swift */; };
 		F2540F611E274360004B0538 /* JobSearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2540F5F1E274360004B0538 /* JobSearchResultCell.xib */; };
+		F2CBC10A1E41E9BE00345B9F /* DMJobDetailVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CBC1091E41E9BE00345B9F /* DMJobDetailVC+Services.swift */; };
 		F2D03BA51E1F580C0005D3A4 /* JobSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2D03BA41E1F580C0005D3A4 /* JobSearch.storyboard */; };
 		F2D03BA81E1F67BA0005D3A4 /* DMJobSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D03BA71E1F67BA0005D3A4 /* DMJobSearchVC.swift */; };
 		F2F5E0CB1E2F292F0082187C /* DentistDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F5E0C91E2F292F0082187C /* DentistDetailCell.swift */; };
@@ -614,6 +615,7 @@
 		F2540F5C1E274258004B0538 /* DMJobSearchResultVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMJobSearchResultVC.swift; sourceTree = "<group>"; };
 		F2540F5E1E274360004B0538 /* JobSearchResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobSearchResultCell.swift; sourceTree = "<group>"; };
 		F2540F5F1E274360004B0538 /* JobSearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobSearchResultCell.xib; sourceTree = "<group>"; };
+		F2CBC1091E41E9BE00345B9F /* DMJobDetailVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMJobDetailVC+Services.swift"; sourceTree = "<group>"; };
 		F2D03BA41E1F580C0005D3A4 /* JobSearch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = JobSearch.storyboard; sourceTree = "<group>"; };
 		F2D03BA71E1F67BA0005D3A4 /* DMJobSearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMJobSearchVC.swift; sourceTree = "<group>"; };
 		F2F5E0C91E2F292F0082187C /* DentistDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DentistDetailCell.swift; sourceTree = "<group>"; };
@@ -1792,6 +1794,7 @@
 				F22E13DB1E409B9D0076F61E /* DMJobSearchResultVC+Services.swift */,
 				F2F5E0DD1E31CE2A0082187C /* DMJobDetailVC.swift */,
 				F223591E1E3F608900E984FC /* DMJobDetaiVC+TableViewExtension.swift */,
+				F2CBC1091E41E9BE00345B9F /* DMJobDetailVC+Services.swift */,
 				F2540F581E263613004B0538 /* DMJobTitleVC.swift */,
 				F239E2DF1E28D0890071909E /* JobMarker.swift */,
 			);
@@ -2229,6 +2232,7 @@
 				5AC714581E34F76900E433C1 /* DMSettingVC+Services.swift in Sources */,
 				E587D2F61E24C0B0006B7F06 /* DMSkillsVC.swift in Sources */,
 				E50B3F501E194CD7004C5F32 /* RegistrationTableViewCell.swift in Sources */,
+				F2CBC10A1E41E9BE00345B9F /* DMJobDetailVC+Services.swift in Sources */,
 				5A85D2141E2DFAD000AC4C89 /* TagPresentable.swift in Sources */,
 				5A50A2CA1E32163D0010AA31 /* SettingTableCell.swift in Sources */,
 				E558D9081E2E6FE700A6DF95 /* DMEditProfileVC.swift in Sources */,

@@ -36,19 +36,20 @@ extension DMJobSearchResultVC : UITableViewDataSource, UITableViewDelegate, JobS
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let jobDetailVC = UIStoryboard.jobSearchStoryBoard().instantiateViewController(type: DMJobDetailVC.self)!
+        jobDetailVC.job = self.jobs[indexPath.row]
         self.navigationController?.pushViewController(jobDetailVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath)
     {
-        if indexPath.row < self.jobs.count - 3 {
+        if indexPath.row == self.jobs.count - 1 {
             self.callLoadMore()
         }
     }
     
     //MARK:- Call Load More
     func callLoadMore() {
-        if loadingMoreJobs == true{
+        if loadingMoreJobs == true {
             return
         }
         else {
@@ -65,8 +66,8 @@ extension DMJobSearchResultVC : UITableViewDataSource, UITableViewDelegate, JobS
         let footer = Bundle.main.loadNibNamed("LoadMoreView", owner: nil, options: nil)?[0] as? LoadMoreView
         footer!.frame = CGRect(x:0, y:0, width:tableView.frame.size.width,height:44)
         footer?.layoutIfNeeded();
-        footer?.activityIndicator.startAnimating();
-        tableView.tableFooterView = footer;
+        footer?.activityIndicator.startAnimating()
+        tableView.tableFooterView = footer
     }
     
     //MARK:- JobSearchResultCellDelegate Method

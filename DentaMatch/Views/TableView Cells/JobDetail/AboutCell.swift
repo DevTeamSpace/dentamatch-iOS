@@ -27,4 +27,12 @@ class AboutCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func setCellData(job : Job) {
+        self.lblDentistName.text = job.officeName
+        self.lblDistance.text = String(format: "%.1f", job.distance) + Constants.Strings.whiteSpace + Constants.Strings.miles
+        self.lblAddress.text = job.address
+        self.lblOfficeType.text = job.officeTypeName
+        self.lblNoOfOpening.text = "10"
+    }
+    
 }

@@ -30,7 +30,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wbG-6Q-eGm">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="115"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="114"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dental Assistance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JiJ-r6-G7B">
                                 <rect key="frame" x="28" y="19" width="196" height="22"/>
@@ -48,6 +48,9 @@
                                 <state key="normal" title="r">
                                     <color key="titleColor" red="0.43529411759999997" green="0.43529411759999997" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="actionFavourite:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="gvk-kK-BkN"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UbB-K9-Quo">
                                 <rect key="frame" x="28" y="48" width="61" height="21"/>
@@ -61,18 +64,14 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunday 06, Monday 09" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbT-hg-hiR">
-                                <rect key="frame" x="105" y="48" width="92" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="Iof-qK-PA7"/>
-                                    <constraint firstAttribute="width" constant="92" id="xm4-Ju-6gH"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mo,su," textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbT-hg-hiR">
+                                <rect key="frame" x="105" y="51" width="195" height="15"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 DAYS AGO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NOt-83-ba0">
-                                <rect key="frame" x="28" y="88" width="150" height="11"/>
+                                <rect key="frame" x="28" y="87" width="150" height="11"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="ah0-Dc-qrV"/>
                                     <constraint firstAttribute="height" constant="11" id="mFe-OS-sAg"/>
@@ -82,12 +81,18 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P41-7v-emu">
-                                <rect key="frame" x="18" y="114" width="302" height="1"/>
+                                <rect key="frame" x="18" y="113" width="302" height="1"/>
                                 <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="ujf-XN-HpS"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Applied" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSf-IO-YoC">
+                                <rect key="frame" x="255.5" y="85.5" width="44.5" height="14.5"/>
+                                <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="12"/>
+                                <color key="textColor" red="0.55686274509803924" green="0.81176470588235294" blue="0.49411764705882355" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -104,7 +109,10 @@
                             <constraint firstAttribute="bottom" secondItem="P41-7v-emu" secondAttribute="bottom" id="gRi-iL-CHe"/>
                             <constraint firstItem="MMU-ub-pAV" firstAttribute="top" secondItem="wbG-6Q-eGm" secondAttribute="top" constant="20" id="hWl-eJ-7x4"/>
                             <constraint firstItem="JiJ-r6-G7B" firstAttribute="top" secondItem="wbG-6Q-eGm" secondAttribute="top" constant="19" id="ibd-Ap-6KE"/>
+                            <constraint firstItem="rSf-IO-YoC" firstAttribute="centerY" secondItem="NOt-83-ba0" secondAttribute="centerY" id="j4b-Wn-Ri6"/>
+                            <constraint firstAttribute="trailing" secondItem="rSf-IO-YoC" secondAttribute="trailing" constant="20" id="nl0-wF-QWc"/>
                             <constraint firstAttribute="bottom" secondItem="NOt-83-ba0" secondAttribute="bottom" constant="16" id="uJa-Gp-xY0"/>
+                            <constraint firstAttribute="trailing" secondItem="lbT-hg-hiR" secondAttribute="trailing" constant="20" id="vcn-rl-D3d"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -118,6 +126,7 @@
             <connections>
                 <outlet property="btnFavourite" destination="MMU-ub-pAV" id="eyp-pE-tv4"/>
                 <outlet property="btnJobType" destination="UbB-K9-Quo" id="qOm-Ja-a2n"/>
+                <outlet property="lblApplied" destination="rSf-IO-YoC" id="2b6-74-gdu"/>
                 <outlet property="lblDays" destination="lbT-hg-hiR" id="9Rh-gb-mVR"/>
                 <outlet property="lblDentistName" destination="JiJ-r6-G7B" id="FQR-nT-mtG"/>
                 <outlet property="lblPostTime" destination="NOt-83-ba0" id="cRZ-zS-6eC"/>

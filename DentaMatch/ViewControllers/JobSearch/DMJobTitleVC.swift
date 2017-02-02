@@ -52,7 +52,7 @@ class DMJobTitleVC: DMBaseVC {
         self.tblJobTitle.rowHeight = UITableViewAutomaticDimension
         self.tblJobTitle.register(UINib(nibName: "JobTitleCell", bundle: nil), forCellReuseIdentifier: "JobTitleCell")
         self.navigationItem.leftBarButtonItem = self.backBarButton()
-        self.setRightBarButton(title: Constants.Strings.save, width : rightBarButtonWidth, font : UIFont.fontRegular(fontSize: 16.0)!)
+        self.setRightBarButton(title: Constants.Strings.save, imageName : "" ,width : rightBarButtonWidth, font : UIFont.fontRegular(fontSize: 16.0)!)
     }
     
     func getJobsAPI() {

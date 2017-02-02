@@ -133,16 +133,16 @@ class DMJobSearchVC : DMBaseVC {
     }
     
     func goToSearchResult() {
-        if self.jobs.count > 0 {
+        //if self.jobs.count > 0 {
             let jobSearchResultVC = UIStoryboard.jobSearchStoryBoard().instantiateViewController(type: DMJobSearchResultVC.self)!
             jobSearchResultVC.jobs = self.jobs
             jobSearchResultVC.searchParams = self.searchParams
             jobSearchResultVC.totalJobsFromServer = self.totalJobsFromServer
             self.navigationController?.pushViewController(jobSearchResultVC, animated: true)
-        }
-        else {
-            self.makeToast(toastString: Constants.Strings.zero + Constants.Strings.resultsFound)
-        }
+//        }
+//        else {
+//            self.makeToast(toastString: Constants.Strings.zero + Constants.Strings.resultsFound)
+//        }
     }
     
     func actionSearchButton() {
@@ -163,6 +163,7 @@ class DMJobSearchVC : DMBaseVC {
         searchParams[Constants.JobDetailKey.parttimeDays] = partTimeJobDays
         searchParams[Constants.JobDetailKey.jobTitle] = jobTitleIds
         searchParams[Constants.JobDetailKey.page] = 1
-        self.fetchSearchResultAPI(params: searchParams)
+        //self.fetchSearchResultAPI(params: searchParams)
+        self.goToSearchResult()
     }
 }

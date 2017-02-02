@@ -27,7 +27,7 @@ class DMJobSearchResultVC : DMBaseVC {
     var currentCoordinate : CLLocationCoordinate2D! = CLLocationCoordinate2D(latitude : 0.00, longitude : 0.00)
     var arrMarkers  = [JobMarker]()
     var jobs = [Job]()
-    var rightBarButtonWidth : CGFloat = 25.0
+    var rightBarButtonWidth : CGFloat = 20.0
     var cellHeight : CGFloat = 172.0
     var loadingMoreJobs = false
     var totalJobsFromServer = 0
@@ -55,15 +55,23 @@ class DMJobSearchResultVC : DMBaseVC {
         super.viewDidAppear(animated)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        jobsPageNo = 1
+        self.jobs.removeAll()
+        searchParams[Constants.JobDetailKey.page] = "\(self.jobsPageNo)"
+        self.fetchSearchResultAPI(params: searchParams)
+    }
+    
     //MARK : Private Method
     func setUp() {
         self.mapViewSearchResult.isHidden = true
         self.tblJobSearchResult.register(UINib(nibName: "JobSearchResultCell", bundle: nil), forCellReuseIdentifier: "JobSearchResultCell")
         self.mapViewSearchResult.delegate = self
         self.mapViewSearchResult.isMyLocationEnabled = true
-        self.lblResultCount.text = String(self.totalJobsFromServer) + Constants.Strings.whiteSpace + Constants.Strings.resultsFound
+        self.lblResultCount.text = String(self.jobs.count) + Constants.Strings.whiteSpace + Constants.Strings.resultsFound
         self.setLeftBarButton(title: Constants.DesignFont.notification)
-        self.setRightBarButton(title: Constants.DesignFont.search, width : rightBarButtonWidth, font: UIFont.designFont(fontSize: 16.0)!)
+        self.setRightBarButton(title: "",imageName: "search",width : rightBarButtonWidth, font: UIFont.designFont(fontSize: 16.0)!)
         self.setUpSegmentControl()
         self.constraintTblViewSearchResultHeight.constant = UIScreen.main.bounds.height - (self.navigationController?.navigationBar.frame.height)! - UIApplication.shared.statusBarFrame.height - (self.tabBarController?.tabBar.frame.height)! - (32.0)
         self.loadViewIfNeeded()

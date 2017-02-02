@@ -43,11 +43,12 @@ class DMBaseVC: UIViewController {
         navigationItem.leftBarButtonItem = leftBarButtonItem
     }
     
-    func setRightBarButton(title : String, width : CGFloat, font : UIFont)  {
+    func setRightBarButton(title : String, imageName : String, width : CGFloat, font : UIFont)  {
         var rightBarBtn : UIButton = UIButton()
         var rightBarButtonItem : UIBarButtonItem = UIBarButtonItem()
         rightBarBtn = UIButton()
         rightBarBtn.setTitle(title, for: .normal)
+        rightBarBtn.setImage(UIImage(named : imageName), for: .normal)
         rightBarBtn.titleLabel?.font = font
         rightBarBtn.frame = CGRect(x : 0,y : 0,width: width,height : 25)
         rightBarBtn.imageView?.contentMode = .scaleAspectFit
