@@ -13,13 +13,13 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Calender-->
+        <!--Calendar-->
         <scene sceneID="4zl-fy-AwR">
             <objects>
                 <navigationController storyboardIdentifier="CanederNav" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NUS-Px-Ne8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Calender" image="calender" id="GmI-ki-020"/>
+                    <tabBarItem key="tabBarItem" title="Calendar" image="calender" id="GmI-ki-020"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="B76-yd-D1j">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="B76-yd-D1j">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

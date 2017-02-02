@@ -50,7 +50,7 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
                 }else if references == 1 {
                     //200 if one reference is present 
                     //128 if no reference is present
-                    let height = checkReferenceIsAvaialble(ref: experiences[row].references[0]) == true ? 200 : 128
+                    let height = checkReferenceIsAvaialble(ref: experiences[row].references[0]) == true ? 200 : 120
                     
                     if indexPath.row == self.experiences.count {
                         //maintain space to bottom
@@ -60,8 +60,12 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
 
 
                 }else if references == 2 {
+                    
+                    if indexPath.row == self.experiences.count {
+                       return 285
+                    }
                     //2 reference
-                    return 280
+                    return 265
                 }
                 return 72
             }
