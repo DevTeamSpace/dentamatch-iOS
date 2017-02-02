@@ -39,7 +39,6 @@ extension DMJobDetailVC : UITableViewDataSource, UITableViewDelegate, JobDescrip
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "JobDescriptionCell") as! JobDescriptionCell
             cell.lblDescription.text = job.templateDesc
-            cell.lblDescription.text = "adfadgadgadfgdfg"
             if isReadMore == true {
                 cell.btnReadMore.setTitle(Constants.Strings.readLess, for: .normal)
             }
