@@ -41,8 +41,12 @@ class DatePickerView: UIView {
         if dateString.trim().characters.count > 0
         {
             let date =  Date.stringToDate(dateString: dateString)
+            if date < Date() {
+            } else {
             self.datePicker.setDate(date, animated: true)
-
+            }
+        } else {
+            self.datePicker.setDate(Date(), animated: false)
         }
         self.currentTag = curTag
     }

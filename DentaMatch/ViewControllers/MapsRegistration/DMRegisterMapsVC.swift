@@ -220,7 +220,7 @@ class DMRegisterMapsVC: DMBaseVC {
     
     //MARK:- IBActions
     @IBAction func gpsNavigationButtonPressed(_ sender: Any) {
-        if fromEditProfile {
+        if fromEditProfile || fromSettings || fromJobSearch {
             getCurrentLocation()
         } else {
             guard let _ = self.currentLocation else {
