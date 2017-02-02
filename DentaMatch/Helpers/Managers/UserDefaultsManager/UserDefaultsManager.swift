@@ -9,6 +9,8 @@
 import UIKit
 import Foundation
 
+let SEARCH_PARAMETR_KEY = "searchParameter"
+
 class UserDefaultsManager: NSObject {
     
     static let sharedInstance = UserDefaultsManager()
@@ -107,5 +109,31 @@ class UserDefaultsManager: NSObject {
 
     func clearCache() {
         UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
+    }
+    
+    
+    //Load last searched parameter user data, if any
+    func loadSearchParameter() -> [String:AnyObject]? {
+        if let decodedUser = kUserDefaults.object(forKey: SEARCH_PARAMETR_KEY) as? Data {
+            let searchParamter = NSKeyedUnarchiver.unarchiveObject(with: decodedUser)
+            return searchParamter as? [String:AnyObject]
+        }
+        return nil
+    }
+    
+    // Save SearchParameter
+    func saveSearchParameter(seachParam : Any) {
+        kUserDefaults.set(NSKeyedArchiver.archivedData(withRootObject: seachParam) as Any?, forKey: SEARCH_PARAMETR_KEY)
+        kUserDefaults.synchronize()
+    }
+    
+    
+    // Delete Search Parameter
+    func deleteSearchParameter() {
+        // remove Search Parameter from storage
+        kUserDefaults.removeObject(forKey: SEARCH_PARAMETR_KEY)
+        // free user object memory
+        kUserDefaults.synchronize()
+        
     }
 }

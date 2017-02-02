@@ -54,7 +54,7 @@ struct Constants {
         static let textFieldColorSelected = UIColor.color(withHexCode: "0470c0")
         static let textFieldPlaceHolderColor =  UIColor.color(withHexCode: "959595")
         static let brickTextColor =  UIColor.color(withHexCode: "959595")
-
+        static let unSaveJobColor = UIColor.color(withHexCode: "6F6F6F")
         static let saveJobColor = UIColor.color(withHexCode: "0470c0")
         static let cancelJobDeleteColor = UIColor.color(withHexCode: "fe3824")
         static let textFieldErrorColor = UIColor.color(withHexCode: "ff0000")
@@ -94,28 +94,32 @@ struct Constants {
         static let jobTypeLabelDeselectedColor = UIColor.init(red: 181.0/255.0, green: 181.0/255.0, blue: 181.0/255.0, alpha: 1.0)
         static let partTimeDaySelectColor = UIColor.init(colorLiteralRed: 142.0/255.0, green: 207.0/255.0, blue: 125.0/255.0, alpha: 1.0)
         static let fullTimeBackgroundColor = UIColor.init(red: 69.0/255.0, green: 177.0/255.0 , blue: 179.0/255.0, alpha: 1.0)
+        static let segmentControlBorderColor = UIColor.init(red: 42/255.0, green: 85/255.0, blue: 169.0/255.0, alpha: 1.0)
+        static let segmentControlSelectionColor = UIColor.init(red: 4/255.0, green: 112/255.0, blue: 191.0/255.0, alpha: 1.0)
     }
     
     struct DesignFont {
-        static let acceptTermsSelected  = "w"
-        static let acceptTermsDeSelected  = "t"
-        static let notification  = "a"
-        static let search  = "y"
+        static let acceptTermsSelected = "w"
+        static let acceptTermsDeSelected = "t"
+        static let notification = "a"
+        static let search = "y"
+        static let notFavourite = "r"
+        static let favourite = "z"
+        static let about = "i"
+        static let jobDescription = "g"
+        static let officeDescription = "v"
+        static let map = "j"
     }
     
     //MARK:- StoryBoards
     struct StoryBoard {
         static let onBoardingStoryboard  = "Onboarding"
-
         static let registrationStoryboard  = "Registration"
         static let profileStoryboard  = "Profile"
         static let jobSearchStoryboard  = "JobSearch"
         static let trackStoryboard  = "Track"
-
- 
         static let dashboardStoryboard  = "Dashboard"
         static let calenderStoryboard  = "Calender"
-
 
         struct Identifer {
             static let registrationNav = "RegistrationNAV"
@@ -178,6 +182,8 @@ struct Constants {
         static let jobList = Constants.API.apiURL("users/job-list")
         static let saveJob = Constants.API.apiURL("users/save-job")
         static let cancelJob = Constants.API.apiURL("users/cancel-job")
+        static let jobDetail = Constants.API.apiURL("jobs/job-detail")
+        static let applyJob = Constants.API.apiURL("users/apply-job")
 
         static let setAvailabality = Constants.API.apiURL("users/update-availability")
 
@@ -351,6 +357,12 @@ struct Constants {
         static let selectTitle = "Please select at least one title"
         static let selectLocation = "Please select location"
         
+        //Apply Job
+        static let congratulations = "congratulations"
+        static let jobApplied = "You have successfully applied for the job."
+        static let completeYourProfile = "Complete your profile"
+        static let completeYourProfileDetailMsg = "You’ll need to fill out your profile before applying for the job. Would you like to fill this out now?"
+        
         //change password screen messgaes
         struct AlertTitle {
             static let invalidEmailTitle = ""
@@ -366,7 +378,7 @@ struct Constants {
         static let forgotPassword = "FORGOT PASSWORD"
         static let jobSearch = "SEARCH JOB"
         static let jobTitle = "JOB TITLE"
-        static let jobDetail = "JOB DETAIL"
+        static let jobDetails = "JOB DETAILS"
     }
     
     //MARK:- Strings
@@ -376,11 +388,21 @@ struct Constants {
         static let save = "Save"
         static let today = "Today"
         static let daysAgo = "DAYS AGO"
+        static let dayAgo = "DAY AGO"
         static let comma = ","
         static let miles = "miles"
         static let partTime = "Part Time"
         static let fullTime = "Full Time"
         static let zero = "0"
+        static let one = "1"
+        static let yes = "Yes"
+        static let no = "No"
+        static let about = "ABOUT"
+        static let jobDesc = "JOB DESCRIPTION"
+        static let officeDesc = "OFFICE DESCRIPTION"
+        static let map = "MAP"
+        static let readMore = "READ MORE"
+        static let readLess = "READ LESS"
     }
     
     //MARK:- Weak Days

@@ -21,16 +21,10 @@ class DMJobSearchVC : DMBaseVC {
     var location : Location! = Location()
     var isJobTypeFullTime : String! = "0"
     var isJobTypePartTime : String! = "0"
-    var searchParams = [
-        Constants.JobDetailKey.lat:"",
-        Constants.JobDetailKey.lng:"",
-        Constants.JobDetailKey.zipCode:"",
-        Constants.JobDetailKey.isFulltime:"",
-        Constants.JobDetailKey.isParttime:"",
-        Constants.JobDetailKey.parttimeDays:[],
-        Constants.JobDetailKey.jobTitle:[],
-        Constants.JobDetailKey.page:""
-        ] as [String : Any]
+    var searchParams = [String : Any]()
+    var totalJobsFromServer = 0
+    
+    var checkParams = SearchParameters()
     
     enum TableViewCellHeight: CGFloat {
         case jobTitleAndLocation = 88.0
@@ -63,6 +57,16 @@ class DMJobSearchVC : DMBaseVC {
         self.tblViewJobSearch.register(UINib(nibName: "JobSearchTypeCell", bundle: nil), forCellReuseIdentifier: "JobSearchTypeCell")
         self.tblViewJobSearch.register(UINib(nibName: "JobSearchPartTimeCell", bundle: nil), forCellReuseIdentifier: "JobSearchPartTimeCell")
         self.tblViewJobSearch.register(UINib(nibName: "CurrentLocationCell", bundle: nil), forCellReuseIdentifier: "CurrentLocationCell")
+        searchParams = [
+            Constants.JobDetailKey.lat:"",
+            Constants.JobDetailKey.lng:"",
+            Constants.JobDetailKey.zipCode:"",
+            Constants.JobDetailKey.isFulltime:"",
+            Constants.JobDetailKey.isParttime:"",
+            Constants.JobDetailKey.parttimeDays:[],
+            Constants.JobDetailKey.jobTitle:[],
+            Constants.JobDetailKey.page:""
+        ]
     }
     
     func validateFields() -> Bool {
@@ -131,11 +135,23 @@ class DMJobSearchVC : DMBaseVC {
     }
     
     func goToSearchResult() {
-        if self.jobs.count > 0 {
+        //if self.jobs.count > 0 {
             let jobSearchResultVC = UIStoryboard.jobSearchStoryBoard().instantiateViewController(type: DMJobSearchResultVC.self)!
             jobSearchResultVC.jobs = self.jobs
+        UserDefaultsManager.sharedInstance.saveSearchParameter(seachParam: searchParams as Any)
+        
+        let check = UserDefaultsManager.sharedInstance.loadSearchParameter()
+        
+        print(check)
+        
+        
+            jobSearchResultVC.searchParams = self.searchParams
+            jobSearchResultVC.totalJobsFromServer = self.totalJobsFromServer
             self.navigationController?.pushViewController(jobSearchResultVC, animated: true)
-        }
+//        }
+//        else {
+//            self.makeToast(toastString: Constants.Strings.zero + Constants.Strings.resultsFound)
+//        }
     }
     
     func actionSearchButton() {
@@ -156,6 +172,13 @@ class DMJobSearchVC : DMBaseVC {
         searchParams[Constants.JobDetailKey.parttimeDays] = partTimeJobDays
         searchParams[Constants.JobDetailKey.jobTitle] = jobTitleIds
         searchParams[Constants.JobDetailKey.page] = 1
-        self.fetchSearchResultAPI(params: searchParams)
+        //self.fetchSearchResultAPI(params: searchParams)
+        
+        // TO Save Search Parameter in UserDefault
+        let encodedData = NSKeyedArchiver.archivedData(withRootObject: searchParams)
+        kUserDefaults.set(encodedData, forKey: "SearchParameter")
+        kUserDefaults.synchronize()
+        
+        self.goToSearchResult()
     }
 }

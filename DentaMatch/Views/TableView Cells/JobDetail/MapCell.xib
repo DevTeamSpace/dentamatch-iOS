@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="199"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qtQ-06-bjr" id="KTS-09-Qzx">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="198"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="198.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AY6-2p-0hX" customClass="GMSMapView">
@@ -30,6 +30,9 @@
                     <constraint firstItem="AY6-2p-0hX" firstAttribute="leading" secondItem="KTS-09-Qzx" secondAttribute="leadingMargin" constant="-8" id="IOt-4m-HkD"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="mapView" destination="AY6-2p-0hX" id="vX2-kt-HfN"/>
+            </connections>
             <point key="canvasLocation" x="-3.5" y="-53.5"/>
         </tableViewCell>
     </objects>

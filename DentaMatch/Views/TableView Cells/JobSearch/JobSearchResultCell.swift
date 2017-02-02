@@ -8,6 +8,11 @@
 
 import UIKit
 
+@objc protocol JobSearchResultCellDelegate {
+    
+    @objc optional func saveOrUnsaveJob(index : Int)
+}
+
 class JobSearchResultCell: UITableViewCell {
 
     enum JobType:Int {
@@ -25,6 +30,9 @@ class JobSearchResultCell: UITableViewCell {
     @IBOutlet weak var lblAddress: UILabel!
     @IBOutlet weak var lblJobPostTime: UILabel!
     
+    weak var delegate : JobSearchResultCellDelegate?
+    var index : Int!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -37,15 +45,24 @@ class JobSearchResultCell: UITableViewCell {
     }
     
     func setCellData(job : Job) {
-        self.lblJobTitle.text = job.jobtitle
-        if job.jobType == 1 {
-            self.btnType.titleLabel?.text = Constants.Strings.fullTime
-            self.btnType.backgroundColor = Constants.Color.fullTimeBackgroundColor
+        if job.isSaved == 0 {
+            self.btnFavourite.setTitle(Constants.DesignFont.notFavourite, for: .normal)
+            self.btnFavourite.titleLabel?.textColor = Constants.Color.unSaveJobColor
+            self.btnFavourite.setImage(UIImage(named:""), for: .normal)
         }
         else {
-            self.btnType.titleLabel?.text = Constants.Strings.partTime
+            self.btnFavourite.setImage(UIImage(named:"saveStar"), for: .normal)
+            self.btnFavourite.setTitle("", for: .normal)
+        }
+        if job.jobType == 1 {
+            self.btnType.setTitle(Constants.Strings.fullTime, for: .normal)
+            self.btnType.backgroundColor = Constants.Color.fullTimeBackgroundColor
+        }
+        else if job.jobType == 2 {
+            self.btnType.setTitle(Constants.Strings.partTime, for: .normal)
             self.btnType.backgroundColor = Constants.Color.partTimeDaySelectColor
         }
+        self.lblJobTitle.text = job.jobtitle
         self.lblDistance.text = String(format: "%.1f", job.distance) + Constants.Strings.whiteSpace + Constants.Strings.miles
         self.lblDocName.text = job.officeName
         self.lblAddress.text = job.address
@@ -71,15 +88,20 @@ class JobSearchResultCell: UITableViewCell {
         if job.isSaturday == 1 {
             partTimeJobDays.append(Constants.Days.saturday)
         }
-        
-        self.lblDays.text = partTimeJobDays.joined(separator: Constants.Strings.comma)
-        
+        self.lblDays.text = partTimeJobDays.joined(separator: Constants.Strings.comma + Constants.Strings.whiteSpace)
         if job.days == Constants.Strings.zero {
-            self.lblJobPostTime.text = Constants.Strings.save
+            self.lblJobPostTime.text = Constants.Strings.today
+        }
+        else if job.days == Constants.Strings.one{
+            self.lblJobPostTime.text = job.days + Constants.Strings.whiteSpace + Constants.Strings.dayAgo
         }
         else {
-            self.lblJobPostTime.text = job.days + Constants.Strings.daysAgo
+            self.lblJobPostTime.text = job.days + Constants.Strings.whiteSpace + Constants.Strings.daysAgo
         }
+    }
+    
+    @IBAction func actionFavourite(_ sender: UIButton) {
+        self.delegate?.saveOrUnsaveJob!(index: index)
     }
     
     func handlePartTimeLabel(job:Job) {

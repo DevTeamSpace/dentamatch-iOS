@@ -11,6 +11,7 @@ import SwiftyJSON
 
 class Job: NSObject {
     
+    var isApplied = 0
     var jobId = 0
     var isSaved = 0
     var jobType = 0
@@ -24,12 +25,34 @@ class Job: NSObject {
     var jobtitle = ""
     var officeName = ""
     var address = ""
-    var zipcode = 000000
+    var zipcode = 0
     var latitude = ""
     var longitude = ""
     var distance = 0.0
     var postTime = ""
     var days = ""
+
+    var templateName = ""
+    var templateDesc = ""
+    var workEverydayStart = ""
+    var workEverydayEnd = ""
+    var mondayStart = ""
+    var mondayEnd = ""
+    var tuesdayStart = ""
+    var tuesdayEnd = ""
+    var wednesdayStart = ""
+    var wednesdayEnd = ""
+    var thursdayStart = ""
+    var thursdayEnd = ""
+    var fridayStart = ""
+    var saturdayStart = ""
+    var saturdayEnd = ""
+    var sundayStart = ""
+    var sundayEnd = ""
+    var jobPostedTimeGap = ""
+    var officeTypeName = ""
+    var jobTypeDates = [String]()
+    var jobTypeString = ""
     var jobCreatedAt = ""
     var jobAppliedOn = ""
     var jobTypeString = ""
@@ -40,6 +63,7 @@ class Job: NSObject {
     }
     
     init(job:JSON) {
+        self.isApplied = job["isApplied"].intValue
         self.jobId = job["id"].intValue
         self.isSaved = job["isSaved"].intValue
         self.jobType = job["jobType"].intValue
@@ -59,6 +83,28 @@ class Job: NSObject {
         self.zipcode = job["zipcode"].intValue
         self.postTime = job["createdAt"].stringValue
         self.days = job["days"].stringValue
+        
+        self.templateName = job["templateName"].stringValue
+        self.templateDesc = job["templateDesc"].stringValue
+        self.workEverydayStart = job["workEverydayStart"].stringValue
+        self.workEverydayEnd = job["workEverydayEnd"].stringValue
+        self.mondayStart = job["mondayStart"].stringValue
+        self.mondayEnd = job["mondayEnd"].stringValue
+        self.tuesdayStart = job["tuesdayStart"].stringValue
+        self.tuesdayEnd = job["tuesdayEnd"].stringValue
+        self.wednesdayStart = job["wednesdayStart"].stringValue
+        self.wednesdayEnd = job["wednesdayEnd"].stringValue
+        self.thursdayStart = job["thursdayStart"].stringValue
+        self.thursdayEnd = job["thursdayEnd"].stringValue
+        self.fridayStart = job["fridayStart"].stringValue
+        self.saturdayStart = job["saturdayStart"].stringValue
+        self.saturdayEnd = job["saturdayEnd"].stringValue
+        self.sundayStart = job["sundayStart"].stringValue
+        self.sundayEnd = job["sundayEnd"].stringValue
+        self.jobPostedTimeGap = job["jobPostedTimeGap"].stringValue
+        self.officeTypeName = job["officeTypeName"].stringValue
+        self.jobTypeDates = [job["jobTypeDates"].stringValue]
+        self.jobTypeString = job["jobTypeString"].stringValue
         self.jobCreatedAt = job["jobCreatedAt"].stringValue
         self.jobAppliedOn = job["jobAppliedOn"].stringValue
         self.jobTypeString = job["jobTypeString"].stringValue

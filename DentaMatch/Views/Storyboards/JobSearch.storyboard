@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Lfn-p4-zS8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -15,6 +15,9 @@
         </array>
         <array key="SF-UI-Text-Semibold.otf">
             <string>SFUIText-Semibold</string>
+        </array>
+        <array key="dentamatch.ttf">
+            <string>dentamatch</string>
         </array>
     </customFonts>
     <scenes>
@@ -80,7 +83,7 @@
                     <tabBarItem key="tabBarItem" title="Jobs" image="jobs" id="PdF-HD-BTv"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5xw-k6-Tbw">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5xw-k6-Tbw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -187,58 +190,69 @@
                                         <color key="textColor" red="0.058823529409999999" green="0.094117647060000004" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I8O-Bm-mPI">
-                                        <rect key="frame" x="0.0" y="30" width="375" height="2"/>
-                                        <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="1.5" id="gjU-20-66E"/>
-                                        </constraints>
-                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="7RR-9E-Vqc"/>
                                     <constraint firstAttribute="bottom" secondItem="Vjm-2c-xgg" secondAttribute="bottom" id="B2b-1r-vda"/>
-                                    <constraint firstItem="I8O-Bm-mPI" firstAttribute="leading" secondItem="NRE-fb-aTV" secondAttribute="leading" id="FwF-Eg-ACz"/>
-                                    <constraint firstAttribute="bottom" secondItem="I8O-Bm-mPI" secondAttribute="bottom" id="aHn-g1-FiS"/>
                                     <constraint firstAttribute="trailing" secondItem="Vjm-2c-xgg" secondAttribute="trailing" id="hhC-nT-EkH"/>
                                     <constraint firstItem="Vjm-2c-xgg" firstAttribute="leading" secondItem="NRE-fb-aTV" secondAttribute="leading" constant="20" id="k6n-5s-zPS"/>
                                     <constraint firstItem="Vjm-2c-xgg" firstAttribute="top" secondItem="NRE-fb-aTV" secondAttribute="top" id="n6k-bu-ZSK"/>
-                                    <constraint firstAttribute="trailing" secondItem="I8O-Bm-mPI" secondAttribute="trailing" id="z9g-F6-XQI"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SWm-JO-UtE" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c5K-0a-VeV">
+                                <rect key="frame" x="320" y="35" width="40" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="VVx-P3-wUd"/>
+                                    <constraint firstAttribute="width" constant="40" id="udj-jQ-Sjo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="dentamatch" family="dentamatch" pointSize="24"/>
+                                <inset key="titleEdgeInsets" minX="-2" minY="2" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="s">
+                                    <color key="titleColor" red="0.015686274510000001" green="0.43921568630000002" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="actionCurrentLocaton:" destination="VbB-48-aza" eventType="touchUpInside" id="f20-ua-mAY"/>
+                                </connections>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hUs-Hx-1cO">
-                                <rect key="frame" x="0.0" y="52" width="375" height="615"/>
+                                <rect key="frame" x="0.0" y="667" width="375" height="0.0"/>
                                 <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="RRY-Qi-5BH"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="dataSource" destination="VbB-48-aza" id="2t6-8d-k9O"/>
                                     <outlet property="delegate" destination="VbB-48-aza" id="pkY-H8-bqR"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SWm-JO-UtE" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="NRE-fb-aTV" secondAttribute="trailing" id="6Yx-4l-ve4"/>
                             <constraint firstAttribute="trailing" secondItem="SWm-JO-UtE" secondAttribute="trailing" id="AC0-ha-PX8"/>
+                            <constraint firstItem="c5K-0a-VeV" firstAttribute="top" secondItem="0tZ-o3-vk0" secondAttribute="bottom" constant="15" id="FRr-5V-fy6"/>
                             <constraint firstItem="NRE-fb-aTV" firstAttribute="width" secondItem="7JX-NO-s69" secondAttribute="width" id="GWo-M2-7c1"/>
+                            <constraint firstAttribute="trailing" secondItem="c5K-0a-VeV" secondAttribute="trailing" constant="15" id="JXZ-BQ-Yjx"/>
                             <constraint firstItem="NRE-fb-aTV" firstAttribute="leading" secondItem="7JX-NO-s69" secondAttribute="leading" id="NWp-nf-wZ4"/>
                             <constraint firstItem="SWm-JO-UtE" firstAttribute="top" secondItem="0tZ-o3-vk0" secondAttribute="bottom" id="Ptx-Rd-P91"/>
                             <constraint firstItem="WOJ-Nk-bOV" firstAttribute="top" secondItem="SWm-JO-UtE" secondAttribute="bottom" id="UBk-u4-5ci"/>
                             <constraint firstItem="hUs-Hx-1cO" firstAttribute="trailing" secondItem="NRE-fb-aTV" secondAttribute="trailing" id="Vin-6P-HHx"/>
                             <constraint firstItem="hUs-Hx-1cO" firstAttribute="leading" secondItem="NRE-fb-aTV" secondAttribute="leading" id="a7I-4h-guJ"/>
                             <constraint firstItem="SWm-JO-UtE" firstAttribute="leading" secondItem="7JX-NO-s69" secondAttribute="leading" id="bAL-th-35H"/>
-                            <constraint firstItem="NRE-fb-aTV" firstAttribute="height" secondItem="7JX-NO-s69" secondAttribute="height" multiplier="0.0479" id="jcs-rH-iF1"/>
-                            <constraint firstItem="hUs-Hx-1cO" firstAttribute="top" secondItem="NRE-fb-aTV" secondAttribute="bottom" id="oTJ-AL-abV"/>
                             <constraint firstItem="NRE-fb-aTV" firstAttribute="top" secondItem="0tZ-o3-vk0" secondAttribute="bottom" id="unR-0X-sYq"/>
                             <constraint firstItem="hUs-Hx-1cO" firstAttribute="bottom" secondItem="WOJ-Nk-bOV" secondAttribute="top" id="x3F-cb-krq"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bha-nN-R4F"/>
                     <connections>
-                        <outlet property="constraintTblViewSearchResultTop" destination="oTJ-AL-abV" id="Axh-36-wYe"/>
+                        <outlet property="btnCurrentLocation" destination="c5K-0a-VeV" id="Y6y-H3-Nga"/>
+                        <outlet property="constraintTblViewSearchResultHeight" destination="RRY-Qi-5BH" id="tQZ-AL-aSI"/>
                         <outlet property="lblResultCount" destination="Vjm-2c-xgg" id="T1a-h8-wab"/>
                         <outlet property="mapViewSearchResult" destination="SWm-JO-UtE" id="pG6-er-2Jy"/>
                         <outlet property="tblJobSearchResult" destination="hUs-Hx-1cO" id="v2t-jR-aKr"/>

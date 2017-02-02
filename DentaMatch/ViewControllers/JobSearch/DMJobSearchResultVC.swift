@@ -13,20 +13,32 @@ class DMJobSearchResultVC : DMBaseVC {
 
     @IBOutlet weak var tblJobSearchResult: UITableView!
     @IBOutlet weak var mapViewSearchResult: GMSMapView!
-    @IBOutlet weak var constraintTblViewSearchResultTop: NSLayoutConstraint!
+    @IBOutlet weak var constraintTblViewSearchResultHeight: NSLayoutConstraint!
     @IBOutlet weak var lblResultCount: UILabel!
+    
+    @IBOutlet weak var btnCurrentLocation: UIButton!
     
     var rightBarBtn : UIButton = UIButton()
     var rightBarButtonItem : UIBarButtonItem = UIBarButtonItem()
-    var isListShow : Bool = true
+    var isListShow : Bool = false
     var isMapShow : Bool = false
     var btnList : UIButton!
     var btnMap : UIButton!
     var currentCoordinate : CLLocationCoordinate2D! = CLLocationCoordinate2D(latitude : 0.00, longitude : 0.00)
     var arrMarkers  = [JobMarker]()
     var jobs = [Job]()
-    var rightBarButtonWidth : CGFloat = 25.0
+    var rightBarButtonWidth : CGFloat = 20.0
     var cellHeight : CGFloat = 172.0
+    var loadingMoreJobs = false
+    var totalJobsFromServer = 0
+    var jobsPageNo = 1
+    var searchParams = [String : Any]()
+    var markers = [JobMarker]()
+    
+    var indexOfSelectedMarker: Int?
+    var selectedMarker: JobMarker?
+    
+    //var stylebarAndNavigationbarHeight = s
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,18 +51,43 @@ class DMJobSearchResultVC : DMBaseVC {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        jobsPageNo = 1
+        self.jobs.removeAll()
+        searchParams[Constants.JobDetailKey.page] = "\(self.jobsPageNo)"
+        self.fetchSearchResultAPI(params: searchParams)
+    }
+    
     //MARK : Private Method
     func setUp() {
         self.mapViewSearchResult.isHidden = true
-//        self.tblJobSearchResult.rowHeight = UITableViewAutomaticDimension
-//        self.tblJobSearchResult.estimatedRowHeight = cellHeight
         self.tblJobSearchResult.register(UINib(nibName: "JobSearchResultCell", bundle: nil), forCellReuseIdentifier: "JobSearchResultCell")
         self.mapViewSearchResult.delegate = self
         self.mapViewSearchResult.isMyLocationEnabled = true
-        self.lblResultCount.text = String(self.jobs.count) + " " + Constants.Strings.resultsFound
+        self.lblResultCount.text = String(self.jobs.count) + Constants.Strings.whiteSpace + Constants.Strings.resultsFound
         self.setLeftBarButton(title: Constants.DesignFont.notification)
-        self.setRightBarButton(title: Constants.DesignFont.search, width : rightBarButtonWidth, font: UIFont.designFont(fontSize: 16.0)!)
+        self.setRightBarButton(title: "",imageName: "search",width : rightBarButtonWidth, font: UIFont.designFont(fontSize: 16.0)!)
         self.setUpSegmentControl()
+        self.constraintTblViewSearchResultHeight.constant = UIScreen.main.bounds.height - (self.navigationController?.navigationBar.frame.height)! - UIApplication.shared.statusBarFrame.height - (self.tabBarController?.tabBar.frame.height)! - (32.0)
+        self.loadViewIfNeeded()
+        self.btnCurrentLocation.isHidden = true
+        self.btnCurrentLocation.isUserInteractionEnabled = false
+        self.btnCurrentLocation.layer.cornerRadius = self.btnCurrentLocation.frame.size.width/2
+        self.btnCurrentLocation.layer.shadowColor = UIColor.gray.cgColor
+        self.btnCurrentLocation.layer.shadowOffset = CGSize(width: 0, height: 1.0)
+        self.btnCurrentLocation.layer.shadowOpacity = 1.0
+        self.btnCurrentLocation.layer.shadowRadius = 1.0
+        
+        self.tblJobSearchResult.layer.shadowColor = UIColor.gray.cgColor
+        self.tblJobSearchResult.layer.shadowOffset = CGSize(width: 0, height: 1.0)
+        self.tblJobSearchResult.layer.shadowOpacity = 1.0
+        self.tblJobSearchResult.layer.shadowRadius = 1.0
+        
     }
     
     override func actionLeftNavigationItem() {
@@ -65,7 +102,7 @@ class DMJobSearchResultVC : DMBaseVC {
         let segmentView : UIView! = UIView(frame:CGRect (x : 0,y : 0, width : 152,height : 29))
         segmentView.backgroundColor = UIColor.clear
         segmentView.layer.cornerRadius = 4.0
-        segmentView.layer.borderColor = Constants.Color.segmentViewBgColor.cgColor
+        segmentView.layer.borderColor = Constants.Color.segmentControlBorderColor.cgColor
         segmentView.layer.borderWidth = 1.0
         segmentView.layer.masksToBounds = true
         
@@ -73,7 +110,7 @@ class DMJobSearchResultVC : DMBaseVC {
         self.btnList.setTitle("List", for: .normal)
         self.btnList.setTitleColor(UIColor.white, for: .normal)
         self.btnList.titleLabel!.font =  UIFont.fontLight(fontSize: 13.0)
-        self.btnList.backgroundColor = Constants.Color.mapButtonBackGroundColor
+        self.btnList.backgroundColor = Constants.Color.segmentControlSelectionColor
         self.btnList.addTarget(self, action: #selector(actionListButton), for: .touchUpInside)
         
         self.btnMap = UIButton.init(frame: CGRect(x : 76 , y : 1, width : 75, height : 27))
@@ -95,8 +132,13 @@ class DMJobSearchResultVC : DMBaseVC {
             self.btnMap.titleLabel!.font =  UIFont.fontLight(fontSize: 13.0)
             self.btnMap.backgroundColor = UIColor.clear
             self.mapViewSearchResult.isHidden = true
+            self.constraintTblViewSearchResultHeight.constant = UIScreen.main.bounds.height - (self.navigationController?.navigationBar.frame.height)! - UIApplication.shared.statusBarFrame.height - (self.tabBarController?.tabBar.frame.height)! - ((32.0))
+            self.view.layoutIfNeeded()
+            self.tblJobSearchResult.isScrollEnabled = true
+            self.btnCurrentLocation.isHidden = true
         }
         isListShow = !isListShow
+        isMapShow = false
     }
     
     func actionMapButton() {
@@ -106,9 +148,19 @@ class DMJobSearchResultVC : DMBaseVC {
             self.btnList.titleLabel!.font =  UIFont.fontLight(fontSize: 13.0)
             self.btnList.backgroundColor = UIColor.clear
             self.mapViewSearchResult.isHidden = false
+            self.constraintTblViewSearchResultHeight.constant = 0.0
+            self.view.layoutIfNeeded()
+            self.btnCurrentLocation.isHidden = false
         }
+        isMapShow = !isMapShow
+        isListShow = false
         self.getLocation()
         self.restoreAllMarkers()
+    }
+    
+    @IBAction func actionCurrentLocaton(_ sender: UIButton) {
+        self.mapViewSearchResult.animate(to: GMSCameraPosition(target: self.currentCoordinate, zoom: 15, bearing: 0, viewingAngle: 0))
+        self.hideCard()
     }
     
     func getLocation() {
@@ -120,7 +172,7 @@ class DMJobSearchResultVC : DMBaseVC {
                 }
                 return
             }
-            
+            self.btnCurrentLocation.isUserInteractionEnabled = true
             let coordinate = CLLocationCoordinate2D(latitude: (location!.coordinate.latitude), longitude: (location!.coordinate.longitude))
             self.currentCoordinate = coordinate
             DispatchQueue.main.async {

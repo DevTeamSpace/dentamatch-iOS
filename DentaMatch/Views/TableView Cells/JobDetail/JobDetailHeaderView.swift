@@ -14,19 +14,19 @@ class JobDetailHeaderView: UIView {
     @IBOutlet weak var lblDescription: UILabel!
     @IBOutlet weak var viewParent: UIView!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        viewParent.layer.borderColor = Constants.Color.jobSearchBorderColor.cgColor
+        viewParent.layer.borderWidth = 1.0
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.setup()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         //fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func setup() {
-        let nib =  Bundle.main.loadNibNamed("JobDetailHeaderView", owner: self, options: nil)
-        self.addSubview(nib?.last as! UIView)
     }
     
     func setHeaderData(iconText : String, headerText : String) {
