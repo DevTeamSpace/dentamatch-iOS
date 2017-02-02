@@ -69,7 +69,7 @@ class DMEditCertificateVC: DMBaseVC,DatePickerViewDelegate {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat =  Date.dateFormatYYYYMMDDDashed()
             let date = dateFormatter.date(from: dateString)
-            dateFormatter.dateFormat = Date.dateFormatDDMMMYYYY()
+            dateFormatter.dateFormat = Date.dateFormatDDMMMMYYYY()
             return dateFormatter.string(from: date!)
         }
         return ""
