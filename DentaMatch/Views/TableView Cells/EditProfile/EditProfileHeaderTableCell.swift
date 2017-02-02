@@ -18,7 +18,7 @@ class EditProfileHeaderTableCell: UITableViewCell {
     @IBOutlet weak var profileButton: ProfileImageButton!
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.aboutTextView.textContainer.lineFragmentPadding = 12.0
+        //self.aboutTextView.textContainer.lineFragmentPadding = 20.0
         self.clipsToBounds = true
         // Initialization code
     }

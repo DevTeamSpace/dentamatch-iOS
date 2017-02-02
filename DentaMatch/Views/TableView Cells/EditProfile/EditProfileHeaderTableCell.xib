@@ -56,7 +56,7 @@
                         <rect key="frame" x="150" y="292" width="21" height="9"/>
                     </imageView>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="About Me" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOf-F1-8Sf">
-                        <rect key="frame" x="0.0" y="300" width="320" height="117.5"/>
+                        <rect key="frame" x="18" y="300" width="298" height="117.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="textColor" red="0.57647058823529407" green="0.57647058823529407" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
@@ -95,14 +95,14 @@
                     <constraint firstItem="yA5-c1-EgQ" firstAttribute="bottom" secondItem="Ant-ls-85M" secondAttribute="bottom" constant="1" id="7Kd-jB-swg"/>
                     <constraint firstItem="4hg-2h-wrq" firstAttribute="centerX" secondItem="two-jR-4bn" secondAttribute="centerX" id="7T4-md-D5E"/>
                     <constraint firstAttribute="trailing" secondItem="HPh-yt-bRc" secondAttribute="trailing" id="8hq-rC-aIi"/>
-                    <constraint firstAttribute="trailing" secondItem="hOf-F1-8Sf" secondAttribute="trailing" id="CHp-3h-5O3"/>
+                    <constraint firstAttribute="trailing" secondItem="hOf-F1-8Sf" secondAttribute="trailing" constant="4" id="CHp-3h-5O3"/>
                     <constraint firstAttribute="trailing" secondItem="4hg-2h-wrq" secondAttribute="trailing" constant="8" id="L5d-SF-Eyg"/>
                     <constraint firstItem="two-jR-4bn" firstAttribute="centerX" secondItem="UiG-3D-BXE" secondAttribute="centerX" id="LA2-JT-WkX"/>
                     <constraint firstItem="Ant-ls-85M" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="PzD-a0-3wR"/>
                     <constraint firstItem="HPh-yt-bRc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Rsj-Bx-K4E"/>
                     <constraint firstAttribute="bottom" secondItem="hOf-F1-8Sf" secondAttribute="bottom" constant="8" id="VlJ-RH-68D"/>
                     <constraint firstItem="4hg-2h-wrq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="ZXy-AT-PbM"/>
-                    <constraint firstItem="hOf-F1-8Sf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Zf9-xH-zCj"/>
+                    <constraint firstItem="hOf-F1-8Sf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="18" id="Zf9-xH-zCj"/>
                     <constraint firstItem="IS9-b7-4ww" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="afW-Zh-2On"/>
                     <constraint firstItem="hOf-F1-8Sf" firstAttribute="top" secondItem="Ant-ls-85M" secondAttribute="bottom" id="bB1-UA-8P0"/>
                     <constraint firstItem="4hg-2h-wrq" firstAttribute="top" secondItem="two-jR-4bn" secondAttribute="bottom" constant="3" id="dsh-20-vZf"/>

@@ -30,6 +30,10 @@ class Job: NSObject {
     var distance = 0.0
     var postTime = ""
     var days = ""
+    var jobCreatedAt = ""
+    var jobAppliedOn = ""
+    var jobTypeString = ""
+    var tempJobDates = [TempJobDate]()
     
     override init() {
         
@@ -55,5 +59,45 @@ class Job: NSObject {
         self.zipcode = job["zipcode"].intValue
         self.postTime = job["createdAt"].stringValue
         self.days = job["days"].stringValue
+        self.jobCreatedAt = job["jobCreatedAt"].stringValue
+        self.jobAppliedOn = job["jobAppliedOn"].stringValue
+        self.jobTypeString = job["jobTypeString"].stringValue
+    }
+    
+    init(job:JSON,tempJobDates:[TempJobDate]) {
+        self.jobId = job["id"].intValue
+        self.isSaved = job["isSaved"].intValue
+        self.jobType = job["jobType"].intValue
+        self.isMonday = job["isMonday"].intValue
+        self.isTuesday = job["isTuesday"].intValue
+        self.isWednesday = job["isWednesday"].intValue
+        self.isThursday = job["isThursday"].intValue
+        self.isFriday = job["isFriday"].intValue
+        self.isSaturday = job["isSaturday"].intValue
+        self.isSunday = job["isSunday"].intValue
+        self.jobtitle = job["jobtitleName"].stringValue
+        self.officeName = job["officeName"].stringValue
+        self.address = job["address"].stringValue
+        self.latitude = job["latitude"].stringValue
+        self.longitude = job["longitude"].stringValue
+        self.distance = Double(job["distance"].floatValue)
+        self.zipcode = job["zipcode"].intValue
+        self.postTime = job["createdAt"].stringValue
+        self.days = job["days"].stringValue
+        self.jobCreatedAt = job[""].stringValue
+        self.jobAppliedOn = job[""].stringValue
+        self.jobTypeString = job[""].stringValue
+        self.tempJobDates = tempJobDates
+    }
+}
+
+class TempJobDate {
+    
+    var jobDate = ""
+    var recruiterJobId = ""
+    
+    init(tempJobDate:JSON) {
+        self.jobDate = tempJobDate["jobDate"].stringValue
+        self.recruiterJobId = tempJobDate["recruiterJobId"].stringValue
     }
 }

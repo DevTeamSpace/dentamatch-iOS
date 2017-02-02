@@ -21,6 +21,11 @@ extension Date {
     public static func dateFormatDDMMMYYYY() ->String {
         return "dd MMM yyyy"
     }
+    
+    public static func dateFormatDDMMMMYYYY() ->String {
+        return "dd MMMM yyyy"
+    }
+    
     public static func dateFormatDDMMYYYYDashed() ->String {
         return "dd-MM-yyyy"
     }
