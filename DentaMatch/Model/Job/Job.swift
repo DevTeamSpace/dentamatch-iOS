@@ -55,7 +55,6 @@ class Job: NSObject {
     var jobTypeString = ""
     var jobCreatedAt = ""
     var jobAppliedOn = ""
-    var jobTypeString = ""
     var tempJobDates = [TempJobDate]()
     
     override init() {
@@ -107,7 +106,6 @@ class Job: NSObject {
         self.jobTypeString = job["jobTypeString"].stringValue
         self.jobCreatedAt = job["jobCreatedAt"].stringValue
         self.jobAppliedOn = job["jobAppliedOn"].stringValue
-        self.jobTypeString = job["jobTypeString"].stringValue
     }
     
     init(job:JSON,tempJobDates:[TempJobDate]) {
