@@ -10,6 +10,12 @@ import UIKit
 
 class JobSearchResultCell: UITableViewCell {
 
+    enum JobType:Int {
+        case fullTime = 1
+        case partTime = 2
+        case temporary = 3
+    }
+    
     @IBOutlet weak var lblJobTitle: UILabel!
     @IBOutlet weak var btnFavourite: UIButton!
     @IBOutlet weak var btnType: UIButton!
@@ -73,6 +79,18 @@ class JobSearchResultCell: UITableViewCell {
         }
         else {
             self.lblJobPostTime.text = job.days + Constants.Strings.daysAgo
+        }
+    }
+    
+    func handlePartTimeLabel(job:Job) {
+        let jobType = JobType(rawValue: job.jobType)!
+        switch jobType {
+        case .fullTime:
+            self.lblDays.isHidden = true
+        case .partTime:
+            self.lblDays.isHidden = false
+        case .temporary:
+            self.lblDays.isHidden = false
         }
     }
 }
