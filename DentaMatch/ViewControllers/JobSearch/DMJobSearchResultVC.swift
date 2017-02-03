@@ -197,6 +197,9 @@ extension DMJobSearchResultVC : SearchJobDelegate {
     func refreshJobList() {
         jobsPageNo = 1
         self.jobs.removeAll()
+        if let params =  UserDefaultsManager.sharedInstance.loadSearchParameter() {
+            searchParams = params
+        }
         searchParams[Constants.JobDetailKey.page] = "\(self.jobsPageNo)"
         self.fetchSearchResultAPI(params: searchParams)
     }

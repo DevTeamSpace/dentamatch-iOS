@@ -41,7 +41,6 @@ class DMJobSearchVC : DMBaseVC {
         super.viewDidLoad()
         self.title = Constants.ScreenTitleNames.jobSearch
         self.setup()
-        self.getLocation()
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,17 +56,49 @@ class DMJobSearchVC : DMBaseVC {
     
     //MARK:- Private Methods
     func setup() {
+    
+        if let params =  UserDefaultsManager.sharedInstance.loadSearchParameter() {
+            searchParams = params
+            location.postalCode = (searchParams[Constants.JobDetailKey.zipCode] as! String?)!
+            location.address = searchParams[Constants.JobDetailKey.address] as! String?
+            let latStr = searchParams[Constants.JobDetailKey.lat] as! NSString
+            let latDbl : Double  = Double(latStr.intValue)
+            let langStr = searchParams[Constants.JobDetailKey.lat] as! NSString
+            let langDbl : Double = Double(langStr.intValue)
+            location.coordinateSelected = CLLocationCoordinate2DMake(latDbl, langDbl)
+            if searchParams[Constants.JobDetailKey.isParttime] as! String? == "1" {
+                isPartTimeDayShow = true
+                isJobTypePartTime = "1"
+                partTimeJobDays = searchParams[Constants.JobDetailKey.parttimeDays] as! [String]
+            }
+            else {
+                isJobTypePartTime = "0"
+            }
+            if searchParams[Constants.JobDetailKey.isFulltime] as! String? == "1" {
+                isJobTypeFullTime = "1"
+            }
+            else {
+                isJobTypeFullTime = "0"
+            }
+            
+            self.jobTitles.removeAll()
+            if let savedJobTitles = searchParams[Constants.JobDetailKey.jobTitles] as? [Any] {
+                for title in savedJobTitles {
+                    let objTilte = title as! [String:Any]
+                    let jobTitle = JobTitle()
+                    jobTitle.jobId = objTilte[Constants.ServerKey.jobId] as! Int
+                    jobTitle.jobTitle = objTilte[Constants.ServerKey.jobtitleName] as! String
+                    jobTitle.jobSelected = true
+                    self.jobTitles.append(jobTitle as JobTitle)
+                    
+                }
+            }
+            
+        }
+        else {
+            self.getLocation()
+        }
         
-        searchParams = [
-            Constants.JobDetailKey.lat:"",
-            Constants.JobDetailKey.lng:"",
-            Constants.JobDetailKey.zipCode:"",
-            Constants.JobDetailKey.isFulltime:"",
-            Constants.JobDetailKey.isParttime:"",
-            Constants.JobDetailKey.parttimeDays:[],
-            Constants.JobDetailKey.jobTitle:[],
-            Constants.JobDetailKey.page:""
-        ]
 
         if fromJobSearchResults {
             self.navigationItem.leftBarButtonItem = self.backBarButton()
@@ -75,6 +106,7 @@ class DMJobSearchVC : DMBaseVC {
                 searchParams = params
             }
         }
+        
         self.tblViewJobSearch.rowHeight = UITableViewAutomaticDimension
         self.tblViewJobSearch.register(UINib(nibName: "JobSeachTitleCell", bundle: nil), forCellReuseIdentifier: "JobSeachTitleCell")
         self.tblViewJobSearch.register(UINib(nibName: "JobSearchTypeCell", bundle: nil), forCellReuseIdentifier: "JobSearchTypeCell")
@@ -148,6 +180,7 @@ class DMJobSearchVC : DMBaseVC {
     }
     
     func goToSearchResult() {
+        UserDefaultsManager.sharedInstance.deleteSearchParameter()
         UserDefaultsManager.sharedInstance.saveSearchParameter(seachParam: searchParams as Any)
         if fromJobSearchResults {
             if let delegate = delegate {
@@ -163,10 +196,17 @@ class DMJobSearchVC : DMBaseVC {
     
     func actionSearchButton() {
         self.view.endEditing(true)
+        var jobTitleDict = [String : Any]()
+        var jobTitles = [Any]()
         var jobTitleIds = [Int]()
-        for job in jobTitles {
+        for job in self.jobTitles {
+            jobTitleDict = [Constants.ServerKey.jobtitleName:job.jobTitle,Constants.ServerKey.jobId:job.jobId]
+            jobTitles.append(jobTitleDict)
+        }
+        for job in self.jobTitles {
             jobTitleIds.append(job.jobId)
         }
+        
         if location.coordinateSelected?.latitude != nil {
             searchParams[Constants.JobDetailKey.lat] = String(describing: location.coordinateSelected!.latitude)
         }
@@ -178,13 +218,15 @@ class DMJobSearchVC : DMBaseVC {
         searchParams[Constants.JobDetailKey.isParttime] = self.isJobTypePartTime
         searchParams[Constants.JobDetailKey.parttimeDays] = partTimeJobDays
         searchParams[Constants.JobDetailKey.jobTitle] = jobTitleIds
+        searchParams[Constants.JobDetailKey.jobTitles] = jobTitles
         searchParams[Constants.JobDetailKey.page] = 1
+        searchParams[Constants.JobDetailKey.address] = location.address
         //self.fetchSearchResultAPI(params: searchParams)
         
         // TO Save Search Parameter in UserDefault
-        let encodedData = NSKeyedArchiver.archivedData(withRootObject: searchParams)
-        kUserDefaults.set(encodedData, forKey: "SearchParameter")
-        kUserDefaults.synchronize()
+//        let encodedData = NSKeyedArchiver.archivedData(withRootObject: searchParams)
+//        kUserDefaults.set(encodedData, forKey: "SearchParameter")
+//        kUserDefaults.synchronize()
         
         self.goToSearchResult()
     }

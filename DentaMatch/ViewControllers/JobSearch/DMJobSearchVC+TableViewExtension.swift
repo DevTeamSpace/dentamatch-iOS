@@ -49,12 +49,14 @@ extension DMJobSearchVC : UITableViewDataSource, UITableViewDelegate {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "JobSearchTypeCell") as? JobSearchTypeCell
                 cell?.delegate = self
                 cell?.selectionStyle = .none
+                cell?.setCellData(isFullTime: isJobTypeFullTime, isPartTime: isJobTypePartTime)
                 return cell!
             }
             else if  indexPath.row == 1 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "JobSearchPartTimeCell") as? JobSearchPartTimeCell
                 cell?.delegate = self
                 cell?.setUp()
+                cell?.setCellData(parttimeDays: self.partTimeJobDays )
                 cell?.selectionStyle = .none
                 return cell!
             }
