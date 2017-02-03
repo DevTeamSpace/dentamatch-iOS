@@ -14,9 +14,11 @@ class SearchParameters: NSObject , NSCoding {
     var lng: String? = ""
     var zipCode: String? = ""
     var jobTitle: [String]? = []
+    var jobTitleIds:[Int]? = []
     var isFulltime: String? = ""
     var isParttime:String? = ""
-    var parttimeDays:[String]? = []
+    var partTimeDays:[String]? = []
+    var pageNo:Any? = 1
     
     required override init() {
         super.init()
@@ -31,7 +33,9 @@ class SearchParameters: NSObject , NSCoding {
         self.jobTitle = aDecoder.decodeObject(forKey: "jobTitle") as? [String]
         self.isFulltime = aDecoder.decodeObject(forKey: "isFulltime") as? String
         self.isParttime = aDecoder.decodeObject(forKey: "isParttime") as? String
-        self.parttimeDays = aDecoder.decodeObject(forKey: "parttimeDays") as? [String]
+        self.partTimeDays = aDecoder.decodeObject(forKey: "partTimeDays") as? [String]
+        self.jobTitleIds = aDecoder.decodeObject(forKey: "jobTitleIds") as? [Int]
+        self.pageNo = aDecoder.decodeObject(forKey: "pageNo")
     }
     
     func encode(with aCoder: NSCoder) {
@@ -41,6 +45,9 @@ class SearchParameters: NSObject , NSCoding {
         aCoder.encode(self.jobTitle, forKey: "jobTitle")
         aCoder.encode(self.isFulltime, forKey: "isFulltime")
         aCoder.encode(self.isParttime, forKey: "isParttime")
-        aCoder.encode(self.parttimeDays, forKey: "parttimeDays")
+        aCoder.encode(self.partTimeDays, forKey: "parttimeDays")
+        aCoder.encode(self.jobTitleIds , forKey: "jobTitleIds")
+        aCoder.encode(self.pageNo , forKey: "pageNo")
+
     }
 }

@@ -8,14 +8,19 @@
 
 import UIKit
 
+protocol JobSavedStatusUpdateDelegate {
+    func jobUpdate(job:Job)
+}
+
 class DMJobDetailVC: DMBaseVC {
     
     @IBOutlet weak var tblJobDetail: UITableView!
     @IBOutlet weak var btnApplyForJob: UIButton!
     var headerHeight : CGFloat = 49.0
     var jobDetailParams = [String : Any]()
-    var job : Job = Job()
+    var job:Job?
     var isReadMore = false
+    var delegate:JobSavedStatusUpdateDelegate?
     
     enum TableViewCellHeight: CGFloat {
         case jobTitle = 115.0
@@ -38,6 +43,7 @@ class DMJobDetailVC: DMBaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.tblJobDetail.reloadData()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -56,7 +62,7 @@ class DMJobDetailVC: DMBaseVC {
         self.tblJobDetail.register(UINib(nibName: "MapCell", bundle: nil), forCellReuseIdentifier: "MapCell")
         self.navigationItem.leftBarButtonItem = self.backBarButton()
         jobDetailParams = [
-            Constants.ServerKey.jobId:job.jobId
+            Constants.ServerKey.jobId:job?.jobId
         ]
     }
     

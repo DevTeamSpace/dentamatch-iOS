@@ -11,9 +11,14 @@ import CoreLocation
 import GoogleMaps
 import GooglePlaces
 
+protocol SearchJobDelegate {
+    func refreshJobList()
+}
+
 class DMJobSearchVC : DMBaseVC {
     
     @IBOutlet weak var tblViewJobSearch: UITableView!
+    var delegate:SearchJobDelegate?
     var isPartTimeDayShow : Bool = false
     var jobTitles = [JobTitle]()
     var jobs = [Job]()
@@ -23,8 +28,8 @@ class DMJobSearchVC : DMBaseVC {
     var isJobTypePartTime : String! = "0"
     var searchParams = [String : Any]()
     var totalJobsFromServer = 0
+    var fromJobSearchResults = false
     
-    var checkParams = SearchParameters()
     
     enum TableViewCellHeight: CGFloat {
         case jobTitleAndLocation = 88.0
@@ -52,11 +57,7 @@ class DMJobSearchVC : DMBaseVC {
     
     //MARK:- Private Methods
     func setup() {
-        self.tblViewJobSearch.rowHeight = UITableViewAutomaticDimension
-        self.tblViewJobSearch.register(UINib(nibName: "JobSeachTitleCell", bundle: nil), forCellReuseIdentifier: "JobSeachTitleCell")
-        self.tblViewJobSearch.register(UINib(nibName: "JobSearchTypeCell", bundle: nil), forCellReuseIdentifier: "JobSearchTypeCell")
-        self.tblViewJobSearch.register(UINib(nibName: "JobSearchPartTimeCell", bundle: nil), forCellReuseIdentifier: "JobSearchPartTimeCell")
-        self.tblViewJobSearch.register(UINib(nibName: "CurrentLocationCell", bundle: nil), forCellReuseIdentifier: "CurrentLocationCell")
+        
         searchParams = [
             Constants.JobDetailKey.lat:"",
             Constants.JobDetailKey.lng:"",
@@ -67,7 +68,19 @@ class DMJobSearchVC : DMBaseVC {
             Constants.JobDetailKey.jobTitle:[],
             Constants.JobDetailKey.page:""
         ]
-    }
+
+        if fromJobSearchResults {
+            self.navigationItem.leftBarButtonItem = self.backBarButton()
+            if let params = UserDefaultsManager.sharedInstance.loadSearchParameter() {
+                searchParams = params
+            }
+        }
+        self.tblViewJobSearch.rowHeight = UITableViewAutomaticDimension
+        self.tblViewJobSearch.register(UINib(nibName: "JobSeachTitleCell", bundle: nil), forCellReuseIdentifier: "JobSeachTitleCell")
+        self.tblViewJobSearch.register(UINib(nibName: "JobSearchTypeCell", bundle: nil), forCellReuseIdentifier: "JobSearchTypeCell")
+        self.tblViewJobSearch.register(UINib(nibName: "JobSearchPartTimeCell", bundle: nil), forCellReuseIdentifier: "JobSearchPartTimeCell")
+        self.tblViewJobSearch.register(UINib(nibName: "CurrentLocationCell", bundle: nil), forCellReuseIdentifier: "CurrentLocationCell")
+            }
     
     func validateFields() -> Bool {
         if self.jobTitles.count == 0 {
@@ -135,23 +148,17 @@ class DMJobSearchVC : DMBaseVC {
     }
     
     func goToSearchResult() {
-        //if self.jobs.count > 0 {
-            let jobSearchResultVC = UIStoryboard.jobSearchStoryBoard().instantiateViewController(type: DMJobSearchResultVC.self)!
-            jobSearchResultVC.jobs = self.jobs
         UserDefaultsManager.sharedInstance.saveSearchParameter(seachParam: searchParams as Any)
-        
-        let check = UserDefaultsManager.sharedInstance.loadSearchParameter()
-        
-        print(check)
-        
-        
-            jobSearchResultVC.searchParams = self.searchParams
-            jobSearchResultVC.totalJobsFromServer = self.totalJobsFromServer
-            self.navigationController?.pushViewController(jobSearchResultVC, animated: true)
-//        }
-//        else {
-//            self.makeToast(toastString: Constants.Strings.zero + Constants.Strings.resultsFound)
-//        }
+        if fromJobSearchResults {
+            if let delegate = delegate {
+                delegate.refreshJobList()
+            }
+            _ = self.navigationController?.popViewController(animated: true)
+        } else {
+            //open dashboard
+            let dashboardVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: TabBarVC.self)!
+            kAppDelegate.window?.rootViewController = dashboardVC
+        }
     }
     
     func actionSearchButton() {

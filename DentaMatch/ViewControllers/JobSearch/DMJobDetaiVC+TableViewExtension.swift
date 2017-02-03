@@ -29,16 +29,16 @@ extension DMJobDetailVC : UITableViewDataSource, UITableViewDelegate, JobDescrip
             let cell = tableView.dequeueReusableCell(withIdentifier: "DentistDetailCell") as? DentistDetailCell
             cell?.selectionStyle = .none
             cell?.delegate = self
-            cell?.setCellData(job: job)
+            cell?.setCellData(job: job!)
             return cell!
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AboutCell") as? AboutCell
             cell?.selectionStyle = .none
-            cell?.setCellData(job: job)
+            cell?.setCellData(job: job!)
             return cell!
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "JobDescriptionCell") as! JobDescriptionCell
-            cell.lblDescription.text = job.templateDesc
+            cell.lblDescription.text = job?.templateDesc
             if isReadMore == true {
                 cell.btnReadMore.setTitle(Constants.Strings.readLess, for: .normal)
             }
@@ -55,7 +55,7 @@ extension DMJobDetailVC : UITableViewDataSource, UITableViewDelegate, JobDescrip
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "MapCell") as! MapCell
             cell.selectionStyle = .none
-            cell.setPinOnMap(job: job)
+            cell.setPinOnMap(job: job!)
             return cell
         default:
             break
@@ -70,7 +70,7 @@ extension DMJobDetailVC : UITableViewDataSource, UITableViewDelegate, JobDescrip
         case 1:
             return TableViewCellHeight.about.rawValue
         case 2:
-            let height = JobDescriptionCell.requiredHeight(jobDescription: job.templateDesc, isReadMore: isReadMore)
+            let height = JobDescriptionCell.requiredHeight(jobDescription: (job?.templateDesc)!, isReadMore: isReadMore)
             return height
         case 3:
             return TableViewCellHeight.jobDescAndOfficeDesc.rawValue
@@ -132,17 +132,20 @@ extension DMJobDetailVC : UITableViewDataSource, UITableViewDelegate, JobDescrip
     //MARK:- DentistDetailCellDelegate Method
     func saveOrUnsaveJob() {
         var status : Int!
-        if job.isSaved == 1 {
+        if job?.isSaved == 1 {
             status = 0
         }
         else {
             status = 1
         }
-        self.saveUnsaveJob(saveStatus: status, jobId: job.jobId) { (response:JSON?, error:NSError?) in
+        self.saveUnsaveJob(saveStatus: status, jobId: (job?.jobId)!) { (response:JSON?, error:NSError?) in
             if let response = response {
                 if response[Constants.ServerKey.status].boolValue {
                     //Save Unsave success
-                    self.job.isSaved = status
+                    self.job?.isSaved = status
+                    if let delegate = self.delegate {
+                        delegate.jobUpdate(job: self.job!)
+                    }
                     DispatchQueue.main.async {
                         self.tblJobDetail.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
                     }

@@ -44,8 +44,9 @@ class DMJobSearchResultVC : DMBaseVC {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.setUp()
+        getJobs()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -57,6 +58,9 @@ class DMJobSearchResultVC : DMBaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    func getJobs() {
         jobsPageNo = 1
         self.jobs.removeAll()
         searchParams[Constants.JobDetailKey.page] = "\(self.jobsPageNo)"
@@ -65,6 +69,9 @@ class DMJobSearchResultVC : DMBaseVC {
     
     //MARK : Private Method
     func setUp() {
+        if let params =  UserDefaultsManager.sharedInstance.loadSearchParameter() {
+            searchParams = params
+        }
         self.mapViewSearchResult.isHidden = true
         self.tblJobSearchResult.register(UINib(nibName: "JobSearchResultCell", bundle: nil), forCellReuseIdentifier: "JobSearchResultCell")
         self.mapViewSearchResult.delegate = self
@@ -95,7 +102,11 @@ class DMJobSearchResultVC : DMBaseVC {
     }
     
     override func actionRightNavigationItem() {
-        _ = self.navigationController?.popViewController(animated: true)
+        let jobSearchVC = UIStoryboard.jobSearchStoryBoard().instantiateViewController(type: DMJobSearchVC.self)!
+        jobSearchVC.fromJobSearchResults = true
+        jobSearchVC.delegate = self
+        jobSearchVC.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(jobSearchVC, animated: true)
     }
     
     func setUpSegmentControl() {
@@ -179,5 +190,23 @@ class DMJobSearchResultVC : DMBaseVC {
                 self.mapViewSearchResult.animate(to: GMSCameraPosition(target: coordinate, zoom: 15, bearing: 0, viewingAngle: 0))
             }
         }
+    }
+}
+
+extension DMJobSearchResultVC : SearchJobDelegate {
+    func refreshJobList() {
+        jobsPageNo = 1
+        self.jobs.removeAll()
+        searchParams[Constants.JobDetailKey.page] = "\(self.jobsPageNo)"
+        self.fetchSearchResultAPI(params: searchParams)
+    }
+}
+
+extension DMJobSearchResultVC: JobSavedStatusUpdateDelegate {
+    
+    func jobUpdate(job: Job) {
+        let updatedJob = self.jobs.filter({$0.jobId == job.jobId}).first
+        updatedJob?.isSaved = job.isSaved
+        self.tblJobSearchResult.reloadData()
     }
 }
