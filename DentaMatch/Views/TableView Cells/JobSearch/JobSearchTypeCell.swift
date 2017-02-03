@@ -47,6 +47,29 @@ class JobSearchTypeCell: UITableViewCell {
         viewJobType.layer.borderColor = Constants.Color.jobSearchBorderColor.cgColor
         viewJobType.layer.borderWidth = 1.0
     }
+    func setUpForButtons(isPartTime:Bool, isFullTime:Bool ) {
+        if isFullTime {
+            self.btnFullTime.setTitle("w", for: .normal)
+            self.btnFullTime.setTitleColor(Constants.Color.tickSelectColor, for: .normal)
+            self.lblFullTime.textColor = Constants.Color.headerTitleColor
+
+        }else {
+            
+            self.btnFullTime.setTitle("t", for: .normal)
+            self.btnFullTime.setTitleColor(Constants.Color.tickDeselectColor, for: .normal)
+            self.lblFullTime.textColor = Constants.Color.jobTypeLabelDeselectedColor
+        }
+        if isPartTime {
+            self.btnPartTime.setTitle("w", for: .normal)
+            self.btnPartTime.setTitleColor(Constants.Color.tickSelectColor, for: .normal)
+            self.lblPartTime.textColor = Constants.Color.headerTitleColor
+        }else {
+            self.btnPartTime.setTitle("t", for: .normal)
+            self.btnPartTime.setTitleColor(Constants.Color.tickDeselectColor, for: .normal)
+            self.lblPartTime.textColor = Constants.Color.jobTypeLabelDeselectedColor
+        }
+
+    }
     
     //MARK : IBOutlet Action
     

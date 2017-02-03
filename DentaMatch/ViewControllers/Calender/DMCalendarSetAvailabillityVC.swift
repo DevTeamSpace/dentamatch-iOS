@@ -18,11 +18,11 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
 
     var isJobTypeFullTime : String! = "0"
     var isJobTypePartTime : String! = "0"
+    var availablitytModel:UserAvailability? = UserAvailability()
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
         setup()
     }
@@ -42,8 +42,14 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
         self.calenderTableView.register(UINib(nibName: "TemporyJobCell", bundle: nil), forCellReuseIdentifier: "TemporyJobCell")
         self.navigationItem.leftBarButtonItem = self.backBarButton()
         self.navigationItem.rightBarButtonItem = self.rightBarButton()
-
+        
+        let month1 = Date.getMonthAndYearForm(date: Date())
+        self.getMyAvailabilityFromServer(month:month1.month , year: month1.year) { (response, error) in
+            
+            self.calenderTableView.reloadData()
+        }
     }
+    
     func rightBarButton() -> UIBarButtonItem {
         let customButton = UIButton(type: .system)
         customButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
@@ -53,7 +59,6 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
         customButton.addTarget(self, action: #selector(saveButtonPressed), for: .touchUpInside)
         let barButton = UIBarButtonItem(customView: customButton)
         return barButton
-
     }
     func saveButtonPressed() {
         if !minimumOneSelected() {
@@ -67,7 +72,6 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
         setMyAvailabilityOnServer { (response, error) in
             print(response ?? "response not available")
             _ = self.navigationController?.popViewController(animated: true)
-
         }
     }
 

@@ -121,6 +121,74 @@ class JobSearchPartTimeCell: UITableViewCell {
         button.backgroundColor = UIColor.clear
         button.setTitleColor(Constants.Color.headerTitleColor, for: .normal)
         delegate?.selectDay!(selected: false, day: day)
+    }
+    
+    func daySelectFor(avail:UserAvailability) {
+        
+        if avail.isParttimeMonday {
+            btnMonday.backgroundColor = Constants.Color.partTimeDaySelectColor
+            btnMonday.setTitleColor(UIColor.white, for: .normal)
+
+        }else {
+            btnMonday.backgroundColor = UIColor.clear
+            btnMonday.setTitleColor(Constants.Color.headerTitleColor, for: .normal)
+
+        }
+        if avail.isParttimeTuesday {
+            btnTuesday.backgroundColor = Constants.Color.partTimeDaySelectColor
+            btnTuesday.setTitleColor(UIColor.white, for: .normal)
+
+        }else {
+            btnTuesday.backgroundColor = UIColor.clear
+            btnTuesday.setTitleColor(Constants.Color.headerTitleColor, for: .normal)
+
+        }
+        if avail.isParttimeWednesday {
+            btnWednesday.backgroundColor = Constants.Color.partTimeDaySelectColor
+            btnWednesday.setTitleColor(UIColor.white, for: .normal)
+
+        }else {
+            btnWednesday.backgroundColor = UIColor.clear
+            btnWednesday.setTitleColor(Constants.Color.headerTitleColor, for: .normal)
+
+        }
+        if avail.isParttimeThursday {
+            btnThursday.backgroundColor = Constants.Color.partTimeDaySelectColor
+            btnThursday.setTitleColor(UIColor.white, for: .normal)
+
+        }else {
+            btnThursday.backgroundColor = UIColor.clear
+            btnThursday.setTitleColor(Constants.Color.headerTitleColor, for: .normal)
+
+        }
+        if avail.isParttimeFriday {
+            btnFriday.backgroundColor = Constants.Color.partTimeDaySelectColor
+            btnFriday.setTitleColor(UIColor.white, for: .normal)
+
+        }else {
+            btnFriday.backgroundColor = UIColor.clear
+            btnFriday.setTitleColor(Constants.Color.headerTitleColor, for: .normal)
+
+        }
+        if avail.isParttimeSaturday {
+            btnSaturday.backgroundColor = Constants.Color.partTimeDaySelectColor
+            btnSaturday.setTitleColor(UIColor.white, for: .normal)
+
+        }else {
+            btnSaturday.backgroundColor = UIColor.clear
+            btnSaturday.setTitleColor(Constants.Color.headerTitleColor, for: .normal)
+
+        }
+        if avail.isParttimeSunday {
+            btnSunday.backgroundColor = Constants.Color.partTimeDaySelectColor
+            btnSunday.setTitleColor(UIColor.white, for: .normal)
+
+        }else {
+            btnSunday.backgroundColor = UIColor.clear
+            btnSunday.setTitleColor(Constants.Color.headerTitleColor, for: .normal)
+        }
         
     }
+    
+    
 }

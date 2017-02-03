@@ -20,20 +20,27 @@ class UserAvailability: NSObject {
     var isParttimeFriday = false
     var isParttimeSaturday = false
     var isParttimeSunday = false
-   
+    var tempJobDates = [String]()
+
     override init() {
         // for empty
     }
     
     init(dict:JSON) {
-        self.isFulltime = dict[""].boolValue
-        self.isParttimeMonday = dict[""].boolValue
-        self.isParttimeTuesday = dict[""].boolValue
-        self.isParttimeWednesday = dict[""].boolValue
-        self.isParttimeThursday = dict[""].boolValue
-        self.isParttimeFriday = dict[""].boolValue
-        self.isParttimeSaturday = dict[""].boolValue
-        self.isParttimeSunday = dict[""].boolValue
-
+        let newDict = dict["calendarAvailability"].dictionaryValue
+        self.isFulltime = (newDict["isFulltime"]?.boolValue)!
+        self.isParttimeMonday = (newDict["isParttimeMonday"]?.boolValue)!
+        self.isParttimeTuesday = (newDict["isParttimeTuesday"]?.boolValue)!
+        self.isParttimeWednesday = (newDict["isParttimeWednesday"]?.boolValue)!
+        self.isParttimeThursday = (newDict["isParttimeThursday"]?.boolValue)!
+        self.isParttimeFriday = (newDict["isParttimeFriday"]?.boolValue)!
+        self.isParttimeSaturday = (newDict["isParttimeSaturday"]?.boolValue)!
+        self.isParttimeSunday = (newDict["isParttimeSunday"]?.boolValue)!
+        self.tempJobDates = dict["tempDatesAvailability"].arrayObject as! [String]
+//        if (self.isParttimeMonday == true) || (self.isParttimeTuesday == true) || self.isParttimeWednesday || self.isParttimeThursday || self.isParttimeFriday || self.isParttimeSaturday || self.isParttimeSunday {
+//            
+//        }
+       
+        
     }
 }

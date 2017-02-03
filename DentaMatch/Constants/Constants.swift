@@ -180,6 +180,7 @@ struct Constants {
         static let cancelJob = Constants.API.apiURL("users/cancel-job")
 
         static let setAvailabality = Constants.API.apiURL("users/update-availability")
+        static let getAvailabality = Constants.API.apiURL("users/availability-list")
 
         static func apiURL(_ methodName: String) -> String {
             return BASE_URL + methodName

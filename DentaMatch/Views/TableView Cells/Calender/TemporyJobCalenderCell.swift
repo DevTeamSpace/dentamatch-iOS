@@ -11,6 +11,9 @@ import FSCalendar
 @objc protocol TemporyJobCalenderCellDelegate {
     @objc optional func selectTempJobDate(selected : Date)
     @objc optional func deSelectTempJobDate(deSelected : Date)
+    @objc optional func nextButtonDelegate(date : Date)
+    @objc optional func previouseButtonDelegate(date : Date)
+
 
 }
 class TemporyJobCalenderCell: UITableViewCell, FSCalendarDelegate {
@@ -39,7 +42,6 @@ class TemporyJobCalenderCell: UITableViewCell, FSCalendarDelegate {
         calenderView.appearance.selectionColor = Constants.Color.selectionColor
         calenderView.appearance.todayColor = UIColor.clear
 
-
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -51,13 +53,16 @@ class TemporyJobCalenderCell: UITableViewCell, FSCalendarDelegate {
         let currentMonth:Date = self.calenderView.currentPage
         let previousMonth:Date = (self.gregorian?.date(byAdding: .month, value: -1, to: currentMonth, options: .matchFirst))!
         self.calenderView.setCurrentPage(previousMonth, animated: true)
+        delegate?.nextButtonDelegate!(date: previousMonth)
+
     }
     @IBAction func nextButtonClicked(_ sender: Any) {
         let currentMonth:Date = self.calenderView.currentPage
         let previousMonth:Date = (self.gregorian?.date(byAdding: .month, value: 1, to: currentMonth, options: .matchFirst))!
         self.calenderView.setCurrentPage(previousMonth, animated: true)
-
+        delegate?.nextButtonDelegate!(date: previousMonth)
     }
+    
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         delegate?.selectTempJobDate!(selected: date)
     }

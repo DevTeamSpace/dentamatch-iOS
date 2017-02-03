@@ -126,6 +126,13 @@ extension Date {
         formatter.dateFormat = format
         return formatter.string(from: self)
     }
+    public static func getMonthAndYearForm(date:Date) -> (month:Int,year:Int) {
+        let calendar = Calendar.current
+        let year = calendar.component(.year, from: date)
+        let month = calendar.component(.month, from: date)
+//        let day = calendar.component(.day, from: date)
+        return (month,year)
+    }
 
     
     
@@ -134,6 +141,7 @@ extension Date {
         let nowDouble = NSDate().timeIntervalSince1970
         return Int64(nowDouble*1000)
     }
+    
     
 }
 
