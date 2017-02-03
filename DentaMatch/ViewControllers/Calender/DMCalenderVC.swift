@@ -19,6 +19,8 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
     @IBOutlet weak var viewForHeader: UIView!
     @IBOutlet weak var monthTitleLabel: UILabel!
     
+    var hiredList  = [Job]()
+    
     var gregorian:NSCalendar?
 
     override func viewDidLoad() {
@@ -76,6 +78,10 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         self.viewForCalender.bringSubview(toFront: self.viewForHeader)
 
 
+        let dateData = Date.getMonthAndYearForm(date: Date())
+        self.getHiredJobsFromServer(month: dateData.month, year: dateData.year) { (response, error) in
+            debugPrint(self.hiredList)
+        }
     }
     
     

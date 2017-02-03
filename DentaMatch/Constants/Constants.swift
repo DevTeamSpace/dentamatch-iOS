@@ -187,6 +187,7 @@ struct Constants {
 
         static let setAvailabality = Constants.API.apiURL("users/update-availability")
         static let getAvailabality = Constants.API.apiURL("users/availability-list")
+        static let getHiredJobs = Constants.API.apiURL("jobs/hired-jobs")
 
         static func apiURL(_ methodName: String) -> String {
             return BASE_URL + methodName
@@ -365,6 +366,10 @@ struct Constants {
         static let jobApplied = "You have successfully applied for the job."
         static let completeYourProfile = "Complete your profile"
         static let completeYourProfileDetailMsg = "You’ll need to fill out your profile before applying for the job. Would you like to fill this out now?"
+        
+        //Calendar Screen 
+        static let canNotSelectPreDate = "sorry you can't select previouse date"
+        
         
         //change password screen messgaes
         struct AlertTitle {

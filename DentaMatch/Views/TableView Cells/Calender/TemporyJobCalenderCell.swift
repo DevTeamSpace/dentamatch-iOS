@@ -49,6 +49,14 @@ class TemporyJobCalenderCell: UITableViewCell, FSCalendarDelegate {
 
         // Configure the view for the selected state
     }
+    func selectPreSelctDate(dateArray:[String]) {
+        for dateString in dateArray {
+            let date = Date.stringToDate(dateString:dateString)
+            calenderView.select(date)
+        }
+
+    }
+    
     @IBAction func previouseButtonClicked(_ sender: Any) {
         let currentMonth:Date = self.calenderView.currentPage
         let previousMonth:Date = (self.gregorian?.date(byAdding: .month, value: -1, to: currentMonth, options: .matchFirst))!
@@ -64,7 +72,13 @@ class TemporyJobCalenderCell: UITableViewCell, FSCalendarDelegate {
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        delegate?.selectTempJobDate!(selected: date)
+        if date >= Date() {
+            delegate?.selectTempJobDate!(selected: date)
+
+        }else {
+            self.calenderView.deselect(date)
+            self.makeToast(Constants.AlertMessage.canNotSelectPreDate)
+        }
     }
     func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
         delegate?.deSelectTempJobDate!(deSelected: date)

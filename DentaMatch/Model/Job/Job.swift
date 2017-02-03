@@ -108,30 +108,38 @@ class Job: NSObject {
         self.jobAppliedOn = job["jobAppliedOn"].stringValue
     }
     
-    init(job:JSON,tempJobDates:[TempJobDate]) {
-        self.jobId = job["id"].intValue
-        self.isSaved = job["isSaved"].intValue
-        self.jobType = job["jobType"].intValue
-        self.isMonday = job["isMonday"].intValue
-        self.isTuesday = job["isTuesday"].intValue
-        self.isWednesday = job["isWednesday"].intValue
-        self.isThursday = job["isThursday"].intValue
-        self.isFriday = job["isFriday"].intValue
-        self.isSaturday = job["isSaturday"].intValue
-        self.isSunday = job["isSunday"].intValue
-        self.jobtitle = job["jobtitleName"].stringValue
-        self.officeName = job["officeName"].stringValue
-        self.address = job["address"].stringValue
-        self.latitude = job["latitude"].stringValue
-        self.longitude = job["longitude"].stringValue
-        self.distance = Double(job["distance"].floatValue)
-        self.zipcode = job["zipcode"].intValue
-        self.postTime = job["createdAt"].stringValue
-        self.days = job["days"].stringValue
-        self.jobCreatedAt = job[""].stringValue
-        self.jobAppliedOn = job[""].stringValue
-        self.jobTypeString = job[""].stringValue
-        self.tempJobDates = tempJobDates
+    init(forCalendarjob:JSON) {
+        self.jobId = forCalendarjob["id"].intValue
+        self.isSaved = forCalendarjob["isSaved"].intValue
+        self.jobType = forCalendarjob["jobType"].intValue
+        self.isMonday = forCalendarjob["isMonday"].intValue
+        self.isTuesday = forCalendarjob["isTuesday"].intValue
+        self.isWednesday = forCalendarjob["isWednesday"].intValue
+        self.isThursday = forCalendarjob["isThursday"].intValue
+        self.isFriday = forCalendarjob["isFriday"].intValue
+        self.isSaturday = forCalendarjob["isSaturday"].intValue
+        self.isSunday = forCalendarjob["isSunday"].intValue
+        self.jobtitle = forCalendarjob["jobtitleName"].stringValue
+        self.officeName = forCalendarjob["officeName"].stringValue
+        self.address = forCalendarjob["address"].stringValue
+        self.latitude = forCalendarjob["latitude"].stringValue
+        self.longitude = forCalendarjob["longitude"].stringValue
+        self.distance = Double(forCalendarjob["distance"].floatValue)
+        self.zipcode = forCalendarjob["zipcode"].intValue
+        self.postTime = forCalendarjob["createdAt"].stringValue
+        self.days = forCalendarjob["days"].stringValue
+        self.jobCreatedAt = forCalendarjob["jobCreatedAt"].stringValue
+        self.jobAppliedOn = forCalendarjob["jobAppliedOn"].stringValue
+        self.jobTypeString = forCalendarjob["jobTypeString"].stringValue
+        let tempDates = forCalendarjob["tempJobDates"].arrayValue
+        self.tempJobDates.removeAll()
+        for dateObj in tempDates {
+            let tempObj = TempJobDate(tempJobDate: dateObj)
+            self.tempJobDates.append(tempObj)
+        }
+        
+        
+//        self.tempJobDates = tempJobDates
     }
 }
 

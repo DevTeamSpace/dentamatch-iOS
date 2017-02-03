@@ -25,6 +25,7 @@ class TemporyJobCell: UITableViewCell {
     }
 
     func setUpForButton(isTempTime:Bool ) {
+        isTemporaryTime = isTempTime
         if isTempTime {
             self.temporyButton.setTitle("w", for: .normal)
             self.temporyButton.setTitleColor(Constants.Color.tickSelectColor, for: .normal)

@@ -82,6 +82,7 @@ extension DMCalendarSetAvailabillityVC : UITableViewDataSource, UITableViewDeleg
             case 2:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TemporyJobCalenderCell") as? TemporyJobCalenderCell
                 cell?.selectionStyle = .none
+                cell?.selectPreSelctDate(dateArray: (self.availablitytModel?.tempJobDates)!)
                 cell?.delegate = self
                 return cell!
                 
@@ -135,6 +136,7 @@ extension DMCalendarSetAvailabillityVC : UITableViewDataSource, UITableViewDeleg
                 case 1:
                     let cell = tableView.dequeueReusableCell(withIdentifier: "TemporyJobCalenderCell") as? TemporyJobCalenderCell
                     cell?.selectionStyle = .none
+                    cell?.selectPreSelctDate(dateArray: (self.availablitytModel?.tempJobDates)!)
                     cell?.delegate = self
                     
                     return cell!
