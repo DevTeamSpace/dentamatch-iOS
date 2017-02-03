@@ -12,7 +12,7 @@ import SwiftyJSON
 extension DMJobSearchVC {
     
     func fetchSearchResultAPI(params:[String:Any]) {
-        print("Search Parameters\n\(params.description))")
+        debugPrint("Search Parameters\n\(params.description))")
         self.showLoader()
         APIManager.apiPost(serviceName: Constants.API.JobSearchResultAPI, parameters: params) { (response:JSON?, error:NSError?) in
             self.hideLoader()
@@ -38,6 +38,7 @@ extension DMJobSearchVC {
                     let job = Job(job: jobObject)
                     self.jobs.append(job)
                 }
+                self.totalJobsFromServer = response[Constants.ServerKey.result]["total"].intValue
                 self.goToSearchResult()
             } else {
                 self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)

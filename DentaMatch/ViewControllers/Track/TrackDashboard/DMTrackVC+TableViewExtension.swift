@@ -49,6 +49,7 @@ extension DMTrackVC:UITableViewDataSource,UITableViewDelegate {
         case .saved:
             let job = savedJobs[indexPath.row]
             self.populateJobCellData(cell: cell, job: job)
+            cell.handlePartTimeLabel(job: job)
             cell.btnFavourite.setImage(UIImage(named:"saveStar"), for: .normal)
             cell.btnFavourite.setTitle("", for: .normal)
             cell.btnFavourite.removeTarget(nil, action: nil, for: .allEvents)
@@ -59,12 +60,14 @@ extension DMTrackVC:UITableViewDataSource,UITableViewDelegate {
         case .applied:
             let job = appliedJobs[indexPath.row]
             self.populateJobCellData(cell: cell, job: job)
+            cell.handlePartTimeLabel(job: job)
             cell.btnFavourite.removeTarget(nil, action: nil, for: .allEvents)
             cell.btnFavourite.isHidden = true
             
         case .shortlisted:
             let job = shortListedJobs[indexPath.row]
             self.populateJobCellData(cell: cell, job: job)
+            cell.handlePartTimeLabel(job: job)
             cell.btnFavourite.isHidden = false
             cell.btnFavourite.imageView?.image = nil
             cell.btnFavourite.tag = indexPath.row

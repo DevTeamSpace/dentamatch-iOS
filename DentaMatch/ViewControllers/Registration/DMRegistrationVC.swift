@@ -63,42 +63,46 @@ class DMRegistrationVC: DMBaseVC {
     
     //MARK:- Private Methods
     func setup() {
+        UserDefaultsManager.sharedInstance.isOnBoardingDone = true
         self.registrationTableView.register(UINib(nibName: "RegistrationTableViewCell", bundle: nil), forCellReuseIdentifier: "RegistrationTableViewCell")
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.registrationTableView.addGestureRecognizer(tap)
     }
     
     func validateFields() -> Bool{
-        if !registrationParams[Constants.ServerKey.firstName]!.isEmpty {
-            if registrationParams[Constants.ServerKey.email]!.isValidEmail {
-                if registrationParams[Constants.ServerKey.password]!.characters.count >= Constants.Limit.passwordLimit {
-                    if coordinateSelected != nil {
-                        if self.termsAndConditionsAccepted {
-                            return true
-                        } else {
-                            self.makeToast(toastString: Constants.AlertMessage.termsAndConditions)
-                            return false
-                        }
-                    } else {
-                        self.makeToast(toastString: Constants.AlertMessage.emptyPreferredJobLocation)
-                        return false
-                    }
-                } else {
-                    if registrationParams[Constants.ServerKey.password]!.characters.count == 0 {
-                        self.makeToast(toastString: Constants.AlertMessage.emptyPassword)
-                    } else {
-                    self.makeToast(toastString: Constants.AlertMessage.passwordRange)
-                    }
-                    return false
-                }
-            } else {
-                self.makeToast(toastString: Constants.AlertMessage.invalidEmail)
-                return false
-            }
-        } else {
-            self.makeToast(toastString: Constants.AlertMessage.emptyName)
+        if registrationParams[Constants.ServerKey.firstName]!.isEmpty {
+            self.makeToast(toastString: Constants.AlertMessage.emptyFirstName)
             return false
         }
+        
+        if registrationParams[Constants.ServerKey.lastName]!.isEmpty {
+            self.makeToast(toastString: Constants.AlertMessage.emptyLastName)
+            return false
+        }
+        
+        if !registrationParams[Constants.ServerKey.email]!.isValidEmail {
+            self.makeToast(toastString: Constants.AlertMessage.invalidEmail)
+            return false
+        }
+        if registrationParams[Constants.ServerKey.password]!.characters.count < Constants.Limit.passwordLimit {
+            if registrationParams[Constants.ServerKey.password]!.characters.count == 0 {
+                self.makeToast(toastString: Constants.AlertMessage.emptyPassword)
+            } else {
+                self.makeToast(toastString: Constants.AlertMessage.passwordRange)
+            }
+            return false
+        }
+        if coordinateSelected == nil {
+            self.makeToast(toastString: Constants.AlertMessage.emptyPreferredJobLocation)
+            return false
+        }
+        
+        if !self.termsAndConditionsAccepted {
+            self.makeToast(toastString: Constants.AlertMessage.termsAndConditions)
+            return false
+        }
+        
+        return true
     }
     
     func openTermsAndConditions(isPrivacyPolicy:Bool) {

@@ -34,11 +34,18 @@ class DMRegistrationContainer: DMBaseVC {
         self.addChildViewController(registrationVC!)
         self.view.addSubview((registrationVC?.view)!)
         
-        loginVC?.didMove(toParentViewController: self)
-        registrationVC?.didMove(toParentViewController: self)
-        
-        loginVC?.view.alpha = 0.0
+        if UserDefaultsManager.sharedInstance.isLoggedOut {
+            registrationVC?.didMove(toParentViewController: self)
+            loginVC?.didMove(toParentViewController: self)
+            registrationVC?.view.alpha = 0.0
+            isRegistration = false
 
+        } else {
+            loginVC?.didMove(toParentViewController: self)
+            registrationVC?.didMove(toParentViewController: self)
+            loginVC?.view.alpha = 0.0
+        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -58,6 +65,10 @@ class DMRegistrationContainer: DMBaseVC {
             registrationButton.titleLabel?.font = UIFont.fontLight(fontSize: 14.0)!
             loginButton.titleLabel?.font = UIFont.fontSemiBold(fontSize: 14.0)!
             UIView.makeTip(view: loginButton, size: 8, x: loginButton.frame.midX/2, y: loginButton.frame.midY)
+        }
+        
+        if UserDefaultsManager.sharedInstance.isLoggedOut {
+            //goToLoginFromLogout()
         }
     }
     
@@ -111,5 +122,18 @@ class DMRegistrationContainer: DMBaseVC {
             //completion
 
         }
+    }
+    
+    func goToLoginFromLogout() {
+        isRegistration = false
+        registrationButton.titleLabel?.font = UIFont.fontLight(fontSize: 14.0)!
+        loginButton.titleLabel?.font = UIFont.fontSemiBold(fontSize: 14.0)!
+        UIView.removeTip(view: registrationButton)
+        UIView.makeTip(view: loginButton, size: 8, x: loginButton.frame.midX/2, y: loginButton.frame.midY)
+        self.view.endEditing(true)
+        self.view.bringSubview(toFront: (self.loginVC?.view)!)
+        loginVC?.clearData()
+        self.loginVC?.view.alpha = 1.0
+        self.registrationVC?.view.alpha = 0.0
     }
 }

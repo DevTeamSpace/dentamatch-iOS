@@ -162,6 +162,7 @@ extension DMJobSearchVC : UITableViewDataSource, UITableViewDelegate {
             if indexPath.row == 0 {
                 let registerMapsVC = UIStoryboard.registrationStoryBoard().instantiateViewController(type: DMRegisterMapsVC.self)!
                 registerMapsVC.delegate = self
+                registerMapsVC.fromJobSearch = true
                 self.navigationController?.pushViewController(registerMapsVC, animated: true)
             }
             else if indexPath.row == 1 {

@@ -11,9 +11,14 @@ import CoreLocation
 import GoogleMaps
 import GooglePlaces
 
+protocol SearchJobDelegate {
+    func refreshJobList()
+}
+
 class DMJobSearchVC : DMBaseVC {
     
     @IBOutlet weak var tblViewJobSearch: UITableView!
+    var delegate:SearchJobDelegate?
     var isPartTimeDayShow : Bool = false
     var jobTitles = [JobTitle]()
     var jobs = [Job]()
@@ -21,16 +26,10 @@ class DMJobSearchVC : DMBaseVC {
     var location : Location! = Location()
     var isJobTypeFullTime : String! = "0"
     var isJobTypePartTime : String! = "0"
-    var searchParams = [
-        Constants.JobDetailKey.lat:"",
-        Constants.JobDetailKey.lng:"",
-        Constants.JobDetailKey.zipCode:"",
-        Constants.JobDetailKey.isFulltime:"",
-        Constants.JobDetailKey.isParttime:"",
-        Constants.JobDetailKey.parttimeDays:[],
-        Constants.JobDetailKey.jobTitle:[],
-        Constants.JobDetailKey.page:""
-        ] as [String : Any]
+    var searchParams = [String : Any]()
+    var totalJobsFromServer = 0
+    var fromJobSearchResults = false
+    
     
     enum TableViewCellHeight: CGFloat {
         case jobTitleAndLocation = 88.0
@@ -58,12 +57,30 @@ class DMJobSearchVC : DMBaseVC {
     
     //MARK:- Private Methods
     func setup() {
+        
+        searchParams = [
+            Constants.JobDetailKey.lat:"",
+            Constants.JobDetailKey.lng:"",
+            Constants.JobDetailKey.zipCode:"",
+            Constants.JobDetailKey.isFulltime:"",
+            Constants.JobDetailKey.isParttime:"",
+            Constants.JobDetailKey.parttimeDays:[],
+            Constants.JobDetailKey.jobTitle:[],
+            Constants.JobDetailKey.page:""
+        ]
+
+        if fromJobSearchResults {
+            self.navigationItem.leftBarButtonItem = self.backBarButton()
+            if let params = UserDefaultsManager.sharedInstance.loadSearchParameter() {
+                searchParams = params
+            }
+        }
         self.tblViewJobSearch.rowHeight = UITableViewAutomaticDimension
         self.tblViewJobSearch.register(UINib(nibName: "JobSeachTitleCell", bundle: nil), forCellReuseIdentifier: "JobSeachTitleCell")
         self.tblViewJobSearch.register(UINib(nibName: "JobSearchTypeCell", bundle: nil), forCellReuseIdentifier: "JobSearchTypeCell")
         self.tblViewJobSearch.register(UINib(nibName: "JobSearchPartTimeCell", bundle: nil), forCellReuseIdentifier: "JobSearchPartTimeCell")
         self.tblViewJobSearch.register(UINib(nibName: "CurrentLocationCell", bundle: nil), forCellReuseIdentifier: "CurrentLocationCell")
-    }
+            }
     
     func validateFields() -> Bool {
         if self.jobTitles.count == 0 {
@@ -131,10 +148,16 @@ class DMJobSearchVC : DMBaseVC {
     }
     
     func goToSearchResult() {
-        if self.jobs.count > 0 {
-            let jobSearchResultVC = UIStoryboard.jobSearchStoryBoard().instantiateViewController(type: DMJobSearchResultVC.self)!
-            jobSearchResultVC.jobs = self.jobs
-            self.navigationController?.pushViewController(jobSearchResultVC, animated: true)
+        UserDefaultsManager.sharedInstance.saveSearchParameter(seachParam: searchParams as Any)
+        if fromJobSearchResults {
+            if let delegate = delegate {
+                delegate.refreshJobList()
+            }
+            _ = self.navigationController?.popViewController(animated: true)
+        } else {
+            //open dashboard
+            let dashboardVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: TabBarVC.self)!
+            kAppDelegate.window?.rootViewController = dashboardVC
         }
     }
     
@@ -156,6 +179,13 @@ class DMJobSearchVC : DMBaseVC {
         searchParams[Constants.JobDetailKey.parttimeDays] = partTimeJobDays
         searchParams[Constants.JobDetailKey.jobTitle] = jobTitleIds
         searchParams[Constants.JobDetailKey.page] = 1
-        self.fetchSearchResultAPI(params: searchParams)
+        //self.fetchSearchResultAPI(params: searchParams)
+        
+        // TO Save Search Parameter in UserDefault
+        let encodedData = NSKeyedArchiver.archivedData(withRootObject: searchParams)
+        kUserDefaults.set(encodedData, forKey: "SearchParameter")
+        kUserDefaults.synchronize()
+        
+        self.goToSearchResult()
     }
 }

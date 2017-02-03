@@ -81,8 +81,9 @@ extension DMSettingVC : UITableViewDataSource,UITableViewDelegate {
             
             if check == true {
                 UserManager.shared().deleteActiveUser()
+                UserDefaultsManager.sharedInstance.clearCache()
                 let registrationContainer = UIStoryboard.registrationStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.registrationNav) as! UINavigationController
-                
+                UserDefaultsManager.sharedInstance.isLoggedOut = true
                 UIView.transition(with: self.view.window!, duration: 0.25, options: .transitionCrossDissolve, animations: {
                     kAppDelegate.window?.rootViewController = registrationContainer
                 }) { (bool:Bool) in
