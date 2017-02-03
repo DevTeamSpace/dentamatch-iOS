@@ -12,7 +12,7 @@ import SwiftyJSON
 extension DMJobSearchVC {
     
     func fetchSearchResultAPI(params:[String:Any]) {
-        debugPrint("Search Parameters\n\(params.description))")
+        print("Search Parameters\n\(params.description))")
         self.showLoader()
         APIManager.apiPost(serviceName: Constants.API.JobSearchResultAPI, parameters: params) { (response:JSON?, error:NSError?) in
             self.hideLoader()

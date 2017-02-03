@@ -48,9 +48,11 @@ extension DMJobDetailVC {
                 self.job = job as Job
                 if job.isApplied == 1 {
                     self.btnApplyForJob.isUserInteractionEnabled = false
+                    self.btnApplyForJob.setTitle(Constants.Strings.appliedForThisJob, for: .normal)
                 }
                 else {
                     self.btnApplyForJob.isUserInteractionEnabled = true
+                    self.btnApplyForJob.setTitle(Constants.Strings.applyForJob, for: .normal)
                 }
                 self.tblJobDetail.isHidden = false
                 self.btnApplyForJob.isHidden = false

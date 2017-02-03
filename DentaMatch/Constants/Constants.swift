@@ -290,10 +290,12 @@ struct Constants {
         static let lng = "lng"
         static let zipCode = "zipCode"
         static let jobTitle = "jobTitle"
+        static let jobTitles = "jobTitles"
         static let page = "page"
         static let isFulltime = "isFulltime"
         static let isParttime = "isParttime"
         static let parttimeDays = "parttimeDays"
+        static let address = "address"
     }
     
     //MARK:- UserDefault Keys
@@ -406,10 +408,12 @@ struct Constants {
         static let map = "MAP"
         static let readMore = "READ MORE"
         static let readLess = "READ LESS"
+        static let appliedForThisJob = "APPLIED FOR THIS JOB"
+        static let applyForJob = "APPLY FOR JOB"
     }
     
     //MARK:- Weak Days
-    struct Days{
+    struct DaysAbbreviation{
         static let sunday = "Su"
         static let monday = "Mo"
         static let tuesday = "Tu"
@@ -417,6 +421,17 @@ struct Constants {
         static let thursday = "Th"
         static let friday = "Fr"
         static let saturday = "Sa"
+    }
+    
+    //MARK:- Weak Days
+    struct Days{
+        static let sunday = "sunday"
+        static let monday = "monday"
+        static let tuesday = "tuesday"
+        static let wednesday = "wednesday"
+        static let thursday = "thursday"
+        static let friday = "friday"
+        static let saturday = "saturday"
     }
     
     //MARK:- Hardcoded Limits

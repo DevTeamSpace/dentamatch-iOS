@@ -68,25 +68,25 @@ class DentistDetailCell: UITableViewCell {
         self.lblDentistName.text = job.jobtitle
         var partTimeJobDays = [String]()
         if job.isSunday == 1 {
-            partTimeJobDays.append(Constants.Days.sunday)
+            partTimeJobDays.append(Constants.DaysAbbreviation.sunday)
         }
         if job.isMonday == 1 {
-            partTimeJobDays.append(Constants.Days.monday)
+            partTimeJobDays.append(Constants.DaysAbbreviation.monday)
         }
         if job.isTuesday == 1 {
-            partTimeJobDays.append(Constants.Days.tuesday)
+            partTimeJobDays.append(Constants.DaysAbbreviation.tuesday)
         }
         if job.isWednesday == 1 {
-            partTimeJobDays.append(Constants.Days.wednesday)
+            partTimeJobDays.append(Constants.DaysAbbreviation.wednesday)
         }
         if job.isThursday == 1 {
-            partTimeJobDays.append(Constants.Days.thursday)
+            partTimeJobDays.append(Constants.DaysAbbreviation.thursday)
         }
         if job.isFriday == 1 {
-            partTimeJobDays.append(Constants.Days.friday)
+            partTimeJobDays.append(Constants.DaysAbbreviation.friday)
         }
         if job.isSaturday == 1 {
-            partTimeJobDays.append(Constants.Days.saturday)
+            partTimeJobDays.append(Constants.DaysAbbreviation.saturday)
         }
         self.lblDays.text = partTimeJobDays.joined(separator: Constants.Strings.comma + Constants.Strings.whiteSpace)
         if job.days == Constants.Strings.zero {
