@@ -244,12 +244,22 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
                     cell.reference2Name.isHidden = true
                     cell.reference2Email.isHidden = true
                     cell.reference2Mobile.isHidden = true
+                    cell.contactInformationLabel.isHidden = true
 
                     if experience.references.count > 0 {
+                        cell.contactInformationLabel.isHidden = false
                         cell.reference1Name.isHidden = false
                         cell.reference1Email.isHidden = false
                         cell.reference1Mobile.isHidden = false
 
+                        if checkReferenceIsAvaialble(ref: experience.references[0]) {
+                            cell.contactInformationLabel.isHidden = false
+
+                        }else{
+                            cell.contactInformationLabel.isHidden = true
+
+                        }
+                        
                         let reference  = experience.references[0]
                         cell.reference1Name.text = (reference.referenceName?.trim().characters.count)! > 0 ? reference.referenceName : "N/A"
                         cell.reference1Email.text = (reference.email?.trim().characters.count)! > 0 ? reference.email : "N/A"
@@ -259,6 +269,13 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
                         cell.reference2Name.isHidden = false
                         cell.reference2Email.isHidden = false
                         cell.reference2Mobile.isHidden = false
+                        if checkReferenceIsAvaialble(ref: experience.references[1]) {
+                            cell.contactInformationLabel.isHidden = false
+                            
+                        }else{
+                            cell.contactInformationLabel.isHidden = true
+                            
+                        }
 
                         let reference  = experience.references[1]
                         cell.reference2Name.text = (reference.referenceName?.trim().characters.count)! > 0 ? reference.referenceName : "N/A"
