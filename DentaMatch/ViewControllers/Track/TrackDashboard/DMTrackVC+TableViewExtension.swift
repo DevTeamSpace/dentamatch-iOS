@@ -80,6 +80,27 @@ extension DMTrackVC:UITableViewDataSource,UITableViewDelegate {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+//        let jobDetailVC = UIStoryboard.jobSearchStoryBoard().instantiateViewController(type: DMJobDetailVC.self)!
+//        
+//        let segmentControlOptions = SegmentControlOption(rawValue: self.segmentedControl.selectedSegmentIndex)!
+//
+//        switch segmentControlOptions {
+//        case .saved:
+//            jobDetailVC.job = self.savedJobs[indexPath.row]
+//
+//        case .applied:
+//            jobDetailVC.job = self.appliedJobs[indexPath.row]
+//
+//        case .shortlisted:
+//            jobDetailVC.job = self.shortListedJobs[indexPath.row]
+//
+//        }
+//        jobDetailVC.delegate = self
+        //self.navigationController?.pushViewController(jobDetailVC, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let segmentControlOptions = SegmentControlOption(rawValue: self.segmentedControl.selectedSegmentIndex)!
         

@@ -55,6 +55,21 @@ class DMTrackVC: DMBaseVC {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let selectedIndex = self.savedJobsTableView.indexPathForSelectedRow {
+            self.savedJobsTableView.deselectRow(at: selectedIndex, animated: true)
+        }
+        
+        if let selectedIndex = self.appliedJobsTableView.indexPathForSelectedRow {
+            self.appliedJobsTableView.deselectRow(at: selectedIndex, animated: true)
+        }
+        
+        if let selectedIndex = self.shortListedJobsTableView.indexPathForSelectedRow {
+            self.shortListedJobsTableView.deselectRow(at: selectedIndex, animated: true)
+        }
+    }
+    
     func setup() {
         self.savedJobsTableView.tag = 0
         self.appliedJobsTableView.tag = 1
