@@ -40,7 +40,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if !UserDefaultsManager.sharedInstance.isProfileSkipped {
             if UserDefaultsManager.sharedInstance.isLoggedIn {
                 self.goToProfile()
-                //goToSearch()
+            } else {
+                if UserDefaultsManager.sharedInstance.isOnBoardingDone {
+                    self.goToRegistration()
+                }
             }
         } else {
             self.goToDashBoard()
@@ -49,6 +52,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
    
+    func goToRegistration() {
+        let registrationVC = UIStoryboard.registrationStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.registrationNav) as! UINavigationController
+        self.window?.rootViewController = registrationVC
+    }
     
     func goToProfile() {
         let profileVC = UIStoryboard.profileStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.profileNav) as! UINavigationController
@@ -59,11 +66,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let dashboardVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: TabBarVC.self)!
         self.window?.rootViewController = dashboardVC
     }
-//    
-//    func goToSearch() {
-//        let jobSearchVC = UIStoryboard.jobSearchStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.jobSearchNav) as! UINavigationController
-//        self.window?.rootViewController = jobSearchVC
-//    }
+    
+    func goToSearch() {
+        let jobSearchVC = UIStoryboard.jobSearchStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.jobSearchNav) as! UINavigationController
+        self.window?.rootViewController = jobSearchVC
+    }
     
     func changeNavBarAppearance() {
         UIApplication.shared.statusBarStyle = .lightContent

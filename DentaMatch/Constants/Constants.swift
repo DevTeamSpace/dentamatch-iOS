@@ -300,6 +300,8 @@ struct Constants {
         static let isLoggedIn = "isLoggedIn"
         static let deviceToken = "kDeviceToken"
         static let isProfileSkipped = "kIsProfileSkipped"
+        static let isOnBoardingDone = "kIsOnBoardingDone"
+        static let isLoggedOut = "kIsLoggedOut"
         static let isProfileCompleted = "kIsProfileCompleted"
         static let accessToken = "kDeviceToken"
         static let profileImageURL = "kProfileImageURL"

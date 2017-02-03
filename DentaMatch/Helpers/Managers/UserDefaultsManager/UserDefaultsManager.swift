@@ -29,6 +29,32 @@ class UserDefaultsManager: NSObject {
         }
     }
     
+    var isLoggedOut:Bool {
+        get {
+            if kUserDefaults.value(forKey: Constants.UserDefaultsKey.isLoggedOut) != nil {
+                return kUserDefaults.value(forKey: Constants.UserDefaultsKey.isLoggedOut) as! Bool
+            }
+            return false
+        }
+        set {
+            kUserDefaults.setValue(newValue, forKey: Constants.UserDefaultsKey.isLoggedOut)
+            kUserDefaults.synchronize()
+        }
+    }
+    
+    var isOnBoardingDone:Bool {
+        get {
+            if kUserDefaults.value(forKey: Constants.UserDefaultsKey.isOnBoardingDone) != nil {
+                return kUserDefaults.value(forKey: Constants.UserDefaultsKey.isOnBoardingDone) as! Bool
+            }
+            return false
+        }
+        set {
+            kUserDefaults.setValue(newValue, forKey: Constants.UserDefaultsKey.isOnBoardingDone)
+            kUserDefaults.synchronize()
+        }
+    }
+    
     var isProfileSkipped:Bool {
         get {
             if kUserDefaults.value(forKey: Constants.UserDefaultsKey.isProfileSkipped) != nil {

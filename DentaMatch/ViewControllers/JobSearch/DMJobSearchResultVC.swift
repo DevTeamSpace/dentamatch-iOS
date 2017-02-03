@@ -81,7 +81,7 @@ class DMJobSearchResultVC : DMBaseVC {
         self.setRightBarButton(title: "",imageName: "search",width : rightBarButtonWidth, font: UIFont.designFont(fontSize: 16.0)!)
         self.setUpSegmentControl()
         self.constraintTblViewSearchResultHeight.constant = UIScreen.main.bounds.height - (self.navigationController?.navigationBar.frame.height)! - UIApplication.shared.statusBarFrame.height - (self.tabBarController?.tabBar.frame.height)! - (32.0)
-        self.loadViewIfNeeded()
+        self.view.layoutIfNeeded()
         self.btnCurrentLocation.isHidden = true
         self.btnCurrentLocation.isUserInteractionEnabled = false
         self.btnCurrentLocation.layer.cornerRadius = self.btnCurrentLocation.frame.size.width/2
