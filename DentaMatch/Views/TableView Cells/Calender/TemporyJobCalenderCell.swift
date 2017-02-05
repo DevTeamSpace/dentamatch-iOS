@@ -74,7 +74,6 @@ class TemporyJobCalenderCell: UITableViewCell, FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         if date >= Date() {
             delegate?.selectTempJobDate!(selected: date)
-
         }else {
             self.calenderView.deselect(date)
             self.makeToast(Constants.AlertMessage.canNotSelectPreDate)
@@ -82,7 +81,6 @@ class TemporyJobCalenderCell: UITableViewCell, FSCalendarDelegate {
     }
     func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
         delegate?.deSelectTempJobDate!(deSelected: date)
-
     }
     
 }

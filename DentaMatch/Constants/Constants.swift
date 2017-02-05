@@ -96,6 +96,9 @@ struct Constants {
         static let fullTimeBackgroundColor = UIColor.init(red: 69.0/255.0, green: 177.0/255.0 , blue: 179.0/255.0, alpha: 1.0)
         static let segmentControlBorderColor = UIColor.init(red: 42/255.0, green: 85/255.0, blue: 169.0/255.0, alpha: 1.0)
         static let segmentControlSelectionColor = UIColor.init(red: 4/255.0, green: 112/255.0, blue: 191.0/255.0, alpha: 1.0)
+        static let partTimeEventColor = UIColor.init(red: 142.0/255.0, green: 207.0/255.0, blue: 126.0/255.0, alpha: 1)
+        static let tempTimeEventColor = UIColor.init(red: 241.0/255.0, green: 184.0/255.0, blue: 90.0/255.0, alpha: 1)
+
     }
     
     struct DesignFont {

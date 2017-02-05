@@ -13,8 +13,8 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
     var isPartTimeDayShow : Bool = false
     var isTemporyAvail : Bool = false
 
-    var partTimeJobDays = [String]()
-    var tempJobDays = [String]()
+//    var partTimeJobDays = [String]()
+//    var tempJobDays = [String]()
 
     var isJobTypeFullTime : String! = "0"
     var isJobTypePartTime : String! = "0"
@@ -91,9 +91,8 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
     func checkValidations() -> Bool {
         if isPartTimeDayShow == true {
             
-            if partTimeJobDays.count > 0
+            if (self.availablitytModel?.isParttimeMonday)! || (self.availablitytModel?.isParttimeTuesday)! || (self.availablitytModel?.isParttimeWednesday)! || (self.availablitytModel?.isParttimeThursday)! || (self.availablitytModel?.isParttimeFriday)! || (self.availablitytModel?.isParttimeSaturday)! || (self.availablitytModel?.isParttimeSunday)!
             {
-                return true
 
             }else{
                 self.makeToast(toastString: Constants.AlertMessage.selectAvailableDay)
@@ -101,9 +100,8 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
             }
         }
         if isTemporyAvail == true {
-            if tempJobDays.count > 0
+            if (self.availablitytModel?.tempJobDates.count)! > 0
             {
-                return true
             }else{
                 self.makeToast(toastString: Constants.AlertMessage.selectDate)
                 return false

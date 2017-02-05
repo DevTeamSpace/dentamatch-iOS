@@ -55,6 +55,7 @@ class Job: NSObject {
     var jobTypeString = ""
     var jobCreatedAt = ""
     var jobAppliedOn = ""
+    var jobDate = ""
     var tempJobDates = [TempJobDate]()
     
     override init() {
@@ -106,6 +107,7 @@ class Job: NSObject {
         self.jobTypeString = job["jobTypeString"].stringValue
         self.jobCreatedAt = job["jobCreatedAt"].stringValue
         self.jobAppliedOn = job["jobAppliedOn"].stringValue
+        self.jobDate = job["jobDate"].stringValue
     }
     
     init(forCalendarjob:JSON) {

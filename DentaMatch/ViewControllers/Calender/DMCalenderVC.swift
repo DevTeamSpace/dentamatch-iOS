@@ -20,7 +20,8 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
     @IBOutlet weak var monthTitleLabel: UILabel!
     
     var hiredList  = [Job]()
-    
+    var selectedDayList  = [Job]()
+
     var gregorian:NSCalendar?
 
     override func viewDidLoad() {
@@ -80,7 +81,8 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
 
         let dateData = Date.getMonthAndYearForm(date: Date())
         self.getHiredJobsFromServer(month: dateData.month, year: dateData.year) { (response, error) in
-            debugPrint(self.hiredList)
+            debugPrint(self.hiredList.description)
+            self.calendar?.reloadData()
         }
     }
     
@@ -108,24 +110,301 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         // Pass the selected object to the new view controller.
     }
     */
+    func calculateNumberOfEvent(date:Date) -> Int {
+        let dayPartTime = hiredList.filter { (newJob) -> Bool in
+            (newJob.jobType == 2)
+        }
+
+        var eventcount = 0
+        switch getDayOfWeek(today: date) {
+        case 1:
+            let sundayJob = dayPartTime.filter { (newJob) -> Bool in
+                (newJob.isSunday == 1)
+            }
+            if sundayJob.count > 0 {
+                eventcount = eventcount + 1
+            }
+
+        case 2:
+            let mondayJob = dayPartTime.filter { (newJob) -> Bool in
+                (newJob.isMonday == 1)
+            }
+            if mondayJob.count > 0 {
+                eventcount = eventcount + 1
+            }
+            
+        case 3:
+            let tuesdayJob = dayPartTime.filter { (newJob) -> Bool in
+                (newJob.isTuesday == 1)
+            }
+            if tuesdayJob.count > 0 {
+                eventcount = eventcount + 1
+            }
+        case 4:
+            let wednesdayJob = dayPartTime.filter { (newJob) -> Bool in
+                (newJob.isWednesday == 1)
+            }
+            if wednesdayJob.count > 0 {
+                eventcount = eventcount + 1
+            }
+        case 5:
+            let thursdayJob = dayPartTime.filter { (newJob) -> Bool in
+                (newJob.isThursday == 1)
+            }
+            if thursdayJob.count > 0 {
+                eventcount = eventcount + 1
+            }
+        case 6:
+            let firdayJob = dayPartTime.filter { (newJob) -> Bool in
+                (newJob.isFriday == 1)
+            }
+            if firdayJob.count > 0 {
+                eventcount = eventcount + 1
+            }
+        case 7:
+            let saturdayJob = dayPartTime.filter { (newJob) -> Bool in
+                (newJob.isMonday == 1)
+            }
+            if saturdayJob.count > 0 {
+                eventcount = eventcount + 1
+            }
+
+        default:
+            break
+        }
+        
+        let dayTempTime = hiredList.filter { (newJob) -> Bool in
+            (newJob.jobType == 3)
+        }
+        for temp in dayTempTime {
+            
+            let tempNew = temp.tempJobDates.filter({ (dateString) -> Bool in
+                (dateString.jobDate == Date.dateToString(date: date))
+            })
+            if tempNew.count > 0 {
+                eventcount = eventcount + 1
+                break
+            }
+            
+            
+        }
+        
+//        let tempDay = dayTempTime.filter { (newJob) -> Bool in
+//            (newJob.tempJobDates.contains(where: { (objDate) -> Bool in
+//                (objDate.jobDate == Date.dateToString(date: Date()))
+//            }))
+//        }
+        
+//        if tempDay.count > 0 {
+//            eventcount = eventcount + 1
+//        }
+        return eventcount
+        
+    }
+    
+    
+    
+    
+    func dateEventColor(date:Date) -> [UIColor] {
+        
+        let dayPartTime = hiredList.filter { (newJob) -> Bool in
+            (newJob.jobType == 2)
+        }
+        var color = [UIColor]()
+        switch getDayOfWeek(today: date) {
+        case 1:
+            let sundayJob = dayPartTime.filter { (newJob) -> Bool in
+                (newJob.isSunday == 1)
+            }
+            if sundayJob.count > 0 {
+                color.append(Constants.Color.partTimeEventColor)
+            }
+            
+        case 2:
+            let mondayJob = dayPartTime.filter { (newJob) -> Bool in
+                (newJob.isMonday == 1)
+            }
+            if mondayJob.count > 0 {
+                color.append(Constants.Color.partTimeEventColor)
+            }
+            
+        case 3:
+            let tuesdayJob = dayPartTime.filter { (newJob) -> Bool in
+                (newJob.isTuesday == 1)
+            }
+            if tuesdayJob.count > 0 {
+                color.append(Constants.Color.partTimeEventColor)
+            }
+        case 4:
+            let wednesdayJob = dayPartTime.filter { (newJob) -> Bool in
+                (newJob.isWednesday == 1)
+            }
+            if wednesdayJob.count > 0 {
+                color.append(Constants.Color.partTimeEventColor)
+            }
+        case 5:
+            let thursdayJob = dayPartTime.filter { (newJob) -> Bool in
+                (newJob.isThursday == 1)
+            }
+            if thursdayJob.count > 0 {
+                color.append(Constants.Color.partTimeEventColor)
+            }
+        case 6:
+            let firdayJob = dayPartTime.filter { (newJob) -> Bool in
+                (newJob.isFriday == 1)
+            }
+            if firdayJob.count > 0 {
+                color.append(Constants.Color.partTimeEventColor)
+            }
+        case 7:
+            let saturdayJob = dayPartTime.filter { (newJob) -> Bool in
+                (newJob.isMonday == 1)
+            }
+            if saturdayJob.count > 0 {
+                color.append(Constants.Color.partTimeEventColor)
+                break
+            }
+            
+        default:
+            break
+        }
+        
+        let dayTempTime = hiredList.filter { (newJob) -> Bool in
+            (newJob.jobType == 3)
+        }
+        for temp in dayTempTime {
+            
+            let tempNew = temp.tempJobDates.filter({ (dateString) -> Bool in
+                (dateString.jobDate == Date.dateToString(date: date))
+            })
+            if tempNew.count > 0 {
+                color.append(Constants.Color.tempTimeEventColor)
+            }
+            
+            
+        }
+        
+        return color
+        
+    }
+    
+    
+    
+    func dateAllEvents(date:Date) -> [Job] {
+        
+        let dayFullTime = hiredList.filter { (newJob) -> Bool in
+            (newJob.jobType == 1)
+        }
+
+        
+        let dayPartTime = hiredList.filter { (newJob) -> Bool in
+            (newJob.jobType == 2)
+        }
+        var todayAllEvent = [Job]()
+        
+        todayAllEvent.append(contentsOf: dayFullTime)
+        switch getDayOfWeek(today: date) {
+        case 1:
+            let sundayJob = dayPartTime.filter { (newJob) -> Bool in
+                (newJob.isSunday == 1)
+            }
+            if sundayJob.count > 0 {
+                todayAllEvent.append(contentsOf: sundayJob)
+            }
+            
+        case 2:
+            let mondayJob = dayPartTime.filter { (newJob) -> Bool in
+                (newJob.isMonday == 1)
+            }
+            if mondayJob.count > 0 {
+                todayAllEvent.append(contentsOf: mondayJob)
+            }
+            
+        case 3:
+            let tuesdayJob = dayPartTime.filter { (newJob) -> Bool in
+                (newJob.isTuesday == 1)
+            }
+            if tuesdayJob.count > 0 {
+                todayAllEvent.append(contentsOf: tuesdayJob)
+            }
+        case 4:
+            let wednesdayJob = dayPartTime.filter { (newJob) -> Bool in
+                (newJob.isWednesday == 1)
+            }
+            if wednesdayJob.count > 0 {
+                todayAllEvent.append(contentsOf: wednesdayJob)
+            }
+        case 5:
+            let thursdayJob = dayPartTime.filter { (newJob) -> Bool in
+                (newJob.isThursday == 1)
+            }
+            if thursdayJob.count > 0 {
+                todayAllEvent.append(contentsOf: thursdayJob)
+            }
+        case 6:
+            let firdayJob = dayPartTime.filter { (newJob) -> Bool in
+                (newJob.isFriday == 1)
+            }
+            if firdayJob.count > 0 {
+                todayAllEvent.append(contentsOf: firdayJob)
+            }
+        case 7:
+            let saturdayJob = dayPartTime.filter { (newJob) -> Bool in
+                (newJob.isMonday == 1)
+            }
+            if saturdayJob.count > 0 {
+                todayAllEvent.append(contentsOf: saturdayJob)
+            }
+            
+        default:
+            break
+        }
+        
+        let dayTempTime = hiredList.filter { (newJob) -> Bool in
+            (newJob.jobType == 3)
+        }
+        for temp in dayTempTime {
+            
+            let tempNew = temp.tempJobDates.filter({ (dateString) -> Bool in
+                (dateString.jobDate == Date.dateToString(date: date))
+            })
+            if tempNew.count > 0 {
+                todayAllEvent.append(temp)
+            }
+            
+        }
+        
+        return todayAllEvent
+        
+    }
+    
+    func getDayOfWeek(today:Date)->Int {
+        //1-sunday , 4- wednesday 7- saturday
+        let myCalendar = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)!
+        let myComponents = myCalendar.components(.weekday, from: today)
+        let weekDay = myComponents.weekday
+        return weekDay!
+    }
+
     //MARK:- Calender Methods 
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        return 2
+        let count = calculateNumberOfEvent(date: date)
+        return count
     }
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, borderRadiusFor date: Date) -> CGFloat {
         return 1.0
     }
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventSelectionColorsFor date: Date) -> [UIColor]? {
-        return [UIColor.brown,UIColor.red,UIColor.yellow]
+        return dateEventColor(date: date)
     }
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventDefaultColorsFor date: Date) -> [UIColor]? {
-        return [UIColor.brown,UIColor.yellow,UIColor.blue]
+        return dateEventColor(date: date)
     }
-    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventColorsFor date: Date) -> [Any]? {
-        
-        return [UIColor.red,UIColor.green,UIColor.blue]
-        
-    }
+//    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventColorsFor date: Date) -> [Any]? {
+//        
+//        return [UIColor.red,UIColor.green,UIColor.blue]
+//        
+//    }
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, borderDefaultColorFor date: Date) -> UIColor? {
         return UIColor.clear
@@ -133,7 +412,16 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
         
     }
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        selectedDayList.removeAll()
+        selectedDayList = dateAllEvents(date: date)
+        print(selectedDayList.description)
 
+    }
+    func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
+    }
+
+    
     //pluse button Action
     func setAvailablityButtonClicked(_ sender: Any) {
         let termsVC = UIStoryboard.calenderStoryBoard().instantiateViewController(type: DMCalendarSetAvailabillityVC.self)!

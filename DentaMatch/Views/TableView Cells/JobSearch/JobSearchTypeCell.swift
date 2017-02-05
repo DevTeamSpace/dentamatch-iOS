@@ -48,6 +48,8 @@ class JobSearchTypeCell: UITableViewCell {
         viewJobType.layer.borderWidth = 1.0
     }
     func setUpForButtons(isPartTime:Bool, isFullTime:Bool ) {
+        self.isFullTime = isFullTime
+        self.isPartTime = isPartTime
         if isFullTime {
             self.btnFullTime.setTitle("w", for: .normal)
             self.btnFullTime.setTitleColor(Constants.Color.tickSelectColor, for: .normal)

@@ -74,10 +74,47 @@ extension DMCalendarSetAvailabillityVC {
         }
     }
     func setMyAvailabilityOnServer(completionHandler: @escaping (JSON?, NSError?) -> ()) {
+        var partTimeJobDays = [String]()
+        
+        if self.availablitytModel?.isParttime == true {
+            if (self.availablitytModel?.isParttimeMonday)! {
+                partTimeJobDays.append("monday")
+            }
+            if (self.availablitytModel?.isParttimeTuesday)! {
+                partTimeJobDays.append("tuesday")
+
+            }
+            if (self.availablitytModel?.isParttimeWednesday)! {
+                partTimeJobDays.append("wednesday")
+
+            }
+            if (self.availablitytModel?.isParttimeThursday)! {
+                partTimeJobDays.append("thursday")
+
+            }
+            if (self.availablitytModel?.isParttimeFriday)! {
+                partTimeJobDays.append("friday")
+
+            }
+            if (self.availablitytModel?.isParttimeSaturday)! {
+                partTimeJobDays.append("saturday")
+
+            }
+            if (self.availablitytModel?.isParttimeSunday)! {
+                partTimeJobDays.append("sunday")
+            }
+        }
+        
         var param = [String:AnyObject]()
         param["isFulltime"] = self.isJobTypeFullTime! as AnyObject?
         param["partTimeDays"] = partTimeJobDays as AnyObject?
-        param["tempdDates"] = tempJobDays as AnyObject?
+        if self.isTemporyAvail {
+            param["tempdDates"] = self.availablitytModel?.tempJobDates as AnyObject?
+        }else {
+            param["tempdDates"] = [String]() as AnyObject?
+ 
+        }
+        
 
         print("setMyAvailabilityOnServer Parameters\n\(param.description))")
         

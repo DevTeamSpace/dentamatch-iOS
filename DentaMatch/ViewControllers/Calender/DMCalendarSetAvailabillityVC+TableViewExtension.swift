@@ -231,11 +231,12 @@ extension DMCalendarSetAvailabillityVC : JobSearchTypeCellDelegate,TemporyJobCel
     
     func selectJobSearchType(selected: Bool, type: String) {
         if type ==  JobSearchType.PartTime.rawValue {
-            partTimeJobDays.removeAll()
-            
+//            partTimeJobDays.removeAll()
+            self.availablitytModel?.isParttime = selected
             if selected == true  {
                 if isPartTimeDayShow == false {
                     isPartTimeDayShow = !isPartTimeDayShow
+                    
                     calenderTableView.beginUpdates()
                     calenderTableView.insertRows(at: [IndexPath(row: 0, section: 1)], with: .none )
                     calenderTableView.endUpdates()
@@ -265,7 +266,7 @@ extension DMCalendarSetAvailabillityVC : JobSearchTypeCellDelegate,TemporyJobCel
     func selectTempJobType(selected: Bool) {
         isTemporyAvail = !isTemporyAvail
         
-        tempJobDays.removeAll()
+//        tempJobDays.removeAll()
         if selected == true  {
             if isPartTimeDayShow == true {
                 let path = IndexPath(row: 2, section: 1)
@@ -291,18 +292,23 @@ extension DMCalendarSetAvailabillityVC : JobSearchTypeCellDelegate,TemporyJobCel
     //MARK : JobSearchPartTimeCellDelegate Method
     
     func selectDay(selected: Bool, day: String) {
-        if selected == true {
-            if partTimeJobDays.contains(day) {
-                
-            }
-            else {
-                partTimeJobDays.append(day)
-            }
-        }
-        else {
-            if partTimeJobDays.contains(day) {
-                partTimeJobDays.remove(at: partTimeJobDays.index(of: day)!)
-            }
+        switch day {
+        case "monday":
+            self.availablitytModel?.isParttimeMonday = selected
+        case "tuesday":
+            self.availablitytModel?.isParttimeTuesday = selected
+        case "wednesday":
+            self.availablitytModel?.isParttimeWednesday = selected
+        case "thursday":
+            self.availablitytModel?.isParttimeThursday = selected
+        case "friday":
+            self.availablitytModel?.isParttimeFriday = selected
+        case "saturday":
+            self.availablitytModel?.isParttimeSaturday = selected
+        case "sunday":
+            self.availablitytModel?.isParttimeSunday = selected
+        default:
+            break
         }
     }
     
@@ -342,16 +348,16 @@ extension DMCalendarSetAvailabillityVC : JobSearchTypeCellDelegate,TemporyJobCel
         }
     }
     func selectTempJobDate(selected: Date) {
-        tempJobDays.append(Date.dateToString(date: selected))
-        print(tempJobDays)
+        self.availablitytModel?.tempJobDates.append(Date.dateToString(date: selected))
+        print(self.availablitytModel?.tempJobDates ?? "dates are not avail")
         
     }
     
     func deSelectTempJobDate(deSelected: Date) {
-        if tempJobDays.contains(Date.dateToString(date: deSelected)) {
-            tempJobDays.remove(at: tempJobDays.index(of: Date.dateToString(date: deSelected))!)
+        if (self.availablitytModel?.tempJobDates.contains(Date.dateToString(date: deSelected)))! {
+            self.availablitytModel?.tempJobDates.remove(at: (self.availablitytModel?.tempJobDates.index(of: Date.dateToString(date: deSelected))!)!)
         }
-        print(tempJobDays)
+        print(self.availablitytModel?.tempJobDates ?? "dates are not avail")
         
     }
     
