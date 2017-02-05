@@ -36,6 +36,8 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
     }
     
     func setup() {
+        self.fulltimeJobIndicatorView.layer.cornerRadius = fulltimeJobIndicatorView.bounds.size.height/2
+        self.fulltimeJobIndicatorView.clipsToBounds = true
         self.title = Constants.ScreenTitleNames.calendar
         gregorian = NSCalendar(calendarIdentifier: .gregorian)
         self.monthTitleLabel.text = Date.dateToStringForFormatter(date: Date(), dateFormate: Date.dateFormatMMMMYYYY())
@@ -43,6 +45,7 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         self.navigationItem.rightBarButtonItem = self.rightBarButton()
         self.bookedJobsTableView.separatorStyle = .none
         self.bookedJobsTableView.register(UINib(nibName: "SectionHeadingTableCell", bundle: nil), forCellReuseIdentifier: "SectionHeadingTableCell")
+        self.bookedJobsTableView.register(UINib(nibName: "JobSearchResultCell", bundle: nil), forCellReuseIdentifier: "JobSearchResultCell")
 
 
         self.calendar = FSCalendar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 311))
@@ -83,6 +86,15 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         self.getHiredJobsFromServer(month: dateData.month, year: dateData.year) { (response, error) in
             debugPrint(self.hiredList.description)
             self.calendar?.reloadData()
+            let fullTime  = self.hiredList.filter({ (job) -> Bool in
+                job.jobType == 1
+            })
+            if fullTime.count > 0 {
+                self.fulltimeJobIndicatorView.isHidden = false
+            }else{
+                self.fulltimeJobIndicatorView.isHidden = true
+            }
+            
         }
     }
     
@@ -416,6 +428,8 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         selectedDayList.removeAll()
         selectedDayList = dateAllEvents(date: date)
         print(selectedDayList.description)
+        bookedJobsTableView.reloadData()
+        
 
     }
     func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
