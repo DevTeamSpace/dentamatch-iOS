@@ -229,6 +229,8 @@
 		E5AE2AF11DAF844C00C008BD /* DMOnboardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE2AF01DAF844C00C008BD /* DMOnboardingVC.swift */; };
 		E5AE2AF31DAF84AD00C008BD /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5AE2AF21DAF84AD00C008BD /* Onboarding.storyboard */; };
 		E5AE2AF61DAF878900C008BD /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE2AF51DAF878900C008BD /* OnboardingCollectionViewCell.swift */; };
+		E5AE37021E485D6E0001EC3C /* PlaceHolderJobsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5AE37011E485D6E0001EC3C /* PlaceHolderJobsView.xib */; };
+		E5AE37041E485D800001EC3C /* PlaceHolderJobsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37031E485D800001EC3C /* PlaceHolderJobsView.swift */; };
 		E5C5F3151DC0AACA001A5A3F /* DMRegisterMapsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C5F3141DC0AACA001A5A3F /* DMRegisterMapsVC.swift */; };
 		E5C5F3181DC1A723001A5A3F /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C5F3171DC1A723001A5A3F /* LocationManager.swift */; };
 		E5C5F31B1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C5F31A1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift */; };
@@ -554,6 +556,8 @@
 		E5AE2AF01DAF844C00C008BD /* DMOnboardingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMOnboardingVC.swift; sourceTree = "<group>"; };
 		E5AE2AF21DAF84AD00C008BD /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		E5AE2AF51DAF878900C008BD /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
+		E5AE37011E485D6E0001EC3C /* PlaceHolderJobsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaceHolderJobsView.xib; sourceTree = "<group>"; };
+		E5AE37031E485D800001EC3C /* PlaceHolderJobsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceHolderJobsView.swift; sourceTree = "<group>"; };
 		E5C5F3141DC0AACA001A5A3F /* DMRegisterMapsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMRegisterMapsVC.swift; sourceTree = "<group>"; };
 		E5C5F3171DC1A723001A5A3F /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		E5C5F31A1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMTermsAndConditionsVC.swift; sourceTree = "<group>"; };
@@ -1037,6 +1041,7 @@
 		E55462DD1DAE31A1004163B2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E5AE37001E485CAE0001EC3C /* PlaceHolderJobsView */,
 				E51D4F031E3FAB9100ACC631 /* LoadMore */,
 				E51D4EFA1E3B816B00ACC631 /* SegmentControl */,
 				E558D8F81E2CB5B500A6DF95 /* AutoCompleteTable */,
@@ -1604,6 +1609,15 @@
 			path = "CollectionView Cells";
 			sourceTree = "<group>";
 		};
+		E5AE37001E485CAE0001EC3C /* PlaceHolderJobsView */ = {
+			isa = PBXGroup;
+			children = (
+				E5AE37011E485D6E0001EC3C /* PlaceHolderJobsView.xib */,
+				E5AE37031E485D800001EC3C /* PlaceHolderJobsView.swift */,
+			);
+			path = PlaceHolderJobsView;
+			sourceTree = "<group>";
+		};
 		E5C5F30C1DC074C9001A5A3F /* fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -2023,6 +2037,7 @@
 				F2F5E0D01E2F62080082187C /* AboutCell.xib in Resources */,
 				E56E45C31DAE07C200AD4559 /* Assets.xcassets in Resources */,
 				E558D8FA1E2CB5C300A6DF95 /* AutoCompleteTable.xib in Resources */,
+				E5AE37021E485D6E0001EC3C /* PlaceHolderJobsView.xib in Resources */,
 				5AC714401E34A9B100E433C1 /* Calender.storyboard in Resources */,
 				5AD246951E273CE7009350BF /* DatePickerView.xib in Resources */,
 				5A3BD4AF1E35DB1E00A607AC /* EditProfileSkillBrickCell.xib in Resources */,
@@ -2225,6 +2240,7 @@
 				F22359171E3F3E3300E984FC /* DMJobSearchVC+TableViewExtension.swift in Sources */,
 				F2F5E0DA1E31BDD00082187C /* MapCell.swift in Sources */,
 				E55462F71DAE4C6F004163B2 /* UITextField+ToolBar.swift in Sources */,
+				E5AE37041E485D800001EC3C /* PlaceHolderJobsView.swift in Sources */,
 				F2F5E0CF1E2F62080082187C /* AboutCell.swift in Sources */,
 				E587D2D71E236B84006B7F06 /* DMRegisterMapsVC+GoogleMapsExtension.swift in Sources */,
 				5A3B06CD1E3387FF00EFCA6E /* DMSettingVC+TableViewExtension.swift in Sources */,

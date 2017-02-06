@@ -56,6 +56,7 @@ extension DMTrackVC:UITableViewDataSource,UITableViewDelegate {
             cell.btnFavourite.addTarget(self, action: #selector(removeFavouriteJobButtonPressed), for: .touchUpInside)
             cell.btnFavourite.tag = indexPath.row
             cell.btnFavourite.isHidden = false
+            cell.selectionStyle = .none
             
         case .applied:
             let job = appliedJobs[indexPath.row]
@@ -63,6 +64,7 @@ extension DMTrackVC:UITableViewDataSource,UITableViewDelegate {
             cell.handlePartTimeLabel(job: job)
             cell.btnFavourite.removeTarget(nil, action: nil, for: .allEvents)
             cell.btnFavourite.isHidden = true
+            cell.selectionStyle = .none
             
         case .shortlisted:
             let job = shortListedJobs[indexPath.row]
@@ -74,6 +76,7 @@ extension DMTrackVC:UITableViewDataSource,UITableViewDelegate {
             cell.btnFavourite.setTitle("n", for: .normal)
             cell.btnFavourite.removeTarget(nil, action: nil, for: .allEvents)
             cell.btnFavourite.addTarget(self, action: #selector(goToChatButton), for: .touchUpInside)
+            cell.selectionStyle = .none
 
         }
         
@@ -101,10 +104,22 @@ extension DMTrackVC:UITableViewDataSource,UITableViewDelegate {
         //self.navigationController?.pushViewController(jobDetailVC, animated: true)
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        let segmentControlOptions = SegmentControlOption(rawValue: self.segmentedControl.selectedSegmentIndex)!
+
+        switch segmentControlOptions {
+        case .saved:
+            return false
+        default:
+            return true
+        }
+    }
+    
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let segmentControlOptions = SegmentControlOption(rawValue: self.segmentedControl.selectedSegmentIndex)!
         
         switch segmentControlOptions {
+  
         case .applied:
             let deleteAction = UITableViewRowAction(style: .normal, title: "Cancel Job", handler: { (action:UITableViewRowAction, indexPath:IndexPath) in
                 let job = self.appliedJobs[indexPath.row]
@@ -242,12 +257,18 @@ extension DMTrackVC : CancelledJobDelegate {
             self.appliedJobsTableView.reloadData()
             if self.appliedJobs.count == 0 {
                 self.appliedJobsPageNo = 1
+                self.placeHolderEmptyJobsView?.isHidden = false
+            } else {
+                self.placeHolderEmptyJobsView?.isHidden = false
             }
         } else {
             self.shortListedJobs.removeObject(object: job)
             self.shortListedJobsTableView.reloadData()
             if self.shortListedJobs.count == 0 {
                 self.shortListedJobsPageNo = 1
+                self.placeHolderEmptyJobsView?.isHidden = false
+            }else {
+                self.placeHolderEmptyJobsView?.isHidden = false
             }
         }
     }
