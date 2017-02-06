@@ -71,6 +71,8 @@ class DMSkillsVC: DMBaseVC {
                 } else {
                     self.updateSkillsAPI(params: params)
                 }
+            } else {
+                self.makeToast(toastString: "Please select atleast one skill")
             }
         }
     }

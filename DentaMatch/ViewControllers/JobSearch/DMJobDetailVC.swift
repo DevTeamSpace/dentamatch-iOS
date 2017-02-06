@@ -21,6 +21,7 @@ class DMJobDetailVC: DMBaseVC {
     var job:Job?
     var isReadMore = false
     var delegate:JobSavedStatusUpdateDelegate?
+    var fromTrack = true
     
     enum TableViewCellHeight: CGFloat {
         case jobTitle = 115.0
@@ -43,7 +44,17 @@ class DMJobDetailVC: DMBaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tblJobDetail.reloadData()
+        if fromTrack {
+            self.navigationItem.leftBarButtonItem = self.backBarButton()
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if fromTrack {
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -62,7 +73,7 @@ class DMJobDetailVC: DMBaseVC {
         self.tblJobDetail.register(UINib(nibName: "MapCell", bundle: nil), forCellReuseIdentifier: "MapCell")
         self.navigationItem.leftBarButtonItem = self.backBarButton()
         jobDetailParams = [
-            Constants.ServerKey.jobId:job?.jobId
+            Constants.ServerKey.jobId:job?.jobId ?? 0
         ]
     }
     

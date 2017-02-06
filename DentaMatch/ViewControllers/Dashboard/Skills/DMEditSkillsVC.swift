@@ -92,6 +92,8 @@ class DMEditSkillsVC: DMBaseVC {
                 } else {
                     self.updateSkillsAPI(params: params)
                 }
+            } else if others.count == 0 {
+                self.makeToast(toastString: "Please select atleast one skill")
             }
         }
     }

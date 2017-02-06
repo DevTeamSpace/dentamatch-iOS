@@ -55,6 +55,21 @@ class DMTrackVC: DMBaseVC {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let selectedIndex = self.savedJobsTableView.indexPathForSelectedRow {
+            self.savedJobsTableView.deselectRow(at: selectedIndex, animated: true)
+        }
+        
+        if let selectedIndex = self.appliedJobsTableView.indexPathForSelectedRow {
+            self.appliedJobsTableView.deselectRow(at: selectedIndex, animated: true)
+        }
+        
+        if let selectedIndex = self.shortListedJobsTableView.indexPathForSelectedRow {
+            self.shortListedJobsTableView.deselectRow(at: selectedIndex, animated: true)
+        }
+    }
+    
     func setup() {
         self.savedJobsTableView.tag = 0
         self.appliedJobsTableView.tag = 1
@@ -83,6 +98,8 @@ class DMTrackVC: DMBaseVC {
         self.savedJobsPageNo = 1
         jobParams["type"] = "1"
         jobParams["page"] = "1"
+        jobParams["lat"] = UserManager.shared().activeUser.latitude
+        jobParams["lng"] = UserManager.shared().activeUser.longitude
         self.getJobList(params: jobParams)
         pullToRefreshSavedJobs.endRefreshing()
     }
@@ -92,6 +109,8 @@ class DMTrackVC: DMBaseVC {
         self.appliedJobsPageNo = 1
         jobParams["type"] = "2"
         jobParams["page"] = "1"
+        jobParams["lat"] = UserManager.shared().activeUser.latitude
+        jobParams["lng"] = UserManager.shared().activeUser.longitude
         self.getJobList(params: jobParams)
         pullToRefreshAppliedJobs.endRefreshing()
     }
@@ -100,6 +119,8 @@ class DMTrackVC: DMBaseVC {
         self.shortListedJobsPageNo = 1
         jobParams["type"] = "3"
         jobParams["page"] = "1"
+        jobParams["lat"] = UserManager.shared().activeUser.latitude
+        jobParams["lng"] = UserManager.shared().activeUser.longitude
         self.getJobList(params: jobParams)
         pullToRefreshShortListedJobs.endRefreshing()
     }
@@ -138,15 +159,4 @@ class DMTrackVC: DMBaseVC {
             }
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

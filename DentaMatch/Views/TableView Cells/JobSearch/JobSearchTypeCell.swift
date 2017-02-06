@@ -73,6 +73,38 @@ class JobSearchTypeCell: UITableViewCell {
 
     }
     
+    //MARK : Set Cell Data
+    
+    func setCellData(isFullTime : String, isPartTime : String) {
+        if isFullTime == "1" {
+            btnFullTime.setTitle("w", for: .normal)
+            btnFullTime.setTitleColor(Constants.Color.tickSelectColor, for: .normal)
+            self.lblFullTime.textColor = Constants.Color.headerTitleColor
+            self.isFullTime = true
+        }
+        else {
+            btnFullTime.setTitle("t", for: .normal)
+            btnFullTime.setTitleColor(Constants.Color.tickDeselectColor, for: .normal)
+            self.lblFullTime.textColor = Constants.Color.jobTypeLabelDeselectedColor
+            self.isFullTime = false
+        }
+        
+        if isPartTime == "1" {
+            btnPartTime.setTitle("w", for: .normal)
+            btnPartTime.setTitleColor(Constants.Color.tickSelectColor, for: .normal)
+            self.lblPartTime.textColor = Constants.Color.headerTitleColor
+            delegate?.selectJobSearchType!(selected: true, type: JobSearchType.FullTime.rawValue)
+            self.isPartTime = true
+        }
+        else {
+            btnPartTime.setTitle("t", for: .normal)
+            btnPartTime.setTitleColor(Constants.Color.tickDeselectColor, for: .normal)
+            self.lblPartTime.textColor = Constants.Color.jobTypeLabelDeselectedColor
+            delegate?.selectJobSearchType!(selected: false, type: JobSearchType.FullTime.rawValue)
+            self.isPartTime = false
+        }
+    }
+    
     //MARK : IBOutlet Action
     
     @IBAction func actionFullTime(_ sender: UIButton) {
