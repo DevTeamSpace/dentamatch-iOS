@@ -34,6 +34,7 @@ class DMJobSearchResultVC : DMBaseVC {
     var jobsPageNo = 1
     var searchParams = [String : Any]()
     var markers = [JobMarker]()
+    var pullToRefreshJobs = UIRefreshControl()
     
     var indexOfSelectedMarker: Int?
     var selectedMarker: JobMarker?
@@ -94,6 +95,8 @@ class DMJobSearchResultVC : DMBaseVC {
         self.tblJobSearchResult.layer.shadowOffset = CGSize(width: 0, height: 1.0)
         self.tblJobSearchResult.layer.shadowOpacity = 1.0
         self.tblJobSearchResult.layer.shadowRadius = 1.0
+        pullToRefreshJobs.addTarget(self, action: #selector(pullToRefreshForJobs), for: .valueChanged)
+        self.tblJobSearchResult.addSubview(pullToRefreshJobs)
         
     }
     
@@ -107,6 +110,17 @@ class DMJobSearchResultVC : DMBaseVC {
         jobSearchVC.delegate = self
         jobSearchVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(jobSearchVC, animated: true)
+    }
+    
+    func pullToRefreshForJobs() {
+        jobsPageNo = 1
+        self.jobs.removeAll()
+        if let params =  UserDefaultsManager.sharedInstance.loadSearchParameter() {
+            searchParams = params
+        }
+        searchParams[Constants.JobDetailKey.page] = "\(self.jobsPageNo)"
+        self.fetchSearchResultAPI(params: searchParams)
+        pullToRefreshJobs.endRefreshing()
     }
     
     func setUpSegmentControl() {
