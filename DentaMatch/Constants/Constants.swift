@@ -351,7 +351,8 @@ struct Constants {
         static let partialFill  = "You have partially filled experience. Do you want to Discard this?"
 
         static let morethen2refernce = "More than two references can not be added."
-        
+        static let empptyFirstReference = "Please complete the reference"
+
         static let emptyOldPassword = "Please enter Old password"
         static let emptyNewPassword = "Please enter New password"
         static let emptyConfirmPassword = "Please enter Confirm password"
