@@ -20,6 +20,9 @@ extension DMAffiliationsVC : UITableViewDataSource,UITableViewDelegate {
         
         switch affiliationOption {
         case .profileHeader:
+            if isEditMode {
+                return 0
+            }
             return 2
             
         case .affiliation:
@@ -41,8 +44,14 @@ extension DMAffiliationsVC : UITableViewDataSource,UITableViewDelegate {
         case .profileHeader:
             switch indexPath.row {
             case 0:
+                if isEditMode {
+                    return 0
+                }
                 return 213
             case 1:
+                if isEditMode {
+                    return 0
+                }
                 return 46
             default:
                 return 0
@@ -109,7 +118,7 @@ extension DMAffiliationsVC : UITableViewDataSource,UITableViewDelegate {
             cell.otherAffiliationTextView.inputAccessoryView = self.addToolBarOnTextView()
             if affiliation.isSelected {
                 cell.otherAffiliationTextView.text = affiliation.otherAffiliation
-                otherText = affiliation.affiliationName
+                otherText = affiliation.otherAffiliation!
                 cell.tickButton.setTitle(Constants.DesignFont.acceptTermsSelected, for: .normal)
                 cell.tickButton.setTitleColor(Constants.Color.textFieldColorSelected, for: .normal)
             } else {
