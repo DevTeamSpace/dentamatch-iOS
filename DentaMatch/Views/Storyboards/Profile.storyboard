@@ -365,7 +365,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FO0-wn-UZh">
-                                <rect key="frame" x="0.0" y="20" width="375" height="599"/>
+                                <rect key="frame" x="0.0" y="65" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
@@ -373,27 +373,59 @@
                                     <outlet property="delegate" destination="eL1-Hu-WzL" id="Fh5-cc-Uj8"/>
                                 </connections>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bCI-Bq-EwA">
+                                <rect key="frame" x="0.0" y="20" width="375" height="45"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3kc-LI-a4U">
+                                        <rect key="frame" x="0.0" y="44" width="375" height="1"/>
+                                        <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1.5" id="bFB-yh-Tj0"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PROFESSIONAL AFFILIATIONS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q9M-aS-mrU">
+                                        <rect key="frame" x="20" y="20" width="205.5" height="17"/>
+                                        <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="14"/>
+                                        <color key="textColor" red="0.21960784310000001" green="0.21960784310000001" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="3kc-LI-a4U" secondAttribute="bottom" id="761-nT-fgq"/>
+                                    <constraint firstItem="q9M-aS-mrU" firstAttribute="top" secondItem="bCI-Bq-EwA" secondAttribute="top" constant="20" id="I5v-Qx-hdk"/>
+                                    <constraint firstAttribute="height" constant="45" id="KjO-Te-2FU"/>
+                                    <constraint firstItem="q9M-aS-mrU" firstAttribute="leading" secondItem="bCI-Bq-EwA" secondAttribute="leading" constant="20" id="fkp-sM-f9A"/>
+                                    <constraint firstAttribute="trailing" secondItem="3kc-LI-a4U" secondAttribute="trailing" id="x8P-6a-XqT"/>
+                                    <constraint firstItem="3kc-LI-a4U" firstAttribute="leading" secondItem="bCI-Bq-EwA" secondAttribute="leading" id="zsw-Yt-eKR"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="FO0-wn-UZh" firstAttribute="top" secondItem="bCI-Bq-EwA" secondAttribute="bottom" id="1EH-40-gSf"/>
+                            <constraint firstItem="bCI-Bq-EwA" firstAttribute="leading" secondItem="qng-2u-cIK" secondAttribute="leading" id="DO2-nK-JRb"/>
                             <constraint firstItem="GMA-LT-4Dr" firstAttribute="top" secondItem="FO0-wn-UZh" secondAttribute="bottom" id="MKh-ke-bMY"/>
                             <constraint firstAttribute="trailing" secondItem="GMA-LT-4Dr" secondAttribute="trailing" id="S5C-Ac-Mpo"/>
+                            <constraint firstAttribute="trailing" secondItem="bCI-Bq-EwA" secondAttribute="trailing" id="n0v-gf-6iO"/>
                             <constraint firstItem="FO0-wn-UZh" firstAttribute="leading" secondItem="qng-2u-cIK" secondAttribute="leading" id="p7h-YN-5CW"/>
-                            <constraint firstItem="FO0-wn-UZh" firstAttribute="top" secondItem="o7T-fL-b2Y" secondAttribute="bottom" id="pwD-7n-abG"/>
                             <constraint firstAttribute="trailing" secondItem="FO0-wn-UZh" secondAttribute="trailing" id="qnq-v5-gz5"/>
                             <constraint firstItem="rtZ-i3-DCs" firstAttribute="top" secondItem="GMA-LT-4Dr" secondAttribute="bottom" id="qy0-37-nbH"/>
                             <constraint firstItem="GMA-LT-4Dr" firstAttribute="leading" secondItem="qng-2u-cIK" secondAttribute="leading" id="sgI-UK-hPO"/>
+                            <constraint firstItem="bCI-Bq-EwA" firstAttribute="top" secondItem="o7T-fL-b2Y" secondAttribute="bottom" id="wCK-CA-hmz"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="affiliationsTableView" destination="FO0-wn-UZh" id="HHK-Mh-ILa"/>
+                        <outlet property="headerViewForEditProfile" destination="bCI-Bq-EwA" id="rsq-j4-gop"/>
+                        <outlet property="headerViewForEditProfileHeight" destination="KjO-Te-2FU" id="S0S-rP-lUe"/>
                         <outlet property="nextButton" destination="GMA-LT-4Dr" id="6er-3L-eKb"/>
                         <segue destination="4zK-dF-WEd" kind="show" identifier="goToCertificationsVC" id="Kla-Dd-Qhq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zzR-Yg-FEV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4926" y="206"/>
+            <point key="canvasLocation" x="4925.6000000000004" y="205.54722638680661"/>
         </scene>
         <!--CertificationsVC-->
         <scene sceneID="PIA-AR-sbf">

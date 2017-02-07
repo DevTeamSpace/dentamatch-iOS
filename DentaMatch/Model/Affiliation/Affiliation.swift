@@ -12,7 +12,7 @@ import SwiftyJSON
 class Affiliation: NSObject {
     var affiliationId = ""
     var affiliationName = ""
-    var otherAffiliation:String?
+    var otherAffiliation:String? = ""
     var isSelected = false
     var isOther = false
     

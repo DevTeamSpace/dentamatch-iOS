@@ -17,6 +17,7 @@ class SectionHeadingTableCell: UITableViewCell {
         // Initialization code
         self.layoutMargins = UIEdgeInsets.zero
         self.preservesSuperviewLayoutMargins = false
+        self.clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
