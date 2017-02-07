@@ -192,6 +192,7 @@ struct Constants {
         static let setAvailabality = Constants.API.apiURL("users/update-availability")
         static let getAvailabality = Constants.API.apiURL("users/availability-list")
         static let getHiredJobs = Constants.API.apiURL("jobs/hired-jobs")
+        static let getChatUserList = Constants.API.apiURL("users/chat-user-list")
 
         static func apiURL(_ methodName: String) -> String {
             return BASE_URL + methodName

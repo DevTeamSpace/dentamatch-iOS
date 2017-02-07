@@ -121,7 +121,7 @@ extension UserManager {
                 user.zipCode = userDetails[Constants.ServerKey.zipCode].stringValue
                 user.preferredJobLocation = userDetails[Constants.ServerKey.preferredLocation].stringValue
                 user.profileImageURL = userDetails[Constants.ServerKey.imageUrl].stringValue
-
+                user.userId = userDetails[Constants.ServerKey.id].stringValue
                 self.activeUser = user
 //                self.saveActiveUser()
                 UserDefaultsManager.sharedInstance.isLoggedIn = true

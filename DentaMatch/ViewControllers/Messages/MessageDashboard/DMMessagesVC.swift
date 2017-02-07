@@ -7,13 +7,20 @@
 //
 
 import UIKit
+import CoreData
 
 class DMMessagesVC: DMBaseVC {
 
     @IBOutlet weak var messageListTableView: UITableView!
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        self.getChatListAPI()
         // Do any additional setup after loading the view.
     }
     
@@ -29,6 +36,20 @@ class DMMessagesVC: DMBaseVC {
         self.messageListTableView.register(UINib(nibName: "MessageListTableCell", bundle: nil), forCellReuseIdentifier: "MessageListTableCell")
     }
     
+    func getMessageList() {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ChatList")
+        
+        // Add Sort Descriptors
+        let sortDescriptor = NSSortDescriptor(key: "createdAt", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        //fetchRequest.fetchBatchSize = 20
+        // Initialize Fetched Results Controller
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        // Configure Fetched Results Controller
+        fetchedResultsController.delegate = self
+    }
+    
     func showBlockRecruiterAlert() {
         let alert = UIAlertController(title: "", message: "This Blocked recruiter will no longer be able to send you message", preferredStyle: .actionSheet)
         let blockAction = UIAlertAction(title: "Block", style: .destructive) { (action:UIAlertAction) in
@@ -41,5 +62,6 @@ class DMMessagesVC: DMBaseVC {
         alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
     }
+    
 
 }

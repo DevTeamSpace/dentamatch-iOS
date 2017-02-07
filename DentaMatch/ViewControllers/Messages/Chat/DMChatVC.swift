@@ -12,6 +12,8 @@ import CoreData
 class DMChatVC: DMBaseVC {
     @IBOutlet weak var chatTableView: UITableView!
 
+    @IBOutlet weak var chatTextView: UITextView!
+    @IBOutlet weak var textContainerViewHeight: NSLayoutConstraint!
     var array = [
         "asdhg sadjhg sadjh asdgf sadghfsad ghfsad gfasd asdgfghasdfhgasdfhgasdfh adsfhgas",
         "Yes, I’m comfortable working part time",
@@ -41,6 +43,8 @@ class DMChatVC: DMBaseVC {
     }
     
     func setup() {
+        self.chatTextView.delegate = self
+        self.chatTextView.layer.cornerRadius = 5.0
         self.chatTableView.register(UINib(nibName: "MessageSenderTableCell", bundle: nil), forCellReuseIdentifier: "MessageSenderTableCell")
         self.chatTableView.register(UINib(nibName: "MessageReceiverTableCell", bundle: nil), forCellReuseIdentifier: "MessageReceiverTableCell")
     }
@@ -50,4 +54,25 @@ class DMChatVC: DMBaseVC {
         SocketManager.sharedInstance.sendTextMessage(message: "")
     }
 
+}
+
+extension DMChatVC:UITextViewDelegate {
+    
+    func textViewDidChange(_ textView: UITextView) {
+        
+        let cSize = textView.sizeThatFits(CGSize(width: textView.frame.width, height: 99999))
+//        let attrS = NSMutableAttributedString(string: textView.text!, attributes: [NSFontAttributeName:UIFont.fontRegular(fontSize: 14.0)!])
+//        
+//        let cSize = CGSize(width: textView.frame.width, height: 99999)
+//        let reqH = attrS.boundingRect(with: cSize, options: .usesLineFragmentOrigin, context: nil)
+        
+        if cSize.height > 48 {
+            textContainerViewHeight.constant = cSize.height
+            self.view.layoutIfNeeded()
+        } else {
+            textContainerViewHeight.constant = 48
+        }
+        print(cSize.height)
+        
+    }
 }

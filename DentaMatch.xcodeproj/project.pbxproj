@@ -269,6 +269,9 @@
 		E5BED5521E49AB85003EC833 /* DMMessages+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BED54D1E49AB85003EC833 /* DMMessages+Services.swift */; };
 		E5BED5531E49AB85003EC833 /* DMMessagesVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BED54E1E49AB85003EC833 /* DMMessagesVC+TableViewExtension.swift */; };
 		E5BED5541E49AB85003EC833 /* DMMessagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BED54F1E49AB85003EC833 /* DMMessagesVC.swift */; };
+		E5BED5631E49B18C003EC833 /* ChatList+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BED5611E49B18C003EC833 /* ChatList+CoreDataClass.swift */; };
+		E5BED5641E49B18C003EC833 /* ChatList+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BED5621E49B18C003EC833 /* ChatList+CoreDataProperties.swift */; };
+		E5BED5661E49BA0B003EC833 /* DMMessagesVC+DBHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BED5651E49BA0B003EC833 /* DMMessagesVC+DBHandling.swift */; };
 		E5C5F3151DC0AACA001A5A3F /* DMRegisterMapsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C5F3141DC0AACA001A5A3F /* DMRegisterMapsVC.swift */; };
 		E5C5F3181DC1A723001A5A3F /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C5F3171DC1A723001A5A3F /* LocationManager.swift */; };
 		E5C5F31B1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C5F31A1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift */; };
@@ -634,6 +637,9 @@
 		E5BED54D1E49AB85003EC833 /* DMMessages+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMMessages+Services.swift"; sourceTree = "<group>"; };
 		E5BED54E1E49AB85003EC833 /* DMMessagesVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMMessagesVC+TableViewExtension.swift"; sourceTree = "<group>"; };
 		E5BED54F1E49AB85003EC833 /* DMMessagesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMMessagesVC.swift; sourceTree = "<group>"; };
+		E5BED5611E49B18C003EC833 /* ChatList+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ChatList+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E5BED5621E49B18C003EC833 /* ChatList+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ChatList+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E5BED5651E49BA0B003EC833 /* DMMessagesVC+DBHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMMessagesVC+DBHandling.swift"; sourceTree = "<group>"; };
 		E5C5F3141DC0AACA001A5A3F /* DMRegisterMapsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMRegisterMapsVC.swift; sourceTree = "<group>"; };
 		E5C5F3171DC1A723001A5A3F /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		E5C5F31A1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMTermsAndConditionsVC.swift; sourceTree = "<group>"; };
@@ -1763,6 +1769,8 @@
 		E5AE37831E4986E10001EC3C /* CoreDataModels */ = {
 			isa = PBXGroup;
 			children = (
+				E5BED5611E49B18C003EC833 /* ChatList+CoreDataClass.swift */,
+				E5BED5621E49B18C003EC833 /* ChatList+CoreDataProperties.swift */,
 				E5BED5431E499480003EC833 /* Chat+CoreDataClass.swift */,
 				E5BED5441E499480003EC833 /* Chat+CoreDataProperties.swift */,
 			);
@@ -1784,6 +1792,7 @@
 				E5BED54D1E49AB85003EC833 /* DMMessages+Services.swift */,
 				E5BED54E1E49AB85003EC833 /* DMMessagesVC+TableViewExtension.swift */,
 				E5BED54F1E49AB85003EC833 /* DMMessagesVC.swift */,
+				E5BED5651E49BA0B003EC833 /* DMMessagesVC+DBHandling.swift */,
 			);
 			path = MessageDashboard;
 			sourceTree = "<group>";
@@ -2298,6 +2307,7 @@
 				E56B20A41DC0526E000512F6 /* DMRegistrationContainer.swift in Sources */,
 				F22359191E3F3F2100E984FC /* DMJobSearchVC+TableViewCellDelegateExtension.swift in Sources */,
 				5A3BD4AA1E35D3D800A607AC /* EditProfileAffiliationBrickCell.swift in Sources */,
+				E5BED5631E49B18C003EC833 /* ChatList+CoreDataClass.swift in Sources */,
 				E5AE37631E4971CE0001EC3C /* SocketEngine.swift in Sources */,
 				E5BED5541E49AB85003EC833 /* DMMessagesVC.swift in Sources */,
 				E5AE37791E49743C0001EC3C /* SocketManager.swift in Sources */,
@@ -2320,6 +2330,7 @@
 				E5AE37681E4971CE0001EC3C /* SocketEngineWebsocket.swift in Sources */,
 				E5496E0C1E26435C00C54288 /* DMLicenseSelectionVC+TableViewExtension.swift in Sources */,
 				E587D2EC1E24C021006B7F06 /* DMWorkExperienceStart.swift in Sources */,
+				E5BED5641E49B18C003EC833 /* ChatList+CoreDataProperties.swift in Sources */,
 				F209C3411E435A43005C9594 /* SearchParameters.swift in Sources */,
 				E51D4F0E1E40744C00ACC631 /* DMTrackVC+TableViewExtension.swift in Sources */,
 				E54B9A801E32729C00805D9C /* EmptyCertificateTableViewCell.swift in Sources */,
@@ -2467,6 +2478,7 @@
 				F223591F1E3F608900E984FC /* DMJobDetaiVC+TableViewExtension.swift in Sources */,
 				E51D4EF31E3AFCA700ACC631 /* DMEditStudyVC.swift in Sources */,
 				E558D90A1E2E7A3200A6DF95 /* DMEditProfileVC+TableViewExtension.swift in Sources */,
+				E5BED5661E49BA0B003EC833 /* DMMessagesVC+DBHandling.swift in Sources */,
 				5A3B06D31E33885A00EFCA6E /* DMChangePasswordVC+Services.swift in Sources */,
 				E5E7CB891E2FA23200D4FB59 /* OtherSkillCell.swift in Sources */,
 				E54976F71E28D243006F21E5 /* DMExecutiveSummaryVC+Services.swift in Sources */,

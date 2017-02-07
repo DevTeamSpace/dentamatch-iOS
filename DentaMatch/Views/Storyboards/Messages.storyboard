@@ -11,6 +11,9 @@
         <array key="SF-UI-Text-Medium.otf">
             <string>SFUIText-Medium</string>
         </array>
+        <array key="SF-UI-Text-Regular.otf">
+            <string>SFUIText-Regular</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Messages-->
@@ -96,9 +99,10 @@
                                 <rect key="frame" x="0.0" y="555" width="375" height="48"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZBR-Pw-p5e">
-                                        <rect key="frame" x="321" y="0.0" width="54" height="48"/>
+                                        <rect key="frame" x="316" y="0.0" width="59" height="48"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="54" id="M60-4l-URY"/>
+                                            <constraint firstAttribute="height" constant="48" id="Hm1-Ln-sOX"/>
+                                            <constraint firstAttribute="width" constant="59" id="grp-0A-AgB"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="16"/>
                                         <state key="normal" title="Send"/>
@@ -106,13 +110,22 @@
                                             <action selector="sendMessageButtonPressed:" destination="2QZ-xL-diH" eventType="touchUpInside" id="3PS-hN-30O"/>
                                         </connections>
                                     </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Hi" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5TB-Wy-wh6">
+                                        <rect key="frame" x="15" y="8" width="300" height="32"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="ZBR-Pw-p5e" firstAttribute="top" secondItem="QjC-bM-j5e" secondAttribute="top" id="4tX-9I-qsj"/>
                                     <constraint firstAttribute="height" constant="48" id="7Xo-Mr-L1z"/>
-                                    <constraint firstAttribute="bottom" secondItem="ZBR-Pw-p5e" secondAttribute="bottom" id="aVr-NG-FwQ"/>
-                                    <constraint firstAttribute="trailing" secondItem="ZBR-Pw-p5e" secondAttribute="trailing" id="wae-kn-JGP"/>
+                                    <constraint firstItem="ZBR-Pw-p5e" firstAttribute="leading" secondItem="5TB-Wy-wh6" secondAttribute="trailing" constant="1" id="7mI-zF-Lkn"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZBR-Pw-p5e" secondAttribute="bottom" id="9wx-ay-8h1"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZBR-Pw-p5e" secondAttribute="trailing" id="IuV-G8-Zc6"/>
+                                    <constraint firstItem="5TB-Wy-wh6" firstAttribute="top" secondItem="QjC-bM-j5e" secondAttribute="top" constant="8" id="JhF-bc-yxE"/>
+                                    <constraint firstAttribute="bottom" secondItem="5TB-Wy-wh6" secondAttribute="bottom" constant="8" id="R2U-5q-69V"/>
+                                    <constraint firstItem="5TB-Wy-wh6" firstAttribute="leading" secondItem="QjC-bM-j5e" secondAttribute="leading" constant="15" id="bLh-ij-fba"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -132,11 +145,13 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="chatTableView" destination="Q39-U4-23E" id="EZX-r7-4HS"/>
+                        <outlet property="chatTextView" destination="5TB-Wy-wh6" id="nQJ-sh-tR2"/>
+                        <outlet property="textContainerViewHeight" destination="7Xo-Mr-L1z" id="mjB-sO-gCD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BvV-Bw-GtN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="431" y="134"/>
+            <point key="canvasLocation" x="429.60000000000002" y="133.5832083958021"/>
         </scene>
     </scenes>
     <resources>
