@@ -11,13 +11,24 @@ import SwiftyJSON
 extension DMCalendarSetAvailabillityVC {
     func getMyAvailabilityFromServer(month:Int,year:Int, completionHandler: @escaping (JSON?, NSError?) -> ()) {
         var param = [String:AnyObject]()
-        if month < 10 {
-            param["calendarMonth"] = "0\(month)" as AnyObject?
+//        if month < 10 {
+//            param["calendarMonth"] = "0\(month)" as AnyObject?
+//
+//        }else{
+//            param["calendarMonth"] = month as AnyObject?
+//        }
+        
+        let firstDate  = Date.getMonthBasedOnThis(date1: Date(), duration: -3)
+        let lastDate  = Date.getMonthBasedOnThis(date1: Date(), duration: 3)
+        
+        let date5  =  gregorian?.fs_firstDay(ofMonth: firstDate)
+        let date2  =  gregorian?.fs_lastDay(ofMonth: lastDate)
+        let strStartDate = Date.dateToString(date: date5!)
+        let strEndDate = Date.dateToString(date: date2!)
+        param["calendarStartDate"] = strStartDate as AnyObject?
+        param["calendarEndDate"] = strEndDate as AnyObject?
 
-        }else{
-            param["calendarMonth"] = month as AnyObject?
-        }
-        param["calendarYear"] = year as AnyObject?
+//        param["calendarYear"] = year as AnyObject?
         
         print("setMyAvailabilityOnServer Parameters\n\(param.description))")
         
@@ -62,7 +73,7 @@ extension DMCalendarSetAvailabillityVC {
                 }
                 
                 
-                self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
+//                self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
                 //do next
                 completionHandler(response, error)
                 

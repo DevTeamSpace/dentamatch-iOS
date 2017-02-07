@@ -19,7 +19,7 @@
                 <navigationController storyboardIdentifier="CanederNav" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NUS-Px-Ne8" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Calendar" image="calender" id="GmI-ki-020"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="B76-yd-D1j">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="B76-yd-D1j">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -123,9 +123,17 @@
                                     <constraint firstItem="BGV-tH-gOZ" firstAttribute="top" secondItem="n4g-8V-4t2" secondAttribute="top" id="hpA-qo-g1h"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fvI-CN-5K4">
+                                <rect key="frame" x="0.0" y="375" width="375" height="243"/>
+                                <string key="text">You don’t have any booked jobs 
+on this date yet.</string>
+                                <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
+                                <color key="textColor" red="0.2196078431372549" green="0.2196078431372549" blue="0.2196078431372549" alpha="0.402068661971831" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VEq-HL-k4t">
                                 <rect key="frame" x="0.0" y="375" width="375" height="243"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="XWc-W3-0AS" id="PIP-nq-AyV"/>
                                     <outlet property="delegate" destination="XWc-W3-0AS" id="xBp-pM-dhd"/>
@@ -134,10 +142,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="fvI-CN-5K4" secondAttribute="trailing" id="2Zs-gT-Twt"/>
                             <constraint firstItem="n4g-8V-4t2" firstAttribute="top" secondItem="Fky-e6-iJh" secondAttribute="bottom" id="2vw-Bu-xQ9"/>
+                            <constraint firstItem="l9S-Be-rNW" firstAttribute="top" secondItem="fvI-CN-5K4" secondAttribute="bottom" id="48S-7U-OQg"/>
                             <constraint firstItem="VEq-HL-k4t" firstAttribute="top" secondItem="n4g-8V-4t2" secondAttribute="bottom" id="CvL-q8-QpP"/>
                             <constraint firstItem="VEq-HL-k4t" firstAttribute="top" secondItem="n4g-8V-4t2" secondAttribute="bottom" id="OzM-V3-z7c"/>
                             <constraint firstItem="l9S-Be-rNW" firstAttribute="top" secondItem="VEq-HL-k4t" secondAttribute="bottom" id="TOR-vf-AQl"/>
+                            <constraint firstItem="fvI-CN-5K4" firstAttribute="top" secondItem="n4g-8V-4t2" secondAttribute="bottom" id="YGo-F0-bO5"/>
+                            <constraint firstItem="fvI-CN-5K4" firstAttribute="leading" secondItem="h9J-3X-rkB" secondAttribute="leading" id="c4a-00-UsO"/>
                             <constraint firstItem="n4g-8V-4t2" firstAttribute="leading" secondItem="h9J-3X-rkB" secondAttribute="leading" id="cy4-4s-gZO"/>
                             <constraint firstAttribute="trailing" secondItem="n4g-8V-4t2" secondAttribute="trailing" id="fdp-hM-VBC"/>
                             <constraint firstItem="VEq-HL-k4t" firstAttribute="leading" secondItem="h9J-3X-rkB" secondAttribute="leading" id="gU7-nX-7Jz"/>
@@ -151,6 +163,7 @@
                         <outlet property="bookedJobsTableView" destination="VEq-HL-k4t" id="Q5U-9f-pe8"/>
                         <outlet property="fulltimeJobIndicatorView" destination="5tt-0w-7DO" id="1fT-Dr-9G3"/>
                         <outlet property="monthTitleLabel" destination="og5-p1-dD7" id="5jC-o8-OEA"/>
+                        <outlet property="noEventLabel" destination="fvI-CN-5K4" id="wuB-Qk-GK6"/>
                         <outlet property="viewForCalender" destination="n4g-8V-4t2" id="wGy-hx-ISi"/>
                         <outlet property="viewForHeader" destination="BGV-tH-gOZ" id="tDB-Dp-Ka9"/>
                     </connections>

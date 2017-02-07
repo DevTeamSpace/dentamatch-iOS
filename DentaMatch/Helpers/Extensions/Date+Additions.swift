@@ -134,7 +134,32 @@ extension Date {
         return (month,year)
     }
 
+    public static func startOfMonth(date:Date) -> Date {
+        return Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: Calendar.current.startOfDay(for: date)))!
+    }
     
+    public static  func endOfMonth(date:Date) -> Date {
+        return Calendar.current.date(byAdding: DateComponents(month: 1, day: 1), to: self.startOfMonth(date:date))!
+    }
+    public  static func getAnotherDateBasedOnThis(date1:Date , duration:Int) -> Date {
+        
+        let currentDate = date1
+        let dateComponents:NSDateComponents = NSDateComponents()
+        dateComponents.day = duration
+        
+        let calculatedDated:Date = NSCalendar.current.date(byAdding: dateComponents as DateComponents, to: currentDate)!
+        return calculatedDated
+    }
+    
+    public  static func getMonthBasedOnThis(date1:Date , duration:Int) -> Date {
+        
+        let currentDate = date1
+        let dateComponents:NSDateComponents = NSDateComponents()
+        dateComponents.month = duration
+        
+        let calculatedDated:Date = NSCalendar.current.date(byAdding: dateComponents as DateComponents, to: currentDate)!
+        return calculatedDated
+    }
     
     //MARK:- Current time in milliseconds
     static func currentTimeMillis() -> Int64{

@@ -19,6 +19,7 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
     var isJobTypeFullTime : String! = "0"
     var isJobTypePartTime : String! = "0"
     var availablitytModel:UserAvailability? = UserAvailability()
+    var gregorian:NSCalendar?
 
 
     override func viewDidLoad() {
@@ -34,6 +35,7 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
     
     func setup() {
         self.title = Constants.ScreenTitleNames.setAvailibility
+        gregorian = NSCalendar(calendarIdentifier: .gregorian)
         self.calenderTableView.rowHeight = UITableViewAutomaticDimension
         self.calenderTableView.separatorStyle = .none
         self.calenderTableView.register(UINib(nibName: "JobSearchTypeCell", bundle: nil), forCellReuseIdentifier: "JobSearchTypeCell")

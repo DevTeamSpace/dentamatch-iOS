@@ -16,7 +16,7 @@ import FSCalendar
 
 
 }
-class TemporyJobCalenderCell: UITableViewCell, FSCalendarDelegate {
+class TemporyJobCalenderCell: UITableViewCell,FSCalendarDataSource, FSCalendarDelegate {
     @IBOutlet weak var calenderView: FSCalendar!
     @IBOutlet weak var previouseButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
@@ -27,6 +27,7 @@ class TemporyJobCalenderCell: UITableViewCell, FSCalendarDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
         gregorian = NSCalendar(calendarIdentifier: .gregorian)
         calenderView.appearance.headerTitleFont = UIFont.fontRegular(fontSize: 12)
         calenderView.appearance.titleFont = UIFont.fontRegular(fontSize: 16)
@@ -54,12 +55,14 @@ class TemporyJobCalenderCell: UITableViewCell, FSCalendarDelegate {
             let date = Date.stringToDate(dateString:dateString)
             calenderView.select(date)
         }
+        self.calenderView.setCurrentPage(Date(), animated: true)
 
     }
     
     @IBAction func previouseButtonClicked(_ sender: Any) {
         let currentMonth:Date = self.calenderView.currentPage
         let previousMonth:Date = (self.gregorian?.date(byAdding: .month, value: -1, to: currentMonth, options: .matchFirst))!
+        
         self.calenderView.setCurrentPage(previousMonth, animated: true)
         delegate?.nextButtonDelegate!(date: previousMonth)
 
@@ -71,8 +74,24 @@ class TemporyJobCalenderCell: UITableViewCell, FSCalendarDelegate {
         delegate?.nextButtonDelegate!(date: previousMonth)
     }
     
+    
+    func minimumDate(for calendar: FSCalendar) -> Date {
+        let firstDate  = Date.getMonthBasedOnThis(date1: Date(), duration: -3)
+        let date5  =  gregorian?.fs_firstDay(ofMonth: firstDate)
+        return date5!
+    }
+    func maximumDate(for calendar: FSCalendar) -> Date {
+        let lastDate  = Date.getMonthBasedOnThis(date1: Date(), duration: 3)
+        let date2  =  gregorian?.fs_lastDay(ofMonth: lastDate)
+        return date2!
+    }
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        if date >= Date() {
+        let dateStrFirst = Date.dateToString(date: date)
+        let dateStrToday = Date.dateToString(date: Date())
+        let dateSelected = Date.stringToDate(dateString: dateStrFirst)
+        let dateToday = Date.stringToDate(dateString: dateStrToday)
+
+        if dateSelected >= dateToday {
             delegate?.selectTempJobDate!(selected: date)
         }else {
             self.calenderView.deselect(date)

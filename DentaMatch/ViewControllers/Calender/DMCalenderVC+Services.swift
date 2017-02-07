@@ -10,15 +10,21 @@ import Foundation
 import SwiftyJSON
 
 extension DMCalenderVC {
-    func getHiredJobsFromServer(month:Int,year:Int, completionHandler: @escaping (JSON?, NSError?) -> ()) {
+    func getHiredJobsFromServer(date:Date, completionHandler: @escaping (JSON?, NSError?) -> ()) {
+        
+//        let firstDate  = Date.getMonthBasedOnThis(date1: Date(), duration: -3)
+//        let lastDate  = Date.getMonthBasedOnThis(date1: Date(), duration: 3)
+        
+        let date5  =  gregorian?.fs_firstDay(ofMonth: date)
+        let date2  =  gregorian?.fs_lastDay(ofMonth: date)
+        let strStartDate = Date.dateToString(date: date5!)
+        let strEndDate = Date.dateToString(date: date2!)
+
         var param = [String:AnyObject]()
-        if month < 10 {
-            param["jobMonth"] = "0\(month)" as AnyObject?
-            
-        }else{
-            param["jobMonth"] = month as AnyObject?
-        }
-        param["jobYear"] = year as AnyObject?
+        param["jobStartDate"] = strStartDate as AnyObject?
+        param["jobEndDate"] = strEndDate as AnyObject?
+
+//        param["jobYear"] = year as AnyObject?
         
         print("getHiredJobsFromServer Parameters\n\(param.description))")
         
@@ -41,7 +47,7 @@ extension DMCalenderVC {
                     let hiredObj = Job(forCalendarjob:calObj)
                     self.hiredList.append(hiredObj)
                 }
-                self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
+//                self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
                 //do next
                 completionHandler(response, error)
                 

@@ -18,6 +18,7 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
     
     @IBOutlet weak var viewForHeader: UIView!
     @IBOutlet weak var monthTitleLabel: UILabel!
+    @IBOutlet weak var noEventLabel: UILabel!
     
     var hiredList  = [Job]()
     var selectedDayList  = [Job]()
@@ -30,6 +31,12 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         setup()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if self.hiredList.count == 0 {
+            self.getAllJobFromServer()
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -82,8 +89,11 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         self.viewForCalender.bringSubview(toFront: self.viewForHeader)
 
 
-        let dateData = Date.getMonthAndYearForm(date: Date())
-        self.getHiredJobsFromServer(month: dateData.month, year: dateData.year) { (response, error) in
+       
+    }
+    
+    func getAllJobFromServer() {
+        self.getHiredJobsFromServer(date:Date()) { (response, error) in
             debugPrint(self.hiredList.description)
             self.calendar?.reloadData()
             let fullTime  = self.hiredList.filter({ (job) -> Bool in
@@ -94,7 +104,6 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
             }else{
                 self.fulltimeJobIndicatorView.isHidden = true
             }
-            
         }
     }
     
@@ -293,7 +302,6 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
                 color.append(Constants.Color.tempTimeEventColor)
             }
             
-            
         }
         
         return color
@@ -428,6 +436,12 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         selectedDayList.removeAll()
         selectedDayList = dateAllEvents(date: date)
         print(selectedDayList.description)
+        if selectedDayList.count > 0 {
+            self.noEventLabel.isHidden = true
+        }else {
+            self.noEventLabel.isHidden = false
+
+        }
         bookedJobsTableView.reloadData()
         
 
@@ -446,7 +460,23 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         let currentMonth:Date = self.calendar!.currentPage
         let previousMonth:Date = (self.gregorian?.date(byAdding: .month, value: 1, to: currentMonth, options: .matchFirst))!
         self.monthTitleLabel.text = Date.dateToStringForFormatter(date: previousMonth, dateFormate: Date.dateFormatMMMMYYYY())
-        self.calendar?.setCurrentPage(previousMonth, animated: true)
+
+//        let dateData = Date.getMonthAndYearForm(date: Date())
+        self.getHiredJobsFromServer(date:previousMonth) { (response, error) in
+            debugPrint(self.hiredList.description)
+            self.calendar?.reloadData()
+            let fullTime  = self.hiredList.filter({ (job) -> Bool in
+                job.jobType == 1
+            })
+            if fullTime.count > 0 {
+                self.fulltimeJobIndicatorView.isHidden = false
+            }else{
+                self.fulltimeJobIndicatorView.isHidden = true
+            }
+            self.calendar?.setCurrentPage(previousMonth, animated: true)
+
+        }
+//        self.calendar?.setCurrentPage(previousMonth, animated: true)
 
     }
     @IBAction func previouseButtonClicked(_ sender: Any) {
@@ -454,7 +484,24 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         let previousMonth:Date = (self.gregorian?.date(byAdding: .month, value: -1, to: currentMonth, options: .matchFirst))!
         self.monthTitleLabel.text = Date.dateToStringForFormatter(date: previousMonth, dateFormate: Date.dateFormatMMMMYYYY())
 
-        self.calendar?.setCurrentPage(previousMonth, animated: true)
+        
+//        let dateData = Date.getMonthAndYearForm(date: Date())
+        self.getHiredJobsFromServer(date: previousMonth) { (response, error) in
+            debugPrint(self.hiredList.description)
+            self.calendar?.reloadData()
+            let fullTime  = self.hiredList.filter({ (job) -> Bool in
+                job.jobType == 1
+            })
+            if fullTime.count > 0 {
+                self.fulltimeJobIndicatorView.isHidden = false
+            }else{
+                self.fulltimeJobIndicatorView.isHidden = true
+            }
+            self.calendar?.setCurrentPage(previousMonth, animated: true)
+            
+        }
+        
+//        self.calendar?.setCurrentPage(previousMonth, animated: true)
 
     }
 
