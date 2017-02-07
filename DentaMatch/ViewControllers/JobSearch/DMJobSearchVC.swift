@@ -75,10 +75,10 @@ class DMJobSearchVC : DMBaseVC {
                 isJobTypePartTime = "0"
             }
             if searchParams[Constants.JobDetailKey.isFulltime] as! String? == "1" {
-                isJobTypeFullTime = "1"
+                self.isJobTypeFullTime = "1"
             }
             else {
-                isJobTypeFullTime = "0"
+                self.isJobTypeFullTime = "0"
             }
             
             self.jobTitles.removeAll()

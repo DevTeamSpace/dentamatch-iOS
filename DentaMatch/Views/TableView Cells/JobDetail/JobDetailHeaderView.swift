@@ -30,8 +30,14 @@ class JobDetailHeaderView: UIView {
     }
     
     func setHeaderData(iconText : String, headerText : String) {
-        self.btnIcon.titleLabel?.text = iconText
+        self.btnIcon.setTitle(iconText, for: .normal)
         self.lblDescription?.text = headerText
+        self.btnIcon.setImage(UIImage(named : ""), for: .normal)
+        if headerText == Constants.Strings.officeDesc {
+            self.btnIcon.setTitle("", for: .normal)
+            self.btnIcon.setImage(UIImage(named : "officeDesc"), for: .normal)
+            
+        }
     }
 
 }

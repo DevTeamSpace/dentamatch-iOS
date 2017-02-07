@@ -21,7 +21,7 @@ class DMJobDetailVC: DMBaseVC {
     var job:Job?
     var isReadMore = false
     var delegate:JobSavedStatusUpdateDelegate?
-    var fromTrack = true
+    var fromTrack = false
     
     enum TableViewCellHeight: CGFloat {
         case jobTitle = 115.0

@@ -43,6 +43,9 @@ extension DMJobSearchResultVC {
     
     func handleJobSearchResponse(response:JSON?) {
         if let response = response {
+            DispatchQueue.main.async {
+                self.tblJobSearchResult.reloadData()
+            }
             if response[Constants.ServerKey.status].boolValue {
                 let skillList = response[Constants.ServerKey.result][Constants.ServerKey.joblist].array
                 for jobObject in (skillList)! {
@@ -53,9 +56,15 @@ extension DMJobSearchResultVC {
                 self.jobsPageNo += 1
                 self.loadingMoreJobs = false
                 DispatchQueue.main.async {
-                    self.tblJobSearchResult.reloadData()
-                    self.tblJobSearchResult.tableFooterView = nil
-                    self.lblResultCount.text = String(self.jobs.count) + Constants.Strings.whiteSpace + Constants.Strings.resultsFound
+                    if self.isMapShow == true {
+                        self.restoreAllMarkers()
+                    }
+                    else {
+                        self.tblJobSearchResult.reloadData()
+                        self.tblJobSearchResult.tableFooterView = nil
+                        self.lblResultCount.text = String(self.jobs.count) + Constants.Strings.whiteSpace + Constants.Strings.resultsFound
+                    }
+                    
                 }
             } else {
                 self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
