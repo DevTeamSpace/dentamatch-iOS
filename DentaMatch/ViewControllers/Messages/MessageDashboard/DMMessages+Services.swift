@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftyJSON
+import CoreData
 
 extension DMMessagesVC {
     
@@ -37,6 +38,7 @@ extension DMMessagesVC {
             if response[Constants.ServerKey.status].boolValue {
                 let chatUserList = response[Constants.ServerKey.result][Constants.ServerKey.list].arrayValue
                 if chatUserList.count > 0 {
+                    self.addUpdateMessageToDB(chatList: chatUserList)
                 } else {
                     self.makeToast(toastString: "No messages")
                 }
@@ -46,4 +48,30 @@ extension DMMessagesVC {
         }
     }
     
+    func addUpdateMessageToDB(chatList:[JSON]?) {
+        
+        DispatchQueue.global(qos: .background).async {
+            print("This will run on the main queue, after the previous code in outer block")
+            for chatListObj in chatList! {
+                let chat = NSEntityDescription.insertNewObject(forEntityName: "ChatList", into: self.context) as! ChatList
+                chat.lastMessage = chatListObj["message"].stringValue
+                chat.recruiterId = chatListObj["recruiterId"].stringValue
+                chat.isBlockedFromRecruiter = chatListObj["recruiterBlock"].boolValue
+                chat.isBlockedFromSeeker = chatListObj["seekerBlock"].boolValue
+                chat.dateString = chatListObj["timestamp"].stringValue
+                chat.officeName = chatListObj["name"].stringValue
+
+//                if (true) {
+//                } else {
+//                    let chat = NSEntityDescription.insertNewObject(forEntityName: "ChatList", into: self.context) as! ChatList
+//                    chat.lastMessage! = ""
+//                }
+            }
+           
+            DispatchQueue.main.async {
+                print("This is run on the main queue, after the previous code in outer block")
+                self.appDelegate.saveContext()
+            }
+        }
+    }
 }

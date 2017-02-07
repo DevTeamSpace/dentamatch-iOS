@@ -34,13 +34,14 @@ class DMMessagesVC: DMBaseVC {
     func setup() {
         self.title = "MESSAGES"
         self.messageListTableView.register(UINib(nibName: "MessageListTableCell", bundle: nil), forCellReuseIdentifier: "MessageListTableCell")
+        self.getMessageList()
     }
     
     func getMessageList() {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ChatList")
         
         // Add Sort Descriptors
-        let sortDescriptor = NSSortDescriptor(key: "createdAt", ascending: true)
+        let sortDescriptor = NSSortDescriptor(key: "dateString", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         //fetchRequest.fetchBatchSize = 20
         // Initialize Fetched Results Controller
@@ -48,6 +49,16 @@ class DMMessagesVC: DMBaseVC {
         
         // Configure Fetched Results Controller
         fetchedResultsController.delegate = self
+        
+        do {
+            try self.fetchedResultsController.performFetch()
+            self.messageListTableView.reloadData()
+            
+        } catch {
+            let fetchError = error as NSError
+            print("\(fetchError), \(fetchError.userInfo)")
+        }
+
     }
     
     func showBlockRecruiterAlert() {

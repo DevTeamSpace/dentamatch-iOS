@@ -1789,9 +1789,9 @@
 		E5BED54C1E49AB85003EC833 /* MessageDashboard */ = {
 			isa = PBXGroup;
 			children = (
+				E5BED54F1E49AB85003EC833 /* DMMessagesVC.swift */,
 				E5BED54D1E49AB85003EC833 /* DMMessages+Services.swift */,
 				E5BED54E1E49AB85003EC833 /* DMMessagesVC+TableViewExtension.swift */,
-				E5BED54F1E49AB85003EC833 /* DMMessagesVC.swift */,
 				E5BED5651E49BA0B003EC833 /* DMMessagesVC+DBHandling.swift */,
 			);
 			path = MessageDashboard;

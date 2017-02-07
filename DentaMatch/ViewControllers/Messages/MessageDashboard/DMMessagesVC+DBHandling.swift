@@ -25,7 +25,7 @@ extension DMMessagesVC:NSFetchedResultsControllerDelegate {
         switch type {
         case .insert:
             if let indexPath = newIndexPath {
-                self.messageListTableView.insertRows(at: [indexPath], with: .bottom)
+                self.messageListTableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
                 
 //                let when = DispatchTime.now() + 0.2 // change 2 to desired number of seconds
 //                DispatchQueue.main.asyncAfter(deadline: when) {

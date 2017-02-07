@@ -32,12 +32,18 @@ extension DMMessagesVC : UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        if let sections = fetchedResultsController.sections {
+            let sectionInfo = sections[section]
+            return sectionInfo.numberOfObjects
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageListTableCell") as! MessageListTableCell
+        let chatList = fetchedResultsController.object(at: indexPath) as! ChatList
+        cell.recruiterNameLabel.text = chatList.officeName!
+        cell.lastMessageLabel.text = chatList.lastMessage!
         return cell
     }
     
