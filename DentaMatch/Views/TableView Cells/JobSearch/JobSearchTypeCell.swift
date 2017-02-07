@@ -100,7 +100,6 @@ class JobSearchTypeCell: UITableViewCell {
             btnPartTime.setTitle("t", for: .normal)
             btnPartTime.setTitleColor(Constants.Color.tickDeselectColor, for: .normal)
             self.lblPartTime.textColor = Constants.Color.jobTypeLabelDeselectedColor
-            delegate?.selectJobSearchType!(selected: false, type: JobSearchType.FullTime.rawValue)
             self.isPartTime = false
         }
     }

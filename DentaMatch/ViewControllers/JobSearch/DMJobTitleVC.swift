@@ -36,14 +36,20 @@ class DMJobTitleVC: DMBaseVC {
     }
     
     override func actionRightNavigationItem() {
-        _ =  self.navigationController?.popViewController(animated: true)
         self.selectedJobs.removeAll()
         for objTitle in self.jobTitles {
             if objTitle.jobSelected == true {
                 self.selectedJobs.append(objTitle)
             }
         }
-        delegate?.setSelectedJobType!(jobTitles: self.selectedJobs)
+        if self.selectedJobs.count == 0 {
+            makeToast(toastString: Constants.AlertMessage.selectTitle)
+        }
+        else {
+            _ =  self.navigationController?.popViewController(animated: true)
+            delegate?.setSelectedJobType!(jobTitles: self.selectedJobs)
+        }
+        
     }
     
     //MARK : Private Method

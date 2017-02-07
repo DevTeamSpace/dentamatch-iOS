@@ -85,10 +85,11 @@ extension DMJobDetailVC {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
                 self.alertMessage(title: Constants.AlertMessage.congratulations, message: Constants.AlertMessage.jobApplied, buttonText: kOkButtonTitle, completionHandler: {
-                    _ = self.navigationController?.popViewController(animated: true)
                 })
+                _ = self.navigationController?.popViewController(animated: true)
+                
             } else {
-                //self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+                
                 self.alertMessage(title: Constants.AlertMessage.completeYourProfile, message: Constants.AlertMessage.completeYourProfileDetailMsg, leftButtonText: Constants.Strings.no, rightButtonText: Constants.Strings.yes, completionHandler: { (isLeftButtonPressed) in
                     if isLeftButtonPressed {
                         

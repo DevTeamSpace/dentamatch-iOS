@@ -25,6 +25,7 @@ class MapCell: UITableViewCell {
     }
     
     func setPinOnMap(job : Job) {
+        self.mapView.clear()
         let latStr = job.latitude as NSString
         let latDbl : Double  = Double(latStr.intValue)
         let langStr = job.longitude as NSString

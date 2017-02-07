@@ -170,7 +170,7 @@ class DMJobSearchResultVC : DMBaseVC {
     }
     
     @IBAction func actionCurrentLocaton(_ sender: UIButton) {
-        self.mapViewSearchResult.animate(to: GMSCameraPosition(target: self.currentCoordinate, zoom: 15, bearing: 0, viewingAngle: 0))
+        self.mapViewSearchResult.animate(to: GMSCameraPosition(target: self.currentCoordinate, zoom: 5, bearing: 0, viewingAngle: 0))
         self.hideCard()
     }
     
@@ -186,9 +186,6 @@ class DMJobSearchResultVC : DMBaseVC {
             self.btnCurrentLocation.isUserInteractionEnabled = true
             let coordinate = CLLocationCoordinate2D(latitude: (location!.coordinate.latitude), longitude: (location!.coordinate.longitude))
             self.currentCoordinate = coordinate
-            DispatchQueue.main.async {
-                self.mapViewSearchResult.animate(to: GMSCameraPosition(target: coordinate, zoom: 15, bearing: 0, viewingAngle: 0))
-            }
         }
     }
 }
