@@ -122,6 +122,7 @@ struct Constants {
         static let jobSearchStoryboard  = "JobSearch"
         static let trackStoryboard  = "Track"
         static let dashboardStoryboard  = "Dashboard"
+        static let messagesStoryboard  = "Messages"
         static let calenderStoryboard  = "Calender"
 
         struct Identifer {
