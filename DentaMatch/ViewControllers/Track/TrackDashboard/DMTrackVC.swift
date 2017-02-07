@@ -35,6 +35,7 @@ class DMTrackVC: DMBaseVC {
     var pullToRefreshShortListedJobs = UIRefreshControl()
 
     var jobParams = [String:String]()
+    var placeHolderEmptyJobsView:PlaceHolderJobsView?
 
     @IBOutlet weak var savedJobsTableView: UITableView!
     @IBOutlet weak var appliedJobsTableView: UITableView!
@@ -49,9 +50,8 @@ class DMTrackVC: DMBaseVC {
             "lat":"\(UserManager.shared().activeUser.latitude!)",
             "lng":"\(UserManager.shared().activeUser.longitude!)"
         ]
-        
-        self.getJobList(params: jobParams)
         setup()
+        self.getJobList(params: jobParams)
         // Do any additional setup after loading the view.
     }
     
@@ -74,7 +74,21 @@ class DMTrackVC: DMBaseVC {
         self.savedJobsTableView.tag = 0
         self.appliedJobsTableView.tag = 1
         self.shortListedJobsTableView.tag = 2
+        self.savedJobsTableView.tableFooterView = UIView()
+        self.appliedJobsTableView.tableFooterView = UIView()
+        self.shortListedJobsTableView.tableFooterView = UIView()
 
+        placeHolderEmptyJobsView = PlaceHolderJobsView.loadPlaceHolderJobsView()
+        placeHolderEmptyJobsView?.frame = CGRect(x: 0, y: 0, width: 300, height: 500)
+        placeHolderEmptyJobsView?.center = self.view.center
+        self.view.addSubview(placeHolderEmptyJobsView!)
+        placeHolderEmptyJobsView?.placeHolderMessageLabel.text = "You don’t have any saved jobs"
+        
+        self.view.bringSubview(toFront: self.savedJobsTableView)
+        self.view.bringSubview(toFront: self.appliedJobsTableView)
+        self.view.bringSubview(toFront: self.shortListedJobsTableView)
+
+        
         pullToRefreshSavedJobs.addTarget(self, action: #selector(pullToRefreshForSavedJobs), for: .valueChanged)
         self.savedJobsTableView.addSubview(pullToRefreshSavedJobs)
         
@@ -134,6 +148,10 @@ class DMTrackVC: DMBaseVC {
             savedJobsTableView.isHidden = false
             appliedJobsTableView.isHidden = true
             shortListedJobsTableView.isHidden = true
+            placeHolderEmptyJobsView?.placeHolderMessageLabel.text = "You don’t have any saved jobs"
+
+            self.placeHolderEmptyJobsView?.isHidden = savedJobs.count == 0 ? false:true
+
             if self.savedJobsPageNo == 1 {
                 jobParams["type"] = "1"
                 jobParams["page"] = "1"
@@ -143,6 +161,8 @@ class DMTrackVC: DMBaseVC {
             savedJobsTableView.isHidden = true
             shortListedJobsTableView.isHidden = true
             appliedJobsTableView.isHidden = false
+            placeHolderEmptyJobsView?.placeHolderMessageLabel.text = "You don’t have any applied jobs"
+            self.placeHolderEmptyJobsView?.isHidden = appliedJobs.count == 0 ? false:true
             if appliedJobsPageNo == 1 {
                 jobParams["type"] = "2"
                 jobParams["page"] = "1"
@@ -152,6 +172,8 @@ class DMTrackVC: DMBaseVC {
             savedJobsTableView.isHidden = true
             appliedJobsTableView.isHidden = true
             shortListedJobsTableView.isHidden = false
+            placeHolderEmptyJobsView?.placeHolderMessageLabel.text = "You don’t have any shortlisted jobs"
+            self.placeHolderEmptyJobsView?.isHidden = shortListedJobs.count == 0 ? false:true
             if shortListedJobsPageNo == 1 {
                 jobParams["type"] = "3"
                 jobParams["page"] = "1"

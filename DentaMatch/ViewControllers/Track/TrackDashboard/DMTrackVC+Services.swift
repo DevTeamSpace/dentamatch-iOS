@@ -60,9 +60,11 @@ extension DMTrackVC {
                     self.pullToRefreshSavedJobs.endRefreshing()
                     savedJobsPageNo += 1
                     self.loadingMoreSavedJobs = false
+                    self.placeHolderEmptyJobsView?.isHidden = self.savedJobs.count == 0 ? false : true
                     DispatchQueue.main.async {
                         self.savedJobsTableView.reloadData()
                         self.savedJobsTableView.tableFooterView = nil
+                        
                     }
                     
                 } else if type == "2" {
@@ -79,6 +81,7 @@ extension DMTrackVC {
                     self.pullToRefreshAppliedJobs.endRefreshing()
                     appliedJobsPageNo += 1
                     self.loadingMoreAppliedJobs = false
+                    self.placeHolderEmptyJobsView?.isHidden = self.appliedJobs.count == 0 ? false : true
                     DispatchQueue.main.async {
                         self.appliedJobsTableView.reloadData()
                         self.appliedJobsTableView.tableFooterView = nil
@@ -98,6 +101,7 @@ extension DMTrackVC {
                     self.pullToRefreshShortListedJobs.endRefreshing()
                     shortListedJobsPageNo += 1
                     self.loadingMoreShortListedJobs = false
+                    self.placeHolderEmptyJobsView?.isHidden = self.shortListedJobs.count == 0 ? false : true
                     DispatchQueue.main.async {
                         self.shortListedJobsTableView.reloadData()
                         self.shortListedJobsTableView.tableFooterView = nil
@@ -111,6 +115,7 @@ extension DMTrackVC {
                         if self.savedJobsPageNo == 1 {
                             self.savedJobs.removeAll()
                         }
+                        self.placeHolderEmptyJobsView?.isHidden = self.savedJobs.count == 0 ? false : true
                         DispatchQueue.main.async {
                             self.savedJobsTableView.reloadData()
                             self.savedJobsTableView.tableFooterView = UIView()
@@ -124,6 +129,7 @@ extension DMTrackVC {
                         if self.appliedJobsPageNo == 1 {
                             self.appliedJobs.removeAll()
                         }
+                        self.placeHolderEmptyJobsView?.isHidden = self.appliedJobs.count == 0 ? false : true
                         DispatchQueue.main.async {
                             self.appliedJobsTableView.reloadData()
                             self.appliedJobsTableView.tableFooterView = UIView()
@@ -137,6 +143,7 @@ extension DMTrackVC {
                         if self.shortListedJobsPageNo == 1 {
                             self.shortListedJobs.removeAll()
                         }
+                        self.placeHolderEmptyJobsView?.isHidden = self.shortListedJobs.count == 0 ? false : true
                         DispatchQueue.main.async {
                             self.shortListedJobsTableView.reloadData()
                             self.shortListedJobsTableView.tableFooterView = UIView()
