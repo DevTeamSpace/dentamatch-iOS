@@ -16,6 +16,8 @@ class DMAffiliationsVC: DMBaseVC {
         case affiliationOther
     }
     
+    @IBOutlet weak var headerViewForEditProfileHeight: NSLayoutConstraint!
+    @IBOutlet weak var headerViewForEditProfile: UIView!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var affiliationsTableView: UITableView!
     
@@ -41,16 +43,20 @@ class DMAffiliationsVC: DMBaseVC {
 
     //MARK:- Private Methods
     func setup() {
-        if isEditMode {
-            self.title = "EDIT PROFILE"
-            self.nextButton.setTitle("SAVE", for: .normal)
-        }
         self.navigationItem.leftBarButtonItem = self.backBarButton()
         self.affiliationsTableView.separatorColor = UIColor.clear
         self.affiliationsTableView.register(UINib(nibName: "PhotoNameCell", bundle: nil), forCellReuseIdentifier: "PhotoNameCell")
         self.affiliationsTableView.register(UINib(nibName: "SectionHeadingTableCell", bundle: nil), forCellReuseIdentifier: "SectionHeadingTableCell")
         self.affiliationsTableView.register(UINib(nibName: "AffiliationsCell", bundle: nil), forCellReuseIdentifier: "AffiliationsCell")
         self.affiliationsTableView.register(UINib(nibName: "AffliliationsOthersCell", bundle: nil), forCellReuseIdentifier: "AffliliationsOthersCell")
+        if isEditMode {
+            self.title = "EDIT PROFILE"
+            self.nextButton.setTitle("SAVE", for: .normal)
+            self.headerViewForEditProfile.isHidden = false
+        } else {
+            self.headerViewForEditProfileHeight.constant = 0
+            self.view.layoutIfNeeded()
+        }
     }
     
     func addToolBarOnTextView() -> UIToolbar {
