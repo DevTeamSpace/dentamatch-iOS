@@ -63,7 +63,9 @@ class DMJobSearchResultVC : DMBaseVC {
     
     func getJobs() {
         jobsPageNo = 1
-        self.jobs.removeAll()
+        if let params =  UserDefaultsManager.sharedInstance.loadSearchParameter() {
+            searchParams = params
+        }
         searchParams[Constants.JobDetailKey.page] = "\(self.jobsPageNo)"
         self.fetchSearchResultAPI(params: searchParams)
     }
@@ -113,14 +115,8 @@ class DMJobSearchResultVC : DMBaseVC {
     }
     
     func pullToRefreshForJobs() {
-        jobsPageNo = 1
-        self.jobs.removeAll()
-        if let params =  UserDefaultsManager.sharedInstance.loadSearchParameter() {
-            searchParams = params
-        }
-        searchParams[Constants.JobDetailKey.page] = "\(self.jobsPageNo)"
-        self.fetchSearchResultAPI(params: searchParams)
-        pullToRefreshJobs.endRefreshing()
+        self.getJobs()
+        self.pullToRefreshJobs.endRefreshing()
     }
     
     func setUpSegmentControl() {
@@ -207,7 +203,6 @@ class DMJobSearchResultVC : DMBaseVC {
 extension DMJobSearchResultVC : SearchJobDelegate {
     func refreshJobList() {
         jobsPageNo = 1
-        self.jobs.removeAll()
         if let params =  UserDefaultsManager.sharedInstance.loadSearchParameter() {
             searchParams = params
         }
