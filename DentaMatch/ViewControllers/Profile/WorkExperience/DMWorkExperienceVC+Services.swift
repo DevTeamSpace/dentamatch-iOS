@@ -61,14 +61,23 @@ extension DMWorkExperienceVC {
         for index in 0..<(self.currentExperience!.references.count) {
             let refObj = self.currentExperience?.references[index]
             if index == 0 {
-                params[Constants.ServerKey.reference1Name] = refObj?.referenceName as AnyObject?
-                params[Constants.ServerKey.reference1Mobile] = refObj?.mobileNumber as AnyObject?
-                params[Constants.ServerKey.reference1Email] = refObj?.email as AnyObject?
+                if (refObj!.referenceName?.isEmptyField)! && (refObj?.mobileNumber?.isEmptyField)! && (refObj?.email?.isEmptyField)! {
+                    // no need to do action
+                }else{
+                    params[Constants.ServerKey.reference1Name] = refObj?.referenceName as AnyObject?
+                    params[Constants.ServerKey.reference1Mobile] = refObj?.mobileNumber as AnyObject?
+                    params[Constants.ServerKey.reference1Email] = refObj?.email as AnyObject?
+                }
                 
             }else {
-                params[Constants.ServerKey.reference2Name] = refObj?.referenceName as AnyObject?
-                params[Constants.ServerKey.reference2Mobile] = refObj?.mobileNumber as AnyObject?
-                params[Constants.ServerKey.reference2Email] = refObj?.email as AnyObject?
+                if (refObj!.referenceName?.isEmptyField)! && (refObj?.mobileNumber?.isEmptyField)! && (refObj?.email?.isEmptyField)! {
+                    // no need to do action
+                    self.currentExperience?.references.removeObject(object: refObj!)
+                }else{
+                    params[Constants.ServerKey.reference2Name] = refObj?.referenceName as AnyObject?
+                    params[Constants.ServerKey.reference2Mobile] = refObj?.mobileNumber as AnyObject?
+                    params[Constants.ServerKey.reference2Email] = refObj?.email as AnyObject?
+                }
             }
             
         }

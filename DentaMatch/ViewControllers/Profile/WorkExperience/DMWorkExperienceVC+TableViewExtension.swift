@@ -335,7 +335,7 @@ extension DMWorkExperienceVC: UITableViewDataSource,UITableViewDelegate
     func addMoreReference(_ sender: Any) {
         if (self.currentExperience?.references.count)! < 2
         {
-            if (self.currentExperience?.references[0].email?.isEmptyField)! && (self.currentExperience?.references[0].email?.isEmptyField)! && (self.currentExperience?.references[0].email?.isEmptyField)! {
+            if (self.currentExperience?.references[0].referenceName?.isEmptyField)! && (self.currentExperience?.references[0].mobileNumber?.isEmptyField)! && (self.currentExperience?.references[0].email?.isEmptyField)! {
                 self.makeToast(toastString: Constants.AlertMessage.empptyFirstReference)
                 
             }else{
@@ -370,17 +370,14 @@ extension DMWorkExperienceVC: UITableViewDataSource,UITableViewDelegate
                 let resultArray = response![Constants.ServerKey.result][Constants.ServerKey.list].array
                 if (resultArray?.count)! > 0
                 {
-                
                     let dict  = resultArray?[0].dictionary
                     self.currentExperience?.experienceID = (dict?[Constants.ServerKey.experienceId]?.intValue)!
-                    
                 }
                 if self.currentExperience?.isEditMode == true {
                     self.exprienceArray[self.selectedIndex] = self.currentExperience!
 
                 }else{
                     self.exprienceArray.append(self.currentExperience!)
-                    
                 }
                 self.isHiddenExperienceTable = false
 
@@ -419,6 +416,7 @@ extension DMWorkExperienceVC: UITableViewDataSource,UITableViewDelegate
                     self.currentExperience = ExperienceModel(empty: "")
                     self.currentExperience?.isFirstExperience = false
                     self.currentExperience?.references.append(EmployeeReferenceModel(empty: ""))
+                    self.isHiddenExperienceTable = false
                     self.workExperienceTable.reloadData()
                     self.workExperienceDetailTable.reloadData()
                     self.reSizeTableViewsAndScrollView()
@@ -430,6 +428,7 @@ extension DMWorkExperienceVC: UITableViewDataSource,UITableViewDelegate
             self.currentExperience = ExperienceModel(empty: "")
             self.currentExperience?.isFirstExperience = false
             self.currentExperience?.references.append(EmployeeReferenceModel(empty: ""))
+            self.isHiddenExperienceTable = false
             self.workExperienceTable.reloadData()
             self.workExperienceDetailTable.reloadData()
             self.reSizeTableViewsAndScrollView()
@@ -462,30 +461,25 @@ extension DMWorkExperienceVC: UITableViewDataSource,UITableViewDelegate
             
             if (empRef?.referenceName?.isEmptyField)! {
                 
-            }else if !(empRef?.mobileNumber?.isEmptyField)!  {
+            }
+            if !(empRef?.mobileNumber?.isEmptyField)!  {
                 if !self.phoneFormatter.isValid((empRef?.mobileNumber!)!) {
                     self.makeToast(toastString: Constants.AlertMessage.referenceMobileNumber)
                     return false
                 }
-                
+            }
+            if !(empRef?.email?.isEmptyField)! {
                 if !(empRef?.email?.isValidEmail)! {
                     self.makeToast(toastString: Constants.AlertMessage.invalidEmail)
                     return false
                 }
-            }else if !(empRef?.email?.isEmptyField)! {
-                if !(empRef?.email?.isValidEmail)! {
-                    self.makeToast(toastString: Constants.AlertMessage.invalidEmail)
-                    return false
-                }
-                
             }
             
             if index == 1 {
-                if (self.currentExperience?.references[0].email?.isEmptyField)! && (self.currentExperience?.references[0].email?.isEmptyField)! && (self.currentExperience?.references[0].email?.isEmptyField)! {
+                if (self.currentExperience?.references[0].referenceName?.isEmptyField)! && (self.currentExperience?.references[0].mobileNumber?.isEmptyField)! && (self.currentExperience?.references[0].email?.isEmptyField)! {
                     self.makeToast(toastString: Constants.AlertMessage.empptyFirstReference)
                     return false
                 }
-                
             }
         }
         

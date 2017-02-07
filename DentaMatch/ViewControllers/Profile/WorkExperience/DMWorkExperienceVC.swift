@@ -55,6 +55,7 @@ class DMWorkExperienceVC: DMBaseVC,ExperiencePickerViewDelegate,ToolBarButtonDel
     var isHiddenExperienceTable :Bool = false
     var isEditMode = false
 
+    @IBOutlet weak var viewForTopHeader: UIView!
     @IBOutlet weak var nextButton: UIButton!
 
     @IBOutlet weak var mainScrollView: UIScrollView!
@@ -63,6 +64,7 @@ class DMWorkExperienceVC: DMBaseVC,ExperiencePickerViewDelegate,ToolBarButtonDel
     @IBOutlet weak var hightOfExperienceTable: NSLayoutConstraint!
     @IBOutlet weak var hightOfExperienceDetailTable: NSLayoutConstraint!
     @IBOutlet weak var heightOfScrollView: NSLayoutConstraint!
+    @IBOutlet weak var topHeaderViewHeight: NSLayoutConstraint!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,10 +73,22 @@ class DMWorkExperienceVC: DMBaseVC,ExperiencePickerViewDelegate,ToolBarButtonDel
         if isEditMode != true {
             getExperienceAPI()
         }else{
+            
             nextButton.setTitle("Save", for: .normal)
         }
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if isEditMode != true {
+            topHeaderViewHeight.constant = 0
+
+        }else{
+        }
+        self.view.layoutIfNeeded()
+
+        
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
