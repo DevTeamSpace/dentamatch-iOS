@@ -22,7 +22,7 @@
                         <color key="backgroundColor" red="0.88235294117647056" green="0.88235294117647056" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="firstWeekday">
-                                <integer key="value" value="0"/>
+                                <integer key="value" value="1"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="allowsMultipleSelection" value="YES"/>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="scrollEnabled" value="NO"/>

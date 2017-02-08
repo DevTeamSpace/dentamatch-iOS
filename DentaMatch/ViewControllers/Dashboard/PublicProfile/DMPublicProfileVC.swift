@@ -191,6 +191,28 @@ class DMPublicProfileVC: DMBaseVC {
 
 extension DMPublicProfileVC:UITextFieldDelegate {
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let profileOptions = ProfileOptions(rawValue: textField.tag)!
+        switch profileOptions {
+        case .firstName:
+            let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ")
+            if string.rangeOfCharacter(from: characterset.inverted) != nil {
+                print("string contains special characters")
+                return false
+            }
+            return true
+        case .lastName:
+            let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ")
+            if string.rangeOfCharacter(from: characterset.inverted) != nil {
+                print("string contains special characters")
+                return false
+            }
+            return true
+        default:
+            return true
+        }
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let profileOptions = ProfileOptions(rawValue: textField.tag)!
         switch profileOptions {
