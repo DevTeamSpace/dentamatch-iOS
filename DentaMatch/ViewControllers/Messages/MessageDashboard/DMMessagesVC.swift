@@ -41,10 +41,14 @@ class DMMessagesVC: DMBaseVC {
         placeHolderEmptyJobsView = PlaceHolderJobsView.loadPlaceHolderJobsView()
         placeHolderEmptyJobsView?.frame = CGRect(x: 0, y: 0, width: 300, height: 500)
         placeHolderEmptyJobsView?.center = self.view.center
+        var frame = placeHolderEmptyJobsView!.frame
+        frame = CGRect(x: frame.origin.x, y: frame.origin.y - 44, width: frame.size.width, height: frame.size.height)
+        placeHolderEmptyJobsView?.frame = frame
         self.view.addSubview(placeHolderEmptyJobsView!)
         placeHolderEmptyJobsView?.placeholderImageView.image = UIImage(named: "chatListPlaceHolder")
         placeHolderEmptyJobsView?.placeHolderMessageLabel.text = "No message in your chats yet."
 
+        self.view.layoutIfNeeded()
     }
     
     func getMessageList() {

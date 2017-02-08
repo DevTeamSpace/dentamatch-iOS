@@ -17,7 +17,7 @@ class DMChatVC: DMBaseVC {
     @IBOutlet weak var chatTextView: UITextView!
     @IBOutlet weak var textContainerViewHeight: NSLayoutConstraint!
     
-    var placeholderLabel:UILabel!
+    var placeHolderLabelForView:UILabel!
     
     var chatList:ChatList?
     var array = [
@@ -54,14 +54,18 @@ class DMChatVC: DMBaseVC {
         self.chatTextView.layer.cornerRadius = 5.0
         self.chatTableView.register(UINib(nibName: "MessageSenderTableCell", bundle: nil), forCellReuseIdentifier: "MessageSenderTableCell")
         self.chatTableView.register(UINib(nibName: "MessageReceiverTableCell", bundle: nil), forCellReuseIdentifier: "MessageReceiverTableCell")
-        placeholderLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 40))
-        placeholderLabel.font = UIFont.fontRegular(fontSize: 15.0)!
-        placeholderLabel.textColor = UIColor.color(withHexCode: "aaafb8")
-        placeholderLabel.textAlignment = .center
-        placeholderLabel.numberOfLines = 2
-        placeholderLabel.center = self.view.center
-        placeholderLabel.text = "Start your conversation with\n \(chatList?.officeName!)"
-        self.view.addSubview(placeholderLabel)
+        placeHolderLabelForView = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 40))
+        placeHolderLabelForView.font = UIFont.fontRegular(fontSize: 15.0)!
+        placeHolderLabelForView.textColor = UIColor.color(withHexCode: "aaafb8")
+        placeHolderLabelForView.textAlignment = .center
+        placeHolderLabelForView.numberOfLines = 2
+        placeHolderLabelForView.text = "Start your conversation with\n \((chatList?.officeName)!)"
+        placeHolderLabelForView.center = self.view.center
+        var frame = placeHolderLabelForView.frame
+        frame = CGRect(x: frame.origin.x, y: frame.origin.y - 44, width: frame.size.width, height: frame.size.height)
+        placeHolderLabelForView.frame = frame
+        self.view.addSubview(placeHolderLabelForView)
+
         
         if (chatList?.isBlockedFromSeeker)! {
             self.chatTextView.isHidden = true
@@ -85,22 +89,17 @@ class DMChatVC: DMBaseVC {
 }
 
 extension DMChatVC:UITextViewDelegate {
-    
     func textViewDidChange(_ textView: UITextView) {
-        
         let cSize = textView.sizeThatFits(CGSize(width: textView.frame.width, height: 99999))
-//        let attrS = NSMutableAttributedString(string: textView.text!, attributes: [NSFontAttributeName:UIFont.fontRegular(fontSize: 14.0)!])
-//        
-//        let cSize = CGSize(width: textView.frame.width, height: 99999)
-//        let reqH = attrS.boundingRect(with: cSize, options: .usesLineFragmentOrigin, context: nil)
-        
-        if cSize.height > 48 {
+        if cSize.height >= 150 {
+            textContainerViewHeight.constant = 150
+            self.view.layoutIfNeeded()
+        } else if cSize.height > 48 {
             textContainerViewHeight.constant = cSize.height
             self.view.layoutIfNeeded()
         } else {
             textContainerViewHeight.constant = 48
         }
-        print(cSize.height)
-        
+//        print(cSize.height)
     }
 }
