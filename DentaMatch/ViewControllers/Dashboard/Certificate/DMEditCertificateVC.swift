@@ -85,15 +85,19 @@ class DMEditCertificateVC: DMBaseVC,DatePickerViewDelegate {
     
     //MARK:- IBActions
     @IBAction func saveButtonPressed(_ sender: Any) {
-        if !self.validityDatePicker.text!.isEmptyField {
-            self.uploadValidityDate { (response:JSON?, error:NSError?) in
-                if let _ = response {
-                    self.updateProfileScreen()
-                    _ = self.navigationController?.popViewController(animated: true)
+        if !(certificate?.certificateImageURL?.isEmptyField)! {
+            if !self.validityDatePicker.text!.isEmptyField {
+                self.uploadValidityDate { (response:JSON?, error:NSError?) in
+                    if let _ = response {
+                        self.updateProfileScreen()
+                        _ = self.navigationController?.popViewController(animated: true)
+                    }
                 }
+            } else {
+                self.makeToast(toastString: Constants.AlertMessage.emptyValidityDate)
             }
         } else {
-            self.makeToast(toastString: Constants.AlertMessage.emptyValidityDate)
+            self.makeToast(toastString: "Please upload certificate image first")
         }
     }
     
