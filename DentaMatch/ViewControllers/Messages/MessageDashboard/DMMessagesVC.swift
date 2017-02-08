@@ -63,10 +63,10 @@ class DMMessagesVC: DMBaseVC {
 
     }
     
-    func showBlockRecruiterAlert() {
+    func showBlockRecruiterAlert(chatList:ChatList) {
         let alert = UIAlertController(title: "", message: "This Blocked recruiter will no longer be able to send you message", preferredStyle: .actionSheet)
         let blockAction = UIAlertAction(title: "Block", style: .destructive) { (action:UIAlertAction) in
-            self.blockRecruiter()
+            self.blockRecruiter(chatList: chatList)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction) in
             

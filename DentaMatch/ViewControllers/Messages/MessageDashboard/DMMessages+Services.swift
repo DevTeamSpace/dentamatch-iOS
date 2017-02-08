@@ -30,8 +30,25 @@ extension DMMessagesVC {
         }
     }
     
-    func blockRecruiter() {
-        print("blockRecruiter")
+    func blockRecruiter(chatList:ChatList) {
+        let params = [
+            Constants.ServerKey.recruiterId:chatList.recruiterId!
+        ]
+        self.showLoader()
+        APIManager.apiPost(serviceName: Constants.API.blockUnblockRecruiter, parameters: params) { (response:JSON?, error:NSError?) in
+            self.hideLoader()
+            if error != nil {
+                self.makeToast(toastString: (error?.localizedDescription)!)
+                self.getMessageList()
+                return
+            }
+            guard let _ = response else {
+                self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
+                return
+            }
+            print(response!)
+            self.handleBlockRecruiterResponse(chatList: chatList, response: response)
+        }
     }
     
     func handleChatListResponse(response:JSON?) {
@@ -46,6 +63,17 @@ extension DMMessagesVC {
             } else {
                 self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
             }
+        }
+    }
+    
+    func handleBlockRecruiterResponse(chatList:ChatList,response:JSON?) {
+        if let response = response {
+            if response[Constants.ServerKey.status].boolValue {
+                chatList.isBlockedFromSeeker = response[Constants.ServerKey.result][Constants.ServerKey.blockStatus].boolValue
+                self.appDelegate.saveContext()
+            } else {
+            }
+            self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
         }
     }
 }
