@@ -50,6 +50,10 @@
 		5A8F62AA1E39EAB70037C4A2 /* TemporyJobCalenderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8F62A81E39EAB70037C4A2 /* TemporyJobCalenderCell.xib */; };
 		5A8F62AD1E39F2550037C4A2 /* TemporyJobCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8F62AB1E39F2550037C4A2 /* TemporyJobCell.swift */; };
 		5A8F62AE1E39F2550037C4A2 /* TemporyJobCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8F62AC1E39F2550037C4A2 /* TemporyJobCell.xib */; };
+		5A988BC11E4AE6A500DECB49 /* Notification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A988BC01E4AE6A500DECB49 /* Notification.storyboard */; };
+		5A988BC41E4AE99800DECB49 /* DMNotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A988BC31E4AE99800DECB49 /* DMNotificationVC.swift */; };
+		5A988BC61E4AE9D200DECB49 /* DMNotificationVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A988BC51E4AE9D200DECB49 /* DMNotificationVC+TableViewExtension.swift */; };
+		5A988BC81E4AEA0E00DECB49 /* DMNotificationVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A988BC71E4AEA0E00DECB49 /* DMNotificationVC+Services.swift */; };
 		5A9A3A971E2B58600002C5B6 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9A3A961E2B58600002C5B6 /* UserManager.swift */; };
 		5AB876501E249B62007818D6 /* ExperiencePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB8764F1E249B62007818D6 /* ExperiencePickerView.swift */; };
 		5AB876521E249C0A007818D6 /* ExperiencePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AB876511E249C0A007818D6 /* ExperiencePickerView.xib */; };
@@ -366,6 +370,10 @@
 		5A8F62A81E39EAB70037C4A2 /* TemporyJobCalenderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemporyJobCalenderCell.xib; sourceTree = "<group>"; };
 		5A8F62AB1E39F2550037C4A2 /* TemporyJobCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemporyJobCell.swift; sourceTree = "<group>"; };
 		5A8F62AC1E39F2550037C4A2 /* TemporyJobCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemporyJobCell.xib; sourceTree = "<group>"; };
+		5A988BC01E4AE6A500DECB49 /* Notification.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Notification.storyboard; sourceTree = "<group>"; };
+		5A988BC31E4AE99800DECB49 /* DMNotificationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMNotificationVC.swift; sourceTree = "<group>"; };
+		5A988BC51E4AE9D200DECB49 /* DMNotificationVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMNotificationVC+TableViewExtension.swift"; sourceTree = "<group>"; };
+		5A988BC71E4AEA0E00DECB49 /* DMNotificationVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMNotificationVC+Services.swift"; sourceTree = "<group>"; };
 		5A9A3A961E2B58600002C5B6 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		5AB8764F1E249B62007818D6 /* ExperiencePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperiencePickerView.swift; sourceTree = "<group>"; };
 		5AB876511E249C0A007818D6 /* ExperiencePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExperiencePickerView.xib; sourceTree = "<group>"; };
@@ -814,6 +822,23 @@
 			path = Calender;
 			sourceTree = "<group>";
 		};
+		5A988BC21E4AE95900DECB49 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				5A988BC31E4AE99800DECB49 /* DMNotificationVC.swift */,
+				5A988BC51E4AE9D200DECB49 /* DMNotificationVC+TableViewExtension.swift */,
+				5A988BC71E4AEA0E00DECB49 /* DMNotificationVC+Services.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		5A988BC91E4AEF4100DECB49 /* Notication */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Notication;
+			sourceTree = "<group>";
+		};
 		5AC714431E34AB2500E433C1 /* Jobs */ = {
 			isa = PBXGroup;
 			children = (
@@ -1081,6 +1106,7 @@
 		E55462E71DAE47C6004163B2 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				5A988BC21E4AE95900DECB49 /* Notification */,
 				5AC714461E34AB5B00E433C1 /* Messages */,
 				5AC714451E34AB4500E433C1 /* Track */,
 				5AC714441E34AB3300E433C1 /* Calender */,
@@ -1234,6 +1260,7 @@
 		E56B20A71DC0606A000512F6 /* TableView Cells */ = {
 			isa = PBXGroup;
 			children = (
+				5A988BC91E4AEF4100DECB49 /* Notication */,
 				5A8F62A61E39EA7E0037C4A2 /* Calender */,
 				F2F9B9781E38976100639716 /* JobTitle */,
 				5A3B06C51E3375A200EFCA6E /* ChangePassword */,
@@ -1587,6 +1614,7 @@
 				5AC7143F1E34A9B100E433C1 /* Calender.storyboard */,
 				5AC714411E34A9C700E433C1 /* Messages.storyboard */,
 				F2D03BA41E1F580C0005D3A4 /* JobSearch.storyboard */,
+				5A988BC01E4AE6A500DECB49 /* Notification.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -2010,6 +2038,7 @@
 				F2F9B97C1E38978200639716 /* JobTitleCell.xib in Resources */,
 				E597E5891E151A99001DDA78 /* SF-UI-Text-SemiboldItalic.otf in Resources */,
 				E5E7CB921E2FA23300D4FB59 /* AutoCompleteTableViewCell.xib in Resources */,
+				5A988BC11E4AE6A500DECB49 /* Notification.storyboard in Resources */,
 				E5E7CB811E2FA23200D4FB59 /* AddDeleteExperienceCell.xib in Resources */,
 				5A8F62AA1E39EAB70037C4A2 /* TemporyJobCalenderCell.xib in Resources */,
 				5A8F62AE1E39F2550037C4A2 /* TemporyJobCell.xib in Resources */,
@@ -2216,8 +2245,10 @@
 				F2540F4E1E23A834004B0538 /* JobSearchTypeCell.swift in Sources */,
 				E587D2ED1E24C021006B7F06 /* DMWorkExperienceVC+TableViewExtension.swift in Sources */,
 				E587D2F21E24C07C006B7F06 /* DMExecutiveSummaryVC.swift in Sources */,
+				5A988BC61E4AE9D200DECB49 /* DMNotificationVC+TableViewExtension.swift in Sources */,
 				E51D4F071E3FABB400ACC631 /* LoadMoreView.swift in Sources */,
 				E50B3F531E194EDD004C5F32 /* AnimatedPHTextField.swift in Sources */,
+				5A988BC41E4AE99800DECB49 /* DMNotificationVC.swift in Sources */,
 				E5E7CB4A1E2F8CDE00D4FB59 /* EditLicenseTableCell.swift in Sources */,
 				E514E5BA1E28B472005F6712 /* DMCertificationsVC+Services.swift in Sources */,
 				E587D2EE1E24C021006B7F06 /* DMWorkExperienceVC.swift in Sources */,
@@ -2269,6 +2300,7 @@
 				E51D4EF31E3AFCA700ACC631 /* DMEditStudyVC.swift in Sources */,
 				E558D90A1E2E7A3200A6DF95 /* DMEditProfileVC+TableViewExtension.swift in Sources */,
 				5A3B06D31E33885A00EFCA6E /* DMChangePasswordVC+Services.swift in Sources */,
+				5A988BC81E4AEA0E00DECB49 /* DMNotificationVC+Services.swift in Sources */,
 				E5E7CB891E2FA23200D4FB59 /* OtherSkillCell.swift in Sources */,
 				E54976F71E28D243006F21E5 /* DMExecutiveSummaryVC+Services.swift in Sources */,
 				E587D2CC1E23362C006B7F06 /* JobSelectionPickerView.swift in Sources */,
