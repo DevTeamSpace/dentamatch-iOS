@@ -68,17 +68,16 @@ class JobDescriptionCell: UITableViewCell {
         label.font = font
         label.text = jobDescription
         label.sizeToFit()
-        if label.frame.height > 30 {
-            if isReadMore == true {
-                return 30 + 22 + 41
+        if label.frame.height > 50 {
+            if isReadMore == false {
+                return 50 + 22 + 41
             }
             else {
                 return label.frame.height + 22 + 41
-            }
-            return label.frame.height + 22 + 41//Button Show
+            }//Button Show
         }
         else {
-            return label.frame.height//Button Hide
+            return label.frame.height + 22 //Button Hide
         }
     }
 }

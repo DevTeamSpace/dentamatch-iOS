@@ -39,20 +39,21 @@ extension DMJobDetailVC : UITableViewDataSource, UITableViewDelegate, JobDescrip
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "JobDescriptionCell") as! JobDescriptionCell
             cell.lblDescription.text = job?.templateDesc
-            if isReadMore == true {
-                cell.btnReadMore.setTitle(Constants.Strings.readLess, for: .normal)
-            }
-            else {
-                cell.btnReadMore.setTitle(Constants.Strings.readMore, for: .normal)
-            }
             let height = JobDescriptionCell.requiredHeight(jobDescription: (job?.templateDesc)!, isReadMore: isReadMore)
             if height > 91 {
                 cell.constarintBtnReadMoreLessHeight.constant = 41//Button Show
+                if isReadMore == true {
+                    cell.btnReadMore.setTitle(Constants.Strings.readLess, for: .normal)
+                }
+                else {
+                    cell.btnReadMore.setTitle(Constants.Strings.readMore, for: .normal)
+                }
             }
             else {
                 cell.constarintBtnReadMoreLessHeight.constant = 0//Button Hide
+                cell.btnReadMore.setTitle("", for: .normal)
             }
-            cell.updateConstraintsIfNeeded()
+            cell.needsUpdateConstraints()
             cell.delegate = self
             cell.selectionStyle = .none
             return cell
