@@ -122,6 +122,9 @@ extension UserManager {
                 user.preferredJobLocation = userDetails[Constants.ServerKey.preferredLocation].stringValue
                 user.profileImageURL = userDetails[Constants.ServerKey.imageUrl].stringValue
                 user.userId = userDetails[Constants.ServerKey.id].stringValue
+                user.latitude = userDetails[Constants.ServerKey.latitude].stringValue
+                user.longitude = userDetails[Constants.ServerKey.longitude].stringValue
+
                 self.activeUser = user
 //                self.saveActiveUser()
                 UserDefaultsManager.sharedInstance.isLoggedIn = true

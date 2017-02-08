@@ -8,7 +8,6 @@
 
 import Foundation
 import SwiftyJSON
-import CoreData
 
 extension DMMessagesVC {
     
@@ -18,6 +17,7 @@ extension DMMessagesVC {
             self.hideLoader()
             if error != nil {
                 self.makeToast(toastString: (error?.localizedDescription)!)
+                self.getMessageList()
                 return
             }
             guard let _ = response else {
@@ -26,6 +26,7 @@ extension DMMessagesVC {
             }
             print(response!)
             self.handleChatListResponse(response: response)
+            self.getMessageList()
         }
     }
     
@@ -44,33 +45,6 @@ extension DMMessagesVC {
                 }
             } else {
                 self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
-            }
-        }
-    }
-    
-    func addUpdateMessageToDB(chatList:[JSON]?) {
-        
-        DispatchQueue.global(qos: .background).async {
-            print("This will run on the main queue, after the previous code in outer block")
-            for chatListObj in chatList! {
-                let chat = NSEntityDescription.insertNewObject(forEntityName: "ChatList", into: self.context) as! ChatList
-                chat.lastMessage = chatListObj["message"].stringValue
-                chat.recruiterId = chatListObj["recruiterId"].stringValue
-                chat.isBlockedFromRecruiter = chatListObj["recruiterBlock"].boolValue
-                chat.isBlockedFromSeeker = chatListObj["seekerBlock"].boolValue
-                chat.dateString = chatListObj["timestamp"].stringValue
-                chat.officeName = chatListObj["name"].stringValue
-
-//                if (true) {
-//                } else {
-//                    let chat = NSEntityDescription.insertNewObject(forEntityName: "ChatList", into: self.context) as! ChatList
-//                    chat.lastMessage! = ""
-//                }
-            }
-           
-            DispatchQueue.main.async {
-                print("This is run on the main queue, after the previous code in outer block")
-                self.appDelegate.saveContext()
             }
         }
     }

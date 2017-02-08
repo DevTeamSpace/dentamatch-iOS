@@ -14,11 +14,13 @@
         <attribute name="isBlockedFromRecruiter" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="isBlockedFromSeeker" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="lastMessage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastMessageId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="messageListId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="officeName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="recruiterId" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="Chat" positionX="-63" positionY="-18" width="128" height="135"/>
-        <element name="ChatList" positionX="-63" positionY="27" width="128" height="150"/>
+        <element name="ChatList" positionX="-63" positionY="27" width="128" height="180"/>
     </elements>
 </model>

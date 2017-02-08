@@ -33,17 +33,19 @@ class DMMessagesVC: DMBaseVC {
     
     func setup() {
         self.title = "MESSAGES"
+        self.messageListTableView.dataSource = nil
         self.messageListTableView.register(UINib(nibName: "MessageListTableCell", bundle: nil), forCellReuseIdentifier: "MessageListTableCell")
-        self.getMessageList()
     }
     
     func getMessageList() {
+        self.messageListTableView.dataSource = self
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ChatList")
         
         // Add Sort Descriptors
-        let sortDescriptor = NSSortDescriptor(key: "dateString", ascending: true)
+        let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         //fetchRequest.fetchBatchSize = 20
+        
         // Initialize Fetched Results Controller
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         
@@ -72,7 +74,5 @@ class DMMessagesVC: DMBaseVC {
         alert.addAction(blockAction)
         alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
-    }
-    
-
+    }    
 }
