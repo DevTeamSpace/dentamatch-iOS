@@ -53,6 +53,7 @@
             <nil key="simulatedStatusBarMetrics"/>
             <connections>
                 <outlet property="placeHolderMessageLabel" destination="N3z-I9-gbW" id="rew-1F-8jD"/>
+                <outlet property="placeholderImageView" destination="Dfq-Xd-oUR" id="Tpy-mx-4ZQ"/>
             </connections>
             <point key="canvasLocation" x="33.5" y="68.5"/>
         </view>

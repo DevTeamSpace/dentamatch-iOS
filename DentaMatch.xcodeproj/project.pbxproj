@@ -63,7 +63,6 @@
 		5AC714421E34A9C700E433C1 /* Messages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AC714411E34A9C700E433C1 /* Messages.storyboard */; };
 		5AC714501E34ACC300E433C1 /* DMJobsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC7144F1E34ACC300E433C1 /* DMJobsVC.swift */; };
 		5AC714521E34ACD400E433C1 /* DMCalenderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC714511E34ACD400E433C1 /* DMCalenderVC.swift */; };
-		5AC714561E34ACFB00E433C1 /* DMMessagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC714551E34ACFB00E433C1 /* DMMessagesVC.swift */; };
 		5AC714581E34F76900E433C1 /* DMSettingVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC714571E34F76900E433C1 /* DMSettingVC+Services.swift */; };
 		5AD246911E272E92009350BF /* DMWorkExperienceVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD246901E272E92009350BF /* DMWorkExperienceVC+Services.swift */; };
 		5AD246931E273CC9009350BF /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD246921E273CC9009350BF /* DatePickerView.swift */; };
@@ -93,6 +92,7 @@
 		E51D4F131E4086BD00ACC631 /* DMCancelJobVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4F121E4086BD00ACC631 /* DMCancelJobVC+Services.swift */; };
 		E51D4F151E41070700ACC631 /* DMRegisterMapsVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4F141E41070700ACC631 /* DMRegisterMapsVC+Services.swift */; };
 		E5302CD61DFE7AB100984A0B /* DMForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5302CD51DFE7AB100984A0B /* DMForgotPasswordVC.swift */; };
+		E5310E0D1E4B2B3F004403A0 /* DMChatVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5310E0C1E4B2B3F004403A0 /* DMChatVC+Services.swift */; };
 		E53738F21DB373C200967876 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53738F11DB373C200967876 /* Reachability.swift */; };
 		E5496DFC1E25547300C54288 /* DMCertificationsVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5496DFB1E25547300C54288 /* DMCertificationsVC+TableViewExtension.swift */; };
 		E5496E021E255A9E00C54288 /* DMExecutiveSummaryVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5496E011E255A9E00C54288 /* DMExecutiveSummaryVC+TableViewExtension.swift */; };
@@ -235,10 +235,52 @@
 		E5AE2AF61DAF878900C008BD /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE2AF51DAF878900C008BD /* OnboardingCollectionViewCell.swift */; };
 		E5AE37021E485D6E0001EC3C /* PlaceHolderJobsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5AE37011E485D6E0001EC3C /* PlaceHolderJobsView.xib */; };
 		E5AE37041E485D800001EC3C /* PlaceHolderJobsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37031E485D800001EC3C /* PlaceHolderJobsView.swift */; };
+		E5AE37081E4897690001EC3C /* MessageSenderTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37061E4897690001EC3C /* MessageSenderTableCell.swift */; };
+		E5AE37091E4897690001EC3C /* MessageSenderTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5AE37071E4897690001EC3C /* MessageSenderTableCell.xib */; };
+		E5AE370C1E4897790001EC3C /* MessageReceiverTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE370A1E4897790001EC3C /* MessageReceiverTableCell.swift */; };
+		E5AE370D1E4897790001EC3C /* MessageReceiverTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5AE370B1E4897790001EC3C /* MessageReceiverTableCell.xib */; };
+		E5AE375F1E4971CE0001EC3C /* SocketAckEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37471E4971CE0001EC3C /* SocketAckEmitter.swift */; };
+		E5AE37601E4971CE0001EC3C /* SocketAckManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37481E4971CE0001EC3C /* SocketAckManager.swift */; };
+		E5AE37611E4971CE0001EC3C /* SocketAnyEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37491E4971CE0001EC3C /* SocketAnyEvent.swift */; };
+		E5AE37621E4971CE0001EC3C /* SocketClientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE374A1E4971CE0001EC3C /* SocketClientManager.swift */; };
+		E5AE37631E4971CE0001EC3C /* SocketEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE374B1E4971CE0001EC3C /* SocketEngine.swift */; };
+		E5AE37641E4971CE0001EC3C /* SocketEngineClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE374C1E4971CE0001EC3C /* SocketEngineClient.swift */; };
+		E5AE37651E4971CE0001EC3C /* SocketEnginePacketType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE374D1E4971CE0001EC3C /* SocketEnginePacketType.swift */; };
+		E5AE37661E4971CE0001EC3C /* SocketEnginePollable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE374E1E4971CE0001EC3C /* SocketEnginePollable.swift */; };
+		E5AE37671E4971CE0001EC3C /* SocketEngineSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE374F1E4971CE0001EC3C /* SocketEngineSpec.swift */; };
+		E5AE37681E4971CE0001EC3C /* SocketEngineWebsocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37501E4971CE0001EC3C /* SocketEngineWebsocket.swift */; };
+		E5AE37691E4971CE0001EC3C /* SocketEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37511E4971CE0001EC3C /* SocketEventHandler.swift */; };
+		E5AE376A1E4971CE0001EC3C /* SocketExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37521E4971CE0001EC3C /* SocketExtensions.swift */; };
+		E5AE376B1E4971CE0001EC3C /* SocketIOClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37531E4971CE0001EC3C /* SocketIOClient.swift */; };
+		E5AE376C1E4971CE0001EC3C /* SocketIOClientConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37541E4971CE0001EC3C /* SocketIOClientConfiguration.swift */; };
+		E5AE376D1E4971CE0001EC3C /* SocketIOClientOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37551E4971CE0001EC3C /* SocketIOClientOption.swift */; };
+		E5AE376E1E4971CE0001EC3C /* SocketIOClientSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37561E4971CE0001EC3C /* SocketIOClientSpec.swift */; };
+		E5AE376F1E4971CE0001EC3C /* SocketIOClientStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37571E4971CE0001EC3C /* SocketIOClientStatus.swift */; };
+		E5AE37701E4971CE0001EC3C /* SocketLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37581E4971CE0001EC3C /* SocketLogger.swift */; };
+		E5AE37711E4971CE0001EC3C /* SocketPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37591E4971CE0001EC3C /* SocketPacket.swift */; };
+		E5AE37721E4971CE0001EC3C /* SocketParsable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE375A1E4971CE0001EC3C /* SocketParsable.swift */; };
+		E5AE37731E4971CE0001EC3C /* SocketStringReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE375B1E4971CE0001EC3C /* SocketStringReader.swift */; };
+		E5AE37741E4971CE0001EC3C /* SocketTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE375C1E4971CE0001EC3C /* SocketTypes.swift */; };
+		E5AE37751E4971CE0001EC3C /* SSLSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE375D1E4971CE0001EC3C /* SSLSecurity.swift */; };
+		E5AE37761E4971CE0001EC3C /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE375E1E4971CE0001EC3C /* WebSocket.swift */; };
+		E5AE37791E49743C0001EC3C /* SocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37781E49743C0001EC3C /* SocketManager.swift */; };
+		E5AE377E1E497D8D0001EC3C /* MessageListTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE377C1E497D8D0001EC3C /* MessageListTableCell.swift */; };
+		E5AE377F1E497D8D0001EC3C /* MessageListTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5AE377D1E497D8D0001EC3C /* MessageListTableCell.xib */; };
+		E5AE37821E4984420001EC3C /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37811E4984420001EC3C /* DatabaseManager.swift */; };
+		E5BED5451E499480003EC833 /* Chat+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BED5431E499480003EC833 /* Chat+CoreDataClass.swift */; };
+		E5BED5461E499480003EC833 /* Chat+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BED5441E499480003EC833 /* Chat+CoreDataProperties.swift */; };
+		E5BED5501E49AB85003EC833 /* DMChatVC+TableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BED54A1E49AB85003EC833 /* DMChatVC+TableViewExtensions.swift */; };
+		E5BED5511E49AB85003EC833 /* DMChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BED54B1E49AB85003EC833 /* DMChatVC.swift */; };
+		E5BED5521E49AB85003EC833 /* DMMessages+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BED54D1E49AB85003EC833 /* DMMessages+Services.swift */; };
+		E5BED5531E49AB85003EC833 /* DMMessagesVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BED54E1E49AB85003EC833 /* DMMessagesVC+TableViewExtension.swift */; };
+		E5BED5541E49AB85003EC833 /* DMMessagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BED54F1E49AB85003EC833 /* DMMessagesVC.swift */; };
+		E5BED5661E49BA0B003EC833 /* DMMessagesVC+DBHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BED5651E49BA0B003EC833 /* DMMessagesVC+DBHandling.swift */; };
 		E5C5F3151DC0AACA001A5A3F /* DMRegisterMapsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C5F3141DC0AACA001A5A3F /* DMRegisterMapsVC.swift */; };
 		E5C5F3181DC1A723001A5A3F /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C5F3171DC1A723001A5A3F /* LocationManager.swift */; };
 		E5C5F31B1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C5F31A1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift */; };
 		E5DC3E731DAF2C45002DA20E /* DentaMatch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E5DC3E711DAF2C45002DA20E /* DentaMatch.xcdatamodeld */; };
+		E5E1148C1E4AC63A00E63FF5 /* ChatList+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E1148A1E4AC63A00E63FF5 /* ChatList+CoreDataClass.swift */; };
+		E5E1148D1E4AC63A00E63FF5 /* ChatList+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E1148B1E4AC63A00E63FF5 /* ChatList+CoreDataProperties.swift */; };
 		E5E7CB431E2F39D500D4FB59 /* DMEditProfileVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E7CB421E2F39D500D4FB59 /* DMEditProfileVC+Services.swift */; };
 		E5E7CB4A1E2F8CDE00D4FB59 /* EditLicenseTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E7CB481E2F8CDE00D4FB59 /* EditLicenseTableCell.swift */; };
 		E5E7CB4B1E2F8CDE00D4FB59 /* EditLicenseTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5E7CB491E2F8CDE00D4FB59 /* EditLicenseTableCell.xib */; };
@@ -383,7 +425,6 @@
 		5AC714411E34A9C700E433C1 /* Messages.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Messages.storyboard; sourceTree = "<group>"; };
 		5AC7144F1E34ACC300E433C1 /* DMJobsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMJobsVC.swift; sourceTree = "<group>"; };
 		5AC714511E34ACD400E433C1 /* DMCalenderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMCalenderVC.swift; sourceTree = "<group>"; };
-		5AC714551E34ACFB00E433C1 /* DMMessagesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMMessagesVC.swift; sourceTree = "<group>"; };
 		5AC714571E34F76900E433C1 /* DMSettingVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMSettingVC+Services.swift"; sourceTree = "<group>"; };
 		5AD246901E272E92009350BF /* DMWorkExperienceVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMWorkExperienceVC+Services.swift"; sourceTree = "<group>"; };
 		5AD246921E273CC9009350BF /* DatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
@@ -416,6 +457,7 @@
 		E51D4F121E4086BD00ACC631 /* DMCancelJobVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMCancelJobVC+Services.swift"; sourceTree = "<group>"; };
 		E51D4F141E41070700ACC631 /* DMRegisterMapsVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMRegisterMapsVC+Services.swift"; sourceTree = "<group>"; };
 		E5302CD51DFE7AB100984A0B /* DMForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMForgotPasswordVC.swift; sourceTree = "<group>"; };
+		E5310E0C1E4B2B3F004403A0 /* DMChatVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMChatVC+Services.swift"; sourceTree = "<group>"; };
 		E53738F11DB373C200967876 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		E538FA7C1DFFD76000AECE26 /* DentaMatch-Dev.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DentaMatch-Dev.entitlements"; sourceTree = "<group>"; };
 		E5496DFB1E25547300C54288 /* DMCertificationsVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMCertificationsVC+TableViewExtension.swift"; sourceTree = "<group>"; };
@@ -566,10 +608,52 @@
 		E5AE2AF51DAF878900C008BD /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
 		E5AE37011E485D6E0001EC3C /* PlaceHolderJobsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaceHolderJobsView.xib; sourceTree = "<group>"; };
 		E5AE37031E485D800001EC3C /* PlaceHolderJobsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceHolderJobsView.swift; sourceTree = "<group>"; };
+		E5AE37061E4897690001EC3C /* MessageSenderTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageSenderTableCell.swift; sourceTree = "<group>"; };
+		E5AE37071E4897690001EC3C /* MessageSenderTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageSenderTableCell.xib; sourceTree = "<group>"; };
+		E5AE370A1E4897790001EC3C /* MessageReceiverTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageReceiverTableCell.swift; sourceTree = "<group>"; };
+		E5AE370B1E4897790001EC3C /* MessageReceiverTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageReceiverTableCell.xib; sourceTree = "<group>"; };
+		E5AE37471E4971CE0001EC3C /* SocketAckEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAckEmitter.swift; sourceTree = "<group>"; };
+		E5AE37481E4971CE0001EC3C /* SocketAckManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAckManager.swift; sourceTree = "<group>"; };
+		E5AE37491E4971CE0001EC3C /* SocketAnyEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAnyEvent.swift; sourceTree = "<group>"; };
+		E5AE374A1E4971CE0001EC3C /* SocketClientManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketClientManager.swift; sourceTree = "<group>"; };
+		E5AE374B1E4971CE0001EC3C /* SocketEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEngine.swift; sourceTree = "<group>"; };
+		E5AE374C1E4971CE0001EC3C /* SocketEngineClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEngineClient.swift; sourceTree = "<group>"; };
+		E5AE374D1E4971CE0001EC3C /* SocketEnginePacketType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEnginePacketType.swift; sourceTree = "<group>"; };
+		E5AE374E1E4971CE0001EC3C /* SocketEnginePollable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEnginePollable.swift; sourceTree = "<group>"; };
+		E5AE374F1E4971CE0001EC3C /* SocketEngineSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEngineSpec.swift; sourceTree = "<group>"; };
+		E5AE37501E4971CE0001EC3C /* SocketEngineWebsocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEngineWebsocket.swift; sourceTree = "<group>"; };
+		E5AE37511E4971CE0001EC3C /* SocketEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEventHandler.swift; sourceTree = "<group>"; };
+		E5AE37521E4971CE0001EC3C /* SocketExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketExtensions.swift; sourceTree = "<group>"; };
+		E5AE37531E4971CE0001EC3C /* SocketIOClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOClient.swift; sourceTree = "<group>"; };
+		E5AE37541E4971CE0001EC3C /* SocketIOClientConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOClientConfiguration.swift; sourceTree = "<group>"; };
+		E5AE37551E4971CE0001EC3C /* SocketIOClientOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOClientOption.swift; sourceTree = "<group>"; };
+		E5AE37561E4971CE0001EC3C /* SocketIOClientSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOClientSpec.swift; sourceTree = "<group>"; };
+		E5AE37571E4971CE0001EC3C /* SocketIOClientStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOClientStatus.swift; sourceTree = "<group>"; };
+		E5AE37581E4971CE0001EC3C /* SocketLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketLogger.swift; sourceTree = "<group>"; };
+		E5AE37591E4971CE0001EC3C /* SocketPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketPacket.swift; sourceTree = "<group>"; };
+		E5AE375A1E4971CE0001EC3C /* SocketParsable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketParsable.swift; sourceTree = "<group>"; };
+		E5AE375B1E4971CE0001EC3C /* SocketStringReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketStringReader.swift; sourceTree = "<group>"; };
+		E5AE375C1E4971CE0001EC3C /* SocketTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketTypes.swift; sourceTree = "<group>"; };
+		E5AE375D1E4971CE0001EC3C /* SSLSecurity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSLSecurity.swift; sourceTree = "<group>"; };
+		E5AE375E1E4971CE0001EC3C /* WebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSocket.swift; sourceTree = "<group>"; };
+		E5AE37781E49743C0001EC3C /* SocketManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketManager.swift; sourceTree = "<group>"; };
+		E5AE377C1E497D8D0001EC3C /* MessageListTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageListTableCell.swift; sourceTree = "<group>"; };
+		E5AE377D1E497D8D0001EC3C /* MessageListTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageListTableCell.xib; sourceTree = "<group>"; };
+		E5AE37811E4984420001EC3C /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		E5BED5431E499480003EC833 /* Chat+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Chat+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E5BED5441E499480003EC833 /* Chat+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Chat+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E5BED54A1E49AB85003EC833 /* DMChatVC+TableViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMChatVC+TableViewExtensions.swift"; sourceTree = "<group>"; };
+		E5BED54B1E49AB85003EC833 /* DMChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMChatVC.swift; sourceTree = "<group>"; };
+		E5BED54D1E49AB85003EC833 /* DMMessages+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMMessages+Services.swift"; sourceTree = "<group>"; };
+		E5BED54E1E49AB85003EC833 /* DMMessagesVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMMessagesVC+TableViewExtension.swift"; sourceTree = "<group>"; };
+		E5BED54F1E49AB85003EC833 /* DMMessagesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMMessagesVC.swift; sourceTree = "<group>"; };
+		E5BED5651E49BA0B003EC833 /* DMMessagesVC+DBHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMMessagesVC+DBHandling.swift"; sourceTree = "<group>"; };
 		E5C5F3141DC0AACA001A5A3F /* DMRegisterMapsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMRegisterMapsVC.swift; sourceTree = "<group>"; };
 		E5C5F3171DC1A723001A5A3F /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		E5C5F31A1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMTermsAndConditionsVC.swift; sourceTree = "<group>"; };
 		E5DC3E721DAF2C45002DA20E /* DentaMatch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DentaMatch.xcdatamodel; sourceTree = "<group>"; };
+		E5E1148A1E4AC63A00E63FF5 /* ChatList+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ChatList+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E5E1148B1E4AC63A00E63FF5 /* ChatList+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ChatList+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E5E7CB421E2F39D500D4FB59 /* DMEditProfileVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMEditProfileVC+Services.swift"; sourceTree = "<group>"; };
 		E5E7CB481E2F8CDE00D4FB59 /* EditLicenseTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditLicenseTableCell.swift; sourceTree = "<group>"; };
 		E5E7CB491E2F8CDE00D4FB59 /* EditLicenseTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditLicenseTableCell.xib; sourceTree = "<group>"; };
@@ -690,6 +774,7 @@
 		5A1E2A161E1E47340055D913 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E5AE37831E4986E10001EC3C /* CoreDataModels */,
 				F209C33F1E435A26005C9594 /* JobSearchParameter */,
 				5A60A8571E43012A00789D14 /* Calendar */,
 				F22359131E3F346600E984FC /* Job */,
@@ -872,7 +957,8 @@
 		5AC714461E34AB5B00E433C1 /* Messages */ = {
 			isa = PBXGroup;
 			children = (
-				5AC714551E34ACFB00E433C1 /* DMMessagesVC.swift */,
+				E5BED5491E49AB85003EC833 /* Chat */,
+				E5BED54C1E49AB85003EC833 /* MessageDashboard */,
 			);
 			path = Messages;
 			sourceTree = "<group>";
@@ -1084,6 +1170,7 @@
 		E55462E21DAE47A9004163B2 /* Third Party */ = {
 			isa = PBXGroup;
 			children = (
+				E5AE37461E4971CE0001EC3C /* SocketIO */,
 				5A85D2051E2DFA5100AC4C89 /* TagView */,
 				E5A0EB071E2BE7C40092E21A /* ASJTagsView */,
 				E5A0EADC1E2944D50092E21A /* SSASideMenu */,
@@ -1139,6 +1226,8 @@
 		E55462ED1DAE483F004163B2 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				E5AE37801E4984270001EC3C /* DatabaseManager */,
+				E5AE37771E49743C0001EC3C /* SocketManager */,
 				E56E907E1DFF315E0096A31B /* PhotoGalleryManager */,
 				E58654FB1DEFEF7F006FEB2D /* ConfigurationManager */,
 				E56C9FA11DED520B00EAA9DD /* IAPManager */,
@@ -1261,6 +1350,7 @@
 			isa = PBXGroup;
 			children = (
 				5A988BC91E4AEF4100DECB49 /* Notication */,
+				E5AE37051E4897380001EC3C /* Messages */,
 				5A8F62A61E39EA7E0037C4A2 /* Calender */,
 				F2F9B9781E38976100639716 /* JobTitle */,
 				5A3B06C51E3375A200EFCA6E /* ChangePassword */,
@@ -1646,6 +1736,98 @@
 			path = PlaceHolderJobsView;
 			sourceTree = "<group>";
 		};
+		E5AE37051E4897380001EC3C /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				E5AE37061E4897690001EC3C /* MessageSenderTableCell.swift */,
+				E5AE37071E4897690001EC3C /* MessageSenderTableCell.xib */,
+				E5AE370A1E4897790001EC3C /* MessageReceiverTableCell.swift */,
+				E5AE370B1E4897790001EC3C /* MessageReceiverTableCell.xib */,
+				E5AE377C1E497D8D0001EC3C /* MessageListTableCell.swift */,
+				E5AE377D1E497D8D0001EC3C /* MessageListTableCell.xib */,
+			);
+			path = Messages;
+			sourceTree = "<group>";
+		};
+		E5AE37461E4971CE0001EC3C /* SocketIO */ = {
+			isa = PBXGroup;
+			children = (
+				E5AE37471E4971CE0001EC3C /* SocketAckEmitter.swift */,
+				E5AE37481E4971CE0001EC3C /* SocketAckManager.swift */,
+				E5AE37491E4971CE0001EC3C /* SocketAnyEvent.swift */,
+				E5AE374A1E4971CE0001EC3C /* SocketClientManager.swift */,
+				E5AE374B1E4971CE0001EC3C /* SocketEngine.swift */,
+				E5AE374C1E4971CE0001EC3C /* SocketEngineClient.swift */,
+				E5AE374D1E4971CE0001EC3C /* SocketEnginePacketType.swift */,
+				E5AE374E1E4971CE0001EC3C /* SocketEnginePollable.swift */,
+				E5AE374F1E4971CE0001EC3C /* SocketEngineSpec.swift */,
+				E5AE37501E4971CE0001EC3C /* SocketEngineWebsocket.swift */,
+				E5AE37511E4971CE0001EC3C /* SocketEventHandler.swift */,
+				E5AE37521E4971CE0001EC3C /* SocketExtensions.swift */,
+				E5AE37531E4971CE0001EC3C /* SocketIOClient.swift */,
+				E5AE37541E4971CE0001EC3C /* SocketIOClientConfiguration.swift */,
+				E5AE37551E4971CE0001EC3C /* SocketIOClientOption.swift */,
+				E5AE37561E4971CE0001EC3C /* SocketIOClientSpec.swift */,
+				E5AE37571E4971CE0001EC3C /* SocketIOClientStatus.swift */,
+				E5AE37581E4971CE0001EC3C /* SocketLogger.swift */,
+				E5AE37591E4971CE0001EC3C /* SocketPacket.swift */,
+				E5AE375A1E4971CE0001EC3C /* SocketParsable.swift */,
+				E5AE375B1E4971CE0001EC3C /* SocketStringReader.swift */,
+				E5AE375C1E4971CE0001EC3C /* SocketTypes.swift */,
+				E5AE375D1E4971CE0001EC3C /* SSLSecurity.swift */,
+				E5AE375E1E4971CE0001EC3C /* WebSocket.swift */,
+			);
+			path = SocketIO;
+			sourceTree = "<group>";
+		};
+		E5AE37771E49743C0001EC3C /* SocketManager */ = {
+			isa = PBXGroup;
+			children = (
+				E5AE37781E49743C0001EC3C /* SocketManager.swift */,
+			);
+			path = SocketManager;
+			sourceTree = "<group>";
+		};
+		E5AE37801E4984270001EC3C /* DatabaseManager */ = {
+			isa = PBXGroup;
+			children = (
+				E5AE37811E4984420001EC3C /* DatabaseManager.swift */,
+			);
+			path = DatabaseManager;
+			sourceTree = "<group>";
+		};
+		E5AE37831E4986E10001EC3C /* CoreDataModels */ = {
+			isa = PBXGroup;
+			children = (
+				E5E1148A1E4AC63A00E63FF5 /* ChatList+CoreDataClass.swift */,
+				E5E1148B1E4AC63A00E63FF5 /* ChatList+CoreDataProperties.swift */,
+				E5BED5431E499480003EC833 /* Chat+CoreDataClass.swift */,
+				E5BED5441E499480003EC833 /* Chat+CoreDataProperties.swift */,
+			);
+			path = CoreDataModels;
+			sourceTree = "<group>";
+		};
+		E5BED5491E49AB85003EC833 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				E5BED54A1E49AB85003EC833 /* DMChatVC+TableViewExtensions.swift */,
+				E5BED54B1E49AB85003EC833 /* DMChatVC.swift */,
+				E5310E0C1E4B2B3F004403A0 /* DMChatVC+Services.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		E5BED54C1E49AB85003EC833 /* MessageDashboard */ = {
+			isa = PBXGroup;
+			children = (
+				E5BED54F1E49AB85003EC833 /* DMMessagesVC.swift */,
+				E5BED54D1E49AB85003EC833 /* DMMessages+Services.swift */,
+				E5BED54E1E49AB85003EC833 /* DMMessagesVC+TableViewExtension.swift */,
+				E5BED5651E49BA0B003EC833 /* DMMessagesVC+DBHandling.swift */,
+			);
+			path = MessageDashboard;
+			sourceTree = "<group>";
+		};
 		E5C5F30C1DC074C9001A5A3F /* fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -2014,6 +2196,7 @@
 				E54B9A811E32729C00805D9C /* EmptyCertificateTableViewCell.xib in Resources */,
 				E597E5831E151A99001DDA78 /* SF-UI-Text-LightItalic.otf in Resources */,
 				F2540F4F1E23A834004B0538 /* JobSearchTypeCell.xib in Resources */,
+				E5AE370D1E4897790001EC3C /* MessageReceiverTableCell.xib in Resources */,
 				F2D03BA51E1F580C0005D3A4 /* JobSearch.storyboard in Resources */,
 				E597E57D1E151A99001DDA78 /* SF-UI-Display-Ultralight.otf in Resources */,
 				5A3BD4B71E36065F00A607AC /* EditProfileReferenceCell.xib in Resources */,
@@ -2023,11 +2206,13 @@
 				E5E7CB7F1E2FA23200D4FB59 /* CertificationsCell.xib in Resources */,
 				E5A0EB111E2BE7C40092E21A /* Resources.bundle in Resources */,
 				E5A0EB061E2BDE680092E21A /* SubSkillCollectionCell.xib in Resources */,
+				E5AE377F1E497D8D0001EC3C /* MessageListTableCell.xib in Resources */,
 				E54B9A7D1E326A6C00805D9C /* EditCertificateTableCell.xib in Resources */,
 				5AC7143C1E34A89300E433C1 /* Track.storyboard in Resources */,
 				E5E7CB8E1E2FA23300D4FB59 /* SkillsTableCell.xib in Resources */,
 				5AB876521E249C0A007818D6 /* ExperiencePickerView.xib in Resources */,
 				E5AE2AF31DAF84AD00C008BD /* Onboarding.storyboard in Resources */,
+				E5AE37091E4897690001EC3C /* MessageSenderTableCell.xib in Resources */,
 				E597E58A1E151A99001DDA78 /* SF-UI-Text-Ultrathin.otf in Resources */,
 				E5E7CB7D1E2FA23200D4FB59 /* AffliliationsOthersCell.xib in Resources */,
 				E597E57F1E151A99001DDA78 /* SF-UI-Text-BoldItalic.otf in Resources */,
@@ -2154,19 +2339,27 @@
 				E56B20A41DC0526E000512F6 /* DMRegistrationContainer.swift in Sources */,
 				F22359191E3F3F2100E984FC /* DMJobSearchVC+TableViewCellDelegateExtension.swift in Sources */,
 				5A3BD4AA1E35D3D800A607AC /* EditProfileAffiliationBrickCell.swift in Sources */,
+				E5AE37631E4971CE0001EC3C /* SocketEngine.swift in Sources */,
+				E5BED5541E49AB85003EC833 /* DMMessagesVC.swift in Sources */,
+				E5AE37791E49743C0001EC3C /* SocketManager.swift in Sources */,
 				5A3B06CF1E33881D00EFCA6E /* DMChangePasswordVC.swift in Sources */,
 				F223591D1E3F5F4900E984FC /* DMJobSearchResultVC+TableViewExtension.swift in Sources */,
+				E5BED5531E49AB85003EC833 /* DMMessagesVC+TableViewExtension.swift in Sources */,
 				E5E7CB781E2FA23200D4FB59 /* AboutMeCell.swift in Sources */,
+				E5E1148C1E4AC63A00E63FF5 /* ChatList+CoreDataClass.swift in Sources */,
+				E5AE37741E4971CE0001EC3C /* SocketTypes.swift in Sources */,
 				E5A174C71E201DE40044B17E /* ProfileImageButton.swift in Sources */,
 				E5A174C21E201D450044B17E /* CircleProgressBar.m in Sources */,
 				E55462F91DAE4DD1004163B2 /* UIView+Additions.swift in Sources */,
 				E51D4F0D1E40744C00ACC631 /* DMTrackVC+Services.swift in Sources */,
-				5AC714561E34ACFB00E433C1 /* DMMessagesVC.swift in Sources */,
+				E5AE376A1E4971CE0001EC3C /* SocketExtensions.swift in Sources */,
 				E5E7CB871E2FA23200D4FB59 /* SectionHeadingTableCell.swift in Sources */,
 				E55462DF1DAE31EA004163B2 /* UIFont+Additions.swift in Sources */,
 				E587D2EA1E24C021006B7F06 /* DMLicenseSelectionVC.swift in Sources */,
 				E558D9151E2EA47500A6DF95 /* AddProfileOptionTableCell.swift in Sources */,
+				E5AE37751E4971CE0001EC3C /* SSLSecurity.swift in Sources */,
 				E587D2D51E2357A9006B7F06 /* DMJobTitleSelectionVC+Services.swift in Sources */,
+				E5AE37681E4971CE0001EC3C /* SocketEngineWebsocket.swift in Sources */,
 				E5496E0C1E26435C00C54288 /* DMLicenseSelectionVC+TableViewExtension.swift in Sources */,
 				E587D2EC1E24C021006B7F06 /* DMWorkExperienceStart.swift in Sources */,
 				F209C3411E435A43005C9594 /* SearchParameters.swift in Sources */,
@@ -2191,6 +2384,7 @@
 				5A5266BD1E26413400C5B7A1 /* DMLicenseSelectionVC+Services.swift in Sources */,
 				E57681961E38A1DA00D912EA /* DMPublicProfileVC+Services.swift in Sources */,
 				E597E58F1E151CFF001DDA78 /* FloatLabelTextField.swift in Sources */,
+				E5AE37621E4971CE0001EC3C /* SocketClientManager.swift in Sources */,
 				E558D8E01E2C80C200A6DF95 /* SchoolCategory.swift in Sources */,
 				5A85D2101E2DFAD000AC4C89 /* Tag.swift in Sources */,
 				E5E7CB821E2FA23200D4FB59 /* ExperienceTableCell.swift in Sources */,
@@ -2200,6 +2394,7 @@
 				5AD246931E273CC9009350BF /* DatePickerView.swift in Sources */,
 				E59029A91DED2C7A00151E9B /* LogManager.swift in Sources */,
 				5A3FD0751E1CC79700360B3C /* DMProfileHeaderView.swift in Sources */,
+				E5AE376F1E4971CE0001EC3C /* SocketIOClientStatus.swift in Sources */,
 				E5302CD61DFE7AB100984A0B /* DMForgotPasswordVC.swift in Sources */,
 				F2540F601E274360004B0538 /* JobSearchResultCell.swift in Sources */,
 				E5C5F3181DC1A723001A5A3F /* LocationManager.swift in Sources */,
@@ -2207,6 +2402,7 @@
 				E5E7CB851E2FA23200D4FB59 /* PhotoNameCell.swift in Sources */,
 				5AC714501E34ACC300E433C1 /* DMJobsVC.swift in Sources */,
 				5A3FD06E1E1BB0A000360B3C /* UINavigationBar+Awesome.m in Sources */,
+				E5AE37641E4971CE0001EC3C /* SocketEngineClient.swift in Sources */,
 				E587D2CF1E23438B006B7F06 /* DMJobTitleSelectionVC.swift in Sources */,
 				E5A0EB051E2BDE680092E21A /* SubSkillCollectionCell.swift in Sources */,
 				E5E7CBA31E3075A200D4FB59 /* DMEditLicenseVC.swift in Sources */,
@@ -2219,6 +2415,8 @@
 				F2540F561E23A8AE004B0538 /* CurrentLocationCell.swift in Sources */,
 				E594BE9D1E1DFF4400310AE5 /* DMRegistrationVC+TableViewExtension.swift in Sources */,
 				5A8F62AD1E39F2550037C4A2 /* TemporyJobCell.swift in Sources */,
+				E5AE37081E4897690001EC3C /* MessageSenderTableCell.swift in Sources */,
+				E5BED5521E49AB85003EC833 /* DMMessages+Services.swift in Sources */,
 				E5E7CBA81E30970700D4FB59 /* EditPublicProfileTableCell.swift in Sources */,
 				E55462DB1DAE312C004163B2 /* String+Additons.swift in Sources */,
 				5A85D2161E2DFAD000AC4C89 /* TagWrapper.swift in Sources */,
@@ -2227,6 +2425,7 @@
 				E55462D91DAE3104004163B2 /* Array+Additions.swift in Sources */,
 				E594BE9F1E1DFFA900310AE5 /* DMRegistrationVC+TextFieldExtension.swift in Sources */,
 				E57EE6CD1E28EBC00090434F /* Affiliation.swift in Sources */,
+				E5AE37701E4971CE0001EC3C /* SocketLogger.swift in Sources */,
 				E5FBE9D91E1CCF940025683C /* DMRegistration+Services.swift in Sources */,
 				E58654FE1DEFEF7F006FEB2D /* ConfigurationManager.swift in Sources */,
 				E5AE2AF61DAF878900C008BD /* OnboardingCollectionViewCell.swift in Sources */,
@@ -2236,6 +2435,7 @@
 				E55462E11DAE41FB004163B2 /* Date+Additions.swift in Sources */,
 				E55462D71DAE2F49004163B2 /* UIColor+HexCode.swift in Sources */,
 				F2540F521E23A854004B0538 /* JobSearchPartTimeCell.swift in Sources */,
+				E5AE37651E4971CE0001EC3C /* SocketEnginePacketType.swift in Sources */,
 				E56B20A21DBF749D000512F6 /* DMRegistrationVC.swift in Sources */,
 				E57F29DF1E3695060025B9DE /* DMEditDentalStateBoardVC.swift in Sources */,
 				E54976F51E28CEDD006F21E5 /* ExperienceModel.swift in Sources */,
@@ -2255,6 +2455,7 @@
 				E54976F41E28CEDD006F21E5 /* EmployeeReferenceModel.swift in Sources */,
 				E59029A81DED2C7A00151E9B /* APIManager.swift in Sources */,
 				E5E7CBA51E3089B200D4FB59 /* DMEditLicenseVC+Services.swift in Sources */,
+				E5AE377E1E497D8D0001EC3C /* MessageListTableCell.swift in Sources */,
 				E56C9FA31DED520B00EAA9DD /* InAppPurchase.swift in Sources */,
 				E558D8FC1E2CB5D400A6DF95 /* AutoCompleteTable.swift in Sources */,
 				E50B3F4C1E194CD7004C5F32 /* AnimatedPHTableCell.swift in Sources */,
@@ -2264,28 +2465,39 @@
 				E558D90E1E2E871900A6DF95 /* GooglePlacesTableViewCell.swift in Sources */,
 				E587D2D91E236EAE006B7F06 /* DMRegisterMapsVC+TableViewExtension.swift in Sources */,
 				5A85D2151E2DFAD000AC4C89 /* TagPresentables.swift in Sources */,
+				E5AE37731E4971CE0001EC3C /* SocketStringReader.swift in Sources */,
 				E55463001DAE510A004163B2 /* Utilities.swift in Sources */,
 				E56E90801DFF31740096A31B /* CameraGalleryManager.swift in Sources */,
 				E5E7CBAC1E3099DF00D4FB59 /* DMPublicProfileVC.swift in Sources */,
+				E5AE37821E4984420001EC3C /* DatabaseManager.swift in Sources */,
+				E5AE376C1E4971CE0001EC3C /* SocketIOClientConfiguration.swift in Sources */,
 				F2540F4A1E23A81C004B0538 /* JobSeachTitleCell.swift in Sources */,
 				F22359171E3F3E3300E984FC /* DMJobSearchVC+TableViewExtension.swift in Sources */,
 				F2F5E0DA1E31BDD00082187C /* MapCell.swift in Sources */,
 				E55462F71DAE4C6F004163B2 /* UITextField+ToolBar.swift in Sources */,
 				E5AE37041E485D800001EC3C /* PlaceHolderJobsView.swift in Sources */,
+				E5AE37661E4971CE0001EC3C /* SocketEnginePollable.swift in Sources */,
+				E5AE376B1E4971CE0001EC3C /* SocketIOClient.swift in Sources */,
 				F2F5E0CF1E2F62080082187C /* AboutCell.swift in Sources */,
 				E587D2D71E236B84006B7F06 /* DMRegisterMapsVC+GoogleMapsExtension.swift in Sources */,
 				5A3B06CD1E3387FF00EFCA6E /* DMSettingVC+TableViewExtension.swift in Sources */,
+				E5AE37691E4971CE0001EC3C /* SocketEventHandler.swift in Sources */,
 				5A60A85B1E43309100789D14 /* UserAvailability.swift in Sources */,
+				E5AE375F1E4971CE0001EC3C /* SocketAckEmitter.swift in Sources */,
 				E54976F31E28CEDD006F21E5 /* User.swift in Sources */,
 				E5E7CB831E2FA23200D4FB59 /* ReferenceTableCell.swift in Sources */,
+				E5AE37761E4971CE0001EC3C /* WebSocket.swift in Sources */,
+				E5AE37671E4971CE0001EC3C /* SocketEngineSpec.swift in Sources */,
 				E51D4F151E41070700ACC631 /* DMRegisterMapsVC+Services.swift in Sources */,
 				E56C9F9E1DED4BD100EAA9DD /* Character+Addition.swift in Sources */,
+				E5AE37601E4971CE0001EC3C /* SocketAckManager.swift in Sources */,
 				E5E7CB8D1E2FA23200D4FB59 /* SkillsTableCell.swift in Sources */,
 				E587D2F81E24C0C0006B7F06 /* DMSelectSkillsVC.swift in Sources */,
 				E57EE6CA1E28EB440090434F /* DMAffiliationsVC+Services.swift in Sources */,
 				E54B9A7C1E326A6C00805D9C /* EditCertificateTableCell.swift in Sources */,
 				5AD246911E272E92009350BF /* DMWorkExperienceVC+Services.swift in Sources */,
 				E5E7CB8F1E2FA23300D4FB59 /* SubSkillCell.swift in Sources */,
+				E5BED5511E49AB85003EC833 /* DMChatVC.swift in Sources */,
 				E5496E081E25E4AA00C54288 /* DMSchoolListPopOverVC.swift in Sources */,
 				5A85D2121E2DFAD000AC4C89 /* TagContents.swift in Sources */,
 				5A85D20F1E2DFAD000AC4C89 /* SeparatorWrapper.swift in Sources */,
@@ -2299,10 +2511,12 @@
 				F223591F1E3F608900E984FC /* DMJobDetaiVC+TableViewExtension.swift in Sources */,
 				E51D4EF31E3AFCA700ACC631 /* DMEditStudyVC.swift in Sources */,
 				E558D90A1E2E7A3200A6DF95 /* DMEditProfileVC+TableViewExtension.swift in Sources */,
+				E5BED5661E49BA0B003EC833 /* DMMessagesVC+DBHandling.swift in Sources */,
 				5A3B06D31E33885A00EFCA6E /* DMChangePasswordVC+Services.swift in Sources */,
 				5A988BC81E4AEA0E00DECB49 /* DMNotificationVC+Services.swift in Sources */,
 				E5E7CB891E2FA23200D4FB59 /* OtherSkillCell.swift in Sources */,
 				E54976F71E28D243006F21E5 /* DMExecutiveSummaryVC+Services.swift in Sources */,
+				E5AE37611E4971CE0001EC3C /* SocketAnyEvent.swift in Sources */,
 				E587D2CC1E23362C006B7F06 /* JobSelectionPickerView.swift in Sources */,
 				E5E7CB801E2FA23200D4FB59 /* AddDeleteExperienceCell.swift in Sources */,
 				E587D3001E24E5C1006B7F06 /* ProfileTextField.swift in Sources */,
@@ -2313,6 +2527,7 @@
 				E587D2F61E24C0B0006B7F06 /* DMSkillsVC.swift in Sources */,
 				E50B3F501E194CD7004C5F32 /* RegistrationTableViewCell.swift in Sources */,
 				F2CBC10A1E41E9BE00345B9F /* DMJobDetailVC+Services.swift in Sources */,
+				E5AE376D1E4971CE0001EC3C /* SocketIOClientOption.swift in Sources */,
 				5A85D2141E2DFAD000AC4C89 /* TagPresentable.swift in Sources */,
 				5A50A2CA1E32163D0010AA31 /* SettingTableCell.swift in Sources */,
 				E558D9081E2E6FE700A6DF95 /* DMEditProfileVC.swift in Sources */,
@@ -2324,6 +2539,7 @@
 				E54976F11E28CEDD006F21E5 /* JobTitle.swift in Sources */,
 				F2540F5D1E274258004B0538 /* DMJobSearchResultVC.swift in Sources */,
 				E53738F21DB373C200967876 /* Reachability.swift in Sources */,
+				E5AE37711E4971CE0001EC3C /* SocketPacket.swift in Sources */,
 				E55462F51DAE4B9E004163B2 /* UIStoryBoard+Additions.swift in Sources */,
 				E587D2EB1E24C021006B7F06 /* DMWorkExperienceStart+TableViewExtension.swift in Sources */,
 				E5E7CB931E2FA23300D4FB59 /* StudyCell.swift in Sources */,
@@ -2338,6 +2554,8 @@
 				E5F47C951E0035B90051C4A1 /* UIImageRotate.m in Sources */,
 				E5C5F31B1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift in Sources */,
 				F223591B1E3F5ED100E984FC /* DMJobSearchResultVC+GMSExtension.swift in Sources */,
+				E5E1148D1E4AC63A00E63FF5 /* ChatList+CoreDataProperties.swift in Sources */,
+				E5AE37721E4971CE0001EC3C /* SocketParsable.swift in Sources */,
 				E5E7CB9F1E306E6300D4FB59 /* License.swift in Sources */,
 				E54976F21E28CEDD006F21E5 /* Skill.swift in Sources */,
 				F2F9B97B1E38978200639716 /* JobTitleCell.swift in Sources */,
@@ -2349,6 +2567,7 @@
 				E587D2F01E24C05D006B7F06 /* DMCertificationsVC.swift in Sources */,
 				E55462FC1DAE4EA1004163B2 /* DMBaseVC.swift in Sources */,
 				E5A0EB021E2A9C760092E21A /* DMStudy+Services.swift in Sources */,
+				E5310E0D1E4B2B3F004403A0 /* DMChatVC+Services.swift in Sources */,
 				E5E7CB8B1E2FA23200D4FB59 /* OtherSubSkillTableCell.swift in Sources */,
 				F2F5E0E61E35DE390082187C /* DMJobSearchVC+Services.swift in Sources */,
 				E5A3E8EE1E160ABF00B10937 /* AnimatedLeftViewPHTextField.swift in Sources */,
@@ -2356,16 +2575,21 @@
 				E5496E021E255A9E00C54288 /* DMExecutiveSummaryVC+TableViewExtension.swift in Sources */,
 				E54B9A841E32870B00805D9C /* DMEditCertificateVC.swift in Sources */,
 				E56F78561E1F602200F07814 /* DMForgotPasswordVC+Services.swift in Sources */,
+				E5BED5501E49AB85003EC833 /* DMChatVC+TableViewExtensions.swift in Sources */,
 				5A3B06CB1E3387DA00EFCA6E /* DMSettingVC.swift in Sources */,
 				E5496E161E2784D500C54288 /* DMSkillsVC+TableViewExtension.swift in Sources */,
+				E5AE376E1E4971CE0001EC3C /* SocketIOClientSpec.swift in Sources */,
 				E51D4F111E40745A00ACC631 /* DMCancelJobVC.swift in Sources */,
+				E5BED5451E499480003EC833 /* Chat+CoreDataClass.swift in Sources */,
 				E587D2FA1E24C102006B7F06 /* DMStudyVC.swift in Sources */,
 				E587D3021E24E97B006B7F06 /* DMStudy+TableViewExtension.swift in Sources */,
 				5A3BD4AE1E35DB1E00A607AC /* EditProfileSkillBrickCell.swift in Sources */,
 				E57F29DC1E368D070025B9DE /* DMEditCertificateVC+Services.swift in Sources */,
+				E5BED5461E499480003EC833 /* Chat+CoreDataProperties.swift in Sources */,
 				E5AE2AF11DAF844C00C008BD /* DMOnboardingVC.swift in Sources */,
 				E55462F31DAE4A5D004163B2 /* Constants.swift in Sources */,
 				E56E315D1E3A8275009FF0FC /* EditProfileSchoolCell.swift in Sources */,
+				E5AE370C1E4897790001EC3C /* MessageReceiverTableCell.swift in Sources */,
 				E5496E0A1E25E52600C54288 /* DMSchoolListPopOverVC+TableViewExtension.swift in Sources */,
 				E51D4F131E4086BD00ACC631 /* DMCancelJobVC+Services.swift in Sources */,
 				E50B3F4E1E194CD7004C5F32 /* LoginTableViewCell.swift in Sources */,
