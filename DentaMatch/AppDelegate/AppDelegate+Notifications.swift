@@ -26,6 +26,7 @@ extension AppDelegate {
             token += String(format: "%02.2hhx", deviceToken[i] as CVarArg)
         }
         debugPrint(token)
+        UserDefaultsManager.sharedInstance.deviceToken = token
     }
     
     //MARK:- Remote/Local Notification Delegates

@@ -24,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //configureCrashlytics()
         
+        configureSocket()
+        
         configureGoogleServices()
         
         registerForPushNotifications()
@@ -78,6 +80,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().isTranslucent = false
         UINavigationBar.appearance().barTintColor = Constants.Color.navBarColor
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white,NSFontAttributeName:UIFont.fontRegular(fontSize: 14.0)!]
+    }
+    
+    // MARK: - Configure Crashlytics
+    func configureSocket() {
+        SocketManager.sharedInstance.establishConnection()
     }
     
     // MARK: - Configure Crashlytics

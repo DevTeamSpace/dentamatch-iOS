@@ -12,6 +12,7 @@ class User: NSObject , NSCoding {
     
     var zipCode: String!
     var userName: String!
+    var userId:String!
     var email: String!
     var accessToken: String!
     var firstName: String?
@@ -47,6 +48,7 @@ class User: NSObject , NSCoding {
         super.init()
         self.zipCode = aDecoder.decodeObject(forKey: "zipCode") as? String
         self.userName = aDecoder.decodeObject(forKey: "userName") as? String
+        self.userId = aDecoder.decodeObject(forKey: "userId") as? String
         self.email = aDecoder.decodeObject(forKey: "email") as? String
         self.accessToken = aDecoder.decodeObject(forKey: "accessToken") as? String
         self.firstName = aDecoder.decodeObject(forKey: "firstName") as? String
@@ -64,6 +66,7 @@ class User: NSObject , NSCoding {
     func encode(with aCoder: NSCoder) {
         aCoder.encode(self.zipCode, forKey: "zipCode")
         aCoder.encode(self.userName, forKey: "userName")
+        aCoder.encode(self.userId, forKey: "userId")
         aCoder.encode(self.email, forKey: "email")
         aCoder.encode(self.accessToken, forKey: "accessToken")
         aCoder.encode(self.firstName, forKey: "firstName")

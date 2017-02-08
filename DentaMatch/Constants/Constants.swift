@@ -122,6 +122,7 @@ struct Constants {
         static let jobSearchStoryboard  = "JobSearch"
         static let trackStoryboard  = "Track"
         static let dashboardStoryboard  = "Dashboard"
+        static let messagesStoryboard  = "Messages"
         static let calenderStoryboard  = "Calender"
 
         struct Identifer {
@@ -191,6 +192,8 @@ struct Constants {
         static let setAvailabality = Constants.API.apiURL("users/update-availability")
         static let getAvailabality = Constants.API.apiURL("users/availability-list")
         static let getHiredJobs = Constants.API.apiURL("jobs/hired-jobs")
+        static let getChatUserList = Constants.API.apiURL("users/chat-user-list")
+        static let blockUnblockRecruiter = Constants.API.apiURL("users/chat-user-block-unblock")
 
         static func apiURL(_ methodName: String) -> String {
             return BASE_URL + methodName
@@ -281,6 +284,8 @@ struct Constants {
         static let schoolChildName = "schoolChildName"
         static let yearOfGraduation = "yearOfGraduation"
         static let jobSeekerStatus = "jobSeekerStatus"
+        static let recruiterId = "recruiterId"
+        static let blockStatus = "blockStatus"
         
         //change password screen
         static let oldPass = "oldPassword"
