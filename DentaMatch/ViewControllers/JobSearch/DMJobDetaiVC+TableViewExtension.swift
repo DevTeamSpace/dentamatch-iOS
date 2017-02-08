@@ -45,6 +45,14 @@ extension DMJobDetailVC : UITableViewDataSource, UITableViewDelegate, JobDescrip
             else {
                 cell.btnReadMore.setTitle(Constants.Strings.readMore, for: .normal)
             }
+            let height = JobDescriptionCell.requiredHeight(jobDescription: (job?.templateDesc)!, isReadMore: isReadMore)
+            if height > 91 {
+                cell.constarintBtnReadMoreLessHeight.constant = 41//Button Show
+            }
+            else {
+                cell.constarintBtnReadMoreLessHeight.constant = 0//Button Hide
+            }
+            cell.updateConstraintsIfNeeded()
             cell.delegate = self
             cell.selectionStyle = .none
             return cell
@@ -63,12 +71,31 @@ extension DMJobDetailVC : UITableViewDataSource, UITableViewDelegate, JobDescrip
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
             return TableViewCellHeight.jobTitle.rawValue
         case 1:
             return TableViewCellHeight.about.rawValue
+        case 2:
+            let height = JobDescriptionCell.requiredHeight(jobDescription: (job?.templateDesc)!, isReadMore: isReadMore)
+            return height
+        case 3:
+            return TableViewCellHeight.jobDescAndOfficeDesc.rawValue
+        case 4:
+            return TableViewCellHeight.map.rawValue
+        default:
+            break
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.section {
+        case 0:
+            return TableViewCellHeight.jobTitle.rawValue
+        case 1:
+            return UITableViewAutomaticDimension
         case 2:
             let height = JobDescriptionCell.requiredHeight(jobDescription: (job?.templateDesc)!, isReadMore: isReadMore)
             return height

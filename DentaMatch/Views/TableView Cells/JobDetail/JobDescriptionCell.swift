@@ -38,25 +38,47 @@ class JobDescriptionCell: UITableViewCell {
         self.delegate?.readMoreOrReadLess!()
     }
     
-    class func requiredHeight(jobDescription:String,isReadMore:Bool) -> CGFloat{
+//    class func requiredHeight(jobDescription:String,isReadMore:Bool) -> CGFloat{
+//        let font = UIFont.fontLight(fontSize: 13.0)
+//        var label:UILabel!
+//        
+//        if isReadMore {
+//            label = UILabel(frame: CGRect(x:0, y:0, width:UIScreen.main.bounds.width - 42, height:CGFloat.greatestFiniteMagnitude))
+//        } else {
+//            label = UILabel(frame: CGRect(x:0, y:0, width:UIScreen.main.bounds.width - 42, height:80))
+//        }
+//        label.numberOfLines = 0
+//        label.lineBreakMode = NSLineBreakMode.byWordWrapping
+//        label.font = font
+//        label.text = jobDescription
+//        if isReadMore {
+//            label.sizeToFit()
+//        } else {
+//            
+//        }
+//        return label.frame.height + 22 + 41
+//    }
+    
+    class func requiredHeight(jobDescription:String,isReadMore:Bool) -> CGFloat {
         let font = UIFont.fontLight(fontSize: 13.0)
         var label:UILabel!
-        
-        if isReadMore {
-            label = UILabel(frame: CGRect(x:0, y:0, width:UIScreen.main.bounds.width - 42, height:CGFloat.greatestFiniteMagnitude))
-        } else {
-            label = UILabel(frame: CGRect(x:0, y:0, width:UIScreen.main.bounds.width - 42, height:80))
-        }
-
+        label = UILabel(frame: CGRect(x:0, y:0, width:UIScreen.main.bounds.width - 42, height:CGFloat.greatestFiniteMagnitude))
         label.numberOfLines = 0
         label.lineBreakMode = NSLineBreakMode.byWordWrapping
         label.font = font
         label.text = jobDescription
-        if isReadMore {
-            label.sizeToFit()
-        } else {
-            
+        label.sizeToFit()
+        if label.frame.height > 30 {
+            if isReadMore == true {
+                return 30 + 22 + 41
+            }
+            else {
+                return label.frame.height + 22 + 41
+            }
+            return label.frame.height + 22 + 41//Button Show
         }
-        return label.frame.height + 22 + 41//Button
+        else {
+            return label.frame.height//Button Hide
+        }
     }
 }

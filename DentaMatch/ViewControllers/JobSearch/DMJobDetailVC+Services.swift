@@ -86,7 +86,12 @@ extension DMJobDetailVC {
             if response[Constants.ServerKey.status].boolValue {
                 self.alertMessage(title: Constants.AlertMessage.congratulations, message: Constants.AlertMessage.jobApplied, buttonText: kOkButtonTitle, completionHandler: {
                 })
-                _ = self.navigationController?.popViewController(animated: true)
+                job?.isApplied = 1
+                DispatchQueue.main.async {
+                    self.btnApplyForJob.isUserInteractionEnabled = false
+                    self.btnApplyForJob.setTitle(Constants.Strings.appliedForThisJob, for: .normal)
+                    self.tblJobDetail.reloadData()
+                }
                 
             } else {
                 

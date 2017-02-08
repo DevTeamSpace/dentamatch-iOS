@@ -16,10 +16,15 @@ class AboutCell: UITableViewCell {
     @IBOutlet weak var lblOfficeType: UILabel!
     @IBOutlet weak var lblNoOfOpening: UILabel!
     
-
+    @IBOutlet weak var constraintlblNoOfOpeningTop: NSLayoutConstraint!
+    @IBOutlet weak var constraintLblNoOfOpeningHeight: NSLayoutConstraint!
+    @IBOutlet weak var constraintLblNoOfOpeningValueHeight: NSLayoutConstraint!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -33,6 +38,12 @@ class AboutCell: UITableViewCell {
         self.lblAddress.text = job.address
         self.lblOfficeType.text = job.officeTypeName
         self.lblNoOfOpening.text = "10"
+        
+        if job.noOfJobs == 0 {
+            self.constraintlblNoOfOpeningTop.constant = 0
+            self.constraintLblNoOfOpeningHeight.constant = 0
+            self.constraintLblNoOfOpeningValueHeight.constant = 0
+        }
     }
     
 }

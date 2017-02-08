@@ -25,7 +25,7 @@ class DMJobDetailVC: DMBaseVC {
     
     enum TableViewCellHeight: CGFloat {
         case jobTitle = 115.0
-        case about = 216.0
+        case about = 200.0
         case jobDescAndOfficeDesc = 175.0
         case map = 199.0
     }

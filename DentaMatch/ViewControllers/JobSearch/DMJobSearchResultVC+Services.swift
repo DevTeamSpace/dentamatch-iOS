@@ -45,7 +45,9 @@ extension DMJobSearchResultVC {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
                 let skillList = response[Constants.ServerKey.result][Constants.ServerKey.joblist].array
-                self.jobs.removeAll()
+                if jobsPageNo == 1 {
+                    self.jobs.removeAll()
+                }
                 for jobObject in (skillList)! {
                     let job = Job(job: jobObject)
                     self.jobs.append(job)
