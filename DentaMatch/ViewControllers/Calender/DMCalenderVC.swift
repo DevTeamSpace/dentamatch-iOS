@@ -62,7 +62,9 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         self.calendar?.swipeToChooseGesture.isEnabled = false
         self.calendar?.appearance.headerMinimumDissolvedAlpha = 0
         self.calendar?.appearance.caseOptions = .headerUsesUpperCase
-        self.calendar?.pagingEnabled = true
+//        self.calendar?.pagingEnabled = false
+        self.calendar?.isUserInteractionEnabled = false
+//        self.calendar?.showsScopeHandle = false
         self.calendar?.placeholderType = .none
         self.calendar?.calendarHeaderView.isHidden = true
         self.calendar?.calendarWeekdayView.isHidden = false
@@ -449,6 +451,7 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
     func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
     }
 
+    
     
     //pluse button Action
     func setAvailablityButtonClicked(_ sender: Any) {
