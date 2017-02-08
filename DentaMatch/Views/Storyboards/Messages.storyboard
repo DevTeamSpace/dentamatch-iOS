@@ -25,7 +25,7 @@
                 <navigationController storyboardIdentifier="MessageNav" id="0Ec-P8-wpD" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Messages" image="messages" id="oC1-ok-prH"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="lEc-xd-1YD">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lEc-xd-1YD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -51,7 +51,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kgg-RW-Zn7">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Fxn-uz-B0W" id="7yc-RQ-0wd"/>
                                     <outlet property="delegate" destination="Fxn-uz-B0W" id="Pjc-05-gs6"/>
@@ -92,7 +92,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Q39-U4-23E">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="555"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="2QZ-xL-diH" id="Z9j-HO-SdR"/>
                                     <outlet property="delegate" destination="2QZ-xL-diH" id="2Ed-Hj-GzG"/>

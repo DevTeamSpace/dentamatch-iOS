@@ -9,6 +9,7 @@
 import UIKit
 
 class PlaceHolderJobsView: UIView {
+    @IBOutlet weak var placeholderImageView: UIImageView!
 
     @IBOutlet weak var placeHolderMessageLabel: UILabel!
     /*

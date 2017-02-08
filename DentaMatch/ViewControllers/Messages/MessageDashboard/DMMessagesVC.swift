@@ -12,7 +12,8 @@ import CoreData
 class DMMessagesVC: DMBaseVC {
 
     @IBOutlet weak var messageListTableView: UITableView!
-    
+    var placeHolderEmptyJobsView:PlaceHolderJobsView?
+
     let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
@@ -34,7 +35,16 @@ class DMMessagesVC: DMBaseVC {
     func setup() {
         self.navigationItem.title = "MESSAGES"
         self.messageListTableView.dataSource = nil
+        self.messageListTableView.tableFooterView = UIView()
         self.messageListTableView.register(UINib(nibName: "MessageListTableCell", bundle: nil), forCellReuseIdentifier: "MessageListTableCell")
+        
+        placeHolderEmptyJobsView = PlaceHolderJobsView.loadPlaceHolderJobsView()
+        placeHolderEmptyJobsView?.frame = CGRect(x: 0, y: 0, width: 300, height: 500)
+        placeHolderEmptyJobsView?.center = self.view.center
+        self.view.addSubview(placeHolderEmptyJobsView!)
+        placeHolderEmptyJobsView?.placeholderImageView.image = UIImage(named: "chatListPlaceHolder")
+        placeHolderEmptyJobsView?.placeHolderMessageLabel.text = "No message in your chats yet."
+
     }
     
     func getMessageList() {

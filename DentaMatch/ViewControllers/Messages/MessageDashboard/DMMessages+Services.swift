@@ -57,7 +57,9 @@ extension DMMessagesVC {
                 let chatUserList = response[Constants.ServerKey.result][Constants.ServerKey.list].arrayValue
                 if chatUserList.count > 0 {
                     self.addUpdateMessageToDB(chatList: chatUserList)
+                    self.placeHolderEmptyJobsView?.isHidden = true
                 } else {
+                    self.placeHolderEmptyJobsView?.isHidden = false
                     self.makeToast(toastString: "No messages")
                 }
             } else {

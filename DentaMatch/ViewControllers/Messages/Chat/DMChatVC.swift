@@ -16,6 +16,9 @@ class DMChatVC: DMBaseVC {
     @IBOutlet weak var unblockButton: UIButton!
     @IBOutlet weak var chatTextView: UITextView!
     @IBOutlet weak var textContainerViewHeight: NSLayoutConstraint!
+    
+    var placeholderLabel:UILabel!
+    
     var chatList:ChatList?
     var array = [
         "asdhg sadjhg sadjh asdgf sadghfsad ghfsad gfasd asdgfghasdfhgasdfhgasdfh adsfhgas",
@@ -39,6 +42,7 @@ class DMChatVC: DMBaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationItem.title = chatList?.officeName
         self.navigationItem.leftBarButtonItem = self.backBarButton()
         SocketManager.sharedInstance.getChatMessage { (object:[String : AnyObject]) in
             print(object)
@@ -46,6 +50,19 @@ class DMChatVC: DMBaseVC {
     }
     
     func setup() {
+        self.chatTextView.delegate = self
+        self.chatTextView.layer.cornerRadius = 5.0
+        self.chatTableView.register(UINib(nibName: "MessageSenderTableCell", bundle: nil), forCellReuseIdentifier: "MessageSenderTableCell")
+        self.chatTableView.register(UINib(nibName: "MessageReceiverTableCell", bundle: nil), forCellReuseIdentifier: "MessageReceiverTableCell")
+        placeholderLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 40))
+        placeholderLabel.font = UIFont.fontRegular(fontSize: 15.0)!
+        placeholderLabel.textColor = UIColor.color(withHexCode: "aaafb8")
+        placeholderLabel.textAlignment = .center
+        placeholderLabel.numberOfLines = 2
+        placeholderLabel.center = self.view.center
+        placeholderLabel.text = "Start your conversation with\n \(chatList?.officeName!)"
+        self.view.addSubview(placeholderLabel)
+        
         if (chatList?.isBlockedFromSeeker)! {
             self.chatTextView.isHidden = true
             self.sendButton.isHidden = true
@@ -55,10 +72,6 @@ class DMChatVC: DMBaseVC {
             self.sendButton.isHidden = false
             self.unblockButton.isHidden = true
         }
-        self.chatTextView.delegate = self
-        self.chatTextView.layer.cornerRadius = 5.0
-        self.chatTableView.register(UINib(nibName: "MessageSenderTableCell", bundle: nil), forCellReuseIdentifier: "MessageSenderTableCell")
-        self.chatTableView.register(UINib(nibName: "MessageReceiverTableCell", bundle: nil), forCellReuseIdentifier: "MessageReceiverTableCell")
     }
     
     @IBAction func sendMessageButtonPressed(_ sender: Any) {
