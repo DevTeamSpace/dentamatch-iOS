@@ -14,6 +14,9 @@
         <array key="SF-UI-Text-Regular.otf">
             <string>SFUIText-Regular</string>
         </array>
+        <array key="SF-UI-Text-Semibold.otf">
+            <string>SFUIText-Semibold</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Messages-->
@@ -116,16 +119,30 @@
                                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exA-jn-27c">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
+                                        <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="16"/>
+                                        <state key="normal" title="UNBLOCK">
+                                            <color key="titleColor" red="0.015686274509803921" green="0.4392156862745098" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="unblockButtonPressed:" destination="2QZ-xL-diH" eventType="touchUpInside" id="c0N-3Q-Arj"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="7Xo-Mr-L1z"/>
                                     <constraint firstItem="ZBR-Pw-p5e" firstAttribute="leading" secondItem="5TB-Wy-wh6" secondAttribute="trailing" constant="1" id="7mI-zF-Lkn"/>
                                     <constraint firstAttribute="bottom" secondItem="ZBR-Pw-p5e" secondAttribute="bottom" id="9wx-ay-8h1"/>
+                                    <constraint firstAttribute="bottom" secondItem="exA-jn-27c" secondAttribute="bottom" id="ERp-eb-vZ3"/>
                                     <constraint firstAttribute="trailing" secondItem="ZBR-Pw-p5e" secondAttribute="trailing" id="IuV-G8-Zc6"/>
                                     <constraint firstItem="5TB-Wy-wh6" firstAttribute="top" secondItem="QjC-bM-j5e" secondAttribute="top" constant="8" id="JhF-bc-yxE"/>
                                     <constraint firstAttribute="bottom" secondItem="5TB-Wy-wh6" secondAttribute="bottom" constant="8" id="R2U-5q-69V"/>
+                                    <constraint firstAttribute="trailing" secondItem="exA-jn-27c" secondAttribute="trailing" id="VcV-Gh-FSb"/>
                                     <constraint firstItem="5TB-Wy-wh6" firstAttribute="leading" secondItem="QjC-bM-j5e" secondAttribute="leading" constant="15" id="bLh-ij-fba"/>
+                                    <constraint firstItem="exA-jn-27c" firstAttribute="leading" secondItem="QjC-bM-j5e" secondAttribute="leading" id="eol-OD-cPX"/>
+                                    <constraint firstItem="exA-jn-27c" firstAttribute="top" secondItem="QjC-bM-j5e" secondAttribute="top" id="sNf-Bc-Be7"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -146,7 +163,9 @@
                     <connections>
                         <outlet property="chatTableView" destination="Q39-U4-23E" id="EZX-r7-4HS"/>
                         <outlet property="chatTextView" destination="5TB-Wy-wh6" id="nQJ-sh-tR2"/>
+                        <outlet property="sendButton" destination="ZBR-Pw-p5e" id="C3E-fp-ORw"/>
                         <outlet property="textContainerViewHeight" destination="7Xo-Mr-L1z" id="mjB-sO-gCD"/>
+                        <outlet property="unblockButton" destination="exA-jn-27c" id="4Ho-u3-Lg7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BvV-Bw-GtN" userLabel="First Responder" sceneMemberID="firstResponder"/>

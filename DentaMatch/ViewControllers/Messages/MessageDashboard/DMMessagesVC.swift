@@ -32,7 +32,7 @@ class DMMessagesVC: DMBaseVC {
     }
     
     func setup() {
-        self.title = "MESSAGES"
+        self.navigationItem.title = "MESSAGES"
         self.messageListTableView.dataSource = nil
         self.messageListTableView.register(UINib(nibName: "MessageListTableCell", bundle: nil), forCellReuseIdentifier: "MessageListTableCell")
     }

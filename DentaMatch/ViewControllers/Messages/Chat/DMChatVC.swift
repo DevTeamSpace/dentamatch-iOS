@@ -12,8 +12,11 @@ import CoreData
 class DMChatVC: DMBaseVC {
     @IBOutlet weak var chatTableView: UITableView!
 
+    @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var unblockButton: UIButton!
     @IBOutlet weak var chatTextView: UITextView!
     @IBOutlet weak var textContainerViewHeight: NSLayoutConstraint!
+    var chatList:ChatList?
     var array = [
         "asdhg sadjhg sadjh asdgf sadghfsad ghfsad gfasd asdgfghasdfhgasdfhgasdfh adsfhgas",
         "Yes, I’m comfortable working part time",
@@ -43,6 +46,15 @@ class DMChatVC: DMBaseVC {
     }
     
     func setup() {
+        if (chatList?.isBlockedFromSeeker)! {
+            self.chatTextView.isHidden = true
+            self.sendButton.isHidden = true
+            self.unblockButton.isHidden = false
+        } else {
+            self.chatTextView.isHidden = false
+            self.sendButton.isHidden = false
+            self.unblockButton.isHidden = true
+        }
         self.chatTextView.delegate = self
         self.chatTextView.layer.cornerRadius = 5.0
         self.chatTableView.register(UINib(nibName: "MessageSenderTableCell", bundle: nil), forCellReuseIdentifier: "MessageSenderTableCell")
@@ -52,6 +64,9 @@ class DMChatVC: DMBaseVC {
     @IBAction func sendMessageButtonPressed(_ sender: Any) {
         //Send Message
         SocketManager.sharedInstance.sendTextMessage(message: "")
+    }
+    @IBAction func unblockButtonPressed(_ sender: Any) {
+        self.unBlockRecruiter(chatList: chatList!)
     }
 
 }
