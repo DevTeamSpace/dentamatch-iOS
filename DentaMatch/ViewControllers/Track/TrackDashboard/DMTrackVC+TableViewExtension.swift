@@ -182,6 +182,8 @@ extension DMTrackVC:UITableViewDataSource,UITableViewDelegate {
                             self.savedJobs.remove(at: sender.tag)
                             if self.savedJobs.count == 0 {
                                 self.savedJobsPageNo = 1
+                                self.placeHolderEmptyJobsView?.isHidden = false
+                                self.placeHolderEmptyJobsView?.placeHolderMessageLabel.text = "You don’t have any saved jobs"
                             }
                             self.totalSavedJobsFromServer -= 1
                             DispatchQueue.main.async {
@@ -258,8 +260,9 @@ extension DMTrackVC : CancelledJobDelegate {
             if self.appliedJobs.count == 0 {
                 self.appliedJobsPageNo = 1
                 self.placeHolderEmptyJobsView?.isHidden = false
+                self.placeHolderEmptyJobsView?.placeHolderMessageLabel.text = "You don’t have any applied jobs"
             } else {
-                self.placeHolderEmptyJobsView?.isHidden = false
+                self.placeHolderEmptyJobsView?.isHidden = true
             }
         } else {
             self.shortListedJobs.removeObject(object: job)
@@ -267,8 +270,9 @@ extension DMTrackVC : CancelledJobDelegate {
             if self.shortListedJobs.count == 0 {
                 self.shortListedJobsPageNo = 1
                 self.placeHolderEmptyJobsView?.isHidden = false
+                self.placeHolderEmptyJobsView?.placeHolderMessageLabel.text = "You don’t have any shortlisted jobs"
             }else {
-                self.placeHolderEmptyJobsView?.isHidden = false
+                self.placeHolderEmptyJobsView?.isHidden = true
             }
         }
     }
