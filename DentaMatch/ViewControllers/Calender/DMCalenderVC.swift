@@ -63,7 +63,7 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         self.calendar?.appearance.headerMinimumDissolvedAlpha = 0
         self.calendar?.appearance.caseOptions = .headerUsesUpperCase
 //        self.calendar?.pagingEnabled = false
-        self.calendar?.isUserInteractionEnabled = false
+//        self.calendar?.isUserInteractionEnabled = false
 //        self.calendar?.showsScopeHandle = false
         self.calendar?.placeholderType = .none
         self.calendar?.calendarHeaderView.isHidden = true
@@ -451,6 +451,26 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
     func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
     }
 
+    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
+        print("new Page  = \(calendar.currentPage)")
+        self.monthTitleLabel.text = Date.dateToStringForFormatter(date: calendar.currentPage, dateFormate: Date.dateFormatMMMMYYYY())
+        
+        self.getHiredJobsFromServer(date: calendar.currentPage) { (response, error) in
+            debugPrint(self.hiredList.description)
+            self.calendar?.reloadData()
+            let fullTime  = self.hiredList.filter({ (job) -> Bool in
+                job.jobType == 1
+            })
+            if fullTime.count > 0 {
+                self.fulltimeJobIndicatorView.isHidden = false
+            }else{
+                self.fulltimeJobIndicatorView.isHidden = true
+            }
+            
+        }
+
+    }
+
     
     
     //pluse button Action
@@ -462,50 +482,33 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
     @IBAction func nextButtonClicked(_ sender: Any) {
         let currentMonth:Date = self.calendar!.currentPage
         let previousMonth:Date = (self.gregorian?.date(byAdding: .month, value: 1, to: currentMonth, options: .matchFirst))!
-        self.monthTitleLabel.text = Date.dateToStringForFormatter(date: previousMonth, dateFormate: Date.dateFormatMMMMYYYY())
+//        self.monthTitleLabel.text = Date.dateToStringForFormatter(date: previousMonth, dateFormate: Date.dateFormatMMMMYYYY())
 
 //        let dateData = Date.getMonthAndYearForm(date: Date())
-        self.getHiredJobsFromServer(date:previousMonth) { (response, error) in
-            debugPrint(self.hiredList.description)
-            self.calendar?.reloadData()
-            let fullTime  = self.hiredList.filter({ (job) -> Bool in
-                job.jobType == 1
-            })
-            if fullTime.count > 0 {
-                self.fulltimeJobIndicatorView.isHidden = false
-            }else{
-                self.fulltimeJobIndicatorView.isHidden = true
-            }
-            self.calendar?.setCurrentPage(previousMonth, animated: true)
-
-        }
-//        self.calendar?.setCurrentPage(previousMonth, animated: true)
+//        self.getHiredJobsFromServer(date:previousMonth) { (response, error) in
+//            debugPrint(self.hiredList.description)
+//            self.calendar?.reloadData()
+//            let fullTime  = self.hiredList.filter({ (job) -> Bool in
+//                job.jobType == 1
+//            })
+//            if fullTime.count > 0 {
+//                self.fulltimeJobIndicatorView.isHidden = false
+//            }else{
+//                self.fulltimeJobIndicatorView.isHidden = true
+//            }
+//            self.calendar?.setCurrentPage(previousMonth, animated: true)
+//
+//        }
+        self.calendar?.setCurrentPage(previousMonth, animated: true)
 
     }
     @IBAction func previouseButtonClicked(_ sender: Any) {
         let currentMonth:Date = self.calendar!.currentPage
         let previousMonth:Date = (self.gregorian?.date(byAdding: .month, value: -1, to: currentMonth, options: .matchFirst))!
-        self.monthTitleLabel.text = Date.dateToStringForFormatter(date: previousMonth, dateFormate: Date.dateFormatMMMMYYYY())
-
         
-//        let dateData = Date.getMonthAndYearForm(date: Date())
-        self.getHiredJobsFromServer(date: previousMonth) { (response, error) in
-            debugPrint(self.hiredList.description)
-            self.calendar?.reloadData()
-            let fullTime  = self.hiredList.filter({ (job) -> Bool in
-                job.jobType == 1
-            })
-            if fullTime.count > 0 {
-                self.fulltimeJobIndicatorView.isHidden = false
-            }else{
-                self.fulltimeJobIndicatorView.isHidden = true
-            }
-            self.calendar?.setCurrentPage(previousMonth, animated: true)
-            
-        }
-        
-//        self.calendar?.setCurrentPage(previousMonth, animated: true)
+        self.calendar?.setCurrentPage(previousMonth, animated: true)
 
     }
 
+    
 }
