@@ -102,16 +102,27 @@ extension DMRegistrationVC:UITextFieldDelegate {
         guard string.characters.count > 0 else {
             return true
         }
+        let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ")
         
         switch fieldSelected {
         case .firstName:
+            if string.rangeOfCharacter(from: characterset.inverted) != nil {
+                debugPrint("string contains special characters")
+                return false
+            }
             if textField.text!.characters.count >= Constants.Limit.commonMaxLimit {
                 return false
             }
+            
         case .lastName:
+            if string.rangeOfCharacter(from: characterset.inverted) != nil {
+                debugPrint("string contains special characters")
+                return false
+            }
             if textField.text!.characters.count >= Constants.Limit.commonMaxLimit {
                 return false
             }
+            
         case .password:
             if textField.text!.characters.count >= Constants.Limit.maxPasswordLimit {
                 return false

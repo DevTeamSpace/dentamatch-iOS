@@ -455,6 +455,7 @@ struct Constants {
         static let maxPasswordLimit = 25
         static let commonMaxLimit = 30
         static let licenseNumber = 15
+        static let aboutMeLimit = 500
 
     }
 }
