@@ -73,6 +73,22 @@ extension DMPublicProfileVC : UITableViewDataSource,UITableViewDelegate,UITextVi
         return true
     }
     
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        guard text.characters.count > 0 else {
+            return true
+        }
+        if textView.text.characters.count >= Constants.Limit.aboutMeLimit && range.length == 0 {
+            return false
+        }
+        if textView.text.characters.count + text.characters.count > Constants.Limit.aboutMeLimit && range.length == 0 {
+            let remainingTextCount = Constants.Limit.aboutMeLimit - textView.text.characters.count
+            textView.text = textView.text + text.stringFrom(0, to: remainingTextCount)
+            return false
+        }
+
+        return true
+    }
+    
     func textViewDidChange(_ textView: UITextView) {
         editProfileParams[Constants.ServerKey.aboutMe] = textView.text
         if let cell = self.publicProfileTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? EditPublicProfileTableCell {

@@ -197,14 +197,20 @@ extension DMPublicProfileVC:UITextFieldDelegate {
         case .firstName:
             let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ")
             if string.rangeOfCharacter(from: characterset.inverted) != nil {
-                print("string contains special characters")
+                debugPrint("string contains special characters")
+                return false
+            }
+            if textField.text!.characters.count >= Constants.Limit.commonMaxLimit {
                 return false
             }
             return true
         case .lastName:
             let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ")
             if string.rangeOfCharacter(from: characterset.inverted) != nil {
-                print("string contains special characters")
+                debugPrint("string contains special characters")
+                return false
+            }
+            if textField.text!.characters.count >= Constants.Limit.commonMaxLimit {
                 return false
             }
             return true
