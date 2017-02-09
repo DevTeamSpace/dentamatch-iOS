@@ -112,7 +112,7 @@ class DMJobSearchVC : DMBaseVC {
         self.tblViewJobSearch.register(UINib(nibName: "JobSearchTypeCell", bundle: nil), forCellReuseIdentifier: "JobSearchTypeCell")
         self.tblViewJobSearch.register(UINib(nibName: "JobSearchPartTimeCell", bundle: nil), forCellReuseIdentifier: "JobSearchPartTimeCell")
         self.tblViewJobSearch.register(UINib(nibName: "CurrentLocationCell", bundle: nil), forCellReuseIdentifier: "CurrentLocationCell")
-            }
+    }
     
     func validateFields() -> Bool {
         if self.jobTitles.count == 0 {
@@ -200,8 +200,12 @@ class DMJobSearchVC : DMBaseVC {
         var jobTitles = [Any]()
         var jobTitleIds = [Int]()
         for job in self.jobTitles {
-            jobTitleDict = [Constants.ServerKey.jobtitleName:job.jobTitle,Constants.ServerKey.jobId:job.jobId]
-            jobTitles.append(jobTitleDict)
+            let dict = NSMutableDictionary()
+            dict.setObject(job.jobTitle, forKey: Constants.ServerKey.jobtitleName as NSCopying)
+            dict.setObject(job.jobId, forKey: Constants.ServerKey.jobId as NSCopying)
+
+          //  jobTitleDict = [Constants.ServerKey.jobtitleName:job.jobTitle,Constants.ServerKey.jobId:job.jobId]
+            jobTitles.append(dict)
         }
         for job in self.jobTitles {
             jobTitleIds.append(job.jobId)
@@ -221,13 +225,6 @@ class DMJobSearchVC : DMBaseVC {
         searchParams[Constants.JobDetailKey.jobTitles] = jobTitles
         searchParams[Constants.JobDetailKey.page] = 1
         searchParams[Constants.JobDetailKey.address] = location.address
-        //self.fetchSearchResultAPI(params: searchParams)
-        
-        // TO Save Search Parameter in UserDefault
-//        let encodedData = NSKeyedArchiver.archivedData(withRootObject: searchParams)
-//        kUserDefaults.set(encodedData, forKey: "SearchParameter")
-//        kUserDefaults.synchronize()
-        
         self.goToSearchResult()
     }
 }

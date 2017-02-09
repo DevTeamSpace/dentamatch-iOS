@@ -81,26 +81,29 @@ class JobSearchTypeCell: UITableViewCell {
             btnFullTime.setTitleColor(Constants.Color.tickSelectColor, for: .normal)
             self.lblFullTime.textColor = Constants.Color.headerTitleColor
             self.isFullTime = true
+            //delegate?.selectJobSearchType!(selected: true, type: JobSearchType.FullTime.rawValue)
         }
         else {
             btnFullTime.setTitle("t", for: .normal)
             btnFullTime.setTitleColor(Constants.Color.tickDeselectColor, for: .normal)
             self.lblFullTime.textColor = Constants.Color.jobTypeLabelDeselectedColor
             self.isFullTime = false
+            //delegate?.selectJobSearchType!(selected: false, type: JobSearchType.FullTime.rawValue)
         }
         
         if isPartTime == "1" {
             btnPartTime.setTitle("w", for: .normal)
             btnPartTime.setTitleColor(Constants.Color.tickSelectColor, for: .normal)
             self.lblPartTime.textColor = Constants.Color.headerTitleColor
-            delegate?.selectJobSearchType!(selected: true, type: JobSearchType.FullTime.rawValue)
             self.isPartTime = true
+            //delegate?.selectJobSearchType!(selected: true, type: JobSearchType.PartTime.rawValue)
         }
         else {
             btnPartTime.setTitle("t", for: .normal)
             btnPartTime.setTitleColor(Constants.Color.tickDeselectColor, for: .normal)
             self.lblPartTime.textColor = Constants.Color.jobTypeLabelDeselectedColor
             self.isPartTime = false
+            //delegate?.selectJobSearchType!(selected: false, type: JobSearchType.PartTime.rawValue)
         }
     }
     
