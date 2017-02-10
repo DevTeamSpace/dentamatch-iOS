@@ -20,12 +20,7 @@ class DMChatVC: DMBaseVC {
     var placeHolderLabelForView:UILabel!
     
     var chatList:ChatList?
-    var array = [
-        "asdhg sadjhg sadjh asdgf sadghfsad ghfsad gfasd asdgfghasdfhgasdfhgasdfh adsfhgas",
-        "Yes, I’m comfortable working part time",
-        "Hi",
-        "asdhg sagdhsdg trhr wgh asd jha  atsudfjasdjasdf sadjg sadj asdgfsadgasd ghfasd hgasdf hgasd asfghd asdghf asdfhadgs"
-    ]
+    var messages = [String]()
     
     let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -35,18 +30,16 @@ class DMChatVC: DMBaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        SocketManager.sharedInstance.initServer()
-
+        SocketManager.sharedInstance.getHistory(pageNo: 1)
         // Do any additional setup after loading the view.
+        receiveMessagesEvent()
+        receiveChatMessageEvent()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationItem.title = chatList?.officeName
         self.navigationItem.leftBarButtonItem = self.backBarButton()
-        SocketManager.sharedInstance.getChatMessage { (object:[String : AnyObject]) in
-            print(object)
-        }
     }
     
     func setup() {
@@ -64,6 +57,7 @@ class DMChatVC: DMBaseVC {
         var frame = placeHolderLabelForView.frame
         frame = CGRect(x: frame.origin.x, y: frame.origin.y - 44, width: frame.size.width, height: frame.size.height)
         placeHolderLabelForView.frame = frame
+        placeHolderLabelForView.isHidden = true
         self.view.addSubview(placeHolderLabelForView)
 
         
@@ -78,9 +72,23 @@ class DMChatVC: DMBaseVC {
         }
     }
     
+    func receiveMessagesEvent() {
+        SocketManager.sharedInstance.receiveMessages { (info:[Any]) in
+            print(info)
+        }
+    }
+    
+    func receiveChatMessageEvent() {
+        SocketManager.sharedInstance.getChatMessage { (object:[String : AnyObject]) in
+            print(object)
+        }
+    }
+    
     @IBAction func sendMessageButtonPressed(_ sender: Any) {
         //Send Message
-        SocketManager.sharedInstance.sendTextMessage(message: "")
+        if SocketManager.sharedInstance.socket.status == .connected {
+            SocketManager.sharedInstance.sendTextMessage(message: self.chatTextView.text)
+        }
     }
     @IBAction func unblockButtonPressed(_ sender: Any) {
         self.unBlockRecruiter(chatList: chatList!)

@@ -12,7 +12,7 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     
     static let sharedInstance = SocketManager()
     
-    var socket = SocketIOClient(socketURL: URL(string: "http://172.16.16.188:3000")!)
+    var socket = SocketIOClient(socketURL: URL(string: "http://dev.dentamatch.co:3000")!)
 
     override init() {
         super.init()
@@ -29,9 +29,27 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     
     func initServer() {
         let params = [
-            "fromId":"420"
+            "userId":UserManager.shared().activeUser.userId!,
+            "userName":UserManager.shared().activeUser.firstName!
         ]
         socket.emit("init", params)
+    }
+    
+    func getHistory(pageNo:Int) {
+        let params = [
+            "fromId":UserManager.shared().activeUser.userId!,
+            "toId":"8",
+            "pageNo":pageNo
+        ] as [String : Any]
+        socket.emit("getHistory", params)
+    }
+    
+    func receiveMessages(completionHandler: @escaping (_ messageInfo: [Any]) -> Void) {
+        socket.on("getMessages") { (dataArray, socketAck) -> Void in
+            var messageDictionary = [Any]()
+            messageDictionary = dataArray
+            completionHandler(messageDictionary)
+        }
     }
 
     func connectToServerWithNickname(nickname: String, completionHandler: @escaping (_ userList: [[String: AnyObject]]?) -> Void) {
@@ -51,11 +69,11 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     
     func sendTextMessage(message: String) {
         let params = [
-            "fromId":"420",
-            "toId":"2",
-            "msg":"Hello Rajan"
+            "fromId":UserManager.shared().activeUser.userId!,
+            "toId":"8",
+            "message":message
         ]
-        socket.emit("sendMsg", with: [params])
+        socket.emit("sendMessage", with: [params])
     }
     
     func sendMessage(message: String, withNickname nickname: String) {
@@ -63,7 +81,7 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     }
     
     func getChatMessage(completionHandler: @escaping (_ messageInfo: [String: AnyObject]) -> Void) {
-        socket.on("recMsg") { (dataArray, socketAck) -> Void in
+        socket.on("receiveMessage") { (dataArray, socketAck) -> Void in
             var messageDictionary = [String: AnyObject]()
             messageDictionary = dataArray[0] as! [String:AnyObject]
             //            messageDictionary["message"] = dataArray[1] as! String as AnyObject?

@@ -21,6 +21,7 @@ class DMMessagesVC: DMBaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        SocketManager.sharedInstance.initServer()
         self.getChatListAPI()
         // Do any additional setup after loading the view.
     }
