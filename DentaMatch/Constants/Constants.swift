@@ -125,7 +125,9 @@ struct Constants {
         static let dashboardStoryboard  = "Dashboard"
         static let messagesStoryboard  = "Messages"
         static let calenderStoryboard  = "Calender"
+        static let notificationStoryboard  = "Notification"
 
+        
         struct Identifer {
             static let registrationNav = "RegistrationNAV"
             static let profileNav  = "ProfileNAV"
@@ -190,6 +192,11 @@ struct Constants {
         static let jobDetail = Constants.API.apiURL("jobs/job-detail")
         static let applyJob = Constants.API.apiURL("users/apply-job")
 
+        
+        static let getNotificationList = Constants.API.apiURL("users/notification-list")
+        static let readNotification = Constants.API.apiURL("users/notification-read")
+
+        
         static let setAvailabality = Constants.API.apiURL("users/update-availability")
         static let getAvailabality = Constants.API.apiURL("users/availability-list")
         static let getHiredJobs = Constants.API.apiURL("jobs/hired-jobs")

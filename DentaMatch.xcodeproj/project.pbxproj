@@ -39,6 +39,8 @@
 		5A5523E81E4C4136007D8C09 /* NotificationJobTypeTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A5523E61E4C4136007D8C09 /* NotificationJobTypeTableCell.xib */; };
 		5A5523EB1E4C419F007D8C09 /* CommonTextNotificationTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5523E91E4C419F007D8C09 /* CommonTextNotificationTableCell.swift */; };
 		5A5523EC1E4C419F007D8C09 /* CommonTextNotificationTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A5523EA1E4C419F007D8C09 /* CommonTextNotificationTableCell.xib */; };
+		5A5523EF1E4D97DF007D8C09 /* UserNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5523EE1E4D97DF007D8C09 /* UserNotification.swift */; };
+		5A5523F11E4DCDF3007D8C09 /* TimeAgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5523F01E4DCDF3007D8C09 /* TimeAgo.swift */; };
 		5A60A8561E42FF1800789D14 /* DMCalenderVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A60A8551E42FF1800789D14 /* DMCalenderVC+Services.swift */; };
 		5A60A85B1E43309100789D14 /* UserAvailability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A60A85A1E43309100789D14 /* UserAvailability.swift */; };
 		5A85D20F1E2DFAD000AC4C89 /* SeparatorWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A85D2061E2DFAD000AC4C89 /* SeparatorWrapper.swift */; };
@@ -407,6 +409,8 @@
 		5A5523E61E4C4136007D8C09 /* NotificationJobTypeTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationJobTypeTableCell.xib; sourceTree = "<group>"; };
 		5A5523E91E4C419F007D8C09 /* CommonTextNotificationTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonTextNotificationTableCell.swift; sourceTree = "<group>"; };
 		5A5523EA1E4C419F007D8C09 /* CommonTextNotificationTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommonTextNotificationTableCell.xib; sourceTree = "<group>"; };
+		5A5523EE1E4D97DF007D8C09 /* UserNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNotification.swift; sourceTree = "<group>"; };
+		5A5523F01E4DCDF3007D8C09 /* TimeAgo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeAgo.swift; sourceTree = "<group>"; };
 		5A60A8551E42FF1800789D14 /* DMCalenderVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMCalenderVC+Services.swift"; sourceTree = "<group>"; };
 		5A60A85A1E43309100789D14 /* UserAvailability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAvailability.swift; sourceTree = "<group>"; };
 		5A85D2061E2DFAD000AC4C89 /* SeparatorWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatorWrapper.swift; sourceTree = "<group>"; };
@@ -786,6 +790,7 @@
 		5A1E2A161E1E47340055D913 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5A5523ED1E4D97C0007D8C09 /* Notification */,
 				E5AE37831E4986E10001EC3C /* CoreDataModels */,
 				F209C33F1E435A26005C9594 /* JobSearchParameter */,
 				5A60A8571E43012A00789D14 /* Calendar */,
@@ -882,6 +887,15 @@
 				5A50A2C91E32163D0010AA31 /* SettingTableCell.xib */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		5A5523ED1E4D97C0007D8C09 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				5A5523EE1E4D97DF007D8C09 /* UserNotification.swift */,
+				5A5523F01E4DCDF3007D8C09 /* TimeAgo.swift */,
+			);
+			path = Notification;
 			sourceTree = "<group>";
 		};
 		5A60A8571E43012A00789D14 /* Calendar */ = {
@@ -2498,6 +2512,7 @@
 				F22359171E3F3E3300E984FC /* DMJobSearchVC+TableViewExtension.swift in Sources */,
 				F2F5E0DA1E31BDD00082187C /* MapCell.swift in Sources */,
 				E55462F71DAE4C6F004163B2 /* UITextField+ToolBar.swift in Sources */,
+				5A5523EF1E4D97DF007D8C09 /* UserNotification.swift in Sources */,
 				E5AE37041E485D800001EC3C /* PlaceHolderJobsView.swift in Sources */,
 				E5AE37661E4971CE0001EC3C /* SocketEnginePollable.swift in Sources */,
 				E5AE376B1E4971CE0001EC3C /* SocketIOClient.swift in Sources */,
@@ -2505,6 +2520,7 @@
 				E587D2D71E236B84006B7F06 /* DMRegisterMapsVC+GoogleMapsExtension.swift in Sources */,
 				5A3B06CD1E3387FF00EFCA6E /* DMSettingVC+TableViewExtension.swift in Sources */,
 				E5AE37691E4971CE0001EC3C /* SocketEventHandler.swift in Sources */,
+				5A5523F11E4DCDF3007D8C09 /* TimeAgo.swift in Sources */,
 				5A60A85B1E43309100789D14 /* UserAvailability.swift in Sources */,
 				E5AE375F1E4971CE0001EC3C /* SocketAckEmitter.swift in Sources */,
 				E54976F31E28CEDD006F21E5 /* User.swift in Sources */,

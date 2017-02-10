@@ -104,6 +104,9 @@ class DMJobSearchResultVC : DMBaseVC {
     
     override func actionLeftNavigationItem() {
         //will implement
+        let notification = UIStoryboard.notificationStoryBoard().instantiateViewController(type: DMNotificationVC.self)!
+        self.navigationController?.pushViewController(notification, animated: true)
+
     }
     
     override func actionRightNavigationItem() {

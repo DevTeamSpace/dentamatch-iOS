@@ -100,6 +100,13 @@ extension Date {
         return dateFormatter.string(from: date)
     }
     
+    static func stringToDateForFormatter(date:String,dateFormate:String)-> Date{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = dateFormate//"dd MMMM yyyy"
+        //        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        return dateFormatter.date(from: date)!
+    }
+    
     
     
     func minute() -> Int {
