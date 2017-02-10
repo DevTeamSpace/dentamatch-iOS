@@ -25,6 +25,14 @@ class AboutCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         self.clipsToBounds = true
+        let paragraphStyle = NSMutableParagraphStyle()
+        let attributedString = NSMutableAttributedString()
+        paragraphStyle.lineSpacing = 130
+        attributedString.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
+        self.lblAddress.attributedText = attributedString;
+        self.lblOfficeType.attributedText = attributedString;
+        self.lblDentistName.attributedText = attributedString;
+        self.lblNoOfOpening.attributedText = attributedString;
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
