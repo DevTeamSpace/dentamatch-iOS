@@ -11,15 +11,35 @@ import Foundation
 extension DMChatVC:UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return MessageSenderTableCell.requiredHeight(message: messages[indexPath.row])
+        let chat = fetchedResultsController.object(at: indexPath) as! Chat
+        if let message = chat.message {
+            return MessageSenderTableCell.requiredHeight(message: message)
+        } else {
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messages.count
+        if let sections = fetchedResultsController.sections {
+            let sectionInfo = sections[section]
+            return sectionInfo.numberOfObjects
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MessageSenderTableCell") as! MessageSenderTableCell
-        return cell
+        let chat = fetchedResultsController.object(at: indexPath) as! Chat
+        if chat.fromId == UserManager.shared().activeUser.userId {
+            //self message
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MessageSenderTableCell") as! MessageSenderTableCell
+            cell.chatMessageLabel.text = chat.message
+            return cell
+
+        } else {
+            //recruiter message
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MessageReceiverTableCell") as! MessageReceiverTableCell
+            cell.chatMessageLabel.text = chat.message
+            return cell
+        }
     }
 }

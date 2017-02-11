@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import SwiftyJSON
 
 class DMChatVC: DMBaseVC {
     @IBOutlet weak var chatTableView: UITableView!
@@ -30,6 +31,7 @@ class DMChatVC: DMBaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        self.getChats()
         SocketManager.sharedInstance.getHistory(pageNo: 1)
         // Do any additional setup after loading the view.
         receiveMessagesEvent()
@@ -81,6 +83,9 @@ class DMChatVC: DMBaseVC {
     func receiveChatMessageEvent() {
         SocketManager.sharedInstance.getChatMessage { (object:[String : AnyObject]) in
             print(object)
+            let json = JSON(rawValue: object)
+            self.addUpdateChatToDB(chatObj: json)
+            self.chatTextView.text = ""
         }
     }
     
@@ -88,6 +93,8 @@ class DMChatVC: DMBaseVC {
         //Send Message
         if SocketManager.sharedInstance.socket.status == .connected {
             SocketManager.sharedInstance.sendTextMessage(message: self.chatTextView.text)
+        } else {
+            debugPrint("Socket not connected")
         }
     }
     @IBAction func unblockButtonPressed(_ sender: Any) {

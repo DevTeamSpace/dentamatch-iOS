@@ -19,6 +19,7 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     }
     
     func establishConnection() {
+        //DefaultSocketLogger.Logger.log = true
         socket.delegate = self
         socket.connect()
     }
