@@ -82,11 +82,13 @@ extension DMChatVC:NSFetchedResultsControllerDelegate {
     
     //MARK:- NSFetchedResultsControllerDelegate
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        self.chatTableView.beginUpdates()
+        //self.chatTableView.beginUpdates()
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        self.chatTableView.endUpdates()
+        //self.chatTableView.endUpdates()
+        self.chatTableView.reloadData()
+
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
@@ -96,6 +98,7 @@ extension DMChatVC:NSFetchedResultsControllerDelegate {
         case .insert:
             if let indexPath = newIndexPath {
                 self.chatTableView.insertRows(at: [indexPath], with: .none)
+                
                 let when = DispatchTime.now() + 0.1
                 DispatchQueue.main.asyncAfter(deadline: when) {
                     self.chatTableView.scrollToRow(at: newIndexPath!, at: .bottom, animated: true)

@@ -33,6 +33,7 @@ extension DMLoginVC {
         UserManager.shared().loginResponseHandler(response: response) { (success:Bool, message:String) in
             self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
             if success {
+                SocketManager.sharedInstance.establishConnection()
                 self.openJobTitleSelection()
             }
         }

@@ -10,4 +10,6 @@ import Foundation
 
 extension Notification.Name {
     static let updateProfileScreen = Notification.Name("updateProfileScreen")
+    static let deleteFetchController = Notification.Name("deleteFetchController")
+
 }

@@ -116,6 +116,9 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     
     func didConnectSocket() {
         print("Socket Connected")
+        if let _ = UserManager.shared().activeUser {
+            self.initServer()
+        }
     }
     
     func didDisconnectSocket() {
