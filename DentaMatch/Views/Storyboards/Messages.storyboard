@@ -161,6 +161,7 @@
                     <navigationItem key="navigationItem" id="jma-oK-W2O"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="bottomConstraint" destination="Ec9-eO-S4m" id="2g5-Pj-DeY"/>
                         <outlet property="chatTableView" destination="Q39-U4-23E" id="EZX-r7-4HS"/>
                         <outlet property="chatTextView" destination="5TB-Wy-wh6" id="nQJ-sh-tR2"/>
                         <outlet property="sendButton" destination="ZBR-Pw-p5e" id="C3E-fp-ORw"/>

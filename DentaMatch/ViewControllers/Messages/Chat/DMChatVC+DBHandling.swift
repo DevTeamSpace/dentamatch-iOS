@@ -25,6 +25,8 @@ extension DMChatVC:NSFetchedResultsControllerDelegate {
                 chat.fromId = chatObj["fromId"].stringValue
                 chat.toId = chatObj["toId"].stringValue
                 chat.dateString = chatObj["sentTime"].stringValue
+                self.chatList?.lastMessage = chatObj["message"].stringValue
+                self.chatList?.lastMessageId = chatObj["messageId"].stringValue
                 //chat.date = self.getDate(dateString: chatObj["timestamp"].stringValue)?.date as NSDate?
             }
         }
@@ -65,7 +67,9 @@ extension DMChatVC:NSFetchedResultsControllerDelegate {
             if let sections = fetchedResultsController.sections {
                 let sectionInfo = sections[sections.count - 1]
                 if sections.count > 0 {
+                    if (sectionInfo.objects?.count)! > 0 {
                     self.chatTableView.scrollToRow(at:IndexPath(row: (sectionInfo.objects?.count)! - 1, section: sections.count - 1), at: .bottom, animated: true)
+                    }
                 }
             }
             

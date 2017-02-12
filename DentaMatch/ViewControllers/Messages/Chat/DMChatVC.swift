@@ -12,6 +12,7 @@ import SwiftyJSON
 
 class DMChatVC: DMBaseVC {
     @IBOutlet weak var chatTableView: UITableView!
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
 
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var unblockButton: UIButton!
@@ -104,6 +105,29 @@ class DMChatVC: DMBaseVC {
 }
 
 extension DMChatVC:UITextViewDelegate {
+    
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        UIView.animate(withDuration: 0.25, animations: {
+            self.bottomConstraint.constant = 300
+            self.view.layoutIfNeeded()
+        }) { (bool:Bool) in
+        }
+        return true
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+       // self.view.layoutIfNeeded()
+    }
+    
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.bottomConstraint.constant = 0
+        }) { (bool:Bool) in
+            self.view.layoutIfNeeded()
+        }
+        return true
+    }
+    
     func textViewDidChange(_ textView: UITextView) {
         let cSize = textView.sizeThatFits(CGSize(width: textView.frame.width, height: 99999))
         if cSize.height >= 150 {
