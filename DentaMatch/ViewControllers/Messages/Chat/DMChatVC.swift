@@ -8,9 +8,11 @@
 
 import UIKit
 import CoreData
+import SwiftyJSON
 
 class DMChatVC: DMBaseVC {
     @IBOutlet weak var chatTableView: UITableView!
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
 
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var unblockButton: UIButton!
@@ -20,12 +22,7 @@ class DMChatVC: DMBaseVC {
     var placeHolderLabelForView:UILabel!
     
     var chatList:ChatList?
-    var array = [
-        "asdhg sadjhg sadjh asdgf sadghfsad ghfsad gfasd asdgfghasdfhgasdfhgasdfh adsfhgas",
-        "Yes, I’m comfortable working part time",
-        "Hi",
-        "asdhg sagdhsdg trhr wgh asd jha  atsudfjasdjasdf sadjg sadj asdgfsadgasd ghfasd hgasdf hgasd asfghd asdghf asdfhadgs"
-    ]
+    var messages = [String]()
     
     let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -35,18 +32,17 @@ class DMChatVC: DMBaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        SocketManager.sharedInstance.initServer()
-
+        self.getChats()
+        SocketManager.sharedInstance.getHistory(pageNo: 1)
         // Do any additional setup after loading the view.
+        receiveMessagesEvent()
+        receiveChatMessageEvent()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationItem.title = chatList?.officeName
         self.navigationItem.leftBarButtonItem = self.backBarButton()
-        SocketManager.sharedInstance.getChatMessage { (object:[String : AnyObject]) in
-            print(object)
-        }
     }
     
     func setup() {
@@ -64,6 +60,7 @@ class DMChatVC: DMBaseVC {
         var frame = placeHolderLabelForView.frame
         frame = CGRect(x: frame.origin.x, y: frame.origin.y - 44, width: frame.size.width, height: frame.size.height)
         placeHolderLabelForView.frame = frame
+        placeHolderLabelForView.isHidden = true
         self.view.addSubview(placeHolderLabelForView)
 
         
@@ -78,9 +75,28 @@ class DMChatVC: DMBaseVC {
         }
     }
     
+    func receiveMessagesEvent() {
+        SocketManager.sharedInstance.receiveMessages { (info:[Any]) in
+            print(info)
+        }
+    }
+    
+    func receiveChatMessageEvent() {
+        SocketManager.sharedInstance.getChatMessage { (object:[String : AnyObject]) in
+            print(object)
+            let json = JSON(rawValue: object)
+            self.addUpdateChatToDB(chatObj: json)
+            self.chatTextView.text = ""
+        }
+    }
+    
     @IBAction func sendMessageButtonPressed(_ sender: Any) {
         //Send Message
-        SocketManager.sharedInstance.sendTextMessage(message: "")
+        if SocketManager.sharedInstance.socket.status == .connected {
+            SocketManager.sharedInstance.sendTextMessage(message: self.chatTextView.text)
+        } else {
+            debugPrint("Socket not connected")
+        }
     }
     @IBAction func unblockButtonPressed(_ sender: Any) {
         self.unBlockRecruiter(chatList: chatList!)
@@ -89,6 +105,29 @@ class DMChatVC: DMBaseVC {
 }
 
 extension DMChatVC:UITextViewDelegate {
+    
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        UIView.animate(withDuration: 0.25, animations: {
+            self.bottomConstraint.constant = 300
+            self.view.layoutIfNeeded()
+        }) { (bool:Bool) in
+        }
+        return true
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+       // self.view.layoutIfNeeded()
+    }
+    
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.bottomConstraint.constant = 0
+        }) { (bool:Bool) in
+            self.view.layoutIfNeeded()
+        }
+        return true
+    }
+    
     func textViewDidChange(_ textView: UITextView) {
         let cSize = textView.sizeThatFits(CGSize(width: textView.frame.width, height: 99999))
         if cSize.height >= 150 {

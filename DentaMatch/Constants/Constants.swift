@@ -234,6 +234,7 @@ struct Constants {
         static let licenseNumber = "licenseNumber"
         static let state = "state"
         static let userDetails = "userDetails"
+        static let searchFilters = "searchFilters"
         static let result = "result"
         static let dentalStateBoard = "dentalStateBoard"
         static let accessToken = "accessToken"

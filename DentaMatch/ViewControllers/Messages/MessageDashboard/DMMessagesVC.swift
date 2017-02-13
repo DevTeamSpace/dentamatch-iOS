@@ -21,6 +21,7 @@ class DMMessagesVC: DMBaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        SocketManager.sharedInstance.initServer()
         self.getChatListAPI()
         // Do any additional setup after loading the view.
     }
@@ -33,6 +34,8 @@ class DMMessagesVC: DMBaseVC {
     }
     
     func setup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(deleteFetchController), name: .deleteFetchController, object: nil)
+        
         self.navigationItem.title = "MESSAGES"
         self.messageListTableView.dataSource = nil
         self.messageListTableView.tableFooterView = UIView()
@@ -69,7 +72,11 @@ class DMMessagesVC: DMBaseVC {
         do {
             try self.fetchedResultsController.performFetch()
             self.messageListTableView.reloadData()
-            
+            if let sections = self.fetchedResultsController.sections {
+                if sections.count > 0 {
+                    self.placeHolderEmptyJobsView?.isHidden = true
+                }
+            }
         } catch {
             let fetchError = error as NSError
             print("\(fetchError), \(fetchError.userInfo)")
@@ -88,5 +95,13 @@ class DMMessagesVC: DMBaseVC {
         alert.addAction(blockAction)
         alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
-    }    
+    }
+    
+    func deleteFetchController() {
+        fetchedResultsController.delegate = nil
+        NSFetchedResultsController<NSFetchRequestResult>.deleteCache(withName: nil)
+//        try self.fetchedResultsController.performFetch(nil)
+//        self.fetchedResultsController.fetchRequest.predicate =
+//            [NSPredicate  predicateWithValue:NO];
+    }
 }

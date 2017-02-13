@@ -84,7 +84,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: - Configure Crashlytics
     func configureSocket() {
-        SocketManager.sharedInstance.establishConnection()
+        if let _ = UserManager.shared().activeUser {
+            SocketManager.sharedInstance.establishConnection()
+        }
     }
     
     // MARK: - Configure Crashlytics

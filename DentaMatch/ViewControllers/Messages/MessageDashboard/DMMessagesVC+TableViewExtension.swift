@@ -47,8 +47,8 @@ extension DMMessagesVC : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageListTableCell") as! MessageListTableCell
         let chatList = fetchedResultsController.object(at: indexPath) as! ChatList
-        cell.recruiterNameLabel.text = chatList.officeName!
-        cell.lastMessageLabel.text = chatList.lastMessage!
+        cell.recruiterNameLabel.text = chatList.officeName
+        cell.lastMessageLabel.text = chatList.lastMessage
         return cell
     }
     
