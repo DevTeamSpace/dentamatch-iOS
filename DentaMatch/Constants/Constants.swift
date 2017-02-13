@@ -99,6 +99,12 @@ struct Constants {
         static let segmentControlSelectionColor = UIColor.init(red: 4/255.0, green: 112/255.0, blue: 191.0/255.0, alpha: 1.0)
         static let partTimeEventColor = UIColor.init(red: 142.0/255.0, green: 207.0/255.0, blue: 126.0/255.0, alpha: 1)
         static let tempTimeEventColor = UIColor.init(red: 241.0/255.0, green: 184.0/255.0, blue: 90.0/255.0, alpha: 1)
+        
+        static let notificationUnreadTextColor = UIColor.init(red: 15.0/255.0, green: 24.0/255.0, blue: 62.0/255.0, alpha: 1)
+        static let notificationUnreadTimeLabelColor = UIColor.init(red: 15.0/255.0, green: 24.0/255.0, blue: 62.0/255.0, alpha: 1)
+        static let notificationreadTextColor = UIColor.init(red: 71.0/255.0, green: 71.0/255.0, blue: 71.0/255.0, alpha: 1)
+        static let notificationreadTimeLabelColor = UIColor.init(red: 137.0/255.0, green: 137.0/255.0, blue: 137.0/255.0, alpha: 1)
+
 
     }
     

@@ -18,6 +18,7 @@ class CommonTextNotificationTableCell: UITableViewCell {
         // Initialization code
         unreadView.layer.cornerRadius = unreadView.bounds.size.height/2
         unreadView.clipsToBounds = true
+        self.selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -29,6 +30,16 @@ class CommonTextNotificationTableCell: UITableViewCell {
         self.notificationTextLabel.text = userNotificationObj.message
         let date = Date.stringToDateForFormatter(date: userNotificationObj.createdAtTime, dateFormate: Date.dateFormatYYYYMMDDHHMMSS())
         self.notificationTimeLabel.text = timeAgoSince(date)
+        if userNotificationObj.seen == 0 {
+            self.notificationTextLabel.textColor = Constants.Color.notificationUnreadTextColor
+            self.notificationTimeLabel.textColor = Constants.Color.notificationUnreadTimeLabelColor
+            self.unreadView.isHidden = false
+        }else {
+            self.unreadView.isHidden = true
+            self.notificationTextLabel.textColor = Constants.Color.notificationreadTextColor
+            self.notificationTimeLabel.textColor = Constants.Color.notificationreadTimeLabelColor
+        }
+
     }
     
 }

@@ -22,6 +22,7 @@ class HiredJobNotificationTableCell: UITableViewCell {
         // Initialization code
         unreadView.layer.cornerRadius = unreadView.bounds.size.height/2
         unreadView.clipsToBounds = true
+        self.selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -32,7 +33,7 @@ class HiredJobNotificationTableCell: UITableViewCell {
     
     func configureHiredJobNotificationTableCell(userNotificationObj:UserNotification) {
         self.notificationTextLabel.text = userNotificationObj.message
-        let address = "\(userNotificationObj.jobdetail?.officeName), \(userNotificationObj.jobdetail?.address)"
+        let address = "\((userNotificationObj.jobdetail?.officeName)!)!, \((userNotificationObj.jobdetail?.address)!)"
         self.notificationJobLocationLabel.text = address
         let date = Date.stringToDateForFormatter(date: userNotificationObj.createdAtTime, dateFormate: Date.dateFormatYYYYMMDDHHMMSS())
         notificationTimeLabel.text = timeAgoSince(date)
@@ -44,6 +45,19 @@ class HiredJobNotificationTableCell: UITableViewCell {
             self.btnJobType.setTitle("Temporary", for: .normal)
         }
         
+        
+        
+        if userNotificationObj.seen == 0 {
+            self.notificationTextLabel.textColor = Constants.Color.notificationUnreadTextColor
+            self.notificationTimeLabel.textColor = Constants.Color.notificationUnreadTimeLabelColor
+            self.notificationJobLocationLabel.textColor = Constants.Color.notificationUnreadTextColor
+            self.unreadView.isHidden = false
+        }else {
+            self.unreadView.isHidden = true
+            self.notificationTextLabel.textColor = Constants.Color.notificationreadTextColor
+            self.notificationTimeLabel.textColor = Constants.Color.notificationreadTimeLabelColor
+            self.notificationJobLocationLabel.textColor = Constants.Color.notificationreadTextColor
+        }
         
     }
     

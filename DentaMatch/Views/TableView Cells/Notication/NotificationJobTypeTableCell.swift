@@ -20,7 +20,7 @@ class NotificationJobTypeTableCell: UITableViewCell {
         // Initialization code
         unreadView.layer.cornerRadius = unreadView.bounds.size.height/2
         unreadView.clipsToBounds = true
-        
+        self.selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -39,6 +39,17 @@ class NotificationJobTypeTableCell: UITableViewCell {
         }else if userNotificationObj.jobdetail?.jobType == 3 {
             self.btnJobType.setTitle("Temporary", for: .normal)
         }
+        
+        if userNotificationObj.seen == 0 {
+            self.notificationTextLabel.textColor = Constants.Color.notificationUnreadTextColor
+            self.notificationTimeLabel.textColor = Constants.Color.notificationUnreadTimeLabelColor
+            self.unreadView.isHidden = false
+        }else {
+            self.unreadView.isHidden = true
+            self.notificationTextLabel.textColor = Constants.Color.notificationreadTextColor
+            self.notificationTimeLabel.textColor = Constants.Color.notificationreadTimeLabelColor
+        }
+
 
         
     }
