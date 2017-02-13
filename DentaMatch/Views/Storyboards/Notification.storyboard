@@ -12,7 +12,7 @@
         <scene sceneID="YCw-8j-qU1">
             <objects>
                 <navigationController id="hMV-YX-EYX" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="oqG-Wm-oqv">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oqG-Wm-oqv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -39,6 +39,10 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SVr-J4-VGw">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="waP-kD-Acz" id="vsk-0s-dl6"/>
+                                    <outlet property="delegate" destination="waP-kD-Acz" id="aVd-gO-Hug"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

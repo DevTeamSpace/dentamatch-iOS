@@ -7,6 +7,44 @@
 //
 
 import Foundation
+import SwiftyJSON
+
 extension DMNotificationVC {
+    func getNotificationList(completionHandler: @escaping (Bool?, NSError?) -> ()) {
+        var params = [String:AnyObject]()
+        params["page"] = 1 as AnyObject
+        self.showLoader()
+        APIManager.apiGet(serviceName: Constants.API.getNotificationList, parameters: params) { (response:JSON?, error:NSError?) in
+            self.hideLoader()
+            if error != nil {
+                self.makeToast(toastString: (error?.localizedDescription)!)
+                return
+            }
+            guard let _ = response else {
+                self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
+                return
+            }
+                        debugPrint(response!)
+            self.notificationList.removeAll()
+            if response![Constants.ServerKey.status].boolValue {
+                let resultDic = response![Constants.ServerKey.result][Constants.ServerKey.list].arrayValue
+                for dictObj in resultDic {
+                    let notificationObj = UserNotification(dict: dictObj)
+                    self.notificationList.append(notificationObj)
+                }
+
+                
+//                self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
+                completionHandler(true, error)
+                //do next
+            } else {
+                self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
+                completionHandler(false, error)
+                
+            }
+        }
+    }
+
+ 
     
 }

@@ -23,6 +23,9 @@ extension UIStoryboard {
     class func registrationStoryBoard()->UIStoryboard{
         return UIStoryboard(name: Constants.StoryBoard.registrationStoryboard, bundle: nil)
     }
+    class func notificationStoryBoard()->UIStoryboard{
+        return UIStoryboard(name: Constants.StoryBoard.notificationStoryboard, bundle: nil)
+    }
     class func calenderStoryBoard()->UIStoryboard{
         return UIStoryboard(name: Constants.StoryBoard.calenderStoryboard, bundle: nil)
     }

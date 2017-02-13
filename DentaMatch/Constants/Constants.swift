@@ -94,6 +94,7 @@ struct Constants {
         static let jobTypeLabelDeselectedColor = UIColor.init(red: 181.0/255.0, green: 181.0/255.0, blue: 181.0/255.0, alpha: 1.0)
         static let partTimeDaySelectColor = UIColor.init(colorLiteralRed: 142.0/255.0, green: 207.0/255.0, blue: 125.0/255.0, alpha: 1.0)
         static let fullTimeBackgroundColor = UIColor.init(red: 69.0/255.0, green: 177.0/255.0 , blue: 179.0/255.0, alpha: 1.0)
+        static let temporaryBackGroundColor = UIColor.color(withHexCode: "f1b85a")
         static let segmentControlBorderColor = UIColor.init(red: 42/255.0, green: 85/255.0, blue: 169.0/255.0, alpha: 1.0)
         static let segmentControlSelectionColor = UIColor.init(red: 4/255.0, green: 112/255.0, blue: 191.0/255.0, alpha: 1.0)
         static let partTimeEventColor = UIColor.init(red: 142.0/255.0, green: 207.0/255.0, blue: 126.0/255.0, alpha: 1)
@@ -124,7 +125,9 @@ struct Constants {
         static let dashboardStoryboard  = "Dashboard"
         static let messagesStoryboard  = "Messages"
         static let calenderStoryboard  = "Calender"
+        static let notificationStoryboard  = "Notification"
 
+        
         struct Identifer {
             static let registrationNav = "RegistrationNAV"
             static let profileNav  = "ProfileNAV"
@@ -189,6 +192,11 @@ struct Constants {
         static let jobDetail = Constants.API.apiURL("jobs/job-detail")
         static let applyJob = Constants.API.apiURL("users/apply-job")
 
+        
+        static let getNotificationList = Constants.API.apiURL("users/notification-list")
+        static let readNotification = Constants.API.apiURL("users/notification-read")
+
+        
         static let setAvailabality = Constants.API.apiURL("users/update-availability")
         static let getAvailabality = Constants.API.apiURL("users/availability-list")
         static let getHiredJobs = Constants.API.apiURL("jobs/hired-jobs")

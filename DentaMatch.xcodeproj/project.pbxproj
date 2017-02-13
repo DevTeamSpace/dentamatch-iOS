@@ -33,6 +33,14 @@
 		5A50A2CA1E32163D0010AA31 /* SettingTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A50A2C81E32163D0010AA31 /* SettingTableCell.swift */; };
 		5A50A2CB1E32163D0010AA31 /* SettingTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A50A2C91E32163D0010AA31 /* SettingTableCell.xib */; };
 		5A5266BD1E26413400C5B7A1 /* DMLicenseSelectionVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5266BC1E26413400C5B7A1 /* DMLicenseSelectionVC+Services.swift */; };
+		5A5523E31E4C40C1007D8C09 /* HiredJobNotificationTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5523E11E4C40C1007D8C09 /* HiredJobNotificationTableCell.swift */; };
+		5A5523E41E4C40C1007D8C09 /* HiredJobNotificationTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A5523E21E4C40C1007D8C09 /* HiredJobNotificationTableCell.xib */; };
+		5A5523E71E4C4136007D8C09 /* NotificationJobTypeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5523E51E4C4136007D8C09 /* NotificationJobTypeTableCell.swift */; };
+		5A5523E81E4C4136007D8C09 /* NotificationJobTypeTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A5523E61E4C4136007D8C09 /* NotificationJobTypeTableCell.xib */; };
+		5A5523EB1E4C419F007D8C09 /* CommonTextNotificationTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5523E91E4C419F007D8C09 /* CommonTextNotificationTableCell.swift */; };
+		5A5523EC1E4C419F007D8C09 /* CommonTextNotificationTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A5523EA1E4C419F007D8C09 /* CommonTextNotificationTableCell.xib */; };
+		5A5523EF1E4D97DF007D8C09 /* UserNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5523EE1E4D97DF007D8C09 /* UserNotification.swift */; };
+		5A5523F11E4DCDF3007D8C09 /* TimeAgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5523F01E4DCDF3007D8C09 /* TimeAgo.swift */; };
 		5A60A8561E42FF1800789D14 /* DMCalenderVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A60A8551E42FF1800789D14 /* DMCalenderVC+Services.swift */; };
 		5A60A85B1E43309100789D14 /* UserAvailability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A60A85A1E43309100789D14 /* UserAvailability.swift */; };
 		5A85D20F1E2DFAD000AC4C89 /* SeparatorWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A85D2061E2DFAD000AC4C89 /* SeparatorWrapper.swift */; };
@@ -396,6 +404,14 @@
 		5A50A2C81E32163D0010AA31 /* SettingTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableCell.swift; sourceTree = "<group>"; };
 		5A50A2C91E32163D0010AA31 /* SettingTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingTableCell.xib; sourceTree = "<group>"; };
 		5A5266BC1E26413400C5B7A1 /* DMLicenseSelectionVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMLicenseSelectionVC+Services.swift"; sourceTree = "<group>"; };
+		5A5523E11E4C40C1007D8C09 /* HiredJobNotificationTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HiredJobNotificationTableCell.swift; sourceTree = "<group>"; };
+		5A5523E21E4C40C1007D8C09 /* HiredJobNotificationTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HiredJobNotificationTableCell.xib; sourceTree = "<group>"; };
+		5A5523E51E4C4136007D8C09 /* NotificationJobTypeTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationJobTypeTableCell.swift; sourceTree = "<group>"; };
+		5A5523E61E4C4136007D8C09 /* NotificationJobTypeTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationJobTypeTableCell.xib; sourceTree = "<group>"; };
+		5A5523E91E4C419F007D8C09 /* CommonTextNotificationTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonTextNotificationTableCell.swift; sourceTree = "<group>"; };
+		5A5523EA1E4C419F007D8C09 /* CommonTextNotificationTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommonTextNotificationTableCell.xib; sourceTree = "<group>"; };
+		5A5523EE1E4D97DF007D8C09 /* UserNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNotification.swift; sourceTree = "<group>"; };
+		5A5523F01E4DCDF3007D8C09 /* TimeAgo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeAgo.swift; sourceTree = "<group>"; };
 		5A60A8551E42FF1800789D14 /* DMCalenderVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMCalenderVC+Services.swift"; sourceTree = "<group>"; };
 		5A60A85A1E43309100789D14 /* UserAvailability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAvailability.swift; sourceTree = "<group>"; };
 		5A85D2061E2DFAD000AC4C89 /* SeparatorWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatorWrapper.swift; sourceTree = "<group>"; };
@@ -776,6 +792,7 @@
 		5A1E2A161E1E47340055D913 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5A5523ED1E4D97C0007D8C09 /* Notification */,
 				E5AE37831E4986E10001EC3C /* CoreDataModels */,
 				F209C33F1E435A26005C9594 /* JobSearchParameter */,
 				5A60A8571E43012A00789D14 /* Calendar */,
@@ -874,6 +891,15 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
+		5A5523ED1E4D97C0007D8C09 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				5A5523EE1E4D97DF007D8C09 /* UserNotification.swift */,
+				5A5523F01E4DCDF3007D8C09 /* TimeAgo.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
 		5A60A8571E43012A00789D14 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
@@ -922,6 +948,12 @@
 		5A988BC91E4AEF4100DECB49 /* Notication */ = {
 			isa = PBXGroup;
 			children = (
+				5A5523E11E4C40C1007D8C09 /* HiredJobNotificationTableCell.swift */,
+				5A5523E21E4C40C1007D8C09 /* HiredJobNotificationTableCell.xib */,
+				5A5523E51E4C4136007D8C09 /* NotificationJobTypeTableCell.swift */,
+				5A5523E61E4C4136007D8C09 /* NotificationJobTypeTableCell.xib */,
+				5A5523E91E4C419F007D8C09 /* CommonTextNotificationTableCell.swift */,
+				5A5523EA1E4C419F007D8C09 /* CommonTextNotificationTableCell.xib */,
 			);
 			path = Notication;
 			sourceTree = "<group>";
@@ -2208,6 +2240,7 @@
 				E5E7CB991E2FA28000D4FB59 /* PhotoCell.xib in Resources */,
 				E5E7CB7F1E2FA23200D4FB59 /* CertificationsCell.xib in Resources */,
 				E5A0EB111E2BE7C40092E21A /* Resources.bundle in Resources */,
+				5A5523E81E4C4136007D8C09 /* NotificationJobTypeTableCell.xib in Resources */,
 				E5A0EB061E2BDE680092E21A /* SubSkillCollectionCell.xib in Resources */,
 				E5AE377F1E497D8D0001EC3C /* MessageListTableCell.xib in Resources */,
 				E54B9A7D1E326A6C00805D9C /* EditCertificateTableCell.xib in Resources */,
@@ -2242,6 +2275,7 @@
 				E597E55B1E150638001DDA78 /* dentamatch.ttf in Resources */,
 				E5E7CB881E2FA23200D4FB59 /* SectionHeadingTableCell.xib in Resources */,
 				E5E7CB861E2FA23200D4FB59 /* PhotoNameCell.xib in Resources */,
+				5A5523E41E4C40C1007D8C09 /* HiredJobNotificationTableCell.xib in Resources */,
 				F2540F611E274360004B0538 /* JobSearchResultCell.xib in Resources */,
 				F2F5E0D41E30CF310082187C /* JobDescriptionCell.xib in Resources */,
 				F2540F571E23A8AE004B0538 /* CurrentLocationCell.xib in Resources */,
@@ -2259,6 +2293,7 @@
 				5AD246951E273CE7009350BF /* DatePickerView.xib in Resources */,
 				5A3BD4AF1E35DB1E00A607AC /* EditProfileSkillBrickCell.xib in Resources */,
 				5A3FD0771E1CC7CD00360B3C /* DMProfileHeaderView.xib in Resources */,
+				5A5523EC1E4C419F007D8C09 /* CommonTextNotificationTableCell.xib in Resources */,
 				5A50A2CB1E32163D0010AA31 /* SettingTableCell.xib in Resources */,
 				E597E5851E151A99001DDA78 /* SF-UI-Text-MediumItalic.otf in Resources */,
 				E558D9121E2E873700A6DF95 /* EditProfileHeaderTableCell.xib in Resources */,
@@ -2415,6 +2450,7 @@
 				E57F29E11E3696A60025B9DE /* DMEditDentalStateBoardVC+Services.swift in Sources */,
 				5A2CEF4B1E3C2F9600836654 /* DMCalendarSetAvailabillityVC+Services.swift in Sources */,
 				E59029AA1DED2C7A00151E9B /* UserDefaultsManager.swift in Sources */,
+				5A5523EB1E4C419F007D8C09 /* CommonTextNotificationTableCell.swift in Sources */,
 				F2D03BA81E1F67BA0005D3A4 /* DMJobSearchVC.swift in Sources */,
 				F2540F561E23A8AE004B0538 /* CurrentLocationCell.swift in Sources */,
 				E594BE9D1E1DFF4400310AE5 /* DMRegistrationVC+TableViewExtension.swift in Sources */,
@@ -2460,6 +2496,7 @@
 				E54976F41E28CEDD006F21E5 /* EmployeeReferenceModel.swift in Sources */,
 				E59029A81DED2C7A00151E9B /* APIManager.swift in Sources */,
 				E5E7CBA51E3089B200D4FB59 /* DMEditLicenseVC+Services.swift in Sources */,
+				5A5523E31E4C40C1007D8C09 /* HiredJobNotificationTableCell.swift in Sources */,
 				E5AE377E1E497D8D0001EC3C /* MessageListTableCell.swift in Sources */,
 				E56C9FA31DED520B00EAA9DD /* InAppPurchase.swift in Sources */,
 				E558D8FC1E2CB5D400A6DF95 /* AutoCompleteTable.swift in Sources */,
@@ -2480,6 +2517,7 @@
 				F22359171E3F3E3300E984FC /* DMJobSearchVC+TableViewExtension.swift in Sources */,
 				F2F5E0DA1E31BDD00082187C /* MapCell.swift in Sources */,
 				E55462F71DAE4C6F004163B2 /* UITextField+ToolBar.swift in Sources */,
+				5A5523EF1E4D97DF007D8C09 /* UserNotification.swift in Sources */,
 				E5AE37041E485D800001EC3C /* PlaceHolderJobsView.swift in Sources */,
 				E5AE37661E4971CE0001EC3C /* SocketEnginePollable.swift in Sources */,
 				E5AE376B1E4971CE0001EC3C /* SocketIOClient.swift in Sources */,
@@ -2487,6 +2525,7 @@
 				E587D2D71E236B84006B7F06 /* DMRegisterMapsVC+GoogleMapsExtension.swift in Sources */,
 				5A3B06CD1E3387FF00EFCA6E /* DMSettingVC+TableViewExtension.swift in Sources */,
 				E5AE37691E4971CE0001EC3C /* SocketEventHandler.swift in Sources */,
+				5A5523F11E4DCDF3007D8C09 /* TimeAgo.swift in Sources */,
 				5A60A85B1E43309100789D14 /* UserAvailability.swift in Sources */,
 				E5AE375F1E4971CE0001EC3C /* SocketAckEmitter.swift in Sources */,
 				E54976F31E28CEDD006F21E5 /* User.swift in Sources */,
@@ -2579,6 +2618,7 @@
 				E594BEA81E1E07F500310AE5 /* DMLoginVC+Services.swift in Sources */,
 				E5496E021E255A9E00C54288 /* DMExecutiveSummaryVC+TableViewExtension.swift in Sources */,
 				E54B9A841E32870B00805D9C /* DMEditCertificateVC.swift in Sources */,
+				5A5523E71E4C4136007D8C09 /* NotificationJobTypeTableCell.swift in Sources */,
 				E56F78561E1F602200F07814 /* DMForgotPasswordVC+Services.swift in Sources */,
 				E5BED5501E49AB85003EC833 /* DMChatVC+TableViewExtensions.swift in Sources */,
 				5A3B06CB1E3387DA00EFCA6E /* DMSettingVC.swift in Sources */,
