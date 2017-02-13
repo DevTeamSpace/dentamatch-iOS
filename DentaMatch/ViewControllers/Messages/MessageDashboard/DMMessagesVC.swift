@@ -72,7 +72,11 @@ class DMMessagesVC: DMBaseVC {
         do {
             try self.fetchedResultsController.performFetch()
             self.messageListTableView.reloadData()
-            
+            if let sections = self.fetchedResultsController.sections {
+                if sections.count > 0 {
+                    self.placeHolderEmptyJobsView?.isHidden = true
+                }
+            }
         } catch {
             let fetchError = error as NSError
             print("\(fetchError), \(fetchError.userInfo)")
