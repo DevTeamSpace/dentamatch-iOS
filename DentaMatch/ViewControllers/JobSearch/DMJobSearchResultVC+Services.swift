@@ -67,6 +67,11 @@ extension DMJobSearchResultVC {
                     self.tblJobSearchResult.reloadData()
                 }
             } else {
+                self.jobs.removeAll()
+                DispatchQueue.main.async {
+                    self.lblResultCount.text = Constants.Strings.zero + Constants.Strings.whiteSpace + Constants.Strings.resultsFound
+                    self.tblJobSearchResult.reloadData()
+                }
                 self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
             }
         }

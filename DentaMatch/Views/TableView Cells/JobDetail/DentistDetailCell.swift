@@ -89,11 +89,11 @@ class DentistDetailCell: UITableViewCell {
             partTimeJobDays.append(Constants.DaysAbbreviation.saturday)
         }
         self.lblDays.text = partTimeJobDays.joined(separator: Constants.Strings.comma + Constants.Strings.whiteSpace)
-        if job.days == Constants.Strings.zero {
+        if job.jobPostedTimeGap == Constants.Strings.zero {
             self.lblPostTime.text = Constants.Strings.today
         }
-        else if job.days == Constants.Strings.one{
-            self.lblPostTime.text = job.days + Constants.Strings.whiteSpace + Constants.Strings.dayAgo
+        else if job.jobPostedTimeGap == Constants.Strings.one {
+            self.lblPostTime.text = job.jobPostedTimeGap + Constants.Strings.whiteSpace + Constants.Strings.dayAgo
         }
         else {
             self.lblPostTime.text = job.jobPostedTimeGap + Constants.Strings.whiteSpace + Constants.Strings.daysAgo
