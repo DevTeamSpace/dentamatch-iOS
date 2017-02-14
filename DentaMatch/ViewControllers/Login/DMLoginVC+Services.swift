@@ -34,7 +34,7 @@ extension DMLoginVC {
             self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
             if success {
                 SocketManager.sharedInstance.establishConnection()
-                //self.saveSearchedData(response: response!)
+                self.saveSearchedData(response: response!)
                 self.openJobTitleSelection()
             }
         }
@@ -49,7 +49,7 @@ extension DMLoginVC {
                 searchParams[Constants.JobDetailKey.isFulltime] = searchFilters[Constants.JobDetailKey.isFulltime].stringValue
                 searchParams[Constants.JobDetailKey.isParttime] = searchFilters[Constants.JobDetailKey.isParttime].stringValue
                 searchParams[Constants.JobDetailKey.parttimeDays] = searchFilters[Constants.JobDetailKey.parttimeDays].arrayObject as! [String]
-                searchParams[Constants.JobDetailKey.jobTitle] = searchFilters[Constants.JobDetailKey.jobTitle].arrayObject as! [String]
+                searchParams[Constants.JobDetailKey.jobTitle] = searchFilters[Constants.JobDetailKey.jobTitle].arrayObject as! [Int]
             searchParams[Constants.JobDetailKey.jobTitles] = searchFilters[Constants.JobDetailKey.jobTitles].arrayObject as! [[String:Any]]
                 searchParams[Constants.JobDetailKey.address] = searchFilters[Constants.JobDetailKey.address].stringValue
         }

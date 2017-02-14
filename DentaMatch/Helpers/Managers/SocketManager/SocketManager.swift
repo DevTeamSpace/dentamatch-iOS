@@ -7,13 +7,21 @@
 //
 
 import UIKit
+import SwiftyJSON
+import UserNotifications
 
 class SocketManager: NSObject,SocketConnectionDelegate {
     
     static let sharedInstance = SocketManager()
     
+    typealias ReceiveMessageClosure = ((_ messageInfo: [String: AnyObject])->Void)
+    private var chatCompletionHandler: ReceiveMessageClosure?
+    
+    typealias HistoryCallBackClosure = ((_ messageInfo: [Any])->Void)
+    private var historyMessagesCompletionHandler: HistoryCallBackClosure?
+    
     var socket = SocketIOClient(socketURL: URL(string: "http://dev.dentamatch.co:3000")!)
-
+    
     override init() {
         super.init()
     }
@@ -36,6 +44,21 @@ class SocketManager: NSObject,SocketConnectionDelegate {
         socket.emit("init", params)
     }
     
+    
+    func sendTextMessage(message: String) {
+        let params = [
+            "fromId":UserManager.shared().activeUser.userId!,
+            "toId":"8",
+            "message":message
+        ]
+        socket.emit("sendMessage", with: [params])
+    }
+    
+    
+    func getChatMessage(completionHandler: @escaping (_ messageInfo: [String: AnyObject]) -> Void) {
+        self.chatCompletionHandler = completionHandler
+    }
+    
     func getHistory(pageNo:Int) {
         let params = [
             "fromId":UserManager.shared().activeUser.userId!,
@@ -46,11 +69,7 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     }
     
     func receiveMessages(completionHandler: @escaping (_ messageInfo: [Any]) -> Void) {
-        socket.on("getMessages") { (dataArray, socketAck) -> Void in
-            var messageDictionary = [Any]()
-            messageDictionary = dataArray
-            completionHandler(messageDictionary)
-        }
+        self.historyMessagesCompletionHandler = completionHandler
     }
 
     func connectToServerWithNickname(nickname: String, completionHandler: @escaping (_ userList: [[String: AnyObject]]?) -> Void) {
@@ -66,30 +85,6 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     func exitChatWithNickname(nickname: String, completionHandler: () -> Void) {
         socket.emit("exitUser", nickname)
         completionHandler()
-    }
-    
-    func sendTextMessage(message: String) {
-        let params = [
-            "fromId":UserManager.shared().activeUser.userId!,
-            "toId":"8",
-            "message":message
-        ]
-        socket.emit("sendMessage", with: [params])
-    }
-    
-    func sendMessage(message: String, withNickname nickname: String) {
-        socket.emit("chatMessage", nickname, message)
-    }
-    
-    func getChatMessage(completionHandler: @escaping (_ messageInfo: [String: AnyObject]) -> Void) {
-        socket.on("receiveMessage") { (dataArray, socketAck) -> Void in
-            var messageDictionary = [String: AnyObject]()
-            messageDictionary = dataArray[0] as! [String:AnyObject]
-            //            messageDictionary["message"] = dataArray[1] as! String as AnyObject?
-//            messageDictionary["date"] = dataArray[2] as! String as AnyObject?
-            
-            completionHandler(messageDictionary)
-        }
     }
     
     private func listenForOtherMessages() {
@@ -118,13 +113,81 @@ class SocketManager: NSObject,SocketConnectionDelegate {
         print("Socket Connected")
         if let _ = UserManager.shared().activeUser {
             self.initServer()
+            eventForReceiveMessage()
+            eventForHistoryMessages()
         }
     }
     
     func didDisconnectSocket() {
         print("Socket Disconnected")
-
     }
     
+    func eventForReceiveMessage() {
+        socket.off("receiveMessage")
+        socket.on("receiveMessage") { (dataArray, socketAck) -> Void in
+            var messageDictionary = [String: AnyObject]()
+            messageDictionary = dataArray[0] as! [String:AnyObject]
+            if let _ = self.chatCompletionHandler {
+                self.chatCompletionHandler?(messageDictionary)
+            } else {
+                debugPrint("not on chat page")
+                let chatObj = JSON(rawValue: messageDictionary)
+                DatabaseManager.addUpdateChatToDB(chatObj: chatObj)
+                self.scheduleNotification(message: (chatObj?["message"].stringValue)!)
+            }
+        }
+    }
+    
+    func eventForHistoryMessages() {
+        socket.off("getMessages")
+        socket.on("getMessages") { (dataArray, socketAck) -> Void in
+            var messageDictionary = [Any]()
+            messageDictionary = dataArray
+            if let _ = self.historyMessagesCompletionHandler {
+                self.historyMessagesCompletionHandler?(messageDictionary)
+            } else {
+                print("not on chat page")
+            }
+        }
+    }
+    
+    func removeAllCompletionHandlers() {
+        self.chatCompletionHandler = nil
+        self.historyMessagesCompletionHandler = nil
+    }
+    
+    func scheduleNotification(message:String) {
+        if #available(iOS 10.0, *) {
+            let content = UNMutableNotificationContent()
+            let requestIdentifier = "chatNotification"
+            
+            content.badge = 1
+            content.title = "New Message"
+            content.subtitle = ""
+            content.body = message
+//            content.categoryIdentifier = "actionCategory"
+            content.sound = UNNotificationSound.default()
+//            let url = Bundle.main.url(forResource: "DP", withExtension: ".jpg")
+//            do {
+//                let attachment = try? UNNotificationAttachment(identifier: requestIdentifier, url: url!, options: nil)
+//                content.attachments = [attachment!]
+//            }
+            let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 0.1, repeats: false)
+            
+            let request = UNNotificationRequest(identifier: requestIdentifier, content: content, trigger: trigger)
+            UNUserNotificationCenter.current().add(request) { (error:Error?) in
+                
+                if error != nil {
+                    print((error?.localizedDescription)!)
+                }
+                
+                print("Notification Register Success")
+                
+            }
+
+        } else {
+            // Fallback on earlier versions
+        }
+    }
 }
 

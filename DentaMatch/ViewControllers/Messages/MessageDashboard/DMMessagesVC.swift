@@ -28,6 +28,7 @@ class DMMessagesVC: DMBaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        SocketManager.sharedInstance.removeAllCompletionHandlers()
         if let selectedIndex = self.messageListTableView.indexPathForSelectedRow {
             self.messageListTableView.deselectRow(at: selectedIndex, animated: true)
         }

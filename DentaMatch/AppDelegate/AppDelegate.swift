@@ -30,6 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         registerForPushNotifications()
         
+        configureRichNotifications()
+        
         changeNavBarAppearance()
         
         configureNetworkReachability()
