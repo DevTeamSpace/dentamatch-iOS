@@ -93,7 +93,6 @@ extension DMChatVC:NSFetchedResultsControllerDelegate {
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         
-        print(indexPath?.row ?? 0)
         switch type {
         case .insert:
             if let indexPath = newIndexPath {

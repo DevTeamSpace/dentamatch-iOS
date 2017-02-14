@@ -33,7 +33,7 @@ class DMChatVC: DMBaseVC {
         super.viewDidLoad()
         setup()
         self.getChats()
-        SocketManager.sharedInstance.getHistory(pageNo: 1)
+        //SocketManager.sharedInstance.getHistory(pageNo: 1)
         // Do any additional setup after loading the view.
         receiveMessagesEvent()
         receiveChatMessageEvent()
