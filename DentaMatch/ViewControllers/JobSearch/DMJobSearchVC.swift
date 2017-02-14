@@ -106,6 +106,9 @@ class DMJobSearchVC : DMBaseVC {
                 searchParams = params
             }
         }
+        else {
+            self.navigationItem.leftBarButtonItem = nil
+        }
         
         self.tblViewJobSearch.rowHeight = UITableViewAutomaticDimension
         self.tblViewJobSearch.register(UINib(nibName: "JobSeachTitleCell", bundle: nil), forCellReuseIdentifier: "JobSeachTitleCell")
