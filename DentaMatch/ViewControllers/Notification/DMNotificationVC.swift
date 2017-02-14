@@ -34,6 +34,8 @@ class DMNotificationVC: DMBaseVC {
     }
     func setup() {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.navigationItem.leftBarButtonItem = self.backBarButton()
+
         self.notificationTableView.estimatedRowHeight = 76
         self.notificationTableView.register(UINib(nibName: "HiredJobNotificationTableCell", bundle: nil), forCellReuseIdentifier: "HiredJobNotificationTableCell")
         self.notificationTableView.register(UINib(nibName: "CommonTextNotificationTableCell", bundle: nil), forCellReuseIdentifier: "CommonTextNotificationTableCell")

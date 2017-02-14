@@ -44,6 +44,47 @@ extension DMNotificationVC {
             }
         }
     }
+    
+    
+    
+    
+    
+    func readNotificationToServer(notificationObj:UserNotification, completionHandler: @escaping (JSON?, NSError?) -> ()) {
+        
+        var param = [String:AnyObject]()
+        param["notificationId"] = notificationObj.notificationID as AnyObject?
+        
+        //        param["jobYear"] = year as AnyObject?
+        
+        print("readNotification Parameters\n\(param.description))")
+        
+        self.showLoader()
+        APIManager.apiPost(serviceName: Constants.API.readNotification, parameters: param) { (response:JSON?, error:NSError?) in
+            self.hideLoader()
+            if error != nil {
+                self.makeToast(toastString: (error?.localizedDescription)!)
+                return
+            }
+            guard let _ = response else {
+                self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
+                return
+            }
+            //            debugPrint(response!)
+            
+            if response![Constants.ServerKey.status].boolValue {
+//                let resultDic = response![Constants.ServerKey.result][Constants.ServerKey.list].arrayValue
+//                                self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
+                //do next
+                completionHandler(response, error)
+                
+            } else {
+                self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
+                completionHandler(response, error)
+                
+            }
+        }
+    }
+
 
  
     

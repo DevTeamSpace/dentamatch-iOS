@@ -41,6 +41,18 @@ extension DMNotificationVC : UITableViewDataSource,UITableViewDelegate {
         
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let notifiObj = self.notificationList[indexPath.row]
+        if notifiObj.seen == 1 {
+            // need to implement
+        }else {
+            self.readNotificationToServer(notificationObj: notifiObj) { (response, error) in
+                if response![Constants.ServerKey.status].boolValue {
+                    notifiObj.seen = 1
+                    self.notificationTableView.reloadData()
+                }
+            }
+        }
+       
         
     }
     
