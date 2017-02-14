@@ -64,20 +64,24 @@ extension DMChatVC:NSFetchedResultsControllerDelegate {
         do {
             try self.fetchedResultsController.performFetch()
             self.chatTableView.reloadData()
-            if let sections = fetchedResultsController.sections {
-                let sectionInfo = sections[sections.count - 1]
-                if sections.count > 0 {
-                    if (sectionInfo.objects?.count)! > 0 {
-                    self.chatTableView.scrollToRow(at:IndexPath(row: (sectionInfo.objects?.count)! - 1, section: sections.count - 1), at: .bottom, animated: true)
-                    }
-                }
-            }
-            
+            self.scrollTableToBottom()
         } catch {
             let fetchError = error as NSError
             print("\(fetchError), \(fetchError.userInfo)")
         }
         
+    }
+    
+    func scrollTableToBottom() {
+        if let sections = fetchedResultsController.sections {
+            let sectionInfo = sections[sections.count - 1]
+            if sections.count > 0 {
+                if (sectionInfo.objects?.count)! > 0 {
+                    self.chatTableView.scrollToRow(at:IndexPath(row: (sectionInfo.objects?.count)! - 1, section: sections.count - 1), at: .bottom, animated: true)
+                }
+            }
+        }
+
     }
     
     //MARK:- NSFetchedResultsControllerDelegate

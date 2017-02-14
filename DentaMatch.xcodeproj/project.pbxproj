@@ -2172,6 +2172,9 @@
 						DevelopmentTeam = 37YG7ABMG2;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};

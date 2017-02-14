@@ -17,6 +17,9 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     typealias ReceiveMessageClosure = ((_ messageInfo: [String: AnyObject])->Void)
     private var chatCompletionHandler: ReceiveMessageClosure?
     
+    //To check whether the same recruiter is chatting
+    var recruiterId = "0"
+    
     typealias HistoryCallBackClosure = ((_ messageInfo: [Any])->Void)
     private var historyMessagesCompletionHandler: HistoryCallBackClosure?
     
@@ -27,7 +30,8 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     }
     
     func establishConnection() {
-        //DefaultSocketLogger.Logger.log = true
+ //       DefaultSocketLogger.Logger.log = true
+//        socket.engine?.ws?.voipEnabled = true
         socket.delegate = self
         socket.connect()
     }
@@ -129,11 +133,17 @@ class SocketManager: NSObject,SocketConnectionDelegate {
             messageDictionary = dataArray[0] as! [String:AnyObject]
             if let _ = self.chatCompletionHandler {
                 self.chatCompletionHandler?(messageDictionary)
+                let chatObj = JSON(rawValue: messageDictionary)
+                if chatObj!["fromId"].stringValue == self.recruiterId || chatObj!["toId"].stringValue == self.recruiterId {
+                    //If app is in background but same chat page is opened
+                    return
+                } else {
+                    self.makeNotificationData(chat: chatObj)
+                }
             } else {
                 debugPrint("not on chat page")
                 let chatObj = JSON(rawValue: messageDictionary)
-                DatabaseManager.addUpdateChatToDB(chatObj: chatObj)
-                self.scheduleNotification(message: (chatObj?["message"].stringValue)!)
+                self.makeNotificationData(chat: chatObj)
             }
         }
     }
@@ -154,6 +164,14 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     func removeAllCompletionHandlers() {
         self.chatCompletionHandler = nil
         self.historyMessagesCompletionHandler = nil
+        self.recruiterId = "0"
+    }
+    
+    func makeNotificationData(chat:JSON?) {
+        DatabaseManager.addUpdateChatToDB(chatObj: chat)
+        if UIApplication.shared.applicationState == .active {
+            self.scheduleNotification(message: (chat?["message"].stringValue)!)
+        }
     }
     
     func scheduleNotification(message:String) {
@@ -167,6 +185,8 @@ class SocketManager: NSObject,SocketConnectionDelegate {
             content.body = message
 //            content.categoryIdentifier = "actionCategory"
             content.sound = UNNotificationSound.default()
+            content.userInfo = ["myKey": "myValue"] as [String : Any]
+
 //            let url = Bundle.main.url(forResource: "DP", withExtension: ".jpg")
 //            do {
 //                let attachment = try? UNNotificationAttachment(identifier: requestIdentifier, url: url!, options: nil)
@@ -176,13 +196,10 @@ class SocketManager: NSObject,SocketConnectionDelegate {
             
             let request = UNNotificationRequest(identifier: requestIdentifier, content: content, trigger: trigger)
             UNUserNotificationCenter.current().add(request) { (error:Error?) in
-                
                 if error != nil {
                     print((error?.localizedDescription)!)
                 }
-                
                 print("Notification Register Success")
-                
             }
 
         } else {
