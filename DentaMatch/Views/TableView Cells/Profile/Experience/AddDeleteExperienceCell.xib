@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -40,7 +40,7 @@
                             <constraint firstAttribute="height" constant="1.5" id="HFU-0V-mUv"/>
                         </constraints>
                     </view>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2nM-up-it5">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2nM-up-it5">
                         <rect key="frame" x="0.0" y="10" width="320" height="44"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="44" id="FtX-Fy-L7C"/>
@@ -48,6 +48,9 @@
                         <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="16"/>
                         <state key="normal" title="Delete Experience">
                             <color key="titleColor" red="0.015686274509803921" green="0.4392156862745098" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <state key="highlighted" title="Delete Experience">
+                            <color key="titleColor" red="0.015686274510000001" green="0.43921568630000002" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
                 </subviews>

@@ -33,9 +33,13 @@ extension AppDelegate {
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         //
         debugPrint(error.localizedDescription)
+        
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        debugPrint("didReceiveRemoteNotification \(userInfo.description)")
+        self.window?.makeToast(userInfo.description)
+
     }
 
 }

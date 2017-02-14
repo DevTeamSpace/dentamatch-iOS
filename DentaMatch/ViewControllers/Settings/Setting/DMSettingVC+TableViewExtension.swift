@@ -25,7 +25,7 @@ extension DMSettingVC : UITableViewDataSource,UITableViewDelegate {
         cell.leftIconImageView.isHidden = true
         switch indexPath.row {
         case 0:
-            cell.TextLabel.text = "Change Home Location"
+            cell.TextLabel.text = "Preferred Job Location"
             cell.leftIconLabel.text = "d"
         case 1:
             cell.TextLabel.text = "Reset Password"

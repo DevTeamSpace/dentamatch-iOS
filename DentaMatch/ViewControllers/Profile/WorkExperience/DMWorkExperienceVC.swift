@@ -212,6 +212,9 @@ class DMWorkExperienceVC: DMBaseVC,ExperiencePickerViewDelegate,ToolBarButtonDel
     func initialDataSetup(){
         let exp = ExperienceModel(empty: "")
         self.exprienceDetailArray?.add(exp)
+        if exprienceArray.count > 0 {
+            self.currentExperience?.isFirstExperience = false
+        }
         self.currentExperience?.references.append(EmployeeReferenceModel(empty: ""))
         self.workExperienceTable.reloadData()
         self.workExperienceDetailTable.reloadData()

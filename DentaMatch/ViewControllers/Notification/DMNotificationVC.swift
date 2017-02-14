@@ -33,6 +33,7 @@ class DMNotificationVC: DMBaseVC {
         // Dispose of any resources that can be recreated.
     }
     func setup() {
+        self.title = Constants.ScreenTitleNames.notification
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationItem.leftBarButtonItem = self.backBarButton()
 

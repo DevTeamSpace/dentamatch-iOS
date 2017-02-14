@@ -413,6 +413,8 @@ struct Constants {
         static let jobSearch = "SEARCH JOBS"
         static let jobTitle = "JOB TITLE"
         static let jobDetails = "JOB DETAILS"
+        static let notification = "NOTIFICATIONS"
+
     }
     
     //MARK:- Strings

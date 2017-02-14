@@ -38,10 +38,13 @@ extension DMWorkExperienceVC {
                     self.exprienceArray.append(experienceObj)
                 }
                 
+                if exprienceArray.count > 0 {
+                    self.currentExperience?.isFirstExperience = false
+                }
                 self.workExperienceTable.reloadData()
                 self.workExperienceDetailTable.reloadData()
                 self.reSizeTableViewsAndScrollView()
-
+                
                 
             } else {
                 self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
