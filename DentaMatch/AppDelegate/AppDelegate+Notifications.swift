@@ -7,13 +7,34 @@
 //
 
 import Foundation
+import UserNotifications
 
-extension AppDelegate {
+extension AppDelegate:UNUserNotificationCenterDelegate {
     
     func registerForPushNotifications() {
         let pushSettings = UIUserNotificationSettings(types: [.alert,.badge,.sound], categories: nil)
         UIApplication.shared.registerUserNotificationSettings(pushSettings)
         UIApplication.shared.registerForRemoteNotifications()
+    }
+    
+    func configureRichNotifications() {
+        if #available(iOS 10.0, *) {
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.badge,.sound]) { (granted:Bool, error:Error?) in
+                
+                if error != nil {
+                    print((error?.localizedDescription)!)
+                }
+                if granted {
+                    print("Permission granted")
+                    UIApplication.shared.registerForRemoteNotifications()
+                } else {
+                    print("Permission not granted")
+                }
+            }
+            UNUserNotificationCenter.current().delegate = self
+        } else {
+            // Fallback on earlier versions
+        }
     }
 
     
@@ -37,5 +58,15 @@ extension AppDelegate {
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
     }
-
+    
+    @available(iOS 10.0, *)
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert,.badge])
+    }
+    
+    @available(iOS 10.0, *)
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        debugPrint("Go to chat")
+        completionHandler()
+    }
 }

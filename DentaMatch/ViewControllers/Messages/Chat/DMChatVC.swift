@@ -84,8 +84,8 @@ class DMChatVC: DMBaseVC {
     func receiveChatMessageEvent() {
         SocketManager.sharedInstance.getChatMessage { (object:[String : AnyObject]) in
             print(object)
-            let json = JSON(rawValue: object)
-            self.addUpdateChatToDB(chatObj: json)
+            let chatObj = JSON(rawValue: object)
+            self.addUpdateChatToDB(chatObj: chatObj)
             self.chatTextView.text = ""
         }
     }
@@ -139,6 +139,5 @@ extension DMChatVC:UITextViewDelegate {
         } else {
             textContainerViewHeight.constant = 48
         }
-//        print(cSize.height)
     }
 }
