@@ -12,6 +12,9 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     
     static let sharedInstance = SocketManager()
     
+    typealias ReceiveMessageClousure = ((_ messageInfo: [String: AnyObject])->Void)
+    private var chatCompletionHandler: ReceiveMessageClousure?
+    
     var socket = SocketIOClient(socketURL: URL(string: "http://dev.dentamatch.co:3000")!)
 
     override init() {
@@ -77,19 +80,9 @@ class SocketManager: NSObject,SocketConnectionDelegate {
         socket.emit("sendMessage", with: [params])
     }
     
-    func sendMessage(message: String, withNickname nickname: String) {
-        socket.emit("chatMessage", nickname, message)
-    }
     
     func getChatMessage(completionHandler: @escaping (_ messageInfo: [String: AnyObject]) -> Void) {
-        socket.on("receiveMessage") { (dataArray, socketAck) -> Void in
-            var messageDictionary = [String: AnyObject]()
-            messageDictionary = dataArray[0] as! [String:AnyObject]
-            //            messageDictionary["message"] = dataArray[1] as! String as AnyObject?
-//            messageDictionary["date"] = dataArray[2] as! String as AnyObject?
-            
-            completionHandler(messageDictionary)
-        }
+        self.chatCompletionHandler = completionHandler
     }
     
     private func listenForOtherMessages() {
@@ -118,6 +111,7 @@ class SocketManager: NSObject,SocketConnectionDelegate {
         print("Socket Connected")
         if let _ = UserManager.shared().activeUser {
             self.initServer()
+            eventForReceiveMessage()
         }
     }
     
@@ -126,5 +120,12 @@ class SocketManager: NSObject,SocketConnectionDelegate {
 
     }
     
+    func eventForReceiveMessage() {
+        socket.on("receiveMessage") { (dataArray, socketAck) -> Void in
+            var messageDictionary = [String: AnyObject]()
+            messageDictionary = dataArray[0] as! [String:AnyObject]
+            self.chatCompletionHandler?(messageDictionary)
+        }
+    }
 }
 
