@@ -175,36 +175,36 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     }
     
     func scheduleNotification(message:String) {
-        if #available(iOS 10.0, *) {
-            let content = UNMutableNotificationContent()
-            let requestIdentifier = "chatNotification"
-            
-            content.badge = 1
-            content.title = "New Message"
-            content.subtitle = ""
-            content.body = message
-//            content.categoryIdentifier = "actionCategory"
-            content.sound = UNNotificationSound.default()
-            content.userInfo = ["myKey": "myValue"] as [String : Any]
-
-//            let url = Bundle.main.url(forResource: "DP", withExtension: ".jpg")
-//            do {
-//                let attachment = try? UNNotificationAttachment(identifier: requestIdentifier, url: url!, options: nil)
-//                content.attachments = [attachment!]
+//        if #available(iOS 10.0, *) {
+//            let content = UNMutableNotificationContent()
+//            let requestIdentifier = "chatNotification"
+//            
+//            content.badge = 1
+//            content.title = "New Message"
+//            content.subtitle = ""
+//            content.body = message
+////            content.categoryIdentifier = "actionCategory"
+//            content.sound = UNNotificationSound.default()
+//            content.userInfo = ["myKey": "myValue"] as [String : Any]
+//
+////            let url = Bundle.main.url(forResource: "DP", withExtension: ".jpg")
+////            do {
+////                let attachment = try? UNNotificationAttachment(identifier: requestIdentifier, url: url!, options: nil)
+////                content.attachments = [attachment!]
+////            }
+//            let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 0.1, repeats: false)
+//            
+//            let request = UNNotificationRequest(identifier: requestIdentifier, content: content, trigger: trigger)
+//            UNUserNotificationCenter.current().add(request) { (error:Error?) in
+//                if error != nil {
+//                    print((error?.localizedDescription)!)
+//                }
+//                print("Notification Register Success")
 //            }
-            let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 0.1, repeats: false)
-            
-            let request = UNNotificationRequest(identifier: requestIdentifier, content: content, trigger: trigger)
-            UNUserNotificationCenter.current().add(request) { (error:Error?) in
-                if error != nil {
-                    print((error?.localizedDescription)!)
-                }
-                print("Notification Register Success")
-            }
-
-        } else {
-            // Fallback on earlier versions
-        }
+//
+//        } else {
+//            // Fallback on earlier versions
+//        }
     }
 }
 

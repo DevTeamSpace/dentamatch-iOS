@@ -25,6 +25,7 @@ extension DMChatVC:NSFetchedResultsControllerDelegate {
                 chat.fromId = chatObj["fromId"].stringValue
                 chat.toId = chatObj["toId"].stringValue
                 chat.dateString = chatObj["sentTime"].stringValue
+                self.getDate(timestamp: chatObj["sentTime"].stringValue)
                 self.chatList?.lastMessage = chatObj["message"].stringValue
                 self.chatList?.lastMessageId = chatObj["messageId"].stringValue
                 //chat.date = self.getDate(dateString: chatObj["timestamp"].stringValue)?.date as NSDate?
@@ -81,6 +82,23 @@ extension DMChatVC:NSFetchedResultsControllerDelegate {
                 }
             }
         }
+
+    }
+    
+    func getDate(timestamp:String) {
+        let doubleTime = Double(timestamp)
+        let date = Date(timeIntervalSince1970: doubleTime!/1000)
+        let dateFormatter = DateFormatter()
+        dateFormatter.amSymbol = "am"
+        dateFormatter.pmSymbol = "pm"
+        dateFormatter.dateFormat = Date.dateFormatYYYYMMDDHHMMSSAA()
+        let dateEnter = dateFormatter.string(from: date)
+
+        dateFormatter.dateFormat = Date.dateFormatHHMM()
+        let dateEnter1 = dateFormatter.string(from: date)
+
+//       dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        let ee = dateFormatter.date(from: dateEnter)
 
     }
     

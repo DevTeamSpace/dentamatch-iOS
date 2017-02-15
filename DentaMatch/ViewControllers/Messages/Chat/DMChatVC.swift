@@ -168,6 +168,7 @@ extension DMChatVC:UITextViewDelegate {
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
+        textView.text = textView.text.trim()
         if !textView.text.isEmpty {
             placeHolderLabel.isHidden = true
         } else {
@@ -180,7 +181,6 @@ extension DMChatVC:UITextViewDelegate {
     }
     
     func textViewDidChange(_ textView: UITextView) {
-        textView.text = textView.text.trim()
         if !textView.text.isEmpty {
             placeHolderLabel.isHidden = true
         } else {

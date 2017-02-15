@@ -43,12 +43,24 @@ extension Date {
         return "yyyy-MM-dd"
     }
     
+    public static func dateFormatMMDDYYYYDashed() ->String {
+        return "MM-dd-YYYY hh:mmaa"
+    }
+    
     public static func dateFormatYYYY()->String {
         return "yyyy"
     }
     
     public static func dateFormatYYYYMMDDHHMMSS()->String {
         return "yyyy-MM-dd HH:mm:ss"
+    }
+    
+    public static func dateFormatYYYYMMDDHHMMSSAA()->String {
+        return "yyyy-MM-dd hh:mm:ss aa"
+    }
+    
+    public static func dateFormatHHMM()->String {
+        return "hh:mma"
     }
     
     static func shortDate(date:Date)-> String{

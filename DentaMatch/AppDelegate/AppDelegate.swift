@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         registerForPushNotifications()
         
-        configureRichNotifications()
+        //configureRichNotifications()
         
         changeNavBarAppearance()
         

@@ -12,9 +12,9 @@ import UserNotifications
 extension AppDelegate:UNUserNotificationCenterDelegate {
     
     func registerForPushNotifications() {
-//        let pushSettings = UIUserNotificationSettings(types: [.alert,.badge,.sound], categories: nil)
-//        UIApplication.shared.registerUserNotificationSettings(pushSettings)
-//        UIApplication.shared.registerForRemoteNotifications()
+        let pushSettings = UIUserNotificationSettings(types: [.alert,.badge,.sound], categories: nil)
+        UIApplication.shared.registerUserNotificationSettings(pushSettings)
+        UIApplication.shared.registerForRemoteNotifications()
     }
     
     func configureRichNotifications() {
