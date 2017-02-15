@@ -83,7 +83,7 @@ class JobSeachTitleCell: UITableViewCell {
             label.text = objTitle.jobTitle as String
             label.layer.borderWidth  = 1
             label.layer.borderColor = Constants.Color.jobTitleBricksColor.cgColor
-            label.layer.cornerRadius = 15.0
+            label.layer.cornerRadius = 5.0
             label.clipsToBounds = true
             self.scrollViewJobTitle.addSubview(label)
             
