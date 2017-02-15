@@ -19,10 +19,10 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
         switch profileOptions {
         case .profileHeader:
             if (UserManager.shared().activeUser.aboutMe?.isEmptyField)! {
-                return 300
+                return 305
             }
             let aboutTextHeight = EditProfileHeaderTableCell.calculateHeight(text: UserManager.shared().activeUser.aboutMe!)
-            return 300 + aboutTextHeight
+            return 305 + aboutTextHeight
             
         case .dentalStateboard:
             if dentalStateBoardURL.isEmpty {
@@ -178,7 +178,7 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
         case .profileHeader:
             let cell = tableView.dequeueReusableCell(withIdentifier: "EditProfileHeaderTableCell") as! EditProfileHeaderTableCell
             cell.nameLabel.text = UserManager.shared().activeUser.fullName()
-            cell.placeLabel.attributedText = cell.fillPlaceAndJobTitle(jobTitle: UserManager.shared().activeUser.jobTitle!, place: "")
+            cell.placeLabel.attributedText = cell.fillPlaceAndJobTitle(jobTitle: UserManager.shared().activeUser.jobTitle!, place: UserManager.shared().activeUser.preferredJobLocation!)
             cell.editButton.addTarget(self, action: #selector(openEditPublicProfileScreen), for: .touchUpInside)
             cell.settingButton.addTarget(self, action: #selector(openSettingScreen), for: .touchUpInside)
             cell.aboutTextView.text = UserManager.shared().activeUser.aboutMe

@@ -70,8 +70,10 @@ class DMWorkExperienceVC: DMBaseVC,ExperiencePickerViewDelegate,ToolBarButtonDel
         super.viewDidLoad()
         setup()
         initialDataSetup()
+        getExperienceAPI()
+
         if isEditMode != true {
-            getExperienceAPI()
+//            getExperienceAPI()
         }else{
             
             nextButton.setTitle("Save", for: .normal)

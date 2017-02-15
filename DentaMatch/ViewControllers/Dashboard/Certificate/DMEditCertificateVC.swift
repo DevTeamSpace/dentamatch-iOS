@@ -89,6 +89,7 @@ class DMEditCertificateVC: DMBaseVC,DatePickerViewDelegate {
             if !self.validityDatePicker.text!.isEmptyField {
                 self.uploadValidityDate { (response:JSON?, error:NSError?) in
                     if let _ = response {
+                        self.certificate?.validityDate = self.dateSelected
                         self.updateProfileScreen()
                         _ = self.navigationController?.popViewController(animated: true)
                     }
@@ -179,7 +180,6 @@ class DMEditCertificateVC: DMBaseVC,DatePickerViewDelegate {
     func doneButtonAction(date: String, tag: Int) {
         self.view.endEditing(true)
         self.dateSelected = date
-        self.certificate?.validityDate = dateSelected
         self.validityDatePicker.text = self.getCertificateDateFormat(dateString: dateSelected)
     }
     

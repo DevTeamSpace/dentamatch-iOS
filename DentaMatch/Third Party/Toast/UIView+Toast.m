@@ -397,7 +397,7 @@ static const NSString * CSToastQueueKey             = @"CSToastQueueKey";
     }
     
     // default to bottom
-    return CGPointMake(self.bounds.size.width/2, (self.bounds.size.height - (toast.frame.size.height / 2)) - style.verticalPadding);
+    return CGPointMake(self.bounds.size.width/2, (self.bounds.size.height - (toast.frame.size.height / 2) - 49.0) - style.verticalPadding);
 }
 
 @end

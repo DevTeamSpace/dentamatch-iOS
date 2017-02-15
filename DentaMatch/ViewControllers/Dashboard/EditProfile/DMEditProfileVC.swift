@@ -136,7 +136,7 @@ class DMEditProfileVC: DMBaseVC {
         workExpVC.hidesBottomBarWhenPushed = true
         workExpVC.isEditMode = true
         workExpVC.jobTitles = self.jobTitles
-        workExpVC.exprienceArray = self.experiences
+//        workExpVC.exprienceArray = self.experiences
         self.navigationController?.pushViewController(workExpVC, animated: true)
     }
     

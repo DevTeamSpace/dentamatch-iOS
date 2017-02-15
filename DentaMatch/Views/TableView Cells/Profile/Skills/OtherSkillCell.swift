@@ -15,10 +15,13 @@ class OtherSkillCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+//        UITextView.appearance().tintColor = UIColor.white
+
         self.otherTextView.layer.cornerRadius = 5.0
         self.otherTextView.layer.borderWidth = 1.0
         self.otherTextView.layer.borderColor = Constants.Color.textFieldBorderColor.cgColor
         self.otherTextView.textContainer.lineFragmentPadding = 12.0
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

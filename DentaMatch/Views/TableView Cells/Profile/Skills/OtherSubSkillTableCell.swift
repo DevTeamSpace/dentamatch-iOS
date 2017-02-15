@@ -19,11 +19,15 @@ class OtherSubSkillTableCell: UITableViewCell {
         self.contentView.backgroundColor = UIColor.color(withHexCode: "0470C0")
 
         self.clipsToBounds = true
+        
         self.otherTextView.layer.cornerRadius = 5.0
         self.otherTextView.layer.borderWidth = 1.0
         self.otherTextView.layer.borderColor = UIColor.white.cgColor
         self.otherTextView.textContainer.lineFragmentPadding = 12.0
         self.otherTextView.backgroundColor = UIColor.color(withHexCode: "0470C0")
+//        UITextView.appearance().tintColor = UIColor.white
+        self.otherTextView.tintColor = UIColor.white
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
