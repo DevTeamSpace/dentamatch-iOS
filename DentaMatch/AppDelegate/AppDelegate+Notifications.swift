@@ -26,7 +26,10 @@ extension AppDelegate:UNUserNotificationCenterDelegate {
                 }
                 if granted {
                     print("Permission granted")
+                   // let pushSettings = UIUserNotificationSettings(types: [.alert,.badge,.sound], categories: nil)
+                   // UIApplication.shared.registerUserNotificationSettings(pushSettings)
                     UIApplication.shared.registerForRemoteNotifications()
+//                    UIApplication.shared.registerForRemoteNotifications()
                 } else {
                     print("Permission not granted")
                 }
@@ -70,6 +73,8 @@ extension AppDelegate:UNUserNotificationCenterDelegate {
     
     @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        let dict = response.notification.request.content.userInfo
+        print(dict)
         debugPrint("Go to chat")
         completionHandler()
     }
