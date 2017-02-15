@@ -48,14 +48,23 @@ extension DMJobDetailVC {
                 self.job = job as Job
                 if job.isApplied == 1 {
                     self.btnApplyForJob.isUserInteractionEnabled = false
+                    self.btnApplyForJob.isHidden = true
+                    self.constraintBtnApplyJobHeight.constant = 0
                     self.btnApplyForJob.setTitle(Constants.Strings.appliedForThisJob, for: .normal)
+                    DispatchQueue.main.async {
+                        self.view.layoutIfNeeded()
+                    }
                 }
                 else {
                     self.btnApplyForJob.isUserInteractionEnabled = true
+                    self.btnApplyForJob.isHidden = false
+                    self.constraintBtnApplyJobHeight.constant = 49
                     self.btnApplyForJob.setTitle(Constants.Strings.applyForJob, for: .normal)
+                    DispatchQueue.main.async {
+                        self.view.layoutIfNeeded()
+                    }
                 }
                 self.tblJobDetail.isHidden = false
-                self.btnApplyForJob.isHidden = false
                 self.tblJobDetail.reloadData()
             } else {
                 self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
@@ -88,7 +97,8 @@ extension DMJobDetailVC {
                 })
                 job?.isApplied = 1
                 DispatchQueue.main.async {
-                    self.btnApplyForJob.isUserInteractionEnabled = false
+                    self.btnApplyForJob.isHidden = true
+                    self.constraintBtnApplyJobHeight.constant = 0
                     self.btnApplyForJob.setTitle(Constants.Strings.appliedForThisJob, for: .normal)
                     self.tblJobDetail.reloadData()
                 }

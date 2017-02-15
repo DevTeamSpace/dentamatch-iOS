@@ -5,7 +5,6 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -61,7 +60,7 @@
                             <constraint firstItem="noO-rj-m36" firstAttribute="leading" secondItem="bII-c8-waP" secondAttribute="leading" id="IiH-tV-Ptl"/>
                             <constraint firstAttribute="trailing" secondItem="PB7-NA-IGt" secondAttribute="trailing" id="LCz-ir-kYx"/>
                             <constraint firstItem="PB7-NA-IGt" firstAttribute="leading" secondItem="bII-c8-waP" secondAttribute="leading" id="Nyl-ta-IxN"/>
-                            <constraint firstItem="cxl-aD-P6c" firstAttribute="top" secondItem="PB7-NA-IGt" secondAttribute="bottom" id="kvL-ej-HZ6"/>
+                            <constraint firstItem="cxl-aD-P6c" firstAttribute="top" secondItem="PB7-NA-IGt" secondAttribute="bottom" id="dh6-VX-93W"/>
                             <constraint firstItem="noO-rj-m36" firstAttribute="top" secondItem="lly-3D-VKP" secondAttribute="bottom" id="nds-jd-A7j"/>
                             <constraint firstAttribute="trailing" secondItem="noO-rj-m36" secondAttribute="trailing" id="nsq-hn-uyK"/>
                             <constraint firstItem="PB7-NA-IGt" firstAttribute="top" secondItem="noO-rj-m36" secondAttribute="bottom" id="qwh-Sn-dfz"/>
@@ -83,7 +82,7 @@
                     <tabBarItem key="tabBarItem" title="Jobs" image="jobs" id="PdF-HD-BTv"/>
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5xw-k6-Tbw">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5xw-k6-Tbw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -301,10 +300,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottomMargin" secondItem="gwU-qZ-Lfz" secondAttribute="bottom" id="1y1-h2-IdY"/>
                             <constraint firstItem="gwU-qZ-Lfz" firstAttribute="top" secondItem="wgg-9a-mNv" secondAttribute="bottom" id="Cef-UH-BN3"/>
                             <constraint firstAttribute="trailing" secondItem="gwU-qZ-Lfz" secondAttribute="trailing" id="WA1-uQ-ytG"/>
                             <constraint firstItem="gwU-qZ-Lfz" firstAttribute="leading" secondItem="zbk-eL-dMO" secondAttribute="leading" id="ZoD-Dh-dzA"/>
+                            <constraint firstItem="lQ7-aW-gP0" firstAttribute="top" secondItem="gwU-qZ-Lfz" secondAttribute="bottom" id="hpk-Eg-diX"/>
                             <constraint firstItem="wgg-9a-mNv" firstAttribute="leading" secondItem="zbk-eL-dMO" secondAttribute="leading" id="mMw-a1-kV8"/>
                             <constraint firstAttribute="trailing" secondItem="wgg-9a-mNv" secondAttribute="trailing" id="mP9-h6-9oU"/>
                             <constraint firstItem="wgg-9a-mNv" firstAttribute="top" secondItem="ixQ-R4-yUs" secondAttribute="bottom" id="oEh-KB-dch"/>
@@ -312,6 +311,7 @@
                     </view>
                     <connections>
                         <outlet property="btnApplyForJob" destination="gwU-qZ-Lfz" id="SME-h4-Idm"/>
+                        <outlet property="constraintBtnApplyJobHeight" destination="Aba-rw-sOd" id="P2Y-YH-bjh"/>
                         <outlet property="tblJobDetail" destination="wgg-9a-mNv" id="qL9-eO-xyB"/>
                     </connections>
                 </viewController>
@@ -326,7 +326,7 @@
                     <tabBarItem key="tabBarItem" title="Jobs" image="jobs" id="Kw8-iY-M93"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4Na-XC-5Om">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="4Na-XC-5Om">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

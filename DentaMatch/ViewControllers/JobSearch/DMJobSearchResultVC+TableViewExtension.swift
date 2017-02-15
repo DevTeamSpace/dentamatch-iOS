@@ -37,6 +37,7 @@ extension DMJobSearchResultVC : UITableViewDataSource, UITableViewDelegate, JobS
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let jobDetailVC = UIStoryboard.jobSearchStoryBoard().instantiateViewController(type: DMJobDetailVC.self)!
         jobDetailVC.job = self.jobs[indexPath.row]
+        jobDetailVC.hidesBottomBarWhenPushed = true
         jobDetailVC.delegate = self
         self.navigationController?.pushViewController(jobDetailVC, animated: true)
     }
