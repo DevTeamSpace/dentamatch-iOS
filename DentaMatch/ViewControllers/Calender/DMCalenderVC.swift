@@ -33,6 +33,8 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+
         if self.hiredList.count == 0 {
             self.getAllJobFromServer()
         }
@@ -147,7 +149,7 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         case 1:
             let sundayJob = dayPartTime.filter { (newJob) -> Bool in
                 let eventDate = Date.stringToDate(dateString: newJob.jobDate)
-                return (newJob.isSunday == 1 && eventDate >= dateToday)
+                return (newJob.isSunday == 1 && eventDate <= dateToday)
             }
             if sundayJob.count > 0 {
                 eventcount = eventcount + 1
@@ -156,7 +158,7 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         case 2:
             let mondayJob = dayPartTime.filter { (newJob) -> Bool in
                 let eventDate = Date.stringToDate(dateString: newJob.jobDate)
-                return (newJob.isMonday == 1 && eventDate >= dateToday)
+                return (newJob.isMonday == 1 && eventDate <= dateToday)
             }
             if mondayJob.count > 0 {
                 eventcount = eventcount + 1
@@ -165,7 +167,7 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         case 3:
             let tuesdayJob = dayPartTime.filter { (newJob) -> Bool in
                 let eventDate = Date.stringToDate(dateString: newJob.jobDate)
-            return  (newJob.isTuesday == 1 && eventDate >= dateToday)
+            return  (newJob.isTuesday == 1 && eventDate <= dateToday)
             }
             if tuesdayJob.count > 0 {
                 eventcount = eventcount + 1
@@ -173,7 +175,7 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         case 4:
             let wednesdayJob = dayPartTime.filter { (newJob) -> Bool in
                 let eventDate = Date.stringToDate(dateString: newJob.jobDate)
-               return (newJob.isWednesday == 1 && eventDate >= dateToday)
+               return (newJob.isWednesday == 1 && eventDate <= dateToday)
             }
             if wednesdayJob.count > 0 {
                 eventcount = eventcount + 1
@@ -181,7 +183,7 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         case 5:
             let thursdayJob = dayPartTime.filter { (newJob) -> Bool in
                 let eventDate = Date.stringToDate(dateString: newJob.jobDate)
-            return (newJob.isThursday == 1 && eventDate >= dateToday)
+            return (newJob.isThursday == 1 && eventDate <= dateToday)
             }
             if thursdayJob.count > 0 {
                 eventcount = eventcount + 1
@@ -189,7 +191,7 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         case 6:
             let firdayJob = dayPartTime.filter { (newJob) -> Bool in
                 let eventDate = Date.stringToDate(dateString: newJob.jobDate)
-               return (newJob.isFriday == 1 && eventDate >= dateToday)
+               return (newJob.isFriday == 1 && eventDate <= dateToday)
             }
             if firdayJob.count > 0 {
                 eventcount = eventcount + 1
@@ -197,7 +199,7 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         case 7:
             let saturdayJob = dayPartTime.filter { (newJob) -> Bool in
                 let eventDate = Date.stringToDate(dateString: newJob.jobDate)
-               return (newJob.isMonday == 1 && eventDate >= dateToday)
+               return (newJob.isSaturday == 1 && eventDate <= dateToday)
             }
             if saturdayJob.count > 0 {
                 eventcount = eventcount + 1
@@ -244,11 +246,16 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         let dayPartTime = hiredList.filter { (newJob) -> Bool in
             (newJob.jobType == 2)
         }
+        let dateStrToday = Date.dateToString(date: date)
+        let dateToday = Date.stringToDate(dateString: dateStrToday)
+
+        
         var color = [UIColor]()
         switch getDayOfWeek(today: date) {
         case 1:
             let sundayJob = dayPartTime.filter { (newJob) -> Bool in
-                (newJob.isSunday == 1)
+                let eventDate = Date.stringToDate(dateString: newJob.jobDate)
+                return  (newJob.isSunday == 1 && eventDate <= dateToday)
             }
             if sundayJob.count > 0 {
                 color.append(Constants.Color.partTimeEventColor)
@@ -256,7 +263,8 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
             
         case 2:
             let mondayJob = dayPartTime.filter { (newJob) -> Bool in
-                (newJob.isMonday == 1)
+                let eventDate = Date.stringToDate(dateString: newJob.jobDate)
+                return  (newJob.isMonday == 1 && eventDate <= dateToday)
             }
             if mondayJob.count > 0 {
                 color.append(Constants.Color.partTimeEventColor)
@@ -264,35 +272,40 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
             
         case 3:
             let tuesdayJob = dayPartTime.filter { (newJob) -> Bool in
-                (newJob.isTuesday == 1)
+                let eventDate = Date.stringToDate(dateString: newJob.jobDate)
+                return  (newJob.isTuesday == 1 && eventDate <= dateToday)
             }
             if tuesdayJob.count > 0 {
                 color.append(Constants.Color.partTimeEventColor)
             }
         case 4:
             let wednesdayJob = dayPartTime.filter { (newJob) -> Bool in
-                (newJob.isWednesday == 1)
+                let eventDate = Date.stringToDate(dateString: newJob.jobDate)
+                return  (newJob.isWednesday == 1 && eventDate <= dateToday)
             }
             if wednesdayJob.count > 0 {
                 color.append(Constants.Color.partTimeEventColor)
             }
         case 5:
             let thursdayJob = dayPartTime.filter { (newJob) -> Bool in
-                (newJob.isThursday == 1)
+                let eventDate = Date.stringToDate(dateString: newJob.jobDate)
+                return  (newJob.isThursday == 1 && eventDate <= dateToday)
             }
             if thursdayJob.count > 0 {
                 color.append(Constants.Color.partTimeEventColor)
             }
         case 6:
             let firdayJob = dayPartTime.filter { (newJob) -> Bool in
-                (newJob.isFriday == 1)
+                let eventDate = Date.stringToDate(dateString: newJob.jobDate)
+                return  (newJob.isFriday == 1 && eventDate <= dateToday)
             }
             if firdayJob.count > 0 {
                 color.append(Constants.Color.partTimeEventColor)
             }
         case 7:
             let saturdayJob = dayPartTime.filter { (newJob) -> Bool in
-                (newJob.isMonday == 1)
+                let eventDate = Date.stringToDate(dateString: newJob.jobDate)
+                return  (newJob.isSaturday == 1 && eventDate <= dateToday)
             }
             if saturdayJob.count > 0 {
                 color.append(Constants.Color.partTimeEventColor)
@@ -325,9 +338,9 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
     
     func dateAllEvents(date:Date) -> [Job] {
         
-        let dayFullTime = hiredList.filter { (newJob) -> Bool in
-            (newJob.jobType == 1)
-        }
+//        let dayFullTime = hiredList.filter { (newJob) -> Bool in
+//            (newJob.jobType == 1)
+//        }
 
         
         let dayPartTime = hiredList.filter { (newJob) -> Bool in
@@ -335,11 +348,16 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         }
         var todayAllEvent = [Job]()
         
-        todayAllEvent.append(contentsOf: dayFullTime)
+        let dateStrToday = Date.dateToString(date: date)
+        let dateToday = Date.stringToDate(dateString: dateStrToday)
+
+        
+//        todayAllEvent.append(contentsOf: dayFullTime)
         switch getDayOfWeek(today: date) {
         case 1:
             let sundayJob = dayPartTime.filter { (newJob) -> Bool in
-                (newJob.isSunday == 1)
+                let eventDate = Date.stringToDate(dateString: newJob.jobDate)
+                return  (newJob.isSunday == 1 && eventDate <= dateToday)
             }
             if sundayJob.count > 0 {
                 todayAllEvent.append(contentsOf: sundayJob)
@@ -347,7 +365,8 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
             
         case 2:
             let mondayJob = dayPartTime.filter { (newJob) -> Bool in
-                (newJob.isMonday == 1)
+                let eventDate = Date.stringToDate(dateString: newJob.jobDate)
+                return  (newJob.isMonday == 1 && eventDate <= dateToday)
             }
             if mondayJob.count > 0 {
                 todayAllEvent.append(contentsOf: mondayJob)
@@ -355,35 +374,40 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
             
         case 3:
             let tuesdayJob = dayPartTime.filter { (newJob) -> Bool in
-                (newJob.isTuesday == 1)
+                let eventDate = Date.stringToDate(dateString: newJob.jobDate)
+                return  (newJob.isTuesday == 1 && eventDate <= dateToday)
             }
             if tuesdayJob.count > 0 {
                 todayAllEvent.append(contentsOf: tuesdayJob)
             }
         case 4:
             let wednesdayJob = dayPartTime.filter { (newJob) -> Bool in
-                (newJob.isWednesday == 1)
+                let eventDate = Date.stringToDate(dateString: newJob.jobDate)
+                return  (newJob.isWednesday == 1 && eventDate <= dateToday)
             }
             if wednesdayJob.count > 0 {
                 todayAllEvent.append(contentsOf: wednesdayJob)
             }
         case 5:
             let thursdayJob = dayPartTime.filter { (newJob) -> Bool in
-                (newJob.isThursday == 1)
+                let eventDate = Date.stringToDate(dateString: newJob.jobDate)
+                return  (newJob.isThursday == 1 && eventDate <= dateToday)
             }
             if thursdayJob.count > 0 {
                 todayAllEvent.append(contentsOf: thursdayJob)
             }
         case 6:
             let firdayJob = dayPartTime.filter { (newJob) -> Bool in
-                (newJob.isFriday == 1)
+                let eventDate = Date.stringToDate(dateString: newJob.jobDate)
+                return  (newJob.isFriday == 1 && eventDate <= dateToday)
             }
             if firdayJob.count > 0 {
                 todayAllEvent.append(contentsOf: firdayJob)
             }
         case 7:
             let saturdayJob = dayPartTime.filter { (newJob) -> Bool in
-                (newJob.isMonday == 1)
+                let eventDate = Date.stringToDate(dateString: newJob.jobDate)
+                return  (newJob.isSaturday == 1 && eventDate <= dateToday)
             }
             if saturdayJob.count > 0 {
                 todayAllEvent.append(contentsOf: saturdayJob)
@@ -453,7 +477,6 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
             self.noEventLabel.isHidden = true
         }else {
             self.noEventLabel.isHidden = false
-
         }
         bookedJobsTableView.reloadData()
         

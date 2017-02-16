@@ -61,6 +61,8 @@ extension AppDelegate:UNUserNotificationCenterDelegate {
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        let dict = userInfo["aps"]
+        print(dict ?? "not avail")
         debugPrint("didReceiveRemoteNotification \(userInfo.description)")
         self.window?.makeToast(userInfo.description)
 

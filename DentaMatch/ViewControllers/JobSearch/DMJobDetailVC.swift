@@ -22,6 +22,7 @@ class DMJobDetailVC: DMBaseVC {
     var isReadMore = false
     var delegate:JobSavedStatusUpdateDelegate?
     var fromTrack = false
+    var fromCalender = false
     @IBOutlet weak var constraintBtnApplyJobHeight: NSLayoutConstraint!
     
     enum TableViewCellHeight: CGFloat {

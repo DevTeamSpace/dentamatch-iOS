@@ -17,6 +17,7 @@ extension DMCancelJobVC {
             Constants.ServerKey.jobId:(job?.jobId)!,
             Constants.ServerKey.cancelReason:self.reasonTextView.text!
         ] as [String : Any]
+        debugPrint("Cancel Paran \(params.description)")
         
         self.showLoader()
         APIManager.apiPost(serviceName: Constants.API.cancelJob, parameters: params) { (response:JSON?, error:NSError?) in
