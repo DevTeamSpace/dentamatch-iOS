@@ -140,9 +140,16 @@ class DMChatVC: DMBaseVC {
     }
     
     @IBAction func sendMessageButtonPressed(_ sender: Any) {
+        if self.chatTextView.text.isEmptyField {
+            self.chatTextView.text = ""
+            self.placeHolderLabel.isHidden = false
+            return
+        }
         //Send Message
         if SocketManager.sharedInstance.socket.status == .connected {
-            SocketManager.sharedInstance.sendTextMessage(message: self.chatTextView.text)
+            SocketManager.sharedInstance.sendTextMessage(message: self.chatTextView.text, recruiterId: (chatList?.recruiterId)!)
+            self.chatTextView.text = ""
+            self.placeHolderLabel.isHidden = false
         } else {
             debugPrint("Socket not connected")
         }
