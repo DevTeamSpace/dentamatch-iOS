@@ -44,10 +44,9 @@ extension DMLoginVC {
         var searchParams = [String : Any]()
         if let searchFilters = response?[Constants.ServerKey.result][Constants.ServerKey.searchFilters] {
             
-            //Uncomment it for sprint 7
-//            if searchFilters.array?.count == 0 {
-//                return
-//            }
+            if searchFilters.count == 0 {
+                return
+            }
             
             searchParams[Constants.JobDetailKey.lat] = searchFilters[Constants.JobDetailKey.lat].stringValue
             searchParams[Constants.JobDetailKey.lng] = searchFilters[Constants.JobDetailKey.lng].stringValue
@@ -68,8 +67,10 @@ extension DMLoginVC {
             }
             
             searchParams[Constants.JobDetailKey.address] = searchFilters[Constants.JobDetailKey.address].stringValue
+            
+            UserDefaultsManager.sharedInstance.deleteSearchParameter()
+            UserDefaultsManager.sharedInstance.saveSearchParameter(seachParam: searchParams as Any)
         }
-        UserDefaultsManager.sharedInstance.deleteSearchParameter()
-        UserDefaultsManager.sharedInstance.saveSearchParameter(seachParam: searchParams as Any)
+       
     }
 }
