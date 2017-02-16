@@ -43,8 +43,9 @@ class DMMessagesVC: DMBaseVC {
         self.messageListTableView.register(UINib(nibName: "MessageListTableCell", bundle: nil), forCellReuseIdentifier: "MessageListTableCell")
         
         placeHolderEmptyJobsView = PlaceHolderJobsView.loadPlaceHolderJobsView()
-        placeHolderEmptyJobsView?.frame = CGRect(x: 0, y: 0, width: 300, height: 500)
+        placeHolderEmptyJobsView?.frame = CGRect(x: 0, y: 0, width: 300, height: 200)
         placeHolderEmptyJobsView?.center = self.view.center
+        placeHolderEmptyJobsView?.backgroundColor = UIColor.clear
         var frame = placeHolderEmptyJobsView!.frame
         frame = CGRect(x: frame.origin.x, y: frame.origin.y - 44, width: frame.size.width, height: frame.size.height)
         placeHolderEmptyJobsView?.frame = frame

@@ -15,6 +15,7 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     static let sharedInstance = SocketManager()
     
     typealias ReceiveMessageClosure = ((_ messageInfo: [String: AnyObject])->Void)
+    
     private var chatCompletionHandler: ReceiveMessageClosure?
     
     //To check whether the same recruiter is chatting
@@ -49,13 +50,18 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     }
     
     
-    func sendTextMessage(message: String) {
+    func sendTextMessage(message: String,recruiterId:String) {
         let params = [
             "fromId":UserManager.shared().activeUser.userId!,
-            "toId":"8",
+            "toId":recruiterId,
             "message":message
         ]
-        socket.emit("sendMessage", with: [params])
+        
+        socket.emitWithAck("sendMessage", params).timingOut(after: 0) { (params:[Any]) in
+            self.handleReceivedChatMessage(params: params)
+        }
+        
+        //socket.emit("sendMessage", with: [params])
     }
     
     
@@ -129,22 +135,7 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     func eventForReceiveMessage() {
         socket.off("receiveMessage")
         socket.on("receiveMessage") { (dataArray, socketAck) -> Void in
-            var messageDictionary = [String: AnyObject]()
-            messageDictionary = dataArray[0] as! [String:AnyObject]
-            if let _ = self.chatCompletionHandler {
-                self.chatCompletionHandler?(messageDictionary)
-                let chatObj = JSON(rawValue: messageDictionary)
-                if chatObj!["fromId"].stringValue == self.recruiterId || chatObj!["toId"].stringValue == self.recruiterId {
-                    //If app is in background but same chat page is opened
-                    return
-                } else {
-                    self.makeNotificationData(chat: chatObj)
-                }
-            } else {
-                debugPrint("not on chat page")
-                let chatObj = JSON(rawValue: messageDictionary)
-                self.makeNotificationData(chat: chatObj)
-            }
+            self.handleReceivedChatMessage(params: dataArray)
         }
     }
     
@@ -205,6 +196,28 @@ class SocketManager: NSObject,SocketConnectionDelegate {
 //        } else {
 //            // Fallback on earlier versions
 //        }
+    }
+    
+    //handling
+    
+    func handleReceivedChatMessage(params:[Any]) {
+        var messageDictionary = [String: AnyObject]()
+        messageDictionary = params[0] as! [String:AnyObject]
+        if let _ = self.chatCompletionHandler {
+            self.chatCompletionHandler?(messageDictionary)
+            let chatObj = JSON(rawValue: messageDictionary)
+            if chatObj!["fromId"].stringValue == self.recruiterId || chatObj!["toId"].stringValue == self.recruiterId {
+                //If app is in background but same chat page is opened
+                return
+            } else {
+                self.makeNotificationData(chat: chatObj)
+            }
+        } else {
+            debugPrint("not on chat page")
+            let chatObj = JSON(rawValue: messageDictionary)
+            self.makeNotificationData(chat: chatObj)
+        }
+
     }
 }
 

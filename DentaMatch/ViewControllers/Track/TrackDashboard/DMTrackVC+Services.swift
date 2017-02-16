@@ -13,7 +13,20 @@ extension DMTrackVC {
      
     func getJobList(params:[String:String]) {
         
-        self.showLoader()
+        //Loader management as we don't have to show loader in load more case
+        if params["type"] == "1" {
+            if self.savedJobsPageNo == 1 {
+                self.showLoader()
+            }
+        } else if params["type"] == "2" {
+            if self.appliedJobsPageNo == 1 {
+                self.showLoader()
+            }
+        } else {
+            if self.shortListedJobsPageNo == 1 {
+                self.showLoader()
+            }
+        }
         APIManager.apiGet(serviceName: Constants.API.jobList, parameters: params) { (response:JSON?, error:NSError?) in
             self.hideLoader()
             if error != nil {
