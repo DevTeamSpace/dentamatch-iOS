@@ -41,10 +41,10 @@ extension DMCalenderVC {
             }
             
             debugPrint(response!)
-            
+            self.hiredList.removeAll()
+
             if response![Constants.ServerKey.status].boolValue {
                 let resultDic = response![Constants.ServerKey.result][Constants.ServerKey.list].arrayValue
-                self.hiredList.removeAll()
                 for calObj in resultDic {
                     let hiredObj = Job(forCalendarjob:calObj)
                     self.hiredList.append(hiredObj)
