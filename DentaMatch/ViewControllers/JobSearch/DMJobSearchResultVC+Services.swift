@@ -25,7 +25,10 @@ extension DMJobSearchResultVC {
     
     func fetchSearchResultAPI(params:[String:Any]) {
         print("Search Parameters\n\(params.description))")
-        self.showLoader()
+        
+        if self.jobsPageNo == 1 {
+            self.showLoader()
+        }
         APIManager.apiPostWithJSONEncode(serviceName: Constants.API.JobSearchResultAPI, parameters: params) { (response:JSON?, error:NSError?) in
             self.hideLoader()
             if error != nil {

@@ -1088,9 +1088,9 @@
 		E51D4F091E40744C00ACC631 /* TrackDashboard */ = {
 			isa = PBXGroup;
 			children = (
+				E51D4F0C1E40744C00ACC631 /* DMTrackVC.swift */,
 				E51D4F0A1E40744C00ACC631 /* DMTrackVC+Services.swift */,
 				E51D4F0B1E40744C00ACC631 /* DMTrackVC+TableViewExtension.swift */,
-				E51D4F0C1E40744C00ACC631 /* DMTrackVC.swift */,
 			);
 			path = TrackDashboard;
 			sourceTree = "<group>";

@@ -8,8 +8,9 @@
 
 import UIKit
 
-protocol JobSavedStatusUpdateDelegate {
-    func jobUpdate(job:Job)
+@objc protocol JobSavedStatusUpdateDelegate {
+    @objc optional func jobUpdate(job:Job)
+    @objc optional func jobApplied(job:Job)
 }
 
 class DMJobDetailVC: DMBaseVC {
@@ -38,6 +39,7 @@ class DMJobDetailVC: DMBaseVC {
         self.btnApplyForJob.isHidden = true
         self.fetchJobAPI(params: jobDetailParams)
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

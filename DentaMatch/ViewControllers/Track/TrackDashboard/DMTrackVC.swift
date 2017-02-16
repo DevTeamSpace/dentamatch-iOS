@@ -33,6 +33,8 @@ class DMTrackVC: DMBaseVC {
     var pullToRefreshSavedJobs = UIRefreshControl()
     var pullToRefreshAppliedJobs = UIRefreshControl()
     var pullToRefreshShortListedJobs = UIRefreshControl()
+    
+    var isFromJobDetailApplied = false
 
     var jobParams = [String:String]()
     var placeHolderEmptyJobsView:PlaceHolderJobsView?
@@ -115,6 +117,8 @@ class DMTrackVC: DMBaseVC {
         jobParams["page"] = "1"
         jobParams["lat"] = UserManager.shared().activeUser.latitude
         jobParams["lng"] = UserManager.shared().activeUser.longitude
+        self.savedJobsTableView.tableFooterView = nil
+        self.loadingMoreSavedJobs = false
         self.getJobList(params: jobParams)
         pullToRefreshSavedJobs.endRefreshing()
     }
@@ -126,6 +130,8 @@ class DMTrackVC: DMBaseVC {
         jobParams["page"] = "1"
         jobParams["lat"] = UserManager.shared().activeUser.latitude
         jobParams["lng"] = UserManager.shared().activeUser.longitude
+        self.appliedJobsTableView.tableFooterView = nil
+        self.loadingMoreAppliedJobs = false
         self.getJobList(params: jobParams)
         pullToRefreshAppliedJobs.endRefreshing()
     }
@@ -136,10 +142,34 @@ class DMTrackVC: DMBaseVC {
         jobParams["page"] = "1"
         jobParams["lat"] = UserManager.shared().activeUser.latitude
         jobParams["lng"] = UserManager.shared().activeUser.longitude
+        self.shortListedJobsTableView.tableFooterView = nil
+        self.loadingMoreShortListedJobs = false
         self.getJobList(params: jobParams)
         pullToRefreshShortListedJobs.endRefreshing()
     }
 
+    func openJobDetails(indexPath:IndexPath) {
+        
+        let segmentControlOptions = SegmentControlOption(rawValue: self.segmentedControl.selectedSegmentIndex)!
+
+        let jobDetailVC = UIStoryboard.jobSearchStoryBoard().instantiateViewController(type: DMJobDetailVC.self)!
+        jobDetailVC.fromTrack = true
+        switch segmentControlOptions {
+        case .saved:
+            jobDetailVC.job = self.savedJobs[indexPath.row]
+
+        case .applied:
+            jobDetailVC.job = self.appliedJobs[indexPath.row]
+            
+        case .shortlisted:
+            jobDetailVC.job = self.shortListedJobs[indexPath.row]
+
+        }
+        jobDetailVC.hidesBottomBarWhenPushed = true
+        jobDetailVC.delegate = self
+        self.navigationController?.pushViewController(jobDetailVC, animated: true)
+    }
+    
     @IBAction func segmentControlValueChanged(_ sender: UISegmentedControl) {
         let segmentControlOptions = SegmentControlOption(rawValue: sender.selectedSegmentIndex)!
         
@@ -181,5 +211,24 @@ class DMTrackVC: DMBaseVC {
                 self.getJobList(params: jobParams)
             }
         }
+    }
+}
+
+extension DMTrackVC: JobSavedStatusUpdateDelegate {
+    func jobUpdate(job: Job) {
+        //unsave status
+        let jobs = self.savedJobs.filter({$0.jobId == job.jobId}).first
+        if let _ = jobs {
+            jobs?.isSaved = job.isSaved
+            self.savedJobs.removeObject(object: jobs!)
+            self.totalSavedJobsFromServer -= 1
+            self.savedJobsTableView.reloadData()
+        }
+    }
+    
+    func jobApplied(job: Job) {
+        isFromJobDetailApplied = true
+        self.appliedJobs.removeAll()
+        self.appliedJobsPageNo = 1
     }
 }

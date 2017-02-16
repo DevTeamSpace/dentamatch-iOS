@@ -93,9 +93,13 @@ extension DMJobDetailVC {
     func handleApplyJobResponse(response:JSON?) {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
+                
                 self.alertMessage(title: Constants.AlertMessage.congratulations, message: Constants.AlertMessage.jobApplied, buttonText: kOkButtonTitle, completionHandler: {
                 })
                 job?.isApplied = 1
+                if let delegate = self.delegate {
+                    delegate.jobApplied!(job: job!)
+                }
                 DispatchQueue.main.async {
                     self.btnApplyForJob.isHidden = true
                     self.constraintBtnApplyJobHeight.constant = 0
