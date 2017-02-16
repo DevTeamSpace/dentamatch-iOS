@@ -357,7 +357,7 @@ struct Constants {
         
         static let termsAndConditions = "Please accept terms and conditions/Privacy Policy."
         static let emptyCurrentJobTitle = "Current Job Title can not be left blank."
-        static let emptyPassword = "please enter the password"
+        static let emptyPassword = "Please enter the password"
         static let skipProfile = "Completed job profile will help you in applying for jobs."
         static let somethingWentWrong = "Something went wrong"
         
@@ -388,13 +388,13 @@ struct Constants {
         static let selectLocation = "Please select location"
         
         //Apply Job
-        static let congratulations = "congratulations"
+        static let congratulations = "Congratulations"
         static let jobApplied = "You have successfully applied for the job."
         static let completeYourProfile = "Complete your profile"
         static let completeYourProfileDetailMsg = "You’ll need to fill out your profile before applying for the job. Would you like to fill this out now?"
         
         //Calendar Screen 
-        static let canNotSelectPreDate = "sorry you can't select previouse date"
+        static let canNotSelectPreDate = "Sorry you can't select previouse date"
         
         
         //change password screen messgaes

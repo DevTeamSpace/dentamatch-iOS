@@ -138,11 +138,16 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
             (newJob.jobType == 2)
         }
 
+        let dateStrToday = Date.dateToString(date: date)
+        let dateToday = Date.stringToDate(dateString: dateStrToday)
+
+
         var eventcount = 0
         switch getDayOfWeek(today: date) {
         case 1:
             let sundayJob = dayPartTime.filter { (newJob) -> Bool in
-                (newJob.isSunday == 1)
+                let eventDate = Date.stringToDate(dateString: newJob.jobDate)
+                return (newJob.isSunday == 1 && eventDate >= dateToday)
             }
             if sundayJob.count > 0 {
                 eventcount = eventcount + 1
@@ -150,7 +155,8 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
 
         case 2:
             let mondayJob = dayPartTime.filter { (newJob) -> Bool in
-                (newJob.isMonday == 1)
+                let eventDate = Date.stringToDate(dateString: newJob.jobDate)
+                return (newJob.isMonday == 1 && eventDate >= dateToday)
             }
             if mondayJob.count > 0 {
                 eventcount = eventcount + 1
@@ -158,35 +164,40 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
             
         case 3:
             let tuesdayJob = dayPartTime.filter { (newJob) -> Bool in
-                (newJob.isTuesday == 1)
+                let eventDate = Date.stringToDate(dateString: newJob.jobDate)
+            return  (newJob.isTuesday == 1 && eventDate >= dateToday)
             }
             if tuesdayJob.count > 0 {
                 eventcount = eventcount + 1
             }
         case 4:
             let wednesdayJob = dayPartTime.filter { (newJob) -> Bool in
-                (newJob.isWednesday == 1)
+                let eventDate = Date.stringToDate(dateString: newJob.jobDate)
+               return (newJob.isWednesday == 1 && eventDate >= dateToday)
             }
             if wednesdayJob.count > 0 {
                 eventcount = eventcount + 1
             }
         case 5:
             let thursdayJob = dayPartTime.filter { (newJob) -> Bool in
-                (newJob.isThursday == 1)
+                let eventDate = Date.stringToDate(dateString: newJob.jobDate)
+            return (newJob.isThursday == 1 && eventDate >= dateToday)
             }
             if thursdayJob.count > 0 {
                 eventcount = eventcount + 1
             }
         case 6:
             let firdayJob = dayPartTime.filter { (newJob) -> Bool in
-                (newJob.isFriday == 1)
+                let eventDate = Date.stringToDate(dateString: newJob.jobDate)
+               return (newJob.isFriday == 1 && eventDate >= dateToday)
             }
             if firdayJob.count > 0 {
                 eventcount = eventcount + 1
             }
         case 7:
             let saturdayJob = dayPartTime.filter { (newJob) -> Bool in
-                (newJob.isMonday == 1)
+                let eventDate = Date.stringToDate(dateString: newJob.jobDate)
+               return (newJob.isMonday == 1 && eventDate >= dateToday)
             }
             if saturdayJob.count > 0 {
                 eventcount = eventcount + 1
