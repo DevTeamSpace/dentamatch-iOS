@@ -79,8 +79,9 @@ class DMTrackVC: DMBaseVC {
         self.shortListedJobsTableView.tableFooterView = UIView()
 
         placeHolderEmptyJobsView = PlaceHolderJobsView.loadPlaceHolderJobsView()
-        placeHolderEmptyJobsView?.frame = CGRect(x: 0, y: 0, width: 300, height: 500)
+        placeHolderEmptyJobsView?.frame = CGRect(x: 0, y: 0, width: 300, height: 200)
         placeHolderEmptyJobsView?.center = self.view.center
+        placeHolderEmptyJobsView?.backgroundColor = UIColor.clear
         self.view.addSubview(placeHolderEmptyJobsView!)
         placeHolderEmptyJobsView?.placeHolderMessageLabel.text = "You don’t have any saved jobs"
         
