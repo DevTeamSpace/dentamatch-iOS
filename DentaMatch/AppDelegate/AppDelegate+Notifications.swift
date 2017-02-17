@@ -65,7 +65,16 @@ extension AppDelegate:UNUserNotificationCenterDelegate {
         print(dict ?? "not avail")
         debugPrint("didReceiveRemoteNotification \(userInfo.description)")
         self.window?.makeToast(userInfo.description)
-
+        
+        
+        let state: UIApplicationState = UIApplication.sharedApplication().applicationState
+        
+        if(state == UIApplicationState.Active)
+        {
+            
+        }else{
+            
+        }
     }
     
     @available(iOS 10.0, *)
