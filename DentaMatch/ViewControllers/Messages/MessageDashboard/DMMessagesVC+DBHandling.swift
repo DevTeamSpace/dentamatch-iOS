@@ -61,24 +61,6 @@ extension DMMessagesVC:NSFetchedResultsControllerDelegate {
         return lastMessageDate
     }
     
-    func getDate1(timestamp:String) {
-        let doubleTime = Double(timestamp)
-        let date = Date(timeIntervalSince1970: doubleTime!/1000)
-        let dateFormatter = DateFormatter()
-        dateFormatter.amSymbol = "am"
-        dateFormatter.pmSymbol = "pm"
-        dateFormatter.dateFormat = Date.dateFormatYYYYMMDDHHMMSSAA()
-        let dateEnter = dateFormatter.string(from: date)
-        
-        dateFormatter.dateFormat = Date.dateFormatHHMM()
-        let dateEnter1 = dateFormatter.string(from: date)
-        
-        //       dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-        let ee = dateFormatter.date(from: dateEnter)
-        
-    }
-
-    
     func chatListExits(messageListId:String) -> ChatList? {
         let fetchRequest:NSFetchRequest<ChatList> = ChatList.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "messageListId == %@", messageListId)

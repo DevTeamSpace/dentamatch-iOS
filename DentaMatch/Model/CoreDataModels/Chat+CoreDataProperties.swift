@@ -2,7 +2,7 @@
 //  Chat+CoreDataProperties.swift
 //  DentaMatch
 //
-//  Created by Rajan Maheshwari on 16/02/17.
+//  Created by Rajan Maheshwari on 17/02/17.
 //  Copyright © 2017 Appster. All rights reserved.
 //
 
@@ -17,12 +17,12 @@ extension Chat {
     }
 
     @NSManaged public var chatId: String?
-    @NSManaged public var dateString: String?
+    @NSManaged public var timeStamp: Double
     @NSManaged public var dateTime: NSDate?
     @NSManaged public var fromId: String?
     @NSManaged public var message: String?
     @NSManaged public var readStatus: Int16
-    @NSManaged public var toId: String?
     @NSManaged public var timeString: String?
+    @NSManaged public var toId: String?
 
 }

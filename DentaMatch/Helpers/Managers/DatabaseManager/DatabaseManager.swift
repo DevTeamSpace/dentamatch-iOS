@@ -60,7 +60,7 @@ class DatabaseManager: NSObject {
                 chat.message = chatObj["message"].stringValue
                 chat.fromId = chatObj["fromId"].stringValue
                 chat.toId = chatObj["toId"].stringValue
-                chat.dateString = chatObj["sentTime"].stringValue
+                chat.timeStamp = chatObj["sentTime"].doubleValue
                 
                 if let user = UserManager.shared().activeUser {
                     if chatObj["fromId"].stringValue == user.userId {

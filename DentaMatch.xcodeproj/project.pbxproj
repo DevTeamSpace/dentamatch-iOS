@@ -85,8 +85,6 @@
 		E50B3F511E194CD7004C5F32 /* RegistrationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E50B3F4B1E194CD7004C5F32 /* RegistrationTableViewCell.xib */; };
 		E50B3F531E194EDD004C5F32 /* AnimatedPHTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50B3F521E194EDD004C5F32 /* AnimatedPHTextField.swift */; };
 		E50FA8131E30A1DA00C20C93 /* DMPublicProfileVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50FA8121E30A1DA00C20C93 /* DMPublicProfileVC+TableViewExtension.swift */; };
-		E513E9FA1E556B2A001E2B6A /* Chat+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E513E9F81E556B2A001E2B6A /* Chat+CoreDataClass.swift */; };
-		E513E9FB1E556B2A001E2B6A /* Chat+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E513E9F91E556B2A001E2B6A /* Chat+CoreDataProperties.swift */; };
 		E514E5BA1E28B472005F6712 /* DMCertificationsVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E514E5B91E28B472005F6712 /* DMCertificationsVC+Services.swift */; };
 		E51D4EF31E3AFCA700ACC631 /* DMEditStudyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4EF21E3AFCA700ACC631 /* DMEditStudyVC.swift */; };
 		E51D4EF51E3AFEA600ACC631 /* DMEditStudyVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4EF41E3AFEA600ACC631 /* DMEditStudyVC+Services.swift */; };
@@ -175,6 +173,8 @@
 		E58654FF1DEFEF7F006FEB2D /* Environments.plist in Resources */ = {isa = PBXBuildFile; fileRef = E58654FD1DEFEF7F006FEB2D /* Environments.plist */; };
 		E587B0CD1E56CEBC00576770 /* ChatList+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587B0CB1E56CEBC00576770 /* ChatList+CoreDataClass.swift */; };
 		E587B0CE1E56CEBC00576770 /* ChatList+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587B0CC1E56CEBC00576770 /* ChatList+CoreDataProperties.swift */; };
+		E587B0D11E56EB0C00576770 /* Chat+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587B0CF1E56EB0C00576770 /* Chat+CoreDataClass.swift */; };
+		E587B0D21E56EB0C00576770 /* Chat+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587B0D01E56EB0C00576770 /* Chat+CoreDataProperties.swift */; };
 		E587D2CC1E23362C006B7F06 /* JobSelectionPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2CB1E23362C006B7F06 /* JobSelectionPickerView.swift */; };
 		E587D2CF1E23438B006B7F06 /* DMJobTitleSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2CE1E23438B006B7F06 /* DMJobTitleSelectionVC.swift */; };
 		E587D2D11E2343A5006B7F06 /* DMJobTitleSelectionVC+UIPickerViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2D01E2343A5006B7F06 /* DMJobTitleSelectionVC+UIPickerViewExtension.swift */; };
@@ -459,8 +459,6 @@
 		E50B3F4B1E194CD7004C5F32 /* RegistrationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegistrationTableViewCell.xib; sourceTree = "<group>"; };
 		E50B3F521E194EDD004C5F32 /* AnimatedPHTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedPHTextField.swift; sourceTree = "<group>"; };
 		E50FA8121E30A1DA00C20C93 /* DMPublicProfileVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMPublicProfileVC+TableViewExtension.swift"; sourceTree = "<group>"; };
-		E513E9F81E556B2A001E2B6A /* Chat+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Chat+CoreDataClass.swift"; sourceTree = "<group>"; };
-		E513E9F91E556B2A001E2B6A /* Chat+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Chat+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E514E5B91E28B472005F6712 /* DMCertificationsVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMCertificationsVC+Services.swift"; sourceTree = "<group>"; };
 		E51D4EF21E3AFCA700ACC631 /* DMEditStudyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMEditStudyVC.swift; sourceTree = "<group>"; };
 		E51D4EF41E3AFEA600ACC631 /* DMEditStudyVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMEditStudyVC+Services.swift"; sourceTree = "<group>"; };
@@ -554,6 +552,8 @@
 		E58654FD1DEFEF7F006FEB2D /* Environments.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Environments.plist; sourceTree = "<group>"; };
 		E587B0CB1E56CEBC00576770 /* ChatList+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ChatList+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E587B0CC1E56CEBC00576770 /* ChatList+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ChatList+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E587B0CF1E56EB0C00576770 /* Chat+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Chat+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E587B0D01E56EB0C00576770 /* Chat+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Chat+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E587D2CB1E23362C006B7F06 /* JobSelectionPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobSelectionPickerView.swift; sourceTree = "<group>"; };
 		E587D2CE1E23438B006B7F06 /* DMJobTitleSelectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMJobTitleSelectionVC.swift; sourceTree = "<group>"; };
 		E587D2D01E2343A5006B7F06 /* DMJobTitleSelectionVC+UIPickerViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMJobTitleSelectionVC+UIPickerViewExtension.swift"; sourceTree = "<group>"; };
@@ -1833,10 +1833,10 @@
 		E5AE37831E4986E10001EC3C /* CoreDataModels */ = {
 			isa = PBXGroup;
 			children = (
+				E587B0CF1E56EB0C00576770 /* Chat+CoreDataClass.swift */,
+				E587B0D01E56EB0C00576770 /* Chat+CoreDataProperties.swift */,
 				E587B0CB1E56CEBC00576770 /* ChatList+CoreDataClass.swift */,
 				E587B0CC1E56CEBC00576770 /* ChatList+CoreDataProperties.swift */,
-				E513E9F81E556B2A001E2B6A /* Chat+CoreDataClass.swift */,
-				E513E9F91E556B2A001E2B6A /* Chat+CoreDataProperties.swift */,
 			);
 			path = CoreDataModels;
 			sourceTree = "<group>";
@@ -2562,8 +2562,8 @@
 				5A3B06D31E33885A00EFCA6E /* DMChangePasswordVC+Services.swift in Sources */,
 				5A988BC81E4AEA0E00DECB49 /* DMNotificationVC+Services.swift in Sources */,
 				E5E7CB891E2FA23200D4FB59 /* OtherSkillCell.swift in Sources */,
+				E587B0D11E56EB0C00576770 /* Chat+CoreDataClass.swift in Sources */,
 				E54976F71E28D243006F21E5 /* DMExecutiveSummaryVC+Services.swift in Sources */,
-				E513E9FA1E556B2A001E2B6A /* Chat+CoreDataClass.swift in Sources */,
 				E5AE37611E4971CE0001EC3C /* SocketAnyEvent.swift in Sources */,
 				E587D2CC1E23362C006B7F06 /* JobSelectionPickerView.swift in Sources */,
 				E5E7CB801E2FA23200D4FB59 /* AddDeleteExperienceCell.swift in Sources */,
@@ -2590,8 +2590,8 @@
 				E5AE37711E4971CE0001EC3C /* SocketPacket.swift in Sources */,
 				E55462F51DAE4B9E004163B2 /* UIStoryBoard+Additions.swift in Sources */,
 				E587D2EB1E24C021006B7F06 /* DMWorkExperienceStart+TableViewExtension.swift in Sources */,
+				E587B0D21E56EB0C00576770 /* Chat+CoreDataProperties.swift in Sources */,
 				E5E7CB931E2FA23300D4FB59 /* StudyCell.swift in Sources */,
-				E513E9FB1E556B2A001E2B6A /* Chat+CoreDataProperties.swift in Sources */,
 				F239E2E01E28D0890071909E /* JobMarker.swift in Sources */,
 				E51D4F001E3F207F00ACC631 /* Notifications+Name.swift in Sources */,
 				5AB876501E249B62007818D6 /* ExperiencePickerView.swift in Sources */,

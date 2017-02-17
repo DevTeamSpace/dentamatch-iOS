@@ -69,7 +69,7 @@ class DMMessagesVC: DMBaseVC {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ChatList")
         
         // Add Sort Descriptors
-        let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
+        let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
         //fetchRequest.fetchBatchSize = 20
         
