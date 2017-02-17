@@ -142,6 +142,7 @@ extension DMTrackVC:UITableViewDataSource,UITableViewDelegate {
         let cancelJobVC = UIStoryboard.trackStoryBoard().instantiateViewController(type: DMCancelJobVC.self)!
         cancelJobVC.job = job
         cancelJobVC.fromApplied = fromApplied
+        cancelJobVC.hidesBottomBarWhenPushed = true
         cancelJobVC.delegate = self
         self.navigationController?.pushViewController(cancelJobVC, animated: true)
     }

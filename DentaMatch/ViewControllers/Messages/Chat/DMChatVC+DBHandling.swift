@@ -24,7 +24,7 @@ extension DMChatVC:NSFetchedResultsControllerDelegate {
                 chat.message = chatObj["message"].stringValue
                 chat.fromId = chatObj["fromId"].stringValue
                 chat.toId = chatObj["toId"].stringValue
-                chat.dateString = chatObj["sentTime"].stringValue
+                chat.timeStamp = chatObj["sentTime"].doubleValue
                 self.getDate(timestamp: chatObj["sentTime"].stringValue)
                 self.chatList?.lastMessage = chatObj["message"].stringValue
                 self.chatList?.lastMessageId = chatObj["messageId"].stringValue
@@ -51,6 +51,11 @@ extension DMChatVC:NSFetchedResultsControllerDelegate {
     func getChats() {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Chat")
         
+        let userId = UserManager.shared().activeUser.userId
+        let recruiterId = chatList?.recruiterId
+        
+        fetchRequest.predicate = NSPredicate(format: "(fromId == %@ AND toId == %@) or (fromId == %@ AND toId == %@)",userId!,recruiterId!,recruiterId!,userId!)
+        
         // Add Sort Descriptors
         let sortDescriptor = NSSortDescriptor(key: "chatId", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
@@ -70,7 +75,6 @@ extension DMChatVC:NSFetchedResultsControllerDelegate {
             let fetchError = error as NSError
             print("\(fetchError), \(fetchError.userInfo)")
         }
-        
     }
     
     func scrollTableToBottom() {

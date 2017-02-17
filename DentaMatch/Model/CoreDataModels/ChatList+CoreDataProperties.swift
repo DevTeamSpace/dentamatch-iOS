@@ -2,7 +2,7 @@
 //  ChatList+CoreDataProperties.swift
 //  DentaMatch
 //
-//  Created by Rajan Maheshwari on 08/02/17.
+//  Created by Rajan Maheshwari on 17/02/17.
 //  Copyright © 2017 Appster. All rights reserved.
 //
 
@@ -17,13 +17,13 @@ extension ChatList {
     }
 
     @NSManaged public var date: NSDate?
-    @NSManaged public var dateString: String?
+    @NSManaged public var timeStamp: Double
     @NSManaged public var isBlockedFromRecruiter: Bool
     @NSManaged public var isBlockedFromSeeker: Bool
     @NSManaged public var lastMessage: String?
+    @NSManaged public var lastMessageId: String?
+    @NSManaged public var messageListId: String?
     @NSManaged public var officeName: String?
     @NSManaged public var recruiterId: String?
-    @NSManaged public var messageListId: String?
-    @NSManaged public var lastMessageId: String?
 
 }

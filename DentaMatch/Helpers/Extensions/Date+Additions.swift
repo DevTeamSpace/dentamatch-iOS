@@ -47,6 +47,10 @@ extension Date {
         return "MM-dd-YYYY hh:mmaa"
     }
     
+    public static func dateFormatMMDDYYYY() ->String {
+        return "MM-dd-yyyy"
+    }
+    
     public static func dateFormatYYYY()->String {
         return "yyyy"
     }
@@ -189,7 +193,27 @@ extension Date {
         return Int64(nowDouble*1000)
     }
     
+    static func getTodaysDateMMDDYYYY() -> Date {
+        let todaysDate = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = Date.dateFormatMMDDYYYY()
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        return dateFormatter.date(from: dateFormatter.string(from: todaysDate))!
+    }
     
+    static func getDateMMDDYYYY(date:Date) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = Date.dateFormatMMDDYYYY()
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        return dateFormatter.date(from: dateFormatter.string(from: date))!
+    }
+    
+    static func getDateDashedMMDDYYYY(date:Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = Date.dateFormatMMDDYYYY()
+        return dateFormatter.string(from: date)
+    }
+
 }
 
 public func == (lhs: NSDate, rhs: NSDate) -> Bool {

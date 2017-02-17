@@ -49,6 +49,17 @@ extension DMMessagesVC : UITableViewDataSource, UITableViewDelegate {
         let chatList = fetchedResultsController.object(at: indexPath) as! ChatList
         cell.recruiterNameLabel.text = chatList.officeName
         cell.lastMessageLabel.text = chatList.lastMessage
+        let chatDate = Date.getDateMMDDYYYY(date: dateFormatter.date(from: dateFormatter.string(from: chatList.date as! Date))!)
+        cell.dateLabel.text = ""
+        if todaysDate == chatDate {
+            cell.dateLabel.text = "Today"
+        } else if (todaysDate - 86400) == chatDate {
+            cell.dateLabel.text = "Yesterday"
+        } else {
+            
+            cell.dateLabel.text = Date.getDateDashedMMDDYYYY(date: chatDate)
+        }
+
         return cell
     }
     
