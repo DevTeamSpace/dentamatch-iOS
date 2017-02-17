@@ -49,6 +49,8 @@ extension DMMessagesVC : UITableViewDataSource, UITableViewDelegate {
         let chatList = fetchedResultsController.object(at: indexPath) as! ChatList
         cell.recruiterNameLabel.text = chatList.officeName
         cell.lastMessageLabel.text = chatList.lastMessage
+        let chatDate = dateFormatter.date(from: dateFormatter.string(from: chatList.date as! Date))!
+
         return cell
     }
     

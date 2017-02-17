@@ -18,6 +18,10 @@ class DMMessagesVC: DMBaseVC {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
     
+    let todaysDate = Date.getTodaysDateMMDDYYYY()
+    
+    let dateFormatter = DateFormatter()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -35,6 +39,10 @@ class DMMessagesVC: DMBaseVC {
     }
     
     func setup() {
+        
+        dateFormatter.dateFormat = Date.dateFormatMMDDYYYY()
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        
         NotificationCenter.default.addObserver(self, selector: #selector(deleteFetchController), name: .deleteFetchController, object: nil)
         
         self.navigationItem.title = "MESSAGES"

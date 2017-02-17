@@ -173,6 +173,8 @@
 		E57F29E11E3696A60025B9DE /* DMEditDentalStateBoardVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57F29E01E3696A60025B9DE /* DMEditDentalStateBoardVC+Services.swift */; };
 		E58654FE1DEFEF7F006FEB2D /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58654FC1DEFEF7F006FEB2D /* ConfigurationManager.swift */; };
 		E58654FF1DEFEF7F006FEB2D /* Environments.plist in Resources */ = {isa = PBXBuildFile; fileRef = E58654FD1DEFEF7F006FEB2D /* Environments.plist */; };
+		E587B0CD1E56CEBC00576770 /* ChatList+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587B0CB1E56CEBC00576770 /* ChatList+CoreDataClass.swift */; };
+		E587B0CE1E56CEBC00576770 /* ChatList+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587B0CC1E56CEBC00576770 /* ChatList+CoreDataProperties.swift */; };
 		E587D2CC1E23362C006B7F06 /* JobSelectionPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2CB1E23362C006B7F06 /* JobSelectionPickerView.swift */; };
 		E587D2CF1E23438B006B7F06 /* DMJobTitleSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2CE1E23438B006B7F06 /* DMJobTitleSelectionVC.swift */; };
 		E587D2D11E2343A5006B7F06 /* DMJobTitleSelectionVC+UIPickerViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2D01E2343A5006B7F06 /* DMJobTitleSelectionVC+UIPickerViewExtension.swift */; };
@@ -288,8 +290,6 @@
 		E5C5F3181DC1A723001A5A3F /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C5F3171DC1A723001A5A3F /* LocationManager.swift */; };
 		E5C5F31B1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C5F31A1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift */; };
 		E5DC3E731DAF2C45002DA20E /* DentaMatch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E5DC3E711DAF2C45002DA20E /* DentaMatch.xcdatamodeld */; };
-		E5E1148C1E4AC63A00E63FF5 /* ChatList+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E1148A1E4AC63A00E63FF5 /* ChatList+CoreDataClass.swift */; };
-		E5E1148D1E4AC63A00E63FF5 /* ChatList+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E1148B1E4AC63A00E63FF5 /* ChatList+CoreDataProperties.swift */; };
 		E5E7CB431E2F39D500D4FB59 /* DMEditProfileVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E7CB421E2F39D500D4FB59 /* DMEditProfileVC+Services.swift */; };
 		E5E7CB4A1E2F8CDE00D4FB59 /* EditLicenseTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E7CB481E2F8CDE00D4FB59 /* EditLicenseTableCell.swift */; };
 		E5E7CB4B1E2F8CDE00D4FB59 /* EditLicenseTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5E7CB491E2F8CDE00D4FB59 /* EditLicenseTableCell.xib */; };
@@ -552,6 +552,8 @@
 		E57F29E01E3696A60025B9DE /* DMEditDentalStateBoardVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMEditDentalStateBoardVC+Services.swift"; sourceTree = "<group>"; };
 		E58654FC1DEFEF7F006FEB2D /* ConfigurationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationManager.swift; sourceTree = "<group>"; };
 		E58654FD1DEFEF7F006FEB2D /* Environments.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Environments.plist; sourceTree = "<group>"; };
+		E587B0CB1E56CEBC00576770 /* ChatList+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ChatList+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E587B0CC1E56CEBC00576770 /* ChatList+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ChatList+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E587D2CB1E23362C006B7F06 /* JobSelectionPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobSelectionPickerView.swift; sourceTree = "<group>"; };
 		E587D2CE1E23438B006B7F06 /* DMJobTitleSelectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMJobTitleSelectionVC.swift; sourceTree = "<group>"; };
 		E587D2D01E2343A5006B7F06 /* DMJobTitleSelectionVC+UIPickerViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMJobTitleSelectionVC+UIPickerViewExtension.swift"; sourceTree = "<group>"; };
@@ -670,8 +672,6 @@
 		E5C5F3171DC1A723001A5A3F /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		E5C5F31A1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMTermsAndConditionsVC.swift; sourceTree = "<group>"; };
 		E5DC3E721DAF2C45002DA20E /* DentaMatch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DentaMatch.xcdatamodel; sourceTree = "<group>"; };
-		E5E1148A1E4AC63A00E63FF5 /* ChatList+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ChatList+CoreDataClass.swift"; sourceTree = "<group>"; };
-		E5E1148B1E4AC63A00E63FF5 /* ChatList+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ChatList+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E5E7CB421E2F39D500D4FB59 /* DMEditProfileVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMEditProfileVC+Services.swift"; sourceTree = "<group>"; };
 		E5E7CB481E2F8CDE00D4FB59 /* EditLicenseTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditLicenseTableCell.swift; sourceTree = "<group>"; };
 		E5E7CB491E2F8CDE00D4FB59 /* EditLicenseTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditLicenseTableCell.xib; sourceTree = "<group>"; };
@@ -1833,10 +1833,10 @@
 		E5AE37831E4986E10001EC3C /* CoreDataModels */ = {
 			isa = PBXGroup;
 			children = (
+				E587B0CB1E56CEBC00576770 /* ChatList+CoreDataClass.swift */,
+				E587B0CC1E56CEBC00576770 /* ChatList+CoreDataProperties.swift */,
 				E513E9F81E556B2A001E2B6A /* Chat+CoreDataClass.swift */,
 				E513E9F91E556B2A001E2B6A /* Chat+CoreDataProperties.swift */,
-				E5E1148A1E4AC63A00E63FF5 /* ChatList+CoreDataClass.swift */,
-				E5E1148B1E4AC63A00E63FF5 /* ChatList+CoreDataProperties.swift */,
 			);
 			path = CoreDataModels;
 			sourceTree = "<group>";
@@ -2387,7 +2387,6 @@
 				F223591D1E3F5F4900E984FC /* DMJobSearchResultVC+TableViewExtension.swift in Sources */,
 				E5BED5531E49AB85003EC833 /* DMMessagesVC+TableViewExtension.swift in Sources */,
 				E5E7CB781E2FA23200D4FB59 /* AboutMeCell.swift in Sources */,
-				E5E1148C1E4AC63A00E63FF5 /* ChatList+CoreDataClass.swift in Sources */,
 				E5AE37741E4971CE0001EC3C /* SocketTypes.swift in Sources */,
 				E5A174C71E201DE40044B17E /* ProfileImageButton.swift in Sources */,
 				E5A174C21E201D450044B17E /* CircleProgressBar.m in Sources */,
@@ -2525,6 +2524,7 @@
 				E5AE376B1E4971CE0001EC3C /* SocketIOClient.swift in Sources */,
 				F2F5E0CF1E2F62080082187C /* AboutCell.swift in Sources */,
 				E587D2D71E236B84006B7F06 /* DMRegisterMapsVC+GoogleMapsExtension.swift in Sources */,
+				E587B0CE1E56CEBC00576770 /* ChatList+CoreDataProperties.swift in Sources */,
 				5A3B06CD1E3387FF00EFCA6E /* DMSettingVC+TableViewExtension.swift in Sources */,
 				E5AE37691E4971CE0001EC3C /* SocketEventHandler.swift in Sources */,
 				5A5523F11E4DCDF3007D8C09 /* TimeAgo.swift in Sources */,
@@ -2538,6 +2538,7 @@
 				E56C9F9E1DED4BD100EAA9DD /* Character+Addition.swift in Sources */,
 				E5AE37601E4971CE0001EC3C /* SocketAckManager.swift in Sources */,
 				E5E7CB8D1E2FA23200D4FB59 /* SkillsTableCell.swift in Sources */,
+				E587B0CD1E56CEBC00576770 /* ChatList+CoreDataClass.swift in Sources */,
 				E587D2F81E24C0C0006B7F06 /* DMSelectSkillsVC.swift in Sources */,
 				E57EE6CA1E28EB440090434F /* DMAffiliationsVC+Services.swift in Sources */,
 				E54B9A7C1E326A6C00805D9C /* EditCertificateTableCell.swift in Sources */,
@@ -2602,7 +2603,6 @@
 				E5F47C951E0035B90051C4A1 /* UIImageRotate.m in Sources */,
 				E5C5F31B1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift in Sources */,
 				F223591B1E3F5ED100E984FC /* DMJobSearchResultVC+GMSExtension.swift in Sources */,
-				E5E1148D1E4AC63A00E63FF5 /* ChatList+CoreDataProperties.swift in Sources */,
 				E5AE37721E4971CE0001EC3C /* SocketParsable.swift in Sources */,
 				E5E7CB9F1E306E6300D4FB59 /* License.swift in Sources */,
 				E54976F21E28CEDD006F21E5 /* Skill.swift in Sources */,

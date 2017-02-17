@@ -47,6 +47,10 @@ extension Date {
         return "MM-dd-YYYY hh:mmaa"
     }
     
+    public static func dateFormatMMDDYYYY() ->String {
+        return "MM-dd-yyyy"
+    }
+    
     public static func dateFormatYYYY()->String {
         return "yyyy"
     }
@@ -187,6 +191,14 @@ extension Date {
     static func currentTimeMillis() -> Int64{
         let nowDouble = NSDate().timeIntervalSince1970
         return Int64(nowDouble*1000)
+    }
+    
+    static func getTodaysDateMMDDYYYY() -> Date {
+        let todaysDate = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = Date.dateFormatMMDDYYYY()
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        return dateFormatter.date(from: dateFormatter.string(from: todaysDate))!
     }
     
     

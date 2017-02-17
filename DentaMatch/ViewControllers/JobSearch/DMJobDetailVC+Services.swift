@@ -98,7 +98,9 @@ extension DMJobDetailVC {
                 })
                 job?.isApplied = 1
                 if let delegate = self.delegate {
-                    delegate.jobApplied!(job: job!)
+                    if fromTrack {
+                        delegate.jobApplied!(job: job!)
+                    }
                 }
                 DispatchQueue.main.async {
                     self.btnApplyForJob.isHidden = true

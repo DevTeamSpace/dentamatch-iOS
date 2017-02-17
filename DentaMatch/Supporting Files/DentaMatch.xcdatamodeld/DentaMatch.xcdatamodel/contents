@@ -2,17 +2,16 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16C67" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Chat" representedClassName=".Chat" syncable="YES">
         <attribute name="chatId" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="dateString" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dateTime" optional="YES" attributeType="Date" defaultDateTimeInterval="508135200" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="fromId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="message" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="readStatus" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="timeStamp" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="timeString" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="toId" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="ChatList" representedClassName=".ChatList" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" defaultDateTimeInterval="508146000" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="dateString" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isBlockedFromRecruiter" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="isBlockedFromSeeker" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="lastMessage" optional="YES" attributeType="String" syncable="YES"/>
@@ -20,6 +19,7 @@
         <attribute name="messageListId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="officeName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="recruiterId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timeStamp" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
         <element name="Chat" positionX="-63" positionY="-18" width="128" height="165"/>

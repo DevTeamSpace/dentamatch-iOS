@@ -20,8 +20,8 @@ extension DMMessagesVC:NSFetchedResultsControllerDelegate {
                 chat.recruiterId = chatListObj["recruiterId"].stringValue
                 chat.isBlockedFromRecruiter = chatListObj["recruiterBlock"].boolValue
                 chat.isBlockedFromSeeker = chatListObj["seekerBlock"].boolValue
-                chat.date = self.getDate(dateString: chatListObj["timestamp"].stringValue)?.date as NSDate?
-                chat.dateString = chatListObj["timestamp"].stringValue
+                chat.date = self.getDate(timestamp: chatListObj["timestamp"].stringValue) as NSDate?
+                chat.timeStamp = chatListObj["timestamp"].doubleValue
                 chat.officeName = chatListObj["name"].stringValue
                 chat.lastMessageId = chatListObj["messageId"].stringValue
             } else {
@@ -31,8 +31,8 @@ extension DMMessagesVC:NSFetchedResultsControllerDelegate {
                 chat.recruiterId = chatListObj["recruiterId"].stringValue
                 chat.isBlockedFromRecruiter = chatListObj["recruiterBlock"].boolValue
                 chat.isBlockedFromSeeker = chatListObj["seekerBlock"].boolValue
-                chat.date = self.getDate(dateString: chatListObj["timestamp"].stringValue)?.date as NSDate?
-                chat.dateString = chatListObj["timestamp"].stringValue
+                chat.date = self.getDate(timestamp: chatListObj["timestamp"].stringValue) as NSDate?
+                chat.timeStamp = chatListObj["timestamp"].doubleValue
                 chat.officeName = chatListObj["name"].stringValue
                 chat.messageListId = chatListObj["messageListId"].stringValue
                 chat.lastMessageId = chatListObj["messageId"].stringValue
@@ -42,16 +42,42 @@ extension DMMessagesVC:NSFetchedResultsControllerDelegate {
         self.appDelegate.saveContext()
     }
     
-    func getDate(dateString:String) -> (date:Date,dateString:String)? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = Date.dateFormatYYYYMMDDHHMMSS()
-        let date = dateFormatter.date(from: dateString)
-        dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
-        if let date = date {
-            return (date,dateFormatter.string(from: date))
-        }
-        return nil
+    func getDate(timestamp:String) -> Date {
+//        Date.getTodaysDateMMDDYYYY()
+        
+//        dateFormatter.dateFormat = Date.dateFormatMMDDYYYY()
+//        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+//        return dateFormatter.date(from: dateFormatter.string(from: todaysDate))!
+        
+        let doubleTime = Double(timestamp)
+        let lastMessageDate = Date(timeIntervalSince1970: doubleTime!/1000)
+       // let dateFormatter = DateFormatter()
+        //dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+//        dateFormatter.dateFormat = Date.dateFormatMMDDYYYY()
+//        dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
+//        let date1 = dateFormatter.string(from: lastMessageDate)
+
+        
+        return lastMessageDate
     }
+    
+    func getDate1(timestamp:String) {
+        let doubleTime = Double(timestamp)
+        let date = Date(timeIntervalSince1970: doubleTime!/1000)
+        let dateFormatter = DateFormatter()
+        dateFormatter.amSymbol = "am"
+        dateFormatter.pmSymbol = "pm"
+        dateFormatter.dateFormat = Date.dateFormatYYYYMMDDHHMMSSAA()
+        let dateEnter = dateFormatter.string(from: date)
+        
+        dateFormatter.dateFormat = Date.dateFormatHHMM()
+        let dateEnter1 = dateFormatter.string(from: date)
+        
+        //       dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        let ee = dateFormatter.date(from: dateEnter)
+        
+    }
+
     
     func chatListExits(messageListId:String) -> ChatList? {
         let fetchRequest:NSFetchRequest<ChatList> = ChatList.fetchRequest()
