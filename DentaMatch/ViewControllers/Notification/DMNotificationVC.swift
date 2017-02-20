@@ -19,6 +19,11 @@ enum UserNotificationType:Int {
 }
 class DMNotificationVC: DMBaseVC {
     @IBOutlet weak var notificationTableView: UITableView!
+    var pullToRefreshNotifications = UIRefreshControl()
+    var loadingMoreNotifications = false
+    var pageNumber = 1
+    var totalNotificationOnServer = 0
+
     var notificationList = [UserNotification]()
 
     override func viewDidLoad() {
@@ -41,6 +46,10 @@ class DMNotificationVC: DMBaseVC {
         self.notificationTableView.register(UINib(nibName: "HiredJobNotificationTableCell", bundle: nil), forCellReuseIdentifier: "HiredJobNotificationTableCell")
         self.notificationTableView.register(UINib(nibName: "CommonTextNotificationTableCell", bundle: nil), forCellReuseIdentifier: "CommonTextNotificationTableCell")
         self.notificationTableView.register(UINib(nibName: "NotificationJobTypeTableCell", bundle: nil), forCellReuseIdentifier: "NotificationJobTypeTableCell")
+        pullToRefreshNotifications.addTarget(self, action: #selector(pullToRefreshForNotification), for: .valueChanged)
+        self.notificationTableView.addSubview(pullToRefreshNotifications)
+
+        self.pageNumber = 1
         self.getNotificationList { (isSucess, error) in
             if isSucess! {
                 self.notificationTableView.reloadData()
@@ -50,7 +59,18 @@ class DMNotificationVC: DMBaseVC {
         }
     }
     
-    
+    func pullToRefreshForNotification() {
+        self.pageNumber = 1
+        self.getNotificationList { (isSucess, error) in
+            if isSucess! {
+                self.notificationTableView.reloadData()
+            }else{
+                
+            }
+        }
+        pullToRefreshNotifications.endRefreshing()
+    }
+
     
 
     /*

@@ -67,9 +67,9 @@ extension AppDelegate:UNUserNotificationCenterDelegate {
         self.window?.makeToast(userInfo.description)
         
         
-        let state: UIApplicationState = UIApplication.sharedApplication().applicationState
+        let state: UIApplicationState = UIApplication.shared.applicationState
         
-        if(state == UIApplicationState.Active)
+        if(state == UIApplicationState.active)
         {
             
         }else{

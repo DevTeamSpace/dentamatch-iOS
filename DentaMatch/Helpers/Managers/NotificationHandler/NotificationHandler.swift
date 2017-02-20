@@ -31,12 +31,13 @@ class NotificationHandler: NSObject {
         case .other: break
             //No need any action
             
-        default: break
             
         }
         
     }
     class func notificationHandleforBackground(notiObj:UserNotification, app : UIApplication) {
+        let notificationType = UserNotificationType(rawValue: notiObj.notificationType!)!
+
         switch notificationType {
         case .acceptJob: break
         //open job detail

@@ -12,7 +12,8 @@ import SwiftyJSON
 extension DMNotificationVC {
     func getNotificationList(completionHandler: @escaping (Bool?, NSError?) -> ()) {
         var params = [String:AnyObject]()
-        params["page"] = 1 as AnyObject
+        params["page"] = self.pageNumber as AnyObject
+        debugPrint("notification Parameter \(params)")
         self.showLoader()
         APIManager.apiGet(serviceName: Constants.API.getNotificationList, parameters: params) { (response:JSON?, error:NSError?) in
             self.hideLoader()
@@ -24,16 +25,21 @@ extension DMNotificationVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-                        debugPrint(response!)
-            self.notificationList.removeAll()
+            
+            debugPrint(response!)
+            if self.pageNumber == 1 {
+                self.notificationList.removeAll()
+            }
             if response![Constants.ServerKey.status].boolValue {
                 let resultDic = response![Constants.ServerKey.result][Constants.ServerKey.list].arrayValue
+                self.pageNumber = self.pageNumber + 1
                 for dictObj in resultDic {
                     let notificationObj = UserNotification(dict: dictObj)
                     self.notificationList.append(notificationObj)
                 }
 
-                
+                self.totalNotificationOnServer = response![Constants.ServerKey.result]["total"].intValue
+                //total
 //                self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
                 completionHandler(true, error)
                 //do next
@@ -42,6 +48,11 @@ extension DMNotificationVC {
                 completionHandler(false, error)
                 
             }
+            DispatchQueue.main.async {
+//                self.notificationTableView.reloadData()
+                self.notificationTableView.tableFooterView = nil
+            }
+
         }
     }
     
