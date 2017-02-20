@@ -47,17 +47,15 @@ class JobSeachTitleCell: UITableViewCell {
         var totalHeight : CGFloat = 5.0
         let widthPadding : CGFloat = 10.0
         let heightPadding : CGFloat = 23.0
-        
         if jobTitles.count == 0 {
             constraintScrollViewHeight.constant = 4.0
-            self.layoutIfNeeded()
             return
         }
         
         for objTitle in jobTitles {
             let font = UIFont.fontRegular(fontSize: 14.0)
             let textAttributes = [NSFontAttributeName: font]
-            let textSize = objTitle.jobTitle.boundingRect(with: CGSize(width : self.frame.size.width + 10,height : 14), options: .usesLineFragmentOrigin, attributes: textAttributes, context: nil)
+            let textSize = objTitle.jobTitle.boundingRect(with: CGSize(width : UIScreen.main.bounds.size.width + 10,height : 14), options: .usesLineFragmentOrigin, attributes: textAttributes, context: nil)
             var textWidth : CGFloat = textSize.width
             let textHeight : CGFloat = 34.0
             
@@ -71,7 +69,7 @@ class JobSeachTitleCell: UITableViewCell {
                 }
                 textWidth = self.scrollViewJobTitle.frame.size.width - leftMargin - rightMargin - 15
             }
-            else if leftMargin + textSize.width + rightMargin + widthPadding >= self.scrollViewJobTitle.frame.size.width {
+            else if leftMargin + textSize.width + rightMargin + widthPadding >= (UIScreen.main.bounds.size.width - 20) {
                 leftMargin = 5.0
                 topMargin =  topMargin + textSize.height + heightPadding + 5.0
             }
@@ -91,12 +89,11 @@ class JobSeachTitleCell: UITableViewCell {
             totalHeight =  topMargin + textSize.height + heightPadding
         }
         
-        self.scrollViewJobTitle.contentSize = CGSize(width : self.scrollViewJobTitle.frame.size.width,height : totalHeight)
+        self.scrollViewJobTitle.contentSize = CGSize(width : UIScreen.main.bounds.size.width - 20,height : totalHeight)
         
         // Set scrollview height equals to Total Height
         
         constraintScrollViewHeight.constant = totalHeight
-        self.needsUpdateConstraints()
     }
     
 }
