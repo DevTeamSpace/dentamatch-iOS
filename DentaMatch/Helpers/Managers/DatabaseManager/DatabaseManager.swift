@@ -68,6 +68,7 @@ class DatabaseManager: NSObject {
                         if let chatList = chatListExists(recruiterId: chatObj["toId"].stringValue) {
                             chatList.lastMessage = chatObj["message"].stringValue
                             chatList.lastMessageId = chatObj["messageId"].stringValue
+                            chatList.timeStamp = chatObj["sentTime"].doubleValue
                             //TODO:- Time Handling
                         }
                     } else {
@@ -75,6 +76,8 @@ class DatabaseManager: NSObject {
                         if let chatList = chatListExists(recruiterId: chatObj["fromId"].stringValue) {
                             chatList.lastMessage = chatObj["message"].stringValue
                             chatList.lastMessageId = chatObj["messageId"].stringValue
+                            chatList.timeStamp = chatObj["sentTime"].doubleValue
+                            chatList.unreadCount = chatList.unreadCount + 1
                         }
                     }
                 }
@@ -82,6 +85,15 @@ class DatabaseManager: NSObject {
             }
         }
         kAppDelegate.saveContext()
+    }
+    
+    class func updateReadCount(recruiterId:String) {
+        if recruiterId != "0" {
+            if let chatList = chatListExists(recruiterId:recruiterId) {
+                chatList.unreadCount = 0
+            }
+            kAppDelegate.saveContext()
+        }
     }
     
     class func chatExits(messageId:String) -> Chat? {

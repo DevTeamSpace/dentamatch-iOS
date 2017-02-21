@@ -46,6 +46,7 @@ class DMChatVC: DMBaseVC {
         self.navigationItem.title = chatList?.officeName
         self.navigationItem.leftBarButtonItem = self.backBarButton()
         SocketManager.sharedInstance.recruiterId = (chatList?.recruiterId)!
+        SocketManager.sharedInstance.updateMessageRead()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

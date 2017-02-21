@@ -24,6 +24,7 @@ extension DMMessagesVC:NSFetchedResultsControllerDelegate {
                 chat.timeStamp = chatListObj["timestamp"].doubleValue
                 chat.officeName = chatListObj["name"].stringValue
                 chat.lastMessageId = chatListObj["messageId"].stringValue
+                chat.unreadCount = chatListObj["unreadCount"].int16Value
             } else {
                 //New Record
                 let chat = NSEntityDescription.insertNewObject(forEntityName: "ChatList", into: self.context) as! ChatList
@@ -36,6 +37,7 @@ extension DMMessagesVC:NSFetchedResultsControllerDelegate {
                 chat.officeName = chatListObj["name"].stringValue
                 chat.messageListId = chatListObj["messageListId"].stringValue
                 chat.lastMessageId = chatListObj["messageId"].stringValue
+                chat.unreadCount = chatListObj["unreadCount"].int16Value
                 
             }
         }

@@ -64,6 +64,15 @@ class SocketManager: NSObject,SocketConnectionDelegate {
         //socket.emit("sendMessage", with: [params])
     }
     
+    func updateMessageRead() {
+        let params = [
+            "toId":UserManager.shared().activeUser.userId!,
+            "fromId":recruiterId,
+        ]
+        socket.emit("updateReadCount", with: [params])
+        DatabaseManager.updateReadCount(recruiterId: recruiterId)
+    }
+    
     
     func getChatMessage(completionHandler: @escaping (_ messageInfo: [String: AnyObject]) -> Void) {
         self.chatCompletionHandler = completionHandler
@@ -82,43 +91,15 @@ class SocketManager: NSObject,SocketConnectionDelegate {
         self.historyMessagesCompletionHandler = completionHandler
     }
 
-    func connectToServerWithNickname(nickname: String, completionHandler: @escaping (_ userList: [[String: AnyObject]]?) -> Void) {
-        socket.emit("connectUser", nickname)
-        
-        socket.on("userList") { ( dataArray, ack) -> Void in
-            completionHandler(dataArray[0] as? [[String: AnyObject]])
-        }
-        
-        listenForOtherMessages()
-    }
-    
-    func exitChatWithNickname(nickname: String, completionHandler: () -> Void) {
-        socket.emit("exitUser", nickname)
-        completionHandler()
-    }
     
     private func listenForOtherMessages() {
-        socket.on("userConnectUpdate") { (dataArray, socketAck) -> Void in
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "userWasConnectedNotification"), object: dataArray[0] as! [String: AnyObject])
-        }
-        
-        socket.on("userExitUpdate") { (dataArray, socketAck) -> Void in
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "userWasDisconnectedNotification"), object: dataArray[0] as! String)
-        }
         
         socket.on("userTypingUpdate") { (dataArray, socketAck) -> Void in
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "userTypingNotification"), object: dataArray[0] as? [String: AnyObject])
         }
     }
     
-    func sendStartTypingMessage(nickname: String) {
-        socket.emit("startType", nickname)
-    }
-    
-    func sendStopTypingMessage(nickname: String) {
-        socket.emit("stopType", nickname)
-    }
-    
+    //MARK:- Socket Delegates
     func didConnectSocket() {
         print("Socket Connected")
         if let _ = UserManager.shared().activeUser {
@@ -132,6 +113,7 @@ class SocketManager: NSObject,SocketConnectionDelegate {
         print("Socket Disconnected")
     }
     
+    //MARK:- Events for On
     func eventForReceiveMessage() {
         socket.off("receiveMessage")
         socket.on("receiveMessage") { (dataArray, socketAck) -> Void in
