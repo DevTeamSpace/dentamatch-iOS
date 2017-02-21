@@ -34,16 +34,32 @@ extension DMChatVC:UITableViewDataSource,UITableViewDelegate {
         return 0
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if let sections = fetchedResultsController.sections {
-            let section = sections[section]
-            return section.name
-        }
-        return nil
-    }
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        if let sections = fetchedResultsController.sections {
+//            let section = sections[section]
+//            return section.name
+//        }
+//        return nil
+//    }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 30
+        return 40
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if let sections = fetchedResultsController.sections {
+            let section = sections[section]
+            let sectionView = UIView(frame: CGRect(x: 0, y: 0, width: Utilities.ScreenSize.SCREEN_WIDTH, height: 40))
+            let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 30))
+            label.font = UIFont.fontRegular(fontSize: 13.0)
+            label.textColor = UIColor.color(withHexCode: "8e9091")
+            label.textAlignment = .center
+            label.text = section.name
+            label.center = sectionView.center
+            sectionView.addSubview(label)
+            return sectionView
+        }
+        return nil
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
