@@ -42,10 +42,12 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     }
     
     func initServer() {
+        //userType 1 is for jobseeker, 2 is recruiter
         let params = [
             "userId":UserManager.shared().activeUser.userId!,
-            "userName":UserManager.shared().activeUser.firstName!
-        ]
+            "userName":UserManager.shared().activeUser.firstName!,
+            "userType":1
+        ] as [String : Any]
         socket.emit("init", params)
     }
     
@@ -69,8 +71,19 @@ class SocketManager: NSObject,SocketConnectionDelegate {
             "toId":UserManager.shared().activeUser.userId!,
             "fromId":recruiterId,
         ]
-        socket.emit("updateReadCount", with: [params])
-        DatabaseManager.updateReadCount(recruiterId: recruiterId)
+        
+        socket.emitWithAck("updateReadCount", params).timingOut(after: 0) { (params:[Any]) in
+            self.handleUpdateUnreadCounter(params: params)
+        }
+    }
+    
+    func notOnChat() {
+        let params = [
+            "fromId":UserManager.shared().activeUser.userId!,
+            ]
+        socket.emitWithAck("notOnChat", params).timingOut(after: 0) { (params:[Any]) in
+            print(params)
+        }
     }
     
     
@@ -180,7 +193,7 @@ class SocketManager: NSObject,SocketConnectionDelegate {
 //        }
     }
     
-    //handling
+    //MARK:- Handling
     
     func handleReceivedChatMessage(params:[Any]) {
         var messageDictionary = [String: AnyObject]()
@@ -199,7 +212,15 @@ class SocketManager: NSObject,SocketConnectionDelegate {
             let chatObj = JSON(rawValue: messageDictionary)
             self.makeNotificationData(chat: chatObj)
         }
-
+    }
+    
+    func handleUpdateUnreadCounter(params:[Any]) {
+        var messageDictionary = [String: AnyObject]()
+        messageDictionary = params[0] as! [String:AnyObject]
+        if let unreadCounterObject = JSON(rawValue: messageDictionary) {
+            print(unreadCounterObject)
+            DatabaseManager.updateReadCount(recruiterId: unreadCounterObject["recruiterId"].stringValue)
+        }
     }
 }
 

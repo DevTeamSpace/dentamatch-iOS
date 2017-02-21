@@ -99,11 +99,11 @@ extension DMMessagesVC:NSFetchedResultsControllerDelegate {
             
         case .move:
             if let indexPath = indexPath {
-                messageListTableView.deleteRows(at: [indexPath], with: .fade)
+                messageListTableView.deleteRows(at: [indexPath], with: .automatic)
             }
             
             if let newIndexPath = newIndexPath {
-                messageListTableView.insertRows(at: [newIndexPath], with: .fade)
+                messageListTableView.insertRows(at: [newIndexPath], with: .automatic)
             }
         default:
             break;
