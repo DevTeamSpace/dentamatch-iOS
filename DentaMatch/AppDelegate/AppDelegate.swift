@@ -12,6 +12,7 @@ import GoogleMaps
 import GooglePlaces
 import Crashlytics
 import Fabric
+import SwiftyJSON
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -51,7 +52,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         } else {
             self.goToDashBoard()
+            
+            if let remoteNotification = launchOptions?[UIApplicationLaunchOptionsKey.remoteNotification] as? NSDictionary {
+                if remoteNotification.allKeys.count > 0
+                {
+//                    self.tabIndex = 4
+                    if let noti = remoteNotification["data"]  {
+                        let josnObj = JSON(noti)
+                        let userNotiObj = UserNotification(dict: josnObj)
+                        NotificationHandler.notificationHandleforForground(notiObj: userNotiObj, app: application)
+                    }
+
+                }
+            }
+            
         }
+        
+        
         
         return true
     }

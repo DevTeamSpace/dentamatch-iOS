@@ -59,7 +59,6 @@ class DMEditProfileVC: DMBaseVC {
     func setup() {
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateProfileScreen), name: .updateProfileScreen, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(psuhRediectNotificationForProfile), name: .pushRedirectNotificationForProfile, object: nil)
 
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.editProfileTableView.register(UINib(nibName: "EditProfileHeaderTableCell", bundle: nil), forCellReuseIdentifier: "EditProfileHeaderTableCell")
@@ -149,11 +148,6 @@ class DMEditProfileVC: DMBaseVC {
         self.navigationController?.pushViewController(editCertificateVC, animated: true)
     }
     
-    func psuhRediectNotificationForProfile(userInfo:Notification) {
-        if let tabbar = ((UIApplication.shared.delegate) as! AppDelegate).window?.rootViewController as? TabBarVC {
-            tabbar.selectedIndex = 4
-        }
-    }
     func updateProfileScreen(userInfo:Notification) {
         let dict = userInfo.userInfo
         

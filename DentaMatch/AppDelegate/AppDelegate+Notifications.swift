@@ -8,6 +8,7 @@
 
 import Foundation
 import UserNotifications
+import SwiftyJSON
 
 extension AppDelegate:UNUserNotificationCenterDelegate {
     
@@ -61,7 +62,7 @@ extension AppDelegate:UNUserNotificationCenterDelegate {
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
-        let dict = userInfo["aps"]
+        let dict = userInfo["aps"] as? NSDictionary
         print(dict ?? "not avail")
         debugPrint("didReceiveRemoteNotification \(userInfo.description)")
         self.window?.makeToast(userInfo.description)
@@ -71,8 +72,26 @@ extension AppDelegate:UNUserNotificationCenterDelegate {
         
         if(state == UIApplicationState.active)
         {
+            if UserDefaultsManager.sharedInstance.isLoggedIn {
+                if let noti = userInfo["data"]  {
+                    let josnObj = JSON(noti)
+                    let userNotiObj = UserNotification(dict: josnObj)
+                    NotificationHandler.notificationHandleforForground(notiObj: userNotiObj, app: application)
+                }
+ 
+            }
+            
             
         }else{
+            
+            if UserDefaultsManager.sharedInstance.isLoggedIn {
+                if let noti = userInfo["data"]  {
+                    let josnObj = JSON(noti)
+                    let userNotiObj = UserNotification(dict: josnObj)
+                    NotificationHandler.notificationHandleforForground(notiObj: userNotiObj, app: application)
+                }
+
+            }
             
         }
     }

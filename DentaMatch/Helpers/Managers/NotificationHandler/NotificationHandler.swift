@@ -14,20 +14,29 @@ class NotificationHandler: NSObject {
         let notificationType = UserNotificationType(rawValue: notiObj.notificationType!)!
 
         switch notificationType {
-        case .acceptJob: break
+        case .acceptJob:
             //open job detail
+            openJobDetailScreen(obj: notiObj.jobdetail!)
         case .chatMessgae: break
             //No need any action
-        case .completeProfile: break
+        case .completeProfile:
             //open profile
+        openEditProfileScreen()
+
         case .deleteJob: break
             //No need any action
-        case .hired: break
+        case .hired:
             //open job detail
-        case .jobCancellation: break
+        openJobDetailScreen(obj: notiObj.jobdetail!)
+
+        case .jobCancellation:
             //open job detail
-        case .verifyDocuments: break
+        openJobDetailScreen(obj: notiObj.jobdetail!)
+
+        case .verifyDocuments:
             //open edit profile
+            openEditProfileScreen()
+
         case .other: break
             //No need any action
             
@@ -39,23 +48,31 @@ class NotificationHandler: NSObject {
         let notificationType = UserNotificationType(rawValue: notiObj.notificationType!)!
 
         switch notificationType {
-        case .acceptJob: break
+        case .acceptJob:
         //open job detail
+        openJobDetailScreen(obj: notiObj.jobdetail!)
+
         case .chatMessgae: break
         //No need any action
-        case .completeProfile: break
+        case .completeProfile:
         //open profile
+        openEditProfileScreen()
+
         case .deleteJob: break
         //No need any action
-        case .hired: break
+        case .hired:
         //open job detail
-        case .jobCancellation: break
+            openJobDetailScreen(obj: notiObj.jobdetail!)
+
+        case .jobCancellation:
         //open job detail
-        case .verifyDocuments: break
+        openJobDetailScreen(obj: notiObj.jobdetail!)
+
+        case .verifyDocuments:
         //open edit profile
+            openEditProfileScreen()
         case .other: break
             //No need any action
-        default: break
             
         }
 
@@ -63,9 +80,13 @@ class NotificationHandler: NSObject {
     }
     
     class func openJobDetailScreen(obj:Job) {
+        NotificationCenter.default.post(name: .pushRedirectNotificationForground, object: nil, userInfo: ["notificationData":obj])
+
         
     }
     class func openEditProfileScreen() {
+        NotificationCenter.default.post(name: .pushRedirectNotificationForProfile, object: nil, userInfo: nil)
+
         
     }
 
