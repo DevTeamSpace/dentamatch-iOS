@@ -38,6 +38,8 @@ extension DMNotificationVC {
                     self.notificationList.append(notificationObj)
                 }
 
+                self.placeHolderEmptyJobsView?.isHidden = self.notificationList.count > 0 ? true : false
+                
                 self.totalNotificationOnServer = response![Constants.ServerKey.result]["total"].intValue
                 //total
 //                self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)

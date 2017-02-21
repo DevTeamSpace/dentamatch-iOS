@@ -23,6 +23,7 @@ class DMNotificationVC: DMBaseVC {
     var loadingMoreNotifications = false
     var pageNumber = 1
     var totalNotificationOnServer = 0
+    var placeHolderEmptyJobsView:PlaceHolderJobsView?
 
     var notificationList = [UserNotification]()
 
@@ -38,10 +39,20 @@ class DMNotificationVC: DMBaseVC {
         // Dispose of any resources that can be recreated.
     }
     func setup() {
+        
+        placeHolderEmptyJobsView = PlaceHolderJobsView.loadPlaceHolderJobsView()
+        placeHolderEmptyJobsView?.frame = CGRect(x: 0, y: 0, width: 300, height: 200)
+        placeHolderEmptyJobsView?.center = self.view.center
+        placeHolderEmptyJobsView?.backgroundColor = UIColor.clear
+        self.view.addSubview(placeHolderEmptyJobsView!)
+        placeHolderEmptyJobsView?.placeHolderMessageLabel.text = "You don’t have any notifications"
+        placeHolderEmptyJobsView?.isHidden = false
+        
         self.title = Constants.ScreenTitleNames.notification
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationItem.leftBarButtonItem = self.backBarButton()
 
+        self.notificationTableView.backgroundColor = UIColor.clear
         self.notificationTableView.estimatedRowHeight = 76
         self.notificationTableView.register(UINib(nibName: "HiredJobNotificationTableCell", bundle: nil), forCellReuseIdentifier: "HiredJobNotificationTableCell")
         self.notificationTableView.register(UINib(nibName: "CommonTextNotificationTableCell", bundle: nil), forCellReuseIdentifier: "CommonTextNotificationTableCell")

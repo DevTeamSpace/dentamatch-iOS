@@ -57,10 +57,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 if remoteNotification.allKeys.count > 0
                 {
 //                    self.tabIndex = 4
-                    if let noti = remoteNotification["data"]  {
-                        let josnObj = JSON(noti)
+                    if let noti = remoteNotification["data"] as? NSDictionary {
+                        let newObj = noti["data"]
+                        let josnObj = JSON(newObj ?? [:])
                         let userNotiObj = UserNotification(dict: josnObj)
-                        NotificationHandler.notificationHandleforForground(notiObj: userNotiObj, app: application)
+                        NotificationHandler.notificationHandleforBackground(notiObj: userNotiObj, app: application)
                     }
 
                 }

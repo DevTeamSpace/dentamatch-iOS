@@ -73,8 +73,9 @@ extension AppDelegate:UNUserNotificationCenterDelegate {
         if(state == UIApplicationState.active)
         {
             if UserDefaultsManager.sharedInstance.isLoggedIn {
-                if let noti = userInfo["data"]  {
-                    let josnObj = JSON(noti)
+                if let noti = userInfo["data"] as? NSDictionary {
+                    let newObj = noti["data"]
+                    let josnObj = JSON(newObj ?? [:])
                     let userNotiObj = UserNotification(dict: josnObj)
                     NotificationHandler.notificationHandleforForground(notiObj: userNotiObj, app: application)
                 }
@@ -85,8 +86,9 @@ extension AppDelegate:UNUserNotificationCenterDelegate {
         }else{
             
             if UserDefaultsManager.sharedInstance.isLoggedIn {
-                if let noti = userInfo["data"]  {
-                    let josnObj = JSON(noti)
+                if let noti = userInfo["data"] as? NSDictionary  {
+                    let newObj = noti["data"]
+                    let josnObj = JSON(newObj ?? [:])
                     let userNotiObj = UserNotification(dict: josnObj)
                     NotificationHandler.notificationHandleforForground(notiObj: userNotiObj, app: application)
                 }
