@@ -61,7 +61,10 @@ class DatabaseManager: NSObject {
                 chat.fromId = chatObj["fromId"].stringValue
                 chat.toId = chatObj["toId"].stringValue
                 chat.timeStamp = chatObj["sentTime"].doubleValue
-                
+                let filteredDateTime = DatabaseManager.getDate(timestamp: chatObj["sentTime"].doubleValue)
+                chat.timeString = filteredDateTime.time
+                chat.dateString = filteredDateTime.date
+             
                 if let user = UserManager.shared().activeUser {
                     if chatObj["fromId"].stringValue == user.userId {
                         //Sender's Chat
@@ -123,4 +126,20 @@ class DatabaseManager: NSObject {
         }
         return nil
     }
+    
+    class func getDate(timestamp:Double) -> (time:String,date:String) {
+        let date = Date(timeIntervalSince1970: timestamp/1000)
+        let dateFormatter = DateFormatter()
+        dateFormatter.amSymbol = "am"
+        dateFormatter.pmSymbol = "pm"
+        dateFormatter.dateFormat = Date.dateFormatYYYYMMDDHHMMSSAA()
+        //let dateEnter = dateFormatter.string(from: date)
+        
+        dateFormatter.dateFormat = Date.dateFormatHHMM()
+        let dateEnter1 = dateFormatter.string(from: date)
+        dateFormatter.dateFormat = Date.dateFormatMMDDYYYY()
+        let dateEnter2 = dateFormatter.string(from: date)
+        return(dateEnter1,dateEnter2)
+    }
+    
 }

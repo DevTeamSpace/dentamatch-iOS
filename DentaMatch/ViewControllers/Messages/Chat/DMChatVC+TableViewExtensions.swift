@@ -27,6 +27,25 @@ extension DMChatVC:UITableViewDataSource,UITableViewDelegate {
         return 0
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        if let sections = fetchedResultsController.sections {
+            return sections.count
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if let sections = fetchedResultsController.sections {
+            let section = sections[section]
+            return section.name
+        }
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let chat = fetchedResultsController.object(at: indexPath) as! Chat
         if let _ = UserManager.shared().activeUser {
@@ -34,6 +53,7 @@ extension DMChatVC:UITableViewDataSource,UITableViewDelegate {
                 //self message
                 let cell = tableView.dequeueReusableCell(withIdentifier: "MessageSenderTableCell") as! MessageSenderTableCell
                 cell.chatTextView.text = chat.message
+                cell.timeLabel.text = chat.timeString
                 //self.setContent(textView: cell.chatTextView)
                 return cell
                 
@@ -41,6 +61,7 @@ extension DMChatVC:UITableViewDataSource,UITableViewDelegate {
                 //recruiter message
                 let cell = tableView.dequeueReusableCell(withIdentifier: "MessageReceiverTableCell") as! MessageReceiverTableCell
                 cell.chatTextView.text = chat.message
+                cell.timeLabel.text = chat.timeString
                 return cell
             }
         } else {

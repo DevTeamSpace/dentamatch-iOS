@@ -91,6 +91,15 @@ class SocketManager: NSObject,SocketConnectionDelegate {
         self.chatCompletionHandler = completionHandler
     }
     
+    func getChatHistory() {
+        let params = [
+            "fromId":UserManager.shared().activeUser.userId!
+            ]
+        socket.emitWithAck("getChatHistory", params).timingOut(after: 0) { (params:[Any]) in
+            print(params)
+        }
+    }
+    
     func getHistory(pageNo:Int) {
         let params = [
             "fromId":UserManager.shared().activeUser.userId!,
