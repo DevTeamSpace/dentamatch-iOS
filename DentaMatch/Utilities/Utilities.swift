@@ -62,6 +62,7 @@ class Utilities: NSObject {
             kAppDelegate.window?.rootViewController = registrationContainer
         }) { (bool:Bool) in
 
+            DatabaseManager.clearDB()
             let alert = UIAlertController(title: "Logged Out", message: "Invalid Token", preferredStyle: .alert)
             let action = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
             }

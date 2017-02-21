@@ -94,10 +94,17 @@ struct Constants {
         static let jobTypeLabelDeselectedColor = UIColor.init(red: 181.0/255.0, green: 181.0/255.0, blue: 181.0/255.0, alpha: 1.0)
         static let partTimeDaySelectColor = UIColor.init(colorLiteralRed: 142.0/255.0, green: 207.0/255.0, blue: 125.0/255.0, alpha: 1.0)
         static let fullTimeBackgroundColor = UIColor.init(red: 69.0/255.0, green: 177.0/255.0 , blue: 179.0/255.0, alpha: 1.0)
+        static let temporaryBackGroundColor = UIColor.color(withHexCode: "f1b85a")
         static let segmentControlBorderColor = UIColor.init(red: 42/255.0, green: 85/255.0, blue: 169.0/255.0, alpha: 1.0)
         static let segmentControlSelectionColor = UIColor.init(red: 4/255.0, green: 112/255.0, blue: 191.0/255.0, alpha: 1.0)
         static let partTimeEventColor = UIColor.init(red: 142.0/255.0, green: 207.0/255.0, blue: 126.0/255.0, alpha: 1)
         static let tempTimeEventColor = UIColor.init(red: 241.0/255.0, green: 184.0/255.0, blue: 90.0/255.0, alpha: 1)
+        
+        static let notificationUnreadTextColor = UIColor.init(red: 15.0/255.0, green: 24.0/255.0, blue: 62.0/255.0, alpha: 1)
+        static let notificationUnreadTimeLabelColor = UIColor.init(red: 15.0/255.0, green: 24.0/255.0, blue: 62.0/255.0, alpha: 1)
+        static let notificationreadTextColor = UIColor.init(red: 71.0/255.0, green: 71.0/255.0, blue: 71.0/255.0, alpha: 1)
+        static let notificationreadTimeLabelColor = UIColor.init(red: 137.0/255.0, green: 137.0/255.0, blue: 137.0/255.0, alpha: 1)
+
 
     }
     
@@ -124,7 +131,9 @@ struct Constants {
         static let dashboardStoryboard  = "Dashboard"
         static let messagesStoryboard  = "Messages"
         static let calenderStoryboard  = "Calender"
+        static let notificationStoryboard  = "Notification"
 
+        
         struct Identifer {
             static let registrationNav = "RegistrationNAV"
             static let profileNav  = "ProfileNAV"
@@ -189,6 +198,11 @@ struct Constants {
         static let jobDetail = Constants.API.apiURL("jobs/job-detail")
         static let applyJob = Constants.API.apiURL("users/apply-job")
 
+        
+        static let getNotificationList = Constants.API.apiURL("users/notification-list")
+        static let readNotification = Constants.API.apiURL("users/notification-read")
+
+        
         static let setAvailabality = Constants.API.apiURL("users/update-availability")
         static let getAvailabality = Constants.API.apiURL("users/availability-list")
         static let getHiredJobs = Constants.API.apiURL("jobs/hired-jobs")
@@ -343,7 +357,7 @@ struct Constants {
         
         static let termsAndConditions = "Please accept terms and conditions/Privacy Policy."
         static let emptyCurrentJobTitle = "Current Job Title can not be left blank."
-        static let emptyPassword = "please enter the password"
+        static let emptyPassword = "Please enter the password"
         static let skipProfile = "Completed job profile will help you in applying for jobs."
         static let somethingWentWrong = "Something went wrong"
         
@@ -374,13 +388,13 @@ struct Constants {
         static let selectLocation = "Please select location"
         
         //Apply Job
-        static let congratulations = "congratulations"
+        static let congratulations = "Congratulations"
         static let jobApplied = "You have successfully applied for the job."
         static let completeYourProfile = "Complete your profile"
         static let completeYourProfileDetailMsg = "You’ll need to fill out your profile before applying for the job. Would you like to fill this out now?"
         
         //Calendar Screen 
-        static let canNotSelectPreDate = "sorry you can't select previouse date"
+        static let canNotSelectPreDate = "Sorry you can't select previouse date"
         
         
         //change password screen messgaes
@@ -399,6 +413,8 @@ struct Constants {
         static let jobSearch = "SEARCH JOBS"
         static let jobTitle = "JOB TITLE"
         static let jobDetails = "JOB DETAILS"
+        static let notification = "NOTIFICATIONS"
+
     }
     
     //MARK:- Strings
@@ -456,6 +472,7 @@ struct Constants {
         static let maxPasswordLimit = 25
         static let commonMaxLimit = 30
         static let licenseNumber = 15
+        static let aboutMeLimit = 500
 
     }
 }

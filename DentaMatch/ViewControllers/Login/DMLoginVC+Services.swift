@@ -33,7 +33,8 @@ extension DMLoginVC {
         UserManager.shared().loginResponseHandler(response: response) { (success:Bool, message:String) in
             self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
             if success {
-                //self.saveSearchedData(response: response!)
+                SocketManager.sharedInstance.establishConnection()
+                self.saveSearchedData(response: response!)
                 self.openJobTitleSelection()
             }
         }
@@ -42,17 +43,34 @@ extension DMLoginVC {
     func saveSearchedData(response:JSON?) {
         var searchParams = [String : Any]()
         if let searchFilters = response?[Constants.ServerKey.result][Constants.ServerKey.searchFilters] {
-                searchParams[Constants.JobDetailKey.lat] = searchFilters[Constants.JobDetailKey.lat].stringValue
-                searchParams[Constants.JobDetailKey.lng] = searchFilters[Constants.JobDetailKey.lng].stringValue
-                searchParams[Constants.JobDetailKey.zipCode] = searchFilters[Constants.JobDetailKey.zipCode].stringValue
-                searchParams[Constants.JobDetailKey.isFulltime] = searchFilters[Constants.JobDetailKey.isFulltime].stringValue
-                searchParams[Constants.JobDetailKey.isParttime] = searchFilters[Constants.JobDetailKey.isParttime].stringValue
-                searchParams[Constants.JobDetailKey.parttimeDays] = searchFilters[Constants.JobDetailKey.parttimeDays].arrayObject as! [String]
-                searchParams[Constants.JobDetailKey.jobTitle] = searchFilters[Constants.JobDetailKey.jobTitle].arrayObject as! [String]
-            searchParams[Constants.JobDetailKey.jobTitles] = searchFilters[Constants.JobDetailKey.jobTitles].arrayObject as! [[String:Any]]
-                searchParams[Constants.JobDetailKey.address] = searchFilters[Constants.JobDetailKey.address].stringValue
+            
+            if searchFilters.count == 0 {
+                return
+            }
+            
+            searchParams[Constants.JobDetailKey.lat] = searchFilters[Constants.JobDetailKey.lat].stringValue
+            searchParams[Constants.JobDetailKey.lng] = searchFilters[Constants.JobDetailKey.lng].stringValue
+            searchParams[Constants.JobDetailKey.zipCode] = searchFilters[Constants.JobDetailKey.zipCode].stringValue
+            searchParams[Constants.JobDetailKey.isFulltime] = searchFilters[Constants.JobDetailKey.isFulltime].stringValue
+            searchParams[Constants.JobDetailKey.isParttime] = searchFilters[Constants.JobDetailKey.isParttime].stringValue
+            
+            if let partTimeDays = searchFilters[Constants.JobDetailKey.parttimeDays].arrayObject as? [String] {
+                searchParams[Constants.JobDetailKey.parttimeDays] = partTimeDays
+            }
+            
+            if let jobTitles = searchFilters[Constants.JobDetailKey.jobTitle].arrayObject as? [Int] {
+                searchParams[Constants.JobDetailKey.jobTitle] = jobTitles
+            }
+            
+            if let customJobTitlesArray =  searchFilters[Constants.JobDetailKey.jobTitles].arrayObject as? [[String:Any]] {
+                searchParams[Constants.JobDetailKey.jobTitles] = customJobTitlesArray
+            }
+            
+            searchParams[Constants.JobDetailKey.address] = searchFilters[Constants.JobDetailKey.address].stringValue
+            
+            UserDefaultsManager.sharedInstance.deleteSearchParameter()
+            UserDefaultsManager.sharedInstance.saveSearchParameter(seachParam: searchParams as Any)
         }
-        UserDefaultsManager.sharedInstance.deleteSearchParameter()
-        UserDefaultsManager.sharedInstance.saveSearchParameter(seachParam: searchParams as Any)
+       
     }
 }

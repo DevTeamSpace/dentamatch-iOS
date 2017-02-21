@@ -32,6 +32,7 @@ class SkillsTableCell: UITableViewCell,TagListDelegate {
         self.subSkillsTagView.clipsToBounds = true
         subSkillsTagView.addSubview(tagList)
         tagList.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: UIScreen.main.bounds.width - 30, height: 0))
+        self.subSkillsTagView.isUserInteractionEnabled = false
         // Initialization code
         
 //        self.subSkillsCollectionView.register(UINib(nibName: "SubSkillCollectionCell", bundle: nil), forCellWithReuseIdentifier: "SubSkillCollectionCell")

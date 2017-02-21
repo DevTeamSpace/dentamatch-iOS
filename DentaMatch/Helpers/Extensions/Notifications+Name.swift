@@ -10,4 +10,9 @@ import Foundation
 
 extension Notification.Name {
     static let updateProfileScreen = Notification.Name("updateProfileScreen")
+    static let deleteFetchController = Notification.Name("deleteFetchController")
+    static let pushRedirectNotificationForground = Notification.Name("pushRedirectNoyificationForground")
+    static let pushRedirectNotificationBacground = Notification.Name("pushRedirectNoyificationBackground")
+    static let pushRedirectNotificationForProfile = Notification.Name("pushRedirectNoyificationForProfile")
+
 }

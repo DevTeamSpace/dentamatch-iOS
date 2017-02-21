@@ -33,8 +33,20 @@ extension DMTrackVC:UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let segmentControlOptions = SegmentControlOption(rawValue: self.segmentedControl.selectedSegmentIndex)!
+        switch segmentControlOptions {
+        case .saved:
             if indexPath.row == savedJobs.count - 2 {
                 callLoadMore(type: 1)
+            }
+        case .applied:
+            if indexPath.row == appliedJobs.count - 2 {
+                callLoadMore(type: 2)
+            }
+        case .shortlisted:
+            if indexPath.row == shortListedJobs.count - 2 {
+                callLoadMore(type: 3)
+            }
         }
     }
     
@@ -84,24 +96,7 @@ extension DMTrackVC:UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-//        let jobDetailVC = UIStoryboard.jobSearchStoryBoard().instantiateViewController(type: DMJobDetailVC.self)!
-//        
-//        let segmentControlOptions = SegmentControlOption(rawValue: self.segmentedControl.selectedSegmentIndex)!
-//
-//        switch segmentControlOptions {
-//        case .saved:
-//            jobDetailVC.job = self.savedJobs[indexPath.row]
-//
-//        case .applied:
-//            jobDetailVC.job = self.appliedJobs[indexPath.row]
-//
-//        case .shortlisted:
-//            jobDetailVC.job = self.shortListedJobs[indexPath.row]
-//
-//        }
-//        jobDetailVC.delegate = self
-        //self.navigationController?.pushViewController(jobDetailVC, animated: true)
+        openJobDetails(indexPath: indexPath)
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -147,6 +142,7 @@ extension DMTrackVC:UITableViewDataSource,UITableViewDelegate {
         let cancelJobVC = UIStoryboard.trackStoryBoard().instantiateViewController(type: DMCancelJobVC.self)!
         cancelJobVC.job = job
         cancelJobVC.fromApplied = fromApplied
+        cancelJobVC.hidesBottomBarWhenPushed = true
         cancelJobVC.delegate = self
         self.navigationController?.pushViewController(cancelJobVC, animated: true)
     }
@@ -182,6 +178,8 @@ extension DMTrackVC:UITableViewDataSource,UITableViewDelegate {
                             self.savedJobs.remove(at: sender.tag)
                             if self.savedJobs.count == 0 {
                                 self.savedJobsPageNo = 1
+                                self.placeHolderEmptyJobsView?.isHidden = false
+                                self.placeHolderEmptyJobsView?.placeHolderMessageLabel.text = "You don’t have any saved jobs"
                             }
                             self.totalSavedJobsFromServer -= 1
                             DispatchQueue.main.async {
@@ -254,21 +252,25 @@ extension DMTrackVC : CancelledJobDelegate {
     func cancelledJob(job: Job, fromApplied: Bool) {
         if fromApplied {
             self.appliedJobs.removeObject(object: job)
+            self.totalAppliedJobsFromServer -= 1
             self.appliedJobsTableView.reloadData()
             if self.appliedJobs.count == 0 {
                 self.appliedJobsPageNo = 1
                 self.placeHolderEmptyJobsView?.isHidden = false
+                self.placeHolderEmptyJobsView?.placeHolderMessageLabel.text = "You don’t have any applied jobs"
             } else {
-                self.placeHolderEmptyJobsView?.isHidden = false
+                self.placeHolderEmptyJobsView?.isHidden = true
             }
         } else {
             self.shortListedJobs.removeObject(object: job)
+            self.totalShortListedJobsFromServer -= 1
             self.shortListedJobsTableView.reloadData()
             if self.shortListedJobs.count == 0 {
                 self.shortListedJobsPageNo = 1
                 self.placeHolderEmptyJobsView?.isHidden = false
+                self.placeHolderEmptyJobsView?.placeHolderMessageLabel.text = "You don’t have any shortlisted jobs"
             }else {
-                self.placeHolderEmptyJobsView?.isHidden = false
+                self.placeHolderEmptyJobsView?.isHidden = true
             }
         }
     }

@@ -137,6 +137,7 @@ class Job: NSObject {
         self.jobTypeString = forCalendarjob["jobTypeString"].stringValue
         let tempDates = forCalendarjob["tempJobDates"].arrayValue
         self.noOfJobs = forCalendarjob["noOfJobs"].intValue
+        self.jobDate = forCalendarjob["jobDate"].stringValue
         self.tempJobDates.removeAll()
         for dateObj in tempDates {
             let tempObj = TempJobDate(tempJobDate: dateObj)

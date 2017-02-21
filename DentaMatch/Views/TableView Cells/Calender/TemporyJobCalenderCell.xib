@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -43,9 +43,9 @@
                         </connections>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0cD-tf-IyH">
-                        <rect key="frame" x="8" y="5" width="95" height="34"/>
+                        <rect key="frame" x="8" y="5" width="40" height="34"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="95" id="om1-Ye-7hm"/>
+                            <constraint firstAttribute="width" constant="40" id="om1-Ye-7hm"/>
                             <constraint firstAttribute="height" constant="34" id="z0d-Kg-COc"/>
                         </constraints>
                         <state key="normal" image="disclosureIndicatorleft">
@@ -56,9 +56,9 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9a5-RQ-bjF">
-                        <rect key="frame" x="217" y="5" width="95" height="34"/>
+                        <rect key="frame" x="272" y="5" width="40" height="34"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="95" id="LVg-d7-13A"/>
+                            <constraint firstAttribute="width" constant="40" id="LVg-d7-13A"/>
                             <constraint firstAttribute="height" constant="34" id="Qz3-ob-IWn"/>
                         </constraints>
                         <state key="normal" image="disclosureIndicator">

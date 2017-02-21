@@ -75,6 +75,11 @@ class DMJobSearchResultVC : DMBaseVC {
         if let params =  UserDefaultsManager.sharedInstance.loadSearchParameter() {
             searchParams = params
         }
+        NotificationCenter.default.addObserver(self, selector: #selector(psuhRediectNotificationForProfile), name: .pushRedirectNotificationForProfile, object: nil)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(pushRediectNotificationForJobDetailForground), name: .pushRedirectNotificationForground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(pushRediectNotificationForJobDetailBacground), name: .pushRedirectNotificationBacground, object: nil)
+
         self.mapViewSearchResult.isHidden = true
         self.tblJobSearchResult.register(UINib(nibName: "JobSearchResultCell", bundle: nil), forCellReuseIdentifier: "JobSearchResultCell")
         self.mapViewSearchResult.delegate = self
@@ -102,8 +107,49 @@ class DMJobSearchResultVC : DMBaseVC {
         
     }
     
+    func pushRediectNotificationForJobDetailForground(userInfo:Notification) {
+        if let tabbar = ((UIApplication.shared.delegate) as! AppDelegate).window?.rootViewController as? TabBarVC {
+            tabbar.selectedIndex = 0
+        }
+        
+        let dict = userInfo.userInfo
+        
+        if let notification = dict?["notificationData"] {
+            let notiObj = notification as! Job
+            goToJobDetail(jobObj: notiObj)
+        }
+    }
+    func psuhRediectNotificationForProfile(userInfo:Notification) {
+        if let tabbar = ((UIApplication.shared.delegate) as! AppDelegate).window?.rootViewController as? TabBarVC {
+            tabbar.selectedIndex = 4
+        }
+    }
+
+    func pushRediectNotificationForJobDetailBacground(userInfo:Notification) {
+        if let tabbar = ((UIApplication.shared.delegate) as! AppDelegate).window?.rootViewController as? TabBarVC {
+            tabbar.selectedIndex = 0
+        }
+        
+        let dict = userInfo.userInfo
+        if let notification = dict?["notificationData"] {
+            let notiObj = notification as! Job
+            goToJobDetail(jobObj: notiObj)
+        }
+    }
+    func goToJobDetail(jobObj:Job){
+        let jobDetailVC = UIStoryboard.jobSearchStoryBoard().instantiateViewController(type: DMJobDetailVC.self)!
+        jobDetailVC.job = jobObj
+        jobDetailVC.hidesBottomBarWhenPushed = true
+        jobDetailVC.delegate = self
+        self.navigationController?.pushViewController(jobDetailVC, animated: true)
+
+    }
+
     override func actionLeftNavigationItem() {
         //will implement
+        let notification = UIStoryboard.notificationStoryBoard().instantiateViewController(type: DMNotificationVC.self)!
+        self.navigationController?.pushViewController(notification, animated: true)
+
     }
     
     override func actionRightNavigationItem() {
@@ -113,6 +159,7 @@ class DMJobSearchResultVC : DMBaseVC {
         jobSearchVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(jobSearchVC, animated: true)
     }
+    
     
     func pullToRefreshForJobs() {
         self.getJobs()

@@ -25,7 +25,7 @@ extension DMSettingVC : UITableViewDataSource,UITableViewDelegate {
         cell.leftIconImageView.isHidden = true
         switch indexPath.row {
         case 0:
-            cell.TextLabel.text = "Change Home Location"
+            cell.TextLabel.text = "Preferred Job Location"
             cell.leftIconLabel.text = "d"
         case 1:
             cell.TextLabel.text = "Reset Password"
@@ -76,10 +76,11 @@ extension DMSettingVC : UITableViewDataSource,UITableViewDelegate {
     }
     func openLogin() {
         
-        
         signOut { (check, error) in
             
             if check == true {
+                self.deleteFetchController()
+                SocketManager.sharedInstance.closeConnection()
                 UserManager.shared().deleteActiveUser()
                 UserDefaultsManager.sharedInstance.clearCache()
                 let registrationContainer = UIStoryboard.registrationStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.registrationNav) as! UINavigationController
@@ -88,11 +89,16 @@ extension DMSettingVC : UITableViewDataSource,UITableViewDelegate {
                     kAppDelegate.window?.rootViewController = registrationContainer
                 }) { (bool:Bool) in
                     //completion
+                    DatabaseManager.clearDB()
                 }
 
             }
             
         }
+    }
+    
+    func deleteFetchController() {
+        NotificationCenter.default.post(name: .deleteFetchController, object: nil)
     }
 }
 

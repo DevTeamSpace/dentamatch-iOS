@@ -18,29 +18,42 @@ class DMMessagesVC: DMBaseVC {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
     
+    let todaysDate = Date.getTodaysDateMMDDYYYY()
+    
+    let dateFormatter = DateFormatter()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        SocketManager.sharedInstance.initServer()
         self.getChatListAPI()
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        SocketManager.sharedInstance.removeAllCompletionHandlers()
         if let selectedIndex = self.messageListTableView.indexPathForSelectedRow {
             self.messageListTableView.deselectRow(at: selectedIndex, animated: true)
         }
     }
     
     func setup() {
+        
+        dateFormatter.dateFormat = Date.dateFormatMMDDYYYY()
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(deleteFetchController), name: .deleteFetchController, object: nil)
+        
         self.navigationItem.title = "MESSAGES"
         self.messageListTableView.dataSource = nil
         self.messageListTableView.tableFooterView = UIView()
         self.messageListTableView.register(UINib(nibName: "MessageListTableCell", bundle: nil), forCellReuseIdentifier: "MessageListTableCell")
         
         placeHolderEmptyJobsView = PlaceHolderJobsView.loadPlaceHolderJobsView()
-        placeHolderEmptyJobsView?.frame = CGRect(x: 0, y: 0, width: 300, height: 500)
+        placeHolderEmptyJobsView?.frame = CGRect(x: 0, y: 0, width: 300, height: 200)
         placeHolderEmptyJobsView?.center = self.view.center
+        placeHolderEmptyJobsView?.backgroundColor = UIColor.clear
         var frame = placeHolderEmptyJobsView!.frame
         frame = CGRect(x: frame.origin.x, y: frame.origin.y - 44, width: frame.size.width, height: frame.size.height)
         placeHolderEmptyJobsView?.frame = frame
@@ -56,7 +69,7 @@ class DMMessagesVC: DMBaseVC {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ChatList")
         
         // Add Sort Descriptors
-        let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
+        let sortDescriptor = NSSortDescriptor(key: "timeStamp", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
         //fetchRequest.fetchBatchSize = 20
         
@@ -69,7 +82,11 @@ class DMMessagesVC: DMBaseVC {
         do {
             try self.fetchedResultsController.performFetch()
             self.messageListTableView.reloadData()
-            
+            if let sections = self.fetchedResultsController.sections {
+                if sections.count > 0 {
+                    self.placeHolderEmptyJobsView?.isHidden = true
+                }
+            }
         } catch {
             let fetchError = error as NSError
             print("\(fetchError), \(fetchError.userInfo)")
@@ -88,5 +105,13 @@ class DMMessagesVC: DMBaseVC {
         alert.addAction(blockAction)
         alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
-    }    
+    }
+    
+    func deleteFetchController() {
+        fetchedResultsController.delegate = nil
+        NSFetchedResultsController<NSFetchRequestResult>.deleteCache(withName: nil)
+//        try self.fetchedResultsController.performFetch(nil)
+//        self.fetchedResultsController.fetchRequest.predicate =
+//            [NSPredicate  predicateWithValue:NO];
+    }
 }

@@ -172,7 +172,7 @@ extension DMJobDetailVC : UITableViewDataSource, UITableViewDelegate, JobDescrip
                     //Save Unsave success
                     self.job?.isSaved = status
                     if let delegate = self.delegate {
-                        delegate.jobUpdate(job: self.job!)
+                        delegate.jobUpdate!(job: self.job!)
                     }
                     DispatchQueue.main.async {
                         self.tblJobDetail.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)

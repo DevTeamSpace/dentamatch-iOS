@@ -70,8 +70,10 @@ class DMWorkExperienceVC: DMBaseVC,ExperiencePickerViewDelegate,ToolBarButtonDel
         super.viewDidLoad()
         setup()
         initialDataSetup()
+        getExperienceAPI()
+
         if isEditMode != true {
-            getExperienceAPI()
+//            getExperienceAPI()
         }else{
             
             nextButton.setTitle("Save", for: .normal)
@@ -212,6 +214,9 @@ class DMWorkExperienceVC: DMBaseVC,ExperiencePickerViewDelegate,ToolBarButtonDel
     func initialDataSetup(){
         let exp = ExperienceModel(empty: "")
         self.exprienceDetailArray?.add(exp)
+        if exprienceArray.count > 0 {
+            self.currentExperience?.isFirstExperience = false
+        }
         self.currentExperience?.references.append(EmployeeReferenceModel(empty: ""))
         self.workExperienceTable.reloadData()
         self.workExperienceDetailTable.reloadData()

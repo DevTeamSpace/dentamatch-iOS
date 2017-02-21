@@ -19,7 +19,7 @@
                 <navigationController storyboardIdentifier="CanederNav" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NUS-Px-Ne8" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Calendar" image="calender" id="GmI-ki-020"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="B76-yd-D1j">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="B76-yd-D1j">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -76,7 +76,7 @@
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5tt-0w-7DO">
                                                         <rect key="frame" x="66.5" y="26" width="10" height="10"/>
-                                                        <color key="backgroundColor" red="0.015686274510000001" green="0.43921568630000002" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" red="0.2627450980392157" green="0.69411764705882351" blue="0.69803921568627447" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="10" id="62p-gS-PmE"/>
                                                             <constraint firstAttribute="width" constant="10" id="TT7-FY-CIE"/>

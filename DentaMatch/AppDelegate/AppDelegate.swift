@@ -12,6 +12,7 @@ import GoogleMaps
 import GooglePlaces
 import Crashlytics
 import Fabric
+import SwiftyJSON
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -29,6 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         configureGoogleServices()
         
         registerForPushNotifications()
+        
+        //configureRichNotifications()
         
         changeNavBarAppearance()
         
@@ -49,7 +52,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         } else {
             self.goToDashBoard()
+            
+            if let remoteNotification = launchOptions?[UIApplicationLaunchOptionsKey.remoteNotification] as? NSDictionary {
+                if remoteNotification.allKeys.count > 0
+                {
+//                    self.tabIndex = 4
+                    if let noti = remoteNotification["data"] as? NSDictionary {
+                        let newObj = noti["data"]
+                        let josnObj = JSON(newObj ?? [:])
+                        let userNotiObj = UserNotification(dict: josnObj)
+                        NotificationHandler.notificationHandleforBackground(notiObj: userNotiObj, app: application)
+                    }
+
+                }
+            }
+            
         }
+        
+        
         
         return true
     }
@@ -84,7 +104,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: - Configure Crashlytics
     func configureSocket() {
-        SocketManager.sharedInstance.establishConnection()
+        if let _ = UserManager.shared().activeUser {
+            SocketManager.sharedInstance.establishConnection()
+        }
+    }
+    
+    func destroySocket() {
+        if let _ = UserManager.shared().activeUser {
+            SocketManager.sharedInstance.closeConnection()
+        }
     }
     
     // MARK: - Configure Crashlytics
@@ -131,10 +159,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        self.destroySocket()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        self.configureSocket()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {

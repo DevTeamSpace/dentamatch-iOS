@@ -13,50 +13,54 @@ import SwiftyJSON
 extension DMMessagesVC:NSFetchedResultsControllerDelegate {
 
     func addUpdateMessageToDB(chatList:[JSON]?) {
-        //2017-02-07 09:50:39
-        DispatchQueue.global(qos: .background).async {
-            for chatListObj in chatList! {
-                if let chat = self.chatListExits(messageListId: chatListObj["messageListId"].stringValue) {
-                    //Update Record
-                    chat.lastMessage = chatListObj["message"].stringValue
-                    chat.recruiterId = chatListObj["recruiterId"].stringValue
-                    chat.isBlockedFromRecruiter = chatListObj["recruiterBlock"].boolValue
-                    chat.isBlockedFromSeeker = chatListObj["seekerBlock"].boolValue
-                    chat.date = self.getDate(dateString: chatListObj["timestamp"].stringValue)?.date as NSDate?
-                    chat.dateString = chatListObj["timestamp"].stringValue
-                    chat.officeName = chatListObj["name"].stringValue
-                    chat.lastMessageId = chatListObj["messageId"].stringValue
-                } else {
-                    //New Record
-                    let chat = NSEntityDescription.insertNewObject(forEntityName: "ChatList", into: self.context) as! ChatList
-                    chat.lastMessage = chatListObj["message"].stringValue
-                    chat.recruiterId = chatListObj["recruiterId"].stringValue
-                    chat.isBlockedFromRecruiter = chatListObj["recruiterBlock"].boolValue
-                    chat.isBlockedFromSeeker = chatListObj["seekerBlock"].boolValue
-                    chat.date = self.getDate(dateString: chatListObj["timestamp"].stringValue)?.date as NSDate?
-                    chat.dateString = chatListObj["timestamp"].stringValue
-                    chat.officeName = chatListObj["name"].stringValue
-                    chat.messageListId = chatListObj["messageListId"].stringValue
-                    chat.lastMessageId = chatListObj["messageId"].stringValue
-
-                }
-            }
-            
-            DispatchQueue.main.async {
-                self.appDelegate.saveContext()
+        for chatListObj in chatList! {
+            if let chat = self.chatListExits(messageListId: chatListObj["messageListId"].stringValue) {
+                //Update Record
+                chat.lastMessage = chatListObj["message"].stringValue
+                chat.recruiterId = chatListObj["recruiterId"].stringValue
+                chat.isBlockedFromRecruiter = chatListObj["recruiterBlock"].boolValue
+                chat.isBlockedFromSeeker = chatListObj["seekerBlock"].boolValue
+                chat.date = self.getDate(timestamp: chatListObj["timestamp"].stringValue) as NSDate?
+                chat.timeStamp = chatListObj["timestamp"].doubleValue
+                chat.officeName = chatListObj["name"].stringValue
+                chat.lastMessageId = chatListObj["messageId"].stringValue
+                chat.unreadCount = chatListObj["unreadCount"].int16Value
+            } else {
+                //New Record
+                let chat = NSEntityDescription.insertNewObject(forEntityName: "ChatList", into: self.context) as! ChatList
+                chat.lastMessage = chatListObj["message"].stringValue
+                chat.recruiterId = chatListObj["recruiterId"].stringValue
+                chat.isBlockedFromRecruiter = chatListObj["recruiterBlock"].boolValue
+                chat.isBlockedFromSeeker = chatListObj["seekerBlock"].boolValue
+                chat.date = self.getDate(timestamp: chatListObj["timestamp"].stringValue) as NSDate?
+                chat.timeStamp = chatListObj["timestamp"].doubleValue
+                chat.officeName = chatListObj["name"].stringValue
+                chat.messageListId = chatListObj["messageListId"].stringValue
+                chat.lastMessageId = chatListObj["messageId"].stringValue
+                chat.unreadCount = chatListObj["unreadCount"].int16Value
+                
             }
         }
+        self.appDelegate.saveContext()
     }
     
-    func getDate(dateString:String) -> (date:Date,dateString:String)? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = Date.dateFormatYYYYMMDDHHMMSS()
-        let date = dateFormatter.date(from: dateString)
-        dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
-        if let date = date {
-            return (date,dateFormatter.string(from: date))
-        }
-        return nil
+    func getDate(timestamp:String) -> Date {
+//        Date.getTodaysDateMMDDYYYY()
+        
+//        dateFormatter.dateFormat = Date.dateFormatMMDDYYYY()
+//        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+//        return dateFormatter.date(from: dateFormatter.string(from: todaysDate))!
+        
+        let doubleTime = Double(timestamp)
+        let lastMessageDate = Date(timeIntervalSince1970: doubleTime!/1000)
+       // let dateFormatter = DateFormatter()
+        //dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+//        dateFormatter.dateFormat = Date.dateFormatMMDDYYYY()
+//        dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
+//        let date1 = dateFormatter.string(from: lastMessageDate)
+
+        
+        return lastMessageDate
     }
     
     func chatListExits(messageListId:String) -> ChatList? {
@@ -72,22 +76,6 @@ extension DMMessagesVC:NSFetchedResultsControllerDelegate {
         }
         return nil
     }
-    
-//    class func updateThoughtNameById(thoughtId:String,thoughtName:String) {
-//        let fetchRequest = NSFetchRequest(entityName: "Thought")
-//        let predicate = NSPredicate(format: "id == %@", thoughtId)
-//        fetchRequest.predicate = predicate
-//        do {
-//            let thoughts = try appDelegate.managedObjectContext.executeFetchRequest(fetchRequest) as! [Thought]
-//            if thoughts.count > 0 {
-//                thoughts[0].name = thoughtName
-//            }
-//            appDelegate.saveContext()
-//        }
-//        catch let error as NSError{
-//            DDLogVerbose(error.localizedDescription)
-//        }
-//    }
 
     //MARK:- NSFetchedResultsControllerDelegate
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
@@ -105,12 +93,6 @@ extension DMMessagesVC:NSFetchedResultsControllerDelegate {
         case .insert:
             if let indexPath = newIndexPath {
                 self.messageListTableView.insertRows(at: [indexPath], with: .automatic)
-                
-//                let when = DispatchTime.now() + 0.2 // change 2 to desired number of seconds
-//                DispatchQueue.main.asyncAfter(deadline: when) {
-//                    self.messageListTableView.scrollToRow(at: newIndexPath!, at: .bottom, animated: true)
-//                    
-//                }
             }
         case .update:
             messageListTableView.reloadRows(at: [indexPath!], with: .none)

@@ -59,7 +59,7 @@ class DMEditProfileVC: DMBaseVC {
     func setup() {
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateProfileScreen), name: .updateProfileScreen, object: nil)
-        
+
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.editProfileTableView.register(UINib(nibName: "EditProfileHeaderTableCell", bundle: nil), forCellReuseIdentifier: "EditProfileHeaderTableCell")
         self.editProfileTableView.register(UINib(nibName: "SectionHeadingTableCell", bundle: nil), forCellReuseIdentifier: "SectionHeadingTableCell")
@@ -136,7 +136,7 @@ class DMEditProfileVC: DMBaseVC {
         workExpVC.hidesBottomBarWhenPushed = true
         workExpVC.isEditMode = true
         workExpVC.jobTitles = self.jobTitles
-        workExpVC.exprienceArray = self.experiences
+//        workExpVC.exprienceArray = self.experiences
         self.navigationController?.pushViewController(workExpVC, animated: true)
     }
     

@@ -58,6 +58,7 @@ class UserManager: NSObject {
     }
     
     func userLogout() {
+        //logout will be here
         
     }
     

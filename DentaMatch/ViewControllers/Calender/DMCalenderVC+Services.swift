@@ -39,8 +39,10 @@ extension DMCalenderVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            //            debugPrint(response!)
             
+            debugPrint(response!)
+            self.hiredList.removeAll()
+
             if response![Constants.ServerKey.status].boolValue {
                 let resultDic = response![Constants.ServerKey.result][Constants.ServerKey.list].arrayValue
                 for calObj in resultDic {

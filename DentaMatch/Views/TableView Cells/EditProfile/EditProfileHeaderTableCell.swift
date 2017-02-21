@@ -20,6 +20,7 @@ class EditProfileHeaderTableCell: UITableViewCell {
         super.awakeFromNib()
         //self.aboutTextView.textContainer.lineFragmentPadding = 20.0
         self.clipsToBounds = true
+        self.placeLabel.numberOfLines = 3
         // Initialization code
     }
 

@@ -8,8 +8,9 @@
 
 import UIKit
 
-protocol JobSavedStatusUpdateDelegate {
-    func jobUpdate(job:Job)
+@objc protocol JobSavedStatusUpdateDelegate {
+    @objc optional func jobUpdate(job:Job)
+    @objc optional func jobApplied(job:Job)
 }
 
 class DMJobDetailVC: DMBaseVC {
@@ -22,6 +23,9 @@ class DMJobDetailVC: DMBaseVC {
     var isReadMore = false
     var delegate:JobSavedStatusUpdateDelegate?
     var fromTrack = false
+    var fromCalender = false
+    var fromNotificationVC = false
+
     @IBOutlet weak var constraintBtnApplyJobHeight: NSLayoutConstraint!
     
     enum TableViewCellHeight: CGFloat {
@@ -38,6 +42,7 @@ class DMJobDetailVC: DMBaseVC {
         self.btnApplyForJob.isHidden = true
         self.fetchJobAPI(params: jobDetailParams)
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
