@@ -42,7 +42,7 @@ extension DMEditCertificateVC {
         
         var allValidatyDates = [AnyObject]()
         
-            let validityDict = ["id":self.certificate?.certificationId,"value":self.certificate?.validityDate]
+            let validityDict = ["id":self.certificate?.certificationId,"value":self.dateSelected]
             allValidatyDates.append(validityDict as AnyObject)
         
         params["certificateValidition"] = allValidatyDates as AnyObject?
