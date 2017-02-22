@@ -33,7 +33,7 @@ extension DMNotificationVC : UITableViewDataSource,UITableViewDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: "HiredJobNotificationTableCell") as? HiredJobNotificationTableCell
             cell?.configureHiredJobNotificationTableCell(userNotificationObj: notificationObj)
             return cell!
-        case .verifyDocuments,.completeProfile,.chatMessgae,.other:
+        case .verifyDocuments,.completeProfile,.chatMessgae,.other,.InviteJob:
             let cell = tableView.dequeueReusableCell(withIdentifier: "CommonTextNotificationTableCell") as? CommonTextNotificationTableCell
             cell?.configureCommonTextNotificationTableCell(userNotificationObj: notificationObj)
             return cell!
@@ -117,7 +117,7 @@ extension DMNotificationVC : UITableViewDataSource,UITableViewDelegate {
         //open edit profile
         self.tabBarController?.selectedIndex = 4
 
-        case .other: break
+        case .other,.InviteJob: break
             //No need any action
             
             

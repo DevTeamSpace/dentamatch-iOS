@@ -45,15 +45,25 @@
                             <constraint firstAttribute="width" constant="10" id="ZNS-Kw-Hrv"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mpK-Lc-2Zn">
+                        <rect key="frame" x="20" y="80.5" width="300" height="1"/>
+                        <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="jfA-rU-ZIv"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="KKa-Wn-k26" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="4kX-8W-AQl"/>
                     <constraint firstAttribute="trailing" secondItem="KKa-Wn-k26" secondAttribute="trailing" constant="39" id="NEh-Ak-2z3"/>
+                    <constraint firstItem="mpK-Lc-2Zn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Nbc-cW-b1M"/>
                     <constraint firstItem="gjx-IQ-Jcb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="NmV-Bv-zv6"/>
                     <constraint firstAttribute="trailing" secondItem="17y-dW-v3w" secondAttribute="trailing" constant="39" id="OUZ-Qe-d1a"/>
                     <constraint firstItem="17y-dW-v3w" firstAttribute="top" secondItem="KKa-Wn-k26" secondAttribute="bottom" constant="8" id="U0s-Qr-hxh"/>
                     <constraint firstItem="gjx-IQ-Jcb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="21" id="Wf0-E8-i8O"/>
+                    <constraint firstAttribute="trailing" secondItem="mpK-Lc-2Zn" secondAttribute="trailing" id="aPv-ja-COt"/>
                     <constraint firstItem="KKa-Wn-k26" firstAttribute="leading" secondItem="gjx-IQ-Jcb" secondAttribute="trailing" constant="14" id="eWp-X9-idK"/>
+                    <constraint firstAttribute="bottom" secondItem="mpK-Lc-2Zn" secondAttribute="bottom" id="ern-qc-xeI"/>
                     <constraint firstItem="17y-dW-v3w" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="39" id="ved-hF-lMy"/>
                     <constraint firstAttribute="bottom" secondItem="17y-dW-v3w" secondAttribute="bottom" constant="8" id="wi5-qL-ldW"/>
                 </constraints>

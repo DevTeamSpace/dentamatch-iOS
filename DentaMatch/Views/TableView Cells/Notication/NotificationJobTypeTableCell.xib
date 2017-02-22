@@ -23,13 +23,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="You have been hired for Dental Hygienists job" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="joy-ng-hJV">
-                        <rect key="frame" x="39" y="16" width="242" height="45.5"/>
+                        <rect key="frame" x="39" y="16" width="242" height="45"/>
                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="15"/>
                         <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oKG-fE-gXR">
-                        <rect key="frame" x="39" y="96.5" width="242" height="10"/>
+                        <rect key="frame" x="39" y="96" width="242" height="10"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="10" id="wZ7-5C-xZY"/>
                         </constraints>
@@ -38,7 +38,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IXd-zv-bgJ">
-                        <rect key="frame" x="39" y="67.5" width="242" height="21"/>
+                        <rect key="frame" x="39" y="67" width="242" height="21"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dwH-vA-3rc">
                                 <rect key="frame" x="1" y="0.0" width="61" height="21"/>
@@ -63,6 +63,13 @@
                             <constraint firstAttribute="height" constant="10" id="pT4-6X-540"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CT1-RL-p4G">
+                        <rect key="frame" x="20" y="113.5" width="300" height="1"/>
+                        <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="R62-UD-vZL"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="oKG-fE-gXR" firstAttribute="leading" secondItem="m32-bl-P4e" secondAttribute="leading" constant="39" id="1rr-Uy-vW4"/>
@@ -73,8 +80,11 @@
                     <constraint firstItem="IXd-zv-bgJ" firstAttribute="top" secondItem="joy-ng-hJV" secondAttribute="bottom" constant="6" id="KK0-1j-Xbj"/>
                     <constraint firstAttribute="trailing" secondItem="IXd-zv-bgJ" secondAttribute="trailing" constant="39" id="KqM-DB-rhO"/>
                     <constraint firstItem="kg6-uk-dzt" firstAttribute="top" secondItem="m32-bl-P4e" secondAttribute="top" constant="21" id="Pqs-o1-P0g"/>
+                    <constraint firstAttribute="bottom" secondItem="CT1-RL-p4G" secondAttribute="bottom" id="arK-Fz-c2J"/>
                     <constraint firstAttribute="bottom" secondItem="oKG-fE-gXR" secondAttribute="bottom" constant="8" id="diC-Nb-5HN"/>
+                    <constraint firstItem="CT1-RL-p4G" firstAttribute="leading" secondItem="m32-bl-P4e" secondAttribute="leading" constant="20" id="ia7-zM-rU1"/>
                     <constraint firstItem="kg6-uk-dzt" firstAttribute="leading" secondItem="m32-bl-P4e" secondAttribute="leading" constant="15" id="itG-CH-JoN"/>
+                    <constraint firstAttribute="trailing" secondItem="CT1-RL-p4G" secondAttribute="trailing" id="msm-te-9Tu"/>
                     <constraint firstItem="IXd-zv-bgJ" firstAttribute="leading" secondItem="m32-bl-P4e" secondAttribute="leading" constant="39" id="qDV-1e-Wdw"/>
                     <constraint firstItem="joy-ng-hJV" firstAttribute="leading" secondItem="kg6-uk-dzt" secondAttribute="trailing" constant="14" id="qts-b1-KCY"/>
                 </constraints>
@@ -86,7 +96,7 @@
                 <outlet property="unreadView" destination="kg6-uk-dzt" id="hRh-hS-esy"/>
                 <outlet property="viewForJobType" destination="IXd-zv-bgJ" id="f0F-bR-wJr"/>
             </connections>
-            <point key="canvasLocation" x="57" y="105"/>
+            <point key="canvasLocation" x="57" y="104.5"/>
         </tableViewCell>
     </objects>
 </document>

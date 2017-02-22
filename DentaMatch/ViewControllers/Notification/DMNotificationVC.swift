@@ -16,6 +16,7 @@ enum UserNotificationType:Int {
     case completeProfile
     case chatMessgae
     case other
+    case InviteJob
 }
 class DMNotificationVC: DMBaseVC {
     @IBOutlet weak var notificationTableView: UITableView!
@@ -44,14 +45,19 @@ class DMNotificationVC: DMBaseVC {
         placeHolderEmptyJobsView?.frame = CGRect(x: 0, y: 0, width: 300, height: 200)
         placeHolderEmptyJobsView?.center = self.view.center
         placeHolderEmptyJobsView?.backgroundColor = UIColor.clear
+        placeHolderEmptyJobsView?.placeHolderMessageLabel.numberOfLines = 2
+        placeHolderEmptyJobsView?.placeHolderMessageLabel.text = Constants.AlertMessage.noNotification
         self.view.addSubview(placeHolderEmptyJobsView!)
-        placeHolderEmptyJobsView?.placeHolderMessageLabel.text = "You don’t have any notifications"
         placeHolderEmptyJobsView?.isHidden = false
+        self.placeHolderEmptyJobsView?.layoutIfNeeded()
+        self.view.layoutIfNeeded()
+
         
         self.title = Constants.ScreenTitleNames.notification
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationItem.leftBarButtonItem = self.backBarButton()
 
+        self.notificationTableView.separatorStyle = .none
         self.notificationTableView.backgroundColor = UIColor.clear
         self.notificationTableView.estimatedRowHeight = 76
         self.notificationTableView.register(UINib(nibName: "HiredJobNotificationTableCell", bundle: nil), forCellReuseIdentifier: "HiredJobNotificationTableCell")

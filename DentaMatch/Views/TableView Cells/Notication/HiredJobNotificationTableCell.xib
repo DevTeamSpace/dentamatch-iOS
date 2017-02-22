@@ -72,10 +72,18 @@ San Francisco, CA 94107</string>
                             <constraint firstAttribute="height" constant="10" id="sD2-1S-mrx"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OK8-Ou-jqv">
+                        <rect key="frame" x="20" y="185.5" width="300" height="1"/>
+                        <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="zYt-fa-e88"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="9Re-bO-paj" firstAttribute="top" secondItem="7e4-QZ-ZGS" secondAttribute="bottom" constant="8" id="0Ey-Bo-iOD"/>
                     <constraint firstItem="7e4-QZ-ZGS" firstAttribute="leading" secondItem="uon-i5-pej" secondAttribute="trailing" constant="14" id="3XI-2L-a5c"/>
+                    <constraint firstAttribute="bottom" secondItem="OK8-Ou-jqv" secondAttribute="bottom" id="6rd-ld-Krw"/>
                     <constraint firstAttribute="trailing" secondItem="iLa-Ye-b2T" secondAttribute="trailing" constant="39" id="7rD-bY-s0Z"/>
                     <constraint firstAttribute="trailing" secondItem="7e4-QZ-ZGS" secondAttribute="trailing" constant="39" id="9qE-f1-hXP"/>
                     <constraint firstItem="iLa-Ye-b2T" firstAttribute="top" secondItem="9Re-bO-paj" secondAttribute="bottom" constant="6" id="CvJ-Z9-Tux"/>
@@ -87,6 +95,8 @@ San Francisco, CA 94107</string>
                     <constraint firstItem="GQv-hx-mF0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="39" id="gNl-V8-NuU"/>
                     <constraint firstItem="iLa-Ye-b2T" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="39" id="hrb-Iz-3Ft"/>
                     <constraint firstAttribute="trailing" secondItem="9Re-bO-paj" secondAttribute="trailing" constant="39" id="iWD-D0-9wf"/>
+                    <constraint firstItem="OK8-Ou-jqv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="npN-uy-J2L"/>
+                    <constraint firstAttribute="trailing" secondItem="OK8-Ou-jqv" secondAttribute="trailing" id="o3I-bf-ClM"/>
                     <constraint firstItem="uon-i5-pej" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="21" id="u98-qh-cgt"/>
                     <constraint firstItem="9Re-bO-paj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="39" id="xaF-C9-igq"/>
                 </constraints>

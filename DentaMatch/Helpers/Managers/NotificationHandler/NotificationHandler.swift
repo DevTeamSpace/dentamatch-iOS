@@ -39,7 +39,7 @@ class NotificationHandler: NSObject {
             //open edit profile
             openEditProfileScreen()
 
-        case .other:
+        case .other,.InviteJob:
             //No need any action
             openNotificationScreen()
             
@@ -76,7 +76,7 @@ class NotificationHandler: NSObject {
         case .verifyDocuments:
             //open edit profile
             openEditProfileScreenForBackground()
-        case .other:
+        case .other,.InviteJob:
             //No need any action
             openNotificationScreenInBackGround()
             

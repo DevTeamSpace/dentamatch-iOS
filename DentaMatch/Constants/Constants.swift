@@ -397,6 +397,10 @@ struct Constants {
         static let canNotSelectPreDate = "Sorry you can't select previouse date"
         
         
+        //Notification Screen 
+        static let noNotification = "You don’t have any Notifications right now."
+        
+        
         //change password screen messgaes
         struct AlertTitle {
             static let invalidEmailTitle = ""
