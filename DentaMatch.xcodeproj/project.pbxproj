@@ -64,6 +64,8 @@
 		5A988BC61E4AE9D200DECB49 /* DMNotificationVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A988BC51E4AE9D200DECB49 /* DMNotificationVC+TableViewExtension.swift */; };
 		5A988BC81E4AEA0E00DECB49 /* DMNotificationVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A988BC71E4AEA0E00DECB49 /* DMNotificationVC+Services.swift */; };
 		5A9A3A971E2B58600002C5B6 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9A3A961E2B58600002C5B6 /* UserManager.swift */; };
+		5AAE74781E5C1D0E00B28851 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAE74761E5C1D0E00B28851 /* ToastView.swift */; };
+		5AAE74791E5C1D0E00B28851 /* ToastView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AAE74771E5C1D0E00B28851 /* ToastView.xib */; };
 		5AB876501E249B62007818D6 /* ExperiencePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB8764F1E249B62007818D6 /* ExperiencePickerView.swift */; };
 		5AB876521E249C0A007818D6 /* ExperiencePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AB876511E249C0A007818D6 /* ExperiencePickerView.xib */; };
 		5AC7143C1E34A89300E433C1 /* Track.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AC7143B1E34A89300E433C1 /* Track.storyboard */; };
@@ -436,6 +438,8 @@
 		5A988BC51E4AE9D200DECB49 /* DMNotificationVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMNotificationVC+TableViewExtension.swift"; sourceTree = "<group>"; };
 		5A988BC71E4AEA0E00DECB49 /* DMNotificationVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMNotificationVC+Services.swift"; sourceTree = "<group>"; };
 		5A9A3A961E2B58600002C5B6 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		5AAE74761E5C1D0E00B28851 /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		5AAE74771E5C1D0E00B28851 /* ToastView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToastView.xib; sourceTree = "<group>"; };
 		5AB8764F1E249B62007818D6 /* ExperiencePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperiencePickerView.swift; sourceTree = "<group>"; };
 		5AB876511E249C0A007818D6 /* ExperiencePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExperiencePickerView.xib; sourceTree = "<group>"; };
 		5AC7143B1E34A89300E433C1 /* Track.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Track.storyboard; sourceTree = "<group>"; };
@@ -968,6 +972,15 @@
 			path = Notication;
 			sourceTree = "<group>";
 		};
+		5AAE74751E5C1D0100B28851 /* BannerView */ = {
+			isa = PBXGroup;
+			children = (
+				5AAE74761E5C1D0E00B28851 /* ToastView.swift */,
+				5AAE74771E5C1D0E00B28851 /* ToastView.xib */,
+			);
+			path = BannerView;
+			sourceTree = "<group>";
+		};
 		5AC714431E34AB2500E433C1 /* Jobs */ = {
 			isa = PBXGroup;
 			children = (
@@ -1196,6 +1209,7 @@
 		E55462DD1DAE31A1004163B2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5AAE74751E5C1D0100B28851 /* BannerView */,
 				E5AE37001E485CAE0001EC3C /* PlaceHolderJobsView */,
 				E51D4F031E3FAB9100ACC631 /* LoadMore */,
 				E51D4EFA1E3B816B00ACC631 /* SegmentControl */,
@@ -2280,6 +2294,7 @@
 				E587D2DD1E2396E9006B7F06 /* JobSelectionPickerView.xib in Resources */,
 				E597E5821E151A99001DDA78 /* SF-UI-Text-Light.otf in Resources */,
 				E56E45C61DAE07C200AD4559 /* LaunchScreen.storyboard in Resources */,
+				5AAE74791E5C1D0E00B28851 /* ToastView.xib in Resources */,
 				E51D4F051E3FABA300ACC631 /* LoadMoreView.xib in Resources */,
 				E597E5761E151A99001DDA78 /* SF-UI-Display-Bold.otf in Resources */,
 				E50B3F511E194CD7004C5F32 /* RegistrationTableViewCell.xib in Resources */,
@@ -2462,6 +2477,7 @@
 				E51D4EFC1E3B818400ACC631 /* CustomSegmentControl.swift in Sources */,
 				E57F29E11E3696A60025B9DE /* DMEditDentalStateBoardVC+Services.swift in Sources */,
 				5A2CEF4B1E3C2F9600836654 /* DMCalendarSetAvailabillityVC+Services.swift in Sources */,
+				5AAE74781E5C1D0E00B28851 /* ToastView.swift in Sources */,
 				E59029AA1DED2C7A00151E9B /* UserDefaultsManager.swift in Sources */,
 				5A5523EB1E4C419F007D8C09 /* CommonTextNotificationTableCell.swift in Sources */,
 				F2D03BA81E1F67BA0005D3A4 /* DMJobSearchVC.swift in Sources */,

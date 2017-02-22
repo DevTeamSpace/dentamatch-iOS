@@ -23,8 +23,10 @@ class NotificationHandler: NSObject {
             //open profile
         openEditProfileScreen()
 
-        case .deleteJob: break
+        case .deleteJob:
             //No need any action
+            openNotificationScreen()
+
         case .hired:
             //open job detail
         openJobDetailScreen(obj: notiObj.jobdetail!)
@@ -37,8 +39,9 @@ class NotificationHandler: NSObject {
             //open edit profile
             openEditProfileScreen()
 
-        case .other: break
+        case .other:
             //No need any action
+            openNotificationScreen()
             
             
         }
@@ -58,8 +61,10 @@ class NotificationHandler: NSObject {
             //open profile
             openEditProfileScreenForBackground()
             
-        case .deleteJob: break
+        case .deleteJob:
         //No need any action
+            openNotificationScreenInBackGround()
+
         case .hired:
             //open job detail
             openJobDetailScreenForBackGround(obj: notiObj.jobdetail!)
@@ -71,8 +76,9 @@ class NotificationHandler: NSObject {
         case .verifyDocuments:
             //open edit profile
             openEditProfileScreenForBackground()
-        case .other: break
+        case .other:
             //No need any action
+            openNotificationScreenInBackGround()
             
         }
         
@@ -83,19 +89,31 @@ class NotificationHandler: NSObject {
         NotificationCenter.default.post(name: .pushRedirectNotificationForground, object: nil, userInfo: ["notificationData":obj])
     }
     class func openEditProfileScreen() {
+        if let tabbar = ((UIApplication.shared.delegate) as! AppDelegate).window?.rootViewController as? TabBarVC {
+//            _=self.navigationController?.popToRootViewController(animated: false)
+            tabbar.selectedIndex = 4
+        }
+
         NotificationCenter.default.post(name: .pushRedirectNotificationForProfile, object: nil, userInfo: nil)
     }
     
     class func openJobDetailScreenForBackGround(obj:Job) {
         delay(time: 3.0) { 
             NotificationCenter.default.post(name: .pushRedirectNotificationForground, object: nil, userInfo: ["notificationData":obj])
-
         }
     }
     class func openEditProfileScreenForBackground() {
         delay(time: 3.0) { 
             NotificationCenter.default.post(name: .pushRedirectNotificationForProfile, object: nil, userInfo: nil)
-
+        }
+    }
+    class func openNotificationScreen() {
+        //pushRedirectNotificationAllForground
+        NotificationCenter.default.post(name: .pushRedirectNotificationAllForground, object: nil, userInfo: nil)
+    }
+    class func openNotificationScreenInBackGround() {
+        delay(time: 3.0) {
+            NotificationCenter.default.post(name: .pushRedirectNotificationAllBackGround, object: nil, userInfo: nil)
         }
     }
     
@@ -106,6 +124,16 @@ class NotificationHandler: NSObject {
         }
     }
 
+    
+//    class func openNotificationScreen() {
+//        NotificationCenter.default.post(name: .pushRedirectNotificationAllForground, object: nil, userInfo: nil)
+//    }
+//    
+//    class func openNotificationScreenForBackGround(obj:Job) {
+//        delay(time: 3.0) {
+//            NotificationCenter.default.post(name: .pushRedirectNotificationAllBackGround, object: nil, userInfo: nil)
+//        }
+//    }
     
     
 }
