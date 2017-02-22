@@ -59,6 +59,7 @@ class DMEditProfileVC: DMBaseVC {
     func setup() {
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateProfileScreen), name: .updateProfileScreen, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(psuhRediectNotificationForProfile), name: .pushRedirectNotificationForProfile, object: nil)
 
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.editProfileTableView.register(UINib(nibName: "EditProfileHeaderTableCell", bundle: nil), forCellReuseIdentifier: "EditProfileHeaderTableCell")
@@ -75,6 +76,12 @@ class DMEditProfileVC: DMBaseVC {
         self.editProfileTableView.register(UINib(nibName: "EditProfileExperienceCell", bundle: nil), forCellReuseIdentifier: "EditProfileExperienceCell")
     }
     
+    func psuhRediectNotificationForProfile(userInfo:Notification) {
+        if let tabbar = ((UIApplication.shared.delegate) as! AppDelegate).window?.rootViewController as? TabBarVC {
+            _=self.navigationController?.popToRootViewController(animated: false)
+            tabbar.selectedIndex = 4
+        }
+    }
     func openEditLicenseScreen(editMode:Bool = false) {
         let editLicenseVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: DMEditLicenseVC.self)!
         editLicenseVC.isEditMode = editMode

@@ -65,19 +65,25 @@ extension AppDelegate:UNUserNotificationCenterDelegate {
         let dict = userInfo["aps"] as? NSDictionary
         print(dict ?? "not avail")
         debugPrint("didReceiveRemoteNotification \(userInfo.description)")
-        self.window?.makeToast(userInfo.description)
+//        self.window?.makeToast(userInfo.description)
         
         
         let state: UIApplicationState = UIApplication.shared.applicationState
         
         if(state == UIApplicationState.active)
         {
+            
+            
             if UserDefaultsManager.sharedInstance.isLoggedIn {
                 if let noti = userInfo["data"] as? NSDictionary {
                     let newObj = noti["data"]
                     let josnObj = JSON(newObj ?? [:])
                     let userNotiObj = UserNotification(dict: josnObj)
-                    NotificationHandler.notificationHandleforForground(notiObj: userNotiObj, app: application)
+                    ToastView.showNotificationToast(message: userNotiObj.message, name: "Notification", imageUrl: "",  type: ToastSkinType.White, onCompletion:{
+                        NotificationHandler.notificationHandleforForground(notiObj: userNotiObj, app: application)
+
+                    })
+
                 }
  
             }

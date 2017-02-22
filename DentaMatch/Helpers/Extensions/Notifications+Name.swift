@@ -14,5 +14,10 @@ extension Notification.Name {
     static let pushRedirectNotificationForground = Notification.Name("pushRedirectNoyificationForground")
     static let pushRedirectNotificationBacground = Notification.Name("pushRedirectNoyificationBackground")
     static let pushRedirectNotificationForProfile = Notification.Name("pushRedirectNoyificationForProfile")
+    static let pushRedirectNotificationAllForground = Notification.Name("pushRedirectNoyification")
+    static let pushRedirectNotificationAllBackGround = Notification.Name("pushRedirectNoyificationBackGround")
+    static let pushRedirectNotificationForChat = Notification.Name("pushRedirectNoyificationForChat")
+    static let pushRedirectNotificationForChatBackGround = Notification.Name("pushRedirectNoyificationForChatBackGround")
+
 
 }

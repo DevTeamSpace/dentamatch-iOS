@@ -120,12 +120,12 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     }
     
     func didConnectSocket() {
-        print("Socket Connected")
-        if let _ = UserManager.shared().activeUser {
-            self.initServer()
-            eventForReceiveMessage()
-            eventForHistoryMessages()
-        }
+//        print("Socket Connected")
+//        if let _ = UserManager.shared().activeUser {
+//            self.initServer()
+//            eventForReceiveMessage()
+//            eventForHistoryMessages()
+//        }
     }
     
     func didDisconnectSocket() {
