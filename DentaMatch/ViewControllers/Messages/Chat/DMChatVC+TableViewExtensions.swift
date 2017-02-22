@@ -27,6 +27,41 @@ extension DMChatVC:UITableViewDataSource,UITableViewDelegate {
         return 0
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        if let sections = fetchedResultsController.sections {
+            return sections.count
+        }
+        return 0
+    }
+    
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        if let sections = fetchedResultsController.sections {
+//            let section = sections[section]
+//            return section.name
+//        }
+//        return nil
+//    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if let sections = fetchedResultsController.sections {
+            let section = sections[section]
+            let sectionView = UIView(frame: CGRect(x: 0, y: 0, width: Utilities.ScreenSize.SCREEN_WIDTH, height: 40))
+            let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 30))
+            label.font = UIFont.fontRegular(fontSize: 13.0)
+            label.textColor = UIColor.color(withHexCode: "8e9091")
+            label.textAlignment = .center
+            label.text = section.name
+            label.center = sectionView.center
+            sectionView.addSubview(label)
+            return sectionView
+        }
+        return nil
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let chat = fetchedResultsController.object(at: indexPath) as! Chat
         if let _ = UserManager.shared().activeUser {
@@ -34,6 +69,7 @@ extension DMChatVC:UITableViewDataSource,UITableViewDelegate {
                 //self message
                 let cell = tableView.dequeueReusableCell(withIdentifier: "MessageSenderTableCell") as! MessageSenderTableCell
                 cell.chatTextView.text = chat.message
+                cell.timeLabel.text = chat.timeString
                 //self.setContent(textView: cell.chatTextView)
                 return cell
                 
@@ -41,6 +77,7 @@ extension DMChatVC:UITableViewDataSource,UITableViewDelegate {
                 //recruiter message
                 let cell = tableView.dequeueReusableCell(withIdentifier: "MessageReceiverTableCell") as! MessageReceiverTableCell
                 cell.chatTextView.text = chat.message
+                cell.timeLabel.text = chat.timeString
                 return cell
             }
         } else {

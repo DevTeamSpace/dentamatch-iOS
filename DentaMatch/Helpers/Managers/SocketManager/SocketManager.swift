@@ -42,10 +42,12 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     }
     
     func initServer() {
+        //userType 1 is for jobseeker, 2 is recruiter
         let params = [
             "userId":UserManager.shared().activeUser.userId!,
-            "userName":UserManager.shared().activeUser.firstName!
-        ]
+            "userName":UserManager.shared().activeUser.firstName!,
+            "userType":1
+        ] as [String : Any]
         socket.emit("init", params)
     }
     
@@ -64,9 +66,38 @@ class SocketManager: NSObject,SocketConnectionDelegate {
         //socket.emit("sendMessage", with: [params])
     }
     
+    func updateMessageRead() {
+        let params = [
+            "toId":UserManager.shared().activeUser.userId!,
+            "fromId":recruiterId,
+        ]
+        
+        socket.emitWithAck("updateReadCount", params).timingOut(after: 0) { (params:[Any]) in
+            self.handleUpdateUnreadCounter(params: params)
+        }
+    }
+    
+    func notOnChat() {
+        let params = [
+            "fromId":UserManager.shared().activeUser.userId!,
+            ]
+        socket.emitWithAck("notOnChat", params).timingOut(after: 0) { (params:[Any]) in
+            print(params)
+        }
+    }
+    
     
     func getChatMessage(completionHandler: @escaping (_ messageInfo: [String: AnyObject]) -> Void) {
         self.chatCompletionHandler = completionHandler
+    }
+    
+    func getChatHistory() {
+        let params = [
+            "fromId":UserManager.shared().activeUser.userId!
+            ]
+        socket.emitWithAck("getChatHistory", params).timingOut(after: 0) { (params:[Any]) in
+            print(params)
+        }
     }
     
     func getHistory(pageNo:Int) {
@@ -82,43 +113,15 @@ class SocketManager: NSObject,SocketConnectionDelegate {
         self.historyMessagesCompletionHandler = completionHandler
     }
 
-    func connectToServerWithNickname(nickname: String, completionHandler: @escaping (_ userList: [[String: AnyObject]]?) -> Void) {
-        socket.emit("connectUser", nickname)
-        
-        socket.on("userList") { ( dataArray, ack) -> Void in
-            completionHandler(dataArray[0] as? [[String: AnyObject]])
-        }
-        
-        listenForOtherMessages()
-    }
-    
-    func exitChatWithNickname(nickname: String, completionHandler: () -> Void) {
-        socket.emit("exitUser", nickname)
-        completionHandler()
-    }
     
     private func listenForOtherMessages() {
-        socket.on("userConnectUpdate") { (dataArray, socketAck) -> Void in
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "userWasConnectedNotification"), object: dataArray[0] as! [String: AnyObject])
-        }
-        
-        socket.on("userExitUpdate") { (dataArray, socketAck) -> Void in
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "userWasDisconnectedNotification"), object: dataArray[0] as! String)
-        }
         
         socket.on("userTypingUpdate") { (dataArray, socketAck) -> Void in
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "userTypingNotification"), object: dataArray[0] as? [String: AnyObject])
         }
     }
     
-    func sendStartTypingMessage(nickname: String) {
-        socket.emit("startType", nickname)
-    }
-    
-    func sendStopTypingMessage(nickname: String) {
-        socket.emit("stopType", nickname)
-    }
-    
+    //MARK:- Socket Delegates
     func didConnectSocket() {
 //        print("Socket Connected")
 //        if let _ = UserManager.shared().activeUser {
@@ -132,6 +135,7 @@ class SocketManager: NSObject,SocketConnectionDelegate {
         print("Socket Disconnected")
     }
     
+    //MARK:- Events for On
     func eventForReceiveMessage() {
         socket.off("receiveMessage")
         socket.on("receiveMessage") { (dataArray, socketAck) -> Void in
@@ -198,7 +202,7 @@ class SocketManager: NSObject,SocketConnectionDelegate {
 //        }
     }
     
-    //handling
+    //MARK:- Handling
     
     func handleReceivedChatMessage(params:[Any]) {
         var messageDictionary = [String: AnyObject]()
@@ -217,7 +221,15 @@ class SocketManager: NSObject,SocketConnectionDelegate {
             let chatObj = JSON(rawValue: messageDictionary)
             self.makeNotificationData(chat: chatObj)
         }
-
+    }
+    
+    func handleUpdateUnreadCounter(params:[Any]) {
+        var messageDictionary = [String: AnyObject]()
+        messageDictionary = params[0] as! [String:AnyObject]
+        if let unreadCounterObject = JSON(rawValue: messageDictionary) {
+            print(unreadCounterObject)
+            DatabaseManager.updateReadCount(recruiterId: unreadCounterObject["recruiterId"].stringValue)
+        }
     }
 }
 

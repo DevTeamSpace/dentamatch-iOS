@@ -33,7 +33,7 @@ class DMChatVC: DMBaseVC {
         super.viewDidLoad()
         setup()
         self.getChats()
-        SocketManager.sharedInstance.getHistory(pageNo: 1)
+        //SocketManager.sharedInstance.getHistory(pageNo: 1)
         // Do any additional setup after loading the view.
         receiveMessagesEvent()
         receiveChatMessageEvent()
@@ -46,11 +46,13 @@ class DMChatVC: DMBaseVC {
         self.navigationItem.title = chatList?.officeName
         self.navigationItem.leftBarButtonItem = self.backBarButton()
         SocketManager.sharedInstance.recruiterId = (chatList?.recruiterId)!
+        SocketManager.sharedInstance.updateMessageRead()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)
+        SocketManager.sharedInstance.notOnChat()
     }
     
     //MARK:- Keyboard Show Hide Observers

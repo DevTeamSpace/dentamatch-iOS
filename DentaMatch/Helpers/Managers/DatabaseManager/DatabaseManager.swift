@@ -61,13 +61,17 @@ class DatabaseManager: NSObject {
                 chat.fromId = chatObj["fromId"].stringValue
                 chat.toId = chatObj["toId"].stringValue
                 chat.timeStamp = chatObj["sentTime"].doubleValue
-                
+                let filteredDateTime = DatabaseManager.getDate(timestamp: chatObj["sentTime"].doubleValue)
+                chat.timeString = filteredDateTime.time
+                chat.dateString = filteredDateTime.date
+             
                 if let user = UserManager.shared().activeUser {
                     if chatObj["fromId"].stringValue == user.userId {
                         //Sender's Chat
                         if let chatList = chatListExists(recruiterId: chatObj["toId"].stringValue) {
                             chatList.lastMessage = chatObj["message"].stringValue
                             chatList.lastMessageId = chatObj["messageId"].stringValue
+                            chatList.timeStamp = chatObj["sentTime"].doubleValue
                             //TODO:- Time Handling
                         }
                     } else {
@@ -75,6 +79,8 @@ class DatabaseManager: NSObject {
                         if let chatList = chatListExists(recruiterId: chatObj["fromId"].stringValue) {
                             chatList.lastMessage = chatObj["message"].stringValue
                             chatList.lastMessageId = chatObj["messageId"].stringValue
+                            chatList.timeStamp = chatObj["sentTime"].doubleValue
+                            chatList.unreadCount = chatList.unreadCount + 1
                         }
                     }
                 }
@@ -82,6 +88,15 @@ class DatabaseManager: NSObject {
             }
         }
         kAppDelegate.saveContext()
+    }
+    
+    class func updateReadCount(recruiterId:String) {
+        if recruiterId != "0" {
+            if let chatList = chatListExists(recruiterId:recruiterId) {
+                chatList.unreadCount = 0
+            }
+            kAppDelegate.saveContext()
+        }
     }
     
     class func chatExits(messageId:String) -> Chat? {
@@ -111,4 +126,20 @@ class DatabaseManager: NSObject {
         }
         return nil
     }
+    
+    class func getDate(timestamp:Double) -> (time:String,date:String) {
+        let date = Date(timeIntervalSince1970: timestamp/1000)
+        let dateFormatter = DateFormatter()
+        dateFormatter.amSymbol = "am"
+        dateFormatter.pmSymbol = "pm"
+        dateFormatter.dateFormat = Date.dateFormatYYYYMMDDHHMMSSAA()
+        //let dateEnter = dateFormatter.string(from: date)
+        
+        dateFormatter.dateFormat = Date.dateFormatHHMM()
+        let dateEnter1 = dateFormatter.string(from: date)
+        dateFormatter.dateFormat = Date.dateFormatMMDDYYYY()
+        let dateEnter2 = dateFormatter.string(from: date)
+        return(dateEnter1,dateEnter2)
+    }
+    
 }
