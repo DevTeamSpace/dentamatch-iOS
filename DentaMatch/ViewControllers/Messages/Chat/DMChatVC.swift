@@ -147,15 +147,18 @@ class DMChatVC: DMBaseVC {
                     self.getChats()
                 }
             } else {
-                self.showLoader(text: "Loading Chats")
+                self.getChats()
+                //self.showLoader(text: "Loading Chats")
                 SocketManager.sharedInstance.getLeftMessages(recruiterId: (chatList?.recruiterId)!, messageId: (chatList?.lastMessageId)!, completionHandler: { (params:[Any]) in
-                    self.hideLoader()
+                    //self.hideLoader()
                     print(params)
                     let chatObj = JSON(rawValue: params)
                     DatabaseManager.insertChats(chats: chatObj?[0].array)
-                    self.getChats()
+//                    self.getChats()
                 })
             }
+        } else {
+            self.getChats()
         }
     }
     
@@ -167,6 +170,8 @@ class DMChatVC: DMBaseVC {
         }
         //Send Message
         if SocketManager.sharedInstance.socket.status == .connected {
+//        let encodedMessage = self.chatTextView.text!.convertToUTF8()
+            
             SocketManager.sharedInstance.sendTextMessage(message: self.chatTextView.text, recruiterId: (chatList?.recruiterId)!)
             self.chatTextView.text = ""
             self.placeHolderLabel.isHidden = false

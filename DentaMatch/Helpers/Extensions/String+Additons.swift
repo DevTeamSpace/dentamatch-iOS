@@ -159,5 +159,25 @@ extension String {
         let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
         return boundingBox.width
     }
-
+    
+    // convert emoji to utf8 string
+    func convertToUTF8() -> String {
+        let data: Data? = self.data(using: String.Encoding.nonLossyASCII)
+        let string = String(data: data!, encoding: .utf8)
+        if string == nil {
+            return self
+        }
+        return string!
+    }
+    
+    // Below code is used to convert the utf8 string to string with emoji
+    func converttoASCIIString() -> String {
+        let newString = self.replacingOccurrences(of: "\\n", with: "\n")
+        let data: Data? = newString.data(using: String.Encoding.utf8, allowLossyConversion: true)
+        let string = String(data: data!, encoding: .nonLossyASCII)
+        if string == nil {
+            return self
+        }
+        return string!
+    }
 }
