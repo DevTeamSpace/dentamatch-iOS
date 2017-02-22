@@ -114,6 +114,7 @@ class DMJobSearchResultVC : DMBaseVC {
             _=self.navigationController?.popToRootViewController(animated: false)
             tabbar.selectedIndex = 0
             let notification = UIStoryboard.notificationStoryBoard().instantiateViewController(type: DMNotificationVC.self)!
+            notification.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(notification, animated: true)
 
         }
@@ -124,8 +125,8 @@ class DMJobSearchResultVC : DMBaseVC {
             _=self.navigationController?.popToRootViewController(animated: false)
             tabbar.selectedIndex = 0
             let notification = UIStoryboard.notificationStoryBoard().instantiateViewController(type: DMNotificationVC.self)!
+            notification.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(notification, animated: true)
-
         }
         
     }
@@ -168,6 +169,7 @@ class DMJobSearchResultVC : DMBaseVC {
     override func actionLeftNavigationItem() {
         //will implement
         let notification = UIStoryboard.notificationStoryBoard().instantiateViewController(type: DMNotificationVC.self)!
+        notification.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(notification, animated: true)
 
     }
