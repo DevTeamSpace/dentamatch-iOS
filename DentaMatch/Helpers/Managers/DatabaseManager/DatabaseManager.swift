@@ -127,6 +127,61 @@ class DatabaseManager: NSObject {
         return nil
     }
     
+    class func getCountForChats(recruiterId:String) -> Int {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Chat")
+        let userId = UserManager.shared().activeUser.userId
+        fetchRequest.predicate = NSPredicate(format: "(fromId == %@ AND toId == %@) or (fromId == %@ AND toId == %@)",userId!,recruiterId,recruiterId,userId!)
+        do {
+            let chatList = try kAppDelegate.managedObjectContext.fetch(fetchRequest)
+            return chatList.count
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+        return 0
+    }
+    
+    class func insertChats(chats:[JSON]?) {
+        if let chats = chats {
+            for chatObj in chats {
+                
+                if let chat = chatExits(messageId: chatObj["messageId"].stringValue) {
+                    //Update chat
+                    
+                } else {
+                    //New chat
+                    let chat = NSEntityDescription.insertNewObject(forEntityName: "Chat", into: kAppDelegate.managedObjectContext) as! Chat
+                    chat.chatId = chatObj["messageId"].stringValue
+                    chat.message = chatObj["message"].stringValue
+                    chat.fromId = chatObj["fromId"].stringValue
+                    chat.toId = chatObj["toId"].stringValue
+                    chat.timeStamp = chatObj["sentTime"].doubleValue
+                    let filteredDateTime = DatabaseManager.getDate(timestamp: chatObj["sentTime"].doubleValue)
+                    chat.timeString = filteredDateTime.time
+                    chat.dateString = filteredDateTime.date
+                    
+                    if let user = UserManager.shared().activeUser {
+                        if chatObj["fromId"].stringValue == user.userId {
+                            //Sender's Chat
+                            if let chatList = chatListExists(recruiterId: chatObj["toId"].stringValue) {
+                                chatList.lastMessage = chatObj["message"].stringValue
+                                chatList.lastMessageId = chatObj["messageId"].stringValue
+                                chatList.timeStamp = chatObj["sentTime"].doubleValue
+                                //TODO:- Time Handling
+                            }
+                        } else {
+                            //Recruiter's Chat
+                            if let chatList = chatListExists(recruiterId: chatObj["fromId"].stringValue) {
+                                chatList.lastMessage = chatObj["message"].stringValue
+                                chatList.lastMessageId = chatObj["messageId"].stringValue
+                                chatList.timeStamp = chatObj["sentTime"].doubleValue
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     class func getDate(timestamp:Double) -> (time:String,date:String) {
         let date = Date(timeIntervalSince1970: timestamp/1000)
         let dateFormatter = DateFormatter()

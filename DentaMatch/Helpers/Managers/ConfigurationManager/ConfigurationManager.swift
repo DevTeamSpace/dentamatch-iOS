@@ -14,6 +14,7 @@ let kConfigurationKey:NSString? = "ActiveConfiguration"
 let kAPIEndpointKey:NSString? = "APIEndPoint"
 let kLoggingEnabledKey:NSString? = "LoggingEnabled"
 let kAnalyticsTrackingEnabled:NSString? = "AnalyticsTrackingEnabled"
+let kSocketEndPoint:NSString? = "SocketEndPoint"
 
 class ConfigurationManager:NSObject {
     
@@ -57,6 +58,11 @@ class ConfigurationManager:NSObject {
     
     func APIEndpoint () -> String  {
         let configuration = self.environment![kAPIEndpointKey!]
+        return (configuration)! as! String
+    }
+    
+    func socketEndpoint() -> String {
+        let configuration = self.environment![kSocketEndPoint!]
         return (configuration)! as! String
     }
     

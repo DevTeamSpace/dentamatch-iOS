@@ -181,7 +181,7 @@ struct Constants {
         static let uploadImageAPI = Constants.API.apiURL("users/upload-image")
         static let JobSearchResultAPI = Constants.API.apiURL("users/search-jobs")
         static let updateUserProfile = Constants.API.apiURL("users/user-profile-update")
-        
+        static let updateDeviceToken = Constants.API.apiURL("users/update-devicetoken")
         static let licenseNumberAndState = Constants.API.apiURL("users/update-license")
         static let workExperienceSave = Constants.API.apiURL("users/work-experience-save")
         static let getWorkExperience = Constants.API.apiURL("users/work-experience-list")
@@ -328,6 +328,7 @@ struct Constants {
         static let deviceToken = "kDeviceToken"
         static let isProfileSkipped = "kIsProfileSkipped"
         static let isOnBoardingDone = "kIsOnBoardingDone"
+        static let isHistoryRetrieved = "kIsHistoryRetrieved"
         static let isLoggedOut = "kIsLoggedOut"
         static let isProfileCompleted = "kIsProfileCompleted"
         static let accessToken = "kDeviceToken"

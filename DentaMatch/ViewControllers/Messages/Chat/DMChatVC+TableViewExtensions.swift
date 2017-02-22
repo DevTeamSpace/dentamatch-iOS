@@ -28,19 +28,14 @@ extension DMChatVC:UITableViewDataSource,UITableViewDelegate {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        if let sections = fetchedResultsController.sections {
-            return sections.count
+        if fetchedResultsController != nil {
+            if let sections = fetchedResultsController.sections {
+                return sections.count
+            }
+            return 0
         }
         return 0
     }
-    
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        if let sections = fetchedResultsController.sections {
-//            let section = sections[section]
-//            return section.name
-//        }
-//        return nil
-//    }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40

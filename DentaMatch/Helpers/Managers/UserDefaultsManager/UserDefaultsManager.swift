@@ -55,6 +55,20 @@ class UserDefaultsManager: NSObject {
         }
     }
     
+    var isHistoryRetrieved:Bool {
+        get {
+            if kUserDefaults.value(forKey: Constants.UserDefaultsKey.isHistoryRetrieved) != nil {
+                return kUserDefaults.value(forKey: Constants.UserDefaultsKey.isHistoryRetrieved) as! Bool
+            }
+            return false
+        }
+        set {
+            kUserDefaults.setValue(newValue, forKey: Constants.UserDefaultsKey.isHistoryRetrieved)
+            kUserDefaults.synchronize()
+        }
+    }
+
+    
     var isProfileSkipped:Bool {
         get {
             if kUserDefaults.value(forKey: Constants.UserDefaultsKey.isProfileSkipped) != nil {
