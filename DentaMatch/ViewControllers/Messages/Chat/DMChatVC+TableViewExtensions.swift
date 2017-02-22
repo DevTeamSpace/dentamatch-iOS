@@ -64,8 +64,8 @@ extension DMChatVC:UITableViewDataSource,UITableViewDelegate {
                 //self message
                 let cell = tableView.dequeueReusableCell(withIdentifier: "MessageSenderTableCell") as! MessageSenderTableCell
                 cell.chatTextView.text = chat.message
+//                cell.chatTextView.text = chat.message!.converttoASCIIString()
                 cell.timeLabel.text = chat.timeString
-                //self.setContent(textView: cell.chatTextView)
                 return cell
                 
             } else {
