@@ -4,6 +4,8 @@
 <dict>
 	<key>Development</key>
 	<dict>
+		<key>SocketEndPoint</key>
+		<string>http://dev.dentamatch.co:3000</string>
 		<key>APIEndPoint</key>
 		<string>http://dev.dentamatch.co/api/</string>
 		<key>LoggingEnabled</key>
@@ -29,6 +31,8 @@
 	<dict>
 		<key>APIEndPoint</key>
 		<string>http://qa.dentamatch.co/api/</string>
+		<key>SocketEndPoint</key>
+		<string>http://qa.dentamatch.co:3000</string>
 		<key>LoggingEnabled</key>
 		<true/>
 		<key>AnalyticsTrackingEnabled</key>
@@ -52,6 +56,8 @@
 	<dict>
 		<key>APIEndPoint</key>
 		<string>http://staging.dentamatch.co/api/</string>
+		<key>SocketEndPoint</key>
+		<string>http://staging.dentamatch.co:3000</string>
 		<key>LoggingEnabled</key>
 		<false/>
 		<key>AnalyticsTrackingEnabled</key>
@@ -77,6 +83,8 @@
 		<string>https://production</string>
 		<key>LoggingEnabled</key>
 		<true/>
+		<key>SocketEndPoint</key>
+		<string>http://production.dentamatch.co:3000</string>
 		<key>AnalyticsTrackingEnabled</key>
 		<true/>
 		<key>Flurry</key>

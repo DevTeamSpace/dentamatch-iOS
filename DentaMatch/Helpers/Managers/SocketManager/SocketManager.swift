@@ -15,7 +15,6 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     static let sharedInstance = SocketManager()
     
     typealias ReceiveMessageClosure = ((_ messageInfo: [String: AnyObject])->Void)
-    
     private var chatCompletionHandler: ReceiveMessageClosure?
     
     //To check whether the same recruiter is chatting
@@ -24,7 +23,10 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     typealias HistoryCallBackClosure = ((_ messageInfo: [Any])->Void)
     private var historyMessagesCompletionHandler: HistoryCallBackClosure?
     
-    var socket = SocketIOClient(socketURL: URL(string: "http://dev.dentamatch.co:3000")!)
+    typealias GetLeftMessagesCallBackClosure = ((_ messageInfo: [Any])->Void)
+    private var getLeftMessagesCompletionHandler: GetLeftMessagesCallBackClosure?
+
+    var socket = SocketIOClient(socketURL: URL(string: ConfigurationManager.sharedManager.socketEndpoint())!)
     
     override init() {
         super.init()
@@ -48,9 +50,11 @@ class SocketManager: NSObject,SocketConnectionDelegate {
             "userName":UserManager.shared().activeUser.firstName!,
             "userType":1
         ] as [String : Any]
-        socket.emit("init", params)
+        socket.emitWithAck("init", params).timingOut(after: 0) { (params:[Any]) in
+            print(params)
+            //self.getChatHistory()
+        }
     }
-    
     
     func sendTextMessage(message: String,recruiterId:String) {
         let params = [
@@ -92,27 +96,41 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     }
     
     func getChatHistory() {
-        let params = [
-            "fromId":UserManager.shared().activeUser.userId!
+        if UserDefaultsManager.sharedInstance.isHistoryRetrieved {
+            return
+        }
+        if socket.status == .connected {
+            let params = [
+                "fromId":UserManager.shared().activeUser.userId!
             ]
-        socket.emitWithAck("getChatHistory", params).timingOut(after: 0) { (params:[Any]) in
-            print(params)
+            socket.emitWithAck("getChatHistory", params).timingOut(after: 0) { (params:[Any]) in
+                //TODO:- store in DB
+                print(params)
+            }
         }
     }
     
-    func getHistory(pageNo:Int) {
+    func getHistory(recruiterId:String,completionHandler: @escaping (_ messageInfo: [Any]) -> Void) {
+        self.historyMessagesCompletionHandler = completionHandler
         let params = [
             "fromId":UserManager.shared().activeUser.userId!,
-            "toId":"8",
-            "pageNo":pageNo
+            "toId":recruiterId,
         ] as [String : Any]
         socket.emit("getHistory", params)
     }
     
-    func receiveMessages(completionHandler: @escaping (_ messageInfo: [Any]) -> Void) {
-        self.historyMessagesCompletionHandler = completionHandler
-    }
+    func getLeftMessages(recruiterId:String,messageId:String,completionHandler: @escaping (_ messageInfo: [Any]) -> Void) {
+        self.getLeftMessagesCompletionHandler = completionHandler
+        let params = [
+            "fromId":UserManager.shared().activeUser.userId!,
+            "toId":recruiterId,
+            "messageId":messageId
+            ] as [String : Any]
+        socket.emitWithAck("getLeftMessages", params).timingOut(after: 0) { (params:[Any]) in
+            self.getLeftMessagesCompletionHandler!(params)
+        }
 
+    }
     
     private func listenForOtherMessages() {
         
@@ -123,12 +141,13 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     
     //MARK:- Socket Delegates
     func didConnectSocket() {
-//        print("Socket Connected")
-//        if let _ = UserManager.shared().activeUser {
-//            self.initServer()
-//            eventForReceiveMessage()
-//            eventForHistoryMessages()
-//        }
+        print("Socket Connected")
+        if let _ = UserManager.shared().activeUser {
+            self.initServer()
+            eventForReceiveMessage()
+            eventForHistoryMessages()
+            //getChatHistory()
+        }
     }
     
     func didDisconnectSocket() {

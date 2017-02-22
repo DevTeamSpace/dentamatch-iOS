@@ -23,6 +23,7 @@ class DMChatVC: DMBaseVC {
     var placeHolderLabel:UILabel!
     var chatList:ChatList?
     var messages = [String]()
+    var shouldFetchFromBeginning = false
     
     let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -32,11 +33,8 @@ class DMChatVC: DMBaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        self.getChats()
-        //SocketManager.sharedInstance.getHistory(pageNo: 1)
-        // Do any additional setup after loading the view.
-        receiveMessagesEvent()
         receiveChatMessageEvent()
+        self.getHistory()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -125,11 +123,6 @@ class DMChatVC: DMBaseVC {
         self.view.endEditing(true)
     }
     
-    func receiveMessagesEvent() {
-        SocketManager.sharedInstance.receiveMessages { (info:[Any]) in
-            print(info)
-        }
-    }
     
     func receiveChatMessageEvent() {
         SocketManager.sharedInstance.getChatMessage { (object:[String : AnyObject]) in
@@ -138,6 +131,31 @@ class DMChatVC: DMBaseVC {
             self.addUpdateChatToDB(chatObj: chatObj)
             self.chatTextView.text = ""
             self.placeHolderLabel.isHidden = false
+        }
+    }
+    
+    func getHistory() {
+        if SocketManager.sharedInstance.socket.status == .connected {
+            if shouldFetchFromBeginning {
+                self.showLoader(text: "Loading Chats")
+                SocketManager.sharedInstance.getHistory(recruiterId: (chatList?.recruiterId)!) { (params:[Any]) in
+                    self.hideLoader()
+                    print("History from Beginning")
+                    print(params)
+                    let chatObj = JSON(rawValue: params)
+                    DatabaseManager.insertChats(chats: chatObj?[0].array)
+                    self.getChats()
+                }
+            } else {
+                self.showLoader(text: "Loading Chats")
+                SocketManager.sharedInstance.getLeftMessages(recruiterId: (chatList?.recruiterId)!, messageId: (chatList?.lastMessageId)!, completionHandler: { (params:[Any]) in
+                    self.hideLoader()
+                    print(params)
+                    let chatObj = JSON(rawValue: params)
+                    DatabaseManager.insertChats(chats: chatObj?[0].array)
+                    self.getChats()
+                })
+            }
         }
     }
     

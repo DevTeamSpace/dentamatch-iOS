@@ -51,7 +51,12 @@ extension AppDelegate:UNUserNotificationCenterDelegate {
             token += String(format: "%02.2hhx", deviceToken[i] as CVarArg)
         }
         debugPrint(token)
-        UserDefaultsManager.sharedInstance.deviceToken = token
+        if UserDefaultsManager.sharedInstance.deviceToken == token {
+            //Nothing needed to call
+        } else {
+            UserDefaultsManager.sharedInstance.deviceToken = token
+            self.updateDeviceTokenAPI()
+        }
     }
     
     //MARK:- Remote/Local Notification Delegates
@@ -115,5 +120,17 @@ extension AppDelegate:UNUserNotificationCenterDelegate {
         print(dict)
         debugPrint("Go to chat")
         completionHandler()
+    }
+    
+    func updateDeviceTokenAPI() {
+        if let user = UserManager.shared().activeUser {
+            let params = [
+                "accessToken":user.accessToken,
+                "updateDeviceToken":UserDefaultsManager.sharedInstance.deviceToken
+            ]
+            APIManager.apiPost(serviceName: Constants.API.updateDeviceToken, parameters: params, completionHandler: { (response:JSON?, error:NSError?) in
+                print(response)
+            })
+        }
     }
 }

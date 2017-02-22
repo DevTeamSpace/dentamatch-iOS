@@ -81,11 +81,13 @@ extension DMChatVC:NSFetchedResultsControllerDelegate {
     }
     
     func scrollTableToBottom() {
-        if let sections = fetchedResultsController.sections {
-            if sections.count > 0 {
-            let sectionInfo = sections[sections.count - 1]
-                if (sectionInfo.objects?.count)! > 0 {
-                    self.chatTableView.scrollToRow(at:IndexPath(row: (sectionInfo.objects?.count)! - 1, section: sections.count - 1), at: .bottom, animated: true)
+        if fetchedResultsController != nil {
+            if let sections = fetchedResultsController.sections {
+                if sections.count > 0 {
+                    let sectionInfo = sections[sections.count - 1]
+                    if (sectionInfo.objects?.count)! > 0 {
+                        self.chatTableView.scrollToRow(at:IndexPath(row: (sectionInfo.objects?.count)! - 1, section: sections.count - 1), at: .bottom, animated: true)
+                    }
                 }
             }
         }
