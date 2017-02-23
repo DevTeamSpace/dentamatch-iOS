@@ -179,6 +179,7 @@ class DatabaseManager: NSObject {
                     }
                 }
             }
+            kAppDelegate.saveContext()
         }
     }
     

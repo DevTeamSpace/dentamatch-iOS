@@ -52,6 +52,8 @@ class SocketManager: NSObject,SocketConnectionDelegate {
         ] as [String : Any]
         socket.emitWithAck("init", params).timingOut(after: 0) { (params:[Any]) in
             print(params)
+            NotificationCenter.default.post(name: .refreshMessageList, object: nil)
+            NotificationCenter.default.post(name: .refreshChat, object: nil)
             //self.getChatHistory()
         }
     }

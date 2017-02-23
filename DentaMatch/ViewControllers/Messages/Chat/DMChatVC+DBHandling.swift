@@ -29,12 +29,40 @@ extension DMChatVC:NSFetchedResultsControllerDelegate {
                 chat.timeString = filteredDateTime.time
                 chat.dateString = filteredDateTime.date
 
-                self.chatList?.lastMessage = chatObj["message"].stringValue
-                self.chatList?.lastMessageId = chatObj["messageId"].stringValue
-                //chat.date = self.getDate(dateString: chatObj["timestamp"].stringValue)?.date as NSDate?
+                if let user = UserManager.shared().activeUser {
+                    if chatObj["fromId"].stringValue == user.userId {
+                        //Sender's Chat
+                        if let chatList = DatabaseManager.chatListExists(recruiterId: chatObj["toId"].stringValue) {
+                            chatList.lastMessage = chatObj["message"].stringValue
+                            chatList.lastMessageId = chatObj["messageId"].stringValue
+                            chatList.timeStamp = chatObj["sentTime"].doubleValue
+                            //TODO:- Time Handling
+                        }
+                    } else {
+                        //Recruiter's Chat
+                        if let chatList = DatabaseManager.chatListExists(recruiterId: chatObj["fromId"].stringValue) {
+                            chatList.lastMessage = chatObj["message"].stringValue
+                            chatList.lastMessageId = chatObj["messageId"].stringValue
+                            chatList.timeStamp = chatObj["sentTime"].doubleValue
+                            if self.chatList?.recruiterId != chatList.recruiterId {
+                                chatList.unreadCount = chatList.unreadCount + 1
+                                //Someone other messaged than the one whose chat page is opened
+                                
+                                ToastView.showNotificationToast(message: chatObj["message"].stringValue, name: chatObj["fromName"].stringValue, imageUrl: "", type: .White, onCompletion: {
+                                    self.notificationTapHandling(recruiterId: chatObj["fromId"].stringValue)
+                                })
+                            }
+                        }
+                    }
+                }
+                
+                
+                
+//                self.chatList?.lastMessage = chatObj["message"].stringValue
+               // self.chatList?.lastMessageId = chatObj["messageId"].stringValue
             }
         }
-        self.appDelegate.saveContext()
+        kAppDelegate.saveContext()
     }
     
     func chatExits(messageId:String) -> Chat? {
@@ -72,8 +100,11 @@ extension DMChatVC:NSFetchedResultsControllerDelegate {
         
         do {
             try self.fetchedResultsController.performFetch()
-            self.chatTableView.reloadData()
-            self.scrollTableToBottom()
+            DispatchQueue.main.async {
+                self.chatTableView.reloadData()
+                self.scrollTableToBottom()
+            }
+
         } catch {
             let fetchError = error as NSError
             print("\(fetchError), \(fetchError.userInfo)")
@@ -86,7 +117,7 @@ extension DMChatVC:NSFetchedResultsControllerDelegate {
                 if sections.count > 0 {
                     let sectionInfo = sections[sections.count - 1]
                     if (sectionInfo.objects?.count)! > 0 {
-                        self.chatTableView.scrollToRow(at:IndexPath(row: (sectionInfo.objects?.count)! - 1, section: sections.count - 1), at: .bottom, animated: true)
+                        self.chatTableView.scrollToRow(at:IndexPath(row: (sectionInfo.objects?.count)! - 1, section: sections.count - 1), at: .bottom, animated: false)
                     }
                 }
             }

@@ -32,10 +32,16 @@ class DMMessagesVC: DMBaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshMessageList), name: .refreshMessageList, object: nil)
         SocketManager.sharedInstance.removeAllCompletionHandlers()
         if let selectedIndex = self.messageListTableView.indexPathForSelectedRow {
             self.messageListTableView.deselectRow(at: selectedIndex, animated: true)
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
     }
     
     func setup() {
@@ -113,5 +119,13 @@ class DMMessagesVC: DMBaseVC {
 //        try self.fetchedResultsController.performFetch(nil)
 //        self.fetchedResultsController.fetchRequest.predicate =
 //            [NSPredicate  predicateWithValue:NO];
+    }
+    
+    func refreshMessageList() {
+        if fetchedResultsController != nil {
+            fetchedResultsController.delegate = nil
+            fetchedResultsController = nil
+            self.getChatListAPI()
+        }
     }
 }

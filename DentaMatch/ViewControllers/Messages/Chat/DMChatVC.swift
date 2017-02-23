@@ -32,19 +32,26 @@ class DMChatVC: DMBaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.showLoader(text: "Loading Chats")
         setup()
         receiveChatMessageEvent()
-        self.getHistory()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshChat), name: .refreshChat, object: nil)
         self.navigationItem.title = chatList?.officeName
         self.navigationItem.leftBarButtonItem = self.backBarButton()
         SocketManager.sharedInstance.recruiterId = (chatList?.recruiterId)!
         SocketManager.sharedInstance.updateMessageRead()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.getHistory()
+        self.hideLoader()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -123,7 +130,6 @@ class DMChatVC: DMBaseVC {
         self.view.endEditing(true)
     }
     
-    
     func receiveChatMessageEvent() {
         SocketManager.sharedInstance.getChatMessage { (object:[String : AnyObject]) in
             print(object)
@@ -135,31 +141,55 @@ class DMChatVC: DMBaseVC {
     }
     
     func getHistory() {
+        
         if SocketManager.sharedInstance.socket.status == .connected {
             if shouldFetchFromBeginning {
-                self.showLoader(text: "Loading Chats")
                 SocketManager.sharedInstance.getHistory(recruiterId: (chatList?.recruiterId)!) { (params:[Any]) in
-                    self.hideLoader()
                     print("History from Beginning")
-                    print(params)
+                    //debugPrint(params)
                     let chatObj = JSON(rawValue: params)
                     DatabaseManager.insertChats(chats: chatObj?[0].array)
                     self.getChats()
                 }
             } else {
                 self.getChats()
-                //self.showLoader(text: "Loading Chats")
-                SocketManager.sharedInstance.getLeftMessages(recruiterId: (chatList?.recruiterId)!, messageId: (chatList?.lastMessageId)!, completionHandler: { (params:[Any]) in
-                    //self.hideLoader()
-                    print(params)
-                    let chatObj = JSON(rawValue: params)
-                    DatabaseManager.insertChats(chats: chatObj?[0].array)
-//                    self.getChats()
-                })
+                if let chat = getLastChat() {
+                    getLeftMessages(lastMessageId: chat.chatId!)
+                }
             }
         } else {
             self.getChats()
         }
+    }
+    
+    func getLeftMessages(lastMessageId:String) {
+        //self.showLoader(text: "Loading Chats")
+        SocketManager.sharedInstance.getLeftMessages(recruiterId: (chatList?.recruiterId)!, messageId: lastMessageId, completionHandler: { (params:[Any]) in
+            //self.hideLoader()
+            print(params)
+            let chatObj = JSON(rawValue: params)
+            DatabaseManager.insertChats(chats: chatObj?[0].array)
+        })
+
+    }
+    
+    func refreshChat() {
+        if let chat = getLastChat() {
+            getLeftMessages(lastMessageId: chat.chatId!)
+        }
+    }
+    
+    func getLastChat() -> Chat? {
+        if let fetchedResultsController = fetchedResultsController {
+            if let section = fetchedResultsController.sections {
+                if section.count > 0 {
+                    let lastRow = section[section.count - 1].numberOfObjects - 1
+                    let indexPath = IndexPath(row: lastRow, section: section.count - 1)
+                    return fetchedResultsController.object(at: indexPath) as? Chat
+                }
+            }
+        }
+        return nil
     }
     
     @IBAction func sendMessageButtonPressed(_ sender: Any) {
@@ -181,6 +211,10 @@ class DMChatVC: DMBaseVC {
     }
     @IBAction func unblockButtonPressed(_ sender: Any) {
         self.unBlockRecruiter(chatList: chatList!)
+    }
+    
+    func notificationTapHandling(recruiterId:String) {
+        print(recruiterId)
     }
 
 }
