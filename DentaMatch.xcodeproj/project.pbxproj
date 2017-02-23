@@ -29,6 +29,8 @@
 		5A3FD06E1E1BB0A000360B3C /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3FD06D1E1BB0A000360B3C /* UINavigationBar+Awesome.m */; };
 		5A3FD0751E1CC79700360B3C /* DMProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3FD0741E1CC79700360B3C /* DMProfileHeaderView.swift */; };
 		5A3FD0771E1CC7CD00360B3C /* DMProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A3FD0761E1CC7CD00360B3C /* DMProfileHeaderView.xib */; };
+		5A463EC81E5D9E4B00B119D6 /* InviteJobNotificationTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A463EC61E5D9E4B00B119D6 /* InviteJobNotificationTableCell.swift */; };
+		5A463EC91E5D9E4B00B119D6 /* InviteJobNotificationTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A463EC71E5D9E4B00B119D6 /* InviteJobNotificationTableCell.xib */; };
 		5A50A2B81E320F6E0010AA31 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A50A2B71E320F6E0010AA31 /* TabBarVC.swift */; };
 		5A50A2CA1E32163D0010AA31 /* SettingTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A50A2C81E32163D0010AA31 /* SettingTableCell.swift */; };
 		5A50A2CB1E32163D0010AA31 /* SettingTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A50A2C91E32163D0010AA31 /* SettingTableCell.xib */; };
@@ -403,6 +405,8 @@
 		5A3FD06D1E1BB0A000360B3C /* UINavigationBar+Awesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Awesome.m"; sourceTree = "<group>"; };
 		5A3FD0741E1CC79700360B3C /* DMProfileHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMProfileHeaderView.swift; sourceTree = "<group>"; };
 		5A3FD0761E1CC7CD00360B3C /* DMProfileHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DMProfileHeaderView.xib; sourceTree = "<group>"; };
+		5A463EC61E5D9E4B00B119D6 /* InviteJobNotificationTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteJobNotificationTableCell.swift; sourceTree = "<group>"; };
+		5A463EC71E5D9E4B00B119D6 /* InviteJobNotificationTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteJobNotificationTableCell.xib; sourceTree = "<group>"; };
 		5A50A2B71E320F6E0010AA31 /* TabBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
 		5A50A2C81E32163D0010AA31 /* SettingTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableCell.swift; sourceTree = "<group>"; };
 		5A50A2C91E32163D0010AA31 /* SettingTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingTableCell.xib; sourceTree = "<group>"; };
@@ -968,6 +972,8 @@
 				5A5523E61E4C4136007D8C09 /* NotificationJobTypeTableCell.xib */,
 				5A5523E91E4C419F007D8C09 /* CommonTextNotificationTableCell.swift */,
 				5A5523EA1E4C419F007D8C09 /* CommonTextNotificationTableCell.xib */,
+				5A463EC61E5D9E4B00B119D6 /* InviteJobNotificationTableCell.swift */,
+				5A463EC71E5D9E4B00B119D6 /* InviteJobNotificationTableCell.xib */,
 			);
 			path = Notication;
 			sourceTree = "<group>";
@@ -2296,6 +2302,7 @@
 				E56E45C61DAE07C200AD4559 /* LaunchScreen.storyboard in Resources */,
 				5AAE74791E5C1D0E00B28851 /* ToastView.xib in Resources */,
 				E51D4F051E3FABA300ACC631 /* LoadMoreView.xib in Resources */,
+				5A463EC91E5D9E4B00B119D6 /* InviteJobNotificationTableCell.xib in Resources */,
 				E597E5761E151A99001DDA78 /* SF-UI-Display-Bold.otf in Resources */,
 				E50B3F511E194CD7004C5F32 /* RegistrationTableViewCell.xib in Resources */,
 				5AC714421E34A9C700E433C1 /* Messages.storyboard in Resources */,
@@ -2625,6 +2632,7 @@
 				F2F5E0DE1E31CE2A0082187C /* DMJobDetailVC.swift in Sources */,
 				E5DC3E731DAF2C45002DA20E /* DentaMatch.xcdatamodeld in Sources */,
 				5A3B06C81E3375ED00EFCA6E /* ChangePasswordTableCell.swift in Sources */,
+				5A463EC81E5D9E4B00B119D6 /* InviteJobNotificationTableCell.swift in Sources */,
 				E590299F1DED25C400151E9B /* AppDelegate+Notifications.swift in Sources */,
 				E597E5901E151CFF001DDA78 /* FloatLabelTextView.swift in Sources */,
 				E5F47C951E0035B90051C4A1 /* UIImageRotate.m in Sources */,
