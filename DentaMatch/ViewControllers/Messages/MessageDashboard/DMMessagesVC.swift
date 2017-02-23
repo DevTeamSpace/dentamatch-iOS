@@ -24,6 +24,7 @@ class DMMessagesVC: DMBaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(redirectToChat), name: .chatRedirect, object: nil)
         setup()
         SocketManager.sharedInstance.initServer()
         self.getChatListAPI()
@@ -41,7 +42,8 @@ class DMMessagesVC: DMBaseVC {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(self)
+        NotificationCenter.default.removeObserver(self, name: .refreshMessageList, object: nil)
+        //NotificationCenter.default.removeObserver(self)
     }
     
     func setup() {
@@ -126,6 +128,38 @@ class DMMessagesVC: DMBaseVC {
             fetchedResultsController.delegate = nil
             fetchedResultsController = nil
             self.getChatListAPI()
+        }
+    }
+    
+    func openChatPage(chatList:ChatList) {
+        let chatVC = UIStoryboard.messagesStoryBoard().instantiateViewController(type: DMChatVC.self)!
+        chatVC.chatList = chatList
+        chatVC.hidesBottomBarWhenPushed = true
+        chatVC.delegate = self
+        if DatabaseManager.getCountForChats(recruiterId: chatList.recruiterId!) == 0 {
+            chatVC.shouldFetchFromBeginning = true
+        }
+        self.navigationController?.pushViewController(chatVC, animated: true)
+    }
+    
+    func redirectToChat(notification:Notification) {
+        let recruiterId = notification.userInfo?["recruiterId"] as! String
+        if let chatList = DatabaseManager.chatListExists(recruiterId: recruiterId) {
+            openChatPage(chatList: chatList)
+        } else {
+            //Recruiter Doesn't exists in core data
+        }
+    }
+}
+
+extension DMMessagesVC:ChatTapNotificationDelegate {
+    
+    func notificationTapped(recruiterId: String) {
+        _ = self.navigationController?.popToRootViewController(animated: false)
+        if let chatList = DatabaseManager.chatListExists(recruiterId: recruiterId) {
+           openChatPage(chatList: chatList)
+        } else {
+            //Recruiter Doesn't exists in core data
         }
     }
 }

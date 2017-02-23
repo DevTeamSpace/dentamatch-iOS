@@ -81,6 +81,11 @@ class DatabaseManager: NSObject {
                             chatList.lastMessageId = chatObj["messageId"].stringValue
                             chatList.timeStamp = chatObj["sentTime"].doubleValue
                             chatList.unreadCount = chatList.unreadCount + 1
+                            
+                            ToastView.showNotificationToast(message: chatObj["message"].stringValue, name: chatObj["fromName"].stringValue, imageUrl: "", type: .White, onCompletion: {
+                                kAppDelegate.chatSocketNotificationTap(recruiterId: chatObj["fromId"].stringValue)
+                            })
+
                         }
                     }
                 }

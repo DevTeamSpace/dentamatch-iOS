@@ -46,7 +46,18 @@ extension DMJobDetailVC {
             if response[Constants.ServerKey.status].boolValue {
                 let job = Job(job: response[Constants.ServerKey.result])
                 self.job = job as Job
-                if job.isApplied == 1 {
+                
+                /* For Job status
+                 INVITED = 1
+                 APPLIED = 2
+                 SHORTLISTED = 3
+                 HIRED = 4
+                 REJECTED = 5
+                 CANCELLED = 6
+                 */
+                
+                if job.isApplied == 2 || job.isApplied == 3 || job.isApplied == 4 || job.isApplied == 5 {
+                    //Hide apply for job button
                     self.btnApplyForJob.isUserInteractionEnabled = false
                     self.btnApplyForJob.isHidden = true
                     self.constraintBtnApplyJobHeight.constant = 0
@@ -96,7 +107,7 @@ extension DMJobDetailVC {
                 
                 self.alertMessage(title: Constants.AlertMessage.congratulations, message: Constants.AlertMessage.jobApplied, buttonText: kOkButtonTitle, completionHandler: {
                 })
-                job?.isApplied = 1
+                job?.isApplied = 2
                 if let delegate = self.delegate {
                     if fromTrack {
                         delegate.jobApplied!(job: job!)

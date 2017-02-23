@@ -70,6 +70,7 @@ extension DMMessagesVC : UITableViewDataSource, UITableViewDelegate {
         let chatVC = UIStoryboard.messagesStoryBoard().instantiateViewController(type: DMChatVC.self)!
         chatVC.chatList = chatList
         chatVC.hidesBottomBarWhenPushed = true
+        chatVC.delegate = self
         if DatabaseManager.getCountForChats(recruiterId: chatList.recruiterId!) == 0 {
             chatVC.shouldFetchFromBeginning = true
         }

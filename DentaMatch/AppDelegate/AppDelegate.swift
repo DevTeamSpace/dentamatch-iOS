@@ -174,6 +174,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    func chatSocketNotificationTap(recruiterId:String) {
+        if let tabbar = ((UIApplication.shared.delegate) as! AppDelegate).window?.rootViewController as? TabBarVC {
+            tabbar.selectedIndex = 3
+            NotificationCenter.default.post(name: .chatRedirect, object: nil, userInfo: ["recruiterId":recruiterId])
+        }
+    }
 
     // MARK: - Core Data stack
     lazy var applicationDocumentsDirectory: NSURL = {

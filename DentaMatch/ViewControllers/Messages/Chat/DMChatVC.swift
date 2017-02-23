@@ -10,6 +10,10 @@ import UIKit
 import CoreData
 import SwiftyJSON
 
+@objc protocol ChatTapNotificationDelegate {
+    @objc optional func notificationTapped(recruiterId:String)
+}
+
 class DMChatVC: DMBaseVC {
     @IBOutlet weak var chatTableView: UITableView!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
@@ -19,6 +23,7 @@ class DMChatVC: DMBaseVC {
     @IBOutlet weak var chatTextView: UITextView!
     @IBOutlet weak var textContainerViewHeight: NSLayoutConstraint!
     
+    var delegate:ChatTapNotificationDelegate?
     var placeHolderLabelForView:UILabel!
     var placeHolderLabel:UILabel!
     var chatList:ChatList?
@@ -214,7 +219,9 @@ class DMChatVC: DMBaseVC {
     }
     
     func notificationTapHandling(recruiterId:String) {
-        print(recruiterId)
+        if let delegate = delegate {
+            delegate.notificationTapped!(recruiterId: recruiterId)
+        }
     }
 
 }
