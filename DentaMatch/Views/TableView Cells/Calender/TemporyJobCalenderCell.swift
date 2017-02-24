@@ -76,12 +76,12 @@ class TemporyJobCalenderCell: UITableViewCell,FSCalendarDataSource, FSCalendarDe
     
     
     func minimumDate(for calendar: FSCalendar) -> Date {
-        let firstDate  = Date.getMonthBasedOnThis(date1: Date(), duration: -3)
+        let firstDate  = Date.getMonthBasedOnThis(date1: Date(), duration: -6)
         let date5  =  gregorian?.fs_firstDay(ofMonth: firstDate)
         return date5!
     }
     func maximumDate(for calendar: FSCalendar) -> Date {
-        let lastDate  = Date.getMonthBasedOnThis(date1: Date(), duration: 3)
+        let lastDate  = Date.getMonthBasedOnThis(date1: Date(), duration: 6)
         let date2  =  gregorian?.fs_lastDay(ofMonth: lastDate)
         return date2!
     }

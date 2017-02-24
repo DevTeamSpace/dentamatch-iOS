@@ -119,7 +119,7 @@ extension Date {
     static func stringToDateForFormatter(date:String,dateFormate:String)-> Date{
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = dateFormate//"dd MMMM yyyy"
-        //        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
         return dateFormatter.date(from: date)!
     }
     

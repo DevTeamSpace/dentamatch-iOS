@@ -18,8 +18,8 @@ extension DMCalendarSetAvailabillityVC {
 //            param["calendarMonth"] = month as AnyObject?
 //        }
         
-        let firstDate  = Date.getMonthBasedOnThis(date1: Date(), duration: -3)
-        let lastDate  = Date.getMonthBasedOnThis(date1: Date(), duration: 3)
+        let firstDate  = Date.getMonthBasedOnThis(date1: Date(), duration: -6)
+        let lastDate  = Date.getMonthBasedOnThis(date1: Date(), duration: 6)
         
         let date5  =  gregorian?.fs_firstDay(ofMonth: firstDate)
         let date2  =  gregorian?.fs_lastDay(ofMonth: lastDate)

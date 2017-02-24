@@ -40,10 +40,15 @@ class InviteJobNotificationTableCell: UITableViewCell {
         notificationTimeLabel.text = timeAgoSince(date)
         if userNotificationObj.jobdetail?.jobType == 1 {
             self.btnJobType.setTitle("Full Time", for: .normal)
+            self.btnJobType.backgroundColor = Constants.Color.fullTimeBackgroundColor
         }else if userNotificationObj.jobdetail?.jobType == 2 {
             self.btnJobType.setTitle("Part Time", for: .normal)
+            self.btnJobType.backgroundColor = Constants.Color.partTimeDaySelectColor
+            
         }else if userNotificationObj.jobdetail?.jobType == 3 {
             self.btnJobType.setTitle("Temporary", for: .normal)
+            self.btnJobType.backgroundColor = Constants.Color.temporaryBackGroundColor
+            
         }
         
         
