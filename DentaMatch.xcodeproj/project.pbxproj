@@ -74,7 +74,6 @@
 		5AC7143E1E34A90700E433C1 /* Jobs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AC7143D1E34A90700E433C1 /* Jobs.storyboard */; };
 		5AC714401E34A9B100E433C1 /* Calender.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AC7143F1E34A9B100E433C1 /* Calender.storyboard */; };
 		5AC714421E34A9C700E433C1 /* Messages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AC714411E34A9C700E433C1 /* Messages.storyboard */; };
-		5AC714501E34ACC300E433C1 /* DMJobsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC7144F1E34ACC300E433C1 /* DMJobsVC.swift */; };
 		5AC714521E34ACD400E433C1 /* DMCalenderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC714511E34ACD400E433C1 /* DMCalenderVC.swift */; };
 		5AC714581E34F76900E433C1 /* DMSettingVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC714571E34F76900E433C1 /* DMSettingVC+Services.swift */; };
 		5AD246911E272E92009350BF /* DMWorkExperienceVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD246901E272E92009350BF /* DMWorkExperienceVC+Services.swift */; };
@@ -450,7 +449,6 @@
 		5AC7143D1E34A90700E433C1 /* Jobs.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Jobs.storyboard; sourceTree = "<group>"; };
 		5AC7143F1E34A9B100E433C1 /* Calender.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Calender.storyboard; sourceTree = "<group>"; };
 		5AC714411E34A9C700E433C1 /* Messages.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Messages.storyboard; sourceTree = "<group>"; };
-		5AC7144F1E34ACC300E433C1 /* DMJobsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMJobsVC.swift; sourceTree = "<group>"; };
 		5AC714511E34ACD400E433C1 /* DMCalenderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMCalenderVC.swift; sourceTree = "<group>"; };
 		5AC714571E34F76900E433C1 /* DMSettingVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMSettingVC+Services.swift"; sourceTree = "<group>"; };
 		5AD246901E272E92009350BF /* DMWorkExperienceVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMWorkExperienceVC+Services.swift"; sourceTree = "<group>"; };
@@ -987,14 +985,6 @@
 			path = BannerView;
 			sourceTree = "<group>";
 		};
-		5AC714431E34AB2500E433C1 /* Jobs */ = {
-			isa = PBXGroup;
-			children = (
-				5AC7144F1E34ACC300E433C1 /* DMJobsVC.swift */,
-			);
-			path = Jobs;
-			sourceTree = "<group>";
-		};
 		5AC714441E34AB3300E433C1 /* Calender */ = {
 			isa = PBXGroup;
 			children = (
@@ -1261,7 +1251,6 @@
 				5AC714461E34AB5B00E433C1 /* Messages */,
 				5AC714451E34AB4500E433C1 /* Track */,
 				5AC714441E34AB3300E433C1 /* Calender */,
-				5AC714431E34AB2500E433C1 /* Jobs */,
 				5A50A2B91E3212D10010AA31 /* Settings */,
 				5A50A2B21E3209970010AA31 /* TabBar */,
 				E558D9011E2E085200A6DF95 /* Dashboard */,
@@ -2474,7 +2463,6 @@
 				E5C5F3181DC1A723001A5A3F /* LocationManager.swift in Sources */,
 				E51D4EF51E3AFEA600ACC631 /* DMEditStudyVC+Services.swift in Sources */,
 				E5E7CB851E2FA23200D4FB59 /* PhotoNameCell.swift in Sources */,
-				5AC714501E34ACC300E433C1 /* DMJobsVC.swift in Sources */,
 				5A3FD06E1E1BB0A000360B3C /* UINavigationBar+Awesome.m in Sources */,
 				E5AE37641E4971CE0001EC3C /* SocketEngineClient.swift in Sources */,
 				E587D2CF1E23438B006B7F06 /* DMJobTitleSelectionVC.swift in Sources */,

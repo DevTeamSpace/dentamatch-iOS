@@ -45,20 +45,9 @@ extension DMMessagesVC:NSFetchedResultsControllerDelegate {
     }
     
     func getDate(timestamp:String) -> Date {
-//        Date.getTodaysDateMMDDYYYY()
-        
-//        dateFormatter.dateFormat = Date.dateFormatMMDDYYYY()
-//        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-//        return dateFormatter.date(from: dateFormatter.string(from: todaysDate))!
         
         let doubleTime = Double(timestamp)
         let lastMessageDate = Date(timeIntervalSince1970: doubleTime!/1000)
-       // let dateFormatter = DateFormatter()
-        //dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-//        dateFormatter.dateFormat = Date.dateFormatMMDDYYYY()
-//        dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
-//        let date1 = dateFormatter.string(from: lastMessageDate)
-
         
         return lastMessageDate
     }

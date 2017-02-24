@@ -185,62 +185,37 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     
     func makeNotificationData(chat:JSON?) {
         DatabaseManager.addUpdateChatToDB(chatObj: chat)
-        if UIApplication.shared.applicationState == .active {
-            self.scheduleNotification(message: (chat?["message"].stringValue)!)
-        }
     }
     
-    func scheduleNotification(message:String) {
-//        if #available(iOS 10.0, *) {
-//            let content = UNMutableNotificationContent()
-//            let requestIdentifier = "chatNotification"
-//            
-//            content.badge = 1
-//            content.title = "New Message"
-//            content.subtitle = ""
-//            content.body = message
-////            content.categoryIdentifier = "actionCategory"
-//            content.sound = UNNotificationSound.default()
-//            content.userInfo = ["myKey": "myValue"] as [String : Any]
-//
-////            let url = Bundle.main.url(forResource: "DP", withExtension: ".jpg")
-////            do {
-////                let attachment = try? UNNotificationAttachment(identifier: requestIdentifier, url: url!, options: nil)
-////                content.attachments = [attachment!]
-////            }
-//            let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 0.1, repeats: false)
-//            
-//            let request = UNNotificationRequest(identifier: requestIdentifier, content: content, trigger: trigger)
-//            UNUserNotificationCenter.current().add(request) { (error:Error?) in
-//                if error != nil {
-//                    print((error?.localizedDescription)!)
-//                }
-//                print("Notification Register Success")
-//            }
-//
-//        } else {
-//            // Fallback on earlier versions
-//        }
-    }
     
     //MARK:- Handling
     
     func handleReceivedChatMessage(params:[Any]) {
         var messageDictionary = [String: AnyObject]()
+        print(params)
         messageDictionary = params[0] as! [String:AnyObject]
+        
         if let _ = self.chatCompletionHandler {
             self.chatCompletionHandler?(messageDictionary)
             let chatObj = JSON(rawValue: messageDictionary)
-            if chatObj!["fromId"].stringValue == self.recruiterId || chatObj!["toId"].stringValue == self.recruiterId {
-                //If app is in background but same chat page is opened
-                return
+            if chatObj!["messageListId"].exists(){
+                self.handleFirstTimeRecruiterMessage(chatObj: chatObj)
             } else {
-                self.makeNotificationData(chat: chatObj)
+                if chatObj!["fromId"].stringValue == self.recruiterId || chatObj!["toId"].stringValue == self.recruiterId {
+                    //If app is in background but same chat page is opened
+                    return
+                } else {
+                    self.makeNotificationData(chat: chatObj)
+                }
             }
         } else {
             debugPrint("not on chat page")
             let chatObj = JSON(rawValue: messageDictionary)
-            self.makeNotificationData(chat: chatObj)
+            if chatObj!["messageListId"].exists() {
+                self.handleFirstTimeRecruiterMessage(chatObj: chatObj)
+            } else {
+                self.makeNotificationData(chat: chatObj)
+            }
         }
     }
     
@@ -250,6 +225,13 @@ class SocketManager: NSObject,SocketConnectionDelegate {
         if let unreadCounterObject = JSON(rawValue: messageDictionary) {
             print(unreadCounterObject)
             DatabaseManager.updateReadCount(recruiterId: unreadCounterObject["recruiterId"].stringValue)
+        }
+    }
+    
+    func handleFirstTimeRecruiterMessage(chatObj:JSON?) {
+        if let chatObj = chatObj {
+            //First time recruiter message
+            DatabaseManager.insertNewMessageListObj(chatObj: chatObj)
         }
     }
 }

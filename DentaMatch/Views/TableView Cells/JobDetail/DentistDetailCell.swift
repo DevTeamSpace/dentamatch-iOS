@@ -42,7 +42,17 @@ class DentistDetailCell: UITableViewCell {
     }
     
     func setCellData(job : Job) {
-        if job.isApplied == 1 {
+        
+        /* For Job status
+         INVITED = 1
+         APPLIED = 2
+         SHORTLISTED = 3
+         HIRED = 4
+         REJECTED = 5
+         CANCELLED = 6
+         */
+        
+        if job.isApplied == 2 {
             self.lblApplied.isHidden = false
         }
         else {

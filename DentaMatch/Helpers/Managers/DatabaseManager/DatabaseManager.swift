@@ -188,6 +188,31 @@ class DatabaseManager: NSObject {
         }
     }
     
+    class func insertNewMessageListObj(chatObj:JSON) {
+        if let chatList = chatListExists(recruiterId: chatObj["recruiterId"].stringValue) {
+            //Update chat
+        } else {
+            //New chat
+            let chatList = NSEntityDescription.insertNewObject(forEntityName: "ChatList", into: kAppDelegate.managedObjectContext) as! ChatList
+            chatList.lastMessage = chatObj["message"].stringValue
+            chatList.recruiterId = chatObj["recruiterId"].stringValue
+            chatList.isBlockedFromRecruiter = chatObj["recruiterBlock"].boolValue
+            chatList.isBlockedFromSeeker = chatObj["seekerBlock"].boolValue
+            chatList.date = self.getMessageDate(timestamp: chatObj["timestamp"].stringValue) as NSDate?
+            chatList.timeStamp = chatObj["timestamp"].doubleValue
+            chatList.officeName = chatObj["name"].stringValue
+            chatList.messageListId = chatObj["messageListId"].stringValue
+            chatList.lastMessageId = chatObj["messageId"].stringValue
+            chatList.unreadCount = 1
+            
+            ToastView.showNotificationToast(message: chatObj["message"].stringValue, name: chatObj["name"].stringValue, imageUrl: "", type: .White, onCompletion: {
+                kAppDelegate.chatSocketNotificationTap(recruiterId: chatObj["recruiterId"].stringValue)
+            })
+            
+        }
+        kAppDelegate.saveContext()
+    }
+    
     class func getDate(timestamp:Double) -> (time:String,date:String) {
         let date = Date(timeIntervalSince1970: timestamp/1000)
         let dateFormatter = DateFormatter()
@@ -201,6 +226,12 @@ class DatabaseManager: NSObject {
         dateFormatter.dateFormat = Date.dateFormatMMDDYYYY()
         let dateEnter2 = dateFormatter.string(from: date)
         return(dateEnter1,dateEnter2)
+    }
+    
+    class func getMessageDate(timestamp:String) -> Date {
+        let doubleTime = Double(timestamp)
+        let lastMessageDate = Date(timeIntervalSince1970: doubleTime!/1000)
+        return lastMessageDate
     }
     
 }
