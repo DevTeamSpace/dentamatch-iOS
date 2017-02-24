@@ -69,10 +69,10 @@ class TabBarVC: UITabBarController,UITabBarControllerDelegate {
 //        }
 //    }
     
-    override func viewDidLayoutSubviews() {
-        debugPrint("viewDidLayoutSubviews")
-        
-    }
+//    override func viewDidLayoutSubviews() {
+//        debugPrint("viewDidLayoutSubviews")
+//        
+//    }
     override func removeFromParentViewController() {
         debugPrint("removeFromParentViewController")
         

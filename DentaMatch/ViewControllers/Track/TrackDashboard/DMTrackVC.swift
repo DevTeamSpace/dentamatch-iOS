@@ -59,17 +59,17 @@ class DMTrackVC: DMBaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let selectedIndex = self.savedJobsTableView.indexPathForSelectedRow {
-            self.savedJobsTableView.deselectRow(at: selectedIndex, animated: true)
-        }
-        
-        if let selectedIndex = self.appliedJobsTableView.indexPathForSelectedRow {
-            self.appliedJobsTableView.deselectRow(at: selectedIndex, animated: true)
-        }
-        
-        if let selectedIndex = self.shortListedJobsTableView.indexPathForSelectedRow {
-            self.shortListedJobsTableView.deselectRow(at: selectedIndex, animated: true)
-        }
+//        if let selectedIndex = self.savedJobsTableView.indexPathForSelectedRow {
+//            self.savedJobsTableView.deselectRow(at: selectedIndex, animated: true)
+//        }
+//        
+//        if let selectedIndex = self.appliedJobsTableView.indexPathForSelectedRow {
+//            self.appliedJobsTableView.deselectRow(at: selectedIndex, animated: true)
+//        }
+//        
+//        if let selectedIndex = self.shortListedJobsTableView.indexPathForSelectedRow {
+//            self.shortListedJobsTableView.deselectRow(at: selectedIndex, animated: true)
+//        }
     }
     
     func setup() {
@@ -179,6 +179,10 @@ class DMTrackVC: DMBaseVC {
             savedJobsTableView.isHidden = false
             appliedJobsTableView.isHidden = true
             shortListedJobsTableView.isHidden = true
+            self.savedJobsTableView.dataSource = self
+            self.appliedJobsTableView.dataSource = nil
+            self.shortListedJobsTableView.dataSource = nil
+
             placeHolderEmptyJobsView?.placeHolderMessageLabel.text = "You don’t have any saved jobs"
 
             self.placeHolderEmptyJobsView?.isHidden = savedJobs.count == 0 ? false:true
@@ -187,30 +191,45 @@ class DMTrackVC: DMBaseVC {
                 jobParams["type"] = "1"
                 jobParams["page"] = "1"
                 self.getJobList(params: jobParams)
+            } else {
+                self.savedJobsTableView.reloadData()
             }
         case .applied:
             savedJobsTableView.isHidden = true
             shortListedJobsTableView.isHidden = true
             appliedJobsTableView.isHidden = false
+            self.savedJobsTableView.dataSource = nil
+            self.appliedJobsTableView.dataSource = self
+            self.shortListedJobsTableView.dataSource = nil
+
             placeHolderEmptyJobsView?.placeHolderMessageLabel.text = "You don’t have any applied jobs"
             self.placeHolderEmptyJobsView?.isHidden = appliedJobs.count == 0 ? false:true
             if appliedJobsPageNo == 1 {
                 jobParams["type"] = "2"
                 jobParams["page"] = "1"
                 self.getJobList(params: jobParams)
+            } else {
+                self.appliedJobsTableView.reloadData()
             }
         case .shortlisted:
             savedJobsTableView.isHidden = true
             appliedJobsTableView.isHidden = true
             shortListedJobsTableView.isHidden = false
+            self.savedJobsTableView.dataSource = nil
+            self.appliedJobsTableView.dataSource = nil
+            self.shortListedJobsTableView.dataSource = self
+
             placeHolderEmptyJobsView?.placeHolderMessageLabel.text = "You don’t have any shortlisted jobs"
             self.placeHolderEmptyJobsView?.isHidden = shortListedJobs.count == 0 ? false:true
             if shortListedJobsPageNo == 1 {
                 jobParams["type"] = "3"
                 jobParams["page"] = "1"
                 self.getJobList(params: jobParams)
+            } else {
+                self.shortListedJobsTableView.reloadData()
             }
         }
+        
     }
 }
 
