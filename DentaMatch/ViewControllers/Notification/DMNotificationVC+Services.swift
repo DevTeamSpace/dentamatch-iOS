@@ -97,6 +97,41 @@ extension DMNotificationVC {
             }
         }
     }
+    
+    func inviteActionSendToServer(notificationObj:UserNotification,actionType:Int, completionHandler: @escaping (JSON?, NSError?) -> ()) {
+        
+        //actionType 0 = reject ; 1 = accept
+        var param = [String:AnyObject]()
+        param["notificationId"] = notificationObj.notificationID as AnyObject?
+        param["acceptStatus"] = actionType as AnyObject?
+
+        print("readNotification Parameters\n\(param.description))")
+        
+        self.showLoader()
+        APIManager.apiPost(serviceName: Constants.API.acceptRejectNotification, parameters: param) { (response:JSON?, error:NSError?) in
+            self.hideLoader()
+            if error != nil {
+                self.makeToast(toastString: (error?.localizedDescription)!)
+                return
+            }
+            guard let _ = response else {
+                self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
+                return
+            }
+            //            debugPrint(response!)
+            
+            if response![Constants.ServerKey.status].boolValue {
+                //do next
+                completionHandler(response, error)
+                
+            } else {
+                self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
+                completionHandler(response, error)
+                
+            }
+        }
+    }
+
 
 
  

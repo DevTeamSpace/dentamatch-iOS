@@ -64,19 +64,28 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CT1-RL-p4G">
-                        <rect key="frame" x="20" y="113.5" width="300" height="1"/>
+                        <rect key="frame" x="20" y="113" width="300" height="1"/>
                         <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="R62-UD-vZL"/>
                         </constraints>
                     </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="disclosureIndicator" translatesAutoresizingMaskIntoConstraints="NO" id="raC-qf-ja0">
+                        <rect key="frame" x="292" y="22" width="8" height="13"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="13" id="rrv-Wh-0h4"/>
+                            <constraint firstAttribute="width" constant="8" id="vgb-PL-Fdu"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="oKG-fE-gXR" firstAttribute="leading" secondItem="m32-bl-P4e" secondAttribute="leading" constant="39" id="1rr-Uy-vW4"/>
+                    <constraint firstAttribute="trailing" secondItem="raC-qf-ja0" secondAttribute="trailing" constant="20" id="Bcq-Qc-qzr"/>
                     <constraint firstAttribute="trailing" secondItem="joy-ng-hJV" secondAttribute="trailing" constant="39" id="DTF-Ln-qKe"/>
                     <constraint firstItem="joy-ng-hJV" firstAttribute="top" secondItem="m32-bl-P4e" secondAttribute="top" constant="16" id="FLe-3M-deE"/>
                     <constraint firstItem="oKG-fE-gXR" firstAttribute="top" secondItem="IXd-zv-bgJ" secondAttribute="bottom" constant="8" id="FnE-D8-iq8"/>
                     <constraint firstAttribute="trailing" secondItem="oKG-fE-gXR" secondAttribute="trailing" constant="39" id="IHW-cN-Bu8"/>
+                    <constraint firstItem="raC-qf-ja0" firstAttribute="top" secondItem="m32-bl-P4e" secondAttribute="top" constant="22" id="ISM-tR-DvN"/>
                     <constraint firstItem="IXd-zv-bgJ" firstAttribute="top" secondItem="joy-ng-hJV" secondAttribute="bottom" constant="6" id="KK0-1j-Xbj"/>
                     <constraint firstAttribute="trailing" secondItem="IXd-zv-bgJ" secondAttribute="trailing" constant="39" id="KqM-DB-rhO"/>
                     <constraint firstItem="kg6-uk-dzt" firstAttribute="top" secondItem="m32-bl-P4e" secondAttribute="top" constant="21" id="Pqs-o1-P0g"/>
@@ -99,4 +108,7 @@
             <point key="canvasLocation" x="57" y="104.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="disclosureIndicator" width="8" height="13"/>
+    </resources>
 </document>

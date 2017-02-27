@@ -46,14 +46,22 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mpK-Lc-2Zn">
-                        <rect key="frame" x="20" y="80.5" width="300" height="1"/>
+                        <rect key="frame" x="20" y="80" width="300" height="1"/>
                         <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="jfA-rU-ZIv"/>
                         </constraints>
                     </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="disclosureIndicator" translatesAutoresizingMaskIntoConstraints="NO" id="nuk-XO-XQi">
+                        <rect key="frame" x="292" y="22" width="8" height="13"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="8" id="JrO-Ng-6BC"/>
+                            <constraint firstAttribute="height" constant="13" id="gB4-Qf-lLf"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="nuk-XO-XQi" secondAttribute="trailing" constant="20" id="403-9u-0SE"/>
                     <constraint firstItem="KKa-Wn-k26" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="4kX-8W-AQl"/>
                     <constraint firstAttribute="trailing" secondItem="KKa-Wn-k26" secondAttribute="trailing" constant="39" id="NEh-Ak-2z3"/>
                     <constraint firstItem="mpK-Lc-2Zn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Nbc-cW-b1M"/>
@@ -64,6 +72,7 @@
                     <constraint firstAttribute="trailing" secondItem="mpK-Lc-2Zn" secondAttribute="trailing" id="aPv-ja-COt"/>
                     <constraint firstItem="KKa-Wn-k26" firstAttribute="leading" secondItem="gjx-IQ-Jcb" secondAttribute="trailing" constant="14" id="eWp-X9-idK"/>
                     <constraint firstAttribute="bottom" secondItem="mpK-Lc-2Zn" secondAttribute="bottom" id="ern-qc-xeI"/>
+                    <constraint firstItem="nuk-XO-XQi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="22" id="v9J-s5-a4e"/>
                     <constraint firstItem="17y-dW-v3w" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="39" id="ved-hF-lMy"/>
                     <constraint firstAttribute="bottom" secondItem="17y-dW-v3w" secondAttribute="bottom" constant="8" id="wi5-qL-ldW"/>
                 </constraints>
@@ -76,4 +85,7 @@
             <point key="canvasLocation" x="57" y="57"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="disclosureIndicator" width="8" height="13"/>
+    </resources>
 </document>

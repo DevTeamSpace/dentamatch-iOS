@@ -201,6 +201,7 @@ struct Constants {
         
         static let getNotificationList = Constants.API.apiURL("users/notification-list")
         static let readNotification = Constants.API.apiURL("users/notification-read")
+        static let acceptRejectNotification = Constants.API.apiURL("users/acceptreject-job")
 
         
         static let setAvailabality = Constants.API.apiURL("users/update-availability")

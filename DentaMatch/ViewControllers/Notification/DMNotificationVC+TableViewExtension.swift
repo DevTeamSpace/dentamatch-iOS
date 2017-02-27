@@ -50,6 +50,8 @@ extension DMNotificationVC : UITableViewDataSource,UITableViewDelegate {
         if notification.seen == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "InviteJobNotificationTableCell") as? InviteJobNotificationTableCell
             cell?.configureInviteJobNotificationTableCell(userNotificationObj: notification)
+            cell?.btnAccept.addTarget(self, action: #selector(btnAcceptButtonClicked(_:)), for: .touchUpInside)
+            cell?.btnDelete.addTarget(self, action: #selector(btnRejectButtonClicked(_:)), for: .touchUpInside)
             return cell!
         }else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "HiredJobNotificationTableCell") as? HiredJobNotificationTableCell
@@ -65,6 +67,22 @@ extension DMNotificationVC : UITableViewDataSource,UITableViewDelegate {
             }
         }
     }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+            let deleteAction = UITableViewRowAction(style: .normal, title: "Delete", handler: { (action:UITableViewRowAction, indexPath:IndexPath) in
+//                let job = self.selectedDayList[indexPath.row]
+//                //                self.removeJobButtonPressed(job: job)
+//                self.openCancelJob(job: job,fromApplied:false)
+//                self.bookedJobsTableView.setEditing(false, animated: true)
+            })
+            deleteAction.backgroundColor = Constants.Color.cancelJobDeleteColor
+            return [ deleteAction]
+            
+        
+    }
+
+    
     func loadMoreNotification() {
         
         if loadingMoreNotifications == true {
@@ -90,22 +108,48 @@ extension DMNotificationVC : UITableViewDataSource,UITableViewDelegate {
 
         
     }
+    
+    func btnAcceptButtonClicked(_ sender: Any) {
+        let tag = (sender as AnyObject).tag
+        let notifiObj = self.notificationList[tag!]
+
+        self.inviteActionSendToServer(notificationObj: notifiObj, actionType: 1) { (response, error) in
+            if response![Constants.ServerKey.status].boolValue {
+                notifiObj.seen = 1
+                self.notificationTableView.reloadData()
+            }
+        }
+    }
+    func btnRejectButtonClicked(_ sender: Any) {
+        let tag = (sender as AnyObject).tag
+        let notifiObj = self.notificationList[tag!]
+        self.inviteActionSendToServer(notificationObj: notifiObj, actionType: 0) { (response, error) in
+            if response![Constants.ServerKey.status].boolValue {
+                notifiObj.seen = 1
+                self.notificationTableView.reloadData()
+            }
+        }
+    }
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let notifiObj = self.notificationList[indexPath.row]
         if notifiObj.seen == 1 {
             // need to implement
             self.redirectToDetail(notiObj: notifiObj)
         }else {
-            self.readNotificationToServer(notificationObj: notifiObj) { (response, error) in
-                if response![Constants.ServerKey.status].boolValue {
-                    notifiObj.seen = 1
-                    self.notificationTableView.reloadData()
-                    self.redirectToDetail(notiObj: notifiObj)
+            if notifiObj.notificationType == UserNotificationType.InviteJob.rawValue {
+                //in case of invite we need to no need to call service
+                self.redirectToDetail(notiObj: notifiObj)
+            }else {
+                self.readNotificationToServer(notificationObj: notifiObj) { (response, error) in
+                    if response![Constants.ServerKey.status].boolValue {
+                        notifiObj.seen = 1
+                        self.notificationTableView.reloadData()
+                        self.redirectToDetail(notiObj: notifiObj)
+                    }
                 }
             }
         }
-       
-        
     }
     
     
@@ -117,7 +161,7 @@ extension DMNotificationVC : UITableViewDataSource,UITableViewDelegate {
         switch notificationType {
         case .acceptJob:
         //open job detail
-            goTOJobDetail(jobObj: notiObj.jobdetail!)
+            goToJobDetail(jobObj: notiObj.jobdetail!)
         case .chatMessgae: break
         //No need any action
         case .completeProfile: break
@@ -127,22 +171,20 @@ extension DMNotificationVC : UITableViewDataSource,UITableViewDelegate {
         //No need any action
         case .hired,.InviteJob:
         //open job detail
-        goTOJobDetail(jobObj: notiObj.jobdetail!)
+        goToJobDetail(jobObj: notiObj.jobdetail!)
         case .jobCancellation:
         //open job detail
-        goTOJobDetail(jobObj: notiObj.jobdetail!)
+        goToJobDetail(jobObj: notiObj.jobdetail!)
         case .verifyDocuments: break
         //open edit profile
         self.tabBarController?.selectedIndex = 4
 
         case .other: break
             //No need any action
-            
-            
         }
     }
     
-    func goTOJobDetail(jobObj:Job) {
+    func goToJobDetail(jobObj:Job) {
         let jobDetailVC = UIStoryboard.jobSearchStoryBoard().instantiateViewController(type: DMJobDetailVC.self)!
         jobDetailVC.fromNotificationVC = false
         jobDetailVC.job = jobObj

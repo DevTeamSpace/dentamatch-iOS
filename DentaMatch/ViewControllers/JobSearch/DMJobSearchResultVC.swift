@@ -109,6 +109,8 @@ class DMJobSearchResultVC : DMBaseVC {
         
     }
     
+    
+    
     func pushRediectNotificationOtherAll(userInfo:Notification) {
         if let tabbar = ((UIApplication.shared.delegate) as! AppDelegate).window?.rootViewController as? TabBarVC {
             _=self.navigationController?.popToRootViewController(animated: false)

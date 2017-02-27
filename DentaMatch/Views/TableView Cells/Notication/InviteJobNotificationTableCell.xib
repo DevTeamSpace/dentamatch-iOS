@@ -110,14 +110,23 @@ San Francisco, CA 94107</string>
                             <constraint firstItem="K5L-cg-6HT" firstAttribute="top" secondItem="b77-E0-R6u" secondAttribute="top" id="wrq-X8-91M"/>
                         </constraints>
                     </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="disclosureIndicator" translatesAutoresizingMaskIntoConstraints="NO" id="jIE-Op-ONP">
+                        <rect key="frame" x="292" y="22" width="8" height="13"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="8" id="uKY-KF-cjs"/>
+                            <constraint firstAttribute="height" constant="13" id="xpE-3l-S2F"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="6L8-Bc-dFB" firstAttribute="top" secondItem="mYF-c6-KOm" secondAttribute="top" constant="21" id="0Jo-RZ-ddc"/>
                     <constraint firstItem="0Em-sq-rtW" firstAttribute="top" secondItem="Scf-N1-CSh" secondAttribute="bottom" constant="8" id="4Io-Lq-M7y"/>
                     <constraint firstItem="0Em-sq-rtW" firstAttribute="leading" secondItem="mYF-c6-KOm" secondAttribute="leading" constant="39" id="6js-Yq-3Gh"/>
                     <constraint firstItem="PW2-Pc-cq8" firstAttribute="leading" secondItem="mYF-c6-KOm" secondAttribute="leading" constant="39" id="8ba-6v-4II"/>
+                    <constraint firstItem="jIE-Op-ONP" firstAttribute="top" secondItem="mYF-c6-KOm" secondAttribute="top" constant="22" id="9UR-EL-LKI"/>
                     <constraint firstItem="WqE-so-pEu" firstAttribute="top" secondItem="PW2-Pc-cq8" secondAttribute="bottom" constant="8" id="FYT-oh-V7J"/>
                     <constraint firstAttribute="trailing" secondItem="WqE-so-pEu" secondAttribute="trailing" constant="39" id="P4U-6K-znU"/>
+                    <constraint firstAttribute="trailing" secondItem="jIE-Op-ONP" secondAttribute="trailing" constant="20" id="VcE-uv-9E8"/>
                     <constraint firstAttribute="trailing" secondItem="0Em-sq-rtW" secondAttribute="trailing" constant="39" id="WJm-0O-HrW"/>
                     <constraint firstItem="6L8-Bc-dFB" firstAttribute="leading" secondItem="mYF-c6-KOm" secondAttribute="leading" constant="15" id="Wbp-Jz-ekc"/>
                     <constraint firstItem="Scf-N1-CSh" firstAttribute="top" secondItem="mYF-c6-KOm" secondAttribute="top" constant="16" id="aqy-oB-K5X"/>
@@ -147,4 +156,7 @@ San Francisco, CA 94107</string>
             <point key="canvasLocation" x="105" y="209.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="disclosureIndicator" width="8" height="13"/>
+    </resources>
 </document>
