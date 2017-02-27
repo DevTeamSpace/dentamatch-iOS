@@ -33,13 +33,31 @@ extension DMNotificationVC : UITableViewDataSource,UITableViewDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: "HiredJobNotificationTableCell") as? HiredJobNotificationTableCell
             cell?.configureHiredJobNotificationTableCell(userNotificationObj: notificationObj)
             return cell!
-        case .verifyDocuments,.completeProfile,.chatMessgae,.other,.InviteJob:
+            
+        case .InviteJob:
+            return configureInviteCell(notification: notificationObj, tableView: tableView)
+            
+        case .verifyDocuments,.completeProfile,.chatMessgae,.other:
             let cell = tableView.dequeueReusableCell(withIdentifier: "CommonTextNotificationTableCell") as? CommonTextNotificationTableCell
             cell?.configureCommonTextNotificationTableCell(userNotificationObj: notificationObj)
             return cell!
         }
         
     }
+    
+    func configureInviteCell(notification:UserNotification,tableView:UITableView ) -> UITableViewCell{
+        
+        if notification.seen == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "InviteJobNotificationTableCell") as? InviteJobNotificationTableCell
+            cell?.configureInviteJobNotificationTableCell(userNotificationObj: notification)
+            return cell!
+        }else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "HiredJobNotificationTableCell") as? HiredJobNotificationTableCell
+            cell?.configureHiredJobNotificationTableCell(userNotificationObj: notification)
+            return cell!
+        }
+    }
+    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if notificationList.count > 9 {
             if indexPath.row == notificationList.count - 2 {
@@ -107,7 +125,7 @@ extension DMNotificationVC : UITableViewDataSource,UITableViewDelegate {
             self.tabBarController?.selectedIndex = 4
         case .deleteJob: break
         //No need any action
-        case .hired:
+        case .hired,.InviteJob:
         //open job detail
         goTOJobDetail(jobObj: notiObj.jobdetail!)
         case .jobCancellation:
@@ -117,7 +135,7 @@ extension DMNotificationVC : UITableViewDataSource,UITableViewDelegate {
         //open edit profile
         self.tabBarController?.selectedIndex = 4
 
-        case .other,.InviteJob: break
+        case .other: break
             //No need any action
             
             
@@ -130,11 +148,7 @@ extension DMNotificationVC : UITableViewDataSource,UITableViewDelegate {
         jobDetailVC.job = jobObj
         jobDetailVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(jobDetailVC, animated: true)
-
     }
-    
-    
-    
     
     
     func setupLoadingMoreOnTable(tableView:UITableView) {
