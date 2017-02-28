@@ -87,7 +87,9 @@ class DMJobSearchResultVC : DMBaseVC {
         self.mapViewSearchResult.delegate = self
         self.mapViewSearchResult.isMyLocationEnabled = true
         self.lblResultCount.text = String(self.jobs.count) + Constants.Strings.whiteSpace + Constants.Strings.resultsFound
-        self.setLeftBarButton(title: Constants.DesignFont.notification)
+//        self.setLeftBarButton(title: Constants.DesignFont.notification)
+        self.navigationItem.leftBarButtonItem = self.customLeftBarButton()
+
         self.setRightBarButton(title: "",imageName: "search",width : rightBarButtonWidth, font: UIFont.designFont(fontSize: 16.0)!)
         self.setUpSegmentControl()
         self.constraintTblViewSearchResultHeight.constant = UIScreen.main.bounds.height - (self.navigationController?.navigationBar.frame.height)! - UIApplication.shared.statusBarFrame.height - (self.tabBarController?.tabBar.frame.height)! - (32.0)
@@ -109,6 +111,29 @@ class DMJobSearchResultVC : DMBaseVC {
         
     }
     
+    
+    func customLeftBarButton() -> UIBarButtonItem {
+        let label = UILabel(frame: CGRect(x: 10, y: 0, width: 15, height: 15))
+        label.backgroundColor = UIColor.red
+        label.layer.cornerRadius = label.bounds.size.height/2
+        label.font = UIFont.fontRegular(fontSize: 10)
+        label.textAlignment = .center
+        label.textColor = UIColor.white
+        label.clipsToBounds = true
+        label.text = "20"
+        let customButton = UIButton(type: .system)
+        customButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        customButton.titleLabel?.font = UIFont.designFont(fontSize: 18)
+        customButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0)
+//        customButton.setImage(UIImage(named: "plusSymbol"), for: .normal)
+        customButton.setTitle(Constants.DesignFont.notification, for: .normal)
+//        self.setLeftBarButton(title: Constants.DesignFont.notification)
+        customButton.addTarget(self, action: #selector(actionLeftNavigationItem), for: .touchUpInside)
+        customButton.addSubview(label)
+        let barButton = UIBarButtonItem(customView: customButton)
+        return barButton
+    }
+
     
     
     func pushRediectNotificationOtherAll(userInfo:Notification) {

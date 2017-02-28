@@ -70,6 +70,7 @@ class DMChatVC: DMBaseVC {
         if let keyboardSize = (note.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             UIView.animate(withDuration: 0.25, animations: {
                 self.bottomConstraint.constant = keyboardSize.height
+                self.chatTableView.layoutIfNeeded()
                 self.view.layoutIfNeeded()
             }) { (bool:Bool) in
             }
