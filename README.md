@@ -4,8 +4,8 @@ This README would normally document whatever steps are necessary to get your app
 
 ### What is this repository for? ###
 
-* App is for Dental Employment, where a Job Seeker can look for the Full time, Part time and, Temp Dentists Job. Recruiter can post the Dental Jobs (Dentist, Hygienists, Dental Assistance)
-* 1.0
+* A Platform that provides facility to users for booking photographer in their area for their events.
+* 1.4
 ### How do I get set up? ###
 
 ###Summary of set up###
@@ -15,9 +15,9 @@ This README would normally document whatever steps are necessary to get your app
 
 ###Dependencies###
 * Cocoapods is being used as dependency manager.
-* XCode 8 (Integrated Development Environment)
-* Swift 3 (Development language)
-* iOS 9+ support
+* XCode 7.3.1 (Integrated Development Environment)
+* Swift 2.2 (Development language)
+* iOS 8.1+ support
 
 ###Code review###
 * Tool Used: SonarQube
