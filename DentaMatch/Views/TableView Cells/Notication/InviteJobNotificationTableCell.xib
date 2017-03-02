@@ -80,17 +80,17 @@ San Francisco, CA 94107</string>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b77-E0-R6u">
-                        <rect key="frame" x="39" y="175" width="242" height="30"/>
+                        <rect key="frame" x="39" y="175" width="147" height="30"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sdp-ap-Ink">
-                                <rect key="frame" x="0.0" y="0.0" width="120" height="30"/>
+                                <rect key="frame" x="0.0" y="0.0" width="57" height="30"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="17"/>
                                 <state key="normal" title="Accept">
-                                    <color key="titleColor" red="0.015686274510000001" green="0.43921568630000002" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.015686274509803921" green="0.50196078431372548" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K5L-cg-6HT">
-                                <rect key="frame" x="122" y="0.0" width="120" height="30"/>
+                                <rect key="frame" x="90" y="0.0" width="57" height="30"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="17"/>
                                 <state key="normal" title="Reject">
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -103,8 +103,9 @@ San Francisco, CA 94107</string>
                             <constraint firstAttribute="bottom" secondItem="K5L-cg-6HT" secondAttribute="bottom" id="2Qa-gH-hfX"/>
                             <constraint firstAttribute="bottom" secondItem="Sdp-ap-Ink" secondAttribute="bottom" id="4LD-gT-Utb"/>
                             <constraint firstItem="K5L-cg-6HT" firstAttribute="width" secondItem="Sdp-ap-Ink" secondAttribute="width" id="5ZC-Bm-5sO"/>
-                            <constraint firstItem="K5L-cg-6HT" firstAttribute="leading" secondItem="Sdp-ap-Ink" secondAttribute="trailing" constant="2" id="5nD-wk-lia"/>
+                            <constraint firstItem="K5L-cg-6HT" firstAttribute="leading" secondItem="Sdp-ap-Ink" secondAttribute="trailing" constant="33" id="5nD-wk-lia"/>
                             <constraint firstItem="Sdp-ap-Ink" firstAttribute="top" secondItem="b77-E0-R6u" secondAttribute="top" id="8gq-vR-DS2"/>
+                            <constraint firstAttribute="width" constant="147" id="8zM-c3-5ip"/>
                             <constraint firstAttribute="trailing" secondItem="K5L-cg-6HT" secondAttribute="trailing" id="NAf-xT-TKJ"/>
                             <constraint firstItem="Sdp-ap-Ink" firstAttribute="leading" secondItem="b77-E0-R6u" secondAttribute="leading" id="pBY-eP-nVw"/>
                             <constraint firstItem="K5L-cg-6HT" firstAttribute="top" secondItem="b77-E0-R6u" secondAttribute="top" id="wrq-X8-91M"/>
@@ -132,7 +133,6 @@ San Francisco, CA 94107</string>
                     <constraint firstItem="Scf-N1-CSh" firstAttribute="top" secondItem="mYF-c6-KOm" secondAttribute="top" constant="16" id="aqy-oB-K5X"/>
                     <constraint firstItem="Ts5-Xu-rLG" firstAttribute="top" secondItem="b77-E0-R6u" secondAttribute="bottom" constant="8" id="cHt-ai-yLt"/>
                     <constraint firstAttribute="bottom" secondItem="Ts5-Xu-rLG" secondAttribute="bottom" id="d8A-ZG-OtC"/>
-                    <constraint firstAttribute="trailing" secondItem="b77-E0-R6u" secondAttribute="trailing" constant="39" id="gLK-2a-oEz"/>
                     <constraint firstItem="Ts5-Xu-rLG" firstAttribute="leading" secondItem="mYF-c6-KOm" secondAttribute="leading" constant="20" id="iZj-l7-1hU"/>
                     <constraint firstItem="b77-E0-R6u" firstAttribute="leading" secondItem="mYF-c6-KOm" secondAttribute="leading" constant="39" id="nph-h5-i9b"/>
                     <constraint firstItem="Scf-N1-CSh" firstAttribute="leading" secondItem="6L8-Bc-dFB" secondAttribute="trailing" constant="14" id="qD4-3u-VIs"/>
@@ -152,6 +152,7 @@ San Francisco, CA 94107</string>
                 <outlet property="notificationJobLocationLabel" destination="0Em-sq-rtW" id="Ytd-gb-Fy4"/>
                 <outlet property="notificationTextLabel" destination="Scf-N1-CSh" id="qol-Zq-Jwr"/>
                 <outlet property="notificationTimeLabel" destination="WqE-so-pEu" id="LHL-aG-Agd"/>
+                <outlet property="unreadView" destination="6L8-Bc-dFB" id="Kw4-UL-vq9"/>
             </connections>
             <point key="canvasLocation" x="105" y="209.5"/>
         </tableViewCell>

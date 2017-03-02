@@ -58,10 +58,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 {
 //                    self.tabIndex = 4
                     if let noti = remoteNotification["data"] as? NSDictionary {
+                        let newObjMSG = noti["jobDetails"]
+                        let jobJson = JSON(newObjMSG ?? [:])
+                        let jobObj = Job(job: jobJson)
+
                         let newObj = noti["data"]
                         let josnObj = JSON(newObj ?? [:])
                         let userNotiObj = UserNotification(dict: josnObj)
-                        NotificationHandler.notificationHandleforBackground(notiObj: userNotiObj, app: application)
+                        NotificationHandler.notificationHandleforBackground(notiObj: userNotiObj, jobObj:jobObj, app: application)
                     }
 
                 }

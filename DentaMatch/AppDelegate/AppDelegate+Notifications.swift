@@ -81,11 +81,15 @@ extension AppDelegate:UNUserNotificationCenterDelegate {
             
             if UserDefaultsManager.sharedInstance.isLoggedIn {
                 if let noti = userInfo["data"] as? NSDictionary {
+                    let newObjMSG = noti["jobDetails"]
+                    let jobJson = JSON(newObjMSG ?? [:])
+                    let jobObj = Job(job: jobJson)
+
                     let newObj = noti["data"]
                     let josnObj = JSON(newObj ?? [:])
                     let userNotiObj = UserNotification(dict: josnObj)
                     ToastView.showNotificationToast(message: userNotiObj.message, name: "Notification", imageUrl: "",  type: ToastSkinType.White, onCompletion:{
-                        NotificationHandler.notificationHandleforForground(notiObj: userNotiObj, app: application)
+                        NotificationHandler.notificationHandleforForground(notiObj: userNotiObj,jobObj:jobObj, app: application)
 
                     })
 
@@ -98,10 +102,14 @@ extension AppDelegate:UNUserNotificationCenterDelegate {
             
             if UserDefaultsManager.sharedInstance.isLoggedIn {
                 if let noti = userInfo["data"] as? NSDictionary  {
+                    let newObjMSG = noti["jobDetails"]
+                    let jobJson = JSON(newObjMSG ?? [:])
+                    let jobObj = Job(job: jobJson)
+
                     let newObj = noti["data"]
                     let josnObj = JSON(newObj ?? [:])
                     let userNotiObj = UserNotification(dict: josnObj)
-                    NotificationHandler.notificationHandleforForground(notiObj: userNotiObj, app: application)
+                    NotificationHandler.notificationHandleforForground(notiObj: userNotiObj, jobObj:jobObj, app: application)
                 }
 
             }
@@ -129,7 +137,7 @@ extension AppDelegate:UNUserNotificationCenterDelegate {
                 "updateDeviceToken":UserDefaultsManager.sharedInstance.deviceToken
             ]
             APIManager.apiPost(serviceName: Constants.API.updateDeviceToken, parameters: params, completionHandler: { (response:JSON?, error:NSError?) in
-                print(response)
+                print(response ?? "response not avaialble")
             })
         }
     }

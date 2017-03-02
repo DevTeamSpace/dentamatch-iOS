@@ -10,13 +10,13 @@ import UIKit
 import SwiftyJSON
 
 class NotificationHandler: NSObject {
-    class func notificationHandleforForground(notiObj:UserNotification, app : UIApplication) {
+    class func notificationHandleforForground(notiObj:UserNotification,jobObj:Job?, app : UIApplication) {
         let notificationType = UserNotificationType(rawValue: notiObj.notificationType!)!
 
         switch notificationType {
         case .acceptJob:
             //open job detail
-            openJobDetailScreen(obj: notiObj.jobdetail!)
+            openJobDetailScreen(obj: jobObj!)
         case .chatMessgae: break
             //No need any action
         case .completeProfile:
@@ -29,11 +29,11 @@ class NotificationHandler: NSObject {
 
         case .hired:
             //open job detail
-        openJobDetailScreen(obj: notiObj.jobdetail!)
+        openJobDetailScreen(obj: jobObj!)
 
         case .jobCancellation:
             //open job detail
-        openJobDetailScreen(obj: notiObj.jobdetail!)
+        openJobDetailScreen(obj: jobObj!)
 
         case .verifyDocuments:
             //open edit profile
@@ -47,7 +47,7 @@ class NotificationHandler: NSObject {
         }
         
     }
-    class func notificationHandleforBackground(notiObj:UserNotification, app : UIApplication) {
+    class func notificationHandleforBackground(notiObj:UserNotification,jobObj:Job?, app : UIApplication) {
         let notificationType = UserNotificationType(rawValue: notiObj.notificationType!)!
         
         switch notificationType {
@@ -67,11 +67,11 @@ class NotificationHandler: NSObject {
 
         case .hired:
             //open job detail
-            openJobDetailScreenForBackGround(obj: notiObj.jobdetail!)
+            openJobDetailScreenForBackGround(obj: jobObj!)
             
         case .jobCancellation:
             //open job detail
-            openJobDetailScreenForBackGround(obj: notiObj.jobdetail!)
+            openJobDetailScreenForBackGround(obj: jobObj!)
             
         case .verifyDocuments:
             //open edit profile

@@ -35,7 +35,14 @@ extension DMLoginVC {
             if success {
                 SocketManager.sharedInstance.establishConnection()
                 self.saveSearchedData(response: response!)
-                self.openJobTitleSelection()
+                let userDetails = response?[Constants.ServerKey.result][Constants.ServerKey.userDetails].dictionary
+                if userDetails?["profileCompleted"]?.boolValue == true {
+                    self.openTabbar()
+                }else {
+                    self.openJobTitleSelection()
+
+                }
+                
             }
         }
     }

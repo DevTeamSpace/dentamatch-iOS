@@ -63,12 +63,13 @@ class DMJobSearchResultVC : DMBaseVC {
         super.viewWillAppear(animated)
         self.getUnreadNotificationCount { (response, error ) in
             if response![Constants.ServerKey.status].boolValue {
-                let resultDic = response![Constants.ServerKey.result].dictionary
-                let count = resultDic?["notificationCount"]?.intValue
-                if self.notificationLabel != nil {
-                    self.setNotificationLabelText(count: count!)
-                }else{
-                    self.notificationLabel?.isHidden = true
+                if let resultDic = response![Constants.ServerKey.result].dictionary {
+                    let count = resultDic["notificationCount"]?.intValue
+                    if self.notificationLabel != nil {
+                        self.setNotificationLabelText(count: count!)
+                    }else{
+                        self.notificationLabel?.isHidden = true
+                    }
                 }
             }
         }

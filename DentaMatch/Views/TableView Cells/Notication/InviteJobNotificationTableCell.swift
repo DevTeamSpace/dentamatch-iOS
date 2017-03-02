@@ -24,6 +24,9 @@ class InviteJobNotificationTableCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        unreadView.layer.cornerRadius = unreadView.bounds.size.height/2
+        unreadView.clipsToBounds = true
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
