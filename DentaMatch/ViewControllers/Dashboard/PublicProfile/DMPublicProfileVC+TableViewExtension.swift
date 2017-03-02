@@ -73,6 +73,8 @@ extension DMPublicProfileVC : UITableViewDataSource,UITableViewDelegate,UITextVi
         return true
     }
     
+    
+    
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         guard text.characters.count > 0 else {
             return true

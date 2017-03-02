@@ -71,10 +71,14 @@ extension DMNotificationVC : UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
             let deleteAction = UITableViewRowAction(style: .normal, title: "Delete", handler: { (action:UITableViewRowAction, indexPath:IndexPath) in
-//                let job = self.selectedDayList[indexPath.row]
-//                //                self.removeJobButtonPressed(job: job)
-//                self.openCancelJob(job: job,fromApplied:false)
-//                self.bookedJobsTableView.setEditing(false, animated: true)
+                let notification = self.notificationList[indexPath.row]
+                self.deleteNotification(notificationObj: notification, completionHandler: { (isSucess, error) in
+                    if isSucess! {
+                        self.notificationList.remove(at: indexPath.row)
+                        self.notificationTableView.reloadData()
+                    }
+                })
+                
             })
             deleteAction.backgroundColor = Constants.Color.cancelJobDeleteColor
             return [ deleteAction]
@@ -99,10 +103,8 @@ extension DMNotificationVC : UITableViewDataSource,UITableViewDelegate {
                         self.notificationTableView.reloadData()
                     }else{
                         self.loadingMoreNotifications = false
-
                     }
                 }
-
             }
         }
 

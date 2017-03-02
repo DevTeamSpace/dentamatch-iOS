@@ -132,6 +132,36 @@ extension DMNotificationVC {
         }
     }
 
+    func deleteNotification(notificationObj:UserNotification,completionHandler: @escaping (Bool?, NSError?) -> ()) {
+        var params = [String:AnyObject]()
+        params["notificationId"] = notificationObj.notificationID  as AnyObject?
+        debugPrint("delete notification Parameters\n\(params.description))")
+        
+        self.showLoader()
+        APIManager.apiPost(serviceName: Constants.API.deleteNotification, parameters: params) { (response:JSON?, error:NSError?) in
+            self.hideLoader()
+            if error != nil {
+                self.makeToast(toastString: (error?.localizedDescription)!)
+                return
+            }
+            guard let _ = response else {
+                self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
+                return
+            }
+            //            debugPrint(response!)
+            
+            if response![Constants.ServerKey.status].boolValue {
+                self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
+                completionHandler(true, error)
+                //do next
+            } else {
+                self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
+                completionHandler(false, error)
+                
+            }
+        }
+    }
+
 
 
  

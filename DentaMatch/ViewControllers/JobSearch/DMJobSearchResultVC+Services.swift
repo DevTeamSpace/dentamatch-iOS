@@ -80,4 +80,27 @@ extension DMJobSearchResultVC {
         }
     }
     
+    
+    func getUnreadNotificationCount(completionHandler: @escaping (JSON?, NSError?) -> ()) {
+        
+//        self.showLoader()
+        APIManager.apiGet(serviceName: Constants.API.unreadNotificationCount, parameters: nil) { (response:JSON?, error:NSError?) in
+//            self.hideLoader()
+            if error != nil {
+                self.makeToast(toastString: (error?.localizedDescription)!)
+                return
+            }
+            if response == nil {
+//                self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
+                return
+            }
+            completionHandler(response, error)
+//            self.handleAboutMeResponse(response: response)
+        }
+    }
+    
+
+    
+    
+    
 }

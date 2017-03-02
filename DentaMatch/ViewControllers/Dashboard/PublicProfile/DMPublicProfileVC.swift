@@ -118,6 +118,11 @@ class DMPublicProfileVC: DMBaseVC {
             self.makeToast(toastString: Constants.AlertMessage.emptyLastName)
             return false
         }
+        if editProfileParams[Constants.ServerKey.jobTitileId]!.isEmptyField {
+            self.makeToast(toastString: Constants.AlertMessage.emptyCurrentJobTitle)
+            return false
+        }
+
         if editProfileParams[Constants.ServerKey.aboutMe]!.isEmptyField {
             self.makeToast(toastString: Constants.AlertMessage.emptyAboutMe)
             return false
@@ -192,6 +197,10 @@ class DMPublicProfileVC: DMBaseVC {
 extension DMPublicProfileVC:UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard string.characters.count > 0 else {
+            return true
+        }
+
         let profileOptions = ProfileOptions(rawValue: textField.tag)!
         switch profileOptions {
         case .firstName:

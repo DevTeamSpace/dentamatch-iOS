@@ -17,6 +17,7 @@ class DMJobSearchResultVC : DMBaseVC {
     @IBOutlet weak var lblResultCount: UILabel!
     
     @IBOutlet weak var btnCurrentLocation: UIButton!
+    var notificationLabel:UILabel?
     
     var rightBarBtn : UIButton = UIButton()
     var rightBarButtonItem : UIBarButtonItem = UIBarButtonItem()
@@ -32,6 +33,7 @@ class DMJobSearchResultVC : DMBaseVC {
     var loadingMoreJobs = false
     var totalJobsFromServer = 0
     var jobsPageNo = 1
+    
     var searchParams = [String : Any]()
     var markers = [JobMarker]()
     var pullToRefreshJobs = UIRefreshControl()
@@ -59,6 +61,28 @@ class DMJobSearchResultVC : DMBaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.getUnreadNotificationCount { (response, error ) in
+            if response![Constants.ServerKey.status].boolValue {
+                let resultDic = response![Constants.ServerKey.result].dictionary
+                let count = resultDic?["notificationCount"]?.intValue
+                if self.notificationLabel != nil {
+                    self.setNotificationLabelText(count: count!)
+                }else{
+                    self.notificationLabel?.isHidden = true
+                }
+            }
+        }
+    }
+    
+    func setNotificationLabelText(count:Int) {
+        if count != 0 {
+            self.notificationLabel?.text = "\(count)"
+            self.notificationLabel?.isHidden = false
+            self.notificationLabel?.adjustsFontSizeToFitWidth = true
+
+        }else {
+            self.notificationLabel?.isHidden = true
+        }
     }
     
     func getJobs() {
@@ -113,23 +137,22 @@ class DMJobSearchResultVC : DMBaseVC {
     
     
     func customLeftBarButton() -> UIBarButtonItem {
-        let label = UILabel(frame: CGRect(x: 10, y: 0, width: 15, height: 15))
-        label.backgroundColor = UIColor.red
-        label.layer.cornerRadius = label.bounds.size.height/2
-        label.font = UIFont.fontRegular(fontSize: 10)
-        label.textAlignment = .center
-        label.textColor = UIColor.white
-        label.clipsToBounds = true
-        label.text = "20"
+        notificationLabel = UILabel(frame: CGRect(x: 10, y: 0, width: 15, height: 15))
+        notificationLabel?.backgroundColor = UIColor.red
+        notificationLabel?.layer.cornerRadius = (notificationLabel?.bounds.size.height)!/2
+        notificationLabel?.font = UIFont.fontRegular(fontSize: 10)
+        notificationLabel?.textAlignment = .center
+        notificationLabel?.textColor = UIColor.white
+        notificationLabel?.clipsToBounds = true
+        notificationLabel?.text = ""
+        notificationLabel?.isHidden = true
         let customButton = UIButton(type: .system)
         customButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         customButton.titleLabel?.font = UIFont.designFont(fontSize: 18)
         customButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0)
-//        customButton.setImage(UIImage(named: "plusSymbol"), for: .normal)
         customButton.setTitle(Constants.DesignFont.notification, for: .normal)
-//        self.setLeftBarButton(title: Constants.DesignFont.notification)
         customButton.addTarget(self, action: #selector(actionLeftNavigationItem), for: .touchUpInside)
-        customButton.addSubview(label)
+        customButton.addSubview(notificationLabel!)
         let barButton = UIBarButtonItem(customView: customButton)
         return barButton
     }
