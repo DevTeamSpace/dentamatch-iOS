@@ -51,13 +51,44 @@ class DentistDetailCell: UITableViewCell {
          REJECTED = 5
          CANCELLED = 6
          */
-        
-        if job.isApplied == 2 {
+        self.lblApplied.isHidden = true
+
+        switch job.isApplied {
+        case 1:
+            self.lblApplied.text = "INVITED"
             self.lblApplied.isHidden = false
+
+        case 2:
+            self.lblApplied.text = "APPLIED"
+            self.lblApplied.isHidden = false
+
+        case 3:
+            self.lblApplied.text = "SHORTLISTED"
+            self.lblApplied.isHidden = false
+
+        case 4:
+            self.lblApplied.text = "HIRED"
+            self.lblApplied.isHidden = false
+
+        case 5:
+            self.lblApplied.text = "REJECTED"
+            self.lblApplied.isHidden = false
+
+        case 6:
+            self.lblApplied.text = "CANCELLED"
+            self.lblApplied.isHidden = false
+
+
+        default:
+            break
         }
-        else {
-            self.lblApplied.isHidden = true
-        }
+
+//        if job.isApplied == 2 {
+//            self.lblApplied.isHidden = false
+//        }
+//        else {
+//            self.lblApplied.isHidden = true
+//        }
         if job.isSaved == 0 {
             self.btnFavourite.setTitle(Constants.DesignFont.notFavourite, for: .normal)
             self.btnFavourite.titleLabel?.textColor = Constants.Color.unSaveJobColor

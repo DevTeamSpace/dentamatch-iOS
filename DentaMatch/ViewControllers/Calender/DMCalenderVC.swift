@@ -108,6 +108,8 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
             }else{
                 self.fulltimeJobIndicatorView.isHidden = true
             }
+            
+            self.calendar?.select(Date())
         }
     }
     
@@ -499,6 +501,17 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
                 self.fulltimeJobIndicatorView.isHidden = true
             }
             
+             let month =  Date.getMonthAndYearForm(date: calendar.currentPage)
+            let currentMonth = Date.getMonthAndYearForm(date: Date())
+            
+            if (month.month == currentMonth.month) {
+                self.calendar?.select(Date())
+            }else{
+                let dateNew = calendar.currentPage.startOfMonth()
+                self.calendar?.select(dateNew)
+
+            }
+            
         }
 
     }
@@ -544,3 +557,14 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
 
     
 }
+
+extension Date {
+    func startOfMonth() -> Date {
+        return Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: Calendar.current.startOfDay(for: self)))!
+    }
+    
+    func endOfMonth() -> Date {
+        return Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: self.startOfMonth())!
+    }
+}
+

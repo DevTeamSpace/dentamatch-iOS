@@ -62,6 +62,8 @@ extension DMCalenderVC:UITableViewDelegate,UITableViewDataSource{
             let job = selectedDayList[indexPath.row]
             
             cell?.setCellData(job: job)
+            cell?.handlePartTimeLabel(job: job)
+
             cell?.lblJobTitle.text = job.jobtitle
             cell?.lblDocName.text = job.officeName
             cell?.lblAddress.text = job.address

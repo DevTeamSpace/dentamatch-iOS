@@ -117,7 +117,7 @@ class JobSearchResultCell: UITableViewCell {
             self.btnType.backgroundColor = Constants.Color.partTimeDaySelectColor
         case .temporary:
             self.lblDays.isHidden = false
-            self.btnType.backgroundColor = Constants.Color.partTimeDaySelectColor
+            self.btnType.backgroundColor = Constants.Color.temporaryBackGroundColor
         }
         
         if job.isSunday == 1 {
