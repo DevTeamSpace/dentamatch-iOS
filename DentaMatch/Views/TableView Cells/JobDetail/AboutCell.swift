@@ -45,7 +45,7 @@ class AboutCell: UITableViewCell {
         self.lblDistance.text = String(format: "%.1f", job.distance) + Constants.Strings.whiteSpace + Constants.Strings.miles
         self.lblAddress.text = job.address
         self.lblOfficeType.text = job.officeTypeName
-        self.lblNoOfOpening.text = "10"
+        self.lblNoOfOpening.text = "\(job.noOfJobs)"
         
         if job.noOfJobs == 0 {
             self.constraintlblNoOfOpeningTop.constant = 0

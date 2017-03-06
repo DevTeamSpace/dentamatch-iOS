@@ -70,7 +70,7 @@ extension AppDelegate:UNUserNotificationCenterDelegate {
         let dict = userInfo["aps"] as? NSDictionary
         print(dict ?? "not avail")
         debugPrint("didReceiveRemoteNotification \(userInfo.description)")
-//        self.window?.makeToast(userInfo.description)
+        //        self.window?.makeToast(userInfo.description)
         
         
         let state: UIApplicationState = UIApplication.shared.applicationState
@@ -81,37 +81,52 @@ extension AppDelegate:UNUserNotificationCenterDelegate {
             
             if UserDefaultsManager.sharedInstance.isLoggedIn {
                 if let noti = userInfo["data"] as? NSDictionary {
-                    let newObjMSG = noti["jobDetails"]
-                    let jobJson = JSON(newObjMSG ?? [:])
-                    let jobObj = Job(job: jobJson)
-
-                    let newObj = noti["data"]
-                    let josnObj = JSON(newObj ?? [:])
-                    let userNotiObj = UserNotification(dict: josnObj)
-                    ToastView.showNotificationToast(message: userNotiObj.message, name: "Notification", imageUrl: "",  type: ToastSkinType.White, onCompletion:{
-                        NotificationHandler.notificationHandleforForground(notiObj: userNotiObj,jobObj:jobObj, app: application)
-
-                    })
-
+                    let megCheck = noti["data"] as! NSDictionary
+                    if megCheck["messageId"] != nil {
+                    }else{
+                        let noti = userInfo["data"] as? NSDictionary
+                        let newObjMSG = noti?["jobDetails"]
+                        let jobJson = JSON(newObjMSG ?? [:])
+                        let jobObj = Job(job: jobJson)
+                        
+                        let newObj = noti?["data"]
+                        let josnObj = JSON(newObj ?? [:])
+                        let userNotiObj = UserNotification(dict: josnObj)
+                        ToastView.showNotificationToast(message: userNotiObj.message, name: "Notification", imageUrl: "",  type: ToastSkinType.White, onCompletion:{
+                            NotificationHandler.notificationHandleforForground(notiObj: userNotiObj,jobObj:jobObj, app: application)
+                            
+                        })
+                    }
+                    
+                    
                 }
- 
             }
+            
             
             
         }else{
             
             if UserDefaultsManager.sharedInstance.isLoggedIn {
-                if let noti = userInfo["data"] as? NSDictionary  {
-                    let newObjMSG = noti["jobDetails"]
-                    let jobJson = JSON(newObjMSG ?? [:])
-                    let jobObj = Job(job: jobJson)
-
-                    let newObj = noti["data"]
-                    let josnObj = JSON(newObj ?? [:])
-                    let userNotiObj = UserNotification(dict: josnObj)
-                    NotificationHandler.notificationHandleforForground(notiObj: userNotiObj, jobObj:jobObj, app: application)
+                if let noti = userInfo["data"] as? NSDictionary {
+                    let megCheck = noti["data"] as! NSDictionary
+                    if megCheck["messageId"] != nil {
+                        NotificationHandler.notificationHandleforChat(fromId: (megCheck["fromId"] as? String), toId: (megCheck["toId"]  as? String), messgaeId: (megCheck["messageId"]  as? String), recurterId: (megCheck["recurterId"]  as? String))
+                        
+                    }else{
+                        let noti = userInfo["data"] as? NSDictionary
+                        let newObjMSG = noti?["jobDetails"]
+                        let jobJson = JSON(newObjMSG ?? [:])
+                        let jobObj = Job(job: jobJson)
+                        
+                        let newObj = noti?["data"]
+                        let josnObj = JSON(newObj ?? [:])
+                        let userNotiObj = UserNotification(dict: josnObj)
+                        NotificationHandler.notificationHandleforForground(notiObj: userNotiObj, jobObj:jobObj, app: application)
+                        
+                    }
+                    
+                    
                 }
-
             }
             
         }

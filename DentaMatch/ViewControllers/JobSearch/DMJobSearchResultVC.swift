@@ -300,7 +300,7 @@ class DMJobSearchResultVC : DMBaseVC {
     }
     
     @IBAction func actionCurrentLocaton(_ sender: UIButton) {
-        self.mapViewSearchResult.animate(to: GMSCameraPosition(target: self.currentCoordinate, zoom: 5, bearing: 0, viewingAngle: 0))
+        self.mapViewSearchResult.animate(to: GMSCameraPosition(target: self.currentCoordinate, zoom: 15, bearing: 0, viewingAngle: 0))
         self.hideCard()
     }
     

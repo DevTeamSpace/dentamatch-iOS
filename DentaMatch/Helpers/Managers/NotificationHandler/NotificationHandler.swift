@@ -85,6 +85,21 @@ class NotificationHandler: NSObject {
         
     }
     
+    class func notificationHandleforChat(fromId:String?,toId:String?,messgaeId:String?,recurterId:String?) {
+        delay(time: 3.0) {
+            if let tabbar = ((UIApplication.shared.delegate) as! AppDelegate).window?.rootViewController as? TabBarVC {
+                tabbar.selectedIndex = 3
+            }
+        }
+
+    }
+    
+    class func notificationHandleforChatForGround(fromId:String?,toId:String?,messgaeId:String?,recurterId:String?) {
+            if let tabbar = ((UIApplication.shared.delegate) as! AppDelegate).window?.rootViewController as? TabBarVC {
+                tabbar.selectedIndex = 3
+        }
+    }
+    
     class func openJobDetailScreen(obj:Job) {
         NotificationCenter.default.post(name: .pushRedirectNotificationForground, object: nil, userInfo: ["notificationData":obj])
     }

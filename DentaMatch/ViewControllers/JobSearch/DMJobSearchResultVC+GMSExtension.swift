@@ -50,9 +50,9 @@ extension DMJobSearchResultVC : GMSMapViewDelegate {
         self.mapViewSearchResult.clear()
         for (index, objJob) in self.jobs.enumerated() {
             let latStr = objJob.latitude as NSString
-            let latDbl : Double  = Double(latStr.intValue)
+            let latDbl : Double  = Double(latStr.doubleValue)
             let langStr = objJob.longitude as NSString
-            let langDbl : Double = Double(langStr.intValue)
+            let langDbl : Double = Double(langStr.doubleValue)
             let marker = JobMarker()
             marker.index = index
             marker.isDraggable = false
@@ -60,7 +60,7 @@ extension DMJobSearchResultVC : GMSMapViewDelegate {
             marker.icon = UIImage(named: "pinPoint")
             marker.map = self.mapViewSearchResult
             if index == 1  {
-                self.mapViewSearchResult.animate(to: GMSCameraPosition(target: CLLocationCoordinate2DMake(latDbl,langDbl), zoom: 5, bearing: 0, viewingAngle: 0))
+                self.mapViewSearchResult.animate(to: GMSCameraPosition(target: CLLocationCoordinate2DMake(latDbl,langDbl), zoom: 10, bearing: 0, viewingAngle: 0))
             }
         }
     }

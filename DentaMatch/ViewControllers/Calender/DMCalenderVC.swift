@@ -110,6 +110,7 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
             }
             
             self.calendar?.select(Date())
+            self.calendar(self.calendar!, didSelect: Date(), at: FSCalendarMonthPosition.notFound)
         }
     }
     
@@ -506,9 +507,12 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
             
             if (month.month == currentMonth.month) {
                 self.calendar?.select(Date())
+                self.calendar(self.calendar!, didSelect: Date(), at: FSCalendarMonthPosition.notFound)
+
             }else{
                 let dateNew = calendar.currentPage.startOfMonth()
                 self.calendar?.select(dateNew)
+                self.calendar(self.calendar!, didSelect: calendar.currentPage, at: FSCalendarMonthPosition.notFound)
 
             }
             
@@ -516,6 +520,7 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
 
     }
 
+    
     
     
     //pluse button Action

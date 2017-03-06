@@ -56,7 +56,7 @@ extension DMJobDetailVC {
                  CANCELLED = 6
                  */
                 
-                if job.isApplied == 2 || job.isApplied == 3 || job.isApplied == 4 || job.isApplied == 5 {
+                if job.isApplied == 1 || job.isApplied == 2 || job.isApplied == 3 || job.isApplied == 4 || job.isApplied == 5 {
                     //Hide apply for job button
                     self.btnApplyForJob.isUserInteractionEnabled = false
                     self.btnApplyForJob.isHidden = true

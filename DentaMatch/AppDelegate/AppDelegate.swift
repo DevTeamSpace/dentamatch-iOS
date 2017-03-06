@@ -58,14 +58,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 {
 //                    self.tabIndex = 4
                     if let noti = remoteNotification["data"] as? NSDictionary {
-                        let newObjMSG = noti["jobDetails"]
-                        let jobJson = JSON(newObjMSG ?? [:])
-                        let jobObj = Job(job: jobJson)
-
-                        let newObj = noti["data"]
-                        let josnObj = JSON(newObj ?? [:])
-                        let userNotiObj = UserNotification(dict: josnObj)
-                        NotificationHandler.notificationHandleforBackground(notiObj: userNotiObj, jobObj:jobObj, app: application)
+                        let megCheck = noti["data"] as! NSDictionary
+                        if megCheck["messageId"] != nil {
+                            NotificationHandler.notificationHandleforChat(fromId: (megCheck["fromId"] as? String), toId: (megCheck["toId"]  as? String), messgaeId: (megCheck["messageId"]  as? String), recurterId: (megCheck["recurterId"]  as? String))
+                            
+                        }else {
+                            
+                            
+                            let newObjMSG = noti["jobDetails"]
+                            let jobJson = JSON(newObjMSG ?? "" )
+                            let jobObj = Job(job: jobJson)
+                            
+                            let newObj = noti["data"]
+                            let josnObj = JSON(newObj ?? [:])
+                            let userNotiObj = UserNotification(dict: josnObj)
+                            NotificationHandler.notificationHandleforBackground(notiObj: userNotiObj, jobObj:jobObj, app: application)
+                            
+                        }
+                        
                     }
 
                 }

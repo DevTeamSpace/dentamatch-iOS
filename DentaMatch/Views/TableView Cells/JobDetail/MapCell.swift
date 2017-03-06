@@ -27,9 +27,9 @@ class MapCell: UITableViewCell {
     func setPinOnMap(job : Job) {
         self.mapView.clear()
         let latStr = job.latitude as NSString
-        let latDbl : Double  = Double(latStr.intValue)
+        let latDbl : Double  = Double(latStr.doubleValue)
         let langStr = job.longitude as NSString
-        let langDbl : Double = Double(langStr.intValue)
+        let langDbl : Double = Double(langStr.doubleValue)
         let marker = JobMarker()
         marker.isDraggable = false
         marker.position = CLLocationCoordinate2DMake(latDbl,langDbl )
