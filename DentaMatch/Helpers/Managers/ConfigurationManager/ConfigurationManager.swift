@@ -15,6 +15,7 @@ let kAPIEndpointKey:NSString? = "APIEndPoint"
 let kLoggingEnabledKey:NSString? = "LoggingEnabled"
 let kAnalyticsTrackingEnabled:NSString? = "AnalyticsTrackingEnabled"
 let kSocketEndPoint:NSString? = "SocketEndPoint"
+let kMixpanelToken:NSString? = "MixpanelToken"
 
 class ConfigurationManager:NSObject {
     
@@ -63,6 +64,10 @@ class ConfigurationManager:NSObject {
     
     func socketEndpoint() -> String {
         let configuration = self.environment![kSocketEndPoint!]
+        return (configuration)! as! String
+    }
+    func mixpanelToken() -> String {
+        let configuration = self.environment![kMixpanelToken!]
         return (configuration)! as! String
     }
     

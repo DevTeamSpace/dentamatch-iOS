@@ -13,6 +13,7 @@ import GooglePlaces
 import Crashlytics
 import Fabric
 import SwiftyJSON
+import Mixpanel
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

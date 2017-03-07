@@ -19,4 +19,5 @@ pod 'SVProgressHUD'
 pod 'FSCalendar'
 
 pod 'RESideMenu', '~> 4.0.6'
+pod 'Mixpanel'
 end

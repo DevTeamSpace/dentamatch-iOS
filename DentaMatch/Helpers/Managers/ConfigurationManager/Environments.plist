@@ -12,6 +12,8 @@
 		<true/>
 		<key>AnalyticsTrackingEnabled</key>
 		<true/>
+		<key>MixpanelToken</key>
+		<string></string>
 		<key>Flurry</key>
 		<dict>
 			<key>FlurryApplicationID</key>
@@ -37,6 +39,8 @@
 		<true/>
 		<key>AnalyticsTrackingEnabled</key>
 		<true/>
+		<key>MixpanelToken</key>
+		<string></string>
 		<key>Flurry</key>
 		<dict>
 			<key>FlurryApplicationID</key>
@@ -62,6 +66,8 @@
 		<false/>
 		<key>AnalyticsTrackingEnabled</key>
 		<true/>
+		<key>MixpanelToken</key>
+		<string></string>
 		<key>Flurry</key>
 		<dict>
 			<key>FlurryApplicationID</key>
@@ -87,6 +93,8 @@
 		<string>http://production.dentamatch.co:3000</string>
 		<key>AnalyticsTrackingEnabled</key>
 		<true/>
+		<key>MixpanelToken</key>
+		<string></string>
 		<key>Flurry</key>
 		<dict>
 			<key>FlurryApplicationID</key>
