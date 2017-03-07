@@ -91,9 +91,12 @@ extension DMCertificationsVC {
 
         var allValidatyDates = [AnyObject]()
         for cetificate in self.certicates {
+            if !cetificate.validityDate.isEmptyField{
+                let validityDict = ["id":cetificate.certificationId,"value":cetificate.validityDate]
+                allValidatyDates.append(validityDict as AnyObject)
+
+            }
             
-            let validityDict = ["id":cetificate.certificationId,"value":cetificate.validityDate]
-            allValidatyDates.append(validityDict as AnyObject)
         }
         params["certificateValidition"] = allValidatyDates as AnyObject?
 
