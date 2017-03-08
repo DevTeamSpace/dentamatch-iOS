@@ -148,6 +148,7 @@ class SocketManager: NSObject,SocketConnectionDelegate {
             self.initServer()
             eventForReceiveMessage()
             eventForHistoryMessages()
+            eventForLogoutPreviousSession()
             //getChatHistory()
         }
     }
@@ -161,6 +162,17 @@ class SocketManager: NSObject,SocketConnectionDelegate {
         socket.off("receiveMessage")
         socket.on("receiveMessage") { (dataArray, socketAck) -> Void in
             self.handleReceivedChatMessage(params: dataArray)
+        }
+    }
+    
+    func eventForLogoutPreviousSession() {
+        socket.off("logoutPreviousSession")
+        socket.on("logoutPreviousSession") { (dataArray, socketAck) -> Void in
+            var messageDictionary = [String: AnyObject]()
+            messageDictionary = dataArray[0] as! [String:AnyObject]
+            if messageDictionary["logout"] as! Bool {
+                Utilities.logOutOfInvalidToken()
+            }
         }
     }
     
