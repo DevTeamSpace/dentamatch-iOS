@@ -92,7 +92,9 @@ class DMMessagesVC: DMBaseVC {
             self.messageListTableView.reloadData()
             if let sections = self.fetchedResultsController.sections {
                 if sections.count > 0 {
-                    self.placeHolderEmptyJobsView?.isHidden = true
+                    if sections[0].numberOfObjects > 0 {
+                        self.placeHolderEmptyJobsView?.isHidden = true
+                    }
                 }
             }
         } catch {

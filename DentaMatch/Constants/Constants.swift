@@ -323,6 +323,9 @@ struct Constants {
         static let isParttime = "isParttime"
         static let parttimeDays = "parttimeDays"
         static let address = "address"
+        static let city = "city"
+        static let state = "state"
+        static let country = "country"
     }
     
     //MARK:- UserDefault Keys

@@ -30,6 +30,9 @@ class DMJobSearchVC : DMBaseVC {
     var totalJobsFromServer = 0
     var fromJobSearchResults = false
     
+    var city = ""
+    var country = ""
+    var state = ""
     
     enum TableViewCellHeight: CGFloat {
         case jobTitleAndLocation = 88.0
@@ -65,7 +68,7 @@ class DMJobSearchVC : DMBaseVC {
             let latDbl : Double  = Double(latStr.intValue)
             let langStr = searchParams[Constants.JobDetailKey.lat] as! NSString
             let langDbl : Double = Double(langStr.intValue)
-            location.coordinateSelected = CLLocationCoordinate2DMake(latDbl, langDbl)
+            //location.coordinateSelected = CLLocationCoordinate2DMake(latDbl, langDbl)
             if searchParams[Constants.JobDetailKey.isParttime] as! String? == "1" {
                 isPartTimeDayShow = true
                 isJobTypePartTime = "1"
@@ -96,9 +99,12 @@ class DMJobSearchVC : DMBaseVC {
             
         }
         else {
-            self.getLocation()
+            //self.getLocation()
         }
         
+        let coordinate = CLLocationCoordinate2D(latitude: Double(UserManager.shared().activeUser.latitude!)!, longitude: Double(UserManager.shared().activeUser.longitude!)!)
+        location.coordinateSelected = coordinate
+        reverseGeocodeCoordinate(coordinate: coordinate)
 
         if fromJobSearchResults {
             self.navigationItem.leftBarButtonItem = self.backBarButton()
@@ -158,6 +164,20 @@ class DMJobSearchVC : DMBaseVC {
             if let address = response?.firstResult() {
                 let lines = address.lines!
                 let count = response?.results()?.count
+                
+                if let state = address.administrativeArea {
+                    self.state = state
+                }
+                
+                if let city = address.locality {
+                    self.city = city
+                }
+                
+                if let country = address.country {
+                    self.country = country
+                }
+
+                
                 for i in 0..<(count)! {
                     if let postalCode = response?.results()![i].postalCode {
                         self.location.postalCode =  postalCode
@@ -227,6 +247,9 @@ class DMJobSearchVC : DMBaseVC {
         searchParams[Constants.JobDetailKey.jobTitle] = jobTitleIds
         searchParams[Constants.JobDetailKey.jobTitles] = jobTitles
         searchParams[Constants.JobDetailKey.page] = 1
+        searchParams[Constants.JobDetailKey.city] = self.city
+        searchParams[Constants.JobDetailKey.state] = self.state
+        searchParams[Constants.JobDetailKey.country] = self.country
         searchParams[Constants.JobDetailKey.address] = location.address
         self.goToSearchResult()
     }

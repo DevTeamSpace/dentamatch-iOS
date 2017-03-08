@@ -24,7 +24,12 @@ class User: NSObject , NSCoding {
     var aboutMe:String? = ""
 
     var profileImageURL: String? = ""
+    
     var preferredJobLocation: String? = ""
+    var city: String? = ""
+    var country: String? = ""
+    var state: String? = ""
+
     
     func fullName() -> String? {
         if let _ = firstName, let _ = lastName {
@@ -55,6 +60,10 @@ class User: NSObject , NSCoding {
         self.lastName = aDecoder.decodeObject(forKey: "lastName") as? String
         self.profileImageURL = aDecoder.decodeObject(forKey: "profileImageURL") as? String
         self.preferredJobLocation = aDecoder.decodeObject(forKey: "preferredJobLocation") as? String
+        self.city = aDecoder.decodeObject(forKey: "city") as? String
+        self.country = aDecoder.decodeObject(forKey: "country") as? String
+        self.state = aDecoder.decodeObject(forKey: "state") as? String
+
         self.jobTitle = aDecoder.decodeObject(forKey: "jobTitle") as? String
         self.jobTitleId = aDecoder.decodeObject(forKey: "jobTitleId") as? String
         self.latitude = aDecoder.decodeObject(forKey: "latitude") as? String
@@ -73,6 +82,9 @@ class User: NSObject , NSCoding {
         aCoder.encode(self.lastName, forKey: "lastName")
         aCoder.encode(self.profileImageURL, forKey: "profileImageURL")
         aCoder.encode(self.preferredJobLocation, forKey: "preferredJobLocation")
+        aCoder.encode(self.city, forKey: "city")
+        aCoder.encode(self.country, forKey: "country")
+        aCoder.encode(self.state, forKey: "state")
         aCoder.encode(self.jobTitle, forKey: "jobTitle")
         aCoder.encode(self.jobTitleId, forKey: "jobTitleId")
         aCoder.encode(self.latitude, forKey: "latitude")

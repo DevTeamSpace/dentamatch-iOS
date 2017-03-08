@@ -18,6 +18,9 @@ struct Location {
     var postalCode = ""
     var coordinateSelected:CLLocationCoordinate2D?
     var address:String? = ""
+    var city = ""
+    var country = ""
+    var state = ""
 }
 
 class DMRegisterMapsVC: DMBaseVC {
@@ -207,6 +210,19 @@ class DMRegisterMapsVC: DMBaseVC {
             if let address = response?.firstResult() {
                 let lines = address.lines!
                 let count = response?.results()?.count
+                
+                if let state = address.administrativeArea {
+                    self.location.state = state
+                }
+                
+                if let city = address.locality {
+                    self.location.city = city
+                }
+                
+                if let country = address.country {
+                    self.location.country = country
+                }
+                
                 for i in 0..<(count)! {
                     if let postalCode = response?.results()![i].postalCode {
                         self.location.postalCode =  postalCode
