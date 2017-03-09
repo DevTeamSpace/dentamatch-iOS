@@ -63,7 +63,8 @@ class SelectedSchool : NSObject {
         self.schoolCategoryId = school[Constants.ServerKey.parentId].stringValue
         self.schoolCategoryName = school[Constants.ServerKey.schoolName].stringValue
         self.universityId = school[Constants.ServerKey.childId].stringValue
-        self.universityName = school[Constants.ServerKey.schoolChildName].stringValue
+        self.universityName = school[Constants.ServerKey.schoolTitle].stringValue
+        //self.universityName = school[Constants.ServerKey.schoolChildName].stringValue
         self.yearOfGraduation = school[Constants.ServerKey.yearOfGraduation].stringValue
         if !school[Constants.ServerKey.otherSchooling].stringValue.isEmpty {
             self.otherSchooling = school[Constants.ServerKey.otherSchooling].stringValue

@@ -300,6 +300,8 @@ struct Constants {
         static let schoolCategory = "schoolCategory"
         static let otherSchooling = "otherSchooling"
         static let schoolChildName = "schoolChildName"
+        static let schoolTitle = "schoolTitle"
+
         static let yearOfGraduation = "yearOfGraduation"
         static let jobSeekerStatus = "jobSeekerStatus"
         static let recruiterId = "recruiterId"
