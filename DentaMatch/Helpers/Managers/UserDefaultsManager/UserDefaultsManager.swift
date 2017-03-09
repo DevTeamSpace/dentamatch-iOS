@@ -148,7 +148,9 @@ class UserDefaultsManager: NSObject {
     }
 
     func clearCache() {
+        let tempDeviceToken = UserDefaultsManager.sharedInstance.deviceToken
         UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
+        UserDefaultsManager.sharedInstance.deviceToken = tempDeviceToken
     }
     
     

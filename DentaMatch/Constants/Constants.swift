@@ -404,7 +404,8 @@ struct Constants {
         
         //Calendar Screen 
         static let canNotSelectPreDate = "Sorry you can't select previouse date"
-        
+        static let socketNotConnected = "Unable to connect to server. Please try again later"
+
         
         //Notification Screen 
         static let noNotification = "You don’t have any Notifications right now."

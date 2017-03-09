@@ -25,6 +25,8 @@ class DMMessagesVC: DMBaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(redirectToChat), name: .chatRedirect, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshBlockUnblockList), name: .refreshBlockUnblockList, object: nil)
+
         setup()
         SocketManager.sharedInstance.initServer()
         self.getChatListAPI()
@@ -107,6 +109,7 @@ class DMMessagesVC: DMBaseVC {
     func showBlockRecruiterAlert(chatList:ChatList) {
         let alert = UIAlertController(title: "", message: "This Blocked recruiter will no longer be able to send you message", preferredStyle: .actionSheet)
         let blockAction = UIAlertAction(title: "Block", style: .destructive) { (action:UIAlertAction) in
+            //SocketManager.sharedInstance.handleBlockUnblock(chatList: chatList, blockStatus: "1")
             self.blockRecruiter(chatList: chatList)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction) in
@@ -151,6 +154,11 @@ class DMMessagesVC: DMBaseVC {
         } else {
             //Recruiter Doesn't exists in core data
         }
+    }
+    
+    func refreshBlockUnblockList(notification:Notification) {
+        print(notification.userInfo)
+        self.makeToast(toastString: "Recruiter Blocked")
     }
 }
 

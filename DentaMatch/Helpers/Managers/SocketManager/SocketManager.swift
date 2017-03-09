@@ -25,7 +25,7 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     
     typealias GetLeftMessagesCallBackClosure = ((_ messageInfo: [Any])->Void)
     private var getLeftMessagesCompletionHandler: GetLeftMessagesCallBackClosure?
-
+    
     var socket = SocketIOClient(socketURL: URL(string: ConfigurationManager.sharedManager.socketEndpoint())!)
     
     override init() {
@@ -33,8 +33,8 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     }
     
     func establishConnection() {
- //       DefaultSocketLogger.Logger.log = true
-//        socket.engine?.ws?.voipEnabled = true
+ //     DefaultSocketLogger.Logger.log = true
+//      socket.engine?.ws?.voipEnabled = true
         socket.delegate = self
         socket.connect()
     }
@@ -44,7 +44,12 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     }
     
     func initServer() {
-        //userType 1 is for jobseeker, 2 is recruiter
+        /*
+         userType:
+         1 is for jobseeker,
+         2 is recruiter
+         */
+        
         let params = [
             "userId":UserManager.shared().activeUser.userId!,
             "userName":UserManager.shared().activeUser.firstName!,
@@ -55,6 +60,21 @@ class SocketManager: NSObject,SocketConnectionDelegate {
             NotificationCenter.default.post(name: .refreshMessageList, object: nil)
             NotificationCenter.default.post(name: .refreshChat, object: nil)
             //self.getChatHistory()
+        }
+    }
+    
+    func handleBlockUnblock(chatList:ChatList,blockStatus:String) {
+        let params = [
+            "fromId":UserManager.shared().activeUser.userId!,
+            "toId":chatList.recruiterId,
+            "message":blockStatus
+        ]
+
+        socket.emitWithAck("blockUnblock", params).timingOut(after: 0) { (params:[Any]) in
+            print(params)
+            chatList.isBlockedFromSeeker = true
+            kAppDelegate.saveContext()
+            NotificationCenter.default.post(name: .refreshBlockUnblockList, object: params)
         }
     }
     
@@ -135,7 +155,6 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     }
     
     private func listenForOtherMessages() {
-        
         socket.on("userTypingUpdate") { (dataArray, socketAck) -> Void in
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "userTypingNotification"), object: dataArray[0] as? [String: AnyObject])
         }
