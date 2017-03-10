@@ -68,7 +68,7 @@ class DMChatVC: DMBaseVC {
     
     //MARK:- Keyboard Show Hide Observers
     func keyboardWillShow(note: NSNotification) {
-        if let keyboardSize = (note.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+        if let keyboardSize = (note.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             UIView.animate(withDuration: 0.25, animations: {
                 self.bottomConstraint.constant = keyboardSize.height
                 self.chatTableView.layoutIfNeeded()
@@ -224,6 +224,7 @@ class DMChatVC: DMBaseVC {
             self.chatTextView.text = ""
             self.placeHolderLabel.isHidden = false
         } else {
+            self.alertMessage(title: "Connection Problem", message: "Unable to connect to server. Please try again later.", buttonText: "Ok", completionHandler: nil)
             debugPrint("Socket not connected")
         }
     }

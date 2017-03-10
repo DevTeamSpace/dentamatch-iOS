@@ -127,6 +127,11 @@ class DMPublicProfileVC: DMBaseVC {
             self.makeToast(toastString: Constants.AlertMessage.emptyAboutMe)
             return false
         }
+        
+        if editProfileParams[Constants.ServerKey.jobTitileId]!.isEmptyField {
+            self.makeToast(toastString: Constants.AlertMessage.emptyJobTitle)
+            return false
+        }
         return true
     }
 

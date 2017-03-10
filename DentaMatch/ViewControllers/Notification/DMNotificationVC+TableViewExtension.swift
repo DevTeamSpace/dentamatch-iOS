@@ -72,18 +72,23 @@ extension DMNotificationVC : UITableViewDataSource,UITableViewDelegate {
         
             let deleteAction = UITableViewRowAction(style: .normal, title: "Delete", handler: { (action:UITableViewRowAction, indexPath:IndexPath) in
                 let notification = self.notificationList[indexPath.row]
-                self.deleteNotification(notificationObj: notification, completionHandler: { (isSucess, error) in
-                    if isSucess! {
-                        self.notificationList.remove(at: indexPath.row)
-                        self.notificationTableView.reloadData()
+                
+                self.alertMessage(title: "Confirm", message: "Are you sure you want to delete this notification?", leftButtonText: "Yes", rightButtonText: "No", completionHandler: { (isLeft:Bool) in
+                    if isLeft {
+                        self.deleteNotification(notificationObj: notification, completionHandler: { (isSucess, error) in
+                            if isSucess! {
+                                self.notificationList.remove(at: indexPath.row)
+                                DispatchQueue.main.async {
+                                    self.notificationTableView.reloadData()
+                                }
+                            }
+                        })
+
                     }
                 })
-                
             })
             deleteAction.backgroundColor = Constants.Color.cancelJobDeleteColor
-            return [ deleteAction]
-            
-        
+            return [ deleteAction]            
     }
 
     

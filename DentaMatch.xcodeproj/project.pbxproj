@@ -2201,7 +2201,7 @@
 					E56E45B71DAE07C200AD4559 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 37YG7ABMG2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
@@ -2741,7 +2741,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "e88a372a-37fa-4987-a6f1-dafdcfb47925";
+				PROVISIONING_PROFILE = "4c298dd0-a8ff-4509-83ea-8ad47dc00174";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2789,7 +2789,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = NO;
-				PROVISIONING_PROFILE = "83634547-93c0-4dc0-9583-d606d962a4fa";
+				PROVISIONING_PROFILE = "7b782191-64b3-4d07-9dc0-6207442a4296";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
@@ -2805,7 +2805,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "DentaMatch/DentaMatch-Dev.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Preston Brown (556TX5Q57N)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Preston Brown (556TX5Q57N)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 37YG7ABMG2;
 				INFOPLIST_FILE = "DentaMatch/Supporting Files/Info.plist";
@@ -2813,8 +2813,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appster.dentamatch;
 				PRODUCT_NAME = "$(TARGET_NAME)-Dev";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "4c298dd0-a8ff-4509-83ea-8ad47dc00174";
+				PROVISIONING_PROFILE_SPECIFIER = "DentaMatch Development";
 				SWIFT_OBJC_BRIDGING_HEADER = "DentaMatch/Supporting Files/DentaMatch-BridgingHeader.h";
 				SWIFT_VERSION = 3.0;
 			};
@@ -2829,15 +2829,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "DentaMatch/DentaMatch-Dev.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Health Match Inc (37YG7ABMG2)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Health Match Inc (37YG7ABMG2)";
 				DEVELOPMENT_TEAM = 37YG7ABMG2;
 				INFOPLIST_FILE = "DentaMatch/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appster.dentamatch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "7b782191-64b3-4d07-9dc0-6207442a4296";
+				PROVISIONING_PROFILE_SPECIFIER = "DentaMatch Adhoc";
 				SWIFT_OBJC_BRIDGING_HEADER = "DentaMatch/Supporting Files/DentaMatch-BridgingHeader.h";
 				SWIFT_VERSION = 3.0;
 			};
@@ -2890,7 +2890,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "83634547-93c0-4dc0-9583-d606d962a4fa";
+				PROVISIONING_PROFILE = "4c298dd0-a8ff-4509-83ea-8ad47dc00174";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2906,7 +2906,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "DentaMatch/DentaMatch-Dev.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Preston Brown (556TX5Q57N)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Preston Brown (556TX5Q57N)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 37YG7ABMG2;
 				INFOPLIST_FILE = "DentaMatch/Supporting Files/Info.plist";
@@ -2914,8 +2914,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appster.dentamatch;
 				PRODUCT_NAME = "$(TARGET_NAME)-QA";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "4c298dd0-a8ff-4509-83ea-8ad47dc00174";
+				PROVISIONING_PROFILE_SPECIFIER = "DentaMatch Development";
 				SWIFT_OBJC_BRIDGING_HEADER = "DentaMatch/Supporting Files/DentaMatch-BridgingHeader.h";
 				SWIFT_VERSION = 3.0;
 			};
@@ -2943,8 +2943,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Preston Brown (556TX5Q57N)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Preston Brown (556TX5Q57N)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Health Match Inc (37YG7ABMG2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Health Match Inc (37YG7ABMG2)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 37YG7ABMG2;
@@ -2962,7 +2962,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = NO;
-				PROVISIONING_PROFILE = "83634547-93c0-4dc0-9583-d606d962a4fa";
+				PROVISIONING_PROFILE = "7b782191-64b3-4d07-9dc0-6207442a4296";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
@@ -2977,16 +2977,16 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "DentaMatch/DentaMatch-Dev.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Preston Brown (556TX5Q57N)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Health Match Inc (37YG7ABMG2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Health Match Inc (37YG7ABMG2)";
 				DEVELOPMENT_TEAM = 37YG7ABMG2;
 				INFOPLIST_FILE = "DentaMatch/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appster.dentamatch;
 				PRODUCT_NAME = "$(TARGET_NAME)-Staging";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "7b782191-64b3-4d07-9dc0-6207442a4296";
+				PROVISIONING_PROFILE_SPECIFIER = "DentaMatch Adhoc";
 				SWIFT_OBJC_BRIDGING_HEADER = "DentaMatch/Supporting Files/DentaMatch-BridgingHeader.h";
 				SWIFT_VERSION = 3.0;
 			};

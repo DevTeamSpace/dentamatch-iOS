@@ -14,7 +14,9 @@ extension DMNotificationVC {
         var params = [String:AnyObject]()
         params["page"] = self.pageNumber as AnyObject
         debugPrint("notification Parameter \(params)")
-        self.showLoader()
+        if self.pageNumber == 1 {
+            self.showLoader()
+        }
         APIManager.apiGet(serviceName: Constants.API.getNotificationList, parameters: params) { (response:JSON?, error:NSError?) in
             self.hideLoader()
             if error != nil {
