@@ -14,7 +14,7 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     
     static let sharedInstance = SocketManager()
     
-    typealias ReceiveMessageClosure = ((_ messageInfo: [String: AnyObject])->Void)
+    typealias ReceiveMessageClosure = ((_ messageInfo: [String: AnyObject],_ isMine:Bool)->Void)
     private var chatCompletionHandler: ReceiveMessageClosure?
     
     //To check whether the same recruiter is chatting
@@ -66,15 +66,22 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     func handleBlockUnblock(chatList:ChatList,blockStatus:String) {
         let params = [
             "fromId":UserManager.shared().activeUser.userId!,
-            "toId":chatList.recruiterId,
-            "message":blockStatus
+            "toId":chatList.recruiterId!,
+            "blockStatus":blockStatus
         ]
+        
+        print(params)
 
         socket.emitWithAck("blockUnblock", params).timingOut(after: 0) { (params:[Any]) in
             print(params)
-            chatList.isBlockedFromSeeker = true
+            if blockStatus == "1" {
+                 chatList.isBlockedFromSeeker = true
+                NotificationCenter.default.post(name: .refreshBlockList, object: params)
+            } else {
+                chatList.isBlockedFromSeeker = false
+                NotificationCenter.default.post(name: .refreshUnblockList, object: params)
+            }
             kAppDelegate.saveContext()
-            NotificationCenter.default.post(name: .refreshBlockUnblockList, object: params)
         }
     }
     
@@ -86,7 +93,7 @@ class SocketManager: NSObject,SocketConnectionDelegate {
         ]
         
         socket.emitWithAck("sendMessage", params).timingOut(after: 0) { (params:[Any]) in
-            self.handleReceivedChatMessage(params: params)
+            self.handleReceivedChatMessage(params: params, isMine: true)
         }
         
         //socket.emit("sendMessage", with: [params])
@@ -113,7 +120,7 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     }
     
     
-    func getChatMessage(completionHandler: @escaping (_ messageInfo: [String: AnyObject]) -> Void) {
+    func getChatMessage(completionHandler: @escaping (_ messageInfo: [String: AnyObject],_ isMine:Bool) -> Void) {
         self.chatCompletionHandler = completionHandler
     }
     
@@ -180,7 +187,7 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     func eventForReceiveMessage() {
         socket.off("receiveMessage")
         socket.on("receiveMessage") { (dataArray, socketAck) -> Void in
-            self.handleReceivedChatMessage(params: dataArray)
+            self.handleReceivedChatMessage(params: dataArray, isMine: false)
         }
     }
     
@@ -221,13 +228,13 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     
     //MARK:- Handling
     
-    func handleReceivedChatMessage(params:[Any]) {
+    func handleReceivedChatMessage(params:[Any],isMine:Bool) {
         var messageDictionary = [String: AnyObject]()
         print(params)
         messageDictionary = params[0] as! [String:AnyObject]
         
         if let _ = self.chatCompletionHandler {
-            self.chatCompletionHandler?(messageDictionary)
+            self.chatCompletionHandler?(messageDictionary,isMine)
             let chatObj = JSON(rawValue: messageDictionary)
             if chatObj!["messageListId"].exists(){
                 self.handleFirstTimeRecruiterMessage(chatObj: chatObj)

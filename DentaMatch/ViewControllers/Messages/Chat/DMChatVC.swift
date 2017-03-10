@@ -44,6 +44,7 @@ class DMChatVC: DMBaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshUnblockList), name: .refreshUnblockList, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(refreshChat), name: .refreshChat, object: nil)
@@ -137,17 +138,28 @@ class DMChatVC: DMBaseVC {
     }
     
     func receiveChatMessageEvent() {
-        SocketManager.sharedInstance.getChatMessage { (object:[String : AnyObject]) in
+        
+        SocketManager.sharedInstance.getChatMessage { (object:[String : AnyObject], isMine:Bool) in
             print(object)
             let chatObj = JSON(rawValue: object)
+            if let chatObj = chatObj {
+                if chatObj["blocked"].exists() {
+                    if isMine {
+                        self.view.endEditing(true)
+                        self.makeToast(toastString: "Recruiter has blocked you from messaging")
+                        return
+                    }
+                }
+            }
             self.addUpdateChatToDB(chatObj: chatObj)
-            self.chatTextView.text = ""
-            self.placeHolderLabel.isHidden = false
+            if isMine {
+                self.chatTextView.text = ""
+                self.placeHolderLabel.isHidden = false
+            }
         }
     }
     
     func getHistory() {
-        
         if SocketManager.sharedInstance.socket.status == .connected {
             if shouldFetchFromBeginning {
                 SocketManager.sharedInstance.getHistory(recruiterId: (chatList?.recruiterId)!) { (params:[Any]) in
@@ -216,7 +228,15 @@ class DMChatVC: DMBaseVC {
         }
     }
     @IBAction func unblockButtonPressed(_ sender: Any) {
-        self.unBlockRecruiter(chatList: chatList!)
+        //self.unBlockRecruiter(chatList: chatList!)
+        SocketManager.sharedInstance.handleBlockUnblock(chatList: chatList!, blockStatus: "0")
+    }
+    
+    func refreshUnblockList(notification:Notification) {
+        self.chatTextView.isHidden = false
+        self.sendButton.isHidden = false
+        self.unblockButton.isHidden = true
+        self.makeToast(toastString: "Recruiter Unblocked")
     }
     
     func notificationTapHandling(recruiterId:String) {

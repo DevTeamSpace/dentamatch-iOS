@@ -12,8 +12,9 @@ extension Notification.Name {
     static let updateProfileScreen = Notification.Name("updateProfileScreen")
     static let deleteFetchController = Notification.Name("deleteFetchController")
     static let refreshChat = Notification.Name("refreshChat")
-    static let refreshBlockUnblockList = Notification.Name("refreshBlockUnblockList")
-
+    static let refreshBlockList = Notification.Name("refreshBlockList")
+    static let refreshUnblockList = Notification.Name("refreshUnBlockList")
+    
     static let refreshMessageList = Notification.Name("refreshMessageList")
     static let chatRedirect = Notification.Name("chatRedirect")
 
