@@ -112,6 +112,7 @@ extension DMCalenderVC:UITableViewDelegate,UITableViewDataSource{
     func openCancelJob(job:Job,fromApplied:Bool) {
         let cancelJobVC = UIStoryboard.trackStoryBoard().instantiateViewController(type: DMCancelJobVC.self)!
         cancelJobVC.job = job
+        cancelJobVC.hidesBottomBarWhenPushed = true
         cancelJobVC.fromApplied = fromApplied
         cancelJobVC.delegate = self
         self.navigationController?.pushViewController(cancelJobVC, animated: true)

@@ -58,6 +58,11 @@ extension DMLoginVC {
             searchParams[Constants.JobDetailKey.lat] = searchFilters[Constants.JobDetailKey.lat].stringValue
             searchParams[Constants.JobDetailKey.lng] = searchFilters[Constants.JobDetailKey.lng].stringValue
             searchParams[Constants.JobDetailKey.zipCode] = searchFilters[Constants.JobDetailKey.zipCode].stringValue
+            searchParams[Constants.JobDetailKey.city] = searchFilters[Constants.JobDetailKey.city].stringValue
+            searchParams[Constants.JobDetailKey.country] = searchFilters[Constants.JobDetailKey.country].stringValue
+            searchParams[Constants.JobDetailKey.state] = searchFilters[Constants.JobDetailKey.state].stringValue
+
+            
             searchParams[Constants.JobDetailKey.isFulltime] = searchFilters[Constants.JobDetailKey.isFulltime].stringValue
             searchParams[Constants.JobDetailKey.isParttime] = searchFilters[Constants.JobDetailKey.isParttime].stringValue
             

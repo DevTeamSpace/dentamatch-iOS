@@ -128,10 +128,15 @@ class DMPublicProfileVC: DMBaseVC {
             return false
         }
         
-        if editProfileParams[Constants.ServerKey.jobTitileId]!.isEmptyField {
+        if editProfileParams[Constants.ServerKey.jobTitileId]!.isEmptyField || editProfileParams[Constants.ServerKey.jobTitileId]! == "0" {
             self.makeToast(toastString: Constants.AlertMessage.emptyJobTitle)
             return false
         }
+        
+        if editProfileParams[Constants.ServerKey.zipcode]!.isEmptyField {
+            self.makeToast(toastString: Constants.AlertMessage.emptyPinCode)
+            return false
+        }        
         return true
     }
 

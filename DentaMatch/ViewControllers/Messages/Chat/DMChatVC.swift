@@ -40,6 +40,7 @@ class DMChatVC: DMBaseVC {
         self.showLoader(text: "Loading Chats")
         setup()
         receiveChatMessageEvent()
+        sendButton.isUserInteractionEnabled = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -153,6 +154,7 @@ class DMChatVC: DMBaseVC {
             }
             self.addUpdateChatToDB(chatObj: chatObj)
             if isMine {
+                self.sendButton.isUserInteractionEnabled = false
                 self.chatTextView.text = ""
                 self.placeHolderLabel.isHidden = false
             }
@@ -278,8 +280,10 @@ extension DMChatVC:UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         if !textView.text.isEmpty {
             placeHolderLabel.isHidden = true
+            sendButton.isUserInteractionEnabled = true
         } else {
             placeHolderLabel.isHidden = false
+            sendButton.isUserInteractionEnabled = false
         }
 
         let cSize = textView.sizeThatFits(CGSize(width: textView.frame.width, height: 99999))

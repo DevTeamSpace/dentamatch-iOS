@@ -230,6 +230,7 @@ struct Constants {
         static let latitude = "latitude"
         static let longitude = "longitude"
         static let zipCode = "zipCode"
+        static let zipcode = "zipcode"
         static let userType = "userType"
         static let status = "status"
         static let statusCode = "statusCode"
@@ -356,6 +357,7 @@ struct Constants {
         static let emptyValidityDate = "Please enter the validity date"
         static let emptyCancelReason = "Please enter the reason for cancellation"
         static let emptyJobTitle = "Please select a Job title"
+        static let emptyPinCode = "Pincode not found. Please select some other location"
 
         static let emptyPreferredJobLocation = "Preferred Job Location can not be left blank."
         //license no screen

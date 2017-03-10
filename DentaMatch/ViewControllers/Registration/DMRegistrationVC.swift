@@ -97,10 +97,16 @@ class DMRegistrationVC: DMBaseVC {
             return false
         }
         
+        if registrationParams[Constants.ServerKey.zipCode]!.isEmpty {
+            self.makeToast(toastString: Constants.AlertMessage.emptyPinCode)
+            return false
+        }
+        
         if !self.termsAndConditionsAccepted {
             self.makeToast(toastString: Constants.AlertMessage.termsAndConditions)
             return false
         }
+        
         
         return true
     }
