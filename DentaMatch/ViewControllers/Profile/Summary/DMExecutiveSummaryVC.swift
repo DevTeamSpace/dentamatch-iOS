@@ -35,14 +35,9 @@ class DMExecutiveSummaryVC: DMBaseVC {
     }
     
     func openDashboard() {
-        let dashboardVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: TabBarVC.self)!
-        kAppDelegate.window?.rootViewController = dashboardVC
-        
-//        UIView.transition(with: self.view.window!, duration: 0.5, options: .curveEaseInOut, animations: {
-//            kAppDelegate.window?.rootViewController = dashboardVC
-//        }) { (bool:Bool) in
-//            
-//        }
+        kAppDelegate.goToSearch()
+//        let dashboardVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: TabBarVC.self)!
+//        kAppDelegate.window?.rootViewController = dashboardVC
     }
     
     func addToolBarOnTextView() -> UIToolbar {

@@ -149,11 +149,6 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
 //        }
     }
     
-    func openJobSearch() {
-        let jobSearchVC = UIStoryboard.jobSearchStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.jobSearchNav) as! UINavigationController
-        kAppDelegate.window?.rootViewController = jobSearchVC
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Constants.StoryBoard.SegueIdentifier.goToLicense {
             let destinationVC:DMLicenseSelectionVC = segue.destination as! DMLicenseSelectionVC
@@ -167,15 +162,12 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
         self.alertMessage(title: "", message: Constants.AlertMessage.skipProfile, leftButtonText: "Cancel", rightButtonText: kOkButtonTitle) { (isLeftButtonPressed:Bool) in
             if !isLeftButtonPressed {
                 DispatchQueue.main.async {
-                    //self.makeToast(toastString: "Coming soon...")
-                    
+                    UserDefaultsManager.sharedInstance.isProfileSkipped = true
                     if UserDefaultsManager.sharedInstance.loadSearchParameter() == nil {
-                        self.openJobSearch()
+                        kAppDelegate.goToSearch()
                     }else {
-                        
                         self.openDashboard()
                     }
-                    
                 }
             } else {
                //Remain here

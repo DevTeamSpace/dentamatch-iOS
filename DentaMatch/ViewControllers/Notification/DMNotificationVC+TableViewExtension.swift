@@ -35,7 +35,7 @@ extension DMNotificationVC : UITableViewDataSource,UITableViewDelegate {
             return cell!
             
         case .InviteJob:
-            return configureInviteCell(notification: notificationObj, tableView: tableView)
+            return configureInviteCell(indexPath:indexPath,notification: notificationObj, tableView: tableView)
             
         case .verifyDocuments,.completeProfile,.chatMessgae,.other:
             let cell = tableView.dequeueReusableCell(withIdentifier: "CommonTextNotificationTableCell") as? CommonTextNotificationTableCell
@@ -45,11 +45,12 @@ extension DMNotificationVC : UITableViewDataSource,UITableViewDelegate {
         
     }
     
-    func configureInviteCell(notification:UserNotification,tableView:UITableView ) -> UITableViewCell{
+    func configureInviteCell(indexPath:IndexPath,notification:UserNotification,tableView:UITableView ) -> UITableViewCell{
         
         if notification.seen == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "InviteJobNotificationTableCell") as? InviteJobNotificationTableCell
             cell?.configureInviteJobNotificationTableCell(userNotificationObj: notification)
+            cell?.btnAccept.tag = indexPath.row
             cell?.btnAccept.addTarget(self, action: #selector(btnAcceptButtonClicked(_:)), for: .touchUpInside)
             cell?.btnDelete.addTarget(self, action: #selector(btnRejectButtonClicked(_:)), for: .touchUpInside)
             return cell!

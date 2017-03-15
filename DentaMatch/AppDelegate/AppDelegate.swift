@@ -39,6 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         configureNetworkReachability()
         
         if UserDefaultsManager.sharedInstance.isProfileCompleted {
+            
             self.goToDashBoard()
             return true
         }
@@ -100,13 +101,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func goToDashBoard() {
-        let dashboardVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: TabBarVC.self)!
-        self.window?.rootViewController = dashboardVC
+        if let _ =  UserDefaultsManager.sharedInstance.loadSearchParameter() {
+            let dashboardVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: TabBarVC.self)!
+            self.window?.rootViewController = dashboardVC
+        } else {
+            self.goToSearch()
+        }
     }
     
     func goToSearch() {
-        let jobSearchVC = UIStoryboard.jobSearchStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.jobSearchNav) as! UINavigationController
-        self.window?.rootViewController = jobSearchVC
+        let jobSearchNAV = UIStoryboard.jobSearchStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.jobSearchNav) as! UINavigationController
+        if let jobSearchVC = jobSearchNAV.viewControllers[0] as? DMJobSearchVC {
+            if let _ =  UserDefaultsManager.sharedInstance.loadSearchParameter() {
+                jobSearchVC.firstTime = false
+            } else {
+                jobSearchVC.firstTime = true
+            }
+        }
+        self.window?.rootViewController = jobSearchNAV
     }
     
     func changeNavBarAppearance() {

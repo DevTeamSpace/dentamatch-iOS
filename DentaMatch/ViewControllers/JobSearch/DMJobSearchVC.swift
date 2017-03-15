@@ -29,6 +29,7 @@ class DMJobSearchVC : DMBaseVC {
     var searchParams = [String : Any]()
     var totalJobsFromServer = 0
     var fromJobSearchResults = false
+    var firstTime = false
     
     var city = ""
     var country = ""
@@ -44,6 +45,13 @@ class DMJobSearchVC : DMBaseVC {
         super.viewDidLoad()
         self.title = Constants.ScreenTitleNames.jobSearch
         self.setup()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if firstTime {
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,9 +73,9 @@ class DMJobSearchVC : DMBaseVC {
             location.postalCode = (searchParams[Constants.JobDetailKey.zipCode] as! String?)!
             location.address = searchParams[Constants.JobDetailKey.address] as! String?
             let latStr = searchParams[Constants.JobDetailKey.lat] as! NSString
-            let latDbl : Double  = Double(latStr.intValue)
+            //let latDbl : Double  = Double(latStr.intValue)
             let langStr = searchParams[Constants.JobDetailKey.lat] as! NSString
-            let langDbl : Double = Double(langStr.intValue)
+            //let langDbl : Double = Double(langStr.intValue)
             //location.coordinateSelected = CLLocationCoordinate2DMake(latDbl, langDbl)
             if searchParams[Constants.JobDetailKey.isParttime] as! String? == "1" {
                 isPartTimeDayShow = true
