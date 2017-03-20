@@ -98,15 +98,24 @@ class DMChangePasswordVC: DMBaseVC {
                 if text.isEmptyField {
                     self.makeToast(toastString: Constants.AlertMessage.emptyOldPassword)
                     return false
+                } else if text.characters.count < Constants.Limit.passwordLimit {
+                    self.makeToast(toastString: Constants.AlertMessage.passwordRange)
+                    return false
                 }
             case 1:
                 if text.isEmptyField {
                     self.makeToast(toastString: Constants.AlertMessage.emptyNewPassword)
                     return false
+                }  else if text.characters.count < Constants.Limit.passwordLimit {
+                    self.makeToast(toastString: Constants.AlertMessage.passwordRange)
+                    return false
                 }
             case 2:
                 if text.isEmptyField {
                     self.makeToast(toastString: Constants.AlertMessage.emptyConfirmPassword)
+                    return false
+                }  else if text.characters.count < Constants.Limit.passwordLimit {
+                    self.makeToast(toastString: Constants.AlertMessage.passwordRange)
                     return false
                 }
 

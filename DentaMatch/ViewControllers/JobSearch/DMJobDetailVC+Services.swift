@@ -67,12 +67,22 @@ extension DMJobDetailVC {
                     }
                 }
                 else {
-                    self.btnApplyForJob.isUserInteractionEnabled = true
-                    self.btnApplyForJob.isHidden = false
-                    self.constraintBtnApplyJobHeight.constant = 49
-                    self.btnApplyForJob.setTitle(Constants.Strings.applyForJob, for: .normal)
-                    DispatchQueue.main.async {
-                        self.view.layoutIfNeeded()
+                    //If its temp job and cancelled
+                    if job.jobType == 3 {
+                        self.btnApplyForJob.isUserInteractionEnabled = false
+                        self.btnApplyForJob.isHidden = true
+                        self.constraintBtnApplyJobHeight.constant = 0
+                        DispatchQueue.main.async {
+                            self.view.layoutIfNeeded()
+                        }
+                    } else {
+                        self.btnApplyForJob.isUserInteractionEnabled = true
+                        self.btnApplyForJob.isHidden = false
+                        self.constraintBtnApplyJobHeight.constant = 49
+                        self.btnApplyForJob.setTitle(Constants.Strings.applyForJob, for: .normal)
+                        DispatchQueue.main.async {
+                            self.view.layoutIfNeeded()
+                        }
                     }
                 }
                 self.tblJobDetail.isHidden = false
