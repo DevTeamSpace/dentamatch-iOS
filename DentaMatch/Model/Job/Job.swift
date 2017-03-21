@@ -31,6 +31,7 @@ class Job: NSObject {
     var distance = 0.0
     var postTime = ""
     var days = ""
+    var officeDesc = ""
 
     var templateName = ""
     var templateDesc = ""
@@ -84,7 +85,7 @@ class Job: NSObject {
         self.zipcode = job["zipcode"].intValue
         self.postTime = job["createdAt"].stringValue
         self.days = job["days"].stringValue
-        
+        self.officeDesc = job["officeDesc"].stringValue
         self.templateName = job["templateName"].stringValue
         self.templateDesc = job["templateDesc"].stringValue
         self.workEverydayStart = job["workEverydayStart"].stringValue

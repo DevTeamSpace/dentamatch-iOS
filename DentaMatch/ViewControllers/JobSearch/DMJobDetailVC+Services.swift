@@ -131,16 +131,21 @@ extension DMJobDetailVC {
                 }
                 
             } else {
-                
-                self.alertMessage(title: Constants.AlertMessage.completeYourProfile, message: Constants.AlertMessage.completeYourProfileDetailMsg, leftButtonText: Constants.Strings.no, rightButtonText: Constants.Strings.yes, completionHandler: { (isLeftButtonPressed) in
-                    if isLeftButtonPressed {
+                if response[Constants.ServerKey.statusCode].intValue == 200 {
+                    self.alertMessage(title: "", message: response[Constants.ServerKey.message].stringValue, buttonText: "Ok", completionHandler: { 
                         
-                    }
-                    else {
-                       self.tabBarController?.selectedIndex = 4
-                    }
-                    
-                })
+                    })
+                } else {
+                    self.alertMessage(title: Constants.AlertMessage.completeYourProfile, message: Constants.AlertMessage.completeYourProfileDetailMsg, leftButtonText: Constants.Strings.no, rightButtonText: Constants.Strings.yes, completionHandler: { (isLeftButtonPressed) in
+                        if isLeftButtonPressed {
+                            
+                        }
+                        else {
+                            self.tabBarController?.selectedIndex = 4
+                        }
+                        
+                    })
+                }
             }
         }
     }

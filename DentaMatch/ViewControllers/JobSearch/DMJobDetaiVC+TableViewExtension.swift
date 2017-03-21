@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-extension DMJobDetailVC : UITableViewDataSource, UITableViewDelegate, JobDescriptionCellDelegate, DentistDetailCellDelegate {
+extension DMJobDetailVC : UITableViewDataSource, UITableViewDelegate, JobDescriptionCellDelegate, DentistDetailCellDelegate, OfficeDescriptionCellDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 5
@@ -58,9 +58,26 @@ extension DMJobDetailVC : UITableViewDataSource, UITableViewDelegate, JobDescrip
             cell.selectionStyle = .none
             return cell
         case 3:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "OfficeDescriptionCell") as? OfficeDescriptionCell
-            cell?.selectionStyle = .none
-            return cell!
+            let cell = tableView.dequeueReusableCell(withIdentifier: "OfficeDescriptionCell") as! OfficeDescriptionCell
+            cell.officeDescriptionLabel.text = job?.officeDesc
+            let height = OfficeDescriptionCell.requiredHeight(jobDescription: (job?.officeDesc)!, isReadMore: isReadMoreOffice)
+            if height > 91 {
+                cell.heightConstraintReadMoreButton.constant = 41//Button Show
+                if isReadMoreOffice == true {
+                    cell.readMoreButton.setTitle(Constants.Strings.readLess, for: .normal)
+                }
+                else {
+                    cell.readMoreButton.setTitle(Constants.Strings.readMore, for: .normal)
+                }
+            }
+            else {
+                cell.heightConstraintReadMoreButton.constant = 0//Button Hide
+                cell.readMoreButton.setTitle("", for: .normal)
+            }
+            cell.needsUpdateConstraints()
+            cell.delegate = self
+            cell.selectionStyle = .none
+            return cell
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "MapCell") as! MapCell
             cell.selectionStyle = .none
@@ -82,7 +99,9 @@ extension DMJobDetailVC : UITableViewDataSource, UITableViewDelegate, JobDescrip
             let height = JobDescriptionCell.requiredHeight(jobDescription: (job?.templateDesc)!, isReadMore: isReadMore)
             return height
         case 3:
-            return TableViewCellHeight.jobDescAndOfficeDesc.rawValue
+            let height = OfficeDescriptionCell.requiredHeight(jobDescription: (job?.officeDesc)!, isReadMore: isReadMoreOffice)
+            return height
+//            return TableViewCellHeight.jobDescAndOfficeDesc.rawValue
         case 4:
             return TableViewCellHeight.map.rawValue
         default:
@@ -101,7 +120,9 @@ extension DMJobDetailVC : UITableViewDataSource, UITableViewDelegate, JobDescrip
             let height = JobDescriptionCell.requiredHeight(jobDescription: (job?.templateDesc)!, isReadMore: isReadMore)
             return height
         case 3:
-            return TableViewCellHeight.jobDescAndOfficeDesc.rawValue
+            let height = OfficeDescriptionCell.requiredHeight(jobDescription: (job?.officeDesc)!, isReadMore: isReadMoreOffice)
+            return height
+            //return TableViewCellHeight.jobDescAndOfficeDesc.rawValue
         case 4:
             return TableViewCellHeight.map.rawValue
         default:
@@ -155,6 +176,12 @@ extension DMJobDetailVC : UITableViewDataSource, UITableViewDelegate, JobDescrip
     func readMoreOrReadLess() {
         isReadMore = isReadMore ? false : true
         self.tblJobDetail.reloadRows(at: [IndexPath(row: 0, section: 2)], with: .automatic)
+    }
+    
+    func readMoreOrReadOfficeDescription() {
+        isReadMoreOffice = isReadMoreOffice ? false : true
+        self.tblJobDetail.reloadRows(at: [IndexPath(row: 0, section: 3)], with: .automatic)
+
     }
     
     //MARK:- DentistDetailCellDelegate Method

@@ -21,6 +21,7 @@ class DMJobDetailVC: DMBaseVC {
     var jobDetailParams = [String : Any]()
     var job:Job?
     var isReadMore = false
+    var isReadMoreOffice = false
     var delegate:JobSavedStatusUpdateDelegate?
     var fromTrack = false
     var fromCalender = false
