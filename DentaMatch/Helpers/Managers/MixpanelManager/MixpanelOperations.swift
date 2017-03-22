@@ -33,4 +33,8 @@ class MixpanelOperations: NSObject {
     class func trackMixpanelEventWithProperties(eventName:String,dict:NSDictionary) {
         Mixpanel.sharedInstance().track(eventName, properties: dict as [NSObject : AnyObject])
     }
+    
+    class func mixpanepanelLogout() {
+        Mixpanel.sharedInstance().reset()
+    }
 }

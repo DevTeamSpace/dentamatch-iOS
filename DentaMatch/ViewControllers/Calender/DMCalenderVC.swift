@@ -213,18 +213,27 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         let dayTempTime = hiredList.filter { (newJob) -> Bool in
             (newJob.jobType == 3)
         }
-        for temp in dayTempTime {
-            
-            let tempNew = temp.tempJobDates.filter({ (dateString) -> Bool in
-                (dateString.jobDate == Date.dateToString(date: date))
-            })
-            if tempNew.count > 0 {
-                eventcount = eventcount + 1
-                break
-            }
-            
-            
+        
+        let tempJobs = dayTempTime.filter { (newJob) -> Bool in
+            let eventDate = Date.stringToDate(dateString: newJob.tempjobDate)
+            return (eventDate == dateToday)
         }
+        
+        if tempJobs.count > 0 {
+            eventcount = eventcount + 1
+        }
+//        for temp in dayTempTime {
+//            
+//            let tempNew = temp.filter({ (dateString) -> Bool in
+//                (dateString.jobDate == Date.dateToString(date: date))
+//            })
+//            if tempNew.count > 0 {
+//                eventcount = eventcount + 1
+//                break
+//            }
+//            
+//            
+//        }
         
 //        let tempDay = dayTempTime.filter { (newJob) -> Bool in
 //            (newJob.tempJobDates.contains(where: { (objDate) -> Bool in
@@ -320,16 +329,26 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         let dayTempTime = hiredList.filter { (newJob) -> Bool in
             (newJob.jobType == 3)
         }
-        for temp in dayTempTime {
-            
-            let tempNew = temp.tempJobDates.filter({ (dateString) -> Bool in
-                (dateString.jobDate == Date.dateToString(date: date))
-            })
-            if tempNew.count > 0 {
-                color.append(Constants.Color.tempTimeEventColor)
-            }
-            
+        
+        
+        let tempJobs = dayTempTime.filter { (newJob) -> Bool in
+            let eventDate = Date.stringToDate(dateString: newJob.tempjobDate)
+            return (eventDate == dateToday)
         }
+        
+        if tempJobs.count > 0 {
+            color.append(Constants.Color.tempTimeEventColor)
+        }
+//        for temp in dayTempTime {
+//            
+//            let tempNew = temp.tempJobDates.filter({ (dateString) -> Bool in
+//                (dateString.jobDate == Date.dateToString(date: date))
+//            })
+//            if tempNew.count > 0 {
+//                color.append(Constants.Color.tempTimeEventColor)
+//            }
+//            
+//        }
         
         return color
         
@@ -421,16 +440,22 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         let dayTempTime = hiredList.filter { (newJob) -> Bool in
             (newJob.jobType == 3)
         }
-        for temp in dayTempTime {
-            
-            let tempNew = temp.tempJobDates.filter({ (dateString) -> Bool in
-                (dateString.jobDate == Date.dateToString(date: date))
-            })
-            if tempNew.count > 0 {
-                todayAllEvent.append(temp)
+//        for temp in dayTempTime {
+        
+//            let tempNew = temp.tempJobDates.filter({ (dateString) -> Bool in
+//                (dateString.jobDate == Date.dateToString(date: date))
+//            })
+            let tempJobs = dayTempTime.filter { (newJob) -> Bool in
+                let eventDate = Date.stringToDate(dateString: newJob.tempjobDate)
+                return (eventDate == dateToday)
             }
-            
-        }
+            if tempJobs.count > 0 {
+//                todayAllEvent.append(temp)
+                todayAllEvent.append(contentsOf: tempJobs)
+
+            }
+        
+//        }
         
         return todayAllEvent
         
