@@ -23,15 +23,17 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rIZ-xu-RlF">
-                        <rect key="frame" x="8" y="11" width="35" height="16"/>
+                        <rect key="frame" x="8" y="13" width="304" height="14"/>
                         <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="rIZ-xu-RlF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="Gus-1f-taq"/>
+                    <constraint firstItem="rIZ-xu-RlF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="Gus-1f-taq"/>
                     <constraint firstItem="rIZ-xu-RlF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="IX4-6M-sVK"/>
+                    <constraint firstAttribute="trailing" secondItem="rIZ-xu-RlF" secondAttribute="trailing" constant="8" id="O3B-Vz-gwX"/>
+                    <constraint firstAttribute="bottom" secondItem="rIZ-xu-RlF" secondAttribute="bottom" constant="16" id="pKp-mE-U5J"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

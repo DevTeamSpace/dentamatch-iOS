@@ -46,6 +46,7 @@ class Job: NSObject {
     var thursdayStart = ""
     var thursdayEnd = ""
     var fridayStart = ""
+    var fridayEnd = ""
     var saturdayStart = ""
     var saturdayEnd = ""
     var sundayStart = ""
@@ -101,6 +102,7 @@ class Job: NSObject {
         self.thursdayStart = job["thursdayStart"].stringValue
         self.thursdayEnd = job["thursdayEnd"].stringValue
         self.fridayStart = job["fridayStart"].stringValue
+        self.fridayEnd = job["fridayEnd"].stringValue
         self.saturdayStart = job["saturdayStart"].stringValue
         self.saturdayEnd = job["saturdayEnd"].stringValue
         self.sundayStart = job["sundayStart"].stringValue

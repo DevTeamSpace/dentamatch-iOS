@@ -81,9 +81,7 @@ extension DMJobDetailVC : UITableViewDataSource, UITableViewDelegate, JobDescrip
         
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "WorkingHoursTableCell") as! WorkingHoursTableCell
-            if !(job?.workEverydayStart.isEmptyField)! {
-                cell.workingHoursLabel.attributedText = cell.setAllDayText(job: job!)
-            }
+            cell.workingHoursLabel.attributedText = WorkingHoursTableCell.setAllDayText(job: job!)
             return cell
             
         case 5:
@@ -111,7 +109,7 @@ extension DMJobDetailVC : UITableViewDataSource, UITableViewDelegate, JobDescrip
             return height
         case 4:
             //Working hours
-            return 50
+            return WorkingHoursTableCell.requiredHeight(job: job!)
         case 5:
             return TableViewCellHeight.map.rawValue
         default:
@@ -135,7 +133,8 @@ extension DMJobDetailVC : UITableViewDataSource, UITableViewDelegate, JobDescrip
             //return TableViewCellHeight.jobDescAndOfficeDesc.rawValue
         case 4:
             //Working hours
-            return 50
+            return UITableViewAutomaticDimension
+            //return WorkingHoursTableCell.requiredHeight(job: job!)
         case 5:
             return TableViewCellHeight.map.rawValue
         default:

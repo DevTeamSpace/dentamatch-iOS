@@ -110,9 +110,10 @@ class DMJobSearchVC : DMBaseVC {
             //self.getLocation()
         }
         
-        let coordinate = CLLocationCoordinate2D(latitude: Double(UserManager.shared().activeUser.latitude!)!, longitude: Double(UserManager.shared().activeUser.longitude!)!)
-        location.coordinateSelected = coordinate
-        reverseGeocodeCoordinate(coordinate: coordinate)
+        self.getLocation()
+//        let coordinate = CLLocationCoordinate2D(latitude: Double(UserManager.shared().activeUser.latitude!)!, longitude: Double(UserManager.shared().activeUser.longitude!)!)
+//        location.coordinateSelected = coordinate
+//        reverseGeocodeCoordinate(coordinate: coordinate)
 
         if fromJobSearchResults {
             self.navigationItem.leftBarButtonItem = self.backBarButton()
@@ -152,7 +153,9 @@ class DMJobSearchVC : DMBaseVC {
     }
     
     func getLocation() {
+        self.showLoader()
         LocationManager.sharedInstance.getLocation { (location:CLLocation?, error:NSError?) in
+            self.hideLoader()
             if error != nil {
                 DispatchQueue.main.async {
                     self.alertMessage(title: "", message: (error?.localizedDescription)!, buttonText: kOkButtonTitle, completionHandler: nil)
