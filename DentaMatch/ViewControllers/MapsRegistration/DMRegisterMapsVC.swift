@@ -171,7 +171,9 @@ class DMRegisterMapsVC: DMBaseVC {
     func getPlaceDetails(_ prediction:GMSAutocompletePrediction) {
         let placesClient = GMSPlacesClient()
         //let placesClient = GMSPlacesClient.shared()
+        self.showLoader()
         placesClient.lookUpPlaceID(prediction.placeID!) { (place:GMSPlace?, error:Error?) in
+            self.hideLoader()
             if error != nil {
                 return
             }

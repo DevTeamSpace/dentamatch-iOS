@@ -30,7 +30,6 @@ extension DMRegisterMapsVC:GMSAutocompleteViewControllerDelegate,GMSMapViewDeleg
     }
     
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
-        print(coordinate)
         self.placeMarkerOnMap(coordinate: coordinate)
         self.location.coordinateSelected = coordinate
         reverseGeocodeCoordinate(coordinate: coordinate)
