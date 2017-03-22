@@ -139,5 +139,14 @@ class DentistDetailCell: UITableViewCell {
         else {
             self.lblPostTime.text = job.jobPostedTimeGap + Constants.Strings.whiteSpace + Constants.Strings.daysAgo
         }
+        
+        if job.jobType == 3 {
+            self.lblDays.text = ""
+            //its a temp job
+            for date in job.jobTypeDates {
+                self.lblDays.text = self.lblDays.text! + date + ", "
+            }
+            self.lblDays.text = self.lblDays.text?.dropLast(2)
+        }
     }
 }

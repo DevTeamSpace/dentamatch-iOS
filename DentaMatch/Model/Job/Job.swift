@@ -107,7 +107,9 @@ class Job: NSObject {
         self.sundayEnd = job["sundayEnd"].stringValue
         self.jobPostedTimeGap = job["jobPostedTimeGap"].stringValue
         self.officeTypeName = job["officeTypeName"].stringValue
-        self.jobTypeDates = [job["jobTypeDates"].stringValue]
+        if let tempDates = job["jobTypeDates"].arrayObject as? [String] {
+            self.jobTypeDates = tempDates
+        }
         self.jobTypeString = job["jobTypeString"].stringValue
         self.jobCreatedAt = job["jobCreatedAt"].stringValue
         self.jobAppliedOn = job["jobAppliedOn"].stringValue
