@@ -41,6 +41,11 @@ extension DMChangePasswordVC:UITableViewDataSource,UITableViewDelegate {
 
 extension DMChangePasswordVC : UITextFieldDelegate {
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if let textField = textField as? AnimatedLeftViewPHTextField {
             textField.layer.borderColor = Constants.Color.textFieldColorSelected.cgColor

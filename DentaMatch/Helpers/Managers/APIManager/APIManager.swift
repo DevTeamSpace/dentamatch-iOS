@@ -23,6 +23,7 @@ class APIManager: NSObject {
                     if json[Constants.ServerKey.statusCode].intValue == 204 {
                         //Invalid Token, Log out
                         Utilities.logOutOfInvalidToken()
+                        return
                     }
                     completionHandler(json,nil)
                 }
@@ -47,6 +48,7 @@ class APIManager: NSObject {
                     if json[Constants.ServerKey.statusCode].intValue == 204 {
                         //Invalid Token, Log out
                         Utilities.logOutOfInvalidToken()
+                        return
                     }
                     completionHandler(json,nil)
                 }
@@ -71,6 +73,7 @@ class APIManager: NSObject {
                     if json[Constants.ServerKey.statusCode].intValue == 204 {
                         //Invalid Token, Log out
                         Utilities.logOutOfInvalidToken()
+                        return
                     }
                     completionHandler(json,nil)
                 }
@@ -95,6 +98,7 @@ class APIManager: NSObject {
                     if json[Constants.ServerKey.statusCode].intValue == 204 {
                         //Invalid Token, Log out
                         Utilities.logOutOfInvalidToken()
+                        return
                     }
                     completionHandler(json,nil)
                 }
@@ -119,6 +123,7 @@ class APIManager: NSObject {
                     if json[Constants.ServerKey.statusCode].intValue == 204 {
                         //Invalid Token, Log out
                         Utilities.logOutOfInvalidToken()
+                        return
                     }
                     completionHandler(json,nil)
                 }
@@ -164,6 +169,7 @@ class APIManager: NSObject {
                         if json[Constants.ServerKey.statusCode].intValue == 204 {
                             //Invalid Token, Log out
                             Utilities.logOutOfInvalidToken()
+                            return
                         }
                         completionHandler(json,nil)
                     }
