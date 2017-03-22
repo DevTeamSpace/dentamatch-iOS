@@ -82,6 +82,8 @@
 		5AD246951E273CE7009350BF /* DatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AD246941E273CE7009350BF /* DatePickerView.xib */; };
 		5AD246971E27799F009350BF /* PickerAnimatedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD246961E27799F009350BF /* PickerAnimatedTextField.swift */; };
 		5AE5F50A1E16563D006C328A /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AE5F5091E16563D006C328A /* Profile.storyboard */; };
+		E50512BE1E82378700509328 /* WorkingHoursTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50512BC1E82378700509328 /* WorkingHoursTableCell.swift */; };
+		E50512BF1E82378700509328 /* WorkingHoursTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E50512BD1E82378700509328 /* WorkingHoursTableCell.xib */; };
 		E50B3F4C1E194CD7004C5F32 /* AnimatedPHTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50B3F451E194CD7004C5F32 /* AnimatedPHTableCell.swift */; };
 		E50B3F4D1E194CD7004C5F32 /* AnimatedPHTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E50B3F461E194CD7004C5F32 /* AnimatedPHTableCell.xib */; };
 		E50B3F4E1E194CD7004C5F32 /* LoginTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50B3F481E194CD7004C5F32 /* LoginTableViewCell.swift */; };
@@ -461,6 +463,8 @@
 		5AE5F5091E16563D006C328A /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		A69AB47303239A016127D8D8 /* Pods-DentaMatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DentaMatch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch.debug.xcconfig"; sourceTree = "<group>"; };
 		C611E923856ECE4538FA4F38 /* Pods_DentaMatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DentaMatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E50512BC1E82378700509328 /* WorkingHoursTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkingHoursTableCell.swift; sourceTree = "<group>"; };
+		E50512BD1E82378700509328 /* WorkingHoursTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkingHoursTableCell.xib; sourceTree = "<group>"; };
 		E50B3F451E194CD7004C5F32 /* AnimatedPHTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedPHTableCell.swift; sourceTree = "<group>"; };
 		E50B3F461E194CD7004C5F32 /* AnimatedPHTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnimatedPHTableCell.xib; sourceTree = "<group>"; };
 		E50B3F481E194CD7004C5F32 /* LoginTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTableViewCell.swift; sourceTree = "<group>"; };
@@ -2151,6 +2155,8 @@
 				F2F5E0DB1E31BDEC0082187C /* MapCell.xib */,
 				F2F5E0DF1E31D40E0082187C /* JobDetailHeaderView.swift */,
 				F2F5E0E11E31D43A0082187C /* JobDetailHeaderView.xib */,
+				E50512BC1E82378700509328 /* WorkingHoursTableCell.swift */,
+				E50512BD1E82378700509328 /* WorkingHoursTableCell.xib */,
 			);
 			path = JobDetail;
 			sourceTree = "<group>";
@@ -2320,6 +2326,7 @@
 				5AC7143E1E34A90700E433C1 /* Jobs.storyboard in Resources */,
 				5AE5F50A1E16563D006C328A /* Profile.storyboard in Resources */,
 				F2540F531E23A854004B0538 /* JobSearchPartTimeCell.xib in Resources */,
+				E50512BF1E82378700509328 /* WorkingHoursTableCell.xib in Resources */,
 				F2F5E0D81E30D2C80082187C /* OfficeDescriptionCell.xib in Resources */,
 				F2F5E0D01E2F62080082187C /* AboutCell.xib in Resources */,
 				E56E45C31DAE07C200AD4559 /* Assets.xcassets in Resources */,
@@ -2420,6 +2427,7 @@
 				F223591D1E3F5F4900E984FC /* DMJobSearchResultVC+TableViewExtension.swift in Sources */,
 				E5BED5531E49AB85003EC833 /* DMMessagesVC+TableViewExtension.swift in Sources */,
 				E5E7CB781E2FA23200D4FB59 /* AboutMeCell.swift in Sources */,
+				E50512BE1E82378700509328 /* WorkingHoursTableCell.swift in Sources */,
 				E5AE37741E4971CE0001EC3C /* SocketTypes.swift in Sources */,
 				E5A174C71E201DE40044B17E /* ProfileImageButton.swift in Sources */,
 				E5A174C21E201D450044B17E /* CircleProgressBar.m in Sources */,

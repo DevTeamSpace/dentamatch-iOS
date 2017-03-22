@@ -12,7 +12,7 @@ import SwiftyJSON
 extension DMJobDetailVC : UITableViewDataSource, UITableViewDelegate, JobDescriptionCellDelegate, DentistDetailCellDelegate, OfficeDescriptionCellDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return 6
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -78,7 +78,15 @@ extension DMJobDetailVC : UITableViewDataSource, UITableViewDelegate, JobDescrip
             cell.delegate = self
             cell.selectionStyle = .none
             return cell
+        
         case 4:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "WorkingHoursTableCell") as! WorkingHoursTableCell
+            if !(job?.workEverydayStart.isEmptyField)! {
+                cell.workingHoursLabel.attributedText = cell.setAllDayText(job: job!)
+            }
+            return cell
+            
+        case 5:
             let cell = tableView.dequeueReusableCell(withIdentifier: "MapCell") as! MapCell
             cell.selectionStyle = .none
             cell.setPinOnMap(job: job!)
@@ -101,8 +109,10 @@ extension DMJobDetailVC : UITableViewDataSource, UITableViewDelegate, JobDescrip
         case 3:
             let height = OfficeDescriptionCell.requiredHeight(jobDescription: (job?.officeDesc)!, isReadMore: isReadMoreOffice)
             return height
-//            return TableViewCellHeight.jobDescAndOfficeDesc.rawValue
         case 4:
+            //Working hours
+            return 50
+        case 5:
             return TableViewCellHeight.map.rawValue
         default:
             break
@@ -124,6 +134,9 @@ extension DMJobDetailVC : UITableViewDataSource, UITableViewDelegate, JobDescrip
             return height
             //return TableViewCellHeight.jobDescAndOfficeDesc.rawValue
         case 4:
+            //Working hours
+            return 50
+        case 5:
             return TableViewCellHeight.map.rawValue
         default:
             break
@@ -159,7 +172,12 @@ extension DMJobDetailVC : UITableViewDataSource, UITableViewDelegate, JobDescrip
         case 3:
             headerView.setHeaderData(iconText: Constants.DesignFont.officeDescription, headerText: Constants.Strings.officeDesc)
             return headerView
+        
         case 4:
+            headerView.setHeaderData(iconText: Constants.DesignFont.map, headerText: Constants.Strings.workingHours)
+            return headerView
+            
+        case 5:
             headerView.setHeaderData(iconText: Constants.DesignFont.map, headerText: Constants.Strings.map)
             return headerView
         default:
