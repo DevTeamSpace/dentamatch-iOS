@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -34,7 +34,7 @@
         <scene sceneID="h2y-8K-0Am">
             <objects>
                 <navigationController storyboardIdentifier="ProfileNAV" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="aBo-Dm-4RQ" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="p5y-OV-SJO">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="p5y-OV-SJO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -111,7 +111,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let’s start with creating your profile." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="hos-jx-ofR">
-                                <rect key="frame" x="45.5" y="335" width="285" height="20"/>
+                                <rect key="frame" x="46" y="335" width="285" height="20"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="17"/>
                                 <color key="textColor" red="0.058823529411764705" green="0.094117647058823528" blue="0.24313725490196078" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -385,7 +385,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PROFESSIONAL AFFILIATIONS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q9M-aS-mrU">
-                                        <rect key="frame" x="20" y="20" width="199" height="17"/>
+                                        <rect key="frame" x="20" y="20" width="205.5" height="17"/>
                                         <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="14"/>
                                         <color key="textColor" red="0.21960784310000001" green="0.21960784310000001" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -788,17 +788,17 @@
                                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gQ6-MV-uz6" id="iUI-BV-vfF">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CAN-M5-Y2I">
-                                                            <rect key="frame" x="20" y="9" width="230" height="21"/>
+                                                            <rect key="frame" x="20" y="9.5" width="230" height="20"/>
                                                             <fontDescription key="fontDescription" name="SFUIText-Bold" family="SF UI Text" pointSize="17"/>
                                                             <color key="textColor" red="0.015686274509803921" green="0.4392156862745098" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20 years 11 month" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDO-mX-kDm">
-                                                            <rect key="frame" x="252" y="10" width="100" height="20"/>
+                                                            <rect key="frame" x="252" y="10.5" width="100" height="19"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="100" id="3hq-jR-g3N"/>
                                                             </constraints>
@@ -814,8 +814,8 @@
                                                             </constraints>
                                                         </imageView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ieu-6l-lsX">
-                                                            <rect key="frame" x="0.0" y="41" width="375" height="2"/>
-                                                            <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <rect key="frame" x="0.0" y="41" width="375" height="1"/>
+                                                            <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="1.5" id="l9J-ff-gp4"/>
                                                             </constraints>
@@ -829,7 +829,7 @@
                                                         <constraint firstItem="2DA-L9-0sU" firstAttribute="leading" secondItem="RDO-mX-kDm" secondAttribute="trailing" constant="2" id="KZH-6z-Ksk"/>
                                                         <constraint firstAttribute="trailing" secondItem="2DA-L9-0sU" secondAttribute="trailing" constant="13" id="T0W-Ex-adP"/>
                                                         <constraint firstAttribute="trailing" secondItem="Ieu-6l-lsX" secondAttribute="trailing" id="dEa-xd-NFK"/>
-                                                        <constraint firstAttribute="bottom" secondItem="Ieu-6l-lsX" secondAttribute="bottom" id="dib-ps-Q9P"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Ieu-6l-lsX" secondAttribute="bottom" constant="1" id="dib-ps-Q9P"/>
                                                         <constraint firstItem="2DA-L9-0sU" firstAttribute="top" secondItem="iUI-BV-vfF" secondAttribute="top" constant="14" id="gbY-fj-fbf"/>
                                                         <constraint firstItem="CAN-M5-Y2I" firstAttribute="centerY" secondItem="iUI-BV-vfF" secondAttribute="centerY" multiplier="0.9" id="rMO-Lu-Ssf"/>
                                                     </constraints>
