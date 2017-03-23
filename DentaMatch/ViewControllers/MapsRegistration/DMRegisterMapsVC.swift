@@ -258,7 +258,7 @@ class DMRegisterMapsVC: DMBaseVC {
 extension DMRegisterMapsVC:UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        if fromEditProfile || fromSettings {
+        if fromEditProfile || fromSettings || fromJobSearch {
             if UserManager.shared().activeUser.preferredJobLocation != self.location.address! {
                 self.alertMessage(title: "Change Location", message: "Are you sure you want to change the location", leftButtonText: "No", rightButtonText: "Yes", completionHandler: { (isLeft:Bool) in
                     if !isLeft {

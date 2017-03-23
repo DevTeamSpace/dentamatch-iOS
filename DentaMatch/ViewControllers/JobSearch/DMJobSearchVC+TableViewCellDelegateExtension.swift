@@ -24,6 +24,9 @@ extension DMJobSearchVC : LocationAddressDelegate {
     func locationAddress(location: Location) {
         self.location = location
         if location.address != nil {
+            self.city = self.location.city
+            self.country = self.location.country
+            self.state = self.location.state
             tblViewJobSearch.beginUpdates()
             tblViewJobSearch.reloadRows(at: [IndexPath(row: 0, section: 2)], with: .bottom)
             tblViewJobSearch.endUpdates()
