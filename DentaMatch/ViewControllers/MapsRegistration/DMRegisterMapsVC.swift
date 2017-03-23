@@ -207,6 +207,7 @@ class DMRegisterMapsVC: DMBaseVC {
     
     //MARK:- Reverse Geocoding
     func reverseGeocodeCoordinate(coordinate: CLLocationCoordinate2D) {
+        print(coordinate)
         let geocoder = GMSGeocoder()
         geocoder.reverseGeocodeCoordinate(coordinate) { (response:GMSReverseGeocodeResponse?, error:Error?) in
             if let address = response?.firstResult() {

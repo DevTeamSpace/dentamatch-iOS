@@ -119,6 +119,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         self.window?.rootViewController = jobSearchNAV
+        UIApplication.shared.statusBarStyle = .lightContent
     }
     
     func changeNavBarAppearance() {

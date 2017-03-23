@@ -85,7 +85,7 @@ class DMCancelJobVC: DMBaseVC {
         if self.reasonTextView.text!.isEmptyField {
             self.makeToast(toastString: Constants.AlertMessage.emptyCancelReason)
         } else {
-            self.alertMessage(title: "Confirm your cancellation", message: "Are you sure you want to cancel the job?", leftButtonText: "Cancel", rightButtonText: "Ok", completionHandler: { (isLeftButton:Bool) in
+            self.alertMessage(title: "Confirm your cancellation", message: "\nAre you sure you want to cancel the job?", leftButtonText: "Cancel", rightButtonText: "Ok", completionHandler: { (isLeftButton:Bool) in
                 if !isLeftButton {
                     self.cancelJobAPI()
                 }

@@ -174,6 +174,7 @@ extension DMJobDetailVC : UITableViewDataSource, UITableViewDelegate, JobDescrip
         
         case 4:
             headerView.setHeaderData(iconText: Constants.DesignFont.map, headerText: Constants.Strings.workingHours)
+            headerView.btnIcon.setImage(UIImage(named:"workingHoursIcon"), for: .normal)
             return headerView
             
         case 5:

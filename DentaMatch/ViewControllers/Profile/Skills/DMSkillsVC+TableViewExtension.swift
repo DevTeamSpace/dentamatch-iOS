@@ -38,7 +38,7 @@ extension DMSkillsVC : UITableViewDataSource, UITableViewDelegate {
             switch indexPath.row {
             case 0:
                 //Profile Header
-                return 233
+                return 213
             case 1:
                 //Heading
                 
@@ -78,6 +78,7 @@ extension DMSkillsVC : UITableViewDataSource, UITableViewDelegate {
             case 1:
                 //Heading
                 let cell = tableView.dequeueReusableCell(withIdentifier: "SectionHeadingTableCell") as! SectionHeadingTableCell
+                cell.headingLabel.text = "KEY SKILLS"
                 return cell
                 
             default:

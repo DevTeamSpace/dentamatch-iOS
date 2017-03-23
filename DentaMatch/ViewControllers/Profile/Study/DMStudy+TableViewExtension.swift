@@ -45,7 +45,7 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate {
         switch indexPath.row {
         case 0:
             //Profile Header
-            return 233
+            return 213
         case 1:
             //Heading
             return 44

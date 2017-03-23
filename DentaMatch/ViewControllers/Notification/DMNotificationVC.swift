@@ -47,6 +47,7 @@ class DMNotificationVC: DMBaseVC {
         placeHolderEmptyJobsView?.backgroundColor = UIColor.clear
         placeHolderEmptyJobsView?.placeHolderMessageLabel.numberOfLines = 2
         placeHolderEmptyJobsView?.placeHolderMessageLabel.text = Constants.AlertMessage.noNotification
+        placeHolderEmptyJobsView?.placeholderImageView.image = UIImage(named: "notificationPlaceholder")
         self.view.addSubview(placeHolderEmptyJobsView!)
         placeHolderEmptyJobsView?.isHidden = false
         self.placeHolderEmptyJobsView?.layoutIfNeeded()
