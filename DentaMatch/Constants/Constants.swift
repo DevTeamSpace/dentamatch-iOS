@@ -388,7 +388,7 @@ struct Constants {
         static let emptyOldPassword = "Please enter Old password"
         static let emptyNewPassword = "Please enter New password"
         static let emptyConfirmPassword = "Please enter Confirm password"
-        static let matchPassword = "New password and Confirm password not match"
+        static let matchPassword = "New password and Confirm password doesn't match"
         
         //setAvailability
         static let selectAvailableDay = "Please select at least one day"

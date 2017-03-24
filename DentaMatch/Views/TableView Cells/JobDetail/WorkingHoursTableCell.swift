@@ -61,10 +61,15 @@ class WorkingHoursTableCell: UITableViewCell {
     
     class func makeWeekDayText(job:Job) -> NSMutableAttributedString {
         
+        let paragraphStyle = NSMutableParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
+        paragraphStyle.lineSpacing = 12.0
+      
+        
         var isStarted = false
         let dateFormatter = DateFormatter()
         
         let weekDayAttrString = NSMutableAttributedString()
+        
         var weekDayText = NSAttributedString(string: "Sunday: ", attributes: [NSFontAttributeName:UIFont.fontSemiBold(fontSize: 13.0)!,NSForegroundColorAttributeName:UIColor.color(withHexCode: "272727")])
         
         var timeText = NSAttributedString(string: allDayDate(job: job), attributes: [NSFontAttributeName:UIFont.fontRegular(fontSize: 13.0)!,NSForegroundColorAttributeName:UIColor.color(withHexCode: "515151")])
@@ -250,6 +255,8 @@ class WorkingHoursTableCell: UITableViewCell {
             weekDayAttrString.append(timeText)
 
         }
+
+        weekDayAttrString.addAttributes([NSParagraphStyleAttributeName:paragraphStyle], range: NSMakeRange(0, weekDayAttrString.length))
 
         return weekDayAttrString
     }
