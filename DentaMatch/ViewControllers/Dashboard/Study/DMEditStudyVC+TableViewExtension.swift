@@ -43,7 +43,7 @@ extension DMEditStudyVC:UITableViewDataSource,UITableViewDelegate {
         cell.yearOfGraduationTextField.tintColor = UIColor.clear
         cell.yearOfGraduationTextField.type = 1
         cell.yearOfGraduationTextField.returnKeyType = .done
-        
+        cell.schoolNameTextField.keyboardType = .asciiCapable
         
         for dict in selectedData {
             let selectedDict = dict as! NSDictionary

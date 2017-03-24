@@ -136,4 +136,8 @@ class DMRegistrationContainer: DMBaseVC {
         self.loginVC?.view.alpha = 1.0
         self.registrationVC?.view.alpha = 0.0
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 }
