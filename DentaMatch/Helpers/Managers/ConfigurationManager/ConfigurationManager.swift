@@ -81,10 +81,10 @@ class ConfigurationManager:NSObject {
     
     // isAnalyticsTrackingEnabled
     
-    func isAnalyticsTrackingEnabled () -> String  {
+    func isAnalyticsTrackingEnabled () -> Bool  {
         
         let configuration = self.environment![kAnalyticsTrackingEnabled!]
-        return (configuration)! as! String
+        return (configuration)! as! Bool
     }
     
     func applicationName()->String{

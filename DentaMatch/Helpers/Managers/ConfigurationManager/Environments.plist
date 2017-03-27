@@ -13,7 +13,7 @@
 		<key>AnalyticsTrackingEnabled</key>
 		<true/>
 		<key>MixpanelToken</key>
-		<string></string>
+		<string>baeda2003ca1585a7828ce1d02833836</string>
 		<key>Flurry</key>
 		<dict>
 			<key>FlurryApplicationID</key>
@@ -40,7 +40,7 @@
 		<key>AnalyticsTrackingEnabled</key>
 		<true/>
 		<key>MixpanelToken</key>
-		<string></string>
+		<string>baeda2003ca1585a7828ce1d02833836</string>
 		<key>Flurry</key>
 		<dict>
 			<key>FlurryApplicationID</key>
@@ -67,7 +67,7 @@
 		<key>AnalyticsTrackingEnabled</key>
 		<true/>
 		<key>MixpanelToken</key>
-		<string></string>
+		<string>baeda2003ca1585a7828ce1d02833836</string>
 		<key>Flurry</key>
 		<dict>
 			<key>FlurryApplicationID</key>
@@ -94,7 +94,7 @@
 		<key>AnalyticsTrackingEnabled</key>
 		<true/>
 		<key>MixpanelToken</key>
-		<string></string>
+		<string>baeda2003ca1585a7828ce1d02833836</string>
 		<key>Flurry</key>
 		<dict>
 			<key>FlurryApplicationID</key>

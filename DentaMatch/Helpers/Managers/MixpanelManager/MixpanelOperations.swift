@@ -11,30 +11,43 @@ import Mixpanel
 class MixpanelOperations: NSObject {
     class func startSessionForMixpanelWithToken()
     {
-        Mixpanel.sharedInstance(withToken: ConfigurationManager.sharedManager.mixpanelToken())
+        if ConfigurationManager.sharedManager.isAnalyticsTrackingEnabled() {
+            Mixpanel.sharedInstance(withToken: ConfigurationManager.sharedManager.mixpanelToken())
+        }
     }
     
     class func registerMixpanelUser()
     {
-        let dictForUser  = ["userID":UserManager.shared().activeUser.userId,"email":UserManager.shared().activeUser.email,"Name":UserManager.shared().activeUser.userName,"Time":NSDate()] as [String : Any]
-        Mixpanel.sharedInstance().people.set(dictForUser)
+        if ConfigurationManager.sharedManager.isAnalyticsTrackingEnabled() {
+            let dictForUser  = ["userID":UserManager.shared().activeUser.userId,"email":UserManager.shared().activeUser.email,"Name":UserManager.shared().activeUser.userName,"Time":NSDate()] as [String : Any]
+            Mixpanel.sharedInstance().people.set(dictForUser)
+        }
+        
     }
     
     class func manageMixpanelUserIdentity(){
-        let dictForUser  = ["userID":UserManager.shared().activeUser.userId,"email":UserManager.shared().activeUser.email,"Name":UserManager.shared().activeUser.userName,"Time":NSDate()] as [String : Any]
-        Mixpanel.sharedInstance().identify(UserManager.shared().activeUser.userId)
-        Mixpanel.sharedInstance().registerSuperProperties(dictForUser)
+        if ConfigurationManager.sharedManager.isAnalyticsTrackingEnabled() {
+            let dictForUser  = ["userID":UserManager.shared().activeUser.userId,"email":UserManager.shared().activeUser.email,"Name":UserManager.shared().activeUser.userName,"Time":NSDate()] as [String : Any]
+            Mixpanel.sharedInstance().identify(UserManager.shared().activeUser.userId)
+            Mixpanel.sharedInstance().registerSuperProperties(dictForUser)
+        }
     }
     
     class func trackMixpanelEvent(eventName:String)  {
-        Mixpanel.sharedInstance().track(eventName)
+        if ConfigurationManager.sharedManager.isAnalyticsTrackingEnabled() {
+            Mixpanel.sharedInstance().track(eventName)
+        }
     }
     
     class func trackMixpanelEventWithProperties(eventName:String,dict:NSDictionary) {
-        Mixpanel.sharedInstance().track(eventName, properties: dict as [NSObject : AnyObject])
+        if ConfigurationManager.sharedManager.isAnalyticsTrackingEnabled() {
+            Mixpanel.sharedInstance().track(eventName, properties: dict as [NSObject : AnyObject])
+        }
     }
     
     class func mixpanepanelLogout() {
-        Mixpanel.sharedInstance().reset()
+        if ConfigurationManager.sharedManager.isAnalyticsTrackingEnabled() {
+            Mixpanel.sharedInstance().reset()
+        }
     }
 }
