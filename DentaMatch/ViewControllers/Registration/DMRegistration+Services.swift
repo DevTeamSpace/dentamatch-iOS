@@ -27,7 +27,7 @@ extension DMRegistrationVC {
             debugPrint(response!)
             
             if response![Constants.ServerKey.status].boolValue {
-                MixpanelOperations.trackMixpanelEventWithProperties(eventName: "SignUp", dict: params)
+                MixpanelOperations.trackMixpanelEventWithProperties(eventName: "SignUp", dict: params as NSDictionary)
                 self.clearData()
                 self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
                 self.goToLogin()

@@ -19,7 +19,7 @@ class MixpanelOperations: NSObject {
     class func registerMixpanelUser()
     {
         if ConfigurationManager.sharedManager.isAnalyticsTrackingEnabled() {
-            let dictForUser  = ["userID":UserManager.shared().activeUser.userId,"email":UserManager.shared().activeUser.email,"Name":UserManager.shared().activeUser.userName,"Time":NSDate()] as [String : Any]
+            let dictForUser  = ["userID":UserManager.shared().activeUser.userId!,"email":UserManager.shared().activeUser.email!,"Name":UserManager.shared().activeUser.fullName()!,"Time":NSDate()] as [String : Any]
             Mixpanel.sharedInstance().people.set(dictForUser)
         }
         
@@ -27,8 +27,8 @@ class MixpanelOperations: NSObject {
     
     class func manageMixpanelUserIdentity(){
         if ConfigurationManager.sharedManager.isAnalyticsTrackingEnabled() {
-            let dictForUser  = ["userID":UserManager.shared().activeUser.userId,"email":UserManager.shared().activeUser.email,"Name":UserManager.shared().activeUser.userName,"Time":NSDate()] as [String : Any]
-            Mixpanel.sharedInstance().identify(UserManager.shared().activeUser.userId)
+            let dictForUser  = ["userID":UserManager.shared().activeUser.userId!,"email":UserManager.shared().activeUser.email!,"Name":UserManager.shared().activeUser.fullName()!,"Time":NSDate()] as [String : Any]
+            Mixpanel.sharedInstance().identify(UserManager.shared().activeUser.userId!)
             Mixpanel.sharedInstance().registerSuperProperties(dictForUser)
         }
     }
