@@ -79,6 +79,9 @@ extension DMSettingVC : UITableViewDataSource,UITableViewDelegate {
         signOut { (check, error) in
             
             if check == true {
+                MixpanelOperations.trackMixpanelEvent(eventName: "Logout")
+                MixpanelOperations.mixpanepanelLogout()
+
                 self.deleteFetchController()
                 SocketManager.sharedInstance.closeConnection()
                 UserManager.shared().deleteActiveUser()

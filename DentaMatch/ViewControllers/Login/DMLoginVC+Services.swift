@@ -33,6 +33,9 @@ extension DMLoginVC {
         UserManager.shared().loginResponseHandler(response: response) { (success:Bool, message:String) in
             self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
             if success {
+                MixpanelOperations.manageMixpanelUserIdentity()
+                MixpanelOperations.registerMixpanelUser()
+                MixpanelOperations.trackMixpanelEvent(eventName: "Login")
                 SocketManager.sharedInstance.establishConnection()
                 self.saveSearchedData(response: response!)
                 let userDetails = response?[Constants.ServerKey.result][Constants.ServerKey.userDetails].dictionary
