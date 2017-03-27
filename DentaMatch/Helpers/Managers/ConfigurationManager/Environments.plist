@@ -34,7 +34,7 @@
 		<key>APIEndPoint</key>
 		<string>https://qa.dentamatch.co/api/</string>
 		<key>SocketEndPoint</key>
-		<string>http://54.67.73.194:3000</string>
+		<string>https://qanode.dentamatch.co:8443</string>
 		<key>LoggingEnabled</key>
 		<true/>
 		<key>AnalyticsTrackingEnabled</key>
@@ -59,9 +59,9 @@
 	<key>Staging</key>
 	<dict>
 		<key>APIEndPoint</key>
-		<string>http://staging.dentamatch.co/api/</string>
+		<string>https://staging.dentamatch.co/api/</string>
 		<key>SocketEndPoint</key>
-		<string>http://staging.dentamatch.co:3000</string>
+		<string>https://staging.dentamatch.co:8443</string>
 		<key>LoggingEnabled</key>
 		<false/>
 		<key>AnalyticsTrackingEnabled</key>
