@@ -32,9 +32,9 @@
 	<key>QA</key>
 	<dict>
 		<key>APIEndPoint</key>
-		<string>http://qa.dentamatch.co/api/</string>
+		<string>https://qa.dentamatch.co/api/</string>
 		<key>SocketEndPoint</key>
-		<string>http://qa.dentamatch.co:3000</string>
+		<string>http://54.67.73.194:3000</string>
 		<key>LoggingEnabled</key>
 		<true/>
 		<key>AnalyticsTrackingEnabled</key>
