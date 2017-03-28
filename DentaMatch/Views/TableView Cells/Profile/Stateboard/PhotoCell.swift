@@ -15,6 +15,7 @@ class PhotoCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.clipsToBounds = true
         self.stateBoardPhotoButton.layer.cornerRadius = self.stateBoardPhotoButton.bounds.size.height/2
         self.stateBoardPhotoButton.clipsToBounds = true
         self.stateBoardPhotoButton.imageView?.contentMode = .scaleAspectFill

@@ -37,7 +37,9 @@ class DMSelectSkillsVC: UIViewController {
             subSkills = skill.subSkills
             subSkillWithoutOther = subSkills.filter({$0.isOther == false})
             otherSkill = subSkills.filter({$0.isOther == true}).first
+            subSkills = subSkillWithoutOther
             if let _ = otherSkill {
+                subSkills.append(otherSkill!)
                 self.otherText = (otherSkill?.otherText)!
                 if self.otherText.isEmptyField {
                     self.otherSkill?.isSelected = false

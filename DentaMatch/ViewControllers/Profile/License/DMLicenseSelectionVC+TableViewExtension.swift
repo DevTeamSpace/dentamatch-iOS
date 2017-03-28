@@ -24,10 +24,16 @@ extension DMLicenseSelectionVC : UITableViewDataSource, UITableViewDelegate {
         switch indexPath.row {
         case 0:
             return 213
-        case 1,3:
-            return 45
+            
+            //Dental Stateboard removed
+        case 1:
+            return 0
         case 2:
-            return 203
+            return 0
+            //Dental Stateboard removed
+
+        case 3:
+            return 45
         case 4,5:
             return 109
         default:

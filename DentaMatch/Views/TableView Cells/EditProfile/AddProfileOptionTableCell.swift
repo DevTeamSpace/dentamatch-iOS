@@ -12,6 +12,7 @@ class AddProfileOptionTableCell: UITableViewCell {
     @IBOutlet weak var profileOptionLabel: UILabel!
 
     override func awakeFromNib() {
+        self.clipsToBounds = true
         super.awakeFromNib()
         // Initialization code
     }

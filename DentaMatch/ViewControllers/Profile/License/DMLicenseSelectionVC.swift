@@ -78,10 +78,13 @@ class DMLicenseSelectionVC: DMBaseVC,UITextFieldDelegate {
     }
     @IBAction func nextButtonClikced(_ sender: Any) {
         
-        if self.stateBoardImage == nil{
-            self.makeToast(toastString: Constants.AlertMessage.stateCertificate)
-            return
-        }
+        //Dental Stateboard Removed
+//        if self.stateBoardImage == nil{
+//            self.makeToast(toastString: Constants.AlertMessage.stateCertificate)
+//            return
+//        }
+        
+        
         for i in 0..<(self.licenseArray?.count)! {
             let text = self.licenseArray?[i] as! String
             if i == 0 {

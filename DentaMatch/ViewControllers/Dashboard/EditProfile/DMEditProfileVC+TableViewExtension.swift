@@ -25,15 +25,18 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             return 305 + aboutTextHeight
             
         case .dentalStateboard:
-            if dentalStateBoardURL.isEmpty {
-                if indexPath.row == 0 {
-                    return 45
-                } else {
-                    return 72
-                }
-            } else {
-                return 230
-            }
+            
+            //Dental Stateboard Removed
+//            if dentalStateBoardURL.isEmpty {
+//                if indexPath.row == 0 {
+//                    return 45
+//                } else {
+//                    return 72
+//                }
+//            } else {
+//                return 230
+//            }
+            return 0
             
         case .experience:
             if indexPath.row == 0 {
