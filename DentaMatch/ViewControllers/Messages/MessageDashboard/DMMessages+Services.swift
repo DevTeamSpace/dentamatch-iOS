@@ -46,7 +46,7 @@ extension DMMessagesVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            print(response!)
+            debugPrint(response!)
             self.handleBlockRecruiterResponse(chatList: chatList, response: response)
         }
     }

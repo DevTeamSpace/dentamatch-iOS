@@ -61,7 +61,7 @@ class EditProfileHeaderTableCell: UITableViewCell {
         newFrame = textView.frame
         newFrame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
 
-        print("height \(newFrame.height)")
+        debugPrint("height \(newFrame.height)")
         if newFrame.height + 10 > 109 {
             return 109
         } else {

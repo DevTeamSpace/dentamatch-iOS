@@ -74,7 +74,7 @@ extension DMChatVC:NSFetchedResultsControllerDelegate {
                 return chats.first
             }
         } catch let error as NSError {
-            print(error.localizedDescription)
+            debugPrint(error.localizedDescription)
         }
         return nil
     }
@@ -107,7 +107,7 @@ extension DMChatVC:NSFetchedResultsControllerDelegate {
 
         } catch {
             let fetchError = error as NSError
-            print("\(fetchError), \(fetchError.userInfo)")
+            debugPrint("\(fetchError), \(fetchError.userInfo)")
         }
     }
     

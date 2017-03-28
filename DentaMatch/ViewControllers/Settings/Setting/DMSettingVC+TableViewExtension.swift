@@ -109,7 +109,7 @@ extension DMSettingVC : UITableViewDataSource,UITableViewDelegate {
 extension DMSettingVC:LocationAddressDelegate {
     func locationAddress(location: Location) {
         if let address = location.address {
-            print(address)
+            debugPrint(address)
             UserManager.shared().activeUser.preferredJobLocation = address
             UserManager.shared().activeUser.zipCode = location.postalCode
             UserManager.shared().activeUser.latitude = "\(location.coordinateSelected!.latitude)"

@@ -24,7 +24,7 @@ extension DMJobSearchResultVC {
     }
     
     func fetchSearchResultAPI(params:[String:Any]) {
-        print("Search Parameters\n\(params.description))")
+        debugPrint("Search Parameters\n\(params.description))")
         
         if self.jobsPageNo == 1 {
             self.showLoader()

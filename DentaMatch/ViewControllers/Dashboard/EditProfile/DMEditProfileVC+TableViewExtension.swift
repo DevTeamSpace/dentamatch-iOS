@@ -439,7 +439,7 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             }
         case .licenseNumber:
             guard let _ = license else {
-                print("License Not added")
+                debugPrint("License Not added")
                 openEditLicenseScreen(editMode: false)
                 return
             }

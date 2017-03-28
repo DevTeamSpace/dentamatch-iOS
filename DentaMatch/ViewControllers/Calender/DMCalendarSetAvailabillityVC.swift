@@ -72,7 +72,7 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
         }
         
         setMyAvailabilityOnServer { (response, error) in
-            print(response ?? "response not available")
+            debugPrint(response ?? "response not available")
             _ = self.navigationController?.popViewController(animated: true)
         }
     }

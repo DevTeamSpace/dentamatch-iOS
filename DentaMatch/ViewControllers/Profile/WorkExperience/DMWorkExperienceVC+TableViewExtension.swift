@@ -206,7 +206,7 @@ extension DMWorkExperienceVC: UITableViewDataSource,UITableViewDelegate
             cell.commonTextField.autocapitalizationType = .sentences
             
         default:
-            print("default")
+            debugPrint("default")
             
         }
 
@@ -294,7 +294,7 @@ extension DMWorkExperienceVC: UITableViewDataSource,UITableViewDelegate
             self.currentExperience?.cityName = textField.text
 
         default:
-            print("default")
+            debugPrint("default")
         }
         
     }

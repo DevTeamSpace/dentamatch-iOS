@@ -28,7 +28,7 @@ extension DMPublicProfileVC {
                         self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                         return
                     }
-                    print(response!)
+                    debugPrint(response!)
                     self.handleUploadProfileResponse(response: response)
                 })
             } else {
@@ -50,7 +50,7 @@ extension DMPublicProfileVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            print(response!)
+            debugPrint(response!)
             self.handleUpdateProfileResponse(response: response)
         }
     }

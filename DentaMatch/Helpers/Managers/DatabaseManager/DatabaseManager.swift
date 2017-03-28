@@ -31,7 +31,7 @@ class DatabaseManager: NSObject {
             }
             kAppDelegate.saveContext()
         } catch let error as NSError {
-            print(error.localizedDescription)
+            debugPrint(error.localizedDescription)
         }
     }
     
@@ -44,7 +44,7 @@ class DatabaseManager: NSObject {
             }
             kAppDelegate.saveContext()
         } catch let error as NSError {
-            print(error.localizedDescription)
+            debugPrint(error.localizedDescription)
         }
     }
     
@@ -113,7 +113,7 @@ class DatabaseManager: NSObject {
                 return chats.first
             }
         } catch let error as NSError {
-            print(error.localizedDescription)
+            debugPrint(error.localizedDescription)
         }
         return nil
     }
@@ -127,7 +127,7 @@ class DatabaseManager: NSObject {
                 return chatLists.first
             }
         } catch let error as NSError {
-            print(error.localizedDescription)
+            debugPrint(error.localizedDescription)
         }
         return nil
     }
@@ -140,7 +140,7 @@ class DatabaseManager: NSObject {
             let chatList = try kAppDelegate.managedObjectContext.fetch(fetchRequest)
             return chatList.count
         } catch let error as NSError {
-            print(error.localizedDescription)
+            debugPrint(error.localizedDescription)
         }
         return 0
     }

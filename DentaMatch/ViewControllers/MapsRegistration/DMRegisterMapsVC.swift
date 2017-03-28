@@ -207,7 +207,7 @@ class DMRegisterMapsVC: DMBaseVC {
     
     //MARK:- Reverse Geocoding
     func reverseGeocodeCoordinate(coordinate: CLLocationCoordinate2D) {
-        print(coordinate)
+        debugPrint(coordinate)
         let geocoder = GMSGeocoder()
         geocoder.reverseGeocodeCoordinate(coordinate) { (response:GMSReverseGeocodeResponse?, error:Error?) in
             if let address = response?.firstResult() {
@@ -232,7 +232,7 @@ class DMRegisterMapsVC: DMBaseVC {
                         break
                     }
                 }
-                print(lines.joined(separator: " "))
+                debugPrint(lines.joined(separator: " "))
                 self.location.address = lines.joined(separator: " ")
                 DispatchQueue.main.async {
                     self.placeSearchBar.text = lines.joined(separator: " ")
@@ -267,6 +267,10 @@ extension DMRegisterMapsVC:UISearchBarDelegate {
                         } else {
                             if let delegate = self.delegate {
                                 self.addressSelected = self.placeSearchBar.text!
+                                if self.location.postalCode.isEmptyField {
+                                    self.alertMessage(title: "Postal Code", message: "No Postal Code found. Try some other nearby location", buttonText: "Ok", completionHandler: nil)
+                                    return
+                                }
                                 delegate.locationAddress(location: self.location)
                             }
                             self.goBack()

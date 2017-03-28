@@ -28,7 +28,7 @@ extension DMEditCertificateVC {
                         self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                         return
                     }
-                    print(response!)
+                    debugPrint(response!)
                     completionHandler(response, error)
                 })
             } else {

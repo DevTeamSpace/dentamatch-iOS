@@ -12,7 +12,7 @@ import SwiftyJSON
 extension DMRegistrationVC {
     
     func registrationAPI(params:[String:String]) {
-        print("Registration Parameters\n\(params.description))")
+        debugPrint("Registration Parameters\n\(params.description))")
         self.showLoader()
         APIManager.apiPost(serviceName: Constants.API.registration, parameters: params) { (response:JSON?, error:NSError?) in
             self.hideLoader()

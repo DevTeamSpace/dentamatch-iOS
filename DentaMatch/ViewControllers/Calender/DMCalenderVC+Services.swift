@@ -26,7 +26,7 @@ extension DMCalenderVC {
 
 //        param["jobYear"] = year as AnyObject?
         
-        print("getHiredJobsFromServer Parameters\n\(param.description))")
+        debugPrint("getHiredJobsFromServer Parameters\n\(param.description))")
         
         self.showLoader()
         APIManager.apiPost(serviceName: Constants.API.getHiredJobs, parameters: param) { (response:JSON?, error:NSError?) in

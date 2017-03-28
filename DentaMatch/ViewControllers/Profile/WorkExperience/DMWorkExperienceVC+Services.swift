@@ -23,7 +23,7 @@ extension DMWorkExperienceVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            print(response!)
+            debugPrint(response!)
             self.handleExperienceListResponse(response: response!)
         }
     }
@@ -97,7 +97,7 @@ extension DMWorkExperienceVC {
         return params
     }
     func saveUpdateExperience(params:[String:AnyObject],completionHandler: @escaping (JSON?, NSError?) -> ()) {
-        print("Experience Parameters\n\(params.description))")
+        debugPrint("Experience Parameters\n\(params.description))")
 
         self.showLoader()
         APIManager.apiPost(serviceName: Constants.API.workExperienceSave, parameters: params) { (response:JSON?, error:NSError?) in

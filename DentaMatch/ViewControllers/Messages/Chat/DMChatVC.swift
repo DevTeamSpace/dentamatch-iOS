@@ -141,7 +141,7 @@ class DMChatVC: DMBaseVC {
     func receiveChatMessageEvent() {
         
         SocketManager.sharedInstance.getChatMessage { (object:[String : AnyObject], isMine:Bool) in
-            print(object)
+            debugPrint(object)
             let chatObj = JSON(rawValue: object)
             if let chatObj = chatObj {
                 if chatObj["blocked"].exists() {
@@ -165,7 +165,7 @@ class DMChatVC: DMBaseVC {
         if SocketManager.sharedInstance.socket.status == .connected {
             if shouldFetchFromBeginning {
                 SocketManager.sharedInstance.getHistory(recruiterId: (chatList?.recruiterId)!) { (params:[Any]) in
-                    print("History from Beginning")
+                    debugPrint("History from Beginning")
                     //debugPrint(params)
                     let chatObj = JSON(rawValue: params)
                     DatabaseManager.insertChats(chats: chatObj?[0].array)
@@ -186,7 +186,7 @@ class DMChatVC: DMBaseVC {
         //self.showLoader(text: "Loading Chats")
         SocketManager.sharedInstance.getLeftMessages(recruiterId: (chatList?.recruiterId)!, messageId: lastMessageId, completionHandler: { (params:[Any]) in
             //self.hideLoader()
-            print(params)
+            debugPrint(params)
             let chatObj = JSON(rawValue: params)
             DatabaseManager.insertChats(chats: chatObj?[0].array)
         })

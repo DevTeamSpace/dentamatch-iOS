@@ -498,7 +498,7 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         selectedDayList.removeAll()
         selectedDayList = dateAllEvents(date: date)
-        print(selectedDayList.description)
+        debugPrint(selectedDayList.description)
         if selectedDayList.count > 0 {
             self.noEventLabel.isHidden = true
         }else {
@@ -512,7 +512,7 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
     }
 
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-        print("new Page  = \(calendar.currentPage)")
+        debugPrint("new Page  = \(calendar.currentPage)")
         self.monthTitleLabel.text = Date.dateToStringForFormatter(date: calendar.currentPage, dateFormate: Date.dateFormatMMMMYYYY())
         
         self.getHiredJobsFromServer(date: calendar.currentPage) { (response, error) in

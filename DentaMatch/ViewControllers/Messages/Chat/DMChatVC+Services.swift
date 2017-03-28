@@ -28,7 +28,7 @@ extension DMChatVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            print(response!)
+            debugPrint(response!)
             self.handleUnblockRecruiterResponse(chatList: chatList, response: response)
         }
     }

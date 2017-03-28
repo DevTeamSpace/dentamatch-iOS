@@ -35,6 +35,8 @@ class DMTrackVC: DMBaseVC {
     var pullToRefreshShortListedJobs = UIRefreshControl()
     
     var isFromJobDetailApplied = false
+    var lat = ""
+    var long = ""
 
     var jobParams = [String:String]()
     var placeHolderEmptyJobsView:PlaceHolderJobsView?
@@ -46,11 +48,16 @@ class DMTrackVC: DMBaseVC {
     @IBOutlet weak var segmentedControl: CustomSegmentControl!
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let params =  UserDefaultsManager.sharedInstance.loadSearchParameter() {
+            lat = params[Constants.JobDetailKey.lat] as! String
+            long = params[Constants.JobDetailKey.lng] as! String
+        }
+        
         jobParams = [
             "type":"1",
             "page":"1",
-            "lat":"\(UserManager.shared().activeUser.latitude!)",
-            "lng":"\(UserManager.shared().activeUser.longitude!)"
+            "lat":lat,
+            "lng":long
         ]
         setup()
         self.getJobList(params: jobParams)
@@ -115,8 +122,8 @@ class DMTrackVC: DMBaseVC {
         self.savedJobsPageNo = 1
         jobParams["type"] = "1"
         jobParams["page"] = "1"
-        jobParams["lat"] = UserManager.shared().activeUser.latitude
-        jobParams["lng"] = UserManager.shared().activeUser.longitude
+        jobParams["lat"] = lat
+        jobParams["lng"] = long
         self.savedJobsTableView.tableFooterView = nil
         self.loadingMoreSavedJobs = false
         self.getJobList(params: jobParams)
@@ -128,8 +135,8 @@ class DMTrackVC: DMBaseVC {
         self.appliedJobsPageNo = 1
         jobParams["type"] = "2"
         jobParams["page"] = "1"
-        jobParams["lat"] = UserManager.shared().activeUser.latitude
-        jobParams["lng"] = UserManager.shared().activeUser.longitude
+        jobParams["lat"] = lat
+        jobParams["lng"] = long
         self.appliedJobsTableView.tableFooterView = nil
         self.loadingMoreAppliedJobs = false
         self.getJobList(params: jobParams)
@@ -140,8 +147,8 @@ class DMTrackVC: DMBaseVC {
         self.shortListedJobsPageNo = 1
         jobParams["type"] = "3"
         jobParams["page"] = "1"
-        jobParams["lat"] = UserManager.shared().activeUser.latitude
-        jobParams["lng"] = UserManager.shared().activeUser.longitude
+        jobParams["lat"] = lat
+        jobParams["lng"] = long
         self.shortListedJobsTableView.tableFooterView = nil
         self.loadingMoreShortListedJobs = false
         self.getJobList(params: jobParams)

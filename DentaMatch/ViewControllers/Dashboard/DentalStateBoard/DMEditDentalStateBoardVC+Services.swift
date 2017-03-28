@@ -29,7 +29,7 @@ extension DMEditDentalStateBoardVC {
                         return
                     }
                     
-                    print(response!)
+                    debugPrint(response!)
                     self.handleDentalStateBoardResponse(response: response)
                     
                 })

@@ -101,7 +101,7 @@ class DMMessagesVC: DMBaseVC {
             }
         } catch {
             let fetchError = error as NSError
-            print("\(fetchError), \(fetchError.userInfo)")
+            debugPrint("\(fetchError), \(fetchError.userInfo)")
         }
 
     }

@@ -24,7 +24,7 @@ extension DMCertificationsVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            print(response!)
+            debugPrint(response!)
             self.handleCertificationListResponse(response: response)
         }
     }
@@ -70,7 +70,7 @@ extension DMCertificationsVC {
                         return
                     }
                     
-                    print(response!)
+                    debugPrint(response!)
 //                    self.handleUploadProfileResponse(response: response)
                 
                     completionHandler(response, error)

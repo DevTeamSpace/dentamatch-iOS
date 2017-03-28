@@ -74,7 +74,7 @@ class DMJobSearchVC : DMBaseVC {
             location.address = searchParams[Constants.JobDetailKey.address] as! String?
             let latStr = searchParams[Constants.JobDetailKey.lat] as! NSString
             //let latDbl : Double  = Double(latStr.intValue)
-            let langStr = searchParams[Constants.JobDetailKey.lat] as! NSString
+            let langStr = searchParams[Constants.JobDetailKey.lng] as! NSString
             //let langDbl : Double = Double(langStr.intValue)
             //location.coordinateSelected = CLLocationCoordinate2DMake(latDbl, langDbl)
             if searchParams[Constants.JobDetailKey.isParttime] as! String? == "1" {
@@ -195,7 +195,7 @@ class DMJobSearchVC : DMBaseVC {
                         break
                     }
                 }
-                print(lines.joined(separator: " "))
+                debugPrint(lines.joined(separator: " "))
                 self.location.address = lines.joined(separator: " ")
                 DispatchQueue.main.async {
                     if self.location.address != nil {

@@ -74,7 +74,7 @@ public struct PhoneNumberFormatter {
             let actualSubtractChars = max(0, lastNumericText.length - numericText.length)
             if requestedSubtractChars > 0 && actualSubtractChars < requestedSubtractChars {
                 let subtractChars = requestedSubtractChars - actualSubtractChars
-                print(subtractChars)
+                debugPrint(subtractChars)
                 numericText = subtractChars >= numericText.length  ? "" : numericText.stringFrom(0, to: -1 * subtractChars)
             }
             //add formatting

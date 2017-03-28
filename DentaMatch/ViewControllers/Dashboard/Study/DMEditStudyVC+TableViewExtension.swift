@@ -88,7 +88,7 @@ extension DMEditStudyVC:UITableViewDataSource,UITableViewDelegate {
             }
         }
         selectedData.removeObjects(in: emptyData as [AnyObject])
-        print(selectedData)
+        debugPrint(selectedData)
         self.studyTableView.reloadData()
         
     }
@@ -106,7 +106,7 @@ extension DMEditStudyVC : UITextFieldDelegate {
         
         if (university?.count)! > 0 {
             //Its in the list
-            print("In the list")
+            debugPrint("In the list")
         } else {
             
             //            if textField.text!.isEmpty {
@@ -154,13 +154,13 @@ extension DMEditStudyVC : UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         //textFieldDidEndEditing
-        print("textFieldDidEndEditing")
+        debugPrint("textFieldDidEndEditing")
         
         let school = schoolCategories.filter({$0.schoolCategoryId == "\(textField.tag)"}).first
         
         
         if textField.inputView is YearPickerView {
-            print("year picker")
+            debugPrint("year picker")
         }
         else {
             if !isFilledFromAutoComplete {

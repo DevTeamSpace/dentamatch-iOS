@@ -144,7 +144,7 @@ class DMPublicProfileVC: DMBaseVC {
     @IBAction func saveButtonPressed(_ sender: Any) {
         self.view.endEditing(true)
         if validateFields() {
-            print("Edit Profile Params\n\(editProfileParams)")
+            debugPrint("Edit Profile Params\n\(editProfileParams)")
             self.updatePublicProfileAPI(params: editProfileParams)
         }
     }

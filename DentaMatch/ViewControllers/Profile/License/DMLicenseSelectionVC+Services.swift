@@ -11,7 +11,7 @@ import SwiftyJSON
 extension DMLicenseSelectionVC {
     
     func updateLicenseAndStateAPI(params:[String:String]) {
-        print("LicenseNumberAndState Parameters\n\(params.description))")
+        debugPrint("LicenseNumberAndState Parameters\n\(params.description))")
         self.showLoader()
         APIManager.apiPut(serviceName: Constants.API.licenseNumberAndState, parameters: params) { (response:JSON?, error:NSError?) in
             self.hideLoader()
@@ -56,7 +56,7 @@ extension DMLicenseSelectionVC {
                         return
                     }
                     
-                    print(response!)
+                    debugPrint(response!)
                     self.handleDentalStateBoardResponse(response: response)
                     
                     

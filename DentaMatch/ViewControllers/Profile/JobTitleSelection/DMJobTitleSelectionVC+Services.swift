@@ -23,7 +23,7 @@ extension DMJobTitleSelectionVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            print(response!)
+            debugPrint(response!)
             self.handleJobListResponse(response: response!)
         }
     }
@@ -65,7 +65,7 @@ extension DMJobTitleSelectionVC {
                         return
                     }
                     
-                    print(response!)
+                    debugPrint(response!)
                     self.handleUploadProfileResponse(response: response)
                     
                     

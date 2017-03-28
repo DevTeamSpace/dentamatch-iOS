@@ -57,7 +57,7 @@ class ExperiencePickerView: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
                 let secondValue  = Int(list[0])
                 self.yearExperiencePickerView.selectRow(secondValue!, inComponent: 1, animated: true)
                 
-                print("month available")
+                debugPrint("month available")
                 
             }
             

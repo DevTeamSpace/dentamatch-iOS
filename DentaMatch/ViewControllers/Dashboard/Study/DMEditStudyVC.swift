@@ -155,7 +155,7 @@ extension DMEditStudyVC:AutoCompleteSelectedDelegate {
             selectedData.add(dict)
         }
         
-        print(selectedData)
+        debugPrint(selectedData)
         
         self.studyTableView.reloadData()
     }
@@ -210,7 +210,7 @@ extension DMEditStudyVC : YearPickerViewDelegate {
             }
             selectedData.add(dict)
         }
-        print(selectedData)
+        debugPrint(selectedData)
         self.studyTableView.reloadData()
     }
 }

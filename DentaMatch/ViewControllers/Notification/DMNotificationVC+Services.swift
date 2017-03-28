@@ -71,7 +71,7 @@ extension DMNotificationVC {
         
         //        param["jobYear"] = year as AnyObject?
         
-        print("readNotification Parameters\n\(param.description))")
+        debugPrint("readNotification Parameters\n\(param.description))")
         
         self.showLoader()
         APIManager.apiPost(serviceName: Constants.API.readNotification, parameters: param) { (response:JSON?, error:NSError?) in
@@ -107,7 +107,7 @@ extension DMNotificationVC {
         param["notificationId"] = notificationObj.notificationID as AnyObject?
         param["acceptStatus"] = actionType as AnyObject?
 
-        print("readNotification Parameters\n\(param.description))")
+        debugPrint("readNotification Parameters\n\(param.description))")
         
         self.showLoader()
         APIManager.apiPost(serviceName: Constants.API.acceptRejectNotification, parameters: param) { (response:JSON?, error:NSError?) in

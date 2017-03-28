@@ -163,7 +163,7 @@ class APIManager: NSObject {
                         completionHandler(nil,response.result.error as NSError?)
                         return
                     }
-                    print(response.result.value!)
+                    debugPrint(response.result.value!)
                     if let data = response.result.value {
                         let json = JSON(data)
                         if json[Constants.ServerKey.statusCode].intValue == 204 {
@@ -177,7 +177,7 @@ class APIManager: NSObject {
                 break
                 
             case .failure(let encodingError):
-                print(encodingError)
+                debugPrint(encodingError)
                 completionHandler(nil,encodingError as NSError?)
                 break
             }

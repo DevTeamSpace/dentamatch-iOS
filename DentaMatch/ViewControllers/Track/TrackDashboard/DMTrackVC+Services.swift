@@ -56,7 +56,7 @@ extension DMTrackVC {
     
     func handleJobListResponse(response:JSON?,type:String) {
         if let response = response {
-            print("type returned = \(type)")
+            debugPrint("type returned = \(type)")
             
             if response[Constants.ServerKey.status].boolValue {
                 if type == "1" {

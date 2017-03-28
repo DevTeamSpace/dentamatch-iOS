@@ -21,7 +21,7 @@ extension DMRegisterMapsVC {
             Constants.ServerKey.zipCode:"\(location.postalCode)"
         ]
         
-        print("Location Update Params\n \(params)")
+        debugPrint("Location Update Params\n \(params)")
         
         APIManager.apiPost(serviceName: Constants.API.updateHomeLocation, parameters: params) { (response:JSON?, error:NSError?) in
             self.hideLoader()

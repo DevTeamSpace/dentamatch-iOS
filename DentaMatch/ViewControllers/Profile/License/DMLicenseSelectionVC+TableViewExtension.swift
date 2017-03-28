@@ -141,7 +141,7 @@ extension DMLicenseSelectionVC : UITableViewDataSource, UITableViewDelegate {
                 return false
             }
             if string.rangeOfCharacter(from: characterset.inverted) != nil {
-                print("string contains special characters")
+                debugPrint("string contains special characters")
                 return false
             }
             
@@ -157,7 +157,7 @@ extension DMLicenseSelectionVC : UITableViewDataSource, UITableViewDelegate {
                 return false
             }
             if string.rangeOfCharacter(from: characterset.inverted) != nil {
-                print("string contains special characters")
+                debugPrint("string contains special characters")
                 return false
             }
 
