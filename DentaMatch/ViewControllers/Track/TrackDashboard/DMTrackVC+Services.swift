@@ -133,6 +133,8 @@ extension DMTrackVC {
                             self.savedJobsTableView.reloadData()
                             self.savedJobsTableView.tableFooterView = UIView()
                         }
+                    } else {
+                        self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
                     }
                     
                 } else if type == "2" {
@@ -147,6 +149,8 @@ extension DMTrackVC {
                             self.appliedJobsTableView.reloadData()
                             self.appliedJobsTableView.tableFooterView = UIView()
                         }
+                    } else {
+                        self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
                     }
                     
                 } else {
@@ -161,9 +165,11 @@ extension DMTrackVC {
                             self.shortListedJobsTableView.reloadData()
                             self.shortListedJobsTableView.tableFooterView = UIView()
                         }
+                    } else {
+                        self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
                     }
+
                 }
-                self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
             }
         } else {
             self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)

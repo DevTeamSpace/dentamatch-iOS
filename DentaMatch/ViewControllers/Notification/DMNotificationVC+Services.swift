@@ -48,8 +48,12 @@ extension DMNotificationVC {
                 completionHandler(true, error)
                 //do next
             } else {
+                if response![Constants.ServerKey.statusCode].intValue == 201 {
+                    completionHandler(false, error)
+                } else {
                 self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
                 completionHandler(false, error)
+                }
                 
             }
             DispatchQueue.main.async {

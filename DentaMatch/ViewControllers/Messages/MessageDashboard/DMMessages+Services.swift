@@ -60,7 +60,7 @@ extension DMMessagesVC {
                     self.placeHolderEmptyJobsView?.isHidden = true
                 } else {
                     self.placeHolderEmptyJobsView?.isHidden = false
-                    self.makeToast(toastString: "No messages")
+//                    self.makeToast(toastString: "No messages")
                 }
             } else {
                 self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)

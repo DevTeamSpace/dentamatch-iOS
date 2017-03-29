@@ -54,8 +54,12 @@ extension DMCalenderVC {
                 completionHandler(response, error)
                 
             } else {
+                if response![Constants.ServerKey.statusCode].intValue == 201 {
+                    completionHandler(response, error)
+                } else {
                 self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
                 completionHandler(response, error)
+                }
                 
             }
         }
