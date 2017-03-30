@@ -63,15 +63,22 @@ class TemporyJobCalenderCell: UITableViewCell,FSCalendarDataSource, FSCalendarDe
         let currentMonth:Date = self.calenderView.currentPage
         let previousMonth:Date = (self.gregorian?.date(byAdding: .month, value: -1, to: currentMonth, options: .matchFirst))!
         
+        if previousMonth < self.calenderView.minimumDate {
+            //self.makeToast("You can set up to previous six months availability from current month")
+        }
         self.calenderView.setCurrentPage(previousMonth, animated: true)
         delegate?.nextButtonDelegate!(date: previousMonth)
 
     }
     @IBAction func nextButtonClicked(_ sender: Any) {
         let currentMonth:Date = self.calenderView.currentPage
-        let previousMonth:Date = (self.gregorian?.date(byAdding: .month, value: 1, to: currentMonth, options: .matchFirst))!
-        self.calenderView.setCurrentPage(previousMonth, animated: true)
-        delegate?.nextButtonDelegate!(date: previousMonth)
+        let nextMonth:Date = (self.gregorian?.date(byAdding: .month, value: 1, to: currentMonth, options: .matchFirst))!
+        
+        if nextMonth > self.calenderView.maximumDate {
+            self.makeToast("You can set up to next six months availability from current month")
+        }
+        self.calenderView.setCurrentPage(nextMonth, animated: true)
+        delegate?.nextButtonDelegate!(date: nextMonth)
     }
     
     
