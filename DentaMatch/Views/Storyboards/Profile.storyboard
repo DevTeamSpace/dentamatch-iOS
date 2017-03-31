@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -111,13 +111,13 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let’s start with creating your profile." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="hos-jx-ofR">
-                                <rect key="frame" x="46" y="335" width="285" height="20"/>
+                                <rect key="frame" x="45" y="335" width="285" height="21"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="17"/>
                                 <color key="textColor" red="0.058823529411764705" green="0.094117647058823528" blue="0.24313725490196078" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Current Job Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aZe-k4-DJs" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
-                                <rect key="frame" x="22" y="381" width="331" height="54"/>
+                                <rect key="frame" x="22" y="382" width="331" height="54"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="Qkg-W3-Lux"/>
                                 </constraints>
@@ -168,7 +168,11 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="c" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8r-Wg-d0j">
-                                <rect key="frame" x="323" y="400" width="16" height="16"/>
+                                <rect key="frame" x="318" y="385" width="31" height="46"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="31" id="XfV-5i-qH7"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="dentamatch" family="dentamatch" pointSize="16"/>
                                 <color key="textColor" red="0.62745098039215685" green="0.62745098039215685" blue="0.62745098039215685" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -178,7 +182,7 @@
                         <constraints>
                             <constraint firstItem="aZe-k4-DJs" firstAttribute="centerX" secondItem="hos-jx-ofR" secondAttribute="centerX" id="3HN-d5-XSp"/>
                             <constraint firstAttribute="trailing" secondItem="pY0-aJ-eeT" secondAttribute="trailing" id="7IR-E0-eyt"/>
-                            <constraint firstItem="V8r-Wg-d0j" firstAttribute="centerY" secondItem="aZe-k4-DJs" secondAttribute="centerY" id="7VH-jO-h6H"/>
+                            <constraint firstItem="V8r-Wg-d0j" firstAttribute="centerY" secondItem="aZe-k4-DJs" secondAttribute="centerY" constant="-1" id="7VH-jO-h6H"/>
                             <constraint firstItem="P6w-uS-muz" firstAttribute="top" secondItem="m9g-Kp-v3b" secondAttribute="bottom" id="8A6-D9-bSv"/>
                             <constraint firstAttribute="trailing" secondItem="m9g-Kp-v3b" secondAttribute="trailing" id="CHz-At-qfI"/>
                             <constraint firstItem="pY0-aJ-eeT" firstAttribute="top" secondItem="JWl-iL-mpX" secondAttribute="top" id="JEC-Gb-k6I"/>
@@ -188,10 +192,10 @@
                             <constraint firstItem="aZe-k4-DJs" firstAttribute="top" secondItem="hos-jx-ofR" secondAttribute="bottom" constant="26" id="Whv-eE-HVm"/>
                             <constraint firstItem="hos-jx-ofR" firstAttribute="top" secondItem="pY0-aJ-eeT" secondAttribute="bottom" constant="38" id="bla-aL-yNa"/>
                             <constraint firstItem="pY0-aJ-eeT" firstAttribute="leading" secondItem="JWl-iL-mpX" secondAttribute="leading" id="fxL-uO-4e2"/>
-                            <constraint firstAttribute="trailing" secondItem="aZe-k4-DJs" secondAttribute="trailing" constant="22" id="iRH-4Z-O7b"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="V8r-Wg-d0j" secondAttribute="trailing" constant="20" id="nhH-ie-GYu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="V8r-Wg-d0j" secondAttribute="trailing" constant="10" id="nhH-ie-GYu"/>
                             <constraint firstItem="hos-jx-ofR" firstAttribute="centerX" secondItem="JWl-iL-mpX" secondAttribute="centerX" id="qxw-qb-IL9"/>
                             <constraint firstItem="aZe-k4-DJs" firstAttribute="leading" secondItem="JWl-iL-mpX" secondAttribute="leading" constant="22" id="tKn-I1-SMD"/>
+                            <constraint firstItem="V8r-Wg-d0j" firstAttribute="height" secondItem="aZe-k4-DJs" secondAttribute="height" multiplier="0.85" id="wvi-Wn-nMo"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fBf-Yo-3Ab"/>
