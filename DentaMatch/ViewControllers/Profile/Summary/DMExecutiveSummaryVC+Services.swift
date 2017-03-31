@@ -38,6 +38,7 @@ extension DMExecutiveSummaryVC {
                 UserDefaultsManager.sharedInstance.isProfileCompleted = true
                 DispatchQueue.main.async {
                     self.openDashboard()
+                    self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
                 }
             } else {
                 self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)

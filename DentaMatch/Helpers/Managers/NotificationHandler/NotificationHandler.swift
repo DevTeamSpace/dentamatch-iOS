@@ -43,7 +43,8 @@ class NotificationHandler: NSObject {
             //No need any action
             openNotificationScreen()
             
-            
+        case .rejectJob:
+            print("do nothing")
         }
         
     }
@@ -80,6 +81,8 @@ class NotificationHandler: NSObject {
             //No need any action
             openNotificationScreenInBackGround()
             
+        case .rejectJob:
+            print("do Nothing")
         }
         
         

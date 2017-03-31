@@ -24,7 +24,7 @@ extension DMNotificationVC : UITableViewDataSource,UITableViewDelegate {
         let notificationType = UserNotificationType(rawValue: notificationObj.notificationType!)!
 
         switch notificationType {
-        case .acceptJob,.jobCancellation,.deleteJob :
+        case .acceptJob,.jobCancellation,.deleteJob,.rejectJob :
             let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationJobTypeTableCell") as? NotificationJobTypeTableCell
             cell?.configureNotificationJobTypeTableCell(userNotificationObj: notificationObj)
             return cell!
@@ -189,7 +189,8 @@ extension DMNotificationVC : UITableViewDataSource,UITableViewDelegate {
         self.tabBarController?.selectedIndex = 4
 
         case .other: break
-            //No need any action
+        case .rejectJob:
+        goToJobDetail(jobObj: notiObj.jobdetail!)
         }
     }
     
