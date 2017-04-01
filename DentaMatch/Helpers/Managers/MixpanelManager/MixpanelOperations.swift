@@ -20,7 +20,10 @@ class MixpanelOperations: NSObject {
     {
         if ConfigurationManager.sharedManager.isAnalyticsTrackingEnabled() {
             let dictForUser  = ["userID":UserManager.shared().activeUser.userId!,"email":UserManager.shared().activeUser.email!,"Name":UserManager.shared().activeUser.fullName()!,"Time":NSDate()] as [String : Any]
+            Mixpanel.sharedInstance().identify(UserManager.shared().activeUser.userId!)
             Mixpanel.sharedInstance().people.set(dictForUser)
+            Mixpanel.sharedInstance().registerSuperProperties(dictForUser)
+
         }
         
     }
@@ -47,7 +50,8 @@ class MixpanelOperations: NSObject {
     
     class func mixpanepanelLogout() {
         if ConfigurationManager.sharedManager.isAnalyticsTrackingEnabled() {
-            Mixpanel.sharedInstance().reset()
+            Mixpanel.sharedInstance().track("Logout")
+//            Mixpanel.sharedInstance().reset()
         }
     }
 }
