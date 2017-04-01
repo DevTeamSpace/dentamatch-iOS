@@ -67,7 +67,7 @@
 		<key>AnalyticsTrackingEnabled</key>
 		<true/>
 		<key>MixpanelToken</key>
-		<string>baeda2003ca1585a7828ce1d02833836</string>
+		<string>3fd78d535c8e6d65ade83460a9272f66</string>
 		<key>Flurry</key>
 		<dict>
 			<key>FlurryApplicationID</key>
@@ -94,7 +94,7 @@
 		<key>AnalyticsTrackingEnabled</key>
 		<true/>
 		<key>MixpanelToken</key>
-		<string>baeda2003ca1585a7828ce1d02833836</string>
+		<string>3fd78d535c8e6d65ade83460a9272f66</string>
 		<key>Flurry</key>
 		<dict>
 			<key>FlurryApplicationID</key>
