@@ -48,8 +48,10 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         self.fulltimeJobIndicatorView.layer.cornerRadius = fulltimeJobIndicatorView.bounds.size.height/2
         self.fulltimeJobIndicatorView.clipsToBounds = true
         self.title = Constants.ScreenTitleNames.calendar
+        self.navigationItem.title = "CALENDAR"
         gregorian = NSCalendar(calendarIdentifier: .gregorian)
         self.monthTitleLabel.text = Date.dateToStringForFormatter(date: Date(), dateFormate: Date.dateFormatMMMMYYYY())
+        self.monthTitleLabel.text = self.monthTitleLabel.text?.uppercased()
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationItem.rightBarButtonItem = self.rightBarButton()
         self.bookedJobsTableView.separatorStyle = .none
@@ -514,6 +516,7 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         debugPrint("new Page  = \(calendar.currentPage)")
         self.monthTitleLabel.text = Date.dateToStringForFormatter(date: calendar.currentPage, dateFormate: Date.dateFormatMMMMYYYY())
+        self.monthTitleLabel.text = self.monthTitleLabel.text?.uppercased()
         
         self.getHiredJobsFromServer(date: calendar.currentPage) { (response, error) in
             debugPrint(self.hiredList.description)

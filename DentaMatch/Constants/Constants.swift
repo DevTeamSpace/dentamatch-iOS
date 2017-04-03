@@ -355,7 +355,7 @@ struct Constants {
         static let emptyLastName = "Last Name text can not be left blank."
         static let emptyAboutMe = "About Me text can not be left blank."
         static let emptyValidityDate = "Please enter the validity date"
-        static let emptyCancelReason = "Please enter the reason for cancellation"
+        static let emptyCancelReason = "Please enter the reason for the cancellation"
         static let emptyJobTitle = "Please select a Job title"
         static let emptyPinCode = "Pincode not found. Please select some other location"
 

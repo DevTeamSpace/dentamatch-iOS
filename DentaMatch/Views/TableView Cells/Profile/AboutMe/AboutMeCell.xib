@@ -22,7 +22,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="256"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="255"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="255.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DeK-c7-ReG">
@@ -53,7 +53,7 @@
                         </constraints>
                     </view>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wod-8b-opA">
-                        <rect key="frame" x="20" y="69" width="280" height="152"/>
+                        <rect key="frame" x="23" y="69" width="274" height="152"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="152" id="dVc-Uk-saW"/>
@@ -66,8 +66,8 @@
                 <constraints>
                     <constraint firstItem="DeK-c7-ReG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="2xJ-er-1KI"/>
                     <constraint firstItem="DeK-c7-ReG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Bh8-Dd-sdN"/>
-                    <constraint firstAttribute="trailing" secondItem="wod-8b-opA" secondAttribute="trailing" constant="20" id="BzC-0H-TKo"/>
-                    <constraint firstItem="wod-8b-opA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="CYf-ff-Olj"/>
+                    <constraint firstAttribute="trailing" secondItem="wod-8b-opA" secondAttribute="trailing" constant="23" id="BzC-0H-TKo"/>
+                    <constraint firstItem="wod-8b-opA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="23" id="CYf-ff-Olj"/>
                     <constraint firstItem="wod-8b-opA" firstAttribute="top" secondItem="DeK-c7-ReG" secondAttribute="bottom" constant="24" id="XJy-ag-7Bq"/>
                     <constraint firstAttribute="trailing" secondItem="DeK-c7-ReG" secondAttribute="trailing" id="bRz-u2-Apf"/>
                 </constraints>
