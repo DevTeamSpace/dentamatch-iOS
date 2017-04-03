@@ -26,7 +26,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56b-Q2-LUv">
-                        <rect key="frame" x="20" y="18.5" width="242" height="19"/>
+                        <rect key="frame" x="22" y="18.5" width="240" height="19"/>
                         <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="16"/>
                         <color key="textColor" red="0.058823529411764705" green="0.094117647058823528" blue="0.24313725490196078" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -52,7 +52,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="SQL-eO-bNV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="1kN-a8-1U6"/>
-                    <constraint firstItem="56b-Q2-LUv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="8cF-KI-1PR"/>
+                    <constraint firstItem="56b-Q2-LUv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="22" id="8cF-KI-1PR"/>
                     <constraint firstItem="ZS4-sY-HeI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="GEa-i6-Ax7"/>
                     <constraint firstItem="56b-Q2-LUv" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="LNk-ny-W1e"/>
                     <constraint firstAttribute="bottom" secondItem="SQL-eO-bNV" secondAttribute="bottom" id="XDV-Eh-hJY"/>

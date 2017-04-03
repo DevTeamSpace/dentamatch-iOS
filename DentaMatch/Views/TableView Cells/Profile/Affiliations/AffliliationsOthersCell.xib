@@ -29,7 +29,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Others" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1fb-9q-g71">
-                        <rect key="frame" x="20" y="16" width="52.5" height="20"/>
+                        <rect key="frame" x="22" y="16" width="52.5" height="19"/>
                         <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="16"/>
                         <color key="textColor" red="0.058823529409999999" green="0.094117647060000004" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -47,7 +47,7 @@
                         </state>
                     </button>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Xxw-Y8-B2V">
-                        <rect key="frame" x="20" y="55" width="280" height="102"/>
+                        <rect key="frame" x="22" y="54" width="278" height="102"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="102" id="qpW-7f-DzT"/>
@@ -59,7 +59,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="Xxw-Y8-B2V" secondAttribute="trailing" constant="20" id="2by-6F-HmU"/>
-                    <constraint firstItem="1fb-9q-g71" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="4Tj-fD-Wvq"/>
+                    <constraint firstItem="1fb-9q-g71" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="22" id="4Tj-fD-Wvq"/>
                     <constraint firstItem="9mf-kB-FAr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="8hG-ts-EXM"/>
                     <constraint firstAttribute="trailing" secondItem="9mf-kB-FAr" secondAttribute="trailing" id="9h3-hN-dYN"/>
                     <constraint firstItem="Xxw-Y8-B2V" firstAttribute="top" secondItem="1fb-9q-g71" secondAttribute="bottom" constant="19" id="Mfb-aC-213"/>
