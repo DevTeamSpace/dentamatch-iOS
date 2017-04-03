@@ -22,7 +22,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="196"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="195"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="195.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MN3-XY-vU5">
@@ -31,13 +31,13 @@
                             <constraint firstAttribute="height" constant="54" id="VQe-md-7hd"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="SFUIText-Bold" family="SF UI Text" pointSize="17"/>
-                        <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <inset key="titleEdgeInsets" minX="23" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <state key="normal" title="Dental School/Training">
                             <color key="titleColor" red="0.01176470588" green="0.4431372549" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type your school" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aa4-JY-TQC" customClass="ProfileTextField" customModule="DentaMatch" customModuleProvider="target">
-                        <rect key="frame" x="20" y="58" width="280" height="44"/>
+                        <rect key="frame" x="23" y="58" width="277" height="44"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="44" id="hc0-le-EU1"/>
                         </constraints>
@@ -46,7 +46,7 @@
                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                     </textField>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Year of Graduation" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gh1-Y5-56C" customClass="ProfileTextField" customModule="DentaMatch" customModuleProvider="target">
-                        <rect key="frame" x="20" y="122" width="280" height="44"/>
+                        <rect key="frame" x="23" y="122" width="277" height="44"/>
                         <color key="textColor" red="0.21960784310000001" green="0.21960784310000001" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
@@ -67,11 +67,11 @@
                     <constraint firstAttribute="trailing" secondItem="MN3-XY-vU5" secondAttribute="trailing" id="8Yl-z8-uIJ"/>
                     <constraint firstItem="MN3-XY-vU5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="DOv-9w-6ea"/>
                     <constraint firstAttribute="bottom" secondItem="KsX-ik-Peq" secondAttribute="bottom" id="GUt-wS-bh7"/>
-                    <constraint firstItem="Aa4-JY-TQC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="GjQ-tu-3GQ"/>
+                    <constraint firstItem="Aa4-JY-TQC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="23" id="GjQ-tu-3GQ"/>
                     <constraint firstAttribute="trailing" secondItem="Gh1-Y5-56C" secondAttribute="trailing" constant="20" id="RFA-Z7-gD6"/>
                     <constraint firstItem="Gh1-Y5-56C" firstAttribute="top" secondItem="Aa4-JY-TQC" secondAttribute="bottom" constant="20" id="jft-vR-Efs"/>
                     <constraint firstItem="Gh1-Y5-56C" firstAttribute="height" secondItem="Aa4-JY-TQC" secondAttribute="height" id="ooa-vf-Zqo"/>
-                    <constraint firstItem="Gh1-Y5-56C" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="pTP-JY-nvN"/>
+                    <constraint firstItem="Gh1-Y5-56C" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="23" id="pTP-JY-nvN"/>
                     <constraint firstItem="Aa4-JY-TQC" firstAttribute="top" secondItem="MN3-XY-vU5" secondAttribute="bottom" constant="4" id="vDy-YN-wPM"/>
                 </constraints>
             </tableViewCellContentView>

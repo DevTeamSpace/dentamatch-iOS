@@ -73,10 +73,10 @@ class DMJobSearchVC : DMBaseVC {
             location.postalCode = (searchParams[Constants.JobDetailKey.zipCode] as! String?)!
             location.address = searchParams[Constants.JobDetailKey.address] as! String?
             let latStr = searchParams[Constants.JobDetailKey.lat] as! NSString
-            //let latDbl : Double  = Double(latStr.intValue)
+            let latDbl : Double  = Double(latStr.intValue)
             let langStr = searchParams[Constants.JobDetailKey.lng] as! NSString
-            //let langDbl : Double = Double(langStr.intValue)
-            //location.coordinateSelected = CLLocationCoordinate2DMake(latDbl, langDbl)
+            let langDbl : Double = Double(langStr.intValue)
+            location.coordinateSelected = CLLocationCoordinate2DMake(latDbl, langDbl)
             if searchParams[Constants.JobDetailKey.isParttime] as! String? == "1" {
                 isPartTimeDayShow = true
                 isJobTypePartTime = "1"
@@ -107,10 +107,10 @@ class DMJobSearchVC : DMBaseVC {
             
         }
         else {
-            //self.getLocation()
+            self.getLocation()
         }
         
-        self.getLocation()
+        //self.getLocation()
 //        let coordinate = CLLocationCoordinate2D(latitude: Double(UserManager.shared().activeUser.latitude!)!, longitude: Double(UserManager.shared().activeUser.longitude!)!)
 //        location.coordinateSelected = coordinate
 //        reverseGeocodeCoordinate(coordinate: coordinate)
