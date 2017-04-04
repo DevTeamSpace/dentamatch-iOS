@@ -42,7 +42,11 @@ class TemporyJobCalenderCell: UITableViewCell,FSCalendarDataSource, FSCalendarDe
 
         calenderView.appearance.selectionColor = Constants.Color.selectionColor
         calenderView.appearance.todayColor = UIColor.clear
+//        calenderView.appearance.
+        calenderView.appearance.caseOptions = .headerUsesUpperCase
 
+//        calenderView.appearance.caseOptions = .weekdayUsesUpperCase
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

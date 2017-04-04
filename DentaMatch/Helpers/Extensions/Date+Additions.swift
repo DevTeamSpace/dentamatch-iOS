@@ -16,7 +16,7 @@ extension Date {
         return "cccc, dd MMMM yyyy"
     }
     public static func dateFormatMMMMYYYY() ->String {
-        return "MMMM, yyyy"
+        return "MMMM yyyy"
     }
     public static func dateFormatDDMMMYYYY() ->String {
         return "dd MMM yyyy"
