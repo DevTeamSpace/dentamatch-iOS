@@ -89,12 +89,14 @@ class DMLoginVC: DMBaseVC {
         let dashboardVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: TabBarVC.self)!
         kAppDelegate.window?.rootViewController = dashboardVC
         UserDefaultsManager.sharedInstance.isProfileSkipped = true
+        SocketManager.sharedInstance.establishConnection()
 
     }
     func openJobTitleSelection() {
         let jobTitleSectionVC = UIStoryboard.profileStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.profileNav)
         UIView.transition(with: self.view.window!, duration: 0.5, options: .transitionFlipFromRight, animations: {
             kAppDelegate.window?.rootViewController = jobTitleSectionVC
+            SocketManager.sharedInstance.establishConnection()
         }) { (bool:Bool) in
             
         }

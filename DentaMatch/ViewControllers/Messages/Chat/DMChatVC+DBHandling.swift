@@ -14,8 +14,9 @@ extension DMChatVC:NSFetchedResultsControllerDelegate {
 
     func addUpdateChatToDB(chatObj:JSON?) {
         if let chatObj = chatObj {
-            if let chat = chatExits(messageId: chatObj["messageId"].stringValue) {
+            if let _ = chatExits(messageId: chatObj["messageId"].stringValue) {
                 //Update chat
+                debugPrint("Update Chat")
                 
             } else {
                 //New chat

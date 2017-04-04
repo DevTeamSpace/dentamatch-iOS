@@ -59,13 +59,8 @@ class Job: NSObject {
     var jobAppliedOn = ""
     var jobDate = ""
     var tempjobDate = ""
-
-//    var tempJobDates = [TempJobDate]()
     var noOfJobs = 0
     
-    override init() {
-        
-    }
     
     init(job:JSON) {
         self.isApplied = job["isApplied"].intValue
@@ -142,18 +137,10 @@ class Job: NSObject {
         self.jobCreatedAt = forCalendarjob["jobCreatedAt"].stringValue
         self.jobAppliedOn = forCalendarjob["jobAppliedOn"].stringValue
         self.jobTypeString = forCalendarjob["jobTypeString"].stringValue
-//        let tempDates = forCalendarjob["tempJobDates"].arrayValue
         self.noOfJobs = forCalendarjob["noOfJobs"].intValue
         self.jobDate = forCalendarjob["jobDate"].stringValue
         self.tempjobDate = forCalendarjob["tempDates"].stringValue
-//        self.tempJobDates.removeAll()
-//        for dateObj in tempDates {
-//            let tempObj = TempJobDate(tempJobDate: dateObj)
-//            self.tempJobDates.append(tempObj)
-//        }
-        
-        
-//        self.tempJobDates = tempJobDates
+
     }
 }
 

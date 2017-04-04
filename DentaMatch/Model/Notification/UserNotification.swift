@@ -12,7 +12,7 @@ import SwiftyJSON
 class UserNotification: NSObject {
     var createdAtTime = ""
     var notificationID:Int?
-    var JobId = ""
+    var jobId = ""
     var message = ""
     var notificationType:Int?
     var seen:Int?
@@ -21,13 +21,13 @@ class UserNotification: NSObject {
     var jobdetail:Job?
     
     override init() {
-        
+        /* For Default object of class */
     }
     
     init(dict:JSON) {
          self.createdAtTime = dict["createdAt"].stringValue
          self.notificationID = dict["id"].intValue
-         self.JobId = dict["jobListId"].stringValue
+         self.jobId = dict["jobListId"].stringValue
          self.message = dict["notificationData"].stringValue
          self.notificationType = dict["notificationType"].intValue
          self.seen = dict["seen"].intValue

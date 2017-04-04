@@ -133,7 +133,6 @@ class SocketManager: NSObject,SocketConnectionDelegate {
                 "fromId":UserManager.shared().activeUser.userId!
             ]
             socket.emitWithAck("getChatHistory", params).timingOut(after: 0) { (params:[Any]) in
-                //TODO:- store in DB
                 debugPrint(params)
             }
         }
@@ -194,8 +193,8 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     func eventForLogoutPreviousSession() {
         socket.off("logoutPreviousSession")
         socket.on("logoutPreviousSession") { (dataArray, socketAck) -> Void in
-            var messageDictionary = [String: AnyObject]()
-            messageDictionary = dataArray[0] as! [String:AnyObject]
+           // var messageDictionary = [String: AnyObject]()
+            let messageDictionary = dataArray[0] as! [String:AnyObject]
             if messageDictionary["logout"] as! Bool {
                 Utilities.logOutOfInvalidToken()
             }
@@ -205,8 +204,8 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     func eventForHistoryMessages() {
         socket.off("getMessages")
         socket.on("getMessages") { (dataArray, socketAck) -> Void in
-            var messageDictionary = [Any]()
-            messageDictionary = dataArray
+            //var messageDictionary = [Any]()
+            let messageDictionary = dataArray
             if let _ = self.historyMessagesCompletionHandler {
                 self.historyMessagesCompletionHandler?(messageDictionary)
             } else {
@@ -229,9 +228,9 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     //MARK:- Handling
     
     func handleReceivedChatMessage(params:[Any],isMine:Bool) {
-        var messageDictionary = [String: AnyObject]()
+        //var messageDictionary = [String: AnyObject]()
         debugPrint(params)
-        messageDictionary = params[0] as! [String:AnyObject]
+        let messageDictionary = params[0] as! [String:AnyObject]
         
         if let _ = self.chatCompletionHandler {
             self.chatCompletionHandler?(messageDictionary,isMine)
@@ -258,8 +257,8 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     }
     
     func handleUpdateUnreadCounter(params:[Any]) {
-        var messageDictionary = [String: AnyObject]()
-        messageDictionary = params[0] as! [String:AnyObject]
+        //var messageDictionary = [String: AnyObject]()
+        let messageDictionary = params[0] as! [String:AnyObject]
         if let unreadCounterObject = JSON(rawValue: messageDictionary) {
             debugPrint(unreadCounterObject)
             DatabaseManager.updateReadCount(recruiterId: unreadCounterObject["recruiterId"].stringValue)

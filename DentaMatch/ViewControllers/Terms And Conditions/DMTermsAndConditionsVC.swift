@@ -49,9 +49,6 @@ class DMTermsAndConditionsVC: DMBaseVC {
 extension DMTermsAndConditionsVC : UIWebViewDelegate {
     
     //MARK:- WebView Delegates
-    func webViewDidStartLoad(_ webView: UIWebView) {
-    }
-    
     func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
         self.hideLoader()
     }

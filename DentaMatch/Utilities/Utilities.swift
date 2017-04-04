@@ -45,7 +45,7 @@ class Utilities: NSObject {
     
     class func deviceId() -> String {
         let keychain = Keychain()
-        if(keychain[kDeviceId] != nil){
+        if keychain[kDeviceId] != nil {
             debugPrint("Device Id = \(keychain[kDeviceId])")
             return keychain[kDeviceId]!
         }else{

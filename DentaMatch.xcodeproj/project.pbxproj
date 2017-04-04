@@ -159,7 +159,6 @@
 		E56B20A21DBF749D000512F6 /* DMRegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56B20A11DBF749D000512F6 /* DMRegistrationVC.swift */; };
 		E56B20A41DC0526E000512F6 /* DMRegistrationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56B20A31DC0526E000512F6 /* DMRegistrationContainer.swift */; };
 		E56C9F9E1DED4BD100EAA9DD /* Character+Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C9F9D1DED4BD100EAA9DD /* Character+Addition.swift */; };
-		E56C9FA31DED520B00EAA9DD /* InAppPurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C9FA21DED520B00EAA9DD /* InAppPurchase.swift */; };
 		E56C9FA81DED75D500EAA9DD /* CommonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C9FA71DED75D500EAA9DD /* CommonHelper.swift */; };
 		E56E315D1E3A8275009FF0FC /* EditProfileSchoolCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56E315B1E3A8275009FF0FC /* EditProfileSchoolCell.swift */; };
 		E56E315E1E3A8275009FF0FC /* EditProfileSchoolCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E56E315C1E3A8275009FF0FC /* EditProfileSchoolCell.xib */; };
@@ -544,7 +543,6 @@
 		E56B20A11DBF749D000512F6 /* DMRegistrationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMRegistrationVC.swift; sourceTree = "<group>"; };
 		E56B20A31DC0526E000512F6 /* DMRegistrationContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMRegistrationContainer.swift; sourceTree = "<group>"; };
 		E56C9F9D1DED4BD100EAA9DD /* Character+Addition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Character+Addition.swift"; sourceTree = "<group>"; };
-		E56C9FA21DED520B00EAA9DD /* InAppPurchase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppPurchase.swift; sourceTree = "<group>"; };
 		E56C9FA71DED75D500EAA9DD /* CommonHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonHelper.swift; sourceTree = "<group>"; };
 		E56E315B1E3A8275009FF0FC /* EditProfileSchoolCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileSchoolCell.swift; sourceTree = "<group>"; };
 		E56E315C1E3A8275009FF0FC /* EditProfileSchoolCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileSchoolCell.xib; sourceTree = "<group>"; };
@@ -1299,7 +1297,6 @@
 				E5AE37771E49743C0001EC3C /* SocketManager */,
 				E56E907E1DFF315E0096A31B /* PhotoGalleryManager */,
 				E58654FB1DEFEF7F006FEB2D /* ConfigurationManager */,
-				E56C9FA11DED520B00EAA9DD /* IAPManager */,
 				E59029A21DED2C7A00151E9B /* APIManager */,
 				E59029A41DED2C7A00151E9B /* Log Manager */,
 				E59029A61DED2C7A00151E9B /* UserDefaultsManager */,
@@ -1432,14 +1429,6 @@
 				E50B3F471E194CD7004C5F32 /* Registration */,
 			);
 			path = "TableView Cells";
-			sourceTree = "<group>";
-		};
-		E56C9FA11DED520B00EAA9DD /* IAPManager */ = {
-			isa = PBXGroup;
-			children = (
-				E56C9FA21DED520B00EAA9DD /* InAppPurchase.swift */,
-			);
-			path = IAPManager;
 			sourceTree = "<group>";
 		};
 		E56C9FA61DED75D500EAA9DD /* CommonHelper */ = {
@@ -2541,7 +2530,6 @@
 				E5E7CBA51E3089B200D4FB59 /* DMEditLicenseVC+Services.swift in Sources */,
 				5A5523E31E4C40C1007D8C09 /* HiredJobNotificationTableCell.swift in Sources */,
 				E5AE377E1E497D8D0001EC3C /* MessageListTableCell.swift in Sources */,
-				E56C9FA31DED520B00EAA9DD /* InAppPurchase.swift in Sources */,
 				E558D8FC1E2CB5D400A6DF95 /* AutoCompleteTable.swift in Sources */,
 				E50B3F4C1E194CD7004C5F32 /* AnimatedPHTableCell.swift in Sources */,
 				E55462E61DAE47A9004163B2 /* UIView+Toast.m in Sources */,

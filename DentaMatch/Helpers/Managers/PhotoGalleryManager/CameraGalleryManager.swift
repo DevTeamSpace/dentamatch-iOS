@@ -53,8 +53,6 @@ class CameraGalleryManager: UIViewController,UIImagePickerControllerDelegate,UIN
                 completionHandler(true)
             } else if status == .denied {
                 completionHandler(false)
-            } else if status == .notDetermined {
-                completionHandler(false)
             } else {
                 completionHandler(false)
             }

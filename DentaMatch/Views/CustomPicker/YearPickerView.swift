@@ -20,13 +20,6 @@ class YearPickerView: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     var delegate:YearPickerViewDelegate?
     var currentYear : Int = 0
     var currentTag: Int = 0
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
     
     class func loadYearPickerView(withText:String, withTag:Int) ->  YearPickerView{
         guard let instance = Bundle.main.loadNibNamed("YearPickerView", owner: self)?.first as? YearPickerView else {
@@ -62,6 +55,7 @@ class YearPickerView: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        //Handle selection of picker view
     }
 
     @IBAction func doneButtonPressed(_ sender: Any) {

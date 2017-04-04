@@ -16,7 +16,7 @@ class JobTitle: NSObject {
     var jobSelected = false
     
     override init() {
-        
+        /* For Default object of class */
     }
     
     init(job:JSON) {

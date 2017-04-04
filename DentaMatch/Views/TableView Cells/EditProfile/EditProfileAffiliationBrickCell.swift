@@ -88,6 +88,7 @@ class EditProfileAffiliationBrickCell: UITableViewCell,TagListDelegate {
     }
     
     func tagActionTriggered(tagList: TagList, action: TagAction, content: TagPresentable, index: Int) {
+        //Tapping of tag action
     }
     
     

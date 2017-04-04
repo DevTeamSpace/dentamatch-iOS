@@ -26,9 +26,7 @@ class DMSettingVC: DMBaseVC {
         self.settingTableView.separatorStyle = .none
         self.title = Constants.ScreenTitleNames.settings
     }
-    override func viewDidAppear(_ animated: Bool) {
-        
-    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)

@@ -19,15 +19,6 @@ class ExperiencePickerView: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     @IBOutlet weak var yearExperiencePickerView: UIPickerView!
     var delegate: ExperiencePickerViewDelegate?
     
-    
-    /*
-     // Only override draw() if you perform custom drawing.
-     // An empty implementation adversely affects performance during animation.
-     override func draw(_ rect: CGRect) {
-     // Drawing code
-     }
-     */
-    
     class func loadExperiencePickerView(withText:String) ->  ExperiencePickerView{
         guard let instance = Bundle.main.loadNibNamed("ExperiencePickerView", owner: self)?.first as? ExperiencePickerView else {
             fatalError("Could not instantiate from nib: ExperiencePickerView")
@@ -58,11 +49,8 @@ class ExperiencePickerView: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
                 self.yearExperiencePickerView.selectRow(secondValue!, inComponent: 1, animated: true)
                 
                 debugPrint("month available")
-                
             }
-            
         }
-        
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -83,14 +71,7 @@ class ExperiencePickerView: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if component == 0
-        {
-            
-        }else
-        {
-            
-        }
-        
+        //Handle Selection of picker row
     }
     
     @IBAction func cancelButtonClicked(_ sender: Any) {

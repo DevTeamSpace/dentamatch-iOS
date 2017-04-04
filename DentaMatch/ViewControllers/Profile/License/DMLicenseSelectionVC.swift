@@ -118,42 +118,7 @@ class DMLicenseSelectionVC: DMBaseVC,UITextFieldDelegate {
         let  params = ["license":self.licenseArray![0],"state":self.licenseArray![1],"jobTitleId":"\(self.selectedJobTitle.jobId)"]
         updateLicenseAndStateAPI(params: params as! [String : String])
         
-//        //for testing 
-       // openExperienceFirstScreen()
     }
-    
-//    func checkValidationForFirstLetter(text:String, tag:Int) -> Bool {
-//        //tag 0 for license and 1 for state
-//        let check = true
-//        let newChar = text.characters.first
-//        if newChar == "-" {
-//        }
-//
-//        if tag == 0 {
-//            
-//        }else{
-//            
-//        }
-//        return check
-//    
-//    }
-//    
-//    func checkValidationForLastLetter(text:String, tag:Int) -> Bool {
-//        //tag 0 for license and 1 for state
-//        let check = true
-//        let newChar = text.characters.last
-//        if newChar == "-" {
-//        }
-//        
-//        if tag == 0 {
-//            
-//        }else{
-//            
-//        }
-//        return check
-//
-//        
-//    }
 
     func openExperienceFirstScreen() {
         self.performSegue(withIdentifier: "goToWorkExperience", sender: self)
@@ -161,6 +126,7 @@ class DMLicenseSelectionVC: DMBaseVC,UITextFieldDelegate {
     func stateBoardButtonPressed(_ sender: Any) {
         self.cameraGalleryOptionActionSheet(title: "", message: "Please select", leftButtonText: "Camera", rightButtonText: "Gallery") { (isCameraButtonPressed, isGalleryButtonPressed, isCancelButtonPressed) in
             if isCancelButtonPressed {
+                debugPrint("Cancel Pressed")
             } else if isCameraButtonPressed {
                 CameraGalleryManager.shared.openCamera(viewController: self, allowsEditing: false, completionHandler: { (image:UIImage?, error:NSError?) in
                     if error != nil {

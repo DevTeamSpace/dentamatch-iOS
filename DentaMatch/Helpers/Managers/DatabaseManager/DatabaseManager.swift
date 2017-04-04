@@ -50,8 +50,9 @@ class DatabaseManager: NSObject {
     
     class func addUpdateChatToDB(chatObj:JSON?) {
         if let chatObj = chatObj {
-            if let chat = chatExits(messageId: chatObj["messageId"].stringValue) {
+            if let _ = chatExits(messageId: chatObj["messageId"].stringValue) {
                 //Update chat
+                debugPrint("Update Chat")
                 
             } else {
                 //New chat
@@ -149,8 +150,9 @@ class DatabaseManager: NSObject {
         if let chats = chats {
             for chatObj in chats {
                 
-                if let chat = chatExits(messageId: chatObj["messageId"].stringValue) {
+                if let _ = chatExits(messageId: chatObj["messageId"].stringValue) {
                     //Update chat
+                    debugPrint("Update Chat")
                     
                 } else {
                     //New chat
@@ -189,8 +191,9 @@ class DatabaseManager: NSObject {
     }
     
     class func insertNewMessageListObj(chatObj:JSON) {
-        if let chatList = chatListExists(recruiterId: chatObj["recruiterId"].stringValue) {
+        if let _ = chatListExists(recruiterId: chatObj["recruiterId"].stringValue) {
             //Update chat
+            debugPrint("Update Chat")
         } else {
             //New chat
             let chatList = NSEntityDescription.insertNewObject(forEntityName: "ChatList", into: kAppDelegate.managedObjectContext) as! ChatList

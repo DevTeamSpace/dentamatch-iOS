@@ -15,6 +15,7 @@ class License: NSObject {
     var number = ""
     
     override init () {
+        /* For Default object of class */
     }
     
     init(license:JSON) {

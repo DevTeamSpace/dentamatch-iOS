@@ -88,7 +88,6 @@ class SkillsTableCell: UITableViewCell,TagListDelegate {
     }
     
     func tagActionTriggered(tagList: TagList, action: TagAction, content: TagPresentable, index: Int) {
+        //For tapping tag action
     }
-
-    
 }

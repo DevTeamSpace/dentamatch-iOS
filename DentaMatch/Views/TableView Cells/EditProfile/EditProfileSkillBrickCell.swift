@@ -38,11 +38,7 @@ class EditProfileSkillBrickCell: UITableViewCell,TagListDelegate {
         
         // Configure the view for the selected state
     }
-    
-    
-    
-    
-    
+
     func updateSkills(subSkills:[SubSkill]) {
         tagList.tags.removeAll()
         for subSkill in subSkills {
@@ -71,5 +67,6 @@ class EditProfileSkillBrickCell: UITableViewCell,TagListDelegate {
     }
     
     func tagActionTriggered(tagList: TagList, action: TagAction, content: TagPresentable, index: Int) {
+        //Tap action of tag
     }
 }

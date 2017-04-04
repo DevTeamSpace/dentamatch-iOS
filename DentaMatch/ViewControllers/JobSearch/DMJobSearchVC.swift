@@ -230,7 +230,7 @@ class DMJobSearchVC : DMBaseVC {
     
     func actionSearchButton() {
         self.view.endEditing(true)
-        var jobTitleDict = [String : Any]()
+       // var jobTitleDict = [String : Any]()
         var jobTitles = [Any]()
         var jobTitleIds = [Int]()
         for job in self.jobTitles {

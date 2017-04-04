@@ -39,6 +39,7 @@ class OfficeDescriptionCell: UITableViewCell {
     }
     
     func setCellData(job : Job) {
+        //Filling cell data
     }
     
     class func requiredHeight(jobDescription:String,isReadMore:Bool) -> CGFloat {

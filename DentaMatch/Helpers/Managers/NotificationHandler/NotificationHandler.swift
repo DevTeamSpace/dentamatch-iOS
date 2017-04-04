@@ -12,41 +12,23 @@ import SwiftyJSON
 class NotificationHandler: NSObject {
     class func notificationHandleforForground(notiObj:UserNotification,jobObj:Job?, app : UIApplication) {
         let notificationType = UserNotificationType(rawValue: notiObj.notificationType!)!
-
+        
         switch notificationType {
-        case .acceptJob:
-            //open job detail
-            openJobDetailScreen(obj: jobObj!)
         case .chatMessgae: break
             //No need any action
-        case .completeProfile:
-            //open profile
-        openEditProfileScreen()
-
-        case .deleteJob:
-            //No need any action
-            openNotificationScreen()
-
-        case .hired:
-            //open job detail
-        openJobDetailScreen(obj: jobObj!)
-
-        case .jobCancellation:
-            //open job detail
-        openJobDetailScreen(obj: jobObj!)
-
-        case .verifyDocuments:
-            //open edit profile
-            openEditProfileScreen()
-
-        case .other,.InviteJob:
-            //No need any action
-            openNotificationScreen()
             
-        case .rejectJob:
-            print("do nothing")
+        case .completeProfile,.verifyDocuments:
+            //open profile
+            openEditProfileScreen()
+            
+        case .hired,.jobCancellation,.rejectJob,.acceptJob:
+            //open job detail
+            openJobDetailScreen(obj: jobObj!)
+            
+        case .other,.InviteJob,.deleteJob:
+            //No need any action
+            openNotificationScreen()
         }
-        
     }
     class func notificationHandleforBackground(notiObj:UserNotification,jobObj:Job?, app : UIApplication) {
         let notificationType = UserNotificationType(rawValue: notiObj.notificationType!)!
@@ -58,34 +40,19 @@ class NotificationHandler: NSObject {
             
         case .chatMessgae: break
         //No need any action
-        case .completeProfile:
+            
+        case .completeProfile,.verifyDocuments:
             //open profile
             openEditProfileScreenForBackground()
             
-        case .deleteJob:
-        //No need any action
-            openNotificationScreenInBackGround()
-
-        case .hired:
+        case .hired,.jobCancellation,.rejectJob:
             //open job detail
             openJobDetailScreenForBackGround(obj: jobObj!)
             
-        case .jobCancellation:
-            //open job detail
-            openJobDetailScreenForBackGround(obj: jobObj!)
-            
-        case .verifyDocuments:
-            //open edit profile
-            openEditProfileScreenForBackground()
-        case .other,.InviteJob:
+        case .other,.InviteJob,.deleteJob:
             //No need any action
             openNotificationScreenInBackGround()
-            
-        case .rejectJob:
-            print("do Nothing")
         }
-        
-        
     }
     
     class func notificationHandleforChat(fromId:String?,toId:String?,messgaeId:String?,recurterId:String?) {
@@ -140,18 +107,5 @@ class NotificationHandler: NSObject {
         DispatchQueue.main.asyncAfter(deadline: when) {
             completionHandler()
         }
-    }
-
-    
-//    class func openNotificationScreen() {
-//        NotificationCenter.default.post(name: .pushRedirectNotificationAllForground, object: nil, userInfo: nil)
-//    }
-//    
-//    class func openNotificationScreenForBackGround(obj:Job) {
-//        delay(time: 3.0) {
-//            NotificationCenter.default.post(name: .pushRedirectNotificationAllBackGround, object: nil, userInfo: nil)
-//        }
-//    }
-    
-    
+    }    
 }

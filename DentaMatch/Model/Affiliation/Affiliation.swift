@@ -16,9 +16,6 @@ class Affiliation: NSObject {
     var isSelected = false
     var isOther = false
     
-    override init() {
-    }
-    
     init(affiliation:JSON) {
         self.affiliationId = affiliation["affiliationId"].stringValue
         self.affiliationName = affiliation["affiliationName"].stringValue

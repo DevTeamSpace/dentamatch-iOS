@@ -113,7 +113,7 @@ class DMMessagesVC: DMBaseVC {
             //self.blockRecruiter(chatList: chatList)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction) in
-            
+            debugPrint("Cancel Action")
         }
         alert.addAction(blockAction)
         alert.addAction(cancelAction)

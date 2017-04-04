@@ -18,14 +18,6 @@ class DatePickerView: UIView {
     @IBOutlet weak var datePicker: UIDatePicker!
     var delegate: DatePickerViewDelegate?
     var currentTag:Int?
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-    
     
     class func loadExperiencePickerView(withText:String,tag:Int) ->  DatePickerView{
         guard let instance = Bundle.main.loadNibNamed("DatePickerView", owner: self)?.first as? DatePickerView else {
@@ -42,6 +34,7 @@ class DatePickerView: UIView {
         {
             let date =  Date.stringToDate(dateString: dateString)
             if date < Date() {
+                //Handle less date scenario
             } else {
             self.datePicker.setDate(date, animated: true)
             }

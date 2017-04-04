@@ -28,20 +28,20 @@ class DMBaseVC: UIViewController {
     }
     
     //MARK : Setup Left Bar Button
-    func setLeftBarButton(title : String)  {
-        var leftBarBtn : UIButton = UIButton()
-        var leftBarButtonItem : UIBarButtonItem = UIBarButtonItem()
-        leftBarBtn = UIButton()
-        leftBarBtn.titleLabel?.font = UIFont.designFont(fontSize: 18)
-        leftBarBtn.titleLabel?.textAlignment = .left
-        leftBarBtn.setTitle(title, for: .normal)
-        leftBarBtn.frame = CGRect(x : 0,y : 0,width: 20,height : 25)
-        leftBarBtn.imageView?.contentMode = .scaleAspectFit
-        leftBarBtn.addTarget(self, action: #selector(DMJobTitleVC.actionLeftNavigationItem), for: .touchUpInside)
-        leftBarButtonItem = UIBarButtonItem()
-        leftBarButtonItem.customView = leftBarBtn
-        navigationItem.leftBarButtonItem = leftBarButtonItem
-    }
+//    func setLeftBarButton(title : String)  {
+//        var leftBarBtn : UIButton = UIButton()
+//        var leftBarButtonItem : UIBarButtonItem = UIBarButtonItem()
+//        leftBarBtn = UIButton()
+//        leftBarBtn.titleLabel?.font = UIFont.designFont(fontSize: 18)
+//        leftBarBtn.titleLabel?.textAlignment = .left
+//        leftBarBtn.setTitle(title, for: .normal)
+//        leftBarBtn.frame = CGRect(x : 0,y : 0,width: 20,height : 25)
+//        leftBarBtn.imageView?.contentMode = .scaleAspectFit
+//        leftBarBtn.addTarget(self, action: #selector(DMJobTitleVC.actionLeftNavigationItem), for: .touchUpInside)
+//        leftBarButtonItem = UIBarButtonItem()
+//        leftBarButtonItem.customView = leftBarBtn
+//        navigationItem.leftBarButtonItem = leftBarButtonItem
+//    }
     
     func setRightBarButton(title : String, imageName : String, width : CGFloat, font : UIFont)  {
         var rightBarBtn : UIButton = UIButton()
@@ -59,9 +59,11 @@ class DMBaseVC: UIViewController {
     }
     
     func actionLeftNavigationItem() {
+        //Override in controller class
     }
     
     func actionRightNavigationItem() {
+        //Override in controller class
     }
     
     //MARK:- Toasts and Alerts
@@ -95,7 +97,7 @@ class DMBaseVC: UIViewController {
             completionHandler?(false,true,false)
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .default) { (action:UIAlertAction) in
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction) in
             completionHandler?(false,false,true)
         }
         
@@ -139,14 +141,6 @@ class DMBaseVC: UIViewController {
         textfield.placeholder = placeholderText
         textfield.attributedPlaceholder = NSAttributedString(string: textfield.placeholder!, attributes: [NSForegroundColorAttributeName : placeholderColor])
     }
-    
-//    func printLog(object:AnyObject?) {
-//        if kLogEnabled {
-//            if let message = object {
-//                debugPrint(message)
-//            }
-//        }
-//    }
     
     func backBarButton() -> UIBarButtonItem {
         let customButton = UIButton(type: .system)

@@ -36,7 +36,8 @@ extension DMLoginVC {
                 MixpanelOperations.manageMixpanelUserIdentity()
                 MixpanelOperations.registerMixpanelUser()
                 MixpanelOperations.trackMixpanelEvent(eventName: "Login")
-                SocketManager.sharedInstance.establishConnection()
+                debugPrint("Login Success......")
+                debugPrint("Socket Operation done......")
                 self.saveSearchedData(response: response!)
                 let userDetails = response?[Constants.ServerKey.result][Constants.ServerKey.userDetails].dictionary
                 if userDetails?["profileCompleted"]?.boolValue == true {
