@@ -245,10 +245,10 @@ extension DMWorkExperienceVC: UITableViewDataSource,UITableViewDelegate
         if tableView == self.workExperienceTable {
             self.isHiddenExperienceTable = true
             selectedIndex = indexPath.row
-            let check  = indexPath.row == 0 ? true : false
+//            let check  = indexPath.row == 0 ? true : false
             self.currentExperience = nil
             self.currentExperience = self.exprienceArray[indexPath.row]
-            self.currentExperience?.isFirstExperience = check
+            self.currentExperience?.isFirstExperience = false
             self.currentExperience?.isEditMode = true
             self.workExperienceTable.reloadData()
             self.workExperienceDetailTable.reloadData()
