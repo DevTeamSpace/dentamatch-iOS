@@ -493,14 +493,6 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
         }
         return false
     }
-    func getHeightForExperience(indexPath:IndexPath) {
-        let experience  = self.experiences[indexPath.row-1]
-        for ref in experience.references {
-            if (ref.email?.characters.count)! > 0 || (ref.mobileNumber?.characters.count)! > 0 || (ref.referenceName?.characters.count)! > 0 {
-                
-            }
-        }
-    }
     
     func getHeightForAffilation (affiliations:[Affiliation]) -> CGFloat  {
         

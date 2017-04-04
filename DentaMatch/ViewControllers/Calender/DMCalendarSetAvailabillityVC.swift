@@ -77,25 +77,12 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
         }
     }
 
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    
     func checkValidations() -> Bool {
         if isPartTimeDayShow == true {
             
             if (self.availablitytModel?.isParttimeMonday)! || (self.availablitytModel?.isParttimeTuesday)! || (self.availablitytModel?.isParttimeWednesday)! || (self.availablitytModel?.isParttimeThursday)! || (self.availablitytModel?.isParttimeFriday)! || (self.availablitytModel?.isParttimeSaturday)! || (self.availablitytModel?.isParttimeSunday)!
             {
-
+                debugPrint("Is part time selected")
             }else{
                 self.makeToast(toastString: Constants.AlertMessage.selectAvailableDay)
                 return false
@@ -104,13 +91,14 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
         if isTemporyAvail == true {
             if (self.availablitytModel?.tempJobDates.count)! > 0
             {
+                debugPrint("Temp Jobs is there")
             }else{
                 self.makeToast(toastString: Constants.AlertMessage.selectDate)
                 return false
             }
-
+            
         }
-    return true
+        return true
     }
     func minimumOneSelected() -> Bool {
         if isPartTimeDayShow == true
