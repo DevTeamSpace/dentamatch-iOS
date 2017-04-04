@@ -75,14 +75,13 @@ extension AppDelegate:UNUserNotificationCenterDelegate {
         
         let state: UIApplicationState = UIApplication.shared.applicationState
         
-        if(state == UIApplicationState.active)
-        {
-            
+        if state == UIApplicationState.active {
             
             if UserDefaultsManager.sharedInstance.isLoggedIn {
                 if let noti = userInfo["data"] as? NSDictionary {
                     let megCheck = noti["data"] as! NSDictionary
                     if megCheck["messageId"] != nil {
+                        debugPrint("message check nil")
                     }else{
                         let noti = userInfo["data"] as? NSDictionary
                         let newObjMSG = noti?["jobDetails"]

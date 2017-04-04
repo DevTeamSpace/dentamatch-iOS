@@ -27,24 +27,8 @@ class DMBaseVC: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName : UIFont.fontRegular(fontSize: 14.0)!, NSForegroundColorAttributeName:UIColor.white]
     }
     
-    //MARK : Setup Left Bar Button
-//    func setLeftBarButton(title : String)  {
-//        var leftBarBtn : UIButton = UIButton()
-//        var leftBarButtonItem : UIBarButtonItem = UIBarButtonItem()
-//        leftBarBtn = UIButton()
-//        leftBarBtn.titleLabel?.font = UIFont.designFont(fontSize: 18)
-//        leftBarBtn.titleLabel?.textAlignment = .left
-//        leftBarBtn.setTitle(title, for: .normal)
-//        leftBarBtn.frame = CGRect(x : 0,y : 0,width: 20,height : 25)
-//        leftBarBtn.imageView?.contentMode = .scaleAspectFit
-//        leftBarBtn.addTarget(self, action: #selector(DMJobTitleVC.actionLeftNavigationItem), for: .touchUpInside)
-//        leftBarButtonItem = UIBarButtonItem()
-//        leftBarButtonItem.customView = leftBarBtn
-//        navigationItem.leftBarButtonItem = leftBarButtonItem
-//    }
-    
     func setRightBarButton(title : String, imageName : String, width : CGFloat, font : UIFont)  {
-        var rightBarBtn : UIButton = UIButton()
+        var rightBarBtn = UIButton()
         var rightBarButtonItem : UIBarButtonItem = UIBarButtonItem()
         rightBarBtn = UIButton()
         rightBarBtn.setTitle(title, for: .normal)

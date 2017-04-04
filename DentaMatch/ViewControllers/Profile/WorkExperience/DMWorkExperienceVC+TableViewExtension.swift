@@ -360,13 +360,13 @@ extension DMWorkExperienceVC: UITableViewDataSource,UITableViewDelegate
             return
         }
         var param = [String:AnyObject]()
-        if self.currentExperience?.isEditMode == true
-        {
-           param = self.getParamsForSaveAndUpdate(isEdit: true)
-        }else {
-            param = self.getParamsForSaveAndUpdate(isEdit: false)
-
+        var isEdit = false
+        
+        if self.currentExperience?.isEditMode == true {
+            isEdit = true
         }
+        param = self.getParamsForSaveAndUpdate(isEdit:isEdit)
+        
         saveUpdateExperience(params: param, completionHandler: { (response, error) in
             
             if response![Constants.ServerKey.status].boolValue {

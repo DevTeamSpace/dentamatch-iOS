@@ -248,11 +248,10 @@ class LocationManager: NSObject,CLLocationManagerDelegate {
                     code:Int(CLAuthorizationStatus.restricted.rawValue),
                     userInfo: nil))
             }
-            break
             
         case .notDetermined:
             self.manager?.requestWhenInUseAuthorization()
-            break
+            
         }
     }
     
