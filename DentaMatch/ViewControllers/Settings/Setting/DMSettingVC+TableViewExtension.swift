@@ -27,9 +27,12 @@ extension DMSettingVC : UITableViewDataSource,UITableViewDelegate {
         case 0:
             cell.TextLabel.text = "Preferred Job Location"
             cell.leftIconLabel.text = "d"
+            cell.leftIconLabel.font = UIFont.designFont(fontSize: 16.0)
         case 1:
             cell.TextLabel.text = "Reset Password"
             cell.leftIconLabel.text = "e"
+            cell.leftIconLabel.font = UIFont.designFont(fontSize: 17.0)
+
         case 2:
             cell.TextLabel.text = "Terms & Conditions"
             cell.leftIconLabel.text = "i"

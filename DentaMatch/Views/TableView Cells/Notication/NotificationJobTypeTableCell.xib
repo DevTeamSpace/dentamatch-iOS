@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -64,7 +64,7 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CT1-RL-p4G">
-                        <rect key="frame" x="20" y="113" width="300" height="1"/>
+                        <rect key="frame" x="0.0" y="113" width="320" height="1"/>
                         <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="R62-UD-vZL"/>
@@ -91,7 +91,7 @@
                     <constraint firstItem="kg6-uk-dzt" firstAttribute="top" secondItem="m32-bl-P4e" secondAttribute="top" constant="21" id="Pqs-o1-P0g"/>
                     <constraint firstAttribute="bottom" secondItem="CT1-RL-p4G" secondAttribute="bottom" id="arK-Fz-c2J"/>
                     <constraint firstAttribute="bottom" secondItem="oKG-fE-gXR" secondAttribute="bottom" constant="8" id="diC-Nb-5HN"/>
-                    <constraint firstItem="CT1-RL-p4G" firstAttribute="leading" secondItem="m32-bl-P4e" secondAttribute="leading" constant="20" id="ia7-zM-rU1"/>
+                    <constraint firstItem="CT1-RL-p4G" firstAttribute="leading" secondItem="m32-bl-P4e" secondAttribute="leading" id="ia7-zM-rU1"/>
                     <constraint firstItem="kg6-uk-dzt" firstAttribute="leading" secondItem="m32-bl-P4e" secondAttribute="leading" constant="15" id="itG-CH-JoN"/>
                     <constraint firstAttribute="trailing" secondItem="CT1-RL-p4G" secondAttribute="trailing" id="msm-te-9Tu"/>
                     <constraint firstItem="IXd-zv-bgJ" firstAttribute="leading" secondItem="m32-bl-P4e" secondAttribute="leading" constant="39" id="qDV-1e-Wdw"/>

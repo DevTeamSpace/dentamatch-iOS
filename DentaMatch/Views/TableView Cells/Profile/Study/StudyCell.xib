@@ -36,7 +36,7 @@
                             <color key="titleColor" red="0.01176470588" green="0.4431372549" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type your school" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aa4-JY-TQC" customClass="ProfileTextField" customModule="DentaMatch" customModuleProvider="target">
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter School" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aa4-JY-TQC" customClass="ProfileTextField" customModule="DentaMatch" customModuleProvider="target">
                         <rect key="frame" x="23" y="58" width="277" height="44"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="44" id="hc0-le-EU1"/>

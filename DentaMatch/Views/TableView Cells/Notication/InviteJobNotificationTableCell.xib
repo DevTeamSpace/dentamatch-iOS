@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -73,7 +73,7 @@ San Francisco, CA 94107</string>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ts5-Xu-rLG">
-                        <rect key="frame" x="20" y="213" width="300" height="1"/>
+                        <rect key="frame" x="0.0" y="213" width="320" height="1"/>
                         <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="mMT-fR-TRo"/>
@@ -133,7 +133,7 @@ San Francisco, CA 94107</string>
                     <constraint firstItem="Scf-N1-CSh" firstAttribute="top" secondItem="mYF-c6-KOm" secondAttribute="top" constant="16" id="aqy-oB-K5X"/>
                     <constraint firstItem="Ts5-Xu-rLG" firstAttribute="top" secondItem="b77-E0-R6u" secondAttribute="bottom" constant="8" id="cHt-ai-yLt"/>
                     <constraint firstAttribute="bottom" secondItem="Ts5-Xu-rLG" secondAttribute="bottom" id="d8A-ZG-OtC"/>
-                    <constraint firstItem="Ts5-Xu-rLG" firstAttribute="leading" secondItem="mYF-c6-KOm" secondAttribute="leading" constant="20" id="iZj-l7-1hU"/>
+                    <constraint firstItem="Ts5-Xu-rLG" firstAttribute="leading" secondItem="mYF-c6-KOm" secondAttribute="leading" id="iZj-l7-1hU"/>
                     <constraint firstItem="b77-E0-R6u" firstAttribute="leading" secondItem="mYF-c6-KOm" secondAttribute="leading" constant="39" id="nph-h5-i9b"/>
                     <constraint firstItem="Scf-N1-CSh" firstAttribute="leading" secondItem="6L8-Bc-dFB" secondAttribute="trailing" constant="14" id="qD4-3u-VIs"/>
                     <constraint firstItem="b77-E0-R6u" firstAttribute="top" secondItem="WqE-so-pEu" secondAttribute="bottom" constant="5" id="vdG-v3-qxM"/>

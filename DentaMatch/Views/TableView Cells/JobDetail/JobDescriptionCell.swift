@@ -62,7 +62,7 @@ class JobDescriptionCell: UITableViewCell {
     class func requiredHeight(jobDescription:String,isReadMore:Bool) -> CGFloat {
         let font = UIFont.fontLight(fontSize: 13.0)
         var label:UILabel!
-        label = UILabel(frame: CGRect(x:0, y:0, width:UIScreen.main.bounds.width - 42, height:CGFloat.greatestFiniteMagnitude))
+        label = UILabel(frame: CGRect(x:0, y:0, width:UIScreen.main.bounds.width - 40, height:CGFloat.greatestFiniteMagnitude))
         label.numberOfLines = 0
         label.lineBreakMode = NSLineBreakMode.byWordWrapping
         label.font = font

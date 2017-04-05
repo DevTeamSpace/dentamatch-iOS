@@ -26,7 +26,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="69.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w1n-3s-H4m">
-                                <rect key="frame" x="21" y="11" width="278" height="6.5"/>
+                                <rect key="frame" x="19" y="11" width="280" height="6.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="13"/>
                                 <color key="textColor" red="0.40784313725490196" green="0.40784313725490196" blue="0.40784313725490196" alpha="1" colorSpace="calibratedRGB"/>
@@ -59,7 +59,7 @@
                             <constraint firstAttribute="trailing" secondItem="NzJ-n7-jaF" secondAttribute="trailing" id="76a-VG-98U"/>
                             <constraint firstItem="Zf1-SD-qzh" firstAttribute="top" secondItem="w1n-3s-H4m" secondAttribute="bottom" constant="11" id="7B6-Fv-4sH"/>
                             <constraint firstItem="w1n-3s-H4m" firstAttribute="top" secondItem="b6G-LP-nP4" secondAttribute="top" constant="11" id="HA0-23-MRf"/>
-                            <constraint firstItem="w1n-3s-H4m" firstAttribute="leading" secondItem="b6G-LP-nP4" secondAttribute="leading" constant="21" id="PJC-pI-MMb"/>
+                            <constraint firstItem="w1n-3s-H4m" firstAttribute="leading" secondItem="b6G-LP-nP4" secondAttribute="leading" constant="19" id="PJC-pI-MMb"/>
                             <constraint firstAttribute="bottom" secondItem="NzJ-n7-jaF" secondAttribute="bottom" id="POZ-4L-kBF"/>
                             <constraint firstAttribute="bottom" secondItem="Zf1-SD-qzh" secondAttribute="bottom" id="W93-z0-KWW"/>
                             <constraint firstItem="NzJ-n7-jaF" firstAttribute="leading" secondItem="b6G-LP-nP4" secondAttribute="leading" constant="15" id="WcA-yz-mxX"/>

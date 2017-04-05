@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -28,20 +28,20 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="172"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="171"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="171.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uPo-7X-os1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="171"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dental Assistance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MAg-4J-NbD">
-                                <rect key="frame" x="25" y="17" width="242" height="22"/>
+                                <rect key="frame" x="25" y="17" width="242" height="21"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="18"/>
                                 <color key="textColor" red="0.015686274509803921" green="0.4392156862745098" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kFR-7Q-dkX">
-                                <rect key="frame" x="267" y="7" width="45" height="41"/>
+                                <rect key="frame" x="267" y="6.5" width="45" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="45" id="91t-ce-nRC"/>
                                     <constraint firstAttribute="height" constant="41" id="YI4-rJ-0Pm"/>
@@ -57,10 +57,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ZF-kL-maa">
-                                <rect key="frame" x="25" y="49" width="52" height="24"/>
+                                <rect key="frame" x="25" y="48" width="57" height="24"/>
                                 <color key="backgroundColor" red="0.55686274509803924" green="0.81176470588235294" blue="0.49411764705882355" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="52" id="z1P-QX-NE2"/>
+                                    <constraint firstAttribute="width" constant="57" id="z1P-QX-NE2"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="10"/>
                                 <state key="normal" title="Part Time">
@@ -68,25 +68,25 @@
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18.5 miles" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6k3-LB-8Mx">
-                                <rect key="frame" x="239" y="54" width="60" height="15"/>
+                                <rect key="frame" x="239" y="52.5" width="60" height="15"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="12"/>
                                 <color key="textColor" red="0.2196078431372549" green="0.2196078431372549" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Su, Mo, Tu, We, Th, Fr, Sa" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qkt-U2-9Ax">
-                                <rect key="frame" x="85" y="54" width="146" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Su, Mo, Tu, We, Th, Fr, Sa" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qkt-U2-9Ax">
+                                <rect key="frame" x="90" y="53" width="141" height="15"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="12"/>
                                 <color key="textColor" red="0.2196078431372549" green="0.2196078431372549" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dr. James Bond" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYw-Gd-ePH">
-                                <rect key="frame" x="25" y="81" width="287" height="17"/>
+                                <rect key="frame" x="25" y="80" width="287" height="17"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="14"/>
                                 <color key="textColor" red="0.2196078431372549" green="0.2196078431372549" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FGO-fW-AIo">
-                                <rect key="frame" x="25" y="106" width="287" height="32"/>
+                                <rect key="frame" x="25" y="105" width="287" height="31.5"/>
                                 <string key="text">628 Vermont Street
 San Francisco, CA 94107628</string>
                                 <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="13"/>
@@ -94,13 +94,13 @@ San Francisco, CA 94107628</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 DAYS AGO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="95O-Tl-7uR">
-                                <rect key="frame" x="25" y="146" width="60" height="12"/>
+                                <rect key="frame" x="25" y="144.5" width="59" height="12"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="10"/>
                                 <color key="textColor" red="0.58431372549019611" green="0.58431372549019611" blue="0.58431372549019611" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q8r-xD-GTF">
-                                <rect key="frame" x="18" y="170" width="302" height="1"/>
+                                <rect key="frame" x="0.0" y="170" width="320" height="1"/>
                                 <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="HfL-71-lTG"/>
@@ -128,7 +128,7 @@ San Francisco, CA 94107628</string>
                             <constraint firstItem="FGO-fW-AIo" firstAttribute="top" secondItem="AYw-Gd-ePH" secondAttribute="bottom" constant="8" id="Xf0-CN-kVb"/>
                             <constraint firstItem="1ZF-kL-maa" firstAttribute="leading" secondItem="MAg-4J-NbD" secondAttribute="leading" id="Zg1-d4-Ahh"/>
                             <constraint firstItem="Qkt-U2-9Ax" firstAttribute="centerY" secondItem="1ZF-kL-maa" secondAttribute="centerY" id="dJP-GX-pJo"/>
-                            <constraint firstItem="q8r-xD-GTF" firstAttribute="leading" secondItem="uPo-7X-os1" secondAttribute="leading" constant="18" id="fCb-Lt-LhA"/>
+                            <constraint firstItem="q8r-xD-GTF" firstAttribute="leading" secondItem="uPo-7X-os1" secondAttribute="leading" id="fCb-Lt-LhA"/>
                             <constraint firstItem="95O-Tl-7uR" firstAttribute="top" secondItem="FGO-fW-AIo" secondAttribute="bottom" constant="8" id="hhL-16-qoB"/>
                             <constraint firstItem="AYw-Gd-ePH" firstAttribute="top" secondItem="1ZF-kL-maa" secondAttribute="bottom" constant="8" id="iwm-aA-Pcz"/>
                             <constraint firstAttribute="bottom" secondItem="q8r-xD-GTF" secondAttribute="bottom" id="mgS-RA-Tzm"/>
@@ -151,12 +151,13 @@ San Francisco, CA 94107628</string>
             <connections>
                 <outlet property="btnFavourite" destination="kFR-7Q-dkX" id="1Dp-sY-uHG"/>
                 <outlet property="btnType" destination="1ZF-kL-maa" id="HrJ-Gr-S0O"/>
+                <outlet property="jobTitleLeftConstraint" destination="22w-DW-Kca" id="bsA-L0-8YC"/>
                 <outlet property="lblAddress" destination="FGO-fW-AIo" id="Pmo-k9-4fV"/>
                 <outlet property="lblDays" destination="Qkt-U2-9Ax" id="V0O-cY-q5l"/>
                 <outlet property="lblDistance" destination="6k3-LB-8Mx" id="H0F-Vc-8D6"/>
                 <outlet property="lblDocName" destination="AYw-Gd-ePH" id="C3n-FM-LIn"/>
                 <outlet property="lblJobPostTime" destination="95O-Tl-7uR" id="ccC-Av-p9J"/>
-                <outlet property="lblJobTitle" destination="MAg-4J-NbD" id="EVa-D9-eb3"/>
+                <outlet property="lblJobTitle" destination="MAg-4J-NbD" id="Loj-Gh-MHi"/>
             </connections>
             <point key="canvasLocation" x="34" y="102"/>
         </tableViewCell>

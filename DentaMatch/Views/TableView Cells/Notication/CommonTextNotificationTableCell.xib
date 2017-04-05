@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -46,7 +46,7 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mpK-Lc-2Zn">
-                        <rect key="frame" x="20" y="80" width="300" height="1"/>
+                        <rect key="frame" x="0.0" y="80" width="320" height="1"/>
                         <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="jfA-rU-ZIv"/>
@@ -64,7 +64,7 @@
                     <constraint firstAttribute="trailing" secondItem="nuk-XO-XQi" secondAttribute="trailing" constant="20" id="403-9u-0SE"/>
                     <constraint firstItem="KKa-Wn-k26" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="4kX-8W-AQl"/>
                     <constraint firstAttribute="trailing" secondItem="KKa-Wn-k26" secondAttribute="trailing" constant="39" id="NEh-Ak-2z3"/>
-                    <constraint firstItem="mpK-Lc-2Zn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Nbc-cW-b1M"/>
+                    <constraint firstItem="mpK-Lc-2Zn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Nbc-cW-b1M"/>
                     <constraint firstItem="gjx-IQ-Jcb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="NmV-Bv-zv6"/>
                     <constraint firstAttribute="trailing" secondItem="17y-dW-v3w" secondAttribute="trailing" constant="39" id="OUZ-Qe-d1a"/>
                     <constraint firstItem="17y-dW-v3w" firstAttribute="top" secondItem="KKa-Wn-k26" secondAttribute="bottom" constant="8" id="U0s-Qr-hxh"/>

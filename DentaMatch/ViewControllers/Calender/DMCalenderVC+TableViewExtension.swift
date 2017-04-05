@@ -60,7 +60,6 @@ extension DMCalenderVC:UITableViewDelegate,UITableViewDataSource{
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "JobSearchResultCell") as? JobSearchResultCell
             let job = selectedDayList[indexPath.row]
-            
             cell?.setCellData(job: job)
             cell?.handlePartTimeLabel(job: job)
 
@@ -73,7 +72,8 @@ extension DMCalenderVC:UITableViewDelegate,UITableViewDataSource{
 //            cell?.lblDistance.text = String(format: "%.2f", job.distance) + " miles"
             cell?.btnType.setTitle(getJobTypeText(jobType: job.jobType), for: .normal)
             cell?.btnFavourite.isHidden = true
-
+            cell?.jobTitleLeftConstraint.constant = 20
+            cell?.contentView.layoutIfNeeded()
             return cell!
         }
     }

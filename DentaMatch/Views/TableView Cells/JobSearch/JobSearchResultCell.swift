@@ -20,7 +20,7 @@ class JobSearchResultCell: UITableViewCell {
         case partTime = 2
         case temporary = 3
     }
-    
+    @IBOutlet weak var jobTitleLeftConstraint: NSLayoutConstraint!
     @IBOutlet weak var lblJobTitle: UILabel!
     @IBOutlet weak var btnFavourite: UIButton!
     @IBOutlet weak var btnType: UIButton!

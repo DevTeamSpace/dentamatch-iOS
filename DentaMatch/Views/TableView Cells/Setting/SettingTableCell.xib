@@ -26,7 +26,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xVI-nU-Bbb">
-                        <rect key="frame" x="56" y="18" width="221" height="20"/>
+                        <rect key="frame" x="60" y="18" width="217" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="lvO-Fj-BLE"/>
                         </constraints>
@@ -42,9 +42,10 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="g" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iDr-uZ-5Zz">
-                        <rect key="frame" x="20" y="22" width="16" height="15"/>
+                        <rect key="frame" x="20" y="19.5" width="20" height="19"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="16" id="eQW-HF-mqa"/>
+                            <constraint firstAttribute="width" constant="20" id="b7a-Sh-fPp"/>
+                            <constraint firstAttribute="height" constant="19" id="nMh-l1-edh"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="dentamatch" family="dentamatch" pointSize="15"/>
                         <color key="textColor" red="0.66666666666666663" green="0.68627450980392157" blue="0.72156862745098038" alpha="1" colorSpace="calibratedRGB"/>

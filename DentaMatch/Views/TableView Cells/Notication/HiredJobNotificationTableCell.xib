@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -19,7 +19,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="187"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="186.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="186"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="You have been hired for Dental Hygienists job" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7e4-QZ-ZGS">
@@ -73,7 +73,7 @@ San Francisco, CA 94107</string>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OK8-Ou-jqv">
-                        <rect key="frame" x="20" y="185" width="300" height="1"/>
+                        <rect key="frame" x="0.0" y="185" width="320" height="1"/>
                         <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="zYt-fa-e88"/>
@@ -104,7 +104,7 @@ San Francisco, CA 94107</string>
                     <constraint firstItem="GQv-hx-mF0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="39" id="gNl-V8-NuU"/>
                     <constraint firstItem="iLa-Ye-b2T" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="39" id="hrb-Iz-3Ft"/>
                     <constraint firstAttribute="trailing" secondItem="9Re-bO-paj" secondAttribute="trailing" constant="39" id="iWD-D0-9wf"/>
-                    <constraint firstItem="OK8-Ou-jqv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="npN-uy-J2L"/>
+                    <constraint firstItem="OK8-Ou-jqv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="npN-uy-J2L"/>
                     <constraint firstAttribute="trailing" secondItem="OK8-Ou-jqv" secondAttribute="trailing" id="o3I-bf-ClM"/>
                     <constraint firstItem="uon-i5-pej" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="21" id="u98-qh-cgt"/>
                     <constraint firstItem="9Re-bO-paj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="39" id="xaF-C9-igq"/>
