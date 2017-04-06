@@ -216,8 +216,35 @@ class DatabaseManager: NSObject {
             
         }
         kAppDelegate.saveContext()
-        //self.addUpdateChatToDB(chatObj: chatObj)
+        self.addChatForFirstTimeMessage(chatObj: chatObj)
         
+    }
+    
+    class func addChatForFirstTimeMessage(chatObj:JSON?) {
+            
+        if let chatObj = chatObj {
+            if let _ = chatExits(messageId: chatObj["messageId"].stringValue) {
+                //Update chat
+                debugPrint("Update Chat")
+                
+            } else {
+                //New chat
+                let chat = NSEntityDescription.insertNewObject(forEntityName: "Chat", into: kAppDelegate.managedObjectContext) as! Chat
+                chat.chatId = chatObj["messageId"].stringValue
+                chat.message = chatObj["message"].stringValue
+                chat.fromId = chatObj["recruiterId"].stringValue
+                
+                if let user = UserManager.shared().activeUser {
+                    chat.toId = user.userId
+                    chat.timeStamp = chatObj["timestamp"].doubleValue
+                    let filteredDateTime = DatabaseManager.getDate(timestamp: chatObj["timestamp"].doubleValue)
+                    chat.timeString = filteredDateTime.time
+                    chat.dateString = filteredDateTime.date
+                }
+                debugPrint("New Chat Saved")
+            }
+        }
+        kAppDelegate.saveContext()
     }
     
     class func getDate(timestamp:Double) -> (time:String,date:String) {
