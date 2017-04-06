@@ -17,6 +17,8 @@ extension Notification.Name {
     
     static let refreshMessageList = Notification.Name("refreshMessageList")
     static let chatRedirect = Notification.Name("chatRedirect")
+    static let hideMessagePlaceholder = Notification.Name("hideMessagePlaceholder")
+
 
     static let pushRedirectNotificationForground = Notification.Name("pushRedirectNoyificationForground")
     static let pushRedirectNotificationBacground = Notification.Name("pushRedirectNoyificationBackground")

@@ -26,6 +26,8 @@ class DMMessagesVC: DMBaseVC {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(redirectToChat), name: .chatRedirect, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(refreshBlockList), name: .refreshBlockList, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(hideMessagePlaceholder), name: .hideMessagePlaceholder, object: nil)
+
 
         setup()
         SocketManager.sharedInstance.initServer()
@@ -159,6 +161,10 @@ class DMMessagesVC: DMBaseVC {
     func refreshBlockList(notification:Notification) {
         //print(notification.userInfo)
         self.makeToast(toastString: "Recruiter Blocked")
+    }
+    
+    func hideMessagePlaceholder() {
+        self.placeHolderEmptyJobsView?.isHidden = true
     }
 }
 

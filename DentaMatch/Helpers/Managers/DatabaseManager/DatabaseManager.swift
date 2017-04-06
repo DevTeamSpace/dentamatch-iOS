@@ -208,12 +208,16 @@ class DatabaseManager: NSObject {
             chatList.lastMessageId = chatObj["messageId"].stringValue
             chatList.unreadCount = 1
             
+            NotificationCenter.default.post(name: .hideMessagePlaceholder, object: nil)
+
             ToastView.showNotificationToast(message: chatObj["message"].stringValue, name: chatObj["name"].stringValue, imageUrl: "", type: .White, onCompletion: {
                 kAppDelegate.chatSocketNotificationTap(recruiterId: chatObj["recruiterId"].stringValue)
             })
             
         }
         kAppDelegate.saveContext()
+        //self.addUpdateChatToDB(chatObj: chatObj)
+        
     }
     
     class func getDate(timestamp:Double) -> (time:String,date:String) {
