@@ -11,53 +11,45 @@ import Foundation
 extension DMCalenderVC:UITableViewDelegate,UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.section {
-        case 0:
-            return 45
-        case 1:
             return 170
-        default:
-            break
-        }
-        return 0
-
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
-        switch section {
-        case 0:
-            return 1
-        case 1:
-            return selectedDayList.count
-        default:
-            break
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+            return 45
         }
-        return 0
-    }
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        switch indexPath.section {
-        case 0:
-            return false
-        case 1:
-            return true
-        default:
-            break
-        }
-        return true
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: Utilities.ScreenSize.SCREEN_WIDTH, height: 46))
+        headerView.backgroundColor = UIColor.color(withHexCode: "f9f9f9")
+        
+        let label = UILabel(frame: CGRect(x: 20, y: 16, width: Utilities.ScreenSize.SCREEN_WIDTH, height: 20))
+        label.text = "BOOKED JOBS"
+        label.textColor = Constants.Color.textFieldTextColor
 
+        label.font = UIFont.fontMedium(fontSize: 14.0)
+        headerView.addSubview(label)
+        
+        let bottomLineView = UIView(frame: CGRect(x: 0, y: 44, width: Utilities.ScreenSize.SCREEN_WIDTH, height: 1))
+        bottomLineView.backgroundColor = Constants.Color.textFieldBorderColor
+        headerView.addSubview(bottomLineView)
+        
+        return headerView
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return selectedDayList.count
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+            return true
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SectionHeadingTableCell") as? SectionHeadingTableCell
-            cell?.headingLabel.text = "BOOKED JOBS"
-            cell?.selectionStyle = .none
-            return cell!
-        }else{
+
             let cell = tableView.dequeueReusableCell(withIdentifier: "JobSearchResultCell") as? JobSearchResultCell
             let job = selectedDayList[indexPath.row]
             cell?.setCellData(job: job)
@@ -75,14 +67,10 @@ extension DMCalenderVC:UITableViewDelegate,UITableViewDataSource{
             cell?.jobTitleLeftConstraint.constant = 20
             cell?.contentView.layoutIfNeeded()
             return cell!
-        }
     }
+    
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        
-        switch indexPath.section {
-        case 0:
-            break
-        case 1:
+
             let deleteAction = UITableViewRowAction(style: .normal, title: "Cancel Job", handler: { (action:UITableViewRowAction, indexPath:IndexPath) in
                 let job = self.selectedDayList[indexPath.row]
 //                self.removeJobButtonPressed(job: job)
@@ -91,23 +79,15 @@ extension DMCalenderVC:UITableViewDelegate,UITableViewDataSource{
             })
             deleteAction.backgroundColor = Constants.Color.cancelJobDeleteColor
             return [ deleteAction]
-            
-        default:
-            return nil
-        }
-        return nil
-
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let jobDetailVC = UIStoryboard.jobSearchStoryBoard().instantiateViewController(type: DMJobDetailVC.self)!
-        jobDetailVC.fromCalender = false
-        jobDetailVC.job = selectedDayList[indexPath.row]
-        jobDetailVC.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(jobDetailVC, animated: true)
+            let jobDetailVC = UIStoryboard.jobSearchStoryBoard().instantiateViewController(type: DMJobDetailVC.self)!
+            jobDetailVC.fromCalender = false
+            jobDetailVC.job = selectedDayList[indexPath.row]
+            jobDetailVC.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(jobDetailVC, animated: true)
     }
-    
     
     func openCancelJob(job:Job,fromApplied:Bool) {
         let cancelJobVC = UIStoryboard.trackStoryBoard().instantiateViewController(type: DMCancelJobVC.self)!
@@ -149,6 +129,7 @@ extension DMCalenderVC:UITableViewDelegate,UITableViewDataSource{
     }
 
 }
+
 
 extension DMCalenderVC : CancelledJobDelegate {
     func cancelledJob(job: Job, fromApplied: Bool) {

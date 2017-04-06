@@ -10,6 +10,7 @@ import UIKit
 
 class SettingTableCell: UITableViewCell {
     
+    @IBOutlet weak var leftConstraintLabel: NSLayoutConstraint!
     @IBOutlet weak var leftIconImageView: UIImageView!
     @IBOutlet weak var leftIconLabel: UILabel!
     @IBOutlet weak var TextLabel: UILabel!

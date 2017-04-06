@@ -41,7 +41,7 @@
                             <constraint firstAttribute="height" constant="1" id="waC-C4-XQV"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="g" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iDr-uZ-5Zz">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="g" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iDr-uZ-5Zz">
                         <rect key="frame" x="20" y="19.5" width="20" height="19"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="20" id="b7a-Sh-fPp"/>
@@ -74,6 +74,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="TextLabel" destination="xVI-nU-Bbb" id="3rb-mO-6So"/>
+                <outlet property="leftConstraintLabel" destination="zxR-Xa-2h3" id="UTV-Bx-5w8"/>
                 <outlet property="leftIconImageView" destination="YLV-rS-C8h" id="4ok-B8-wFK"/>
                 <outlet property="leftIconLabel" destination="iDr-uZ-5Zz" id="j0F-88-Rwv"/>
             </connections>

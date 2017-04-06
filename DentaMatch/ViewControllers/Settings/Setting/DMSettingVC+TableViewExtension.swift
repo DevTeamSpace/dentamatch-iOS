@@ -23,16 +23,19 @@ extension DMSettingVC : UITableViewDataSource,UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingTableCell") as! SettingTableCell
         cell.selectionStyle = .none
         cell.leftIconImageView.isHidden = true
+        cell.leftIconImageView.contentMode = .scaleAspectFill
         switch indexPath.row {
         case 0:
             cell.TextLabel.text = "Preferred Job Location"
-            cell.leftIconLabel.text = "d"
-            cell.leftIconLabel.font = UIFont.designFont(fontSize: 16.0)
+            cell.leftIconLabel.text = ""
+            cell.leftIconImageView.image = UIImage(named: "preferredLocationIcon")
+            cell.leftIconImageView.isHidden = false
+
         case 1:
             cell.TextLabel.text = "Reset Password"
+            cell.leftIconLabel.font = UIFont.designFont(fontSize: 19.0)
             cell.leftIconLabel.text = "e"
-            cell.leftIconLabel.font = UIFont.designFont(fontSize: 17.0)
-
+            cell.leftConstraintLabel.constant = 18
         case 2:
             cell.TextLabel.text = "Terms & Conditions"
             cell.leftIconLabel.text = "i"
@@ -43,12 +46,14 @@ extension DMSettingVC : UITableViewDataSource,UITableViewDelegate {
         case 4:
             cell.TextLabel.text = "Logout"
             cell.leftIconLabel.text = ""
+            cell.leftIconImageView.image = UIImage(named: "logOut")
             cell.leftIconImageView.isHidden = false
 
 
         default: break
             
         }
+        cell.contentView.layoutIfNeeded()
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
