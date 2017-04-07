@@ -144,7 +144,7 @@ class DentistDetailCell: UITableViewCell {
             self.lblDays.text = ""
             //its a temp job
             for date in job.jobTypeDates {
-                self.lblDays.text = self.lblDays.text! + date + ", "
+                self.lblDays.text = self.lblDays.text! + Date.commonDateFormatMMDDYYYY(dateString: date) + ", "
             }
             self.lblDays.text = self.lblDays.text?.dropLast(2)
         }

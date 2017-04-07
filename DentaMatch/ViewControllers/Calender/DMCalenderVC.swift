@@ -128,16 +128,6 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         return barButton
     }
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     func calculateNumberOfEvent(date:Date) -> Int {
         let dayPartTime = hiredList.filter { (newJob) -> Bool in
             (newJob.jobType == 2)
@@ -224,34 +214,8 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         if tempJobs.count > 0 {
             eventcount = eventcount + 1
         }
-//        for temp in dayTempTime {
-//            
-//            let tempNew = temp.filter({ (dateString) -> Bool in
-//                (dateString.jobDate == Date.dateToString(date: date))
-//            })
-//            if tempNew.count > 0 {
-//                eventcount = eventcount + 1
-//                break
-//            }
-//            
-//            
-//        }
-        
-//        let tempDay = dayTempTime.filter { (newJob) -> Bool in
-//            (newJob.tempJobDates.contains(where: { (objDate) -> Bool in
-//                (objDate.jobDate == Date.dateToString(date: Date()))
-//            }))
-//        }
-        
-//        if tempDay.count > 0 {
-//            eventcount = eventcount + 1
-//        }
         return eventcount
-        
     }
-    
-    
-    
     
     func dateEventColor(date:Date) -> [UIColor] {
         
@@ -341,16 +305,6 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         if tempJobs.count > 0 {
             color.append(Constants.Color.tempTimeEventColor)
         }
-//        for temp in dayTempTime {
-//            
-//            let tempNew = temp.tempJobDates.filter({ (dateString) -> Bool in
-//                (dateString.jobDate == Date.dateToString(date: date))
-//            })
-//            if tempNew.count > 0 {
-//                color.append(Constants.Color.tempTimeEventColor)
-//            }
-//            
-//        }
         
         return color
         
@@ -359,11 +313,6 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
     
     
     func dateAllEvents(date:Date) -> [Job] {
-        
-//        let dayFullTime = hiredList.filter { (newJob) -> Bool in
-//            (newJob.jobType == 1)
-//        }
-
         
         let dayPartTime = hiredList.filter { (newJob) -> Bool in
             (newJob.jobType == 2)
@@ -442,22 +391,14 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         let dayTempTime = hiredList.filter { (newJob) -> Bool in
             (newJob.jobType == 3)
         }
-//        for temp in dayTempTime {
-        
-//            let tempNew = temp.tempJobDates.filter({ (dateString) -> Bool in
-//                (dateString.jobDate == Date.dateToString(date: date))
-//            })
             let tempJobs = dayTempTime.filter { (newJob) -> Bool in
                 let eventDate = Date.stringToDate(dateString: newJob.tempjobDate)
                 return (eventDate == dateToday)
             }
             if tempJobs.count > 0 {
-//                todayAllEvent.append(temp)
                 todayAllEvent.append(contentsOf: tempJobs)
 
             }
-        
-//        }
         
         return todayAllEvent
         
@@ -547,11 +488,9 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         }
 
     }
-
     
     
-    
-    //pluse button Action
+    //plus button Action
     func setAvailablityButtonClicked(_ sender: Any) {
         let termsVC = UIStoryboard.calenderStoryBoard().instantiateViewController(type: DMCalendarSetAvailabillityVC.self)!
         termsVC.hidesBottomBarWhenPushed = true
@@ -560,35 +499,14 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
     @IBAction func nextButtonClicked(_ sender: Any) {
         let currentMonth:Date = self.calendar!.currentPage
         let previousMonth:Date = (self.gregorian?.date(byAdding: .month, value: 1, to: currentMonth, options: .matchFirst))!
-//        self.monthTitleLabel.text = Date.dateToStringForFormatter(date: previousMonth, dateFormate: Date.dateFormatMMMMYYYY())
-
-//        let dateData = Date.getMonthAndYearForm(date: Date())
-//        self.getHiredJobsFromServer(date:previousMonth) { (response, error) in
-//            debugPrint(self.hiredList.description)
-//            self.calendar?.reloadData()
-//            let fullTime  = self.hiredList.filter({ (job) -> Bool in
-//                job.jobType == 1
-//            })
-//            if fullTime.count > 0 {
-//                self.fulltimeJobIndicatorView.isHidden = false
-//            }else{
-//                self.fulltimeJobIndicatorView.isHidden = true
-//            }
-//            self.calendar?.setCurrentPage(previousMonth, animated: true)
-//
-//        }
         self.calendar?.setCurrentPage(previousMonth, animated: true)
 
     }
     @IBAction func previouseButtonClicked(_ sender: Any) {
         let currentMonth:Date = self.calendar!.currentPage
         let previousMonth:Date = (self.gregorian?.date(byAdding: .month, value: -1, to: currentMonth, options: .matchFirst))!
-        
         self.calendar?.setCurrentPage(previousMonth, animated: true)
-
     }
-
-    
 }
 
 extension Date {
