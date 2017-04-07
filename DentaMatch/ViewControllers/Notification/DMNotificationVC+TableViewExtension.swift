@@ -131,10 +131,16 @@ extension DMNotificationVC : UITableViewDataSource,UITableViewDelegate {
     func btnRejectButtonClicked(_ sender: Any) {
         let tag = (sender as AnyObject).tag
         let notifiObj = self.notificationList[tag!]
-        self.inviteActionSendToServer(notificationObj: notifiObj, actionType: 0) { (response, error) in
-            if response![Constants.ServerKey.status].boolValue {
-                notifiObj.seen = 1
-                self.notificationTableView.reloadData()
+        self.alertMessage(title: "Confirm Rejection", message: "Are you sure you want to reject this job invitation?", leftButtonText: "Yes", rightButtonText: "No") { (isLeft:Bool) in
+            if isLeft {
+                self.inviteActionSendToServer(notificationObj: notifiObj, actionType: 0) { (response, error) in
+                    if response![Constants.ServerKey.status].boolValue {
+                        notifiObj.seen = 1
+                        DispatchQueue.main.async {
+                            self.notificationTableView.reloadData()
+                        }
+                    }
+                }
             }
         }
     }

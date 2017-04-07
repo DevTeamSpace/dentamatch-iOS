@@ -89,12 +89,13 @@ extension DMEditSkillsVC : UITableViewDataSource, UITableViewDelegate{
             view.separator.margin = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
             return view
         }()
-        tagList.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: skillsTableView.frame.width - 20, height: 0))
-        
+        //tagList.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: skillsTableView.frame.width - 20, height: 0))
+        tagList.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: Utilities.ScreenSize.SCREEN_WIDTH - 30, height: 0))
+
         for subSkill in subSkills {
             
             let tag = Tag(content: TagPresentableText(subSkill.subSkillName) {
-                $0.label.font = UIFont.systemFont(ofSize: 16)
+                $0.label.font = UIFont.fontRegular(fontSize: 14.0)
                 }, onInit: {
                     $0.padding = UIEdgeInsets(top: 8, left: 10, bottom: 8, right: 10)
                     $0.layer.borderColor = UIColor.cyan.cgColor

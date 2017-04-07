@@ -182,6 +182,17 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EditProfileHeaderTableCell") as! EditProfileHeaderTableCell
             cell.nameLabel.text = UserManager.shared().activeUser.fullName()
             cell.placeLabel.attributedText = cell.fillPlaceAndJobTitle(jobTitle: UserManager.shared().activeUser.jobTitle!, place: UserManager.shared().activeUser.preferredJobLocation!)
+            
+//            var address = ""
+//            if let city = UserManager.shared().activeUser.city {
+//                address = city+", "
+//            }
+//
+//            if let country = UserManager.shared().activeUser.country {
+//                address += country
+//            }
+//            cell.placeLabel.attributedText = cell.fillPlaceAndJobTitle(jobTitle: UserManager.shared().activeUser.jobTitle!, place: address)
+            
             cell.editButton.addTarget(self, action: #selector(openEditPublicProfileScreen), for: .touchUpInside)
             cell.settingButton.addTarget(self, action: #selector(openSettingScreen), for: .touchUpInside)
             cell.aboutTextView.text = UserManager.shared().activeUser.aboutMe
@@ -505,7 +516,8 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             view.separator.margin = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
             return view
         }()
-        tagList.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: editProfileTableView.frame.width - 20, height: 0))
+        
+        tagList.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: Utilities.ScreenSize.SCREEN_WIDTH - 20, height: 0))
         
         for subSkill in affiliations {
             
@@ -521,8 +533,6 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             })
             tagList.tags.append(tag)
         }
-        
-        debugPrint("Height \(tagList.intrinsicContentSize.height)")
         return tagList.frame.size.height
     }
     
@@ -538,8 +548,8 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             view.separator.margin = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
             return view
         }()
-        tagList.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: editProfileTableView.frame.width - 20, height: 0))
-        
+        tagList.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: Utilities.ScreenSize.SCREEN_WIDTH - 30, height: 0))
+
         for subSkill in subSkills {
             
             let tag = Tag(content: TagPresentableText(subSkill.subSkillName) {
@@ -554,8 +564,6 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             })
             tagList.tags.append(tag)
         }
-        
-        debugPrint("Height \(tagList.intrinsicContentSize.height)")
         return tagList.frame.size.height
 
     }
