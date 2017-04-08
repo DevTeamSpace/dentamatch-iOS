@@ -131,7 +131,7 @@ extension DMNotificationVC {
                 completionHandler(response, error)
                 
             } else {
-                self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
+//                self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
                 completionHandler(response, error)
                 
             }

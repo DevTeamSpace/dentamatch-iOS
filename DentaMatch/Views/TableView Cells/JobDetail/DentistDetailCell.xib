@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -26,14 +26,14 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="115"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="114"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="114.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wbG-6Q-eGm">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="114"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dental Assistance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JiJ-r6-G7B">
-                                <rect key="frame" x="17" y="19" width="198" height="22"/>
+                                <rect key="frame" x="17" y="19" width="198" height="21"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="18"/>
                                 <color key="textColor" red="0.015686274510000001" green="0.43921568630000002" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -53,7 +53,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UbB-K9-Quo">
-                                <rect key="frame" x="17" y="48" width="61" height="21"/>
+                                <rect key="frame" x="17" y="47" width="61" height="21"/>
                                 <color key="backgroundColor" red="0.94509803921568625" green="0.72156862745098038" blue="0.3529411764705882" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="61" id="O5v-id-HWV"/>
@@ -64,8 +64,8 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mo,su," textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbT-hg-hiR">
-                                <rect key="frame" x="94" y="51" width="206" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mo,su," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbT-hg-hiR">
+                                <rect key="frame" x="94" y="51" width="171" height="14"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -88,7 +88,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Applied" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSf-IO-YoC">
-                                <rect key="frame" x="255" y="81" width="45" height="15"/>
+                                <rect key="frame" x="255.5" y="80.5" width="44.5" height="14"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="12"/>
                                 <color key="textColor" red="0.55686274509803924" green="0.81176470588235294" blue="0.49411764705882355" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -100,6 +100,7 @@
                             <constraint firstItem="JiJ-r6-G7B" firstAttribute="leading" secondItem="wbG-6Q-eGm" secondAttribute="leading" constant="17" id="4FA-8q-eTu"/>
                             <constraint firstItem="lbT-hg-hiR" firstAttribute="leading" secondItem="UbB-K9-Quo" secondAttribute="trailing" constant="16" id="4XA-TP-7lN"/>
                             <constraint firstItem="UbB-K9-Quo" firstAttribute="top" secondItem="JiJ-r6-G7B" secondAttribute="bottom" constant="7" id="55I-kg-Y7O"/>
+                            <constraint firstItem="MMU-ub-pAV" firstAttribute="leading" secondItem="lbT-hg-hiR" secondAttribute="trailing" id="BoO-kb-dby"/>
                             <constraint firstItem="MMU-ub-pAV" firstAttribute="leading" secondItem="JiJ-r6-G7B" secondAttribute="trailing" constant="50" id="DkB-l7-bPC"/>
                             <constraint firstItem="lbT-hg-hiR" firstAttribute="centerY" secondItem="UbB-K9-Quo" secondAttribute="centerY" id="KNd-W6-kyu"/>
                             <constraint firstAttribute="trailing" secondItem="P41-7v-emu" secondAttribute="trailing" id="MHC-gO-au5"/>
@@ -112,7 +113,6 @@
                             <constraint firstItem="rSf-IO-YoC" firstAttribute="centerY" secondItem="NOt-83-ba0" secondAttribute="centerY" id="j4b-Wn-Ri6"/>
                             <constraint firstAttribute="trailing" secondItem="rSf-IO-YoC" secondAttribute="trailing" constant="20" id="nl0-wF-QWc"/>
                             <constraint firstAttribute="bottom" secondItem="NOt-83-ba0" secondAttribute="bottom" constant="21" id="uJa-Gp-xY0"/>
-                            <constraint firstAttribute="trailing" secondItem="lbT-hg-hiR" secondAttribute="trailing" constant="20" id="vcn-rl-D3d"/>
                         </constraints>
                     </view>
                 </subviews>

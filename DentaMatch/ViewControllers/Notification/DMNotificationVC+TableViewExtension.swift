@@ -122,9 +122,21 @@ extension DMNotificationVC : UITableViewDataSource,UITableViewDelegate {
         let notifiObj = self.notificationList[tag!]
 
         self.inviteActionSendToServer(notificationObj: notifiObj, actionType: 1) { (response, error) in
+            if error != nil {
+                return
+            }
+            debugPrint(response!)
             if response![Constants.ServerKey.status].boolValue {
                 notifiObj.seen = 1
                 self.notificationTableView.reloadData()
+            } else {
+                if response![Constants.ServerKey.statusCode].intValue == 201 {
+                    self.alertMessage(title: "Change Availability", message: response![Constants.ServerKey.message].stringValue, buttonText: "Ok", completionHandler: {
+                        
+                    })
+                } else {
+                    self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
+                }
             }
         }
     }
