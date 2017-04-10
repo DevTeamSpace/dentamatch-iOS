@@ -35,9 +35,9 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
 
-        if self.hiredList.count == 0 {
+//        if self.hiredList.count == 0 {
             self.getAllJobFromServer()
-        }
+       // }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

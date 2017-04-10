@@ -81,9 +81,9 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             if indexPath.row == 0 {
                 return 45
             } else {
-                var height = 0
-                height = self.schoolCategories.count == 0 ? 72 : 70
-                return CGFloat(height)
+                var height:CGFloat = 0
+                height = self.schoolCategories.count == 0 ? CGFloat(72) : EditProfileSchoolCell.requiredHeight(school: self.schoolCategories[indexPath.row - 1])
+                return height
             }
             
         case .keySkills:
@@ -317,7 +317,7 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "EditProfileSchoolCell") as! EditProfileSchoolCell
                     let school = self.schoolCategories[indexPath.row - 1]
                     cell.schoolCategoryLabel.text = school.schoolCategoryName
-                    cell.universityNameLabel.text = cell.makeUniversityText(school: school)
+                    cell.universityNameLabel.text = EditProfileSchoolCell.makeUniversityText(school: school)
                     return cell
                 }
             }
