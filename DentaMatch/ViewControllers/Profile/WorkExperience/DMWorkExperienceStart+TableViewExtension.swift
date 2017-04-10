@@ -77,11 +77,9 @@ extension DMWorkExperienceStart: UITableViewDataSource,UITableViewDelegate
     
     func updateCellForWorkeExperienceStart(cell:AnimatedPHTableCell, indexPath:IndexPath) {
         if indexPath.row == 2 {
-            cell.accessoryLabel.isHidden = false
             cell.cellTopSpace.constant = 30
         } else {
             cell.cellTopSpace.constant = 10
-            cell.accessoryLabel.isHidden = true
         }
         
         switch indexPath.row {
@@ -108,6 +106,17 @@ extension DMWorkExperienceStart: UITableViewDataSource,UITableViewDelegate
         cell.commonTextField.placeholder = FieldType.CurrentJobTitle.description
         let pickerView = JobSelectionPickerView.loadJobSelectionView(withJobTitles: jobTitles)
         cell.commonTextField.type = 1
+        //Right View for drop down
+        let rightView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: cell.commonTextField.frame.size.height))
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 40, height: cell.commonTextField.frame.size.height))
+        label.font = UIFont.designFont(fontSize: 16.0)
+        label.text = "c"
+        label.textColor = UIColor.color(withHexCode: "a0a0a0")
+        label.textAlignment = .center
+        label.center = rightView.center
+        rightView.addSubview(label)
+        cell.commonTextField.rightView = rightView
+        cell.commonTextField.rightViewMode = .always
         cell.commonTextField.tintColor = UIColor.clear
         cell.commonTextField.inputView = pickerView
         pickerView.delegate = self

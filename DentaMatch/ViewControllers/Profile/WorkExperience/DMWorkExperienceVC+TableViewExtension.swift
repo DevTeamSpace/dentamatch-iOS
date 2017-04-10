@@ -217,7 +217,18 @@ extension DMWorkExperienceVC: UITableViewDataSource,UITableViewDelegate
     func cellConfigureForJobSelection(cell:AnimatedPHTableCell, indexPath:IndexPath) {
         
         cell.commonTextField.placeholder = FieldType.CurrentJobTitle.description
-        cell.accessoryLabel.isHidden = false
+        //Right View for drop down
+        let rightView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: cell.commonTextField.frame.size.height))
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 40, height: cell.commonTextField.frame.size.height))
+        label.font = UIFont.designFont(fontSize: 16.0)
+        label.text = "c"
+        label.textColor = UIColor.color(withHexCode: "a0a0a0")
+        label.textAlignment = .center
+        label.center = rightView.center
+        rightView.addSubview(label)
+        cell.commonTextField.rightView = rightView
+        cell.commonTextField.rightViewMode = .always
+
         cell.commonTextField.text = self.currentExperience?.jobTitle
         let pickerView = JobSelectionPickerView.loadJobSelectionView(withJobTitles: jobTitles)
         cell.commonTextField.type = 1

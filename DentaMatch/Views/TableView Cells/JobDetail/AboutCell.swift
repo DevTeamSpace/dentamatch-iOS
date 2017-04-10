@@ -47,7 +47,8 @@ class AboutCell: UITableViewCell {
         self.lblOfficeType.text = job.officeTypeName
         self.lblNoOfOpening.text = "\(job.noOfJobs)"
         
-        if job.noOfJobs == 0 {
+        //Show total openings in case of temp Jobs only i.e jobType = 3
+        if job.jobType == 1 || job.jobType == 2 {
             self.constraintlblNoOfOpeningTop.constant = 0
             self.constraintLblNoOfOpeningHeight.constant = 0
             self.constraintLblNoOfOpeningValueHeight.constant = 0

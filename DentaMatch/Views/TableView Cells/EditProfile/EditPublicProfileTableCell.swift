@@ -33,6 +33,19 @@ class EditPublicProfileTableCell: UITableViewCell {
         self.jobTitleTextField.type = 1
         self.jobTitleTextField.tintColor = UIColor.clear
         self.locationTextField.type = 1
+        
+        //Right View for drop down
+        let rightView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: jobTitleTextField.frame.size.height))
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 40, height: jobTitleTextField.frame.size.height))
+        label.font = UIFont.designFont(fontSize: 16.0)
+        label.text = "c"
+        label.textColor = UIColor.color(withHexCode: "a0a0a0")
+        label.textAlignment = .center
+        label.center = rightView.center
+        rightView.addSubview(label)
+        jobTitleTextField.rightView = rightView
+        jobTitleTextField.rightViewMode = .always
+
         addPlaceHolderLabel()
     }
     

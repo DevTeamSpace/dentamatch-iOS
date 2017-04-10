@@ -52,6 +52,18 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
         self.addJobSelectionPickerViewTextField()
         currentJobTitleTextField.type = 1
         self.profileButton.isUserInteractionEnabled = false
+        
+        //Right View for drop down
+        let rightView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: currentJobTitleTextField.frame.size.height))
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 40, height: currentJobTitleTextField.frame.size.height))
+        label.font = UIFont.designFont(fontSize: 16.0)
+        label.text = "c"
+        label.textColor = UIColor.color(withHexCode: "a0a0a0")
+        label.textAlignment = .center
+        label.center = rightView.center
+        rightView.addSubview(label)
+        currentJobTitleTextField.rightView = rightView
+        currentJobTitleTextField.rightViewMode = .always
         self.perform(#selector(makeTip), with: nil, afterDelay: 0.2)
     }
     
