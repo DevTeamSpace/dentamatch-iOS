@@ -64,6 +64,7 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
         rightView.addSubview(label)
         currentJobTitleTextField.rightView = rightView
         currentJobTitleTextField.rightViewMode = .always
+        currentJobTitleTextField.rightView?.isUserInteractionEnabled = false
         self.perform(#selector(makeTip), with: nil, afterDelay: 0.2)
     }
     

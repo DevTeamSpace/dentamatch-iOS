@@ -117,6 +117,7 @@ extension DMWorkExperienceStart: UITableViewDataSource,UITableViewDelegate
         rightView.addSubview(label)
         cell.commonTextField.rightView = rightView
         cell.commonTextField.rightViewMode = .always
+        cell.commonTextField.rightView?.isUserInteractionEnabled = false
         cell.commonTextField.tintColor = UIColor.clear
         cell.commonTextField.inputView = pickerView
         pickerView.delegate = self

@@ -44,6 +44,7 @@ class EditPublicProfileTableCell: UITableViewCell {
         label.center = rightView.center
         rightView.addSubview(label)
         jobTitleTextField.rightView = rightView
+        jobTitleTextField.rightView?.isUserInteractionEnabled = false
         jobTitleTextField.rightViewMode = .always
 
         addPlaceHolderLabel()

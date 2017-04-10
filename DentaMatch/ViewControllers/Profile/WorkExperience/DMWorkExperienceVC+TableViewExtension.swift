@@ -228,6 +228,7 @@ extension DMWorkExperienceVC: UITableViewDataSource,UITableViewDelegate
         rightView.addSubview(label)
         cell.commonTextField.rightView = rightView
         cell.commonTextField.rightViewMode = .always
+        cell.commonTextField.rightView?.isUserInteractionEnabled = false
 
         cell.commonTextField.text = self.currentExperience?.jobTitle
         let pickerView = JobSelectionPickerView.loadJobSelectionView(withJobTitles: jobTitles)
