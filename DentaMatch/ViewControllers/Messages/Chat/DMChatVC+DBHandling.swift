@@ -37,6 +37,7 @@ extension DMChatVC:NSFetchedResultsControllerDelegate {
                             chatList.lastMessage = chatObj["message"].stringValue
                             chatList.lastMessageId = chatObj["messageId"].stringValue
                             chatList.timeStamp = chatObj["sentTime"].doubleValue
+                            chatList.date = Date.getDate(timestamp: chatObj["sentTime"].stringValue) as NSDate?
                             //TODO:- Time Handling
                         }
                     } else {
@@ -45,6 +46,7 @@ extension DMChatVC:NSFetchedResultsControllerDelegate {
                             chatList.lastMessage = chatObj["message"].stringValue
                             chatList.lastMessageId = chatObj["messageId"].stringValue
                             chatList.timeStamp = chatObj["sentTime"].doubleValue
+                            chatList.date = Date.getDate(timestamp: chatObj["sentTime"].stringValue) as NSDate?
                             if self.chatList?.recruiterId != chatList.recruiterId {
                                 chatList.unreadCount = chatList.unreadCount + 1
                                 //Someone other messaged than the one whose chat page is opened
@@ -63,7 +65,7 @@ extension DMChatVC:NSFetchedResultsControllerDelegate {
                // self.chatList?.lastMessageId = chatObj["messageId"].stringValue
             }
         }
-        kAppDelegate.saveContext()
+        kAppDelegate.saveContext()        
     }
     
     func chatExits(messageId:String) -> Chat? {

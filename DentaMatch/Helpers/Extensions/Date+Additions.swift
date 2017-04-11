@@ -196,6 +196,12 @@ extension Date {
         return calculatedDated
     }
     
+    static func getDate(timestamp:String) -> Date {
+        let doubleTime = Double(timestamp)
+        let lastMessageDate = Date(timeIntervalSince1970: doubleTime!/1000)
+        return lastMessageDate
+    }
+    
     //MARK:- Current time in milliseconds
     static func currentTimeMillis() -> Int64{
         let nowDouble = NSDate().timeIntervalSince1970

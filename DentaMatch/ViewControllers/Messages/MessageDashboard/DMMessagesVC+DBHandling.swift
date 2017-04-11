@@ -45,10 +45,8 @@ extension DMMessagesVC:NSFetchedResultsControllerDelegate {
     }
     
     func getDate(timestamp:String) -> Date {
-        
         let doubleTime = Double(timestamp)
         let lastMessageDate = Date(timeIntervalSince1970: doubleTime!/1000)
-        
         return lastMessageDate
     }
     
