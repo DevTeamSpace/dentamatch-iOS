@@ -57,7 +57,7 @@ class DatabaseManager: NSObject {
             } else {
                 //New chat
                 let chat = NSEntityDescription.insertNewObject(forEntityName: "Chat", into: kAppDelegate.managedObjectContext) as! Chat
-                chat.chatId = chatObj["messageId"].stringValue
+                chat.chatId = chatObj["messageId"].int64Value
                 chat.message = chatObj["message"].stringValue
                 chat.fromId = chatObj["fromId"].stringValue
                 chat.toId = chatObj["toId"].stringValue
@@ -157,7 +157,7 @@ class DatabaseManager: NSObject {
                 } else {
                     //New chat
                     let chat = NSEntityDescription.insertNewObject(forEntityName: "Chat", into: kAppDelegate.managedObjectContext) as! Chat
-                    chat.chatId = chatObj["messageId"].stringValue
+                    chat.chatId = chatObj["messageId"].int64Value
                     chat.message = chatObj["message"].stringValue
                     chat.fromId = chatObj["fromId"].stringValue
                     chat.toId = chatObj["toId"].stringValue
@@ -230,7 +230,7 @@ class DatabaseManager: NSObject {
             } else {
                 //New chat
                 let chat = NSEntityDescription.insertNewObject(forEntityName: "Chat", into: kAppDelegate.managedObjectContext) as! Chat
-                chat.chatId = chatObj["messageId"].stringValue
+                chat.chatId = chatObj["messageId"].int64Value
                 chat.message = chatObj["message"].stringValue
                 chat.fromId = chatObj["recruiterId"].stringValue
                 

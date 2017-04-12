@@ -21,7 +21,7 @@ extension DMChatVC:NSFetchedResultsControllerDelegate {
             } else {
                 //New chat
                 let chat = NSEntityDescription.insertNewObject(forEntityName: "Chat", into: self.context) as! Chat
-                chat.chatId = chatObj["messageId"].stringValue
+                chat.chatId = chatObj["messageId"].int64Value
                 chat.message = chatObj["message"].stringValue
                 chat.fromId = chatObj["fromId"].stringValue
                 chat.toId = chatObj["toId"].stringValue
@@ -91,7 +91,8 @@ extension DMChatVC:NSFetchedResultsControllerDelegate {
         fetchRequest.predicate = NSPredicate(format: "(fromId == %@ AND toId == %@) or (fromId == %@ AND toId == %@)",userId!,recruiterId!,recruiterId!,userId!)
         
         // Add Sort Descriptors
-        let sortDescriptor = NSSortDescriptor(key: "timeStamp", ascending: true)
+        let sortDescriptor = NSSortDescriptor(key: "chatId", ascending: true)
+        //let sortDescriptor = NSSortDescriptor(key: "timeStamp", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         //fetchRequest.fetchBatchSize = 20
         

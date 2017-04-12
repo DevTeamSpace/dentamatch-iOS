@@ -147,7 +147,7 @@ class SocketManager: NSObject,SocketConnectionDelegate {
         socket.emit("getHistory", params)
     }
     
-    func getLeftMessages(recruiterId:String,messageId:String,completionHandler: @escaping (_ messageInfo: [Any]) -> Void) {
+    func getLeftMessages(recruiterId:String,messageId:Int64,completionHandler: @escaping (_ messageInfo: [Any]) -> Void) {
         self.getLeftMessagesCompletionHandler = completionHandler
         let params = [
             "fromId":UserManager.shared().activeUser.userId!,

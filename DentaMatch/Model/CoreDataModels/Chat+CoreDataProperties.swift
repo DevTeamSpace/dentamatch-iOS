@@ -2,7 +2,7 @@
 //  Chat+CoreDataProperties.swift
 //  DentaMatch
 //
-//  Created by Rajan Maheshwari on 21/02/17.
+//  Created by Rajan Maheshwari on 12/04/17.
 //  Copyright © 2017 Appster. All rights reserved.
 //
 
@@ -13,10 +13,11 @@ import CoreData
 extension Chat {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Chat> {
-        return NSFetchRequest<Chat>(entityName: "Chat");
+        return NSFetchRequest<Chat>(entityName: "Chat")
     }
 
-    @NSManaged public var chatId: String?
+    @NSManaged public var chatId: Int64
+    @NSManaged public var dateString: String?
     @NSManaged public var dateTime: NSDate?
     @NSManaged public var fromId: String?
     @NSManaged public var message: String?
@@ -24,6 +25,5 @@ extension Chat {
     @NSManaged public var timeStamp: Double
     @NSManaged public var timeString: String?
     @NSManaged public var toId: String?
-    @NSManaged public var dateString: String?
 
 }

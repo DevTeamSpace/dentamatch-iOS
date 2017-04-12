@@ -174,7 +174,7 @@ class DMChatVC: DMBaseVC {
             } else {
                 self.getChats()
                 if let chat = getLastChat() {
-                    getLeftMessages(lastMessageId: chat.chatId!)
+                    getLeftMessages(lastMessageId: chat.chatId)
                 }
             }
         } else {
@@ -182,7 +182,7 @@ class DMChatVC: DMBaseVC {
         }
     }
     
-    func getLeftMessages(lastMessageId:String) {
+    func getLeftMessages(lastMessageId:Int64) {
         //self.showLoader(text: "Loading Chats")
         SocketManager.sharedInstance.getLeftMessages(recruiterId: (chatList?.recruiterId)!, messageId: lastMessageId, completionHandler: { (params:[Any]) in
             //self.hideLoader()
@@ -195,7 +195,7 @@ class DMChatVC: DMBaseVC {
     
     func refreshChat() {
         if let chat = getLastChat() {
-            getLeftMessages(lastMessageId: chat.chatId!)
+            getLeftMessages(lastMessageId: chat.chatId)
         }
     }
     

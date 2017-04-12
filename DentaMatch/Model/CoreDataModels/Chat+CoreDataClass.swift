@@ -2,7 +2,7 @@
 //  Chat+CoreDataClass.swift
 //  DentaMatch
 //
-//  Created by Rajan Maheshwari on 21/02/17.
+//  Created by Rajan Maheshwari on 12/04/17.
 //  Copyright © 2017 Appster. All rights reserved.
 //
 
