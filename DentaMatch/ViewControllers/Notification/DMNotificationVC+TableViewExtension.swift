@@ -40,6 +40,7 @@ extension DMNotificationVC : UITableViewDataSource,UITableViewDelegate {
         case .verifyDocuments,.completeProfile,.chatMessgae,.other:
             let cell = tableView.dequeueReusableCell(withIdentifier: "CommonTextNotificationTableCell") as? CommonTextNotificationTableCell
             cell?.configureCommonTextNotificationTableCell(userNotificationObj: notificationObj)
+            cell?.disclosureIndicatorView.isHidden = true
             return cell!
         }
         

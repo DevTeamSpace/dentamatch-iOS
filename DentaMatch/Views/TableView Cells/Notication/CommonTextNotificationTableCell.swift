@@ -13,6 +13,7 @@ class CommonTextNotificationTableCell: UITableViewCell {
     @IBOutlet weak var notificationTimeLabel: UILabel!
     @IBOutlet weak var unreadView: UIView!
     
+    @IBOutlet weak var disclosureIndicatorView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

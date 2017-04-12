@@ -72,10 +72,13 @@ class DMJobSearchVC : DMBaseVC {
             searchParams = params
             location.postalCode = (searchParams[Constants.JobDetailKey.zipCode] as! String?)!
             location.address = searchParams[Constants.JobDetailKey.address] as! String?
+            self.city = searchParams[Constants.JobDetailKey.city] as! String
+            self.state = searchParams[Constants.JobDetailKey.state] as! String
+            self.country = searchParams[Constants.JobDetailKey.country] as! String
             let latStr = searchParams[Constants.JobDetailKey.lat] as! NSString
-            let latDbl : Double  = Double(latStr.intValue)
+            let latDbl : Double  = latStr.doubleValue
             let langStr = searchParams[Constants.JobDetailKey.lng] as! NSString
-            let langDbl : Double = Double(langStr.intValue)
+            let langDbl : Double = langStr.doubleValue
             location.coordinateSelected = CLLocationCoordinate2DMake(latDbl, langDbl)
             if searchParams[Constants.JobDetailKey.isParttime] as! String? == "1" {
                 isPartTimeDayShow = true
