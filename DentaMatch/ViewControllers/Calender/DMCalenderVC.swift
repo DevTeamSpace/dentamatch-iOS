@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FSCalendar
 
 class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarDelegateAppearance {
     @IBOutlet weak var viewForCalender: UIView!

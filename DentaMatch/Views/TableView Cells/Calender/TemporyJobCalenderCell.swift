@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import FSCalendar
+
 @objc protocol TemporyJobCalenderCellDelegate {
     @objc optional func selectTempJobDate(selected : Date)
     @objc optional func deSelectTempJobDate(deSelected : Date)
