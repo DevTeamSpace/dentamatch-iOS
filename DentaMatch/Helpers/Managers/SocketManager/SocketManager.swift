@@ -26,7 +26,7 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     typealias GetLeftMessagesCallBackClosure = ((_ messageInfo: [Any])->Void)
     private var getLeftMessagesCompletionHandler: GetLeftMessagesCallBackClosure?
     
-    var socket = SocketIOClient(socketURL: URL(string: ConfigurationManager.sharedManager.socketEndpoint())!)
+    var socket = SocketIOClient(socketURL: URL(string:ConfigurationManager.sharedManager().socketEndPoint())!)
     
     override init() {
         super.init()

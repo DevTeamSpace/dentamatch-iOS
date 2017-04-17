@@ -178,7 +178,6 @@
 		E57F29DF1E3695060025B9DE /* DMEditDentalStateBoardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57F29DE1E3695060025B9DE /* DMEditDentalStateBoardVC.swift */; };
 		E57F29E11E3696A60025B9DE /* DMEditDentalStateBoardVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57F29E01E3696A60025B9DE /* DMEditDentalStateBoardVC+Services.swift */; };
 		E58654FE1DEFEF7F006FEB2D /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58654FC1DEFEF7F006FEB2D /* ConfigurationManager.swift */; };
-		E58654FF1DEFEF7F006FEB2D /* Environments.plist in Resources */ = {isa = PBXBuildFile; fileRef = E58654FD1DEFEF7F006FEB2D /* Environments.plist */; };
 		E587D2CC1E23362C006B7F06 /* JobSelectionPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2CB1E23362C006B7F06 /* JobSelectionPickerView.swift */; };
 		E587D2CF1E23438B006B7F06 /* DMJobTitleSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2CE1E23438B006B7F06 /* DMJobTitleSelectionVC.swift */; };
 		E587D2D11E2343A5006B7F06 /* DMJobTitleSelectionVC+UIPickerViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2D01E2343A5006B7F06 /* DMJobTitleSelectionVC+UIPickerViewExtension.swift */; };
@@ -579,7 +578,6 @@
 		E57F29DE1E3695060025B9DE /* DMEditDentalStateBoardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMEditDentalStateBoardVC.swift; sourceTree = "<group>"; };
 		E57F29E01E3696A60025B9DE /* DMEditDentalStateBoardVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMEditDentalStateBoardVC+Services.swift"; sourceTree = "<group>"; };
 		E58654FC1DEFEF7F006FEB2D /* ConfigurationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationManager.swift; sourceTree = "<group>"; };
-		E58654FD1DEFEF7F006FEB2D /* Environments.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Environments.plist; sourceTree = "<group>"; };
 		E587D2CB1E23362C006B7F06 /* JobSelectionPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobSelectionPickerView.swift; sourceTree = "<group>"; };
 		E587D2CE1E23438B006B7F06 /* DMJobTitleSelectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMJobTitleSelectionVC.swift; sourceTree = "<group>"; };
 		E587D2D01E2343A5006B7F06 /* DMJobTitleSelectionVC+UIPickerViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMJobTitleSelectionVC+UIPickerViewExtension.swift"; sourceTree = "<group>"; };
@@ -1563,7 +1561,6 @@
 			isa = PBXGroup;
 			children = (
 				E58654FC1DEFEF7F006FEB2D /* ConfigurationManager.swift */,
-				E58654FD1DEFEF7F006FEB2D /* Environments.plist */,
 			);
 			path = ConfigurationManager;
 			sourceTree = "<group>";
@@ -2371,7 +2368,6 @@
 				E5E7CB791E2FA23200D4FB59 /* AboutMeCell.xib in Resources */,
 				E597E5791E151A99001DDA78 /* SF-UI-Display-Medium.otf in Resources */,
 				E5E7CB941E2FA23300D4FB59 /* StudyCell.xib in Resources */,
-				E58654FF1DEFEF7F006FEB2D /* Environments.plist in Resources */,
 				F2F9B97C1E38978200639716 /* JobTitleCell.xib in Resources */,
 				E597E5891E151A99001DDA78 /* SF-UI-Text-SemiboldItalic.otf in Resources */,
 				E5E7CB921E2FA23300D4FB59 /* AutoCompleteTableViewCell.xib in Resources */,
@@ -2909,6 +2905,7 @@
 				INFOPLIST_FILE = "DentaMatch/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-DDEVELOPMENT";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appster.dentamatch;
 				PRODUCT_NAME = "$(TARGET_NAME)-Dev";
 				PROVISIONING_PROFILE = "4c298dd0-a8ff-4509-83ea-8ad47dc00174";
@@ -2932,6 +2929,7 @@
 				INFOPLIST_FILE = "DentaMatch/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-DPRODUCTION";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appster.dentamatch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "7b782191-64b3-4d07-9dc0-6207442a4296";
@@ -3010,6 +3008,7 @@
 				INFOPLIST_FILE = "DentaMatch/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-DQA";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appster.dentamatch;
 				PRODUCT_NAME = "$(TARGET_NAME)-QA";
 				PROVISIONING_PROFILE = "4c298dd0-a8ff-4509-83ea-8ad47dc00174";
@@ -3082,6 +3081,7 @@
 				INFOPLIST_FILE = "DentaMatch/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-DSTAGING";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appster.dentamatch;
 				PRODUCT_NAME = "$(TARGET_NAME)-Staging";
 				PROVISIONING_PROFILE = "7b782191-64b3-4d07-9dc0-6207442a4296";

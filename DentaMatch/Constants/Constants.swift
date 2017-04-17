@@ -27,7 +27,7 @@ struct Constants {
     static let BASE_URL = Constants.apiBaseURL()
 
     static func apiBaseURL() -> String {
-        return ConfigurationManager.sharedManager.APIEndpoint()
+        return ConfigurationManager.sharedManager().applicationEndPoint()
     }
     
     struct Heading {
