@@ -239,7 +239,7 @@ class DMJobSearchVC : DMBaseVC {
         for job in self.jobTitles {
             let dict = NSMutableDictionary()
             dict.setObject(job.jobTitle, forKey: Constants.ServerKey.jobtitleName as NSCopying)
-            dict.setObject(job.jobId, forKey: Constants.ServerKey.jobId as NSCopying)
+            dict.setObject("\(job.jobId)", forKey: Constants.ServerKey.jobId as NSCopying)
 
           //  jobTitleDict = [Constants.ServerKey.jobtitleName:job.jobTitle,Constants.ServerKey.jobId:job.jobId]
             jobTitles.append(dict)
