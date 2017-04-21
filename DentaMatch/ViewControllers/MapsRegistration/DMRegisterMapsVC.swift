@@ -263,6 +263,10 @@ extension DMRegisterMapsVC:UISearchBarDelegate {
                 self.alertMessage(title: "Change Location", message: "Are you sure you want to change the location?", leftButtonText: "No", rightButtonText: "Yes", completionHandler: { (isLeft:Bool) in
                     if !isLeft {
                         if self.fromSettings {
+                            if self.location.postalCode.isEmptyField {
+                                 self.alertMessage(title: "Postal Code", message: "No Postal Code found. Try some other nearby location", buttonText: "Ok", completionHandler: nil)
+                                return
+                            }
                             self.locationUpdateAPI(location: self.location)
                         } else {
                             if let delegate = self.delegate {

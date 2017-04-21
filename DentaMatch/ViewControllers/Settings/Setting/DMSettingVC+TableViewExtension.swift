@@ -120,6 +120,9 @@ extension DMSettingVC:LocationAddressDelegate {
             debugPrint(address)
             UserManager.shared().activeUser.preferredJobLocation = address
             UserManager.shared().activeUser.zipCode = location.postalCode
+            UserManager.shared().activeUser.state = location.state
+            UserManager.shared().activeUser.city = location.city
+            UserManager.shared().activeUser.country = location.country
             UserManager.shared().activeUser.latitude = "\(location.coordinateSelected!.latitude)"
             UserManager.shared().activeUser.longitude = "\(location.coordinateSelected!.longitude)"
             UserManager.shared().saveActiveUser()

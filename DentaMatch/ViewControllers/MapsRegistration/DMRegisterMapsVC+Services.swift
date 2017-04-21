@@ -18,7 +18,10 @@ extension DMRegisterMapsVC {
             Constants.ServerKey.preferredLocation:location.address!,
             Constants.ServerKey.latitude:"\(location.coordinateSelected!.latitude)",
             Constants.ServerKey.longitude:"\(location.coordinateSelected!.longitude)",
-            Constants.ServerKey.zipCode:"\(location.postalCode)"
+            Constants.ServerKey.zipCode:"\(location.postalCode)",
+            "preferredCity":"\(location.city)",
+            "preferredState":"\(location.state)",
+            "preferredCountry":"\(location.country)"
         ]
         
         debugPrint("Location Update Params\n \(params)")
