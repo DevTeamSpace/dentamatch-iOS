@@ -74,7 +74,7 @@ extension DMLoginVC {
                 searchParams[Constants.JobDetailKey.parttimeDays] = partTimeDays
             }
             
-            if let jobTitles = searchFilters[Constants.JobDetailKey.jobTitle].arrayObject as? [Int] {
+            if let jobTitles = searchFilters[Constants.JobDetailKey.jobTitle].arrayObject as? [String] {
                 searchParams[Constants.JobDetailKey.jobTitle] = jobTitles
             }
             

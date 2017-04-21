@@ -100,7 +100,7 @@ class DMJobSearchVC : DMBaseVC {
                 for title in savedJobTitles {
                     let objTilte = title as! [String:Any]
                     let jobTitle = JobTitle()
-                    jobTitle.jobId = objTilte[Constants.ServerKey.jobId] as! Int
+                    jobTitle.jobId = Int(objTilte[Constants.ServerKey.jobId] as! String)!
                     jobTitle.jobTitle = objTilte[Constants.ServerKey.jobtitleName] as! String
                     jobTitle.jobSelected = true
                     self.jobTitles.append(jobTitle as JobTitle)
