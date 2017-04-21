@@ -181,17 +181,17 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
         case .profileHeader:
             let cell = tableView.dequeueReusableCell(withIdentifier: "EditProfileHeaderTableCell") as! EditProfileHeaderTableCell
             cell.nameLabel.text = UserManager.shared().activeUser.fullName()
-            cell.placeLabel.attributedText = cell.fillPlaceAndJobTitle(jobTitle: UserManager.shared().activeUser.jobTitle!, place: UserManager.shared().activeUser.preferredJobLocation!)
+            //cell.placeLabel.attributedText = cell.fillPlaceAndJobTitle(jobTitle: UserManager.shared().activeUser.jobTitle!, place: UserManager.shared().activeUser.preferredJobLocation!)
             
-//            var address = ""
-//            if let city = UserManager.shared().activeUser.city {
-//                address = city+", "
-//            }
-//
-//            if let country = UserManager.shared().activeUser.country {
-//                address += country
-//            }
-//            cell.placeLabel.attributedText = cell.fillPlaceAndJobTitle(jobTitle: UserManager.shared().activeUser.jobTitle!, place: address)
+            var address = ""
+            if let city = UserManager.shared().activeUser.city {
+                address = city
+            }
+
+            if let state = UserManager.shared().activeUser.state {
+                address += ", "+state
+            }
+            cell.placeLabel.attributedText = cell.fillPlaceAndJobTitle(jobTitle: UserManager.shared().activeUser.jobTitle!, place: address)
             
             cell.editButton.addTarget(self, action: #selector(openEditPublicProfileScreen), for: .touchUpInside)
             cell.settingButton.addTarget(self, action: #selector(openSettingScreen), for: .touchUpInside)

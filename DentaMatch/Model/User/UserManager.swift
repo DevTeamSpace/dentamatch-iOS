@@ -120,6 +120,10 @@ extension UserManager {
                 user.accessToken = userDetails[Constants.ServerKey.accessToken].stringValue
                 user.email = userDetails[Constants.ServerKey.email].stringValue
                 user.zipCode = userDetails[Constants.ServerKey.zipCode].stringValue
+                user.city = userDetails[Constants.JobDetailKey.city].stringValue
+                user.state = userDetails[Constants.JobDetailKey.state].stringValue
+                user.country = userDetails[Constants.JobDetailKey.country].stringValue
+
                 user.preferredJobLocation = userDetails[Constants.ServerKey.preferredLocation].stringValue
                 user.profileImageURL = userDetails[Constants.ServerKey.imageUrl].stringValue
                 user.userId = userDetails[Constants.ServerKey.id].stringValue

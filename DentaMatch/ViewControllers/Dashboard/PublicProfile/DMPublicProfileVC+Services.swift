@@ -93,6 +93,9 @@ extension DMPublicProfileVC {
         UserManager.shared().activeUser.longitude = editProfileParams[Constants.ServerKey.longitude]
         UserManager.shared().activeUser.aboutMe = editProfileParams[Constants.ServerKey.aboutMe]
         UserManager.shared().activeUser.zipCode = editProfileParams["zipcode"]
+        UserManager.shared().activeUser.country = editProfileParams["preferredCountry"]
+        UserManager.shared().activeUser.city = editProfileParams["preferredCity"]
+        UserManager.shared().activeUser.state = editProfileParams["preferredState"]        
         UserManager.shared().activeUser.jobTitle = (jobTitles.filter({$0.jobId == Int(self.selectedJobTitleId)}).first)?.jobTitle
         UserManager.shared().saveActiveUser()
     }

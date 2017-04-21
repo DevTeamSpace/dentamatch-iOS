@@ -406,7 +406,7 @@ struct Constants {
         static let completeYourProfileDetailMsg = "You’ll need to fill out your profile before applying for the job. Would you like to fill this out now?"
         
         //Calendar Screen 
-        static let canNotSelectPreDate = "Sorry you can't select previouse date"
+        static let canNotSelectPreDate = "Sorry you can't select previous date"
         static let socketNotConnected = "Unable to connect to server. Please try again later"
 
         

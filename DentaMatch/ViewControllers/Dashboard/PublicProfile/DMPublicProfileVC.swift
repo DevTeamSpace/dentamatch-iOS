@@ -30,7 +30,10 @@ class DMPublicProfileVC: DMBaseVC {
         Constants.ServerKey.longitude:"",
         Constants.ServerKey.preferredJobLocation:"",
         Constants.ServerKey.jobTitileId:"",
-        Constants.ServerKey.aboutMe:""
+        Constants.ServerKey.aboutMe:"",
+        "preferredCity":"",
+        "preferredState":"",
+        "preferredCountry":""
     ]
     
     var profileImage:UIImage?
@@ -54,6 +57,10 @@ class DMPublicProfileVC: DMBaseVC {
         editProfileParams[Constants.ServerKey.longitude] = UserManager.shared().activeUser.longitude
         editProfileParams[Constants.ServerKey.preferredJobLocation] = UserManager.shared().activeUser.preferredJobLocation
         editProfileParams["zipcode"] = UserManager.shared().activeUser.zipCode
+        editProfileParams["preferredCity"] = UserManager.shared().activeUser.city
+        editProfileParams["preferredState"] = UserManager.shared().activeUser.state
+        editProfileParams["preferredCountry"] = UserManager.shared().activeUser.country
+
         editProfileParams[Constants.ServerKey.aboutMe] = UserManager.shared().activeUser.aboutMe
 
         selectedLocationCoordinate = CLLocationCoordinate2D(latitude: Double(UserManager.shared().activeUser.latitude!)!, longitude: Double(UserManager.shared().activeUser.longitude!)!)
@@ -324,6 +331,9 @@ extension DMPublicProfileVC:LocationAddressDelegate {
                 editProfileParams[Constants.ServerKey.longitude] = "\(location.coordinateSelected!.longitude)"
                 editProfileParams[Constants.ServerKey.preferredJobLocation] = address
                 editProfileParams["zipcode"] = location.postalCode
+                editProfileParams["preferredCity"] = location.city
+                editProfileParams["preferredState"] = location.state
+                editProfileParams["preferredCountry"] = location.country
             }
             debugPrint(address)
         } else {

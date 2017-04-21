@@ -24,6 +24,10 @@ class DMRegistrationVC: DMBaseVC {
         Constants.ServerKey.password:"",
         Constants.ServerKey.preferredLocation:"",
         Constants.ServerKey.zipCode:"",
+        Constants.JobDetailKey.city:"",
+        Constants.JobDetailKey.state:"",
+        Constants.JobDetailKey.country:"",
+
         Constants.ServerKey.latitude:"",
         Constants.ServerKey.longitude:""
         ]
@@ -169,6 +173,10 @@ extension DMRegistrationVC:LocationAddressDelegate {
                 cell.preferredLocationTextField.text = address
                 
                 registrationParams[Constants.ServerKey.zipCode] = location.postalCode
+                registrationParams[Constants.JobDetailKey.state] = location.state
+                registrationParams[Constants.JobDetailKey.country] = location.country
+                registrationParams[Constants.JobDetailKey.city] = location.city
+
                 registrationParams[Constants.ServerKey.preferredLocation] = address
                 if let _ = coordinateSelected {
                     registrationParams[Constants.ServerKey.latitude] = "\((coordinateSelected?.latitude)!)"
