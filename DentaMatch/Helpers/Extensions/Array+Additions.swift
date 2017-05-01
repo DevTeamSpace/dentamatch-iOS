@@ -19,7 +19,7 @@ extension Array where Element : Equatable {
     
     func containsObject (_ items:[NSNumber], valueToCheck:NSNumber) -> Bool {
         for (_,value) in items.enumerated() {
-            if (value as Int == valueToCheck as Int) {
+            if value as Int == valueToCheck as Int {
                 return true
             }
         }

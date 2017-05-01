@@ -53,8 +53,6 @@ class CameraGalleryManager: UIViewController,UIImagePickerControllerDelegate,UIN
                 completionHandler(true)
             } else if status == .denied {
                 completionHandler(false)
-            } else if status == .notDetermined {
-                completionHandler(false)
             } else {
                 completionHandler(false)
             }
@@ -80,7 +78,7 @@ class CameraGalleryManager: UIViewController,UIImagePickerControllerDelegate,UIN
                 else {
                     // User Rejected
                     completionHandler(false)
-                    print("No permission")
+                    debugPrint("No permission")
                 }
             });
         }
@@ -157,6 +155,7 @@ class CameraGalleryManager: UIViewController,UIImagePickerControllerDelegate,UIN
     }
     
     //MARK:- ImagePicker Delegates
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if allowsEditing {
             if let pickedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
@@ -164,7 +163,7 @@ class CameraGalleryManager: UIViewController,UIImagePickerControllerDelegate,UIN
                 image = image.rotateImageWithScaling()
                 self.completionHandler?(image,nil)
             }
-
+            
         } else {
             if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
                 var image = pickedImage
@@ -173,6 +172,7 @@ class CameraGalleryManager: UIViewController,UIImagePickerControllerDelegate,UIN
             }
         }
         presentedFromController?.dismiss(animated: true, completion: nil)
+
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

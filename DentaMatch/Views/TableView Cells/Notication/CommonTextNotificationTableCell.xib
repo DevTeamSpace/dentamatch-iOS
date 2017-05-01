@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-UI-Text-Regular.otf">
+            <string>SFUIText-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommonTextNotificationTableCell" rowHeight="82" id="KGk-i7-Jjw" customClass="CommonTextNotificationTableCell" customModule="DentaMatch" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="82"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="81.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You need to complete your profile for applying a job" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KKa-Wn-k26">
+                        <rect key="frame" x="39" y="16" width="242" height="39"/>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="15"/>
+                        <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="17y-dW-v3w">
+                        <rect key="frame" x="39" y="63" width="242" height="10"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="10" id="ytx-Ct-7Xx"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="10"/>
+                        <color key="textColor" red="0.53725490200000003" green="0.53725490200000003" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gjx-IQ-Jcb">
+                        <rect key="frame" x="15" y="21" width="10" height="10"/>
+                        <color key="backgroundColor" red="0.058823529409999999" green="0.094117647060000004" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="10" id="NWi-vu-C2E"/>
+                            <constraint firstAttribute="width" constant="10" id="ZNS-Kw-Hrv"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mpK-Lc-2Zn">
+                        <rect key="frame" x="0.0" y="80" width="320" height="1"/>
+                        <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="jfA-rU-ZIv"/>
+                        </constraints>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="disclosureIndicator" translatesAutoresizingMaskIntoConstraints="NO" id="nuk-XO-XQi">
+                        <rect key="frame" x="292" y="22" width="8" height="13"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="8" id="JrO-Ng-6BC"/>
+                            <constraint firstAttribute="height" constant="13" id="gB4-Qf-lLf"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="nuk-XO-XQi" secondAttribute="trailing" constant="20" id="403-9u-0SE"/>
+                    <constraint firstItem="KKa-Wn-k26" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="4kX-8W-AQl"/>
+                    <constraint firstAttribute="trailing" secondItem="KKa-Wn-k26" secondAttribute="trailing" constant="39" id="NEh-Ak-2z3"/>
+                    <constraint firstItem="mpK-Lc-2Zn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Nbc-cW-b1M"/>
+                    <constraint firstItem="gjx-IQ-Jcb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="NmV-Bv-zv6"/>
+                    <constraint firstAttribute="trailing" secondItem="17y-dW-v3w" secondAttribute="trailing" constant="39" id="OUZ-Qe-d1a"/>
+                    <constraint firstItem="17y-dW-v3w" firstAttribute="top" secondItem="KKa-Wn-k26" secondAttribute="bottom" constant="8" id="U0s-Qr-hxh"/>
+                    <constraint firstItem="gjx-IQ-Jcb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="21" id="Wf0-E8-i8O"/>
+                    <constraint firstAttribute="trailing" secondItem="mpK-Lc-2Zn" secondAttribute="trailing" id="aPv-ja-COt"/>
+                    <constraint firstItem="KKa-Wn-k26" firstAttribute="leading" secondItem="gjx-IQ-Jcb" secondAttribute="trailing" constant="14" id="eWp-X9-idK"/>
+                    <constraint firstAttribute="bottom" secondItem="mpK-Lc-2Zn" secondAttribute="bottom" id="ern-qc-xeI"/>
+                    <constraint firstItem="nuk-XO-XQi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="22" id="v9J-s5-a4e"/>
+                    <constraint firstItem="17y-dW-v3w" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="39" id="ved-hF-lMy"/>
+                    <constraint firstAttribute="bottom" secondItem="17y-dW-v3w" secondAttribute="bottom" constant="8" id="wi5-qL-ldW"/>
+                </constraints>
+            </tableViewCellContentView>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+            <connections>
+                <outlet property="disclosureIndicatorView" destination="nuk-XO-XQi" id="yTH-zS-OcA"/>
+                <outlet property="notificationTextLabel" destination="KKa-Wn-k26" id="hLs-d3-URO"/>
+                <outlet property="notificationTimeLabel" destination="17y-dW-v3w" id="DXv-31-gua"/>
+                <outlet property="unreadView" destination="gjx-IQ-Jcb" id="aWY-Eg-8ra"/>
+            </connections>
+            <point key="canvasLocation" x="57" y="57"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="disclosureIndicator" width="8" height="13"/>
+    </resources>
+</document>

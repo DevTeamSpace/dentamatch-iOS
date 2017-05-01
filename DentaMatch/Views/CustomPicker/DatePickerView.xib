@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-UI-Text-Regular.otf">
+            <string>SFUIText-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DatePickerView" customModule="DentaMatch" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="249"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iCW-bJ-xuh">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="kPL-be-XaH"/>
+                    </constraints>
+                    <items>
+                        <barButtonItem style="plain" id="kSI-8a-zXt">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="CMS-C3-Tdm">
+                                <rect key="frame" x="16" y="7" width="62" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="6FY-0c-OrV"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="yBb-pW-bVX"/>
+                        <barButtonItem style="plain" id="HEl-dT-oJU">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nsx-tW-BwE">
+                                <rect key="frame" x="311" y="7" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doneButtonClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="rRM-1j-R0d"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </items>
+                </toolbar>
+                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="fPe-so-uKQ">
+                    <rect key="frame" x="0.0" y="44" width="375" height="205"/>
+                    <date key="date" timeIntervalSinceReferenceDate="505888033.843364">
+                        <!--2017-01-12 04:27:13 +0000-->
+                    </date>
+                </datePicker>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fPe-so-uKQ" firstAttribute="top" secondItem="iCW-bJ-xuh" secondAttribute="bottom" id="MWp-YJ-FPO"/>
+                <constraint firstAttribute="trailing" secondItem="iCW-bJ-xuh" secondAttribute="trailing" id="Oom-tb-Gw9"/>
+                <constraint firstAttribute="bottom" secondItem="fPe-so-uKQ" secondAttribute="bottom" id="VSi-wi-qH5"/>
+                <constraint firstItem="iCW-bJ-xuh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="cmZ-cz-TeU"/>
+                <constraint firstItem="iCW-bJ-xuh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="jZp-D1-fzg"/>
+                <constraint firstItem="fPe-so-uKQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="kTI-CP-bJe"/>
+                <constraint firstAttribute="trailing" secondItem="fPe-so-uKQ" secondAttribute="trailing" id="pTQ-cS-5WU"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="datePicker" destination="fPe-so-uKQ" id="1xC-iR-FSq"/>
+            </connections>
+            <point key="canvasLocation" x="44.5" y="-105.5"/>
+        </view>
+    </objects>
+</document>

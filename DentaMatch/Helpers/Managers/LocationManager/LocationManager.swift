@@ -29,7 +29,7 @@ class LocationManager: NSObject,CLLocationManagerDelegate {
     typealias ReverseGeoLocationClosure = ((_ location:CLLocation?, _ placemark:CLPlacemark?,_ error: NSError?)->Void)
     private var geoLocationCompletionHandler: ReverseGeoLocationClosure?
     
-    private var locationManager:CLLocationManager?
+    private var manager:CLLocationManager?
     var locationAccuracy = kCLLocationAccuracyBest
     
     private var lastLocation:CLLocation?
@@ -52,18 +52,18 @@ class LocationManager: NSObject,CLLocationManagerDelegate {
     private func setupLocationManager() {
         
         //Setting of location manager
-        locationManager = nil
-        locationManager = CLLocationManager()
-        locationManager?.desiredAccuracy = locationAccuracy
-        locationManager?.delegate = self
-        locationManager?.requestWhenInUseAuthorization()
+        manager = nil
+        manager = CLLocationManager()
+        manager?.desiredAccuracy = locationAccuracy
+        manager?.delegate = self
+        manager?.requestWhenInUseAuthorization()
         
     }
     
     private func destroyLocationManager() {
-        locationManager?.delegate = nil
-        locationManager = nil
-        lastLocation = nil
+        manager?.delegate = nil
+        manager = nil
+        manager = nil
     }
     
     //MARK:- Selectors
@@ -215,7 +215,7 @@ class LocationManager: NSObject,CLLocationManagerDelegate {
             
         case .authorizedWhenInUse,.authorizedAlways:
             //Request Current Location
-            self.locationManager?.requestLocation()
+            self.manager?.requestLocation()
 //            if self.reverseGeocoding {
 //                //startGeocodeThread()
 //            } else {
@@ -248,11 +248,10 @@ class LocationManager: NSObject,CLLocationManagerDelegate {
                     code:Int(CLAuthorizationStatus.restricted.rawValue),
                     userInfo: nil))
             }
-            break
             
         case .notDetermined:
-            self.locationManager?.requestWhenInUseAuthorization()
-            break
+            self.manager?.requestWhenInUseAuthorization()
+            
         }
     }
     
@@ -263,17 +262,17 @@ class LocationManager: NSObject,CLLocationManagerDelegate {
     
     //MARK:- Final closure/callback
     private func didComplete(location: CLLocation?,error: NSError?) {
-        locationManager?.stopUpdatingLocation()
+        manager?.stopUpdatingLocation()
         completionHandler?(location,error)
-        locationManager?.delegate = nil
-        locationManager = nil
+        manager?.delegate = nil
+        manager = nil
     }
     
     private func didCompleteGeocoding(location:CLLocation?,placemark: CLPlacemark?,error: NSError?) {
-        locationManager?.stopUpdatingLocation()
+        manager?.stopUpdatingLocation()
         geoLocationCompletionHandler?(location,placemark,error)
-        locationManager?.delegate = nil
-        locationManager = nil
+        manager?.delegate = nil
+        manager = nil
         reverseGeocoding = false
     }
 }

@@ -19,6 +19,7 @@ class DMRegistrationContainer: DMBaseVC {
     var loginVC:DMLoginVC?
     var isRegistration = true
     
+    //MARK:- View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,11 +34,18 @@ class DMRegistrationContainer: DMBaseVC {
         self.addChildViewController(registrationVC!)
         self.view.addSubview((registrationVC?.view)!)
         
-        loginVC?.didMove(toParentViewController: self)
-        registrationVC?.didMove(toParentViewController: self)
-        
-        loginVC?.view.alpha = 0.0
+        if UserDefaultsManager.sharedInstance.isLoggedOut {
+            registrationVC?.didMove(toParentViewController: self)
+            loginVC?.didMove(toParentViewController: self)
+            registrationVC?.view.alpha = 0.0
+            isRegistration = false
 
+        } else {
+            loginVC?.didMove(toParentViewController: self)
+            registrationVC?.didMove(toParentViewController: self)
+            loginVC?.view.alpha = 0.0
+        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -58,8 +66,13 @@ class DMRegistrationContainer: DMBaseVC {
             loginButton.titleLabel?.font = UIFont.fontSemiBold(fontSize: 14.0)!
             UIView.makeTip(view: loginButton, size: 8, x: loginButton.frame.midX/2, y: loginButton.frame.midY)
         }
+        
+        if UserDefaultsManager.sharedInstance.isLoggedOut {
+            //goToLoginFromLogout()
+        }
     }
     
+    //MARK:- IBActions
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         isRegistration = false
         registrationButton.titleLabel?.font = UIFont.fontLight(fontSize: 14.0)!
@@ -72,6 +85,8 @@ class DMRegistrationContainer: DMBaseVC {
             self.loginVC?.view.alpha = 1.0
             self.registrationVC?.view.alpha = 0.0
         }) { (finished:Bool) in
+            //completion
+
         }
     }
 
@@ -87,6 +102,42 @@ class DMRegistrationContainer: DMBaseVC {
             self.registrationVC?.view.alpha = 1.0
             self.loginVC?.view.alpha = 0.0
         }) { (finished:Bool) in
+            //completion
         }
+    }
+    
+    func goToLoginAfterRegistration() {
+        isRegistration = false
+        registrationButton.titleLabel?.font = UIFont.fontLight(fontSize: 14.0)!
+        loginButton.titleLabel?.font = UIFont.fontSemiBold(fontSize: 14.0)!
+        UIView.removeTip(view: registrationButton)
+        UIView.makeTip(view: loginButton, size: 8, x: loginButton.frame.midX/2, y: loginButton.frame.midY)
+        self.view.endEditing(true)
+        self.view.bringSubview(toFront: (self.loginVC?.view)!)
+        loginVC?.clearData()
+        UIView.animate(withDuration: 0.25, animations: {
+            self.loginVC?.view.alpha = 1.0
+            self.registrationVC?.view.alpha = 0.0
+        }) { (finished:Bool) in
+            //completion
+
+        }
+    }
+    
+    func goToLoginFromLogout() {
+        isRegistration = false
+        registrationButton.titleLabel?.font = UIFont.fontLight(fontSize: 14.0)!
+        loginButton.titleLabel?.font = UIFont.fontSemiBold(fontSize: 14.0)!
+        UIView.removeTip(view: registrationButton)
+        UIView.makeTip(view: loginButton, size: 8, x: loginButton.frame.midX/2, y: loginButton.frame.midY)
+        self.view.endEditing(true)
+        self.view.bringSubview(toFront: (self.loginVC?.view)!)
+        loginVC?.clearData()
+        self.loginVC?.view.alpha = 1.0
+        self.registrationVC?.view.alpha = 0.0
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 }

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-UI-Text-Light.otf">
+            <string>SFUIText-Light</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="qop-Ux-avN" customClass="OfficeDescriptionCell" customModule="DentaMatch" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="76"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qop-Ux-avN" id="CKn-2J-hT2">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="75"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rz3-s0-rzH">
+                        <rect key="frame" x="100" y="34.5" width="121" height="41"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="41" id="J8m-my-sbe"/>
+                            <constraint firstAttribute="width" constant="121" id="ixP-bb-rH1"/>
+                        </constraints>
+                        <state key="normal" title="Read More">
+                            <color key="titleColor" red="0.015686274510000001" green="0.50196078430000002" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="readMoreButtonClicked:" destination="qop-Ux-avN" eventType="touchUpInside" id="HEy-1W-aMo"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="St3-G6-0N5">
+                        <rect key="frame" x="18" y="11" width="281" height="12.5"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="13"/>
+                        <color key="textColor" red="0.40784313729999999" green="0.40784313729999999" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="St3-G6-0N5" secondAttribute="trailing" constant="21" id="0MZ-ww-n34"/>
+                    <constraint firstAttribute="bottom" secondItem="rz3-s0-rzH" secondAttribute="bottom" id="cE8-gw-OCI"/>
+                    <constraint firstItem="St3-G6-0N5" firstAttribute="top" secondItem="CKn-2J-hT2" secondAttribute="top" constant="11" id="dzc-mi-xwi"/>
+                    <constraint firstItem="St3-G6-0N5" firstAttribute="leading" secondItem="CKn-2J-hT2" secondAttribute="leading" constant="18" id="jEe-De-FEK"/>
+                    <constraint firstItem="rz3-s0-rzH" firstAttribute="top" secondItem="St3-G6-0N5" secondAttribute="bottom" constant="11" id="slb-03-Wcg"/>
+                    <constraint firstItem="rz3-s0-rzH" firstAttribute="centerX" secondItem="CKn-2J-hT2" secondAttribute="centerX" id="xO9-yN-ZS4"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="heightConstraintReadMoreButton" destination="J8m-my-sbe" id="3MW-m1-Ma3"/>
+                <outlet property="officeDescriptionLabel" destination="St3-G6-0N5" id="7qY-Uj-mAE"/>
+                <outlet property="readMoreButton" destination="rz3-s0-rzH" id="I70-vE-Nog"/>
+            </connections>
+            <point key="canvasLocation" x="90" y="-11"/>
+        </tableViewCell>
+    </objects>
+</document>

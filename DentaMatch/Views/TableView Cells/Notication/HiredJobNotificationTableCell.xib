@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-UI-Text-Regular.otf">
+            <string>SFUIText-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HiredJobNotificationTableCell" rowHeight="146" id="KGk-i7-Jjw" customClass="HiredJobNotificationTableCell" customModule="DentaMatch" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="187"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="186.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="You have been hired for Dental Hygienists job" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7e4-QZ-ZGS">
+                        <rect key="frame" x="39" y="16" width="242" height="55"/>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="15"/>
+                        <color key="textColor" red="0.27843137254901962" green="0.27843137254901962" blue="0.27843137254901962" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Re-bO-paj">
+                        <rect key="frame" x="39" y="79" width="242" height="54"/>
+                        <string key="text">Dr. Bensen Lab
+628 Vermont Street
+San Francisco, CA 94107</string>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="15"/>
+                        <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GQv-hx-mF0">
+                        <rect key="frame" x="39" y="168" width="242" height="10"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="10" id="evx-ZQ-dh2"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="10"/>
+                        <color key="textColor" red="0.53725490196078429" green="0.53725490196078429" blue="0.53725490196078429" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iLa-Ye-b2T">
+                        <rect key="frame" x="39" y="139" width="242" height="21"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1p5-Av-lCn">
+                                <rect key="frame" x="1" y="0.0" width="61" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.94509803921568625" green="0.72156862745098038" blue="0.3529411764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="10"/>
+                                <state key="normal" title="Temporary">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="VYu-j0-g2G"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uon-i5-pej">
+                        <rect key="frame" x="15" y="21" width="10" height="10"/>
+                        <color key="backgroundColor" red="0.058823529411764705" green="0.094117647058823528" blue="0.24313725490196078" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="10" id="rDf-He-XNA"/>
+                            <constraint firstAttribute="height" constant="10" id="sD2-1S-mrx"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OK8-Ou-jqv">
+                        <rect key="frame" x="0.0" y="185" width="320" height="1"/>
+                        <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="zYt-fa-e88"/>
+                        </constraints>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="disclosureIndicator" translatesAutoresizingMaskIntoConstraints="NO" id="iym-1D-KxO">
+                        <rect key="frame" x="292" y="22" width="8" height="13"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="8" id="U0v-rC-C6g"/>
+                            <constraint firstAttribute="height" constant="13" id="XQM-Bv-rO0"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="9Re-bO-paj" firstAttribute="top" secondItem="7e4-QZ-ZGS" secondAttribute="bottom" constant="8" id="0Ey-Bo-iOD"/>
+                    <constraint firstItem="7e4-QZ-ZGS" firstAttribute="leading" secondItem="uon-i5-pej" secondAttribute="trailing" constant="14" id="3XI-2L-a5c"/>
+                    <constraint firstAttribute="bottom" secondItem="OK8-Ou-jqv" secondAttribute="bottom" id="6rd-ld-Krw"/>
+                    <constraint firstAttribute="trailing" secondItem="iLa-Ye-b2T" secondAttribute="trailing" constant="39" id="7rD-bY-s0Z"/>
+                    <constraint firstAttribute="trailing" secondItem="7e4-QZ-ZGS" secondAttribute="trailing" constant="39" id="9qE-f1-hXP"/>
+                    <constraint firstItem="iLa-Ye-b2T" firstAttribute="top" secondItem="9Re-bO-paj" secondAttribute="bottom" constant="6" id="CvJ-Z9-Tux"/>
+                    <constraint firstAttribute="trailing" secondItem="GQv-hx-mF0" secondAttribute="trailing" constant="39" id="KbI-7K-9At"/>
+                    <constraint firstItem="GQv-hx-mF0" firstAttribute="top" secondItem="iLa-Ye-b2T" secondAttribute="bottom" constant="8" id="Ll2-dA-Eze"/>
+                    <constraint firstItem="uon-i5-pej" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="SpY-Ab-8Cj"/>
+                    <constraint firstItem="7e4-QZ-ZGS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="ZDT-BT-NL5"/>
+                    <constraint firstAttribute="bottom" secondItem="GQv-hx-mF0" secondAttribute="bottom" constant="8" id="c1P-7K-p1X"/>
+                    <constraint firstItem="iym-1D-KxO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="22" id="cN6-hT-xxY"/>
+                    <constraint firstAttribute="trailing" secondItem="iym-1D-KxO" secondAttribute="trailing" constant="20" id="dFj-xd-vla"/>
+                    <constraint firstItem="GQv-hx-mF0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="39" id="gNl-V8-NuU"/>
+                    <constraint firstItem="iLa-Ye-b2T" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="39" id="hrb-Iz-3Ft"/>
+                    <constraint firstAttribute="trailing" secondItem="9Re-bO-paj" secondAttribute="trailing" constant="39" id="iWD-D0-9wf"/>
+                    <constraint firstItem="OK8-Ou-jqv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="npN-uy-J2L"/>
+                    <constraint firstAttribute="trailing" secondItem="OK8-Ou-jqv" secondAttribute="trailing" id="o3I-bf-ClM"/>
+                    <constraint firstItem="uon-i5-pej" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="21" id="u98-qh-cgt"/>
+                    <constraint firstItem="9Re-bO-paj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="39" id="xaF-C9-igq"/>
+                </constraints>
+            </tableViewCellContentView>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+            <connections>
+                <outlet property="btnJobType" destination="1p5-Av-lCn" id="8un-hX-TQq"/>
+                <outlet property="jobTypeView" destination="iLa-Ye-b2T" id="cB8-Qh-L9Q"/>
+                <outlet property="notificationJobLocationLabel" destination="9Re-bO-paj" id="R3B-my-KRx"/>
+                <outlet property="notificationTextLabel" destination="7e4-QZ-ZGS" id="x7N-Av-uGh"/>
+                <outlet property="notificationTimeLabel" destination="GQv-hx-mF0" id="ypD-fd-6kY"/>
+                <outlet property="unreadView" destination="uon-i5-pej" id="5lN-X2-XO5"/>
+            </connections>
+            <point key="canvasLocation" x="57" y="104.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="disclosureIndicator" width="8" height="13"/>
+    </resources>
+</document>

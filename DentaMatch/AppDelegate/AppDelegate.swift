@@ -12,6 +12,8 @@ import GoogleMaps
 import GooglePlaces
 import Crashlytics
 import Fabric
+import SwiftyJSON
+import Mixpanel
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,26 +23,126 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-
-        //configureCrashlytics()
-
+        MixpanelOperations.startSessionForMixpanelWithToken()
+        
+        configureCrashlytics()
+        
+        configureSocket()
+        
         configureGoogleServices()
-
+        
         registerForPushNotifications()
+        
+        //configureRichNotifications()
         
         changeNavBarAppearance()
         
         configureNetworkReachability()
         
+        if UserDefaultsManager.sharedInstance.isProfileCompleted {
+            
+            self.goToDashBoard()
+            return true
+        }
+        
+        if !UserDefaultsManager.sharedInstance.isProfileSkipped {
+            if UserDefaultsManager.sharedInstance.isLoggedIn {
+                self.goToProfile()
+            } else {
+                if UserDefaultsManager.sharedInstance.isOnBoardingDone {
+                    self.goToRegistration()
+                }
+            }
+        } else {
+            self.goToDashBoard()
+            
+            if let remoteNotification = launchOptions?[UIApplicationLaunchOptionsKey.remoteNotification] as? NSDictionary {
+                if remoteNotification.allKeys.count > 0
+                {
+//                    self.tabIndex = 4
+                    if let noti = remoteNotification["data"] as? NSDictionary {
+                        let megCheck = noti["data"] as! NSDictionary
+                        if megCheck["messageId"] != nil {
+                            NotificationHandler.notificationHandleforChat(fromId: (megCheck["fromId"] as? String), toId: (megCheck["toId"]  as? String), messgaeId: (megCheck["messageId"]  as? String), recurterId: (megCheck["recurterId"]  as? String))
+                            
+                        }else {
+                            
+                            
+                            let newObjMSG = noti["jobDetails"]
+                            let jobJson = JSON(newObjMSG ?? "" )
+                            let jobObj = Job(job: jobJson)
+                            
+                            let newObj = noti["data"]
+                            let josnObj = JSON(newObj ?? [:])
+                            let userNotiObj = UserNotification(dict: josnObj)
+                            NotificationHandler.notificationHandleforBackground(notiObj: userNotiObj, jobObj:jobObj, app: application)
+                            
+                        }
+                        
+                    }
+
+                }
+            }
+            
+        }
+        
+        
+        
         return true
+    }
+   
+    func goToRegistration() {
+        let registrationVC = UIStoryboard.registrationStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.registrationNav) as! UINavigationController
+        self.window?.rootViewController = registrationVC
+    }
+    
+    func goToProfile() {
+        let profileVC = UIStoryboard.profileStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.profileNav) as! UINavigationController
+        self.window?.rootViewController = profileVC
+    }
+    
+    func goToDashBoard() {
+        if let _ =  UserDefaultsManager.sharedInstance.loadSearchParameter() {
+            let dashboardVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: TabBarVC.self)!
+            self.window?.rootViewController = dashboardVC
+        } else {
+            self.goToSearch()
+        }
+    }
+    
+    func goToSearch() {
+        let jobSearchNAV = UIStoryboard.jobSearchStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.jobSearchNav) as! UINavigationController
+        if let jobSearchVC = jobSearchNAV.viewControllers[0] as? DMJobSearchVC {
+            if let _ =  UserDefaultsManager.sharedInstance.loadSearchParameter() {
+                jobSearchVC.firstTime = false
+            } else {
+                jobSearchVC.firstTime = true
+            }
+        }
+        self.window?.rootViewController = jobSearchNAV
+        UIApplication.shared.statusBarStyle = .lightContent
     }
     
     func changeNavBarAppearance() {
         UIApplication.shared.statusBarStyle = .lightContent
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().isTranslucent = false
-        UINavigationBar.appearance().barTintColor = UIColor.color(withHexCode: kNavBarColor)
+        UINavigationBar.appearance().barTintColor = Constants.Color.navBarColor
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white,NSFontAttributeName:UIFont.fontRegular(fontSize: 14.0)!]
+    }
+    
+    // MARK: - Configure Crashlytics
+    func configureSocket() {
+//        if let _ = UserManager.shared().activeUser {
+        if UserDefaultsManager.sharedInstance.isLoggedIn {
+            SocketManager.sharedInstance.establishConnection()
+        }
+    }
+    
+    func destroySocket() {
+        if let _ = UserManager.shared().activeUser {
+            SocketManager.sharedInstance.closeConnection()
+        }
     }
     
     // MARK: - Configure Crashlytics
@@ -87,10 +189,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        //self.destroySocket()
+        if let _ = UserManager.shared().activeUser {
+            SocketManager.sharedInstance.socket.disconnect()
+        }
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        self.configureSocket()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -99,6 +206,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func chatSocketNotificationTap(recruiterId:String) {
+        if let tabbar = ((UIApplication.shared.delegate) as! AppDelegate).window?.rootViewController as? TabBarVC {
+            tabbar.selectedIndex = 3
+            NotificationCenter.default.post(name: .chatRedirect, object: nil, userInfo: ["recruiterId":recruiterId])
+        }
     }
 
     // MARK: - Core Data stack
@@ -163,4 +277,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 }
+
 

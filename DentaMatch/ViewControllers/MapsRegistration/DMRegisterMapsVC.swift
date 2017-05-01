@@ -11,7 +11,16 @@ import GoogleMaps
 import GooglePlaces
 
 protocol LocationAddressDelegate {
-    func locationAddress(address:String?,coordinate:CLLocationCoordinate2D?)
+    func locationAddress(location:Location)
+}
+
+struct Location {
+    var postalCode = ""
+    var coordinateSelected:CLLocationCoordinate2D?
+    var address:String? = ""
+    var city = ""
+    var country = ""
+    var state = ""
 }
 
 class DMRegisterMapsVC: DMBaseVC {
@@ -24,21 +33,35 @@ class DMRegisterMapsVC: DMBaseVC {
     var placesArray = [GMSAutocompletePrediction]()
     var marker:GMSMarker?
     var coordinateSelected:CLLocationCoordinate2D?
+    var postCodeSelected = ""
     var currentLocation:CLLocationCoordinate2D?
     var addressSelected = ""
+    var fromEditProfile = false
+    var fromSettings = false
+    var fromRegistration = false
+    var fromJobSearch = false
+    var userSelectedCoordinate:CLLocationCoordinate2D?
+    var addressSelectedFromProfile = ""
     var delegate:LocationAddressDelegate?
+    var location = Location()
     
+    //MARK:- View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
         setup()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        if !fromRegistration {
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
+        }
         self.hideLoader()
     }
     
+    //MARK:- Private Methods
     func setup() {
         self.gpsNavigationButton.layer.cornerRadius = self.gpsNavigationButton.frame.size.width/2
         self.gpsNavigationButton.layer.shadowColor = UIColor.gray.cgColor;
@@ -54,6 +77,50 @@ class DMRegisterMapsVC: DMBaseVC {
         setSearchButtonText(text: "Done", searchBar: placeSearchBar)
         mapView.isMyLocationEnabled = true
         mapView.delegate = self
+        if let userSelectedCoordinate = userSelectedCoordinate {
+            placeMarkerOnMap(coordinate: userSelectedCoordinate)
+            location.coordinateSelected = userSelectedCoordinate
+            self.location.address = addressSelectedFromProfile
+            self.placeSearchBar.text = addressSelectedFromProfile
+            self.mapView.animate(to: GMSCameraPosition(target: userSelectedCoordinate, zoom: 15, bearing: 0, viewingAngle: 0))
+        }
+        if fromSettings {
+            let coordinate = CLLocationCoordinate2D(latitude: Double(UserManager.shared().activeUser.latitude!)!, longitude: Double(UserManager.shared().activeUser.longitude!)!)
+            placeMarkerOnMap(coordinate: coordinate)
+            location.coordinateSelected = coordinate
+            self.location.address = UserManager.shared().activeUser.preferredJobLocation
+            self.placeSearchBar.text = UserManager.shared().activeUser.preferredJobLocation
+            self.mapView.animate(to: GMSCameraPosition(target: coordinate, zoom: 15, bearing: 0, viewingAngle: 0))
+        }
+        
+        if fromRegistration  {
+            getCurrentLocation()
+        }
+        
+        if fromJobSearch  {
+            getCurrentLocation()
+        }
+    }
+    
+    func goBack() {
+        DispatchQueue.main.async {
+            _ = self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    func setSearchButtonText(text:String,searchBar:UISearchBar) {
+        for subview in searchBar.subviews {
+            for innerSubViews in subview.subviews {
+                if let cancelButton = innerSubViews as? UIButton {
+                    cancelButton.setTitleColor(UIColor.white, for: .normal)
+                    cancelButton.setTitle(text, for: .normal)
+                }
+            }
+        }
+    }
+    
+    //MARK:- For Current Location
+    func getCurrentLocation() {
         self.showLoader(text: "Getting Location")
         LocationManager.sharedInstance.getLocation { (location:CLLocation?, error:NSError?) in
             if error != nil {
@@ -63,31 +130,19 @@ class DMRegisterMapsVC: DMBaseVC {
                 }
                 return
             }
-           
-            let coordinate = CLLocationCoordinate2D(latitude: (location!.coordinate.latitude), longitude: (location!.coordinate.longitude))
-            self.coordinateSelected = coordinate
+            
+            let coordinate = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
+            self.location.coordinateSelected = coordinate
             self.currentLocation = coordinate
             self.reverseGeocodeCoordinate(coordinate: coordinate)
             DispatchQueue.main.async {
                 self.hideLoader()
-                self.mapView.camera = GMSCameraPosition(target: coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
+                self.mapView.animate(to: GMSCameraPosition(target: coordinate, zoom: 15, bearing: 0, viewingAngle: 0))
             }
         }
     }
     
-    func setSearchButtonText(text:String,searchBar:UISearchBar) {
-        for subview in searchBar.subviews {
-            for innerSubViews in subview.subviews {
-                if innerSubViews is UIButton {
-                    if let cancelButton = innerSubViews as? UIButton {
-                        cancelButton.setTitleColor(UIColor.white, for: .normal)
-                        cancelButton.setTitle(text, for: .normal)
-                    }
-                }
-            }
-        }
-    }
-    
+    //MARK:- Google Auto Complete API
     func placeAutocomplete(autoCompleteString:NSString) {
         
         let filter = GMSAutocompleteFilter()
@@ -112,15 +167,20 @@ class DMRegisterMapsVC: DMBaseVC {
         }
     }
     
+    //MARK:- Google Place Details API
     func getPlaceDetails(_ prediction:GMSAutocompletePrediction) {
         let placesClient = GMSPlacesClient()
         //let placesClient = GMSPlacesClient.shared()
+        self.showLoader()
         placesClient.lookUpPlaceID(prediction.placeID!) { (place:GMSPlace?, error:Error?) in
+            self.hideLoader()
             if error != nil {
                 return
             }
             if let place = place {
                 debugPrint(place)
+                self.location.coordinateSelected = place.coordinate
+                self.reverseGeocodeCoordinate(coordinate: place.coordinate)
                 OperationQueue.main.addOperation({
                     self.placeMarkerOnMap(coordinate: place.coordinate, isAnimatingToLocation: true)
                 })
@@ -137,65 +197,60 @@ class DMRegisterMapsVC: DMBaseVC {
         marker?.position = coordinate
         //marker.icon = GMSMarker.markerImage(with: UIColor.black)
         //marker.icon = UIImage(named:"ic_pin")
+        
         marker?.map = self.mapView
         marker?.appearAnimation = kGMSMarkerAnimationPop
         if isAnimatingToLocation {
-        self.mapView.camera = GMSCameraPosition(target: coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
+            self.mapView.animate(to: GMSCameraPosition(target: coordinate, zoom: 15, bearing: 0, viewingAngle: 0))
         }
     }
     
+    //MARK:- Reverse Geocoding
     func reverseGeocodeCoordinate(coordinate: CLLocationCoordinate2D) {
+        debugPrint(coordinate)
         let geocoder = GMSGeocoder()
         geocoder.reverseGeocodeCoordinate(coordinate) { (response:GMSReverseGeocodeResponse?, error:Error?) in
             if let address = response?.firstResult() {
-//                self.placeMarkerOnMap(coordinate: address.coordinate)
                 let lines = address.lines!
                 let count = response?.results()?.count
                 
+                if let state = address.administrativeArea {
+                    self.location.state = state
+                }
+                
+                if let city = address.locality {
+                    self.location.city = city
+                }
+                
+                if let country = address.country {
+                    self.location.country = country
+                }
+                
                 for i in 0..<(count)! {
                     if let postalCode = response?.results()![i].postalCode {
-                        //self.selectedpostalCode =  postalCode
+                        self.location.postalCode =  postalCode
                         break
                     }
                 }
-                print(lines.joined(separator: "\n"))
-                self.placeSearchBar.text = lines.joined(separator: "\n")
-
+                debugPrint(lines.joined(separator: " "))
+                self.location.address = lines.joined(separator: " ")
                 DispatchQueue.main.async {
-                    self.placeSearchBar.text = lines.joined(separator: "\n")
+                    self.placeSearchBar.text = lines.joined(separator: " ")
                 }
             }
         }
     }
+    
+    //MARK:- IBActions
     @IBAction func gpsNavigationButtonPressed(_ sender: Any) {
-    }
-}
-
-//MARK:- GoogleMaps Autocomplete Delegates
-extension DMRegisterMapsVC:GMSAutocompleteViewControllerDelegate,GMSMapViewDelegate {
-    
-    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-    }
-    
-    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
-        debugPrint(error.localizedDescription)
-    }
-    
-    func viewController(_ viewController: GMSAutocompleteViewController, didSelect prediction: GMSAutocompletePrediction) -> Bool {
-        return true
-    }
-    
-    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
-    }
-    
-    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
-        print(coordinate)
-        self.placeMarkerOnMap(coordinate: coordinate)
-        reverseGeocodeCoordinate(coordinate: coordinate)
-    }
-    
-    func mapView(_ mapView: GMSMapView, didEndDragging marker: GMSMarker) {
-        reverseGeocodeCoordinate(coordinate: marker.position)
+        if fromEditProfile || fromSettings || fromJobSearch {
+            getCurrentLocation()
+        } else {
+            guard let _ = self.currentLocation else {
+                return
+            }
+            self.mapView.animate(to: GMSCameraPosition(target: self.currentLocation!, zoom: 15, bearing: 0, viewingAngle: 0))
+        }
     }
 }
 
@@ -203,11 +258,41 @@ extension DMRegisterMapsVC:GMSAutocompleteViewControllerDelegate,GMSMapViewDeleg
 extension DMRegisterMapsVC:UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        if let delegate = self.delegate {
-            self.addressSelected = self.placeSearchBar.text!
-            delegate.locationAddress(address: addressSelected, coordinate: coordinateSelected)
+        if fromEditProfile || fromSettings || fromJobSearch {
+            if UserManager.shared().activeUser.preferredJobLocation != self.location.address! {
+                self.alertMessage(title: "Change Location", message: "Are you sure you want to change the location?", leftButtonText: "No", rightButtonText: "Yes", completionHandler: { (isLeft:Bool) in
+                    if !isLeft {
+                        if self.fromSettings {
+                            if self.location.postalCode.isEmptyField {
+                                 self.alertMessage(title: "Postal Code", message: "No Postal Code found. Try some other nearby location", buttonText: "Ok", completionHandler: nil)
+                                return
+                            }
+                            self.locationUpdateAPI(location: self.location)
+                        } else {
+                            if let delegate = self.delegate {
+                                self.addressSelected = self.placeSearchBar.text!
+                                if self.location.postalCode.isEmptyField {
+                                    self.alertMessage(title: "Postal Code", message: "No Postal Code found. Try some other nearby location", buttonText: "Ok", completionHandler: nil)
+                                    return
+                                }
+                                delegate.locationAddress(location: self.location)
+                            }
+                            self.goBack()
+                        }
+                    } else {
+                        self.goBack()
+                    }
+                })
+            } else {
+                goBack()
+            }
+        } else {
+            if let delegate = self.delegate {
+                self.addressSelected = self.placeSearchBar.text!
+                delegate.locationAddress(location: location)
+            }
+            goBack()
         }
-        _ = self.navigationController?.popViewController(animated: true)
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -217,30 +302,11 @@ extension DMRegisterMapsVC:UISearchBarDelegate {
             self.placesTableView.isHidden = false
         }
         
+        //For Google Auto Complete Controller
 //        let autocompleteController = GMSAutocompleteViewController()
 //        autocompleteController.delegate = self
 //        self.present(autocompleteController, animated: true, completion: nil)
+        
         placeAutocomplete(autoCompleteString: searchText as NSString)
-    }
-}
-
-extension DMRegisterMapsVC : UITableViewDataSource,UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return placesArray.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "GooglePlacesTableViewCell") as! GooglePlacesTableViewCell
-        let place = placesArray[indexPath.row]
-        cell.placeLabel.attributedText = place.attributedFullText
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let place = placesArray[indexPath.row]
-        getPlaceDetails(place)
-        self.placeSearchBar.text = place.attributedFullText.string
-        self.placesTableView.isHidden = true
     }
 }

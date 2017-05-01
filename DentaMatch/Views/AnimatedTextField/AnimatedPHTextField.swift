@@ -9,22 +9,34 @@
 import UIKit
 
 class AnimatedPHTextField: FloatLabelTextField {
-
+    
     private var leftTextFieldView:UIView?
+    var type = 0
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.textColor = kTextFieldTextColor
+        self.autocorrectionType = .no
+        self.autocapitalizationType = .sentences
+        self.textColor = Constants.Color.textFieldTextColor
         self.titleYPadding = 5.0
         self.titleFont = UIFont.fontRegular(fontSize: 12.0)!
-        self.titleActiveTextColour = kTextFieldColor
+        self.titleActiveTextColour = Constants.Color.textFieldPlaceHolderColor
+        self.titleTextColour = Constants.Color.textFieldPlaceHolderColor
         leftTextFieldView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: self.frame.size.height))
         self.leftView =  leftTextFieldView
         self.leftViewMode = .always
         self.layer.cornerRadius = 5.0
         self.layer.borderWidth = 1.0
-        self.layer.borderColor = kTextFieldBorderColor.cgColor
+        self.layer.borderColor = Constants.Color.textFieldBorderColor.cgColor
     }
+    
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        if self.type != 0 || action == #selector(delete(_:)) {
+            return false
+        }
+        return true
+    }
+    
     
     /*
     // Only override draw() if you perform custom drawing.

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hMV-YX-EYX">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="YCw-8j-qU1">
+            <objects>
+                <navigationController id="hMV-YX-EYX" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oqG-Wm-oqv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="waP-kD-Acz" kind="relationship" relationship="rootViewController" id="uo3-Wl-0qj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uuA-yz-Tac" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-614" y="-31"/>
+        </scene>
+        <!--NotificationVC-->
+        <scene sceneID="fjU-XH-Wp3">
+            <objects>
+                <viewController storyboardIdentifier="DMNotificationVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="waP-kD-Acz" customClass="DMNotificationVC" customModule="DentaMatch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ndq-RG-udw"/>
+                        <viewControllerLayoutGuide type="bottom" id="6Wu-6d-WDi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NiP-dM-jbP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SVr-J4-VGw">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="waP-kD-Acz" id="vsk-0s-dl6"/>
+                                    <outlet property="delegate" destination="waP-kD-Acz" id="aVd-gO-Hug"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6Wu-6d-WDi" firstAttribute="top" secondItem="SVr-J4-VGw" secondAttribute="bottom" id="Lrn-UW-9iG"/>
+                            <constraint firstAttribute="trailing" secondItem="SVr-J4-VGw" secondAttribute="trailing" id="fVb-Xy-UeB"/>
+                            <constraint firstItem="SVr-J4-VGw" firstAttribute="leading" secondItem="NiP-dM-jbP" secondAttribute="leading" id="pDv-6L-gFt"/>
+                            <constraint firstItem="SVr-J4-VGw" firstAttribute="top" secondItem="ndq-RG-udw" secondAttribute="bottom" id="tbV-yY-vGo"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="grx-vz-nbc"/>
+                    <connections>
+                        <outlet property="notificationTableView" destination="SVr-J4-VGw" id="ubj-vz-wIX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r7a-CP-jSv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="85.599999999999994" y="-31.03448275862069"/>
+        </scene>
+    </scenes>
+</document>

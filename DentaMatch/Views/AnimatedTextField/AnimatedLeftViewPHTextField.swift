@@ -15,14 +15,15 @@ class AnimatedLeftViewPHTextField: FloatLabelTextField {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.textColor = kTextFieldTextColor
+        self.textColor = Constants.Color.textFieldTextColor
         self.titleYPadding = 5.0
         self.titleFont = UIFont.fontRegular(fontSize: 12.0)!
-        self.titleActiveTextColour = kTextFieldColor
+        self.titleActiveTextColour = Constants.Color.textFieldPlaceHolderColor
+        self.titleTextColour = Constants.Color.textFieldPlaceHolderColor
         leftTextFieldView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: self.frame.size.height))
         leftViewLabel = UILabel(frame:  CGRect(x: 0, y: 0, width: 30, height: self.frame.size.height))
         
-        leftViewLabel?.textColor = kTextFieldLeftViewModeColor
+        leftViewLabel?.textColor = Constants.Color.textFieldLeftViewModeColor
         leftViewLabel?.textAlignment = .center
         leftViewLabel?.font = UIFont.designFont(fontSize: 18.0)
         leftViewLabel?.center = (leftTextFieldView?.center)!
@@ -31,7 +32,7 @@ class AnimatedLeftViewPHTextField: FloatLabelTextField {
         self.leftViewMode = .always
         self.layer.cornerRadius = 5.0
         self.layer.borderWidth = 1.0
-        self.layer.borderColor = kTextFieldBorderColor.cgColor
+        self.layer.borderColor = Constants.Color.textFieldBorderColor.cgColor
     }
     
     /*

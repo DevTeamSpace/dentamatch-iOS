@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-UI-Text-Medium.otf">
+            <string>SFUIText-Medium</string>
+        </array>
+        <array key="SF-UI-Text-Regular.otf">
+            <string>SFUIText-Regular</string>
+        </array>
+        <array key="SF-UI-Text-Semibold.otf">
+            <string>SFUIText-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="EditProfileExperienceCell" rowHeight="281" id="KGk-i7-Jjw" customClass="EditProfileExperienceCell" customModule="DentaMatch" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="280"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="279.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dental Assistance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c7R-Dg-JDn">
+                        <rect key="frame" x="20" y="15" width="189" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="Dn7-6D-mAr"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="18"/>
+                        <color key="textColor" red="0.2196078431372549" green="0.2196078431372549" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3.5 years" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="t8a-kv-LeQ">
+                        <rect key="frame" x="210" y="19" width="95" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="1ty-h6-ve0"/>
+                            <constraint firstAttribute="width" constant="95" id="iHg-i1-dnz"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="12"/>
+                        <color key="textColor" red="0.21960784310000001" green="0.21960784310000001" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OFFICE LOCATION" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K1R-C5-k18">
+                        <rect key="frame" x="20" y="46" width="112" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="LyM-Tg-mXc"/>
+                            <constraint firstAttribute="width" constant="112" id="vdF-qf-95J"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="12"/>
+                        <color key="textColor" red="0.098039215686274508" green="0.15686274509803921" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dr. Nacy LY" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vwG-xQ-JIV">
+                        <rect key="frame" x="20" y="65" width="292" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="7vV-KN-gtY"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="14"/>
+                        <color key="textColor" red="0.21960784310000001" green="0.21960784310000001" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0W6-V9-Amd">
+                        <rect key="frame" x="20" y="86" width="292" height="32"/>
+                        <string key="text">628 Vermont Street
+San Francisco, CA 94107</string>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="13"/>
+                        <color key="textColor" red="0.21960784310000001" green="0.21960784310000001" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CONTACT INFORMATION" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="izt-X5-osU">
+                        <rect key="frame" x="20" y="128" width="159" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="AH1-Bm-eGC"/>
+                            <constraint firstAttribute="width" constant="159" id="WtF-TO-M5b"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="12"/>
+                        <color key="textColor" red="0.098039215686274508" green="0.15686274509803921" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dr. Nacy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zYT-PK-jCf">
+                        <rect key="frame" x="20" y="147" width="280" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="0On-fv-H8K"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="13"/>
+                        <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(415) 200 2356 " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CTs-Ha-vuq">
+                        <rect key="frame" x="20" y="164" width="280" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="Nxq-5k-rMD"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="13"/>
+                        <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="nancy.ly@gmail.com" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heU-1a-qWy">
+                        <rect key="frame" x="20" y="181" width="280" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20.5" id="Clz-Tu-JLy"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="13"/>
+                        <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dr. Nacy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c13-Fx-Jhd">
+                        <rect key="frame" x="20" y="206" width="280" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="udK-bQ-9iZ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="13"/>
+                        <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(415) 200 2356 " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T0G-5U-LmI">
+                        <rect key="frame" x="20" y="223" width="280" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="sMR-uA-LxH"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="13"/>
+                        <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="nancy.ly@gmail.com" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bRY-zH-5yD">
+                        <rect key="frame" x="20" y="240" width="280" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20.5" id="QfP-h0-jKQ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="13"/>
+                        <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="K1R-C5-k18" firstAttribute="top" secondItem="c7R-Dg-JDn" secondAttribute="bottom" constant="10" id="4gD-VG-MQb"/>
+                    <constraint firstItem="CTs-Ha-vuq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="69s-8e-zOD"/>
+                    <constraint firstItem="CTs-Ha-vuq" firstAttribute="top" secondItem="zYT-PK-jCf" secondAttribute="bottom" constant="1" id="8eO-fL-N0W"/>
+                    <constraint firstItem="0W6-V9-Amd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="8fh-kY-QMc"/>
+                    <constraint firstItem="bRY-zH-5yD" firstAttribute="top" secondItem="T0G-5U-LmI" secondAttribute="bottom" constant="1" id="9Ne-3p-MMy"/>
+                    <constraint firstItem="t8a-kv-LeQ" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="-7" id="ByT-5V-zVK"/>
+                    <constraint firstItem="t8a-kv-LeQ" firstAttribute="leading" secondItem="c7R-Dg-JDn" secondAttribute="trailing" constant="1" id="Cv6-sq-Tpy"/>
+                    <constraint firstItem="vwG-xQ-JIV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="DVI-eb-fqw"/>
+                    <constraint firstItem="bRY-zH-5yD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="F58-zo-QFf"/>
+                    <constraint firstAttribute="trailing" secondItem="c13-Fx-Jhd" secondAttribute="trailing" constant="20" id="Gal-Om-R8w"/>
+                    <constraint firstItem="T0G-5U-LmI" firstAttribute="top" secondItem="c13-Fx-Jhd" secondAttribute="bottom" constant="1" id="Hk7-Qm-i1R"/>
+                    <constraint firstItem="heU-1a-qWy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="K8k-dC-vZ9"/>
+                    <constraint firstItem="T0G-5U-LmI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="KOc-Wn-oab"/>
+                    <constraint firstItem="T0G-5U-LmI" firstAttribute="top" secondItem="c13-Fx-Jhd" secondAttribute="bottom" constant="1" id="LXf-Fv-wns"/>
+                    <constraint firstItem="K1R-C5-k18" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Lu8-wc-NOg"/>
+                    <constraint firstItem="heU-1a-qWy" firstAttribute="top" secondItem="CTs-Ha-vuq" secondAttribute="bottom" constant="1" id="NmF-r3-D1p"/>
+                    <constraint firstItem="heU-1a-qWy" firstAttribute="top" secondItem="CTs-Ha-vuq" secondAttribute="bottom" constant="1" id="Rgd-Tc-VYx"/>
+                    <constraint firstAttribute="trailing" secondItem="vwG-xQ-JIV" secondAttribute="trailing" constant="8" id="XO7-am-Pgd"/>
+                    <constraint firstItem="izt-X5-osU" firstAttribute="top" secondItem="0W6-V9-Amd" secondAttribute="bottom" constant="10" id="XoM-2n-lbp"/>
+                    <constraint firstItem="c7R-Dg-JDn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="ZRR-r8-NQu"/>
+                    <constraint firstItem="vwG-xQ-JIV" firstAttribute="top" secondItem="K1R-C5-k18" secondAttribute="bottom" constant="5" id="aIl-kt-mR7"/>
+                    <constraint firstItem="0W6-V9-Amd" firstAttribute="top" secondItem="vwG-xQ-JIV" secondAttribute="bottom" id="dRj-li-sal"/>
+                    <constraint firstAttribute="trailing" secondItem="zYT-PK-jCf" secondAttribute="trailing" constant="20" id="ewk-Aw-xGg"/>
+                    <constraint firstItem="zYT-PK-jCf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="gPL-aL-8NX"/>
+                    <constraint firstItem="CTs-Ha-vuq" firstAttribute="top" secondItem="zYT-PK-jCf" secondAttribute="bottom" constant="1" id="gT5-hX-mHX"/>
+                    <constraint firstAttribute="trailing" secondItem="0W6-V9-Amd" secondAttribute="trailing" constant="8" id="hdv-MO-TSk"/>
+                    <constraint firstItem="bRY-zH-5yD" firstAttribute="top" secondItem="T0G-5U-LmI" secondAttribute="bottom" constant="1" id="iMG-j9-Wvf"/>
+                    <constraint firstAttribute="trailing" secondItem="T0G-5U-LmI" secondAttribute="trailing" constant="20" id="kT6-Uh-7ca"/>
+                    <constraint firstAttribute="trailing" secondItem="heU-1a-qWy" secondAttribute="trailing" constant="20" id="keQ-5s-czQ"/>
+                    <constraint firstItem="t8a-kv-LeQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="11" id="kem-PR-0zO"/>
+                    <constraint firstItem="c13-Fx-Jhd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="lz0-1L-Wg1"/>
+                    <constraint firstItem="izt-X5-osU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="nNt-E7-BkR"/>
+                    <constraint firstAttribute="trailing" secondItem="bRY-zH-5yD" secondAttribute="trailing" constant="20" id="nxW-8e-SS9"/>
+                    <constraint firstItem="c13-Fx-Jhd" firstAttribute="top" secondItem="heU-1a-qWy" secondAttribute="bottom" constant="5" id="qUV-bE-qWT"/>
+                    <constraint firstItem="zYT-PK-jCf" firstAttribute="top" secondItem="izt-X5-osU" secondAttribute="bottom" constant="5" id="rTR-h1-IKI"/>
+                    <constraint firstItem="c7R-Dg-JDn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="vGG-Og-gSn"/>
+                    <constraint firstAttribute="trailing" secondItem="CTs-Ha-vuq" secondAttribute="trailing" constant="20" id="wI0-QK-ldq"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="contactInformationLabel" destination="izt-X5-osU" id="IcL-Vx-21a"/>
+                <outlet property="jobTitleLabel" destination="c7R-Dg-JDn" id="FOD-RW-Ru4"/>
+                <outlet property="officeAddressLabel" destination="0W6-V9-Amd" id="0hs-bQ-bj8"/>
+                <outlet property="officeNameLabel" destination="vwG-xQ-JIV" id="99C-bt-Ug0"/>
+                <outlet property="reference1Email" destination="heU-1a-qWy" id="6iV-Hc-RZd"/>
+                <outlet property="reference1Mobile" destination="CTs-Ha-vuq" id="0fG-vJ-Ack"/>
+                <outlet property="reference1Name" destination="zYT-PK-jCf" id="w4b-1H-G8s"/>
+                <outlet property="reference2Email" destination="bRY-zH-5yD" id="XUk-h1-Zap"/>
+                <outlet property="reference2Mobile" destination="T0G-5U-LmI" id="pgD-rv-uPV"/>
+                <outlet property="reference2Name" destination="c13-Fx-Jhd" id="g1B-PQ-dD8"/>
+                <outlet property="yearOfExperienceLabel" destination="t8a-kv-LeQ" id="eS9-wG-FfT"/>
+            </connections>
+            <point key="canvasLocation" x="57" y="74"/>
+        </tableViewCell>
+    </objects>
+</document>
