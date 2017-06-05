@@ -4,8 +4,8 @@ This README would normally document whatever steps are necessary to get your app
 
 ### What is this repository for? ###
 
-* A Platform that provides facility to users for booking photographer in their area for their events.
-* 1.4
+* A Platform that is basically a dating app like tinder which allows the user to find there matches within some hotzone regions.
+* 1.0
 ### How do I get set up? ###
 
 ###Summary of set up###
@@ -15,9 +15,9 @@ This README would normally document whatever steps are necessary to get your app
 
 ###Dependencies###
 * Cocoapods is being used as dependency manager.
-* XCode 7.3.1 (Integrated Development Environment)
-* Swift 2.2 (Development language)
-* iOS 8.1+ support
+* XCode 8.3.2 (Integrated Development Environment)
+* Swift 3.1 (Development language)
+* iOS 10.0+ support
 
 ###Code review###
 * Tool Used: SonarQube
