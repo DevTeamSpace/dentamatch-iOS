@@ -4,7 +4,7 @@ This README would normally document whatever steps are necessary to get your app
 
 ### What is this repository for? ###
 
-* A Platform that is basically a dating app like tinder which allows the user to find there matches within some hotzone regions.
+* A Platform that is which allows the user to find dental jobs for in US.
 * 1.0
 ### How do I get set up? ###
 
@@ -17,7 +17,7 @@ This README would normally document whatever steps are necessary to get your app
 * Cocoapods is being used as dependency manager.
 * XCode 8.3.2 (Integrated Development Environment)
 * Swift 3.1 (Development language)
-* iOS 10.0+ support
+* iOS 9.0+ support
 
 ###Code review###
 * Tool Used: SonarQube
