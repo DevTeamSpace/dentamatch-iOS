@@ -55,7 +55,7 @@ class DMSelectSkillsVC: UIViewController {
     }
 
     //MARK:- Private Methods
-    func getSubSkillData(info:Notification) {
+    @objc func getSubSkillData(info:Notification) {
         let userInfo = info.userInfo
         skill = userInfo?["skill"] as? Skill
         subSkills.removeAll()

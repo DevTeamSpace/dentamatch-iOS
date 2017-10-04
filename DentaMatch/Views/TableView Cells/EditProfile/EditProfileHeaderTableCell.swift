@@ -34,13 +34,13 @@ class EditProfileHeaderTableCell: UITableViewCell {
         
         if jobTitle.isEmptyField {
             let attributedString = NSMutableAttributedString()
-            let placeText = NSAttributedString(string: place, attributes: [NSFontAttributeName:UIFont.fontRegular(fontSize: 16.0)!,NSForegroundColorAttributeName:UIColor.white])
+            let placeText = NSAttributedString(string: place, attributes: [NSAttributedStringKey.font:UIFont.fontRegular(fontSize: 16.0)!,NSAttributedStringKey.foregroundColor:UIColor.white])
             attributedString.append(placeText)
             return attributedString
         } else {
             let attributedString = NSMutableAttributedString()
-            let jobTitleText = NSAttributedString(string: jobTitle, attributes: [NSFontAttributeName:UIFont.fontSemiBold(fontSize: 16.0)!,NSForegroundColorAttributeName:UIColor.white])
-            let placeText = NSAttributedString(string: place, attributes: [NSFontAttributeName:UIFont.fontRegular(fontSize: 16.0)!,NSForegroundColorAttributeName:UIColor.white])
+            let jobTitleText = NSAttributedString(string: jobTitle, attributes: [NSAttributedStringKey.font:UIFont.fontSemiBold(fontSize: 16.0)!,NSAttributedStringKey.foregroundColor:UIColor.white])
+            let placeText = NSAttributedString(string: place, attributes: [NSAttributedStringKey.font:UIFont.fontRegular(fontSize: 16.0)!,NSAttributedStringKey.foregroundColor:UIColor.white])
             attributedString.append(jobTitleText)
             attributedString.append(NSAttributedString(string: "\n"))
             attributedString.append(placeText)

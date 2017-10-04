@@ -64,11 +64,11 @@ class CameraGalleryManager: UIViewController,UIImagePickerControllerDelegate,UIN
     /// - Parameter completionHandler: Accepts a closure of a success bool variable which is sent back as a completon handler
     /// - success: Bool
     private func checkCameraPermission(_ completionHandler:@escaping (_ success:Bool)->()) {
-        if AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo) ==  AVAuthorizationStatus.authorized {
+        if AVCaptureDevice.authorizationStatus(for: AVMediaType.video) ==  AVAuthorizationStatus.authorized {
             // Already Authorized
             completionHandler(true)
         } else {
-            AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo, completionHandler: { (granted :Bool) -> Void in
+            AVCaptureDevice.requestAccess(for: AVMediaType.video, completionHandler: { (granted :Bool) -> Void in
                 if granted == true {
                     // User granted
                     OperationQueue.main.addOperation({

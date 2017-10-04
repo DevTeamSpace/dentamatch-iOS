@@ -55,13 +55,13 @@ class DMRegistrationVC: DMBaseVC {
     }
     
     //MARK:- Keyboard Show Hide Observers
-    func keyboardWillShow(note: NSNotification) {
+    @objc func keyboardWillShow(note: NSNotification) {
         if let keyboardSize = (note.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             registrationTableView.contentInset =  UIEdgeInsetsMake(0, 0, keyboardSize.height+1, 0)
         }
     }
     
-    func keyboardWillHide(note: NSNotification) {
+    @objc func keyboardWillHide(note: NSNotification) {
         registrationTableView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0)
     }
     
@@ -122,7 +122,7 @@ class DMRegistrationVC: DMBaseVC {
         self.navigationController?.pushViewController(termsVC, animated: true)
     }
     
-    func dismissKeyboard() {
+    @objc func dismissKeyboard() {
         self.view.endEditing(true)
     }
     
@@ -138,7 +138,7 @@ class DMRegistrationVC: DMBaseVC {
         }
     }
 
-    func acceptTermsButtonPressed(sender:UIButton) {
+    @objc func acceptTermsButtonPressed(sender:UIButton) {
         self.termsAndConditionsAccepted = self.termsAndConditionsAccepted ? false:true
         self.registrationTableView.reloadData()
     }

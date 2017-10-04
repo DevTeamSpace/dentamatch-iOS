@@ -62,7 +62,7 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
         let barButton = UIBarButtonItem(customView: customButton)
         return barButton
     }
-    func saveButtonPressed() {
+    @objc func saveButtonPressed() {
         if !minimumOneSelected() {
             self.makeToast(toastString: Constants.AlertMessage.selectOneAvailableOption)
            return

@@ -61,7 +61,7 @@ extension String {
     subscript (r: Range<Int>) -> String {
         let start = self.index(self.startIndex, offsetBy: r.lowerBound)
         let end = self.index(start, offsetBy: r.upperBound)
-        return self[Range(start ..< end)]
+        return String(self[Range(start ..< end)])
     }
     
     
@@ -156,7 +156,7 @@ extension String {
     
     func widthWithConstraintHeight(height: CGFloat, font: UIFont) -> CGFloat {
         let constraintRect = CGSize(width: .greatestFiniteMagnitude, height: height)
-        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
+        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font: font], context: nil)
         return boundingBox.width
     }
     

@@ -41,7 +41,7 @@ class ChangePasswordTableCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    func showPasswordText() {
+    @objc func showPasswordText() {
         if self.passwordTextField.isSecureTextEntry {
             self.passwordTextField.isSecureTextEntry = false
             showButton.setTitle("Hide", for: .normal)

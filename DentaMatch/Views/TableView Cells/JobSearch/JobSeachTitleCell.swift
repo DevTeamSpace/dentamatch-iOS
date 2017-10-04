@@ -54,7 +54,7 @@ class JobSeachTitleCell: UITableViewCell {
         
         for objTitle in jobTitles {
             let font = UIFont.fontRegular(fontSize: 14.0)
-            let textAttributes = [NSFontAttributeName: font]
+            let textAttributes = [NSAttributedStringKey.font: font]
             let textSize = objTitle.jobTitle.boundingRect(with: CGSize(width : UIScreen.main.bounds.size.width + 10,height : 14), options: .usesLineFragmentOrigin, attributes: textAttributes, context: nil)
             var textWidth : CGFloat = textSize.width
             let textHeight : CGFloat = 34.0

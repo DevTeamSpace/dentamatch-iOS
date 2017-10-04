@@ -160,7 +160,7 @@ class DMJobSearchResultVC : DMBaseVC {
 
     
     
-    func pushRediectNotificationOtherAll(userInfo:Notification) {
+    @objc func pushRediectNotificationOtherAll(userInfo:Notification) {
         if let tabbar = ((UIApplication.shared.delegate) as! AppDelegate).window?.rootViewController as? TabBarVC {
             _=self.navigationController?.popToRootViewController(animated: false)
             tabbar.selectedIndex = 0
@@ -171,7 +171,7 @@ class DMJobSearchResultVC : DMBaseVC {
         }
         
     }
-    func pushRediectNotificationOtherAllBackGround(userInfo:Notification) {
+    @objc func pushRediectNotificationOtherAllBackGround(userInfo:Notification) {
         if let tabbar = ((UIApplication.shared.delegate) as! AppDelegate).window?.rootViewController as? TabBarVC {
             _=self.navigationController?.popToRootViewController(animated: false)
             tabbar.selectedIndex = 0
@@ -182,7 +182,7 @@ class DMJobSearchResultVC : DMBaseVC {
         
     }
 
-    func pushRediectNotificationForJobDetailForground(userInfo:Notification) {
+    @objc func pushRediectNotificationForJobDetailForground(userInfo:Notification) {
         if let tabbar = ((UIApplication.shared.delegate) as! AppDelegate).window?.rootViewController as? TabBarVC {
             _=self.navigationController?.popToRootViewController(animated: false)
             tabbar.selectedIndex = 0
@@ -197,7 +197,7 @@ class DMJobSearchResultVC : DMBaseVC {
     }
    
 
-    func pushRediectNotificationForJobDetailBacground(userInfo:Notification) {
+    @objc func pushRediectNotificationForJobDetailBacground(userInfo:Notification) {
         if let tabbar = ((UIApplication.shared.delegate) as! AppDelegate).window?.rootViewController as? TabBarVC {
             tabbar.selectedIndex = 0
         }
@@ -217,7 +217,7 @@ class DMJobSearchResultVC : DMBaseVC {
 
     }
 
-    override func actionLeftNavigationItem() {
+    @objc override func actionLeftNavigationItem() {
         //will implement
         let notification = UIStoryboard.notificationStoryBoard().instantiateViewController(type: DMNotificationVC.self)!
         notification.hidesBottomBarWhenPushed = true
@@ -225,7 +225,7 @@ class DMJobSearchResultVC : DMBaseVC {
 
     }
     
-    override func actionRightNavigationItem() {
+    @objc override func actionRightNavigationItem() {
         let jobSearchVC = UIStoryboard.jobSearchStoryBoard().instantiateViewController(type: DMJobSearchVC.self)!
         jobSearchVC.fromJobSearchResults = true
         jobSearchVC.delegate = self
@@ -234,7 +234,7 @@ class DMJobSearchResultVC : DMBaseVC {
     }
     
     
-    func pullToRefreshForJobs() {
+    @objc func pullToRefreshForJobs() {
         self.getJobs()
         self.pullToRefreshJobs.endRefreshing()
     }
@@ -266,7 +266,7 @@ class DMJobSearchResultVC : DMBaseVC {
         self.navigationItem.titleView = segmentView
     }
     
-    func actionListButton() {
+    @objc func actionListButton() {
         if isListShow == false {
             self.btnList.backgroundColor = Constants.Color.mapButtonBackGroundColor
             self.btnList.titleLabel!.font =  UIFont.fontSemiBold(fontSize: 13.0)
@@ -282,7 +282,7 @@ class DMJobSearchResultVC : DMBaseVC {
         isMapShow = false
     }
     
-    func actionMapButton() {
+    @objc func actionMapButton() {
         if isMapShow == false {
             self.btnMap.backgroundColor = Constants.Color.mapButtonBackGroundColor
             self.btnMap.titleLabel!.font =  UIFont.fontSemiBold(fontSize: 13.0)

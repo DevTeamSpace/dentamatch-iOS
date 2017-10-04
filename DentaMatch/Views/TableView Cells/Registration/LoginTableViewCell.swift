@@ -38,7 +38,7 @@ class LoginTableViewCell: UITableViewCell {
         passwordTextField.leftViewLabel?.text = "e"
     }
     
-    func showPasswordText() {
+    @objc func showPasswordText() {
         if self.passwordTextField.isSecureTextEntry {
             self.passwordTextField.isSecureTextEntry = false
             showButton.setTitle("Hide", for: .normal)

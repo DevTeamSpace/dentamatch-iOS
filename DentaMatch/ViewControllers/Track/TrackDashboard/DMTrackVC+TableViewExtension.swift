@@ -165,7 +165,7 @@ extension DMTrackVC:UITableViewDataSource,UITableViewDelegate {
         }
     }
     
-    func removeFavouriteJobButtonPressed(sender:UIButton) {
+    @objc func removeFavouriteJobButtonPressed(sender:UIButton) {
         self.alertMessage(title: "Confirm your action", message: "Are you sure you want to unsave the job?", leftButtonText: "Cancel", rightButtonText: "Ok") { (isLeftButton:Bool) in
             if !isLeftButton {
                 let job = self.savedJobs[sender.tag]
@@ -192,7 +192,7 @@ extension DMTrackVC:UITableViewDataSource,UITableViewDelegate {
         }
     }
     
-    func goToChatButton(sender:UIButton) {
+    @objc func goToChatButton(sender:UIButton) {
         _ = self.shortListedJobs[sender.tag]
     }
     

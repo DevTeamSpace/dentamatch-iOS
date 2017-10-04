@@ -76,13 +76,14 @@ class DMEditProfileVC: DMBaseVC {
         self.editProfileTableView.register(UINib(nibName: "EditProfileExperienceCell", bundle: nil), forCellReuseIdentifier: "EditProfileExperienceCell")
     }
     
-    func psuhRediectNotificationForProfile(userInfo:Notification) {
+    @objc func psuhRediectNotificationForProfile(userInfo:Notification) {
         if let tabbar = ((UIApplication.shared.delegate) as! AppDelegate).window?.rootViewController as? TabBarVC {
             _=self.navigationController?.popToRootViewController(animated: false)
             tabbar.selectedIndex = 4
         }
     }
-    func openEditLicenseScreen(editMode:Bool = false) {
+    
+    @objc func openEditLicenseScreen(editMode:Bool = false) {
         let editLicenseVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: DMEditLicenseVC.self)!
         editLicenseVC.isEditMode = editMode
         editLicenseVC.license = self.license
@@ -90,17 +91,17 @@ class DMEditProfileVC: DMBaseVC {
         self.navigationController?.pushViewController(editLicenseVC, animated: true)
     }
     
-    func openEditPublicProfileScreen() {
+    @objc func openEditPublicProfileScreen() {
         self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToPublicProfile, sender: self)
 
     }
 
-    func openSettingScreen() {
+    @objc func openSettingScreen() {
         self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToSetting, sender: self)
         
     }
     
-    func openAffiliationsScreen() {
+    @objc func openAffiliationsScreen() {
         let affiliationVC = UIStoryboard.profileStoryBoard().instantiateViewController(type: DMAffiliationsVC.self)!
         affiliationVC.isEditMode = true
         affiliationVC.hidesBottomBarWhenPushed = true
@@ -108,14 +109,14 @@ class DMEditProfileVC: DMBaseVC {
         self.navigationController?.pushViewController(affiliationVC, animated: true)
     }
     
-    func openSchoolsScreen() {
+    @objc func openSchoolsScreen() {
         let studyVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: DMEditStudyVC.self)!
         studyVC.hidesBottomBarWhenPushed = true
         studyVC.selectedSchoolCategories = self.schoolCategories
         self.navigationController?.pushViewController(studyVC, animated: true)
     }
     
-    func openSkillsScreen() {
+    @objc func openSkillsScreen() {
         let skillsVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: DMEditSkillsVC.self)!
         skillsVC.selectedSkills = self.skills
         
@@ -130,7 +131,7 @@ class DMEditProfileVC: DMBaseVC {
 
     }
     
-    func openDentalStateBoardScreen(isEditMode:Bool = true) {
+    @objc func openDentalStateBoardScreen(isEditMode:Bool = true) {
         let dentalStateboardVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: DMEditDentalStateBoardVC.self)!
         dentalStateboardVC.dentalStateBoardImageURL = self.dentalStateBoardURL
         dentalStateboardVC.hidesBottomBarWhenPushed = true
@@ -138,7 +139,7 @@ class DMEditProfileVC: DMBaseVC {
         self.navigationController?.pushViewController(dentalStateboardVC, animated: true)
     }
     
-    func openWorkExperienceScreen() {
+    @objc func openWorkExperienceScreen() {
         let workExpVC = UIStoryboard.profileStoryBoard().instantiateViewController(type: DMWorkExperienceVC.self)!
         workExpVC.hidesBottomBarWhenPushed = true
         workExpVC.isEditMode = true
@@ -147,7 +148,7 @@ class DMEditProfileVC: DMBaseVC {
         self.navigationController?.pushViewController(workExpVC, animated: true)
     }
     
-    func openCertificateScreen(sender:UIButton) {
+    @objc func openCertificateScreen(sender:UIButton) {
         let editCertificateVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: DMEditCertificateVC.self)!
         editCertificateVC.certificate = certifications[sender.tag]
         editCertificateVC.hidesBottomBarWhenPushed = true
@@ -155,7 +156,7 @@ class DMEditProfileVC: DMBaseVC {
         self.navigationController?.pushViewController(editCertificateVC, animated: true)
     }
     
-    func updateProfileScreen(userInfo:Notification) {
+    @objc func updateProfileScreen(userInfo:Notification) {
         let dict = userInfo.userInfo
         
         if let license = dict?["license"] {

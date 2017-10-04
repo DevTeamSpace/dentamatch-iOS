@@ -268,32 +268,32 @@ extension DMWorkExperienceVC: UITableViewDataSource,UITableViewDelegate
         }
     }
     
-    func referenceNameTextFieldDidEnd(_ textField: UITextField) {
+    @objc func referenceNameTextFieldDidEnd(_ textField: UITextField) {
         let tag  =  textField.tag
         let empRef =  self.currentExperience?.references[tag]
         empRef?.referenceName = textField.text
         self.currentExperience?.references[tag] = empRef!
 
     }
-    func referenceMobileNumberTextFieldDidEnd(_ textField: UITextField) {
+    @objc func referenceMobileNumberTextFieldDidEnd(_ textField: UITextField) {
         let tag  =  textField.tag
         let empRef =  self.currentExperience?.references[tag]
         empRef?.mobileNumber = textField.text
         self.currentExperience?.references[tag] = empRef!
 
     }
-    func referenceEmailTextFieldDidEnd(_ textField: UITextField) {
+    @objc func referenceEmailTextFieldDidEnd(_ textField: UITextField) {
         let tag  =  textField.tag
         let empRef =  self.currentExperience?.references[tag]
         empRef?.email = textField.text
         self.currentExperience?.references[tag] = empRef!
     }
 
-    func textFieldDidChange(_ textField: UITextField) {
+    @objc func textFieldDidChange(_ textField: UITextField) {
         textField.text = self.phoneFormatter.format(textField.text!, hash: textField.hash)
     }
     
-    func CommonExperiencelTextFieldDidEnd(_ textField: UITextField) {
+    @objc func CommonExperiencelTextFieldDidEnd(_ textField: UITextField) {
         
         switch textField.tag {
 //        case 0:
@@ -347,7 +347,7 @@ extension DMWorkExperienceVC: UITableViewDataSource,UITableViewDelegate
         self.workExperienceDetailTable.endEditing(true)
     }
     
-    func addMoreReference(_ sender: Any) {
+    @objc func addMoreReference(_ sender: Any) {
         if (self.currentExperience?.references.count)! < 2
         {
             if (self.currentExperience?.references[0].referenceName?.isEmptyField)! && (self.currentExperience?.references[0].mobileNumber?.isEmptyField)! && (self.currentExperience?.references[0].email?.isEmptyField)! {
@@ -365,7 +365,7 @@ extension DMWorkExperienceVC: UITableViewDataSource,UITableViewDelegate
             self.makeToast(toastString: Constants.AlertMessage.morethen2refernce)
         }
     }
-    func addMoreExperience(_ sender: Any) {
+    @objc func addMoreExperience(_ sender: Any) {
         self.view.endEditing(true)
         if !checkValidations()
         {
@@ -412,7 +412,7 @@ extension DMWorkExperienceVC: UITableViewDataSource,UITableViewDelegate
 //        self.makeToast(toastString: "Experience Added")
         self.reSizeTableViewsAndScrollView()
     }
-    func deleteReference(_ sender: Any) {
+    @objc func deleteReference(_ sender: Any) {
         self.view.endEditing(true)
         let tag = (sender as AnyObject).tag
         self.currentExperience?.references.remove(at: tag!)
@@ -420,7 +420,7 @@ extension DMWorkExperienceVC: UITableViewDataSource,UITableViewDelegate
         self.workExperienceDetailTable.reloadData()
         self.reSizeTableViewsAndScrollView()
     }
-    func deleteExperience(_ sender: Any) {
+    @objc func deleteExperience(_ sender: Any) {
         self.view.endEditing(true)
 
         if self.currentExperience?.isEditMode == true {

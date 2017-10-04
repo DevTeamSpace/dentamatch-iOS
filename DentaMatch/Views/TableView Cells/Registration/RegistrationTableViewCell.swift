@@ -31,10 +31,10 @@ class RegistrationTableViewCell: UITableViewCell {
         setupPasswordShowButton()
         
         let attributedString = NSMutableAttributedString(string: "I agree to the Terms and Conditions and Privacy Policy  ")
-        attributedString.addAttribute(NSLinkAttributeName, value: "openTermsAndConditions", range: NSRange(location: 14, length: 21))
-        attributedString.addAttribute(NSLinkAttributeName, value: "openPrivacyPolicy", range: NSRange(location: 40, length: 14))
-        attributedString.addAttributes([NSFontAttributeName:UIFont.fontRegular(fontSize: 14.0)!,NSForegroundColorAttributeName:UIColor.color(withHexCode: "383838")], range: NSRange(location: 0, length: 54))
-        termsAndConditionsTextView.linkTextAttributes = [NSForegroundColorAttributeName:UIColor.color(withHexCode: "1587c9")]
+        attributedString.addAttribute(NSAttributedStringKey.link, value: "openTermsAndConditions", range: NSRange(location: 14, length: 21))
+        attributedString.addAttribute(NSAttributedStringKey.link, value: "openPrivacyPolicy", range: NSRange(location: 40, length: 14))
+        attributedString.addAttributes([NSAttributedStringKey.font:UIFont.fontRegular(fontSize: 14.0)!,NSAttributedStringKey.foregroundColor:UIColor.color(withHexCode: "383838")], range: NSRange(location: 0, length: 54))
+        termsAndConditionsTextView.linkTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue:UIColor.color(withHexCode: "1587c9")]
         termsAndConditionsTextView.isScrollEnabled = false
         termsAndConditionsTextView.attributedText = attributedString
     }
@@ -53,7 +53,7 @@ class RegistrationTableViewCell: UITableViewCell {
         newPasswordTextField.rightView = rightTextFieldView
     }
     
-    func showPasswordText() {
+    @objc func showPasswordText() {
         if self.newPasswordTextField.isSecureTextEntry {
             self.newPasswordTextField.isSecureTextEntry = false
             showButton.setTitle("Hide", for: .normal)

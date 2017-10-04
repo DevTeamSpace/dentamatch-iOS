@@ -68,7 +68,7 @@ class DMChatVC: DMBaseVC {
     }
     
     //MARK:- Keyboard Show Hide Observers
-    func keyboardWillShow(note: NSNotification) {
+    @objc func keyboardWillShow(note: NSNotification) {
         if let keyboardSize = (note.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             UIView.animate(withDuration: 0.25, animations: {
                 self.bottomConstraint.constant = keyboardSize.height
@@ -83,7 +83,7 @@ class DMChatVC: DMBaseVC {
         }
     }
     
-    func keyboardWillHide(note: NSNotification) {
+    @objc func keyboardWillHide(note: NSNotification) {
         UIView.animate(withDuration: 0.25, animations: {
             self.bottomConstraint.constant = 0
             self.view.layoutIfNeeded()
@@ -134,7 +134,7 @@ class DMChatVC: DMBaseVC {
         }
     }
     
-    func dismissKeyboard() {
+    @objc func dismissKeyboard() {
         self.view.endEditing(true)
     }
     
@@ -193,7 +193,7 @@ class DMChatVC: DMBaseVC {
 
     }
     
-    func refreshChat() {
+    @objc func refreshChat() {
         if let chat = getLastChat() {
             getLeftMessages(lastMessageId: chat.chatId)
         }
@@ -235,7 +235,7 @@ class DMChatVC: DMBaseVC {
         SocketManager.sharedInstance.handleBlockUnblock(chatList: chatList!, blockStatus: "0")
     }
     
-    func refreshUnblockList(notification:Notification) {
+    @objc func refreshUnblockList(notification:Notification) {
         self.chatTextView.isHidden = false
         self.sendButton.isHidden = false
         self.unblockButton.isHidden = true

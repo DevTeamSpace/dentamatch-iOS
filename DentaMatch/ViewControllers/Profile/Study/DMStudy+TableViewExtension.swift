@@ -121,7 +121,7 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate {
         cell.headingButton.setTitle(school.schoolCategoryName, for: .normal)
 
     }
-    func buttonTapped(sender:UIButton) {
+    @objc func buttonTapped(sender:UIButton) {
         let school = schoolCategories[sender.tag]
         if school.isOpen {
             school.isOpen = false
@@ -154,7 +154,7 @@ extension DMStudyVC : UITableViewDataSource,UITableViewDelegate {
 
 
 extension DMStudyVC: UITextFieldDelegate {
-    func textFieldDidChange(textField:UITextField) {
+    @objc func textFieldDidChange(textField:UITextField) {
         
         let schoolCategory = schoolCategories.filter({$0.schoolCategoryId == "\(textField.tag)"}).first
         

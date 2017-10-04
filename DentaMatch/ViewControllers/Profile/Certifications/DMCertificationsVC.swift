@@ -51,12 +51,12 @@ class DMCertificationsVC: DMBaseVC,DatePickerViewDelegate {
         }
     }
     //MARK:- Keyboard Show Hide Observers
-    func keyboardWillShow(note: NSNotification) {
+    @objc func keyboardWillShow(note: NSNotification) {
         if let keyboardSize = (note.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             certificationsTableView.contentInset =  UIEdgeInsetsMake(0, 0, keyboardSize.height+1, 0)
         }
     }
-    func keyboardWillHide(note: NSNotification) {
+    @objc func keyboardWillHide(note: NSNotification) {
         certificationsTableView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0)
     }
 
@@ -82,7 +82,7 @@ class DMCertificationsVC: DMBaseVC,DatePickerViewDelegate {
     
     
     
-    func certificationImageButtonPressed(_ sender: Any) {
+    @objc func certificationImageButtonPressed(_ sender: Any) {
         let button = sender as? UIButton
         
         self.cameraGalleryOptionActionSheet(title: "", message: "Please select", leftButtonText: "Camera", rightButtonText: "Gallery") { (isCameraButtonPressed, isGalleryButtonPressed, isCancelButtonPressed) in

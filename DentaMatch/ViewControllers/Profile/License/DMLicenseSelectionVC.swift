@@ -51,12 +51,12 @@ class DMLicenseSelectionVC: DMBaseVC,UITextFieldDelegate {
     }
     
     //MARK:- Keyboard Show Hide Observers
-    func keyboardWillShow(note: NSNotification) {
+    @objc func keyboardWillShow(note: NSNotification) {
         if let keyboardSize = (note.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             licenseTableView.contentInset =  UIEdgeInsetsMake(0, 0, keyboardSize.height+1, 0)
         }
     }
-    func keyboardWillHide(note: NSNotification) {
+    @objc func keyboardWillHide(note: NSNotification) {
         licenseTableView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0)
     }
     
@@ -73,7 +73,7 @@ class DMLicenseSelectionVC: DMBaseVC,UITextFieldDelegate {
         self.navigationItem.leftBarButtonItem = self.backBarButton()
 
     }
-    func dismissKeyboard() {
+    @objc func dismissKeyboard() {
         self.view.endEditing(true)
     }
     @IBAction func nextButtonClikced(_ sender: Any) {
@@ -123,7 +123,8 @@ class DMLicenseSelectionVC: DMBaseVC,UITextFieldDelegate {
     func openExperienceFirstScreen() {
         self.performSegue(withIdentifier: "goToWorkExperience", sender: self)
     }
-    func stateBoardButtonPressed(_ sender: Any) {
+    
+    @objc func stateBoardButtonPressed(_ sender: Any) {
         self.cameraGalleryOptionActionSheet(title: "", message: "Please select", leftButtonText: "Camera", rightButtonText: "Gallery") { (isCameraButtonPressed, isGalleryButtonPressed, isCancelButtonPressed) in
             if isCancelButtonPressed {
                 debugPrint("Cancel Pressed")

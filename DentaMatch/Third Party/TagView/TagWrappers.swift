@@ -49,7 +49,7 @@ open class TagWrapperRemover: TagWrapper {
         addConstraint(NSLayoutConstraint(item: deleteButton, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1, constant: 0))
     }
     
-    func didRemove() {
+    @objc func didRemove() {
         actionDelegate?.tagActionTriggered(action: .remove)
     }
     

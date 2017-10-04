@@ -24,7 +24,7 @@ open class TagList: UIView {
     
     public weak var delegate: TagListDelegate?
     
-    public dynamic var tags: [Tag] = []
+    @objc public dynamic var tags: [Tag] = []
     public var horizontalAlignment: TagHorizontalAlignment = .left {
         didSet {
             update()

@@ -63,7 +63,7 @@ extension DMEditStudyVC:UITableViewDataSource,UITableViewDelegate {
         
     }
     
-    func buttonTapped(sender:UIButton) {
+    @objc func buttonTapped(sender:UIButton) {
         let school = schoolCategories[sender.tag]
         if school.isOpen {
             school.isOpen = false
@@ -96,7 +96,7 @@ extension DMEditStudyVC:UITableViewDataSource,UITableViewDelegate {
 }
 
 extension DMEditStudyVC : UITextFieldDelegate {
-    func textFieldDidChange(textField:UITextField) {
+    @objc func textFieldDidChange(textField:UITextField) {
         
         let schoolCategory = schoolCategories.filter({$0.schoolCategoryId == "\(textField.tag)"}).first
         

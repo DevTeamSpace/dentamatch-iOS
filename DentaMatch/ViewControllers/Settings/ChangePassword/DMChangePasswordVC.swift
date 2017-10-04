@@ -53,19 +53,19 @@ class DMChangePasswordVC: DMBaseVC {
 
         
     }
-    func dismissKeyboard() {
+    @objc func dismissKeyboard() {
         self.view.endEditing(true)
     }
     
     
     //MARK:- Keyboard Show Hide Observers
-    func keyboardWillShow(note: NSNotification) {
+    @objc func keyboardWillShow(note: NSNotification) {
         if let keyboardSize = (note.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             self.changePasswordTableView.contentInset =  UIEdgeInsetsMake(0, 0, keyboardSize.height+1, 0)
         }
     }
     
-    func keyboardWillHide(note: NSNotification) {
+    @objc func keyboardWillHide(note: NSNotification) {
         self.changePasswordTableView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0)
     }
     

@@ -122,7 +122,7 @@ class DMMessagesVC: DMBaseVC {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func deleteFetchController() {
+    @objc func deleteFetchController() {
         fetchedResultsController.delegate = nil
         NSFetchedResultsController<NSFetchRequestResult>.deleteCache(withName: nil)
 //        try self.fetchedResultsController.performFetch(nil)
@@ -130,7 +130,7 @@ class DMMessagesVC: DMBaseVC {
 //            [NSPredicate  predicateWithValue:NO];
     }
     
-    func refreshMessageList() {
+    @objc func refreshMessageList() {
         if fetchedResultsController != nil {
             fetchedResultsController.delegate = nil
             fetchedResultsController = nil
@@ -149,7 +149,7 @@ class DMMessagesVC: DMBaseVC {
         self.navigationController?.pushViewController(chatVC, animated: true)
     }
     
-    func redirectToChat(notification:Notification) {
+    @objc func redirectToChat(notification:Notification) {
         let recruiterId = notification.userInfo?["recruiterId"] as! String
         if let chatList = DatabaseManager.chatListExists(recruiterId: recruiterId) {
             openChatPage(chatList: chatList)
@@ -158,12 +158,12 @@ class DMMessagesVC: DMBaseVC {
         }
     }
     
-    func refreshBlockList(notification:Notification) {
+    @objc func refreshBlockList(notification:Notification) {
         //print(notification.userInfo)
         self.makeToast(toastString: "Recruiter Blocked")
     }
     
-    func hideMessagePlaceholder() {
+    @objc func hideMessagePlaceholder() {
         self.placeHolderEmptyJobsView?.isHidden = true
     }
 }

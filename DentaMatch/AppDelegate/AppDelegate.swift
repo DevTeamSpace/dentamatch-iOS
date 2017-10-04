@@ -128,7 +128,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().isTranslucent = false
         UINavigationBar.appearance().barTintColor = Constants.Color.navBarColor
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white,NSFontAttributeName:UIFont.fontRegular(fontSize: 14.0)!]
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white,NSAttributedStringKey.font:UIFont.fontRegular(fontSize: 14.0)!]
     }
     
     // MARK: - Configure Crashlytics
@@ -167,7 +167,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func reachabilityChanged(notification:Notification) {
+    @objc func reachabilityChanged(notification:Notification) {
         let reachability = notification.object as! Reachability
         if reachability.isReachable {
             if reachability.isReachableViaWiFi {

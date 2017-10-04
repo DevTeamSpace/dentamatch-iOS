@@ -28,7 +28,7 @@ extension UITextField {
         // Setup the buttons to be put in the system.
         let item = UIBarButtonItem(title: title, style: .done, target: self, action: #selector(toolBarButtonPressed))
         item.tag = 1
-        item.setTitleTextAttributes([NSFontAttributeName: UIFont.fontRegular(fontSize: 20.0)!], for: UIControlState.normal)
+        item.setTitleTextAttributes([NSAttributedStringKey.font: UIFont.fontRegular(fontSize: 20.0)!], for: UIControlState.normal)
         
         item.tintColor = UIColor.white
         let toolbarButtons = [item]
@@ -47,7 +47,7 @@ extension UITextField {
         
         let item = UIBarButtonItem(title: title, style: .done, target: self, action: #selector(toolBarButtonPressed))
         item.tag = 2
-        item.setTitleTextAttributes([NSFontAttributeName: UIFont.fontRegular(fontSize: 20.0)!], for: UIControlState.normal)
+        item.setTitleTextAttributes([NSAttributedStringKey.font: UIFont.fontRegular(fontSize: 20.0)!], for: UIControlState.normal)
         
         item.tintColor = UIColor.white
         
@@ -58,7 +58,7 @@ extension UITextField {
         self.inputAccessoryView = keyboardDoneButtonView
     }
     
-    func toolBarButtonPressed(barButton:UIBarButtonItem) {
+    @objc func toolBarButtonPressed(barButton:UIBarButtonItem) {
         if let delegate = delegate as? ToolBarButtonDelegate {
             if barButton.tag == 1 {
                 delegate.toolBarButtonPressed(position: Position.Left)

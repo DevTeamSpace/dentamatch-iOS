@@ -140,7 +140,7 @@ class ToastView: UIView {
         }
     }
 
-    func dismissToast()  {
+    @objc func dismissToast()  {
 
         if self.isHideInitiated {
             return
@@ -166,7 +166,7 @@ class ToastView: UIView {
 
         let constraintRect = CGSize(width: labelMaxWidth, height: labelMaxHeight)
 
-        let boundingBox = messageString.boundingRect(with: constraintRect, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: fontSize)], context: nil)
+        let boundingBox = messageString.boundingRect(with: constraintRect, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: fontSize)], context: nil)
 
         LogManager.logDebug("\(boundingBox)")
         LogManager.logDebug("\(constraintRect)")

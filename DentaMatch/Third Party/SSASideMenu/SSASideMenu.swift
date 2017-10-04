@@ -49,17 +49,17 @@ extension UIViewController {
 
 class SSASideMenu: UIViewController, UIGestureRecognizerDelegate {
     
-    enum SSASideMenuPanDirection: Int {
+    @objc enum SSASideMenuPanDirection: Int {
         case edge = 0
         case everyWhere = 1
     }
     
-    enum SSASideMenuType: Int {
+    @objc enum SSASideMenuType: Int {
         case scale = 0
         case slip = 1
     }
     
-    enum SSAStatusBarStyle: Int {
+    @objc enum SSAStatusBarStyle: Int {
         case hidden = 0
         case black = 1
         case light = 2
@@ -227,8 +227,8 @@ class SSASideMenu: UIViewController, UIGestureRecognizerDelegate {
     // MARK : Public Properties: SideMenu
     @IBInspectable var animationDuration: Float = 0.35
     @IBInspectable var panGestureEnabled: Bool = true
-    @IBInspectable var panDirection: SSASideMenuPanDirection = .edge
-    @IBInspectable var type: SSASideMenuType = .scale
+    @IBInspectable var panDirection: SSASideMenuPanDirection = SSASideMenuPanDirection.edge
+    @IBInspectable var type: SSASideMenuType = SSASideMenuType.scale
     @IBInspectable var panMinimumOpenThreshold: UInt = 60
     @IBInspectable var menuViewControllerTransformation: CGAffineTransform = CGAffineTransform(scaleX: 1.5, y:1.5)
     @IBInspectable var backgroundTransformation: CGAffineTransform = CGAffineTransform(scaleX: 1.7, y:1.7)
@@ -345,7 +345,7 @@ class SSASideMenu: UIViewController, UIGestureRecognizerDelegate {
         showRightMenuViewController()
     }
     
-    func hideMenuViewController() {
+    @objc func hideMenuViewController() {
         hideMenuViewController(true)
     }
     
@@ -929,7 +929,7 @@ class SSASideMenu: UIViewController, UIGestureRecognizerDelegate {
         return true
     }
     
-    func panGestureRecognized(_ recognizer: UIPanGestureRecognizer) {
+    @objc func panGestureRecognized(_ recognizer: UIPanGestureRecognizer) {
         
         delegate?.sideMenuDidRecognizePanGesture?(self, recongnizer: recognizer)
         

@@ -26,10 +26,10 @@ class WorkingHoursTableCell: UITableViewCell {
     class func setAllDayText(job:Job) -> NSMutableAttributedString {
         let allDayTextAttrString = NSMutableAttributedString()
         if !job.workEverydayStart.isEmptyField {
-            let allDayText = NSAttributedString(string: "All Days: ", attributes: [NSFontAttributeName:UIFont.fontSemiBold(fontSize: 13.0)!,NSForegroundColorAttributeName:UIColor.color(withHexCode: "272727")])
+            let allDayText = NSAttributedString(string: "All Days: ", attributes: [NSAttributedStringKey.font:UIFont.fontSemiBold(fontSize: 13.0)!,NSAttributedStringKey.foregroundColor:UIColor.color(withHexCode: "272727")])
             allDayTextAttrString.append(allDayText)
             
-            let allDayTime = NSAttributedString(string: allDayDate(job: job), attributes: [NSFontAttributeName:UIFont.fontRegular(fontSize: 13.0)!,NSForegroundColorAttributeName:UIColor.color(withHexCode: "515151")])
+            let allDayTime = NSAttributedString(string: allDayDate(job: job), attributes: [NSAttributedStringKey.font:UIFont.fontRegular(fontSize: 13.0)!,NSAttributedStringKey.foregroundColor:UIColor.color(withHexCode: "515151")])
 
             allDayTextAttrString.append(allDayTime)
             
@@ -70,9 +70,9 @@ class WorkingHoursTableCell: UITableViewCell {
         
         let weekDayAttrString = NSMutableAttributedString()
         
-        var weekDayText = NSAttributedString(string: "Sunday: ", attributes: [NSFontAttributeName:UIFont.fontSemiBold(fontSize: 13.0)!,NSForegroundColorAttributeName:UIColor.color(withHexCode: "272727")])
+        var weekDayText = NSAttributedString(string: "Sunday: ", attributes: [NSAttributedStringKey.font:UIFont.fontSemiBold(fontSize: 13.0)!,NSAttributedStringKey.foregroundColor:UIColor.color(withHexCode: "272727")])
         
-        var timeText = NSAttributedString(string: allDayDate(job: job), attributes: [NSFontAttributeName:UIFont.fontRegular(fontSize: 13.0)!,NSForegroundColorAttributeName:UIColor.color(withHexCode: "515151")])
+        var timeText = NSAttributedString(string: allDayDate(job: job), attributes: [NSAttributedStringKey.font:UIFont.fontRegular(fontSize: 13.0)!,NSAttributedStringKey.foregroundColor:UIColor.color(withHexCode: "515151")])
         
         
         if !job.sundayStart.isEmptyField {
@@ -93,7 +93,7 @@ class WorkingHoursTableCell: UITableViewCell {
             if let date = date {
                 time += dateFormatter.string(from: date)
             }
-            timeText = NSAttributedString(string: time, attributes: [NSFontAttributeName:UIFont.fontRegular(fontSize: 13.0)!,NSForegroundColorAttributeName:UIColor.color(withHexCode: "515151")])
+            timeText = NSAttributedString(string: time, attributes: [NSAttributedStringKey.font:UIFont.fontRegular(fontSize: 13.0)!,NSAttributedStringKey.foregroundColor:UIColor.color(withHexCode: "515151")])
             weekDayAttrString.append(timeText)
         }
         
@@ -102,7 +102,7 @@ class WorkingHoursTableCell: UITableViewCell {
                 weekDayAttrString.append(NSAttributedString(string: "\n"))
             }
             isStarted = true
-            weekDayText = NSAttributedString(string: "Monday: ", attributes: [NSFontAttributeName:UIFont.fontSemiBold(fontSize: 13.0)!,NSForegroundColorAttributeName:UIColor.color(withHexCode: "272727")])
+            weekDayText = NSAttributedString(string: "Monday: ", attributes: [NSAttributedStringKey.font:UIFont.fontSemiBold(fontSize: 13.0)!,NSAttributedStringKey.foregroundColor:UIColor.color(withHexCode: "272727")])
             weekDayAttrString.append(weekDayText)
             var time = ""
             dateFormatter.dateFormat = "HH:mm:ss"
@@ -118,7 +118,7 @@ class WorkingHoursTableCell: UITableViewCell {
             if let date = date {
                 time += dateFormatter.string(from: date)
             }
-            timeText = NSAttributedString(string: time, attributes: [NSFontAttributeName:UIFont.fontRegular(fontSize: 13.0)!,NSForegroundColorAttributeName:UIColor.color(withHexCode: "515151")])
+            timeText = NSAttributedString(string: time, attributes: [NSAttributedStringKey.font:UIFont.fontRegular(fontSize: 13.0)!,NSAttributedStringKey.foregroundColor:UIColor.color(withHexCode: "515151")])
             weekDayAttrString.append(timeText)
 
         }
@@ -128,7 +128,7 @@ class WorkingHoursTableCell: UITableViewCell {
                 weekDayAttrString.append(NSAttributedString(string: "\n"))
             }
             isStarted = true
-            weekDayText = NSAttributedString(string: "Tuesday: ", attributes: [NSFontAttributeName:UIFont.fontSemiBold(fontSize: 13.0)!,NSForegroundColorAttributeName:UIColor.color(withHexCode: "272727")])
+            weekDayText = NSAttributedString(string: "Tuesday: ", attributes: [NSAttributedStringKey.font:UIFont.fontSemiBold(fontSize: 13.0)!,NSAttributedStringKey.foregroundColor:UIColor.color(withHexCode: "272727")])
             weekDayAttrString.append(weekDayText)
             var time = ""
             dateFormatter.dateFormat = "HH:mm:ss"
@@ -144,7 +144,7 @@ class WorkingHoursTableCell: UITableViewCell {
             if let date = date {
                 time += dateFormatter.string(from: date)
             }
-            timeText = NSAttributedString(string: time, attributes: [NSFontAttributeName:UIFont.fontRegular(fontSize: 13.0)!,NSForegroundColorAttributeName:UIColor.color(withHexCode: "515151")])
+            timeText = NSAttributedString(string: time, attributes: [NSAttributedStringKey.font:UIFont.fontRegular(fontSize: 13.0)!,NSAttributedStringKey.foregroundColor:UIColor.color(withHexCode: "515151")])
             weekDayAttrString.append(timeText)
 
         }
@@ -154,7 +154,7 @@ class WorkingHoursTableCell: UITableViewCell {
                 weekDayAttrString.append(NSAttributedString(string: "\n"))
             }
             isStarted = true
-            weekDayText = NSAttributedString(string: "Wednesday: ", attributes: [NSFontAttributeName:UIFont.fontSemiBold(fontSize: 13.0)!,NSForegroundColorAttributeName:UIColor.color(withHexCode: "272727")])
+            weekDayText = NSAttributedString(string: "Wednesday: ", attributes: [NSAttributedStringKey.font:UIFont.fontSemiBold(fontSize: 13.0)!,NSAttributedStringKey.foregroundColor:UIColor.color(withHexCode: "272727")])
             weekDayAttrString.append(weekDayText)
             var time = ""
             dateFormatter.dateFormat = "HH:mm:ss"
@@ -170,7 +170,7 @@ class WorkingHoursTableCell: UITableViewCell {
             if let date = date {
                 time += dateFormatter.string(from: date)
             }
-            timeText = NSAttributedString(string: time, attributes: [NSFontAttributeName:UIFont.fontRegular(fontSize: 13.0)!,NSForegroundColorAttributeName:UIColor.color(withHexCode: "515151")])
+            timeText = NSAttributedString(string: time, attributes: [NSAttributedStringKey.font:UIFont.fontRegular(fontSize: 13.0)!,NSAttributedStringKey.foregroundColor:UIColor.color(withHexCode: "515151")])
             weekDayAttrString.append(timeText)
 
 
@@ -181,7 +181,7 @@ class WorkingHoursTableCell: UITableViewCell {
                 weekDayAttrString.append(NSAttributedString(string: "\n"))
             }
             isStarted = true
-            weekDayText = NSAttributedString(string: "Thursday: ", attributes: [NSFontAttributeName:UIFont.fontSemiBold(fontSize: 13.0)!,NSForegroundColorAttributeName:UIColor.color(withHexCode: "272727")])
+            weekDayText = NSAttributedString(string: "Thursday: ", attributes: [NSAttributedStringKey.font:UIFont.fontSemiBold(fontSize: 13.0)!,NSAttributedStringKey.foregroundColor:UIColor.color(withHexCode: "272727")])
             weekDayAttrString.append(weekDayText)
             var time = ""
             dateFormatter.dateFormat = "HH:mm:ss"
@@ -197,7 +197,7 @@ class WorkingHoursTableCell: UITableViewCell {
             if let date = date {
                 time += dateFormatter.string(from: date)
             }
-            timeText = NSAttributedString(string: time, attributes: [NSFontAttributeName:UIFont.fontRegular(fontSize: 13.0)!,NSForegroundColorAttributeName:UIColor.color(withHexCode: "515151")])
+            timeText = NSAttributedString(string: time, attributes: [NSAttributedStringKey.font:UIFont.fontRegular(fontSize: 13.0)!,NSAttributedStringKey.foregroundColor:UIColor.color(withHexCode: "515151")])
             weekDayAttrString.append(timeText)
 
 
@@ -208,7 +208,7 @@ class WorkingHoursTableCell: UITableViewCell {
                 weekDayAttrString.append(NSAttributedString(string: "\n"))
             }
             isStarted = true
-            weekDayText = NSAttributedString(string: "Friday: ", attributes: [NSFontAttributeName:UIFont.fontSemiBold(fontSize: 13.0)!,NSForegroundColorAttributeName:UIColor.color(withHexCode: "272727")])
+            weekDayText = NSAttributedString(string: "Friday: ", attributes: [NSAttributedStringKey.font:UIFont.fontSemiBold(fontSize: 13.0)!,NSAttributedStringKey.foregroundColor:UIColor.color(withHexCode: "272727")])
             weekDayAttrString.append(weekDayText)
             var time = ""
             dateFormatter.dateFormat = "HH:mm:ss"
@@ -224,7 +224,7 @@ class WorkingHoursTableCell: UITableViewCell {
             if let date = date {
                 time += dateFormatter.string(from: date)
             }
-            timeText = NSAttributedString(string: time, attributes: [NSFontAttributeName:UIFont.fontRegular(fontSize: 13.0)!,NSForegroundColorAttributeName:UIColor.color(withHexCode: "515151")])
+            timeText = NSAttributedString(string: time, attributes: [NSAttributedStringKey.font:UIFont.fontRegular(fontSize: 13.0)!,NSAttributedStringKey.foregroundColor:UIColor.color(withHexCode: "515151")])
             weekDayAttrString.append(timeText)
 
 
@@ -235,7 +235,7 @@ class WorkingHoursTableCell: UITableViewCell {
                 weekDayAttrString.append(NSAttributedString(string: "\n"))
             }
             isStarted = true
-            weekDayText = NSAttributedString(string: "Saturday: ", attributes: [NSFontAttributeName:UIFont.fontSemiBold(fontSize: 13.0)!,NSForegroundColorAttributeName:UIColor.color(withHexCode: "272727")])
+            weekDayText = NSAttributedString(string: "Saturday: ", attributes: [NSAttributedStringKey.font:UIFont.fontSemiBold(fontSize: 13.0)!,NSAttributedStringKey.foregroundColor:UIColor.color(withHexCode: "272727")])
             weekDayAttrString.append(weekDayText)
             var time = ""
             dateFormatter.dateFormat = "HH:mm:ss"
@@ -251,12 +251,12 @@ class WorkingHoursTableCell: UITableViewCell {
             if let date = date {
                 time += dateFormatter.string(from: date)
             }
-            timeText = NSAttributedString(string: time, attributes: [NSFontAttributeName:UIFont.fontRegular(fontSize: 13.0)!,NSForegroundColorAttributeName:UIColor.color(withHexCode: "515151")])
+            timeText = NSAttributedString(string: time, attributes: [NSAttributedStringKey.font:UIFont.fontRegular(fontSize: 13.0)!,NSAttributedStringKey.foregroundColor:UIColor.color(withHexCode: "515151")])
             weekDayAttrString.append(timeText)
 
         }
 
-        weekDayAttrString.addAttributes([NSParagraphStyleAttributeName:paragraphStyle], range: NSMakeRange(0, weekDayAttrString.length))
+        weekDayAttrString.addAttributes([NSAttributedStringKey.paragraphStyle:paragraphStyle], range: NSMakeRange(0, weekDayAttrString.length))
 
         return weekDayAttrString
     }

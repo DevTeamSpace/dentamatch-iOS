@@ -24,7 +24,7 @@ class DMBaseVC: UIViewController {
     }
     
     func setUpControls() {
-        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName : UIFont.fontRegular(fontSize: 14.0)!, NSForegroundColorAttributeName:UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font : UIFont.fontRegular(fontSize: 14.0)!, NSAttributedStringKey.foregroundColor:UIColor.white]
     }
     
     func setRightBarButton(title : String, imageName : String, width : CGFloat, font : UIFont)  {
@@ -123,7 +123,7 @@ class DMBaseVC: UIViewController {
     func puttingErrorPlaceholder(textfield:UITextField, placeholderText:String,placeholderColor:UIColor){
         textfield.text = ""
         textfield.placeholder = placeholderText
-        textfield.attributedPlaceholder = NSAttributedString(string: textfield.placeholder!, attributes: [NSForegroundColorAttributeName : placeholderColor])
+        textfield.attributedPlaceholder = NSAttributedString(string: textfield.placeholder!, attributes: [NSAttributedStringKey.foregroundColor : placeholderColor])
     }
     
     func backBarButton() -> UIBarButtonItem {
@@ -137,7 +137,7 @@ class DMBaseVC: UIViewController {
         return barButton
     }
     
-    func backBarButtonItemPressed() {
+    @objc func backBarButtonItemPressed() {
         _ = self.navigationController?.popViewController(animated: true)
     }
     func changeNavBarAppearanceForProfiles() {
@@ -145,14 +145,14 @@ class DMBaseVC: UIViewController {
         self.navigationController?.navigationBar.tintColor = Constants.Color.navHeadingForExperienceScreen
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.barTintColor = Constants.Color.navBarColorForExperienceScreen
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:Constants.Color.navHeadingForExperienceScreen,NSFontAttributeName:UIFont.fontMedium(fontSize: 14.0)!]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:Constants.Color.navHeadingForExperienceScreen,NSAttributedStringKey.font:UIFont.fontMedium(fontSize: 14.0)!]
     }
     func changeNavBarAppearanceForWithoutHeader() {
         UIApplication.shared.statusBarStyle = .default
         self.navigationController?.navigationBar.tintColor = Constants.Color.navHeadingForExperienceScreen
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.barTintColor = UIColor.white
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:Constants.Color.navHeadingForExperienceScreen,NSFontAttributeName:UIFont.fontMedium(fontSize: 14.0)!]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:Constants.Color.navHeadingForExperienceScreen,NSAttributedStringKey.font:UIFont.fontMedium(fontSize: 14.0)!]
     }
     
     func changeNavBarToTransparent() {
@@ -167,7 +167,7 @@ class DMBaseVC: UIViewController {
         self.navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.barTintColor = Constants.Color.navBarColor
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white,NSFontAttributeName:UIFont.fontRegular(fontSize: 14.0)!]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white,NSAttributedStringKey.font:UIFont.fontRegular(fontSize: 14.0)!]
     }
 
     

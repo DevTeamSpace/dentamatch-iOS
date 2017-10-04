@@ -49,7 +49,7 @@ class DMExecutiveSummaryVC: DMBaseVC {
         
         let item = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(toolBarButtonPressed))
         item.tag = 2
-        item.setTitleTextAttributes([NSFontAttributeName: UIFont.fontRegular(fontSize: 20.0)!], for: UIControlState.normal)
+        item.setTitleTextAttributes([NSAttributedStringKey.font: UIFont.fontRegular(fontSize: 20.0)!], for: UIControlState.normal)
         
         item.tintColor = UIColor.white
         
@@ -61,7 +61,7 @@ class DMExecutiveSummaryVC: DMBaseVC {
         return keyboardDoneButtonView
     }
     
-    func toolBarButtonPressed() {
+    @objc func toolBarButtonPressed() {
         self.view.endEditing(true)
     }
     

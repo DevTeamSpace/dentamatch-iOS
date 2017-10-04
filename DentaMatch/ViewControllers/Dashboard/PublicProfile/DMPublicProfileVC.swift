@@ -94,7 +94,7 @@ class DMPublicProfileVC: DMBaseVC {
 
     }
     
-    func dismissKeyboard() {
+    @objc func dismissKeyboard() {
         self.view.endEditing(true)
     }
     
@@ -105,13 +105,13 @@ class DMPublicProfileVC: DMBaseVC {
     }
     
     //MARK:- Keyboard Show Hide Observers
-    func keyboardWillShow(note: NSNotification) {
+    @objc func keyboardWillShow(note: NSNotification) {
         if let keyboardSize = (note.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             publicProfileTableView.contentInset =  UIEdgeInsetsMake(0, 0, keyboardSize.height+1, 0)
         }
     }
     
-    func keyboardWillHide(note: NSNotification) {
+    @objc func keyboardWillHide(note: NSNotification) {
         publicProfileTableView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0)
     }
     
@@ -156,7 +156,7 @@ class DMPublicProfileVC: DMBaseVC {
         }
     }
     
-    func addPhoto() {
+    @objc func addPhoto() {
         self.cameraGalleryOptionActionSheet(title: "", message: "Please select", leftButtonText: "Camera", rightButtonText: "Gallery") { (isCameraButtonPressed, isGalleryButtonPressed, isCancelButtonPressed) in
             if isCancelButtonPressed {
                 //cancel action

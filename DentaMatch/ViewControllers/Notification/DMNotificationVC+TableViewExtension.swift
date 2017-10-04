@@ -118,7 +118,7 @@ extension DMNotificationVC : UITableViewDataSource,UITableViewDelegate {
         
     }
     
-    func btnAcceptButtonClicked(_ sender: Any) {
+    @objc func btnAcceptButtonClicked(_ sender: Any) {
         let tag = (sender as AnyObject).tag
         let notifiObj = self.notificationList[tag!]
 
@@ -141,7 +141,7 @@ extension DMNotificationVC : UITableViewDataSource,UITableViewDelegate {
             }
         }
     }
-    func btnRejectButtonClicked(_ sender: Any) {
+    @objc func btnRejectButtonClicked(_ sender: Any) {
         let tag = (sender as AnyObject).tag
         let notifiObj = self.notificationList[tag!]
         self.alertMessage(title: "Confirm Rejection", message: "Are you sure you want to reject this job invitation?", leftButtonText: "Yes", rightButtonText: "No") { (isLeft:Bool) in

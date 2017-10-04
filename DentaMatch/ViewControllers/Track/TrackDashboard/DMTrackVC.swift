@@ -118,7 +118,7 @@ class DMTrackVC: DMBaseVC {
 
     }
     
-    func pullToRefreshForSavedJobs() {
+    @objc func pullToRefreshForSavedJobs() {
         self.savedJobsPageNo = 1
         jobParams["type"] = "1"
         jobParams["page"] = "1"
@@ -131,7 +131,7 @@ class DMTrackVC: DMBaseVC {
     }
     
     
-    func pullToRefreshForAppliedJobs() {
+    @objc func pullToRefreshForAppliedJobs() {
         self.appliedJobsPageNo = 1
         jobParams["type"] = "2"
         jobParams["page"] = "1"
@@ -143,7 +143,7 @@ class DMTrackVC: DMBaseVC {
         pullToRefreshAppliedJobs.endRefreshing()
     }
 
-    func pullToRefreshForShortListedJobs() {
+    @objc func pullToRefreshForShortListedJobs() {
         self.shortListedJobsPageNo = 1
         jobParams["type"] = "3"
         jobParams["page"] = "1"

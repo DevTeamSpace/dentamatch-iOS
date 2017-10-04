@@ -41,7 +41,7 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
         //jobSelectionView?.frame = self.currentJobTitleTextField.frame
     }
     
-    func makeTip() {
+    @objc func makeTip() {
         UIView.makeTip(view: profileHeaderView, size: 8, x: profileHeaderView.frame.midX/2, y: profileHeaderView.frame.midY)
     }
     

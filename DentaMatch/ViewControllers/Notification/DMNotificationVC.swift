@@ -80,7 +80,7 @@ class DMNotificationVC: DMBaseVC {
         }
     }
     
-    func pullToRefreshForNotification() {
+    @objc func pullToRefreshForNotification() {
         self.pageNumber = 1
         self.getNotificationList { (isSucess, error) in
             if isSucess! {

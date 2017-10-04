@@ -59,7 +59,7 @@ open class Tag: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func onTap() {
+    @objc func onTap() {
         isSelected = !isSelected
         update()
         tagActionTriggered(action: .tap)

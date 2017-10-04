@@ -43,13 +43,13 @@ class DMLoginVC: DMBaseVC {
     }
 
     //MARK:- Keyboard Show Hide Observers
-    func keyboardWillShow(note: NSNotification) {
+    @objc func keyboardWillShow(note: NSNotification) {
         if let keyboardSize = (note.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             loginTableView.contentInset =  UIEdgeInsetsMake(0, 0, keyboardSize.height+1, 0)
         }
     }
     
-    func keyboardWillHide(note: NSNotification) {
+    @objc func keyboardWillHide(note: NSNotification) {
         loginTableView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0)
     }
 
@@ -81,7 +81,7 @@ class DMLoginVC: DMBaseVC {
         }
     }
     
-    func dismissKeyboard() {
+    @objc func dismissKeyboard() {
         self.view.endEditing(true)
     }
     
@@ -103,7 +103,7 @@ class DMLoginVC: DMBaseVC {
     }
     
     //MARK:- IBActions
-    func forgotPasswordButtonPressed() {
+    @objc func forgotPasswordButtonPressed() {
         self.view.endEditing(true)
         let forgotPasswordVC = UIStoryboard.registrationStoryBoard().instantiateViewController(type: DMForgotPasswordVC.self)!
         self.navigationController?.pushViewController(forgotPasswordVC, animated: true)

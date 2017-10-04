@@ -490,7 +490,7 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
     
     
     //plus button Action
-    func setAvailablityButtonClicked(_ sender: Any) {
+    @objc func setAvailablityButtonClicked(_ sender: Any) {
         let termsVC = UIStoryboard.calenderStoryBoard().instantiateViewController(type: DMCalendarSetAvailabillityVC.self)!
         termsVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(termsVC, animated: true)

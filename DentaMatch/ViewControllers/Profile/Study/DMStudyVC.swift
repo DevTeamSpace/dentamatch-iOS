@@ -81,7 +81,7 @@ class DMStudyVC: DMBaseVC {
         self.view.addSubview(autoCompleteTable)        
     }
     
-    func dismissKeyboard() {
+    @objc func dismissKeyboard() {
         self.view.endEditing(true)
         hideAutoCompleteView()
     }
@@ -92,13 +92,13 @@ class DMStudyVC: DMBaseVC {
     }
     
     //MARK:- Keyboard Show Hide Observers
-    func keyboardWillShow(note: NSNotification) {
+    @objc func keyboardWillShow(note: NSNotification) {
         if let keyboardSize = (note.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             studyTableView.contentInset =  UIEdgeInsetsMake(0, 0, keyboardSize.height+200, 0)
         }
     }
     
-    func keyboardWillHide(note: NSNotification) {
+    @objc func keyboardWillHide(note: NSNotification) {
         studyTableView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0)
     }
 
