@@ -144,6 +144,8 @@ extension DMChatVC:NSFetchedResultsControllerDelegate {
         switch type {
         case .insert:
             self.chatTableView.insertSections([sectionIndex], with: .automatic)
+        case .delete:
+            self.chatTableView.deleteSections([sectionIndex], with: .automatic)
         default:
             break
         }
