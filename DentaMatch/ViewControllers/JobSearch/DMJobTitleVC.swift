@@ -35,7 +35,7 @@ class DMJobTitleVC: DMBaseVC {
         // Dispose of any resources that can be recreated.
     }
     
-    override func actionRightNavigationItem() {
+    @objc override func actionRightNavigationItem() {
         self.selectedJobs.removeAll()
         for objTitle in self.jobTitles {
             if objTitle.jobSelected == true {
