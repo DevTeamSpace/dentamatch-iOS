@@ -47,6 +47,8 @@
 	<string>Denta Match use this to track your location and give you the relevant search results.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Use Photos</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Denta Match access to the microphone to be able to attach voice notes</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>untitled-font-6.ttf</string>

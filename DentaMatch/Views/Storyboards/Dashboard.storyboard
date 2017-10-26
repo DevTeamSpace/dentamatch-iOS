@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -318,7 +318,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GUs-jT-7iP">
-                                <rect key="frame" x="0.0" y="40" width="375" height="529"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="549"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="RiE-rr-WZ6" id="1KH-6Y-ngr"/>
@@ -333,7 +333,7 @@
                             <constraint firstItem="Vdb-iq-mY0" firstAttribute="leading" secondItem="1wy-kj-70d" secondAttribute="leading" id="TaZ-wv-5WP"/>
                             <constraint firstItem="Vdb-iq-mY0" firstAttribute="top" secondItem="GUs-jT-7iP" secondAttribute="bottom" id="YZf-Dg-p28"/>
                             <constraint firstAttribute="trailing" secondItem="Vdb-iq-mY0" secondAttribute="trailing" id="dU6-LO-gkk"/>
-                            <constraint firstItem="GUs-jT-7iP" firstAttribute="top" secondItem="SId-UV-bxn" secondAttribute="bottom" constant="20" id="kTq-S2-SWf"/>
+                            <constraint firstItem="GUs-jT-7iP" firstAttribute="top" secondItem="SId-UV-bxn" secondAttribute="bottom" id="kTq-S2-SWf"/>
                             <constraint firstItem="k0H-xG-Whe" firstAttribute="top" secondItem="Vdb-iq-mY0" secondAttribute="bottom" id="s0J-L3-RdZ"/>
                         </constraints>
                     </view>

@@ -14,6 +14,7 @@ import Crashlytics
 import Fabric
 import SwiftyJSON
 import Mixpanel
+import Instabug
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,7 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         MixpanelOperations.startSessionForMixpanelWithToken()
-        
+        Instabug.start(withToken: "82adf5a65cda07e9cb91142555b985e3", invocationEvent: .shake)
+
         configureCrashlytics()
         
         configureSocket()
