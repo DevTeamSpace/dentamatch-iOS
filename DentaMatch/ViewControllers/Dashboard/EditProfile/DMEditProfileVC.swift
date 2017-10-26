@@ -42,6 +42,11 @@ class DMEditProfileVC: DMBaseVC {
             dashBoardVC = dashBoard
         }
         
+        //To remove the top white line which came in iOS 11
+        if #available(iOS 11.0, *) {
+            editProfileTableView.contentInsetAdjustmentBehavior = .never
+        }
+        
         self.userProfileAPI()
         // Do any additional setup after loading the view.
     }
