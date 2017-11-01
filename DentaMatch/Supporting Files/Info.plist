@@ -19,7 +19,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>11.1</string>
+	<string>11.2</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -45,10 +45,10 @@
 	<string>Want to use camera</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Denta Match use this to track your location and give you the relevant search results.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Use Photos</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Denta Match access to the microphone to be able to attach voice notes</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Use Photos</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>untitled-font-6.ttf</string>
