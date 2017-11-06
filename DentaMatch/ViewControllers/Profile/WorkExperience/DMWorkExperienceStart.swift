@@ -50,7 +50,7 @@ class DMWorkExperienceStart: DMBaseVC,ExperiencePickerViewDelegate {
     
     //MARK:- Keyboard Show Hide Observers
     @objc func keyboardWillShow(note: NSNotification) {
-        if let keyboardSize = (note.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+        if let keyboardSize = (note.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             self.workExperienceTable.contentInset =  UIEdgeInsetsMake(0, 0, keyboardSize.height+1, 0)
         }
     }

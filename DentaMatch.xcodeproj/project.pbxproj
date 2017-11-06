@@ -84,6 +84,9 @@
 		5AE5F50A1E16563D006C328A /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AE5F5091E16563D006C328A /* Profile.storyboard */; };
 		E50512BE1E82378700509328 /* WorkingHoursTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50512BC1E82378700509328 /* WorkingHoursTableCell.swift */; };
 		E50512BF1E82378700509328 /* WorkingHoursTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E50512BD1E82378700509328 /* WorkingHoursTableCell.xib */; };
+		E506AE501FAC329400ABC7FA /* PreferredLocationPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E506AE4F1FAC329400ABC7FA /* PreferredLocationPickerView.swift */; };
+		E506AE521FAC32A800ABC7FA /* PreferredLocationPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E506AE511FAC32A800ABC7FA /* PreferredLocationPickerView.xib */; };
+		E506AE551FAC375700ABC7FA /* PreferredLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E506AE541FAC375700ABC7FA /* PreferredLocation.swift */; };
 		E50B3F4C1E194CD7004C5F32 /* AnimatedPHTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50B3F451E194CD7004C5F32 /* AnimatedPHTableCell.swift */; };
 		E50B3F4D1E194CD7004C5F32 /* AnimatedPHTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E50B3F461E194CD7004C5F32 /* AnimatedPHTableCell.xib */; };
 		E50B3F4E1E194CD7004C5F32 /* LoginTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50B3F481E194CD7004C5F32 /* LoginTableViewCell.swift */; };
@@ -93,6 +96,11 @@
 		E50B3F531E194EDD004C5F32 /* AnimatedPHTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50B3F521E194EDD004C5F32 /* AnimatedPHTextField.swift */; };
 		E50FA8131E30A1DA00C20C93 /* DMPublicProfileVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50FA8121E30A1DA00C20C93 /* DMPublicProfileVC+TableViewExtension.swift */; };
 		E514E5BA1E28B472005F6712 /* DMCertificationsVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E514E5B91E28B472005F6712 /* DMCertificationsVC+Services.swift */; };
+		E51C4D361FB04FC5009FC3A0 /* TitleHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E51C4D351FB04FC5009FC3A0 /* TitleHeaderView.xib */; };
+		E51C4D381FB04FD8009FC3A0 /* TitleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51C4D371FB04FD8009FC3A0 /* TitleHeaderView.swift */; };
+		E51C4D3B1FB051C7009FC3A0 /* AboutMeJobSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51C4D391FB051C7009FC3A0 /* AboutMeJobSelectionCell.swift */; };
+		E51C4D3C1FB051C7009FC3A0 /* AboutMeJobSelectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E51C4D3A1FB051C7009FC3A0 /* AboutMeJobSelectionCell.xib */; };
+		E51C4D3E1FB05591009FC3A0 /* DMJobTitleSelectionVC+TextFieldDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51C4D3D1FB05591009FC3A0 /* DMJobTitleSelectionVC+TextFieldDelegates.swift */; };
 		E51D4EF31E3AFCA700ACC631 /* DMEditStudyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4EF21E3AFCA700ACC631 /* DMEditStudyVC.swift */; };
 		E51D4EF51E3AFEA600ACC631 /* DMEditStudyVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4EF41E3AFEA600ACC631 /* DMEditStudyVC+Services.swift */; };
 		E51D4EF71E3B029D00ACC631 /* DMEditStudyVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4EF61E3B029D00ACC631 /* DMEditStudyVC+TableViewExtension.swift */; };
@@ -203,6 +211,9 @@
 		E59029A81DED2C7A00151E9B /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59029A31DED2C7A00151E9B /* APIManager.swift */; };
 		E59029A91DED2C7A00151E9B /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59029A51DED2C7A00151E9B /* LogManager.swift */; };
 		E59029AA1DED2C7A00151E9B /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59029A71DED2C7A00151E9B /* UserDefaultsManager.swift */; };
+		E59073571FB023C7007381E8 /* DMCongratulationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59073561FB023C7007381E8 /* DMCongratulationsVC.swift */; };
+		E59073591FB02C4F007381E8 /* DMJobTitleSelectionVC+TableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59073581FB02C4F007381E8 /* DMJobTitleSelectionVC+TableExtension.swift */; };
+		E590735B1FB02D36007381E8 /* DMJobTitleSelectionVC+TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590735A1FB02D36007381E8 /* DMJobTitleSelectionVC+TextFieldExtension.swift */; };
 		E594BE9D1E1DFF4400310AE5 /* DMRegistrationVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E594BE9C1E1DFF4400310AE5 /* DMRegistrationVC+TableViewExtension.swift */; };
 		E594BE9F1E1DFFA900310AE5 /* DMRegistrationVC+TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E594BE9E1E1DFFA900310AE5 /* DMRegistrationVC+TextFieldExtension.swift */; };
 		E594BEA21E1E014F00310AE5 /* DMLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E594BEA11E1E014F00310AE5 /* DMLoginVC.swift */; };
@@ -479,6 +490,9 @@
 		C611E923856ECE4538FA4F38 /* Pods_DentaMatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DentaMatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E50512BC1E82378700509328 /* WorkingHoursTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkingHoursTableCell.swift; sourceTree = "<group>"; };
 		E50512BD1E82378700509328 /* WorkingHoursTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkingHoursTableCell.xib; sourceTree = "<group>"; };
+		E506AE4F1FAC329400ABC7FA /* PreferredLocationPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferredLocationPickerView.swift; sourceTree = "<group>"; };
+		E506AE511FAC32A800ABC7FA /* PreferredLocationPickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferredLocationPickerView.xib; sourceTree = "<group>"; };
+		E506AE541FAC375700ABC7FA /* PreferredLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferredLocation.swift; sourceTree = "<group>"; };
 		E50B3F451E194CD7004C5F32 /* AnimatedPHTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedPHTableCell.swift; sourceTree = "<group>"; };
 		E50B3F461E194CD7004C5F32 /* AnimatedPHTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnimatedPHTableCell.xib; sourceTree = "<group>"; };
 		E50B3F481E194CD7004C5F32 /* LoginTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTableViewCell.swift; sourceTree = "<group>"; };
@@ -488,6 +502,11 @@
 		E50B3F521E194EDD004C5F32 /* AnimatedPHTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedPHTextField.swift; sourceTree = "<group>"; };
 		E50FA8121E30A1DA00C20C93 /* DMPublicProfileVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMPublicProfileVC+TableViewExtension.swift"; sourceTree = "<group>"; };
 		E514E5B91E28B472005F6712 /* DMCertificationsVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMCertificationsVC+Services.swift"; sourceTree = "<group>"; };
+		E51C4D351FB04FC5009FC3A0 /* TitleHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleHeaderView.xib; sourceTree = "<group>"; };
+		E51C4D371FB04FD8009FC3A0 /* TitleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleHeaderView.swift; sourceTree = "<group>"; };
+		E51C4D391FB051C7009FC3A0 /* AboutMeJobSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutMeJobSelectionCell.swift; sourceTree = "<group>"; };
+		E51C4D3A1FB051C7009FC3A0 /* AboutMeJobSelectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutMeJobSelectionCell.xib; sourceTree = "<group>"; };
+		E51C4D3D1FB05591009FC3A0 /* DMJobTitleSelectionVC+TextFieldDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DMJobTitleSelectionVC+TextFieldDelegates.swift"; sourceTree = "<group>"; };
 		E51D4EF21E3AFCA700ACC631 /* DMEditStudyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMEditStudyVC.swift; sourceTree = "<group>"; };
 		E51D4EF41E3AFEA600ACC631 /* DMEditStudyVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMEditStudyVC+Services.swift"; sourceTree = "<group>"; };
 		E51D4EF61E3B029D00ACC631 /* DMEditStudyVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMEditStudyVC+TableViewExtension.swift"; sourceTree = "<group>"; };
@@ -603,6 +622,9 @@
 		E59029A31DED2C7A00151E9B /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		E59029A51DED2C7A00151E9B /* LogManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
 		E59029A71DED2C7A00151E9B /* UserDefaultsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		E59073561FB023C7007381E8 /* DMCongratulationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMCongratulationsVC.swift; sourceTree = "<group>"; };
+		E59073581FB02C4F007381E8 /* DMJobTitleSelectionVC+TableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DMJobTitleSelectionVC+TableExtension.swift"; sourceTree = "<group>"; };
+		E590735A1FB02D36007381E8 /* DMJobTitleSelectionVC+TextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DMJobTitleSelectionVC+TextFieldExtension.swift"; sourceTree = "<group>"; };
 		E594BE9C1E1DFF4400310AE5 /* DMRegistrationVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMRegistrationVC+TableViewExtension.swift"; sourceTree = "<group>"; };
 		E594BE9E1E1DFFA900310AE5 /* DMRegistrationVC+TextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMRegistrationVC+TextFieldExtension.swift"; sourceTree = "<group>"; };
 		E594BEA11E1E014F00310AE5 /* DMLoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMLoginVC.swift; sourceTree = "<group>"; };
@@ -857,6 +879,7 @@
 		5A1E2A161E1E47340055D913 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E506AE531FAC374C00ABC7FA /* PreferredLocation */,
 				5A5523ED1E4D97C0007D8C09 /* Notification */,
 				E5AE37831E4986E10001EC3C /* CoreDataModels */,
 				F209C33F1E435A26005C9594 /* JobSearchParameter */,
@@ -1076,6 +1099,7 @@
 		5AE5F50B1E16569B006C328A /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				E59073551FB023B2007381E8 /* Congratulations */,
 				E587D2DE1E24C021006B7F06 /* Affiliations */,
 				E587D2DF1E24C021006B7F06 /* Certifications */,
 				E587D2E01E24C021006B7F06 /* License */,
@@ -1096,6 +1120,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E506AE531FAC374C00ABC7FA /* PreferredLocation */ = {
+			isa = PBXGroup;
+			children = (
+				E506AE541FAC375700ABC7FA /* PreferredLocation.swift */,
+			);
+			path = PreferredLocation;
+			sourceTree = "<group>";
+		};
 		E50B3F441E194CD7004C5F32 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -1110,6 +1142,8 @@
 				E5E7CB731E2FA23200D4FB59 /* Study */,
 				E50B3F451E194CD7004C5F32 /* AnimatedPHTableCell.swift */,
 				E50B3F461E194CD7004C5F32 /* AnimatedPHTableCell.xib */,
+				E51C4D351FB04FC5009FC3A0 /* TitleHeaderView.xib */,
+				E51C4D371FB04FD8009FC3A0 /* TitleHeaderView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1568,6 +1602,8 @@
 		E587D2CA1E2334F2006B7F06 /* CustomPicker */ = {
 			isa = PBXGroup;
 			children = (
+				E506AE511FAC32A800ABC7FA /* PreferredLocationPickerView.xib */,
+				E506AE4F1FAC329400ABC7FA /* PreferredLocationPickerView.swift */,
 				5AB8764F1E249B62007818D6 /* ExperiencePickerView.swift */,
 				5AB876511E249C0A007818D6 /* ExperiencePickerView.xib */,
 				E587D2CB1E23362C006B7F06 /* JobSelectionPickerView.swift */,
@@ -1586,6 +1622,9 @@
 				E587D2CE1E23438B006B7F06 /* DMJobTitleSelectionVC.swift */,
 				E587D2D01E2343A5006B7F06 /* DMJobTitleSelectionVC+UIPickerViewExtension.swift */,
 				E587D2D41E2357A9006B7F06 /* DMJobTitleSelectionVC+Services.swift */,
+				E59073581FB02C4F007381E8 /* DMJobTitleSelectionVC+TableExtension.swift */,
+				E590735A1FB02D36007381E8 /* DMJobTitleSelectionVC+TextFieldExtension.swift */,
+				E51C4D3D1FB05591009FC3A0 /* DMJobTitleSelectionVC+TextFieldDelegates.swift */,
 			);
 			path = JobTitleSelection;
 			sourceTree = "<group>";
@@ -1687,6 +1726,14 @@
 				E59029A71DED2C7A00151E9B /* UserDefaultsManager.swift */,
 			);
 			path = UserDefaultsManager;
+			sourceTree = "<group>";
+		};
+		E59073551FB023B2007381E8 /* Congratulations */ = {
+			isa = PBXGroup;
+			children = (
+				E59073561FB023C7007381E8 /* DMCongratulationsVC.swift */,
+			);
+			path = Congratulations;
 			sourceTree = "<group>";
 		};
 		E594BEA01E1E014F00310AE5 /* Login */ = {
@@ -1974,6 +2021,8 @@
 			children = (
 				E5E7CB541E2FA23200D4FB59 /* AboutMeCell.swift */,
 				E5E7CB551E2FA23200D4FB59 /* AboutMeCell.xib */,
+				E51C4D391FB051C7009FC3A0 /* AboutMeJobSelectionCell.swift */,
+				E51C4D3A1FB051C7009FC3A0 /* AboutMeJobSelectionCell.xib */,
 			);
 			path = AboutMe;
 			sourceTree = "<group>";
@@ -2317,12 +2366,14 @@
 			files = (
 				E558D9161E2EA47500A6DF95 /* AddProfileOptionTableCell.xib in Resources */,
 				E597E5881E151A99001DDA78 /* SF-UI-Text-Semibold.otf in Resources */,
+				E51C4D361FB04FC5009FC3A0 /* TitleHeaderView.xib in Resources */,
 				E5F9194E1E9DD4A30021F008 /* Info.plist in Resources */,
 				E597E5841E151A99001DDA78 /* SF-UI-Text-Medium.otf in Resources */,
 				F2F5E0E21E31D43A0082187C /* JobDetailHeaderView.xib in Resources */,
 				E597E57E1E151A99001DDA78 /* SF-UI-Text-Bold.otf in Resources */,
 				E5A0EB0F1E2BE7C40092E21A /* ASJTag.xib in Resources */,
 				5A3BD4B31E35FCBA00A607AC /* EditProfileExperienceCell.xib in Resources */,
+				E51C4D3C1FB051C7009FC3A0 /* AboutMeJobSelectionCell.xib in Resources */,
 				5A3B06C91E3375ED00EFCA6E /* ChangePasswordTableCell.xib in Resources */,
 				E597E57A1E151A99001DDA78 /* SF-UI-Display-Regular.otf in Resources */,
 				5A3BD4AB1E35D3D800A607AC /* EditProfileAffiliationBrickCell.xib in Resources */,
@@ -2402,6 +2453,7 @@
 				E50512BF1E82378700509328 /* WorkingHoursTableCell.xib in Resources */,
 				F2F5E0D81E30D2C80082187C /* OfficeDescriptionCell.xib in Resources */,
 				F2F5E0D01E2F62080082187C /* AboutCell.xib in Resources */,
+				E506AE521FAC32A800ABC7FA /* PreferredLocationPickerView.xib in Resources */,
 				E56E45C31DAE07C200AD4559 /* Assets.xcassets in Resources */,
 				E558D8FA1E2CB5C300A6DF95 /* AutoCompleteTable.xib in Resources */,
 				E5AE37021E485D6E0001EC3C /* PlaceHolderJobsView.xib in Resources */,
@@ -2630,6 +2682,7 @@
 				E5E7CB981E2FA28000D4FB59 /* PhotoCell.swift in Sources */,
 				F2F5E0E01E31D40E0082187C /* JobDetailHeaderView.swift in Sources */,
 				E51D4F0F1E40744C00ACC631 /* DMTrackVC.swift in Sources */,
+				E59073571FB023C7007381E8 /* DMCongratulationsVC.swift in Sources */,
 				F2540F4E1E23A834004B0538 /* JobSearchTypeCell.swift in Sources */,
 				E587D2ED1E24C021006B7F06 /* DMWorkExperienceVC+TableViewExtension.swift in Sources */,
 				E587D2F21E24C07C006B7F06 /* DMExecutiveSummaryVC.swift in Sources */,
@@ -2642,9 +2695,11 @@
 				E587D2EE1E24C021006B7F06 /* DMWorkExperienceVC.swift in Sources */,
 				E54976F41E28CEDD006F21E5 /* EmployeeReferenceModel.swift in Sources */,
 				E59029A81DED2C7A00151E9B /* APIManager.swift in Sources */,
+				E51C4D3B1FB051C7009FC3A0 /* AboutMeJobSelectionCell.swift in Sources */,
 				E5E7CBA51E3089B200D4FB59 /* DMEditLicenseVC+Services.swift in Sources */,
 				5A5523E31E4C40C1007D8C09 /* HiredJobNotificationTableCell.swift in Sources */,
 				E5AE377E1E497D8D0001EC3C /* MessageListTableCell.swift in Sources */,
+				E506AE551FAC375700ABC7FA /* PreferredLocation.swift in Sources */,
 				E558D8FC1E2CB5D400A6DF95 /* AutoCompleteTable.swift in Sources */,
 				E50B3F4C1E194CD7004C5F32 /* AnimatedPHTableCell.swift in Sources */,
 				E55462E61DAE47A9004163B2 /* UIView+Toast.m in Sources */,
@@ -2687,6 +2742,7 @@
 				E5E7CB8D1E2FA23200D4FB59 /* SkillsTableCell.swift in Sources */,
 				E587D2F81E24C0C0006B7F06 /* DMSelectSkillsVC.swift in Sources */,
 				E57EE6CA1E28EB440090434F /* DMAffiliationsVC+Services.swift in Sources */,
+				E506AE501FAC329400ABC7FA /* PreferredLocationPickerView.swift in Sources */,
 				E54B9A7C1E326A6C00805D9C /* EditCertificateTableCell.swift in Sources */,
 				5AD246911E272E92009350BF /* DMWorkExperienceVC+Services.swift in Sources */,
 				E5E7CB8F1E2FA23300D4FB59 /* SubSkillCell.swift in Sources */,
@@ -2702,6 +2758,7 @@
 				E55462EC1DAE47F5004163B2 /* AppDelegate.swift in Sources */,
 				E587D3081E253719006B7F06 /* DMAffiliationsVC+TableViewExtension.swift in Sources */,
 				E5F9194C1E9DD4A30021F008 /* FSCalendarStickyHeader.m in Sources */,
+				E51C4D381FB04FD8009FC3A0 /* TitleHeaderView.swift in Sources */,
 				5A85D2171E2DFAD000AC4C89 /* TagWrappers.swift in Sources */,
 				F223591F1E3F608900E984FC /* DMJobDetaiVC+TableViewExtension.swift in Sources */,
 				E51D4EF31E3AFCA700ACC631 /* DMEditStudyVC.swift in Sources */,
@@ -2738,6 +2795,7 @@
 				5A3BD4B61E36065E00A607AC /* EditProfileReferenceCell.swift in Sources */,
 				5A8F62A31E399A080037C4A2 /* DMCalendarSetAvailabillityVC.swift in Sources */,
 				E54976F11E28CEDD006F21E5 /* JobTitle.swift in Sources */,
+				E59073591FB02C4F007381E8 /* DMJobTitleSelectionVC+TableExtension.swift in Sources */,
 				E5F919481E9DD4A30021F008 /* FSCalendarDelegateProxy.m in Sources */,
 				F2540F5D1E274258004B0538 /* DMJobSearchResultVC.swift in Sources */,
 				E53738F21DB373C200967876 /* Reachability.swift in Sources */,
@@ -2750,6 +2808,7 @@
 				5AB876501E249B62007818D6 /* ExperiencePickerView.swift in Sources */,
 				E5F919471E9DD4A30021F008 /* FSCalendarConstants.m in Sources */,
 				F2F5E0DE1E31CE2A0082187C /* DMJobDetailVC.swift in Sources */,
+				E590735B1FB02D36007381E8 /* DMJobTitleSelectionVC+TextFieldExtension.swift in Sources */,
 				E5DC3E731DAF2C45002DA20E /* DentaMatch.xcdatamodeld in Sources */,
 				5A3B06C81E3375ED00EFCA6E /* ChangePasswordTableCell.swift in Sources */,
 				5A463EC81E5D9E4B00B119D6 /* InviteJobNotificationTableCell.swift in Sources */,
@@ -2772,6 +2831,7 @@
 				E5F9194D1E9DD4A30021F008 /* FSCalendarWeekdayView.m in Sources */,
 				E55462FC1DAE4EA1004163B2 /* DMBaseVC.swift in Sources */,
 				E5A0EB021E2A9C760092E21A /* DMStudy+Services.swift in Sources */,
+				E51C4D3E1FB05591009FC3A0 /* DMJobTitleSelectionVC+TextFieldDelegates.swift in Sources */,
 				E5310E0D1E4B2B3F004403A0 /* DMChatVC+Services.swift in Sources */,
 				E5E7CB8B1E2FA23200D4FB59 /* OtherSubSkillTableCell.swift in Sources */,
 				F2F5E0E61E35DE390082187C /* DMJobSearchVC+Services.swift in Sources */,

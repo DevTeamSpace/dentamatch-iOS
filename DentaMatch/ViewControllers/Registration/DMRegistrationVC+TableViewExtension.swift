@@ -24,6 +24,8 @@ extension DMRegistrationVC: UITableViewDataSource, UITableViewDelegate {
         cell.lastNameTextField.delegate = self
         cell.preferredLocationTextField.delegate = self
         cell.termsAndConditionsTextView.delegate = self
+        cell.preferredLocationTextField.inputView = preferredLocationPickerView
+
         
         if self.termsAndConditionsAccepted {
             cell.acceptTermsButton.setTitle(Constants.DesignFont.acceptTermsSelected, for: .normal)

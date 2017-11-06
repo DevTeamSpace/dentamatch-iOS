@@ -88,4 +88,21 @@ extension DMJobTitleSelectionVC {
             }
         }
     }
+    
+    func updateLicenseDetails(params:[String:Any]) {
+        self.showLoader()
+        APIManager.apiGet(serviceName: Constants.API.licenseNumberAndState, parameters: params) { (response:JSON?, error:NSError?) in
+            self.hideLoader()
+            if error != nil {
+                self.makeToast(toastString: (error?.localizedDescription)!)
+                return
+            }
+            if response == nil {
+                self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
+                return
+            }
+            debugPrint(response!)
+//            self.handleJobListResponse(response: response!)
+        }
+    }
 }

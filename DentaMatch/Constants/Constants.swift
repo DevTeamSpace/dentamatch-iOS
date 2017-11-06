@@ -166,6 +166,7 @@ struct Constants {
         static let forgotPassword = Constants.API.apiURL("users/forgot-password")
         static let termsAndConditionsURL = Constants.API.apiURL("term-condition")
         static let privacyPolicyURL = Constants.API.apiURL("privacy-policy")
+        static let getPreferredJobLocations = Constants.API.apiURL("jobs/preferred-job-locations")
         static let getJobTitle = Constants.API.apiURL("list-jobtitle")
         static let uploadImage = Constants.API.apiURL("users/upload-image")
         static let getSkillList = Constants.API.apiURL("list-skills")
@@ -226,6 +227,7 @@ struct Constants {
         static let email = "email"
         static let password = "password"
         static let preferredLocation = "preferedLocation"
+        static let preferredJobLocationId = "preferredJobLocationId"
         static let preferredJobLocation = "preferredJobLocation"
         static let latitude = "latitude"
         static let longitude = "longitude"
@@ -277,6 +279,8 @@ struct Constants {
         static let officeAddressExp = "officeAddress"
         static let cityName = "city"
         static let workExperience = "workExperience"
+        static let preferredLocationName = "preferredLocationName"
+        static let isActive = "isActive"
 
         static let reference1Name = "reference1Name"
         static let reference1Mobile = "reference1Mobile"

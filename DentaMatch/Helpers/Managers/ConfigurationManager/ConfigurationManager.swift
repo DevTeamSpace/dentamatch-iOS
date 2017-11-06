@@ -100,8 +100,8 @@ final class ConfigurationManager: NSObject {
     
     private func debugConfiguration() -> AppConfiguration {
         
-        return AppConfiguration(apiEndPoint: "http://dev.dentamatch.co/api/",
-                                socketEndPoint: "",
+        return AppConfiguration(apiEndPoint: "https://dev.dentamatch.co/api/",
+                                socketEndPoint: "https://dev.dentamatch.co:3000",
                                 loggingEnabled: true,
                                 analyticsKey: "baeda2003ca1585a7828ce1d02833836",
                                 trackingEnabled: false,

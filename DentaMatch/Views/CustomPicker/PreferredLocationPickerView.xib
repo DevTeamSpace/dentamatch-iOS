@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PreferredLocationPickerView" customModule="DentaMatch" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="212"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sYU-sV-cQn">
+                    <rect key="frame" x="0.0" y="44" width="320" height="168"/>
+                    <connections>
+                        <outlet property="dataSource" destination="iN0-l3-epB" id="iXp-Sr-BJ8"/>
+                        <outlet property="delegate" destination="iN0-l3-epB" id="dag-UL-rcz"/>
+                    </connections>
+                </pickerView>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b9h-5I-4O8">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="L5a-9M-n1B"/>
+                    </constraints>
+                    <items>
+                        <barButtonItem title="Cancel" style="done" id="uSm-pC-xE6">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="iN0-l3-epB" id="tXJ-va-ySh"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="fFa-dx-SAx"/>
+                        <barButtonItem title="Done" style="done" id="wle-Af-LMf">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="iN0-l3-epB" id="O2q-BK-FvW"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                    <color key="barTintColor" red="0.01176470588" green="0.4431372549" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                </toolbar>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="sYU-sV-cQn" firstAttribute="top" secondItem="b9h-5I-4O8" secondAttribute="bottom" id="3f6-tl-wTA"/>
+                <constraint firstItem="b9h-5I-4O8" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="CK7-fl-aKM"/>
+                <constraint firstItem="sYU-sV-cQn" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="JUD-Qg-QJU"/>
+                <constraint firstItem="sYU-sV-cQn" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="SgT-a7-FS1"/>
+                <constraint firstItem="sYU-sV-cQn" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="YCK-u9-k2S"/>
+                <constraint firstItem="b9h-5I-4O8" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="nWk-Ex-8aj"/>
+                <constraint firstItem="b9h-5I-4O8" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="yvP-mg-54e"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="pickerView" destination="sYU-sV-cQn" id="ntZ-EC-UQQ"/>
+                <outlet property="toolBar" destination="b9h-5I-4O8" id="S08-IZ-0sD"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="-208"/>
+        </view>
+    </objects>
+</document>

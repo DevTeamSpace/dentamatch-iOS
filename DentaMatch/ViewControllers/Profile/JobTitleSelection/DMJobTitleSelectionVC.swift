@@ -8,20 +8,23 @@
 
 import UIKit
 
-class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate {
+class DMJobTitleSelectionVC: DMBaseVC,ToolBarButtonDelegate {
 
+    @IBOutlet weak var jobTitleSelectionTableView: UITableView!
+    @IBOutlet weak var createProfileButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var addPhotoButton: UIButton!
     @IBOutlet weak var profileButton: ProfileImageButton!
-    @IBOutlet weak var notNowButton: UIButton!
-    @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var currentJobTitleTextField: AnimatedPHTextField!
+//    @IBOutlet weak var currentJobTitleTextField: AnimatedPHTextField!
     @IBOutlet weak var profileHeaderView: UIView!
     
+    var aboutMe = ""
     var profileImage:UIImage?
     var jobSelectionPickerView:JobSelectionPickerView!
     var jobTitles = [JobTitle]()
     var selectedJobTitle:JobTitle?
+    var licenseNumber = ""
+    var state = ""
     
     //MARK:- View LifeCycle
     override func viewDidLoad() {
@@ -33,6 +36,8 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
@@ -41,38 +46,116 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
         //jobSelectionView?.frame = self.currentJobTitleTextField.frame
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    //MARK:- Keyboard Show Hide Observers
+    @objc func keyboardWillShow(note: NSNotification) {
+        if let keyboardSize = (note.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            jobTitleSelectionTableView.contentInset =  UIEdgeInsetsMake(0, 0, keyboardSize.height+1, 0)
+        }
+    }
+    
+    @objc func keyboardWillHide(note: NSNotification) {
+        jobTitleSelectionTableView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0)
+    }
+    
     @objc func makeTip() {
         UIView.makeTip(view: profileHeaderView, size: 8, x: profileHeaderView.frame.midX/2, y: profileHeaderView.frame.midY)
     }
     
     //MARK:- Private Methods
     func setup() {
-        currentJobTitleTextField.tintColor = UIColor.clear
+        let headerView = TitleHeaderView.loadTitleHeaderView()
+        headerView.frame = CGRect(x: 0, y: 0, width: Utilities.ScreenSize.SCREEN_WIDTH, height: 54)
+        self.jobTitleSelectionTableView.tableHeaderView = headerView
+        
+        self.jobTitleSelectionTableView.register(UINib(nibName: "AnimatedPHTableCell", bundle: nil), forCellReuseIdentifier: "AnimatedPHTableCell")
+        self.jobTitleSelectionTableView.register(UINib(nibName: "AboutMeJobSelectionCell", bundle: nil), forCellReuseIdentifier: "AboutMeJobSelectionCell")
+
+        //currentJobTitleTextField.tintColor = UIColor.clear
         self.nameLabel.text = "Hi \(UserManager.shared().activeUser.firstName!)"
         self.addJobSelectionPickerViewTextField()
-        currentJobTitleTextField.type = 1
+        //currentJobTitleTextField.type = 1
         self.profileButton.isUserInteractionEnabled = false
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.jobTitleSelectionTableView.addGestureRecognizer(tap)
+        
         //Right View for drop down
-        let rightView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: currentJobTitleTextField.frame.size.height))
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 40, height: currentJobTitleTextField.frame.size.height))
-        label.font = UIFont.designFont(fontSize: 16.0)
-        label.text = "c"
-        label.textColor = UIColor.color(withHexCode: "a0a0a0")
-        label.textAlignment = .center
-        label.center = rightView.center
-        rightView.addSubview(label)
-        currentJobTitleTextField.rightView = rightView
-        currentJobTitleTextField.rightViewMode = .always
-        currentJobTitleTextField.rightView?.isUserInteractionEnabled = false
+//        let rightView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: currentJobTitleTextField.frame.size.height))
+//        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 40, height: currentJobTitleTextField.frame.size.height))
+//        label.font = UIFont.designFont(fontSize: 16.0)
+//        label.text = "c"
+//        label.textColor = UIColor.color(withHexCode: "a0a0a0")
+//        label.textAlignment = .center
+//        label.center = rightView.center
+//        rightView.addSubview(label)
+//        currentJobTitleTextField.rightView = rightView
+//        currentJobTitleTextField.rightViewMode = .always
+//        currentJobTitleTextField.rightView?.isUserInteractionEnabled = false
         self.perform(#selector(makeTip), with: nil, afterDelay: 0.2)
+    }
+    
+    @objc func dismissKeyboard() {
+        self.view.endEditing(true)
+    }
+    
+    func addToolBarOnTextView() -> UIToolbar {
+        let keyboardDoneButtonView = UIToolbar()
+        keyboardDoneButtonView.sizeToFit()
+        keyboardDoneButtonView.barTintColor = Constants.Color.toolBarColor
+        // Setup the buttons to be put in the system.
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
+        
+        let item = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(toolBarButtonTapped))
+        item.tag = 2
+        item.setTitleTextAttributes([NSAttributedStringKey.font: UIFont.fontRegular(fontSize: 20.0)!], for: UIControlState.normal)
+        
+        item.tintColor = UIColor.white
+        
+        let toolbarButtons = [flexibleSpace,item]
+        
+        //Put the buttons into the ToolBar and display the tool bar
+        keyboardDoneButtonView.setItems(toolbarButtons, animated: false)
+        
+        return keyboardDoneButtonView
     }
     
     func addJobSelectionPickerViewTextField(){
         //Job Title Picker
         jobSelectionPickerView = JobSelectionPickerView.loadJobSelectionView(withJobTitles: [])
-        currentJobTitleTextField.inputView = jobSelectionPickerView
+//        currentJobTitleTextField.inputView = jobSelectionPickerView
         jobSelectionPickerView.delegate = self
+    }
+    
+    func validateFields() -> Bool {
+        if selectedJobTitle == nil {
+            self.makeToast(toastString: "Please select job title")
+            return false
+        }
+        if selectedJobTitle!.isLicenseRequired {
+            if licenseNumber.count == 0 {
+                self.makeToast(toastString: "Please fill license number")
+                return false
+            }
+            if state.count == 0 {
+                self.makeToast(toastString: "Please fill state")
+                return false
+            }
+        }
+        if aboutMe.trim().count > 0 {
+            return true
+        } else {
+            self.makeToast(toastString: "Please fill about me section")
+            return false
+        }
+    }
+    
+    @objc func toolBarButtonTapped() {
+        self.view.endEditing(true)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -171,21 +254,32 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
     }
     
     
-    @IBAction func notNowButtonPressed(_ sender: Any) {
-        self.alertMessage(title: "", message: Constants.AlertMessage.skipProfile, leftButtonText: "Cancel", rightButtonText: kOkButtonTitle) { (isLeftButtonPressed:Bool) in
-            if !isLeftButtonPressed {
-                DispatchQueue.main.async {
-                    UserDefaultsManager.sharedInstance.isProfileSkipped = true
-                    if UserDefaultsManager.sharedInstance.loadSearchParameter() == nil {
-                        kAppDelegate.goToSearch()
-                    }else {
-                        self.openDashboard()
-                    }
-                }
-            } else {
-               //Remain here
+    @IBAction func createProfileButtonPressed(_ sender: Any) {
+        if validateFields() {
+            var params = [
+                "jobTitleId":selectedJobTitle!.jobId,
+                "aboutMe":aboutMe
+                ] as [String : Any]
+            if selectedJobTitle!.isLicenseRequired {
+                params["license"] = licenseNumber
+                params["state"] = state
             }
-        }
+            self.updateLicenseDetails(params: params)
+    }
+//        self.alertMessage(title: "", message: Constants.AlertMessage.skipProfile, leftButtonText: "Cancel", rightButtonText: kOkButtonTitle) { (isLeftButtonPressed:Bool) in
+//            if !isLeftButtonPressed {
+//                DispatchQueue.main.async {
+//                    UserDefaultsManager.sharedInstance.isProfileSkipped = true
+//                    if UserDefaultsManager.sharedInstance.loadSearchParameter() == nil {
+//                        kAppDelegate.goToSearch()
+//                    }else {
+//                        self.openDashboard()
+//                    }
+//                }
+//            } else {
+//               //Remain here
+//            }
+//        }
     }
     
     //MARK:- ToolBarButton Delegate
@@ -194,14 +288,14 @@ class DMJobTitleSelectionVC: DMBaseVC,UITextFieldDelegate,ToolBarButtonDelegate 
     }
     
     //MARK:- UITextFieldDelegates
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        debugPrint("Open Picker")
-        currentJobTitleTextField.layer.borderColor = Constants.Color.textFieldColorSelected.cgColor
-        return true
-    }
-    
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        currentJobTitleTextField.layer.borderColor = Constants.Color.textFieldBorderColor.cgColor
-        return true
-    }
+//    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+//        debugPrint("Open Picker")
+//        //currentJobTitleTextField.layer.borderColor = Constants.Color.textFieldColorSelected.cgColor
+//        return true
+//    }
+//    
+//    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+//        //currentJobTitleTextField.layer.borderColor = Constants.Color.textFieldBorderColor.cgColor
+//        return true
+//    }
 }

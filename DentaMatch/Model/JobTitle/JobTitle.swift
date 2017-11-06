@@ -14,6 +14,7 @@ class JobTitle: NSObject {
     var jobTitle = ""
     var jobId = 0
     var jobSelected = false
+    var isLicenseRequired = false
     
     override init() {
         /* For Default object of class */
@@ -25,5 +26,6 @@ class JobTitle: NSObject {
             self.jobTitle = job["jobtitleName"].stringValue
         }
         self.jobId = job["id"].intValue
+        self.isLicenseRequired = job["isLicenseRequired"].boolValue
     }
 }

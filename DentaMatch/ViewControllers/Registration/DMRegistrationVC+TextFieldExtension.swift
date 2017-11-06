@@ -53,12 +53,16 @@ extension DMRegistrationVC:UITextFieldDelegate {
         if let cell = self.registrationTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as?
             RegistrationTableViewCell {
             if textField == cell.preferredLocationTextField {
-                let mapVC = UIStoryboard.registrationStoryBoard().instantiateViewController(type: DMRegisterMapsVC.self)!
-                mapVC.delegate = self
-                mapVC.fromRegistration = true
-                self.navigationController?.pushViewController(mapVC, animated: true)
-                self.view.endEditing(true)
-                return false
+//                let mapVC = UIStoryboard.registrationStoryBoard().instantiateViewController(type: DMRegisterMapsVC.self)!
+//                mapVC.delegate = self
+//                mapVC.fromRegistration = true
+//                self.navigationController?.pushViewController(mapVC, animated: true)
+//                self.view.endEditing(true)
+//                return true
+                if preferredLocations.count == 0 {
+                    self.getPreferredLocations(shouldShowKeyboard: true)
+                    return false
+                }
             }
         }
         if let textField = textField as? AnimatedLeftViewPHTextField {

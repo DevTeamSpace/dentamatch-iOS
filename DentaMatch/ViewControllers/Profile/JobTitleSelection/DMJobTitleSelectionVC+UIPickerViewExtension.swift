@@ -12,7 +12,10 @@ extension DMJobTitleSelectionVC:JobSelectionPickerViewDelegate {
     
     func jobPickerDoneButtonAction(job: JobTitle?) {
         if let jobTitle = job {
-            self.currentJobTitleTextField.text = jobTitle.jobTitle
+            if let cell = self.jobTitleSelectionTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? AnimatedPHTableCell {
+                cell.commonTextField.text = jobTitle.jobTitle
+                self.jobTitleSelectionTableView.reloadData()
+            }
             self.selectedJobTitle = jobTitle
         }
         self.view.endEditing(true)

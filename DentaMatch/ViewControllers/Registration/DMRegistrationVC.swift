@@ -14,6 +14,10 @@ class DMRegistrationVC: DMBaseVC {
     @IBOutlet weak var registrationTableView: UITableView!
     var coordinateSelected:CLLocationCoordinate2D?
     var termsAndConditionsAccepted = false
+    var preferredLocations = [PreferredLocation]()
+    var selectedPreferredLocation:PreferredLocation?
+
+    var preferredLocationPickerView:PreferredLocationPickerView!
     var registrationParams = [
         Constants.ServerKey.deviceId:"",
         Constants.ServerKey.deviceToken:"",
@@ -22,20 +26,20 @@ class DMRegistrationVC: DMBaseVC {
         Constants.ServerKey.firstName:"",
         Constants.ServerKey.lastName:"",
         Constants.ServerKey.password:"",
-        Constants.ServerKey.preferredLocation:"",
-        Constants.ServerKey.zipCode:"",
-        Constants.JobDetailKey.city:"",
-        Constants.JobDetailKey.state:"",
-        Constants.JobDetailKey.country:"",
-
-        Constants.ServerKey.latitude:"",
-        Constants.ServerKey.longitude:""
+        Constants.ServerKey.preferredJobLocationId:""
+        //Constants.ServerKey.zipCode:"",
+        //Constants.JobDetailKey.city:"",
+        //Constants.JobDetailKey.state:"",
+        //Constants.JobDetailKey.country:""
+        //Constants.ServerKey.latitude:"",
+        //Constants.ServerKey.longitude:""
         ]
     
     //MARK:- View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        self.getPreferredLocations()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,7 +60,7 @@ class DMRegistrationVC: DMBaseVC {
     
     //MARK:- Keyboard Show Hide Observers
     @objc func keyboardWillShow(note: NSNotification) {
-        if let keyboardSize = (note.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+        if let keyboardSize = (note.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             registrationTableView.contentInset =  UIEdgeInsetsMake(0, 0, keyboardSize.height+1, 0)
         }
     }
@@ -67,6 +71,8 @@ class DMRegistrationVC: DMBaseVC {
     
     //MARK:- Private Methods
     func setup() {
+        preferredLocationPickerView = PreferredLocationPickerView.loadPreferredLocationPickerView(preferredLocations: preferredLocations)
+        preferredLocationPickerView.delegate = self
         UserDefaultsManager.sharedInstance.isOnBoardingDone = true
         self.registrationTableView.register(UINib(nibName: "RegistrationTableViewCell", bundle: nil), forCellReuseIdentifier: "RegistrationTableViewCell")
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -96,15 +102,19 @@ class DMRegistrationVC: DMBaseVC {
             }
             return false
         }
-        if coordinateSelected == nil {
+        if selectedPreferredLocation == nil {
             self.makeToast(toastString: Constants.AlertMessage.emptyPreferredJobLocation)
             return false
         }
-        
-        if registrationParams[Constants.ServerKey.zipCode]!.isEmpty {
-            self.makeToast(toastString: Constants.AlertMessage.emptyPinCode)
-            return false
-        }
+//        if coordinateSelected == nil {
+//            self.makeToast(toastString: Constants.AlertMessage.emptyPreferredJobLocation)
+//            return false
+//        }
+//
+//        if registrationParams[Constants.ServerKey.zipCode]!.isEmpty {
+//            self.makeToast(toastString: Constants.AlertMessage.emptyPinCode)
+//            return false
+//        }
         
         if !self.termsAndConditionsAccepted {
             self.makeToast(toastString: Constants.AlertMessage.termsAndConditions)
@@ -163,30 +173,48 @@ extension DMRegistrationVC:UITextViewDelegate {
     }
 }
 
-//MARK:- LocationAddress Delegate
-extension DMRegistrationVC:LocationAddressDelegate {
-    func locationAddress(location: Location) {
-        coordinateSelected = location.coordinateSelected
-        if let address = location.address {
-            if let cell = self.registrationTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as?
-                RegistrationTableViewCell {
-                cell.preferredLocationTextField.text = address
-                
-                registrationParams[Constants.ServerKey.zipCode] = location.postalCode
-                registrationParams[Constants.JobDetailKey.state] = location.state
-                registrationParams[Constants.JobDetailKey.country] = location.country
-                registrationParams[Constants.JobDetailKey.city] = location.city
-
-                registrationParams[Constants.ServerKey.preferredLocation] = address
-                if let _ = coordinateSelected {
-                    registrationParams[Constants.ServerKey.latitude] = "\((coordinateSelected?.latitude)!)"
-                    registrationParams[Constants.ServerKey.longitude] = "\((coordinateSelected?.longitude)!)"
-                }
-               
+extension DMRegistrationVC:PreferredLocationPickerViewDelegate {
+    func preferredLocationPickerCancelButtonAction() {
+        self.view.endEditing(true)
+    }
+    
+    func preferredLocationPickerDoneButtonAction(preferredLocation: PreferredLocation?) {
+        if let cell = self.registrationTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? RegistrationTableViewCell {
+            cell.preferredLocationTextField.text = preferredLocation?.preferredLocationName
+            selectedPreferredLocation = preferredLocation
+            if let location = selectedPreferredLocation {
+                registrationParams[Constants.ServerKey.preferredJobLocationId] = location.id
             }
-            debugPrint(address)
-        } else {
-            debugPrint("Address is empty")
+            self.view.endEditing(true)
         }
     }
 }
+
+//MARK:- LocationAddress Delegate
+//extension DMRegistrationVC:LocationAddressDelegate {
+//    func locationAddress(location: Location) {
+//        coordinateSelected = location.coordinateSelected
+//        if let address = location.address {
+//            if let cell = self.registrationTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as?
+//                RegistrationTableViewCell {
+//                cell.preferredLocationTextField.text = address
+//
+//                registrationParams[Constants.ServerKey.zipCode] = location.postalCode
+//                registrationParams[Constants.JobDetailKey.state] = location.state
+//                registrationParams[Constants.JobDetailKey.country] = location.country
+//                registrationParams[Constants.JobDetailKey.city] = location.city
+//
+//                registrationParams[Constants.ServerKey.preferredLocation] = address
+//                if let _ = coordinateSelected {
+//                    registrationParams[Constants.ServerKey.latitude] = "\((coordinateSelected?.latitude)!)"
+//                    registrationParams[Constants.ServerKey.longitude] = "\((coordinateSelected?.longitude)!)"
+//                }
+//
+//            }
+//            debugPrint(address)
+//        } else {
+//            debugPrint("Address is empty")
+//        }
+//    }
+//}
+
