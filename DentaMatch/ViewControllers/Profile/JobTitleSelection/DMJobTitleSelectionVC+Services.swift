@@ -91,7 +91,7 @@ extension DMJobTitleSelectionVC {
     
     func updateLicenseDetails(params:[String:Any]) {
         self.showLoader()
-        APIManager.apiGet(serviceName: Constants.API.licenseNumberAndState, parameters: params) { (response:JSON?, error:NSError?) in
+        APIManager.apiPut(serviceName: Constants.API.licenseNumberAndState, parameters: params) { (response:JSON?, error:NSError?) in
             self.hideLoader()
             if error != nil {
                 self.makeToast(toastString: (error?.localizedDescription)!)
@@ -102,7 +102,17 @@ extension DMJobTitleSelectionVC {
                 return
             }
             debugPrint(response!)
-//            self.handleJobListResponse(response: response!)
+            self.handleUpdateLicenseResponse(response: response)
+        }
+    }
+    
+    func handleUpdateLicenseResponse(response:JSON?) {
+        if let response = response {
+            if response[Constants.ServerKey.status].boolValue {
+                //move to congrats screen
+            } else {
+                self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+            }
         }
     }
 }
