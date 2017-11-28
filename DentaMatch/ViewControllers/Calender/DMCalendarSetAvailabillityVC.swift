@@ -53,6 +53,7 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
         
         self.navigationItem.rightBarButtonItem = self.rightBarButton()
         if fromJobSelection {
+            self.autoFillData()
             self.navigationItem.hidesBackButton = true
         } else {
             self.navigationItem.leftBarButtonItem = self.backBarButton()
@@ -66,7 +67,23 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
     
     //By Default set all days as available
     func autoFillData() {
-        
+        isPartTimeDayShow  = true
+        isTemporyAvail  = true
+        self.availablitytModel?.isParttime = true
+        self.availablitytModel?.isFulltime = true
+
+        self.availablitytModel?.isParttimeMonday = true
+        self.availablitytModel?.isParttimeTuesday = true
+        self.availablitytModel?.isParttimeWednesday = true
+        self.availablitytModel?.isParttimeThursday = true
+        self.availablitytModel?.isParttimeFriday = true
+        self.availablitytModel?.isParttimeSaturday = true
+        self.availablitytModel?.isParttimeSunday = true
+        isJobTypeFullTime = "1"
+        isJobTypePartTime = "1"
+        self.calenderTableView.reloadData()
+
+
     }
     
     func rightBarButton() -> UIBarButtonItem {
