@@ -12,6 +12,7 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
     @IBOutlet weak var calenderTableView: UITableView!
     var isPartTimeDayShow : Bool = false
     var isTemporyAvail : Bool = false
+    var fromJobSelection = false
 
 //    var partTimeJobDays = [String]()
 //    var tempJobDays = [String]()
@@ -26,6 +27,13 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setup()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if fromJobSelection {
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,14 +50,23 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
         self.calenderTableView.register(UINib(nibName: "JobSearchPartTimeCell", bundle: nil), forCellReuseIdentifier: "JobSearchPartTimeCell")
         self.calenderTableView.register(UINib(nibName: "TemporyJobCalenderCell", bundle: nil), forCellReuseIdentifier: "TemporyJobCalenderCell")
         self.calenderTableView.register(UINib(nibName: "TemporyJobCell", bundle: nil), forCellReuseIdentifier: "TemporyJobCell")
-        self.navigationItem.leftBarButtonItem = self.backBarButton()
-        self.navigationItem.rightBarButtonItem = self.rightBarButton()
         
-        let month1 = Date.getMonthAndYearForm(date: Date())
-        self.getMyAvailabilityFromServer(month:month1.month , year: month1.year) { (response, error) in
-            
-            self.calenderTableView.reloadData()
+        self.navigationItem.rightBarButtonItem = self.rightBarButton()
+        if fromJobSelection {
+            self.navigationItem.hidesBackButton = true
+        } else {
+            self.navigationItem.leftBarButtonItem = self.backBarButton()
+            let month1 = Date.getMonthAndYearForm(date: Date())
+            self.getMyAvailabilityFromServer(month:month1.month , year: month1.year) { (response, error) in
+                
+                self.calenderTableView.reloadData()
+            }
         }
+    }
+    
+    //By Default set all days as available
+    func autoFillData() {
+        
     }
     
     func rightBarButton() -> UIBarButtonItem {

@@ -91,6 +91,7 @@ extension DMJobTitleSelectionVC {
     
     func updateLicenseDetails(params:[String:Any]) {
         self.showLoader()
+        
         APIManager.apiPut(serviceName: Constants.API.licenseNumberAndState, parameters: params) { (response:JSON?, error:NSError?) in
             self.hideLoader()
             if error != nil {
@@ -110,6 +111,11 @@ extension DMJobTitleSelectionVC {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
                 //move to congrats screen
+                let profileSuccessPendingVC = UIStoryboard.profileStoryBoard().instantiateViewController(type: DMProfileSuccessPending.self)!
+                if selectedJobTitle!.isLicenseRequired {
+                    profileSuccessPendingVC.isLicenseRequired = true
+                }
+                self.navigationController?.pushViewController(profileSuccessPendingVC, animated: true)
             } else {
                 self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
             }

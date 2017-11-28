@@ -118,6 +118,7 @@
 		E5310E0D1E4B2B3F004403A0 /* DMChatVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5310E0C1E4B2B3F004403A0 /* DMChatVC+Services.swift */; };
 		E5310E0F1E4EDE71004403A0 /* DMChatVC+DBHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5310E0E1E4EDE71004403A0 /* DMChatVC+DBHandling.swift */; };
 		E53738F21DB373C200967876 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53738F11DB373C200967876 /* Reachability.swift */; };
+		E5433AF21FCD140800D152D9 /* DMProfileSuccessPending.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5433AF11FCD140800D152D9 /* DMProfileSuccessPending.swift */; };
 		E5496DFC1E25547300C54288 /* DMCertificationsVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5496DFB1E25547300C54288 /* DMCertificationsVC+TableViewExtension.swift */; };
 		E5496E021E255A9E00C54288 /* DMExecutiveSummaryVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5496E011E255A9E00C54288 /* DMExecutiveSummaryVC+TableViewExtension.swift */; };
 		E5496E081E25E4AA00C54288 /* DMSchoolListPopOverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5496E071E25E4AA00C54288 /* DMSchoolListPopOverVC.swift */; };
@@ -525,6 +526,7 @@
 		E5310E0E1E4EDE71004403A0 /* DMChatVC+DBHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMChatVC+DBHandling.swift"; sourceTree = "<group>"; };
 		E53738F11DB373C200967876 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		E538FA7C1DFFD76000AECE26 /* DentaMatch-Dev.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DentaMatch-Dev.entitlements"; sourceTree = "<group>"; };
+		E5433AF11FCD140800D152D9 /* DMProfileSuccessPending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMProfileSuccessPending.swift; sourceTree = "<group>"; };
 		E5496DFB1E25547300C54288 /* DMCertificationsVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMCertificationsVC+TableViewExtension.swift"; sourceTree = "<group>"; };
 		E5496E011E255A9E00C54288 /* DMExecutiveSummaryVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMExecutiveSummaryVC+TableViewExtension.swift"; sourceTree = "<group>"; };
 		E5496E071E25E4AA00C54288 /* DMSchoolListPopOverVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMSchoolListPopOverVC.swift; sourceTree = "<group>"; };
@@ -1099,6 +1101,7 @@
 		5AE5F50B1E16569B006C328A /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				E5433AF01FCD13E400D152D9 /* ProfileSuccessFailure */,
 				E59073551FB023B2007381E8 /* Congratulations */,
 				E587D2DE1E24C021006B7F06 /* Affiliations */,
 				E587D2DF1E24C021006B7F06 /* Certifications */,
@@ -1212,6 +1215,14 @@
 				E56F78551E1F602200F07814 /* DMForgotPasswordVC+Services.swift */,
 			);
 			path = "Forgot Password";
+			sourceTree = "<group>";
+		};
+		E5433AF01FCD13E400D152D9 /* ProfileSuccessFailure */ = {
+			isa = PBXGroup;
+			children = (
+				E5433AF11FCD140800D152D9 /* DMProfileSuccessPending.swift */,
+			);
+			path = ProfileSuccessFailure;
 			sourceTree = "<group>";
 		};
 		E54976E51E28CEDD006F21E5 /* Certification */ = {
@@ -2747,6 +2758,7 @@
 				5AD246911E272E92009350BF /* DMWorkExperienceVC+Services.swift in Sources */,
 				E5E7CB8F1E2FA23300D4FB59 /* SubSkillCell.swift in Sources */,
 				E5BED5511E49AB85003EC833 /* DMChatVC.swift in Sources */,
+				E5433AF21FCD140800D152D9 /* DMProfileSuccessPending.swift in Sources */,
 				E5F919421E9DD4A30021F008 /* FSCalendarAppearance.m in Sources */,
 				E5496E081E25E4AA00C54288 /* DMSchoolListPopOverVC.swift in Sources */,
 				5A85D2121E2DFAD000AC4C89 /* TagContents.swift in Sources */,
