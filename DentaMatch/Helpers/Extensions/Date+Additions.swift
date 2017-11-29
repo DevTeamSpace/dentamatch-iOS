@@ -108,6 +108,19 @@ extension Date {
         //        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
         return dateFormatter.string(from: date)
     }
+    
+    static func stringToDateWithUTC(dateString:String)-> Date{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = dateFormatYYYYMMDDDashed()//"dd MMMM yyyy"
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        return dateFormatter.date(from: dateString)!
+    }
+    static func dateToStringWithUTC(date:Date)-> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = dateFormatYYYYMMDDDashed()//"dd MMMM yyyy"
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        return dateFormatter.string(from: date)
+    }
 
     static func dateToStringForFormatter(date:Date,dateFormate:String)-> String{
         let dateFormatter = DateFormatter()

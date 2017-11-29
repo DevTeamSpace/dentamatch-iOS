@@ -81,9 +81,25 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
         self.availablitytModel?.isParttimeSunday = true
         isJobTypeFullTime = "1"
         isJobTypePartTime = "1"
+        getDateForMonths(months: 3)
         self.calenderTableView.reloadData()
+    }
+    
+    func getDateForMonths(months:Int) {
+        let dateStrToday = Date.dateToStringWithUTC(date: Date())
+        var dateToday = Date.stringToDateWithUTC(dateString: dateStrToday)
 
+        let endDate = Calendar.current.date(byAdding: DateComponents(month: months), to: dateToday)! //this create date with previous month for date.
+        self.availablitytModel?.tempJobDates.removeAll()
+        self.availablitytModel?.tempJobDates.append(dateStrToday)
+        
+        while dateToday <= endDate {
+            dateToday = Calendar.current.date(byAdding: DateComponents(day: 1), to: dateToday)!
+            print(dateToday)
+            self.availablitytModel?.tempJobDates.append(Date.dateToString(date: dateToday))
 
+        }
+        print("")
     }
     
     func rightBarButton() -> UIBarButtonItem {
