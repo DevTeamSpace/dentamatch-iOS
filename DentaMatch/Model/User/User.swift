@@ -29,6 +29,7 @@ class User: NSObject , NSCoding {
     var city: String? = ""
     var country: String? = ""
     var state: String? = ""
+    var preferredLocationId:String? = ""
 
     
     func fullName() -> String? {
@@ -69,6 +70,8 @@ class User: NSObject , NSCoding {
         self.latitude = aDecoder.decodeObject(forKey: "latitude") as? String
         self.longitude = aDecoder.decodeObject(forKey: "longitude") as? String
         self.aboutMe = aDecoder.decodeObject(forKey: "aboutMe") as? String
+        self.preferredLocationId = aDecoder.decodeObject(forKey: "preferredLocationId") as? String
+
 
     }
     
@@ -90,6 +93,7 @@ class User: NSObject , NSCoding {
         aCoder.encode(self.latitude, forKey: "latitude")
         aCoder.encode(self.longitude, forKey: "longitude")
         aCoder.encode(self.aboutMe, forKey: "aboutMe")
+        aCoder.encode(self.preferredLocationId, forKey: "preferredLocationId")
 
     }
 }

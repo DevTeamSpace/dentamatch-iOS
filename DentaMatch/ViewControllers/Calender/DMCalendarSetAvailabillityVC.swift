@@ -53,6 +53,7 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
         
         self.navigationItem.rightBarButtonItem = self.rightBarButton()
         if fromJobSelection {
+            UserDefaultsManager.sharedInstance.isProfileCompleted = true
             self.autoFillData()
             self.navigationItem.hidesBackButton = true
         } else {
@@ -97,9 +98,7 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
             dateToday = Calendar.current.date(byAdding: DateComponents(day: 1), to: dateToday)!
             print(dateToday)
             self.availablitytModel?.tempJobDates.append(Date.dateToString(date: dateToday))
-
         }
-        print("")
     }
     
     func rightBarButton() -> UIBarButtonItem {
@@ -112,6 +111,7 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
         let barButton = UIBarButtonItem(customView: customButton)
         return barButton
     }
+    
     @objc func saveButtonPressed() {
         if !minimumOneSelected() {
             self.makeToast(toastString: Constants.AlertMessage.selectOneAvailableOption)
@@ -123,7 +123,11 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
         
         setMyAvailabilityOnServer { (response, error) in
             debugPrint(response ?? "response not available")
-            _ = self.navigationController?.popViewController(animated: true)
+            if self.fromJobSelection {
+              kAppDelegate.goToDashBoard()
+            } else {
+                _ = self.navigationController?.popViewController(animated: true)
+            }
         }
     }
 

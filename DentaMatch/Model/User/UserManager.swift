@@ -124,11 +124,14 @@ extension UserManager {
                 user.state = userDetails[Constants.JobDetailKey.state].stringValue
                 user.country = userDetails[Constants.JobDetailKey.country].stringValue
 
-                user.preferredJobLocation = userDetails[Constants.ServerKey.preferredLocation].stringValue
                 user.profileImageURL = userDetails[Constants.ServerKey.imageUrl].stringValue
                 user.userId = userDetails[Constants.ServerKey.id].stringValue
                 user.latitude = userDetails[Constants.ServerKey.latitude].stringValue
                 user.longitude = userDetails[Constants.ServerKey.longitude].stringValue
+                user.preferredLocationId = userDetails["preferredJobLocationId"].stringValue
+                user.preferredJobLocation = userDetails["preferredLocationName"].stringValue
+                user.jobTitle = userDetails["jobtitleName"].stringValue
+                user.jobTitleId = userDetails["jobTitileId"].stringValue
 
                 self.activeUser = user
 //                self.saveActiveUser()

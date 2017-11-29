@@ -104,12 +104,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func goToDashBoard() {
-        if let _ =  UserDefaultsManager.sharedInstance.loadSearchParameter() {
+       // if let _ =  UserDefaultsManager.sharedInstance.loadSearchParameter() {
             let dashboardVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: TabBarVC.self)!
             self.window?.rootViewController = dashboardVC
-        } else {
-            self.goToSearch()
-        }
+      //  } else {
+     //       self.goToSearch()
+     //   }
     }
     
     func goToSearch() {

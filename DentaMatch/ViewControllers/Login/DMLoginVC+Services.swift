@@ -39,13 +39,16 @@ extension DMLoginVC {
                 debugPrint("Login Success......")
                 debugPrint("Socket Operation done......")
                 self.saveSearchedData(response: response!)
-                let userDetails = response?[Constants.ServerKey.result][Constants.ServerKey.userDetails].dictionary
-                if userDetails?["profileCompleted"]?.boolValue == true {
-                    self.openTabbar()
-                }else {
+                //let userDetails = response?[Constants.ServerKey.result][Constants.ServerKey.userDetails].dictionary
+                if (UserManager.shared().activeUser.preferredLocationId?.isEmptyField)! {
                     self.openJobTitleSelection()
-
+                } else {
+                    self.openTabbar()
                 }
+//                if userDetails?["profileCompleted"]?.boolValue == true {
+//                }else {
+//
+//                }
                 
             }
         }
