@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,11 +18,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="EditPublicProfileTableCell" rowHeight="645" id="KGk-i7-Jjw" customClass="EditPublicProfileTableCell" customModule="DentaMatch" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="645"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="EditPublicProfileTableCell" rowHeight="793" id="KGk-i7-Jjw" customClass="EditPublicProfileTableCell" customModule="DentaMatch" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="793"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="644"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="792.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="onA-2d-Xbc">
@@ -33,7 +34,7 @@
                         <state key="normal" image="profileButton"/>
                     </button>
                     <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="24i-3S-8Nu" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
-                        <rect key="frame" x="28" y="164" width="264" height="55"/>
+                        <rect key="frame" x="36" y="164" width="248" height="55"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="55" id="TbI-Sa-Tfn"/>
                         </constraints>
@@ -41,23 +42,23 @@
                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
-                    <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Job Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DVJ-iw-XgA" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
-                        <rect key="frame" x="28" y="314" width="264" height="55"/>
+                    <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Job Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DVJ-iw-XgA" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
+                        <rect key="frame" x="36" y="389" width="248" height="55"/>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
-                    <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Location" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o2G-tl-7Yc" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
-                        <rect key="frame" x="28" y="389" width="264" height="55"/>
+                    <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Preferred Job Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dQK-8m-xrG" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
+                        <rect key="frame" x="36" y="314" width="248" height="55"/>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Hi" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EBs-Au-Mw3">
-                        <rect key="frame" x="28" y="464" width="264" height="152"/>
+                        <rect key="frame" x="36" y="614" width="248" height="152"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="152" id="ugc-d9-HXV"/>
+                            <constraint firstAttribute="height" constant="152" id="cRM-H9-4RW"/>
                         </constraints>
                         <color key="textColor" red="0.21960784310000001" green="0.21960784310000001" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
@@ -68,35 +69,67 @@
                         <state key="normal" image="addPhoto"/>
                     </button>
                     <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rhf-Hl-X9c" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
-                        <rect key="frame" x="28" y="239" width="264" height="55"/>
+                        <rect key="frame" x="36" y="239" width="248" height="55"/>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SKa-FC-KuY">
+                        <rect key="frame" x="36" y="464" width="248" height="130"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="License No" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PLD-cM-ua2" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="248" height="55"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="State" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eiy-e4-eQl" customClass="AnimatedPHTextField" customModule="DentaMatch" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="75" width="248" height="55"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="eiy-e4-eQl" firstAttribute="leading" secondItem="SKa-FC-KuY" secondAttribute="leading" id="HuF-uh-OCB"/>
+                            <constraint firstAttribute="height" constant="130" id="ODL-hh-Mdh"/>
+                            <constraint firstItem="PLD-cM-ua2" firstAttribute="top" secondItem="SKa-FC-KuY" secondAttribute="top" id="PFm-2Q-n1A"/>
+                            <constraint firstItem="eiy-e4-eQl" firstAttribute="height" secondItem="PLD-cM-ua2" secondAttribute="height" id="QrU-ga-VN8"/>
+                            <constraint firstAttribute="trailing" secondItem="eiy-e4-eQl" secondAttribute="trailing" id="Zy2-zZ-Tt1"/>
+                            <constraint firstItem="PLD-cM-ua2" firstAttribute="leading" secondItem="SKa-FC-KuY" secondAttribute="leading" id="nUZ-W8-pD4"/>
+                            <constraint firstItem="eiy-e4-eQl" firstAttribute="top" secondItem="PLD-cM-ua2" secondAttribute="bottom" constant="20" id="v2o-cT-sZs"/>
+                            <constraint firstAttribute="trailing" secondItem="PLD-cM-ua2" secondAttribute="trailing" id="xpu-Xb-Vo8"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="EBs-Au-Mw3" firstAttribute="top" secondItem="o2G-tl-7Yc" secondAttribute="bottom" constant="20" id="148-C0-vGc"/>
+                    <constraint firstItem="SKa-FC-KuY" firstAttribute="leading" secondItem="DVJ-iw-XgA" secondAttribute="leading" id="0Ve-tA-Zo7"/>
+                    <constraint firstItem="EBs-Au-Mw3" firstAttribute="width" secondItem="DVJ-iw-XgA" secondAttribute="width" id="3I2-lF-DQd"/>
                     <constraint firstItem="24i-3S-8Nu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="20" id="96Z-RW-hVg"/>
-                    <constraint firstItem="o2G-tl-7Yc" firstAttribute="centerX" secondItem="DVJ-iw-XgA" secondAttribute="centerX" id="FAe-Sn-1yz"/>
+                    <constraint firstItem="PLD-cM-ua2" firstAttribute="height" secondItem="DVJ-iw-XgA" secondAttribute="height" id="C91-q4-Znr"/>
+                    <constraint firstItem="EBs-Au-Mw3" firstAttribute="centerX" secondItem="DVJ-iw-XgA" secondAttribute="centerX" id="FMB-vM-Hed"/>
+                    <constraint firstItem="dQK-8m-xrG" firstAttribute="centerX" secondItem="rhf-Hl-X9c" secondAttribute="centerX" id="JaD-vl-Qea"/>
                     <constraint firstItem="onA-2d-Xbc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="Map-EZ-sr8"/>
-                    <constraint firstItem="EBs-Au-Mw3" firstAttribute="width" secondItem="o2G-tl-7Yc" secondAttribute="width" id="NF6-c1-rDo"/>
+                    <constraint firstItem="dQK-8m-xrG" firstAttribute="width" secondItem="rhf-Hl-X9c" secondAttribute="width" id="MtH-cz-grV"/>
                     <constraint firstItem="rhf-Hl-X9c" firstAttribute="top" secondItem="24i-3S-8Nu" secondAttribute="bottom" constant="20" id="Nhw-gl-X7K"/>
                     <constraint firstItem="ffK-Uk-8Is" firstAttribute="centerX" secondItem="onA-2d-Xbc" secondAttribute="centerX" multiplier="1.22" id="Nnh-Si-39Y"/>
-                    <constraint firstItem="o2G-tl-7Yc" firstAttribute="height" secondItem="DVJ-iw-XgA" secondAttribute="height" id="OlQ-9y-A52"/>
-                    <constraint firstItem="o2G-tl-7Yc" firstAttribute="top" secondItem="DVJ-iw-XgA" secondAttribute="bottom" constant="20" id="Pyt-2Z-yoI"/>
                     <constraint firstItem="DVJ-iw-XgA" firstAttribute="width" secondItem="rhf-Hl-X9c" secondAttribute="width" id="TSo-Rn-Aao"/>
                     <constraint firstItem="rhf-Hl-X9c" firstAttribute="centerX" secondItem="24i-3S-8Nu" secondAttribute="centerX" id="VfJ-ko-Cnf"/>
+                    <constraint firstItem="dQK-8m-xrG" firstAttribute="top" secondItem="rhf-Hl-X9c" secondAttribute="bottom" constant="20" id="Z9p-05-nHM"/>
                     <constraint firstItem="24i-3S-8Nu" firstAttribute="top" secondItem="ffK-Uk-8Is" secondAttribute="bottom" constant="45" id="aUX-JB-z3H"/>
+                    <constraint firstItem="EBs-Au-Mw3" firstAttribute="top" secondItem="SKa-FC-KuY" secondAttribute="bottom" constant="20" id="eR3-qR-Te7"/>
                     <constraint firstItem="DVJ-iw-XgA" firstAttribute="height" secondItem="rhf-Hl-X9c" secondAttribute="height" id="fPT-jH-5f1"/>
+                    <constraint firstAttribute="bottom" secondItem="EBs-Au-Mw3" secondAttribute="bottom" constant="26.5" id="frS-08-PVU"/>
+                    <constraint firstItem="SKa-FC-KuY" firstAttribute="trailing" secondItem="DVJ-iw-XgA" secondAttribute="trailing" id="i5w-lQ-oFx"/>
                     <constraint firstItem="DVJ-iw-XgA" firstAttribute="centerX" secondItem="rhf-Hl-X9c" secondAttribute="centerX" id="jVG-Uh-lvm"/>
-                    <constraint firstItem="DVJ-iw-XgA" firstAttribute="top" secondItem="rhf-Hl-X9c" secondAttribute="bottom" constant="20" id="k8l-T2-qKz"/>
                     <constraint firstItem="rhf-Hl-X9c" firstAttribute="height" secondItem="24i-3S-8Nu" secondAttribute="height" id="kym-Tg-ATo"/>
                     <constraint firstAttribute="trailingMargin" secondItem="24i-3S-8Nu" secondAttribute="trailing" constant="20" id="lhz-2O-BZX"/>
+                    <constraint firstItem="DVJ-iw-XgA" firstAttribute="top" secondItem="dQK-8m-xrG" secondAttribute="bottom" constant="20" id="m2B-SJ-B3H"/>
                     <constraint firstItem="rhf-Hl-X9c" firstAttribute="width" secondItem="24i-3S-8Nu" secondAttribute="width" id="oo4-Cc-f0n"/>
+                    <constraint firstItem="dQK-8m-xrG" firstAttribute="height" secondItem="rhf-Hl-X9c" secondAttribute="height" id="ovt-bi-TmW"/>
                     <constraint firstItem="onA-2d-Xbc" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="pF7-BW-782"/>
-                    <constraint firstItem="o2G-tl-7Yc" firstAttribute="width" secondItem="DVJ-iw-XgA" secondAttribute="width" id="tOs-ip-Z8B"/>
+                    <constraint firstItem="SKa-FC-KuY" firstAttribute="top" secondItem="DVJ-iw-XgA" secondAttribute="bottom" constant="20" id="tYg-Ts-Sxx"/>
                     <constraint firstItem="24i-3S-8Nu" firstAttribute="top" secondItem="onA-2d-Xbc" secondAttribute="bottom" constant="39" id="weK-W3-TAj"/>
-                    <constraint firstItem="EBs-Au-Mw3" firstAttribute="centerX" secondItem="o2G-tl-7Yc" secondAttribute="centerX" id="zwg-OI-GFi"/>
                 </constraints>
             </tableViewCellContentView>
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -106,10 +139,13 @@
                 <outlet property="firstNameTextField" destination="24i-3S-8Nu" id="yDC-jM-kvb"/>
                 <outlet property="jobTitleTextField" destination="DVJ-iw-XgA" id="1XK-PX-kjt"/>
                 <outlet property="lastNameTextField" destination="rhf-Hl-X9c" id="KLm-Gf-Oz6"/>
-                <outlet property="locationTextField" destination="o2G-tl-7Yc" id="7hK-Lc-cIg"/>
+                <outlet property="licenseNumberTextField" destination="PLD-cM-ua2" id="blV-QX-h8m"/>
+                <outlet property="licenseStateConstraint" destination="ODL-hh-Mdh" id="OH5-np-ZbS"/>
+                <outlet property="preferredJobLocationTextField" destination="dQK-8m-xrG" id="X5k-ym-GSp"/>
                 <outlet property="profileButton" destination="onA-2d-Xbc" id="czs-8A-ewV"/>
+                <outlet property="stateTextField" destination="eiy-e4-eQl" id="URc-D4-LR8"/>
             </connections>
-            <point key="canvasLocation" x="27" y="313.5"/>
+            <point key="canvasLocation" x="27" y="387.5"/>
         </tableViewCell>
     </objects>
     <resources>

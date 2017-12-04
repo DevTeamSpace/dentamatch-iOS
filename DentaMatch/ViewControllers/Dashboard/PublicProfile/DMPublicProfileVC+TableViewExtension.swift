@@ -11,9 +11,9 @@ import Foundation
 extension DMPublicProfileVC : UITableViewDataSource,UITableViewDelegate,UITextViewDelegate {
     
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 645
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 0
+//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -24,19 +24,19 @@ extension DMPublicProfileVC : UITableViewDataSource,UITableViewDelegate,UITextVi
         cell.firstNameTextField.delegate = self
         cell.lastNameTextField.delegate = self
         cell.jobTitleTextField.delegate = self
-        cell.locationTextField.delegate = self
+        cell.preferredJobLocationTextField.delegate = self
         cell.aboutMeTextView.delegate = self
         cell.aboutMeTextView.text = editProfileParams[Constants.ServerKey.aboutMe]
         cell.placeHolderLabel.isHidden = editProfileParams[Constants.ServerKey.aboutMe]!.isEmpty ? false : true
         cell.firstNameTextField.text = editProfileParams[Constants.ServerKey.firstName]
         cell.lastNameTextField.text = editProfileParams[Constants.ServerKey.lastName]
         cell.jobTitleTextField.text = UserManager.shared().activeUser.jobTitle
+        cell.licenseNumberTextField.text = UserManager.shared().activeUser.licenseNumber
+        cell.stateTextField.text = UserManager.shared().activeUser.state
         cell.jobTitleTextField.type = 1
         cell.jobTitleTextField.tintColor = UIColor.clear
         cell.jobTitleTextField.inputView = jobSelectionPickerView
-
-        cell.locationTextField.type = 2
-        cell.locationTextField.text = UserManager.shared().activeUser.preferredJobLocation
+        cell.preferredJobLocationTextField.inputView = preferredJobLocationPickerView
         cell.addEditProfileButton.addTarget(self, action: #selector(addPhoto), for: .touchUpInside)
         if profileImage == nil {
             if let imageUrl = URL(string: UserManager.shared().activeUser.profileImageURL!) {
@@ -76,14 +76,14 @@ extension DMPublicProfileVC : UITableViewDataSource,UITableViewDelegate,UITextVi
     
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        guard text.characters.count > 0 else {
+        guard text.count > 0 else {
             return true
         }
-        if textView.text.characters.count >= Constants.Limit.aboutMeLimit && range.length == 0 {
+        if textView.text.count >= Constants.Limit.aboutMeLimit && range.length == 0 {
             return false
         }
-        if textView.text.characters.count + text.characters.count > Constants.Limit.aboutMeLimit && range.length == 0 {
-            let remainingTextCount = Constants.Limit.aboutMeLimit - textView.text.characters.count
+        if textView.text.count + text.count > Constants.Limit.aboutMeLimit && range.length == 0 {
+            let remainingTextCount = Constants.Limit.aboutMeLimit - textView.text.count
             textView.text = textView.text + text.stringFrom(0, to: remainingTextCount)
             return false
         }

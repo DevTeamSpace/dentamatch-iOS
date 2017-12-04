@@ -132,7 +132,7 @@ extension UserManager {
                 user.preferredJobLocation = userDetails["preferredLocationName"].stringValue
                 user.jobTitle = userDetails["jobtitleName"].stringValue
                 user.jobTitleId = userDetails["jobTitileId"].stringValue
-
+                
                 self.activeUser = user
 //                self.saveActiveUser()
                 UserDefaultsManager.sharedInstance.isLoggedIn = true

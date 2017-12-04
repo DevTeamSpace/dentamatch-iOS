@@ -14,7 +14,8 @@ extension DMEditProfileVC {
     func userProfileAPI() {
         self.showLoader()
         APIManager.apiGet(serviceName: Constants.API.userProfile, parameters: [:]) { (response:JSON?, error:NSError?) in
-            self.hideLoader()
+            
+            self.hideLoader()            
             if error != nil {
                 self.makeToast(toastString: (error?.localizedDescription)!)
                 return
@@ -70,10 +71,14 @@ extension DMEditProfileVC {
             UserManager.shared().activeUser.jobTitleId = user[Constants.ServerKey.jobTitileId].stringValue
             UserManager.shared().activeUser.profileImageURL = user[Constants.ServerKey.profilePic].stringValue
             UserManager.shared().activeUser.preferredJobLocation = user[Constants.ServerKey.preferredJobLocation].stringValue
-            UserManager.shared().activeUser.latitude = user[Constants.ServerKey.latitude].stringValue
-            UserManager.shared().activeUser.longitude = user[Constants.ServerKey.longitude].stringValue
+            UserManager.shared().activeUser.state = user[Constants.ServerKey.state].stringValue
+
+//            UserManager.shared().activeUser.latitude = user[Constants.ServerKey.latitude].stringValue
+//            UserManager.shared().activeUser.longitude = user[Constants.ServerKey.longitude].stringValue
             UserManager.shared().activeUser.aboutMe = user[Constants.ServerKey.aboutMe].stringValue
+            UserManager.shared().activeUser.licenseNumber = user[Constants.ServerKey.licenseNumber].stringValue
             UserManager.shared().saveActiveUser()
+            
 
         }
     }

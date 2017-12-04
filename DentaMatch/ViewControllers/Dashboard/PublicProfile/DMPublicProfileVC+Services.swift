@@ -99,4 +99,40 @@ extension DMPublicProfileVC {
         UserManager.shared().activeUser.jobTitle = (jobTitles.filter({$0.jobId == Int(self.selectedJobTitleId)}).first)?.jobTitle
         UserManager.shared().saveActiveUser()
     }
+    
+    func getPreferredLocations(shouldShowKeyboard:Bool = false) {
+        self.view.endEditing(true)
+        if shouldShowKeyboard { self.showLoader() }
+        APIManager.apiGet(serviceName: Constants.API.getPreferredJobLocations, parameters: nil) { (response:JSON?, error:NSError?) in
+            self.hideLoader()
+            if error != nil {
+                self.makeToast(toastString: (error?.localizedDescription)!)
+                return
+            }
+            guard let _ = response else {
+                self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
+                return
+            }
+            debugPrint(response!)
+            if response![Constants.ServerKey.status].boolValue {
+                let preferredJobLocationArray = response!["result"]["preferredJobLocations"].arrayValue
+                
+                self.preferredLocations.removeAll()
+                for location in preferredJobLocationArray {
+                    self.preferredLocations.append(PreferredLocation(preferredLocation: location))
+                }
+                self.preferredJobLocationPickerView.setup(preferredLocations: self.preferredLocations)
+                self.preferredJobLocationPickerView.pickerView.reloadAllComponents()
+                self.preferredJobLocationPickerView.backgroundColor = UIColor.white
+                if shouldShowKeyboard {
+                    if let cell = self.publicProfileTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as?
+                        EditPublicProfileTableCell {
+                        cell.preferredJobLocationTextField.becomeFirstResponder()
+                    }
+                }
+            } else {
+                self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
+            }
+        }
+    }
 }

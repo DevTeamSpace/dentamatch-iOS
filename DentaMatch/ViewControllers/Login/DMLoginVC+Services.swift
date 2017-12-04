@@ -40,7 +40,7 @@ extension DMLoginVC {
                 debugPrint("Socket Operation done......")
                 self.saveSearchedData(response: response!)
                 //let userDetails = response?[Constants.ServerKey.result][Constants.ServerKey.userDetails].dictionary
-                if (UserManager.shared().activeUser.preferredLocationId?.isEmptyField)! {
+                if (UserManager.shared().activeUser.jobTitleId?.isEmptyField)! {
                     self.openJobTitleSelection()
                 } else {
                     self.openTabbar()

@@ -22,6 +22,7 @@ class User: NSObject , NSCoding {
     var latitude:String? = ""
     var longitude:String? = ""
     var aboutMe:String? = ""
+    var licenseNumber:String? = ""
 
     var profileImageURL: String? = ""
     
@@ -70,6 +71,7 @@ class User: NSObject , NSCoding {
         self.latitude = aDecoder.decodeObject(forKey: "latitude") as? String
         self.longitude = aDecoder.decodeObject(forKey: "longitude") as? String
         self.aboutMe = aDecoder.decodeObject(forKey: "aboutMe") as? String
+        self.licenseNumber = aDecoder.decodeObject(forKey: "licenseNumber") as? String
         self.preferredLocationId = aDecoder.decodeObject(forKey: "preferredLocationId") as? String
 
 
@@ -94,6 +96,8 @@ class User: NSObject , NSCoding {
         aCoder.encode(self.longitude, forKey: "longitude")
         aCoder.encode(self.aboutMe, forKey: "aboutMe")
         aCoder.encode(self.preferredLocationId, forKey: "preferredLocationId")
+        aCoder.encode(self.licenseNumber, forKey: "licenseNumber")
+
 
     }
 }

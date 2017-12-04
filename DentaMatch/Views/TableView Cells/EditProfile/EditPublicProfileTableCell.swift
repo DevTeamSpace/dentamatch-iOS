@@ -9,9 +9,15 @@
 import UIKit
 
 class EditPublicProfileTableCell: UITableViewCell {
+    @IBOutlet weak var licenseStateConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var addEditProfileButton: UIButton!
     
-    @IBOutlet weak var locationTextField: AnimatedPHTextField!
+    @IBOutlet weak var preferredJobLocationTextField: AnimatedPHTextField!
+    
+    @IBOutlet weak var licenseNumberTextField: AnimatedPHTextField!
+    
+    @IBOutlet weak var stateTextField: AnimatedPHTextField!
     @IBOutlet weak var jobTitleTextField: AnimatedPHTextField!
     @IBOutlet weak var lastNameTextField: AnimatedPHTextField!
     @IBOutlet weak var firstNameTextField: AnimatedPHTextField!
@@ -32,8 +38,8 @@ class EditPublicProfileTableCell: UITableViewCell {
         self.aboutMeTextView.textContainer.lineFragmentPadding = 12.0
         self.jobTitleTextField.type = 1
         self.jobTitleTextField.tintColor = UIColor.clear
-        self.locationTextField.type = 1
-        
+        self.preferredJobLocationTextField.type = 1
+        self.licenseNumberTextField.type = 1
         //Right View for drop down
         let rightView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: jobTitleTextField.frame.size.height))
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 40, height: jobTitleTextField.frame.size.height))
