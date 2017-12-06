@@ -197,10 +197,8 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             }
             cell.placeLabel.attributedText = cell.fillPlaceAndJobTitle(jobTitle: UserManager.shared().activeUser.jobTitle!, place: address)
 
-            
-            if (UserManager.shared().activeUser.city?.isEmptyField)! && (UserManager.shared().activeUser.state?.isEmptyField)! {
+            if (UserManager.shared().activeUser.state?.isEmptyField)! {
                 cell.placeLabel.attributedText = cell.fillPlaceAndJobTitle(jobTitle: UserManager.shared().activeUser.jobTitle!, place: UserManager.shared().activeUser.country!)
-
             }
             
             cell.editButton.addTarget(self, action: #selector(openEditPublicProfileScreen), for: .touchUpInside)

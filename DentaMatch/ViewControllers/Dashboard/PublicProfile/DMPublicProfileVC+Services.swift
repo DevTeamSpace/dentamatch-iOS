@@ -94,9 +94,16 @@ extension DMPublicProfileVC {
         UserManager.shared().activeUser.jobTitle = selectedJob.jobTitle
 
         UserManager.shared().activeUser.aboutMe = editProfileParams[Constants.ServerKey.aboutMe]
-        UserManager.shared().activeUser.state = editProfileParams[Constants.ServerKey.state]
-        UserManager.shared().activeUser.licenseNumber = editProfileParams[Constants.ServerKey.licenseNumber]
-
+        if let _ = editProfileParams[Constants.ServerKey.state] {
+            UserManager.shared().activeUser.state = editProfileParams[Constants.ServerKey.state]
+        } else {
+            UserManager.shared().activeUser.state = ""
+        }
+        if let _ = editProfileParams[Constants.ServerKey.licenseNumber] {
+            UserManager.shared().activeUser.licenseNumber = editProfileParams[Constants.ServerKey.licenseNumber]
+        } else {
+            UserManager.shared().activeUser.licenseNumber = ""
+        }
         UserManager.shared().saveActiveUser()
     }
     

@@ -50,7 +50,13 @@ class DMPublicProfileVC: DMBaseVC {
         getPreferredLocations()
         // Do any additional setup after loading the view.
     }
+    
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.adjustLicenseAndStateTextFields(job: selectedJob)
+    }
+    
     func setup() {
        
         editProfileParams[Constants.ServerKey.firstName] = UserManager.shared().activeUser.firstName
@@ -134,25 +140,27 @@ class DMPublicProfileVC: DMBaseVC {
             self.makeToast(toastString: Constants.AlertMessage.emptyLastName)
             return false
         }
-        if editProfileParams[Constants.ServerKey.jobTitileId]!.isEmptyField {
-            self.makeToast(toastString: Constants.AlertMessage.emptyCurrentJobTitle)
-            return false
-        }
+
 
         if editProfileParams[Constants.ServerKey.aboutMe]!.isEmptyField {
             self.makeToast(toastString: Constants.AlertMessage.emptyAboutMe)
             return false
         }
         
-        if editProfileParams[Constants.ServerKey.jobTitileId]!.isEmptyField || editProfileParams[Constants.ServerKey.jobTitileId]! == "0" {
-            self.makeToast(toastString: Constants.AlertMessage.emptyJobTitle)
-            return false
-        }
         
-        if editProfileParams[Constants.ServerKey.zipcode]!.isEmptyField {
-            self.makeToast(toastString: Constants.AlertMessage.emptyPinCode)
-            return false
-        }        
+        if !selectedJob.isLicenseRequired {
+            editProfileParams[Constants.ServerKey.licenseNumber] = nil
+            editProfileParams[Constants.ServerKey.state] = nil
+        } else {
+            if editProfileParams[Constants.ServerKey.licenseNumber]!.isEmptyField {
+                self.makeToast(toastString: Constants.AlertMessage.emptyLicenseNumber)
+                return false
+            }
+            if editProfileParams[Constants.ServerKey.state]!.isEmptyField {
+                self.makeToast(toastString: Constants.AlertMessage.emptyState)
+                return false
+            }
+        }
         return true
     }
 
@@ -216,6 +224,8 @@ class DMPublicProfileVC: DMBaseVC {
     }
     
     func updateProfileScreen() {
+        //NotificationCenter.default.post(name: .updateProfileScreen, object: nil, userInfo: ["license":license!])
+
         NotificationCenter.default.post(name: .updateProfileScreen, object: nil, userInfo: nil)
     }
 }
@@ -311,6 +321,7 @@ extension DMPublicProfileVC:UITextFieldDelegate {
         
         if let cell = self.publicProfileTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as?
             EditPublicProfileTableCell {
+            
 //            if textField == cell.locationTextField {
 //                openMapsScreen()
 //                return false
@@ -347,7 +358,25 @@ extension DMPublicProfileVC:UITextFieldDelegate {
         case .state:
             editProfileParams[Constants.ServerKey.state] = textField.text!
         case .license:
-            editProfileParams[Constants.ServerKey.license] = textField.text!
+            editProfileParams[Constants.ServerKey.licenseNumber] = textField.text!
+        }
+    }
+    
+    func adjustLicenseAndStateTextFields(job:JobTitle) {
+        if let cell = self.publicProfileTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? EditPublicProfileTableCell {
+            cell.jobTitleTextField.text = job.jobTitle
+            if job.isLicenseRequired {
+                cell.stateTextField.isHidden = false
+                cell.licenseNumberTextField.isHidden = false
+                cell.licenseStateConstraint.constant = 130
+                cell.licenseStateTopConstraint.constant = 20
+            } else {
+                cell.stateTextField.isHidden = true
+                cell.licenseNumberTextField.isHidden = true
+                cell.licenseStateConstraint.constant = 0
+                cell.licenseStateTopConstraint.constant = 0
+            }
+            editProfileParams[Constants.ServerKey.jobTitileId] = "\(selectedJob.jobId)"
         }
     }
 }
@@ -356,19 +385,7 @@ extension DMPublicProfileVC : JobSelectionPickerViewDelegate {
     
     func jobPickerDoneButtonAction(job: JobTitle?) {
         selectedJob = job!
-        if let cell = self.publicProfileTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? EditPublicProfileTableCell {
-            cell.jobTitleTextField.text = job?.jobTitle
-            if job!.isLicenseRequired {
-                cell.stateTextField.isHidden = false
-                cell.licenseNumberTextField.isHidden = false
-                cell.licenseStateConstraint.constant = 130
-            } else {
-                cell.stateTextField.isHidden = true
-                cell.licenseNumberTextField.isHidden = true
-                cell.licenseStateConstraint.constant = 0
-            }
-            editProfileParams[Constants.ServerKey.jobTitileId] = "\(selectedJob.jobId)"
-        }
+        self.adjustLicenseAndStateTextFields(job: selectedJob)
         self.view.endEditing(true)
     }
     

@@ -119,7 +119,7 @@
                     <constraint firstItem="24i-3S-8Nu" firstAttribute="top" secondItem="ffK-Uk-8Is" secondAttribute="bottom" constant="45" id="aUX-JB-z3H"/>
                     <constraint firstItem="EBs-Au-Mw3" firstAttribute="top" secondItem="SKa-FC-KuY" secondAttribute="bottom" constant="20" id="eR3-qR-Te7"/>
                     <constraint firstItem="DVJ-iw-XgA" firstAttribute="height" secondItem="rhf-Hl-X9c" secondAttribute="height" id="fPT-jH-5f1"/>
-                    <constraint firstAttribute="bottom" secondItem="EBs-Au-Mw3" secondAttribute="bottom" constant="26.5" id="frS-08-PVU"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="EBs-Au-Mw3" secondAttribute="bottom" constant="26.5" id="frS-08-PVU"/>
                     <constraint firstItem="SKa-FC-KuY" firstAttribute="trailing" secondItem="DVJ-iw-XgA" secondAttribute="trailing" id="i5w-lQ-oFx"/>
                     <constraint firstItem="DVJ-iw-XgA" firstAttribute="centerX" secondItem="rhf-Hl-X9c" secondAttribute="centerX" id="jVG-Uh-lvm"/>
                     <constraint firstItem="rhf-Hl-X9c" firstAttribute="height" secondItem="24i-3S-8Nu" secondAttribute="height" id="kym-Tg-ATo"/>
@@ -141,6 +141,7 @@
                 <outlet property="lastNameTextField" destination="rhf-Hl-X9c" id="KLm-Gf-Oz6"/>
                 <outlet property="licenseNumberTextField" destination="PLD-cM-ua2" id="blV-QX-h8m"/>
                 <outlet property="licenseStateConstraint" destination="ODL-hh-Mdh" id="OH5-np-ZbS"/>
+                <outlet property="licenseStateTopConstraint" destination="tYg-Ts-Sxx" id="p9g-Gt-2E4"/>
                 <outlet property="preferredJobLocationTextField" destination="dQK-8m-xrG" id="X5k-ym-GSp"/>
                 <outlet property="profileButton" destination="onA-2d-Xbc" id="czs-8A-ewV"/>
                 <outlet property="stateTextField" destination="eiy-e4-eQl" id="URc-D4-LR8"/>

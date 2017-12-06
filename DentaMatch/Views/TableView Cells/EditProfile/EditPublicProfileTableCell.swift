@@ -11,6 +11,7 @@ import UIKit
 class EditPublicProfileTableCell: UITableViewCell {
     @IBOutlet weak var licenseStateConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var licenseStateTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var addEditProfileButton: UIButton!
     
     @IBOutlet weak var preferredJobLocationTextField: AnimatedPHTextField!
