@@ -27,24 +27,19 @@ class DMPublicProfileVC: DMBaseVC {
     var editProfileParams = [
         Constants.ServerKey.firstName:"",
         Constants.ServerKey.lastName:"",
-        //"zipcode":"",
-        Constants.ServerKey.latitude:"",
-        Constants.ServerKey.longitude:"",
         Constants.ServerKey.preferredJobLocation:"",
+        Constants.ServerKey.preferredJobLocationId:"",
         Constants.ServerKey.jobTitileId:"",
         Constants.ServerKey.aboutMe:"",
         Constants.ServerKey.licenseNumber:"",
         Constants.ServerKey.state:"",
-        "preferredCity":"",
-        "preferredState":"",
-        "preferredCountry":""
     ]
     
     var profileImage:UIImage?
     var jobSelectionPickerView:JobSelectionPickerView!
     var preferredJobLocationPickerView:PreferredLocationPickerView!
     var jobTitles = [JobTitle]()
-    var selectedJobTitleId = ""
+    var selectedJob = JobTitle()
     var preferredLocations = [PreferredLocation]()
     var selectedLocation:PreferredLocation!
     //var selectedLocationCoordinate:CLLocationCoordinate2D?
@@ -57,20 +52,17 @@ class DMPublicProfileVC: DMBaseVC {
     }
 
     func setup() {
-        selectedJobTitleId = UserManager.shared().activeUser.jobTitleId!
+       
         editProfileParams[Constants.ServerKey.firstName] = UserManager.shared().activeUser.firstName
         editProfileParams[Constants.ServerKey.lastName] = UserManager.shared().activeUser.lastName
-        editProfileParams[Constants.ServerKey.jobTitileId] = selectedJobTitleId
+        editProfileParams[Constants.ServerKey.jobTitileId] = String(selectedJob.jobId)
 //        editProfileParams[Constants.ServerKey.latitude] = UserManager.shared().activeUser.latitude
 //        editProfileParams[Constants.ServerKey.longitude] = UserManager.shared().activeUser.longitude
         editProfileParams[Constants.ServerKey.licenseNumber] = UserManager.shared().activeUser.licenseNumber
         editProfileParams[Constants.ServerKey.state] = UserManager.shared().activeUser.state
 
         editProfileParams[Constants.ServerKey.preferredJobLocation] = UserManager.shared().activeUser.preferredJobLocation
-        editProfileParams["zipcode"] = UserManager.shared().activeUser.zipCode
-        editProfileParams["preferredCity"] = UserManager.shared().activeUser.city
-        editProfileParams["preferredState"] = UserManager.shared().activeUser.state
-        editProfileParams["preferredCountry"] = UserManager.shared().activeUser.country
+        editProfileParams[Constants.ServerKey.preferredJobLocationId] = UserManager.shared().activeUser.preferredLocationId
 
         editProfileParams[Constants.ServerKey.aboutMe] = UserManager.shared().activeUser.aboutMe
 
@@ -231,14 +223,15 @@ class DMPublicProfileVC: DMBaseVC {
 extension DMPublicProfileVC:UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard string.characters.count > 0 else {
+        guard string.count > 0 else {
             return true
         }
+        let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ")
 
         let profileOptions = ProfileOptions(rawValue: textField.tag)!
         switch profileOptions {
         case .firstName:
-            let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ")
+
             if string.rangeOfCharacter(from: characterset.inverted) != nil {
                 debugPrint("string contains special characters")
                 return false
@@ -247,8 +240,9 @@ extension DMPublicProfileVC:UITextFieldDelegate {
                 return false
             }
             return true
+            
         case .lastName:
-            let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ")
+
             if string.rangeOfCharacter(from: characterset.inverted) != nil {
                 debugPrint("string contains special characters")
                 return false
@@ -257,6 +251,41 @@ extension DMPublicProfileVC:UITextFieldDelegate {
                 return false
             }
             return true
+            
+        case .license:
+            let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ0123456789-")
+            if string == "-" && textField.text?.count == 0 {
+                self.makeToast(toastString: Constants.AlertMessage.lienseNoStartError)
+                return false
+            }
+            
+            if string.rangeOfCharacter(from: characterset.inverted) != nil {
+                debugPrint("string contains special characters")
+                return false
+            }
+            
+            if (textField.text?.count)! >= Constants.Limit.licenseNumber {                return false
+            }
+            return true
+            
+        case .state:
+            let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ- ")
+            if string == "-" && textField.text?.count == 0 {
+                //self.dismissKeyboard()
+                self.makeToast(toastString: Constants.AlertMessage.stateStartError)
+                return false
+                
+            }
+            if string.rangeOfCharacter(from: characterset.inverted) != nil {
+                debugPrint("string contains special characters")
+                return false
+                
+            }
+            if (textField.text?.count)! >= Constants.Limit.commonMaxLimit {                return false
+                
+            }
+            return true
+            
         default:
             return true
         }
@@ -313,8 +342,12 @@ extension DMPublicProfileVC:UITextFieldDelegate {
             editProfileParams[Constants.ServerKey.lastName] = textField.text!
         case .preferredJobLocation:
             editProfileParams[Constants.ServerKey.preferredJobLocation] = textField.text!
-        default:
-            break
+        case .jobTitle:
+            editProfileParams[Constants.ServerKey.jobTitle] = textField.text!
+        case .state:
+            editProfileParams[Constants.ServerKey.state] = textField.text!
+        case .license:
+            editProfileParams[Constants.ServerKey.license] = textField.text!
         }
     }
 }
@@ -322,9 +355,9 @@ extension DMPublicProfileVC:UITextFieldDelegate {
 extension DMPublicProfileVC : JobSelectionPickerViewDelegate {
     
     func jobPickerDoneButtonAction(job: JobTitle?) {
+        selectedJob = job!
         if let cell = self.publicProfileTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? EditPublicProfileTableCell {
             cell.jobTitleTextField.text = job?.jobTitle
-            selectedJobTitleId = "\(job!.jobId)"
             if job!.isLicenseRequired {
                 cell.stateTextField.isHidden = false
                 cell.licenseNumberTextField.isHidden = false
@@ -334,7 +367,7 @@ extension DMPublicProfileVC : JobSelectionPickerViewDelegate {
                 cell.licenseNumberTextField.isHidden = true
                 cell.licenseStateConstraint.constant = 0
             }
-            editProfileParams[Constants.ServerKey.jobTitileId] = selectedJobTitleId
+            editProfileParams[Constants.ServerKey.jobTitileId] = "\(selectedJob.jobId)"
         }
         self.view.endEditing(true)
     }
@@ -350,10 +383,10 @@ extension DMPublicProfileVC:PreferredLocationPickerViewDelegate {
     }
     
     func preferredLocationPickerDoneButtonAction(preferredLocation: PreferredLocation?) {
+        editProfileParams[Constants.ServerKey.preferredJobLocationId] = preferredLocation?.id
         if let cell = self.publicProfileTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? EditPublicProfileTableCell {
             cell.preferredJobLocationTextField.text = preferredLocation?.preferredLocationName
             selectedLocation = preferredLocation
-            //editProfileParams[Constants.ServerKey.jobTitileId] = selectedJobTitleId
         }
         self.view.endEditing(true)
 

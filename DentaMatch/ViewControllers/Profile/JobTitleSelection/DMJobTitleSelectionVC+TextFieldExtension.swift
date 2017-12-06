@@ -25,14 +25,14 @@ extension DMJobTitleSelectionVC : UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard string.characters.count > 0 else {
+        guard string.count > 0 else {
             return true
         }
         
         if textField.tag == 2 {
             //For License
             let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ0123456789-")
-            if string == "-" && textField.text?.characters.count == 0 {
+            if string == "-" && textField.text?.count == 0 {
 //                self.dismissKeyboard()
                 self.makeToast(toastString: Constants.AlertMessage.lienseNoStartError)
                 return false
@@ -43,14 +43,14 @@ extension DMJobTitleSelectionVC : UITextFieldDelegate {
                 return false
                 
             }
-            if (textField.text?.characters.count)! >= Constants.Limit.licenseNumber {                return false
+            if (textField.text?.count)! >= Constants.Limit.licenseNumber {                return false
                 
             }
             
         }else if textField.tag == 3 {
             //State check
             let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ- ")
-            if string == "-" && textField.text?.characters.count == 0 {
+            if string == "-" && textField.text?.count == 0 {
                 //self.dismissKeyboard()
                 self.makeToast(toastString: Constants.AlertMessage.stateStartError)
                 return false
@@ -61,7 +61,7 @@ extension DMJobTitleSelectionVC : UITextFieldDelegate {
                 return false
                 
             }
-            if (textField.text?.characters.count)! >= Constants.Limit.commonMaxLimit {                return false
+            if (textField.text?.count)! >= Constants.Limit.commonMaxLimit {                return false
                 
             }
         }

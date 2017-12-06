@@ -24,6 +24,9 @@ extension DMPublicProfileVC : UITableViewDataSource,UITableViewDelegate,UITextVi
         cell.firstNameTextField.delegate = self
         cell.lastNameTextField.delegate = self
         cell.jobTitleTextField.delegate = self
+        cell.licenseNumberTextField.delegate = self
+        cell.stateTextField.delegate = self
+
         cell.preferredJobLocationTextField.delegate = self
         cell.aboutMeTextView.delegate = self
         cell.aboutMeTextView.text = editProfileParams[Constants.ServerKey.aboutMe]
@@ -32,6 +35,7 @@ extension DMPublicProfileVC : UITableViewDataSource,UITableViewDelegate,UITextVi
         cell.lastNameTextField.text = editProfileParams[Constants.ServerKey.lastName]
         cell.jobTitleTextField.text = UserManager.shared().activeUser.jobTitle
         cell.licenseNumberTextField.text = UserManager.shared().activeUser.licenseNumber
+        cell.preferredJobLocationTextField.text = UserManager.shared().activeUser.preferredJobLocation
         cell.stateTextField.text = UserManager.shared().activeUser.state
         cell.jobTitleTextField.type = 1
         cell.jobTitleTextField.tintColor = UIColor.clear

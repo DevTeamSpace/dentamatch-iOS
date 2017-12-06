@@ -20,6 +20,14 @@ class JobTitle: NSObject {
         /* For Default object of class */
     }
     
+    //Used as a copy constructor
+    init(jobTitle:JobTitle) {
+        self.jobTitle = jobTitle.jobTitle
+        self.jobId = jobTitle.jobId
+        self.isLicenseRequired = jobTitle.isLicenseRequired
+
+    }
+    
     init(job:JSON) {
         self.jobTitle = job["jobtitle_name"].stringValue
         if job["jobtitle_name"].stringValue.isEmpty {

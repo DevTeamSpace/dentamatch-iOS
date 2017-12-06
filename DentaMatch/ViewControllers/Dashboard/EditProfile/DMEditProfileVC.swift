@@ -33,6 +33,7 @@ class DMEditProfileVC: DMBaseVC {
     var experiences = [ExperienceModel]()
     var dentalStateBoardURL = ""
     var jobTitles = [JobTitle]()
+    var currentJobTitle:JobTitle!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,8 +98,10 @@ class DMEditProfileVC: DMBaseVC {
     }
     
     @objc func openEditPublicProfileScreen() {
+//        let editPublicProfileVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: DMPublicProfileVC.self)!
+//        editPublicProfileVC.selectedJob = JobTitle(jobTitle: currentJobTitle)
+//        self.navigationController?.pushViewController(editPublicProfileVC, animated: true)
         self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToPublicProfile, sender: self)
-
     }
 
     @objc func openSettingScreen() {
@@ -214,6 +217,7 @@ class DMEditProfileVC: DMBaseVC {
         } else if segue.identifier == Constants.StoryBoard.SegueIdentifier.goToPublicProfile {
             let destinationVC = segue.destination as! DMPublicProfileVC
             destinationVC.jobTitles = jobTitles
+            destinationVC.selectedJob = JobTitle(jobTitle: currentJobTitle)
             destinationVC.hidesBottomBarWhenPushed = true
         } else if segue.identifier == Constants.StoryBoard.SegueIdentifier.goToSetting {
             let destinationVC = segue.destination as! DMSettingVC

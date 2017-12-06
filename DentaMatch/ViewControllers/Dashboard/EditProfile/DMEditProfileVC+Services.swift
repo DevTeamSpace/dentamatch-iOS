@@ -33,6 +33,7 @@ extension DMEditProfileVC {
     func handleProfileResponse(response:JSON?) {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
+                handleJobListResponse(jobLists: response[Constants.ServerKey.result][Constants.ServerKey.joblists].arrayValue)
                 handleUserResponse(user: response[Constants.ServerKey.result][Constants.ServerKey.user])
                 handleDentalStateboardResponse(dentalStateBoard: response[Constants.ServerKey.result][Constants.ServerKey.dentalStateBoard])
                 handleLicenseResponse(license: response[Constants.ServerKey.result][Constants.ServerKey.license])
@@ -41,7 +42,6 @@ extension DMEditProfileVC {
                 handleSchoolListResponse(schoolsCategories: response[Constants.ServerKey.result][Constants.ServerKey.school].arrayValue)
                 handleSkillsResponse(skills: response[Constants.ServerKey.result][Constants.ServerKey.skills].arrayValue)
                 handleWorkExperienceResponse(workExperienceArray: response[Constants.ServerKey.result][Constants.ServerKey.workExperience][Constants.ServerKey.list].arrayValue)
-                handleJobListResponse(jobLists: response[Constants.ServerKey.result][Constants.ServerKey.joblists].arrayValue)
             } else {
                 //handle error
             }
@@ -67,14 +67,15 @@ extension DMEditProfileVC {
         if let user = user {
             UserManager.shared().activeUser.firstName = user[Constants.ServerKey.firstName].stringValue
             UserManager.shared().activeUser.lastName = user[Constants.ServerKey.lastName].stringValue
-            UserManager.shared().activeUser.jobTitle = user[Constants.ServerKey.jobTitle].stringValue
+            UserManager.shared().activeUser.jobTitle = user[Constants.ServerKey.jobtitleName].stringValue
             UserManager.shared().activeUser.jobTitleId = user[Constants.ServerKey.jobTitileId].stringValue
             UserManager.shared().activeUser.profileImageURL = user[Constants.ServerKey.profilePic].stringValue
-            UserManager.shared().activeUser.preferredJobLocation = user[Constants.ServerKey.preferredJobLocation].stringValue
+            UserManager.shared().activeUser.preferredJobLocation = user[Constants.ServerKey.preferredLocationName].stringValue
+            UserManager.shared().activeUser.preferredLocationId = user[Constants.ServerKey.preferredJobLocationId].stringValue
             UserManager.shared().activeUser.state = user[Constants.ServerKey.state].stringValue
 
-//            UserManager.shared().activeUser.latitude = user[Constants.ServerKey.latitude].stringValue
-//            UserManager.shared().activeUser.longitude = user[Constants.ServerKey.longitude].stringValue
+            currentJobTitle = self.jobTitles.filter({$0.jobId == user[Constants.ServerKey.jobTitileId].intValue}).first
+
             UserManager.shared().activeUser.aboutMe = user[Constants.ServerKey.aboutMe].stringValue
             UserManager.shared().activeUser.licenseNumber = user[Constants.ServerKey.licenseNumber].stringValue
             UserManager.shared().saveActiveUser()

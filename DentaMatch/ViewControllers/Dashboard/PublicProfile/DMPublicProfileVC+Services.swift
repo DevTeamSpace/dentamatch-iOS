@@ -88,15 +88,15 @@ extension DMPublicProfileVC {
         UserManager.shared().activeUser.firstName = editProfileParams[Constants.ServerKey.firstName]
         UserManager.shared().activeUser.lastName = editProfileParams[Constants.ServerKey.lastName]
         UserManager.shared().activeUser.preferredJobLocation = editProfileParams[Constants.ServerKey.preferredJobLocation]
-        UserManager.shared().activeUser.jobTitleId = editProfileParams["jobTitileId"]
-        UserManager.shared().activeUser.latitude = editProfileParams[Constants.ServerKey.latitude]
-        UserManager.shared().activeUser.longitude = editProfileParams[Constants.ServerKey.longitude]
+        UserManager.shared().activeUser.preferredLocationId = editProfileParams[Constants.ServerKey.preferredJobLocationId]
+
+        UserManager.shared().activeUser.jobTitleId = "\(selectedJob.jobId)"
+        UserManager.shared().activeUser.jobTitle = selectedJob.jobTitle
+
         UserManager.shared().activeUser.aboutMe = editProfileParams[Constants.ServerKey.aboutMe]
-        UserManager.shared().activeUser.zipCode = editProfileParams["zipcode"]
-        UserManager.shared().activeUser.country = editProfileParams["preferredCountry"]
-        UserManager.shared().activeUser.city = editProfileParams["preferredCity"]
-        UserManager.shared().activeUser.state = editProfileParams["preferredState"]        
-        UserManager.shared().activeUser.jobTitle = (jobTitles.filter({$0.jobId == Int(self.selectedJobTitleId)}).first)?.jobTitle
+        UserManager.shared().activeUser.state = editProfileParams[Constants.ServerKey.state]
+        UserManager.shared().activeUser.licenseNumber = editProfileParams[Constants.ServerKey.licenseNumber]
+
         UserManager.shared().saveActiveUser()
     }
     
