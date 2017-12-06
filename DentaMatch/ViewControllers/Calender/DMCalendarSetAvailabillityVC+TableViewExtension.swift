@@ -254,6 +254,7 @@ extension DMCalendarSetAvailabillityVC : JobSearchTypeCellDelegate,TemporyJobCel
             }
         }
         else {
+            self.availablitytModel?.isFulltime = selected
             if selected == true  {
                 isJobTypeFullTime = "1"
             }
