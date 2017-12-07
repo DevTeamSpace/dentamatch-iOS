@@ -215,6 +215,7 @@
 		E59073571FB023C7007381E8 /* DMCongratulationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59073561FB023C7007381E8 /* DMCongratulationsVC.swift */; };
 		E59073591FB02C4F007381E8 /* DMJobTitleSelectionVC+TableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59073581FB02C4F007381E8 /* DMJobTitleSelectionVC+TableExtension.swift */; };
 		E590735B1FB02D36007381E8 /* DMJobTitleSelectionVC+TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590735A1FB02D36007381E8 /* DMJobTitleSelectionVC+TextFieldExtension.swift */; };
+		E59467271FD8FFE70009C18B /* Popover.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59467261FD8FFE60009C18B /* Popover.swift */; };
 		E594BE9D1E1DFF4400310AE5 /* DMRegistrationVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E594BE9C1E1DFF4400310AE5 /* DMRegistrationVC+TableViewExtension.swift */; };
 		E594BE9F1E1DFFA900310AE5 /* DMRegistrationVC+TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E594BE9E1E1DFFA900310AE5 /* DMRegistrationVC+TextFieldExtension.swift */; };
 		E594BEA21E1E014F00310AE5 /* DMLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E594BEA11E1E014F00310AE5 /* DMLoginVC.swift */; };
@@ -627,6 +628,7 @@
 		E59073561FB023C7007381E8 /* DMCongratulationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMCongratulationsVC.swift; sourceTree = "<group>"; };
 		E59073581FB02C4F007381E8 /* DMJobTitleSelectionVC+TableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DMJobTitleSelectionVC+TableExtension.swift"; sourceTree = "<group>"; };
 		E590735A1FB02D36007381E8 /* DMJobTitleSelectionVC+TextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DMJobTitleSelectionVC+TextFieldExtension.swift"; sourceTree = "<group>"; };
+		E59467261FD8FFE60009C18B /* Popover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Popover.swift; sourceTree = "<group>"; };
 		E594BE9C1E1DFF4400310AE5 /* DMRegistrationVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMRegistrationVC+TableViewExtension.swift"; sourceTree = "<group>"; };
 		E594BE9E1E1DFFA900310AE5 /* DMRegistrationVC+TextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMRegistrationVC+TextFieldExtension.swift"; sourceTree = "<group>"; };
 		E594BEA11E1E014F00310AE5 /* DMLoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMLoginVC.swift; sourceTree = "<group>"; };
@@ -1326,6 +1328,7 @@
 		E55462E21DAE47A9004163B2 /* Third Party */ = {
 			isa = PBXGroup;
 			children = (
+				E59467251FD8FFE60009C18B /* PopOverView */,
 				E5F9191F1E9DD4A30021F008 /* FSCalendar */,
 				E5AE37461E4971CE0001EC3C /* SocketIO */,
 				5A85D2051E2DFA5100AC4C89 /* TagView */,
@@ -1745,6 +1748,14 @@
 				E59073561FB023C7007381E8 /* DMCongratulationsVC.swift */,
 			);
 			path = Congratulations;
+			sourceTree = "<group>";
+		};
+		E59467251FD8FFE60009C18B /* PopOverView */ = {
+			isa = PBXGroup;
+			children = (
+				E59467261FD8FFE60009C18B /* Popover.swift */,
+			);
+			path = PopOverView;
 			sourceTree = "<group>";
 		};
 		E594BEA01E1E014F00310AE5 /* Login */ = {
@@ -2591,6 +2602,7 @@
 				E5BED5531E49AB85003EC833 /* DMMessagesVC+TableViewExtension.swift in Sources */,
 				E5B84B381E9DF835009665D1 /* Chat+CoreDataProperties.swift in Sources */,
 				E5F9194B1E9DD4A30021F008 /* FSCalendarScopeHandle.m in Sources */,
+				E59467271FD8FFE70009C18B /* Popover.swift in Sources */,
 				E5E7CB781E2FA23200D4FB59 /* AboutMeCell.swift in Sources */,
 				E50512BE1E82378700509328 /* WorkingHoursTableCell.swift in Sources */,
 				E5AE37741E4971CE0001EC3C /* SocketTypes.swift in Sources */,

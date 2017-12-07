@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -34,7 +34,7 @@
                         </constraints>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UiG-3D-BXE" customClass="ProfileImageButton" customModule="DentaMatch" customModuleProvider="target">
-                        <rect key="frame" x="112" y="87" width="96" height="96"/>
+                        <rect key="frame" x="112" y="58" width="96" height="96"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="96" id="YVk-sZ-Z2h"/>
                             <constraint firstAttribute="width" constant="96" id="iqx-L8-jGM"/>
@@ -42,13 +42,13 @@
                         <state key="normal" image="profileButton"/>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi Jennifer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="two-jR-4bn">
-                        <rect key="frame" x="8" y="200" width="304" height="35"/>
+                        <rect key="frame" x="8" y="199" width="304" height="35"/>
                         <fontDescription key="fontDescription" name="SFUIText-Bold" family="SF UI Text" pointSize="30"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4hg-2h-wrq">
-                        <rect key="frame" x="8" y="238" width="304" height="19"/>
+                        <rect key="frame" x="8" y="237" width="304" height="19"/>
                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -87,6 +87,14 @@
                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dxh-jx-qpg">
+                        <rect key="frame" x="99" y="164" width="122" height="24"/>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="14"/>
+                        <state key="normal" title="Pending" backgroundImage="pendingButton">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <state key="highlighted" title="Pending" backgroundImage="pendingButton"/>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="IS9-b7-4ww" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="00G-UY-CxS"/>
@@ -97,6 +105,8 @@
                     <constraint firstItem="4hg-2h-wrq" firstAttribute="centerX" secondItem="two-jR-4bn" secondAttribute="centerX" id="7T4-md-D5E"/>
                     <constraint firstAttribute="trailing" secondItem="HPh-yt-bRc" secondAttribute="trailing" id="8hq-rC-aIi"/>
                     <constraint firstAttribute="trailing" secondItem="hOf-F1-8Sf" secondAttribute="trailing" constant="4" id="CHp-3h-5O3"/>
+                    <constraint firstItem="Dxh-jx-qpg" firstAttribute="centerX" secondItem="UiG-3D-BXE" secondAttribute="centerX" id="EU7-aJ-hEv"/>
+                    <constraint firstItem="Dxh-jx-qpg" firstAttribute="top" secondItem="UiG-3D-BXE" secondAttribute="bottom" constant="10" id="I5j-TJ-YJd"/>
                     <constraint firstAttribute="trailing" secondItem="4hg-2h-wrq" secondAttribute="trailing" constant="8" id="L5d-SF-Eyg"/>
                     <constraint firstItem="two-jR-4bn" firstAttribute="centerX" secondItem="UiG-3D-BXE" secondAttribute="centerX" id="LA2-JT-WkX"/>
                     <constraint firstItem="Ant-ls-85M" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="PzD-a0-3wR"/>
@@ -108,10 +118,10 @@
                     <constraint firstItem="hOf-F1-8Sf" firstAttribute="top" secondItem="Ant-ls-85M" secondAttribute="bottom" id="bB1-UA-8P0"/>
                     <constraint firstItem="4hg-2h-wrq" firstAttribute="top" secondItem="two-jR-4bn" secondAttribute="bottom" constant="3" id="dsh-20-vZf"/>
                     <constraint firstItem="Ant-ls-85M" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="mmA-ej-Wcf"/>
-                    <constraint firstItem="two-jR-4bn" firstAttribute="top" secondItem="UiG-3D-BXE" secondAttribute="bottom" constant="17" id="pE6-eD-pyo"/>
                     <constraint firstItem="yA5-c1-EgQ" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="tLA-cL-lyO"/>
+                    <constraint firstItem="two-jR-4bn" firstAttribute="top" secondItem="Dxh-jx-qpg" secondAttribute="bottom" constant="11" id="xnM-6l-ylk"/>
                     <constraint firstItem="two-jR-4bn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="yZ4-be-BZG"/>
-                    <constraint firstItem="UiG-3D-BXE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="79" id="zDD-Qa-ngU"/>
+                    <constraint firstItem="UiG-3D-BXE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="47" id="zDD-Qa-ngU"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -121,11 +131,13 @@
                 <outlet property="placeLabel" destination="4hg-2h-wrq" id="f4i-B7-WY7"/>
                 <outlet property="profileButton" destination="UiG-3D-BXE" id="KdY-kd-dIc"/>
                 <outlet property="settingButton" destination="IS9-b7-4ww" id="nox-HS-mX6"/>
+                <outlet property="statusButton" destination="Dxh-jx-qpg" id="dsz-ji-zlN"/>
             </connections>
             <point key="canvasLocation" x="34" y="147"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="pendingButton" width="122" height="24"/>
         <image name="profileButton" width="99" height="100"/>
         <image name="registrationHeading" width="375" height="192"/>
         <image name="settings" width="22" height="22"/>

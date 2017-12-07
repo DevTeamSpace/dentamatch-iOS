@@ -181,7 +181,13 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
         case .profileHeader:
             let cell = tableView.dequeueReusableCell(withIdentifier: "EditProfileHeaderTableCell") as! EditProfileHeaderTableCell
             cell.nameLabel.text = UserManager.shared().activeUser.fullName()
+            
             //cell.placeLabel.attributedText = cell.fillPlaceAndJobTitle(jobTitle: UserManager.shared().activeUser.jobTitle!, place: UserManager.shared().activeUser.preferredJobLocation!)
+            cell.profileButton.progressBar.setProgress(1.0, animated: false)
+            
+            //Pending
+            cell.profileButton.progressBar.progressBarTrackColor = UIColor.clear
+            cell.profileButton.progressBar.progressBarProgressColor = UIColor.color(withHexCode: "e7aa4d")
             
             var address = ""
             if let city = UserManager.shared().activeUser.city {
@@ -201,11 +207,17 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
                 cell.placeLabel.attributedText = cell.fillPlaceAndJobTitle(jobTitle: UserManager.shared().activeUser.jobTitle!, place: UserManager.shared().activeUser.country!)
             }
             
+            //            cell.statusButton.setBackgroundImage(UIImage(named:"pendingButton"), for: .normal)
+            //            cell.statusButton.setTitle("Pending", for: .normal)
+            
+            //            cell.statusButton.setBackgroundImage(UIImage(named:"needsAttention"), for: .normal)
+            //            cell.statusButton.setTitle("Needs Attention", for: .normal)
+            
             cell.editButton.addTarget(self, action: #selector(openEditPublicProfileScreen), for: .touchUpInside)
+            cell.statusButton.addTarget(self, action: #selector(statusButtonPressed), for: .touchUpInside)
             cell.settingButton.addTarget(self, action: #selector(openSettingScreen), for: .touchUpInside)
             cell.aboutTextView.text = UserManager.shared().activeUser.aboutMe
-            cell.profileButton.progressBar.progressBarTrackColor = UIColor.clear
-            cell.profileButton.progressBar.progressBarProgressColor = UIColor.clear
+ 
             if let imageUrl = URL(string: UserManager.shared().activeUser.profileImageURL!) {
                 cell.profileButton.sd_setImage(with: imageUrl, for: .normal, placeholderImage: kPlaceHolderImage)
             }

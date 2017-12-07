@@ -13,6 +13,7 @@ class EditProfileHeaderTableCell: UITableViewCell {
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var placeLabel: UILabel!
 
+    @IBOutlet weak var statusButton: UIButton!
     @IBOutlet weak var aboutTextView: UITextView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var profileButton: ProfileImageButton!

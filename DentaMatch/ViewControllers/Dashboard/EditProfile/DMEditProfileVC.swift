@@ -34,11 +34,21 @@ class DMEditProfileVC: DMBaseVC {
     var dentalStateBoardURL = ""
     var jobTitles = [JobTitle]()
     var currentJobTitle:JobTitle!
+    
+    var popOverLabel:UILabel!
+    var popOverView:UIView!
+    var popover: Popover!
+    var popoverOptions: [PopoverOption] = [
+        .type(.down),
+        .blackOverlayColor(UIColor(white: 0.0, alpha: 0.6))
+    ]
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
         
+
         if let dashBoard = ((UIApplication.shared.delegate) as! AppDelegate).window?.rootViewController as? TabBarVC {
             dashBoardVC = dashBoard
         }
@@ -63,7 +73,6 @@ class DMEditProfileVC: DMBaseVC {
     }
     
     func setup() {
-        
         NotificationCenter.default.addObserver(self, selector: #selector(updateProfileScreen), name: .updateProfileScreen, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(psuhRediectNotificationForProfile), name: .pushRedirectNotificationForProfile, object: nil)
 
@@ -80,6 +89,52 @@ class DMEditProfileVC: DMBaseVC {
         
         self.editProfileTableView.register(UINib(nibName: "EditProfileReferenceCell", bundle: nil), forCellReuseIdentifier: "EditProfileReferenceCell")
         self.editProfileTableView.register(UINib(nibName: "EditProfileExperienceCell", bundle: nil), forCellReuseIdentifier: "EditProfileExperienceCell")
+        setupPopOver()
+    }
+    
+    func setupPopOver() {
+        self.popover = Popover(options: self.popoverOptions)
+        popOverView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 30, height: 96))
+        popOverView.backgroundColor = UIColor.color(withHexCode: "fafafa")
+        
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        button.setTitle("GOT IT", for: .normal)
+        button.setTitleColor(UIColor.color(withHexCode: "0480dc"), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.titleLabel?.font = UIFont.fontRegular(fontSize: 14.0)
+        button.addTarget(self, action: #selector(gotItButtonPressed), for: .touchUpInside)
+        
+        popOverLabel = UILabel(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 35, height: 40))
+        popOverLabel.textColor = Constants.Color.textFieldTextColor
+        popOverLabel.font = UIFont.fontRegular(fontSize: 14.0)
+        popOverLabel.translatesAutoresizingMaskIntoConstraints = false
+        popOverLabel.textAlignment = .center
+        popOverLabel.text = "Your profile is pending admin’s approval. You will be able to apply for jobs once its approved."
+        popOverLabel.numberOfLines = 3
+        
+        
+        popOverLabel.center = popOverView.center
+        popOverView.addSubview(popOverLabel)
+        popOverView.addSubview(button)
+        
+        popOverLabel.topAnchor.constraint(equalTo: popOverView.topAnchor, constant: 18.0).isActive = true
+        popOverLabel.centerXAnchor.constraint(equalTo: popOverView.centerXAnchor).isActive = true
+        popOverLabel.leadingAnchor.constraint(equalTo: popOverView.leadingAnchor, constant: 6.0).isActive = true
+        popOverLabel.trailingAnchor.constraint(equalTo: popOverView.trailingAnchor, constant: -6.0).isActive = true
+        
+        button.bottomAnchor.constraint(equalTo: popOverView.bottomAnchor, constant: -10.0).isActive = true
+        button.trailingAnchor.constraint(equalTo: popOverView.trailingAnchor, constant: -10.0).isActive = true
+    }
+    
+    @objc func gotItButtonPressed() {
+        self.popover.dismiss()
+    }
+    
+    @objc func statusButtonPressed() {
+        
+        if let cell = editProfileTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? EditProfileHeaderTableCell {
+            self.popover.show(popOverView, fromView: cell.statusButton)
+        }
     }
     
     @objc func psuhRediectNotificationForProfile(userInfo:Notification) {

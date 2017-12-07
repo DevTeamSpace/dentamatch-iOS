@@ -29,11 +29,37 @@ extension DMRegistrationVC {
             if response![Constants.ServerKey.status].boolValue {
                 MixpanelOperations.trackMixpanelEventWithProperties(eventName: "SignUp", dict: params as NSDictionary)
                 self.clearData()
-                self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
-                self.goToLogin()
+                self.handleUserResponse(response: response)
+                self.alertMessage(title: "Success", message: response![Constants.ServerKey.message].stringValue, buttonText: "Ok", completionHandler: {
+                    self.openJobTitleSelection()
+                })
+                //self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
+                //self.goToLogin()
             } else {
                 self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
             }
+        }
+    }
+    
+    func handleUserResponse(response:JSON?) {
+        UserManager.shared().loginResponseHandler(response: response) { (success:Bool, message:String) in
+            if success {
+                MixpanelOperations.manageMixpanelUserIdentity()
+                MixpanelOperations.registerMixpanelUser()
+                MixpanelOperations.trackMixpanelEvent(eventName: "Login")
+                debugPrint("Login Success......")
+                debugPrint("Socket Operation done......")
+            }
+        }
+    }
+    
+    func openJobTitleSelection() {
+        let jobTitleSectionVC = UIStoryboard.profileStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.profileNav)
+        UIView.transition(with: self.view.window!, duration: 0.5, options: .transitionFlipFromRight, animations: {
+            kAppDelegate.window?.rootViewController = jobTitleSectionVC
+            SocketManager.sharedInstance.establishConnection()
+        }) { (bool:Bool) in
+            
         }
     }
     

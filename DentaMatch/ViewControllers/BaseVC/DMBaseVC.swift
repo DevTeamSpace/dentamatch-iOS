@@ -23,6 +23,14 @@ class DMBaseVC: UIViewController {
         //self.setUpControls()
     }
     
+    func openTabbar() {
+        let dashboardVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: TabBarVC.self)!
+        kAppDelegate.window?.rootViewController = dashboardVC
+        UserDefaultsManager.sharedInstance.isProfileSkipped = true
+        SocketManager.sharedInstance.establishConnection()
+        
+    }
+    
     func setUpControls() {
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font : UIFont.fontRegular(fontSize: 14.0)!, NSAttributedStringKey.foregroundColor:UIColor.white]
     }
