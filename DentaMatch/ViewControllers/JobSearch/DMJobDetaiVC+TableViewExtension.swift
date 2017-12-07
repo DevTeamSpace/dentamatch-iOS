@@ -12,7 +12,10 @@ import SwiftyJSON
 extension DMJobDetailVC : UITableViewDataSource, UITableViewDelegate, JobDescriptionCellDelegate, DentistDetailCellDelegate, OfficeDescriptionCellDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 6
+        //For map
+        //return 6
+        return 5
+
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -35,6 +38,7 @@ extension DMJobDetailVC : UITableViewDataSource, UITableViewDelegate, JobDescrip
             let cell = tableView.dequeueReusableCell(withIdentifier: "AboutCell") as? AboutCell
             cell?.selectionStyle = .none
             cell?.setCellData(job: job!)
+            cell?.googleMapButton.addTarget(self, action: #selector(openMaps), for: .touchUpInside)
             return cell!
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "JobDescriptionCell") as! JobDescriptionCell
@@ -200,6 +204,30 @@ extension DMJobDetailVC : UITableViewDataSource, UITableViewDelegate, JobDescrip
         isReadMoreOffice = isReadMoreOffice ? false : true
         self.tblJobDetail.reloadRows(at: [IndexPath(row: 0, section: 3)], with: .automatic)
 
+    }
+    
+    @objc func openMaps() {
+        
+        if UIApplication.shared.canOpenURL(URL(string:kOpenGoogleMapUrl)!) {
+            let url = URL(string:"\(kOpenGoogleMapUrl)?q=\(job!.latitude),\(job!.longitude)&zoom=14")!
+            
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                // Fallback on earlier versions
+                UIApplication.shared.openURL(url)
+            }
+            
+        } else {
+            let url = URL(string: "\(kGoogleSearchMap)\(job!.latitude),\(job!.longitude)")!
+            
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                // Fallback on earlier versions
+                UIApplication.shared.openURL(url)
+            }
+        }
     }
     
     //MARK:- DentistDetailCellDelegate Method

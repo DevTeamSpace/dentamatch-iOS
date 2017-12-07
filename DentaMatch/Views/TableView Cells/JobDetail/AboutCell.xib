@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -29,17 +30,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="189.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.8 miles" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIU-aG-ttV">
-                        <rect key="frame" x="246" y="21" width="52" height="18"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="18" id="meM-qM-uV5"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="12"/>
-                        <color key="textColor" red="0.2196078431372549" green="0.2196078431372549" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OFFICE LOCATION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zl0-28-5Rh">
-                        <rect key="frame" x="15" y="23" width="107.5" height="14"/>
+                        <rect key="frame" x="15" y="26" width="107.5" height="14"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="14" id="0ro-gi-SWq"/>
                         </constraints>
@@ -48,19 +40,19 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dr. Nacy LY " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCd-zC-eFR">
-                        <rect key="frame" x="15" y="45" width="88.5" height="18"/>
+                        <rect key="frame" x="15" y="48" width="88.5" height="18"/>
                         <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="15"/>
                         <color key="textColor" red="0.2196078431372549" green="0.2196078431372549" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dld-NX-eLi">
-                        <rect key="frame" x="15" y="64" width="290" height="0.0"/>
+                        <rect key="frame" x="15" y="67" width="290" height="0.0"/>
                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="13"/>
                         <color key="textColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OFFICE TYPE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hbn-r3-7Bj">
-                        <rect key="frame" x="15" y="82" width="77" height="14"/>
+                        <rect key="frame" x="15" y="85" width="77" height="14"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="14" id="PCw-tH-rGv"/>
                         </constraints>
@@ -69,13 +61,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SvP-gl-Lhb">
-                        <rect key="frame" x="15" y="100" width="290" height="16.5"/>
+                        <rect key="frame" x="15" y="103" width="290" height="11"/>
                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="13"/>
                         <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TOTAL JOB OPENING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2u-pb-vSy">
-                        <rect key="frame" x="15" y="141.5" width="124" height="14"/>
+                        <rect key="frame" x="15" y="139" width="124" height="14"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="14" id="Jen-qJ-zbX"/>
                         </constraints>
@@ -84,7 +76,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Clh-xE-dDU">
-                        <rect key="frame" x="15" y="157.5" width="0.0" height="19"/>
+                        <rect key="frame" x="15" y="155" width="0.0" height="19"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="19" id="Ctt-R4-rkp"/>
                         </constraints>
@@ -99,6 +91,10 @@
                             <constraint firstAttribute="height" constant="1" id="e1t-Rv-L9P"/>
                         </constraints>
                     </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WAj-ki-rV2">
+                        <rect key="frame" x="255" y="18" width="49" height="30"/>
+                        <state key="normal" title="GMaps"/>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Dld-NX-eLi" firstAttribute="leading" secondItem="zl0-28-5Rh" secondAttribute="leading" id="0kP-F1-p73"/>
@@ -110,17 +106,17 @@
                     <constraint firstItem="Dld-NX-eLi" firstAttribute="top" secondItem="YCd-zC-eFR" secondAttribute="bottom" constant="1" id="Dgx-0d-rAW"/>
                     <constraint firstAttribute="trailing" secondItem="Dld-NX-eLi" secondAttribute="trailing" constant="15" id="Ebv-us-eh8"/>
                     <constraint firstItem="zl0-28-5Rh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="OPe-Ev-1Yp"/>
-                    <constraint firstAttribute="trailing" secondItem="sIU-aG-ttV" secondAttribute="trailing" constant="22" id="SNe-VC-zm6"/>
+                    <constraint firstAttribute="trailing" secondItem="WAj-ki-rV2" secondAttribute="trailing" constant="16" id="Qb5-Wu-DAb"/>
                     <constraint firstItem="Hbn-r3-7Bj" firstAttribute="top" secondItem="Dld-NX-eLi" secondAttribute="bottom" constant="18" id="Soh-Cc-uTZ"/>
                     <constraint firstAttribute="bottom" secondItem="0CF-g1-qW3" secondAttribute="bottom" id="Sv0-gl-2bV"/>
                     <constraint firstItem="Clh-xE-dDU" firstAttribute="top" secondItem="v2u-pb-vSy" secondAttribute="bottom" constant="2" id="Tfh-jK-0Zj"/>
                     <constraint firstItem="YCd-zC-eFR" firstAttribute="top" secondItem="zl0-28-5Rh" secondAttribute="bottom" constant="8" id="dhl-6c-b49"/>
                     <constraint firstAttribute="trailing" secondItem="SvP-gl-Lhb" secondAttribute="trailing" constant="15" id="fKa-Pw-ZJs"/>
+                    <constraint firstItem="WAj-ki-rV2" firstAttribute="centerY" secondItem="zl0-28-5Rh" secondAttribute="centerY" id="hwE-H9-tGK"/>
                     <constraint firstItem="0CF-g1-qW3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="jhf-Lu-iO5"/>
                     <constraint firstItem="v2u-pb-vSy" firstAttribute="top" secondItem="SvP-gl-Lhb" secondAttribute="bottom" constant="25" id="l9a-PF-TQe"/>
                     <constraint firstItem="Clh-xE-dDU" firstAttribute="leading" secondItem="zl0-28-5Rh" secondAttribute="leading" id="lGE-wq-ukc"/>
                     <constraint firstItem="Hbn-r3-7Bj" firstAttribute="leading" secondItem="zl0-28-5Rh" secondAttribute="leading" id="nba-Oz-BEs"/>
-                    <constraint firstItem="sIU-aG-ttV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="13" id="nyf-sk-GRG"/>
                     <constraint firstItem="YCd-zC-eFR" firstAttribute="leading" secondItem="zl0-28-5Rh" secondAttribute="leading" id="rzt-Zr-yF1"/>
                     <constraint firstItem="v2u-pb-vSy" firstAttribute="leading" secondItem="zl0-28-5Rh" secondAttribute="leading" id="y4o-BE-dxx"/>
                 </constraints>
@@ -129,9 +125,9 @@
                 <outlet property="constraintLblNoOfOpeningHeight" destination="Jen-qJ-zbX" id="uSc-cK-bW3"/>
                 <outlet property="constraintLblNoOfOpeningValueHeight" destination="Ctt-R4-rkp" id="E30-3D-DKJ"/>
                 <outlet property="constraintlblNoOfOpeningTop" destination="l9a-PF-TQe" id="CPK-zj-WBr"/>
+                <outlet property="googleMapButton" destination="WAj-ki-rV2" id="oyZ-5e-Qfx"/>
                 <outlet property="lblAddress" destination="Dld-NX-eLi" id="b6s-NB-Niq"/>
                 <outlet property="lblDentistName" destination="YCd-zC-eFR" id="PbJ-UY-L62"/>
-                <outlet property="lblDistance" destination="sIU-aG-ttV" id="ZPM-hB-cv2"/>
                 <outlet property="lblNoOfOpening" destination="Clh-xE-dDU" id="biz-Cg-VGr"/>
                 <outlet property="lblOfficeType" destination="SvP-gl-Lhb" id="fO0-GG-gep"/>
             </connections>

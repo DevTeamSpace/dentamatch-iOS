@@ -21,6 +21,8 @@ let kCertificatePlaceHolder = UIImage(named: "certificatePlaceholder")
 let kGoogleAPIKey = "AIzaSyDFWCamiO9WGTth-iOxfY_L0K6oRBeAu0U"
 
 let kOkButtonTitle = "Ok"
+let kOpenGoogleMapUrl = "comgooglemaps://"
+let kGoogleSearchMap = "https://maps.google.com/?saddr=&daddr="
 
 struct Constants {
     

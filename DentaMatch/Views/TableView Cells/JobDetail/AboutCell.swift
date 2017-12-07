@@ -10,8 +10,8 @@ import UIKit
 
 class AboutCell: UITableViewCell {
     
+    @IBOutlet weak var googleMapButton: UIButton!
     @IBOutlet weak var lblDentistName: UILabel!
-    @IBOutlet weak var lblDistance: UILabel!
     @IBOutlet weak var lblAddress: UILabel!
     @IBOutlet weak var lblOfficeType: UILabel!
     @IBOutlet weak var lblNoOfOpening: UILabel!
@@ -42,7 +42,7 @@ class AboutCell: UITableViewCell {
     
     func setCellData(job : Job) {
         self.lblDentistName.text = job.officeName
-        self.lblDistance.text = String(format: "%.1f", job.distance) + Constants.Strings.whiteSpace + Constants.Strings.miles
+//        self.lblDistance.text = String(format: "%.1f", job.distance) + Constants.Strings.whiteSpace + Constants.Strings.miles
         self.lblAddress.text = job.address
         self.lblOfficeType.text = job.officeTypeName
         self.lblNoOfOpening.text = "\(job.noOfJobs)"

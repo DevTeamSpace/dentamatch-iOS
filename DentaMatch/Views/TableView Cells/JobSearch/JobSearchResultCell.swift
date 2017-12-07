@@ -63,7 +63,9 @@ class JobSearchResultCell: UITableViewCell {
             self.btnType.backgroundColor = Constants.Color.partTimeDaySelectColor
         }
         self.lblJobTitle.text = job.jobtitle
-        self.lblDistance.text = String(format: "%.2f", job.distance) + " miles"
+        
+        //Now the lblDistance will be percentage label
+        self.lblDistance.text = String(format: "%.2f", 98.7877) + " %"
         self.lblDocName.text = job.officeName
         self.lblAddress.text = job.address
         var partTimeJobDays = [String]()
