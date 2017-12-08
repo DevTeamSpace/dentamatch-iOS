@@ -31,7 +31,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OFFICE LOCATION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zl0-28-5Rh">
-                        <rect key="frame" x="15" y="26" width="107.5" height="14"/>
+                        <rect key="frame" x="15" y="26" width="104.5" height="14"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="14" id="0ro-gi-SWq"/>
                         </constraints>
@@ -40,7 +40,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dr. Nacy LY " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCd-zC-eFR">
-                        <rect key="frame" x="15" y="48" width="88.5" height="18"/>
+                        <rect key="frame" x="15" y="48" width="82" height="18"/>
                         <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="15"/>
                         <color key="textColor" red="0.2196078431372549" green="0.2196078431372549" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -52,7 +52,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OFFICE TYPE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hbn-r3-7Bj">
-                        <rect key="frame" x="15" y="85" width="77" height="14"/>
+                        <rect key="frame" x="15" y="85" width="75.5" height="14"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="14" id="PCw-tH-rGv"/>
                         </constraints>
@@ -67,7 +67,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TOTAL JOB OPENING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2u-pb-vSy">
-                        <rect key="frame" x="15" y="139" width="124" height="14"/>
+                        <rect key="frame" x="15" y="139" width="120.5" height="14"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="14" id="Jen-qJ-zbX"/>
                         </constraints>
@@ -91,12 +91,13 @@
                             <constraint firstAttribute="height" constant="1" id="e1t-Rv-L9P"/>
                         </constraints>
                     </view>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WAj-ki-rV2">
-                        <rect key="frame" x="231" y="21" width="64" height="24"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WAj-ki-rV2">
+                        <rect key="frame" x="221" y="25.5" width="74" height="15"/>
                         <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="10"/>
-                        <state key="normal" title="View On Map">
+                        <state key="normal" title=" View On Map" image="locationButton">
                             <color key="titleColor" red="0.015686274509803921" green="0.50196078431372548" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
+                        <state key="highlighted" image="locationButton"/>
                     </button>
                 </subviews>
                 <constraints>
@@ -137,4 +138,7 @@
             <point key="canvasLocation" x="105" y="11"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="locationButton" width="11" height="15"/>
+    </resources>
 </document>

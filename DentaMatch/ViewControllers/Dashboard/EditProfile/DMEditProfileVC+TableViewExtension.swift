@@ -185,10 +185,6 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             //cell.placeLabel.attributedText = cell.fillPlaceAndJobTitle(jobTitle: UserManager.shared().activeUser.jobTitle!, place: UserManager.shared().activeUser.preferredJobLocation!)
             cell.profileButton.progressBar.setProgress(1.0, animated: false)
             
-            //Pending
-            cell.profileButton.progressBar.progressBarTrackColor = UIColor.clear
-            cell.profileButton.progressBar.progressBarProgressColor = UIColor.color(withHexCode: "e7aa4d")
-            
             var address = ""
             if let city = UserManager.shared().activeUser.city {
                 address = city
@@ -207,11 +203,28 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
                 cell.placeLabel.attributedText = cell.fillPlaceAndJobTitle(jobTitle: UserManager.shared().activeUser.jobTitle!, place: UserManager.shared().activeUser.country!)
             }
             
-            //            cell.statusButton.setBackgroundImage(UIImage(named:"pendingButton"), for: .normal)
-            //            cell.statusButton.setTitle("Pending", for: .normal)
+            cell.profileButton.progressBar.progressBarTrackColor = UIColor.clear
+
+            cell.statusButton.isHidden = true
             
-            //            cell.statusButton.setBackgroundImage(UIImage(named:"needsAttention"), for: .normal)
-            //            cell.statusButton.setTitle("Needs Attention", for: .normal)
+            if isJobSeekerVerified == "0" {
+                cell.statusButton.isHidden = false
+                cell.statusButton.setBackgroundImage(UIImage(named:"pendingButton"), for: .normal)
+                cell.statusButton.setTitle("Pending", for: .normal)
+                cell.profileButton.progressBar.progressBarProgressColor = UIColor.color(withHexCode: "e7aa4d")
+            } else if isProfileCompleted == "0" {
+                cell.statusButton.isHidden = false
+                cell.statusButton.setBackgroundImage(UIImage(named:"needsAttention"), for: .normal)
+                cell.statusButton.setTitle("Needs Attention", for: .normal)
+                cell.profileButton.progressBar.progressBarProgressColor = UIColor.color(withHexCode: "fc3238")
+            }
+          
+            if isJobSeekerVerified == "1" && isProfileCompleted == "1" {
+                cell.statusButton.isHidden = false
+                cell.statusButton.setBackgroundImage(UIImage(named:"activeButton"), for: .normal)
+                cell.statusButton.setTitle("Active", for: .normal)
+                cell.profileButton.progressBar.progressBarProgressColor = UIColor.color(withHexCode: "a4d87c")                
+            }
             
             cell.editButton.addTarget(self, action: #selector(openEditPublicProfileScreen), for: .touchUpInside)
             cell.statusButton.addTarget(self, action: #selector(statusButtonPressed), for: .touchUpInside)

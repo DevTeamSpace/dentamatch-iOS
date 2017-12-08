@@ -25,6 +25,8 @@ class DMEditProfileVC: DMBaseVC {
     
     var dashBoardVC:TabBarVC?
     
+    var isJobSeekerVerified = ""
+    var isProfileCompleted = ""
     var license:License?
     var affiliations = [Affiliation]()
     var skills = [Skill]()

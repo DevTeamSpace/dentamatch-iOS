@@ -190,10 +190,6 @@ extension DMJobDetailVC : UITableViewDataSource, UITableViewDelegate, JobDescrip
         return headerView
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
-    
     //MARK:- JobDescriptionCellDelegate Method
     func readMoreOrReadLess() {
         isReadMore = isReadMore ? false : true

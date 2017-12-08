@@ -78,6 +78,9 @@ extension DMEditProfileVC {
 
             UserManager.shared().activeUser.aboutMe = user[Constants.ServerKey.aboutMe].stringValue
             UserManager.shared().activeUser.licenseNumber = user[Constants.ServerKey.licenseNumber].stringValue
+            self.isJobSeekerVerified = user["isJobSeekerVerified"].stringValue
+            self.isProfileCompleted = user["isCompleted"].stringValue
+            
             UserManager.shared().saveActiveUser()
             
 
