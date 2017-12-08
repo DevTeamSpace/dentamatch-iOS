@@ -92,8 +92,11 @@
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WAj-ki-rV2">
-                        <rect key="frame" x="255" y="18" width="49" height="30"/>
-                        <state key="normal" title="GMaps"/>
+                        <rect key="frame" x="231" y="21" width="64" height="24"/>
+                        <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="10"/>
+                        <state key="normal" title="View On Map">
+                            <color key="titleColor" red="0.015686274509803921" green="0.50196078431372548" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
                     </button>
                 </subviews>
                 <constraints>
@@ -106,7 +109,7 @@
                     <constraint firstItem="Dld-NX-eLi" firstAttribute="top" secondItem="YCd-zC-eFR" secondAttribute="bottom" constant="1" id="Dgx-0d-rAW"/>
                     <constraint firstAttribute="trailing" secondItem="Dld-NX-eLi" secondAttribute="trailing" constant="15" id="Ebv-us-eh8"/>
                     <constraint firstItem="zl0-28-5Rh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="OPe-Ev-1Yp"/>
-                    <constraint firstAttribute="trailing" secondItem="WAj-ki-rV2" secondAttribute="trailing" constant="16" id="Qb5-Wu-DAb"/>
+                    <constraint firstAttribute="trailing" secondItem="WAj-ki-rV2" secondAttribute="trailing" constant="25" id="Qb5-Wu-DAb"/>
                     <constraint firstItem="Hbn-r3-7Bj" firstAttribute="top" secondItem="Dld-NX-eLi" secondAttribute="bottom" constant="18" id="Soh-Cc-uTZ"/>
                     <constraint firstAttribute="bottom" secondItem="0CF-g1-qW3" secondAttribute="bottom" id="Sv0-gl-2bV"/>
                     <constraint firstItem="Clh-xE-dDU" firstAttribute="top" secondItem="v2u-pb-vSy" secondAttribute="bottom" constant="2" id="Tfh-jK-0Zj"/>

@@ -10,7 +10,11 @@ import UIKit
 import GoogleMaps
 
 class DMJobSearchResultVC : DMBaseVC {
-
+    @IBOutlet weak var currentGPSButtonTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bannerLabel: UILabel!
+    @IBOutlet weak var bannerView: UIView!
+    
+    @IBOutlet weak var bannerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var tblJobSearchResult: UITableView!
     @IBOutlet weak var mapViewSearchResult: GMSMapView!
     @IBOutlet weak var constraintTblViewSearchResultHeight: NSLayoutConstraint!
@@ -117,7 +121,11 @@ class DMJobSearchResultVC : DMBaseVC {
 
         self.setRightBarButton(title: "",imageName: "search",width : rightBarButtonWidth, font: UIFont.designFont(fontSize: 16.0)!)
         self.setUpSegmentControl()
-        self.constraintTblViewSearchResultHeight.constant = UIScreen.main.bounds.height - (self.navigationController?.navigationBar.frame.height)! - UIApplication.shared.statusBarFrame.height - (self.tabBarController?.tabBar.frame.height)! - (32.0)
+        self.bannerHeightConstraint.constant = 0
+        self.currentGPSButtonTopConstraint.constant = 15.0
+        self.constraintTblViewSearchResultHeight.constant = UIScreen.main.bounds.height - (self.navigationController?.navigationBar.frame.height)! - UIApplication.shared.statusBarFrame.height - (self.tabBarController?.tabBar.frame.height)! - (32.0) 
+//        self.constraintTblViewSearchResultHeight.constant = UIScreen.main.bounds.height - (self.navigationController?.navigationBar.frame.height)! - UIApplication.shared.statusBarFrame.height - (self.tabBarController?.tabBar.frame.height)! - (32.0) - (45.0)
+
         self.view.layoutIfNeeded()
         self.btnCurrentLocation.isHidden = true
         self.btnCurrentLocation.isUserInteractionEnabled = false
@@ -134,6 +142,31 @@ class DMJobSearchResultVC : DMBaseVC {
         pullToRefreshJobs.addTarget(self, action: #selector(pullToRefreshForJobs), for: .valueChanged)
         self.tblJobSearchResult.addSubview(pullToRefreshJobs)
         
+    }
+    
+    func showBanner(status:Int = 1) {
+        //if status is 1 it means yellow banner i.e. profile not verified
+        //if status is 2 it means red banner i.e. needs attention
+        self.bannerHeightConstraint.constant = 45.0
+        self.constraintTblViewSearchResultHeight.constant = UIScreen.main.bounds.height - (self.navigationController?.navigationBar.frame.height)! - UIApplication.shared.statusBarFrame.height - (self.tabBarController?.tabBar.frame.height)! - (32.0) - (45.0)
+        self.currentGPSButtonTopConstraint.constant = 55.0
+        UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded()
+        }
+        if status == 1 {
+            self.bannerView.backgroundColor = UIColor.color(withHexCode: "e8ab43")
+        } else {
+            self.bannerView.backgroundColor = UIColor.color(withHexCode: "fc3238")
+        }
+    }
+    
+    func hideBanner() {
+        self.bannerHeightConstraint.constant = 0.0
+        self.constraintTblViewSearchResultHeight.constant = UIScreen.main.bounds.height - (self.navigationController?.navigationBar.frame.height)! - UIApplication.shared.statusBarFrame.height - (self.tabBarController?.tabBar.frame.height)! - (32.0)
+        self.currentGPSButtonTopConstraint.constant = 15.0
+        UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded()
+        }
     }
     
     
@@ -273,7 +306,8 @@ class DMJobSearchResultVC : DMBaseVC {
             self.btnMap.titleLabel!.font =  UIFont.fontLight(fontSize: 13.0)
             self.btnMap.backgroundColor = UIColor.clear
             self.mapViewSearchResult.isHidden = true
-            self.constraintTblViewSearchResultHeight.constant = UIScreen.main.bounds.height - (self.navigationController?.navigationBar.frame.height)! - UIApplication.shared.statusBarFrame.height - (self.tabBarController?.tabBar.frame.height)! - ((32.0))
+            self.tblJobSearchResult.isHidden = false
+//            self.constraintTblViewSearchResultHeight.constant = UIScreen.main.bounds.height - (self.navigationController?.navigationBar.frame.height)! - UIApplication.shared.statusBarFrame.height - (self.tabBarController?.tabBar.frame.height)! - ((32.0))
             self.view.layoutIfNeeded()
             self.tblJobSearchResult.isScrollEnabled = true
             self.btnCurrentLocation.isHidden = true
@@ -289,7 +323,8 @@ class DMJobSearchResultVC : DMBaseVC {
             self.btnList.titleLabel!.font =  UIFont.fontLight(fontSize: 13.0)
             self.btnList.backgroundColor = UIColor.clear
             self.mapViewSearchResult.isHidden = false
-            self.constraintTblViewSearchResultHeight.constant = 0.0
+            self.tblJobSearchResult.isHidden = true
+//            self.constraintTblViewSearchResultHeight.constant = 0.0
             self.view.layoutIfNeeded()
             self.btnCurrentLocation.isHidden = false
         }

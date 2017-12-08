@@ -80,16 +80,13 @@ class DMJobDetailVC: DMBaseVC {
         self.tblJobDetail.register(UINib(nibName: "WorkingHoursTableCell", bundle: nil), forCellReuseIdentifier: "WorkingHoursTableCell")
         self.tblJobDetail.register(UINib(nibName: "MapCell", bundle: nil), forCellReuseIdentifier: "MapCell")
         self.navigationItem.leftBarButtonItem = self.backBarButton()
-        if let params =  UserDefaultsManager.sharedInstance.loadSearchParameter() {
-            let latStr = params[Constants.JobDetailKey.lat] as! NSString
-            let longStr = params[Constants.JobDetailKey.lng] as! NSString
+       // if let params =  UserDefaultsManager.sharedInstance.loadSearchParameter() {
+//            let latStr = params[Constants.JobDetailKey.lat] as! NSString
+//            let longStr = params[Constants.JobDetailKey.lng] as! NSString
             jobDetailParams = [
                 Constants.ServerKey.jobId:job?.jobId ?? 0,
-                Constants.JobDetailKey.lat : latStr,
-                Constants.JobDetailKey.lng : longStr
-                
             ]
-        }
+       // }
     }
     
     //MARK:- @IBAction

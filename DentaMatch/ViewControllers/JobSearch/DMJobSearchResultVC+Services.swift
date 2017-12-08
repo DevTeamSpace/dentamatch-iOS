@@ -47,6 +47,17 @@ extension DMJobSearchResultVC {
     func handleJobSearchResponse(response:JSON?) {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
+                let result = response[Constants.ServerKey.result]
+                if result["isJobSeekerVerified"].stringValue == "0" {
+                    self.showBanner(status: 1)
+                } else if result["profileCompleted"].stringValue == "0" {
+                    self.showBanner(status: 2)
+                }
+                
+                if result["isJobSeekerVerified"].stringValue == "1" && result["profileCompleted"].stringValue == "1" {
+                    self.hideBanner()
+                }
+                
                 let skillList = response[Constants.ServerKey.result][Constants.ServerKey.joblist].array
                 if jobsPageNo == 1 {
                     self.jobs.removeAll()

@@ -60,6 +60,7 @@ class Job: NSObject {
     var jobDate = ""
     var tempjobDate = ""
     var noOfJobs = 0
+    var matchedSkills = 0
     
     
     init(job:JSON) {
@@ -112,6 +113,7 @@ class Job: NSObject {
         self.jobAppliedOn = job["jobAppliedOn"].stringValue
         self.jobDate = job["jobDate"].stringValue
         self.noOfJobs = job["noOfJobs"].intValue
+        self.matchedSkills = job["matchedSkills"].intValue
     }
     
     init(forCalendarjob:JSON) {

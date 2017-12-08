@@ -54,6 +54,8 @@ class JobSearchResultCell: UITableViewCell {
             self.btnFavourite.setImage(UIImage(named:"saveStar"), for: .normal)
             self.btnFavourite.setTitle("", for: .normal)
         }
+        
+        //As we will not get temp jobs (jobType = 3) in this screen, so we handled the case for 1 and 2 only
         if job.jobType == 1 {
             self.btnType.setTitle(Constants.Strings.fullTime, for: .normal)
             self.btnType.backgroundColor = Constants.Color.fullTimeBackgroundColor
@@ -65,7 +67,7 @@ class JobSearchResultCell: UITableViewCell {
         self.lblJobTitle.text = job.jobtitle
         
         //Now the lblDistance will be percentage label
-        self.lblDistance.text = String(format: "%.2f", 98.7877) + " %"
+        self.lblDistance.text = "\(job.matchedSkills)%"
         self.lblDocName.text = job.officeName
         self.lblAddress.text = job.address
         var partTimeJobDays = [String]()
