@@ -112,7 +112,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8oM-t9-Csv">
-                                <rect key="frame" x="99.5" y="269" width="176.5" height="28"/>
+                                <rect key="frame" x="100" y="269" width="176.5" height="28"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Bold" family="SF UI Text" pointSize="24"/>
                                 <color key="textColor" red="0.058823529411764705" green="0.094117647058823528" blue="0.24313725490196078" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -144,6 +144,7 @@ Lets set your availability so that dental offices can get to know about your tim
                     </view>
                     <connections>
                         <outlet property="detailLabel" destination="Me1-6B-peE" id="qno-rI-Ong"/>
+                        <outlet property="letsGoButton" destination="mHX-s1-UaA" id="wpH-PC-gUw"/>
                         <outlet property="successPendingImageView" destination="QjF-6s-gZU" id="EyX-AK-BYe"/>
                         <outlet property="titleLabel" destination="8oM-t9-Csv" id="CYX-hz-LUI"/>
                     </connections>

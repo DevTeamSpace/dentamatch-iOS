@@ -112,9 +112,13 @@ extension DMJobTitleSelectionVC {
             if response[Constants.ServerKey.status].boolValue {
                 //move to congrats screen
                 let profileSuccessPendingVC = UIStoryboard.profileStoryBoard().instantiateViewController(type: DMProfileSuccessPending.self)!
+                if response[Constants.ServerKey.result]["isVerified"].stringValue == "1" {
+                    profileSuccessPendingVC.isEmailVerified = true
+                }
                 if selectedJobTitle!.isLicenseRequired {
                     profileSuccessPendingVC.isLicenseRequired = true
                 }
+                
                 self.navigationController?.pushViewController(profileSuccessPendingVC, animated: true)
             } else {
                 self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
