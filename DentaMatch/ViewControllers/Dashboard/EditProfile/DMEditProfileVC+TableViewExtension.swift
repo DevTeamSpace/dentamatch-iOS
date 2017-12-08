@@ -114,14 +114,15 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             }
             
         case .licenseNumber:
-            if indexPath.row == 0 {
-                return 45
-            } else {
-                if let _ = license {
-                    return 87
-                }
-                return 72
-            }
+//            if indexPath.row == 0 {
+//                return 45
+//            } else {
+//                if let _ = license {
+//                    return 87
+//                }
+//                return 72
+//            }
+            return 0
             
         case .certifications:
             let certificate = certifications[indexPath.row]

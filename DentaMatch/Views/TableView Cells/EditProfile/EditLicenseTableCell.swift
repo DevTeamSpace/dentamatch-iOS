@@ -14,6 +14,7 @@ class EditLicenseTableCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.clipsToBounds = true
         // Initialization code
     }
 
