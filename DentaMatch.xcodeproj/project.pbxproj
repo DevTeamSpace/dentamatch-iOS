@@ -118,6 +118,7 @@
 		E5310E0D1E4B2B3F004403A0 /* DMChatVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5310E0C1E4B2B3F004403A0 /* DMChatVC+Services.swift */; };
 		E5310E0F1E4EDE71004403A0 /* DMChatVC+DBHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5310E0E1E4EDE71004403A0 /* DMChatVC+DBHandling.swift */; };
 		E53738F21DB373C200967876 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53738F11DB373C200967876 /* Reachability.swift */; };
+		E540CBC01FDE426E00A8A56E /* DMProfileSuccessPending+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E540CBBF1FDE426E00A8A56E /* DMProfileSuccessPending+Services.swift */; };
 		E5433AF21FCD140800D152D9 /* DMProfileSuccessPending.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5433AF11FCD140800D152D9 /* DMProfileSuccessPending.swift */; };
 		E5496DFC1E25547300C54288 /* DMCertificationsVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5496DFB1E25547300C54288 /* DMCertificationsVC+TableViewExtension.swift */; };
 		E5496E021E255A9E00C54288 /* DMExecutiveSummaryVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5496E011E255A9E00C54288 /* DMExecutiveSummaryVC+TableViewExtension.swift */; };
@@ -527,6 +528,7 @@
 		E5310E0E1E4EDE71004403A0 /* DMChatVC+DBHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMChatVC+DBHandling.swift"; sourceTree = "<group>"; };
 		E53738F11DB373C200967876 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		E538FA7C1DFFD76000AECE26 /* DentaMatch-Dev.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DentaMatch-Dev.entitlements"; sourceTree = "<group>"; };
+		E540CBBF1FDE426E00A8A56E /* DMProfileSuccessPending+Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DMProfileSuccessPending+Services.swift"; sourceTree = "<group>"; };
 		E5433AF11FCD140800D152D9 /* DMProfileSuccessPending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMProfileSuccessPending.swift; sourceTree = "<group>"; };
 		E5496DFB1E25547300C54288 /* DMCertificationsVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMCertificationsVC+TableViewExtension.swift"; sourceTree = "<group>"; };
 		E5496E011E255A9E00C54288 /* DMExecutiveSummaryVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMExecutiveSummaryVC+TableViewExtension.swift"; sourceTree = "<group>"; };
@@ -1223,6 +1225,7 @@
 			isa = PBXGroup;
 			children = (
 				E5433AF11FCD140800D152D9 /* DMProfileSuccessPending.swift */,
+				E540CBBF1FDE426E00A8A56E /* DMProfileSuccessPending+Services.swift */,
 			);
 			path = ProfileSuccessFailure;
 			sourceTree = "<group>";
@@ -2878,6 +2881,7 @@
 				E5AE2AF11DAF844C00C008BD /* DMOnboardingVC.swift in Sources */,
 				E55462F31DAE4A5D004163B2 /* Constants.swift in Sources */,
 				E56E315D1E3A8275009FF0FC /* EditProfileSchoolCell.swift in Sources */,
+				E540CBC01FDE426E00A8A56E /* DMProfileSuccessPending+Services.swift in Sources */,
 				E5AE370C1E4897790001EC3C /* MessageReceiverTableCell.swift in Sources */,
 				E5496E0A1E25E52600C54288 /* DMSchoolListPopOverVC+TableViewExtension.swift in Sources */,
 				E51D4F131E4086BD00ACC631 /* DMCancelJobVC+Services.swift in Sources */,

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DMProfileSuccessPending: UIViewController {
+class DMProfileSuccessPending: DMBaseVC {
     @IBOutlet weak var letsGoButton: UIButton!
     
     @IBOutlet weak var successPendingImageView: UIImageView!
@@ -38,6 +38,11 @@ class DMProfileSuccessPending: UIViewController {
     
     @IBAction func letsGoButtonPressed(_ sender: Any) {
         if !isEmailVerified {
+            verifyEmail(completionHandler: { (isVerified:Bool, error:NSError?) in
+                if error == nil {
+                    
+                }
+            })
             print("Check with new email verify api")
         } else {
             let calendarSetAvailabillityVC = UIStoryboard.calenderStoryBoard().instantiateViewController(type: DMCalendarSetAvailabillityVC.self)!

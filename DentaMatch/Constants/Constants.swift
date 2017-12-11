@@ -167,6 +167,7 @@ struct Constants {
         static let login = Constants.API.apiURL("users/sign-in")
         static let forgotPassword = Constants.API.apiURL("users/forgot-password")
         static let termsAndConditionsURL = Constants.API.apiURL("term-condition")
+        static let emailVerify = Constants.API.apiURL("users/is-verified")
         static let privacyPolicyURL = Constants.API.apiURL("privacy-policy")
         static let getPreferredJobLocations = Constants.API.apiURL("jobs/preferred-job-locations")
         static let getJobTitle = Constants.API.apiURL("list-jobtitle")
