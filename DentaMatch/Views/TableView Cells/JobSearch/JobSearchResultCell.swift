@@ -67,7 +67,7 @@ class JobSearchResultCell: UITableViewCell {
         self.lblJobTitle.text = job.jobtitle
         
         //Now the lblDistance will be percentage label
-        self.lblDistance.text = "\(job.matchedSkills)%"
+        self.lblDistance.text = String(format: "%.2f", job.percentSkillsMatch) + "%"
         self.lblDocName.text = job.officeName
         self.lblAddress.text = job.address
         var partTimeJobDays = [String]()

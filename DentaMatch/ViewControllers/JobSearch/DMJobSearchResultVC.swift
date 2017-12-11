@@ -22,7 +22,7 @@ class DMJobSearchResultVC : DMBaseVC {
     
     @IBOutlet weak var btnCurrentLocation: UIButton!
     var notificationLabel:UILabel?
-    
+    var bannerStatus = 0
     var rightBarBtn : UIButton = UIButton()
     var rightBarButtonItem : UIBarButtonItem = UIBarButtonItem()
     var isListShow : Bool = false
@@ -147,6 +147,7 @@ class DMJobSearchResultVC : DMBaseVC {
     func showBanner(status:Int = 1) {
         //if status is 1 it means yellow banner i.e. profile not verified
         //if status is 2 it means red banner i.e. needs attention
+        self.bannerStatus = status
         self.bannerHeightConstraint.constant = 45.0
         self.constraintTblViewSearchResultHeight.constant = UIScreen.main.bounds.height - (self.navigationController?.navigationBar.frame.height)! - UIApplication.shared.statusBarFrame.height - (self.tabBarController?.tabBar.frame.height)! - (32.0) - (45.0)
         self.currentGPSButtonTopConstraint.constant = 55.0
@@ -307,6 +308,7 @@ class DMJobSearchResultVC : DMBaseVC {
             self.btnMap.backgroundColor = UIColor.clear
             self.mapViewSearchResult.isHidden = true
             self.tblJobSearchResult.isHidden = false
+            self.showBanner(status: self.bannerStatus)
 //            self.constraintTblViewSearchResultHeight.constant = UIScreen.main.bounds.height - (self.navigationController?.navigationBar.frame.height)! - UIApplication.shared.statusBarFrame.height - (self.tabBarController?.tabBar.frame.height)! - ((32.0))
             self.view.layoutIfNeeded()
             self.tblJobSearchResult.isScrollEnabled = true

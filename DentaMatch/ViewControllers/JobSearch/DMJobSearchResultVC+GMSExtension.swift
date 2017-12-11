@@ -66,6 +66,7 @@ extension DMJobSearchResultVC : GMSMapViewDelegate {
     }
     
     func showCard(index : Int) {
+        self.tblJobSearchResult.isHidden = false
         self.constraintTblViewSearchResultHeight.constant = cellHeight
         UIView.animate(withDuration: 0.5, animations: {
             self.view.layoutIfNeeded()
@@ -78,10 +79,12 @@ extension DMJobSearchResultVC : GMSMapViewDelegate {
     }
     
     func hideCard() {
+        self.tblJobSearchResult.isHidden = true
         self.constraintTblViewSearchResultHeight.constant = 0.0
         UIView.animate(withDuration: 0.5, animations: {
             self.view.layoutIfNeeded()
         }) { (complete: Bool) in
-            self.tblJobSearchResult.isScrollEnabled = true        }
+            self.tblJobSearchResult.isScrollEnabled = true
+        }
     }
 }

@@ -151,7 +151,7 @@ extension DMTrackVC:UITableViewDataSource,UITableViewDelegate {
         cell.lblJobTitle.text = job.jobtitle
         cell.lblDocName.text = job.officeName
         cell.lblAddress.text = job.address
-        cell.lblDistance.text = "\(job.matchedSkills)%"
+        cell.lblDistance.text = String(format: "%.2f", job.percentSkillsMatch) + "%"
         cell.btnType.setTitle(getJobTypeText(jobType: job.jobType), for: .normal)
     }
     
