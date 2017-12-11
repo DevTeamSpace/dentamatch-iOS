@@ -9,20 +9,48 @@
 import UIKit
 
 class DMProfileSuccessPending: DMBaseVC {
-    @IBOutlet weak var letsGoButton: UIButton!
     
+    @IBOutlet weak var letsGoButton: UIButton!
     @IBOutlet weak var successPendingImageView: UIImageView!
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
+    
     var isLicenseRequired = false
     var isEmailVerified = false
+    var fromRoot = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        verifyEmailAPI()
+    }
+    
+    func verifyEmailAPI() {
+        verifyEmail(completionHandler: { (isVerified:Bool, error:NSError?) in
+            if error == nil && isVerified {
+                DispatchQueue.main.async {
+                    if self.isEmailVerified {
+                        return
+                    }
+                    self.goToCalendar()
+                }
+            } else {
+                self.hideAll(isHidden: false)
+            }
+        })
+    }
+    
+    func hideAll(isHidden:Bool) {
+        letsGoButton.isHidden = isHidden
+        successPendingImageView.isHidden = isHidden
+        titleLabel.isHidden = isHidden
+        detailLabel.isHidden = isHidden
     }
 
     func setup() {
+        if fromRoot {
+            self.hideAll(isHidden: true)
+        }
         if !isEmailVerified {
             letsGoButton.setTitle("VERIFIED EMAIL", for: .normal)
             successPendingImageView.image = UIImage(named:"verifyEmail")
@@ -39,17 +67,22 @@ class DMProfileSuccessPending: DMBaseVC {
     @IBAction func letsGoButtonPressed(_ sender: Any) {
         if !isEmailVerified {
             verifyEmail(completionHandler: { (isVerified:Bool, error:NSError?) in
-                if error == nil {
-                    
+                if error == nil && isVerified {
+                    DispatchQueue.main.async {
+                        self.goToCalendar()
+                    }
                 }
             })
             print("Check with new email verify api")
         } else {
-            let calendarSetAvailabillityVC = UIStoryboard.calenderStoryBoard().instantiateViewController(type: DMCalendarSetAvailabillityVC.self)!
-            calendarSetAvailabillityVC.fromJobSelection = true
-            self.navigationController?.pushViewController(calendarSetAvailabillityVC, animated: true)
+            goToCalendar()
         }
     }
     
+    func goToCalendar() {
+        let calendarSetAvailabillityVC = UIStoryboard.calenderStoryBoard().instantiateViewController(type: DMCalendarSetAvailabillityVC.self)!
+        calendarSetAvailabillityVC.fromJobSelection = true
+        self.navigationController?.pushViewController(calendarSetAvailabillityVC, animated: true)
+    }
 
 }

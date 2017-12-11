@@ -42,14 +42,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         configureNetworkReachability()
         
         if UserDefaultsManager.sharedInstance.isProfileCompleted {
-            
             self.goToDashBoard()
             return true
         }
         
         if !UserDefaultsManager.sharedInstance.isProfileSkipped {
             if UserDefaultsManager.sharedInstance.isLoggedIn {
-                self.goToProfile()
+                if  !UserManager.shared().activeUser.jobTitle!.isEmptyField {
+                    self.goToSuccessPendingScreen()
+                } else {
+                    self.goToProfile()
+                }
             } else {
                 if UserDefaultsManager.sharedInstance.isOnBoardingDone {
                     self.goToRegistration()
@@ -101,6 +104,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func goToProfile() {
         let profileVC = UIStoryboard.profileStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.profileNav) as! UINavigationController
         self.window?.rootViewController = profileVC
+    }
+    
+    func goToSuccessPendingScreen() {
+        let profileSuccessPendingVC = UIStoryboard.profileStoryBoard().instantiateViewController(type: DMProfileSuccessPending.self)!
+        profileSuccessPendingVC.fromRoot = true
+        let navigationVC = UINavigationController(rootViewController: profileSuccessPendingVC)
+        navigationVC.setNavigationBarHidden(true, animated: false)
+        self.window?.rootViewController = navigationVC
     }
     
     func goToDashBoard() {

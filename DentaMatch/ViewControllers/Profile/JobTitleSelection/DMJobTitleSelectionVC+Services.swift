@@ -112,12 +112,21 @@ extension DMJobTitleSelectionVC {
             if response[Constants.ServerKey.status].boolValue {
                 //move to congrats screen
                 let profileSuccessPendingVC = UIStoryboard.profileStoryBoard().instantiateViewController(type: DMProfileSuccessPending.self)!
-                if response[Constants.ServerKey.result]["isVerified"].stringValue == "1" {
+                let user = response[Constants.ServerKey.result]["userDetails"]
+                if user["isVerified"].stringValue == "1" {
                     profileSuccessPendingVC.isEmailVerified = true
                 }
                 if selectedJobTitle!.isLicenseRequired {
                     profileSuccessPendingVC.isLicenseRequired = true
                 }
+                UserManager.shared().activeUser.jobTitle = user[Constants.ServerKey.jobtitleName].stringValue
+                UserManager.shared().activeUser.jobTitleId = user[Constants.ServerKey.jobTitileId].stringValue
+                UserManager.shared().activeUser.profileImageURL = user[Constants.ServerKey.profilePic].stringValue
+                UserManager.shared().activeUser.preferredJobLocation = user[Constants.ServerKey.preferredLocationName].stringValue
+                UserManager.shared().activeUser.preferredLocationId = user[Constants.ServerKey.preferredJobLocationId].stringValue
+                UserManager.shared().activeUser.state = user[Constants.ServerKey.state].stringValue
+                UserManager.shared().activeUser.licenseNumber = user[Constants.ServerKey.licenseNumber].stringValue
+                UserManager.shared().saveActiveUser()
                 
                 self.navigationController?.pushViewController(profileSuccessPendingVC, animated: true)
             } else {

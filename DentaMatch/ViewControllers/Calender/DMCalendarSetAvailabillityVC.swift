@@ -21,7 +21,7 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
     var isJobTypePartTime : String! = "0"
     var availablitytModel:UserAvailability? = UserAvailability()
     var gregorian:NSCalendar?
-
+    var fromRoot = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
