@@ -12,6 +12,10 @@ extension DMSettingVC : UITableViewDataSource,UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        //Made preferred job cell to hide
+        if indexPath.row == 0 {
+            return 0
+        }
         return 60
     }
     

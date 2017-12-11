@@ -18,6 +18,7 @@ class SettingTableCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
