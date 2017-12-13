@@ -17,6 +17,14 @@ extension DMJobSearchVC : DMJobTitleVCDelegate {
         tblViewJobSearch.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .top)
         tblViewJobSearch.endUpdates()
     }
+    
+    func setSelectedPreferredLocations(preferredLocations: [PreferredLocation]) {
+        self.preferredLocations.removeAll()
+        self.preferredLocations = preferredLocations
+        tblViewJobSearch.beginUpdates()
+        tblViewJobSearch.reloadRows(at: [IndexPath(row: 0, section: 2)], with: .fade)
+        tblViewJobSearch.endUpdates()
+    }
 }
 
 extension DMJobSearchVC : LocationAddressDelegate {

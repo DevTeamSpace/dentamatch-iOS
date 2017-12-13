@@ -13,6 +13,8 @@ class PreferredLocation : NSObject {
     var id = "0"
     var preferredLocationName = ""
     var isActive = false
+    var isSelected = false
+
  
     override init() {
         /* For Default object of class */

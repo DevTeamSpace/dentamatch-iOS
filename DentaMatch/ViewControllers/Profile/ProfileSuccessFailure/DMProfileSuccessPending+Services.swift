@@ -11,7 +11,7 @@ import SwiftyJSON
 
 extension DMProfileSuccessPending {
     
-    func verifyEmail(completionHandler:@escaping (Bool, NSError?) -> ()) {
+    func verifyEmail(completionHandler:@escaping (Bool,String, NSError?) -> ()) {
         self.showLoader()
         APIManager.apiGet(serviceName: Constants.API.emailVerify, parameters: nil) { (response:JSON?, error:NSError?) in
             self.hideLoader()
@@ -25,7 +25,7 @@ extension DMProfileSuccessPending {
             }
             debugPrint(response!)
             if response![Constants.ServerKey.status].boolValue {
-                completionHandler(response![Constants.ServerKey.result]["isVerified"].boolValue, error)
+                completionHandler(response![Constants.ServerKey.result]["isVerified"].boolValue,response![Constants.ServerKey.message].stringValue ,error)
             }
         }
     }

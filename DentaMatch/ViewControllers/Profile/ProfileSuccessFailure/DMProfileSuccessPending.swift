@@ -26,7 +26,7 @@ class DMProfileSuccessPending: DMBaseVC {
     }
     
     func verifyEmailAPI() {
-        verifyEmail(completionHandler: { (isVerified:Bool, error:NSError?) in
+        verifyEmail(completionHandler: { (isVerified:Bool, message:String,error:NSError?) in
             if error == nil && isVerified {
                 DispatchQueue.main.async {
                     if self.isEmailVerified {
@@ -52,10 +52,10 @@ class DMProfileSuccessPending: DMBaseVC {
             self.hideAll(isHidden: true)
         }
         if !isEmailVerified {
-            letsGoButton.setTitle("VERIFIED EMAIL", for: .normal)
+            letsGoButton.setTitle("RESEND VERIFICATION EMAIL", for: .normal)
             successPendingImageView.image = UIImage(named:"verifyEmail")
             titleLabel.text = "Verify Email"
-            detailLabel.text = "We Have sent a verification link on your registered email. Please verify it to proceed further."
+            detailLabel.text = "We have sent a verification link on your registered email. Please verify it to proceed further."
             
         } else if isLicenseRequired {
             successPendingImageView.image = UIImage(named:"pendingApproval")
@@ -66,10 +66,16 @@ class DMProfileSuccessPending: DMBaseVC {
     
     @IBAction func letsGoButtonPressed(_ sender: Any) {
         if !isEmailVerified {
-            verifyEmail(completionHandler: { (isVerified:Bool, error:NSError?) in
-                if error == nil && isVerified {
-                    DispatchQueue.main.async {
-                        self.goToCalendar()
+            verifyEmail(completionHandler: { (isVerified:Bool, message:String,error:NSError?) in
+                if error == nil  {
+                    if isVerified {
+                        DispatchQueue.main.async {
+                            self.goToCalendar()
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            self.alertMessage(title: "Message", message: message, buttonText: "Ok", completionHandler: nil)
+                        }
                     }
                 }
             })

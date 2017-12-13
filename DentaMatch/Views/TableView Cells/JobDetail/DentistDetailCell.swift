@@ -15,6 +15,7 @@ import UIKit
 
 class DentistDetailCell: UITableViewCell {
     
+    @IBOutlet weak var lblPercentSkill: UILabel!
     @IBOutlet weak var lblDentistName: UILabel!
     @IBOutlet weak var btnFavourite: UIButton!
     @IBOutlet weak var btnJobType: UIButton!
@@ -148,5 +149,6 @@ class DentistDetailCell: UITableViewCell {
             }
             self.lblDays.text = self.lblDays.text?.dropLast(2)
         }
+        self.lblPercentSkill.text = String(format: "%.2f", job.percentSkillsMatch) + "%"
     }
 }

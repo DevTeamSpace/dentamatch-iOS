@@ -61,15 +61,13 @@ extension DMJobSearchVC : UITableViewDataSource, UITableViewDelegate {
                 return cell!
             }
         case 2:
-            if indexPath.row == 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "CurrentLocationCell") as! CurrentLocationCell
-                cell.selectionStyle = .none
-                cell.lblLocation.text = self.location.address
-                return cell
-            }
-            else if  indexPath.row == 1 {
-                return cell
-            }  
+            let cell = tableView.dequeueReusableCell(withIdentifier: "JobSeachTitleCell") as? JobSeachTitleCell
+            cell?.selectionStyle = .none
+            cell?.lblJobTitle.text = "PREFERRED LOCATION"
+            cell?.preferredLocations = self.preferredLocations
+            cell?.forPreferredLocation = true
+            cell!.updateJobTitle()
+            return cell!
         default:
             break
         }
@@ -161,15 +159,17 @@ extension DMJobSearchVC : UITableViewDataSource, UITableViewDelegate {
             }
         }
         else if indexPath.section == 2 {
-            if indexPath.row == 0 {
-                let registerMapsVC = UIStoryboard.registrationStoryBoard().instantiateViewController(type: DMRegisterMapsVC.self)!
-                registerMapsVC.delegate = self
-                registerMapsVC.fromJobSearch = true
-                self.navigationController?.pushViewController(registerMapsVC, animated: true)
-            }
-            else if indexPath.row == 1 {
-                //will implement
-            }
+                let jobTitleVC = UIStoryboard.jobSearchStoryBoard().instantiateViewController(type: DMJobTitleVC.self)!
+                jobTitleVC.delegate = self
+                jobTitleVC.forPreferredLocations = true
+                jobTitleVC.selectedPreferredLocations = self.preferredLocations
+                self.navigationController?.pushViewController(jobTitleVC, animated: true)
+                
+//                let registerMapsVC = UIStoryboard.registrationStoryBoard().instantiateViewController(type: DMRegisterMapsVC.self)!
+//                registerMapsVC.delegate = self
+//                registerMapsVC.fromJobSearch = true
+//                self.navigationController?.pushViewController(registerMapsVC, animated: true)
+            
         }
     }
 }

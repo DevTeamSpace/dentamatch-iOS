@@ -21,6 +21,7 @@ class DMJobSearchVC : DMBaseVC {
     var delegate:SearchJobDelegate?
     var isPartTimeDayShow : Bool = false
     var jobTitles = [JobTitle]()
+    var preferredLocations = [PreferredLocation]()
     var jobs = [Job]()
     var partTimeJobDays = [String]()
     var location : Location! = Location()
@@ -110,7 +111,7 @@ class DMJobSearchVC : DMBaseVC {
             
         }
         else {
-            self.getLocation()
+            //self.getLocation()
         }
         
         //self.getLocation()

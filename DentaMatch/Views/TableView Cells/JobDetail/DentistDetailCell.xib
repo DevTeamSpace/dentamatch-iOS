@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
         <array key="SF-UI-Text-Medium.otf">
             <string>SFUIText-Medium</string>
         </array>
@@ -30,16 +34,16 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wbG-6Q-eGm">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="114"/>
+                        <rect key="frame" x="8" y="3" width="304" height="109"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dental Assistance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JiJ-r6-G7B">
-                                <rect key="frame" x="17" y="19" width="198" height="21"/>
+                                <rect key="frame" x="17" y="19" width="182" height="21"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="18"/>
                                 <color key="textColor" red="0.015686274510000001" green="0.43921568630000002" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MMU-ub-pAV">
-                                <rect key="frame" x="265" y="5" width="50" height="50"/>
+                                <rect key="frame" x="249" y="5" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="5VJ-if-x5E"/>
                                     <constraint firstAttribute="height" constant="50" id="wsC-tH-s9w"/>
@@ -65,43 +69,58 @@
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mo,su," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbT-hg-hiR">
-                                <rect key="frame" x="94" y="51" width="171" height="14"/>
+                                <rect key="frame" x="94" y="51" width="155" height="14"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 DAYS AGO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NOt-83-ba0">
-                                <rect key="frame" x="17" y="82" width="150" height="11"/>
+                                <rect key="frame" x="17" y="88" width="150" height="9"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="ah0-Dc-qrV"/>
-                                    <constraint firstAttribute="height" constant="11" id="mFe-OS-sAg"/>
+                                    <constraint firstAttribute="height" constant="9" id="mFe-OS-sAg"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="10"/>
                                 <color key="textColor" red="0.58431372550000005" green="0.58431372550000005" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P41-7v-emu">
-                                <rect key="frame" x="18" y="113" width="302" height="1"/>
+                                <rect key="frame" x="18" y="108" width="286" height="1"/>
                                 <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="ujf-XN-HpS"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Applied" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSf-IO-YoC">
-                                <rect key="frame" x="255.5" y="80.5" width="44.5" height="14"/>
+                                <rect key="frame" x="239.5" y="85.5" width="44.5" height="14"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="12"/>
                                 <color key="textColor" red="0.55686274509803924" green="0.81176470588235294" blue="0.49411764705882355" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="87%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zvy-hC-NoB">
+                                <rect key="frame" x="259" y="50.5" width="30" height="19"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MATCH" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CvJ-rN-yiB">
+                                <rect key="frame" x="257" y="70.5" width="34.5" height="12"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="10"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="CvJ-rN-yiB" firstAttribute="centerX" secondItem="Zvy-hC-NoB" secondAttribute="centerX" id="0M9-Xc-AGR"/>
                             <constraint firstItem="NOt-83-ba0" firstAttribute="leading" secondItem="wbG-6Q-eGm" secondAttribute="leading" constant="17" id="3AF-Ev-X9y"/>
+                            <constraint firstItem="Zvy-hC-NoB" firstAttribute="centerX" secondItem="MMU-ub-pAV" secondAttribute="centerX" id="3vm-Pw-Nzv"/>
                             <constraint firstItem="JiJ-r6-G7B" firstAttribute="leading" secondItem="wbG-6Q-eGm" secondAttribute="leading" constant="17" id="4FA-8q-eTu"/>
                             <constraint firstItem="lbT-hg-hiR" firstAttribute="leading" secondItem="UbB-K9-Quo" secondAttribute="trailing" constant="16" id="4XA-TP-7lN"/>
                             <constraint firstItem="UbB-K9-Quo" firstAttribute="top" secondItem="JiJ-r6-G7B" secondAttribute="bottom" constant="7" id="55I-kg-Y7O"/>
                             <constraint firstItem="MMU-ub-pAV" firstAttribute="leading" secondItem="lbT-hg-hiR" secondAttribute="trailing" id="BoO-kb-dby"/>
                             <constraint firstItem="MMU-ub-pAV" firstAttribute="leading" secondItem="JiJ-r6-G7B" secondAttribute="trailing" constant="50" id="DkB-l7-bPC"/>
+                            <constraint firstItem="Zvy-hC-NoB" firstAttribute="centerY" secondItem="lbT-hg-hiR" secondAttribute="centerY" constant="2" id="HdW-Lb-flk"/>
                             <constraint firstItem="lbT-hg-hiR" firstAttribute="centerY" secondItem="UbB-K9-Quo" secondAttribute="centerY" id="KNd-W6-kyu"/>
                             <constraint firstAttribute="trailing" secondItem="P41-7v-emu" secondAttribute="trailing" id="MHC-gO-au5"/>
                             <constraint firstItem="UbB-K9-Quo" firstAttribute="leading" secondItem="JiJ-r6-G7B" secondAttribute="leading" id="MNT-7y-U3t"/>
@@ -112,7 +131,8 @@
                             <constraint firstItem="JiJ-r6-G7B" firstAttribute="top" secondItem="wbG-6Q-eGm" secondAttribute="top" constant="19" id="ibd-Ap-6KE"/>
                             <constraint firstItem="rSf-IO-YoC" firstAttribute="centerY" secondItem="NOt-83-ba0" secondAttribute="centerY" id="j4b-Wn-Ri6"/>
                             <constraint firstAttribute="trailing" secondItem="rSf-IO-YoC" secondAttribute="trailing" constant="20" id="nl0-wF-QWc"/>
-                            <constraint firstAttribute="bottom" secondItem="NOt-83-ba0" secondAttribute="bottom" constant="21" id="uJa-Gp-xY0"/>
+                            <constraint firstAttribute="bottom" secondItem="NOt-83-ba0" secondAttribute="bottom" constant="12" id="uJa-Gp-xY0"/>
+                            <constraint firstItem="CvJ-rN-yiB" firstAttribute="top" secondItem="Zvy-hC-NoB" secondAttribute="bottom" constant="1" id="ydO-bu-oce"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -129,6 +149,7 @@
                 <outlet property="lblApplied" destination="rSf-IO-YoC" id="2b6-74-gdu"/>
                 <outlet property="lblDays" destination="lbT-hg-hiR" id="9Rh-gb-mVR"/>
                 <outlet property="lblDentistName" destination="JiJ-r6-G7B" id="FQR-nT-mtG"/>
+                <outlet property="lblPercentSkill" destination="Zvy-hC-NoB" id="2CM-I3-WQo"/>
                 <outlet property="lblPostTime" destination="NOt-83-ba0" id="cRZ-zS-6eC"/>
             </connections>
             <point key="canvasLocation" x="34" y="90.5"/>

@@ -16,6 +16,8 @@ class JobSeachTitleCell: UITableViewCell {
     @IBOutlet weak var constraintScrollViewHeight: NSLayoutConstraint!
     
     var jobTitles = [JobTitle]()
+    var preferredLocations = [PreferredLocation]()
+    var forPreferredLocation = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -47,47 +49,97 @@ class JobSeachTitleCell: UITableViewCell {
         var totalHeight : CGFloat = 5.0
         let widthPadding : CGFloat = 10.0
         let heightPadding : CGFloat = 23.0
-        if jobTitles.count == 0 {
-            constraintScrollViewHeight.constant = 4.0
-            return
+        
+        if forPreferredLocation {
+            if preferredLocations.count == 0 {
+                constraintScrollViewHeight.constant = 4.0
+                return
+            }
+        } else {
+            if jobTitles.count == 0 {
+                constraintScrollViewHeight.constant = 4.0
+                return
+            }
         }
         
-        for objTitle in jobTitles {
-            let font = UIFont.fontRegular(fontSize: 14.0)
-            let textAttributes = [NSAttributedStringKey.font: font]
-            let textSize = objTitle.jobTitle.boundingRect(with: CGSize(width : UIScreen.main.bounds.size.width + 10,height : 14), options: .usesLineFragmentOrigin, attributes: textAttributes, context: nil)
-            var textWidth : CGFloat = textSize.width
-            let textHeight : CGFloat = 34.0
-            
-            if textSize.width >= self.scrollViewJobTitle.frame.size.width {
-                leftMargin = 5.0
-                if topMargin == 0.0 {
-                    topMargin = 5.0
+
+        
+        if forPreferredLocation {
+            for objTitle in preferredLocations {
+                let font = UIFont.fontRegular(fontSize: 14.0)
+                let textAttributes = [NSAttributedStringKey.font: font]
+                let textSize = objTitle.preferredLocationName.boundingRect(with: CGSize(width : UIScreen.main.bounds.size.width + 10,height : 14), options: .usesLineFragmentOrigin, attributes: textAttributes, context: nil)
+                var textWidth : CGFloat = textSize.width
+                let textHeight : CGFloat = 34.0
+                
+                if textSize.width >= self.scrollViewJobTitle.frame.size.width {
+                    leftMargin = 5.0
+                    if topMargin == 0.0 {
+                        topMargin = 5.0
+                    }
+                    else {
+                        topMargin =  topMargin + textSize.height + heightPadding + 5.0
+                    }
+                    textWidth = self.scrollViewJobTitle.frame.size.width - leftMargin - rightMargin - 15
                 }
-                else {
+                else if leftMargin + textSize.width + rightMargin + widthPadding >= (UIScreen.main.bounds.size.width - 20) {
+                    leftMargin = 5.0
                     topMargin =  topMargin + textSize.height + heightPadding + 5.0
                 }
-                textWidth = self.scrollViewJobTitle.frame.size.width - leftMargin - rightMargin - 15
+                
+                let label = UILabel(frame: CGRect(x : leftMargin,y : topMargin,width : textWidth + widthPadding + 15,height :  textHeight))
+                label.textAlignment = NSTextAlignment.center
+                label.font = font
+                label.textColor = Constants.Color.jobTitleBricksColor
+                label.text = objTitle.preferredLocationName as String
+                label.layer.borderWidth  = 1
+                label.layer.borderColor = Constants.Color.jobTitleBricksColor.cgColor
+                label.layer.cornerRadius = 5.0
+                label.clipsToBounds = true
+                self.scrollViewJobTitle.addSubview(label)
+                
+                leftMargin = leftMargin + textWidth + widthPadding + 25
+                totalHeight =  topMargin + textSize.height + heightPadding
             }
-            else if leftMargin + textSize.width + rightMargin + widthPadding >= (UIScreen.main.bounds.size.width - 20) {
-                leftMargin = 5.0
-                topMargin =  topMargin + textSize.height + heightPadding + 5.0
+        } else {
+            for objTitle in jobTitles {
+                let font = UIFont.fontRegular(fontSize: 14.0)
+                let textAttributes = [NSAttributedStringKey.font: font]
+                let textSize = objTitle.jobTitle.boundingRect(with: CGSize(width : UIScreen.main.bounds.size.width + 10,height : 14), options: .usesLineFragmentOrigin, attributes: textAttributes, context: nil)
+                var textWidth : CGFloat = textSize.width
+                let textHeight : CGFloat = 34.0
+                
+                if textSize.width >= self.scrollViewJobTitle.frame.size.width {
+                    leftMargin = 5.0
+                    if topMargin == 0.0 {
+                        topMargin = 5.0
+                    }
+                    else {
+                        topMargin =  topMargin + textSize.height + heightPadding + 5.0
+                    }
+                    textWidth = self.scrollViewJobTitle.frame.size.width - leftMargin - rightMargin - 15
+                }
+                else if leftMargin + textSize.width + rightMargin + widthPadding >= (UIScreen.main.bounds.size.width - 20) {
+                    leftMargin = 5.0
+                    topMargin =  topMargin + textSize.height + heightPadding + 5.0
+                }
+                
+                let label = UILabel(frame: CGRect(x : leftMargin,y : topMargin,width : textWidth + widthPadding + 15,height :  textHeight))
+                label.textAlignment = NSTextAlignment.center
+                label.font = font
+                label.textColor = Constants.Color.jobTitleBricksColor
+                label.text = objTitle.jobTitle as String
+                label.layer.borderWidth  = 1
+                label.layer.borderColor = Constants.Color.jobTitleBricksColor.cgColor
+                label.layer.cornerRadius = 5.0
+                label.clipsToBounds = true
+                self.scrollViewJobTitle.addSubview(label)
+                
+                leftMargin = leftMargin + textWidth + widthPadding + 25
+                totalHeight =  topMargin + textSize.height + heightPadding
             }
-            
-            let label = UILabel(frame: CGRect(x : leftMargin,y : topMargin,width : textWidth + widthPadding + 15,height :  textHeight))
-            label.textAlignment = NSTextAlignment.center
-            label.font = font
-            label.textColor = Constants.Color.jobTitleBricksColor
-            label.text = objTitle.jobTitle as String
-            label.layer.borderWidth  = 1
-            label.layer.borderColor = Constants.Color.jobTitleBricksColor.cgColor
-            label.layer.cornerRadius = 5.0
-            label.clipsToBounds = true
-            self.scrollViewJobTitle.addSubview(label)
-            
-            leftMargin = leftMargin + textWidth + widthPadding + 25
-            totalHeight =  topMargin + textSize.height + heightPadding
         }
+        
         
         self.scrollViewJobTitle.contentSize = CGSize(width : UIScreen.main.bounds.size.width - 20,height : totalHeight)
         

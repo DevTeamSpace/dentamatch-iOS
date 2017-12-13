@@ -404,6 +404,8 @@ struct Constants {
         
         //Job Search
         static let selectTitle = "Please select at least one title"
+        static let selectPreferredLocation = "Please select at least one location"
+
         static let selectLocation = "Please select location"
         
         //Apply Job
