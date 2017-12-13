@@ -73,7 +73,11 @@ class DMJobTitleVC: DMBaseVC {
     
     //MARK : Private Method
     func setUp() {
-        self.title = Constants.ScreenTitleNames.jobTitle
+        if forPreferredLocations {
+            self.title = "PREFERRED LOCATIONS"
+        } else {
+            self.title = Constants.ScreenTitleNames.jobTitle
+        }
         self.tblJobTitle.rowHeight = UITableViewAutomaticDimension
         self.tblJobTitle.register(UINib(nibName: "JobTitleCell", bundle: nil), forCellReuseIdentifier: "JobTitleCell")
         self.navigationItem.leftBarButtonItem = self.backBarButton()
