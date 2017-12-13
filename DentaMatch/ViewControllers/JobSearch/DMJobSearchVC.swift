@@ -71,16 +71,16 @@ class DMJobSearchVC : DMBaseVC {
     
         if let params =  UserDefaultsManager.sharedInstance.loadSearchParameter() {
             searchParams = params
-            location.postalCode = (searchParams[Constants.JobDetailKey.zipCode] as! String?)!
-            location.address = searchParams[Constants.JobDetailKey.address] as! String?
-            self.city = searchParams[Constants.JobDetailKey.city] as! String
-            self.state = searchParams[Constants.JobDetailKey.state] as! String
-            self.country = searchParams[Constants.JobDetailKey.country] as! String
-            let latStr = searchParams[Constants.JobDetailKey.lat] as! NSString
-            let latDbl : Double  = latStr.doubleValue
-            let langStr = searchParams[Constants.JobDetailKey.lng] as! NSString
-            let langDbl : Double = langStr.doubleValue
-            location.coordinateSelected = CLLocationCoordinate2DMake(latDbl, langDbl)
+//            location.postalCode = (searchParams[Constants.JobDetailKey.zipCode] as! String?)!
+//            location.address = searchParams[Constants.JobDetailKey.address] as! String?
+//            self.city = searchParams[Constants.JobDetailKey.city] as! String
+//            self.state = searchParams[Constants.JobDetailKey.state] as! String
+//            self.country = searchParams[Constants.JobDetailKey.country] as! String
+//            let latStr = searchParams[Constants.JobDetailKey.lat] as! NSString
+//            let latDbl : Double  = latStr.doubleValue
+//            let langStr = searchParams[Constants.JobDetailKey.lng] as! NSString
+//            let langDbl : Double = langStr.doubleValue
+//            location.coordinateSelected = CLLocationCoordinate2DMake(latDbl, langDbl)
             if searchParams[Constants.JobDetailKey.isParttime] as! String? == "1" {
                 isPartTimeDayShow = true
                 isJobTypePartTime = "1"
@@ -104,11 +104,23 @@ class DMJobSearchVC : DMBaseVC {
                     jobTitle.jobId = Int(objTilte[Constants.ServerKey.jobId] as! String)!
                     jobTitle.jobTitle = objTilte[Constants.ServerKey.jobtitleName] as! String
                     jobTitle.jobSelected = true
-                    self.jobTitles.append(jobTitle as JobTitle)
+                    self.jobTitles.append(jobTitle)
                     
                 }
             }
             
+            self.preferredLocations.removeAll()
+            if let savedPreferredLocations = searchParams["preferredJobLocations"] as? [Any] {
+                for location in savedPreferredLocations {
+                    let objTilte = location as! [String:Any]
+                    let preferredLocation = PreferredLocation()
+                    preferredLocation.id = objTilte["id"] as! String
+                    preferredLocation.preferredLocationName = objTilte["preferredLocationName"] as! String
+                    preferredLocation.isSelected = true
+                    self.preferredLocations.append(preferredLocation)
+                    
+                }
+            }
         }
         else {
             //self.getLocation()
@@ -149,10 +161,10 @@ class DMJobSearchVC : DMBaseVC {
             self.makeToast(toastString: Constants.AlertMessage.selectAvailableDay)
             return false
         }
-        if self.location.coordinateSelected == nil {
-            self.makeToast(toastString: Constants.AlertMessage.selectLocation)
-            return false
-        }
+//        if self.location.coordinateSelected == nil {
+//            self.makeToast(toastString: Constants.AlertMessage.selectLocation)
+//            return false
+//        }
         return true
     }
     
@@ -236,36 +248,52 @@ class DMJobSearchVC : DMBaseVC {
         self.view.endEditing(true)
        // var jobTitleDict = [String : Any]()
         var jobTitles = [Any]()
+        var preferredLocationsArray = [Any]()
         var jobTitleIds = [Int]()
+        var preferredLocationIds = [String]()
+        
         for job in self.jobTitles {
             let dict = NSMutableDictionary()
             dict.setObject(job.jobTitle, forKey: Constants.ServerKey.jobtitleName as NSCopying)
             dict.setObject("\(job.jobId)", forKey: Constants.ServerKey.jobId as NSCopying)
 
-          //  jobTitleDict = [Constants.ServerKey.jobtitleName:job.jobTitle,Constants.ServerKey.jobId:job.jobId]
             jobTitles.append(dict)
         }
+        
+        for location in self.preferredLocations {
+            let dict = NSMutableDictionary()
+            dict.setObject(location.preferredLocationName, forKey: "preferredLocationName" as NSCopying)
+            dict.setObject(location.id, forKey: "id" as NSCopying)
+            preferredLocationsArray.append(dict)
+        }
+        
         for job in self.jobTitles {
             jobTitleIds.append(job.jobId)
         }
         
-        if location.coordinateSelected?.latitude != nil {
-            searchParams[Constants.JobDetailKey.lat] = String(describing: location.coordinateSelected!.latitude)
+        for location in self.preferredLocations {
+            preferredLocationIds.append(location.id)
         }
-        if location.coordinateSelected?.longitude != nil {
-            searchParams[Constants.JobDetailKey.lng] = String(describing: location.coordinateSelected!.longitude)
-        }
-        searchParams[Constants.JobDetailKey.zipCode] = location.postalCode
+        
+//        if location.coordinateSelected?.latitude != nil {
+//            searchParams[Constants.JobDetailKey.lat] = String(describing: location.coordinateSelected!.latitude)
+//        }
+//        if location.coordinateSelected?.longitude != nil {
+//            searchParams[Constants.JobDetailKey.lng] = String(describing: location.coordinateSelected!.longitude)
+//        }
+//        searchParams[Constants.JobDetailKey.zipCode] = location.postalCode
         searchParams[Constants.JobDetailKey.isFulltime] = self.isJobTypeFullTime
         searchParams[Constants.JobDetailKey.isParttime] = self.isJobTypePartTime
         searchParams[Constants.JobDetailKey.parttimeDays] = partTimeJobDays
         searchParams[Constants.JobDetailKey.jobTitle] = jobTitleIds
         searchParams[Constants.JobDetailKey.jobTitles] = jobTitles
         searchParams[Constants.JobDetailKey.page] = 1
-        searchParams[Constants.JobDetailKey.city] = self.city
-        searchParams[Constants.JobDetailKey.state] = self.state
-        searchParams[Constants.JobDetailKey.country] = self.country
-        searchParams[Constants.JobDetailKey.address] = location.address
+        searchParams["preferredJobLocations"] = preferredLocationsArray
+        searchParams["preferredJobLocationId"] = preferredLocationIds
+//        searchParams[Constants.JobDetailKey.city] = self.city
+//        searchParams[Constants.JobDetailKey.state] = self.state
+//        searchParams[Constants.JobDetailKey.country] = self.country
+//        searchParams[Constants.JobDetailKey.address] = location.address
         self.goToSearchResult()
     }
 }
