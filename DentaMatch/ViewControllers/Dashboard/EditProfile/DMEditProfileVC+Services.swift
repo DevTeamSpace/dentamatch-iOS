@@ -11,8 +11,10 @@ import SwiftyJSON
 
 extension DMEditProfileVC {
     
-    func userProfileAPI() {
-        self.showLoader()
+    func userProfileAPI(checkForCompletion:Bool = false) {
+        if !checkForCompletion {
+            self.showLoader()
+        }
         APIManager.apiGet(serviceName: Constants.API.userProfile, parameters: [:]) { (response:JSON?, error:NSError?) in
             
             self.hideLoader()            
@@ -25,7 +27,11 @@ extension DMEditProfileVC {
                 return
             }
             debugPrint(response!)
-            self.handleProfileResponse(response: response)
+            if checkForCompletion {
+                self.handleUserResponse(user: response![Constants.ServerKey.result][Constants.ServerKey.user])
+            } else {
+                self.handleProfileResponse(response: response)
+            }
             self.editProfileTableView.reloadData()
         }
     }

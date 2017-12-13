@@ -263,6 +263,7 @@ class DMEditProfileVC: DMBaseVC {
             self.dentalStateBoardURL = url
         }
         self.editProfileTableView.reloadData()
+        self.userProfileAPI(checkForCompletion: true)
     }
     
     // MARK: - Navigation
