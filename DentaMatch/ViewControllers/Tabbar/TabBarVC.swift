@@ -22,7 +22,7 @@ class TabBarVC: UITabBarController,UITabBarControllerDelegate {
     //MARK:- View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(setTabBarToProfile), name: NSNotification.Name(rawValue: "setTabBarToProfile"), object: nil)
         // Do any additional setup after loading the view.
         let appearance = UITabBarItem.appearance()
         UITabBarItem.appearance().titlePositionAdjustment = UIOffset(horizontal: 0, vertical:-4)
@@ -42,6 +42,10 @@ class TabBarVC: UITabBarController,UITabBarControllerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         debugPrint("viewWillAppear")
         
+    }
+    
+    @objc func setTabBarToProfile() {
+        self.selectedIndex = 4
     }
     
     //TODO:- Will Implement Later

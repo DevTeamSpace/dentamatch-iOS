@@ -136,15 +136,18 @@ extension DMJobDetailVC {
                         
                     })
                 } else {
-                    self.alertMessage(title: Constants.AlertMessage.completeYourProfile, message: Constants.AlertMessage.completeYourProfileDetailMsg, leftButtonText: Constants.Strings.no, rightButtonText: Constants.Strings.yes, completionHandler: { (isLeftButtonPressed) in
-                        if isLeftButtonPressed {
-                            debugPrint("Left Button Pressed")
-                        }
-                        else {
-                            self.tabBarController?.selectedIndex = 4
-                        }
-                        
-                    })
+                    DispatchQueue.main.async {
+                        kAppDelegate.showOverlay(isJobSeekerVerified: true)
+                    }
+//                    self.alertMessage(title: Constants.AlertMessage.completeYourProfile, message: Constants.AlertMessage.completeYourProfileDetailMsg, leftButtonText: Constants.Strings.no, rightButtonText: Constants.Strings.yes, completionHandler: { (isLeftButtonPressed) in
+//                        if isLeftButtonPressed {
+//                            debugPrint("Left Button Pressed")
+//                        }
+//                        else {
+//                            self.tabBarController?.selectedIndex = 4
+//                        }
+//
+//                    })
                 }
             }
         }

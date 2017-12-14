@@ -309,6 +309,7 @@
 		E5C5F3181DC1A723001A5A3F /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C5F3171DC1A723001A5A3F /* LocationManager.swift */; };
 		E5C5F31B1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C5F31A1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift */; };
 		E5D2D8A81FE10B6E001EFA68 /* DMJobTitleVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D2D8A71FE10B6E001EFA68 /* DMJobTitleVC+Services.swift */; };
+		E5D2D8AB1FE24305001EFA68 /* DMCommonSuccessFailureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D2D8AA1FE24305001EFA68 /* DMCommonSuccessFailureVC.swift */; };
 		E5DC3E731DAF2C45002DA20E /* DentaMatch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E5DC3E711DAF2C45002DA20E /* DentaMatch.xcdatamodeld */; };
 		E5E7CB431E2F39D500D4FB59 /* DMEditProfileVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E7CB421E2F39D500D4FB59 /* DMEditProfileVC+Services.swift */; };
 		E5E7CB4A1E2F8CDE00D4FB59 /* EditLicenseTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E7CB481E2F8CDE00D4FB59 /* EditLicenseTableCell.swift */; };
@@ -727,6 +728,7 @@
 		E5C5F3171DC1A723001A5A3F /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		E5C5F31A1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMTermsAndConditionsVC.swift; sourceTree = "<group>"; };
 		E5D2D8A71FE10B6E001EFA68 /* DMJobTitleVC+Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DMJobTitleVC+Services.swift"; sourceTree = "<group>"; };
+		E5D2D8AA1FE24305001EFA68 /* DMCommonSuccessFailureVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMCommonSuccessFailureVC.swift; sourceTree = "<group>"; };
 		E5DC3E721DAF2C45002DA20E /* DentaMatch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DentaMatch.xcdatamodel; sourceTree = "<group>"; };
 		E5E7CB421E2F39D500D4FB59 /* DMEditProfileVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMEditProfileVC+Services.swift"; sourceTree = "<group>"; };
 		E5E7CB481E2F8CDE00D4FB59 /* EditLicenseTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditLicenseTableCell.swift; sourceTree = "<group>"; };
@@ -1358,6 +1360,7 @@
 		E55462E71DAE47C6004163B2 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E5D2D8A91FE242E1001EFA68 /* CommonSuccessFailureScreen */,
 				5A988BC21E4AE95900DECB49 /* Notification */,
 				5AC714461E34AB5B00E433C1 /* Messages */,
 				5AC714451E34AB4500E433C1 /* Track */,
@@ -2041,6 +2044,14 @@
 				E5C5F31A1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift */,
 			);
 			path = "Terms And Conditions";
+			sourceTree = "<group>";
+		};
+		E5D2D8A91FE242E1001EFA68 /* CommonSuccessFailureScreen */ = {
+			isa = PBXGroup;
+			children = (
+				E5D2D8AA1FE24305001EFA68 /* DMCommonSuccessFailureVC.swift */,
+			);
+			path = CommonSuccessFailureScreen;
 			sourceTree = "<group>";
 		};
 		E5E7CB531E2FA23200D4FB59 /* AboutMe */ = {
@@ -2801,6 +2812,7 @@
 				E5F919431E9DD4A30021F008 /* FSCalendarCalculator.m in Sources */,
 				E5F9194A1E9DD4A30021F008 /* FSCalendarHeaderView.m in Sources */,
 				E5E7CB891E2FA23200D4FB59 /* OtherSkillCell.swift in Sources */,
+				E5D2D8AB1FE24305001EFA68 /* DMCommonSuccessFailureVC.swift in Sources */,
 				E54976F71E28D243006F21E5 /* DMExecutiveSummaryVC+Services.swift in Sources */,
 				E5AE37611E4971CE0001EC3C /* SocketAnyEvent.swift in Sources */,
 				E587D2CC1E23362C006B7F06 /* JobSelectionPickerView.swift in Sources */,

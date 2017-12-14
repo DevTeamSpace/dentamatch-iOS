@@ -227,6 +227,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NotificationCenter.default.post(name: .chatRedirect, object: nil, userInfo: ["recruiterId":recruiterId])
         }
     }
+    
+    func showOverlay(isJobSeekerVerified:Bool = false) {
+        let commonSuccessFailureVC = UIStoryboard.profileStoryBoard().instantiateViewController(type: DMCommonSuccessFailureVC.self)!
+        commonSuccessFailureVC.isJobSeekerVerified = isJobSeekerVerified
+        commonSuccessFailureVC.modalPresentationStyle = .overCurrentContext
+        commonSuccessFailureVC.modalTransitionStyle = .coverVertical
+        self.window?.rootViewController?.present(commonSuccessFailureVC, animated: true, completion: nil)
+    }
 
     // MARK: - Core Data stack
     lazy var applicationDocumentsDirectory: NSURL = {
