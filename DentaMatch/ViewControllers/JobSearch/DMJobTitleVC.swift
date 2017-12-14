@@ -16,6 +16,7 @@ import SwiftyJSON
 
 class DMJobTitleVC: DMBaseVC {
     
+    @IBOutlet weak var headingLabel: UILabel!
     @IBOutlet weak var tblJobTitle: UITableView!
     var jobTitles = [JobTitle]()
     var selectedJobs = [JobTitle]()
@@ -32,8 +33,10 @@ class DMJobTitleVC: DMBaseVC {
         super.viewDidLoad()
         self.setUp()
         if forPreferredLocations {
+            self.headingLabel.text = "You can select more than one location"
             self.getPreferredJobs()
         } else {
+            self.headingLabel.text = "You can select more than one job title"
             self.getJobsAPI()
         }
     }
