@@ -27,7 +27,7 @@ class AboutMeJobSelectionCell: UITableViewCell {
 //        self.titleActiveTextColour = Constants.Color.textFieldPlaceHolderColor
 //        self.titleTextColour = Constants.Color.textFieldPlaceHolderColor
         
-        placeHolderLabel = UILabel(frame: CGRect(x: 10, y: 10, width: 260, height: 20))
+        placeHolderLabel = UILabel(frame: CGRect(x: 10, y: 10, width: 280, height: 20))
         placeHolderLabel.font = UIFont.fontRegular(fontSize: 14.0)
         placeHolderLabel.textColor = UIColor.color(withHexCode: "939393")
         placeHolderLabel.text = "Write a brief introduction about yourself"

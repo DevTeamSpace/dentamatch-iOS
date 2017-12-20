@@ -18,10 +18,12 @@ extension DMJobTitleSelectionVC:JobSelectionPickerViewDelegate {
             }
             self.selectedJobTitle = jobTitle
         }
+        self.changeUIOFCreateProfileButton(self.isCreateProfileButtonEnable())
         self.view.endEditing(true)
     }
     
     func jobPickerCancelButtonAction() {
+        self.changeUIOFCreateProfileButton(self.isCreateProfileButtonEnable())
         self.view.endEditing(true)
     }
 }

@@ -13,6 +13,7 @@ class DMJobTitleSelectionVC: DMBaseVC,ToolBarButtonDelegate {
     @IBOutlet weak var jobTitleSelectionTableView: UITableView!
     @IBOutlet weak var createProfileButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var prefferedJobLocationLabel: UILabel!
     @IBOutlet weak var addPhotoButton: UIButton!
     @IBOutlet weak var profileButton: ProfileImageButton!
 //    @IBOutlet weak var currentJobTitleTextField: AnimatedPHTextField!
@@ -76,14 +77,15 @@ class DMJobTitleSelectionVC: DMBaseVC,ToolBarButtonDelegate {
         self.jobTitleSelectionTableView.register(UINib(nibName: "AboutMeJobSelectionCell", bundle: nil), forCellReuseIdentifier: "AboutMeJobSelectionCell")
 
         //currentJobTitleTextField.tintColor = UIColor.clear
-        self.nameLabel.text = "Hi \(UserManager.shared().activeUser.firstName!)"
+        self.nameLabel.text = "Hi " + UserManager.shared().activeUser.firstName! + " " + UserManager.shared().activeUser.lastName!
+        self.prefferedJobLocationLabel.text = UserManager.shared().activeUser.preferredJobLocation
         self.addJobSelectionPickerViewTextField()
         //currentJobTitleTextField.type = 1
         self.profileButton.isUserInteractionEnabled = false
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.jobTitleSelectionTableView.addGestureRecognizer(tap)
-        
+        self.changeUIOFCreateProfileButton(self.isCreateProfileButtonEnable())
         //Right View for drop down
 //        let rightView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: currentJobTitleTextField.frame.size.height))
 //        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 40, height: currentJobTitleTextField.frame.size.height))
@@ -100,6 +102,7 @@ class DMJobTitleSelectionVC: DMBaseVC,ToolBarButtonDelegate {
     }
     
     @objc func dismissKeyboard() {
+        self.changeUIOFCreateProfileButton(self.isCreateProfileButtonEnable())
         self.view.endEditing(true)
     }
     
@@ -154,11 +157,42 @@ class DMJobTitleSelectionVC: DMBaseVC,ToolBarButtonDelegate {
         }
     }
     
+    func isCreateProfileButtonEnable() -> Bool {
+        if selectedJobTitle == nil {
+            return false
+        }
+        if selectedJobTitle!.isLicenseRequired {
+            if licenseNumber.count == 0 {
+                return false
+            }
+            if state.count == 0 {
+                return false
+            }
+        }
+        if aboutMe.trim().count > 0 {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func changeUIOFCreateProfileButton(_ isEnable: Bool) {
+        if isEnable {
+            self.createProfileButton.setTitleColor(UIColor.white, for: .normal)
+            
+        } else {
+            let bgcolor =  UIColor(red: CGFloat(255.0)/255.0, green: CGFloat(255.0)/255.0, blue: CGFloat(255.0)/255.0, alpha: 0.5)
+            self.createProfileButton.setTitleColor(bgcolor, for: .normal)
+        }
+    }
+    
     @objc func toolBarButtonTapped() {
+        self.changeUIOFCreateProfileButton(self.isCreateProfileButtonEnable())
         self.view.endEditing(true)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.changeUIOFCreateProfileButton(self.isCreateProfileButtonEnable())
         self.view.endEditing(true)
     }
     
@@ -284,6 +318,7 @@ class DMJobTitleSelectionVC: DMBaseVC,ToolBarButtonDelegate {
     
     //MARK:- ToolBarButton Delegate
     func toolBarButtonPressed(position: Position) {
+        self.changeUIOFCreateProfileButton(self.isCreateProfileButtonEnable())
         self.view.endEditing(true)
     }
     

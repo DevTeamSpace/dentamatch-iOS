@@ -132,7 +132,7 @@ class DentistDetailCell: UITableViewCell {
         }
         self.lblDays.text = partTimeJobDays.joined(separator: Constants.Strings.comma + Constants.Strings.whiteSpace)
         if job.jobPostedTimeGap == Constants.Strings.zero {
-            self.lblPostTime.text = Constants.Strings.today
+            self.lblPostTime.text = Constants.Strings.today.uppercased()
         }
         else if job.jobPostedTimeGap == Constants.Strings.one {
             self.lblPostTime.text = job.jobPostedTimeGap + Constants.Strings.whiteSpace + Constants.Strings.dayAgo

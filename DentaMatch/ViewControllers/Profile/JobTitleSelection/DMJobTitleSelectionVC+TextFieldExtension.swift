@@ -75,6 +75,7 @@ extension DMJobTitleSelectionVC : UITextFieldDelegate {
         }else if textField.tag == 3 {
             state = textField.text!
         }
+        self.changeUIOFCreateProfileButton(self.isCreateProfileButtonEnable())
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

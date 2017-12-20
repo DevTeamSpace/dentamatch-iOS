@@ -55,7 +55,7 @@ extension DMJobTitleSelectionVC : UITableViewDataSource,UITableViewDelegate {
             cell.commonTextField.placeholder = "License Number"
             cell.commonTextField.tag = 2
         case 2:
-            cell.commonTextField.placeholder = "State"
+            cell.commonTextField.placeholder = "License State"
             cell.commonTextField.tag = 3
 
         case 3:
