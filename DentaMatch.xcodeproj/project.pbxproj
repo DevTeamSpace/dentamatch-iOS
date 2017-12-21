@@ -3169,7 +3169,7 @@
 				OTHER_SWIFT_FLAGS = "-DQA";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appster.dentamatch;
 				PRODUCT_NAME = "$(TARGET_NAME)-QA";
-				PROVISIONING_PROFILE = "31ebfa34-7ee8-4825-aa3b-96c1015ff99a";
+				PROVISIONING_PROFILE = "5c3022b9-859c-4909-b06e-32e60697f1bd";
 				PROVISIONING_PROFILE_SPECIFIER = "DentaMatch Development";
 				SWIFT_OBJC_BRIDGING_HEADER = "DentaMatch/Supporting Files/DentaMatch-BridgingHeader.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
