@@ -76,7 +76,7 @@ extension DMJobSearchResultVC {
                     }
                     else {
                         self.tblJobSearchResult.tableFooterView = nil
-                        self.lblResultCount.text = String(self.jobs.count) + Constants.Strings.whiteSpace + Constants.Strings.resultsFound
+                        self.lblResultCount.text = String(self.totalJobsFromServer) + Constants.Strings.whiteSpace + Constants.Strings.resultsFound
                     }
                     self.tblJobSearchResult.reloadData()
                 }

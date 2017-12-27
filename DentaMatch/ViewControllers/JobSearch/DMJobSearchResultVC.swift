@@ -155,9 +155,9 @@ class DMJobSearchResultVC : DMBaseVC {
             self.view.layoutIfNeeded()
         }
         if status == 1 {
-            self.bannerView.backgroundColor = UIColor.color(withHexCode: "e8ab43")
+            self.bannerView.backgroundColor = UIColor.color(withHexCode: "e8ab43") //yellow /job seeker verified = 0
         } else {
-            self.bannerView.backgroundColor = UIColor.color(withHexCode: "fc3238")
+            self.bannerView.backgroundColor = UIColor.color(withHexCode: "fc3238") //red // profile completed = 0
         }
     }
     
@@ -308,7 +308,10 @@ class DMJobSearchResultVC : DMBaseVC {
             self.btnMap.backgroundColor = UIColor.clear
             self.mapViewSearchResult.isHidden = true
             self.tblJobSearchResult.isHidden = false
-            self.showBanner(status: self.bannerStatus)
+            if self.bannerStatus == 1 || self.bannerStatus == 2 {
+                self.showBanner(status: self.bannerStatus)
+            }
+            
 //            self.constraintTblViewSearchResultHeight.constant = UIScreen.main.bounds.height - (self.navigationController?.navigationBar.frame.height)! - UIApplication.shared.statusBarFrame.height - (self.tabBarController?.tabBar.frame.height)! - ((32.0))
             self.view.layoutIfNeeded()
             self.tblJobSearchResult.isScrollEnabled = true
