@@ -21,21 +21,48 @@ class DMProfileSuccessPending: DMBaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.addNotificationObserver()
         setup()
         verifyEmailAPI()
+    }
+    
+    func addNotificationObserver(){
+        NotificationCenter.default.addObserver(self, selector: #selector(self.willEnterForgeGroundCalled), name:.UIApplicationWillEnterForeground, object: nil)
+
+    }
+    func removeObserversForNotification() {
+        NotificationCenter.default.removeObserver(self, name: .UIApplicationWillEnterForeground, object: nil)
+    }
+    
+    @objc func willEnterForgeGroundCalled() {
+        if self.isEmailVerified == false {
+            self.verifyEmailAPI()
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("viewWillDisappear called ")
+        self.removeObserversForNotification()
+    }
+    deinit {
+        print("deinit called ")
+        self.removeObserversForNotification()
+        //Logger.debug("deinit TLStory")
     }
     
     func verifyEmailAPI() {
         verifyEmail(completionHandler: { (isVerified:Bool, message:String,error:NSError?) in
             if error == nil && isVerified {
                 DispatchQueue.main.async {
+                    self.showPendingCongrats()
                     if self.isEmailVerified {
                         return
                     }
-                    self.goToCalendar()
                 }
             } else {
                 self.hideAll(isHidden: false)
+                self.showUIForVerifyEmail()
             }
         })
     }
@@ -52,16 +79,34 @@ class DMProfileSuccessPending: DMBaseVC {
             self.hideAll(isHidden: true)
         }
         if !isEmailVerified {
-            letsGoButton.setTitle("RESEND VERIFICATION EMAIL", for: .normal)
-            successPendingImageView.image = UIImage(named:"verifyEmail")
-            titleLabel.text = "Verify Email"
-            detailLabel.text = "We have sent a verification link on your registered email. Please verify it to proceed further."
+           self.showUIForVerifyEmail()
             
         } else if isLicenseRequired {
-            successPendingImageView.image = UIImage(named:"pendingApproval")
-            titleLabel.text = "Pending Approval"
-            detailLabel.text = "Your profile has been sent for admin’s  approval. You can apply for jobs once your profile gets approved.\n\nIn the meantime, Lets set your availability so that dental offices can get to know about your timings."
+            self.showUIForPending()
         }
+        
+    }
+    
+    func showUIForVerifyEmail(){
+        letsGoButton.setTitle("RESEND VERIFICATION EMAIL", for: .normal)
+        successPendingImageView.image = UIImage(named:"verifyEmail")
+        titleLabel.text = "Verify Email"
+        detailLabel.text = "We have sent a verification link on your registered email. Please verify it to proceed further."
+    }
+    func showUIForCongrats(){
+        self.hideAll(isHidden: false)
+        letsGoButton.setTitle("LET'S GO", for: .normal)
+        successPendingImageView.image = UIImage(named:"congratesTick")
+        titleLabel.text = "Congratulations"
+        detailLabel.text = "Your profile has been created successfully./n Lets set your availability so that dental offices can get to know about your timings."
+    }
+    
+    func showUIForPending(){
+        self.hideAll(isHidden: false)
+        letsGoButton.setTitle("LET'S GO", for: .normal)
+        successPendingImageView.image = UIImage(named:"pendingApproval")
+        titleLabel.text = "Pending Approval"
+        detailLabel.text = "Your profile has been sent for admin’s  approval. You can apply for jobs once your profile gets approved.\n\nIn the meantime, Lets set your availability so that dental offices can get to know about your timings."
     }
     
     @IBAction func letsGoButtonPressed(_ sender: Any) {
@@ -70,7 +115,7 @@ class DMProfileSuccessPending: DMBaseVC {
                 if error == nil  {
                     if isVerified {
                         DispatchQueue.main.async {
-                            self.goToCalendar()
+                           self.showPendingCongrats()
                         }
                     } else {
                         DispatchQueue.main.async {
@@ -82,6 +127,19 @@ class DMProfileSuccessPending: DMBaseVC {
             print("Check with new email verify api")
         } else {
             goToCalendar()
+        }
+    }
+    
+    func showPendingCongrats(){
+        self.isEmailVerified = true
+        if UserManager.shared().activeUser.isJobSeekerVerified == true {
+            // congrats UI
+            self.showUIForCongrats()
+        }
+        else {
+            // pending UI
+             self.showUIForPending()
+            
         }
     }
     

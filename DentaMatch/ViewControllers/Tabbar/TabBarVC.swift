@@ -49,29 +49,36 @@ class TabBarVC: UITabBarController,UITabBarControllerDelegate {
     }
     
     //TODO:- Will Implement Later
-//    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-//        self.tabBar.alpha = 1.0
-//        let tabBarOptions = TabBarOptions(rawValue: (self.tabBar.selectedItem?.tag)!)!
-//        
-//        switch tabBarOptions {
-//            
-//        case .jobs:
-//            print("jobs")
-//            
-//        case .track:
-//            print("track")
-//
-//        case .calender:
-//            print("calender")
-//
-//        case .messages:
-//            print("messages")
-//
-//        case .profile:
-//            print("profile")
-//
-//        }
-//    }
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        //self.tabBar.alpha = 1.0
+        let index = self.selectedIndex
+        let tabBarOptions = TabBarOptions(rawValue: (index+1))!
+        
+        switch tabBarOptions {
+            
+        case .jobs:
+            print("jobs")
+            
+        case .track:
+            print("track")
+
+        case .calender:
+            print("calender")
+
+        case .messages:
+            print("messages")
+
+        case .profile:
+            let navController = viewController as! UINavigationController
+            if let profileVC = navController.viewControllers.first as? DMEditProfileVC {
+                if profileVC.dashBoardVC != nil {
+                    profileVC.userProfileAPI()
+                }
+            }
+           // print("profile \(profileVC)")
+
+        }
+    }
     
 //    override func viewDidLayoutSubviews() {
 //        debugPrint("viewDidLayoutSubviews")

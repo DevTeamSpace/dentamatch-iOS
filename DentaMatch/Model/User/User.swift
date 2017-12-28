@@ -24,6 +24,7 @@ class User: NSObject , NSCoding {
     var aboutMe:String? = ""
     var licenseNumber:String? = ""
 
+    var isJobSeekerVerified:Bool? = false
     var profileImageURL: String? = ""
     
     var preferredJobLocation: String? = ""
@@ -74,6 +75,7 @@ class User: NSObject , NSCoding {
         self.licenseNumber = aDecoder.decodeObject(forKey: "licenseNumber") as? String
         self.preferredLocationId = aDecoder.decodeObject(forKey: "preferredLocationId") as? String
 
+        self.isJobSeekerVerified = aDecoder.decodeObject(forKey: "isJobSeekerVerified") as? Bool
 
     }
     
@@ -97,7 +99,7 @@ class User: NSObject , NSCoding {
         aCoder.encode(self.aboutMe, forKey: "aboutMe")
         aCoder.encode(self.preferredLocationId, forKey: "preferredLocationId")
         aCoder.encode(self.licenseNumber, forKey: "licenseNumber")
-
+         aCoder.encode(self.isJobSeekerVerified, forKey: "isJobSeekerVerified")
 
     }
 }

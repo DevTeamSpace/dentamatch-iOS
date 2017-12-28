@@ -113,10 +113,10 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
     }
     
     @objc func saveButtonPressed() {
-        if !minimumOneSelected() {
-            self.makeToast(toastString: Constants.AlertMessage.selectOneAvailableOption)
-           return
-        }
+//        if !minimumOneSelected() {
+//            self.makeToast(toastString: Constants.AlertMessage.selectOneAvailableOption)
+//           return
+//        }
         if !checkValidations() {
             return
         }

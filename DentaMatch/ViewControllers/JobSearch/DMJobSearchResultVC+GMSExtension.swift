@@ -59,7 +59,7 @@ extension DMJobSearchResultVC : GMSMapViewDelegate {
             marker.position = CLLocationCoordinate2DMake(latDbl,langDbl )
             marker.icon = UIImage(named: "pinPoint")
             marker.map = self.mapViewSearchResult
-            if index == 1  {
+            if index == 0  {
                 self.mapViewSearchResult.animate(to: GMSCameraPosition(target: CLLocationCoordinate2DMake(latDbl,langDbl), zoom: 10, bearing: 0, viewingAngle: 0))
             }
         }
