@@ -129,6 +129,7 @@ extension DMEditProfileVC {
     }
     
     func handleSkillsResponse(skills:[JSON]?) {
+        self.skills.removeAll()
         if let skills = skills {
             for skillObj in skills {
                 var subSkills = [SubSkill]()

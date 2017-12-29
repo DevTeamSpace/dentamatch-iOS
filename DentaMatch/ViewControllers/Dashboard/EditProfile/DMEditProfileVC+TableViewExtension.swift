@@ -186,23 +186,23 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             //cell.placeLabel.attributedText = cell.fillPlaceAndJobTitle(jobTitle: UserManager.shared().activeUser.jobTitle!, place: UserManager.shared().activeUser.preferredJobLocation!)
             cell.profileButton.progressBar.setProgress(1.0, animated: false)
             
-            var address = ""
-            if let city = UserManager.shared().activeUser.city {
-                address = city
-            }
+            let address = UserManager.shared().activeUser.preferredJobLocation
+//            if let city = UserManager.shared().activeUser.city {
+//                address = city
+//            }
+//
+//            if let state = UserManager.shared().activeUser.state {
+//                if UserManager.shared().activeUser.city!.isEmptyField {
+//                    address += state
+//                } else {
+//                    address += ", "+state
+//                }
+//            }
+            cell.placeLabel.attributedText = cell.fillPlaceAndJobTitle(jobTitle: UserManager.shared().activeUser.jobTitle!, place: address!)
 
-            if let state = UserManager.shared().activeUser.state {
-                if UserManager.shared().activeUser.city!.isEmptyField {
-                    address += state
-                } else {
-                    address += ", "+state
-                }
-            }
-            cell.placeLabel.attributedText = cell.fillPlaceAndJobTitle(jobTitle: UserManager.shared().activeUser.jobTitle!, place: address)
-
-            if (UserManager.shared().activeUser.state?.isEmptyField)! {
-                cell.placeLabel.attributedText = cell.fillPlaceAndJobTitle(jobTitle: UserManager.shared().activeUser.jobTitle!, place: UserManager.shared().activeUser.country!)
-            }
+//            if (UserManager.shared().activeUser.state?.isEmptyField)! {
+//                cell.placeLabel.attributedText = cell.fillPlaceAndJobTitle(jobTitle: UserManager.shared().activeUser.jobTitle!, place: UserManager.shared().activeUser.country!)
+//            }
             
             cell.profileButton.progressBar.progressBarTrackColor = UIColor.clear
 

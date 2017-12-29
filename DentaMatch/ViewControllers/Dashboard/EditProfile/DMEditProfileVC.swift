@@ -135,7 +135,17 @@ class DMEditProfileVC: DMBaseVC {
     @objc func statusButtonPressed() {
         
         if let cell = editProfileTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? EditProfileHeaderTableCell {
-            self.popover.show(popOverView, fromView: cell.statusButton)
+            
+            
+            if isJobSeekerVerified == "0" {
+                popOverLabel.text = "Your profile is pending admin’s approval. You will be able to apply for jobs once its approved."
+                self.popover.show(popOverView, fromView: cell.statusButton)//Pending
+
+
+            } else if isProfileCompleted == "0" {
+                popOverLabel.text = "Your Profile is incomplete, please select the availability to be able to apply for jobs."
+                self.popover.show(popOverView, fromView: cell.statusButton)//Needs Attention
+            }
         }
     }
     

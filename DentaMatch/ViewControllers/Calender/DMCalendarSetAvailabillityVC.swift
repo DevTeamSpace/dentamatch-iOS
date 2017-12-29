@@ -54,15 +54,16 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
         self.navigationItem.rightBarButtonItem = self.rightBarButton()
         if fromJobSelection {
             UserDefaultsManager.sharedInstance.isProfileCompleted = true
-            self.autoFillData()
+            //self.autoFillData()
             self.navigationItem.hidesBackButton = true
         } else {
             self.navigationItem.leftBarButtonItem = self.backBarButton()
-            let month1 = Date.getMonthAndYearForm(date: Date())
-            self.getMyAvailabilityFromServer(month:month1.month , year: month1.year) { (response, error) in
-                
-                self.calenderTableView.reloadData()
-            }
+            
+        }
+        let month1 = Date.getMonthAndYearForm(date: Date())
+        self.getMyAvailabilityFromServer(month:month1.month , year: month1.year) { (response, error) in
+            
+            self.calenderTableView.reloadData()
         }
     }
     
