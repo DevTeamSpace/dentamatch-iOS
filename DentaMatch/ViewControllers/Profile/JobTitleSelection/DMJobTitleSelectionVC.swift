@@ -254,7 +254,7 @@ class DMJobTitleSelectionVC: DMBaseVC,ToolBarButtonDelegate {
         if profileImage != nil {
             if selectedJobTitle != nil {
                 //openLicenseScreen()
-                uploadProfileImageAPI()
+               // uploadProfileImageAPI()
             } else {
                 self.makeToast(toastString: Constants.AlertMessage.emptyCurrentJobTitle)
             }
@@ -298,22 +298,28 @@ class DMJobTitleSelectionVC: DMBaseVC,ToolBarButtonDelegate {
                 params["license"] = licenseNumber
                 params["state"] = state
             }
-            self.updateLicenseDetails(params: params)
-    }
-//        self.alertMessage(title: "", message: Constants.AlertMessage.skipProfile, leftButtonText: "Cancel", rightButtonText: kOkButtonTitle) { (isLeftButtonPressed:Bool) in
-//            if !isLeftButtonPressed {
-//                DispatchQueue.main.async {
-//                    UserDefaultsManager.sharedInstance.isProfileSkipped = true
-//                    if UserDefaultsManager.sharedInstance.loadSearchParameter() == nil {
-//                        kAppDelegate.goToSearch()
-//                    }else {
-//                        self.openDashboard()
-//                    }
-//                }
-//            } else {
-//               //Remain here
-//            }
-//        }
+            if profileImage != nil {
+                uploadProfileImageAPI(textParams: params)
+            }
+            else {
+                self.updateLicenseDetails(params: params)
+            }
+            
+        }
+        //        self.alertMessage(title: "", message: Constants.AlertMessage.skipProfile, leftButtonText: "Cancel", rightButtonText: kOkButtonTitle) { (isLeftButtonPressed:Bool) in
+        //            if !isLeftButtonPressed {
+        //                DispatchQueue.main.async {
+        //                    UserDefaultsManager.sharedInstance.isProfileSkipped = true
+        //                    if UserDefaultsManager.sharedInstance.loadSearchParameter() == nil {
+        //                        kAppDelegate.goToSearch()
+        //                    }else {
+        //                        self.openDashboard()
+        //                    }
+        //                }
+        //            } else {
+        //               //Remain here
+        //            }
+        //        }
     }
     
     //MARK:- ToolBarButton Delegate

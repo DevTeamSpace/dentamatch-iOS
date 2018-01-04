@@ -19,6 +19,7 @@ extension DMJobTitleSelectionVC : UITextViewDelegate {
             } else {
                 cell.placeHolderLabel.isHidden = false
             }
+            self.changeUIOFCreateProfileButton(self.isCreateProfileButtonEnable())
         }
     }
     

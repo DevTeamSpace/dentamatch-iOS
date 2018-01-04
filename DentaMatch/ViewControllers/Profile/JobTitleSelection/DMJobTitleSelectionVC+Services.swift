@@ -47,7 +47,7 @@ extension DMJobTitleSelectionVC {
         }
     }
     
-    func uploadProfileImageAPI() {
+    func uploadProfileImageAPI(textParams:[String:Any]) {
         var params = [String:AnyObject]()
         params["type"] = "profile_pic" as AnyObject?
         if let profileImageData = self.profileImage {
@@ -56,6 +56,7 @@ extension DMJobTitleSelectionVC {
                 self.showLoader()
                 APIManager.apiMultipart(serviceName: Constants.API.uploadImage, parameters: params, completionHandler: { (response:JSON?, error:NSError?) in
                     self.hideLoader()
+                    self.updateLicenseDetails(params: textParams)
                     if error != nil {
                         self.makeToast(toastString: (error?.localizedDescription)!)
                         return
@@ -68,10 +69,10 @@ extension DMJobTitleSelectionVC {
                     debugPrint(response!)
                     self.handleUploadProfileResponse(response: response)
                     
-                    
                 })
             } else {
                 self.makeToast(toastString: "Profile Image problem")
+                self.updateLicenseDetails(params: params)
             }
         }
     }
@@ -82,7 +83,7 @@ extension DMJobTitleSelectionVC {
                 UserManager.shared().activeUser.profileImageURL = response[Constants.ServerKey.result][Constants.ServerKey.profileImageURL].stringValue
 //                UserDefaultsManager.sharedInstance.profileImageURL = response[Constants.ServerKey.result][Constants.ServerKey.profileImageURL].stringValue
                 self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
-                openLicenseScreen()
+               // openLicenseScreen()
             } else {
                 self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
             }
