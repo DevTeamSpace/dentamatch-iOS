@@ -268,7 +268,7 @@ extension DMTrackVC : CancelledJobDelegate {
             if self.shortListedJobs.count == 0 {
                 self.shortListedJobsPageNo = 1
                 self.placeHolderEmptyJobsView?.isHidden = false
-                self.placeHolderEmptyJobsView?.placeHolderMessageLabel.text = "You don’t have any shortlisted jobs"
+                self.placeHolderEmptyJobsView?.placeHolderMessageLabel.text = "You don’t have any interviewing jobs"
             }else {
                 self.placeHolderEmptyJobsView?.isHidden = true
             }

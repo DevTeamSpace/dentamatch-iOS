@@ -226,7 +226,7 @@ class DMTrackVC: DMBaseVC {
             self.appliedJobsTableView.dataSource = nil
             self.shortListedJobsTableView.dataSource = self
 
-            placeHolderEmptyJobsView?.placeHolderMessageLabel.text = "You don’t have any shortlisted jobs"
+            placeHolderEmptyJobsView?.placeHolderMessageLabel.text = "You don’t have any interviewing jobs"
             self.placeHolderEmptyJobsView?.isHidden = shortListedJobs.count == 0 ? false:true
             if shortListedJobsPageNo == 1 {
                 jobParams["type"] = "3"

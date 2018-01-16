@@ -310,11 +310,13 @@ class DMJobSearchResultVC : DMBaseVC {
             self.btnMap.backgroundColor = UIColor.clear
             self.mapViewSearchResult.isHidden = true
             self.tblJobSearchResult.isHidden = false
+            self.constraintTblViewSearchResultHeight.constant = UIScreen.main.bounds.height - (self.navigationController?.navigationBar.frame.height)! - UIApplication.shared.statusBarFrame.height - (self.tabBarController?.tabBar.frame.height)! - ((32.0))
             if self.bannerStatus == 1 || self.bannerStatus == 2 {
                 self.showBanner(status: self.bannerStatus)
             }
             
-//            self.constraintTblViewSearchResultHeight.constant = UIScreen.main.bounds.height - (self.navigationController?.navigationBar.frame.height)! - UIApplication.shared.statusBarFrame.height - (self.tabBarController?.tabBar.frame.height)! - ((32.0))
+            
+            
             self.view.layoutIfNeeded()
             self.tblJobSearchResult.isScrollEnabled = true
             self.btnCurrentLocation.isHidden = true

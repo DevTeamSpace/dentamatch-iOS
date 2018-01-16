@@ -64,7 +64,7 @@ class DentistDetailCell: UITableViewCell {
             self.lblApplied.isHidden = false
 
         case 3:
-            self.lblApplied.text = "SHORTLISTED"
+            self.lblApplied.text = "INTERVIEWING"
             self.lblApplied.isHidden = false
 
         case 4:

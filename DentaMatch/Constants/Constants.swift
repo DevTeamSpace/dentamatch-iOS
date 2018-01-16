@@ -436,7 +436,7 @@ struct Constants {
         static let settings = "SETTINGS"
         static let workExperience = "Work Experience"
         static let forgotPassword = "FORGOT PASSWORD"
-        static let jobSearch = "SEARCH JOBS"
+        static let jobSearch = "FILTER JOBS"
         static let jobTitle = "JOB TITLE"
         static let jobDetails = "JOB DETAILS"
         static let notification = "NOTIFICATIONS"

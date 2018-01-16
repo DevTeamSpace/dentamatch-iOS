@@ -21,11 +21,11 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Track-->
+        <!--Saved-->
         <scene sceneID="ghx-fp-Wtp">
             <objects>
                 <navigationController storyboardIdentifier="TrackNav" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="v1q-7J-AZJ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Track" image="track" id="SXr-Vr-Zd9"/>
+                    <tabBarItem key="tabBarItem" title="Saved" image="track" id="SXr-Vr-Zd9"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="cUM-Gl-FVk">
                         <autoresizingMask key="autoresizingMask"/>
@@ -59,7 +59,7 @@
                                         <segments>
                                             <segment title="Saved"/>
                                             <segment title="Applied"/>
-                                            <segment title="Shortlisted"/>
+                                            <segment title="Interviewing"/>
                                         </segments>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
