@@ -119,7 +119,7 @@ class DMJobSearchResultVC : DMBaseVC {
 //        self.setLeftBarButton(title: Constants.DesignFont.notification)
         self.navigationItem.leftBarButtonItem = self.customLeftBarButton()
 
-        self.setRightBarButton(title: "",imageName: "search",width : rightBarButtonWidth, font: UIFont.designFont(fontSize: 16.0)!)
+        self.setRightBarButton(title: "",imageName: "FilterImage",width : rightBarButtonWidth, font: UIFont.designFont(fontSize: 16.0)!)
         self.setUpSegmentControl()
         self.bannerHeightConstraint.constant = 0
         self.currentGPSButtonTopConstraint.constant = 15.0
