@@ -61,6 +61,7 @@ extension DMEditProfileVC {
     }
     
     func handleJobListResponse(jobLists:[JSON]?) {
+			self.jobTitles.removeAll()
         if let jobLists = jobLists {
             for jobList in jobLists {
                 let jobTitle = JobTitle(job: jobList)
@@ -102,6 +103,7 @@ extension DMEditProfileVC {
     }
     
     func handleSchoolListResponse(schoolsCategories:[JSON]?) {
+			self.schoolCategories.removeAll()
         if let schoolsCategories = schoolsCategories {
             for schoolCategory in schoolsCategories {
                 let school = SelectedSchool(school: schoolCategory)
@@ -111,6 +113,7 @@ extension DMEditProfileVC {
     }
     
     func handleCertificationResponse(certifications:[JSON]?) {
+			self.certifications = [Certification]()
         if let certifications = certifications {
             for certification in certifications {
                 let certification = Certification(certification: certification)
@@ -120,6 +123,7 @@ extension DMEditProfileVC {
     }
     
     func handleAffiliationResponse(affiliations:[JSON]?) {
+			self.affiliations = [Affiliation]()
         if let affiliations = affiliations {
             for affiliation in affiliations {
                 let affiliation = Affiliation(affiliation: affiliation)
@@ -149,6 +153,7 @@ extension DMEditProfileVC {
     }
     
     func handleWorkExperienceResponse(workExperienceArray:[JSON]?) {
+			self.experiences.removeAll()
         if let workExperienceArray = workExperienceArray {
             for workExperience in workExperienceArray {
                 let workExperience = ExperienceModel(json: workExperience)

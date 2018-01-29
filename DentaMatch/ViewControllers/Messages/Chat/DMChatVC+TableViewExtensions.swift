@@ -9,7 +9,7 @@
 import Foundation
 
 extension DMChatVC:UITableViewDataSource,UITableViewDelegate {
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let chat = fetchedResultsController.object(at: indexPath) as! Chat
         if let message = chat.message {
@@ -20,6 +20,19 @@ extension DMChatVC:UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+			if self.printData == true {
+				if let sections = fetchedResultsController.sections {
+					let sectionInfo = sections[section]
+					for i in 0..<sections.count {
+						let sectionInfo = sections[i]
+						print(sectionInfo.name)
+						print(sectionInfo.numberOfObjects)
+					}
+
+					printData = false
+				}
+			}
         if let sections = fetchedResultsController.sections {
             let sectionInfo = sections[section]
             return sectionInfo.numberOfObjects

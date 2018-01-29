@@ -34,7 +34,8 @@ class DMChatVC: DMBaseVC {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
 
-    
+		var printData = true
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.showLoader(text: "Loading Chats")

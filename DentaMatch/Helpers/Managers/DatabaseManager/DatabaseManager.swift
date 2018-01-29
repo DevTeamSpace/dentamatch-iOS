@@ -145,7 +145,7 @@ class DatabaseManager: NSObject {
         }
         return 0
     }
-    
+
     class func insertChats(chats:[JSON]?) {
         if let chats = chats {
             for chatObj in chats {
