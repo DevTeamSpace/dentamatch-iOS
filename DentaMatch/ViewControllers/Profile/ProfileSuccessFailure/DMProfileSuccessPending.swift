@@ -97,8 +97,8 @@ class DMProfileSuccessPending: DMBaseVC {
         self.hideAll(isHidden: false)
         letsGoButton.setTitle("LET'S GO", for: .normal)
         successPendingImageView.image = UIImage(named:"congratesTick")
-        titleLabel.text = "Congratulations"
-        detailLabel.text = "Your profile has been created successfully.\nLets set your availability so that dental offices can get to know about your timings."
+        titleLabel.text = "Congratulations!"
+        detailLabel.text = "Your profile has been created successfully.\nLet's set your availability so that dental offices can get to know about your timings."
     }
     
     func showUIForPending(){

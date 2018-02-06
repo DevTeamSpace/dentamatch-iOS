@@ -248,8 +248,6 @@ extension DMWorkExperienceVC: UITableViewDataSource,UITableViewDelegate
         cell.commonTextField.type = 1
         cell.commonTextField.tintColor = UIColor.clear
         cell.commonTextField.inputView = yearViewObj
-
-        
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -395,7 +393,6 @@ extension DMWorkExperienceVC: UITableViewDataSource,UITableViewDelegate
                     self.exprienceArray.append(self.currentExperience!)
                 }
                 self.isHiddenExperienceTable = false
-
                 self.currentExperience = nil
                 self.currentExperience = ExperienceModel(empty: "")
                 self.currentExperience?.isFirstExperience = false
@@ -548,10 +545,10 @@ extension DMWorkExperienceVC: UITableViewDataSource,UITableViewDelegate
 extension DMWorkExperienceVC :UITextFieldDelegate  {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard string.characters.count > 0 else {
+        guard string.count > 0 else {
             return true
         }
-        if (textField.text?.characters.count)! >= Constants.Limit.commonMaxLimit {
+        if (textField.text?.count)! >= Constants.Limit.commonMaxLimit {
             return false
         }
         return true

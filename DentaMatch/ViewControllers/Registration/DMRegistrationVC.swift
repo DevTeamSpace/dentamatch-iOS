@@ -89,13 +89,16 @@ class DMRegistrationVC: DMBaseVC {
             self.makeToast(toastString: Constants.AlertMessage.emptyLastName)
             return false
         }
-        
+        if !registrationParams[Constants.ServerKey.email]!.isEmpty {
+            self.makeToast(toastString: Constants.AlertMessage.emptyEmail)
+            return false
+        }
         if !registrationParams[Constants.ServerKey.email]!.isValidEmail {
             self.makeToast(toastString: Constants.AlertMessage.invalidEmail)
             return false
         }
-        if registrationParams[Constants.ServerKey.password]!.characters.count < Constants.Limit.passwordLimit {
-            if registrationParams[Constants.ServerKey.password]!.characters.count == 0 {
+        if registrationParams[Constants.ServerKey.password]!.count < Constants.Limit.passwordLimit {
+            if registrationParams[Constants.ServerKey.password]!.count == 0 {
                 self.makeToast(toastString: Constants.AlertMessage.emptyPassword)
             } else {
                 self.makeToast(toastString: Constants.AlertMessage.passwordRange)

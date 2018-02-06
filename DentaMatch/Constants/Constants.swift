@@ -355,8 +355,9 @@ struct Constants {
     
     //MARK:- Alert Messages
     struct AlertMessage{
+        static let emptyEmail = "Email Id can not be left blank."
         static let invalidEmail = "Please provide a valid Email Id."
-        static let passwordRange = "Password should be 6-25 characters long"
+        static let passwordRange = "Password should be 6-25 characters long."
         static let emptyName = "Name text can not be left blank."
         static let emptyFirstName = "First Name text can not be left blank."
         static let emptyLastName = "Last Name text can not be left blank."
@@ -369,14 +370,14 @@ struct Constants {
         static let emptyPreferredJobLocation = "Preferred Job Location can not be left blank."
         //license no screen
         static let emptyLicenseNumber = "Please enter License number"
-        static let emptyState = "Please enter State"
+        static let emptyState = "Please enter License state"
         static let stateCertificate = "Please upload photo for Dental state board"
         static let lienseNoStartError = "License number can't start with hyphen (-)"
         static let stateStartError = "State  can't start with hyphen (-)"
         
-        static let termsAndConditions = "Please accept terms and conditions/Privacy Policy."
+        static let termsAndConditions = "Please accept Terms and Conditions/Privacy Policy."
         static let emptyCurrentJobTitle = "Current Job Title can not be left blank."
-        static let emptyPassword = "Please enter the password"
+        static let emptyPassword = "Password can not be left blank."
         static let skipProfile = "Completed job profile will help you in applying for jobs."
         static let somethingWentWrong = "Something went wrong"
         
@@ -392,10 +393,10 @@ struct Constants {
         static let morethen2refernce = "More than two references can not be added."
         static let empptyFirstReference = "Please complete the reference"
 
-        static let emptyOldPassword = "Please enter Old password"
-        static let emptyNewPassword = "Please enter New password"
-        static let emptyConfirmPassword = "Please enter Confirm password"
-        static let matchPassword = "New password and Confirm password doesn't match"
+        static let emptyOldPassword = "Old password can never be blank."
+        static let emptyNewPassword = "New password can never be blank."
+        static let emptyConfirmPassword = "Confirm password can never be blank."
+        static let matchPassword = "New password and Confirm password should be same."
         
         //setAvailability
         static let selectAvailableDay = "Please select at least one day"

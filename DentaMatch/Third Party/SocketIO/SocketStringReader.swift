@@ -40,7 +40,7 @@ struct SocketStringReader {
     
     @discardableResult
     mutating func advance(by: Int) -> String.Index {
-        currentIndex = message.characters.index(currentIndex, offsetBy: by)
+        currentIndex = message.index(currentIndex, offsetBy: by)
         
         return currentIndex
     }

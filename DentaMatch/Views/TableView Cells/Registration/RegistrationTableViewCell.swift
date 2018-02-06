@@ -27,7 +27,7 @@ class RegistrationTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        helpHintLabel.text = "  ⓘ Helps Dental Offices find you easily"
+        helpHintLabel.text = "  ⓘ Helps Dental Offices find you easily."
         setupPasswordShowButton()
         
         let attributedString = NSMutableAttributedString(string: "I agree to the Terms and Conditions and Privacy Policy  ")

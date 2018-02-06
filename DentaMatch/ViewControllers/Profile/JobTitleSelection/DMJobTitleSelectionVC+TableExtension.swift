@@ -20,6 +20,10 @@ extension DMJobTitleSelectionVC : UITableViewDataSource,UITableViewDelegate {
             }
             return 76
         }
+        if indexPath.row == 1 || indexPath.row == 2 {
+            return 0
+        }
+
         return 76
     }
     

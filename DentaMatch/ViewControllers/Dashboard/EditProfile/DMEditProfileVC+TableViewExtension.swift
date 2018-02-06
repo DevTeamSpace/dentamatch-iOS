@@ -381,7 +381,7 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             
         case .affiliations:
             if indexPath.row == 0 {
-                let cell = makeHeadingCell(heading: "PROFESSIONAL AFFILIATIONS")
+                let cell = makeHeadingCell(heading: "AFFILIATIONS")
                 cell.editButton.isHidden = self.affiliations.count > 0 ? false:true
                 cell.editButton.removeTarget(nil, action: nil, for: .allEvents)
                 cell.editButton.addTarget(self, action: #selector(openAffiliationsScreen), for: .touchUpInside)
@@ -429,13 +429,13 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             //Certificate not uploaded cell
             if (certificate.certificateImageURL?.isEmpty)! {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyCertificateTableViewCell") as! EmptyCertificateTableViewCell
-                cell.certificateNameLabel.text = certificate.certificationName
+                cell.certificateNameLabel.text = certificate.certificationName.uppercased()
                 return cell
             } else {
                 //Certificate  uploaded cell
                 let cell = tableView.dequeueReusableCell(withIdentifier: "EditCertificateTableCell") as! EditCertificateTableCell
-                cell.certificateNameLabel.text = certificate.certificationName
-                cell.certificateHeadingLabel.text = certificate.certificationName
+                cell.certificateNameLabel.text = certificate.certificationName.uppercased()
+                cell.certificateHeadingLabel.text = certificate.certificationName.uppercased()
                 cell.validityDateAttributedLabel.isHidden = false
                 cell.certificateNameLabel.isHidden = false
                 cell.validityDateAttributedLabel.attributedText = cell.createValidityDateAttributedText(date: certificate.validityDate)
