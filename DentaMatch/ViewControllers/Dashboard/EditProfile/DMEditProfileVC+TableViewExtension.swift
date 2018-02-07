@@ -309,9 +309,9 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
                         }
                         
                         let reference  = experience.references[0]
-                        cell.reference1Name.text = (reference.referenceName?.trim().characters.count)! > 0 ? reference.referenceName : "N/A"
-                        cell.reference1Email.text = (reference.email?.trim().characters.count)! > 0 ? reference.email : "N/A"
-                        cell.reference1Mobile.text = (reference.mobileNumber?.trim().characters.count)! > 0 ? reference.mobileNumber : "N/A"
+                        cell.reference1Name.text = (reference.referenceName?.trim().count)! > 0 ? reference.referenceName : "N/A"
+                        cell.reference1Email.text = (reference.email?.trim().count)! > 0 ? reference.email : "N/A"
+                        cell.reference1Mobile.text = (reference.mobileNumber?.trim().count)! > 0 ? reference.mobileNumber : "N/A"
                     }
                     if experience.references.count > 1 {
                         cell.reference2Name.isHidden = false
@@ -326,9 +326,9 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
                         }
 
                         let reference  = experience.references[1]
-                        cell.reference2Name.text = (reference.referenceName?.trim().characters.count)! > 0 ? reference.referenceName : "N/A"
-                        cell.reference2Email.text = (reference.email?.trim().characters.count)! > 0 ? reference.email : "N/A"
-                        cell.reference2Mobile.text = (reference.mobileNumber?.trim().characters.count)! > 0 ? reference.mobileNumber : "N/A"
+                        cell.reference2Name.text = (reference.referenceName?.trim().count)! > 0 ? reference.referenceName : "N/A"
+                        cell.reference2Email.text = (reference.email?.trim().count)! > 0 ? reference.email : "N/A"
+                        cell.reference2Mobile.text = (reference.mobileNumber?.trim().count)! > 0 ? reference.mobileNumber : "N/A"
                     }
                     
                     return cell
@@ -533,7 +533,7 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     func checkReferenceIsAvaialble(ref:EmployeeReferenceModel) -> Bool {
-        if ((ref.email?.trim())?.characters.count)! > 0 || ((ref.mobileNumber?.trim())?.characters.count)! > 0 || ((ref.referenceName?.trim())?.characters.count)! > 0 {
+        if ((ref.email?.trim())?.count)! > 0 || ((ref.mobileNumber?.trim())?.count)! > 0 || ((ref.referenceName?.trim())?.count)! > 0 {
             return true
         }
         return false
@@ -555,19 +555,42 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
         
         for subSkill in affiliations {
             
-            let tag = Tag(content: TagPresentableText(subSkill.affiliationName) {
-                $0.label.font = UIFont.fontRegular(fontSize: 14.0)
-                }, onInit: {
-                    $0.padding = UIEdgeInsets(top: 8, left: 10, bottom: 8, right: 10)
-                    $0.layer.borderColor = UIColor.cyan.cgColor
-                    $0.layer.borderWidth = 2
-                    $0.layer.cornerRadius = 5
-            }, onSelect: {
-                $0.backgroundColor = $0.isSelected ? UIColor.orange : UIColor.white
-            })
-            tagList.tags.append(tag)
+            if let otherText = subSkill.otherAffiliation, (subSkill.affiliationName == "Other" || subSkill.affiliationId == "9") {
+                let result = otherText.split(separator: ",")
+                for otherString in result {
+                    tagList.tags.append(createTag(tagString: String(otherString)))
+                }
+            } else {
+                tagList.tags.append(createTag(tagString: subSkill.affiliationName))
+
+            }
+
+//            let tag = Tag(content: TagPresentableText(subSkill.affiliationName) {
+//                $0.label.font = UIFont.fontRegular(fontSize: 14.0)
+//                }, onInit: {
+//                    $0.padding = UIEdgeInsets(top: 8, left: 10, bottom: 8, right: 10)
+//                    $0.layer.borderColor = UIColor.cyan.cgColor
+//                    $0.layer.borderWidth = 2
+//                    $0.layer.cornerRadius = 5
+//            }, onSelect: {
+//                $0.backgroundColor = $0.isSelected ? UIColor.orange : UIColor.white
+//            })
+//            tagList.tags.append(tag)
         }
         return tagList.frame.size.height
+    }
+    func createTag(tagString: String) -> Tag {
+        let tag = Tag(content: TagPresentableText(tagString) {
+            $0.label.font = UIFont.fontRegular(fontSize: 14.0)
+            }, onInit: {
+                $0.padding = UIEdgeInsets(top: 8, left: 10, bottom: 8, right: 10)
+                $0.layer.borderColor = UIColor.cyan.cgColor
+                $0.layer.borderWidth = 2
+                $0.layer.cornerRadius = 5
+        }, onSelect: {
+            $0.backgroundColor = $0.isSelected ? UIColor.orange : UIColor.white
+        })
+        return tag
     }
     
     func getHeightForSkillsRow(indexPath:IndexPath) -> CGFloat {

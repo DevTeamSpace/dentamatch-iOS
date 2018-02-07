@@ -63,24 +63,39 @@ class EditProfileAffiliationBrickCell: UITableViewCell,TagListDelegate {
     func updateAffiliations(affiliation:[Affiliation]) {
         tagList.tags.removeAll()
         for subSkill in affiliation {
-            let tag = Tag(content: TagPresentableText(subSkill.affiliationName) {
-                $0.label.font = UIFont.fontRegular(fontSize: 14.0)
-                $0.label.textColor = Constants.Color.brickTextColor
-                }, onInit: {
-                    $0.padding = UIEdgeInsets(top: 8, left: 10, bottom: 8, right: 10)
-                    $0.layer.borderColor = UIColor.clear.cgColor
-                    $0.layer.borderWidth = 1
-                    $0.layer.cornerRadius = 2
-            }, onSelect: {
-                $0.backgroundColor = Constants.Color.jobSkillBrickColor //$0.isSelected ? UIColor.orange : UIColor.white
-            })
-            tagList.tags.append(tag)
+//            var otherTags = [Tag]()
+            if let otherText = subSkill.otherAffiliation, (subSkill.affiliationName == "Other" || subSkill.affiliationId == "9") {
+                let result = otherText.split(separator: ",")
+                for otherString in result {
+                    tagList.tags.append(createTag(tagString: String(otherString)))
+                }
+
+            } else {
+                
+                tagList.tags.append(createTag(tagString: subSkill.affiliationName))
+
+            }
+            
         }
         if affiliation.count > 0 {
             self.tagScrollView.isHidden = false
         }else {
             self.tagScrollView.isHidden = true
         }
+    }
+    func createTag(tagString: String) -> Tag {
+        let tag = Tag(content: TagPresentableText(tagString) {
+            $0.label.font = UIFont.fontRegular(fontSize: 14.0)
+            $0.label.textColor = Constants.Color.brickTextColor
+            }, onInit: {
+                $0.padding = UIEdgeInsets(top: 8, left: 10, bottom: 8, right: 10)
+                $0.layer.borderColor = UIColor.clear.cgColor
+                $0.layer.borderWidth = 1
+                $0.layer.cornerRadius = 2
+        }, onSelect: {
+            $0.backgroundColor = Constants.Color.jobSkillBrickColor //$0.isSelected ? UIColor.orange : UIColor.white
+        })
+        return tag
     }
     
     func tagListUpdated(tagList: TagList) {

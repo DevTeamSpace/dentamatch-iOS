@@ -3055,7 +3055,7 @@
 				OTHER_SWIFT_FLAGS = "-DDEVELOPMENT";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appster.dentamatch;
 				PRODUCT_NAME = "$(TARGET_NAME)-Dev";
-				PROVISIONING_PROFILE = "5c3022b9-859c-4909-b06e-32e60697f1bd";
+				PROVISIONING_PROFILE = "1c379209-4730-4cb3-b040-c01ac7593bf2";
 				PROVISIONING_PROFILE_SPECIFIER = "DentaMatch Development";
 				SWIFT_OBJC_BRIDGING_HEADER = "DentaMatch/Supporting Files/DentaMatch-BridgingHeader.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -3169,7 +3169,7 @@
 				OTHER_SWIFT_FLAGS = "-DQA";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appster.dentamatch;
 				PRODUCT_NAME = "$(TARGET_NAME)-QA";
-				PROVISIONING_PROFILE = "5c3022b9-859c-4909-b06e-32e60697f1bd";
+				PROVISIONING_PROFILE = "1c379209-4730-4cb3-b040-c01ac7593bf2";
 				PROVISIONING_PROFILE_SPECIFIER = "DentaMatch Development";
 				SWIFT_OBJC_BRIDGING_HEADER = "DentaMatch/Supporting Files/DentaMatch-BridgingHeader.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -3251,7 +3251,7 @@
 				OTHER_SWIFT_FLAGS = "-DSTAGING";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appster.dentamatch;
 				PRODUCT_NAME = "$(TARGET_NAME)-Staging";
-				PROVISIONING_PROFILE = "5e9883f3-ddb7-421d-a3f7-2445636c1001";
+				PROVISIONING_PROFILE = "0a9bb0e7-6e9f-4719-8c91-221ced0ff0b5";
 				PROVISIONING_PROFILE_SPECIFIER = Dentamatch_distribution;
 				SWIFT_OBJC_BRIDGING_HEADER = "DentaMatch/Supporting Files/DentaMatch-BridgingHeader.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
