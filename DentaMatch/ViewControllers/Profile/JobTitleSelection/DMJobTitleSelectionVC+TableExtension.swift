@@ -14,7 +14,6 @@ extension DMJobTitleSelectionVC : UITableViewDataSource,UITableViewDelegate {
         if indexPath.row > 2 {
             return 110
         }
-        debugPrint(selectedJobTitle?.isLicenseRequired ?? "Not avaial")
         if selectedJobTitle == nil {
             if indexPath.row == 1 || indexPath.row == 2 {
                 return 0
@@ -28,9 +27,6 @@ extension DMJobTitleSelectionVC : UITableViewDataSource,UITableViewDelegate {
             return 76
         }
         else {
-//            if indexPath.row == 1 || indexPath.row == 2 {
-//                return 0
-//            }
             return 76
 
         }

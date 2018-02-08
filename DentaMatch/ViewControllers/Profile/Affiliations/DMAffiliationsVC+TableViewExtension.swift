@@ -98,6 +98,7 @@ extension DMAffiliationsVC : UITableViewDataSource,UITableViewDelegate {
         case .affiliation:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AffiliationsCell") as! AffiliationsCell
             let affiliation = affiliations[indexPath.row]
+            debugPrint("affiliationName:-  \(affiliation.affiliationName)")
             cell.affiliationLabel.text = affiliation.affiliationName
             if affiliation.isSelected {
                 cell.tickButton.setTitle(Constants.DesignFont.acceptTermsSelected, for: .normal)
@@ -116,6 +117,8 @@ extension DMAffiliationsVC : UITableViewDataSource,UITableViewDelegate {
             cell.tickButton.isEnabled = false
             cell.otherAffiliationTextView.delegate = self
             cell.otherAffiliationTextView.inputAccessoryView = self.addToolBarOnTextView()
+            debugPrint("affiliationName Other:-  \(String(describing: affiliation.otherAffiliation))")
+
             if affiliation.isSelected {
                 cell.otherAffiliationTextView.text = affiliation.otherAffiliation
                 otherText = affiliation.otherAffiliation!

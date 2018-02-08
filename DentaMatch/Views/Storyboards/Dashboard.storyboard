@@ -310,7 +310,7 @@
                                     <constraint firstAttribute="height" constant="49" id="zip-tX-KVf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="16"/>
-                                <state key="normal" title="Save">
+                                <state key="normal" title="SAVE">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
