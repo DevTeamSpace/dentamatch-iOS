@@ -89,10 +89,11 @@ class DMRegistrationVC: DMBaseVC {
             self.makeToast(toastString: Constants.AlertMessage.emptyLastName)
             return false
         }
-        if !registrationParams[Constants.ServerKey.email]!.isEmpty {
+        if registrationParams[Constants.ServerKey.email]!.isEmpty {
             self.makeToast(toastString: Constants.AlertMessage.emptyEmail)
             return false
         }
+        
         if !registrationParams[Constants.ServerKey.email]!.isValidEmail {
             self.makeToast(toastString: Constants.AlertMessage.invalidEmail)
             return false

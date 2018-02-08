@@ -14,17 +14,26 @@ extension DMJobTitleSelectionVC : UITableViewDataSource,UITableViewDelegate {
         if indexPath.row > 2 {
             return 110
         }
+        debugPrint(selectedJobTitle?.isLicenseRequired ?? "Not avaial")
+        if selectedJobTitle == nil {
+            if indexPath.row == 1 || indexPath.row == 2 {
+                return 0
+            }
+            return 76
+        }
         if let selectedJobTitle = selectedJobTitle, selectedJobTitle.isLicenseRequired == false {
             if indexPath.row == 1 || indexPath.row == 2 {
                 return 0
             }
             return 76
         }
-        if indexPath.row == 1 || indexPath.row == 2 {
-            return 0
-        }
+        else {
+//            if indexPath.row == 1 || indexPath.row == 2 {
+//                return 0
+//            }
+            return 76
 
-        return 76
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
