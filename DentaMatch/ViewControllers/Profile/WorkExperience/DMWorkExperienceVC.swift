@@ -22,15 +22,15 @@ enum FieldType: Int,CustomStringConvertible{
     var description: String{
         switch self {
         case .CurrentJobTitle:
-            return "Current Job Title"
+            return "Job Title"
         case .YearOfExperience:
-            return "Years Of Experience"
+            return "Year Of Experience"
         case .OfficeName:
             return "Office Name"
         case .OfficeAddress:
             return "Office Address"
         case .CityName:
-            return "City Name"
+            return "City"
         case .ReferenceName:
             return "Reference Name (Optional)"
         case .ReferenceMobileNo:

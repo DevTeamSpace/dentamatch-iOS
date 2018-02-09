@@ -94,8 +94,9 @@ extension DMWorkExperienceVC: UITableViewDataSource,UITableViewDelegate
                 if tag == 0 {
                     if (self.currentExperience?.references.count)! - 1 > tag {
                         cell.addMoreReferenceButton.isHidden = true
-                    }else
-                    {
+                    } else if (self.currentExperience?.references.count)! >= 2 {
+                        cell.addMoreReferenceButton.isHidden = true
+                    } else {
                         cell.addMoreReferenceButton.isHidden = false
                     }
                     cell.deleteButton.isHidden = true
@@ -106,8 +107,10 @@ extension DMWorkExperienceVC: UITableViewDataSource,UITableViewDelegate
                         cell.deleteButton.isHidden = false
                         cell.addMoreButtonTopSpace.constant = 10
                         cell.addMoreReferenceButton.isHidden = true
-                    }else
-                    {
+                    }else if (self.currentExperience?.references.count)! >= 2 {
+                        cell.addMoreButtonTopSpace.constant = 10
+                        cell.addMoreReferenceButton.isHidden = true
+                    } else {
                         cell.deleteButton.isHidden = false
                         cell.addMoreButtonTopSpace.constant = 55
                         cell.addMoreReferenceButton.isHidden = false
@@ -168,8 +171,6 @@ extension DMWorkExperienceVC: UITableViewDataSource,UITableViewDelegate
             cell.topSpaceOfAddMoreExperience.constant = 57
         }
         cell.layoutIfNeeded()
-
-        
     }
     func updateCellForAnimatedPHTableCell(cell : AnimatedPHTableCell , indexPath: IndexPath) {
         
@@ -349,7 +350,7 @@ extension DMWorkExperienceVC: UITableViewDataSource,UITableViewDelegate
         if (self.currentExperience?.references.count)! < 2
         {
             if (self.currentExperience?.references[0].referenceName?.isEmptyField)! && (self.currentExperience?.references[0].mobileNumber?.isEmptyField)! && (self.currentExperience?.references[0].email?.isEmptyField)! {
-                self.makeToast(toastString: Constants.AlertMessage.empptyFirstReference)
+                self.makeToast(toastString: Constants.AlertMessage.firstEmptyExperience)
                 
             }else{
                 let refere = EmployeeReferenceModel(empty: "")

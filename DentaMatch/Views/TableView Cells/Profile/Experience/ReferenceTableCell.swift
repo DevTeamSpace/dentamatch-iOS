@@ -31,6 +31,7 @@ class ReferenceTableCell: UITableViewCell {
     }
     func updateCell(empRef: EmployeeReferenceModel? , tag:Int) {
     
+        referenceLabel.text = "Reference \(tag+1)"
         self.deleteButton.tag = tag
         self.addMoreReferenceButton.tag = tag
         self.nameTextField.tag = tag

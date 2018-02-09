@@ -208,7 +208,7 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
 
             cell.statusButton.isHidden = true
             
-            if isJobSeekerVerified == "0" {
+            if isJobSeekerVerified == "0"  || isJobSeekerVerified == "2" {
                 cell.statusButton.isHidden = false
                 cell.statusButton.setBackgroundImage(UIImage(named:"pendingButton"), for: .normal)
                 cell.statusButton.setTitle("Pending", for: .normal)

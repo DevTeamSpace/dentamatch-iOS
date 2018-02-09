@@ -389,6 +389,7 @@ struct Constants {
         static let referenceMobileNumber = "Please, Provide a valid Phone number of 10 digits."
         static let atleastOneExperience  = "Please add at least one experience"
         static let partialFill  = "You have partially filled experience. Do you want to Discard this?"
+        static let firstEmptyExperience = "Please add Reference 1 first."
 
         static let morethen2refernce = "More than two references can not be added."
         static let empptyFirstReference = "Please complete the reference"
