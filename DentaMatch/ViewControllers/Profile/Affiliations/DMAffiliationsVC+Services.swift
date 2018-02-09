@@ -60,6 +60,13 @@ extension DMAffiliationsVC {
                     let affiliation = Affiliation(affiliation: affiliationObj)
                     affiliations.append(affiliation)
                 }
+                let filter = affiliations.filter({ (obj) -> Bool in
+                    obj.affiliationId == "9"
+                })
+                for obj in  filter {
+                    affiliations.removeObject(object: obj)
+                }
+                affiliations.append(contentsOf: filter)
                 self.affiliationsTableView.reloadData()
             } else {
                 self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)

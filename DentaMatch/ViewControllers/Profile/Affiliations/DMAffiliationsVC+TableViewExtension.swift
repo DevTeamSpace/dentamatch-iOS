@@ -133,7 +133,43 @@ extension DMAffiliationsVC : UITableViewDataSource,UITableViewDelegate {
             return cell
         }
     }
-    
+//    func cellSetUpForAffilications(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "AffiliationsCell") as! AffiliationsCell
+//        let affiliation = affiliations[indexPath.row]
+//        debugPrint("affiliationName:-  \(affiliation.affiliationName)")
+//        cell.affiliationLabel.text = affiliation.affiliationName
+//        if affiliation.isSelected {
+//            cell.tickButton.setTitle(Constants.DesignFont.acceptTermsSelected, for: .normal)
+//            cell.tickButton.setTitleColor(Constants.Color.textFieldColorSelected, for: .normal)
+//        } else {
+//            cell.tickButton.setTitle(Constants.DesignFont.acceptTermsDeSelected, for: .normal)
+//            cell.tickButton.setTitleColor(Constants.Color.textFieldPlaceHolderColor, for: .normal)
+//        }
+//        return cell
+//    }
+//
+//    func cellSetUpForOtherOption(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "AffliliationsOthersCell") as! AffliliationsOthersCell
+//        let affiliation = affiliations[affiliations.count - 1]
+//        cell.tickButton.isEnabled = false
+//        cell.otherAffiliationTextView.delegate = self
+//        cell.otherAffiliationTextView.inputAccessoryView = self.addToolBarOnTextView()
+//        debugPrint("affiliationName Other:-  \(String(describing: affiliation.otherAffiliation))")
+//
+//        if affiliation.isSelected {
+//            cell.otherAffiliationTextView.text = affiliation.otherAffiliation
+//            otherText = affiliation.otherAffiliation!
+//            cell.tickButton.setTitle(Constants.DesignFont.acceptTermsSelected, for: .normal)
+//            cell.tickButton.setTitleColor(Constants.Color.textFieldColorSelected, for: .normal)
+//        } else {
+//            cell.otherAffiliationTextView.text = ""
+//            otherText = ""
+//            cell.tickButton.setTitle(Constants.DesignFont.acceptTermsDeSelected, for: .normal)
+//            cell.tickButton.setTitleColor(Constants.Color.textFieldPlaceHolderColor, for: .normal)
+//        }
+//        return cell
+//
+//    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let affiliationOption = Affiliations(rawValue: indexPath.section)!
 
