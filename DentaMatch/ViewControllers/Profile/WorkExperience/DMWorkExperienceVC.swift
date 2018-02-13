@@ -76,7 +76,7 @@ class DMWorkExperienceVC: DMBaseVC,ExperiencePickerViewDelegate,ToolBarButtonDel
 //            getExperienceAPI()
         }else{
             
-            nextButton.setTitle("Save", for: .normal)
+            nextButton.setTitle("SAVE", for: .normal)
         }
     }
     
@@ -151,16 +151,14 @@ class DMWorkExperienceVC: DMBaseVC,ExperiencePickerViewDelegate,ToolBarButtonDel
             navigateAction()
         }else {
             //alert here for
-            
-            
-            let alert = UIAlertController(title: title, message: Constants.AlertMessage.partialFill, preferredStyle: .alert)
-            let leftButtonAction = UIAlertAction(title: "Discard", style: .default) { (action:UIAlertAction) in
+            let alert = UIAlertController(title: "WORK EXPERIENCE", message: Constants.AlertMessage.partialFill, preferredStyle: .alert)
+            let leftButtonAction = UIAlertAction(title: "DISCARD", style: .default) { (action:UIAlertAction) in
                 alert.dismiss(animated: true, completion: nil)
                 self.navigateAction()
 
             }
             
-            let rightButtonAction = UIAlertAction(title: "Save", style: .default) { (action:UIAlertAction) in
+            let rightButtonAction = UIAlertAction(title: "SAVE", style: .default) { (action:UIAlertAction) in
                 alert.dismiss(animated: true, completion: nil)
 
                 self.saveDataOnNextButton()

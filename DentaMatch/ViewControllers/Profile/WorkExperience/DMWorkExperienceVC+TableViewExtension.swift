@@ -421,32 +421,43 @@ extension DMWorkExperienceVC: UITableViewDataSource,UITableViewDelegate
     @objc func deleteExperience(_ sender: Any) {
         self.view.endEditing(true)
 
-        if self.currentExperience?.isEditMode == true {
-            self.deleteExperience(completionHandler: { (check, error) in
-                if check == true{
-                    self.exprienceArray.removeObject(object:self.currentExperience!)
-                    self.currentExperience = nil
-                    self.currentExperience = ExperienceModel(empty: "")
-                    self.currentExperience?.isFirstExperience = false
-                    self.currentExperience?.references.append(EmployeeReferenceModel(empty: ""))
-                    self.isHiddenExperienceTable = false
-                    self.workExperienceTable.reloadData()
-                    self.workExperienceDetailTable.reloadData()
-                    self.reSizeTableViewsAndScrollView()
-                    self.updateProfileScreen()
-                }
-            })
-        }else{
-            self.currentExperience = nil
-            self.currentExperience = ExperienceModel(empty: "")
-            self.currentExperience?.isFirstExperience = false
-            self.currentExperience?.references.append(EmployeeReferenceModel(empty: ""))
-            self.isHiddenExperienceTable = false
-            self.workExperienceTable.reloadData()
-            self.workExperienceDetailTable.reloadData()
-            self.reSizeTableViewsAndScrollView()
-            self.updateProfileScreen()
+        let alertController = UIAlertController(title: "", message: "Are you sure you want to delete this experience ?", preferredStyle: .alert)
+        let action1 = UIAlertAction(title: "OK", style: .default) { (_: UIAlertAction) in
+            if self.currentExperience?.isEditMode == true {
+                self.deleteExperience(completionHandler: { (check, error) in
+                    if check == true{
+                        self.exprienceArray.removeObject(object:self.currentExperience!)
+                        self.currentExperience = nil
+                        self.currentExperience = ExperienceModel(empty: "")
+                        self.currentExperience?.isFirstExperience = false
+                        self.currentExperience?.references.append(EmployeeReferenceModel(empty: ""))
+                        self.isHiddenExperienceTable = false
+                        self.workExperienceTable.reloadData()
+                        self.workExperienceDetailTable.reloadData()
+                        self.reSizeTableViewsAndScrollView()
+                        self.updateProfileScreen()
+                    }
+                })
+            }else{
+                self.currentExperience = nil
+                self.currentExperience = ExperienceModel(empty: "")
+                self.currentExperience?.isFirstExperience = false
+                self.currentExperience?.references.append(EmployeeReferenceModel(empty: ""))
+                self.isHiddenExperienceTable = false
+                self.workExperienceTable.reloadData()
+                self.workExperienceDetailTable.reloadData()
+                self.reSizeTableViewsAndScrollView()
+                self.updateProfileScreen()
+            }
+
         }
+        let action2 = UIAlertAction(title: "CANCEL", style: .default) { (_: UIAlertAction) in
+            debugPrint("No")
+        }
+        alertController.addAction(action2)
+        alertController.addAction(action1)
+        present(alertController, animated: true, completion: nil)
+
 
     }
     

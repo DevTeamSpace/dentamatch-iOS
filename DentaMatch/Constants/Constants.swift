@@ -382,7 +382,7 @@ struct Constants {
         static let somethingWentWrong = "Something went wrong"
         
         //Experience
-        static let emptyYearOfExperience = "Please select Year Of Experience."
+        static let emptyYearOfExperience = "Please select experience."
         static let emptyOfficeName = "Office Name can not be left blank."
         static let emptyOfficeAddress = "Office Field can not be left blank."
         static let emptyCityName = "City Name can not be left blank."
