@@ -72,7 +72,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             
                         }else {
                             
-                            
                             let newObjMSG = noti["jobDetails"]
                             let jobJson = JSON(newObjMSG ?? "" )
                             let jobObj = Job(job: jobJson)

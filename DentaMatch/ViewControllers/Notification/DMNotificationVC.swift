@@ -18,6 +18,7 @@ enum UserNotificationType:Int {
     case other
     case InviteJob
     case rejectJob = 14
+    case licenseAcceptReject = 15
 }
 class DMNotificationVC: DMBaseVC {
     @IBOutlet weak var notificationTableView: UITableView!

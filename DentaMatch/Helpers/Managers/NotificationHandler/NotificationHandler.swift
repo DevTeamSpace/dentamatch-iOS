@@ -17,7 +17,7 @@ class NotificationHandler: NSObject {
         case .chatMessgae: break
             //No need any action
             
-        case .completeProfile,.verifyDocuments:
+        case .completeProfile,.verifyDocuments, .licenseAcceptReject:
             //open profile
             openEditProfileScreen()
             
@@ -41,7 +41,7 @@ class NotificationHandler: NSObject {
         case .chatMessgae: break
         //No need any action
             
-        case .completeProfile,.verifyDocuments:
+        case .completeProfile,.verifyDocuments, .licenseAcceptReject:
             //open profile
             openEditProfileScreenForBackground()
             
@@ -88,6 +88,12 @@ class NotificationHandler: NSObject {
         }
     }
     class func openEditProfileScreenForBackground() {
+        delay(time: 1.0) {
+            if let tabbar = ((UIApplication.shared.delegate) as! AppDelegate).window?.rootViewController as? TabBarVC {
+                tabbar.selectedIndex = 4
+            }
+        }
+
         delay(time: 3.0) { 
             NotificationCenter.default.post(name: .pushRedirectNotificationForProfile, object: nil, userInfo: nil)
         }

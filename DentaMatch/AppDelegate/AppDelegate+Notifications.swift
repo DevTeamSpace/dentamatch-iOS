@@ -120,7 +120,7 @@ extension AppDelegate:UNUserNotificationCenterDelegate {
                         let newObj = noti?["data"]
                         let josnObj = JSON(newObj ?? [:])
                         let userNotiObj = UserNotification(dict: josnObj)
-                        NotificationHandler.notificationHandleforForground(notiObj: userNotiObj, jobObj:jobObj, app: application)
+                        NotificationHandler.notificationHandleforBackground(notiObj: userNotiObj, jobObj:jobObj, app: application)
                         
                     }
                     

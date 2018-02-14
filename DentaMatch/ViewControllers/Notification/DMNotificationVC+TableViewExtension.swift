@@ -24,7 +24,7 @@ extension DMNotificationVC : UITableViewDataSource,UITableViewDelegate {
         let notificationType = UserNotificationType(rawValue: notificationObj.notificationType!)!
 
         switch notificationType {
-        case .acceptJob,.jobCancellation,.deleteJob,.rejectJob :
+        case .acceptJob,.jobCancellation,.deleteJob,.rejectJob, .licenseAcceptReject :
             let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationJobTypeTableCell") as? NotificationJobTypeTableCell
             cell?.configureNotificationJobTypeTableCell(userNotificationObj: notificationObj)
             return cell!
@@ -203,7 +203,7 @@ extension DMNotificationVC : UITableViewDataSource,UITableViewDelegate {
         case .jobCancellation:
         //open job detail
         goToJobDetail(jobObj: notiObj.jobdetail!)
-        case .verifyDocuments: break
+        case .verifyDocuments, .licenseAcceptReject: break
         //open edit profile
         self.tabBarController?.selectedIndex = 4
 
