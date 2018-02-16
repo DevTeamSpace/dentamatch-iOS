@@ -23,7 +23,7 @@ extension DMEditSkillsVC : UITableViewDataSource, UITableViewDelegate{
             return skills.count
             
         case .other:
-            return 1
+            return 0
         }
 
     }
