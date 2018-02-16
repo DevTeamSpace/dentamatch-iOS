@@ -285,7 +285,13 @@ class DMEditProfileVC: DMBaseVC {
         } else if segue.identifier == Constants.StoryBoard.SegueIdentifier.goToPublicProfile {
             let destinationVC = segue.destination as! DMPublicProfileVC
             destinationVC.jobTitles = jobTitles
-            destinationVC.selectedJob = JobTitle(jobTitle: currentJobTitle)
+            if let title = self.currentJobTitle {
+                destinationVC.selectedJob = JobTitle(jobTitle: title)
+
+            } else {
+                destinationVC.selectedJob = JobTitle()
+
+            }
             destinationVC.hidesBottomBarWhenPushed = true
         } else if segue.identifier == Constants.StoryBoard.SegueIdentifier.goToSetting {
             let destinationVC = segue.destination as! DMSettingVC
