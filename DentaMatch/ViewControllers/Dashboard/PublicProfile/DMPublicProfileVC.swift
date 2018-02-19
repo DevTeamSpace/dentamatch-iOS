@@ -43,6 +43,8 @@ class DMPublicProfileVC: DMBaseVC {
     var preferredLocations = [PreferredLocation]()
     var selectedLocation:PreferredLocation!
     //var selectedLocationCoordinate:CLLocationCoordinate2D?
+    var licenseString: String?
+    var stateString : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,14 +60,16 @@ class DMPublicProfileVC: DMBaseVC {
     }
     
     func setup() {
-       
+        licenseString = UserManager.shared().activeUser.licenseNumber
+        stateString = UserManager.shared().activeUser.state
+
         editProfileParams[Constants.ServerKey.firstName] = UserManager.shared().activeUser.firstName
         editProfileParams[Constants.ServerKey.lastName] = UserManager.shared().activeUser.lastName
         editProfileParams[Constants.ServerKey.jobTitileId] = String(selectedJob.jobId)
 //        editProfileParams[Constants.ServerKey.latitude] = UserManager.shared().activeUser.latitude
 //        editProfileParams[Constants.ServerKey.longitude] = UserManager.shared().activeUser.longitude
-        editProfileParams[Constants.ServerKey.licenseNumber] = UserManager.shared().activeUser.licenseNumber
-        editProfileParams[Constants.ServerKey.state] = UserManager.shared().activeUser.state
+        editProfileParams[Constants.ServerKey.licenseNumber] = licenseString//UserManager.shared().activeUser.licenseNumber
+        editProfileParams[Constants.ServerKey.state] = stateString//UserManager.shared().activeUser.state
 
         editProfileParams[Constants.ServerKey.preferredJobLocation] = UserManager.shared().activeUser.preferredJobLocation
         editProfileParams[Constants.ServerKey.preferredJobLocationId] = UserManager.shared().activeUser.preferredLocationId
@@ -370,6 +374,8 @@ extension DMPublicProfileVC:UITextFieldDelegate {
                 cell.licenseNumberTextField.isHidden = false
                 cell.licenseStateConstraint.constant = 130
                 cell.licenseStateTopConstraint.constant = 20
+                cell.licenseNumberTextField.text = licenseString
+                cell.stateTextField.text = stateString
             } else {
                 cell.stateTextField.isHidden = true
                 cell.licenseNumberTextField.isHidden = true
@@ -385,8 +391,17 @@ extension DMPublicProfileVC : JobSelectionPickerViewDelegate {
     
     func jobPickerDoneButtonAction(job: JobTitle?) {
         selectedJob = job!
+        if selectedJob.jobTitle != UserManager.shared().activeUser.jobTitle {
+            licenseString = nil
+            stateString = nil
+            editProfileParams[Constants.ServerKey.state] = ""
+            editProfileParams[Constants.ServerKey.licenseNumber] = ""
+        }
+
         self.adjustLicenseAndStateTextFields(job: selectedJob)
         self.view.endEditing(true)
+//        publicProfileTableView.reloadData()
+
     }
     
     func jobPickerCancelButtonAction() {

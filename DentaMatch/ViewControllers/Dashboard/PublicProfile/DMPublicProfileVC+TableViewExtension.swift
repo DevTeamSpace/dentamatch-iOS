@@ -29,9 +29,9 @@ extension DMPublicProfileVC : UITableViewDataSource,UITableViewDelegate,UITextVi
         cell.firstNameTextField.text = editProfileParams[Constants.ServerKey.firstName]
         cell.lastNameTextField.text = editProfileParams[Constants.ServerKey.lastName]
         cell.jobTitleTextField.text = UserManager.shared().activeUser.jobTitle
-        cell.licenseNumberTextField.text = UserManager.shared().activeUser.licenseNumber
+        cell.licenseNumberTextField.text = licenseString//UserManager.shared().activeUser.licenseNumber
         cell.preferredJobLocationTextField.text = UserManager.shared().activeUser.preferredJobLocation
-        cell.stateTextField.text = UserManager.shared().activeUser.state
+        cell.stateTextField.text = stateString//UserManager.shared().activeUser.state
         cell.jobTitleTextField.type = 1
         cell.jobTitleTextField.tintColor = UIColor.clear
         cell.jobTitleTextField.inputView = jobSelectionPickerView

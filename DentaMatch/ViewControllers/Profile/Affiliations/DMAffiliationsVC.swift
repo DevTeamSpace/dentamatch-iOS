@@ -152,9 +152,7 @@ class DMAffiliationsVC: DMBaseVC {
                     return
                 }
             }
-
         }
-        
         
         params[Constants.ServerKey.affiliationDataArray] = selectedAffiliationIds as AnyObject?
         params[Constants.ServerKey.other] = other as AnyObject?
