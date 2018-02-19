@@ -11,7 +11,7 @@ import Foundation
 extension DMAffiliationsVC : UITableViewDataSource,UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -26,7 +26,7 @@ extension DMAffiliationsVC : UITableViewDataSource,UITableViewDelegate {
             return 2
             
         case .affiliation:
-            return affiliations.count - 1
+            return affiliations.count
             
         case .affiliationOther:
             if affiliations.count > 0 {
@@ -47,6 +47,7 @@ extension DMAffiliationsVC : UITableViewDataSource,UITableViewDelegate {
                 if isEditMode {
                     return 0
                 }
+
                 return 213
             case 1:
                 if isEditMode {
@@ -58,6 +59,12 @@ extension DMAffiliationsVC : UITableViewDataSource,UITableViewDelegate {
             }
             
         case .affiliation:
+            let affiliation = affiliations[indexPath.row]
+            if affiliation.affiliationId == "9" {
+                let returnValue = affiliation.isSelected ? 186: 54
+                return CGFloat(returnValue)
+            }
+
             return 56
             
         case .affiliationOther:
@@ -108,6 +115,17 @@ extension DMAffiliationsVC : UITableViewDataSource,UITableViewDelegate {
                 cell.tickButton.setTitleColor(Constants.Color.textFieldPlaceHolderColor, for: .normal)
                 
             }
+            if affiliation.affiliationId == "9" {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AffliliationsOthersCell") as! AffliliationsOthersCell
+//                let affiliation = affiliations[affiliations.count - 1]
+//                cell.tickButton.isEnabled = false
+//                cell.otherAffiliationTextView.delegate = self
+//                cell.otherAffiliationTextView.inputAccessoryView = self.addToolBarOnTextView()
+//                debugPrint("affiliationName Other:-  \(String(describing: affiliation.otherAffiliation))")
+                cellSetpUpForOther(cell: cell, indexPath: indexPath)
+                return cell
+
+            }
             
             return cell
             
@@ -132,6 +150,26 @@ extension DMAffiliationsVC : UITableViewDataSource,UITableViewDelegate {
             }
             return cell
         }
+    }
+    func cellSetpUpForOther(cell: AffliliationsOthersCell, indexPath: IndexPath) {
+        let affiliation = affiliations[indexPath.row]
+        cell.tickButton.isEnabled = false
+        cell.otherAffiliationTextView.delegate = self
+        cell.otherAffiliationTextView.inputAccessoryView = self.addToolBarOnTextView()
+        debugPrint("affiliationName Other:-  \(String(describing: affiliation.otherAffiliation))")
+        
+        if affiliation.isSelected {
+            cell.otherAffiliationTextView.text = affiliation.otherAffiliation
+            otherText = affiliation.otherAffiliation!
+            cell.tickButton.setTitle(Constants.DesignFont.acceptTermsSelected, for: .normal)
+            cell.tickButton.setTitleColor(Constants.Color.textFieldColorSelected, for: .normal)
+        } else {
+            cell.otherAffiliationTextView.text = ""
+            otherText = ""
+            cell.tickButton.setTitle(Constants.DesignFont.acceptTermsDeSelected, for: .normal)
+            cell.tickButton.setTitleColor(Constants.Color.textFieldPlaceHolderColor, for: .normal)
+        }
+
     }
 //    func cellSetUpForAffilications(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 //        let cell = tableView.dequeueReusableCell(withIdentifier: "AffiliationsCell") as! AffiliationsCell

@@ -39,6 +39,27 @@ class DMAffiliationsVC: DMBaseVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+
+    //MARK:- Keyboard Show Hide Observers
+    @objc func keyboardWillShow(note: NSNotification) {
+        if let keyboardSize = (note.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            self.affiliationsTableView.contentInset =  UIEdgeInsetsMake(0, 0, keyboardSize.height+10, 0)
+//            DispatchQueue.main.async {
+//                self.affiliationsTableView.scrollToRow(at: IndexPath(row: 0, section: 1), at: .top, animated: true)
+//            }
+        }
+    }
+    
+    @objc func keyboardWillHide(note: NSNotification) {
+        self.affiliationsTableView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0)
     }
 
     //MARK:- Private Methods
@@ -109,25 +130,31 @@ class DMAffiliationsVC: DMBaseVC {
         }
         
         //For other affiliation
-        let affiliation = affiliations[affiliations.count - 1]
-        if affiliation.isSelected {
-            if let otherAffiliation = affiliation.otherAffiliation {
-                if otherAffiliation.trim().isEmpty {
-                    self.makeToast(toastString: "Other Affiliation can't be empty")
+        let affiliationArray = affiliations.filter { (obj) -> Bool in
+            obj.affiliationId == "9"
+        }//affiliations[affiliations.count - 1]
+        if  affiliationArray.count > 0 {
+            let  affiliation = affiliationArray[0]
+            if affiliation.isSelected {
+                if let otherAffiliation = affiliation.otherAffiliation {
+                    if otherAffiliation.trim().isEmpty {
+                        self.makeToast(toastString: "Other Affiliation can't be empty")
+                        return
+                    }
+                    otherObject[Constants.ServerKey.affiliationId] = affiliation.affiliationId
+                    otherObject[Constants.ServerKey.otherAffiliation] = otherText
+                    other.append(otherObject)
+                }
+            }
+            if !affiliation.isSelected {
+                if selectedAffiliationIds.count == 0 {
+                    self.makeToast(toastString: "Please select atleast one affiliation")
                     return
                 }
-            otherObject[Constants.ServerKey.affiliationId] = affiliation.affiliationId
-            otherObject[Constants.ServerKey.otherAffiliation] = otherText
-            other.append(otherObject)
             }
+
         }
         
-        if !affiliation.isSelected {
-            if selectedAffiliationIds.count == 0 {
-                self.makeToast(toastString: "Please select atleast one affiliation")
-                return
-            }
-        }
         
         params[Constants.ServerKey.affiliationDataArray] = selectedAffiliationIds as AnyObject?
         params[Constants.ServerKey.other] = other as AnyObject?
@@ -145,10 +172,10 @@ extension DMAffiliationsVC: UITextViewDelegate {
     
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         
-        self.affiliationsTableView.contentInset =  UIEdgeInsetsMake(0, 0, 200, 0)
-        DispatchQueue.main.async {
-            self.affiliationsTableView.scrollToRow(at: IndexPath(row: 0, section: 2), at: .bottom, animated: true)
-        }
+//        self.affiliationsTableView.contentInset =  UIEdgeInsetsMake(0, 0, 200, 0)
+//        DispatchQueue.main.async {
+//            self.affiliationsTableView.scrollToRow(at: IndexPath(row: 0, section: 1), at: .middle, animated: true)
+//        }
         return true
     }
     
@@ -159,8 +186,12 @@ extension DMAffiliationsVC: UITextViewDelegate {
     }
     
     func textViewDidChange(_ textView: UITextView) {
-        let affiliation = affiliations[affiliations.count - 1]
-        affiliation.otherAffiliation = textView.text!
+        let affiliation = affiliations.filter { (obj) -> Bool in
+            obj.affiliationId == "9"
+        }// affiliations[affiliations.count - 1]
+        if affiliation.count > 0{
+            affiliation[0].otherAffiliation = textView.text!
+        }
         otherText = textView.text
     }
 }
