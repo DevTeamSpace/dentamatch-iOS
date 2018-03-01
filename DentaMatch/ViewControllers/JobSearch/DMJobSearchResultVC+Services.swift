@@ -66,6 +66,8 @@ extension DMJobSearchResultVC {
                     let job = Job(job: jobObject)
                     self.jobs.append(job)
                 }
+                self.placeHolderEmptyJobsView?.isHidden = self.jobs.count > 0 ? true : false
+
                 self.totalJobsFromServer = response[Constants.ServerKey.result]["total"].intValue
                 self.jobsPageNo += 1
                 self.loadingMoreJobs = false

@@ -45,6 +45,11 @@ class DMForgotPasswordVC: DMBaseVC {
     //MARK:- IBActions
     @IBAction func sendButtonPressed(_ sender: Any) {
         self.view.endEditing(true)
+        
+        if let emailtext = emailTextField.text, emailtext.isEmpty {
+            self.makeToast(toastString: Constants.AlertMessage.emptyEmail)
+            return
+        }
         if emailTextField.text!.isValidEmail {
             forgotPasswordParams[Constants.ServerKey.email] = self.emailTextField.text!
             self.forgotPasswordAPI(params: forgotPasswordParams)

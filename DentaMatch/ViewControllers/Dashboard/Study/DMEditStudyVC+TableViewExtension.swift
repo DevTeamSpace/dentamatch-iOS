@@ -89,7 +89,7 @@ extension DMEditStudyVC:UITableViewDataSource,UITableViewDelegate {
         }
         selectedData.removeObjects(in: emptyData as [AnyObject])
         debugPrint(selectedData)
-        self.studyTableView.reloadData()
+//        self.studyTableView.reloadData()
         
     }
 
@@ -154,6 +154,8 @@ extension DMEditStudyVC : UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         //textFieldDidEndEditing
+//        textField.resignFirstResponder()
+
         debugPrint("textFieldDidEndEditing")
         
         let school = schoolCategories.filter({$0.schoolCategoryId == "\(textField.tag)"}).first

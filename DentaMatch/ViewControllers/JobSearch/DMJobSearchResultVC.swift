@@ -44,6 +44,8 @@ class DMJobSearchResultVC : DMBaseVC {
     
     var indexOfSelectedMarker: Int?
     var selectedMarker: JobMarker?
+    var placeHolderEmptyJobsView:PlaceHolderJobsView?
+
     
     //var stylebarAndNavigationbarHeight = s
     
@@ -104,12 +106,34 @@ class DMJobSearchResultVC : DMBaseVC {
         if let params =  UserDefaultsManager.sharedInstance.loadSearchParameter() {
             searchParams = params
         }
+        
+        placeHolderEmptyJobsView = PlaceHolderJobsView.loadPlaceHolderJobsView()
+        placeHolderEmptyJobsView?.frame = CGRect(x: 0, y: 0, width: 300, height: 200)
+        placeHolderEmptyJobsView?.center = self.view.center
+        placeHolderEmptyJobsView?.backgroundColor = UIColor.clear
+        placeHolderEmptyJobsView?.placeHolderMessageLabel.numberOfLines = 2
+//        placeHolderEmptyJobsView?.placeHolderMessageLabel.text = Constants.AlertMessage.noNotification
+//        placeHolderEmptyJobsView?.placeholderImageView.image = UIImage(named: "notificationPlaceholder")
+        self.view.addSubview(placeHolderEmptyJobsView!)
+        placeHolderEmptyJobsView?.isHidden = false
+        self.placeHolderEmptyJobsView?.layoutIfNeeded()
+        self.view.layoutIfNeeded()
+        placeHolderEmptyJobsView?.placeHolderMessageLabel.text = "You don’t have any jobs"
+
 
         NotificationCenter.default.addObserver(self, selector: #selector(pushRediectNotificationOtherAll), name: .pushRedirectNotificationAllForground, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(pushRediectNotificationOtherAllBackGround), name: .pushRedirectNotificationAllBackGround, object: nil)
 
         NotificationCenter.default.addObserver(self, selector: #selector(pushRediectNotificationForJobDetailForground), name: .pushRedirectNotificationForground, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(pushRediectNotificationForJobDetailBacground), name: .pushRedirectNotificationBacground, object: nil)
+        
+//        placeHolderEmptyJobsView = PlaceHolderJobsView.loadPlaceHolderJobsView()
+//        placeHolderEmptyJobsView?.frame = CGRect(x: 0, y: 0, width: 300, height: 200)
+//        placeHolderEmptyJobsView?.center = self.view.center
+//        placeHolderEmptyJobsView?.backgroundColor = UIColor.clear
+//        self.view.addSubview(placeHolderEmptyJobsView!)
+//        placeHolderEmptyJobsView?.placeHolderMessageLabel.text = "You don’t have any saved jobs"
+
 
         self.mapViewSearchResult.isHidden = true
         self.tblJobSearchResult.register(UINib(nibName: "JobSearchResultCell", bundle: nil), forCellReuseIdentifier: "JobSearchResultCell")

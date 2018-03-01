@@ -174,11 +174,17 @@ extension DMEditStudyVC : YearPickerViewDelegate {
             let dict = NSMutableDictionary()
             dict["parentId"] = "\(tag)"
             dict["schoolId"] = "\(tag)"
-            dict["yearOfGraduation"] = "\(year)"
+            //            dict["yearOfGraduation"] = "\(year)"
+            if year == -1 {
+                dict["yearOfGraduation"] = ""
+            } else {
+                dict["yearOfGraduation"] = "\(year)"
+            }
+
             if let _ = dict["other"] {
                 debugPrint("Other dict")
             } else {
-                self.makeToast(toastString: "Please enter school name first")
+//                self.makeToast(toastString: "Please enter school name first")
                 dict["other"] = ""
             }
             selectedData.add(dict)
@@ -187,11 +193,17 @@ extension DMEditStudyVC : YearPickerViewDelegate {
             for category in selectedData {
                 let dict = category as! NSMutableDictionary
                 if dict["parentId"] as! String == "\(tag)" {
-                    dict["yearOfGraduation"] = "\(year)"
+//                    dict["yearOfGraduation"] = "\(year)"
+                    if year == -1 {
+                        dict["yearOfGraduation"] = ""
+                    } else {
+                        dict["yearOfGraduation"] = "\(year)"
+                    }
+
                     if let _ = dict["other"] {
                         debugPrint("Other dict")
                     } else {
-                        self.makeToast(toastString: "Please enter school name first")
+//                        self.makeToast(toastString: "Please enter school name first")
                         dict["other"] = ""
                     }
                     flag = 1
@@ -204,11 +216,17 @@ extension DMEditStudyVC : YearPickerViewDelegate {
             let dict = NSMutableDictionary()
             dict["parentId"] = "\(tag)"
             dict["schoolId"] = "\(tag)"
-            dict["yearOfGraduation"] = "\(year)"
+//            dict["yearOfGraduation"] = "\(year)"
+            if year == -1 {
+                dict["yearOfGraduation"] = ""
+            } else {
+                dict["yearOfGraduation"] = "\(year)"
+            }
+
             if let _ = dict["other"] {
                 debugPrint("Other dict")
             } else {
-                self.makeToast(toastString: "Please enter school name first")
+//                self.makeToast(toastString: "Please enter school name first")
                 dict["other"] = ""
             }
             selectedData.add(dict)

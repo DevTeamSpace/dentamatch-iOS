@@ -46,12 +46,14 @@ class YearPickerView: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         return 1
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 100
+        return 100 + 1
        
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        
-        return "\(currentYear - row)"
+        if row == 0 {
+            return "Year of Graduation"
+        }
+        return "\(currentYear - row+1)"
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -62,7 +64,17 @@ class YearPickerView: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         
         if let delegate = delegate {
             let row  = self.yearPickerView.selectedRow(inComponent: 0)
-            let selctedRow = self.currentYear - row
+            var selctedRow = -1
+
+            if row == 0 {
+//                let selctedRow = self.currentYear - row
+                 selctedRow = -1
+
+
+            } else {
+                 selctedRow = self.currentYear - row
+
+            }
 
             delegate.doneButtonAction( year: selctedRow, tag: self.currentTag)
         }
