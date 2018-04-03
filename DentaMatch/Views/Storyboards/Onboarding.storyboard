@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="YKv-lx-v7y">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="YKv-lx-v7y">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -42,7 +43,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="OnboardingCollectionViewCell" id="2rr-RC-n6e" customClass="OnboardingCollectionViewCell" customModule="DentaMatch" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <rect key="frame" x="0.0" y="-10" width="375" height="667"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -137,11 +138,11 @@
                             <constraint firstItem="I0e-VI-fpG" firstAttribute="top" secondItem="7Tl-dd-GP5" secondAttribute="bottom" constant="8" id="5WA-Hl-PE4"/>
                             <constraint firstItem="7Tl-dd-GP5" firstAttribute="leading" secondItem="iyp-Fv-mPo" secondAttribute="leading" constant="25" id="Pax-d1-PWE"/>
                             <constraint firstItem="Fcm-PV-9mt" firstAttribute="leading" secondItem="iyp-Fv-mPo" secondAttribute="leading" id="Q9u-qg-NGo"/>
+                            <constraint firstItem="Fcm-PV-9mt" firstAttribute="bottom" secondItem="iyp-Fv-mPo" secondAttribute="bottom" id="ROI-6H-ER1"/>
                             <constraint firstAttribute="trailing" secondItem="Fcm-PV-9mt" secondAttribute="trailing" id="TZM-es-9Tt"/>
                             <constraint firstItem="I0e-VI-fpG" firstAttribute="top" secondItem="Ddc-yP-oKV" secondAttribute="bottom" constant="4" id="U9M-0y-8vQ"/>
                             <constraint firstAttribute="trailing" secondItem="QWg-rm-8q8" secondAttribute="trailing" id="dWj-Ao-wvA"/>
                             <constraint firstItem="Fcm-PV-9mt" firstAttribute="top" secondItem="iyp-Fv-mPo" secondAttribute="top" id="hYI-pK-iei"/>
-                            <constraint firstItem="I0e-VI-fpG" firstAttribute="top" secondItem="Fcm-PV-9mt" secondAttribute="bottom" id="lNA-oC-OKA"/>
                             <constraint firstItem="I0e-VI-fpG" firstAttribute="top" secondItem="QWg-rm-8q8" secondAttribute="bottom" constant="4" id="rya-Il-Bdd"/>
                             <constraint firstAttribute="trailing" secondItem="Ddc-yP-oKV" secondAttribute="trailing" id="x6X-r6-5Jf"/>
                         </constraints>
@@ -164,7 +165,6 @@
                 <navigationController storyboardIdentifier="OnboardingNAV" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="YKv-lx-v7y" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="eMJ-TA-DVb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

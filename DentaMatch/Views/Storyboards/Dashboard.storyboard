@@ -33,11 +33,11 @@
                         <viewControllerLayoutGuide type="bottom" id="dgW-zF-vSE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="uaR-ux-pzN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="s5f-pG-lsU">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="28" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5f-pG-lsU">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
@@ -46,17 +46,17 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="0.6705882353" green="0.1215686275" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.019607843137254902" green="0.1764705882352941" blue="0.41176470588235292" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="s5f-pG-lsU" firstAttribute="leading" secondItem="uaR-ux-pzN" secondAttribute="leading" id="a1i-6m-aaY"/>
-                            <constraint firstItem="dgW-zF-vSE" firstAttribute="top" secondItem="s5f-pG-lsU" secondAttribute="bottom" id="cet-Et-7ts"/>
+                            <constraint firstItem="s5f-pG-lsU" firstAttribute="bottom" secondItem="uaR-ux-pzN" secondAttribute="bottom" id="cet-Et-7ts"/>
                             <constraint firstAttribute="trailing" secondItem="s5f-pG-lsU" secondAttribute="trailing" id="qt2-7M-y8D"/>
-                            <constraint firstItem="s5f-pG-lsU" firstAttribute="top" secondItem="uaR-ux-pzN" secondAttribute="top" id="svf-jH-UpX"/>
+                            <constraint firstItem="s5f-pG-lsU" firstAttribute="top" secondItem="Q6m-nl-rmN" secondAttribute="bottom" id="svf-jH-UpX"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="oSa-8S-S7x"/>
-                    <nil key="simulatedTopBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
                         <outlet property="editProfileTableView" destination="s5f-pG-lsU" id="40Y-bB-PfS"/>
@@ -155,7 +155,7 @@
                             <constraint firstAttribute="trailing" secondItem="ucU-vr-6cp" secondAttribute="trailing" id="Qp9-HE-lhL"/>
                             <constraint firstItem="ucU-vr-6cp" firstAttribute="top" secondItem="sTc-xv-vTk" secondAttribute="bottom" id="SWb-m8-KXr"/>
                             <constraint firstAttribute="trailing" secondItem="ufX-Iq-dZm" secondAttribute="trailing" constant="20" id="UaZ-Zx-VQ7"/>
-                            <constraint firstItem="1ZT-BK-qEY" firstAttribute="top" secondItem="roV-Iz-60h" secondAttribute="bottom" id="a4P-TV-0cD"/>
+                            <constraint firstItem="roV-Iz-60h" firstAttribute="bottom" secondItem="6zr-gI-65q" secondAttribute="bottom" id="a4P-TV-0cD"/>
                             <constraint firstItem="tes-k1-QPG" firstAttribute="top" secondItem="ucU-vr-6cp" secondAttribute="bottom" constant="24" id="dC2-HR-JEq"/>
                             <constraint firstAttribute="trailing" secondItem="tes-k1-QPG" secondAttribute="trailing" constant="20" id="fj1-yg-BTn"/>
                             <constraint firstItem="tes-k1-QPG" firstAttribute="leading" secondItem="6zr-gI-65q" secondAttribute="leading" constant="20" id="oYj-rD-eyP"/>
@@ -211,7 +211,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="PzG-NF-pdP" firstAttribute="top" secondItem="72f-1x-UJR" secondAttribute="bottom" id="NLv-DW-h51"/>
+                            <constraint firstItem="PzG-NF-pdP" firstAttribute="top" secondItem="EKZ-h3-RSd" secondAttribute="top" id="NLv-DW-h51"/>
                             <constraint firstAttribute="trailing" secondItem="ine-DQ-tLE" secondAttribute="trailing" id="Ocb-fQ-s8H"/>
                             <constraint firstAttribute="bottom" secondItem="ine-DQ-tLE" secondAttribute="bottom" id="QfJ-4T-4wf"/>
                             <constraint firstItem="ine-DQ-tLE" firstAttribute="top" secondItem="PzG-NF-pdP" secondAttribute="bottom" id="UjH-MQ-CYx"/>
@@ -266,7 +266,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0iF-NM-oLr">
-                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="QwC-wV-hMI" id="nEV-PG-7DD"/>
@@ -278,8 +278,8 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="0iF-NM-oLr" secondAttribute="trailing" id="3Ej-7D-ClC"/>
                             <constraint firstItem="0iF-NM-oLr" firstAttribute="leading" secondItem="5QS-Ri-pRJ" secondAttribute="leading" id="FlH-I7-4sn"/>
-                            <constraint firstItem="Apu-0P-8wG" firstAttribute="top" secondItem="0iF-NM-oLr" secondAttribute="bottom" id="Ms3-yx-rKU"/>
-                            <constraint firstItem="0iF-NM-oLr" firstAttribute="top" secondItem="lcM-Wj-dAi" secondAttribute="bottom" id="N61-um-iV3"/>
+                            <constraint firstAttribute="bottom" secondItem="0iF-NM-oLr" secondAttribute="bottom" id="Ms3-yx-rKU"/>
+                            <constraint firstItem="0iF-NM-oLr" firstAttribute="top" secondItem="5QS-Ri-pRJ" secondAttribute="top" id="N61-um-iV3"/>
                         </constraints>
                     </view>
                     <connections>
@@ -318,7 +318,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GUs-jT-7iP">
-                                <rect key="frame" x="0.0" y="20" width="375" height="549"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="505"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="RiE-rr-WZ6" id="1KH-6Y-ngr"/>
@@ -334,7 +334,7 @@
                             <constraint firstItem="Vdb-iq-mY0" firstAttribute="top" secondItem="GUs-jT-7iP" secondAttribute="bottom" id="YZf-Dg-p28"/>
                             <constraint firstAttribute="trailing" secondItem="Vdb-iq-mY0" secondAttribute="trailing" id="dU6-LO-gkk"/>
                             <constraint firstItem="GUs-jT-7iP" firstAttribute="top" secondItem="SId-UV-bxn" secondAttribute="bottom" id="kTq-S2-SWf"/>
-                            <constraint firstItem="k0H-xG-Whe" firstAttribute="top" secondItem="Vdb-iq-mY0" secondAttribute="bottom" id="s0J-L3-RdZ"/>
+                            <constraint firstItem="Vdb-iq-mY0" firstAttribute="bottom" secondItem="1wy-kj-70d" secondAttribute="bottom" id="s0J-L3-RdZ"/>
                         </constraints>
                     </view>
                     <connections>
@@ -446,7 +446,7 @@
                             <constraint firstItem="22d-R6-ZJE" firstAttribute="leading" secondItem="Ygx-OA-7ER" secondAttribute="leading" id="Olm-jV-mQd"/>
                             <constraint firstAttribute="trailing" secondItem="zy1-2M-55k" secondAttribute="trailing" constant="20" id="a9E-Ee-AnA"/>
                             <constraint firstItem="E0A-1T-GS0" firstAttribute="top" secondItem="mgB-fK-w89" secondAttribute="bottom" id="hVH-PS-WjO"/>
-                            <constraint firstItem="IQS-iv-icH" firstAttribute="top" secondItem="22d-R6-ZJE" secondAttribute="bottom" id="kFE-pR-99W"/>
+                            <constraint firstItem="22d-R6-ZJE" firstAttribute="bottom" secondItem="Ygx-OA-7ER" secondAttribute="bottom" id="kFE-pR-99W"/>
                             <constraint firstAttribute="trailing" secondItem="22d-R6-ZJE" secondAttribute="trailing" id="l83-th-ahw"/>
                             <constraint firstItem="zy1-2M-55k" firstAttribute="height" secondItem="Ygx-OA-7ER" secondAttribute="height" multiplier="0.256" id="oVn-ap-yMy"/>
                             <constraint firstItem="KkQ-Gp-DgJ" firstAttribute="trailing" secondItem="zy1-2M-55k" secondAttribute="trailing" id="qCh-7W-5pV"/>
@@ -576,7 +576,7 @@
                             <constraint firstItem="I6r-bg-W9I" firstAttribute="top" secondItem="gJp-PO-LNd" secondAttribute="top" id="qUi-E9-eaE"/>
                             <constraint firstItem="Noj-PL-WTT" firstAttribute="top" secondItem="lC4-62-THA" secondAttribute="bottom" id="v3P-IP-NRk"/>
                             <constraint firstAttribute="trailing" secondItem="BEY-y2-YCD" secondAttribute="trailing" id="vka-rV-0nc"/>
-                            <constraint firstItem="NRv-61-dcc" firstAttribute="top" secondItem="BEY-y2-YCD" secondAttribute="bottom" id="yWb-X7-8Dl"/>
+                            <constraint firstItem="BEY-y2-YCD" firstAttribute="bottom" secondItem="gJp-PO-LNd" secondAttribute="bottom" id="yWb-X7-8Dl"/>
                         </constraints>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
@@ -653,7 +653,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="xCb-xi-9QB" firstAttribute="top" secondItem="ebn-0h-9b7" secondAttribute="bottom" id="1bI-VO-65R"/>
+                            <constraint firstItem="ebn-0h-9b7" firstAttribute="bottom" secondItem="GWy-K7-BHO" secondAttribute="bottom" id="1bI-VO-65R"/>
                             <constraint firstItem="DPE-QG-jAO" firstAttribute="leading" secondItem="GWy-K7-BHO" secondAttribute="leading" id="5uD-Hd-XXD"/>
                             <constraint firstAttribute="trailing" secondItem="DPE-QG-jAO" secondAttribute="trailing" id="6Ri-h8-waF"/>
                             <constraint firstAttribute="trailing" secondItem="ebn-0h-9b7" secondAttribute="trailing" id="6jg-1Q-ZQr"/>
@@ -781,11 +781,10 @@
         <!--Profile-->
         <scene sceneID="P7V-iT-9Fe">
             <objects>
-                <navigationController storyboardIdentifier="EditProfileNAV" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8Ar-Ah-Bfh" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="EditProfileNAV" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="8Ar-Ah-Bfh" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="5" title="Profile" image="profile" id="frf-SB-pmR"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="lT7-8Y-N7V">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

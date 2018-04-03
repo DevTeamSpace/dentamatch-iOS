@@ -32,8 +32,8 @@
             <objects>
                 <viewController storyboardIdentifier="DMRegistrationContainer" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lsa-fw-BC6" customClass="DMRegistrationContainer" customModule="DentaMatch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="9wO-e2-Mtl"/>
-                        <viewControllerLayoutGuide type="bottom" id="Fdy-nh-XrI"/>
+                        <viewControllerLayoutGuide type="top" id="uHT-aP-TxF"/>
+                        <viewControllerLayoutGuide type="bottom" id="jEZ-ck-uCv"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="D9f-LL-91K">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -118,8 +118,8 @@
             <objects>
                 <viewController storyboardIdentifier="DMRegisterMapsVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GcO-KR-zjQ" customClass="DMRegisterMapsVC" customModule="DentaMatch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Uuy-uj-dai"/>
-                        <viewControllerLayoutGuide type="bottom" id="f5J-Ku-Sas"/>
+                        <viewControllerLayoutGuide type="top" id="ov4-Ne-LQN"/>
+                        <viewControllerLayoutGuide type="bottom" id="smR-Re-q4R"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="CT3-TW-OPY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -208,7 +208,7 @@
                             <constraint firstAttribute="trailing" secondItem="ASo-74-Ted" secondAttribute="trailing" id="8yS-bK-m5H"/>
                             <constraint firstAttribute="trailing" secondItem="cIl-fv-ouR" secondAttribute="trailing" id="RJV-uM-b0o"/>
                             <constraint firstItem="ASo-74-Ted" firstAttribute="top" secondItem="cs0-Xq-jKR" secondAttribute="bottom" id="SCD-xm-JMa"/>
-                            <constraint firstItem="f5J-Ku-Sas" firstAttribute="top" secondItem="8eO-F4-wdO" secondAttribute="bottom" id="UhJ-pN-YQB"/>
+                            <constraint firstItem="8eO-F4-wdO" firstAttribute="bottom" secondItem="CT3-TW-OPY" secondAttribute="bottom" id="UhJ-pN-YQB"/>
                             <constraint firstItem="cs0-Xq-jKR" firstAttribute="top" secondItem="CT3-TW-OPY" secondAttribute="top" id="WAB-VL-oOJ"/>
                             <constraint firstItem="8eO-F4-wdO" firstAttribute="top" secondItem="ASo-74-Ted" secondAttribute="bottom" id="WRp-dB-JPk"/>
                             <constraint firstItem="8eO-F4-wdO" firstAttribute="leading" secondItem="CT3-TW-OPY" secondAttribute="leading" id="ZB2-u9-6dy"/>
@@ -216,7 +216,7 @@
                             <constraint firstAttribute="trailing" secondItem="41I-Sc-AXi" secondAttribute="trailing" constant="15" id="jB0-iS-9is"/>
                             <constraint firstAttribute="trailing" secondItem="cs0-Xq-jKR" secondAttribute="trailing" id="mVw-ng-7H3"/>
                             <constraint firstItem="cs0-Xq-jKR" firstAttribute="leading" secondItem="CT3-TW-OPY" secondAttribute="leading" id="pgk-V8-SLQ"/>
-                            <constraint firstItem="ASo-74-Ted" firstAttribute="top" secondItem="Uuy-uj-dai" secondAttribute="bottom" id="rE8-WD-agq"/>
+                            <constraint firstItem="ASo-74-Ted" firstAttribute="top" secondItem="ov4-Ne-LQN" secondAttribute="bottom" id="rE8-WD-agq"/>
                             <constraint firstItem="cIl-fv-ouR" firstAttribute="top" secondItem="ASo-74-Ted" secondAttribute="bottom" id="xqp-68-HL9"/>
                         </constraints>
                     </view>
@@ -236,8 +236,8 @@
             <objects>
                 <viewController storyboardIdentifier="DMTermsAndConditionsVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0lD-wd-eXf" customClass="DMTermsAndConditionsVC" customModule="DentaMatch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="qfw-gB-ftr"/>
-                        <viewControllerLayoutGuide type="bottom" id="TQX-k3-zt9"/>
+                        <viewControllerLayoutGuide type="top" id="Yhw-MF-KaO"/>
+                        <viewControllerLayoutGuide type="bottom" id="b34-ub-ZEf"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kVg-6W-hMB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
@@ -251,9 +251,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Yfv-rb-xBR" secondAttribute="trailing" id="6Ks-sn-Hso"/>
-                            <constraint firstItem="Yfv-rb-xBR" firstAttribute="top" secondItem="qfw-gB-ftr" secondAttribute="bottom" id="9QT-Si-kcl"/>
+                            <constraint firstItem="Yfv-rb-xBR" firstAttribute="top" secondItem="Yhw-MF-KaO" secondAttribute="bottom" id="9QT-Si-kcl"/>
                             <constraint firstItem="Yfv-rb-xBR" firstAttribute="leading" secondItem="kVg-6W-hMB" secondAttribute="leading" id="BOv-8b-GZz"/>
-                            <constraint firstItem="TQX-k3-zt9" firstAttribute="top" secondItem="Yfv-rb-xBR" secondAttribute="bottom" id="FeE-0V-GCj"/>
+                            <constraint firstItem="Yfv-rb-xBR" firstAttribute="bottom" secondItem="kVg-6W-hMB" secondAttribute="bottom" id="FeE-0V-GCj"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
@@ -271,8 +271,8 @@
             <objects>
                 <viewController storyboardIdentifier="DMForgotPasswordVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JvZ-pA-bC8" customClass="DMForgotPasswordVC" customModule="DentaMatch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="dHg-yr-3f7"/>
-                        <viewControllerLayoutGuide type="bottom" id="diS-tU-7Ig"/>
+                        <viewControllerLayoutGuide type="top" id="IP3-n0-dzH"/>
+                        <viewControllerLayoutGuide type="bottom" id="F1K-mh-pHa"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="SLx-nh-btb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -319,8 +319,8 @@
                             <constraint firstAttribute="trailing" secondItem="bsL-Ll-rOR" secondAttribute="trailing" id="0CG-uq-fz7"/>
                             <constraint firstItem="xlF-WJ-RrJ" firstAttribute="leading" secondItem="SLx-nh-btb" secondAttribute="leading" constant="22" id="7AN-4a-pRS"/>
                             <constraint firstAttribute="trailing" secondItem="xlF-WJ-RrJ" secondAttribute="trailing" constant="22" id="AUO-F5-OY2"/>
-                            <constraint firstItem="diS-tU-7Ig" firstAttribute="top" secondItem="bsL-Ll-rOR" secondAttribute="bottom" id="CfL-57-3hr"/>
-                            <constraint firstItem="IRT-i0-rz1" firstAttribute="top" secondItem="dHg-yr-3f7" secondAttribute="bottom" constant="30" id="F5z-5e-Jt7"/>
+                            <constraint firstItem="bsL-Ll-rOR" firstAttribute="bottom" secondItem="SLx-nh-btb" secondAttribute="bottom" id="CfL-57-3hr"/>
+                            <constraint firstItem="IRT-i0-rz1" firstAttribute="top" secondItem="IP3-n0-dzH" secondAttribute="bottom" constant="30" id="F5z-5e-Jt7"/>
                             <constraint firstItem="IRT-i0-rz1" firstAttribute="centerX" secondItem="SLx-nh-btb" secondAttribute="centerX" id="KWU-FQ-qtf"/>
                             <constraint firstItem="bsL-Ll-rOR" firstAttribute="leading" secondItem="SLx-nh-btb" secondAttribute="leading" id="KfH-AB-N45"/>
                             <constraint firstItem="xlF-WJ-RrJ" firstAttribute="top" secondItem="IRT-i0-rz1" secondAttribute="bottom" constant="38" id="lGM-7I-P8n"/>
@@ -340,15 +340,15 @@
             <objects>
                 <viewController storyboardIdentifier="DMRegistrationVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ek9-7G-TEK" customClass="DMRegistrationVC" customModule="DentaMatch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="5GN-JO-vEX"/>
-                        <viewControllerLayoutGuide type="bottom" id="2pF-fB-QgN"/>
+                        <viewControllerLayoutGuide type="top" id="t1k-Lw-zL2"/>
+                        <viewControllerLayoutGuide type="bottom" id="KDc-wD-BTD"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Q3d-Ym-r0y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Yn3-QB-7Qm">
-                                <rect key="frame" x="0.0" y="20" width="375" height="599"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="619"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="ek9-7G-TEK" id="v3E-59-s8F"/>
@@ -374,9 +374,9 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="6lc-Sk-F06" secondAttribute="trailing" id="6Bm-1I-nEP"/>
                             <constraint firstItem="6lc-Sk-F06" firstAttribute="top" secondItem="Yn3-QB-7Qm" secondAttribute="bottom" id="FQf-Hc-Osh"/>
-                            <constraint firstItem="2pF-fB-QgN" firstAttribute="top" secondItem="6lc-Sk-F06" secondAttribute="bottom" id="Voc-dA-S9x"/>
+                            <constraint firstItem="6lc-Sk-F06" firstAttribute="bottom" secondItem="Q3d-Ym-r0y" secondAttribute="bottom" id="Voc-dA-S9x"/>
                             <constraint firstAttribute="trailing" secondItem="Yn3-QB-7Qm" secondAttribute="trailing" id="Vop-I4-4Hm"/>
-                            <constraint firstItem="Yn3-QB-7Qm" firstAttribute="top" secondItem="5GN-JO-vEX" secondAttribute="bottom" id="YXc-LE-Odp"/>
+                            <constraint firstItem="Yn3-QB-7Qm" firstAttribute="top" secondItem="Q3d-Ym-r0y" secondAttribute="top" id="YXc-LE-Odp"/>
                             <constraint firstItem="Yn3-QB-7Qm" firstAttribute="leading" secondItem="Q3d-Ym-r0y" secondAttribute="leading" id="qq0-T4-dv4"/>
                             <constraint firstItem="6lc-Sk-F06" firstAttribute="leading" secondItem="Q3d-Ym-r0y" secondAttribute="leading" id="rEd-xB-Y2k"/>
                         </constraints>
@@ -394,15 +394,15 @@
             <objects>
                 <viewController storyboardIdentifier="DMLoginVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7or-rf-7X3" customClass="DMLoginVC" customModule="DentaMatch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="hYf-zK-TuJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="Chc-n7-XSS"/>
+                        <viewControllerLayoutGuide type="top" id="kWP-GZ-4Fw"/>
+                        <viewControllerLayoutGuide type="bottom" id="ysZ-4h-sM3"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="O9O-4f-ubY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="k1b-dg-vUT">
-                                <rect key="frame" x="0.0" y="20" width="375" height="599"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="619"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="7or-rf-7X3" id="Mpw-aa-K83"/>
@@ -429,10 +429,10 @@
                             <constraint firstItem="eom-Hw-Ozp" firstAttribute="leading" secondItem="O9O-4f-ubY" secondAttribute="leading" id="7eU-bE-iRs"/>
                             <constraint firstAttribute="trailing" secondItem="k1b-dg-vUT" secondAttribute="trailing" id="MS1-69-vs6"/>
                             <constraint firstAttribute="trailing" secondItem="eom-Hw-Ozp" secondAttribute="trailing" id="OVR-Va-cmb"/>
-                            <constraint firstItem="Chc-n7-XSS" firstAttribute="top" secondItem="eom-Hw-Ozp" secondAttribute="bottom" id="X9r-Aj-ceD"/>
+                            <constraint firstItem="eom-Hw-Ozp" firstAttribute="bottom" secondItem="O9O-4f-ubY" secondAttribute="bottom" id="X9r-Aj-ceD"/>
                             <constraint firstItem="eom-Hw-Ozp" firstAttribute="top" secondItem="k1b-dg-vUT" secondAttribute="bottom" id="gJq-Tq-LAx"/>
                             <constraint firstItem="k1b-dg-vUT" firstAttribute="leading" secondItem="O9O-4f-ubY" secondAttribute="leading" id="h1F-KW-Fcm"/>
-                            <constraint firstItem="k1b-dg-vUT" firstAttribute="top" secondItem="hYf-zK-TuJ" secondAttribute="bottom" id="iwS-1d-R1c"/>
+                            <constraint firstItem="k1b-dg-vUT" firstAttribute="top" secondItem="O9O-4f-ubY" secondAttribute="top" id="iwS-1d-R1c"/>
                         </constraints>
                     </view>
                     <connections>
