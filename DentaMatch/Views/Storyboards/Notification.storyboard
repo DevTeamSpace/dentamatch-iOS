@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hMV-YX-EYX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hMV-YX-EYX">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,7 +14,7 @@
             <objects>
                 <navigationController id="hMV-YX-EYX" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oqG-Wm-oqv">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -47,7 +48,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="6Wu-6d-WDi" firstAttribute="top" secondItem="SVr-J4-VGw" secondAttribute="bottom" id="Lrn-UW-9iG"/>
+                            <constraint firstAttribute="bottom" secondItem="SVr-J4-VGw" secondAttribute="bottom" id="Lrn-UW-9iG"/>
                             <constraint firstAttribute="trailing" secondItem="SVr-J4-VGw" secondAttribute="trailing" id="fVb-Xy-UeB"/>
                             <constraint firstItem="SVr-J4-VGw" firstAttribute="leading" secondItem="NiP-dM-jbP" secondAttribute="leading" id="pDv-6L-gFt"/>
                             <constraint firstItem="SVr-J4-VGw" firstAttribute="top" secondItem="ndq-RG-udw" secondAttribute="bottom" id="tbV-yY-vGo"/>
