@@ -138,7 +138,7 @@ class DMJobSearchResultVC : DMBaseVC {
         self.mapViewSearchResult.isHidden = true
         self.tblJobSearchResult.register(UINib(nibName: "JobSearchResultCell", bundle: nil), forCellReuseIdentifier: "JobSearchResultCell")
         self.mapViewSearchResult.delegate = self
-        self.mapViewSearchResult.isMyLocationEnabled = true
+        self.mapViewSearchResult.isMyLocationEnabled = false
         self.lblResultCount.text = String(self.jobs.count) + Constants.Strings.whiteSpace + Constants.Strings.resultsFound
 //        self.setLeftBarButton(title: Constants.DesignFont.notification)
         self.navigationItem.leftBarButtonItem = self.customLeftBarButton()
@@ -363,7 +363,7 @@ class DMJobSearchResultVC : DMBaseVC {
         }
         isMapShow = !isMapShow
         isListShow = false
-        self.getLocation()
+//        self.getLocation()
         self.restoreAllMarkers()
     }
     
@@ -373,18 +373,18 @@ class DMJobSearchResultVC : DMBaseVC {
     }
     
     func getLocation() {
-        LocationManager.sharedInstance.getLocation { (location:CLLocation?, error:NSError?) in
-            if error != nil {
-                DispatchQueue.main.async {
-                    self.hideLoader()
-                    self.alertMessage(title: "", message: (error?.localizedDescription)!, buttonText: kOkButtonTitle, completionHandler: nil)
-                }
-                return
-            }
-            self.btnCurrentLocation.isUserInteractionEnabled = true
-            let coordinate = CLLocationCoordinate2D(latitude: (location!.coordinate.latitude), longitude: (location!.coordinate.longitude))
-            self.currentCoordinate = coordinate
-        }
+//        LocationManager.sharedInstance.getLocation { (location:CLLocation?, error:NSError?) in
+//            if error != nil {
+//                DispatchQueue.main.async {
+//                    self.hideLoader()
+//                    self.alertMessage(title: "", message: (error?.localizedDescription)!, buttonText: kOkButtonTitle, completionHandler: nil)
+//                }
+//                return
+//            }
+//            self.btnCurrentLocation.isUserInteractionEnabled = true
+//            let coordinate = CLLocationCoordinate2D(latitude: (location!.coordinate.latitude), longitude: (location!.coordinate.longitude))
+//            self.currentCoordinate = coordinate
+//        }
     }
 }
 

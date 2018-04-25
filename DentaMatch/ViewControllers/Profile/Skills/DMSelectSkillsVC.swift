@@ -79,7 +79,7 @@ extension DMSelectSkillsVC:UITableViewDataSource, UITableViewDelegate {
         if let _ = skill {
             return 2
         }
-        return 0
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

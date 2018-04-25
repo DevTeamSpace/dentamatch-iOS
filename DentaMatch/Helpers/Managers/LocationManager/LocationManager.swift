@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 
 class LocationManager: NSObject,CLLocationManagerDelegate {
+    /*
     
     enum LocationErrors: String {
         case denied = "Locations are turned off. Please turn it on in Settings"
@@ -29,7 +30,7 @@ class LocationManager: NSObject,CLLocationManagerDelegate {
     typealias ReverseGeoLocationClosure = ((_ location:CLLocation?, _ placemark:CLPlacemark?,_ error: NSError?)->Void)
     private var geoLocationCompletionHandler: ReverseGeoLocationClosure?
     
-    private var manager:CLLocationManager?
+//    private var manager:CLLocationManager?
     var locationAccuracy = kCLLocationAccuracyBest
     
     private var lastLocation:CLLocation?
@@ -45,26 +46,26 @@ class LocationManager: NSObject,CLLocationManagerDelegate {
 
     //MARK:- Destroy the LocationManager
     deinit {
-        destroyLocationManager()
+//        destroyLocationManager()
     }
     
     //MARK:- Private Methods
     private func setupLocationManager() {
         
         //Setting of location manager
-        manager = nil
-        manager = CLLocationManager()
-        manager?.desiredAccuracy = locationAccuracy
-        manager?.delegate = self
-        manager?.requestWhenInUseAuthorization()
+//        manager = nil
+//        manager = CLLocationManager()
+//        manager?.desiredAccuracy = locationAccuracy
+//        manager?.delegate = self
+//        manager?.requestWhenInUseAuthorization()
         
     }
     
-    private func destroyLocationManager() {
-        manager?.delegate = nil
-        manager = nil
-        manager = nil
-    }
+//    private func destroyLocationManager() {
+//        manager?.delegate = nil
+//        manager = nil
+//        manager = nil
+//    }
     
     //MARK:- Selectors
     private func startThread() {
@@ -213,9 +214,9 @@ class LocationManager: NSObject,CLLocationManagerDelegate {
         
         switch status {
             
-        case .authorizedWhenInUse,.authorizedAlways:
+        case .authorizedWhenInUse,.authorizedAlways: break
             //Request Current Location
-            self.manager?.requestLocation()
+//            self.manager?.requestLocation()
 //            if self.reverseGeocoding {
 //                //startGeocodeThread()
 //            } else {
@@ -249,8 +250,8 @@ class LocationManager: NSObject,CLLocationManagerDelegate {
                     userInfo: nil))
             }
             
-        case .notDetermined:
-            self.manager?.requestWhenInUseAuthorization()
+        case .notDetermined: break
+//            self.manager?.requestWhenInUseAuthorization()
             
         }
     }
@@ -262,17 +263,18 @@ class LocationManager: NSObject,CLLocationManagerDelegate {
     
     //MARK:- Final closure/callback
     private func didComplete(location: CLLocation?,error: NSError?) {
-        manager?.stopUpdatingLocation()
+//        manager?.stopUpdatingLocation()
         completionHandler?(location,error)
-        manager?.delegate = nil
-        manager = nil
+//        manager?.delegate = nil
+//        manager = nil
     }
     
     private func didCompleteGeocoding(location:CLLocation?,placemark: CLPlacemark?,error: NSError?) {
-        manager?.stopUpdatingLocation()
+//        manager?.stopUpdatingLocation()
         geoLocationCompletionHandler?(location,placemark,error)
-        manager?.delegate = nil
-        manager = nil
+//        manager?.delegate = nil
+//        manager = nil
         reverseGeocoding = false
     }
+ */
 }

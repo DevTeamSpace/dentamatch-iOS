@@ -56,8 +56,10 @@ extension DMJobSearchResultVC : GMSMapViewDelegate {
             let marker = JobMarker()
             marker.index = index
             marker.isDraggable = false
+//            marker.panoramaView
             marker.position = CLLocationCoordinate2DMake(latDbl,langDbl )
             marker.icon = UIImage(named: "pinPoint")
+            marker.groundAnchor = CGPoint(x: 0.5, y: 0.5)
             marker.map = self.mapViewSearchResult
             if index == 0  {
                 self.mapViewSearchResult.animate(to: GMSCameraPosition(target: CLLocationCoordinate2DMake(latDbl,langDbl), zoom: 10, bearing: 0, viewingAngle: 0))

@@ -110,6 +110,21 @@ class DMEditStudyVC: DMBaseVC {
             self.makeToast(toastString: "Please fill atleast one school")
             return
         }
+        let emptyData = NSMutableArray()
+        for category in selectedData {
+            let dict = category as! NSMutableDictionary
+            if (dict["other"] as! String).isEmptyField {
+                emptyData.add(dict)
+            }
+        }
+        debugPrint(selectedData.description)
+        if emptyData.count > 0 {
+            self.makeToast(toastString: "Please enter school name first")
+//            selectedData.removeObjects(in: emptyData as [AnyObject])
+            return
+        }
+//        selectedData.removeObjects(in: emptyData as [AnyObject])
+
         self.preparePostSchoolData(schoolsSelected: selectedData)
     }
 }
@@ -159,6 +174,19 @@ extension DMEditStudyVC:AutoCompleteSelectedDelegate {
         
         self.studyTableView.reloadData()
     }
+    func removeEmptyYear() {
+        let emptyData = NSMutableArray()
+        for category in selectedData {
+            let dict = category as! NSMutableDictionary
+            if (dict["other"] as! String).isEmptyField {
+                emptyData.add(dict)
+            }
+        }
+        debugPrint(selectedData.description)
+        selectedData.removeObjects(in: emptyData as [AnyObject])
+        studyTableView.reloadData()
+
+    }
 }
 
 extension DMEditStudyVC : YearPickerViewDelegate {
@@ -177,6 +205,7 @@ extension DMEditStudyVC : YearPickerViewDelegate {
             //            dict["yearOfGraduation"] = "\(year)"
             if year == -1 {
                 dict["yearOfGraduation"] = ""
+                removeEmptyYear()
             } else {
                 dict["yearOfGraduation"] = "\(year)"
             }
@@ -196,6 +225,7 @@ extension DMEditStudyVC : YearPickerViewDelegate {
 //                    dict["yearOfGraduation"] = "\(year)"
                     if year == -1 {
                         dict["yearOfGraduation"] = ""
+                        removeEmptyYear()
                     } else {
                         dict["yearOfGraduation"] = "\(year)"
                     }
@@ -219,6 +249,7 @@ extension DMEditStudyVC : YearPickerViewDelegate {
 //            dict["yearOfGraduation"] = "\(year)"
             if year == -1 {
                 dict["yearOfGraduation"] = ""
+                removeEmptyYear()
             } else {
                 dict["yearOfGraduation"] = "\(year)"
             }

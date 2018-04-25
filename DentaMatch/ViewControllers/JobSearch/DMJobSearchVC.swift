@@ -169,20 +169,20 @@ class DMJobSearchVC : DMBaseVC {
     }
     
     func getLocation() {
-        self.showLoader()
-        LocationManager.sharedInstance.getLocation { (location:CLLocation?, error:NSError?) in
-            self.hideLoader()
-            if error != nil {
-                DispatchQueue.main.async {
-                    self.alertMessage(title: "", message: (error?.localizedDescription)!, buttonText: kOkButtonTitle, completionHandler: nil)
-                }
-                return
-            }
-            
-            let coordinate = CLLocationCoordinate2D(latitude: (location!.coordinate.latitude), longitude: (location!.coordinate.longitude))
-            self.location.coordinateSelected = coordinate
-            self.reverseGeocodeCoordinate(coordinate: coordinate)
-        }
+//        self.showLoader()
+//        LocationManager.sharedInstance.getLocation { (location:CLLocation?, error:NSError?) in
+//            self.hideLoader()
+//            if error != nil {
+//                DispatchQueue.main.async {
+//                    self.alertMessage(title: "", message: (error?.localizedDescription)!, buttonText: kOkButtonTitle, completionHandler: nil)
+//                }
+//                return
+//            }
+//            
+//            let coordinate = CLLocationCoordinate2D(latitude: (location!.coordinate.latitude), longitude: (location!.coordinate.longitude))
+//            self.location.coordinateSelected = coordinate
+//            self.reverseGeocodeCoordinate(coordinate: coordinate)
+//        }
     }
     
     func reverseGeocodeCoordinate(coordinate: CLLocationCoordinate2D) {

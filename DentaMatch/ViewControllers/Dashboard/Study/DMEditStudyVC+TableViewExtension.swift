@@ -87,7 +87,10 @@ extension DMEditStudyVC:UITableViewDataSource,UITableViewDelegate {
                 emptyData.add(dict)
             }
         }
-        selectedData.removeObjects(in: emptyData as [AnyObject])
+//        selectedData.removeObjects(in: emptyData as [AnyObject])
+//        if emptyData.count > 0 {
+//            self.makeToast(toastString: "Please enter school name first")
+//        }
         debugPrint(selectedData)
 //        self.studyTableView.reloadData()
         

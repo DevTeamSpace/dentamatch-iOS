@@ -18,7 +18,7 @@ let kPlaceHolderImage = UIImage(named: "profileButton")
 let kCertificatePlaceHolder = UIImage(named: "certificatePlaceholder")
 
 
-let kGoogleAPIKey = "AIzaSyDFWCamiO9WGTth-iOxfY_L0K6oRBeAu0U"
+let kGoogleAPIKey = "AIzaSyD1xD10kM-xCzRswPNEoovElT2vhpJQSGo" //"AIzaSyDFWCamiO9WGTth-iOxfY_L0K6oRBeAu0U"
 
 let kOkButtonTitle = "Ok"
 let kOpenGoogleMapUrl = "comgooglemaps://"

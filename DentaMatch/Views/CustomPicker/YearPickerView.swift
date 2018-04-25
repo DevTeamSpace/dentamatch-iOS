@@ -72,7 +72,7 @@ class YearPickerView: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
 
 
             } else {
-                 selctedRow = self.currentYear - row
+                 selctedRow = self.currentYear - row+1
 
             }
 

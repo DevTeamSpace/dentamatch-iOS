@@ -175,6 +175,7 @@ extension DMEditStudyVC {
             self.makeToast(toastString: "Please select your school")
             return
         }
+        //selectedData
         for school in schoolsSelected {
             let dict = school as! NSMutableDictionary
             if let yearOfGraduation =  dict["yearOfGraduation"] as? String{
@@ -183,6 +184,7 @@ extension DMEditStudyVC {
                     self.makeToast(toastString: "Please enter graduation year for \(dict["other"] as! String)")
                     return
                 }
+                
             } else {
                 self.makeToast(toastString: "Please enter graduation year for \(dict["other"] as! String)")
                 return

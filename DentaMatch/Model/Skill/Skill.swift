@@ -24,7 +24,7 @@ class Skill: NSObject {
     init(skills:JSON,subSkills:[SubSkill]) {
         self.skillId = skills[Constants.ServerKey.id].stringValue
         self.skillName = skills[Constants.ServerKey.skillName].stringValue
-        if skills[Constants.ServerKey.skillName].stringValue.lowercased() == "other" {
+        if skills[Constants.ServerKey.skillName].stringValue.lowercased().trim() == "other" || skills[Constants.ServerKey.skillName].stringValue.lowercased().trim() == "Other" {
             self.isOther = true
             self.otherText = skills[Constants.ServerKey.otherSkill].stringValue
         }
@@ -49,7 +49,7 @@ class SubSkill:NSObject {
         self.subSkillId = subSkill[Constants.ServerKey.id].stringValue
         self.subSkillName = subSkill[Constants.ServerKey.skillName].stringValue
         self.isSelected = subSkill[Constants.ServerKey.isSkillSelected].boolValue
-        if subSkill[Constants.ServerKey.skillName].stringValue.lowercased() == "Other".lowercased() {
+        if subSkill[Constants.ServerKey.skillName].stringValue.lowercased().trim() == "Other" || subSkill[Constants.ServerKey.skillName].stringValue.lowercased().trim() == "other"{
             self.isOther = true
             self.otherText = subSkill[Constants.ServerKey.otherSkill].stringValue
         }
