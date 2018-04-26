@@ -180,7 +180,7 @@
                                        self.preferredEventOffset.x,
                                        CGRectGetMaxY(_shapeLayer.frame)+eventSize*0.17+self.preferredEventOffset.y,
                                        self.fs_width,
-                                       eventSize*0.83
+                                       eventSize*1.3
                                       );
     
 }
