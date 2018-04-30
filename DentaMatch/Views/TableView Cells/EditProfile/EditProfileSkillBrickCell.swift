@@ -42,7 +42,7 @@ class EditProfileSkillBrickCell: UITableViewCell,TagListDelegate {
     func updateSkills(subSkills:[SubSkill]) {
         tagList.tags.removeAll()
         for subSkill in subSkills {
-            let tag = Tag(content: TagPresentableText(subSkill.subSkillName) {
+            let tag = Tag(content: TagPresentableText((subSkill.subSkillName == "Other" ? subSkill.otherText : subSkill.subSkillName)) {
                 $0.label.font = UIFont.fontRegular(fontSize: 14.0)
                 $0.label.textColor = Constants.Color.brickTextColor
                 }, onInit: {
