@@ -76,7 +76,7 @@
                                                 <rect key="frame" x="89" y="-1" width="197" height="63"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5tt-0w-7DO">
-                                                        <rect key="frame" x="66" y="26" width="10" height="10"/>
+                                                        <rect key="frame" x="66.5" y="26" width="10" height="10"/>
                                                         <color key="backgroundColor" red="0.2627450980392157" green="0.69411764705882351" blue="0.69803921568627447" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="10" id="62p-gS-PmE"/>
@@ -84,7 +84,7 @@
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="og5-p1-dD7">
-                                                        <rect key="frame" x="83" y="18" width="31" height="27"/>
+                                                        <rect key="frame" x="83.5" y="18" width="31" height="27"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="27" id="l8U-Z0-GIw"/>
                                                         </constraints>
