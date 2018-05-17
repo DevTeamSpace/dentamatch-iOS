@@ -72,7 +72,7 @@ class TabBarVC: UITabBarController,UITabBarControllerDelegate {
             let navController = viewController as! UINavigationController
             if let profileVC = navController.viewControllers.first as? DMEditProfileVC {
                 if profileVC.dashBoardVC != nil {
-                    profileVC.userProfileAPI()
+//                    profileVC.userProfileAPI()
                 }
             }
            // print("profile \(profileVC)")

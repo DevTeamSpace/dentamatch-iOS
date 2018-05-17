@@ -176,25 +176,25 @@ extension DMEditStudyVC {
             return
         }
         //selectedData
+        var finalData = NSMutableArray()
         for school in schoolsSelected {
             let dict = school as! NSMutableDictionary
-            if let yearOfGraduation =  dict["yearOfGraduation"] as? String{
+            if let yearOfGraduation =  dict["yearOfGraduation"] as? String {
                 //Everything fine
-                if yearOfGraduation.isEmpty {
-                    self.makeToast(toastString: "Please enter graduation year for \(dict["other"] as! String)")
-                    return
+                if !yearOfGraduation.isEmpty {
+                    finalData.add(school)
                 }
-                
-            } else {
-                self.makeToast(toastString: "Please enter graduation year for \(dict["other"] as! String)")
-                return
             }
+        }
+        selectedData.removeAllObjects()
+        for school in finalData {
+            let dict = school as! NSMutableDictionary
             self.checkAvailabilityInAutoComplete(dictionary: dict)
             debugPrint(dict)
             
             let makeData = NSMutableDictionary()
             makeData.setObject(dict["schoolId"] as! String, forKey: "schoolingChildId" as NSCopying)
-            makeData.setObject(dict["yearOfGraduation"] as! String, forKey: "yearOfGraduation" as NSCopying)
+            makeData.setObject((dict["yearOfGraduation"] as? String) ?? "", forKey: "yearOfGraduation" as NSCopying)
             
             if dict["isOther"] as! Bool {
                 makeData.setObject(dict["other"] as! String, forKey: "otherSchooling" as NSCopying)

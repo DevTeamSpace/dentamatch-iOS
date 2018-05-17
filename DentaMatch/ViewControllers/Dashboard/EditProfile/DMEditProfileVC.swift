@@ -60,13 +60,14 @@ class DMEditProfileVC: DMBaseVC {
             editProfileTableView.contentInsetAdjustmentBehavior = .never
         }
         
-        self.userProfileAPI()
+//        self.userProfileAPI()
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.editProfileTableView.reloadData()
+        self.userProfileAPI()
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     

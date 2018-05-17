@@ -98,7 +98,7 @@ class DMEditStudyVC: DMBaseVC {
             selectedSchool.schoolCategoryId = dict["parentId"] as! String
             selectedSchool.universityId = dict["schoolId"] as! String
             selectedSchool.universityName = dict["other"] as! String
-            selectedSchool.yearOfGraduation = dict["yearOfGraduation"] as! String
+            selectedSchool.yearOfGraduation = dict["yearOfGraduation"] as? String ?? ""
             selectedSchool.schoolCategoryName = dict["parentName"] as! String
             self.selectedSchoolCategories.append(selectedSchool)
         }
@@ -111,14 +111,18 @@ class DMEditStudyVC: DMBaseVC {
             return
         }
         let emptyData = NSMutableArray()
+        var shouldSaveData = false
         for category in selectedData {
             let dict = category as! NSMutableDictionary
             if (dict["other"] as! String).isEmptyField {
                 emptyData.add(dict)
+            } else {
+                shouldSaveData = true
             }
         }
         debugPrint(selectedData.description)
-        if emptyData.count > 0 {
+//        if emptyData.count > 0 {
+        if !shouldSaveData {
             self.makeToast(toastString: "Please enter school name first")
 //            selectedData.removeObjects(in: emptyData as [AnyObject])
             return
@@ -225,7 +229,7 @@ extension DMEditStudyVC : YearPickerViewDelegate {
 //                    dict["yearOfGraduation"] = "\(year)"
                     if year == -1 {
                         dict["yearOfGraduation"] = ""
-                        removeEmptyYear()
+//                        removeEmptyYear()
                     } else {
                         dict["yearOfGraduation"] = "\(year)"
                     }
