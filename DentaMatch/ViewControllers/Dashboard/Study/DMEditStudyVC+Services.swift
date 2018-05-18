@@ -186,6 +186,10 @@ extension DMEditStudyVC {
                 }
             }
         }
+        if finalData.count == 0 {
+            self.makeToast(toastString: "Please enter graduation year.")
+            return
+        }
         selectedData.removeAllObjects()
         for school in finalData {
             let dict = school as! NSMutableDictionary
