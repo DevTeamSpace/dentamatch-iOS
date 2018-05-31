@@ -58,10 +58,11 @@ class EditPublicProfileTableCell: UITableViewCell {
     }
     
     func addPlaceHolderLabel() {
-        placeHolderLabel = UILabel(frame: CGRect(x: 10, y: 10, width: 200, height: 20))
+        placeHolderLabel = UILabel(frame: CGRect(x: 10, y: 10, width: 250, height: 60))
         placeHolderLabel.font = UIFont.fontRegular(fontSize: 16.0)
         placeHolderLabel.textColor = UIColor.color(withHexCode: "939393")
-        placeHolderLabel.text = "Write a brief introduction"
+        placeHolderLabel.numberOfLines = 0
+        placeHolderLabel.text = "Introduce yourself and tell us what you're looking for. What can you bring to the office?"
         self.aboutMeTextView.addSubview(placeHolderLabel)
     }
 

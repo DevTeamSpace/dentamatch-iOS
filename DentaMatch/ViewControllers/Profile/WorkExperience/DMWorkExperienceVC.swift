@@ -24,7 +24,7 @@ enum FieldType: Int,CustomStringConvertible{
         case .CurrentJobTitle:
             return "Job Title"
         case .YearOfExperience:
-            return "Year Of Experience"
+            return "Time at This Job"
         case .OfficeName:
             return "Office Name"
         case .OfficeAddress:

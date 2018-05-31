@@ -156,7 +156,7 @@ extension DMWorkExperienceVC: UITableViewDataSource,UITableViewDelegate
         if self.currentExperience?.isEditMode == true {
             cell.addMoreExperienceButton.setTitle(" Save", for: .normal)
         }else{
-            cell.addMoreExperienceButton.setTitle(" Add More Experience", for: .normal)
+            cell.addMoreExperienceButton.setTitle(" Add Another Job", for: .normal)
         }
         
         cell.deleteButton.addTarget(self, action: #selector(DMWorkExperienceVC.deleteExperience(_:)), for: .touchUpInside)

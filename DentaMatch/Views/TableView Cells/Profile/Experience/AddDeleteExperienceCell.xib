@@ -30,7 +30,7 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="46" id="rRC-H5-JFx"/>
                         </constraints>
-                        <state key="normal" title=" Add More Experience" image="addMoreExperience">
+                        <state key="normal" title=" Add ANOTHER JOB" image="addMoreExperience">
                             <color key="titleColor" red="0.2196078431372549" green="0.2196078431372549" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
@@ -47,10 +47,10 @@
                             <constraint firstAttribute="height" constant="44" id="FtX-Fy-L7C"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="16"/>
-                        <state key="normal" title="DELETE EXPERIENCE">
+                        <state key="normal" title="DELETE THIS JOB">
                             <color key="titleColor" red="0.015686274509803921" green="0.4392156862745098" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
-                        <state key="highlighted" title="Delete Experience">
+                        <state key="highlighted">
                             <color key="titleColor" red="0.015686274510000001" green="0.43921568630000002" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>

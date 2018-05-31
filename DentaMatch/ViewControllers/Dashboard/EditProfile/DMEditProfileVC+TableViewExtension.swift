@@ -337,7 +337,7 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             
         case .schooling:
             if indexPath.row == 0 {
-                let cell = makeHeadingCell(heading: "SCHOOLING AND CERTIFICATION")
+                let cell = makeHeadingCell(heading: "EDUCATION / TRANNING")
                 cell.editButton.isHidden = self.schoolCategories.count > 0 ? false:true
                 cell.editButton.removeTarget(nil, action: nil, for: .allEvents)
                 cell.editButton.addTarget(self, action: #selector(openSchoolsScreen), for: .touchUpInside)
@@ -381,7 +381,7 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             
         case .affiliations:
             if indexPath.row == 0 {
-                let cell = makeHeadingCell(heading: "AFFILIATIONS")
+                let cell = makeHeadingCell(heading: "PROFESSIONAL AFFILIATIONS")
                 cell.editButton.isHidden = self.affiliations.count > 0 ? false:true
                 cell.editButton.removeTarget(nil, action: nil, for: .allEvents)
                 cell.editButton.addTarget(self, action: #selector(openAffiliationsScreen), for: .touchUpInside)
@@ -418,7 +418,7 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
                     return cell
                 } else {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "AddProfileOptionTableCell") as! AddProfileOptionTableCell
-                    cell.profileOptionLabel.text = "Add license details"
+                    cell.profileOptionLabel.text = "Add license details. Your license Number is ONLY Visible to DentaMatch for Verification purpose."
                     return cell
                 }
             }

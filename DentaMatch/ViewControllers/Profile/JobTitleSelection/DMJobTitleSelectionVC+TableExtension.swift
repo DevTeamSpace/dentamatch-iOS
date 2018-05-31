@@ -57,7 +57,7 @@ extension DMJobTitleSelectionVC : UITableViewDataSource,UITableViewDelegate {
         switch indexPath.row {
         case 0:
             cell.commonTextField.inputView = jobSelectionPickerView
-            cell.commonTextField.placeholder = "Current Job Title"
+            cell.commonTextField.placeholder = "Job Title"
             cell.commonTextField.tag = 1
             cell.commonTextField.tintColor = UIColor.clear
         case 1:
