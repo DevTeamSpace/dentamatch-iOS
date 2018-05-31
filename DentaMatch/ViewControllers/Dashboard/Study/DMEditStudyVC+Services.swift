@@ -176,6 +176,7 @@ extension DMEditStudyVC {
             return
         }
         //selectedData
+        var isGraduationListEmpty = false
         var finalData = NSMutableArray()
         for school in schoolsSelected {
             let dict = school as! NSMutableDictionary
@@ -183,10 +184,14 @@ extension DMEditStudyVC {
                 //Everything fine
                 if !yearOfGraduation.isEmpty {
                     finalData.add(school)
+                } else {
+                    isGraduationListEmpty = true
                 }
+            } else {
+                isGraduationListEmpty = true
             }
         }
-        if finalData.count == 0 {
+        if isGraduationListEmpty {
             self.makeToast(toastString: "Please enter graduation year.")
             return
         }

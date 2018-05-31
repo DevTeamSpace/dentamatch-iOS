@@ -128,8 +128,15 @@ class DMEditStudyVC: DMBaseVC {
             return
         }
 //        selectedData.removeObjects(in: emptyData as [AnyObject])
+        var finalData = NSMutableArray()
+        for data in selectedData {
+            let dict = data as! NSMutableDictionary
+            if (dict["other"] as! String).isEmptyField == false {
+                finalData.add(dict)
+            }
+        }
 
-        self.preparePostSchoolData(schoolsSelected: selectedData)
+        self.preparePostSchoolData(schoolsSelected: finalData)
     }
 }
 
