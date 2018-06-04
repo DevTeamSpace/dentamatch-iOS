@@ -27,7 +27,7 @@ extension DMCalenderVC:UITableViewDelegate,UITableViewDataSource{
         headerView.backgroundColor = UIColor.color(withHexCode: "f9f9f9")
         
         let label = UILabel(frame: CGRect(x: 20, y: 16, width: Utilities.ScreenSize.SCREEN_WIDTH, height: 20))
-        label.text = "BOOKED JOBS"
+        label.text = "BOOKED JOBS (Swipe to cancel job)"
         label.textColor = Constants.Color.textFieldTextColor
 
         label.font = UIFont.fontMedium(fontSize: 14.0)
