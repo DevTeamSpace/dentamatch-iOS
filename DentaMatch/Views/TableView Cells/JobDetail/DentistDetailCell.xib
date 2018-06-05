@@ -68,8 +68,8 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mo,su," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbT-hg-hiR">
-                                <rect key="frame" x="94" y="51" width="155" height="14"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mo,su," textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbT-hg-hiR">
+                                <rect key="frame" x="94" y="51" width="145" height="14"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -118,7 +118,7 @@
                             <constraint firstItem="JiJ-r6-G7B" firstAttribute="leading" secondItem="wbG-6Q-eGm" secondAttribute="leading" constant="17" id="4FA-8q-eTu"/>
                             <constraint firstItem="lbT-hg-hiR" firstAttribute="leading" secondItem="UbB-K9-Quo" secondAttribute="trailing" constant="16" id="4XA-TP-7lN"/>
                             <constraint firstItem="UbB-K9-Quo" firstAttribute="top" secondItem="JiJ-r6-G7B" secondAttribute="bottom" constant="7" id="55I-kg-Y7O"/>
-                            <constraint firstItem="MMU-ub-pAV" firstAttribute="leading" secondItem="lbT-hg-hiR" secondAttribute="trailing" id="BoO-kb-dby"/>
+                            <constraint firstItem="MMU-ub-pAV" firstAttribute="leading" secondItem="lbT-hg-hiR" secondAttribute="trailing" constant="10" id="BoO-kb-dby"/>
                             <constraint firstItem="MMU-ub-pAV" firstAttribute="leading" secondItem="JiJ-r6-G7B" secondAttribute="trailing" constant="5" id="DkB-l7-bPC"/>
                             <constraint firstItem="Zvy-hC-NoB" firstAttribute="centerY" secondItem="lbT-hg-hiR" secondAttribute="centerY" constant="2" id="HdW-Lb-flk"/>
                             <constraint firstItem="lbT-hg-hiR" firstAttribute="centerY" secondItem="UbB-K9-Quo" secondAttribute="centerY" id="KNd-W6-kyu"/>
