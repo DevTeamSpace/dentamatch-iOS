@@ -59,6 +59,7 @@ class Job: NSObject {
     var jobAppliedOn = ""
     var jobDate = ""
     var tempjobDate = ""
+    var currentDate = ""
     var noOfJobs = 0
     var matchedSkills = 0
     var percentSkillsMatch = 0.0
@@ -144,6 +145,7 @@ class Job: NSObject {
         self.noOfJobs = forCalendarjob["noOfJobs"].intValue
         self.jobDate = forCalendarjob["jobDate"].stringValue
         self.tempjobDate = forCalendarjob["tempDates"].stringValue
+        self.currentDate = forCalendarjob["currentDate"].stringValue
 
     }
 }

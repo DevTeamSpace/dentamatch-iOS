@@ -77,6 +77,15 @@ extension DMCalenderVC:UITableViewDelegate,UITableViewDataSource{
                 self.openCancelJob(job: job,fromApplied:false)
                 self.bookedJobsTableView.setEditing(false, animated: true)
             })
+        let job = self.selectedDayList[indexPath.row]
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let currentDate = formatter.date(from: job.currentDate) ?? Date()
+        let tempjobDate = formatter.date(from: job.tempjobDate) ?? Date()
+        if currentDate.timeIntervalSince(tempjobDate) > 0 {
+            return nil
+        }
+
             deleteAction.backgroundColor = Constants.Color.cancelJobDeleteColor
             return [ deleteAction]
     }
