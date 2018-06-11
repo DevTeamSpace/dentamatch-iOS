@@ -345,7 +345,7 @@ extension DMEditProfileVC : UITableViewDataSource, UITableViewDelegate {
             } else {
                 if self.schoolCategories.count == 0 {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "AddProfileOptionTableCell") as! AddProfileOptionTableCell
-                    cell.profileOptionLabel.text = "Add schooling and certification"
+                    cell.profileOptionLabel.text = "Add education and trainning"
                     return cell
                 } else {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "EditProfileSchoolCell") as! EditProfileSchoolCell
