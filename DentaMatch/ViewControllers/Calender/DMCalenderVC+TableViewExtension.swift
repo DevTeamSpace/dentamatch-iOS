@@ -83,7 +83,7 @@ extension DMCalenderVC:UITableViewDelegate,UITableViewDataSource{
         let currentDate = formatter.date(from: job.currentDate) ?? Date()
         let tempjobDate = formatter.date(from: job.tempjobDate) ?? Date()
         if currentDate.timeIntervalSince(tempjobDate) > 0 {
-            return nil
+            return [UITableViewRowAction]()
         }
 
             deleteAction.backgroundColor = Constants.Color.cancelJobDeleteColor

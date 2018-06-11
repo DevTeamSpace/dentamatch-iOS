@@ -144,6 +144,7 @@ class DentistDetailCell: UITableViewCell {
         if job.jobType == 3 {
             self.lblDays.text = ""
             //its a temp job
+            self.lblDays.text = "Dates Needed "
             for date in job.jobTypeDates {
                 self.lblDays.text = self.lblDays.text! + Date.commonDateFormatEEMMDD(dateString: date) + ", "
             }
