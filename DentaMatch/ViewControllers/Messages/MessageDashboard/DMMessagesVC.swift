@@ -109,7 +109,7 @@ class DMMessagesVC: DMBaseVC {
     }
     
     func showBlockRecruiterAlert(chatList:ChatList) {
-        let alert = UIAlertController(title: "", message: "This Blocked recruiter will no longer be able to send you message", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "", message: "This Recruiter is BLOCKED and will no longer be able to see your profile or send you messages", preferredStyle: .actionSheet)
         let blockAction = UIAlertAction(title: "Block", style: .destructive) { (action:UIAlertAction) in
             SocketManager.sharedInstance.handleBlockUnblock(chatList: chatList, blockStatus: "1")
             //self.blockRecruiter(chatList: chatList)

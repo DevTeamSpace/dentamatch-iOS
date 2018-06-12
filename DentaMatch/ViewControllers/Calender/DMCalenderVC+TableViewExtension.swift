@@ -82,7 +82,7 @@ extension DMCalenderVC:UITableViewDelegate,UITableViewDataSource{
         formatter.dateFormat = "yyyy-MM-dd"
         let currentDate = formatter.date(from: job.currentDate) ?? Date()
         let tempjobDate = formatter.date(from: job.tempjobDate) ?? Date()
-        if currentDate.timeIntervalSince(tempjobDate) > 0 {
+        if currentDate.timeIntervalSince(tempjobDate) >= 0 {
             return [UITableViewRowAction]()
         }
 
