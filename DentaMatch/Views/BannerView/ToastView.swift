@@ -1,6 +1,6 @@
 //
 //  ToastView.swift
-//  Order
+//  DentaMatch
 //
 //  Created by Appster on 17/08/16.
 //  Copyright © 2016 Appster. All rights reserved.

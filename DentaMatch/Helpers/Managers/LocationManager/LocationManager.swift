@@ -1,6 +1,6 @@
 //
 //  LocationManager.swift
-//  LocationManager
+//  DentaMatch
 //
 //  Created by Rajan Maheshwari on 22/10/16.
 //  Copyright © 2016 Rajan Maheshwari. All rights reserved.

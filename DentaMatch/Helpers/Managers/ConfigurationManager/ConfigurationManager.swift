@@ -1,6 +1,7 @@
 //
 //  ConfigurationManager.swift
-//
+//   DentaMatch
+
 //  Created by Arvind Singh on 07/04/17.
 //  Copyright © 2017 Appster. All rights reserved.
 //

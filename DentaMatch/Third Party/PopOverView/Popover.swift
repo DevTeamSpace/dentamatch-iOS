@@ -1,6 +1,6 @@
 //
 //  Popover.swift
-//  Popover
+//  DentaMatch
 //
 //  Created by corin8823 on 8/16/15.
 //  Copyright (c) 2015 corin8823. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  UIImageRotate.m
-//  ThoughtTracker
+//  DentaMatch
 //
 //  Created by Rajan Maheshwari on 17/10/16.
 //

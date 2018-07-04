@@ -1,6 +1,6 @@
 //
 //  LogManager.swift
-//
+//  DentaMatch
 //  Created by Arvind Singh on 02/06/16.
 //  Copyright © 2016 Appster. All rights reserved.
 //

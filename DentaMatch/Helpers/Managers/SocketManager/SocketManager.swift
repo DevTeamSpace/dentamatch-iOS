@@ -1,6 +1,6 @@
 //
 //  SocketManager.swift
-//  SocketChatManager
+//  DentaMatch
 //
 //  Created by Rajan Maheshwari on 10/11/16.
 //  Copyright © 2016 Rajan Maheshwari. All rights reserved.
