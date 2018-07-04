@@ -23,6 +23,7 @@ let kGoogleAPIKey = "AIzaSyD1xD10kM-xCzRswPNEoovElT2vhpJQSGo" //"AIzaSyDFWCamiO9
 let kOkButtonTitle = "Ok"
 let kOpenGoogleMapUrl = "comgooglemaps://"
 let kGoogleSearchMap = "https://maps.google.com/?q="
+let kInstaBugKey = "AIzaSyD1xD10kM-xCzRswPNEoovElT2vhpJQSGo"
 
 struct Constants {
     

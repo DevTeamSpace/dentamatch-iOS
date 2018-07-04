@@ -14,7 +14,7 @@ extension AppDelegate {
     
     func setUpApplication () {
         MixpanelOperations.startSessionForMixpanelWithToken()
-        Instabug.start(withToken: "82adf5a65cda07e9cb91142555b985e3", invocationEvent: .shake)
+        Instabug.start(withToken: kInstaBugKey, invocationEvent: .shake)
         
         configureCrashlytics()
         
