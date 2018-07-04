@@ -12,9 +12,8 @@ import GoogleMaps
 import GooglePlaces
 import Crashlytics
 import Fabric
-import SwiftyJSON
 import Mixpanel
-import Instabug
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,74 +23,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        MixpanelOperations.startSessionForMixpanelWithToken()
-        Instabug.start(withToken: "82adf5a65cda07e9cb91142555b985e3", invocationEvent: .shake)
-
-        configureCrashlytics()
-        
-        configureSocket()
-        
-        configureGoogleServices()
-        
-        registerForPushNotifications()
-        
-        //configureRichNotifications()
-        
-        changeNavBarAppearance()
-        
-        configureNetworkReachability()
-        
+        self.setUpApplication()
         if UserDefaultsManager.sharedInstance.isProfileCompleted {
             self.goToDashBoard()
             return true
         }
-        
-        if !UserDefaultsManager.sharedInstance.isProfileSkipped {
-            if UserDefaultsManager.sharedInstance.isLoggedIn {
-                if  !UserManager.shared().activeUser.jobTitle!.isEmptyField {
-                    self.goToSuccessPendingScreen()
-                } else {
-                    self.goToProfile()
-                }
-            } else {
-                if UserDefaultsManager.sharedInstance.isOnBoardingDone {
-                    self.goToRegistration()
-                }
-            }
-        } else {
-            self.goToDashBoard()
-            
-            if let remoteNotification = launchOptions?[UIApplicationLaunchOptionsKey.remoteNotification] as? NSDictionary {
-                if remoteNotification.allKeys.count > 0
-                {
-//                    self.tabIndex = 4
-                    if let noti = remoteNotification["data"] as? NSDictionary {
-                        let megCheck = noti["data"] as! NSDictionary
-                        if megCheck["messageId"] != nil {
-                            NotificationHandler.notificationHandleforChat(fromId: (megCheck["fromId"] as? String), toId: (megCheck["toId"]  as? String), messgaeId: (megCheck["messageId"]  as? String), recurterId: (megCheck["recurterId"]  as? String))
-                            
-                        }else {
-                            
-                            let newObjMSG = noti["jobDetails"]
-                            let jobJson = JSON(newObjMSG ?? "" )
-                            let jobObj = Job(job: jobJson)
-                            
-                            let newObj = noti["data"]
-                            let josnObj = JSON(newObj ?? [:])
-                            let userNotiObj = UserNotification(dict: josnObj)
-                            NotificationHandler.notificationHandleforBackground(notiObj: userNotiObj, jobObj:jobObj, app: application)
-                            
-                        }
-                        
-                    }
-
-                }
-            }
-            
-        }
-        
-        
-        
+        self.setUpApplicationUI(application,launchOptions)
         return true
     }
    

@@ -13,35 +13,23 @@ import SwiftyJSON
 extension AppDelegate:UNUserNotificationCenterDelegate {
     
     func registerForPushNotifications() {
-        let pushSettings = UIUserNotificationSettings(types: [.alert,.badge,.sound], categories: nil)
-        UIApplication.shared.registerUserNotificationSettings(pushSettings)
-        UIApplication.shared.registerForRemoteNotifications()
-    }
-    
-    func configureRichNotifications() {
         if #available(iOS 10.0, *) {
-            UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.badge,.sound]) { (granted:Bool, error:Error?) in
-                
-                if error != nil {
-                    //debugPrint((error?.localizedDescription)!)
-                }
-                if granted {
-                    //debugPrint("Permission granted")
-                   // let pushSettings = UIUserNotificationSettings(types: [.alert,.badge,.sound], categories: nil)
-                   // UIApplication.shared.registerUserNotificationSettings(pushSettings)
-                    UIApplication.shared.registerForRemoteNotifications()
-//                    UIApplication.shared.registerForRemoteNotifications()
-                } else {
-                    //debugPrint("Permission not granted")
+            let center = UNUserNotificationCenter.current()
+            center.delegate = self
+            center.requestAuthorization(options: [.sound, .alert, .badge]) { _, error in
+                if error == nil {
+                    DispatchQueue.main.sync {
+                        UIApplication.shared.registerForRemoteNotifications()
+                    }
                 }
             }
-            UNUserNotificationCenter.current().delegate = self
         } else {
-            // Fallback on earlier versions
+            let pushSettings = UIUserNotificationSettings(types: [.alert,.badge,.sound], categories: nil)
+            UIApplication.shared.registerUserNotificationSettings(pushSettings)
+            UIApplication.shared.registerForRemoteNotifications()
         }
     }
 
-    
     //MARK:- UIApplicationDelegate
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         // application is unused
@@ -71,12 +59,8 @@ extension AppDelegate:UNUserNotificationCenterDelegate {
         //debugPrint(dict ?? "not avail")
         //debugPrint("didReceiveRemoteNotification \(userInfo.description)")
         //        self.window?.makeToast(userInfo.description)
-        
-        
         let state: UIApplicationState = UIApplication.shared.applicationState
-        
         if state == UIApplicationState.active {
-            
             if UserDefaultsManager.sharedInstance.isLoggedIn {
                 if let noti = userInfo["data"] as? NSDictionary {
                     let megCheck = noti["data"] as! NSDictionary
@@ -87,47 +71,33 @@ extension AppDelegate:UNUserNotificationCenterDelegate {
                         let newObjMSG = noti?["jobDetails"]
                         let jobJson = JSON(newObjMSG ?? [:])
                         let jobObj = Job(job: jobJson)
-                        
                         let newObj = noti?["data"]
                         let josnObj = JSON(newObj ?? [:])
                         let userNotiObj = UserNotification(dict: josnObj)
                         ToastView.showNotificationToast(message: userNotiObj.message, name: "Notification", imageUrl: "",  type: ToastSkinType.White, onCompletion:{
                             NotificationHandler.notificationHandleforForground(notiObj: userNotiObj,jobObj:jobObj, app: application)
-                            
                         })
                     }
-                    
-                    
                 }
             }
-            
-            
-            
         }else{
-            
             if UserDefaultsManager.sharedInstance.isLoggedIn {
                 if let noti = userInfo["data"] as? NSDictionary {
                     let megCheck = noti["data"] as! NSDictionary
                     if megCheck["messageId"] != nil {
                         NotificationHandler.notificationHandleforChat(fromId: (megCheck["fromId"] as? String), toId: (megCheck["toId"]  as? String), messgaeId: (megCheck["messageId"]  as? String), recurterId: (megCheck["recurterId"]  as? String))
-                        
                     }else{
                         let noti = userInfo["data"] as? NSDictionary
                         let newObjMSG = noti?["jobDetails"]
                         let jobJson = JSON(newObjMSG ?? [:])
                         let jobObj = Job(job: jobJson)
-                        
                         let newObj = noti?["data"]
                         let josnObj = JSON(newObj ?? [:])
                         let userNotiObj = UserNotification(dict: josnObj)
                         NotificationHandler.notificationHandleforBackground(notiObj: userNotiObj, jobObj:jobObj, app: application)
-                        
                     }
-                    
-                    
-                }
+                 }
             }
-            
         }
     }
     

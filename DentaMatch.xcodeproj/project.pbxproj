@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		270886FB07B603FF47668A72 /* Pods_DentaMatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C611E923856ECE4538FA4F38 /* Pods_DentaMatch.framework */; };
+		4877D98320ECD54400264422 /* AppDelegate+InitialConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4877D98220ECD54400264422 /* AppDelegate+InitialConfiguration.swift */; };
 		5A0138241E6EBBA900D15783 /* MixpanelOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0138231E6EBBA900D15783 /* MixpanelOperations.swift */; };
 		5A1960FD1E208B67002A5F7C /* PhoneNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1960FB1E208B67002A5F7C /* PhoneNumberFormatter.swift */; };
 		5A2CEF4B1E3C2F9600836654 /* DMCalendarSetAvailabillityVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2CEF4A1E3C2F9600836654 /* DMCalendarSetAvailabillityVC+Services.swift */; };
@@ -415,6 +416,7 @@
 /* Begin PBXFileReference section */
 		158450992C392116A74F763C /* Pods-DentaMatch.qa.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DentaMatch.qa.xcconfig"; path = "Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch.qa.xcconfig"; sourceTree = "<group>"; };
 		19F54B802B7D87A34FEE97F2 /* Pods-DentaMatch.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DentaMatch.staging.xcconfig"; path = "Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch.staging.xcconfig"; sourceTree = "<group>"; };
+		4877D98220ECD54400264422 /* AppDelegate+InitialConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+InitialConfiguration.swift"; sourceTree = "<group>"; };
 		5A0138231E6EBBA900D15783 /* MixpanelOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixpanelOperations.swift; sourceTree = "<group>"; };
 		5A1960FB1E208B67002A5F7C /* PhoneNumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberFormatter.swift; sourceTree = "<group>"; };
 		5A2CEF4A1E3C2F9600836654 /* DMCalendarSetAvailabillityVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMCalendarSetAvailabillityVC+Services.swift"; sourceTree = "<group>"; };
@@ -1386,6 +1388,7 @@
 			children = (
 				E55462EB1DAE47F5004163B2 /* AppDelegate.swift */,
 				E590299E1DED25C400151E9B /* AppDelegate+Notifications.swift */,
+				4877D98220ECD54400264422 /* AppDelegate+InitialConfiguration.swift */,
 			);
 			path = AppDelegate;
 			sourceTree = "<group>";
@@ -2694,6 +2697,7 @@
 				E5F919411E9DD4A30021F008 /* FSCalendarAnimator.m in Sources */,
 				5A2CEF4B1E3C2F9600836654 /* DMCalendarSetAvailabillityVC+Services.swift in Sources */,
 				5AAE74781E5C1D0E00B28851 /* ToastView.swift in Sources */,
+				4877D98320ECD54400264422 /* AppDelegate+InitialConfiguration.swift in Sources */,
 				E59029AA1DED2C7A00151E9B /* UserDefaultsManager.swift in Sources */,
 				5A5523EB1E4C419F007D8C09 /* CommonTextNotificationTableCell.swift in Sources */,
 				F2D03BA81E1F67BA0005D3A4 /* DMJobSearchVC.swift in Sources */,
