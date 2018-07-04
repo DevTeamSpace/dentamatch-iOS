@@ -436,13 +436,13 @@ public final class SocketEngine : NSObject, URLSessionDelegate, SocketEnginePoll
 
         switch type {
         case .message:
-            handleMessage(String(fixedString.characters.dropFirst()))
+            handleMessage(String(fixedString.dropFirst()))
         case .noop:
             handleNOOP()
         case .pong:
             handlePong(with: fixedString)
         case .open:
-            handleOpen(openData: String(fixedString.characters.dropFirst()))
+            handleOpen(openData: String(fixedString.dropFirst()))
         case .close:
             handleClose(fixedString)
         default:

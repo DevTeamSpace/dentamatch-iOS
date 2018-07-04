@@ -55,7 +55,7 @@ extension AppDelegate:UNUserNotificationCenterDelegate {
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
-        let dict = userInfo["aps"] as? NSDictionary
+        //let dict = userInfo["aps"] as? NSDictionary
         //debugPrint(dict ?? "not avail")
         //debugPrint("didReceiveRemoteNotification \(userInfo.description)")
         //        self.window?.makeToast(userInfo.description)
@@ -108,7 +108,7 @@ extension AppDelegate:UNUserNotificationCenterDelegate {
     
     @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        let dict = response.notification.request.content.userInfo
+        //let dict = response.notification.request.content.userInfo
         //debugPrint(dict)
         //debugPrint("Go to chat")
         completionHandler()
@@ -116,11 +116,11 @@ extension AppDelegate:UNUserNotificationCenterDelegate {
     
     func updateDeviceTokenAPI() {
         if let user = UserManager.shared().activeUser {
-            let params = [
+            let params : [String: Any] = [
                 "accessToken":user.accessToken,
                 "updateDeviceToken":UserDefaultsManager.sharedInstance.deviceToken
             ]
-            APIManager.apiPost(serviceName: Constants.API.updateDeviceToken, parameters: params, completionHandler: { (response:JSON?, error:NSError?) in
+            APIManager.apiPost(serviceName: Constants.API.updateDeviceToken, parameters: params , completionHandler: { (response:JSON?, error:NSError?) in
                 //debugPrint(response ?? "response not avaialble")
             })
         }
