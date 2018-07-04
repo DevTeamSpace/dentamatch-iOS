@@ -23,7 +23,7 @@ extension DMJobTitleVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            debugPrint(response!)
+            //debugPrint(response!)
             if response![Constants.ServerKey.status].boolValue {
                 let preferredJobLocationArray = response!["result"]["preferredJobLocations"].arrayValue
                 self.preferredLocations.removeAll()
@@ -58,7 +58,7 @@ extension DMJobTitleVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            debugPrint(response!)
+            //debugPrint(response!)
             self.handleJobListResponse(response: response!)
         }
     }

@@ -24,7 +24,7 @@ extension DMRegisterMapsVC {
             "preferredCountry":"\(location.country)"
         ]
         
-        debugPrint("Location Update Params\n \(params)")
+        //debugPrint("Location Update Params\n \(params)")
         
         APIManager.apiPost(serviceName: Constants.API.updateHomeLocation, parameters: params) { (response:JSON?, error:NSError?) in
             self.hideLoader()
@@ -36,7 +36,7 @@ extension DMRegisterMapsVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            debugPrint(response!)
+            //debugPrint(response!)
             self.handleLocationUpdateResponse(response: response)
         }
     }

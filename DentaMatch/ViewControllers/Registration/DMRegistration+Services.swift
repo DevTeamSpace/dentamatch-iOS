@@ -12,7 +12,7 @@ import SwiftyJSON
 extension DMRegistrationVC {
     
     func registrationAPI(params:[String:String]) {
-        debugPrint("Registration Parameters\n\(params.description))")
+        //debugPrint("Registration Parameters\n\(params.description))")
         self.showLoader()
         APIManager.apiPost(serviceName: Constants.API.registration, parameters: params) { (response:JSON?, error:NSError?) in
             self.hideLoader()
@@ -24,7 +24,7 @@ extension DMRegistrationVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            debugPrint(response!)
+            //debugPrint(response!)
             
             if response![Constants.ServerKey.status].boolValue {
                 MixpanelOperations.trackMixpanelEventWithProperties(eventName: "SignUp", dict: params as NSDictionary)
@@ -47,8 +47,8 @@ extension DMRegistrationVC {
                 MixpanelOperations.manageMixpanelUserIdentity()
                 MixpanelOperations.registerMixpanelUser()
                 MixpanelOperations.trackMixpanelEvent(eventName: "Login")
-                debugPrint("Login Success......")
-                debugPrint("Socket Operation done......")
+                //debugPrint("Login Success......")
+                //debugPrint("Socket Operation done......")
             }
         }
     }
@@ -76,7 +76,7 @@ extension DMRegistrationVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            debugPrint(response!)
+            //debugPrint(response!)
             if response![Constants.ServerKey.status].boolValue {
                 let preferredJobLocationArray = response!["result"]["preferredJobLocations"].arrayValue
                 

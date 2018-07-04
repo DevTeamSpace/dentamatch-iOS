@@ -126,7 +126,7 @@ extension DMNotificationVC : UITableViewDataSource,UITableViewDelegate {
             if error != nil {
                 return
             }
-            debugPrint(response!)
+            //debugPrint(response!)
             if response![Constants.ServerKey.status].boolValue {
                 notifiObj.seen = 1
                 self.notificationTableView.reloadData()

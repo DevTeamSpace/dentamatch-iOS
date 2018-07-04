@@ -24,13 +24,13 @@ extension DMAffiliationsVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            debugPrint(response!)
+            //debugPrint(response!)
             self.handleAffiliationListResponse(response: response)
         }
     }
     
     func saveAffiliationData(params:[String:Any]) {
-        debugPrint(params)
+        //debugPrint(params)
         self.showLoader()
         APIManager.apiPostWithJSONEncode(serviceName: Constants.API.saveAffiliationList, parameters: params) { (response:JSON?, error:NSError?) in
             
@@ -44,7 +44,7 @@ extension DMAffiliationsVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            debugPrint(response!)
+            //debugPrint(response!)
             self.handleSaveAffiliationResponse(response: response)
 
         }

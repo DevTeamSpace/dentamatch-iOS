@@ -146,7 +146,7 @@ extension DMSkillsVC : UITableViewDataSource, UITableViewDelegate {
             tagList.tags.append(tag)
         }
 
-        debugPrint("Height \(tagList.intrinsicContentSize.height)")
+        //debugPrint("Height \(tagList.intrinsicContentSize.height)")
         return tagList.frame.size.height
 
         

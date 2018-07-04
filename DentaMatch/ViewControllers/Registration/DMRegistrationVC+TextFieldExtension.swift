@@ -111,7 +111,7 @@ extension DMRegistrationVC:UITextFieldDelegate {
         switch fieldSelected {
         case .firstName:
             if string.rangeOfCharacter(from: characterset.inverted) != nil {
-                debugPrint("string contains special characters")
+                //debugPrint("string contains special characters")
                 return false
             }
             if textField.text!.characters.count >= Constants.Limit.commonMaxLimit {
@@ -120,7 +120,7 @@ extension DMRegistrationVC:UITextFieldDelegate {
             
         case .lastName:
             if string.rangeOfCharacter(from: characterset.inverted) != nil {
-                debugPrint("string contains special characters")
+                //debugPrint("string contains special characters")
                 return false
             }
             if textField.text!.characters.count >= Constants.Limit.commonMaxLimit {

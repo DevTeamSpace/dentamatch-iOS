@@ -42,11 +42,11 @@ class DMProfileSuccessPending: DMBaseVC {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("viewWillDisappear called ")
+        //print("viewWillDisappear called ")
         self.removeObserversForNotification()
     }
     deinit {
-        print("deinit called ")
+        //print("deinit called ")
         self.removeObserversForNotification()
         //Logger.debug("deinit TLStory")
     }
@@ -124,7 +124,7 @@ class DMProfileSuccessPending: DMBaseVC {
                     }
                 }
             })
-            print("Check with new email verify api")
+            //print("Check with new email verify api")
         } else {
             goToCalendar()
         }

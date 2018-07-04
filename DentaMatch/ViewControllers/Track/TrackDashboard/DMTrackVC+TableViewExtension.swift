@@ -173,7 +173,7 @@ extension DMTrackVC:UITableViewDataSource,UITableViewDelegate {
                     if let response = response {
                         if response[Constants.ServerKey.status].boolValue {
                             //Save Unsave success
-                            debugPrint(response)
+                            //debugPrint(response)
                             job.isSaved = 0
                             self.savedJobs.remove(at: sender.tag)
                             if self.savedJobs.count == 0 {

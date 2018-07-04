@@ -17,7 +17,7 @@ extension DMRegisterMapsVC:GMSAutocompleteViewControllerDelegate,GMSMapViewDeleg
     }
     
     func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
-        debugPrint(error.localizedDescription)
+        //debugPrint(error.localizedDescription)
     }
     
     func viewController(_ viewController: GMSAutocompleteViewController, didSelect prediction: GMSAutocompletePrediction) -> Bool {
@@ -25,7 +25,7 @@ extension DMRegisterMapsVC:GMSAutocompleteViewControllerDelegate,GMSMapViewDeleg
     }
     
     func wasCancelled(_ viewController: GMSAutocompleteViewController) {
-        debugPrint("viewController")
+        //debugPrint("viewController")
 
     }
     

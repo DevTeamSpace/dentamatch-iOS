@@ -172,7 +172,7 @@ class DMPublicProfileVC: DMBaseVC {
     @IBAction func saveButtonPressed(_ sender: Any) {
         self.view.endEditing(true)
         if validateFields() {
-            debugPrint("Edit Profile Params\n\(editProfileParams)")
+            //debugPrint("Edit Profile Params\n\(editProfileParams)")
             self.updatePublicProfileAPI(params: editProfileParams)
         }
     }
@@ -247,7 +247,7 @@ extension DMPublicProfileVC:UITextFieldDelegate {
         case .firstName:
 
             if string.rangeOfCharacter(from: characterset.inverted) != nil {
-                debugPrint("string contains special characters")
+                //debugPrint("string contains special characters")
                 return false
             }
             if textField.text!.count >= Constants.Limit.commonMaxLimit {
@@ -258,7 +258,7 @@ extension DMPublicProfileVC:UITextFieldDelegate {
         case .lastName:
 
             if string.rangeOfCharacter(from: characterset.inverted) != nil {
-                debugPrint("string contains special characters")
+                //debugPrint("string contains special characters")
                 return false
             }
             if textField.text!.count >= Constants.Limit.commonMaxLimit {
@@ -274,7 +274,7 @@ extension DMPublicProfileVC:UITextFieldDelegate {
             }
             
             if string.rangeOfCharacter(from: characterset.inverted) != nil {
-                debugPrint("string contains special characters")
+                //debugPrint("string contains special characters")
                 return false
             }
             
@@ -291,7 +291,7 @@ extension DMPublicProfileVC:UITextFieldDelegate {
                 
             }
             if string.rangeOfCharacter(from: characterset.inverted) != nil {
-                debugPrint("string contains special characters")
+                //debugPrint("string contains special characters")
                 return false
                 
             }
@@ -443,9 +443,9 @@ extension DMPublicProfileVC:PreferredLocationPickerViewDelegate {
 //                editProfileParams["preferredState"] = location.state
 //                editProfileParams["preferredCountry"] = location.country
 //            }
-//            debugPrint(address)
+//            //debugPrint(address)
 //        } else {
-//            debugPrint("Address is empty")
+//            //debugPrint("Address is empty")
 //        }
 //    }
 //}

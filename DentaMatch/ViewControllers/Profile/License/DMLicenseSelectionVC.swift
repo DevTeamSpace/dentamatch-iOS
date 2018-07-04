@@ -127,7 +127,7 @@ class DMLicenseSelectionVC: DMBaseVC,UITextFieldDelegate {
     @objc func stateBoardButtonPressed(_ sender: Any) {
         self.cameraGalleryOptionActionSheet(title: "", message: "Please select", leftButtonText: "Camera", rightButtonText: "Gallery") { (isCameraButtonPressed, isGalleryButtonPressed, isCancelButtonPressed) in
             if isCancelButtonPressed {
-                debugPrint("Cancel Pressed")
+                //debugPrint("Cancel Pressed")
             } else if isCameraButtonPressed {
                 CameraGalleryManager.shared.openCamera(viewController: self, allowsEditing: false, completionHandler: { (image:UIImage?, error:NSError?) in
                     if error != nil {

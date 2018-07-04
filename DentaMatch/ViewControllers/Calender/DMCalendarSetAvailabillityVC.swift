@@ -97,7 +97,7 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
         
         while dateToday <= endDate {
             dateToday = Calendar.current.date(byAdding: DateComponents(day: 1), to: dateToday)!
-            print(dateToday)
+            //print(dateToday)
             self.availablitytModel?.tempJobDates.append(Date.dateToString(date: dateToday))
         }
     }
@@ -123,7 +123,7 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
         }
         
         setMyAvailabilityOnServer { (response, error) in
-            debugPrint(response ?? "response not available")
+            //debugPrint(response ?? "response not available")
             if self.fromJobSelection {
               kAppDelegate.goToDashBoard()
             } else {
@@ -137,7 +137,7 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
             
             if (self.availablitytModel?.isParttimeMonday)! || (self.availablitytModel?.isParttimeTuesday)! || (self.availablitytModel?.isParttimeWednesday)! || (self.availablitytModel?.isParttimeThursday)! || (self.availablitytModel?.isParttimeFriday)! || (self.availablitytModel?.isParttimeSaturday)! || (self.availablitytModel?.isParttimeSunday)!
             {
-                debugPrint("Is part time selected")
+                //debugPrint("Is part time selected")
             }else{
                 self.makeToast(toastString: Constants.AlertMessage.selectAvailableDay)
                 return false
@@ -146,7 +146,7 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
         if isTemporyAvail == true {
             if (self.availablitytModel?.tempJobDates.count)! > 0
             {
-                debugPrint("Temp Jobs is there")
+                //debugPrint("Temp Jobs is there")
             }else{
                 self.makeToast(toastString: Constants.AlertMessage.selectDate)
                 return false

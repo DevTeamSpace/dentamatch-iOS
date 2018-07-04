@@ -30,8 +30,8 @@ class DatabaseManager: NSObject {
                 kAppDelegate.managedObjectContext.delete(chatList)
             }
             kAppDelegate.saveContext()
-        } catch let error as NSError {
-            debugPrint(error.localizedDescription)
+        } catch let _ as NSError {
+            //debugPrint(error.localizedDescription)
         }
     }
     
@@ -43,8 +43,8 @@ class DatabaseManager: NSObject {
                 kAppDelegate.managedObjectContext.delete(chat)
             }
             kAppDelegate.saveContext()
-        } catch let error as NSError {
-            debugPrint(error.localizedDescription)
+        } catch let _ as NSError {
+            //debugPrint(error.localizedDescription)
         }
     }
     
@@ -52,7 +52,7 @@ class DatabaseManager: NSObject {
         if let chatObj = chatObj {
             if let _ = chatExits(messageId: chatObj["messageId"].stringValue) {
                 //Update chat
-                debugPrint("Update Chat")
+                //debugPrint("Update Chat")
                 
             } else {
                 //New chat
@@ -113,8 +113,8 @@ class DatabaseManager: NSObject {
             if chats.count > 0 {
                 return chats.first
             }
-        } catch let error as NSError {
-            debugPrint(error.localizedDescription)
+        } catch let _ as NSError {
+            //debugPrint(error.localizedDescription)
         }
         return nil
     }
@@ -127,8 +127,8 @@ class DatabaseManager: NSObject {
             if chatLists.count > 0 {
                 return chatLists.first
             }
-        } catch let error as NSError {
-            debugPrint(error.localizedDescription)
+        } catch let _ as NSError {
+            //debugPrint(error.localizedDescription)
         }
         return nil
     }
@@ -140,8 +140,8 @@ class DatabaseManager: NSObject {
         do {
             let chatList = try kAppDelegate.managedObjectContext.fetch(fetchRequest)
             return chatList.count
-        } catch let error as NSError {
-            debugPrint(error.localizedDescription)
+        } catch let _ as NSError {
+            //debugPrint(error.localizedDescription)
         }
         return 0
     }
@@ -152,7 +152,7 @@ class DatabaseManager: NSObject {
                 
                 if let _ = chatExits(messageId: chatObj["messageId"].stringValue) {
                     //Update chat
-                    debugPrint("Update Chat")
+                    //debugPrint("Update Chat")
                     
                 } else {
                     //New chat
@@ -193,7 +193,7 @@ class DatabaseManager: NSObject {
     class func insertNewMessageListObj(chatObj:JSON) {
         if let _ = chatListExists(recruiterId: chatObj["recruiterId"].stringValue) {
             //Update chat
-            debugPrint("Update Chat")
+            //debugPrint("Update Chat")
         } else {
             //New chat
             let chatList = NSEntityDescription.insertNewObject(forEntityName: "ChatList", into: kAppDelegate.managedObjectContext) as! ChatList
@@ -225,7 +225,7 @@ class DatabaseManager: NSObject {
         if let chatObj = chatObj {
             if let _ = chatExits(messageId: chatObj["messageId"].stringValue) {
                 //Update chat
-                debugPrint("Update Chat")
+                //debugPrint("Update Chat")
                 
             } else {
                 //New chat
@@ -241,7 +241,7 @@ class DatabaseManager: NSObject {
                     chat.timeString = filteredDateTime.time
                     chat.dateString = filteredDateTime.date
                 }
-                debugPrint("New Chat Saved")
+                //debugPrint("New Chat Saved")
             }
         }
         kAppDelegate.saveContext()

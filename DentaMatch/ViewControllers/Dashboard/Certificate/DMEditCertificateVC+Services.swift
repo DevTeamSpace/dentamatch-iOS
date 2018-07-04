@@ -28,7 +28,7 @@ extension DMEditCertificateVC {
                         self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                         return
                     }
-                    debugPrint(response!)
+                    //debugPrint(response!)
                     completionHandler(response, error)
                 })
             } else {
@@ -47,7 +47,7 @@ extension DMEditCertificateVC {
         
         params["certificateValidition"] = allValidatyDates as AnyObject?
         
-        debugPrint("certificateValidition Parameters\n\(params.description)")
+        //debugPrint("certificateValidition Parameters\n\(params.description)")
         self.showLoader()
         APIManager.apiPostWithJSONEncode(serviceName: Constants.API.updateValidationDates, parameters: params) { (response:JSON?, error:NSError?) in
             self.hideLoader()
@@ -59,7 +59,7 @@ extension DMEditCertificateVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            debugPrint(response!)
+            //debugPrint(response!)
             
             if response![Constants.ServerKey.status].boolValue {
                 self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)

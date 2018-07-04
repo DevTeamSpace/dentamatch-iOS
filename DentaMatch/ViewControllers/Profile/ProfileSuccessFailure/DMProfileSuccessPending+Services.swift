@@ -23,7 +23,7 @@ extension DMProfileSuccessPending {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            debugPrint(response!)
+            //debugPrint(response!)
             if response![Constants.ServerKey.status].boolValue {
                 completionHandler(response![Constants.ServerKey.result]["isVerified"].boolValue,response![Constants.ServerKey.message].stringValue ,error)
             }

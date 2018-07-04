@@ -121,7 +121,7 @@ extension DMSettingVC : UITableViewDataSource,UITableViewDelegate {
 extension DMSettingVC:LocationAddressDelegate {
     func locationAddress(location: Location) {
         if let address = location.address {
-            debugPrint(address)
+            //debugPrint(address)
             UserManager.shared().activeUser.preferredJobLocation = address
             UserManager.shared().activeUser.zipCode = location.postalCode
             UserManager.shared().activeUser.state = location.state
@@ -131,7 +131,7 @@ extension DMSettingVC:LocationAddressDelegate {
             UserManager.shared().activeUser.longitude = "\(location.coordinateSelected!.longitude)"
             UserManager.shared().saveActiveUser()
         } else {
-            debugPrint("Address is empty")
+            //debugPrint("Address is empty")
         }
     }
 }

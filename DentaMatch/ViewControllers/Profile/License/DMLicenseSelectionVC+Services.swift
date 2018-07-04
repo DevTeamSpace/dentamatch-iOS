@@ -11,7 +11,7 @@ import SwiftyJSON
 extension DMLicenseSelectionVC {
     
     func updateLicenseAndStateAPI(params:[String:String]) {
-        debugPrint("LicenseNumberAndState Parameters\n\(params.description))")
+        //debugPrint("LicenseNumberAndState Parameters\n\(params.description))")
         self.showLoader()
         APIManager.apiPut(serviceName: Constants.API.licenseNumberAndState, parameters: params) { (response:JSON?, error:NSError?) in
             self.hideLoader()
@@ -23,7 +23,7 @@ extension DMLicenseSelectionVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            debugPrint(response!)
+            //debugPrint(response!)
             
             if response![Constants.ServerKey.status].boolValue {
                 self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
@@ -56,7 +56,7 @@ extension DMLicenseSelectionVC {
                         return
                     }
                     
-                    debugPrint(response!)
+                    //debugPrint(response!)
                     self.handleDentalStateBoardResponse(response: response)
                     
                     

@@ -12,7 +12,7 @@ import SwiftyJSON
 extension DMLoginVC {
     
     func loginAPI(params:[String:String]) {
-        debugPrint("Login Parameters\n\(params.description))")
+        //debugPrint("Login Parameters\n\(params.description))")
         self.showLoader()
         APIManager.apiPost(serviceName: Constants.API.login, parameters: params) { (response:JSON?, error:NSError?) in
             self.hideLoader()
@@ -24,7 +24,7 @@ extension DMLoginVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            debugPrint(response!)
+            //debugPrint(response!)
             self.handleLoginResponse(response: response!)
         }
     }
@@ -36,8 +36,8 @@ extension DMLoginVC {
                 MixpanelOperations.manageMixpanelUserIdentity()
                 MixpanelOperations.registerMixpanelUser()
                 MixpanelOperations.trackMixpanelEvent(eventName: "Login")
-                debugPrint("Login Success......")
-                debugPrint("Socket Operation done......")
+                //debugPrint("Login Success......")
+                //debugPrint("Socket Operation done......")
                 self.saveSearchedData(response: response!)
                 //let userDetails = response?[Constants.ServerKey.result][Constants.ServerKey.userDetails].dictionary
                 if (UserManager.shared().activeUser.jobTitleId?.isEmptyField)! {

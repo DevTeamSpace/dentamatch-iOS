@@ -39,10 +39,10 @@ extension DMJobSearchVC : LocationAddressDelegate {
             tblViewJobSearch.reloadRows(at: [IndexPath(row: 0, section: 2)], with: .bottom)
             tblViewJobSearch.endUpdates()
             tblViewJobSearch.scrollToRow(at: IndexPath(row: 0, section: 2), at: UITableViewScrollPosition.none, animated: false)
-            debugPrint(self.location.address!)
+            //debugPrint(self.location.address!)
         }
         else {
-            debugPrint("Address is empty")
+            //debugPrint("Address is empty")
         }
     }
 }

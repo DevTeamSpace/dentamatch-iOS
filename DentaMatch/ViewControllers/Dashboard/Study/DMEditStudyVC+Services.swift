@@ -24,7 +24,7 @@ extension DMEditStudyVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            debugPrint(response!)
+            //debugPrint(response!)
             self.handleSchoolListAPIResponse(response: response)
         }
     }
@@ -43,7 +43,7 @@ extension DMEditStudyVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            debugPrint(response!)
+            //debugPrint(response!)
             
             if response![Constants.ServerKey.status].boolValue {
                 self.updateProfileScreen()
@@ -118,7 +118,7 @@ extension DMEditStudyVC {
                     selectedData.add(dict)
                 }
                 
-                debugPrint(selectedData)
+                //debugPrint(selectedData)
                 
             } else {
                 if selectedData.count == 0 {
@@ -160,7 +160,7 @@ extension DMEditStudyVC {
                     selectedData.add(dict)
                 }
                 
-                debugPrint(selectedData)
+                //debugPrint(selectedData)
             }
         }
         checkForEmptySchoolField()
@@ -199,7 +199,7 @@ extension DMEditStudyVC {
         for school in finalData {
             let dict = school as! NSMutableDictionary
             self.checkAvailabilityInAutoComplete(dictionary: dict)
-            debugPrint(dict)
+            //debugPrint(dict)
             
             let makeData = NSMutableDictionary()
             makeData.setObject(dict["schoolId"] as! String, forKey: "schoolingChildId" as NSCopying)
@@ -217,7 +217,7 @@ extension DMEditStudyVC {
         params["schoolDataArray"] = selectedArray as AnyObject
         
         
-        debugPrint("\nPost School Params\n \(params.description)")
+        //debugPrint("\nPost School Params\n \(params.description)")
         addSchoolAPI(params: params)
     }
     

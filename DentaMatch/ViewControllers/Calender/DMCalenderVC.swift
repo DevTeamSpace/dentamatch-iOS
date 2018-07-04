@@ -99,7 +99,7 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
     
     func getAllJobFromServer() {
         self.getHiredJobsFromServer(date:Date()) { (response, error) in
-            debugPrint(self.hiredList.description)
+            //debugPrint(self.hiredList.description)
             self.calendar?.reloadData()
             let fullTime  = self.hiredList.filter({ (job) -> Bool in
                 job.jobType == 1
@@ -440,7 +440,7 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         selectedDayList.removeAll()
         selectedDayList = dateAllEvents(date: date)
-        debugPrint(selectedDayList.description)
+        //debugPrint(selectedDayList.description)
         if selectedDayList.count > 0 {
             self.noEventLabel.isHidden = true
         }else {
@@ -454,12 +454,12 @@ class DMCalenderVC: DMBaseVC,FSCalendarDataSource,FSCalendarDelegate,FSCalendarD
     }
 
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-        debugPrint("new Page  = \(calendar.currentPage)")
+        //debugPrint("new Page  = \(calendar.currentPage)")
         self.monthTitleLabel.text = Date.dateToStringForFormatter(date: calendar.currentPage, dateFormate: Date.dateFormatMMMMYYYY())
         self.monthTitleLabel.text = self.monthTitleLabel.text?.uppercased()
         
         self.getHiredJobsFromServer(date: calendar.currentPage) { (response, error) in
-            debugPrint(self.hiredList.description)
+            //debugPrint(self.hiredList.description)
             self.calendar?.reloadData()
             let fullTime  = self.hiredList.filter({ (job) -> Bool in
                 job.jobType == 1

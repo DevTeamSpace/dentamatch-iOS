@@ -102,8 +102,8 @@ class DMMessagesVC: DMBaseVC {
                 }
             }
         } catch {
-            let fetchError = error as NSError
-            debugPrint("\(fetchError), \(fetchError.userInfo)")
+            //let fetchError = error as NSError
+            //debugPrint("\(fetchError), \(fetchError.userInfo)")
         }
 
     }
@@ -115,7 +115,7 @@ class DMMessagesVC: DMBaseVC {
             //self.blockRecruiter(chatList: chatList)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction) in
-            debugPrint("Cancel Action")
+            //debugPrint("Cancel Action")
         }
         alert.addAction(blockAction)
         alert.addAction(cancelAction)

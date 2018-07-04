@@ -153,7 +153,7 @@ class DMRegisterMapsVC: DMBaseVC {
         placesClient.autocompleteQuery(autoCompleteString as String, bounds: nil, filter: filter) { (results:[GMSAutocompletePrediction]?, error:Error?) in
             
             if error != nil {
-                debugPrint(error.debugDescription)
+                //debugPrint(error.debugDescription)
                 return
             }
             
@@ -179,7 +179,7 @@ class DMRegisterMapsVC: DMBaseVC {
                 return
             }
             if let place = place {
-                debugPrint(place)
+                //debugPrint(place)
                 self.location.coordinateSelected = place.coordinate
                 self.reverseGeocodeCoordinate(coordinate: place.coordinate)
                 OperationQueue.main.addOperation({
@@ -208,7 +208,7 @@ class DMRegisterMapsVC: DMBaseVC {
     
     //MARK:- Reverse Geocoding
     func reverseGeocodeCoordinate(coordinate: CLLocationCoordinate2D) {
-        debugPrint(coordinate)
+        //debugPrint(coordinate)
         let geocoder = GMSGeocoder()
         geocoder.reverseGeocodeCoordinate(coordinate) { (response:GMSReverseGeocodeResponse?, error:Error?) in
             if let address = response?.firstResult() {
@@ -233,7 +233,7 @@ class DMRegisterMapsVC: DMBaseVC {
                         break
                     }
                 }
-                debugPrint(lines.joined(separator: " "))
+                //debugPrint(lines.joined(separator: " "))
                 self.location.address = lines.joined(separator: " ")
                 DispatchQueue.main.async {
                     self.placeSearchBar.text = lines.joined(separator: " ")

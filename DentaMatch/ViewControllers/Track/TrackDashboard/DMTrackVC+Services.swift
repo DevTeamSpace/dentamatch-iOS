@@ -37,7 +37,7 @@ extension DMTrackVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            debugPrint(response!)
+            //debugPrint(response!)
             self.handleJobListResponse(response: response,type: params["type"]!)
         }
     }
@@ -56,7 +56,7 @@ extension DMTrackVC {
     
     func handleJobListResponse(response:JSON?,type:String) {
         if let response = response {
-            debugPrint("type returned = \(type)")
+            //debugPrint("type returned = \(type)")
             
             if response[Constants.ServerKey.status].boolValue {
                 if type == "1" {

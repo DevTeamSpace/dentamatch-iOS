@@ -142,7 +142,7 @@ class DMChatVC: DMBaseVC {
     func receiveChatMessageEvent() {
         
         SocketManager.sharedInstance.getChatMessage { (object:[String : AnyObject], isMine:Bool) in
-            debugPrint(object)
+            //debugPrint(object)
             let chatObj = JSON(rawValue: object)
             if let chatObj = chatObj {
                 if chatObj["blocked"].exists() {
@@ -166,8 +166,8 @@ class DMChatVC: DMBaseVC {
         if SocketManager.sharedInstance.socket.status == .connected {
             if shouldFetchFromBeginning {
                 SocketManager.sharedInstance.getHistory(recruiterId: (chatList?.recruiterId)!) { (params:[Any]) in
-                    debugPrint("History from Beginning")
-                    //debugPrint(params)
+                    //debugPrint("History from Beginning")
+                    ////debugPrint(params)
                     let chatObj = JSON(rawValue: params)
                     DatabaseManager.insertChats(chats: chatObj?[0].array)
                     self.getChats()
@@ -187,7 +187,7 @@ class DMChatVC: DMBaseVC {
         //self.showLoader(text: "Loading Chats")
         SocketManager.sharedInstance.getLeftMessages(recruiterId: (chatList?.recruiterId)!, messageId: lastMessageId, completionHandler: { (params:[Any]) in
             //self.hideLoader()
-            debugPrint(params)
+            //debugPrint(params)
             let chatObj = JSON(rawValue: params)
             DatabaseManager.insertChats(chats: chatObj?[0].array)
         })
@@ -228,7 +228,7 @@ class DMChatVC: DMBaseVC {
             self.placeHolderLabel.isHidden = false
         } else {
             self.alertMessage(title: "Connection Problem", message: "Unable to connect to server. Please try again later.", buttonText: "Ok", completionHandler: nil)
-            debugPrint("Socket not connected")
+            //debugPrint("Socket not connected")
         }
     }
     @IBAction func unblockButtonPressed(_ sender: Any) {

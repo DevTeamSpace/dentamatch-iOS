@@ -24,7 +24,7 @@ extension DMJobDetailVC {
     }
     
     func fetchJobAPI(params:[String:Any]) {
-        debugPrint("Job Detail Parameters\n\(params.description))")
+        //debugPrint("Job Detail Parameters\n\(params.description))")
         self.showLoader()
         APIManager.apiPost(serviceName: Constants.API.jobDetail, parameters: params) { (response:JSON?, error:NSError?) in
             self.hideLoader()
@@ -36,7 +36,7 @@ extension DMJobDetailVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            debugPrint(response!)
+            //debugPrint(response!)
             self.handleJobDetailResponse(response: response!)
         }
     }
@@ -94,7 +94,7 @@ extension DMJobDetailVC {
     }
     
     func applyJobAPI(params:[String:Any]) {
-        debugPrint("Search Parameters\n\(params.description))")
+        //debugPrint("Search Parameters\n\(params.description))")
         self.showLoader()
         APIManager.apiPost(serviceName: Constants.API.applyJob, parameters: params) { (response:JSON?, error:NSError?) in
             self.hideLoader()
@@ -106,7 +106,7 @@ extension DMJobDetailVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            debugPrint(response!)
+            //debugPrint(response!)
             self.handleApplyJobResponse(response: response!)
         }
     }
@@ -141,7 +141,7 @@ extension DMJobDetailVC {
                     }
 //                    self.alertMessage(title: Constants.AlertMessage.completeYourProfile, message: Constants.AlertMessage.completeYourProfileDetailMsg, leftButtonText: Constants.Strings.no, rightButtonText: Constants.Strings.yes, completionHandler: { (isLeftButtonPressed) in
 //                        if isLeftButtonPressed {
-//                            debugPrint("Left Button Pressed")
+//                            //debugPrint("Left Button Pressed")
 //                        }
 //                        else {
 //                            self.tabBarController?.selectedIndex = 4

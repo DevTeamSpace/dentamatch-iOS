@@ -68,7 +68,7 @@ extension DMLicenseSelectionVC : UITableViewDataSource, UITableViewDelegate {
             
         case 4,5:
             
-            debugPrint("row 2")
+            //debugPrint("row 2")
             let cell = tableView.dequeueReusableCell(withIdentifier: "AnimatedPHTableCell") as! AnimatedPHTableCell
             updateCellForTextField(cell: cell, indexPath: indexPath)
             return cell
@@ -147,7 +147,7 @@ extension DMLicenseSelectionVC : UITableViewDataSource, UITableViewDelegate {
                 return false
             }
             if string.rangeOfCharacter(from: characterset.inverted) != nil {
-                debugPrint("string contains special characters")
+                //debugPrint("string contains special characters")
                 return false
             }
             
@@ -163,7 +163,7 @@ extension DMLicenseSelectionVC : UITableViewDataSource, UITableViewDelegate {
                 return false
             }
             if string.rangeOfCharacter(from: characterset.inverted) != nil {
-                debugPrint("string contains special characters")
+                //debugPrint("string contains special characters")
                 return false
             }
 

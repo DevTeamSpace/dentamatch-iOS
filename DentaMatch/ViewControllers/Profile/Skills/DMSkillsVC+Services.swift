@@ -24,13 +24,13 @@ extension DMSkillsVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            debugPrint(response!)
+            //debugPrint(response!)
             self.handleSkillListResponse(response: response)
         }
     }
     
     func updateSkillsAPI(params:[String:AnyObject]) {
-        debugPrint("Update Skill params \(params)")
+        //debugPrint("Update Skill params \(params)")
         self.showLoader()
         APIManager.apiPostWithJSONEncode(serviceName: Constants.API.updateSkillList, parameters: params) { (response:JSON?, error:NSError?) in
             self.hideLoader()
@@ -43,7 +43,7 @@ extension DMSkillsVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            debugPrint(response!)
+            //debugPrint(response!)
             self.handleUpdateSkillsResponse(response: response)
         }
     }

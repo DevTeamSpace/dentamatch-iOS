@@ -91,7 +91,7 @@ extension DMEditStudyVC:UITableViewDataSource,UITableViewDelegate {
 //        if emptyData.count > 0 {
 //            self.makeToast(toastString: "Please enter school name first")
 //        }
-        debugPrint(selectedData)
+        //debugPrint(selectedData)
 //        self.studyTableView.reloadData()
         
     }
@@ -109,7 +109,7 @@ extension DMEditStudyVC : UITextFieldDelegate {
         
         if (university?.count)! > 0 {
             //Its in the list
-            debugPrint("In the list")
+            //debugPrint("In the list")
         } else {
             
             //            if textField.text!.isEmpty {
@@ -159,13 +159,13 @@ extension DMEditStudyVC : UITextFieldDelegate {
         //textFieldDidEndEditing
 //        textField.resignFirstResponder()
 
-        debugPrint("textFieldDidEndEditing")
+        //debugPrint("textFieldDidEndEditing")
         
         let school = schoolCategories.filter({$0.schoolCategoryId == "\(textField.tag)"}).first
         
         
         if textField.inputView is YearPickerView {
-            debugPrint("year picker")
+            //debugPrint("year picker")
         }
         else {
             if !isFilledFromAutoComplete {

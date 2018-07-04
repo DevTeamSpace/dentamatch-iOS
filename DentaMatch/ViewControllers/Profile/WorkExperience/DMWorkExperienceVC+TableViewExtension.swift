@@ -48,7 +48,7 @@ extension DMWorkExperienceVC: UITableViewDataSource,UITableViewDelegate
             if (self.currentExperience?.references.count)! == 1 {
                 height = 250 // if single experience is added add more experience button should be clickable
             }
-            debugPrint("row height \(height)")
+            //debugPrint("row height \(height)")
             return CGFloat(height)
         }
         if indexPath.row == 0 {
@@ -452,7 +452,7 @@ extension DMWorkExperienceVC: UITableViewDataSource,UITableViewDelegate
 
         }
         let action2 = UIAlertAction(title: "CANCEL", style: .default) { (_: UIAlertAction) in
-            debugPrint("No")
+            //debugPrint("No")
         }
         alertController.addAction(action2)
         alertController.addAction(action1)

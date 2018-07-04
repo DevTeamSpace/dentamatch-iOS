@@ -120,7 +120,7 @@ class DMEditStudyVC: DMBaseVC {
                 shouldSaveData = true
             }
         }
-        debugPrint(selectedData.description)
+        //debugPrint(selectedData.description)
 //        if emptyData.count > 0 {
         if !shouldSaveData {
             self.makeToast(toastString: "Please enter school name first")
@@ -181,7 +181,7 @@ extension DMEditStudyVC:AutoCompleteSelectedDelegate {
             selectedData.add(dict)
         }
         
-        debugPrint(selectedData)
+        //debugPrint(selectedData)
         
         self.studyTableView.reloadData()
     }
@@ -193,7 +193,7 @@ extension DMEditStudyVC:AutoCompleteSelectedDelegate {
                 emptyData.add(dict)
             }
         }
-        debugPrint(selectedData.description)
+        //debugPrint(selectedData.description)
         selectedData.removeObjects(in: emptyData as [AnyObject])
         studyTableView.reloadData()
 
@@ -222,7 +222,7 @@ extension DMEditStudyVC : YearPickerViewDelegate {
             }
 
             if let _ = dict["other"] {
-                debugPrint("Other dict")
+                //debugPrint("Other dict")
             } else {
 //                self.makeToast(toastString: "Please enter school name first")
                 dict["other"] = ""
@@ -242,7 +242,7 @@ extension DMEditStudyVC : YearPickerViewDelegate {
                     }
 
                     if let _ = dict["other"] {
-                        debugPrint("Other dict")
+                        //debugPrint("Other dict")
                     } else {
 //                        self.makeToast(toastString: "Please enter school name first")
                         dict["other"] = ""
@@ -266,14 +266,14 @@ extension DMEditStudyVC : YearPickerViewDelegate {
             }
 
             if let _ = dict["other"] {
-                debugPrint("Other dict")
+                //debugPrint("Other dict")
             } else {
 //                self.makeToast(toastString: "Please enter school name first")
                 dict["other"] = ""
             }
             selectedData.add(dict)
         }
-        debugPrint(selectedData)
+        //debugPrint(selectedData)
         self.studyTableView.reloadData()
     }
 }

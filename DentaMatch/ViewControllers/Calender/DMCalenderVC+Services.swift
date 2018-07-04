@@ -26,7 +26,7 @@ extension DMCalenderVC {
 
 //        param["jobYear"] = year as AnyObject?
         
-        debugPrint("getHiredJobsFromServer Parameters\n\(param.description))")
+        //debugPrint("getHiredJobsFromServer Parameters\n\(param.description))")
         
         self.showLoader()
         APIManager.apiPost(serviceName: Constants.API.getHiredJobs, parameters: param) { (response:JSON?, error:NSError?) in
@@ -40,7 +40,7 @@ extension DMCalenderVC {
                 return
             }
             
-            debugPrint(response!)
+            //debugPrint(response!)
             self.hiredList.removeAll()
 
             if response![Constants.ServerKey.status].boolValue {

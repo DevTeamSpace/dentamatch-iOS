@@ -23,7 +23,7 @@ extension DMForgotPasswordVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            debugPrint(response!)
+            //debugPrint(response!)
             if response![Constants.ServerKey.status].boolValue {
                 _ = self.navigationController?.popViewController(animated: true)
                 self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)

@@ -23,7 +23,7 @@ extension DMWorkExperienceVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            debugPrint(response!)
+            ////debugPrint(response!)
             self.handleExperienceListResponse(response: response!)
         }
     }
@@ -97,7 +97,7 @@ extension DMWorkExperienceVC {
         return params
     }
     func saveUpdateExperience(params:[String:AnyObject],completionHandler: @escaping (JSON?, NSError?) -> ()) {
-        debugPrint("Experience Parameters\n\(params.description))")
+        //debugPrint("Experience Parameters\n\(params.description))")
 
         self.showLoader()
         APIManager.apiPost(serviceName: Constants.API.workExperienceSave, parameters: params) { (response:JSON?, error:NSError?) in
@@ -110,7 +110,7 @@ extension DMWorkExperienceVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            debugPrint(response!)
+            //debugPrint(response!)
             
             if response![Constants.ServerKey.status].boolValue {
                 
@@ -130,7 +130,7 @@ extension DMWorkExperienceVC {
     func deleteExperience(completionHandler: @escaping (Bool?, NSError?) -> ()) {
         var params = [String:AnyObject]()
         params[Constants.ServerKey.experienceId] = self.currentExperience?.experienceID as AnyObject?
-        debugPrint("Experience Parameters\n\(params.description))")
+        //debugPrint("Experience Parameters\n\(params.description))")
         
         self.showLoader()
         APIManager.apiDelete(serviceName: Constants.API.deleteExperience, parameters: params) { (response:JSON?, error:NSError?) in
@@ -143,7 +143,7 @@ extension DMWorkExperienceVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-//            debugPrint(response!)
+//            //debugPrint(response!)
             
             if response![Constants.ServerKey.status].boolValue {
                 self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)

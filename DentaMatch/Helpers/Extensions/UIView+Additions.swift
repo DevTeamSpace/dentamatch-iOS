@@ -12,7 +12,7 @@ import UIKit
 extension UIView {
     
     static func instanceFromNib<T:UIView>(type: T.Type) -> T?  {
-        debugPrint("type")
+        //debugPrint("type")
         var fullName: String = NSStringFromClass(T.self)
         if let range = fullName.range(of: ".", options: .backwards, range: nil, locale: nil) {
             fullName = fullName.substring(from: range.upperBound)
@@ -21,7 +21,7 @@ extension UIView {
     }
     
     static func makeTip(view:UIView,size: CGFloat, x: CGFloat, y: CGFloat) {
-        debugPrint("\(x) \(y)")
+        //debugPrint("\(x) \(y)")
         let triangleLayer = CAShapeLayer()
         let trianglePath = UIBezierPath()
         

@@ -23,16 +23,16 @@ extension AppDelegate:UNUserNotificationCenterDelegate {
             UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.badge,.sound]) { (granted:Bool, error:Error?) in
                 
                 if error != nil {
-                    debugPrint((error?.localizedDescription)!)
+                    //debugPrint((error?.localizedDescription)!)
                 }
                 if granted {
-                    debugPrint("Permission granted")
+                    //debugPrint("Permission granted")
                    // let pushSettings = UIUserNotificationSettings(types: [.alert,.badge,.sound], categories: nil)
                    // UIApplication.shared.registerUserNotificationSettings(pushSettings)
                     UIApplication.shared.registerForRemoteNotifications()
 //                    UIApplication.shared.registerForRemoteNotifications()
                 } else {
-                    debugPrint("Permission not granted")
+                    //debugPrint("Permission not granted")
                 }
             }
             UNUserNotificationCenter.current().delegate = self
@@ -50,7 +50,7 @@ extension AppDelegate:UNUserNotificationCenterDelegate {
             //token = token + String(format: "%02.2hhx", arguments: [deviceToken[i]])
             token += String(format: "%02.2hhx", deviceToken[i] as CVarArg)
         }
-        debugPrint(token)
+        //debugPrint(token)
         if UserDefaultsManager.sharedInstance.deviceToken == token {
             //Nothing needed to call
         } else {
@@ -62,14 +62,14 @@ extension AppDelegate:UNUserNotificationCenterDelegate {
     //MARK:- Remote/Local Notification Delegates
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         //
-        debugPrint(error.localizedDescription)
+        //debugPrint(error.localizedDescription)
         
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
         let dict = userInfo["aps"] as? NSDictionary
-        debugPrint(dict ?? "not avail")
-        debugPrint("didReceiveRemoteNotification \(userInfo.description)")
+        //debugPrint(dict ?? "not avail")
+        //debugPrint("didReceiveRemoteNotification \(userInfo.description)")
         //        self.window?.makeToast(userInfo.description)
         
         
@@ -81,7 +81,7 @@ extension AppDelegate:UNUserNotificationCenterDelegate {
                 if let noti = userInfo["data"] as? NSDictionary {
                     let megCheck = noti["data"] as! NSDictionary
                     if megCheck["messageId"] != nil {
-                        debugPrint("message check nil")
+                        //debugPrint("message check nil")
                     }else{
                         let noti = userInfo["data"] as? NSDictionary
                         let newObjMSG = noti?["jobDetails"]
@@ -139,8 +139,8 @@ extension AppDelegate:UNUserNotificationCenterDelegate {
     @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let dict = response.notification.request.content.userInfo
-        debugPrint(dict)
-        debugPrint("Go to chat")
+        //debugPrint(dict)
+        //debugPrint("Go to chat")
         completionHandler()
     }
     
@@ -151,7 +151,7 @@ extension AppDelegate:UNUserNotificationCenterDelegate {
                 "updateDeviceToken":UserDefaultsManager.sharedInstance.deviceToken
             ]
             APIManager.apiPost(serviceName: Constants.API.updateDeviceToken, parameters: params, completionHandler: { (response:JSON?, error:NSError?) in
-                debugPrint(response ?? "response not avaialble")
+                //debugPrint(response ?? "response not avaialble")
             })
         }
     }

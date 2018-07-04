@@ -58,8 +58,8 @@ extension DMMessagesVC:NSFetchedResultsControllerDelegate {
             if chatLists.count > 0 {
                 return chatLists.first
             }
-        } catch let error as NSError {
-            debugPrint(error.localizedDescription)
+        } catch let _ as NSError {
+            //debugPrint(error.localizedDescription)
         }
         return nil
     }
@@ -75,7 +75,7 @@ extension DMMessagesVC:NSFetchedResultsControllerDelegate {
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         
-        debugPrint(indexPath?.row ?? 0)
+        //debugPrint(indexPath?.row ?? 0)
         switch type {
         case .insert:
             if let indexPath = newIndexPath {

@@ -174,8 +174,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.reachability = Reachability.init()
         do {
             try self.reachability.startNotifier()
-        } catch let error {
-            debugPrint(error.localizedDescription)
+        } catch _ {
+            //debugPrint(error.localizedDescription)
         }
     }
     
@@ -183,12 +183,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let reachability = notification.object as! Reachability
         if reachability.isReachable {
             if reachability.isReachableViaWiFi {
-                debugPrint("Reachable via WiFi")
+                //debugPrint("Reachable via WiFi")
             } else {
-                debugPrint("Reachable via Cellular")
+                //debugPrint("Reachable via Cellular")
             }
         } else {
-            debugPrint("Network not reachable")
+            //debugPrint("Network not reachable")
         }
     }
     
@@ -239,7 +239,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "com.test.CoreData_13Aug" in the application's documents Application Support directory.
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        debugPrint(urls)
+        //debugPrint(urls)
         return urls[urls.count-1] as NSURL
     }()
     

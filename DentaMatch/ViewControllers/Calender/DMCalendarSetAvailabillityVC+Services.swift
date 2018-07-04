@@ -30,7 +30,7 @@ extension DMCalendarSetAvailabillityVC {
 
 //        param["calendarYear"] = year as AnyObject?
         
-        print("setMyAvailabilityOnServer Parameters\n\(param.description))")
+        //print("setMyAvailabilityOnServer Parameters\n\(param.description))")
         
         self.showLoader()
         APIManager.apiPost(serviceName: Constants.API.getAvailabality, parameters: param) { (response:JSON?, error:NSError?) in
@@ -127,7 +127,7 @@ extension DMCalendarSetAvailabillityVC {
         }
         
 
-        print("setMyAvailabilityOnServer Parameters\n\(param.description))")
+        //print("setMyAvailabilityOnServer Parameters\n\(param.description))")
         
         self.showLoader()
         APIManager.apiPostWithJSONEncode(serviceName: Constants.API.setAvailabality, parameters: param) { (response:JSON?, error:NSError?) in

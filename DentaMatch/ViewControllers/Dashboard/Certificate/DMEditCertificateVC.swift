@@ -192,7 +192,7 @@ extension DMEditCertificateVC : UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         self.dateView?.getPreSelectedValues(dateString: dateSelected, curTag: textField.tag)
-        debugPrint("set Tag =\(textField.tag)")
+        //debugPrint("set Tag =\(textField.tag)")
         if let textField = textField as? PickerAnimatedTextField {
             textField.layer.borderColor = Constants.Color.textFieldColorSelected.cgColor
         }

@@ -24,7 +24,7 @@ extension DMCertificationsVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            debugPrint(response!)
+            //debugPrint(response!)
             self.handleCertificationListResponse(response: response)
         }
     }
@@ -70,7 +70,7 @@ extension DMCertificationsVC {
                         return
                     }
                     
-                    debugPrint(response!)
+                    //debugPrint(response!)
 //                    self.handleUploadProfileResponse(response: response)
                 
                     completionHandler(response, error)
@@ -101,7 +101,7 @@ extension DMCertificationsVC {
         params["certificateValidition"] = allValidatyDates as AnyObject?
 
         
-            debugPrint("certificateValidition Parameters\n\(params.description)")
+            //debugPrint("certificateValidition Parameters\n\(params.description)")
             self.showLoader()
             APIManager.apiPostWithJSONEncode(serviceName: Constants.API.updateValidationDates, parameters: params) { (response:JSON?, error:NSError?) in
                 self.hideLoader()
@@ -113,7 +113,7 @@ extension DMCertificationsVC {
                     self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                     return
                 }
-                debugPrint(response!)
+                //debugPrint(response!)
                 
                 if response![Constants.ServerKey.status].boolValue {
                     self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)

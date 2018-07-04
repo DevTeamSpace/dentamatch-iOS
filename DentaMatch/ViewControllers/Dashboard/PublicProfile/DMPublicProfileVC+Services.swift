@@ -28,7 +28,7 @@ extension DMPublicProfileVC {
                         self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                         return
                     }
-                    debugPrint(response!)
+                    //debugPrint(response!)
                     self.handleUploadProfileResponse(response: response)
                 })
             } else {
@@ -50,7 +50,7 @@ extension DMPublicProfileVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            debugPrint(response!)
+            //debugPrint(response!)
             self.handleUpdateProfileResponse(response: response)
         }
     }
@@ -120,7 +120,7 @@ extension DMPublicProfileVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            debugPrint(response!)
+            //debugPrint(response!)
             if response![Constants.ServerKey.status].boolValue {
                 let preferredJobLocationArray = response!["result"]["preferredJobLocations"].arrayValue
                 

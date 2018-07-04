@@ -39,7 +39,7 @@ extension DMJobTitleSelectionVC : UITextFieldDelegate {
                 
             }
             if string.rangeOfCharacter(from: characterset.inverted) != nil {
-                debugPrint("string contains special characters")
+                //debugPrint("string contains special characters")
                 return false
                 
             }
@@ -57,7 +57,7 @@ extension DMJobTitleSelectionVC : UITextFieldDelegate {
                 
             }
             if string.rangeOfCharacter(from: characterset.inverted) != nil {
-                debugPrint("string contains special characters")
+                //debugPrint("string contains special characters")
                 return false
                 
             }

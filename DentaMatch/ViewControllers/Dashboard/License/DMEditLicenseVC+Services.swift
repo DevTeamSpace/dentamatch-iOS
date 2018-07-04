@@ -23,7 +23,7 @@ extension DMEditLicenseVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            debugPrint(response!)
+            //debugPrint(response!)
             self.handleUpdateLicenseResponse(response: response)
         }
     }

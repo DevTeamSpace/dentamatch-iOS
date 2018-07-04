@@ -78,7 +78,7 @@ class CameraGalleryManager: UIViewController,UIImagePickerControllerDelegate,UIN
                 else {
                     // User Rejected
                     completionHandler(false)
-                    debugPrint("No permission")
+                    //debugPrint("No permission")
                 }
             });
         }

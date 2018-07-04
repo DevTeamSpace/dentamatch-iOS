@@ -16,7 +16,7 @@ extension DMChatVC:NSFetchedResultsControllerDelegate {
         if let chatObj = chatObj {
             if let _ = chatExits(messageId: chatObj["messageId"].stringValue) {
                 //Update chat
-                debugPrint("Update Chat")
+                ////debugPrint("Update Chat")
                 
             } else {
                 //New chat
@@ -77,7 +77,7 @@ extension DMChatVC:NSFetchedResultsControllerDelegate {
                 return chats.first
             }
         } catch let error as NSError {
-            debugPrint(error.localizedDescription)
+            //debugPrint(error.localizedDescription)
         }
         return nil
     }
@@ -111,7 +111,7 @@ extension DMChatVC:NSFetchedResultsControllerDelegate {
 
         } catch {
             let fetchError = error as NSError
-            debugPrint("\(fetchError), \(fetchError.userInfo)")
+            //debugPrint("\(fetchError), \(fetchError.userInfo)")
         }
     }
     

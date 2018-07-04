@@ -56,7 +56,7 @@ class SocketManager: NSObject,SocketConnectionDelegate {
             "userType":1
         ] as [String : Any]
         socket.emitWithAck("init", params).timingOut(after: 0) { (params:[Any]) in
-            debugPrint(params)
+            //debugPrint(params)
             NotificationCenter.default.post(name: .refreshMessageList, object: nil)
             NotificationCenter.default.post(name: .refreshChat, object: nil)
             //self.getChatHistory()
@@ -70,10 +70,10 @@ class SocketManager: NSObject,SocketConnectionDelegate {
             "blockStatus":blockStatus
         ]
         
-        debugPrint(params)
+        //debugPrint(params)
 
         socket.emitWithAck("blockUnblock", params).timingOut(after: 0) { (params:[Any]) in
-            debugPrint(params)
+            //debugPrint(params)
             if blockStatus == "1" {
                  chatList.isBlockedFromSeeker = true
                 NotificationCenter.default.post(name: .refreshBlockList, object: params)
@@ -115,7 +115,7 @@ class SocketManager: NSObject,SocketConnectionDelegate {
             "fromId":UserManager.shared().activeUser.userId!,
             ]
         socket.emitWithAck("notOnChat", params).timingOut(after: 0) { (params:[Any]) in
-            debugPrint(params)
+            //debugPrint(params)
         }
     }
     
@@ -133,7 +133,7 @@ class SocketManager: NSObject,SocketConnectionDelegate {
                 "fromId":UserManager.shared().activeUser.userId!
             ]
             socket.emitWithAck("getChatHistory", params).timingOut(after: 0) { (params:[Any]) in
-                debugPrint(params)
+                //debugPrint(params)
             }
         }
     }
@@ -168,7 +168,7 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     
     //MARK:- Socket Delegates
     func didConnectSocket() {
-        debugPrint("Socket Connected")
+        //debugPrint("Socket Connected")
         if let _ = UserManager.shared().activeUser {
             self.initServer()
             eventForReceiveMessage()
@@ -179,7 +179,7 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     }
     
     func didDisconnectSocket() {
-        debugPrint("Socket Disconnected")
+        //debugPrint("Socket Disconnected")
     }
     
     //MARK:- Events for On
@@ -209,7 +209,7 @@ class SocketManager: NSObject,SocketConnectionDelegate {
             if let _ = self.historyMessagesCompletionHandler {
                 self.historyMessagesCompletionHandler?(messageDictionary)
             } else {
-                debugPrint("not on chat page")
+                //debugPrint("not on chat page")
             }
         }
     }
@@ -229,7 +229,7 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     
     func handleReceivedChatMessage(params:[Any],isMine:Bool) {
         //var messageDictionary = [String: AnyObject]()
-        debugPrint(params)
+        //debugPrint(params)
         let messageDictionary = params[0] as! [String:AnyObject]
         
         if let _ = self.chatCompletionHandler {
@@ -246,7 +246,7 @@ class SocketManager: NSObject,SocketConnectionDelegate {
                 }
             }
         } else {
-            debugPrint("not on chat page")
+            //debugPrint("not on chat page")
             let chatObj = JSON(rawValue: messageDictionary)
             if chatObj!["messageListId"].exists() {
                 self.handleFirstTimeRecruiterMessage(chatObj: chatObj)
@@ -260,7 +260,7 @@ class SocketManager: NSObject,SocketConnectionDelegate {
         //var messageDictionary = [String: AnyObject]()
         let messageDictionary = params[0] as! [String:AnyObject]
         if let unreadCounterObject = JSON(rawValue: messageDictionary) {
-            debugPrint(unreadCounterObject)
+            //debugPrint(unreadCounterObject)
             DatabaseManager.updateReadCount(recruiterId: unreadCounterObject["recruiterId"].stringValue)
         }
     }

@@ -193,7 +193,7 @@ class DMCertificationsVC: DMBaseVC,DatePickerViewDelegate {
         self.view.endEditing(true)
     }
     func doneButtonAction(date: String, tag: Int) {
-        debugPrint("get Tag =\(tag)")
+        //debugPrint("get Tag =\(tag)")
         self.view.endEditing(true)
         certicates[tag].validityDate = date
         self.certificationsTableView.reloadData()

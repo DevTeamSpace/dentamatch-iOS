@@ -24,7 +24,7 @@ extension DMJobSearchResultVC {
     }
     
     func fetchSearchResultAPI(params:[String:Any]) {
-        debugPrint("Search Parameters\n\(params.description))")
+        //debugPrint("Search Parameters\n\(params.description))")
         
         if self.jobsPageNo == 1 {
             self.showLoader()
@@ -39,7 +39,7 @@ extension DMJobSearchResultVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            debugPrint(response!)
+            //debugPrint(response!)
             self.handleJobSearchResponse(response: response!)
         }
     }

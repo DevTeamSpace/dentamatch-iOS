@@ -107,7 +107,7 @@ extension DMEditLicenseVC : UITextFieldDelegate {
                 return false
             }
             if string.rangeOfCharacter(from: characterset.inverted) != nil {
-                debugPrint("string contains special characters")
+                //debugPrint("string contains special characters")
                 return false
             }
             
@@ -123,7 +123,7 @@ extension DMEditLicenseVC : UITextFieldDelegate {
                 return false
             }
             if string.rangeOfCharacter(from: characterset.inverted) != nil {
-                debugPrint("string contains special characters")
+                //debugPrint("string contains special characters")
                 return false
             }
             

@@ -94,7 +94,7 @@ extension DMOnboardingVC:UICollectionViewDataSource,UICollectionViewDelegateFlow
             skipButton.isHidden = false
             getStartedButton.isHidden = true
         }
-        debugPrint(page)
+        //debugPrint(page)
     }
 }
 

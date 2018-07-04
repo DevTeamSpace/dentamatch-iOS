@@ -35,12 +35,12 @@ class TabBarVC: UITabBarController,UITabBarControllerDelegate {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        debugPrint("viewWillDisappear")
+       // debugPrint("viewWillDisappear")
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        debugPrint("viewWillAppear")
+        //debugPrint("viewWillAppear")
         
     }
     
@@ -56,18 +56,8 @@ class TabBarVC: UITabBarController,UITabBarControllerDelegate {
         
         switch tabBarOptions {
             
-        case .jobs:
-            print("jobs")
-            
-        case .track:
-            print("track")
-
-        case .calender:
-            print("calender")
-
-        case .messages:
-            print("messages")
-
+        case .jobs, .track, .calender, .messages: break
+            //print("jobs")
         case .profile:
             let navController = viewController as! UINavigationController
             if let profileVC = navController.viewControllers.first as? DMEditProfileVC {
@@ -85,7 +75,7 @@ class TabBarVC: UITabBarController,UITabBarControllerDelegate {
 //        
 //    }
     override func removeFromParentViewController() {
-        debugPrint("removeFromParentViewController")
+        //debugPrint("removeFromParentViewController")
         
     }
     

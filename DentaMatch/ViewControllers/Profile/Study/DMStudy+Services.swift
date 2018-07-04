@@ -24,7 +24,7 @@ extension DMStudyVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            debugPrint(response!)
+            //debugPrint(response!)
             self.handleSchoolListAPIResponse(response: response)
         }
     }
@@ -43,7 +43,7 @@ extension DMStudyVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            debugPrint(response!)
+            //debugPrint(response!)
 
             if response![Constants.ServerKey.status].boolValue {
                 self.openSkillsScreen()
@@ -116,7 +116,7 @@ extension DMStudyVC {
                 selectedData.add(dict)
             }
             
-            debugPrint(selectedData)
+            //debugPrint(selectedData)
 
             } else {
                 if selectedData.count == 0 {
@@ -158,7 +158,7 @@ extension DMStudyVC {
                     selectedData.add(dict)
                 }
                 
-                debugPrint(selectedData)
+                //debugPrint(selectedData)
             }
             
         }
@@ -187,7 +187,7 @@ extension DMStudyVC {
                 return
             }
             self.checkAvailabilityInAutoComplete(dictionary: dict)
-            debugPrint(dict)
+            //debugPrint(dict)
             
             let makeData = NSMutableDictionary()
             makeData.setObject(dict["schoolId"] as! String, forKey: "schoolingChildId" as NSCopying)
@@ -205,7 +205,7 @@ extension DMStudyVC {
         params["schoolDataArray"] = selectedArray as AnyObject
         
         
-        debugPrint("\nPost School Params\n \(params.description)")
+        //debugPrint("\nPost School Params\n \(params.description)")
         addSchoolAPI(params: params)
     }
     

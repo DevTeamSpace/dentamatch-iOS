@@ -164,7 +164,7 @@ extension DMStudyVC:AutoCompleteSelectedDelegate {
             selectedData.add(dict)
         }
         
-        debugPrint(selectedData)
+        //debugPrint(selectedData)
         
         self.studyTableView.reloadData()
     }
@@ -192,7 +192,7 @@ extension DMStudyVC : YearPickerViewDelegate {
             }
 
             if let _ = dict["other"] {
-                debugPrint("handle other")
+                //debugPrint("handle other")
             } else {
 //                self.makeToast(toastString: "Please enter school name first")
                 dict["other"] = ""
@@ -211,7 +211,7 @@ extension DMStudyVC : YearPickerViewDelegate {
                     }
 
                     if let _ = dict["other"] {
-                        debugPrint("handle other")
+                        //debugPrint("handle other")
                     } else {
 //                        self.makeToast(toastString: "Please enter school name first")
                         dict["other"] = ""
@@ -234,14 +234,14 @@ extension DMStudyVC : YearPickerViewDelegate {
             }
 
             if let _ = dict["other"] {
-                debugPrint("handle other")
+                //debugPrint("handle other")
             } else {
                 self.makeToast(toastString: "Please enter school name first")
                 dict["other"] = ""
             }
             selectedData.add(dict)
         }
-        debugPrint(selectedData)
+        //debugPrint(selectedData)
         self.studyTableView.reloadData()
     }
 }
