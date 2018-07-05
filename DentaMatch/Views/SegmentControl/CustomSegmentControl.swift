@@ -17,11 +17,4 @@ class CustomSegmentControl: UISegmentedControl {
         setTitleTextAttributes([NSAttributedStringKey.font: UIFont.fontRegular(fontSize: 13.0)!, NSAttributedStringKey.foregroundColor: UIColor.white], for: .selected)
     }
 
-    /*
-     // Only override draw() if you perform custom drawing.
-     // An empty implementation adversely affects performance during animation.
-     override func draw(_ rect: CGRect) {
-     // Drawing code
-     }
-     */
 }

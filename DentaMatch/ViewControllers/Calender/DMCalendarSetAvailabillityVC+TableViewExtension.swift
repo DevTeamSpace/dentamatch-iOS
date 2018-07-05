@@ -291,21 +291,11 @@ extension DMCalendarSetAvailabillityVC: JobSearchTypeCellDelegate, TemporyJobCel
     }
 
     func nextButtonDelegate(date _: Date) {
-//        let dateData = Date.getMonthAndYearForm(date: date)
-//        self.getMyAvailabilityFromServer(month: dateData.month, year: dateData.year) { (responseData, error) in
-//            self.calenderTableView.reloadData()
-//
-//            debugPrint(responseData ?? "response not available")
-//        }
+      //DO nothing
     }
 
     func previouseButtonDelegate(date _: Date) {
-//        let dateData = Date.getMonthAndYearForm(date: date)
-//        self.getMyAvailabilityFromServer(month: dateData.month, year: dateData.year) { (responseData, error) in
-//            self.calenderTableView.reloadData()
-//
-//            debugPrint(responseData ?? "response not available")
-//        }
+     //DO nothing
     }
 
     func tableUpdateFor(indexPath: IndexPath, action: Int) {

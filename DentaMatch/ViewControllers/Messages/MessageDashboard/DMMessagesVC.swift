@@ -121,9 +121,6 @@ class DMMessagesVC: DMBaseVC {
     @objc func deleteFetchController() {
         fetchedResultsController.delegate = nil
         NSFetchedResultsController<NSFetchRequestResult>.deleteCache(withName: nil)
-//        try self.fetchedResultsController.performFetch(nil)
-//        self.fetchedResultsController.fetchRequest.predicate =
-//            [NSPredicate  predicateWithValue:NO];
     }
 
     @objc func refreshMessageList() {

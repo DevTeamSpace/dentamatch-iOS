@@ -104,25 +104,6 @@ extension DMCalenderVC: UITableViewDelegate, UITableViewDataSource {
         navigationController?.pushViewController(cancelJobVC, animated: true)
     }
 
-//    func removeJobButtonPressed(job:Job) {
-//        self.alertMessage(title: "Confirm your action", message: "Are you sure you want to cancel the job?", leftButtonText: "Cancel", rightButtonText: "Ok") { (isLeftButton:Bool) in
-//            if !isLeftButton {
-    ////                let job = self.selectedDayList[sender.tag]
-    ////                self.saveUnsaveJob(saveStatus: 0, jobId: job.jobId) { (response:JSON?, error:NSError?) in
-    ////                    if let response = response {
-    ////                        if response[Constants.ServerKey.status].boolValue {
-    ////                            //Save Unsave success
-    ////                            print(response)
-    ////                            DispatchQueue.main.async {
-    ////                                self.savedJobsTableView.reloadData()
-    ////                            }
-    ////                        }
-    ////                    }
-    ////                }
-//            }
-//        }
-//    }
-
     func getJobTypeText(jobType: Int) -> String {
         if jobType == 1 {
             return "Full Time"

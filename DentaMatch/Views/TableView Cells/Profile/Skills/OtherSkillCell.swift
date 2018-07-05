@@ -14,8 +14,6 @@ class OtherSkillCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-//        UITextView.appearance().tintColor = UIColor.white
-
         otherTextView.layer.cornerRadius = 5.0
         otherTextView.layer.borderWidth = 1.0
         otherTextView.layer.borderColor = Constants.Color.textFieldBorderColor.cgColor

@@ -23,10 +23,6 @@ class AboutMeJobSelectionCell: UITableViewCell {
     }
 
     func addPlaceHolderLabel() {
-//        self.titleFont = UIFont.fontRegular(fontSize: 12.0)!
-//        self.titleActiveTextColour = Constants.Color.textFieldPlaceHolderColor
-//        self.titleTextColour = Constants.Color.textFieldPlaceHolderColor
-
         placeHolderLabel = UILabel(frame: CGRect(x: 10, y: 10, width: 280, height: 20))
         placeHolderLabel.font = UIFont.fontRegular(fontSize: 14.0)
 

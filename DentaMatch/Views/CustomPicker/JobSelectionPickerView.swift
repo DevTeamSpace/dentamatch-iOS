@@ -9,11 +9,6 @@
 import UIKit
 
 @objc protocol JobSelectionPickerViewDelegate {
-//    func numberOfComponents(in jobSelectionPickerView: UIPickerView) -> Int
-//    func pickerView(_ jobSelectionPickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
-//    func pickerView(_ jobSelectionPickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
-//    func pickerView(_ jobSelectionPickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
-
     func jobPickerDoneButtonAction(job: JobTitle?)
     func jobPickerCancelButtonAction()
 }

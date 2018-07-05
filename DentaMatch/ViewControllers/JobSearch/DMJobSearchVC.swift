@@ -71,16 +71,6 @@ class DMJobSearchVC: DMBaseVC {
     func setup() {
         if let params = UserDefaultsManager.sharedInstance.loadSearchParameter() {
             searchParams = params
-//            location.postalCode = (searchParams[Constants.JobDetailKey.zipCode] as! String?)!
-//            location.address = searchParams[Constants.JobDetailKey.address] as! String?
-//            self.city = searchParams[Constants.JobDetailKey.city] as! String
-//            self.state = searchParams[Constants.JobDetailKey.state] as! String
-//            self.country = searchParams[Constants.JobDetailKey.country] as! String
-//            let latStr = searchParams[Constants.JobDetailKey.lat] as! NSString
-//            let latDbl : Double  = latStr.doubleValue
-//            let langStr = searchParams[Constants.JobDetailKey.lng] as! NSString
-//            let langDbl : Double = langStr.doubleValue
-//            location.coordinateSelected = CLLocationCoordinate2DMake(latDbl, langDbl)
             if searchParams[Constants.JobDetailKey.isParttime] as! String? == "1" {
                 isPartTimeDayShow = true
                 isJobTypePartTime = "1"
@@ -121,10 +111,6 @@ class DMJobSearchVC: DMBaseVC {
             // self.getLocation()
         }
 
-        // self.getLocation()
-//        let coordinate = CLLocationCoordinate2D(latitude: Double(UserManager.shared().activeUser.latitude!)!, longitude: Double(UserManager.shared().activeUser.longitude!)!)
-//        location.coordinateSelected = coordinate
-//        reverseGeocodeCoordinate(coordinate: coordinate)
 
         if fromJobSearchResults {
             navigationItem.leftBarButtonItem = backBarButton()
@@ -155,28 +141,8 @@ class DMJobSearchVC: DMBaseVC {
             makeToast(toastString: Constants.AlertMessage.selectAvailableDay)
             return false
         }
-//        if self.location.coordinateSelected == nil {
-//            self.makeToast(toastString: Constants.AlertMessage.selectLocation)
-//            return false
-//        }
-        return true
-    }
 
-    func getLocation() {
-//        self.showLoader()
-//        LocationManager.sharedInstance.getLocation { (location:CLLocation?, error:NSError?) in
-//            self.hideLoader()
-//            if error != nil {
-//                DispatchQueue.main.async {
-//                    self.alertMessage(title: "", message: (error?.localizedDescription)!, buttonText: kOkButtonTitle, completionHandler: nil)
-//                }
-//                return
-//            }
-//
-//            let coordinate = CLLocationCoordinate2D(latitude: (location!.coordinate.latitude), longitude: (location!.coordinate.longitude))
-//            self.location.coordinateSelected = coordinate
-//            self.reverseGeocodeCoordinate(coordinate: coordinate)
-//        }
+        return true
     }
 
     func reverseGeocodeCoordinate(coordinate: CLLocationCoordinate2D) {
@@ -238,7 +204,6 @@ class DMJobSearchVC: DMBaseVC {
 
     func actionSearchButton() {
         view.endEditing(true)
-        // var jobTitleDict = [String : Any]()
         var jobTitles = [Any]()
         var preferredLocationsArray = [Any]()
         var jobTitleIds = [Int]()
@@ -266,14 +231,6 @@ class DMJobSearchVC: DMBaseVC {
         for location in preferredLocations {
             preferredLocationIds.append(location.id)
         }
-
-//        if location.coordinateSelected?.latitude != nil {
-//            searchParams[Constants.JobDetailKey.lat] = String(describing: location.coordinateSelected!.latitude)
-//        }
-//        if location.coordinateSelected?.longitude != nil {
-//            searchParams[Constants.JobDetailKey.lng] = String(describing: location.coordinateSelected!.longitude)
-//        }
-//        searchParams[Constants.JobDetailKey.zipCode] = location.postalCode
         searchParams[Constants.JobDetailKey.isFulltime] = isJobTypeFullTime
         searchParams[Constants.JobDetailKey.isParttime] = isJobTypePartTime
         searchParams[Constants.JobDetailKey.parttimeDays] = partTimeJobDays
@@ -282,10 +239,7 @@ class DMJobSearchVC: DMBaseVC {
         searchParams[Constants.JobDetailKey.page] = 1
         searchParams["preferredJobLocations"] = preferredLocationsArray
         searchParams["preferredJobLocationId"] = preferredLocationIds
-//        searchParams[Constants.JobDetailKey.city] = self.city
-//        searchParams[Constants.JobDetailKey.state] = self.state
-//        searchParams[Constants.JobDetailKey.country] = self.country
-//        searchParams[Constants.JobDetailKey.address] = location.address
+
         goToSearchResult()
     }
 }

@@ -84,9 +84,6 @@ extension DMNotificationVC {
             //            //debugPrint(response!)
 
             if response![Constants.ServerKey.status].boolValue {
-//                let resultDic = response![Constants.ServerKey.result][Constants.ServerKey.list].arrayValue
-//                                self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
-                // do next
                 completionHandler(response, error)
 
             } else {
@@ -101,9 +98,6 @@ extension DMNotificationVC {
         var param = [String: AnyObject]()
         param["notificationId"] = notificationObj.notificationID as AnyObject?
         param["acceptStatus"] = actionType as AnyObject?
-
-        // debugPrint("readNotification Parameters\n\(param.description))")
-
         showLoader()
         APIManager.apiPost(serviceName: Constants.API.acceptRejectNotification, parameters: param) { (response: JSON?, error: NSError?) in
             self.hideLoader()
@@ -122,7 +116,7 @@ extension DMNotificationVC {
                 completionHandler(response, error)
 
             } else {
-//                self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
+
                 completionHandler(response, error)
             }
         }

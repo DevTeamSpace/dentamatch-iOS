@@ -36,27 +36,6 @@ class JobDescriptionCell: UITableViewCell {
         delegate?.readMoreOrReadLess!()
     }
 
-//    class func requiredHeight(jobDescription:String,isReadMore:Bool) -> CGFloat{
-//        let font = UIFont.fontLight(fontSize: 13.0)
-//        var label:UILabel!
-//
-//        if isReadMore {
-//            label = UILabel(frame: CGRect(x:0, y:0, width:UIScreen.main.bounds.width - 42, height:CGFloat.greatestFiniteMagnitude))
-//        } else {
-//            label = UILabel(frame: CGRect(x:0, y:0, width:UIScreen.main.bounds.width - 42, height:80))
-//        }
-//        label.numberOfLines = 0
-//        label.lineBreakMode = NSLineBreakMode.byWordWrapping
-//        label.font = font
-//        label.text = jobDescription
-//        if isReadMore {
-//            label.sizeToFit()
-//        } else {
-//
-//        }
-//        return label.frame.height + 22 + 41
-//    }
-
     class func requiredHeight(jobDescription: String, isReadMore: Bool) -> CGFloat {
         let font = UIFont.fontLight(fontSize: 13.0)
         var label: UILabel!

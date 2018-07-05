@@ -46,8 +46,6 @@ class DMJobSearchResultVC: DMBaseVC {
     var selectedMarker: JobMarker?
     var placeHolderEmptyJobsView: PlaceHolderJobsView?
 
-    // var stylebarAndNavigationbarHeight = s
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -112,8 +110,6 @@ class DMJobSearchResultVC: DMBaseVC {
         placeHolderEmptyJobsView?.center = view.center
         placeHolderEmptyJobsView?.backgroundColor = UIColor.clear
         placeHolderEmptyJobsView?.placeHolderMessageLabel.numberOfLines = 2
-//        placeHolderEmptyJobsView?.placeHolderMessageLabel.text = Constants.AlertMessage.noNotification
-//        placeHolderEmptyJobsView?.placeholderImageView.image = UIImage(named: "notificationPlaceholder")
         view.addSubview(placeHolderEmptyJobsView!)
         placeHolderEmptyJobsView?.isHidden = false
         placeHolderEmptyJobsView?.layoutIfNeeded()
@@ -126,19 +122,12 @@ class DMJobSearchResultVC: DMBaseVC {
         NotificationCenter.default.addObserver(self, selector: #selector(pushRediectNotificationForJobDetailForground), name: .pushRedirectNotificationForground, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(pushRediectNotificationForJobDetailBacground), name: .pushRedirectNotificationBacground, object: nil)
 
-//        placeHolderEmptyJobsView = PlaceHolderJobsView.loadPlaceHolderJobsView()
-//        placeHolderEmptyJobsView?.frame = CGRect(x: 0, y: 0, width: 300, height: 200)
-//        placeHolderEmptyJobsView?.center = self.view.center
-//        placeHolderEmptyJobsView?.backgroundColor = UIColor.clear
-//        self.view.addSubview(placeHolderEmptyJobsView!)
-//        placeHolderEmptyJobsView?.placeHolderMessageLabel.text = "You don’t have any saved jobs"
-
         mapViewSearchResult.isHidden = true
         tblJobSearchResult.register(UINib(nibName: "JobSearchResultCell", bundle: nil), forCellReuseIdentifier: "JobSearchResultCell")
         mapViewSearchResult.delegate = self
         mapViewSearchResult.isMyLocationEnabled = false
         lblResultCount.text = String(jobs.count) + Constants.Strings.whiteSpace + Constants.Strings.resultsFound
-//        self.setLeftBarButton(title: Constants.DesignFont.notification)
+
         navigationItem.leftBarButtonItem = customLeftBarButton()
 
         setRightBarButton(title: "", imageName: "FilterImage", width: rightBarButtonWidth, font: UIFont.designFont(fontSize: 16.0)!)
@@ -146,7 +135,6 @@ class DMJobSearchResultVC: DMBaseVC {
         bannerHeightConstraint.constant = 0
         currentGPSButtonTopConstraint.constant = 15.0
         constraintTblViewSearchResultHeight.constant = UIScreen.main.bounds.height - (navigationController?.navigationBar.frame.height)! - UIApplication.shared.statusBarFrame.height - (tabBarController?.tabBar.frame.height)! - 32.0
-//        self.constraintTblViewSearchResultHeight.constant = UIScreen.main.bounds.height - (self.navigationController?.navigationBar.frame.height)! - UIApplication.shared.statusBarFrame.height - (self.tabBarController?.tabBar.frame.height)! - (32.0) - (45.0)
 
         view.layoutIfNeeded()
         btnCurrentLocation.isHidden = true
@@ -344,13 +332,11 @@ class DMJobSearchResultVC: DMBaseVC {
             btnList.backgroundColor = UIColor.clear
             mapViewSearchResult.isHidden = false
             tblJobSearchResult.isHidden = true
-//            self.constraintTblViewSearchResultHeight.constant = 0.0
             view.layoutIfNeeded()
             btnCurrentLocation.isHidden = false
         }
         isMapShow = !isMapShow
         isListShow = false
-//        self.getLocation()
         restoreAllMarkers()
     }
 
@@ -359,20 +345,7 @@ class DMJobSearchResultVC: DMBaseVC {
         hideCard()
     }
 
-    func getLocation() {
-//        LocationManager.sharedInstance.getLocation { (location:CLLocation?, error:NSError?) in
-//            if error != nil {
-//                DispatchQueue.main.async {
-//                    self.hideLoader()
-//                    self.alertMessage(title: "", message: (error?.localizedDescription)!, buttonText: kOkButtonTitle, completionHandler: nil)
-//                }
-//                return
-//            }
-//            self.btnCurrentLocation.isUserInteractionEnabled = true
-//            let coordinate = CLLocationCoordinate2D(latitude: (location!.coordinate.latitude), longitude: (location!.coordinate.longitude))
-//            self.currentCoordinate = coordinate
-//        }
-    }
+   
 }
 
 extension DMJobSearchResultVC: SearchJobDelegate {

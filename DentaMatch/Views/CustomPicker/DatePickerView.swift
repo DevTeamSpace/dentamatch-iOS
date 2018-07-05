@@ -27,7 +27,7 @@ class DatePickerView: UIView {
 
     func getPreSelectedValues(dateString: String, curTag: Int) {
         datePicker.minimumDate = Date()
-        if dateString.trim().characters.count > 0 {
+        if dateString.trim().count > 0 {
             let date = Date.stringToDate(dateString: dateString)
             if date < Date() {
                 // Handle less date scenario

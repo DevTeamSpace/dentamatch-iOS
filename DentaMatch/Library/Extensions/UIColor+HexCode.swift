@@ -21,14 +21,14 @@ extension UIColor {
     class func color(withHexCode: String) -> UIColor {
         var cString = withHexCode.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).uppercased()
         cString = cString.replacingOccurrences(of: "#", with: "")
-        if cString.characters.count < 6 {
+        if cString.count < 6 {
             // Return Default Color
             return UIColor.gray
         }
         if cString.hasPrefix("0X") {
             cString = (cString as NSString).substring(from: 2)
         }
-        if cString.characters.count != 6 {
+        if cString.count != 6 {
             // Return Default Color
             return UIColor.gray
         }

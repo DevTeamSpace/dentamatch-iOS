@@ -78,8 +78,6 @@ class DMChatVC: DMBaseVC {
                 self.view.layoutIfNeeded()
             }) { (_: Bool) in
             }
-
-            // chatTableView.contentInset =  UIEdgeInsetsMake(0, 0, keyboardSize.height+1, 0)
             scrollTableToBottom()
         }
     }
@@ -163,8 +161,6 @@ class DMChatVC: DMBaseVC {
         if SocketManager.sharedInstance.socket.status == .connected {
             if shouldFetchFromBeginning {
                 SocketManager.sharedInstance.getHistory(recruiterId: (chatList?.recruiterId)!) { (params: [Any]) in
-                    // debugPrint("History from Beginning")
-                    ////debugPrint(params)
                     let chatObj = JSON(rawValue: params)
                     DatabaseManager.insertChats(chats: chatObj?[0].array)
                     self.getChats()
@@ -181,7 +177,6 @@ class DMChatVC: DMBaseVC {
     }
 
     func getLeftMessages(lastMessageId: Int64) {
-        // self.showLoader(text: "Loading Chats")
         SocketManager.sharedInstance.getLeftMessages(recruiterId: (chatList?.recruiterId)!, messageId: lastMessageId, completionHandler: { (params: [Any]) in
             // self.hideLoader()
             // debugPrint(params)
@@ -217,7 +212,7 @@ class DMChatVC: DMBaseVC {
         }
         // Send Message
         if SocketManager.sharedInstance.socket.status == .connected {
-//        let encodedMessage = self.chatTextView.text!.convertToUTF8()
+         //  let encodedMessage = self.chatTextView.text!.convertToUTF8()
 
             SocketManager.sharedInstance.sendTextMessage(message: chatTextView.text, recruiterId: (chatList?.recruiterId)!)
             chatTextView.text = ""

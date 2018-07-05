@@ -11,9 +11,6 @@ import SwiftyJSON
 
 extension DMCalenderVC {
     func getHiredJobsFromServer(date: Date, completionHandler: @escaping (JSON?, NSError?) -> Void) {
-//        let firstDate  = Date.getMonthBasedOnThis(date1: Date(), duration: -3)
-//        let lastDate  = Date.getMonthBasedOnThis(date1: Date(), duration: 3)
-
         let date5 = gregorian?.fs_firstDay(ofMonth: date)
         let date2 = gregorian?.fs_lastDay(ofMonth: date)
         let strStartDate = Date.dateToString(date: date5!)
@@ -22,10 +19,6 @@ extension DMCalenderVC {
         var param = [String: AnyObject]()
         param["jobStartDate"] = strStartDate as AnyObject?
         param["jobEndDate"] = strEndDate as AnyObject?
-
-//        param["jobYear"] = year as AnyObject?
-
-        // debugPrint("getHiredJobsFromServer Parameters\n\(param.description))")
 
         showLoader()
         APIManager.apiPost(serviceName: Constants.API.getHiredJobs, parameters: param) { (response: JSON?, error: NSError?) in
@@ -48,7 +41,6 @@ extension DMCalenderVC {
                     let hiredObj = Job(forCalendarjob: calObj)
                     self.hiredList.append(hiredObj)
                 }
-//                self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
                 // do next
                 completionHandler(response, error)
 

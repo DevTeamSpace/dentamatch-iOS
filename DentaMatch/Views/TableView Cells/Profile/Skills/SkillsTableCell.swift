@@ -26,18 +26,10 @@ class SkillsTableCell: UITableViewCell, TagListDelegate {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-//        subSkillsTagView.tagColorTheme = .raspberry
         subSkillsTagView.clipsToBounds = true
         subSkillsTagView.addSubview(tagList)
         tagList.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: UIScreen.main.bounds.width - 30, height: 0))
         subSkillsTagView.isUserInteractionEnabled = false
-        // Initialization code
-
-//        self.subSkillsCollectionView.register(UINib(nibName: "SubSkillCollectionCell", bundle: nil), forCellWithReuseIdentifier: "SubSkillCollectionCell")
-//        self.subSkillsCollectionView.dataSource = self
-//        self.subSkillsCollectionView.delegate = self
-//        let collectionViewFlowLayout = subSkillsCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-//        collectionViewFlowLayout.estimatedItemSize = CGSize(width: 34, height: 50)
     }
 
     func getHeight() -> CGFloat {

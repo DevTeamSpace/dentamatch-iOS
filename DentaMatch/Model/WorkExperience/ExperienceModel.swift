@@ -45,7 +45,7 @@ class ExperienceModel: NSObject {
         let reference2Name = json[Constants.ServerKey.reference2Name].stringValue
         let reference2Mobile = json[Constants.ServerKey.reference2Mobile].stringValue
         let reference2Email = json[Constants.ServerKey.reference2Email].stringValue
-        if reference1Name.trim().characters.count > 0 || reference1Mobile.trim().characters.count > 0 || reference1Email.trim().characters.count > 0 {
+        if reference1Name.trim().count > 0 || reference1Mobile.trim().count > 0 || reference1Email.trim().count > 0 {
             let ref = EmployeeReferenceModel(referenceName: reference1Name, mobileNumber: reference1Mobile, email: reference1Email)
 
             references.append(ref)
@@ -54,7 +54,7 @@ class ExperienceModel: NSObject {
 
             references.append(ref)
         }
-        if reference2Name.trim().characters.count > 0 || reference2Mobile.trim().characters.count > 0 || reference2Email.trim().characters.count > 0 {
+        if reference2Name.trim().count > 0 || reference2Mobile.trim().count > 0 || reference2Email.trim().count > 0 {
             let ref1 = EmployeeReferenceModel(referenceName: reference2Name, mobileNumber: reference2Mobile, email: reference2Email)
             references.append(ref1)
         }

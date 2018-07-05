@@ -65,14 +65,9 @@ class DMCalenderVC: DMBaseVC, FSCalendarDataSource, FSCalendarDelegate, FSCalend
         calendar?.swipeToChooseGesture.isEnabled = false
         calendar?.appearance.headerMinimumDissolvedAlpha = 0
         calendar?.appearance.caseOptions = .headerUsesUpperCase
-//        self.calendar?.pagingEnabled = false
-//        self.calendar?.isUserInteractionEnabled = false
-//        self.calendar?.showsScopeHandle = false
         calendar?.placeholderType = .none
         calendar?.calendarHeaderView.isHidden = true
         calendar?.calendarWeekdayView.isHidden = false
-
-//        self.calendar?.calendarHeaderView.frame.size = CGSize(width: (self.calendar?.calendarHeaderView.frame.size.width)!, height: 161)
         calendar?.headerHeight = 60
         calendar?.weekdayHeight = 30
         calendar?.appearance.todayColor = UIColor.clear
@@ -86,9 +81,6 @@ class DMCalenderVC: DMBaseVC, FSCalendarDataSource, FSCalendarDelegate, FSCalend
         calendar?.appearance.weekdayTextColor = Constants.Color.weekdayTextColor
         calendar?.appearance.titleDefaultColor = Constants.Color.headerTitleColor
         calendar?.appearance.selectionColor = Constants.Color.CalendarSelectionColor
-
-//        self.calendar?.calendarWeekdayView.backgroundColor = UIColor.red
-//        self.calendar?.appearance.titleOffset = CGPoint(x: 0, y: 10)
         calendar?.appearance.eventOffset = CGPoint(x: 0, y: -8)
         viewForCalender.addSubview(calendar!)
         viewForCalender.bringSubview(toFront: viewForHeader)

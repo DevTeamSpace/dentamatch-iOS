@@ -35,7 +35,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         // application is unused
         var token = ""
         for i in 0 ..< deviceToken.count {
-            //token = token + String(format: "%02.2hhx", arguments: [deviceToken[i]])
             token += String(format: "%02.2hhx", deviceToken[i] as CVarArg)
         }
         // debugPrint(token)
@@ -55,10 +54,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     }
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
-        // let dict = userInfo["aps"] as? NSDictionary
-        // debugPrint(dict ?? "not avail")
-        // debugPrint("didReceiveRemoteNotification \(userInfo.description)")
-        //        self.window?.makeToast(userInfo.description)
         let state: UIApplicationState = UIApplication.shared.applicationState
         if state == UIApplicationState.active {
             if UserDefaultsManager.sharedInstance.isLoggedIn {
@@ -108,9 +103,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 
     @available(iOS 10.0, *)
     func userNotificationCenter(_: UNUserNotificationCenter, didReceive _: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        // let dict = response.notification.request.content.userInfo
-        // debugPrint(dict)
-        // debugPrint("Go to chat")
         completionHandler()
     }
 

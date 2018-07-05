@@ -32,8 +32,6 @@ class SocketManager: NSObject, SocketConnectionDelegate {
     }
 
     func establishConnection() {
-        //     DefaultSocketLogger.Logger.log = true
-//      socket.engine?.ws?.voipEnabled = true
         socket.delegate = self
         socket.connect()
     }
@@ -172,7 +170,6 @@ class SocketManager: NSObject, SocketConnectionDelegate {
             eventForReceiveMessage()
             eventForHistoryMessages()
             eventForLogoutPreviousSession()
-            // getChatHistory()
         }
     }
 
@@ -203,7 +200,6 @@ class SocketManager: NSObject, SocketConnectionDelegate {
     func eventForHistoryMessages() {
         socket.off("getMessages")
         socket.on("getMessages") { (dataArray, _) -> Void in
-            // var messageDictionary = [Any]()
             let messageDictionary = dataArray
             if let _ = self.historyMessagesCompletionHandler {
                 self.historyMessagesCompletionHandler?(messageDictionary)

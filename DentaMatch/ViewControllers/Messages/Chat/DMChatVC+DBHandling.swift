@@ -57,9 +57,6 @@ extension DMChatVC: NSFetchedResultsControllerDelegate {
                         }
                     }
                 }
-
-//                self.chatList?.lastMessage = chatObj["message"].stringValue
-                // self.chatList?.lastMessageId = chatObj["messageId"].stringValue
             }
         }
         kAppDelegate.saveContext()

@@ -11,13 +11,6 @@ import SwiftyJSON
 extension DMCalendarSetAvailabillityVC {
     func getMyAvailabilityFromServer(month _: Int, year _: Int, completionHandler: @escaping (JSON?, NSError?) -> Void) {
         var param = [String: AnyObject]()
-//        if month < 10 {
-//            param["calendarMonth"] = "0\(month)" as AnyObject?
-//
-//        }else{
-//            param["calendarMonth"] = month as AnyObject?
-//        }
-
         let firstDate = Date.getMonthBasedOnThis(date1: Date(), duration: -6)
         let lastDate = Date.getMonthBasedOnThis(date1: Date(), duration: 6)
 
@@ -28,7 +21,6 @@ extension DMCalendarSetAvailabillityVC {
         param["calendarStartDate"] = strStartDate as AnyObject?
         param["calendarEndDate"] = strEndDate as AnyObject?
 
-//        param["calendarYear"] = year as AnyObject?
 
         // print("setMyAvailabilityOnServer Parameters\n\(param.description))")
 

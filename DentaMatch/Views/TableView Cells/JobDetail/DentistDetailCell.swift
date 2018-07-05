@@ -79,12 +79,6 @@ class DentistDetailCell: UITableViewCell {
             break
         }
 
-//        if job.isApplied == 2 {
-//            self.lblApplied.isHidden = false
-//        }
-//        else {
-//            self.lblApplied.isHidden = true
-//        }
         if job.isSaved == 0 {
             self.btnFavourite.setTitle(Constants.DesignFont.notFavourite, for: .normal)
             self.btnFavourite.titleLabel?.textColor = Constants.Color.unSaveJobColor

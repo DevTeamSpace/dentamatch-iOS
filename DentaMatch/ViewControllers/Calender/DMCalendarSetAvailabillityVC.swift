@@ -14,9 +14,6 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
     var isTemporyAvail: Bool = false
     var fromJobSelection = false
 
-//    var partTimeJobDays = [String]()
-//    var tempJobDays = [String]()
-
     var isJobTypeFullTime: String! = "0"
     var isJobTypePartTime: String! = "0"
     var availablitytModel: UserAvailability? = UserAvailability()
@@ -113,10 +110,7 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
     }
 
     @objc func saveButtonPressed() {
-//        if !minimumOneSelected() {
-//            self.makeToast(toastString: Constants.AlertMessage.selectOneAvailableOption)
-//           return
-//        }
+
         if !checkValidations() {
             return
         }

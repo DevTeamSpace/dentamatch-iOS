@@ -93,15 +93,6 @@ class DMRegisterMapsVC: DMBaseVC {
             placeSearchBar.text = UserManager.shared().activeUser.preferredJobLocation
             mapView.animate(to: GMSCameraPosition(target: coordinate, zoom: 15, bearing: 0, viewingAngle: 0))
         }
-        /*
-         if fromRegistration  {
-         getCurrentLocation()
-         }
-
-         if fromJobSearch  {
-         getCurrentLocation()
-         }
-         */
     }
 
     func goBack() {
@@ -119,30 +110,6 @@ class DMRegisterMapsVC: DMBaseVC {
                 }
             }
         }
-    }
-
-    // MARK: - For Current Location
-
-    func getCurrentLocation() {
-//        self.showLoader(text: "Getting Location")
-//        LocationManager.sharedInstance.getLocation { (location:CLLocation?, error:NSError?) in
-//            if error != nil {
-//                DispatchQueue.main.async {
-//                    self.hideLoader()
-//                    self.alertMessage(title: "", message: (error?.localizedDescription)!, buttonText: kOkButtonTitle, completionHandler: nil)
-//                }
-//                return
-//            }
-//
-//            let coordinate = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
-//            self.location.coordinateSelected = coordinate
-//            self.currentLocation = coordinate
-//            self.reverseGeocodeCoordinate(coordinate: coordinate)
-//            DispatchQueue.main.async {
-//                self.hideLoader()
-//                self.mapView.animate(to: GMSCameraPosition(target: coordinate, zoom: 15, bearing: 0, viewingAngle: 0))
-//            }
-//        }
     }
 
     // MARK: - Google Auto Complete API

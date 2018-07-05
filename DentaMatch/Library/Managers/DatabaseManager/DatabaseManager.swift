@@ -87,7 +87,6 @@ class DatabaseManager: NSObject {
                         }
                     }
                 }
-                // chat.date = self.getDate(dateString: chatObj["timestamp"].stringValue)?.date as NSDate?
             }
         }
         kAppDelegate.saveContext()
@@ -246,7 +245,6 @@ class DatabaseManager: NSObject {
         dateFormatter.amSymbol = "am"
         dateFormatter.pmSymbol = "pm"
         dateFormatter.dateFormat = Date.dateFormatYYYYMMDDHHMMSSAA()
-        // let dateEnter = dateFormatter.string(from: date)
 
         dateFormatter.dateFormat = Date.dateFormatHHMM()
         let dateEnter1 = dateFormatter.string(from: date)

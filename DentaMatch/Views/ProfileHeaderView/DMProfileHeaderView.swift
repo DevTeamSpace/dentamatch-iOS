@@ -12,13 +12,6 @@ class DMProfileHeaderView: UIView {
     @IBOutlet var profileImage: UIImageView!
     @IBOutlet var NameLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
-    /*
-     // Only override draw() if you perform custom drawing.
-     // An empty implementation adversely affects performance during animation.
-     override func draw(_ rect: CGRect) {
-     // Drawing code
-     }
-     */
 
     class func loadProfileView() -> DMProfileHeaderView {
         guard let instance = Bundle.main.loadNibNamed("DMProfileHeaderView", owner: self)?.first as? DMProfileHeaderView else {

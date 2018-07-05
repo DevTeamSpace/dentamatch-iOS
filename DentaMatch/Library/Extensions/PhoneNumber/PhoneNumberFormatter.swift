@@ -84,10 +84,10 @@ public struct PhoneNumberFormatter {
                 numericText = numericText.stringFrom(0, to: formatStyle.length)
             }
             let fullyFormattedNumber = numericText.replacingOccurrences(of: formatStyle.match, with: formatStyle.format, options: NSString.CompareOptions.regularExpression, range: nil)
-            if let editingNumber = fullyFormattedNumber.characters.split(maxSplits: 1, omittingEmptySubsequences: false, whereSeparator: {
+            if let editingNumber = fullyFormattedNumber.split(maxSplits: 1, omittingEmptySubsequences: false, whereSeparator: {
                 Character(placeholder) == $0
             }).first {
-                let eNumber = String(editingNumber)
+                let eNumber = "\(editingNumber)"
                 lastPhoneNumbers[hash] = eNumber
                 return eNumber
             }

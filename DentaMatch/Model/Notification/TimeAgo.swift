@@ -77,7 +77,7 @@ func timeAgoSinceDate(date: NSDate, numericDates: Bool) -> String {
     let components = calendar.dateComponents([.year, .weekOfYear, .month, .day, .hour, .minute, .second], from: earliest, to: latest as Date)
 
     if components.year! >= 2 {
-        return "\(components.year) years ago"
+        return "\(components.year ?? 0) years ago"
     } else if components.year! >= 1 {
         if numericDates {
             return "1 year ago"
@@ -85,7 +85,7 @@ func timeAgoSinceDate(date: NSDate, numericDates: Bool) -> String {
             return "Last year"
         }
     } else if components.month! >= 2 {
-        return "\(components.month) months ago"
+        return "\(components.month ?? 0) months ago"
     } else if components.month! >= 1 {
         if numericDates {
             return "1 month ago"
@@ -93,7 +93,7 @@ func timeAgoSinceDate(date: NSDate, numericDates: Bool) -> String {
             return "Last month"
         }
     } else if components.weekOfYear! >= 2 {
-        return "\(components.weekOfYear) weeks ago"
+        return "\(components.weekOfYear ?? 0) weeks ago"
     } else if components.weekOfYear! >= 1 {
         if numericDates {
             return "1 week ago"
@@ -101,7 +101,7 @@ func timeAgoSinceDate(date: NSDate, numericDates: Bool) -> String {
             return "Last week"
         }
     } else if components.day! >= 2 {
-        return "\(components.day) days ago"
+        return "\(components.day ?? 0) days ago"
     } else if components.day! >= 1 {
         if numericDates {
             return "1 day ago"
@@ -109,7 +109,7 @@ func timeAgoSinceDate(date: NSDate, numericDates: Bool) -> String {
             return "Yesterday"
         }
     } else if components.hour! >= 2 {
-        return "\(components.hour) hours ago"
+        return "\(components.hour ?? 0) hours ago"
     } else if components.hour! >= 1 {
         if numericDates {
             return "1 hour ago"
@@ -117,7 +117,7 @@ func timeAgoSinceDate(date: NSDate, numericDates: Bool) -> String {
             return "An hour ago"
         }
     } else if components.minute! >= 2 {
-        return "\(components.minute) minutes ago"
+        return "\(components.minute ?? 0) minutes ago"
     } else if components.minute! >= 1 {
         if numericDates {
             return "1 minute ago"
@@ -125,7 +125,7 @@ func timeAgoSinceDate(date: NSDate, numericDates: Bool) -> String {
             return "A minute ago"
         }
     } else if components.second! >= 3 {
-        return "\(components.second) seconds ago"
+        return "\(components.second ?? 0) seconds ago"
     } else {
         return "Just now"
     }

@@ -32,21 +32,21 @@ extension String {
     }
 
     var isEmpty: Bool {
-        if characters.count == 0 {
+        if self.count == 0 {
             return true
         }
         return false
     }
 
     var isEmptyField: Bool {
-        if trimmingCharacters(in: CharacterSet.whitespaces).characters.count == 0 {
+        if trimmingCharacters(in: CharacterSet.whitespaces).count == 0 {
             return true
         }
         return false
     }
 
     func dropLast(_ n: Int) -> String {
-        return String(characters.dropLast(n))
+        return String(self.dropLast(n))
     }
 
     subscript(i: Int) -> Character {
@@ -64,10 +64,10 @@ extension String {
     }
 
     func lpad(_ padding: String, length: Int) -> String {
-        if characters.count > length {
+        if self.count > length {
             return self
         }
-        return "".padding(toLength: length - characters.count, withPad: padding, startingAt: 0) + self
+        return "".padding(toLength: length - self.count, withPad: padding, startingAt: 0) + self
     }
 
     /**
@@ -79,7 +79,7 @@ extension String {
      - returns: The padded string
      */
     func rpad(_ padding: String, length: Int) -> String {
-        if characters.count > length { return self }
+        if self.count > length { return self }
         return self.padding(toLength: length, withPad: padding, startingAt: 0)
     }
 
@@ -98,7 +98,7 @@ extension String {
      - returns: Int length of string
      */
     var length: Int {
-        return characters.count
+        return self.count
     }
 
     /**
@@ -121,7 +121,7 @@ extension String {
      - returns: String
      */
     func stringFrom(_ start: Int, to end: Int? = nil) -> String {
-        var maximum = characters.count
+        var maximum = self.count
 
         let i = start < 0 ? self.endIndex : self.startIndex
         let ioffset = min(maximum, max(-1 * maximum, start))
@@ -131,7 +131,7 @@ extension String {
 
         let j = end < 0 ? self.endIndex : self.startIndex
         let joffset = min(maximum, max(-1 * maximum, end ?? 0))
-        let endIndex = end != nil && end! < characters.count ? index(j, offsetBy: joffset) : self.endIndex
+        let endIndex = end != nil && end! < self.count ? index(j, offsetBy: joffset) : self.endIndex
         return substring(with: (startIndex ..< endIndex))
     }
 
@@ -142,8 +142,8 @@ extension String {
      - returns: String
      */
     func onlyCharacters(_ allowed: String) -> String {
-        let search = allowed.characters
-        return characters.filter({ search.contains($0) }).reduce("", { $0 + String($1) })
+        let search = allowed
+        return self.filter({ search.contains($0) }).reduce("", { $0 + String($1) })
     }
 
     /**

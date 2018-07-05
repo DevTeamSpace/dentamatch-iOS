@@ -32,11 +32,7 @@ class YearPickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
         let calendar = Calendar.current
         currentTag = curTag
         let year = calendar.component(.year, from: date)
-
         currentYear = year
-//        let month = calendar.component(.month, from: date)
-//        let day = calendar.component(.day, from: date)
-        // self.currentTag = curTag
     }
 
     func numberOfComponents(in _: UIPickerView) -> Int {
