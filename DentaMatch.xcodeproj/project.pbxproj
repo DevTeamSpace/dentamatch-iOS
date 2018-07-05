@@ -872,6 +872,50 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		4877D98420EDF02500264422 /* Resourses */ = {
+			isa = PBXGroup;
+			children = (
+				E5AE2AEE1DAF82F500C008BD /* Storyboards */,
+				4877D98720EDF46E00264422 /* Database */,
+				E5C5F30C1DC074C9001A5A3F /* fonts */,
+				4877D98620EDF07900264422 /* Storyboards */,
+				4877D98520EDF05300264422 /* Images */,
+			);
+			path = Resourses;
+			sourceTree = "<group>";
+		};
+		4877D98520EDF05300264422 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				E56E45C21DAE07C200AD4559 /* Assets.xcassets */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		4877D98620EDF07900264422 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				E56E45C41DAE07C200AD4559 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		4877D98720EDF46E00264422 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				E5DC3E711DAF2C45002DA20E /* DentaMatch.xcdatamodeld */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		4877D98820EDF4ED00264422 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				E53738F11DB373C200967876 /* Reachability.swift */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
 		5A01381F1E6EBB6900D15783 /* MixpanelManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -1329,12 +1373,11 @@
 				E5A3E8EC1E160ABF00B10937 /* AnimatedTextField */,
 				E56B20A71DC0606A000512F6 /* TableView Cells */,
 				E5AE2AF41DAF876100C008BD /* CollectionView Cells */,
-				E5AE2AEE1DAF82F500C008BD /* Storyboards */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		E55462E21DAE47A9004163B2 /* Third Party */ = {
+		E55462E21DAE47A9004163B2 /* Externals */ = {
 			isa = PBXGroup;
 			children = (
 				E59467251FD8FFE60009C18B /* PopOverView */,
@@ -1347,7 +1390,7 @@
 				E597E58C1E151CF3001DDA78 /* FloatLabel */,
 				E55462E31DAE47A9004163B2 /* Toast */,
 			);
-			path = "Third Party";
+			path = Externals;
 			sourceTree = "<group>";
 		};
 		E55462E31DAE47A9004163B2 /* Toast */ = {
@@ -1383,19 +1426,22 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		E55462EA1DAE47F5004163B2 /* AppDelegate */ = {
+		E55462EA1DAE47F5004163B2 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				E55462FD1DAE4EDC004163B2 /* DentaMatch-BridgingHeader.h */,
+				E55462D01DAE1419004163B2 /* Info.plist */,
 				E55462EB1DAE47F5004163B2 /* AppDelegate.swift */,
 				E590299E1DED25C400151E9B /* AppDelegate+Notifications.swift */,
 				4877D98220ECD54400264422 /* AppDelegate+InitialConfiguration.swift */,
 			);
-			path = AppDelegate;
+			path = Application;
 			sourceTree = "<group>";
 		};
 		E55462ED1DAE483F004163B2 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				4877D98820EDF4ED00264422 /* Reachability */,
 				5A01381F1E6EBB6900D15783 /* MixpanelManager */,
 				5A737D071E56AF9D002472D4 /* NotificationHandler */,
 				E5AE37801E4984270001EC3C /* DatabaseManager */,
@@ -1406,7 +1452,6 @@
 				E59029A41DED2C7A00151E9B /* Log Manager */,
 				E59029A61DED2C7A00151E9B /* UserDefaultsManager */,
 				E5C5F3161DC1A723001A5A3F /* LocationManager */,
-				E53738F11DB373C200967876 /* Reachability.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1566,17 +1611,14 @@
 			isa = PBXGroup;
 			children = (
 				5A2CEF4C1E3F030400836654 /* Entitlements */,
+				E55462EA1DAE47F5004163B2 /* Application */,
+				E55462E21DAE47A9004163B2 /* Externals */,
 				E55462D41DAE1558004163B2 /* Constants */,
-				E55462FE1DAE50FE004163B2 /* Utilities */,
-				E5FCBE091DAE109F00F59D05 /* Helpers */,
-				E55462E21DAE47A9004163B2 /* Third Party */,
+				E5FCBE091DAE109F00F59D05 /* Library */,
 				5A1E2A161E1E47340055D913 /* Model */,
 				E55462DD1DAE31A1004163B2 /* Views */,
 				E55462E71DAE47C6004163B2 /* ViewControllers */,
-				E55462EA1DAE47F5004163B2 /* AppDelegate */,
-				E56E45C21DAE07C200AD4559 /* Assets.xcassets */,
-				E56E45C41DAE07C200AD4559 /* LaunchScreen.storyboard */,
-				E5FCBE0D1DAE110700F59D05 /* Supporting Files */,
+				4877D98420EDF02500264422 /* Resourses */,
 			);
 			path = DentaMatch;
 			sourceTree = "<group>";
@@ -1889,7 +1931,8 @@
 				F2D03BA41E1F580C0005D3A4 /* JobSearch.storyboard */,
 				5A988BC01E4AE6A500DECB49 /* Notification.storyboard */,
 			);
-			path = Storyboards;
+			name = Storyboards;
+			path = ../Views/Storyboards;
 			sourceTree = "<group>";
 		};
 		E5AE2AEF1DAF83F600C008BD /* Onboarding */ = {
@@ -2228,25 +2271,15 @@
 			path = FSCalendar;
 			sourceTree = "<group>";
 		};
-		E5FCBE091DAE109F00F59D05 /* Helpers */ = {
+		E5FCBE091DAE109F00F59D05 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				E55462FE1DAE50FE004163B2 /* Utilities */,
 				E56C9FA61DED75D500EAA9DD /* CommonHelper */,
 				E55462ED1DAE483F004163B2 /* Managers */,
 				E55462D51DAE2F01004163B2 /* Extensions */,
 			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
-		E5FCBE0D1DAE110700F59D05 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				E5C5F30C1DC074C9001A5A3F /* fonts */,
-				E55462D01DAE1419004163B2 /* Info.plist */,
-				E55462FD1DAE4EDC004163B2 /* DentaMatch-BridgingHeader.h */,
-				E5DC3E711DAF2C45002DA20E /* DentaMatch.xcdatamodeld */,
-			);
-			path = "Supporting Files";
+			path = Library;
 			sourceTree = "<group>";
 		};
 		F209C33F1E435A26005C9594 /* JobSearchParameter */ = {
@@ -3057,7 +3090,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 37YG7ABMG2;
-				INFOPLIST_FILE = "DentaMatch/Supporting Files/Info.plist";
+				INFOPLIST_FILE = DentaMatch/Application/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-DDEVELOPMENT";
@@ -3065,7 +3098,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)-Dev";
 				PROVISIONING_PROFILE = "35ac7f31-607c-4f0b-8566-8f60e995d36d";
 				PROVISIONING_PROFILE_SPECIFIER = "DentaMatch Development";
-				SWIFT_OBJC_BRIDGING_HEADER = "DentaMatch/Supporting Files/DentaMatch-BridgingHeader.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "DentaMatch/Application/DentaMatch-BridgingHeader.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
@@ -3083,7 +3116,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 37YG7ABMG2;
-				INFOPLIST_FILE = "DentaMatch/Supporting Files/Info.plist";
+				INFOPLIST_FILE = DentaMatch/Application/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-DPRODUCTION";
@@ -3091,7 +3124,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "979e1642-8e1f-472b-800f-488334cf4573";
 				PROVISIONING_PROFILE_SPECIFIER = DentaMatch_AppStore;
-				SWIFT_OBJC_BRIDGING_HEADER = "DentaMatch/Supporting Files/DentaMatch-BridgingHeader.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "DentaMatch/Application/DentaMatch-BridgingHeader.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
@@ -3171,7 +3204,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 37YG7ABMG2;
-				INFOPLIST_FILE = "DentaMatch/Supporting Files/Info.plist";
+				INFOPLIST_FILE = DentaMatch/Application/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-DQA";
@@ -3179,7 +3212,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)-QA";
 				PROVISIONING_PROFILE = "35ac7f31-607c-4f0b-8566-8f60e995d36d";
 				PROVISIONING_PROFILE_SPECIFIER = "DentaMatch Development";
-				SWIFT_OBJC_BRIDGING_HEADER = "DentaMatch/Supporting Files/DentaMatch-BridgingHeader.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "DentaMatch/Application/DentaMatch-BridgingHeader.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
@@ -3253,7 +3286,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 37YG7ABMG2;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				INFOPLIST_FILE = "DentaMatch/Supporting Files/Info.plist";
+				INFOPLIST_FILE = DentaMatch/Application/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-DSTAGING";
@@ -3261,7 +3294,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)-Staging";
 				PROVISIONING_PROFILE = "0a9bb0e7-6e9f-4719-8c91-221ced0ff0b5";
 				PROVISIONING_PROFILE_SPECIFIER = Dentamatch_distribution;
-				SWIFT_OBJC_BRIDGING_HEADER = "DentaMatch/Supporting Files/DentaMatch-BridgingHeader.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "DentaMatch/Application/DentaMatch-BridgingHeader.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
