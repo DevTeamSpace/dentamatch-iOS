@@ -10,7 +10,7 @@ import UIKit
 
 class DMCommonSuccessFailureVC: UIViewController {
 
-    @IBOutlet weak var headingImageView: UIImageView!
+            @IBOutlet weak var headingImageView: UIImageView!
     
     @IBOutlet weak var completeProfileButton: UIButton!
     @IBOutlet weak var detailLabel: UILabel!
