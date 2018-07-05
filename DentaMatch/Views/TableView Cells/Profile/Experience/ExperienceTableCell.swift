@@ -9,10 +9,9 @@
 import UIKit
 
 class ExperienceTableCell: UITableViewCell {
-    @IBOutlet weak var jobTitleLable: UILabel!
-    @IBOutlet weak var experienceLabel: UILabel!
+    @IBOutlet var jobTitleLable: UILabel!
+    @IBOutlet var experienceLabel: UILabel!
 
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,5 +22,4 @@ class ExperienceTableCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }

@@ -9,51 +9,53 @@
 import UIKit
 
 class DMTermsAndConditionsVC: DMBaseVC {
-
-    @IBOutlet weak var webView: UIWebView!
+    @IBOutlet var webView: UIWebView!
     var isPrivacyPolicy = false
-    var request:URLRequest!
-    
-    //MARK:- View LifeCycle
+    var request: URLRequest!
+
+    // MARK: - View LifeCycle
+
     override func viewDidLoad() {
         // Do any additional setup after loading the view.
         super.viewDidLoad()
         setup()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-        self.hideLoader()
+        navigationController?.setNavigationBarHidden(true, animated: true)
+        hideLoader()
     }
-    
-    //MARK:- Private Methods
+
+    // MARK: - Private Methods
+
     func setup() {
-        self.showLoader()
-        self.title = isPrivacyPolicy ? "PRIVACY POLICY" : "TERMS & CONDITIONS"
+        showLoader()
+        title = isPrivacyPolicy ? "PRIVACY POLICY" : "TERMS & CONDITIONS"
         request = isPrivacyPolicy ?
-            URLRequest(url: URL(string:Constants.API.privacyPolicyURL)!) :
-            URLRequest(url: URL(string:Constants.API.termsAndConditionsURL)!)
+            URLRequest(url: URL(string: Constants.API.privacyPolicyURL)!) :
+            URLRequest(url: URL(string: Constants.API.termsAndConditionsURL)!)
         webView.delegate = self
         webView.loadRequest(request)
-        self.navigationItem.leftBarButtonItem = self.backBarButton()
-        self.navigationController?.navigationBar.barTintColor = Constants.Color.navBarColor
+        navigationItem.leftBarButtonItem = backBarButton()
+        navigationController?.navigationBar.barTintColor = Constants.Color.navBarColor
     }
 }
 
-extension DMTermsAndConditionsVC : UIWebViewDelegate {
-    
-    //MARK:- WebView Delegates
-    func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
-        self.hideLoader()
+extension DMTermsAndConditionsVC: UIWebViewDelegate {
+
+    // MARK: - WebView Delegates
+
+    func webView(_: UIWebView, didFailLoadWithError _: Error) {
+        hideLoader()
     }
-    
-    func webViewDidFinishLoad(_ webView: UIWebView) {
-        self.hideLoader()
+
+    func webViewDidFinishLoad(_: UIWebView) {
+        hideLoader()
     }
 }

@@ -7,11 +7,10 @@
 //
 
 import Foundation
-import UserNotifications
 import SwiftyJSON
+import UserNotifications
 
-extension AppDelegate:UNUserNotificationCenterDelegate {
-    
+extension AppDelegate: UNUserNotificationCenterDelegate {
     func registerForPushNotifications() {
         if #available(iOS 10.0, *) {
             let center = UNUserNotificationCenter.current()
@@ -24,40 +23,41 @@ extension AppDelegate:UNUserNotificationCenterDelegate {
                 }
             }
         } else {
-            let pushSettings = UIUserNotificationSettings(types: [.alert,.badge,.sound], categories: nil)
+            let pushSettings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
             UIApplication.shared.registerUserNotificationSettings(pushSettings)
             UIApplication.shared.registerForRemoteNotifications()
         }
     }
 
-    //MARK:- UIApplicationDelegate
-    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+    // MARK: - UIApplicationDelegate
+
+    func application(_: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         // application is unused
         var token = ""
-        for i in 0..<deviceToken.count {
+        for i in 0 ..< deviceToken.count {
             //token = token + String(format: "%02.2hhx", arguments: [deviceToken[i]])
             token += String(format: "%02.2hhx", deviceToken[i] as CVarArg)
         }
-        //debugPrint(token)
+        // debugPrint(token)
         if UserDefaultsManager.sharedInstance.deviceToken == token {
-            //Nothing needed to call
+            // Nothing needed to call
         } else {
             UserDefaultsManager.sharedInstance.deviceToken = token
-            self.updateDeviceTokenAPI()
+            updateDeviceTokenAPI()
         }
     }
-    
-    //MARK:- Remote/Local Notification Delegates
-    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+
+    // MARK: - Remote/Local Notification Delegates
+
+    func application(_: UIApplication, didFailToRegisterForRemoteNotificationsWithError _: Error) {
         //
-        //debugPrint(error.localizedDescription)
-        
+        // debugPrint(error.localizedDescription)
     }
-    
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
-        //let dict = userInfo["aps"] as? NSDictionary
-        //debugPrint(dict ?? "not avail")
-        //debugPrint("didReceiveRemoteNotification \(userInfo.description)")
+
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
+        // let dict = userInfo["aps"] as? NSDictionary
+        // debugPrint(dict ?? "not avail")
+        // debugPrint("didReceiveRemoteNotification \(userInfo.description)")
         //        self.window?.makeToast(userInfo.description)
         let state: UIApplicationState = UIApplication.shared.applicationState
         if state == UIApplicationState.active {
@@ -65,8 +65,8 @@ extension AppDelegate:UNUserNotificationCenterDelegate {
                 if let noti = userInfo["data"] as? NSDictionary {
                     let megCheck = noti["data"] as! NSDictionary
                     if megCheck["messageId"] != nil {
-                        //debugPrint("message check nil")
-                    }else{
+                        // debugPrint("message check nil")
+                    } else {
                         let noti = userInfo["data"] as? NSDictionary
                         let newObjMSG = noti?["jobDetails"]
                         let jobJson = JSON(newObjMSG ?? [:])
@@ -74,19 +74,19 @@ extension AppDelegate:UNUserNotificationCenterDelegate {
                         let newObj = noti?["data"]
                         let josnObj = JSON(newObj ?? [:])
                         let userNotiObj = UserNotification(dict: josnObj)
-                        ToastView.showNotificationToast(message: userNotiObj.message, name: "Notification", imageUrl: "",  type: ToastSkinType.White, onCompletion:{
-                            NotificationHandler.notificationHandleforForground(notiObj: userNotiObj,jobObj:jobObj, app: application)
+                        ToastView.showNotificationToast(message: userNotiObj.message, name: "Notification", imageUrl: "", type: ToastSkinType.White, onCompletion: {
+                            NotificationHandler.notificationHandleforForground(notiObj: userNotiObj, jobObj: jobObj, app: application)
                         })
                     }
                 }
             }
-        }else{
+        } else {
             if UserDefaultsManager.sharedInstance.isLoggedIn {
                 if let noti = userInfo["data"] as? NSDictionary {
                     let megCheck = noti["data"] as! NSDictionary
                     if megCheck["messageId"] != nil {
-                        NotificationHandler.notificationHandleforChat(fromId: (megCheck["fromId"] as? String), toId: (megCheck["toId"]  as? String), messgaeId: (megCheck["messageId"]  as? String), recurterId: (megCheck["recurterId"]  as? String))
-                    }else{
+                        NotificationHandler.notificationHandleforChat(fromId: (megCheck["fromId"] as? String), toId: (megCheck["toId"] as? String), messgaeId: (megCheck["messageId"] as? String), recurterId: (megCheck["recurterId"] as? String))
+                    } else {
                         let noti = userInfo["data"] as? NSDictionary
                         let newObjMSG = noti?["jobDetails"]
                         let jobJson = JSON(newObjMSG ?? [:])
@@ -94,34 +94,34 @@ extension AppDelegate:UNUserNotificationCenterDelegate {
                         let newObj = noti?["data"]
                         let josnObj = JSON(newObj ?? [:])
                         let userNotiObj = UserNotification(dict: josnObj)
-                        NotificationHandler.notificationHandleforBackground(notiObj: userNotiObj, jobObj:jobObj, app: application)
+                        NotificationHandler.notificationHandleforBackground(notiObj: userNotiObj, jobObj: jobObj, app: application)
                     }
-                 }
+                }
             }
         }
     }
-    
+
     @available(iOS 10.0, *)
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.alert,.badge])
+    func userNotificationCenter(_: UNUserNotificationCenter, willPresent _: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .badge])
     }
-    
+
     @available(iOS 10.0, *)
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        //let dict = response.notification.request.content.userInfo
-        //debugPrint(dict)
-        //debugPrint("Go to chat")
+    func userNotificationCenter(_: UNUserNotificationCenter, didReceive _: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        // let dict = response.notification.request.content.userInfo
+        // debugPrint(dict)
+        // debugPrint("Go to chat")
         completionHandler()
     }
-    
+
     func updateDeviceTokenAPI() {
         if let user = UserManager.shared().activeUser {
-            let params : [String: Any] = [
-                "accessToken":user.accessToken,
-                "updateDeviceToken":UserDefaultsManager.sharedInstance.deviceToken
+            let params: [String: Any] = [
+                "accessToken": user.accessToken,
+                "updateDeviceToken": UserDefaultsManager.sharedInstance.deviceToken,
             ]
-            APIManager.apiPost(serviceName: Constants.API.updateDeviceToken, parameters: params , completionHandler: { (response:JSON?, error:NSError?) in
-                //debugPrint(response ?? "response not avaialble")
+            APIManager.apiPost(serviceName: Constants.API.updateDeviceToken, parameters: params, completionHandler: { (_: JSON?, _: NSError?) in
+                // debugPrint(response ?? "response not avaialble")
             })
         }
     }

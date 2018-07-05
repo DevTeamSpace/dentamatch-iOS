@@ -10,14 +10,13 @@ import Foundation
 import SwiftyJSON
 
 extension DMEditProfileVC {
-    
-    func userProfileAPI(checkForCompletion:Bool = false) {
+    func userProfileAPI(checkForCompletion: Bool = false) {
         if !checkForCompletion {
-            self.showLoader()
+            showLoader()
         }
-        APIManager.apiGet(serviceName: Constants.API.userProfile, parameters: [:]) { (response:JSON?, error:NSError?) in
-            
-            self.hideLoader()            
+        APIManager.apiGet(serviceName: Constants.API.userProfile, parameters: [:]) { (response: JSON?, error: NSError?) in
+
+            self.hideLoader()
             if error != nil {
                 self.makeToast(toastString: (error?.localizedDescription)!)
                 return
@@ -26,7 +25,7 @@ extension DMEditProfileVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            //debugPrint(response!)
+            // debugPrint(response!)
             if checkForCompletion {
                 self.handleUserResponse(user: response![Constants.ServerKey.result][Constants.ServerKey.user])
             } else {
@@ -35,8 +34,8 @@ extension DMEditProfileVC {
             self.editProfileTableView.reloadData()
         }
     }
-    
-    func handleProfileResponse(response:JSON?) {
+
+    func handleProfileResponse(response: JSON?) {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
                 handleJobListResponse(jobLists: response[Constants.ServerKey.result][Constants.ServerKey.joblists].arrayValue)
@@ -49,28 +48,28 @@ extension DMEditProfileVC {
                 handleSkillsResponse(skills: response[Constants.ServerKey.result][Constants.ServerKey.skills].arrayValue)
                 handleWorkExperienceResponse(workExperienceArray: response[Constants.ServerKey.result][Constants.ServerKey.workExperience][Constants.ServerKey.list].arrayValue)
             } else {
-                //handle error
+                // handle error
             }
         }
     }
-    
-    func handleDentalStateboardResponse(dentalStateBoard:JSON?) {
+
+    func handleDentalStateboardResponse(dentalStateBoard: JSON?) {
         if let dentalStateBoard = dentalStateBoard {
-            self.dentalStateBoardURL = dentalStateBoard[Constants.ServerKey.imageUrl].stringValue
+            dentalStateBoardURL = dentalStateBoard[Constants.ServerKey.imageUrl].stringValue
         }
     }
-    
-    func handleJobListResponse(jobLists:[JSON]?) {
-			self.jobTitles.removeAll()
+
+    func handleJobListResponse(jobLists: [JSON]?) {
+        jobTitles.removeAll()
         if let jobLists = jobLists {
             for jobList in jobLists {
                 let jobTitle = JobTitle(job: jobList)
-                self.jobTitles.append(jobTitle)
+                jobTitles.append(jobTitle)
             }
         }
     }
-    
-    func handleUserResponse(user:JSON?) {
+
+    func handleUserResponse(user: JSON?) {
         if let user = user {
             UserManager.shared().activeUser.firstName = user[Constants.ServerKey.firstName].stringValue
             UserManager.shared().activeUser.lastName = user[Constants.ServerKey.lastName].stringValue
@@ -81,39 +80,37 @@ extension DMEditProfileVC {
             UserManager.shared().activeUser.preferredLocationId = user[Constants.ServerKey.preferredJobLocationId].stringValue
             UserManager.shared().activeUser.state = user[Constants.ServerKey.state].stringValue
 
-            currentJobTitle = self.jobTitles.filter({$0.jobId == user[Constants.ServerKey.jobTitileId].intValue}).first
+            currentJobTitle = jobTitles.filter({ $0.jobId == user[Constants.ServerKey.jobTitileId].intValue }).first
 
             UserManager.shared().activeUser.aboutMe = user[Constants.ServerKey.aboutMe].stringValue
             UserManager.shared().activeUser.licenseNumber = user[Constants.ServerKey.licenseNumber].stringValue
-            self.isJobSeekerVerified = user["isJobSeekerVerified"].stringValue
-            self.isProfileCompleted = user["isCompleted"].stringValue
-            
-            UserManager.shared().saveActiveUser()
-            
+            isJobSeekerVerified = user["isJobSeekerVerified"].stringValue
+            isProfileCompleted = user["isCompleted"].stringValue
 
+            UserManager.shared().saveActiveUser()
         }
     }
-    
-    func handleLicenseResponse(license:JSON?) {
+
+    func handleLicenseResponse(license: JSON?) {
         if !(license?[Constants.ServerKey.licenseNumber].stringValue.isEmptyField)! {
             if let license = license {
                 self.license = License(license: license)
             }
         }
     }
-    
-    func handleSchoolListResponse(schoolsCategories:[JSON]?) {
-			self.schoolCategories.removeAll()
+
+    func handleSchoolListResponse(schoolsCategories: [JSON]?) {
+        schoolCategories.removeAll()
         if let schoolsCategories = schoolsCategories {
             for schoolCategory in schoolsCategories {
                 let school = SelectedSchool(school: schoolCategory)
-                self.schoolCategories.append(school)
+                schoolCategories.append(school)
             }
         }
     }
-    
-    func handleCertificationResponse(certifications:[JSON]?) {
-			self.certifications = [Certification]()
+
+    func handleCertificationResponse(certifications: [JSON]?) {
+        self.certifications = [Certification]()
         if let certifications = certifications {
             for certification in certifications {
                 let certification = Certification(certification: certification)
@@ -121,9 +118,9 @@ extension DMEditProfileVC {
             }
         }
     }
-    
-    func handleAffiliationResponse(affiliations:[JSON]?) {
-			self.affiliations = [Affiliation]()
+
+    func handleAffiliationResponse(affiliations: [JSON]?) {
+        self.affiliations = [Affiliation]()
         if let affiliations = affiliations {
             for affiliation in affiliations {
                 let affiliation = Affiliation(affiliation: affiliation)
@@ -131,33 +128,33 @@ extension DMEditProfileVC {
             }
         }
     }
-    
-    func handleSkillsResponse(skills:[JSON]?) {
+
+    func handleSkillsResponse(skills: [JSON]?) {
         self.skills.removeAll()
         if let skills = skills {
             for skillObj in skills {
                 var subSkills = [SubSkill]()
                 let subSkillsArray = skillObj["children"].arrayValue
-                
+
                 for subSkillObj in subSkillsArray {
                     let subSkill = SubSkill(subSkill: subSkillObj)
-                     subSkills.append(subSkill)
+                    subSkills.append(subSkill)
                 }
-                
+
                 let skill = Skill(skills: skillObj, subSkills: subSkills)
                 self.skills.append(skill)
             }
-            //otherSkill = skills.filter({$0.isOther == true}).first
-            //skills = skills.filter({$0.isOther == false})
+            // otherSkill = skills.filter({$0.isOther == true}).first
+            // skills = skills.filter({$0.isOther == false})
         }
     }
-    
-    func handleWorkExperienceResponse(workExperienceArray:[JSON]?) {
-			self.experiences.removeAll()
+
+    func handleWorkExperienceResponse(workExperienceArray: [JSON]?) {
+        experiences.removeAll()
         if let workExperienceArray = workExperienceArray {
             for workExperience in workExperienceArray {
                 let workExperience = ExperienceModel(json: workExperience)
-                self.experiences.append(workExperience)
+                experiences.append(workExperience)
             }
         }
     }

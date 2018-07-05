@@ -10,50 +10,48 @@ import Foundation
 import SwiftyJSON
 
 extension DMAffiliationsVC {
-    
     func getAffiliationListAPI() {
-        self.showLoader()
-        APIManager.apiGet(serviceName: Constants.API.getAffiliationList, parameters: [:]) { (response:JSON?, error:NSError?) in
+        showLoader()
+        APIManager.apiGet(serviceName: Constants.API.getAffiliationList, parameters: [:]) { (response: JSON?, error: NSError?) in
             self.hideLoader()
             if error != nil {
                 self.makeToast(toastString: (error?.localizedDescription)!)
                 return
             }
-            
+
             if response == nil {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            //debugPrint(response!)
+            // debugPrint(response!)
             self.handleAffiliationListResponse(response: response)
         }
     }
-    
-    func saveAffiliationData(params:[String:Any]) {
-        //debugPrint(params)
-        self.showLoader()
-        APIManager.apiPostWithJSONEncode(serviceName: Constants.API.saveAffiliationList, parameters: params) { (response:JSON?, error:NSError?) in
-            
+
+    func saveAffiliationData(params: [String: Any]) {
+        // debugPrint(params)
+        showLoader()
+        APIManager.apiPostWithJSONEncode(serviceName: Constants.API.saveAffiliationList, parameters: params) { (response: JSON?, error: NSError?) in
+
             self.hideLoader()
             if error != nil {
                 self.makeToast(toastString: (error?.localizedDescription)!)
                 return
             }
-            
+
             if response == nil {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            //debugPrint(response!)
+            // debugPrint(response!)
             self.handleSaveAffiliationResponse(response: response)
-
         }
     }
-    
-    //MARK:- Response Handling
+
+    // MARK: - Response Handling
+
     func handleAffiliationListResponse(response: JSON?) {
         if let response = response {
-            
             if response[Constants.ServerKey.status].boolValue {
                 let affiliationList = response[Constants.ServerKey.result][Constants.ServerKey.list].arrayValue
                 for affiliationObj in affiliationList {
@@ -67,26 +65,25 @@ extension DMAffiliationsVC {
 //                    affiliations.removeObject(object: obj)
 //                }
 //                affiliations.append(contentsOf: filter)
-                self.affiliationsTableView.reloadData()
+                affiliationsTableView.reloadData()
             } else {
-                self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+                makeToast(toastString: response[Constants.ServerKey.message].stringValue)
             }
         }
     }
-    
-    func handleSaveAffiliationResponse(response:JSON?) {
+
+    func handleSaveAffiliationResponse(response: JSON?) {
         if let response = response {
-        
             if response[Constants.ServerKey.status].boolValue {
-                self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+                makeToast(toastString: response[Constants.ServerKey.message].stringValue)
                 if isEditMode {
-                    self.manageSelectedAffiliations()
-                    _ = self.navigationController?.popViewController(animated: true)
+                    manageSelectedAffiliations()
+                    _ = navigationController?.popViewController(animated: true)
                 } else {
                     openCertificationScreen()
                 }
             } else {
-                self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+                makeToast(toastString: response[Constants.ServerKey.message].stringValue)
             }
         }
     }

@@ -8,22 +8,23 @@
 
 import Foundation
 
-extension DMLoginVC:UITextFieldDelegate {
-    
-    //MARK:- TextField Delegates
+extension DMLoginVC: UITextFieldDelegate {
+
+    // MARK: - TextField Delegates
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField.tag == 1 {
-            //Email TextField
+            // Email TextField
             if let cell = self.loginTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? LoginTableViewCell {
                 cell.passwordTextField.becomeFirstResponder()
             }
         } else {
-            //Password TextField
+            // Password TextField
             textField.resignFirstResponder()
         }
         return true
     }
-    
+
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if let textField = textField as? AnimatedLeftViewPHTextField {
             textField.layer.borderColor = Constants.Color.textFieldColorSelected.cgColor
@@ -31,7 +32,7 @@ extension DMLoginVC:UITextFieldDelegate {
         }
         return true
     }
-    
+
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         if let textField = textField as? AnimatedLeftViewPHTextField {
             textField.text = textField.text!.trim()
@@ -40,7 +41,7 @@ extension DMLoginVC:UITextFieldDelegate {
         }
         return true
     }
-    
+
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField.tag == 1 {
             loginParams[Constants.ServerKey.email] = textField.text!

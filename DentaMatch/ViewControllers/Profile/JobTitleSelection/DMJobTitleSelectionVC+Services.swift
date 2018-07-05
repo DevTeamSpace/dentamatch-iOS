@@ -10,10 +10,9 @@ import Foundation
 import SwiftyJSON
 
 extension DMJobTitleSelectionVC {
-    
     func getJobsAPI() {
-        self.showLoader()
-        APIManager.apiGet(serviceName: Constants.API.getJobTitle, parameters: [:]) { (response:JSON?, error:NSError?) in
+        showLoader()
+        APIManager.apiGet(serviceName: Constants.API.getJobTitle, parameters: [:]) { (response: JSON?, error: NSError?) in
             self.hideLoader()
             if error != nil {
                 self.makeToast(toastString: (error?.localizedDescription)!)
@@ -23,13 +22,12 @@ extension DMJobTitleSelectionVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            //debugPrint(response!)
+            // debugPrint(response!)
             self.handleJobListResponse(response: response!)
         }
     }
-    
-    func handleJobListResponse(response:JSON?) {
 
+    func handleJobListResponse(response: JSON?) {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
                 let skillList = response[Constants.ServerKey.result][Constants.ServerKey.joblists].array
@@ -40,21 +38,21 @@ extension DMJobTitleSelectionVC {
                 jobSelectionPickerView.setup(jobTitles: jobTitles)
                 jobSelectionPickerView.pickerView.reloadAllComponents()
                 jobSelectionPickerView.backgroundColor = UIColor.white
-                
+
             } else {
-                self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+                makeToast(toastString: response[Constants.ServerKey.message].stringValue)
             }
         }
     }
-    
-    func uploadProfileImageAPI(textParams:[String:Any]) {
-        var params = [String:AnyObject]()
+
+    func uploadProfileImageAPI(textParams: [String: Any]) {
+        var params = [String: AnyObject]()
         params["type"] = "profile_pic" as AnyObject?
         if let profileImageData = self.profileImage {
             if let imageData = UIImageJPEGRepresentation(profileImageData, 0.5) {
                 params["image"] = imageData as AnyObject?
-                self.showLoader()
-                APIManager.apiMultipart(serviceName: Constants.API.uploadImage, parameters: params, completionHandler: { (response:JSON?, error:NSError?) in
+                showLoader()
+                APIManager.apiMultipart(serviceName: Constants.API.uploadImage, parameters: params, completionHandler: { (response: JSON?, error: NSError?) in
                     self.hideLoader()
                     self.updateLicenseDetails(params: textParams)
                     if error != nil {
@@ -65,35 +63,35 @@ extension DMJobTitleSelectionVC {
                         self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                         return
                     }
-                    
-                    //debugPrint(response!)
+
+                    // debugPrint(response!)
                     self.handleUploadProfileResponse(response: response)
-                    
+
                 })
             } else {
-                self.makeToast(toastString: "Profile Image problem")
-                self.updateLicenseDetails(params: params)
+                makeToast(toastString: "Profile Image problem")
+                updateLicenseDetails(params: params)
             }
         }
     }
-    
-    func handleUploadProfileResponse(response:JSON?) {
+
+    func handleUploadProfileResponse(response: JSON?) {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
                 UserManager.shared().activeUser.profileImageURL = response[Constants.ServerKey.result][Constants.ServerKey.profileImageURL].stringValue
 //                UserDefaultsManager.sharedInstance.profileImageURL = response[Constants.ServerKey.result][Constants.ServerKey.profileImageURL].stringValue
-                self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
-               // openLicenseScreen()
+                makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+                // openLicenseScreen()
             } else {
-                self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+                makeToast(toastString: response[Constants.ServerKey.message].stringValue)
             }
         }
     }
-    
-    func updateLicenseDetails(params:[String:Any]) {
-        self.showLoader()
-        
-        APIManager.apiPut(serviceName: Constants.API.licenseNumberAndState, parameters: params) { (response:JSON?, error:NSError?) in
+
+    func updateLicenseDetails(params: [String: Any]) {
+        showLoader()
+
+        APIManager.apiPut(serviceName: Constants.API.licenseNumberAndState, parameters: params) { (response: JSON?, error: NSError?) in
             self.hideLoader()
             if error != nil {
                 self.makeToast(toastString: (error?.localizedDescription)!)
@@ -103,15 +101,15 @@ extension DMJobTitleSelectionVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            //debugPrint(response!)
+            // debugPrint(response!)
             self.handleUpdateLicenseResponse(response: response)
         }
     }
-    
-    func handleUpdateLicenseResponse(response:JSON?) {
+
+    func handleUpdateLicenseResponse(response: JSON?) {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
-                //move to congrats screen
+                // move to congrats screen
                 let profileSuccessPendingVC = UIStoryboard.profileStoryBoard().instantiateViewController(type: DMProfileSuccessPending.self)!
                 let user = response[Constants.ServerKey.result]["userDetails"]
                 if user["isVerified"].stringValue == "1" {
@@ -131,10 +129,10 @@ extension DMJobTitleSelectionVC {
                 let myuser = UserManager.shared().activeUser as! User
                 print("user job\(myuser.isJobSeekerVerified)")
                 UserManager.shared().saveActiveUser()
-                
-                self.navigationController?.pushViewController(profileSuccessPendingVC, animated: true)
+
+                navigationController?.pushViewController(profileSuccessPendingVC, animated: true)
             } else {
-                self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+                makeToast(toastString: response[Constants.ServerKey.message].stringValue)
             }
         }
     }

@@ -8,23 +8,22 @@
 
 import Foundation
 
-extension DMJobTitleSelectionVC:JobSelectionPickerViewDelegate {
-    
+extension DMJobTitleSelectionVC: JobSelectionPickerViewDelegate {
     func jobPickerDoneButtonAction(job: JobTitle?) {
         if let jobTitle = job {
-            self.selectedJobTitle = jobTitle
+            selectedJobTitle = jobTitle
 
             if let cell = self.jobTitleSelectionTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? AnimatedPHTableCell {
                 cell.commonTextField.text = jobTitle.jobTitle
-                self.jobTitleSelectionTableView.reloadData()
+                jobTitleSelectionTableView.reloadData()
             }
         }
-        self.changeUIOFCreateProfileButton(self.isCreateProfileButtonEnable())
-        self.view.endEditing(true)
+        changeUIOFCreateProfileButton(isCreateProfileButtonEnable())
+        view.endEditing(true)
     }
-    
+
     func jobPickerCancelButtonAction() {
-        self.changeUIOFCreateProfileButton(self.isCreateProfileButtonEnable())
-        self.view.endEditing(true)
+        changeUIOFCreateProfileButton(isCreateProfileButtonEnable())
+        view.endEditing(true)
     }
 }

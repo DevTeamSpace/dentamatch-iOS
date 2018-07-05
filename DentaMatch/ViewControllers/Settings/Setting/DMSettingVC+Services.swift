@@ -10,12 +10,11 @@ import Foundation
 import SwiftyJSON
 
 extension DMSettingVC {
-    
-    func signOut(completionHandler: @escaping (Bool?, NSError?) -> ()) {
-        let params = [String:AnyObject]()
-        
-        self.showLoader()
-        APIManager.apiDelete(serviceName: Constants.API.signOut, parameters: params) { (response:JSON?, error:NSError?) in
+    func signOut(completionHandler: @escaping (Bool?, NSError?) -> Void) {
+        let params = [String: AnyObject]()
+
+        showLoader()
+        APIManager.apiDelete(serviceName: Constants.API.signOut, parameters: params) { (response: JSON?, error: NSError?) in
             self.hideLoader()
             if error != nil {
                 self.makeToast(toastString: (error?.localizedDescription)!)
@@ -26,17 +25,15 @@ extension DMSettingVC {
                 return
             }
             //            debugPrint(response!)
-            
+
             if response![Constants.ServerKey.status].boolValue {
                 self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
                 completionHandler(true, error)
-                //do next
+                // do next
             } else {
                 self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
                 completionHandler(false, error)
-                
             }
         }
     }
-
 }

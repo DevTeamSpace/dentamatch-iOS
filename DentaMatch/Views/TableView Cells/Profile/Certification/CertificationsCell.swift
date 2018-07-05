@@ -9,18 +9,17 @@
 import UIKit
 
 class CertificationsCell: UITableViewCell {
-
-    @IBOutlet weak var photoButton: UIButton!
-    @IBOutlet weak var validityDateTextField: PickerAnimatedTextField!
-    @IBOutlet weak var uploadPhotoButton: UIButton!
-    @IBOutlet weak var headingLabel: UILabel!
+    @IBOutlet var photoButton: UIButton!
+    @IBOutlet var validityDateTextField: PickerAnimatedTextField!
+    @IBOutlet var uploadPhotoButton: UIButton!
+    @IBOutlet var headingLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.photoButton.layer.cornerRadius = self.photoButton.frame.size.width/2
-        self.photoButton.clipsToBounds = true
-        self.photoButton.imageView?.contentMode = .scaleAspectFill
-        self.validityDateTextField.tintColor = UIColor.clear
+        photoButton.layer.cornerRadius = photoButton.frame.size.width / 2
+        photoButton.clipsToBounds = true
+        photoButton.imageView?.contentMode = .scaleAspectFill
+        validityDateTextField.tintColor = UIColor.clear
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -28,5 +27,4 @@ class CertificationsCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }

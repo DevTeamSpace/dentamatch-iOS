@@ -9,13 +9,13 @@
 import Foundation
 import UIKit
 
-enum Position:Int {
+enum Position: Int {
     case Left = 1
     case Right
 }
 
 protocol ToolBarButtonDelegate {
-    func toolBarButtonPressed(position:Position)
+    func toolBarButtonPressed(position: Position)
 }
 
 var delegate: ToolBarButtonDelegate?
@@ -29,36 +29,36 @@ extension UITextField {
         let item = UIBarButtonItem(title: title, style: .done, target: self, action: #selector(toolBarButtonPressed))
         item.tag = 1
         item.setTitleTextAttributes([NSAttributedStringKey.font: UIFont.fontRegular(fontSize: 20.0)!], for: UIControlState.normal)
-        
+
         item.tintColor = UIColor.white
         let toolbarButtons = [item]
-        
-        //Put the buttons into the ToolBar and display the tool bar
+
+        // Put the buttons into the ToolBar and display the tool bar
         keyboardDoneButtonView.setItems(toolbarButtons, animated: false)
-        self.inputAccessoryView = keyboardDoneButtonView
+        inputAccessoryView = keyboardDoneButtonView
     }
-    
+
     func addRightToolBarButton(title: String) {
         let keyboardDoneButtonView = UIToolbar()
         keyboardDoneButtonView.sizeToFit()
         keyboardDoneButtonView.barTintColor = Constants.Color.toolBarColor
         // Setup the buttons to be put in the system.
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
-        
+
         let item = UIBarButtonItem(title: title, style: .done, target: self, action: #selector(toolBarButtonPressed))
         item.tag = 2
         item.setTitleTextAttributes([NSAttributedStringKey.font: UIFont.fontRegular(fontSize: 20.0)!], for: UIControlState.normal)
-        
+
         item.tintColor = UIColor.white
-        
-        let toolbarButtons = [flexibleSpace,item]
-        
-        //Put the buttons into the ToolBar and display the tool bar
+
+        let toolbarButtons = [flexibleSpace, item]
+
+        // Put the buttons into the ToolBar and display the tool bar
         keyboardDoneButtonView.setItems(toolbarButtons, animated: false)
-        self.inputAccessoryView = keyboardDoneButtonView
+        inputAccessoryView = keyboardDoneButtonView
     }
-    
-    @objc func toolBarButtonPressed(barButton:UIBarButtonItem) {
+
+    @objc func toolBarButtonPressed(barButton: UIBarButtonItem) {
         if let delegate = delegate as? ToolBarButtonDelegate {
             if barButton.tag == 1 {
                 delegate.toolBarButtonPressed(position: Position.Left)

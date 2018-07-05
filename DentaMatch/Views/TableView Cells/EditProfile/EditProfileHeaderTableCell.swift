@@ -9,19 +9,19 @@
 import UIKit
 
 class EditProfileHeaderTableCell: UITableViewCell {
-    @IBOutlet weak var settingButton: UIButton!
-    @IBOutlet weak var editButton: UIButton!
-    @IBOutlet weak var placeLabel: UILabel!
+    @IBOutlet var settingButton: UIButton!
+    @IBOutlet var editButton: UIButton!
+    @IBOutlet var placeLabel: UILabel!
 
-    @IBOutlet weak var statusButton: UIButton!
-    @IBOutlet weak var aboutTextView: UITextView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var profileButton: ProfileImageButton!
+    @IBOutlet var statusButton: UIButton!
+    @IBOutlet var aboutTextView: UITextView!
+    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var profileButton: ProfileImageButton!
     override func awakeFromNib() {
         super.awakeFromNib()
-        //self.aboutTextView.textContainer.lineFragmentPadding = 20.0
-        self.clipsToBounds = true
-        self.placeLabel.numberOfLines = 3
+        // self.aboutTextView.textContainer.lineFragmentPadding = 20.0
+        clipsToBounds = true
+        placeLabel.numberOfLines = 3
         // Initialization code
     }
 
@@ -30,39 +30,37 @@ class EditProfileHeaderTableCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-    func fillPlaceAndJobTitle(jobTitle:String,place:String) -> NSMutableAttributedString {
-        
+
+    func fillPlaceAndJobTitle(jobTitle: String, place: String) -> NSMutableAttributedString {
         if jobTitle.isEmptyField {
             let attributedString = NSMutableAttributedString()
-            let placeText = NSAttributedString(string: place, attributes: [NSAttributedStringKey.font:UIFont.fontRegular(fontSize: 16.0)!,NSAttributedStringKey.foregroundColor:UIColor.white])
+            let placeText = NSAttributedString(string: place, attributes: [NSAttributedStringKey.font: UIFont.fontRegular(fontSize: 16.0)!, NSAttributedStringKey.foregroundColor: UIColor.white])
             attributedString.append(placeText)
             return attributedString
         } else {
             let attributedString = NSMutableAttributedString()
-            let jobTitleText = NSAttributedString(string: jobTitle, attributes: [NSAttributedStringKey.font:UIFont.fontSemiBold(fontSize: 16.0)!,NSAttributedStringKey.foregroundColor:UIColor.white])
-            let placeText = NSAttributedString(string: place, attributes: [NSAttributedStringKey.font:UIFont.fontRegular(fontSize: 16.0)!,NSAttributedStringKey.foregroundColor:UIColor.white])
+            let jobTitleText = NSAttributedString(string: jobTitle, attributes: [NSAttributedStringKey.font: UIFont.fontSemiBold(fontSize: 16.0)!, NSAttributedStringKey.foregroundColor: UIColor.white])
+            let placeText = NSAttributedString(string: place, attributes: [NSAttributedStringKey.font: UIFont.fontRegular(fontSize: 16.0)!, NSAttributedStringKey.foregroundColor: UIColor.white])
             attributedString.append(jobTitleText)
             attributedString.append(NSAttributedString(string: "\n"))
             attributedString.append(placeText)
             return attributedString
         }
-        
     }
-    
-    class func calculateHeight(text:String) -> CGFloat {
+
+    class func calculateHeight(text: String) -> CGFloat {
         let textView = UITextView()
         textView.font = UIFont.fontRegular(fontSize: 16.0)!
-        var newFrame:CGRect!
+        var newFrame: CGRect!
         textView.text = text
-        
+
         let fixedWidth = UIScreen.main.bounds.width - 40
         textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
         let newSize = textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
         newFrame = textView.frame
         newFrame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
 
-        //debugPrint("height \(newFrame.height)")
+        // debugPrint("height \(newFrame.height)")
         if newFrame.height + 10 > 109 {
             return 109
         } else {

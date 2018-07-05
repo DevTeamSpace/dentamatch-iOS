@@ -6,52 +6,50 @@
 //  Copyright © 2017 Appster. All rights reserved.
 //
 
-import UIKit
 import SwiftyJSON
+import UIKit
 
 class Skill: NSObject {
-
     var skillId = ""
     var skillName = ""
     var isOther = false
     var otherText = ""
     var subSkills = [SubSkill]()
-    
-    override init () {
-        //for empty object
+
+    override init() {
+        // for empty object
     }
-    
-    init(skills:JSON,subSkills:[SubSkill]) {
-        self.skillId = skills[Constants.ServerKey.id].stringValue
-        self.skillName = skills[Constants.ServerKey.skillName].stringValue
+
+    init(skills: JSON, subSkills: [SubSkill]) {
+        skillId = skills[Constants.ServerKey.id].stringValue
+        skillName = skills[Constants.ServerKey.skillName].stringValue
         if skills[Constants.ServerKey.skillName].stringValue.lowercased().trim() == "other" || skills[Constants.ServerKey.skillName].stringValue.lowercased().trim() == "Other" {
-            self.isOther = true
-            self.otherText = skills[Constants.ServerKey.otherSkill].stringValue
+            isOther = true
+            otherText = skills[Constants.ServerKey.otherSkill].stringValue
         }
         self.subSkills = subSkills
     }
 }
 
-class SubSkill:NSObject {
+class SubSkill: NSObject {
     var subSkillId = ""
     var subSkillName = ""
     var isSelected = false
     var isOther = false
     var isOpenForOther = false
     var otherText = ""
-    
-    override init() {
-        //for empty object
 
+    override init() {
+        // for empty object
     }
-    
-    init(subSkill:JSON) {
-        self.subSkillId = subSkill[Constants.ServerKey.id].stringValue
-        self.subSkillName = subSkill[Constants.ServerKey.skillName].stringValue
-        self.isSelected = subSkill[Constants.ServerKey.isSkillSelected].boolValue
-        if subSkill[Constants.ServerKey.skillName].stringValue.lowercased().trim() == "Other" || subSkill[Constants.ServerKey.skillName].stringValue.lowercased().trim() == "other"{
-            self.isOther = true
-            self.otherText = subSkill[Constants.ServerKey.otherSkill].stringValue
+
+    init(subSkill: JSON) {
+        subSkillId = subSkill[Constants.ServerKey.id].stringValue
+        subSkillName = subSkill[Constants.ServerKey.skillName].stringValue
+        isSelected = subSkill[Constants.ServerKey.isSkillSelected].boolValue
+        if subSkill[Constants.ServerKey.skillName].stringValue.lowercased().trim() == "Other" || subSkill[Constants.ServerKey.skillName].stringValue.lowercased().trim() == "other" {
+            isOther = true
+            otherText = subSkill[Constants.ServerKey.otherSkill].stringValue
         }
     }
 }

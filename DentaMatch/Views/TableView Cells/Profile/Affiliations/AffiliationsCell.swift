@@ -9,13 +9,12 @@
 import UIKit
 
 class AffiliationsCell: UITableViewCell {
-
-    @IBOutlet weak var tickButton: UIButton!
-    @IBOutlet weak var affiliationLabel: UILabel!
+    @IBOutlet var tickButton: UIButton!
+    @IBOutlet var affiliationLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.tickButton.isEnabled = false
+        tickButton.isEnabled = false
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -23,5 +22,4 @@ class AffiliationsCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }

@@ -6,14 +6,12 @@
 //  Copyright © 2017 Appster. All rights reserved.
 //
 
-import Foundation
 import CoreData
-
+import Foundation
 
 extension ChatList {
-
     @nonobjc public class func fetchRequest() -> NSFetchRequest<ChatList> {
-        return NSFetchRequest<ChatList>(entityName: "ChatList");
+        return NSFetchRequest<ChatList>(entityName: "ChatList")
     }
 
     @NSManaged public var date: NSDate?
@@ -26,5 +24,4 @@ extension ChatList {
     @NSManaged public var recruiterId: String?
     @NSManaged public var timeStamp: Double
     @NSManaged public var unreadCount: Int16
-
 }

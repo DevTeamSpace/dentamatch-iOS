@@ -9,45 +9,42 @@
 import UIKit
 
 @objc protocol JobSearchPartTimeCellDelegate {
-    
-    @objc optional func selectDay(selected : Bool, day : String)
+    @objc optional func selectDay(selected: Bool, day: String)
 }
 
 class JobSearchPartTimeCell: UITableViewCell {
+    @IBOutlet var viewPartTime: UIView!
+    @IBOutlet var btnSunday: UIButton!
+    @IBOutlet var btnMonday: UIButton!
+    @IBOutlet var btnTuesday: UIButton!
+    @IBOutlet var btnWednesday: UIButton!
+    @IBOutlet var btnThursday: UIButton!
+    @IBOutlet var btnFriday: UIButton!
+    @IBOutlet var btnSaturday: UIButton!
 
-    @IBOutlet weak var viewPartTime: UIView!
-    @IBOutlet weak var btnSunday: UIButton!
-    @IBOutlet weak var btnMonday: UIButton!
-    @IBOutlet weak var btnTuesday: UIButton!
-    @IBOutlet weak var btnWednesday: UIButton!
-    @IBOutlet weak var btnThursday: UIButton!
-    @IBOutlet weak var btnFriday: UIButton!
-    @IBOutlet weak var btnSaturday: UIButton!
-    
-    weak var delegate : JobSearchPartTimeCellDelegate?
-    
+    weak var delegate: JobSearchPartTimeCellDelegate?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.setUp()
+        setUp()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
     }
-    
+
     override func layoutIfNeeded() {
         super.layoutIfNeeded()
     }
-    
-    //MARK : Private Methods
-    
+
+    // MARK: Private Methods
+
     func setUp() {
-    
         viewPartTime.layer.borderColor = Constants.Color.jobSearchBorderColor.cgColor
         viewPartTime.layer.borderWidth = 1.0
-    
+
         btnSunday.layer.cornerRadius = btnFriday.frame.size.height / 2
         btnMonday.layer.cornerRadius = btnFriday.frame.size.height / 2
         btnTuesday.layer.cornerRadius = btnFriday.frame.size.height / 2
@@ -55,7 +52,7 @@ class JobSearchPartTimeCell: UITableViewCell {
         btnThursday.layer.cornerRadius = btnFriday.frame.size.height / 2
         btnFriday.layer.cornerRadius = btnFriday.frame.size.height / 2
         btnSaturday.layer.cornerRadius = btnFriday.frame.size.height / 2
-        
+
         btnSunday.backgroundColor = UIColor.clear
         btnSunday.setTitleColor(Constants.Color.headerTitleColor, for: .normal)
         btnMonday.backgroundColor = UIColor.clear
@@ -71,192 +68,173 @@ class JobSearchPartTimeCell: UITableViewCell {
         btnSaturday.backgroundColor = UIColor.clear
         btnSaturday.setTitleColor(Constants.Color.headerTitleColor, for: .normal)
     }
-    
-    //MARK : Set Cell Data
-    
-    func setCellData(parttimeDays : [String]) {
-        
+
+    // MARK: Set Cell Data
+
+    func setCellData(parttimeDays: [String]) {
         if parttimeDays.contains(Constants.Days.sunday) {
             btnSunday.backgroundColor = Constants.Color.partTimeDaySelectColor
             btnSunday.setTitleColor(UIColor.white, for: .normal)
-        }
-        else {
+        } else {
             btnSunday.backgroundColor = UIColor.clear
             btnSunday.setTitleColor(Constants.Color.headerTitleColor, for: .normal)
         }
-        
+
         if parttimeDays.contains(Constants.Days.monday) {
             btnMonday.backgroundColor = Constants.Color.partTimeDaySelectColor
             btnMonday.setTitleColor(UIColor.white, for: .normal)
-        }
-        else {
+        } else {
             btnMonday.backgroundColor = UIColor.clear
             btnMonday.setTitleColor(Constants.Color.headerTitleColor, for: .normal)
         }
-        
+
         if parttimeDays.contains(Constants.Days.tuesday) {
             btnTuesday.backgroundColor = Constants.Color.partTimeDaySelectColor
             btnTuesday.setTitleColor(UIColor.white, for: .normal)
-        }
-        else {
+        } else {
             btnTuesday.backgroundColor = UIColor.clear
             btnTuesday.setTitleColor(Constants.Color.headerTitleColor, for: .normal)
         }
-        
+
         if parttimeDays.contains(Constants.Days.wednesday) {
             btnWednesday.backgroundColor = Constants.Color.partTimeDaySelectColor
             btnWednesday.setTitleColor(UIColor.white, for: .normal)
-        }
-        else {
+        } else {
             btnWednesday.backgroundColor = UIColor.clear
             btnWednesday.setTitleColor(Constants.Color.headerTitleColor, for: .normal)
         }
-        
+
         if parttimeDays.contains(Constants.Days.thursday) {
             btnThursday.backgroundColor = Constants.Color.partTimeDaySelectColor
             btnThursday.setTitleColor(UIColor.white, for: .normal)
-        }
-        else {
+        } else {
             btnThursday.backgroundColor = UIColor.clear
             btnThursday.setTitleColor(Constants.Color.headerTitleColor, for: .normal)
         }
-        
+
         if parttimeDays.contains(Constants.Days.friday) {
             btnFriday.backgroundColor = Constants.Color.partTimeDaySelectColor
             btnFriday.setTitleColor(UIColor.white, for: .normal)
-        }
-        else {
+        } else {
             btnFriday.backgroundColor = UIColor.clear
             btnFriday.setTitleColor(Constants.Color.headerTitleColor, for: .normal)
         }
-        
+
         if parttimeDays.contains(Constants.Days.saturday) {
             btnSaturday.backgroundColor = Constants.Color.partTimeDaySelectColor
             btnSaturday.setTitleColor(UIColor.white, for: .normal)
-        }
-        else {
+        } else {
             btnSaturday.backgroundColor = UIColor.clear
             btnSaturday.setTitleColor(Constants.Color.headerTitleColor, for: .normal)
         }
     }
-    
-    //MARK : IBOutlet Actions
-    
+
+    // MARK: IBOutlet Actions
+
     @IBAction func actionSunday(_ sender: UIButton) {
-        self.checkToSelectOrDeselectButton(button: sender, day: Constants.Days.sunday)
+        checkToSelectOrDeselectButton(button: sender, day: Constants.Days.sunday)
     }
-    
+
     @IBAction func actionMonday(_ sender: UIButton) {
-        self.checkToSelectOrDeselectButton(button: sender, day: Constants.Days.monday)
+        checkToSelectOrDeselectButton(button: sender, day: Constants.Days.monday)
     }
-    
+
     @IBAction func actionTuesday(_ sender: UIButton) {
-        self.checkToSelectOrDeselectButton(button: sender, day: Constants.Days.tuesday)
+        checkToSelectOrDeselectButton(button: sender, day: Constants.Days.tuesday)
     }
-    
+
     @IBAction func actionWednesday(_ sender: UIButton) {
-        self.checkToSelectOrDeselectButton(button: sender, day: Constants.Days.wednesday)
+        checkToSelectOrDeselectButton(button: sender, day: Constants.Days.wednesday)
     }
-    
+
     @IBAction func btnThursday(_ sender: UIButton) {
-        self.checkToSelectOrDeselectButton(button: sender, day: Constants.Days.thursday)
+        checkToSelectOrDeselectButton(button: sender, day: Constants.Days.thursday)
     }
-    
+
     @IBAction func actionFriday(_ sender: UIButton) {
-        self.checkToSelectOrDeselectButton(button: sender, day: Constants.Days.friday)
+        checkToSelectOrDeselectButton(button: sender, day: Constants.Days.friday)
     }
-    
+
     @IBAction func actionSaturday(_ sender: UIButton) {
-        self.checkToSelectOrDeselectButton(button: sender, day: Constants.Days.saturday)
+        checkToSelectOrDeselectButton(button: sender, day: Constants.Days.saturday)
     }
-    
-    func checkToSelectOrDeselectButton(button : UIButton, day : String) {
+
+    func checkToSelectOrDeselectButton(button: UIButton, day: String) {
         if button.backgroundColor == UIColor.clear {
-            self.daySelect(button: button, day: day)
-        }
-        else {
-            self.dayDeselect(button: button, day: day)
+            daySelect(button: button, day: day)
+        } else {
+            dayDeselect(button: button, day: day)
         }
     }
-    
-    func daySelect(button : UIButton, day : String) {
+
+    func daySelect(button: UIButton, day: String) {
         button.backgroundColor = Constants.Color.partTimeDaySelectColor
         button.setTitleColor(UIColor.white, for: .normal)
         delegate?.selectDay!(selected: true, day: day)
     }
-    
-    func dayDeselect(button : UIButton, day : String) {
+
+    func dayDeselect(button: UIButton, day: String) {
         button.backgroundColor = UIColor.clear
         button.setTitleColor(Constants.Color.headerTitleColor, for: .normal)
         delegate?.selectDay!(selected: false, day: day)
     }
-    
-    func daySelectFor(avail:UserAvailability) {
-        
+
+    func daySelectFor(avail: UserAvailability) {
         if avail.isParttimeMonday {
             btnMonday.backgroundColor = Constants.Color.partTimeDaySelectColor
             btnMonday.setTitleColor(UIColor.white, for: .normal)
 
-        }else {
+        } else {
             btnMonday.backgroundColor = UIColor.clear
             btnMonday.setTitleColor(Constants.Color.headerTitleColor, for: .normal)
-
         }
         if avail.isParttimeTuesday {
             btnTuesday.backgroundColor = Constants.Color.partTimeDaySelectColor
             btnTuesday.setTitleColor(UIColor.white, for: .normal)
 
-        }else {
+        } else {
             btnTuesday.backgroundColor = UIColor.clear
             btnTuesday.setTitleColor(Constants.Color.headerTitleColor, for: .normal)
-
         }
         if avail.isParttimeWednesday {
             btnWednesday.backgroundColor = Constants.Color.partTimeDaySelectColor
             btnWednesday.setTitleColor(UIColor.white, for: .normal)
 
-        }else {
+        } else {
             btnWednesday.backgroundColor = UIColor.clear
             btnWednesday.setTitleColor(Constants.Color.headerTitleColor, for: .normal)
-
         }
         if avail.isParttimeThursday {
             btnThursday.backgroundColor = Constants.Color.partTimeDaySelectColor
             btnThursday.setTitleColor(UIColor.white, for: .normal)
 
-        }else {
+        } else {
             btnThursday.backgroundColor = UIColor.clear
             btnThursday.setTitleColor(Constants.Color.headerTitleColor, for: .normal)
-
         }
         if avail.isParttimeFriday {
             btnFriday.backgroundColor = Constants.Color.partTimeDaySelectColor
             btnFriday.setTitleColor(UIColor.white, for: .normal)
 
-        }else {
+        } else {
             btnFriday.backgroundColor = UIColor.clear
             btnFriday.setTitleColor(Constants.Color.headerTitleColor, for: .normal)
-
         }
         if avail.isParttimeSaturday {
             btnSaturday.backgroundColor = Constants.Color.partTimeDaySelectColor
             btnSaturday.setTitleColor(UIColor.white, for: .normal)
 
-        }else {
+        } else {
             btnSaturday.backgroundColor = UIColor.clear
             btnSaturday.setTitleColor(Constants.Color.headerTitleColor, for: .normal)
-
         }
         if avail.isParttimeSunday {
             btnSunday.backgroundColor = Constants.Color.partTimeDaySelectColor
             btnSunday.setTitleColor(UIColor.white, for: .normal)
 
-        }else {
+        } else {
             btnSunday.backgroundColor = UIColor.clear
             btnSunday.setTitleColor(Constants.Color.headerTitleColor, for: .normal)
         }
-        
     }
-    
-    
 }

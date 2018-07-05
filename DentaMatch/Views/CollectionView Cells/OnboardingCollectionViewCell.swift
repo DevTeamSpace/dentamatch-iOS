@@ -9,8 +9,8 @@
 import UIKit
 
 class OnboardingCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var onBoardingImageView: UIImageView!
-    
-    @IBOutlet weak var subHeadingLabel: UILabel!
-    @IBOutlet weak var headingLabel: UILabel!
+    @IBOutlet var onBoardingImageView: UIImageView!
+
+    @IBOutlet var subHeadingLabel: UILabel!
+    @IBOutlet var headingLabel: UILabel!
 }

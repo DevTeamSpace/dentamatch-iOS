@@ -10,41 +10,40 @@ import Foundation
 import SwiftyJSON
 
 extension DMEditStudyVC {
-    
     func getSchoolListAPI() {
-        self.showLoader()
-        APIManager.apiGet(serviceName: Constants.API.getSchoolListAPI, parameters: [:]) { (response:JSON?, error:NSError?) in
+        showLoader()
+        APIManager.apiGet(serviceName: Constants.API.getSchoolListAPI, parameters: [:]) { (response: JSON?, error: NSError?) in
             self.hideLoader()
             if error != nil {
                 self.makeToast(toastString: (error?.localizedDescription)!)
                 return
             }
-            
+
             if response == nil {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            //debugPrint(response!)
+            // debugPrint(response!)
             self.handleSchoolListAPIResponse(response: response)
         }
     }
-    
-    func addSchoolAPI(params:[String:AnyObject]) {
-        self.showLoader()
-        APIManager.apiPostWithJSONEncode(serviceName: Constants.API.addSchoolAPI, parameters: params) { (response:JSON?, error:NSError?) in
-            
+
+    func addSchoolAPI(params: [String: AnyObject]) {
+        showLoader()
+        APIManager.apiPostWithJSONEncode(serviceName: Constants.API.addSchoolAPI, parameters: params) { (response: JSON?, error: NSError?) in
+
             self.hideLoader()
             if error != nil {
                 self.makeToast(toastString: (error?.localizedDescription)!)
                 return
             }
-            
+
             if response == nil {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            //debugPrint(response!)
-            
+            // debugPrint(response!)
+
             if response![Constants.ServerKey.status].boolValue {
                 self.updateProfileScreen()
                 _ = self.navigationController?.popViewController(animated: true)
@@ -52,41 +51,38 @@ extension DMEditStudyVC {
             self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
         }
     }
-    
-    func handleSchoolListAPIResponse(response:JSON?) {
+
+    func handleSchoolListAPIResponse(response: JSON?) {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
                 let schoolCategoryList = response[Constants.ServerKey.result][Constants.ServerKey.list].arrayValue
-                self.prepareSchoolCategoryListData(schoolCategoryList: schoolCategoryList)
-                self.studyTableView.reloadData()
+                prepareSchoolCategoryListData(schoolCategoryList: schoolCategoryList)
+                studyTableView.reloadData()
             } else {
-                //handle fail case
-                self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+                // handle fail case
+                makeToast(toastString: response[Constants.ServerKey.message].stringValue)
             }
         }
     }
-    
-    func prepareSchoolCategoryListData(schoolCategoryList:[JSON]) {
+
+    func prepareSchoolCategoryListData(schoolCategoryList: [JSON]) {
         for schoolCategoryObj in schoolCategoryList {
-            
             var universities = [University]()
             let universitiesArray = schoolCategoryObj[Constants.ServerKey.schoolCategory].arrayValue
-            
+
             for universityObj in universitiesArray {
                 let university = University(university: universityObj)
                 universities.append(university)
             }
-            
+
             let schoolCategory = SchoolCategory(school: schoolCategoryObj, universities: universities)
             schoolCategories.append(schoolCategory)
         }
-        
+
         for category in schoolCategories {
-            
             var flag = 0
-            if let university = category.universities.filter({$0.isSelected == true}).first
-            {
-                //If university selected exists
+            if let university = category.universities.filter({ $0.isSelected == true }).first {
+                // If university selected exists
                 if selectedData.count == 0 {
                     let dict = NSMutableDictionary()
                     dict["parentId"] = category.schoolCategoryId
@@ -99,15 +95,15 @@ extension DMEditStudyVC {
                 } else {
                     for categoryObj in selectedData {
                         let dict = categoryObj as! NSMutableDictionary
-                        
+
                         if dict["parentId"] as! String == category.schoolCategoryId {
                             dict["other"] = university.universityName
                             flag = 1
                         }
                     }
                 }
-                
-                //Array is > 0 but dict doesnt exists
+
+                // Array is > 0 but dict doesnt exists
                 if flag == 0 {
                     let dict = NSMutableDictionary()
                     dict["parentId"] = category.schoolCategoryId
@@ -117,9 +113,9 @@ extension DMEditStudyVC {
                     dict["parentName"] = category.schoolCategoryName
                     selectedData.add(dict)
                 }
-                
-                //debugPrint(selectedData)
-                
+
+                // debugPrint(selectedData)
+
             } else {
                 if selectedData.count == 0 {
                     let dict = NSMutableDictionary()
@@ -136,7 +132,7 @@ extension DMEditStudyVC {
                 } else {
                     for categoryObj in selectedData {
                         let dict = categoryObj as! NSMutableDictionary
-                        
+
                         if dict["parentId"] as! String == category.schoolCategoryId {
                             if let other = category.othersArray {
                                 dict["other"] = other[0][Constants.ServerKey.otherSchooling].stringValue
@@ -145,8 +141,8 @@ extension DMEditStudyVC {
                         }
                     }
                 }
-                
-                //Array is > 0 but dict doesnt exists
+
+                // Array is > 0 but dict doesnt exists
                 if flag == 0 {
                     let dict = NSMutableDictionary()
                     dict["parentId"] = category.schoolCategoryId
@@ -159,29 +155,27 @@ extension DMEditStudyVC {
                     dict["parentName"] = category.schoolCategoryName
                     selectedData.add(dict)
                 }
-                
-                //debugPrint(selectedData)
+
+                // debugPrint(selectedData)
             }
         }
         checkForEmptySchoolField()
-
     }
-    
-    func preparePostSchoolData(schoolsSelected:NSMutableArray) {
-        
-        var params = [String:AnyObject]()
+
+    func preparePostSchoolData(schoolsSelected: NSMutableArray) {
+        var params = [String: AnyObject]()
         let selectedArray = NSMutableArray()
         if schoolsSelected.count == 0 {
-            self.makeToast(toastString: "Please select your school")
+            makeToast(toastString: "Please select your school")
             return
         }
-        //selectedData
+        // selectedData
         var isGraduationListEmpty = false
         var finalData = NSMutableArray()
         for school in schoolsSelected {
             let dict = school as! NSMutableDictionary
-            if let yearOfGraduation =  dict["yearOfGraduation"] as? String {
-                //Everything fine
+            if let yearOfGraduation = dict["yearOfGraduation"] as? String {
+                // Everything fine
                 if !yearOfGraduation.isEmpty {
                     finalData.add(school)
                 } else {
@@ -192,43 +186,41 @@ extension DMEditStudyVC {
             }
         }
         if isGraduationListEmpty {
-            self.makeToast(toastString: "Please enter graduation year.")
+            makeToast(toastString: "Please enter graduation year.")
             return
         }
         selectedData.removeAllObjects()
         for school in finalData {
             let dict = school as! NSMutableDictionary
-            self.checkAvailabilityInAutoComplete(dictionary: dict)
-            //debugPrint(dict)
-            
+            checkAvailabilityInAutoComplete(dictionary: dict)
+            // debugPrint(dict)
+
             let makeData = NSMutableDictionary()
             makeData.setObject(dict["schoolId"] as! String, forKey: "schoolingChildId" as NSCopying)
             makeData.setObject((dict["yearOfGraduation"] as? String) ?? "", forKey: "yearOfGraduation" as NSCopying)
-            
+
             if dict["isOther"] as! Bool {
                 makeData.setObject(dict["other"] as! String, forKey: "otherSchooling" as NSCopying)
             } else {
                 makeData.setObject("", forKey: "otherSchooling" as NSCopying)
             }
-            
+
             selectedArray.add(makeData)
-            
         }
         params["schoolDataArray"] = selectedArray as AnyObject
-        
-        
-        //debugPrint("\nPost School Params\n \(params.description)")
+
+        // debugPrint("\nPost School Params\n \(params.description)")
         addSchoolAPI(params: params)
     }
-    
-    func checkAvailabilityInAutoComplete(dictionary:NSMutableDictionary) {
+
+    func checkAvailabilityInAutoComplete(dictionary: NSMutableDictionary) {
         let dict = dictionary
         let schoolName = (dict["other"] as! String).trim()
         let parentId = dict["parentId"] as! String
-        let universities = schoolCategories.filter({$0.schoolCategoryId == parentId}).first?.universities
-        
-        let university = universities?.filter({$0.universityName == schoolName})
-        
+        let universities = schoolCategories.filter({ $0.schoolCategoryId == parentId }).first?.universities
+
+        let university = universities?.filter({ $0.universityName == schoolName })
+
         if (university?.count)! > 0 {
             if university?.first?.universityName == schoolName {
                 dict["schoolId"] = university!.first!.universityId

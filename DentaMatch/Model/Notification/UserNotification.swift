@@ -6,34 +6,33 @@
 //  Copyright © 2017 Appster. All rights reserved.
 //
 
-import UIKit
 import SwiftyJSON
+import UIKit
 
 class UserNotification: NSObject {
     var createdAtTime = ""
-    var notificationID:Int?
+    var notificationID: Int?
     var jobId = ""
     var message = ""
-    var notificationType:Int?
-    var seen:Int?
-    var senderID:Int?
-    var reciverID:Int?
-    var jobdetail:Job?
-    
+    var notificationType: Int?
+    var seen: Int?
+    var senderID: Int?
+    var reciverID: Int?
+    var jobdetail: Job?
+
     override init() {
         /* For Default object of class */
     }
-    
-    init(dict:JSON) {
-         self.createdAtTime = dict["createdAt"].stringValue
-         self.notificationID = dict["id"].intValue
-         self.jobId = dict["jobListId"].stringValue
-         self.message = dict["notificationData"].stringValue
-         self.notificationType = dict["notificationType"].intValue
-         self.seen = dict["seen"].intValue
-         self.senderID = dict["senderId"].intValue
-         self.reciverID = dict["receiverId"].intValue
-        self.jobdetail = Job(forCalendarjob: dict["jobDetails"])
-    }
 
+    init(dict: JSON) {
+        createdAtTime = dict["createdAt"].stringValue
+        notificationID = dict["id"].intValue
+        jobId = dict["jobListId"].stringValue
+        message = dict["notificationData"].stringValue
+        notificationType = dict["notificationType"].intValue
+        seen = dict["seen"].intValue
+        senderID = dict["senderId"].intValue
+        reciverID = dict["receiverId"].intValue
+        jobdetail = Job(forCalendarjob: dict["jobDetails"])
+    }
 }

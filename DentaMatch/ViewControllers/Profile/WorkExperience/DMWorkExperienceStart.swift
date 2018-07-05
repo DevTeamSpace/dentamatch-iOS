@@ -8,141 +8,133 @@
 
 import UIKit
 
-class DMWorkExperienceStart: DMBaseVC,ExperiencePickerViewDelegate {
-    @IBOutlet weak var workExperienceTable: UITableView!
-    let profileProgress:CGFloat = 0.25
+class DMWorkExperienceStart: DMBaseVC, ExperiencePickerViewDelegate {
+    @IBOutlet var workExperienceTable: UITableView!
+    let profileProgress: CGFloat = 0.25
 
-    var selectedJobTitle:JobTitle!
+    var selectedJobTitle: JobTitle!
     var experienceArray = NSMutableArray()
     var jobTitles = [JobTitle]()
     var totalExperience = 0
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        experienceArray.addObjects(from: [selectedJobTitle.jobTitle,"",""])
-        self.title = Constants.ScreenTitleNames.workExperience
+        experienceArray.addObjects(from: [selectedJobTitle.jobTitle, "", ""])
+        title = Constants.ScreenTitleNames.workExperience
         setUp()
-        
+
         // Do any additional setup after loading the view.
     }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        self.changeNavBarAppearanceForProfiles()
-        self.navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = nil
-        self.navigationController?.navigationBar.isTranslucent = false
-
+        changeNavBarAppearanceForProfiles()
+        navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
+        navigationController?.navigationBar.shadowImage = nil
+        navigationController?.navigationBar.isTranslucent = false
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        self.workExperienceTable.reloadData()
+        workExperienceTable.reloadData()
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)
     }
-    
-    //MARK:- Keyboard Show Hide Observers
+
+    // MARK: - Keyboard Show Hide Observers
+
     @objc func keyboardWillShow(note: NSNotification) {
         if let keyboardSize = (note.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            self.workExperienceTable.contentInset =  UIEdgeInsetsMake(0, 0, keyboardSize.height+1, 0)
+            workExperienceTable.contentInset = UIEdgeInsetsMake(0, 0, keyboardSize.height + 1, 0)
         }
     }
-    @objc func keyboardWillHide(note: NSNotification) {
-        self.workExperienceTable.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0)
+
+    @objc func keyboardWillHide(note _: NSNotification) {
+        workExperienceTable.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
     }
-    
 
     func setUp() {
-        self.workExperienceTable.register(UINib(nibName: "AnimatedPHTableCell", bundle: nil), forCellReuseIdentifier: "AnimatedPHTableCell")
-        self.workExperienceTable.register(UINib(nibName: "PhotoNameCell", bundle: nil), forCellReuseIdentifier: "PhotoNameCell")
+        workExperienceTable.register(UINib(nibName: "AnimatedPHTableCell", bundle: nil), forCellReuseIdentifier: "AnimatedPHTableCell")
+        workExperienceTable.register(UINib(nibName: "PhotoNameCell", bundle: nil), forCellReuseIdentifier: "PhotoNameCell")
         workExperienceTable.separatorStyle = .none
-        self.workExperienceTable.register(UINib(nibName: "SectionHeadingTableCell", bundle: nil), forCellReuseIdentifier: "SectionHeadingTableCell")
+        workExperienceTable.register(UINib(nibName: "SectionHeadingTableCell", bundle: nil), forCellReuseIdentifier: "SectionHeadingTableCell")
 
-        
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        self.workExperienceTable.addGestureRecognizer(tap)
+        workExperienceTable.addGestureRecognizer(tap)
 
-        self.workExperienceTable.reloadData()
-        self.navigationItem.leftBarButtonItem = self.backBarButton()
-
+        workExperienceTable.reloadData()
+        navigationItem.leftBarButtonItem = backBarButton()
     }
 
     @objc func dismissKeyboard() {
-        self.view.endEditing(true)
+        view.endEditing(true)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    //goToExperienceDetail
-    @IBAction func nextButtonClicked(_ sender: Any) {
-        
-        for i in 0..<self.experienceArray.count {
-            let text = self.experienceArray[i] as! String
+
+    // goToExperienceDetail
+    @IBAction func nextButtonClicked(_: Any) {
+        for i in 0 ..< experienceArray.count {
+            let text = experienceArray[i] as! String
             if i == 0 {
                 if text.isEmptyField {
-                    self.makeToast(toastString: Constants.AlertMessage.emptyCurrentJobTitle)
+                    makeToast(toastString: Constants.AlertMessage.emptyCurrentJobTitle)
                     return
                 }
-            }else if i == 1{
+            } else if i == 1 {
                 if text.isEmptyField {
-                    self.makeToast(toastString: Constants.AlertMessage.emptyYearOfExperience)
+                    makeToast(toastString: Constants.AlertMessage.emptyYearOfExperience)
                     return
                 }
-            }else if i == 2 {
+            } else if i == 2 {
                 if text.isEmptyField {
-                    self.makeToast(toastString: Constants.AlertMessage.emptyOfficeName)
+                    makeToast(toastString: Constants.AlertMessage.emptyOfficeName)
                     return
                 }
             }
         }
 
-        self.performSegue(withIdentifier: "goToExperienceDetail", sender: self)
-
+        performSegue(withIdentifier: "goToExperienceDetail", sender: self)
     }
 
-    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "goToExperienceDetail"
-        {
-            let destinationVC:DMWorkExperienceVC = segue.destination as! DMWorkExperienceVC
-            destinationVC.currentExperience?.jobTitleID = self.selectedJobTitle.jobId
-            destinationVC.currentExperience?.jobTitle = self.experienceArray[0] as? String
-            destinationVC.currentExperience?.yearOfExperience = self.experienceArray[1] as? String
-            destinationVC.jobTitles = self.jobTitles
-            destinationVC.currentExperience?.experienceInMonth = self.totalExperience
-            destinationVC.currentExperience?.officeName = self.experienceArray[2] as? String
+        if segue.identifier == "goToExperienceDetail" {
+            let destinationVC: DMWorkExperienceVC = segue.destination as! DMWorkExperienceVC
+            destinationVC.currentExperience?.jobTitleID = selectedJobTitle.jobId
+            destinationVC.currentExperience?.jobTitle = experienceArray[0] as? String
+            destinationVC.currentExperience?.yearOfExperience = experienceArray[1] as? String
+            destinationVC.jobTitles = jobTitles
+            destinationVC.currentExperience?.experienceInMonth = totalExperience
+            destinationVC.currentExperience?.officeName = experienceArray[2] as? String
         }
     }
-
-
 }
 
-extension DMWorkExperienceStart:JobSelectionPickerViewDelegate {
-    
+extension DMWorkExperienceStart: JobSelectionPickerViewDelegate {
     func jobPickerDoneButtonAction(job: JobTitle?) {
         if let jobTitle = job {
-            self.selectedJobTitle = jobTitle
-            self.experienceArray.replaceObject(at: 0, with: jobTitle.jobTitle)
-            self.workExperienceTable.reloadData()
+            selectedJobTitle = jobTitle
+            experienceArray.replaceObject(at: 0, with: jobTitle.jobTitle)
+            workExperienceTable.reloadData()
         }
-        self.view.endEditing(true)
+        view.endEditing(true)
     }
-    
+
     func jobPickerCancelButtonAction() {
-        self.view.endEditing(true)
+        view.endEditing(true)
     }
 }

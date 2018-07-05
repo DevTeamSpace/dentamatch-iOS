@@ -10,26 +10,25 @@ import Foundation
 import SwiftyJSON
 
 extension DMJobSearchResultVC {
-    
-    func saveUnsaveJob(saveStatus:Int,jobId:Int,completionHandler: @escaping (JSON?, NSError?) -> ()) {
+    func saveUnsaveJob(saveStatus: Int, jobId: Int, completionHandler: @escaping (JSON?, NSError?) -> Void) {
         let params = [
-            Constants.ServerKey.jobId:jobId,
-            Constants.ServerKey.status:saveStatus
+            Constants.ServerKey.jobId: jobId,
+            Constants.ServerKey.status: saveStatus,
         ]
-        self.showLoader()
-        APIManager.apiPost(serviceName: Constants.API.saveJob, parameters: params) { (response:JSON?, error:NSError?) in
+        showLoader()
+        APIManager.apiPost(serviceName: Constants.API.saveJob, parameters: params) { (response: JSON?, error: NSError?) in
             self.hideLoader()
-            completionHandler(response,error)
+            completionHandler(response, error)
         }
     }
-    
-    func fetchSearchResultAPI(params:[String:Any]) {
-        //debugPrint("Search Parameters\n\(params.description))")
-        
-        if self.jobsPageNo == 1 {
-            self.showLoader()
+
+    func fetchSearchResultAPI(params: [String: Any]) {
+        // debugPrint("Search Parameters\n\(params.description))")
+
+        if jobsPageNo == 1 {
+            showLoader()
         }
-        APIManager.apiPostWithJSONEncode(serviceName: Constants.API.JobSearchResultAPI, parameters: params) { (response:JSON?, error:NSError?) in
+        APIManager.apiPostWithJSONEncode(serviceName: Constants.API.JobSearchResultAPI, parameters: params) { (response: JSON?, error: NSError?) in
             self.hideLoader()
             if error != nil {
                 self.makeToast(toastString: (error?.localizedDescription)!)
@@ -39,65 +38,61 @@ extension DMJobSearchResultVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            //debugPrint(response!)
+            // debugPrint(response!)
             self.handleJobSearchResponse(response: response!)
         }
     }
-    
-    func handleJobSearchResponse(response:JSON?) {
+
+    func handleJobSearchResponse(response: JSON?) {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
                 let result = response[Constants.ServerKey.result]
                 if result["isJobSeekerVerified"].stringValue == "0" {
-                    self.showBanner(status: 1)
+                    showBanner(status: 1)
                 } else if result["profileCompleted"].stringValue == "0" {
-                    self.showBanner(status: 2)
+                    showBanner(status: 2)
                 }
-                
+
                 if result["isJobSeekerVerified"].stringValue == "1" && result["profileCompleted"].stringValue == "1" {
-                    self.hideBanner()
+                    hideBanner()
                 }
-                
+
                 let skillList = response[Constants.ServerKey.result][Constants.ServerKey.joblist].array
                 if jobsPageNo == 1 {
-                    self.jobs.removeAll()
+                    jobs.removeAll()
                 }
-                for jobObject in (skillList)! {
+                for jobObject in skillList! {
                     let job = Job(job: jobObject)
-                    self.jobs.append(job)
+                    jobs.append(job)
                 }
-                self.placeHolderEmptyJobsView?.isHidden = self.jobs.count > 0 ? true : false
+                placeHolderEmptyJobsView?.isHidden = jobs.count > 0 ? true : false
 
-                self.totalJobsFromServer = response[Constants.ServerKey.result]["total"].intValue
-                self.jobsPageNo += 1
-                self.loadingMoreJobs = false
+                totalJobsFromServer = response[Constants.ServerKey.result]["total"].intValue
+                jobsPageNo += 1
+                loadingMoreJobs = false
                 DispatchQueue.main.async {
-                    
                     if self.isMapShow == true {
                         self.restoreAllMarkers()
-                    }
-                    else {
+                    } else {
                         self.tblJobSearchResult.tableFooterView = nil
                         self.lblResultCount.text = String(self.totalJobsFromServer) + Constants.Strings.whiteSpace + Constants.Strings.resultsFound
                     }
                     self.tblJobSearchResult.reloadData()
                 }
             } else {
-                self.jobs.removeAll()
+                jobs.removeAll()
                 DispatchQueue.main.async {
                     self.lblResultCount.text = Constants.Strings.zero + Constants.Strings.whiteSpace + Constants.Strings.resultsFound
                     self.tblJobSearchResult.reloadData()
                 }
-                self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+                makeToast(toastString: response[Constants.ServerKey.message].stringValue)
             }
         }
     }
-    
-    
-    func getUnreadNotificationCount(completionHandler: @escaping (JSON?, NSError?) -> ()) {
-        
+
+    func getUnreadNotificationCount(completionHandler: @escaping (JSON?, NSError?) -> Void) {
 //        self.showLoader()
-        APIManager.apiGet(serviceName: Constants.API.unreadNotificationCount, parameters: nil) { (response:JSON?, error:NSError?) in
+        APIManager.apiGet(serviceName: Constants.API.unreadNotificationCount, parameters: nil) { (response: JSON?, error: NSError?) in
 //            self.hideLoader()
             if error != nil {
                 self.makeToast(toastString: (error?.localizedDescription)!)
@@ -111,9 +106,4 @@ extension DMJobSearchResultVC {
 //            self.handleAboutMeResponse(response: response)
         }
     }
-    
-
-    
-    
-    
 }

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-enum UserNotificationType:Int {
+enum UserNotificationType: Int {
     case acceptJob = 1
     case hired
     case jobCancellation
@@ -20,13 +20,14 @@ enum UserNotificationType:Int {
     case rejectJob = 14
     case licenseAcceptReject = 15
 }
+
 class DMNotificationVC: DMBaseVC {
-    @IBOutlet weak var notificationTableView: UITableView!
+    @IBOutlet var notificationTableView: UITableView!
     var pullToRefreshNotifications = UIRefreshControl()
     var loadingMoreNotifications = false
     var pageNumber = 1
     var totalNotificationOnServer = 0
-    var placeHolderEmptyJobsView:PlaceHolderJobsView?
+    var placeHolderEmptyJobsView: PlaceHolderJobsView?
 
     var notificationList = [UserNotification]()
 
@@ -41,68 +42,62 @@ class DMNotificationVC: DMBaseVC {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
     func setup() {
-        
         placeHolderEmptyJobsView = PlaceHolderJobsView.loadPlaceHolderJobsView()
         placeHolderEmptyJobsView?.frame = CGRect(x: 0, y: 0, width: 300, height: 200)
-        placeHolderEmptyJobsView?.center = self.view.center
+        placeHolderEmptyJobsView?.center = view.center
         placeHolderEmptyJobsView?.backgroundColor = UIColor.clear
         placeHolderEmptyJobsView?.placeHolderMessageLabel.numberOfLines = 2
         placeHolderEmptyJobsView?.placeHolderMessageLabel.text = Constants.AlertMessage.noNotification
         placeHolderEmptyJobsView?.placeholderImageView.image = UIImage(named: "notificationPlaceholder")
-        self.view.addSubview(placeHolderEmptyJobsView!)
+        view.addSubview(placeHolderEmptyJobsView!)
         placeHolderEmptyJobsView?.isHidden = false
-        self.placeHolderEmptyJobsView?.layoutIfNeeded()
-        self.view.layoutIfNeeded()
+        placeHolderEmptyJobsView?.layoutIfNeeded()
+        view.layoutIfNeeded()
 
-        
-        self.title = Constants.ScreenTitleNames.notification
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-        self.navigationItem.leftBarButtonItem = self.backBarButton()
+        title = Constants.ScreenTitleNames.notification
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationItem.leftBarButtonItem = backBarButton()
 
-        self.notificationTableView.separatorStyle = .none
-        self.notificationTableView.backgroundColor = UIColor.clear
-        self.notificationTableView.estimatedRowHeight = 76
-        self.notificationTableView.register(UINib(nibName: "HiredJobNotificationTableCell", bundle: nil), forCellReuseIdentifier: "HiredJobNotificationTableCell")
-        self.notificationTableView.register(UINib(nibName: "CommonTextNotificationTableCell", bundle: nil), forCellReuseIdentifier: "CommonTextNotificationTableCell")
-        self.notificationTableView.register(UINib(nibName: "NotificationJobTypeTableCell", bundle: nil), forCellReuseIdentifier: "NotificationJobTypeTableCell")
-        self.notificationTableView.register(UINib(nibName: "InviteJobNotificationTableCell", bundle: nil), forCellReuseIdentifier: "InviteJobNotificationTableCell")
+        notificationTableView.separatorStyle = .none
+        notificationTableView.backgroundColor = UIColor.clear
+        notificationTableView.estimatedRowHeight = 76
+        notificationTableView.register(UINib(nibName: "HiredJobNotificationTableCell", bundle: nil), forCellReuseIdentifier: "HiredJobNotificationTableCell")
+        notificationTableView.register(UINib(nibName: "CommonTextNotificationTableCell", bundle: nil), forCellReuseIdentifier: "CommonTextNotificationTableCell")
+        notificationTableView.register(UINib(nibName: "NotificationJobTypeTableCell", bundle: nil), forCellReuseIdentifier: "NotificationJobTypeTableCell")
+        notificationTableView.register(UINib(nibName: "InviteJobNotificationTableCell", bundle: nil), forCellReuseIdentifier: "InviteJobNotificationTableCell")
 
         pullToRefreshNotifications.addTarget(self, action: #selector(pullToRefreshForNotification), for: .valueChanged)
-        self.notificationTableView.addSubview(pullToRefreshNotifications)
+        notificationTableView.addSubview(pullToRefreshNotifications)
 
-        self.pageNumber = 1
-        self.getNotificationList { (isSucess, error) in
+        pageNumber = 1
+        getNotificationList { isSucess, _ in
             if isSucess! {
                 self.notificationTableView.reloadData()
-            }else{
-                
+            } else {
             }
         }
     }
-    
+
     @objc func pullToRefreshForNotification() {
-        self.pageNumber = 1
-        self.getNotificationList { (isSucess, error) in
+        pageNumber = 1
+        getNotificationList { isSucess, _ in
             if isSucess! {
                 self.notificationTableView.reloadData()
-            }else{
-                
+            } else {
             }
         }
         pullToRefreshNotifications.endRefreshing()
     }
 
-    
-
     /*
-    // MARK: - Navigation
+     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
 }

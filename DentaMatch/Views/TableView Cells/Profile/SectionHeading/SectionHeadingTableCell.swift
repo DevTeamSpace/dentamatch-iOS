@@ -9,15 +9,14 @@
 import UIKit
 
 class SectionHeadingTableCell: UITableViewCell {
-
-    @IBOutlet weak var editButton: UIButton!
-    @IBOutlet weak var headingLabel: UILabel!
+    @IBOutlet var editButton: UIButton!
+    @IBOutlet var headingLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.layoutMargins = UIEdgeInsets.zero
-        self.preservesSuperviewLayoutMargins = false
-        self.clipsToBounds = true
+        layoutMargins = UIEdgeInsets.zero
+        preservesSuperviewLayoutMargins = false
+        clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -25,5 +24,4 @@ class SectionHeadingTableCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }

@@ -9,18 +9,16 @@
 import UIKit
 
 class AffliliationsOthersCell: UITableViewCell {
-
-    @IBOutlet weak var tickButton: UIButton!
-    @IBOutlet weak var otherAffiliationTextView: UITextView!
+    @IBOutlet var tickButton: UIButton!
+    @IBOutlet var otherAffiliationTextView: UITextView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.clipsToBounds = true
-        self.otherAffiliationTextView.layer.cornerRadius = 5.0
-        self.otherAffiliationTextView.layer.borderWidth = 1.0
-        self.otherAffiliationTextView.layer.borderColor = Constants.Color.textFieldBorderColor.cgColor
-        self.otherAffiliationTextView.textContainer.lineFragmentPadding = 12.0
-
+        clipsToBounds = true
+        otherAffiliationTextView.layer.cornerRadius = 5.0
+        otherAffiliationTextView.layer.borderWidth = 1.0
+        otherAffiliationTextView.layer.borderColor = Constants.Color.textFieldBorderColor.cgColor
+        otherAffiliationTextView.textContainer.lineFragmentPadding = 12.0
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -28,5 +26,4 @@ class AffliliationsOthersCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }

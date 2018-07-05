@@ -9,7 +9,7 @@
 import UIKit
 
 class EmptyCertificateTableViewCell: UITableViewCell {
-    @IBOutlet weak var certificateNameLabel: UILabel!
+    @IBOutlet var certificateNameLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,5 +21,4 @@ class EmptyCertificateTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }

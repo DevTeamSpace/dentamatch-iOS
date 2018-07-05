@@ -10,14 +10,14 @@ import Foundation
 import SwiftyJSON
 
 extension DMNotificationVC {
-    func getNotificationList(completionHandler: @escaping (Bool?, NSError?) -> ()) {
-        var params = [String:AnyObject]()
-        params["page"] = self.pageNumber as AnyObject
-        //debugPrint("notification Parameter \(params)")
-        if self.pageNumber == 1 {
-            self.showLoader()
+    func getNotificationList(completionHandler: @escaping (Bool?, NSError?) -> Void) {
+        var params = [String: AnyObject]()
+        params["page"] = pageNumber as AnyObject
+        // debugPrint("notification Parameter \(params)")
+        if pageNumber == 1 {
+            showLoader()
         }
-        APIManager.apiGet(serviceName: Constants.API.getNotificationList, parameters: params) { (response:JSON?, error:NSError?) in
+        APIManager.apiGet(serviceName: Constants.API.getNotificationList, parameters: params) { (response: JSON?, error: NSError?) in
             self.hideLoader()
             if error != nil {
                 self.makeToast(toastString: (error?.localizedDescription)!)
@@ -27,8 +27,8 @@ extension DMNotificationVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            
-            //debugPrint(response!)
+
+            // debugPrint(response!)
             if self.pageNumber == 1 {
                 self.notificationList.removeAll()
             }
@@ -41,44 +41,37 @@ extension DMNotificationVC {
                 }
 
                 self.placeHolderEmptyJobsView?.isHidden = self.notificationList.count > 0 ? true : false
-                
+
                 self.totalNotificationOnServer = response![Constants.ServerKey.result]["total"].intValue
                 //total
 //                self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
                 completionHandler(true, error)
-                //do next
+                // do next
             } else {
                 if response![Constants.ServerKey.statusCode].intValue == 201 {
                     completionHandler(false, error)
                 } else {
-                self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
-                completionHandler(false, error)
+                    self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
+                    completionHandler(false, error)
                 }
-                
             }
             DispatchQueue.main.async {
 //                self.notificationTableView.reloadData()
                 self.notificationTableView.tableFooterView = nil
             }
-
         }
     }
-    
-    
-    
-    
-    
-    func readNotificationToServer(notificationObj:UserNotification, completionHandler: @escaping (JSON?, NSError?) -> ()) {
-        
-        var param = [String:AnyObject]()
+
+    func readNotificationToServer(notificationObj: UserNotification, completionHandler: @escaping (JSON?, NSError?) -> Void) {
+        var param = [String: AnyObject]()
         param["notificationId"] = notificationObj.notificationID as AnyObject?
-        
+
         //        param["jobYear"] = year as AnyObject?
-        
-        //debugPrint("readNotification Parameters\n\(param.description))")
-        
-        self.showLoader()
-        APIManager.apiPost(serviceName: Constants.API.readNotification, parameters: param) { (response:JSON?, error:NSError?) in
+
+        // debugPrint("readNotification Parameters\n\(param.description))")
+
+        showLoader()
+        APIManager.apiPost(serviceName: Constants.API.readNotification, parameters: param) { (response: JSON?, error: NSError?) in
             self.hideLoader()
             if error != nil {
                 self.makeToast(toastString: (error?.localizedDescription)!)
@@ -89,32 +82,30 @@ extension DMNotificationVC {
                 return
             }
             //            //debugPrint(response!)
-            
+
             if response![Constants.ServerKey.status].boolValue {
 //                let resultDic = response![Constants.ServerKey.result][Constants.ServerKey.list].arrayValue
 //                                self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
-                //do next
+                // do next
                 completionHandler(response, error)
-                
+
             } else {
                 self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
                 completionHandler(response, error)
-                
             }
         }
     }
-    
-    func inviteActionSendToServer(notificationObj:UserNotification,actionType:Int, completionHandler: @escaping (JSON?, NSError?) -> ()) {
-        
-        //actionType 0 = reject ; 1 = accept
-        var param = [String:AnyObject]()
+
+    func inviteActionSendToServer(notificationObj: UserNotification, actionType: Int, completionHandler: @escaping (JSON?, NSError?) -> Void) {
+        // actionType 0 = reject ; 1 = accept
+        var param = [String: AnyObject]()
         param["notificationId"] = notificationObj.notificationID as AnyObject?
         param["acceptStatus"] = actionType as AnyObject?
 
-        //debugPrint("readNotification Parameters\n\(param.description))")
-        
-        self.showLoader()
-        APIManager.apiPost(serviceName: Constants.API.acceptRejectNotification, parameters: param) { (response:JSON?, error:NSError?) in
+        // debugPrint("readNotification Parameters\n\(param.description))")
+
+        showLoader()
+        APIManager.apiPost(serviceName: Constants.API.acceptRejectNotification, parameters: param) { (response: JSON?, error: NSError?) in
             self.hideLoader()
             if error != nil {
                 self.makeToast(toastString: (error?.localizedDescription)!)
@@ -125,26 +116,25 @@ extension DMNotificationVC {
                 return
             }
             //            //debugPrint(response!)
-            
+
             if response![Constants.ServerKey.status].boolValue {
-                //do next
+                // do next
                 completionHandler(response, error)
-                
+
             } else {
 //                self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
                 completionHandler(response, error)
-                
             }
         }
     }
 
-    func deleteNotification(notificationObj:UserNotification,completionHandler: @escaping (Bool?, NSError?) -> ()) {
-        var params = [String:AnyObject]()
-        params["notificationId"] = notificationObj.notificationID  as AnyObject?
-        //debugPrint("delete notification Parameters\n\(params.description))")
-        
-        self.showLoader()
-        APIManager.apiPost(serviceName: Constants.API.deleteNotification, parameters: params) { (response:JSON?, error:NSError?) in
+    func deleteNotification(notificationObj: UserNotification, completionHandler: @escaping (Bool?, NSError?) -> Void) {
+        var params = [String: AnyObject]()
+        params["notificationId"] = notificationObj.notificationID as AnyObject?
+        // debugPrint("delete notification Parameters\n\(params.description))")
+
+        showLoader()
+        APIManager.apiPost(serviceName: Constants.API.deleteNotification, parameters: params) { (response: JSON?, error: NSError?) in
             self.hideLoader()
             if error != nil {
                 self.makeToast(toastString: (error?.localizedDescription)!)
@@ -155,21 +145,15 @@ extension DMNotificationVC {
                 return
             }
             //            //debugPrint(response!)
-            
+
             if response![Constants.ServerKey.status].boolValue {
                 self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
                 completionHandler(true, error)
-                //do next
+                // do next
             } else {
                 self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
                 completionHandler(false, error)
-                
             }
         }
     }
-
-
-
- 
-    
 }

@@ -9,13 +9,12 @@
 import UIKit
 
 class SubSkillCell: UITableViewCell {
-
-    @IBOutlet weak var tickButton: UIButton!
-    @IBOutlet weak var subSkillLabel: UILabel!
+    @IBOutlet var tickButton: UIButton!
+    @IBOutlet var subSkillLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.backgroundColor = UIColor.color(withHexCode: "0470C0")
-        self.contentView.backgroundColor = UIColor.color(withHexCode: "0470C0")
+        backgroundColor = UIColor.color(withHexCode: "0470C0")
+        contentView.backgroundColor = UIColor.color(withHexCode: "0470C0")
 
         // Initialization code
     }
@@ -25,5 +24,4 @@ class SubSkillCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }

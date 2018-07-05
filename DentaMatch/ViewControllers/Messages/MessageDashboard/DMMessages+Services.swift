@@ -10,10 +10,9 @@ import Foundation
 import SwiftyJSON
 
 extension DMMessagesVC {
-    
     func getChatListAPI() {
-        self.showLoader()
-        APIManager.apiGet(serviceName: Constants.API.getChatUserList, parameters: [:]) { (response:JSON?, error:NSError?) in
+        showLoader()
+        APIManager.apiGet(serviceName: Constants.API.getChatUserList, parameters: [:]) { (response: JSON?, error: NSError?) in
             self.hideLoader()
             if error != nil {
                 self.makeToast(toastString: (error?.localizedDescription)!)
@@ -24,19 +23,19 @@ extension DMMessagesVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            //print(response!)
+            // print(response!)
             self.handleChatListResponse(response: response)
             self.getMessageList()
         }
     }
-    
-    func blockRecruiter(chatList:ChatList) {
+
+    func blockRecruiter(chatList: ChatList) {
         let params = [
-            Constants.ServerKey.recruiterId:chatList.recruiterId!,
-            Constants.ServerKey.blockStatus:"1"
-        ] as [String : Any]
-        self.showLoader()
-        APIManager.apiPost(serviceName: Constants.API.blockUnblockRecruiter, parameters: params) { (response:JSON?, error:NSError?) in
+            Constants.ServerKey.recruiterId: chatList.recruiterId!,
+            Constants.ServerKey.blockStatus: "1",
+        ] as [String: Any]
+        showLoader()
+        APIManager.apiPost(serviceName: Constants.API.blockUnblockRecruiter, parameters: params) { (response: JSON?, error: NSError?) in
             self.hideLoader()
             if error != nil {
                 self.makeToast(toastString: (error?.localizedDescription)!)
@@ -46,41 +45,41 @@ extension DMMessagesVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            //debugPrint(response!)
+            // debugPrint(response!)
             self.handleBlockRecruiterResponse(chatList: chatList, response: response)
         }
     }
-    
-    func handleChatListResponse(response:JSON?) {
+
+    func handleChatListResponse(response: JSON?) {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
                 let chatUserList = response[Constants.ServerKey.result][Constants.ServerKey.list].arrayValue
                 if chatUserList.count > 0 {
-                    self.addUpdateMessageToDB(chatList: chatUserList)
-                    self.placeHolderEmptyJobsView?.isHidden = true
+                    addUpdateMessageToDB(chatList: chatUserList)
+                    placeHolderEmptyJobsView?.isHidden = true
                 } else {
-                    self.placeHolderEmptyJobsView?.isHidden = false
+                    placeHolderEmptyJobsView?.isHidden = false
 //                    self.makeToast(toastString: "No messages")
                 }
             } else {
-                self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+                makeToast(toastString: response[Constants.ServerKey.message].stringValue)
             }
         }
     }
-    
-    func handleBlockRecruiterResponse(chatList:ChatList,response:JSON?) {
+
+    func handleBlockRecruiterResponse(chatList: ChatList, response: JSON?) {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
                 if response[Constants.ServerKey.result][Constants.ServerKey.blockStatus].stringValue == "1" {
                     chatList.isBlockedFromSeeker = true
-                    self.makeToast(toastString: "Recruiter Blocked")
+                    makeToast(toastString: "Recruiter Blocked")
                 } else {
                     chatList.isBlockedFromSeeker = false
-                    self.makeToast(toastString: "Recruiter Unblocked")
+                    makeToast(toastString: "Recruiter Unblocked")
                 }
-                self.appDelegate.saveContext()
+                appDelegate.saveContext()
             } else {
-                self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+                makeToast(toastString: response[Constants.ServerKey.message].stringValue)
             }
         }
     }

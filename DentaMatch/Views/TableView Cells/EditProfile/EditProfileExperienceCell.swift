@@ -9,17 +9,17 @@
 import UIKit
 
 class EditProfileExperienceCell: UITableViewCell {
-    @IBOutlet weak var jobTitleLabel: UILabel!
-    @IBOutlet weak var yearOfExperienceLabel: UILabel!
-    @IBOutlet weak var officeNameLabel: UILabel!
-    @IBOutlet weak var officeAddressLabel: UILabel!
-    @IBOutlet weak var contactInformationLabel: UILabel!
-    @IBOutlet weak var reference1Name: UILabel!
-    @IBOutlet weak var reference1Mobile: UILabel!
-    @IBOutlet weak var reference1Email: UILabel!
-    @IBOutlet weak var reference2Name: UILabel!
-    @IBOutlet weak var reference2Mobile: UILabel!
-    @IBOutlet weak var reference2Email: UILabel!
+    @IBOutlet var jobTitleLabel: UILabel!
+    @IBOutlet var yearOfExperienceLabel: UILabel!
+    @IBOutlet var officeNameLabel: UILabel!
+    @IBOutlet var officeAddressLabel: UILabel!
+    @IBOutlet var contactInformationLabel: UILabel!
+    @IBOutlet var reference1Name: UILabel!
+    @IBOutlet var reference1Mobile: UILabel!
+    @IBOutlet var reference1Email: UILabel!
+    @IBOutlet var reference2Name: UILabel!
+    @IBOutlet var reference2Mobile: UILabel!
+    @IBOutlet var reference2Email: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,5 +31,4 @@ class EditProfileExperienceCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }

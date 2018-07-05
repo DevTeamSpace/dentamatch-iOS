@@ -9,39 +9,37 @@
 import UIKit
 
 @objc protocol JobDescriptionCellDelegate {
-    
     @objc optional func readMoreOrReadLess()
 }
 
 class JobDescriptionCell: UITableViewCell {
-    
-    @IBOutlet weak var lblDescription: UILabel!
-    @IBOutlet weak var btnReadMore: UIButton!
-    @IBOutlet weak var constraintDescHeight: NSLayoutConstraint!
-    @IBOutlet weak var constarintBtnReadMoreLessHeight: NSLayoutConstraint!
-    var isReadMore : Bool! = false
-    var textHeight : CGFloat! 
-    weak var delegate : JobDescriptionCellDelegate?
-    
+    @IBOutlet var lblDescription: UILabel!
+    @IBOutlet var btnReadMore: UIButton!
+    @IBOutlet var constraintDescHeight: NSLayoutConstraint!
+    @IBOutlet var constarintBtnReadMoreLessHeight: NSLayoutConstraint!
+    var isReadMore: Bool! = false
+    var textHeight: CGFloat!
+    weak var delegate: JobDescriptionCellDelegate?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.clipsToBounds = true
+        clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
     }
-    
-    @IBAction func actionReadMore(_ sender: UIButton) {
-        self.delegate?.readMoreOrReadLess!()
+
+    @IBAction func actionReadMore(_: UIButton) {
+        delegate?.readMoreOrReadLess!()
     }
-    
+
 //    class func requiredHeight(jobDescription:String,isReadMore:Bool) -> CGFloat{
 //        let font = UIFont.fontLight(fontSize: 13.0)
 //        var label:UILabel!
-//        
+//
 //        if isReadMore {
 //            label = UILabel(frame: CGRect(x:0, y:0, width:UIScreen.main.bounds.width - 42, height:CGFloat.greatestFiniteMagnitude))
 //        } else {
@@ -54,15 +52,15 @@ class JobDescriptionCell: UITableViewCell {
 //        if isReadMore {
 //            label.sizeToFit()
 //        } else {
-//            
+//
 //        }
 //        return label.frame.height + 22 + 41
 //    }
-    
-    class func requiredHeight(jobDescription:String,isReadMore:Bool) -> CGFloat {
+
+    class func requiredHeight(jobDescription: String, isReadMore: Bool) -> CGFloat {
         let font = UIFont.fontLight(fontSize: 13.0)
-        var label:UILabel!
-        label = UILabel(frame: CGRect(x:0, y:0, width:UIScreen.main.bounds.width - 40, height:CGFloat.greatestFiniteMagnitude))
+        var label: UILabel!
+        label = UILabel(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 40, height: CGFloat.greatestFiniteMagnitude))
         label.numberOfLines = 0
         label.lineBreakMode = NSLineBreakMode.byWordWrapping
         label.font = font
@@ -71,13 +69,11 @@ class JobDescriptionCell: UITableViewCell {
         if label.frame.height > 50 {
             if isReadMore == false {
                 return 50 + 22 + 41
-            }
-            else {
+            } else {
                 return label.frame.height + 22 + 41
-            }//Button Show
-        }
-        else {
-            return label.frame.height + 22 //Button Hide
+            } // Button Show
+        } else {
+            return label.frame.height + 22 // Button Hide
         }
     }
 }

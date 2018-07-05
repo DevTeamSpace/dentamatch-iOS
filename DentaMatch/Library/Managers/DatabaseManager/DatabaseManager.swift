@@ -6,12 +6,11 @@
 //  Copyright © 2017 Appster. All rights reserved.
 //
 
-import UIKit
 import CoreData
 import SwiftyJSON
+import UIKit
 
 class DatabaseManager: NSObject {
-
 //    static let sharedInstance = DatabaseManager()
 
     class func clearDB() {
@@ -20,9 +19,8 @@ class DatabaseManager: NSObject {
         NSFetchedResultsController<NSFetchRequestResult>.deleteCache(withName: nil)
         kAppDelegate.saveContext()
     }
-    
+
     private class func clearChatList() {
-        
         let fetchRequest: NSFetchRequest<ChatList> = ChatList.fetchRequest()
         do {
             let chatLists = try kAppDelegate.managedObjectContext.fetch(fetchRequest)
@@ -30,11 +28,11 @@ class DatabaseManager: NSObject {
                 kAppDelegate.managedObjectContext.delete(chatList)
             }
             kAppDelegate.saveContext()
-        } catch let _ as NSError {
-            //debugPrint(error.localizedDescription)
+        } catch _ as NSError {
+            // debugPrint(error.localizedDescription)
         }
     }
-    
+
     private class func clearChats() {
         let fetchRequest: NSFetchRequest<Chat> = Chat.fetchRequest()
         do {
@@ -43,19 +41,19 @@ class DatabaseManager: NSObject {
                 kAppDelegate.managedObjectContext.delete(chat)
             }
             kAppDelegate.saveContext()
-        } catch let _ as NSError {
-            //debugPrint(error.localizedDescription)
+        } catch _ as NSError {
+            // debugPrint(error.localizedDescription)
         }
     }
-    
-    class func addUpdateChatToDB(chatObj:JSON?) {
+
+    class func addUpdateChatToDB(chatObj: JSON?) {
         if let chatObj = chatObj {
             if let _ = chatExits(messageId: chatObj["messageId"].stringValue) {
-                //Update chat
-                //debugPrint("Update Chat")
-                
+                // Update chat
+                // debugPrint("Update Chat")
+
             } else {
-                //New chat
+                // New chat
                 let chat = NSEntityDescription.insertNewObject(forEntityName: "Chat", into: kAppDelegate.managedObjectContext) as! Chat
                 chat.chatId = chatObj["messageId"].int64Value
                 chat.message = chatObj["message"].stringValue
@@ -65,97 +63,95 @@ class DatabaseManager: NSObject {
                 let filteredDateTime = DatabaseManager.getDate(timestamp: chatObj["sentTime"].doubleValue)
                 chat.timeString = filteredDateTime.time
                 chat.dateString = filteredDateTime.date
-             
+
                 if let user = UserManager.shared().activeUser {
                     if chatObj["fromId"].stringValue == user.userId {
-                        //Sender's Chat
+                        // Sender's Chat
                         if let chatList = chatListExists(recruiterId: chatObj["toId"].stringValue) {
                             chatList.lastMessage = chatObj["message"].stringValue
                             chatList.lastMessageId = chatObj["messageId"].stringValue
                             chatList.timeStamp = chatObj["sentTime"].doubleValue
-                            //TODO:- Time Handling
+                            // TODO: - Time Handling
                         }
                     } else {
-                        //Recruiter's Chat
+                        // Recruiter's Chat
                         if let chatList = chatListExists(recruiterId: chatObj["fromId"].stringValue) {
                             chatList.lastMessage = chatObj["message"].stringValue
                             chatList.lastMessageId = chatObj["messageId"].stringValue
                             chatList.timeStamp = chatObj["sentTime"].doubleValue
                             chatList.unreadCount = chatList.unreadCount + 1
-                            
+
                             ToastView.showNotificationToast(message: chatObj["message"].stringValue, name: chatObj["fromName"].stringValue, imageUrl: "", type: .White, onCompletion: {
                                 kAppDelegate.chatSocketNotificationTap(recruiterId: chatObj["fromId"].stringValue)
                             })
-
                         }
                     }
                 }
-                //chat.date = self.getDate(dateString: chatObj["timestamp"].stringValue)?.date as NSDate?
+                // chat.date = self.getDate(dateString: chatObj["timestamp"].stringValue)?.date as NSDate?
             }
         }
         kAppDelegate.saveContext()
     }
-    
-    class func updateReadCount(recruiterId:String) {
+
+    class func updateReadCount(recruiterId: String) {
         if recruiterId != "0" {
-            if let chatList = chatListExists(recruiterId:recruiterId) {
+            if let chatList = chatListExists(recruiterId: recruiterId) {
                 chatList.unreadCount = 0
             }
             kAppDelegate.saveContext()
         }
     }
-    
-    class func chatExits(messageId:String) -> Chat? {
-        let fetchRequest:NSFetchRequest<Chat> = Chat.fetchRequest()
+
+    class func chatExits(messageId: String) -> Chat? {
+        let fetchRequest: NSFetchRequest<Chat> = Chat.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "chatId == %@", messageId)
         do {
             let chats = try kAppDelegate.managedObjectContext.fetch(fetchRequest)
             if chats.count > 0 {
                 return chats.first
             }
-        } catch let _ as NSError {
-            //debugPrint(error.localizedDescription)
+        } catch _ as NSError {
+            // debugPrint(error.localizedDescription)
         }
         return nil
     }
-    
-    class func chatListExists(recruiterId:String) -> ChatList? {
-        let fetchRequest:NSFetchRequest<ChatList> = ChatList.fetchRequest()
+
+    class func chatListExists(recruiterId: String) -> ChatList? {
+        let fetchRequest: NSFetchRequest<ChatList> = ChatList.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "recruiterId == %@", recruiterId)
         do {
             let chatLists = try kAppDelegate.managedObjectContext.fetch(fetchRequest)
             if chatLists.count > 0 {
                 return chatLists.first
             }
-        } catch let _ as NSError {
-            //debugPrint(error.localizedDescription)
+        } catch _ as NSError {
+            // debugPrint(error.localizedDescription)
         }
         return nil
     }
-    
-    class func getCountForChats(recruiterId:String) -> Int {
+
+    class func getCountForChats(recruiterId: String) -> Int {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Chat")
         let userId = UserManager.shared().activeUser.userId
-        fetchRequest.predicate = NSPredicate(format: "(fromId == %@ AND toId == %@) or (fromId == %@ AND toId == %@)",userId!,recruiterId,recruiterId,userId!)
+        fetchRequest.predicate = NSPredicate(format: "(fromId == %@ AND toId == %@) or (fromId == %@ AND toId == %@)", userId!, recruiterId, recruiterId, userId!)
         do {
             let chatList = try kAppDelegate.managedObjectContext.fetch(fetchRequest)
             return chatList.count
-        } catch let _ as NSError {
-            //debugPrint(error.localizedDescription)
+        } catch _ as NSError {
+            // debugPrint(error.localizedDescription)
         }
         return 0
     }
 
-    class func insertChats(chats:[JSON]?) {
+    class func insertChats(chats: [JSON]?) {
         if let chats = chats {
             for chatObj in chats {
-                
                 if let _ = chatExits(messageId: chatObj["messageId"].stringValue) {
-                    //Update chat
-                    //debugPrint("Update Chat")
-                    
+                    // Update chat
+                    // debugPrint("Update Chat")
+
                 } else {
-                    //New chat
+                    // New chat
                     let chat = NSEntityDescription.insertNewObject(forEntityName: "Chat", into: kAppDelegate.managedObjectContext) as! Chat
                     chat.chatId = chatObj["messageId"].int64Value
                     chat.message = chatObj["message"].stringValue
@@ -165,18 +161,18 @@ class DatabaseManager: NSObject {
                     let filteredDateTime = DatabaseManager.getDate(timestamp: chatObj["sentTime"].doubleValue)
                     chat.timeString = filteredDateTime.time
                     chat.dateString = filteredDateTime.date
-                    
+
                     if let user = UserManager.shared().activeUser {
                         if chatObj["fromId"].stringValue == user.userId {
-                            //Sender's Chat
+                            // Sender's Chat
                             if let chatList = chatListExists(recruiterId: chatObj["toId"].stringValue) {
                                 chatList.lastMessage = chatObj["message"].stringValue
                                 chatList.lastMessageId = chatObj["messageId"].stringValue
                                 chatList.timeStamp = chatObj["sentTime"].doubleValue
-                                //TODO:- Time Handling
+                                // TODO: - Time Handling
                             }
                         } else {
-                            //Recruiter's Chat
+                            // Recruiter's Chat
                             if let chatList = chatListExists(recruiterId: chatObj["fromId"].stringValue) {
                                 chatList.lastMessage = chatObj["message"].stringValue
                                 chatList.lastMessageId = chatObj["messageId"].stringValue
@@ -189,51 +185,48 @@ class DatabaseManager: NSObject {
             kAppDelegate.saveContext()
         }
     }
-    
-    class func insertNewMessageListObj(chatObj:JSON) {
+
+    class func insertNewMessageListObj(chatObj: JSON) {
         if let _ = chatListExists(recruiterId: chatObj["recruiterId"].stringValue) {
-            //Update chat
-            //debugPrint("Update Chat")
+            // Update chat
+            // debugPrint("Update Chat")
         } else {
-            //New chat
+            // New chat
             let chatList = NSEntityDescription.insertNewObject(forEntityName: "ChatList", into: kAppDelegate.managedObjectContext) as! ChatList
             chatList.lastMessage = chatObj["message"].stringValue
             chatList.recruiterId = chatObj["recruiterId"].stringValue
             chatList.isBlockedFromRecruiter = chatObj["recruiterBlock"].boolValue
             chatList.isBlockedFromSeeker = chatObj["seekerBlock"].boolValue
-            chatList.date = self.getMessageDate(timestamp: chatObj["timestamp"].stringValue) as NSDate?
+            chatList.date = getMessageDate(timestamp: chatObj["timestamp"].stringValue) as NSDate?
             chatList.timeStamp = chatObj["timestamp"].doubleValue
             chatList.officeName = chatObj["name"].stringValue
             chatList.messageListId = chatObj["messageListId"].stringValue
             chatList.lastMessageId = chatObj["messageId"].stringValue
             chatList.unreadCount = 1
-            
+
             NotificationCenter.default.post(name: .hideMessagePlaceholder, object: nil)
 
             ToastView.showNotificationToast(message: chatObj["message"].stringValue, name: chatObj["name"].stringValue, imageUrl: "", type: .White, onCompletion: {
                 kAppDelegate.chatSocketNotificationTap(recruiterId: chatObj["recruiterId"].stringValue)
             })
-            
         }
         kAppDelegate.saveContext()
-        self.addChatForFirstTimeMessage(chatObj: chatObj)
-        
+        addChatForFirstTimeMessage(chatObj: chatObj)
     }
-    
-    class func addChatForFirstTimeMessage(chatObj:JSON?) {
-            
+
+    class func addChatForFirstTimeMessage(chatObj: JSON?) {
         if let chatObj = chatObj {
             if let _ = chatExits(messageId: chatObj["messageId"].stringValue) {
-                //Update chat
-                //debugPrint("Update Chat")
-                
+                // Update chat
+                // debugPrint("Update Chat")
+
             } else {
-                //New chat
+                // New chat
                 let chat = NSEntityDescription.insertNewObject(forEntityName: "Chat", into: kAppDelegate.managedObjectContext) as! Chat
                 chat.chatId = chatObj["messageId"].int64Value
                 chat.message = chatObj["message"].stringValue
                 chat.fromId = chatObj["recruiterId"].stringValue
-                
+
                 if let user = UserManager.shared().activeUser {
                     chat.toId = user.userId
                     chat.timeStamp = chatObj["timestamp"].doubleValue
@@ -241,31 +234,30 @@ class DatabaseManager: NSObject {
                     chat.timeString = filteredDateTime.time
                     chat.dateString = filteredDateTime.date
                 }
-                //debugPrint("New Chat Saved")
+                // debugPrint("New Chat Saved")
             }
         }
         kAppDelegate.saveContext()
     }
-    
-    class func getDate(timestamp:Double) -> (time:String,date:String) {
-        let date = Date(timeIntervalSince1970: timestamp/1000)
+
+    class func getDate(timestamp: Double) -> (time: String, date: String) {
+        let date = Date(timeIntervalSince1970: timestamp / 1000)
         let dateFormatter = DateFormatter()
         dateFormatter.amSymbol = "am"
         dateFormatter.pmSymbol = "pm"
         dateFormatter.dateFormat = Date.dateFormatYYYYMMDDHHMMSSAA()
-        //let dateEnter = dateFormatter.string(from: date)
-        
+        // let dateEnter = dateFormatter.string(from: date)
+
         dateFormatter.dateFormat = Date.dateFormatHHMM()
         let dateEnter1 = dateFormatter.string(from: date)
         dateFormatter.dateFormat = Date.dateFormatMMDDYYYY()
         let dateEnter2 = dateFormatter.string(from: date)
-        return(dateEnter1,dateEnter2)
+        return (dateEnter1, dateEnter2)
     }
-    
-    class func getMessageDate(timestamp:String) -> Date {
+
+    class func getMessageDate(timestamp: String) -> Date {
         let doubleTime = Double(timestamp)
-        let lastMessageDate = Date(timeIntervalSince1970: doubleTime!/1000)
+        let lastMessageDate = Date(timeIntervalSince1970: doubleTime! / 1000)
         return lastMessageDate
     }
-    
 }

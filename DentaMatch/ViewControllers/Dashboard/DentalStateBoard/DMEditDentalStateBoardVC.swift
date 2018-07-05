@@ -9,61 +9,61 @@
 import UIKit
 
 class DMEditDentalStateBoardVC: DMBaseVC {
-
-    @IBOutlet weak var dentalStateBoardImageButton: UIButton!
-    var dentalStateBoardImage:UIImage?
+    @IBOutlet var dentalStateBoardImageButton: UIButton!
+    var dentalStateBoardImage: UIImage?
     var dentalStateBoardImageURL = ""
     var isEditMode = false
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
         // Do any additional setup after loading the view.
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
 
     func setup() {
-        self.title = "EDIT PROFILE"
-        self.changeNavBarAppearanceForDefault()
-        self.navigationItem.leftBarButtonItem = self.backBarButton()
-        self.dentalStateBoardImageButton.imageView?.contentMode = .scaleAspectFill
-        dentalStateBoardImageButton.layer.cornerRadius = self.dentalStateBoardImageButton.frame.size.height/2
+        title = "EDIT PROFILE"
+        changeNavBarAppearanceForDefault()
+        navigationItem.leftBarButtonItem = backBarButton()
+        dentalStateBoardImageButton.imageView?.contentMode = .scaleAspectFill
+        dentalStateBoardImageButton.layer.cornerRadius = dentalStateBoardImageButton.frame.size.height / 2
         dentalStateBoardImageButton.clipsToBounds = true
-        if let imageUrl = URL(string: dentalStateBoardImageURL){            
+        if let imageUrl = URL(string: dentalStateBoardImageURL) {
             dentalStateBoardImageButton.setTitle("", for: .normal)
             dentalStateBoardImageButton.sd_setImage(with: imageUrl, for: .normal, placeholderImage: kCertificatePlaceHolder)
-            self.dentalStateBoardImageButton.layoutIfNeeded()
+            dentalStateBoardImageButton.layoutIfNeeded()
         }
     }
-    
-    @IBAction func dentalStateBoardImageButtonPressed(_ sender: Any) {
+
+    @IBAction func dentalStateBoardImageButtonPressed(_: Any) {
         addPhoto()
     }
-    @IBAction func saveButtonPressed(_ sender: Any) {
-        self.uploadDentalStateboardImage()
+
+    @IBAction func saveButtonPressed(_: Any) {
+        uploadDentalStateboardImage()
     }
-    
+
     func updateProfileScreen() {
-        NotificationCenter.default.post(name: .updateProfileScreen, object: nil, userInfo: ["dentalStateBoardImageURL":dentalStateBoardImageURL])
+        NotificationCenter.default.post(name: .updateProfileScreen, object: nil, userInfo: ["dentalStateBoardImageURL": dentalStateBoardImageURL])
     }
 
     func addPhoto() {
-        self.cameraGalleryOptionActionSheet(title: "", message: "Please select", leftButtonText: "Camera", rightButtonText: "Gallery") { (isCameraButtonPressed, isGalleryButtonPressed, isCancelButtonPressed) in
+        cameraGalleryOptionActionSheet(title: "", message: "Please select", leftButtonText: "Camera", rightButtonText: "Gallery") { isCameraButtonPressed, _, isCancelButtonPressed in
             if isCancelButtonPressed {
-                //cancel action
+                // cancel action
             } else if isCameraButtonPressed {
                 self.getPhotoFromCamera()
             } else {
@@ -71,9 +71,9 @@ class DMEditDentalStateBoardVC: DMBaseVC {
             }
         }
     }
-    
+
     func getPhotoFromCamera() {
-        CameraGalleryManager.shared.openCamera(viewController: self, allowsEditing: false, completionHandler: { (image:UIImage?, error:NSError?) in
+        CameraGalleryManager.shared.openCamera(viewController: self, allowsEditing: false, completionHandler: { (image: UIImage?, error: NSError?) in
             if error != nil {
                 DispatchQueue.main.async {
                     self.makeToast(toastString: (error?.localizedDescription)!)
@@ -86,9 +86,9 @@ class DMEditDentalStateBoardVC: DMBaseVC {
             }
         })
     }
-    
+
     func getPhotoFromGallery() {
-        CameraGalleryManager.shared.openGallery(viewController: self, allowsEditing: false, completionHandler: { (image:UIImage?, error:NSError?) in
+        CameraGalleryManager.shared.openGallery(viewController: self, allowsEditing: false, completionHandler: { (image: UIImage?, error: NSError?) in
             if error != nil {
                 DispatchQueue.main.async {
                     self.makeToast(toastString: (error?.localizedDescription)!)
@@ -96,11 +96,10 @@ class DMEditDentalStateBoardVC: DMBaseVC {
                 return
             }
             self.dentalStateBoardImage = image
-            
+
             DispatchQueue.main.async {
                 self.dentalStateBoardImageButton.setImage(self.dentalStateBoardImage, for: .normal)
             }
         })
     }
-    
 }

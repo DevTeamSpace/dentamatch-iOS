@@ -9,35 +9,32 @@
 import UIKit
 
 @objc protocol TemporyJobCellDelegate {
-    @objc optional func selectTempJobType(selected : Bool)
+    @objc optional func selectTempJobType(selected: Bool)
 }
 
 class TemporyJobCell: UITableViewCell {
-    @IBOutlet weak var TemporyJobLabel: UILabel!
-    @IBOutlet weak var temporyButton: UIButton!
-    var isTemporaryTime : Bool! = false
-    weak var delegate : TemporyJobCellDelegate?
-
+    @IBOutlet var TemporyJobLabel: UILabel!
+    @IBOutlet var temporyButton: UIButton!
+    var isTemporaryTime: Bool! = false
+    weak var delegate: TemporyJobCellDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    func setUpForButton(isTempTime:Bool ) {
+    func setUpForButton(isTempTime: Bool) {
         isTemporaryTime = isTempTime
         if isTempTime {
-            self.temporyButton.setTitle("w", for: .normal)
-            self.temporyButton.setTitleColor(Constants.Color.tickSelectColor, for: .normal)
-            self.TemporyJobLabel.textColor = Constants.Color.headerTitleColor
-            
-        }else {
-            
-            self.temporyButton.setTitle("t", for: .normal)
-            self.temporyButton.setTitleColor(Constants.Color.tickDeselectColor, for: .normal)
-            self.TemporyJobLabel.textColor = Constants.Color.jobTypeLabelDeselectedColor
+            temporyButton.setTitle("w", for: .normal)
+            temporyButton.setTitleColor(Constants.Color.tickSelectColor, for: .normal)
+            TemporyJobLabel.textColor = Constants.Color.headerTitleColor
+
+        } else {
+            temporyButton.setTitle("t", for: .normal)
+            temporyButton.setTitleColor(Constants.Color.tickDeselectColor, for: .normal)
+            TemporyJobLabel.textColor = Constants.Color.jobTypeLabelDeselectedColor
         }
-        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -45,22 +42,19 @@ class TemporyJobCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    @IBAction func TemporyButtonClicked(_ sender: Any) {
+
+    @IBAction func TemporyButtonClicked(_: Any) {
         if isTemporaryTime == false {
             temporyButton.setTitle("w", for: .normal)
             temporyButton.setTitleColor(Constants.Color.availabilitySeletedColor, for: .normal)
-            self.TemporyJobLabel.textColor = Constants.Color.headerTitleColor
+            TemporyJobLabel.textColor = Constants.Color.headerTitleColor
             delegate?.selectTempJobType!(selected: true)
-        }
-        else {
+        } else {
             temporyButton.setTitle("t", for: .normal)
             temporyButton.setTitleColor(Constants.Color.availabilityUnseletedColor, for: .normal)
-            self.TemporyJobLabel.textColor = Constants.Color.jobTypeLabelDeselectedColor
+            TemporyJobLabel.textColor = Constants.Color.jobTypeLabelDeselectedColor
             delegate?.selectTempJobType!(selected: false)
         }
         isTemporaryTime = !isTemporaryTime
-
-        
     }
-    
 }

@@ -8,9 +8,8 @@
 
 import Foundation
 
-extension DMJobTitleSelectionVC : UITableViewDataSource,UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+extension DMJobTitleSelectionVC: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row > 2 {
             return 110
         }
@@ -25,23 +24,21 @@ extension DMJobTitleSelectionVC : UITableViewDataSource,UITableViewDelegate {
                 return 0
             }
             return 76
-        }
-        else {
+        } else {
             return 76
-
         }
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return 4
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //For about yourself
+        // For about yourself
         if indexPath.row > 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AboutMeJobSelectionCell") as! AboutMeJobSelectionCell
             cell.aboutMeTextView.delegate = self
-            cell.aboutMeTextView.inputAccessoryView = self.addToolBarOnTextView()
+            cell.aboutMeTextView.inputAccessoryView = addToolBarOnTextView()
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AnimatedPHTableCell") as! AnimatedPHTableCell
@@ -52,8 +49,8 @@ extension DMJobTitleSelectionVC : UITableViewDataSource,UITableViewDelegate {
             return cell
         }
     }
-    
-    func updateCellForTextField(cell:AnimatedPHTableCell ,indexPath :IndexPath ) {
+
+    func updateCellForTextField(cell: AnimatedPHTableCell, indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
             cell.commonTextField.inputView = jobSelectionPickerView
@@ -73,5 +70,4 @@ extension DMJobTitleSelectionVC : UITableViewDataSource,UITableViewDelegate {
             break
         }
     }
-    
 }

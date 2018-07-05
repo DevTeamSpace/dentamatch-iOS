@@ -9,16 +9,15 @@
 import UIKit
 
 class SettingTableCell: UITableViewCell {
-    
-    @IBOutlet weak var leftConstraintLabel: NSLayoutConstraint!
-    @IBOutlet weak var leftIconImageView: UIImageView!
-    @IBOutlet weak var leftIconLabel: UILabel!
-    @IBOutlet weak var TextLabel: UILabel!
+    @IBOutlet var leftConstraintLabel: NSLayoutConstraint!
+    @IBOutlet var leftIconImageView: UIImageView!
+    @IBOutlet var leftIconLabel: UILabel!
+    @IBOutlet var TextLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.clipsToBounds = true
+        clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -26,5 +25,4 @@ class SettingTableCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }

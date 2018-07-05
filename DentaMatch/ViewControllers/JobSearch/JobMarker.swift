@@ -6,8 +6,8 @@
 //  Copyright © 2017 Appster. All rights reserved.
 //
 
-import UIKit
 import GoogleMaps
+import UIKit
 
 class JobMarker: GMSMarker {
     var index: Int?

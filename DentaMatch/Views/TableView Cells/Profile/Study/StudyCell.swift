@@ -9,16 +9,15 @@
 import UIKit
 
 class StudyCell: UITableViewCell {
-
-    @IBOutlet weak var headingButton: UIButton!
-    @IBOutlet weak var yearOfGraduationTextField: ProfileTextField!
-    @IBOutlet weak var schoolNameTextField: ProfileTextField!
+    @IBOutlet var headingButton: UIButton!
+    @IBOutlet var yearOfGraduationTextField: ProfileTextField!
+    @IBOutlet var schoolNameTextField: ProfileTextField!
     override func awakeFromNib() {
         // Initialization code
         super.awakeFromNib()
-        self.layoutMargins = UIEdgeInsets.zero
-        self.preservesSuperviewLayoutMargins = false
-        self.clipsToBounds = true
+        layoutMargins = UIEdgeInsets.zero
+        preservesSuperviewLayoutMargins = false
+        clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -26,5 +25,4 @@ class StudyCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }

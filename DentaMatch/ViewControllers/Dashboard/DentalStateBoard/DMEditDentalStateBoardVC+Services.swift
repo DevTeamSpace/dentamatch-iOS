@@ -9,16 +9,14 @@
 import Foundation
 import SwiftyJSON
 extension DMEditDentalStateBoardVC {
-    
-    func uploadDentalStateboardImage()  {
-        
-        var params = [String:AnyObject]()
+    func uploadDentalStateboardImage() {
+        var params = [String: AnyObject]()
         params["type"] = "dental_state_board" as AnyObject?
         if let dentalStateBoardImage = self.dentalStateBoardImage {
             if let imageData = UIImageJPEGRepresentation(dentalStateBoardImage, 0.5) {
                 params["image"] = imageData as AnyObject?
-                self.showLoader()
-                APIManager.apiMultipart(serviceName: Constants.API.uploadImage, parameters: params, completionHandler: { (response:JSON?, error:NSError?) in
+                showLoader()
+                APIManager.apiMultipart(serviceName: Constants.API.uploadImage, parameters: params, completionHandler: { (response: JSON?, error: NSError?) in
                     self.hideLoader()
                     if error != nil {
                         self.makeToast(toastString: (error?.localizedDescription)!)
@@ -28,27 +26,27 @@ extension DMEditDentalStateBoardVC {
                         self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                         return
                     }
-                    
-                    //debugPrint(response!)
+
+                    // debugPrint(response!)
                     self.handleDentalStateBoardResponse(response: response)
-                    
+
                 })
             } else {
-                self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
+                makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
             }
         }
     }
-    
-    func handleDentalStateBoardResponse(response:JSON?) {
+
+    func handleDentalStateBoardResponse(response: JSON?) {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
                 UserDefaultsManager.sharedInstance.licenseImageURL = response[Constants.ServerKey.result][Constants.ServerKey.profileImageURL].stringValue
-                self.dentalStateBoardImageURL = response[Constants.ServerKey.result][Constants.ServerKey.profileImageURL].stringValue
-                self.updateProfileScreen()
-                self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
-                _ = self.navigationController?.popViewController(animated: true)
+                dentalStateBoardImageURL = response[Constants.ServerKey.result][Constants.ServerKey.profileImageURL].stringValue
+                updateProfileScreen()
+                makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+                _ = navigationController?.popViewController(animated: true)
             } else {
-                self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+                makeToast(toastString: response[Constants.ServerKey.message].stringValue)
             }
         }
     }

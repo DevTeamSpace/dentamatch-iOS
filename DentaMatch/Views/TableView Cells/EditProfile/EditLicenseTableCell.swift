@@ -9,12 +9,12 @@
 import UIKit
 
 class EditLicenseTableCell: UITableViewCell {
-    @IBOutlet weak var stateLabel: UILabel!
-    @IBOutlet weak var licenceNumberLabel: UILabel!
+    @IBOutlet var stateLabel: UILabel!
+    @IBOutlet var licenceNumberLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.clipsToBounds = true
+        clipsToBounds = true
         // Initialization code
     }
 
@@ -23,5 +23,4 @@ class EditLicenseTableCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }

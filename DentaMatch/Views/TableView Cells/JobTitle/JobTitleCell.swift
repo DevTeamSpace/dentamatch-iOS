@@ -9,21 +9,18 @@
 import UIKit
 
 class JobTitleCell: UITableViewCell {
-    
-    @IBOutlet weak var lblJobTitle: UILabel!
+    @IBOutlet var lblJobTitle: UILabel!
 
-    @IBOutlet weak var btnTick: UIButton!
-    
+    @IBOutlet var btnTick: UIButton!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.btnTick.isUserInteractionEnabled = false
+        btnTick.isUserInteractionEnabled = false
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
     }
-    
 }
-

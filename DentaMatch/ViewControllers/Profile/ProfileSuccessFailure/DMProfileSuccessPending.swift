@@ -9,50 +9,50 @@
 import UIKit
 
 class DMProfileSuccessPending: DMBaseVC {
-    
-    @IBOutlet weak var letsGoButton: UIButton!
-    @IBOutlet weak var successPendingImageView: UIImageView!
-    @IBOutlet weak var detailLabel: UILabel!
-    @IBOutlet weak var titleLabel: UILabel!
-    
+    @IBOutlet var letsGoButton: UIButton!
+    @IBOutlet var successPendingImageView: UIImageView!
+    @IBOutlet var detailLabel: UILabel!
+    @IBOutlet var titleLabel: UILabel!
+
     var isLicenseRequired = false
     var isEmailVerified = false
     var fromRoot = false
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.addNotificationObserver()
+        addNotificationObserver()
         setup()
         verifyEmailAPI()
     }
-    
-    func addNotificationObserver(){
-        NotificationCenter.default.addObserver(self, selector: #selector(self.willEnterForgeGroundCalled), name:.UIApplicationWillEnterForeground, object: nil)
 
+    func addNotificationObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForgeGroundCalled), name: .UIApplicationWillEnterForeground, object: nil)
     }
+
     func removeObserversForNotification() {
         NotificationCenter.default.removeObserver(self, name: .UIApplicationWillEnterForeground, object: nil)
     }
-    
+
     @objc func willEnterForgeGroundCalled() {
-        if self.isEmailVerified == false {
-            self.verifyEmailAPI()
+        if isEmailVerified == false {
+            verifyEmailAPI()
         }
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //print("viewWillDisappear called ")
-        self.removeObserversForNotification()
+        // print("viewWillDisappear called ")
+        removeObserversForNotification()
     }
+
     deinit {
-        //print("deinit called ")
+        // print("deinit called ")
         self.removeObserversForNotification()
-        //Logger.debug("deinit TLStory")
+        // Logger.debug("deinit TLStory")
     }
-    
+
     func verifyEmailAPI() {
-        verifyEmail(completionHandler: { (isVerified:Bool, message:String,error:NSError?) in
+        verifyEmail(completionHandler: { (isVerified: Bool, _: String, error: NSError?) in
             if error == nil && isVerified {
                 DispatchQueue.main.async {
                     self.showPendingCongrats()
@@ -66,8 +66,8 @@ class DMProfileSuccessPending: DMBaseVC {
             }
         })
     }
-    
-    func hideAll(isHidden:Bool) {
+
+    func hideAll(isHidden: Bool) {
         letsGoButton.isHidden = isHidden
         successPendingImageView.isHidden = isHidden
         titleLabel.isHidden = isHidden
@@ -76,46 +76,46 @@ class DMProfileSuccessPending: DMBaseVC {
 
     func setup() {
         if fromRoot {
-            self.hideAll(isHidden: true)
+            hideAll(isHidden: true)
         }
         if !isEmailVerified {
-           self.showUIForVerifyEmail()
-            
+            showUIForVerifyEmail()
+
         } else if isLicenseRequired {
-            self.showUIForPending()
+            showUIForPending()
         }
-        
     }
-    
-    func showUIForVerifyEmail(){
+
+    func showUIForVerifyEmail() {
         letsGoButton.setTitle("RESEND VERIFICATION EMAIL", for: .normal)
-        successPendingImageView.image = UIImage(named:"verifyEmail")
+        successPendingImageView.image = UIImage(named: "verifyEmail")
         titleLabel.text = "Verify Email"
         detailLabel.text = "We have sent a verification link on your registered email. Please verify it to proceed further."
     }
-    func showUIForCongrats(){
-        self.hideAll(isHidden: false)
+
+    func showUIForCongrats() {
+        hideAll(isHidden: false)
         letsGoButton.setTitle("LET'S GO", for: .normal)
-        successPendingImageView.image = UIImage(named:"congratesTick")
+        successPendingImageView.image = UIImage(named: "congratesTick")
         titleLabel.text = "Congratulations!"
         detailLabel.text = "Your profile has been created successfully.\nLet's set your availability so that dental offices can get to know about your timings."
     }
-    
-    func showUIForPending(){
-        self.hideAll(isHidden: false)
+
+    func showUIForPending() {
+        hideAll(isHidden: false)
         letsGoButton.setTitle("LET'S GO", for: .normal)
-        successPendingImageView.image = UIImage(named:"pendingApproval")
+        successPendingImageView.image = UIImage(named: "pendingApproval")
         titleLabel.text = "Pending Approval"
         detailLabel.text = "Your profile has been sent for admin’s  approval. You can apply for jobs once your profile gets approved.\n\nIn the meantime, Lets set your availability so that dental offices can get to know about your timings."
     }
-    
-    @IBAction func letsGoButtonPressed(_ sender: Any) {
+
+    @IBAction func letsGoButtonPressed(_: Any) {
         if !isEmailVerified {
-            verifyEmail(completionHandler: { (isVerified:Bool, message:String,error:NSError?) in
-                if error == nil  {
+            verifyEmail(completionHandler: { (isVerified: Bool, message: String, error: NSError?) in
+                if error == nil {
                     if isVerified {
                         DispatchQueue.main.async {
-                           self.showPendingCongrats()
+                            self.showPendingCongrats()
                         }
                     } else {
                         DispatchQueue.main.async {
@@ -124,29 +124,26 @@ class DMProfileSuccessPending: DMBaseVC {
                     }
                 }
             })
-            //print("Check with new email verify api")
+            // print("Check with new email verify api")
         } else {
             goToCalendar()
         }
     }
-    
-    func showPendingCongrats(){
-        self.isEmailVerified = true
+
+    func showPendingCongrats() {
+        isEmailVerified = true
         if UserManager.shared().activeUser.isJobSeekerVerified == true {
             // congrats UI
-            self.showUIForCongrats()
-        }
-        else {
+            showUIForCongrats()
+        } else {
             // pending UI
-             self.showUIForPending()
-            
+            showUIForPending()
         }
     }
-    
+
     func goToCalendar() {
         let calendarSetAvailabillityVC = UIStoryboard.calenderStoryBoard().instantiateViewController(type: DMCalendarSetAvailabillityVC.self)!
         calendarSetAvailabillityVC.fromJobSelection = true
-        self.navigationController?.pushViewController(calendarSetAvailabillityVC, animated: true)
+        navigationController?.pushViewController(calendarSetAvailabillityVC, animated: true)
     }
-
 }

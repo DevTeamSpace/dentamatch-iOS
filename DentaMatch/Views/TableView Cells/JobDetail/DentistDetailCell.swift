@@ -9,41 +9,37 @@
 import UIKit
 
 @objc protocol DentistDetailCellDelegate {
-    
     @objc optional func saveOrUnsaveJob()
 }
 
 class DentistDetailCell: UITableViewCell {
-    
-    @IBOutlet weak var lblPercentSkill: UILabel!
-    @IBOutlet weak var lblDentistName: UILabel!
-    @IBOutlet weak var btnFavourite: UIButton!
-    @IBOutlet weak var btnJobType: UIButton!
-    @IBOutlet weak var lblDays: UILabel!
-    @IBOutlet weak var lblPostTime: UILabel!
-    @IBOutlet weak var lblApplied: UILabel!
-    
-    weak var delegate : DentistDetailCellDelegate?
-    
+    @IBOutlet var lblPercentSkill: UILabel!
+    @IBOutlet var lblDentistName: UILabel!
+    @IBOutlet var btnFavourite: UIButton!
+    @IBOutlet var btnJobType: UIButton!
+    @IBOutlet var lblDays: UILabel!
+    @IBOutlet var lblPostTime: UILabel!
+    @IBOutlet var lblApplied: UILabel!
+
+    weak var delegate: DentistDetailCellDelegate?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.btnJobType.layer.cornerRadius = 3
-        self.lblApplied.isHidden = true
+        btnJobType.layer.cornerRadius = 3
+        lblApplied.isHidden = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
     }
-    
-    
-    @IBAction func actionFavourite(_ sender: UIButton) {
-        self.delegate?.saveOrUnsaveJob!()
+
+    @IBAction func actionFavourite(_: UIButton) {
+        delegate?.saveOrUnsaveJob!()
     }
-    
-    func setCellData(job : Job) {
-        
+
+    func setCellData(job: Job) {
         /* For Job status
          INVITED = 1
          APPLIED = 2
@@ -52,33 +48,32 @@ class DentistDetailCell: UITableViewCell {
          REJECTED = 5
          CANCELLED = 6
          */
-        self.lblApplied.isHidden = true
+        lblApplied.isHidden = true
 
         switch job.isApplied {
         case 1:
-            self.lblApplied.text = "INVITED"
-            self.lblApplied.isHidden = false
+            lblApplied.text = "INVITED"
+            lblApplied.isHidden = false
 
         case 2:
-            self.lblApplied.text = "APPLIED"
-            self.lblApplied.isHidden = false
+            lblApplied.text = "APPLIED"
+            lblApplied.isHidden = false
 
         case 3:
-            self.lblApplied.text = "INTERVIEWING"
-            self.lblApplied.isHidden = false
+            lblApplied.text = "INTERVIEWING"
+            lblApplied.isHidden = false
 
         case 4:
-            self.lblApplied.text = "HIRED"
-            self.lblApplied.isHidden = false
+            lblApplied.text = "HIRED"
+            lblApplied.isHidden = false
 
         case 5:
-            self.lblApplied.text = "REJECTED"
-            self.lblApplied.isHidden = false
+            lblApplied.text = "REJECTED"
+            lblApplied.isHidden = false
 
         case 6:
-            self.lblApplied.text = "CANCELLED"
-            self.lblApplied.isHidden = false
-
+            lblApplied.text = "CANCELLED"
+            lblApplied.isHidden = false
 
         default:
             break
@@ -93,21 +88,19 @@ class DentistDetailCell: UITableViewCell {
         if job.isSaved == 0 {
             self.btnFavourite.setTitle(Constants.DesignFont.notFavourite, for: .normal)
             self.btnFavourite.titleLabel?.textColor = Constants.Color.unSaveJobColor
-            self.btnFavourite.setImage(UIImage(named:""), for: .normal)
-        }
-        else {
-            self.btnFavourite.setImage(UIImage(named:"saveStar"), for: .normal)
-            self.btnFavourite.setTitle("", for: .normal)
+            self.btnFavourite.setImage(UIImage(named: ""), for: .normal)
+        } else {
+            btnFavourite.setImage(UIImage(named: "saveStar"), for: .normal)
+            btnFavourite.setTitle("", for: .normal)
         }
         if job.jobType == 1 {
-            self.btnJobType.setTitle(Constants.Strings.fullTime, for: .normal)
-            self.btnJobType.backgroundColor = Constants.Color.fullTimeBackgroundColor
+            btnJobType.setTitle(Constants.Strings.fullTime, for: .normal)
+            btnJobType.backgroundColor = Constants.Color.fullTimeBackgroundColor
+        } else if job.jobType == 2 {
+            btnJobType.setTitle(Constants.Strings.partTime, for: .normal)
+            btnJobType.backgroundColor = Constants.Color.partTimeDaySelectColor
         }
-        else if job.jobType == 2 {
-            self.btnJobType.setTitle(Constants.Strings.partTime, for: .normal)
-            self.btnJobType.backgroundColor = Constants.Color.partTimeDaySelectColor
-        }
-        self.lblDentistName.text = job.jobtitle
+        lblDentistName.text = job.jobtitle
         var partTimeJobDays = [String]()
         if job.isSunday == 1 {
             partTimeJobDays.append(Constants.DaysAbbreviation.sunday)
@@ -130,26 +123,24 @@ class DentistDetailCell: UITableViewCell {
         if job.isSaturday == 1 {
             partTimeJobDays.append(Constants.DaysAbbreviation.saturday)
         }
-        self.lblDays.text = partTimeJobDays.joined(separator: Constants.Strings.comma + Constants.Strings.whiteSpace)
+        lblDays.text = partTimeJobDays.joined(separator: Constants.Strings.comma + Constants.Strings.whiteSpace)
         if job.jobPostedTimeGap == Constants.Strings.zero {
-            self.lblPostTime.text = Constants.Strings.today.uppercased()
+            lblPostTime.text = Constants.Strings.today.uppercased()
+        } else if job.jobPostedTimeGap == Constants.Strings.one {
+            lblPostTime.text = job.jobPostedTimeGap + Constants.Strings.whiteSpace + Constants.Strings.dayAgo
+        } else {
+            lblPostTime.text = job.jobPostedTimeGap + Constants.Strings.whiteSpace + Constants.Strings.daysAgo
         }
-        else if job.jobPostedTimeGap == Constants.Strings.one {
-            self.lblPostTime.text = job.jobPostedTimeGap + Constants.Strings.whiteSpace + Constants.Strings.dayAgo
-        }
-        else {
-            self.lblPostTime.text = job.jobPostedTimeGap + Constants.Strings.whiteSpace + Constants.Strings.daysAgo
-        }
-        
+
         if job.jobType == 3 {
-            self.lblDays.text = ""
-            //its a temp job
-            self.lblDays.text = "Dates Needed "
+            lblDays.text = ""
+            // its a temp job
+            lblDays.text = "Dates Needed "
             for date in job.jobTypeDates {
-                self.lblDays.text = self.lblDays.text! + Date.commonDateFormatEEMMDD(dateString: date) + ", "
+                lblDays.text = lblDays.text! + Date.commonDateFormatEEMMDD(dateString: date) + ", "
             }
-            self.lblDays.text = self.lblDays.text?.dropLast(2)
+            lblDays.text = lblDays.text?.dropLast(2)
         }
-        self.lblPercentSkill.text = String(format: "%.2f", job.percentSkillsMatch) + "%"
+        lblPercentSkill.text = String(format: "%.2f", job.percentSkillsMatch) + "%"
     }
 }

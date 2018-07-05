@@ -9,21 +9,18 @@
 import UIKit
 
 class EmployeeReferenceModel: NSObject {
-    
-    var referenceName:String? = ""
-    var mobileNumber:String? = ""
-    var email:String? = ""
-    init(empty:String) {
-        self.referenceName = ""
-        self.mobileNumber = ""
-        self.email = ""
+    var referenceName: String? = ""
+    var mobileNumber: String? = ""
+    var email: String? = ""
+    init(empty _: String) {
+        referenceName = ""
+        mobileNumber = ""
+        email = ""
     }
-    init(referenceName:String?,mobileNumber:String?,email:String?) {
+
+    init(referenceName: String?, mobileNumber: String?, email: String?) {
         self.referenceName = referenceName
         self.mobileNumber = mobileNumber
         self.email = email
     }
-    
 }
-
-

@@ -10,24 +10,22 @@ import Foundation
 import SwiftyJSON
 
 extension DMTrackVC {
-     
-    func getJobList(params:[String:String]) {
-        
-        //Loader management as we don't have to show loader in load more case
+    func getJobList(params: [String: String]) {
+        // Loader management as we don't have to show loader in load more case
         if params["type"] == "1" {
-            if self.savedJobsPageNo == 1 {
-                self.showLoader()
+            if savedJobsPageNo == 1 {
+                showLoader()
             }
         } else if params["type"] == "2" {
-            if self.appliedJobsPageNo == 1 {
-                self.showLoader()
+            if appliedJobsPageNo == 1 {
+                showLoader()
             }
         } else {
-            if self.shortListedJobsPageNo == 1 {
-                self.showLoader()
+            if shortListedJobsPageNo == 1 {
+                showLoader()
             }
         }
-        APIManager.apiGet(serviceName: Constants.API.jobList, parameters: params) { (response:JSON?, error:NSError?) in
+        APIManager.apiGet(serviceName: Constants.API.jobList, parameters: params) { (response: JSON?, error: NSError?) in
             self.hideLoader()
             if error != nil {
                 self.makeToast(toastString: (error?.localizedDescription)!)
@@ -37,84 +35,83 @@ extension DMTrackVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            //debugPrint(response!)
-            self.handleJobListResponse(response: response,type: params["type"]!)
+            // debugPrint(response!)
+            self.handleJobListResponse(response: response, type: params["type"]!)
         }
     }
-    
-    func saveUnsaveJob(saveStatus:Int,jobId:Int,completionHandler: @escaping (JSON?, NSError?) -> ()) {
+
+    func saveUnsaveJob(saveStatus: Int, jobId: Int, completionHandler: @escaping (JSON?, NSError?) -> Void) {
         let params = [
-            Constants.ServerKey.jobId:jobId,
-            Constants.ServerKey.status:saveStatus
-            ]
-        self.showLoader()
-        APIManager.apiPost(serviceName: Constants.API.saveJob, parameters: params) { (response:JSON?, error:NSError?) in
+            Constants.ServerKey.jobId: jobId,
+            Constants.ServerKey.status: saveStatus,
+        ]
+        showLoader()
+        APIManager.apiPost(serviceName: Constants.API.saveJob, parameters: params) { (response: JSON?, error: NSError?) in
             self.hideLoader()
-            completionHandler(response,error)
+            completionHandler(response, error)
         }
     }
-    
-    func handleJobListResponse(response:JSON?,type:String) {
+
+    func handleJobListResponse(response: JSON?, type: String) {
         if let response = response {
-            //debugPrint("type returned = \(type)")
-            
+            // debugPrint("type returned = \(type)")
+
             if response[Constants.ServerKey.status].boolValue {
                 if type == "1" {
-                    //Saved Jobs
-                    if self.savedJobsPageNo == 1 {
-                        self.savedJobs.removeAll()
+                    // Saved Jobs
+                    if savedJobsPageNo == 1 {
+                        savedJobs.removeAll()
                     }
-                    self.totalSavedJobsFromServer = response[Constants.ServerKey.result]["total"].intValue
+                    totalSavedJobsFromServer = response[Constants.ServerKey.result]["total"].intValue
                     let jobsArray = response[Constants.ServerKey.result][Constants.ServerKey.list].arrayValue
                     for job in jobsArray {
                         let job = Job(job: job)
-                        self.savedJobs.append(job)
+                        savedJobs.append(job)
                     }
-                    self.pullToRefreshSavedJobs.endRefreshing()
+                    pullToRefreshSavedJobs.endRefreshing()
                     savedJobsPageNo += 1
-                    self.loadingMoreSavedJobs = false
-                    self.placeHolderEmptyJobsView?.isHidden = self.savedJobs.count == 0 ? false : true
+                    loadingMoreSavedJobs = false
+                    placeHolderEmptyJobsView?.isHidden = savedJobs.count == 0 ? false : true
                     DispatchQueue.main.async {
                         self.savedJobsTableView.reloadData()
                         self.savedJobsTableView.tableFooterView = nil
-                        
                     }
-                    
+
                 } else if type == "2" {
-                    //Applied jons
-                    if self.appliedJobsPageNo == 1 {
-                        self.appliedJobs.removeAll()
+                    // Applied jons
+                    if appliedJobsPageNo == 1 {
+                        appliedJobs.removeAll()
                     }
-                    self.totalAppliedJobsFromServer = response[Constants.ServerKey.result]["total"].intValue
+                    totalAppliedJobsFromServer = response[Constants.ServerKey.result]["total"].intValue
                     let jobsArray = response[Constants.ServerKey.result][Constants.ServerKey.list].arrayValue
                     for job in jobsArray {
                         let job = Job(job: job)
-                        self.appliedJobs.append(job)
+                        appliedJobs.append(job)
                     }
-                    self.pullToRefreshAppliedJobs.endRefreshing()
+                    pullToRefreshAppliedJobs.endRefreshing()
                     appliedJobsPageNo += 1
-                    self.loadingMoreAppliedJobs = false
-                    self.placeHolderEmptyJobsView?.isHidden = self.appliedJobs.count == 0 ? false : true
+                    loadingMoreAppliedJobs = false
+                    placeHolderEmptyJobsView?.isHidden = appliedJobs.count == 0 ? false : true
                     DispatchQueue.main.async {
                         self.appliedJobsTableView.reloadData()
                         self.appliedJobsTableView.tableFooterView = nil
                     }
                 } else if type == "3" {
-                    //Shortlisted jobs
-                    if self.shortListedJobsPageNo == 1 {
-                        self.shortListedJobs.removeAll()
+                    // Shortlisted jobs
+                    if shortListedJobsPageNo == 1 {
+                        shortListedJobs.removeAll()
                     }
-                    self.totalShortListedJobsFromServer = response[Constants.ServerKey.result]["total"].intValue
-                    
+                    totalShortListedJobsFromServer = response[Constants.ServerKey.result]["total"].intValue
+
                     let jobsArray = response[Constants.ServerKey.result][Constants.ServerKey.list].arrayValue
                     for job in jobsArray {
                         let job = Job(job: job)
-                        self.shortListedJobs.append(job)
+                        shortListedJobs.append(job)
                     }
-                    self.pullToRefreshShortListedJobs.endRefreshing()
+                    pullToRefreshShortListedJobs.endRefreshing()
                     shortListedJobsPageNo += 1
-                    self.loadingMoreShortListedJobs = false
-                    self.placeHolderEmptyJobsView?.isHidden = self.shortListedJobs.count == 0 ? false : true
+                    loadingMoreShortListedJobs = false
+                    placeHolderEmptyJobsView?.isHidden = shortListedJobs.count == 0 ? false : true
                     DispatchQueue.main.async {
                         self.shortListedJobsTableView.reloadData()
                         self.shortListedJobsTableView.tableFooterView = nil
@@ -123,56 +120,55 @@ extension DMTrackVC {
             } else {
                 if type == "1" {
                     if response[Constants.ServerKey.statusCode] == 201 {
-                        self.pullToRefreshSavedJobs.endRefreshing()
-                        self.loadingMoreSavedJobs = false
-                        if self.savedJobsPageNo == 1 {
-                            self.savedJobs.removeAll()
+                        pullToRefreshSavedJobs.endRefreshing()
+                        loadingMoreSavedJobs = false
+                        if savedJobsPageNo == 1 {
+                            savedJobs.removeAll()
                         }
-                        self.placeHolderEmptyJobsView?.isHidden = self.savedJobs.count == 0 ? false : true
+                        placeHolderEmptyJobsView?.isHidden = savedJobs.count == 0 ? false : true
                         DispatchQueue.main.async {
                             self.savedJobsTableView.reloadData()
                             self.savedJobsTableView.tableFooterView = UIView()
                         }
                     } else {
-                        self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+                        makeToast(toastString: response[Constants.ServerKey.message].stringValue)
                     }
-                    
+
                 } else if type == "2" {
                     if response[Constants.ServerKey.statusCode] == 201 {
-                        self.pullToRefreshAppliedJobs.endRefreshing()
-                        self.loadingMoreAppliedJobs = false
-                        if self.appliedJobsPageNo == 1 {
-                            self.appliedJobs.removeAll()
+                        pullToRefreshAppliedJobs.endRefreshing()
+                        loadingMoreAppliedJobs = false
+                        if appliedJobsPageNo == 1 {
+                            appliedJobs.removeAll()
                         }
-                        self.placeHolderEmptyJobsView?.isHidden = self.appliedJobs.count == 0 ? false : true
+                        placeHolderEmptyJobsView?.isHidden = appliedJobs.count == 0 ? false : true
                         DispatchQueue.main.async {
                             self.appliedJobsTableView.reloadData()
                             self.appliedJobsTableView.tableFooterView = UIView()
                         }
                     } else {
-                        self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+                        makeToast(toastString: response[Constants.ServerKey.message].stringValue)
                     }
-                    
+
                 } else {
                     if response[Constants.ServerKey.statusCode] == 201 {
-                        self.pullToRefreshShortListedJobs.endRefreshing()
-                        self.loadingMoreShortListedJobs = false
-                        if self.shortListedJobsPageNo == 1 {
-                            self.shortListedJobs.removeAll()
+                        pullToRefreshShortListedJobs.endRefreshing()
+                        loadingMoreShortListedJobs = false
+                        if shortListedJobsPageNo == 1 {
+                            shortListedJobs.removeAll()
                         }
-                        self.placeHolderEmptyJobsView?.isHidden = self.shortListedJobs.count == 0 ? false : true
+                        placeHolderEmptyJobsView?.isHidden = shortListedJobs.count == 0 ? false : true
                         DispatchQueue.main.async {
                             self.shortListedJobsTableView.reloadData()
                             self.shortListedJobsTableView.tableFooterView = UIView()
                         }
                     } else {
-                        self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+                        makeToast(toastString: response[Constants.ServerKey.message].stringValue)
                     }
-
                 }
             }
         } else {
-            self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
+            makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
         }
     }
 }

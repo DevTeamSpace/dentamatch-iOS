@@ -6,11 +6,10 @@
 //  Copyright © 2017 Appster. All rights reserved.
 //
 
-import UIKit
 import SwiftyJSON
+import UIKit
 
 class UserAvailability: NSObject {
-
     var isFulltime = false
     var isParttime = false
     var isParttimeMonday = false
@@ -25,22 +24,20 @@ class UserAvailability: NSObject {
     override init() {
         // for empty
     }
-    
-    init(dict:JSON) {
+
+    init(dict: JSON) {
         let newDict = dict["calendarAvailability"].dictionaryValue
-        self.isFulltime = (newDict["isFulltime"]?.boolValue)!
-        self.isParttimeMonday = (newDict["isParttimeMonday"]?.boolValue)!
-        self.isParttimeTuesday = (newDict["isParttimeTuesday"]?.boolValue)!
-        self.isParttimeWednesday = (newDict["isParttimeWednesday"]?.boolValue)!
-        self.isParttimeThursday = (newDict["isParttimeThursday"]?.boolValue)!
-        self.isParttimeFriday = (newDict["isParttimeFriday"]?.boolValue)!
-        self.isParttimeSaturday = (newDict["isParttimeSaturday"]?.boolValue)!
-        self.isParttimeSunday = (newDict["isParttimeSunday"]?.boolValue)!
-        self.tempJobDates = dict["tempDatesAvailability"].arrayObject as! [String]
+        isFulltime = (newDict["isFulltime"]?.boolValue)!
+        isParttimeMonday = (newDict["isParttimeMonday"]?.boolValue)!
+        isParttimeTuesday = (newDict["isParttimeTuesday"]?.boolValue)!
+        isParttimeWednesday = (newDict["isParttimeWednesday"]?.boolValue)!
+        isParttimeThursday = (newDict["isParttimeThursday"]?.boolValue)!
+        isParttimeFriday = (newDict["isParttimeFriday"]?.boolValue)!
+        isParttimeSaturday = (newDict["isParttimeSaturday"]?.boolValue)!
+        isParttimeSunday = (newDict["isParttimeSunday"]?.boolValue)!
+        tempJobDates = dict["tempDatesAvailability"].arrayObject as! [String]
 //        if (self.isParttimeMonday == true) || (self.isParttimeTuesday == true) || self.isParttimeWednesday || self.isParttimeThursday || self.isParttimeFriday || self.isParttimeSaturday || self.isParttimeSunday {
-//            
+//
 //        }
-       
-        
     }
 }

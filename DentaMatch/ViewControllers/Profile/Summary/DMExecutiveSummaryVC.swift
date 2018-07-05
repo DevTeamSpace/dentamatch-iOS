@@ -9,16 +9,14 @@
 import UIKit
 
 class DMExecutiveSummaryVC: DMBaseVC {
-
-    enum ExecutiveSummary:Int {
+    enum ExecutiveSummary: Int {
         case profileHeader
         case aboutMe
     }
-    
-    
-    @IBOutlet weak var executiveSummaryTableView: UITableView!
-    
-    let profileProgress:CGFloat = 1.0
+
+    @IBOutlet var executiveSummaryTableView: UITableView!
+
+    let profileProgress: CGFloat = 1.0
     var aboutMe = ""
 
     override func viewDidLoad() {
@@ -28,51 +26,52 @@ class DMExecutiveSummaryVC: DMBaseVC {
     }
 
     func setup() {
-        self.navigationItem.leftBarButtonItem = self.backBarButton()
-        self.executiveSummaryTableView.separatorColor = UIColor.clear
-        self.executiveSummaryTableView.register(UINib(nibName: "PhotoNameCell", bundle: nil), forCellReuseIdentifier: "PhotoNameCell")
-        self.executiveSummaryTableView.register(UINib(nibName: "AboutMeCell", bundle: nil), forCellReuseIdentifier: "AboutMeCell")
+        navigationItem.leftBarButtonItem = backBarButton()
+        executiveSummaryTableView.separatorColor = UIColor.clear
+        executiveSummaryTableView.register(UINib(nibName: "PhotoNameCell", bundle: nil), forCellReuseIdentifier: "PhotoNameCell")
+        executiveSummaryTableView.register(UINib(nibName: "AboutMeCell", bundle: nil), forCellReuseIdentifier: "AboutMeCell")
     }
-    
+
     func openDashboard() {
         kAppDelegate.goToSearch()
 //        let dashboardVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: TabBarVC.self)!
 //        kAppDelegate.window?.rootViewController = dashboardVC
     }
-    
+
     func addToolBarOnTextView() -> UIToolbar {
         let keyboardDoneButtonView = UIToolbar()
         keyboardDoneButtonView.sizeToFit()
         keyboardDoneButtonView.barTintColor = Constants.Color.toolBarColor
         // Setup the buttons to be put in the system.
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
-        
+
         let item = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(toolBarButtonPressed))
         item.tag = 2
         item.setTitleTextAttributes([NSAttributedStringKey.font: UIFont.fontRegular(fontSize: 20.0)!], for: UIControlState.normal)
-        
+
         item.tintColor = UIColor.white
-        
-        let toolbarButtons = [flexibleSpace,item]
-        
-        //Put the buttons into the ToolBar and display the tool bar
+
+        let toolbarButtons = [flexibleSpace, item]
+
+        // Put the buttons into the ToolBar and display the tool bar
         keyboardDoneButtonView.setItems(toolbarButtons, animated: false)
-        
+
         return keyboardDoneButtonView
     }
-    
+
     @objc func toolBarButtonPressed() {
-        self.view.endEditing(true)
+        view.endEditing(true)
     }
-    
-    @IBAction func completeProfileButtonClicked(_ sender: Any) {
-        self.updateAboutMeAPI()
+
+    @IBAction func completeProfileButtonClicked(_: Any) {
+        updateAboutMeAPI()
     }
 }
 
-extension DMExecutiveSummaryVC : UITextViewDelegate {
+extension DMExecutiveSummaryVC: UITextViewDelegate {
+
     // MARK: - TextView Delegates
-    
+
     func textViewDidChange(_ textView: UITextView) {
         if let cell = self.executiveSummaryTableView.cellForRow(at: IndexPath(row: 0, section: 1)) as? AboutMeCell {
             aboutMe = textView.text
@@ -83,9 +82,8 @@ extension DMExecutiveSummaryVC : UITextViewDelegate {
             }
         }
     }
-    
+
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        
         guard text.characters.count > 0 else {
             return true
         }
@@ -97,17 +95,16 @@ extension DMExecutiveSummaryVC : UITextViewDelegate {
             textView.text = textView.text + text.stringFrom(0, to: remainingTextCount)
             return false
         }
-        
-        return true        
+
+        return true
     }
-    
+
     func textViewDidBeginEditing(_ textView: UITextView) {
-        
-        self.executiveSummaryTableView.contentInset =  UIEdgeInsetsMake(0, 0, 200, 0)
+        executiveSummaryTableView.contentInset = UIEdgeInsetsMake(0, 0, 200, 0)
         DispatchQueue.main.async {
             self.executiveSummaryTableView.scrollToRow(at: IndexPath(row: 0, section: 1), at: .bottom, animated: true)
         }
-        
+
         if let cell = self.executiveSummaryTableView.cellForRow(at: IndexPath(row: 0, section: 1)) as? AboutMeCell {
             if !textView.text.isEmpty {
                 cell.placeHolderLabel.isHidden = true
@@ -116,14 +113,13 @@ extension DMExecutiveSummaryVC : UITextViewDelegate {
             }
         }
     }
-    
-    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
-        self.executiveSummaryTableView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0)
+
+    func textViewShouldEndEditing(_: UITextView) -> Bool {
+        executiveSummaryTableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
         return true
     }
-    
+
     func textViewDidEndEditing(_ textView: UITextView) {
-        
         if let cell = self.executiveSummaryTableView.cellForRow(at: IndexPath(row: 0, section: 1)) as? AboutMeCell {
             if !textView.text.isEmpty {
                 cell.placeHolderLabel.isHidden = true

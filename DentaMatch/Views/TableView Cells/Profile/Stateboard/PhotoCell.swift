@@ -9,21 +9,19 @@
 import UIKit
 
 class PhotoCell: UITableViewCell {
-
     @IBOutlet var stateBoardPhotoButton: UIButton!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.clipsToBounds = true
-        self.stateBoardPhotoButton.layer.cornerRadius = self.stateBoardPhotoButton.bounds.size.height/2
-        self.stateBoardPhotoButton.clipsToBounds = true
-        self.stateBoardPhotoButton.imageView?.contentMode = .scaleAspectFill
+        clipsToBounds = true
+        stateBoardPhotoButton.layer.cornerRadius = stateBoardPhotoButton.bounds.size.height / 2
+        stateBoardPhotoButton.clipsToBounds = true
+        stateBoardPhotoButton.imageView?.contentMode = .scaleAspectFill
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
     }
-    
 }

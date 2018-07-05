@@ -10,10 +10,9 @@ import Foundation
 import SwiftyJSON
 
 extension DMForgotPasswordVC {
-    
-    func forgotPasswordAPI(params:[String:String]) {
-        self.showLoader()
-        APIManager.apiPut(serviceName: Constants.API.forgotPassword, parameters: params) { (response:JSON?, error:NSError?) in
+    func forgotPasswordAPI(params: [String: String]) {
+        showLoader()
+        APIManager.apiPut(serviceName: Constants.API.forgotPassword, parameters: params) { (response: JSON?, error: NSError?) in
             self.hideLoader()
             if error != nil {
                 self.makeToast(toastString: (error?.localizedDescription)!)
@@ -23,7 +22,7 @@ extension DMForgotPasswordVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            //debugPrint(response!)
+            // debugPrint(response!)
             if response![Constants.ServerKey.status].boolValue {
                 _ = self.navigationController?.popViewController(animated: true)
                 self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)

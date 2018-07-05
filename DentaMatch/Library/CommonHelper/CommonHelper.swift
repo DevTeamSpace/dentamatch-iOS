@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: Directory Path helper methods
 
-public func documentsDirectoryPath () -> String? {
+public func documentsDirectoryPath() -> String? {
     return NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
 }
 

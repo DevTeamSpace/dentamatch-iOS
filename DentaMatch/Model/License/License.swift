@@ -6,20 +6,19 @@
 //  Copyright © 2017 Appster. All rights reserved.
 //
 
-import UIKit
 import SwiftyJSON
+import UIKit
 
 class License: NSObject {
-    
     var state = ""
     var number = ""
-    
-    override init () {
+
+    override init() {
         /* For Default object of class */
     }
-    
-    init(license:JSON) {
-        self.number = license[Constants.ServerKey.licenseNumber].stringValue
-        self.state = license[Constants.ServerKey.state].stringValue
+
+    init(license: JSON) {
+        number = license[Constants.ServerKey.licenseNumber].stringValue
+        state = license[Constants.ServerKey.state].stringValue
     }
 }

@@ -9,14 +9,13 @@
 import UIKit
 
 class MessageReceiverTableCell: UITableViewCell {
-
-    @IBOutlet weak var chatTextView: UITextView!
-    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet var chatTextView: UITextView!
+    @IBOutlet var timeLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.chatTextView.layer.cornerRadius = 5.0
-        self.chatTextView.textContainerInset = UIEdgeInsets(top: 9, left: 8, bottom: 8, right: 8)
+        chatTextView.layer.cornerRadius = 5.0
+        chatTextView.textContainerInset = UIEdgeInsets(top: 9, left: 8, bottom: 8, right: 8)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -24,5 +23,4 @@ class MessageReceiverTableCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }

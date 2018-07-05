@@ -9,8 +9,7 @@
 import UIKit
 
 class GooglePlacesTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var placeLabel: UILabel!
+    @IBOutlet var placeLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,5 +19,4 @@ class GooglePlacesTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
     }
-
 }

@@ -6,21 +6,20 @@
 //  Copyright © 2016 Appster. All rights reserved.
 //
 
-import UIKit
 import Foundation
+import UIKit
 
 let SEARCH_PARAMETR_KEY = "searchParameter"
 
 class UserDefaultsManager: NSObject {
-    
     static let sharedInstance = UserDefaultsManager()
-    
-    var isLoggedIn:Bool {
+
+    var isLoggedIn: Bool {
         get {
             if kUserDefaults.value(forKey: Constants.UserDefaultsKey.isLoggedIn) != nil {
                 return kUserDefaults.value(forKey: Constants.UserDefaultsKey.isLoggedIn) as! Bool
             }
-            //Default is not logged in
+            // Default is not logged in
             return false
         }
         set {
@@ -28,8 +27,8 @@ class UserDefaultsManager: NSObject {
             kUserDefaults.synchronize()
         }
     }
-    
-    var isLoggedOut:Bool {
+
+    var isLoggedOut: Bool {
         get {
             if kUserDefaults.value(forKey: Constants.UserDefaultsKey.isLoggedOut) != nil {
                 return kUserDefaults.value(forKey: Constants.UserDefaultsKey.isLoggedOut) as! Bool
@@ -41,8 +40,8 @@ class UserDefaultsManager: NSObject {
             kUserDefaults.synchronize()
         }
     }
-    
-    var isOnBoardingDone:Bool {
+
+    var isOnBoardingDone: Bool {
         get {
             if kUserDefaults.value(forKey: Constants.UserDefaultsKey.isOnBoardingDone) != nil {
                 return kUserDefaults.value(forKey: Constants.UserDefaultsKey.isOnBoardingDone) as! Bool
@@ -54,8 +53,8 @@ class UserDefaultsManager: NSObject {
             kUserDefaults.synchronize()
         }
     }
-    
-    var isHistoryRetrieved:Bool {
+
+    var isHistoryRetrieved: Bool {
         get {
             if kUserDefaults.value(forKey: Constants.UserDefaultsKey.isHistoryRetrieved) != nil {
                 return kUserDefaults.value(forKey: Constants.UserDefaultsKey.isHistoryRetrieved) as! Bool
@@ -68,8 +67,7 @@ class UserDefaultsManager: NSObject {
         }
     }
 
-    
-    var isProfileSkipped:Bool {
+    var isProfileSkipped: Bool {
         get {
             if kUserDefaults.value(forKey: Constants.UserDefaultsKey.isProfileSkipped) != nil {
                 return kUserDefaults.value(forKey: Constants.UserDefaultsKey.isProfileSkipped) as! Bool
@@ -81,8 +79,8 @@ class UserDefaultsManager: NSObject {
             kUserDefaults.synchronize()
         }
     }
-    
-    var isProfileCompleted:Bool {
+
+    var isProfileCompleted: Bool {
         get {
             if kUserDefaults.value(forKey: Constants.UserDefaultsKey.isProfileCompleted) != nil {
                 return kUserDefaults.value(forKey: Constants.UserDefaultsKey.isProfileCompleted) as! Bool
@@ -94,8 +92,8 @@ class UserDefaultsManager: NSObject {
             kUserDefaults.synchronize()
         }
     }
-    
-    var deviceToken:String {
+
+    var deviceToken: String {
         get {
             if kUserDefaults.value(forKey: Constants.UserDefaultsKey.deviceToken) != nil {
                 return kUserDefaults.value(forKey: Constants.UserDefaultsKey.deviceToken) as! String
@@ -107,8 +105,8 @@ class UserDefaultsManager: NSObject {
             kUserDefaults.synchronize()
         }
     }
-    
-    var accessToken:String {
+
+    var accessToken: String {
         get {
             if kUserDefaults.value(forKey: Constants.UserDefaultsKey.accessToken) != nil {
                 return kUserDefaults.value(forKey: Constants.UserDefaultsKey.accessToken) as! String
@@ -120,8 +118,8 @@ class UserDefaultsManager: NSObject {
             kUserDefaults.synchronize()
         }
     }
-    
-    var profileImageURL:String {
+
+    var profileImageURL: String {
         get {
             if kUserDefaults.value(forKey: Constants.UserDefaultsKey.profileImageURL) != nil {
                 return kUserDefaults.value(forKey: Constants.UserDefaultsKey.profileImageURL) as! String
@@ -133,8 +131,8 @@ class UserDefaultsManager: NSObject {
             kUserDefaults.synchronize()
         }
     }
-    
-    var licenseImageURL:String {
+
+    var licenseImageURL: String {
         get {
             if kUserDefaults.value(forKey: Constants.UserDefaultsKey.licenseImageURL) != nil {
                 return kUserDefaults.value(forKey: Constants.UserDefaultsKey.licenseImageURL) as! String
@@ -152,30 +150,27 @@ class UserDefaultsManager: NSObject {
         UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
         UserDefaultsManager.sharedInstance.deviceToken = tempDeviceToken
     }
-    
-    
-    //Load last searched parameter user data, if any
-    func loadSearchParameter() -> [String:AnyObject]? {
+
+    // Load last searched parameter user data, if any
+    func loadSearchParameter() -> [String: AnyObject]? {
         if let decodedUser = kUserDefaults.object(forKey: SEARCH_PARAMETR_KEY) as? Data {
             let searchParamter = NSKeyedUnarchiver.unarchiveObject(with: decodedUser)
-            return searchParamter as? [String:AnyObject]
+            return searchParamter as? [String: AnyObject]
         }
         return nil
     }
-    
+
     // Save SearchParameter
-    func saveSearchParameter(seachParam : Any) {
+    func saveSearchParameter(seachParam: Any) {
         kUserDefaults.set(NSKeyedArchiver.archivedData(withRootObject: seachParam) as Any?, forKey: SEARCH_PARAMETR_KEY)
         kUserDefaults.synchronize()
     }
-    
-    
+
     // Delete Search Parameter
     func deleteSearchParameter() {
         // remove Search Parameter from storage
         kUserDefaults.removeObject(forKey: SEARCH_PARAMETR_KEY)
         // free user object memory
         kUserDefaults.synchronize()
-        
     }
 }

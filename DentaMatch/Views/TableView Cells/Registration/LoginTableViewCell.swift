@@ -9,20 +9,19 @@
 import UIKit
 
 class LoginTableViewCell: UITableViewCell {
+    @IBOutlet var forgotPasswordButton: UIButton!
+    @IBOutlet var emailTextField: AnimatedLeftViewPHTextField!
+    @IBOutlet var passwordTextField: AnimatedLeftViewPHTextField!
 
-    @IBOutlet weak var forgotPasswordButton: UIButton!
-    @IBOutlet weak var emailTextField: AnimatedLeftViewPHTextField!
-    @IBOutlet weak var passwordTextField: AnimatedLeftViewPHTextField!
-    
-    var showButton:UIButton!
+    var showButton: UIButton!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        let rightTextFieldView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: self.passwordTextField.frame.height))
+        let rightTextFieldView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: passwordTextField.frame.height))
 
         showButton = UIButton(type: .system)
-        showButton.frame = CGRect(x: 0, y: 0, width: 50, height: self.passwordTextField.frame.height)
+        showButton.frame = CGRect(x: 0, y: 0, width: 50, height: passwordTextField.frame.height)
         showButton.setTitle("Show", for: .normal)
         showButton.titleLabel?.font = UIFont.fontRegular(fontSize: 12.0)!
         showButton.addTarget(self, action: #selector(showPasswordText), for: .touchUpInside)
@@ -37,21 +36,20 @@ class LoginTableViewCell: UITableViewCell {
         emailTextField.leftViewLabel?.text = "f"
         passwordTextField.leftViewLabel?.text = "e"
     }
-    
+
     @objc func showPasswordText() {
-        if self.passwordTextField.isSecureTextEntry {
-            self.passwordTextField.isSecureTextEntry = false
+        if passwordTextField.isSecureTextEntry {
+            passwordTextField.isSecureTextEntry = false
             showButton.setTitle("Hide", for: .normal)
         } else {
-            self.passwordTextField.isSecureTextEntry = true
+            passwordTextField.isSecureTextEntry = true
             showButton.setTitle("Show", for: .normal)
         }
     }
-    
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
-    
 }

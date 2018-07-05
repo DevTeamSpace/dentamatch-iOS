@@ -9,9 +9,9 @@
 import UIKit
 
 class AddDeleteExperienceCell: UITableViewCell {
-    @IBOutlet weak var topSpaceOfAddMoreExperience: NSLayoutConstraint!
-    @IBOutlet weak var deleteButton: UIButton!
-    @IBOutlet weak var addMoreExperienceButton: UIButton!
+    @IBOutlet var topSpaceOfAddMoreExperience: NSLayoutConstraint!
+    @IBOutlet var deleteButton: UIButton!
+    @IBOutlet var addMoreExperienceButton: UIButton!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,5 +23,4 @@ class AddDeleteExperienceCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }

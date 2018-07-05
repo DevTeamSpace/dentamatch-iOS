@@ -9,21 +9,20 @@
 import UIKit
 
 class CurrentLocationCell: UITableViewCell {
-    
-    @IBOutlet weak var viewCurrentLocation: UIView!
-    @IBOutlet weak var lblLocation: UILabel!
-    
+    @IBOutlet var viewCurrentLocation: UIView!
+    @IBOutlet var lblLocation: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.setUp()
+        setUp()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
     }
-    
+
     func setUp() {
         viewCurrentLocation.layer.borderColor = Constants.Color.jobSearchBorderColor.cgColor
         viewCurrentLocation.layer.borderWidth = 1.0

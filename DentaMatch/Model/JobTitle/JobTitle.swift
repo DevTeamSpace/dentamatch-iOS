@@ -6,34 +6,32 @@
 //  Copyright © 2017 Appster. All rights reserved.
 //
 
-import UIKit
 import SwiftyJSON
+import UIKit
 
 class JobTitle: NSObject {
-
     var jobTitle = ""
     var jobId = 0
     var jobSelected = false
     var isLicenseRequired = false
-    
+
     override init() {
         /* For Default object of class */
     }
-    
-    //Used as a copy constructor
-    init(jobTitle:JobTitle) {
-        self.jobTitle = jobTitle.jobTitle
-        self.jobId = jobTitle.jobId
-        self.isLicenseRequired = jobTitle.isLicenseRequired
 
+    // Used as a copy constructor
+    init(jobTitle: JobTitle) {
+        self.jobTitle = jobTitle.jobTitle
+        jobId = jobTitle.jobId
+        isLicenseRequired = jobTitle.isLicenseRequired
     }
-    
-    init(job:JSON) {
-        self.jobTitle = job["jobtitle_name"].stringValue
+
+    init(job: JSON) {
+        jobTitle = job["jobtitle_name"].stringValue
         if job["jobtitle_name"].stringValue.isEmpty {
-            self.jobTitle = job["jobtitleName"].stringValue
+            jobTitle = job["jobtitleName"].stringValue
         }
-        self.jobId = job["id"].intValue
-        self.isLicenseRequired = job["isLicenseRequired"].boolValue
+        jobId = job["id"].intValue
+        isLicenseRequired = job["isLicenseRequired"].boolValue
     }
 }

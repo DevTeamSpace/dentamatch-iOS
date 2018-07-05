@@ -9,18 +9,18 @@
 import UIKit
 
 class EditCertificateTableCell: UITableViewCell {
-    @IBOutlet weak var certificateHeadingLabel: UILabel!
-    @IBOutlet weak var editButton: UIButton!
-    @IBOutlet weak var validityDateAttributedLabel: UILabel!
-    @IBOutlet weak var certificateNameLabel: UILabel!
-    @IBOutlet weak var certificateImageView: UIImageView!
+    @IBOutlet var certificateHeadingLabel: UILabel!
+    @IBOutlet var editButton: UIButton!
+    @IBOutlet var validityDateAttributedLabel: UILabel!
+    @IBOutlet var certificateNameLabel: UILabel!
+    @IBOutlet var certificateImageView: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.clipsToBounds = true
-        self.certificateImageView.layer.cornerRadius = self.certificateImageView.frame.size.width/2
-        self.certificateImageView.clipsToBounds = true
+        clipsToBounds = true
+        certificateImageView.layer.cornerRadius = certificateImageView.frame.size.width / 2
+        certificateImageView.clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -28,26 +28,25 @@ class EditCertificateTableCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-    func createValidityDateAttributedText(date:String) -> NSMutableAttributedString {
+
+    func createValidityDateAttributedText(date: String) -> NSMutableAttributedString {
         let attributedString = NSMutableAttributedString()
-        let validityDateText = NSAttributedString(string: "Validity date ", attributes: [NSAttributedStringKey.font:UIFont.fontRegular(fontSize: 14.0)!,NSAttributedStringKey.foregroundColor:Constants.Color.textFieldTextColor])
-        let convertedDate = self.getCertificateDateFormat(dateString: date)
-        let dateString = NSAttributedString(string: convertedDate, attributes: [NSAttributedStringKey.font:UIFont.fontSemiBold(fontSize: 14.0)!,NSAttributedStringKey.foregroundColor:Constants.Color.textFieldTextColor])
+        let validityDateText = NSAttributedString(string: "Validity date ", attributes: [NSAttributedStringKey.font: UIFont.fontRegular(fontSize: 14.0)!, NSAttributedStringKey.foregroundColor: Constants.Color.textFieldTextColor])
+        let convertedDate = getCertificateDateFormat(dateString: date)
+        let dateString = NSAttributedString(string: convertedDate, attributes: [NSAttributedStringKey.font: UIFont.fontSemiBold(fontSize: 14.0)!, NSAttributedStringKey.foregroundColor: Constants.Color.textFieldTextColor])
         attributedString.append(validityDateText)
         attributedString.append(dateString)
         return attributedString
     }
-    
-    func getCertificateDateFormat(dateString:String) -> String {
+
+    func getCertificateDateFormat(dateString: String) -> String {
         if !dateString.isEmptyField {
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat =  Date.dateFormatYYYYMMDDDashed()
+            dateFormatter.dateFormat = Date.dateFormatYYYYMMDDDashed()
             let date = dateFormatter.date(from: dateString)
             dateFormatter.dateFormat = Date.dateFormatDDMMMMYYYY()
             return dateFormatter.string(from: date!)
         }
         return ""
     }
-    
 }

@@ -9,13 +9,12 @@
 import UIKit
 
 class AnimatedPHTableCell: UITableViewCell {
-    @IBOutlet weak var commonTextField: AnimatedPHTextField!
+    @IBOutlet var commonTextField: AnimatedPHTextField!
     @IBOutlet var cellTopSpace: NSLayoutConstraint!
     @IBOutlet var cellBottomSpace: NSLayoutConstraint!
 
-    
-    @IBOutlet weak var accessoryLabel: UILabel!
-    
+    @IBOutlet var accessoryLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -26,5 +25,4 @@ class AnimatedPHTableCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }

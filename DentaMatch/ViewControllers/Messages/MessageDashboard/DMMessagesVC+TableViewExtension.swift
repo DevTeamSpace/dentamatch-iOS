@@ -8,24 +8,21 @@
 
 import Foundation
 
-extension DMMessagesVC : UITableViewDataSource, UITableViewDelegate {
-
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+extension DMMessagesVC: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
         return 75
     }
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+
+    func tableView(_: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         let chatList = fetchedResultsController.object(at: indexPath) as! ChatList
         if chatList.isBlockedFromSeeker {
             return false
         }
         return true
     }
-    
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        
-        let blockAction = UITableViewRowAction(style: .normal, title: "Block", handler: { (action:UITableViewRowAction, indexPath:IndexPath) in
+
+    func tableView(_: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let blockAction = UITableViewRowAction(style: .normal, title: "Block", handler: { (_: UITableViewRowAction, indexPath: IndexPath) in
             self.messageListTableView.setEditing(false, animated: true)
             let chatList = self.fetchedResultsController.object(at: indexPath) as! ChatList
             DispatchQueue.main.async {
@@ -35,15 +32,15 @@ extension DMMessagesVC : UITableViewDataSource, UITableViewDelegate {
         blockAction.backgroundColor = Constants.Color.cancelJobDeleteColor
         return [blockAction]
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+    func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let sections = fetchedResultsController.sections {
             let sectionInfo = sections[section]
             return sectionInfo.numberOfObjects
         }
         return 0
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageListTableCell") as! MessageListTableCell
         let chatList = fetchedResultsController.object(at: indexPath) as! ChatList
@@ -58,15 +55,14 @@ extension DMMessagesVC : UITableViewDataSource, UITableViewDelegate {
         } else if (todaysDate - 86400) == chatDate {
             cell.dateLabel.text = "Yesterday"
         } else {
-            
             cell.dateLabel.text = Date.getDateDashedMMDDYYYY(date: chatDate)
         }
 
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let chatList = self.fetchedResultsController.object(at: indexPath) as! ChatList
+
+    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let chatList = fetchedResultsController.object(at: indexPath) as! ChatList
         let chatVC = UIStoryboard.messagesStoryBoard().instantiateViewController(type: DMChatVC.self)!
         chatVC.chatList = chatList
         chatVC.hidesBottomBarWhenPushed = true
@@ -74,6 +70,6 @@ extension DMMessagesVC : UITableViewDataSource, UITableViewDelegate {
         if DatabaseManager.getCountForChats(recruiterId: chatList.recruiterId!) == 0 {
             chatVC.shouldFetchFromBeginning = true
         }
-        self.navigationController?.pushViewController(chatVC, animated: true)
+        navigationController?.pushViewController(chatVC, animated: true)
     }
 }

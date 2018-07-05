@@ -9,39 +9,39 @@
 import UIKit
 
 class EditPublicProfileTableCell: UITableViewCell {
-    @IBOutlet weak var licenseStateConstraint: NSLayoutConstraint!
-    
-    @IBOutlet weak var licenseStateTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var addEditProfileButton: UIButton!
-    
-    @IBOutlet weak var preferredJobLocationTextField: AnimatedPHTextField!
-    
-    @IBOutlet weak var licenseNumberTextField: AnimatedPHTextField!
-    
-    @IBOutlet weak var stateTextField: AnimatedPHTextField!
-    @IBOutlet weak var jobTitleTextField: AnimatedPHTextField!
-    @IBOutlet weak var lastNameTextField: AnimatedPHTextField!
-    @IBOutlet weak var firstNameTextField: AnimatedPHTextField!
-    @IBOutlet weak var profileButton: UIButton!
-    @IBOutlet weak var aboutMeTextView: UITextView!
+    @IBOutlet var licenseStateConstraint: NSLayoutConstraint!
 
-    var placeHolderLabel:UILabel!
+    @IBOutlet var licenseStateTopConstraint: NSLayoutConstraint!
+    @IBOutlet var addEditProfileButton: UIButton!
+
+    @IBOutlet var preferredJobLocationTextField: AnimatedPHTextField!
+
+    @IBOutlet var licenseNumberTextField: AnimatedPHTextField!
+
+    @IBOutlet var stateTextField: AnimatedPHTextField!
+    @IBOutlet var jobTitleTextField: AnimatedPHTextField!
+    @IBOutlet var lastNameTextField: AnimatedPHTextField!
+    @IBOutlet var firstNameTextField: AnimatedPHTextField!
+    @IBOutlet var profileButton: UIButton!
+    @IBOutlet var aboutMeTextView: UITextView!
+
+    var placeHolderLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.profileButton.layer.cornerRadius = self.profileButton.frame.size.width/2
-        self.profileButton.imageView?.contentMode = .scaleAspectFill
-        self.profileButton.clipsToBounds = true
-        self.aboutMeTextView.layer.cornerRadius = 5.0
-        self.aboutMeTextView.layer.borderWidth = 1.0
-        self.aboutMeTextView.layer.borderColor = Constants.Color.textFieldBorderColor.cgColor
-        self.aboutMeTextView.textContainer.lineFragmentPadding = 12.0
-        self.jobTitleTextField.type = 1
-        self.jobTitleTextField.tintColor = UIColor.clear
-        self.preferredJobLocationTextField.type = 1
-        self.licenseNumberTextField.type = 1
-        //Right View for drop down
+        profileButton.layer.cornerRadius = profileButton.frame.size.width / 2
+        profileButton.imageView?.contentMode = .scaleAspectFill
+        profileButton.clipsToBounds = true
+        aboutMeTextView.layer.cornerRadius = 5.0
+        aboutMeTextView.layer.borderWidth = 1.0
+        aboutMeTextView.layer.borderColor = Constants.Color.textFieldBorderColor.cgColor
+        aboutMeTextView.textContainer.lineFragmentPadding = 12.0
+        jobTitleTextField.type = 1
+        jobTitleTextField.tintColor = UIColor.clear
+        preferredJobLocationTextField.type = 1
+        licenseNumberTextField.type = 1
+        // Right View for drop down
         let rightView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: jobTitleTextField.frame.size.height))
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 40, height: jobTitleTextField.frame.size.height))
         label.font = UIFont.designFont(fontSize: 16.0)
@@ -56,21 +56,19 @@ class EditPublicProfileTableCell: UITableViewCell {
 
         addPlaceHolderLabel()
     }
-    
+
     func addPlaceHolderLabel() {
         placeHolderLabel = UILabel(frame: CGRect(x: 10, y: 10, width: 250, height: 60))
         placeHolderLabel.font = UIFont.fontRegular(fontSize: 16.0)
         placeHolderLabel.textColor = UIColor.color(withHexCode: "939393")
         placeHolderLabel.numberOfLines = 0
         placeHolderLabel.text = "Introduce yourself and tell us what you're looking for. What can you bring to the office?"
-        self.aboutMeTextView.addSubview(placeHolderLabel)
+        aboutMeTextView.addSubview(placeHolderLabel)
     }
-
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
-    
 }

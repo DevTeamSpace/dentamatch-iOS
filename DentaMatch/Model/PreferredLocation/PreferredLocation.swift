@@ -9,21 +9,19 @@
 import Foundation
 import SwiftyJSON
 
-class PreferredLocation : NSObject {
+class PreferredLocation: NSObject {
     var id = "0"
     var preferredLocationName = ""
     var isActive = false
     var isSelected = false
 
- 
     override init() {
         /* For Default object of class */
     }
-    
-    init(preferredLocation:JSON) {
-        self.id = preferredLocation[Constants.ServerKey.id].stringValue
-        self.preferredLocationName = preferredLocation[Constants.ServerKey.preferredLocationName].stringValue
-        self.isActive = preferredLocation[Constants.ServerKey.isActive].boolValue
 
+    init(preferredLocation: JSON) {
+        id = preferredLocation[Constants.ServerKey.id].stringValue
+        preferredLocationName = preferredLocation[Constants.ServerKey.preferredLocationName].stringValue
+        isActive = preferredLocation[Constants.ServerKey.isActive].boolValue
     }
 }

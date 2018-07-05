@@ -8,81 +8,76 @@
 
 import UIKit
 
-protocol YearPickerViewDelegate{
-    
+protocol YearPickerViewDelegate {
     func canceButtonAction()
-    func doneButtonAction(year:Int,tag:Int)
+    func doneButtonAction(year: Int, tag: Int)
 }
 
-class YearPickerView: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
-
-    @IBOutlet weak var yearPickerView: UIPickerView!
-    var delegate:YearPickerViewDelegate?
-    var currentYear : Int = 0
+class YearPickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
+    @IBOutlet var yearPickerView: UIPickerView!
+    var delegate: YearPickerViewDelegate?
+    var currentYear: Int = 0
     var currentTag: Int = 0
-    
-    class func loadYearPickerView(withText:String, withTag:Int) ->  YearPickerView{
+
+    class func loadYearPickerView(withText: String, withTag _: Int) -> YearPickerView {
         guard let instance = Bundle.main.loadNibNamed("YearPickerView", owner: self)?.first as? YearPickerView else {
             fatalError("Could not instantiate from nib: ExperiencePickerView")
         }
         instance.getPreSelectedValues(dateString: withText, curTag: 1)
         return instance
     }
-    
-    
-    func getPreSelectedValues(dateString:String,curTag:Int) {
+
+    func getPreSelectedValues(dateString _: String, curTag: Int) {
         let date = Date()
         let calendar = Calendar.current
-        self.currentTag = curTag
+        currentTag = curTag
         let year = calendar.component(.year, from: date)
-        
+
         currentYear = year
 //        let month = calendar.component(.month, from: date)
 //        let day = calendar.component(.day, from: date)
-      //self.currentTag = curTag
+        // self.currentTag = curTag
     }
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+
+    func numberOfComponents(in _: UIPickerView) -> Int {
         return 1
     }
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+
+    func pickerView(_: UIPickerView, numberOfRowsInComponent _: Int) -> Int {
         return 100 + 1
-       
     }
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+
+    func pickerView(_: UIPickerView, titleForRow row: Int, forComponent _: Int) -> String? {
         if row == 0 {
             return "Year of Graduation"
         }
-        return "\(currentYear - row+1)"
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        //Handle selection of picker view
+        return "\(currentYear - row + 1)"
     }
 
-    @IBAction func doneButtonPressed(_ sender: Any) {
-        
+    func pickerView(_: UIPickerView, didSelectRow _: Int, inComponent _: Int) {
+        // Handle selection of picker view
+    }
+
+    @IBAction func doneButtonPressed(_: Any) {
         if let delegate = delegate {
-            let row  = self.yearPickerView.selectedRow(inComponent: 0)
+            let row = yearPickerView.selectedRow(inComponent: 0)
             var selctedRow = -1
 
             if row == 0 {
 //                let selctedRow = self.currentYear - row
-                 selctedRow = -1
-
+                selctedRow = -1
 
             } else {
-                 selctedRow = self.currentYear - row+1
-
+                selctedRow = currentYear - row + 1
             }
 
-            delegate.doneButtonAction( year: selctedRow, tag: self.currentTag)
+            delegate.doneButtonAction(year: selctedRow, tag: currentTag)
         }
     }
-    @IBAction func canceButtonPressed(_ sender: Any) {
+
+    @IBAction func canceButtonPressed(_: Any) {
         if let delegate = delegate {
             delegate.canceButtonAction()
         }
     }
-
 }

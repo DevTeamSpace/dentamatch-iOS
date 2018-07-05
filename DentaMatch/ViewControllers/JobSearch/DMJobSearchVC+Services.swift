@@ -10,11 +10,10 @@ import Foundation
 import SwiftyJSON
 
 extension DMJobSearchVC {
-    
-    func fetchSearchResultAPI(params:[String:Any]) {
-        //debugPrint("Search Parameters\n\(params.description))")
-        self.showLoader()
-        APIManager.apiPost(serviceName: Constants.API.JobSearchResultAPI, parameters: params) { (response:JSON?, error:NSError?) in
+    func fetchSearchResultAPI(params: [String: Any]) {
+        // debugPrint("Search Parameters\n\(params.description))")
+        showLoader()
+        APIManager.apiPost(serviceName: Constants.API.JobSearchResultAPI, parameters: params) { (response: JSON?, error: NSError?) in
             self.hideLoader()
             if error != nil {
                 self.makeToast(toastString: (error?.localizedDescription)!)
@@ -24,26 +23,25 @@ extension DMJobSearchVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            //debugPrint(response!)
+            // debugPrint(response!)
             self.handleJobSearchResponse(response: response!)
         }
     }
-    
-    func handleJobSearchResponse(response:JSON?) {
+
+    func handleJobSearchResponse(response: JSON?) {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
                 let skillList = response[Constants.ServerKey.result][Constants.ServerKey.joblist].array
-                self.jobs.removeAll()
-                for jobObject in (skillList)! {
+                jobs.removeAll()
+                for jobObject in skillList! {
                     let job = Job(job: jobObject)
-                    self.jobs.append(job)
+                    jobs.append(job)
                 }
-                self.totalJobsFromServer = response[Constants.ServerKey.result]["total"].intValue
-                self.goToSearchResult()
+                totalJobsFromServer = response[Constants.ServerKey.result]["total"].intValue
+                goToSearchResult()
             } else {
-                self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+                makeToast(toastString: response[Constants.ServerKey.message].stringValue)
             }
         }
     }
-    
 }

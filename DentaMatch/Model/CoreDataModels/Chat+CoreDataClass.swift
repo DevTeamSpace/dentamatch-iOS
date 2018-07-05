@@ -6,10 +6,8 @@
 //  Copyright © 2017 Appster. All rights reserved.
 //
 
-import Foundation
 import CoreData
-
+import Foundation
 
 public class Chat: NSManagedObject {
-
 }

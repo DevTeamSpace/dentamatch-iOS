@@ -6,12 +6,10 @@
 //  Copyright © 2017 Appster. All rights reserved.
 //
 
-import Foundation
 import CoreData
-
+import Foundation
 
 extension Chat {
-
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Chat> {
         return NSFetchRequest<Chat>(entityName: "Chat")
     }
@@ -25,5 +23,4 @@ extension Chat {
     @NSManaged public var timeStamp: Double
     @NSManaged public var timeString: String?
     @NSManaged public var toId: String?
-
 }

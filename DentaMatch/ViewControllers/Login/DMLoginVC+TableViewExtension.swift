@@ -8,23 +8,23 @@
 
 import Foundation
 
-extension DMLoginVC:UITableViewDataSource,UITableViewDelegate {
-    
-    //MARK:- TableView Datasource/Delegates
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension DMLoginVC: UITableViewDataSource, UITableViewDelegate {
+
+    // MARK: - TableView Datasource/Delegates
+
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return 1
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+    func tableView(_ tableView: UITableView, cellForRowAt _: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LoginTableViewCell") as! LoginTableViewCell
         cell.emailTextField.delegate = self
         cell.passwordTextField.delegate = self
         cell.forgotPasswordButton.addTarget(self, action: #selector(forgotPasswordButtonPressed), for: .touchUpInside)
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return self.loginTableView.frame.size.height
+
+    func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
+        return loginTableView.frame.size.height
     }
-    
 }

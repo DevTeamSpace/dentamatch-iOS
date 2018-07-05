@@ -6,9 +6,9 @@
 //  Copyright © 2016 Appster. All rights reserved.
 //
 
-import UIKit
 import Photos
 import SVProgressHUD
+import UIKit
 
 enum ToastPosition {
     case top
@@ -17,123 +17,119 @@ enum ToastPosition {
 }
 
 class DMBaseVC: UIViewController {
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.setUpControls()
+        // self.setUpControls()
     }
-    
+
     func openTabbar() {
         let dashboardVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: TabBarVC.self)!
         kAppDelegate.window?.rootViewController = dashboardVC
         UserDefaultsManager.sharedInstance.isProfileSkipped = true
         SocketManager.sharedInstance.establishConnection()
-        
     }
-    
+
     func setUpControls() {
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font : UIFont.fontRegular(fontSize: 14.0)!, NSAttributedStringKey.foregroundColor:UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont.fontRegular(fontSize: 14.0)!, NSAttributedStringKey.foregroundColor: UIColor.white]
     }
-    
-    func setRightBarButton(title : String, imageName : String, width : CGFloat, font : UIFont)  {
+
+    func setRightBarButton(title: String, imageName: String, width: CGFloat, font: UIFont) {
         var rightBarBtn = UIButton()
-        var rightBarButtonItem : UIBarButtonItem = UIBarButtonItem()
+        var rightBarButtonItem: UIBarButtonItem = UIBarButtonItem()
         rightBarBtn = UIButton()
         rightBarBtn.setTitle(title, for: .normal)
-        rightBarBtn.setImage(UIImage(named : imageName), for: .normal)
+        rightBarBtn.setImage(UIImage(named: imageName), for: .normal)
         rightBarBtn.titleLabel?.font = font
-        rightBarBtn.frame = CGRect(x : 0,y : 0,width: width,height : 25)
+        rightBarBtn.frame = CGRect(x: 0, y: 0, width: width, height: 25)
         rightBarBtn.imageView?.contentMode = .scaleAspectFit
         rightBarBtn.addTarget(self, action: #selector(DMJobSearchResultVC.actionRightNavigationItem), for: .touchUpInside)
         rightBarButtonItem = UIBarButtonItem()
         rightBarButtonItem.customView = rightBarBtn
-        self.navigationItem.rightBarButtonItem = rightBarButtonItem
+        navigationItem.rightBarButtonItem = rightBarButtonItem
     }
-    
+
     func actionLeftNavigationItem() {
-        //Override in controller class
+        // Override in controller class
     }
-    
+
     func actionRightNavigationItem() {
-        //Override in controller class
+        // Override in controller class
     }
-    
-    //MARK:- Toasts and Alerts
-    func makeToast(toastString:String){
+
+    // MARK: - Toasts and Alerts
+
+    func makeToast(toastString: String) {
         kAppDelegate.window?.makeToast(toastString)
     }
-    
-    func makeToast(toastString:String,duration:TimeInterval){
+
+    func makeToast(toastString: String, duration: TimeInterval) {
         kAppDelegate.window?.makeToast(toastString, duration: duration, position: CSToastPositionBottom)
     }
-    
-    func makeToast(toastString:String,duration:TimeInterval,position:ToastPosition){
+
+    func makeToast(toastString: String, duration: TimeInterval, position: ToastPosition) {
         if position == .top {
             kAppDelegate.window?.makeToast(toastString, duration: duration, position: CSToastPositionTop)
-            
+
         } else if position == .center {
             kAppDelegate.window?.makeToast(toastString, duration: duration, position: CSToastPositionCenter)
-            
-        }else {
+
+        } else {
             kAppDelegate.window?.makeToast(toastString, duration: duration, position: CSToastPositionBottom)
         }
     }
-    
-    func cameraGalleryOptionActionSheet(title:String,message:String,leftButtonText:String,rightButtonText:String,completionHandler:((_ isCameraButtonPressed:Bool,_ isGalleryButtonPressed:Bool,_ isCancelButtonPressed:Bool)->())?) {
+
+    func cameraGalleryOptionActionSheet(title: String, message: String, leftButtonText: String, rightButtonText: String, completionHandler: ((_ isCameraButtonPressed: Bool, _ isGalleryButtonPressed: Bool, _ isCancelButtonPressed: Bool) -> Void)?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
-        let leftButtonAction = UIAlertAction(title: leftButtonText, style: .default) { (action:UIAlertAction) in
-            completionHandler?(true,false,false)
+        let leftButtonAction = UIAlertAction(title: leftButtonText, style: .default) { (_: UIAlertAction) in
+            completionHandler?(true, false, false)
         }
-        
-        let rightButtonAction = UIAlertAction(title: rightButtonText, style: .default) { (action:UIAlertAction) in
-            completionHandler?(false,true,false)
+
+        let rightButtonAction = UIAlertAction(title: rightButtonText, style: .default) { (_: UIAlertAction) in
+            completionHandler?(false, true, false)
         }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction) in
-            completionHandler?(false,false,true)
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_: UIAlertAction) in
+            completionHandler?(false, false, true)
         }
-        
+
         alert.addAction(leftButtonAction)
         alert.addAction(rightButtonAction)
         alert.addAction(cancelAction)
 
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
-    
-    func alertMessage(title:String,message:String,buttonText:String,completionHandler:(()->())?) {
-        
+
+    func alertMessage(title: String, message: String, buttonText: String, completionHandler: (() -> Void)?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: buttonText, style: .default) { (action:UIAlertAction) in
+        let action = UIAlertAction(title: buttonText, style: .default) { (_: UIAlertAction) in
             completionHandler?()
         }
         alert.addAction(action)
-        self.present(alert, animated: true, completion: nil)
-        
+        present(alert, animated: true, completion: nil)
     }
-    
-    func alertMessage(title:String,message:String,leftButtonText:String,rightButtonText:String,completionHandler:((_ isLeftButtonPressed:Bool)->())?) {
-        
+
+    func alertMessage(title: String, message: String, leftButtonText: String, rightButtonText: String, completionHandler: ((_ isLeftButtonPressed: Bool) -> Void)?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let leftButtonAction = UIAlertAction(title: leftButtonText, style: .default) { (action:UIAlertAction) in
+        let leftButtonAction = UIAlertAction(title: leftButtonText, style: .default) { (_: UIAlertAction) in
             completionHandler?(true)
         }
-        
-        let rightButtonAction = UIAlertAction(title: rightButtonText, style: .default) { (action:UIAlertAction) in
+
+        let rightButtonAction = UIAlertAction(title: rightButtonText, style: .default) { (_: UIAlertAction) in
             completionHandler?(false)
         }
-        
+
         alert.addAction(leftButtonAction)
         alert.addAction(rightButtonAction)
 
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
-    
-    func puttingErrorPlaceholder(textfield:UITextField, placeholderText:String,placeholderColor:UIColor){
+
+    func puttingErrorPlaceholder(textfield: UITextField, placeholderText: String, placeholderColor: UIColor) {
         textfield.text = ""
         textfield.placeholder = placeholderText
-        textfield.attributedPlaceholder = NSAttributedString(string: textfield.placeholder!, attributes: [NSAttributedStringKey.foregroundColor : placeholderColor])
+        textfield.attributedPlaceholder = NSAttributedString(string: textfield.placeholder!, attributes: [NSAttributedStringKey.foregroundColor: placeholderColor])
     }
-    
+
     func backBarButton() -> UIBarButtonItem {
         let customButton = UIButton(type: .system)
         customButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
@@ -144,71 +140,72 @@ class DMBaseVC: UIViewController {
         let barButton = UIBarButtonItem(customView: customButton)
         return barButton
     }
-    
+
     @objc func backBarButtonItemPressed() {
-        _ = self.navigationController?.popViewController(animated: true)
-    }
-    func changeNavBarAppearanceForProfiles() {
-        UIApplication.shared.statusBarStyle = .default
-        self.navigationController?.navigationBar.tintColor = Constants.Color.navHeadingForExperienceScreen
-        self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.barTintColor = Constants.Color.navBarColorForExperienceScreen
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:Constants.Color.navHeadingForExperienceScreen,NSAttributedStringKey.font:UIFont.fontMedium(fontSize: 14.0)!]
-    }
-    func changeNavBarAppearanceForWithoutHeader() {
-        UIApplication.shared.statusBarStyle = .default
-        self.navigationController?.navigationBar.tintColor = Constants.Color.navHeadingForExperienceScreen
-        self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.barTintColor = UIColor.white
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:Constants.Color.navHeadingForExperienceScreen,NSAttributedStringKey.font:UIFont.fontMedium(fontSize: 14.0)!]
-    }
-    
-    func changeNavBarToTransparent() {
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-    }
-    
-    func changeNavBarAppearanceForDefault() {
-        UIApplication.shared.statusBarStyle = .lightContent
-        self.navigationController?.navigationBar.tintColor = UIColor.white
-        self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.barTintColor = Constants.Color.navBarColor
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white,NSAttributedStringKey.font:UIFont.fontRegular(fontSize: 14.0)!]
+        _ = navigationController?.popViewController(animated: true)
     }
 
-    
-    func delay(time:TimeInterval,completionHandler: @escaping ()->()) {
+    func changeNavBarAppearanceForProfiles() {
+        UIApplication.shared.statusBarStyle = .default
+        navigationController?.navigationBar.tintColor = Constants.Color.navHeadingForExperienceScreen
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.barTintColor = Constants.Color.navBarColorForExperienceScreen
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: Constants.Color.navHeadingForExperienceScreen, NSAttributedStringKey.font: UIFont.fontMedium(fontSize: 14.0)!]
+    }
+
+    func changeNavBarAppearanceForWithoutHeader() {
+        UIApplication.shared.statusBarStyle = .default
+        navigationController?.navigationBar.tintColor = Constants.Color.navHeadingForExperienceScreen
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.barTintColor = UIColor.white
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: Constants.Color.navHeadingForExperienceScreen, NSAttributedStringKey.font: UIFont.fontMedium(fontSize: 14.0)!]
+    }
+
+    func changeNavBarToTransparent() {
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+
+    func changeNavBarAppearanceForDefault() {
+        UIApplication.shared.statusBarStyle = .lightContent
+        navigationController?.navigationBar.tintColor = UIColor.white
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.barTintColor = Constants.Color.navBarColor
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont.fontRegular(fontSize: 14.0)!]
+    }
+
+    func delay(time _: TimeInterval, completionHandler: @escaping () -> Void) {
         let when = DispatchTime.now() + 0.01
         DispatchQueue.main.asyncAfter(deadline: when) {
             completionHandler()
         }
     }
-    
+
     func showLoader() {
         SVProgressHUD.setDefaultMaskType(.black)
         SVProgressHUD.setForegroundColor(Constants.Color.loaderRingColor)
         SVProgressHUD.setBackgroundColor(Constants.Color.loaderBackgroundColor)
         SVProgressHUD.show()
     }
-    
-    func showLoader(text:String) {
+
+    func showLoader(text: String) {
         SVProgressHUD.setDefaultMaskType(.black)
         SVProgressHUD.setForegroundColor(Constants.Color.loaderRingColor)
         SVProgressHUD.setBackgroundColor(Constants.Color.loaderBackgroundColor)
         SVProgressHUD.setFont(UIFont.fontRegular(fontSize: 12.0)!)
         SVProgressHUD.show(withStatus: text)
     }
-    
+
     func showLoaderWithInteractionOn() {
         SVProgressHUD.setDefaultMaskType(.none)
         SVProgressHUD.setForegroundColor(Constants.Color.loaderRingColor)
         SVProgressHUD.setBackgroundColor(Constants.Color.loaderBackgroundColor)
         SVProgressHUD.show()
     }
-    
-    func showLoaderWithInteractionOn(text:String) {
+
+    func showLoaderWithInteractionOn(text: String) {
         SVProgressHUD.setDefaultMaskType(.none)
         SVProgressHUD.setForegroundColor(Constants.Color.loaderRingColor)
         SVProgressHUD.setBackgroundColor(Constants.Color.loaderBackgroundColor)
@@ -219,8 +216,8 @@ class DMBaseVC: UIViewController {
     func hideLoader() {
         SVProgressHUD.dismiss()
     }
-    
-    func hideLoader(delay:TimeInterval) {
+
+    func hideLoader(delay: TimeInterval) {
         SVProgressHUD.dismiss(withDelay: delay)
     }
 }

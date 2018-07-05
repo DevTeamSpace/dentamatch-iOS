@@ -10,15 +10,13 @@ import Foundation
 import SwiftyJSON
 
 extension DMExecutiveSummaryVC {
-
     func updateAboutMeAPI() {
-        
-        if self.aboutMe.isEmptyField {
-            self.makeToast(toastString: "Please add introduction")
+        if aboutMe.isEmptyField {
+            makeToast(toastString: "Please add introduction")
             return
         }
-        self.showLoader()
-        APIManager.apiPost(serviceName: Constants.API.saveAboutMe, parameters: [Constants.ServerKey.aboutMe:aboutMe]) { (response:JSON?, error:NSError?) in
+        showLoader()
+        APIManager.apiPost(serviceName: Constants.API.saveAboutMe, parameters: [Constants.ServerKey.aboutMe: aboutMe]) { (response: JSON?, error: NSError?) in
             self.hideLoader()
             if error != nil {
                 self.makeToast(toastString: (error?.localizedDescription)!)
@@ -31,8 +29,8 @@ extension DMExecutiveSummaryVC {
             self.handleAboutMeResponse(response: response)
         }
     }
-    
-    func handleAboutMeResponse(response:JSON?) {
+
+    func handleAboutMeResponse(response: JSON?) {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
                 UserDefaultsManager.sharedInstance.isProfileCompleted = true
@@ -41,7 +39,7 @@ extension DMExecutiveSummaryVC {
                     self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
                 }
             } else {
-                self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+                makeToast(toastString: response[Constants.ServerKey.message].stringValue)
             }
         }
     }

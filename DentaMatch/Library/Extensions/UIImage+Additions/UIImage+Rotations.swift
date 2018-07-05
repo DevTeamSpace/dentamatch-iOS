@@ -9,9 +9,7 @@
 import Foundation
 
 extension UIImage {
-    
     func rotateImageWithScaling() -> UIImage {
         return UIImageRotate.scaleAndRotateImage(self)
     }
-    
 }

@@ -9,8 +9,7 @@
 import UIKit
 
 class AutoCompleteTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var universityNameLabel: UILabel!
+    @IBOutlet var universityNameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,5 +20,4 @@ class AutoCompleteTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }

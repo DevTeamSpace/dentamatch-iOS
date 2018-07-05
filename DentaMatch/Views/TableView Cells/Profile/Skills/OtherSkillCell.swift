@@ -9,19 +9,17 @@
 import UIKit
 
 class OtherSkillCell: UITableViewCell {
-
-    @IBOutlet weak var otherLabel: UILabel!
-    @IBOutlet weak var otherTextView: UITextView!
+    @IBOutlet var otherLabel: UILabel!
+    @IBOutlet var otherTextView: UITextView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
 //        UITextView.appearance().tintColor = UIColor.white
 
-        self.otherTextView.layer.cornerRadius = 5.0
-        self.otherTextView.layer.borderWidth = 1.0
-        self.otherTextView.layer.borderColor = Constants.Color.textFieldBorderColor.cgColor
-        self.otherTextView.textContainer.lineFragmentPadding = 12.0
-        
+        otherTextView.layer.cornerRadius = 5.0
+        otherTextView.layer.borderWidth = 1.0
+        otherTextView.layer.borderColor = Constants.Color.textFieldBorderColor.cgColor
+        otherTextView.textContainer.lineFragmentPadding = 12.0
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -29,5 +27,4 @@ class OtherSkillCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }

@@ -9,11 +9,10 @@
 import UIKit
 
 class SubSkillCollectionCell: UICollectionViewCell {
-    @IBOutlet weak var subSkillLabel: UILabel!
+    @IBOutlet var subSkillLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
 }

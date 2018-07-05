@@ -9,25 +9,23 @@
 import UIKit
 
 class OtherSubSkillTableCell: UITableViewCell {
-
-    @IBOutlet weak var tickButton: UIButton!
-    @IBOutlet weak var otherTextView: UITextView!
+    @IBOutlet var tickButton: UIButton!
+    @IBOutlet var otherTextView: UITextView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.backgroundColor = UIColor.color(withHexCode: "0470C0")
-        self.contentView.backgroundColor = UIColor.color(withHexCode: "0470C0")
+        backgroundColor = UIColor.color(withHexCode: "0470C0")
+        contentView.backgroundColor = UIColor.color(withHexCode: "0470C0")
 
-        self.clipsToBounds = true
-        
-        self.otherTextView.layer.cornerRadius = 5.0
-        self.otherTextView.layer.borderWidth = 1.0
-        self.otherTextView.layer.borderColor = UIColor.white.cgColor
-        self.otherTextView.textContainer.lineFragmentPadding = 12.0
-        self.otherTextView.backgroundColor = UIColor.color(withHexCode: "0470C0")
+        clipsToBounds = true
+
+        otherTextView.layer.cornerRadius = 5.0
+        otherTextView.layer.borderWidth = 1.0
+        otherTextView.layer.borderColor = UIColor.white.cgColor
+        otherTextView.textContainer.lineFragmentPadding = 12.0
+        otherTextView.backgroundColor = UIColor.color(withHexCode: "0470C0")
 //        UITextView.appearance().tintColor = UIColor.white
-        self.otherTextView.tintColor = UIColor.white
-        
+        otherTextView.tintColor = UIColor.white
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -35,5 +33,4 @@ class OtherSubSkillTableCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }

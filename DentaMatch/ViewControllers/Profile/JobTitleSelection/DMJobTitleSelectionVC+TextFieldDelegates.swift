@@ -8,9 +8,10 @@
 
 import Foundation
 
-extension DMJobTitleSelectionVC : UITextViewDelegate {
+extension DMJobTitleSelectionVC: UITextViewDelegate {
+
     // MARK: - TextView Delegates
-    
+
     func textViewDidChange(_ textView: UITextView) {
         aboutMe = textView.text
         if let cell = self.jobTitleSelectionTableView.cellForRow(at: IndexPath(row: 3, section: 0)) as? AboutMeJobSelectionCell {
@@ -19,12 +20,11 @@ extension DMJobTitleSelectionVC : UITextViewDelegate {
             } else {
                 cell.placeHolderLabel.isHidden = false
             }
-            self.changeUIOFCreateProfileButton(self.isCreateProfileButtonEnable())
+            changeUIOFCreateProfileButton(isCreateProfileButtonEnable())
         }
     }
-    
+
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        
         guard text.characters.count > 0 else {
             return true
         }
@@ -36,17 +36,16 @@ extension DMJobTitleSelectionVC : UITextViewDelegate {
             textView.text = textView.text + text.stringFrom(0, to: remainingTextCount)
             return false
         }
-        
+
         return true
     }
-    
+
     func textViewDidBeginEditing(_ textView: UITextView) {
-        
-        self.jobTitleSelectionTableView.contentInset =  UIEdgeInsetsMake(0, 0, 200, 0)
+        jobTitleSelectionTableView.contentInset = UIEdgeInsetsMake(0, 0, 200, 0)
         DispatchQueue.main.async {
             self.jobTitleSelectionTableView.scrollToRow(at: IndexPath(row: 3, section: 0), at: .bottom, animated: true)
         }
-        
+
         if let cell = self.jobTitleSelectionTableView.cellForRow(at: IndexPath(row: 3, section: 0)) as? AboutMeJobSelectionCell {
             if !textView.text.isEmpty {
                 cell.placeHolderLabel.isHidden = true
@@ -55,14 +54,13 @@ extension DMJobTitleSelectionVC : UITextViewDelegate {
             }
         }
     }
-    
-    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
-        self.jobTitleSelectionTableView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0)
+
+    func textViewShouldEndEditing(_: UITextView) -> Bool {
+        jobTitleSelectionTableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
         return true
     }
-    
+
     func textViewDidEndEditing(_ textView: UITextView) {
-        
         if let cell = self.jobTitleSelectionTableView.cellForRow(at: IndexPath(row: 0, section: 3)) as? AboutMeJobSelectionCell {
             if !textView.text.isEmpty {
                 cell.placeHolderLabel.isHidden = true

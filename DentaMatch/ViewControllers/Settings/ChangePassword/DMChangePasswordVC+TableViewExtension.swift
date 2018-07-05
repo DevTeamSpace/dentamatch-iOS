@@ -8,15 +8,15 @@
 
 import Foundation
 
-extension DMChangePasswordVC:UITableViewDataSource,UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+extension DMChangePasswordVC: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
         return 75
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return 3
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChangePasswordTableCell") as! ChangePasswordTableCell
         cell.selectionStyle = .none
@@ -30,22 +30,19 @@ extension DMChangePasswordVC:UITableViewDataSource,UITableViewDelegate {
             cell.passwordTextField.placeholder = "New Password"
         case 2:
             cell.passwordTextField.placeholder = "Confirm Password"
-            
+
         default: break
-            
         }
         return cell
     }
-    
 }
 
-extension DMChangePasswordVC : UITextFieldDelegate {
-    
+extension DMChangePasswordVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
-    
+
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if let textField = textField as? AnimatedLeftViewPHTextField {
             textField.layer.borderColor = Constants.Color.textFieldColorSelected.cgColor
@@ -53,7 +50,7 @@ extension DMChangePasswordVC : UITextFieldDelegate {
         }
         return true
     }
-    
+
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         if let textField = textField as? AnimatedLeftViewPHTextField {
@@ -63,9 +60,8 @@ extension DMChangePasswordVC : UITextFieldDelegate {
         }
         return true
     }
+
     func textFieldDidEndEditing(_ textField: UITextField) {
         passwordArray[textField.tag] = textField.text!
-        
     }
-    
 }

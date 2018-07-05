@@ -6,23 +6,23 @@
 //  Copyright © 2017 Appster. All rights reserved.
 //
 
-import UIKit
 import SwiftyJSON
+import UIKit
 
 class Affiliation: NSObject {
     var affiliationId = ""
     var affiliationName = ""
-    var otherAffiliation:String? = ""
+    var otherAffiliation: String? = ""
     var isSelected = false
     var isOther = false
-    
-    init(affiliation:JSON) {
-        self.affiliationId = affiliation["affiliationId"].stringValue
-        self.affiliationName = affiliation["affiliationName"].stringValue
-        self.otherAffiliation = affiliation["otherAffiliation"].stringValue
-        self.isSelected = affiliation["jobSeekerAffiliationStatus"].boolValue
+
+    init(affiliation: JSON) {
+        affiliationId = affiliation["affiliationId"].stringValue
+        affiliationName = affiliation["affiliationName"].stringValue
+        otherAffiliation = affiliation["otherAffiliation"].stringValue
+        isSelected = affiliation["jobSeekerAffiliationStatus"].boolValue
         if affiliation["affiliationName"].stringValue == "OTHER" {
-            self.isOther = true
+            isOther = true
         }
     }
 }

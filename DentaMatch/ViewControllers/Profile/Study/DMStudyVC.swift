@@ -9,64 +9,64 @@
 import UIKit
 
 class DMStudyVC: DMBaseVC {
-
-    enum Study:Int {
+    enum Study: Int {
         case profileHeader
         case school
     }
-    
-    @IBOutlet weak var studyTableView: UITableView!
-    
+
+    @IBOutlet var studyTableView: UITableView!
+
     var isFilledFromAutoComplete = false
-    let profileProgress:CGFloat = 0.50
-    var school = [[String:AnyObject]()]
-    var autoCompleteTable:AutoCompleteTable!
+    let profileProgress: CGFloat = 0.50
+    var school = [[String: AnyObject]()]
+    var autoCompleteTable: AutoCompleteTable!
     let autoCompleteBackView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
 
     var schoolCategories = [SchoolCategory]()
-    
-    var selectedData = NSMutableArray()
-    var yearPicker:YearPickerView?
 
-    //MARK:- View LifeCycle
+    var selectedData = NSMutableArray()
+    var yearPicker: YearPickerView?
+
+    // MARK: - View LifeCycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-    
-        self.getSchoolListAPI()
+
+        getSchoolListAPI()
         // Do any additional setup after loading the view.
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)
     }
-    
-    //MARK:- Private Methods
-    func setup() {
-        
-        self.yearPicker = YearPickerView.loadYearPickerView(withText: "", withTag: 0)
-        self.yearPicker?.delegate = self
 
-        self.navigationItem.leftBarButtonItem = self.backBarButton()
-        
+    // MARK: - Private Methods
+
+    func setup() {
+        yearPicker = YearPickerView.loadYearPickerView(withText: "", withTag: 0)
+        yearPicker?.delegate = self
+
+        navigationItem.leftBarButtonItem = backBarButton()
+
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        self.studyTableView.addGestureRecognizer(tap)
-        
-        self.studyTableView.separatorColor = UIColor.clear
-        self.studyTableView.register(UINib(nibName: "PhotoNameCell", bundle: nil), forCellReuseIdentifier: "PhotoNameCell")
-        self.studyTableView.register(UINib(nibName: "SectionHeadingTableCell", bundle: nil), forCellReuseIdentifier: "SectionHeadingTableCell")
-        self.studyTableView.register(UINib(nibName: "StudyCell", bundle: nil), forCellReuseIdentifier: "StudyCell")
-        self.changeNavBarAppearanceForWithoutHeader()
-        self.changeNavBarToTransparent()
-        
+        studyTableView.addGestureRecognizer(tap)
+
+        studyTableView.separatorColor = UIColor.clear
+        studyTableView.register(UINib(nibName: "PhotoNameCell", bundle: nil), forCellReuseIdentifier: "PhotoNameCell")
+        studyTableView.register(UINib(nibName: "SectionHeadingTableCell", bundle: nil), forCellReuseIdentifier: "SectionHeadingTableCell")
+        studyTableView.register(UINib(nibName: "StudyCell", bundle: nil), forCellReuseIdentifier: "StudyCell")
+        changeNavBarAppearanceForWithoutHeader()
+        changeNavBarToTransparent()
+
         autoCompleteTable = UIView.instanceFromNib(type: AutoCompleteTable.self)!
         autoCompleteTable.delegate = self
         autoCompleteBackView.backgroundColor = UIColor.clear
@@ -74,72 +74,75 @@ class DMStudyVC: DMBaseVC {
         autoCompleteTable.isHidden = true
         autoCompleteTable.layer.cornerRadius = 8.0
         autoCompleteTable.clipsToBounds = true
-        self.view.addSubview(autoCompleteBackView)
+        view.addSubview(autoCompleteBackView)
         autoCompleteBackView.isUserInteractionEnabled = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         autoCompleteBackView.addGestureRecognizer(tapGesture)
-        self.view.addSubview(autoCompleteTable)        
+        view.addSubview(autoCompleteTable)
     }
-    
+
     @objc func dismissKeyboard() {
-        self.view.endEditing(true)
+        view.endEditing(true)
         hideAutoCompleteView()
     }
-    
+
     func hideAutoCompleteView() {
         autoCompleteBackView.isHidden = true
         autoCompleteTable.isHidden = true
     }
-    
-    //MARK:- Keyboard Show Hide Observers
+
+    // MARK: - Keyboard Show Hide Observers
+
     @objc func keyboardWillShow(note: NSNotification) {
         if let keyboardSize = (note.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            studyTableView.contentInset =  UIEdgeInsetsMake(0, 0, keyboardSize.height+200, 0)
+            studyTableView.contentInset = UIEdgeInsetsMake(0, 0, keyboardSize.height + 200, 0)
         }
-    }
-    
-    @objc func keyboardWillHide(note: NSNotification) {
-        studyTableView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0)
     }
 
-    //MARK:- IBActions
-    @IBAction func nextButtonClicked(_ sender: Any) {
+    @objc func keyboardWillHide(note _: NSNotification) {
+        studyTableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
+    }
+
+    // MARK: - IBActions
+
+    @IBAction func nextButtonClicked(_: Any) {
         if selectedData.count == 0 {
-            self.makeToast(toastString: "Please fill atleast one school")
+            makeToast(toastString: "Please fill atleast one school")
             return
         }
-        self.preparePostSchoolData(schoolsSelected: selectedData)
+        preparePostSchoolData(schoolsSelected: selectedData)
     }
-    
+
     func openSkillsScreen() {
         let skillsVC = UIStoryboard.profileStoryBoard().instantiateViewController(type: DMSkillsVC.self)!
-        
+
         let selectSkillsVC = UIStoryboard.profileStoryBoard().instantiateViewController(type: DMSelectSkillsVC.self)!
-        
+
         let sideMenu = SSASideMenu(contentViewController: skillsVC, rightMenuViewController: selectSkillsVC)
         sideMenu.panGestureEnabled = false
         sideMenu.delegate = skillsVC
-        self.navigationController?.pushViewController(sideMenu, animated: true)
+        navigationController?.pushViewController(sideMenu, animated: true)
     }
 }
 
-extension DMStudyVC:AutoCompleteSelectedDelegate {
+extension DMStudyVC: AutoCompleteSelectedDelegate {
 
-    //MARK:- AutoComplete List Delegates
+    // MARK: - AutoComplete List Delegates
+
     func didSelect(schoolCategoryId: String, university: University) {
         hideAutoCompleteView()
-        let school = schoolCategories.filter({$0.schoolCategoryId == schoolCategoryId}).first
-        
+        let school = schoolCategories.filter({ $0.schoolCategoryId == schoolCategoryId }).first
+
         isFilledFromAutoComplete = true
         var flag = 0
-        
+
         if selectedData.count == 0 {
             let dict = NSMutableDictionary()
             dict["parentId"] = "\(schoolCategoryId)"
             dict["schoolId"] = "\(university.universityId)"
             dict["other"] = university.universityName
             dict["parentName"] = school?.schoolCategoryName
-            
+
             selectedData.add(dict)
             flag = 1
         } else {
@@ -152,8 +155,8 @@ extension DMStudyVC:AutoCompleteSelectedDelegate {
                 }
             }
         }
-        
-        //Array is > 0 but dict doesnt exists
+
+        // Array is > 0 but dict doesnt exists
         if flag == 0 {
             let dict = NSMutableDictionary()
             dict["parentId"] = schoolCategoryId as AnyObject?
@@ -163,23 +166,21 @@ extension DMStudyVC:AutoCompleteSelectedDelegate {
             dict["yearOfGraduation"] = ""
             selectedData.add(dict)
         }
-        
-        //debugPrint(selectedData)
-        
-        self.studyTableView.reloadData()
+
+        // debugPrint(selectedData)
+
+        studyTableView.reloadData()
     }
 }
 
-extension DMStudyVC : YearPickerViewDelegate {
-    
+extension DMStudyVC: YearPickerViewDelegate {
     func canceButtonAction() {
-        self.view.endEditing(true)
+        view.endEditing(true)
     }
-    
+
     func doneButtonAction(year: Int, tag: Int) {
         var flag = 0
         if year == -1 {
-            
         }
         if selectedData.count == 0 {
             let dict = NSMutableDictionary()
@@ -192,7 +193,7 @@ extension DMStudyVC : YearPickerViewDelegate {
             }
 
             if let _ = dict["other"] {
-                //debugPrint("handle other")
+                // debugPrint("handle other")
             } else {
 //                self.makeToast(toastString: "Please enter school name first")
                 dict["other"] = ""
@@ -211,7 +212,7 @@ extension DMStudyVC : YearPickerViewDelegate {
                     }
 
                     if let _ = dict["other"] {
-                        //debugPrint("handle other")
+                        // debugPrint("handle other")
                     } else {
 //                        self.makeToast(toastString: "Please enter school name first")
                         dict["other"] = ""
@@ -220,8 +221,8 @@ extension DMStudyVC : YearPickerViewDelegate {
                 }
             }
         }
-        
-        //Array is > 0 but dict doesnt exists
+
+        // Array is > 0 but dict doesnt exists
         if flag == 0 {
             let dict = NSMutableDictionary()
             dict["parentId"] = "\(tag)"
@@ -234,14 +235,14 @@ extension DMStudyVC : YearPickerViewDelegate {
             }
 
             if let _ = dict["other"] {
-                //debugPrint("handle other")
+                // debugPrint("handle other")
             } else {
-                self.makeToast(toastString: "Please enter school name first")
+                makeToast(toastString: "Please enter school name first")
                 dict["other"] = ""
             }
             selectedData.add(dict)
         }
-        //debugPrint(selectedData)
-        self.studyTableView.reloadData()
+        // debugPrint(selectedData)
+        studyTableView.reloadData()
     }
 }

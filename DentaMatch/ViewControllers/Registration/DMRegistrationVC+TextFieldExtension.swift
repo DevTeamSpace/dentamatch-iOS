@@ -8,20 +8,19 @@
 
 import Foundation
 
-extension DMRegistrationVC:UITextFieldDelegate {
-    
-    enum TextField:Int {
+extension DMRegistrationVC: UITextFieldDelegate {
+    enum TextField: Int {
         case firstName = 1
         case lastName
         case email
         case password
         case preferredLocation
     }
-    
-    //MARK:- TextField Delegates
+
+    // MARK: - TextField Delegates
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        let fieldSelected = TextField(rawValue:textField.tag)!
+        let fieldSelected = TextField(rawValue: textField.tag)!
 
         switch fieldSelected {
         case .firstName:
@@ -29,13 +28,13 @@ extension DMRegistrationVC:UITextFieldDelegate {
                 RegistrationTableViewCell {
                 cell.lastNameTextField.becomeFirstResponder()
             }
-            
+
         case .lastName:
             if let cell = self.registrationTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as?
                 RegistrationTableViewCell {
                 cell.emailTextField.becomeFirstResponder()
             }
-            
+
         case .email:
             if let cell = self.registrationTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as?
                 RegistrationTableViewCell {
@@ -48,7 +47,7 @@ extension DMRegistrationVC:UITextFieldDelegate {
         }
         return true
     }
-    
+
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if let cell = self.registrationTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as?
             RegistrationTableViewCell {
@@ -60,7 +59,7 @@ extension DMRegistrationVC:UITextFieldDelegate {
 //                self.view.endEditing(true)
 //                return true
                 if preferredLocations.count == 0 {
-                    self.getPreferredLocations(shouldShowKeyboard: true)
+                    getPreferredLocations(shouldShowKeyboard: true)
                     return false
                 }
             }
@@ -71,7 +70,7 @@ extension DMRegistrationVC:UITextFieldDelegate {
         }
         return true
     }
-    
+
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         if let textField = textField as? AnimatedLeftViewPHTextField {
             textField.text = textField.text!.trim()
@@ -80,10 +79,9 @@ extension DMRegistrationVC:UITextFieldDelegate {
         }
         return true
     }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
 
-        let fieldSelected = TextField(rawValue:textField.tag)!
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        let fieldSelected = TextField(rawValue: textField.tag)!
 
         switch fieldSelected {
         case .firstName:
@@ -98,35 +96,34 @@ extension DMRegistrationVC:UITextFieldDelegate {
             break
         }
     }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-        let fieldSelected = TextField(rawValue:textField.tag)!
-        
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn _: NSRange, replacementString string: String) -> Bool {
+        let fieldSelected = TextField(rawValue: textField.tag)!
+
         guard string.characters.count > 0 else {
             return true
         }
         let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ")
-        
+
         switch fieldSelected {
         case .firstName:
             if string.rangeOfCharacter(from: characterset.inverted) != nil {
-                //debugPrint("string contains special characters")
+                // debugPrint("string contains special characters")
                 return false
             }
             if textField.text!.characters.count >= Constants.Limit.commonMaxLimit {
                 return false
             }
-            
+
         case .lastName:
             if string.rangeOfCharacter(from: characterset.inverted) != nil {
-                //debugPrint("string contains special characters")
+                // debugPrint("string contains special characters")
                 return false
             }
             if textField.text!.characters.count >= Constants.Limit.commonMaxLimit {
                 return false
             }
-            
+
         case .password:
             if textField.text!.characters.count >= Constants.Limit.maxPasswordLimit {
                 return false

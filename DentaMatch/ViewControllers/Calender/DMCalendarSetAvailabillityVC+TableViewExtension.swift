@@ -8,166 +8,149 @@
 
 import Foundation
 
-
-extension DMCalendarSetAvailabillityVC : UITableViewDataSource, UITableViewDelegate {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
+extension DMCalendarSetAvailabillityVC: UITableViewDataSource, UITableViewDelegate {
+    func numberOfSections(in _: UITableView) -> Int {
         return 2
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        
+
+    func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
             return 1
         case 1:
             return calculatePartAndTemporyRows()
         default: break
-            
         }
         return 0
     }
-    
+
     func calculatePartAndTemporyRows() -> Int {
         if isPartTimeDayShow == true && isTemporyAvail == true {
             return 3
         } else if isPartTimeDayShow == false && isTemporyAvail == false {
             return 1
-        }else{
+        } else {
             return 2
         }
-        
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "JobSearchTypeCell") as? JobSearchTypeCell
             cell?.delegate = self
             cell?.selectionStyle = .none
-            cell?.setUpForButtons(isPartTime: (self.availablitytModel?.isParttime)!, isFullTime: (self.availablitytModel?.isFulltime)!)
+            cell?.setUpForButtons(isPartTime: (availablitytModel?.isParttime)!, isFullTime: (availablitytModel?.isFulltime)!)
             return cell!
         case 1:
-            return getDynamicCellFor(tableView:tableView, indexPath: indexPath)
-            
+            return getDynamicCellFor(tableView: tableView, indexPath: indexPath)
+
         default:
             break
         }
         return UITableViewCell()
-        
-        
     }
-    func getDynamicCellFor(tableView:UITableView,indexPath:IndexPath) -> UITableViewCell{
-        
+
+    func getDynamicCellFor(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         if isPartTimeDayShow == true && isTemporyAvail == true {
             switch indexPath.row {
             case 0:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "JobSearchPartTimeCell") as? JobSearchPartTimeCell
                 cell?.delegate = self
                 cell?.setUp()
-                cell?.daySelectFor(avail: self.availablitytModel!)
+                cell?.daySelectFor(avail: availablitytModel!)
                 cell?.selectionStyle = .none
                 return cell!
-                
+
             case 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TemporyJobCell") as? TemporyJobCell
                 cell?.delegate = self
-                cell?.setUpForButton(isTempTime: self.isTemporyAvail)
+                cell?.setUpForButton(isTempTime: isTemporyAvail)
                 cell?.selectionStyle = .none
                 return cell!
-                
+
             case 2:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TemporyJobCalenderCell") as? TemporyJobCalenderCell
                 cell?.selectionStyle = .none
-                cell?.selectPreSelctDate(dateArray: (self.availablitytModel?.tempJobDates)!)
+                cell?.selectPreSelctDate(dateArray: (availablitytModel?.tempJobDates)!)
                 cell?.delegate = self
                 return cell!
-                
-                
-                
+
             default:
                 break
             }
         } else if isPartTimeDayShow == false && isTemporyAvail == false {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TemporyJobCell") as? TemporyJobCell
-            cell?.setUpForButton(isTempTime: self.isTemporyAvail)
+            cell?.setUpForButton(isTempTime: isTemporyAvail)
             cell?.delegate = self
-            
+
             cell?.selectionStyle = .none
             return cell!
-            
-        }else{
+
+        } else {
             if isPartTimeDayShow == true {
                 switch indexPath.row {
                 case 0:
                     let cell = tableView.dequeueReusableCell(withIdentifier: "JobSearchPartTimeCell") as? JobSearchPartTimeCell
                     cell?.delegate = self
                     cell?.setUp()
-                    cell?.daySelectFor(avail: self.availablitytModel!)
-                    
+                    cell?.daySelectFor(avail: availablitytModel!)
+
                     cell?.selectionStyle = .none
                     return cell!
-                    
+
                 case 1:
                     let cell = tableView.dequeueReusableCell(withIdentifier: "TemporyJobCell") as? TemporyJobCell
-                    cell?.setUpForButton(isTempTime: self.isTemporyAvail)
+                    cell?.setUpForButton(isTempTime: isTemporyAvail)
                     cell?.delegate = self
-                    
+
                     cell?.selectionStyle = .none
                     return cell!
                 default: break
-                    
                 }
-                
             }
             if isTemporyAvail == true {
                 switch indexPath.row {
                 case 0:
                     let cell = tableView.dequeueReusableCell(withIdentifier: "TemporyJobCell") as? TemporyJobCell
                     cell?.selectionStyle = .none
-                    cell?.setUpForButton(isTempTime: self.isTemporyAvail)
+                    cell?.setUpForButton(isTempTime: isTemporyAvail)
                     cell?.delegate = self
-                    
+
                     return cell!
-                    
+
                 case 1:
                     let cell = tableView.dequeueReusableCell(withIdentifier: "TemporyJobCalenderCell") as? TemporyJobCalenderCell
                     cell?.selectionStyle = .none
-                    cell?.selectPreSelctDate(dateArray: (self.availablitytModel?.tempJobDates)!)
+                    cell?.selectPreSelctDate(dateArray: (availablitytModel?.tempJobDates)!)
                     cell?.delegate = self
-                    
+
                     return cell!
-                    
+
                 default:
                     break
                 }
             }
         }
-        
+
         return UITableViewCell()
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+
+    func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
             return 189
-        }
-        else {
-            let height  = getHeightForRow(indePath: indexPath)
-            //debugPrint("height \(height)")
+        } else {
+            let height = getHeightForRow(indePath: indexPath)
+            // debugPrint("height \(height)")
             return height
-            
         }
     }
-    
-    func getHeightForRow(indePath:IndexPath)  -> CGFloat{
-        
-        let tempJobCellHeight:CGFloat = 62
-        let tempPartTimeJobHeight:CGFloat = 77
-        let tempJobCalender:CGFloat = 310
-        
+
+    func getHeightForRow(indePath: IndexPath) -> CGFloat {
+        let tempJobCellHeight: CGFloat = 62
+        let tempPartTimeJobHeight: CGFloat = 77
+        let tempJobCalender: CGFloat = 310
+
         if isPartTimeDayShow == true && isTemporyAvail == true {
             switch indePath.row {
             case 0:
@@ -187,9 +170,9 @@ extension DMCalendarSetAvailabillityVC : UITableViewDataSource, UITableViewDeleg
             default:
                 break
             }
-            
+
             return tempJobCellHeight
-        }else{
+        } else {
             if isPartTimeDayShow == true {
                 switch indePath.row {
                 case 0:
@@ -201,7 +184,7 @@ extension DMCalendarSetAvailabillityVC : UITableViewDataSource, UITableViewDeleg
                 default:
                     break
                 }
-                
+
                 return tempPartTimeJobHeight
             }
             if isTemporyAvail == true {
@@ -213,38 +196,36 @@ extension DMCalendarSetAvailabillityVC : UITableViewDataSource, UITableViewDeleg
                 default:
                     break
                 }
-                
+
                 return tempJobCalender
             }
         }
         return 0
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+    func tableView(_: UITableView, didSelectRowAt _: IndexPath) {
     }
-    
 }
 
-extension DMCalendarSetAvailabillityVC : JobSearchTypeCellDelegate,TemporyJobCellDelegate, JobSearchPartTimeCellDelegate,TemporyJobCalenderCellDelegate {
-    
-    //MARK : JobSearchTypeCellDelegate Method
-    
+extension DMCalendarSetAvailabillityVC: JobSearchTypeCellDelegate, TemporyJobCellDelegate, JobSearchPartTimeCellDelegate, TemporyJobCalenderCellDelegate {
+
+    // MARK: JobSearchTypeCellDelegate Method
+
     func selectJobSearchType(selected: Bool, type: String) {
-        if type ==  JobSearchType.PartTime.rawValue {
+        if type == JobSearchType.PartTime.rawValue {
 //            partTimeJobDays.removeAll()
-            self.availablitytModel?.isParttime = selected
-            if selected == true  {
+            availablitytModel?.isParttime = selected
+            if selected == true {
                 if isPartTimeDayShow == false {
                     isPartTimeDayShow = !isPartTimeDayShow
-                    
+
                     calenderTableView.beginUpdates()
-                    calenderTableView.insertRows(at: [IndexPath(row: 0, section: 1)], with: .none )
+                    calenderTableView.insertRows(at: [IndexPath(row: 0, section: 1)], with: .none)
                     calenderTableView.endUpdates()
                     calenderTableView.scrollToRow(at: IndexPath(row: 0, section: 1), at: UITableViewScrollPosition.none, animated: false)
                 }
                 isJobTypePartTime = "1"
-            }
-            else {
+            } else {
                 isPartTimeDayShow = !isPartTimeDayShow
                 calenderTableView.beginUpdates()
                 calenderTableView.deleteRows(at: [IndexPath(row: 0, section: 1)], with: .none)
@@ -252,114 +233,106 @@ extension DMCalendarSetAvailabillityVC : JobSearchTypeCellDelegate,TemporyJobCel
                 calenderTableView.scrollToRow(at: IndexPath(row: 0, section: 1), at: UITableViewScrollPosition.none, animated: false)
                 isJobTypePartTime = "0"
             }
-        }
-        else {
-            self.availablitytModel?.isFulltime = selected
-            if selected == true  {
+        } else {
+            availablitytModel?.isFulltime = selected
+            if selected == true {
                 isJobTypeFullTime = "1"
-            }
-            else {
+            } else {
                 isJobTypeFullTime = "0"
             }
         }
     }
-    
+
     func selectTempJobType(selected: Bool) {
         isTemporyAvail = !isTemporyAvail
-        
+
 //        tempJobDays.removeAll()
-        if selected == true  {
+        if selected == true {
             if isPartTimeDayShow == true {
                 let path = IndexPath(row: 2, section: 1)
-                self.tableUpdateFor(indexPath: path, action: 0)
-            }else {
+                tableUpdateFor(indexPath: path, action: 0)
+            } else {
                 let path = IndexPath(row: 1, section: 1)
-                self.tableUpdateFor(indexPath: path, action: 0)
-                
+                tableUpdateFor(indexPath: path, action: 0)
             }
-        }else{
+        } else {
             if isPartTimeDayShow == true {
                 let path = IndexPath(row: 2, section: 1)
-                self.tableUpdateFor(indexPath: path, action: 1)
-                
-            }else {
+                tableUpdateFor(indexPath: path, action: 1)
+
+            } else {
                 let path = IndexPath(row: 1, section: 1)
-                self.tableUpdateFor(indexPath: path, action: 1)
+                tableUpdateFor(indexPath: path, action: 1)
             }
-            
         }
     }
-    
-    //MARK : JobSearchPartTimeCellDelegate Method
-    
+
+    // MARK: JobSearchPartTimeCellDelegate Method
+
     func selectDay(selected: Bool, day: String) {
         switch day {
         case "monday":
-            self.availablitytModel?.isParttimeMonday = selected
+            availablitytModel?.isParttimeMonday = selected
         case "tuesday":
-            self.availablitytModel?.isParttimeTuesday = selected
+            availablitytModel?.isParttimeTuesday = selected
         case "wednesday":
-            self.availablitytModel?.isParttimeWednesday = selected
+            availablitytModel?.isParttimeWednesday = selected
         case "thursday":
-            self.availablitytModel?.isParttimeThursday = selected
+            availablitytModel?.isParttimeThursday = selected
         case "friday":
-            self.availablitytModel?.isParttimeFriday = selected
+            availablitytModel?.isParttimeFriday = selected
         case "saturday":
-            self.availablitytModel?.isParttimeSaturday = selected
+            availablitytModel?.isParttimeSaturday = selected
         case "sunday":
-            self.availablitytModel?.isParttimeSunday = selected
+            availablitytModel?.isParttimeSunday = selected
         default:
             break
         }
     }
-    
-    func nextButtonDelegate(date : Date) {
+
+    func nextButtonDelegate(date _: Date) {
 //        let dateData = Date.getMonthAndYearForm(date: date)
 //        self.getMyAvailabilityFromServer(month: dateData.month, year: dateData.year) { (responseData, error) in
 //            self.calenderTableView.reloadData()
-//            
+//
 //            debugPrint(responseData ?? "response not available")
 //        }
-        
     }
-    func previouseButtonDelegate(date : Date) {
+
+    func previouseButtonDelegate(date _: Date) {
 //        let dateData = Date.getMonthAndYearForm(date: date)
 //        self.getMyAvailabilityFromServer(month: dateData.month, year: dateData.year) { (responseData, error) in
 //            self.calenderTableView.reloadData()
-//            
+//
 //            debugPrint(responseData ?? "response not available")
 //        }
-        
     }
-    
-    
-    func tableUpdateFor(indexPath:IndexPath ,action:Int) {
+
+    func tableUpdateFor(indexPath: IndexPath, action: Int) {
         if action == 0 {
-            //add
+            // add
             calenderTableView.beginUpdates()
-            calenderTableView.insertRows(at: [indexPath], with: .none )
+            calenderTableView.insertRows(at: [indexPath], with: .none)
             calenderTableView.endUpdates()
             calenderTableView.scrollToRow(at: IndexPath(row: 0, section: 1), at: UITableViewScrollPosition.none, animated: false)
-        }else  {
-            //delete
+        } else {
+            // delete
             calenderTableView.beginUpdates()
             calenderTableView.deleteRows(at: [indexPath], with: .none)
             calenderTableView.endUpdates()
             calenderTableView.scrollToRow(at: IndexPath(row: 0, section: 1), at: UITableViewScrollPosition.none, animated: false)
         }
     }
+
     func selectTempJobDate(selected: Date) {
-        self.availablitytModel?.tempJobDates.append(Date.dateToString(date: selected))
-        //debugPrint(self.availablitytModel?.tempJobDates ?? "dates are not avail")
-        
+        availablitytModel?.tempJobDates.append(Date.dateToString(date: selected))
+        // debugPrint(self.availablitytModel?.tempJobDates ?? "dates are not avail")
     }
-    
+
     func deSelectTempJobDate(deSelected: Date) {
-        if (self.availablitytModel?.tempJobDates.contains(Date.dateToString(date: deSelected)))! {
-            self.availablitytModel?.tempJobDates.remove(at: (self.availablitytModel?.tempJobDates.index(of: Date.dateToString(date: deSelected))!)!)
+        if (availablitytModel?.tempJobDates.contains(Date.dateToString(date: deSelected)))! {
+            availablitytModel?.tempJobDates.remove(at: (availablitytModel?.tempJobDates.index(of: Date.dateToString(date: deSelected))!)!)
         }
-        //debugPrint(self.availablitytModel?.tempJobDates ?? "dates are not avail")
-        
+        // debugPrint(self.availablitytModel?.tempJobDates ?? "dates are not avail")
     }
-    
 }

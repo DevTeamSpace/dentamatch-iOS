@@ -9,83 +9,82 @@
 import Foundation
 import GoogleMaps
 
-extension DMJobSearchResultVC : GMSMapViewDelegate {
-    
-    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+extension DMJobSearchResultVC: GMSMapViewDelegate {
+    func mapView(_: GMSMapView, didTapAt _: CLLocationCoordinate2D) {
         // Just hiding the card and restoring markers.
-        //self.restoreAllMarkers()
-        self.deselectMarker()
-        self.hideCard()
+        // self.restoreAllMarkers()
+        deselectMarker()
+        hideCard()
     }
-    
-    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+
+    func mapView(_: GMSMapView, didTap marker: GMSMarker) -> Bool {
         let marker = marker as! JobMarker
-        
+
         if let index = indexOfSelectedMarker {
             if marker.index != index {
                 deselectMarker()
             }
         }
         marker.icon = UIImage(named: "mapLPin")
-        self.indexOfSelectedMarker = marker.index
-        self.selectedMarker = marker
-        self.showCard(index: marker.index!)
+        indexOfSelectedMarker = marker.index
+        selectedMarker = marker
+        showCard(index: marker.index!)
         return true
     }
-    
+
     func moveToMarker(marker: JobMarker) {
-        self.mapViewSearchResult.selectedMarker = marker
+        mapViewSearchResult.selectedMarker = marker
     }
-    
+
     func deselectMarker() {
         if let marker = self.selectedMarker {
             marker.icon = UIImage(named: "pinPoint")
         }
-        self.indexOfSelectedMarker = nil
-        self.selectedMarker = nil
+        indexOfSelectedMarker = nil
+        selectedMarker = nil
     }
-    
+
     func restoreAllMarkers() {
-        self.mapViewSearchResult.selectedMarker = nil
-        self.mapViewSearchResult.clear()
-        for (index, objJob) in self.jobs.enumerated() {
+        mapViewSearchResult.selectedMarker = nil
+        mapViewSearchResult.clear()
+        for (index, objJob) in jobs.enumerated() {
             let latStr = objJob.latitude as NSString
-            let latDbl : Double  = Double(latStr.doubleValue)
+            let latDbl: Double = Double(latStr.doubleValue)
             let langStr = objJob.longitude as NSString
-            let langDbl : Double = Double(langStr.doubleValue)
+            let langDbl: Double = Double(langStr.doubleValue)
             let marker = JobMarker()
             marker.index = index
             marker.isDraggable = false
 //            marker.panoramaView
-            marker.position = CLLocationCoordinate2DMake(latDbl,langDbl )
+            marker.position = CLLocationCoordinate2DMake(latDbl, langDbl)
             marker.icon = UIImage(named: "pinPoint")
             marker.groundAnchor = CGPoint(x: 0.5, y: 0.5)
-            marker.map = self.mapViewSearchResult
-            if index == 0  {
-                self.mapViewSearchResult.animate(to: GMSCameraPosition(target: CLLocationCoordinate2DMake(latDbl,langDbl), zoom: 10, bearing: 0, viewingAngle: 0))
+            marker.map = mapViewSearchResult
+            if index == 0 {
+                mapViewSearchResult.animate(to: GMSCameraPosition(target: CLLocationCoordinate2DMake(latDbl, langDbl), zoom: 10, bearing: 0, viewingAngle: 0))
             }
         }
     }
-    
-    func showCard(index : Int) {
-        self.tblJobSearchResult.isHidden = false
-        self.constraintTblViewSearchResultHeight.constant = cellHeight
+
+    func showCard(index: Int) {
+        tblJobSearchResult.isHidden = false
+        constraintTblViewSearchResultHeight.constant = cellHeight
         UIView.animate(withDuration: 0.5, animations: {
             self.view.layoutIfNeeded()
-        }) { (complete: Bool) in
+        }) { (_: Bool) in
             DispatchQueue.main.async {
                 self.tblJobSearchResult.scrollToRow(at: IndexPath(row: index, section: 0), at: .none, animated: false)
                 self.tblJobSearchResult.isScrollEnabled = false
             }
         }
     }
-    
+
     func hideCard() {
-        self.tblJobSearchResult.isHidden = true
-        self.constraintTblViewSearchResultHeight.constant = 0.0
+        tblJobSearchResult.isHidden = true
+        constraintTblViewSearchResultHeight.constant = 0.0
         UIView.animate(withDuration: 0.5, animations: {
             self.view.layoutIfNeeded()
-        }) { (complete: Bool) in
+        }) { (_: Bool) in
             self.tblJobSearchResult.isScrollEnabled = true
         }
     }

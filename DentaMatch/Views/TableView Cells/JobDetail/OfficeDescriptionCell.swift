@@ -13,39 +13,38 @@ import UIKit
 }
 
 class OfficeDescriptionCell: UITableViewCell {
+    @IBOutlet var heightConstraintReadMoreButton: NSLayoutConstraint!
+    @IBOutlet var officeDescriptionLabel: UILabel!
 
-   
-    @IBOutlet weak var heightConstraintReadMoreButton: NSLayoutConstraint!
-    @IBOutlet weak var officeDescriptionLabel: UILabel!
-    
-    @IBOutlet weak var readMoreButton: UIButton!
+    @IBOutlet var readMoreButton: UIButton!
     var isReadMore = false
-   
-    var textHeight : CGFloat!
-    weak var delegate : OfficeDescriptionCellDelegate?
+
+    var textHeight: CGFloat!
+    weak var delegate: OfficeDescriptionCellDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.clipsToBounds = true
+        clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
     }
-    @IBAction func readMoreButtonClicked(_ sender: Any) {
-        self.delegate?.readMoreOrReadOfficeDescription!()
+
+    @IBAction func readMoreButtonClicked(_: Any) {
+        delegate?.readMoreOrReadOfficeDescription!()
     }
-    
-    func setCellData(job : Job) {
-        //Filling cell data
+
+    func setCellData(job _: Job) {
+        // Filling cell data
     }
-    
-    class func requiredHeight(jobDescription:String,isReadMore:Bool) -> CGFloat {
+
+    class func requiredHeight(jobDescription: String, isReadMore: Bool) -> CGFloat {
         let font = UIFont.fontLight(fontSize: 13.0)
-        var label:UILabel!
-        label = UILabel(frame: CGRect(x:0, y:0, width:UIScreen.main.bounds.width - 40, height:CGFloat.greatestFiniteMagnitude))
+        var label: UILabel!
+        label = UILabel(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 40, height: CGFloat.greatestFiniteMagnitude))
         label.numberOfLines = 0
         label.lineBreakMode = NSLineBreakMode.byWordWrapping
         label.font = font
@@ -54,15 +53,11 @@ class OfficeDescriptionCell: UITableViewCell {
         if label.frame.height > 50 {
             if isReadMore == false {
                 return 50 + 22 + 41
-            }
-            else {
+            } else {
                 return label.frame.height + 22 + 41
-            }//Button Show
-        }
-        else {
-            return label.frame.height + 22 //Button Hide
+            } // Button Show
+        } else {
+            return label.frame.height + 22 // Button Hide
         }
     }
-
-    
 }

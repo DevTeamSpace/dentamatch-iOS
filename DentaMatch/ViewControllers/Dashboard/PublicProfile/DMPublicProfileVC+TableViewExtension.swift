@@ -8,13 +8,12 @@
 
 import Foundation
 
-extension DMPublicProfileVC : UITableViewDataSource,UITableViewDelegate,UITextViewDelegate {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension DMPublicProfileVC: UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return 1
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+    func tableView(_ tableView: UITableView, cellForRowAt _: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EditPublicProfileTableCell") as! EditPublicProfileTableCell
         cell.firstNameTextField.delegate = self
         cell.lastNameTextField.delegate = self
@@ -29,9 +28,9 @@ extension DMPublicProfileVC : UITableViewDataSource,UITableViewDelegate,UITextVi
         cell.firstNameTextField.text = editProfileParams[Constants.ServerKey.firstName]
         cell.lastNameTextField.text = editProfileParams[Constants.ServerKey.lastName]
         cell.jobTitleTextField.text = UserManager.shared().activeUser.jobTitle
-        cell.licenseNumberTextField.text = licenseString//UserManager.shared().activeUser.licenseNumber
+        cell.licenseNumberTextField.text = licenseString // UserManager.shared().activeUser.licenseNumber
         cell.preferredJobLocationTextField.text = UserManager.shared().activeUser.preferredJobLocation
-        cell.stateTextField.text = stateString//UserManager.shared().activeUser.state
+        cell.stateTextField.text = stateString // UserManager.shared().activeUser.state
         cell.jobTitleTextField.type = 1
         cell.jobTitleTextField.tintColor = UIColor.clear
         cell.jobTitleTextField.inputView = jobSelectionPickerView
@@ -42,20 +41,19 @@ extension DMPublicProfileVC : UITableViewDataSource,UITableViewDelegate,UITextVi
                 cell.profileButton.sd_setImage(with: imageUrl, for: .normal, placeholderImage: kPlaceHolderImage)
             }
         } else {
-            cell.profileButton.setImage(self.profileImage, for: .normal)
+            cell.profileButton.setImage(profileImage, for: .normal)
         }
         return cell
     }
-    
-    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-        
-        self.publicProfileTableView.contentInset =  UIEdgeInsetsMake(0, 0, 200, 0)
+
+    func textViewShouldBeginEditing(_: UITextView) -> Bool {
+        publicProfileTableView.contentInset = UIEdgeInsetsMake(0, 0, 200, 0)
         DispatchQueue.main.async {
             self.publicProfileTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: true)
         }
         return true
     }
-    
+
     func textViewDidBeginEditing(_ textView: UITextView) {
         if let cell = self.publicProfileTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? EditPublicProfileTableCell {
             if !textView.text.isEmpty {
@@ -65,15 +63,13 @@ extension DMPublicProfileVC : UITableViewDataSource,UITableViewDelegate,UITextVi
             }
         }
     }
-    
+
     func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
-        self.publicProfileTableView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0)
+        publicProfileTableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
         editProfileParams[Constants.ServerKey.aboutMe] = textView.text
         return true
     }
-    
-    
-    
+
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         guard text.count > 0 else {
             return true
@@ -89,7 +85,7 @@ extension DMPublicProfileVC : UITableViewDataSource,UITableViewDelegate,UITextVi
 
         return true
     }
-    
+
     func textViewDidChange(_ textView: UITextView) {
         editProfileParams[Constants.ServerKey.aboutMe] = textView.text
         if let cell = self.publicProfileTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? EditPublicProfileTableCell {
@@ -100,7 +96,7 @@ extension DMPublicProfileVC : UITableViewDataSource,UITableViewDelegate,UITextVi
             }
         }
     }
-    
+
     func textViewDidEndEditing(_ textView: UITextView) {
         if let cell = self.publicProfileTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? EditPublicProfileTableCell {
             if !textView.text.isEmpty {

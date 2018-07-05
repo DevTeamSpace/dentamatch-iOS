@@ -9,59 +9,63 @@
 import UIKit
 
 class DMForgotPasswordVC: DMBaseVC {
+    @IBOutlet var emailTextField: AnimatedLeftViewPHTextField!
 
-    @IBOutlet weak var emailTextField: AnimatedLeftViewPHTextField!
-    
     var forgotPasswordParams = [
-        Constants.ServerKey.email:""
+        Constants.ServerKey.email: "",
     ]
-    //MARK:- View LifeCycle
+
+    // MARK: - View LifeCycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
+
+    override func touchesBegan(_: Set<UITouch>, with _: UIEvent?) {
+        view.endEditing(true)
     }
-    
-    //MARK:- Private Methods
+
+    // MARK: - Private Methods
+
     func setup() {
         emailTextField.leftViewLabel?.text = "f"
-        self.title = Constants.ScreenTitleNames.forgotPassword
-        self.navigationItem.leftBarButtonItem = self.backBarButton()
+        title = Constants.ScreenTitleNames.forgotPassword
+        navigationItem.leftBarButtonItem = backBarButton()
     }
-    
-    //MARK:- IBActions
-    @IBAction func sendButtonPressed(_ sender: Any) {
-        self.view.endEditing(true)
-        
+
+    // MARK: - IBActions
+
+    @IBAction func sendButtonPressed(_: Any) {
+        view.endEditing(true)
+
         if let emailtext = emailTextField.text, emailtext.isEmpty {
-            self.makeToast(toastString: Constants.AlertMessage.emptyEmail)
+            makeToast(toastString: Constants.AlertMessage.emptyEmail)
             return
         }
         if emailTextField.text!.isValidEmail {
-            forgotPasswordParams[Constants.ServerKey.email] = self.emailTextField.text!
-            self.forgotPasswordAPI(params: forgotPasswordParams)
+            forgotPasswordParams[Constants.ServerKey.email] = emailTextField.text!
+            forgotPasswordAPI(params: forgotPasswordParams)
         } else {
-            self.makeToast(toastString: Constants.AlertMessage.invalidEmail)
+            makeToast(toastString: Constants.AlertMessage.invalidEmail)
         }
     }
 }
 
 extension DMForgotPasswordVC: UITextFieldDelegate {
-    
-    //MARK:- TextField Delegates
+
+    // MARK: - TextField Delegates
+
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if let textField = textField as? AnimatedLeftViewPHTextField {
             textField.layer.borderColor = Constants.Color.textFieldColorSelected.cgColor
@@ -69,7 +73,7 @@ extension DMForgotPasswordVC: UITextFieldDelegate {
         }
         return true
     }
-    
+
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         if let textField = textField as? AnimatedLeftViewPHTextField {
             textField.layer.borderColor = Constants.Color.textFieldBorderColor.cgColor
@@ -77,7 +81,7 @@ extension DMForgotPasswordVC: UITextFieldDelegate {
         }
         return true
     }
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

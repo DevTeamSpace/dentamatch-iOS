@@ -8,52 +8,47 @@
 
 import Foundation
 
-extension DMEditSkillsVC : UITableViewDataSource, UITableViewDelegate{
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
+extension DMEditSkillsVC: UITableViewDataSource, UITableViewDelegate {
+    func numberOfSections(in _: UITableView) -> Int {
         return 2
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+    func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {
         let skillsOption = Skills(rawValue: section)!
-        
+
         switch skillsOption {
-            
         case .skills:
             return skills.count
-            
+
         case .other:
             return 0
         }
-
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+
+    func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let skillOption = Skills(rawValue: indexPath.section)!
-        
+
         switch skillOption {
         case .skills:
-            let height  = self .getHeightOFCellForSkill(subSkills: skills[indexPath.row].subSkills.filter({$0.isSelected == true}))
+            let height = getHeightOFCellForSkill(subSkills: skills[indexPath.row].subSkills.filter({ $0.isSelected == true }))
             return 56 + height
         case .other:
             return 144
         }
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let skillsOption = Skills(rawValue: indexPath.section)!
-        
+
         switch skillsOption {
-            
         case .skills:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SkillsTableCell") as! SkillsTableCell
             let skill = skills[indexPath.row]
             cell.subSkillsTagView.tag = indexPath.row
-            cell.updateSkills(subSkills: skills[indexPath.row].subSkills.filter({$0.isSelected == true}))            
+            cell.updateSkills(subSkills: skills[indexPath.row].subSkills.filter({ $0.isSelected == true }))
             cell.skillLabel.text = skill.skillName
             return cell
-            
+
         case .other:
             let cell = tableView.dequeueReusableCell(withIdentifier: "OtherSkillCell") as! OtherSkillCell
             cell.otherTextView.delegate = self
@@ -63,23 +58,21 @@ extension DMEditSkillsVC : UITableViewDataSource, UITableViewDelegate{
             return cell
         }
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+
+    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         let skillsOption = Skills(rawValue: indexPath.section)!
 
         switch skillsOption {
         case .skills:
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "getSubSkillData"), object: nil, userInfo: ["skill":skills[indexPath.row]])
-            self.presentRightMenuViewController()
-            
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "getSubSkillData"), object: nil, userInfo: ["skill": skills[indexPath.row]])
+            presentRightMenuViewController()
+
         default:
             break
         }
     }
-    
-    func getHeightOFCellForSkill(subSkills:[SubSkill]) -> CGFloat {
-        
+
+    func getHeightOFCellForSkill(subSkills: [SubSkill]) -> CGFloat {
         let tagList: TagList = {
             let view = TagList()
             view.backgroundColor = Constants.Color.jobSkillBrickColor
@@ -93,51 +86,46 @@ extension DMEditSkillsVC : UITableViewDataSource, UITableViewDelegate{
         tagList.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: Utilities.ScreenSize.SCREEN_WIDTH - 30, height: 0))
 
         for subSkill in subSkills {
-            
             let tag = Tag(content: TagPresentableText(subSkill.subSkillName) {
                 $0.label.font = UIFont.fontRegular(fontSize: 14.0)
-                }, onInit: {
-                    $0.padding = UIEdgeInsets(top: 8, left: 10, bottom: 8, right: 10)
-                    $0.layer.borderColor = UIColor.cyan.cgColor
-                    $0.layer.borderWidth = 2
-                    $0.layer.cornerRadius = 5
+            }, onInit: {
+                $0.padding = UIEdgeInsets(top: 8, left: 10, bottom: 8, right: 10)
+                $0.layer.borderColor = UIColor.cyan.cgColor
+                $0.layer.borderWidth = 2
+                $0.layer.cornerRadius = 5
             }, onSelect: {
                 $0.backgroundColor = $0.isSelected ? UIColor.orange : UIColor.white
             })
             tagList.tags.append(tag)
         }
-        
-        //debugPrint("Height \(tagList.intrinsicContentSize.height)")
+
+        // debugPrint("Height \(tagList.intrinsicContentSize.height)")
         return tagList.frame.size.height
-        
     }
 }
 
-extension DMEditSkillsVC:UITextViewDelegate {
-    
+extension DMEditSkillsVC: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         if let _ = otherSkill {
             otherSkill?.otherText = textView.text.trim()
         }
     }
-    
-    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-        
-        self.skillsTableView.contentInset =  UIEdgeInsetsMake(0, 0, 200, 0)
+
+    func textViewShouldBeginEditing(_: UITextView) -> Bool {
+        skillsTableView.contentInset = UIEdgeInsetsMake(0, 0, 200, 0)
         DispatchQueue.main.async {
             self.skillsTableView.scrollToRow(at: IndexPath(row: 0, section: 1), at: .bottom, animated: true)
         }
         return true
     }
-    
-    
-    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
-        self.skillsTableView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0)
+
+    func textViewShouldEndEditing(_: UITextView) -> Bool {
+        skillsTableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
         return true
     }
-    
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if(text == "\n") {
+
+    func textView(_ textView: UITextView, shouldChangeTextIn _: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
             textView.resignFirstResponder()
             return false
         }

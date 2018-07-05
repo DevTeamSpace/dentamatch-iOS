@@ -10,10 +10,9 @@ import Foundation
 import SwiftyJSON
 
 extension DMProfileSuccessPending {
-    
-    func verifyEmail(completionHandler:@escaping (Bool,String, NSError?) -> ()) {
-        self.showLoader()
-        APIManager.apiGet(serviceName: Constants.API.emailVerify, parameters: nil) { (response:JSON?, error:NSError?) in
+    func verifyEmail(completionHandler: @escaping (Bool, String, NSError?) -> Void) {
+        showLoader()
+        APIManager.apiGet(serviceName: Constants.API.emailVerify, parameters: nil) { (response: JSON?, error: NSError?) in
             self.hideLoader()
             if error != nil {
                 self.makeToast(toastString: (error?.localizedDescription)!)
@@ -23,9 +22,9 @@ extension DMProfileSuccessPending {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            //debugPrint(response!)
+            // debugPrint(response!)
             if response![Constants.ServerKey.status].boolValue {
-                completionHandler(response![Constants.ServerKey.result]["isVerified"].boolValue,response![Constants.ServerKey.message].stringValue ,error)
+                completionHandler(response![Constants.ServerKey.result]["isVerified"].boolValue, response![Constants.ServerKey.message].stringValue, error)
             }
         }
     }

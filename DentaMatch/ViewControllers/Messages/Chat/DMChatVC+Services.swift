@@ -10,15 +10,13 @@ import Foundation
 import SwiftyJSON
 
 extension DMChatVC {
-    
-    
-    func unBlockRecruiter(chatList:ChatList) {
+    func unBlockRecruiter(chatList: ChatList) {
         let params = [
-            Constants.ServerKey.recruiterId:chatList.recruiterId!,
-            Constants.ServerKey.blockStatus:"0"
-            ] as [String : Any]
-        self.showLoader()
-        APIManager.apiPost(serviceName: Constants.API.blockUnblockRecruiter, parameters: params) { (response:JSON?, error:NSError?) in
+            Constants.ServerKey.recruiterId: chatList.recruiterId!,
+            Constants.ServerKey.blockStatus: "0",
+        ] as [String: Any]
+        showLoader()
+        APIManager.apiPost(serviceName: Constants.API.blockUnblockRecruiter, parameters: params) { (response: JSON?, error: NSError?) in
             self.hideLoader()
             if error != nil {
                 self.makeToast(toastString: (error?.localizedDescription)!)
@@ -28,17 +26,17 @@ extension DMChatVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            //debugPrint(response!)
+            // debugPrint(response!)
             self.handleUnblockRecruiterResponse(chatList: chatList, response: response)
         }
     }
-    
-    func handleUnblockRecruiterResponse(chatList:ChatList,response:JSON?) {
+
+    func handleUnblockRecruiterResponse(chatList: ChatList, response: JSON?) {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
                 if response[Constants.ServerKey.result][Constants.ServerKey.blockStatus].stringValue == "1" {
                     chatList.isBlockedFromSeeker = true
-                    self.makeToast(toastString: "Recruiter Blocked")
+                    makeToast(toastString: "Recruiter Blocked")
                 } else {
                     chatList.isBlockedFromSeeker = false
                     DispatchQueue.main.async {
@@ -46,11 +44,11 @@ extension DMChatVC {
                         self.sendButton.isHidden = false
                         self.unblockButton.isHidden = true
                     }
-                    self.makeToast(toastString: "Recruiter Unblocked")
+                    makeToast(toastString: "Recruiter Unblocked")
                 }
-                self.appDelegate.saveContext()
+                appDelegate.saveContext()
             } else {
-                self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+                makeToast(toastString: response[Constants.ServerKey.message].stringValue)
             }
         }
     }

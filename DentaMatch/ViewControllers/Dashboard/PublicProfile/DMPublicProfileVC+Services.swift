@@ -10,15 +10,14 @@ import Foundation
 import SwiftyJSON
 
 extension DMPublicProfileVC {
-    
     func uploadProfileImageAPI() {
-        var params = [String:AnyObject]()
+        var params = [String: AnyObject]()
         params["type"] = "profile_pic" as AnyObject?
         if let profileImageData = self.profileImage {
             if let imageData = UIImageJPEGRepresentation(profileImageData, 0.5) {
                 params["image"] = imageData as AnyObject?
-                self.showLoader()
-                APIManager.apiMultipart(serviceName: Constants.API.uploadImage, parameters: params, completionHandler: { (response:JSON?, error:NSError?) in
+                showLoader()
+                APIManager.apiMultipart(serviceName: Constants.API.uploadImage, parameters: params, completionHandler: { (response: JSON?, error: NSError?) in
                     self.hideLoader()
                     if error != nil {
                         self.makeToast(toastString: (error?.localizedDescription)!)
@@ -28,19 +27,18 @@ extension DMPublicProfileVC {
                         self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                         return
                     }
-                    //debugPrint(response!)
+                    // debugPrint(response!)
                     self.handleUploadProfileResponse(response: response)
                 })
             } else {
-                self.makeToast(toastString: "Profile Image problem")
+                makeToast(toastString: "Profile Image problem")
             }
         }
     }
-    
-    func updatePublicProfileAPI(params:[String:String]) {
-        
-        self.showLoader()
-        APIManager.apiPut(serviceName: Constants.API.updateUserProfile, parameters: params) { (response:JSON?, error:NSError?) in
+
+    func updatePublicProfileAPI(params: [String: String]) {
+        showLoader()
+        APIManager.apiPut(serviceName: Constants.API.updateUserProfile, parameters: params) { (response: JSON?, error: NSError?) in
             self.hideLoader()
             if error != nil {
                 self.makeToast(toastString: (error?.localizedDescription)!)
@@ -50,40 +48,40 @@ extension DMPublicProfileVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            //debugPrint(response!)
+            // debugPrint(response!)
             self.handleUpdateProfileResponse(response: response)
         }
     }
-    
-    func handleUploadProfileResponse(response:JSON?) {
+
+    func handleUploadProfileResponse(response: JSON?) {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
                 UserManager.shared().activeUser.profileImageURL = response[Constants.ServerKey.result][Constants.ServerKey.profileImageURL].stringValue
                 UserManager.shared().saveActiveUser()
-                self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
-                self.updateProfileScreen()
+                makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+                updateProfileScreen()
                 DispatchQueue.main.async {
                     self.publicProfileTableView.reloadData()
                 }
             } else {
-                self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+                makeToast(toastString: response[Constants.ServerKey.message].stringValue)
             }
         }
     }
-    
-    func handleUpdateProfileResponse(response:JSON?) {
+
+    func handleUpdateProfileResponse(response: JSON?) {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
                 updateUserDetailsOnSuccess()
-                self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
-                self.updateProfileScreen()
-                _ = self.navigationController?.popViewController(animated: true)
+                makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+                updateProfileScreen()
+                _ = navigationController?.popViewController(animated: true)
             } else {
-                self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+                makeToast(toastString: response[Constants.ServerKey.message].stringValue)
             }
         }
     }
-    
+
     func updateUserDetailsOnSuccess() {
         UserManager.shared().activeUser.firstName = editProfileParams[Constants.ServerKey.firstName]
         UserManager.shared().activeUser.lastName = editProfileParams[Constants.ServerKey.lastName]
@@ -106,11 +104,11 @@ extension DMPublicProfileVC {
         }
         UserManager.shared().saveActiveUser()
     }
-    
-    func getPreferredLocations(shouldShowKeyboard:Bool = false) {
-        self.view.endEditing(true)
-        if shouldShowKeyboard { self.showLoader() }
-        APIManager.apiGet(serviceName: Constants.API.getPreferredJobLocations, parameters: nil) { (response:JSON?, error:NSError?) in
+
+    func getPreferredLocations(shouldShowKeyboard: Bool = false) {
+        view.endEditing(true)
+        if shouldShowKeyboard { showLoader() }
+        APIManager.apiGet(serviceName: Constants.API.getPreferredJobLocations, parameters: nil) { (response: JSON?, error: NSError?) in
             self.hideLoader()
             if error != nil {
                 self.makeToast(toastString: (error?.localizedDescription)!)
@@ -120,10 +118,10 @@ extension DMPublicProfileVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            //debugPrint(response!)
+            // debugPrint(response!)
             if response![Constants.ServerKey.status].boolValue {
                 let preferredJobLocationArray = response!["result"]["preferredJobLocations"].arrayValue
-                
+
                 self.preferredLocations.removeAll()
                 for location in preferredJobLocationArray {
                     self.preferredLocations.append(PreferredLocation(preferredLocation: location))

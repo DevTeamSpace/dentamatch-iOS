@@ -9,10 +9,10 @@
 import UIKit
 
 class AddProfileOptionTableCell: UITableViewCell {
-    @IBOutlet weak var profileOptionLabel: UILabel!
+    @IBOutlet var profileOptionLabel: UILabel!
 
     override func awakeFromNib() {
-        self.clipsToBounds = true
+        clipsToBounds = true
         super.awakeFromNib()
         // Initialization code
     }
@@ -22,5 +22,4 @@ class AddProfileOptionTableCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }

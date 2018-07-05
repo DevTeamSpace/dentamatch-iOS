@@ -9,11 +9,10 @@ import Foundation
 import XCGLogger
 
 class LogManager: NSObject {
-
-    //let log: XCGLogger = {
-        // Setup XCGLogger
-       // let log = XCGLogger.default
-        //log.xcodeColorsEnabled = true // Or set the XcodeColors environment variable in your scheme to YES
+    // let log: XCGLogger = {
+    // Setup XCGLogger
+    // let log = XCGLogger.default
+    // log.xcodeColorsEnabled = true // Or set the XcodeColors environment variable in your scheme to YES
 //        log.xcodeColors = [
 //            .verbose: .lightGrey,
 //            .debug: .darkGrey,
@@ -23,13 +22,13 @@ class LogManager: NSObject {
 //            .severe: XCGLogger.XcodeColor(fg: (255, 255, 255), bg: (255, 0, 0)) // Optionally use RGB values directly,,,,,,,
 //        ]
 
-      //  return log
-   // }
-    
+    //  return log
+    // }
+
     let log = XCGLogger.default
 
-
     // MARK: - Singleton Instance
+
     fileprivate static let _sharedManager = LogManager()
 
     class func sharedManager() -> LogManager {
@@ -41,47 +40,43 @@ class LogManager: NSObject {
     }
 
     // MARK: - Setup methods
-    class func setup(_ logLevel: XCGLogger.Level = .debug, showLogLevel: Bool = true, showFunctionName: Bool = true, showThreadName: Bool = false, showFileName: Bool = true, showLineNumber: Bool = true, writeToFile: Bool = false) {
 
+    class func setup(_ logLevel: XCGLogger.Level = .debug, showLogLevel: Bool = true, showFunctionName: Bool = true, showThreadName: Bool = false, showFileName: Bool = true, showLineNumber: Bool = true, writeToFile: Bool = false) {
         LogManager.sharedManager().setup(logLevel, showLogLevel: showLogLevel, showFunctionName: showFunctionName, showThreadName: showThreadName, showFileName: showFileName, showLineNumber: showLineNumber, writeToFile: writeToFile)
     }
 
     func setup(_ logLevel: XCGLogger.Level = .debug, showLogLevel: Bool = true, showFunctionName: Bool = true, showThreadName: Bool = false, showFileName: Bool = true, showLineNumber: Bool = true, writeToFile: Bool = false) {
-
         #if USE_NSLOG // Set via Build Settings, under Other Swift Flags
 
-            self.log.removeLogDestination(XCGLogger.Constants.baseConsoleLogDestinationIdentifier)
-            self.log.addLogDestination(XCGNSLogDestination(owner: self.log, identifier: XCGLogger.Constants.nslogDestinationIdentifier))
-            self.log.logAppDetails()
+            log.removeLogDestination(XCGLogger.Constants.baseConsoleLogDestinationIdentifier)
+            log.addLogDestination(XCGNSLogDestination(owner: log, identifier: XCGLogger.Constants.nslogDestinationIdentifier))
+            log.logAppDetails()
 
         #else
 
-            var logPath: URL? = nil
+            var logPath: URL?
 
             if writeToFile {
                 // create a log file name using current date
-                let fileName: String = "Log-\(Date().formattedString()).txt"                
+                let fileName: String = "Log-\(Date().formattedString()).txt"
                 logPath = cacheDirectoryURL.appendingPathComponent(fileName)
             }
 
-            self.log.setup(level: logLevel, showFunctionName: showFunctionName, showThreadName: showThreadName, showLevel: showLogLevel, showFileNames: showFileName, showLineNumbers: showLineNumber, writeToFile: logPath)
+            log.setup(level: logLevel, showFunctionName: showFunctionName, showThreadName: showThreadName, showLevel: showLogLevel, showFileNames: showFileName, showLineNumbers: showLineNumber, writeToFile: logPath)
 
         #endif
     }
 
     // MARK: - Write log
+
     fileprivate func writeLog(_ logLevel: XCGLogger.Level, closure: @autoclosure () -> String?, functionName: StaticString = #function, fileName: StaticString = #file, lineNumber: Int = #line) {
-        
-        
-        
-        self.log.logln(logLevel, functionName: functionName, fileName: fileName, lineNumber: lineNumber, closure: closure)
-        
+        log.logln(logLevel, functionName: functionName, fileName: fileName, lineNumber: lineNumber, closure: closure)
     }
 }
 
 // MARK: - Helpers for Logging
-extension LogManager {
 
+extension LogManager {
     class func logDebug(_ closure: @autoclosure () -> String?, functionName: StaticString = #function, fileName: StaticString = #file, lineNumber: Int = #line) {
         LogManager.sharedManager().writeLog(.debug, closure: closure, functionName: functionName, fileName: fileName, lineNumber: lineNumber)
     }

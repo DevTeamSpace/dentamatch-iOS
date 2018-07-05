@@ -9,31 +9,31 @@
 import UIKit
 
 class DMRegistrationContainer: DMBaseVC {
-    
-    @IBOutlet weak var topView: UIView!
-    @IBOutlet weak var registrationButton: UIButton!
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var registrationHeaderImageView: UIImageView!
-    
-    var registrationVC:DMRegistrationVC?
-    var loginVC:DMLoginVC?
+    @IBOutlet var topView: UIView!
+    @IBOutlet var registrationButton: UIButton!
+    @IBOutlet var loginButton: UIButton!
+    @IBOutlet var registrationHeaderImageView: UIImageView!
+
+    var registrationVC: DMRegistrationVC?
+    var loginVC: DMLoginVC?
     var isRegistration = true
-    
-    //MARK:- View LifeCycle
+
+    // MARK: - View LifeCycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         registrationVC = UIStoryboard.registrationStoryBoard().instantiateViewController(type: DMRegistrationVC.self)!
-        registrationVC?.view.frame = CGRect(x: 0, y: self.topView.frame.size.height, width: self.view.frame.size.width, height: self.view.frame.size.height - self.topView.frame.size.height)
-        
+        registrationVC?.view.frame = CGRect(x: 0, y: topView.frame.size.height, width: view.frame.size.width, height: view.frame.size.height - topView.frame.size.height)
+
         loginVC = UIStoryboard.registrationStoryBoard().instantiateViewController(type: DMLoginVC.self)!
-        loginVC?.view.frame = CGRect(x: 0, y: self.topView.frame.size.height, width: self.view.frame.size.width, height: self.view.frame.size.height - self.topView.frame.size.height)
-        
-        self.addChildViewController(loginVC!)
-        self.view.addSubview((loginVC?.view)!)
-        self.addChildViewController(registrationVC!)
-        self.view.addSubview((registrationVC?.view)!)
-        
+        loginVC?.view.frame = CGRect(x: 0, y: topView.frame.size.height, width: view.frame.size.width, height: view.frame.size.height - topView.frame.size.height)
+
+        addChildViewController(loginVC!)
+        view.addSubview((loginVC?.view)!)
+        addChildViewController(registrationVC!)
+        view.addSubview((registrationVC?.view)!)
+
         if UserDefaultsManager.sharedInstance.isLoggedOut {
             registrationVC?.didMove(toParentViewController: self)
             loginVC?.didMove(toParentViewController: self)
@@ -45,48 +45,47 @@ class DMRegistrationContainer: DMBaseVC {
             registrationVC?.didMove(toParentViewController: self)
             loginVC?.view.alpha = 0.0
         }
-        
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        registrationVC?.view.frame = CGRect(x: 0, y: self.topView.frame.size.height, width: self.view.frame.size.width, height: self.view.frame.size.height - self.topView.frame.size.height)
-        
-        loginVC?.view.frame = CGRect(x: 0, y: self.topView.frame.size.height, width: self.view.frame.size.width, height: self.view.frame.size.height - self.topView.frame.size.height)
-        
+        registrationVC?.view.frame = CGRect(x: 0, y: topView.frame.size.height, width: view.frame.size.width, height: view.frame.size.height - topView.frame.size.height)
+
+        loginVC?.view.frame = CGRect(x: 0, y: topView.frame.size.height, width: view.frame.size.width, height: view.frame.size.height - topView.frame.size.height)
+
         UIView.removeTip(view: registrationButton)
         UIView.removeTip(view: loginButton)
-        
+
         if isRegistration {
             registrationButton.titleLabel?.font = UIFont.fontSemiBold(fontSize: 14.0)!
             loginButton.titleLabel?.font = UIFont.fontLight(fontSize: 14.0)!
-            UIView.makeTip(view: registrationButton, size: 8, x: registrationButton.frame.midX/2, y: registrationButton.frame.midY)
+            UIView.makeTip(view: registrationButton, size: 8, x: registrationButton.frame.midX / 2, y: registrationButton.frame.midY)
         } else {
             registrationButton.titleLabel?.font = UIFont.fontLight(fontSize: 14.0)!
             loginButton.titleLabel?.font = UIFont.fontSemiBold(fontSize: 14.0)!
-            UIView.makeTip(view: loginButton, size: 8, x: loginButton.frame.midX/2, y: loginButton.frame.midY)
+            UIView.makeTip(view: loginButton, size: 8, x: loginButton.frame.midX / 2, y: loginButton.frame.midY)
         }
-        
+
         if UserDefaultsManager.sharedInstance.isLoggedOut {
-            //goToLoginFromLogout()
+            // goToLoginFromLogout()
         }
     }
-    
-    //MARK:- IBActions
+
+    // MARK: - IBActions
+
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         isRegistration = false
         registrationButton.titleLabel?.font = UIFont.fontLight(fontSize: 14.0)!
         loginButton.titleLabel?.font = UIFont.fontSemiBold(fontSize: 14.0)!
         UIView.removeTip(view: registrationButton)
-        UIView.makeTip(view: sender, size: 8, x: sender.frame.midX/2, y: sender.frame.midY)
-        self.view.endEditing(true)
-        self.view.bringSubview(toFront: (self.loginVC?.view)!)
+        UIView.makeTip(view: sender, size: 8, x: sender.frame.midX / 2, y: sender.frame.midY)
+        view.endEditing(true)
+        view.bringSubview(toFront: (loginVC?.view)!)
         UIView.animate(withDuration: 0.25, animations: {
             self.loginVC?.view.alpha = 1.0
             self.registrationVC?.view.alpha = 0.0
-        }) { (finished:Bool) in
-            //completion
-
+        }) { (_: Bool) in
+            // completion
         }
     }
 
@@ -95,49 +94,48 @@ class DMRegistrationContainer: DMBaseVC {
         registrationButton.titleLabel?.font = UIFont.fontSemiBold(fontSize: 14.0)!
         loginButton.titleLabel?.font = UIFont.fontLight(fontSize: 14.0)!
         UIView.removeTip(view: loginButton)
-        UIView.makeTip(view: sender, size: 8, x: sender.frame.midX/2, y: sender.frame.midY)
-        self.view.endEditing(true)
-        self.view.bringSubview(toFront: (registrationVC?.view)!)
+        UIView.makeTip(view: sender, size: 8, x: sender.frame.midX / 2, y: sender.frame.midY)
+        view.endEditing(true)
+        view.bringSubview(toFront: (registrationVC?.view)!)
         UIView.animate(withDuration: 0.25, animations: {
             self.registrationVC?.view.alpha = 1.0
             self.loginVC?.view.alpha = 0.0
-        }) { (finished:Bool) in
-            //completion
+        }) { (_: Bool) in
+            // completion
         }
     }
-    
+
     func goToLoginAfterRegistration() {
         isRegistration = false
         registrationButton.titleLabel?.font = UIFont.fontLight(fontSize: 14.0)!
         loginButton.titleLabel?.font = UIFont.fontSemiBold(fontSize: 14.0)!
         UIView.removeTip(view: registrationButton)
-        UIView.makeTip(view: loginButton, size: 8, x: loginButton.frame.midX/2, y: loginButton.frame.midY)
-        self.view.endEditing(true)
-        self.view.bringSubview(toFront: (self.loginVC?.view)!)
+        UIView.makeTip(view: loginButton, size: 8, x: loginButton.frame.midX / 2, y: loginButton.frame.midY)
+        view.endEditing(true)
+        view.bringSubview(toFront: (loginVC?.view)!)
         loginVC?.clearData()
         UIView.animate(withDuration: 0.25, animations: {
             self.loginVC?.view.alpha = 1.0
             self.registrationVC?.view.alpha = 0.0
-        }) { (finished:Bool) in
-            //completion
-
+        }) { (_: Bool) in
+            // completion
         }
     }
-    
+
     func goToLoginFromLogout() {
         isRegistration = false
         registrationButton.titleLabel?.font = UIFont.fontLight(fontSize: 14.0)!
         loginButton.titleLabel?.font = UIFont.fontSemiBold(fontSize: 14.0)!
         UIView.removeTip(view: registrationButton)
-        UIView.makeTip(view: loginButton, size: 8, x: loginButton.frame.midX/2, y: loginButton.frame.midY)
-        self.view.endEditing(true)
-        self.view.bringSubview(toFront: (self.loginVC?.view)!)
+        UIView.makeTip(view: loginButton, size: 8, x: loginButton.frame.midX / 2, y: loginButton.frame.midY)
+        view.endEditing(true)
+        view.bringSubview(toFront: (loginVC?.view)!)
         loginVC?.clearData()
-        self.loginVC?.view.alpha = 1.0
-        self.registrationVC?.view.alpha = 0.0
+        loginVC?.view.alpha = 1.0
+        registrationVC?.view.alpha = 0.0
     }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
+
+    override func touchesBegan(_: Set<UITouch>, with _: UIEvent?) {
+        view.endEditing(true)
     }
 }

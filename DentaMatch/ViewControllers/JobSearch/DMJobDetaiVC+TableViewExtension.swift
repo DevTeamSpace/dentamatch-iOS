@@ -9,22 +9,19 @@
 import Foundation
 import SwiftyJSON
 
-extension DMJobDetailVC : UITableViewDataSource, UITableViewDelegate, JobDescriptionCellDelegate, DentistDetailCellDelegate, OfficeDescriptionCellDelegate {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        //For map
-        //return 6
+extension DMJobDetailVC: UITableViewDataSource, UITableViewDelegate, JobDescriptionCellDelegate, DentistDetailCellDelegate, OfficeDescriptionCellDelegate {
+    func numberOfSections(in _: UITableView) -> Int {
+        // For map
+        // return 6
         return 5
-
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return 1
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = UITableViewCell.init(style: .default, reuseIdentifier: "Blank")
+        let cell = UITableViewCell(style: .default, reuseIdentifier: "Blank")
         cell.backgroundColor = UIColor.clear
         cell.selectionStyle = .none
         switch indexPath.section {
@@ -45,16 +42,14 @@ extension DMJobDetailVC : UITableViewDataSource, UITableViewDelegate, JobDescrip
             cell.lblDescription.text = job?.templateDesc
             let height = JobDescriptionCell.requiredHeight(jobDescription: (job?.templateDesc)!, isReadMore: isReadMore)
             if height > 91 {
-                cell.constarintBtnReadMoreLessHeight.constant = 41//Button Show
+                cell.constarintBtnReadMoreLessHeight.constant = 41 // Button Show
                 if isReadMore == true {
                     cell.btnReadMore.setTitle(Constants.Strings.readLess, for: .normal)
-                }
-                else {
+                } else {
                     cell.btnReadMore.setTitle(Constants.Strings.readMore, for: .normal)
                 }
-            }
-            else {
-                cell.constarintBtnReadMoreLessHeight.constant = 0//Button Hide
+            } else {
+                cell.constarintBtnReadMoreLessHeight.constant = 0 // Button Hide
                 cell.btnReadMore.setTitle("", for: .normal)
             }
             cell.needsUpdateConstraints()
@@ -66,28 +61,26 @@ extension DMJobDetailVC : UITableViewDataSource, UITableViewDelegate, JobDescrip
             cell.officeDescriptionLabel.text = job?.officeDesc
             let height = OfficeDescriptionCell.requiredHeight(jobDescription: (job?.officeDesc)!, isReadMore: isReadMoreOffice)
             if height > 91 {
-                cell.heightConstraintReadMoreButton.constant = 41//Button Show
+                cell.heightConstraintReadMoreButton.constant = 41 // Button Show
                 if isReadMoreOffice == true {
                     cell.readMoreButton.setTitle(Constants.Strings.readLess, for: .normal)
-                }
-                else {
+                } else {
                     cell.readMoreButton.setTitle(Constants.Strings.readMore, for: .normal)
                 }
-            }
-            else {
-                cell.heightConstraintReadMoreButton.constant = 0//Button Hide
+            } else {
+                cell.heightConstraintReadMoreButton.constant = 0 // Button Hide
                 cell.readMoreButton.setTitle("", for: .normal)
             }
             cell.needsUpdateConstraints()
             cell.delegate = self
             cell.selectionStyle = .none
             return cell
-        
+
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "WorkingHoursTableCell") as! WorkingHoursTableCell
             cell.workingHoursLabel.attributedText = WorkingHoursTableCell.setAllDayText(job: job!)
             return cell
-            
+
         case 5:
             let cell = tableView.dequeueReusableCell(withIdentifier: "MapCell") as! MapCell
             cell.selectionStyle = .none
@@ -98,8 +91,8 @@ extension DMJobDetailVC : UITableViewDataSource, UITableViewDelegate, JobDescrip
         }
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+
+    func tableView(_: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
             return TableViewCellHeight.jobTitle.rawValue
@@ -112,7 +105,7 @@ extension DMJobDetailVC : UITableViewDataSource, UITableViewDelegate, JobDescrip
             let height = OfficeDescriptionCell.requiredHeight(jobDescription: (job?.officeDesc)!, isReadMore: isReadMoreOffice)
             return height
         case 4:
-            //Working hours
+            // Working hours
             return WorkingHoursTableCell.requiredHeight(job: job!)
         case 5:
             return TableViewCellHeight.map.rawValue
@@ -121,8 +114,8 @@ extension DMJobDetailVC : UITableViewDataSource, UITableViewDelegate, JobDescrip
         }
         return 0
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+
+    func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
             return TableViewCellHeight.jobTitle.rawValue
@@ -134,11 +127,11 @@ extension DMJobDetailVC : UITableViewDataSource, UITableViewDelegate, JobDescrip
         case 3:
             let height = OfficeDescriptionCell.requiredHeight(jobDescription: (job?.officeDesc)!, isReadMore: isReadMoreOffice)
             return height
-            //return TableViewCellHeight.jobDescAndOfficeDesc.rawValue
+        // return TableViewCellHeight.jobDescAndOfficeDesc.rawValue
         case 4:
-            //Working hours
+            // Working hours
             return UITableViewAutomaticDimension
-            //return WorkingHoursTableCell.requiredHeight(job: job!)
+        // return WorkingHoursTableCell.requiredHeight(job: job!)
         case 5:
             return TableViewCellHeight.map.rawValue
         default:
@@ -146,23 +139,20 @@ extension DMJobDetailVC : UITableViewDataSource, UITableViewDelegate, JobDescrip
         }
         return 0
     }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
-    {
+
+    func tableView(_: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
             return 0
-        }
-        else {
+        } else {
             return headerHeight
         }
     }
-    
-    func tableView (_ tableView:UITableView,  viewForHeaderInSection section:Int)->UIView?
-    {
-        let headerView : JobDetailHeaderView! = Bundle.main.loadNibNamed("JobDetailHeaderView", owner: nil, options: nil)?[0] as? JobDetailHeaderView
-        headerView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: headerHeight)
+
+    func tableView(_: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView: JobDetailHeaderView! = Bundle.main.loadNibNamed("JobDetailHeaderView", owner: nil, options: nil)?[0] as? JobDetailHeaderView
+        headerView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: headerHeight)
         headerView.layoutIfNeeded()
-        
+
         switch section {
         case 0:
             return nil
@@ -175,12 +165,12 @@ extension DMJobDetailVC : UITableViewDataSource, UITableViewDelegate, JobDescrip
         case 3:
             headerView.setHeaderData(iconText: Constants.DesignFont.officeDescription, headerText: Constants.Strings.officeDesc)
             return headerView
-        
+
         case 4:
             headerView.setHeaderData(iconText: Constants.DesignFont.map, headerText: Constants.Strings.workingHours)
-            headerView.btnIcon.setImage(UIImage(named:"workingHoursIcon"), for: .normal)
+            headerView.btnIcon.setImage(UIImage(named: "workingHoursIcon"), for: .normal)
             return headerView
-            
+
         case 5:
             headerView.setHeaderData(iconText: Constants.DesignFont.map, headerText: Constants.Strings.map)
             return headerView
@@ -189,34 +179,33 @@ extension DMJobDetailVC : UITableViewDataSource, UITableViewDelegate, JobDescrip
         }
         return headerView
     }
-    
-    //MARK:- JobDescriptionCellDelegate Method
+
+    // MARK: - JobDescriptionCellDelegate Method
+
     func readMoreOrReadLess() {
         isReadMore = isReadMore ? false : true
-        self.tblJobDetail.reloadRows(at: [IndexPath(row: 0, section: 2)], with: .automatic)
+        tblJobDetail.reloadRows(at: [IndexPath(row: 0, section: 2)], with: .automatic)
     }
-    
+
     func readMoreOrReadOfficeDescription() {
         isReadMoreOffice = isReadMoreOffice ? false : true
-        self.tblJobDetail.reloadRows(at: [IndexPath(row: 0, section: 3)], with: .automatic)
-
+        tblJobDetail.reloadRows(at: [IndexPath(row: 0, section: 3)], with: .automatic)
     }
-    
+
     @objc func openMaps() {
-        
-        if UIApplication.shared.canOpenURL(URL(string:kOpenGoogleMapUrl)!) {
-            let url = URL(string:"\(kOpenGoogleMapUrl)?q=\(job!.latitude),\(job!.longitude)&zoom=14")!
-            
+        if UIApplication.shared.canOpenURL(URL(string: kOpenGoogleMapUrl)!) {
+            let url = URL(string: "\(kOpenGoogleMapUrl)?q=\(job!.latitude),\(job!.longitude)&zoom=14")!
+
             if #available(iOS 10.0, *) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             } else {
                 // Fallback on earlier versions
                 UIApplication.shared.openURL(url)
             }
-            
+
         } else {
             let url = URL(string: "\(kGoogleSearchMap)\(job!.latitude),\(job!.longitude)")!
-            
+
             if #available(iOS 10.0, *) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             } else {
@@ -225,20 +214,20 @@ extension DMJobDetailVC : UITableViewDataSource, UITableViewDelegate, JobDescrip
             }
         }
     }
-    
-    //MARK:- DentistDetailCellDelegate Method
+
+    // MARK: - DentistDetailCellDelegate Method
+
     func saveOrUnsaveJob() {
-        var status : Int!
+        var status: Int!
         if job?.isSaved == 1 {
             status = 0
-        }
-        else {
+        } else {
             status = 1
         }
-        self.saveUnsaveJob(saveStatus: status, jobId: (job?.jobId)!) { (response:JSON?, error:NSError?) in
+        saveUnsaveJob(saveStatus: status, jobId: (job?.jobId)!) { (response: JSON?, _: NSError?) in
             if let response = response {
                 if response[Constants.ServerKey.status].boolValue {
-                    //Save Unsave success
+                    // Save Unsave success
                     self.job?.isSaved = status
                     if let delegate = self.delegate {
                         delegate.jobUpdate!(job: self.job!)

@@ -6,36 +6,35 @@
 //  Copyright © 2017 Appster. All rights reserved.
 //
 
-import UIKit
 import CoreLocation
 import GoogleMaps
 import GooglePlaces
+import UIKit
 
 protocol SearchJobDelegate {
     func refreshJobList()
 }
 
-class DMJobSearchVC : DMBaseVC {
-    
-    @IBOutlet weak var tblViewJobSearch: UITableView!
-    var delegate:SearchJobDelegate?
-    var isPartTimeDayShow : Bool = false
+class DMJobSearchVC: DMBaseVC {
+    @IBOutlet var tblViewJobSearch: UITableView!
+    var delegate: SearchJobDelegate?
+    var isPartTimeDayShow: Bool = false
     var jobTitles = [JobTitle]()
     var preferredLocations = [PreferredLocation]()
     var jobs = [Job]()
     var partTimeJobDays = [String]()
-    var location : Location! = Location()
-    var isJobTypeFullTime : String! = "0"
-    var isJobTypePartTime : String! = "0"
-    var searchParams = [String : Any]()
+    var location: Location! = Location()
+    var isJobTypeFullTime: String! = "0"
+    var isJobTypePartTime: String! = "0"
+    var searchParams = [String: Any]()
     var totalJobsFromServer = 0
     var fromJobSearchResults = false
     var firstTime = false
-    
+
     var city = ""
     var country = ""
     var state = ""
-    
+
     enum TableViewCellHeight: CGFloat {
         case jobTitleAndLocation = 88.0
         case jobType = 189.0
@@ -44,32 +43,33 @@ class DMJobSearchVC : DMBaseVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = Constants.ScreenTitleNames.jobSearch
-        self.setup()
+        title = Constants.ScreenTitleNames.jobSearch
+        setup()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if firstTime {
-            self.navigationController?.setNavigationBarHidden(false, animated: true)
+            navigationController?.setNavigationBarHidden(false, animated: true)
         }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    //MARK:- @IBAction Method
-    @IBAction func actionSearchButton(_ sender: UIButton) {
-        if self.validateFields() {
-            self.actionSearchButton()
+
+    // MARK: - @IBAction Method
+
+    @IBAction func actionSearchButton(_: UIButton) {
+        if validateFields() {
+            actionSearchButton()
         }
     }
-    
-    //MARK:- Private Methods
+
+    // MARK: - Private Methods
+
     func setup() {
-    
-        if let params =  UserDefaultsManager.sharedInstance.loadSearchParameter() {
+        if let params = UserDefaultsManager.sharedInstance.loadSearchParameter() {
             searchParams = params
 //            location.postalCode = (searchParams[Constants.JobDetailKey.zipCode] as! String?)!
 //            location.address = searchParams[Constants.JobDetailKey.address] as! String?
@@ -85,80 +85,74 @@ class DMJobSearchVC : DMBaseVC {
                 isPartTimeDayShow = true
                 isJobTypePartTime = "1"
                 partTimeJobDays = searchParams[Constants.JobDetailKey.parttimeDays] as! [String]
-            }
-            else {
+            } else {
                 isJobTypePartTime = "0"
             }
             if searchParams[Constants.JobDetailKey.isFulltime] as! String? == "1" {
-                self.isJobTypeFullTime = "1"
+                isJobTypeFullTime = "1"
+            } else {
+                isJobTypeFullTime = "0"
             }
-            else {
-                self.isJobTypeFullTime = "0"
-            }
-            
-            self.jobTitles.removeAll()
+
+            jobTitles.removeAll()
             if let savedJobTitles = searchParams[Constants.JobDetailKey.jobTitles] as? [Any] {
                 for title in savedJobTitles {
-                    let objTilte = title as! [String:Any]
+                    let objTilte = title as! [String: Any]
                     let jobTitle = JobTitle()
                     jobTitle.jobId = Int(objTilte[Constants.ServerKey.jobId] as! String)!
                     jobTitle.jobTitle = objTilte[Constants.ServerKey.jobtitleName] as! String
                     jobTitle.jobSelected = true
-                    self.jobTitles.append(jobTitle)
-                    
+                    jobTitles.append(jobTitle)
                 }
             }
-            
-            self.preferredLocations.removeAll()
+
+            preferredLocations.removeAll()
             if let savedPreferredLocations = searchParams["preferredJobLocations"] as? [Any] {
                 for location in savedPreferredLocations {
-                    let objTilte = location as! [String:Any]
+                    let objTilte = location as! [String: Any]
                     let preferredLocation = PreferredLocation()
                     preferredLocation.id = objTilte["id"] as! String
                     preferredLocation.preferredLocationName = objTilte["preferredLocationName"] as! String
                     preferredLocation.isSelected = true
-                    self.preferredLocations.append(preferredLocation)
-                    
+                    preferredLocations.append(preferredLocation)
                 }
             }
+        } else {
+            // self.getLocation()
         }
-        else {
-            //self.getLocation()
-        }
-        
-        //self.getLocation()
+
+        // self.getLocation()
 //        let coordinate = CLLocationCoordinate2D(latitude: Double(UserManager.shared().activeUser.latitude!)!, longitude: Double(UserManager.shared().activeUser.longitude!)!)
 //        location.coordinateSelected = coordinate
 //        reverseGeocodeCoordinate(coordinate: coordinate)
 
         if fromJobSearchResults {
-            self.navigationItem.leftBarButtonItem = self.backBarButton()
+            navigationItem.leftBarButtonItem = backBarButton()
             if let params = UserDefaultsManager.sharedInstance.loadSearchParameter() {
                 searchParams = params
             }
+        } else {
+            navigationItem.leftBarButtonItem = nil
         }
-        else {
-            self.navigationItem.leftBarButtonItem = nil
-        }
-        
-        self.tblViewJobSearch.rowHeight = UITableViewAutomaticDimension
-        self.tblViewJobSearch.register(UINib(nibName: "JobSeachTitleCell", bundle: nil), forCellReuseIdentifier: "JobSeachTitleCell")
-        self.tblViewJobSearch.register(UINib(nibName: "JobSearchTypeCell", bundle: nil), forCellReuseIdentifier: "JobSearchTypeCell")
-        self.tblViewJobSearch.register(UINib(nibName: "JobSearchPartTimeCell", bundle: nil), forCellReuseIdentifier: "JobSearchPartTimeCell")
-        self.tblViewJobSearch.register(UINib(nibName: "CurrentLocationCell", bundle: nil), forCellReuseIdentifier: "CurrentLocationCell")
+
+        tblViewJobSearch.rowHeight = UITableViewAutomaticDimension
+        tblViewJobSearch.register(UINib(nibName: "JobSeachTitleCell", bundle: nil), forCellReuseIdentifier: "JobSeachTitleCell")
+        tblViewJobSearch.register(UINib(nibName: "JobSearchTypeCell", bundle: nil), forCellReuseIdentifier: "JobSearchTypeCell")
+        tblViewJobSearch.register(UINib(nibName: "JobSearchPartTimeCell", bundle: nil), forCellReuseIdentifier: "JobSearchPartTimeCell")
+        tblViewJobSearch.register(UINib(nibName: "CurrentLocationCell", bundle: nil), forCellReuseIdentifier: "CurrentLocationCell")
     }
-    
+
     func validateFields() -> Bool {
-        if self.jobTitles.count == 0 {
-            self.makeToast(toastString: Constants.AlertMessage.selectTitle)
+        if jobTitles.count == 0 {
+            makeToast(toastString: Constants.AlertMessage.selectTitle)
             return false
         }
-        if self.isJobTypeFullTime == "0" && self.isJobTypePartTime == "0" {
-            self.makeToast(toastString: Constants.AlertMessage.selectOneAvailableOption)
+        if isJobTypeFullTime == "0" && isJobTypePartTime == "0" {
+            makeToast(toastString: Constants.AlertMessage.selectOneAvailableOption)
             return false
         }
-        if self.isJobTypePartTime == "1" && self.partTimeJobDays.count == 0 {
-            self.makeToast(toastString: Constants.AlertMessage.selectAvailableDay)
+        if isJobTypePartTime == "1" && partTimeJobDays.count == 0 {
+            makeToast(toastString: Constants.AlertMessage.selectAvailableDay)
             return false
         }
 //        if self.location.coordinateSelected == nil {
@@ -167,7 +161,7 @@ class DMJobSearchVC : DMBaseVC {
 //        }
         return true
     }
-    
+
     func getLocation() {
 //        self.showLoader()
 //        LocationManager.sharedInstance.getLocation { (location:CLLocation?, error:NSError?) in
@@ -178,40 +172,39 @@ class DMJobSearchVC : DMBaseVC {
 //                }
 //                return
 //            }
-//            
+//
 //            let coordinate = CLLocationCoordinate2D(latitude: (location!.coordinate.latitude), longitude: (location!.coordinate.longitude))
 //            self.location.coordinateSelected = coordinate
 //            self.reverseGeocodeCoordinate(coordinate: coordinate)
 //        }
     }
-    
+
     func reverseGeocodeCoordinate(coordinate: CLLocationCoordinate2D) {
         let geocoder = GMSGeocoder()
-        geocoder.reverseGeocodeCoordinate(coordinate) { (response:GMSReverseGeocodeResponse?, error:Error?) in
+        geocoder.reverseGeocodeCoordinate(coordinate) { (response: GMSReverseGeocodeResponse?, _: Error?) in
             if let address = response?.firstResult() {
                 let lines = address.lines!
                 let count = response?.results()?.count
-                
+
                 if let state = address.administrativeArea {
                     self.state = state
                 }
-                
+
                 if let city = address.locality {
                     self.city = city
                 }
-                
+
                 if let country = address.country {
                     self.country = country
                 }
 
-                
-                for i in 0..<(count)! {
+                for i in 0 ..< count! {
                     if let postalCode = response?.results()![i].postalCode {
-                        self.location.postalCode =  postalCode
+                        self.location.postalCode = postalCode
                         break
                     }
                 }
-                //debugPrint(lines.joined(separator: " "))
+                // debugPrint(lines.joined(separator: " "))
                 self.location.address = lines.joined(separator: " ")
                 DispatchQueue.main.async {
                     if self.location.address != nil {
@@ -219,16 +212,15 @@ class DMJobSearchVC : DMBaseVC {
                         self.tblViewJobSearch.reloadRows(at: [IndexPath(row: 0, section: 2)], with: .bottom)
                         self.tblViewJobSearch.endUpdates()
                         self.tblViewJobSearch.scrollToRow(at: IndexPath(row: 0, section: 2), at: UITableViewScrollPosition.none, animated: false)
-                        //debugPrint(self.location.address ?? "Address not found")
-                    }
-                    else {
-                        //debugPrint("Address is empty")
+                        // debugPrint(self.location.address ?? "Address not found")
+                    } else {
+                        // debugPrint("Address is empty")
                     }
                 }
             }
         }
     }
-    
+
     func goToSearchResult() {
         UserDefaultsManager.sharedInstance.deleteSearchParameter()
         UserDefaultsManager.sharedInstance.saveSearchParameter(seachParam: searchParams as Any)
@@ -236,22 +228,22 @@ class DMJobSearchVC : DMBaseVC {
             if let delegate = delegate {
                 delegate.refreshJobList()
             }
-            _ = self.navigationController?.popViewController(animated: true)
+            _ = navigationController?.popViewController(animated: true)
         } else {
-            //open dashboard
+            // open dashboard
             let dashboardVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: TabBarVC.self)!
             kAppDelegate.window?.rootViewController = dashboardVC
         }
     }
-    
+
     func actionSearchButton() {
-        self.view.endEditing(true)
-       // var jobTitleDict = [String : Any]()
+        view.endEditing(true)
+        // var jobTitleDict = [String : Any]()
         var jobTitles = [Any]()
         var preferredLocationsArray = [Any]()
         var jobTitleIds = [Int]()
         var preferredLocationIds = [String]()
-        
+
         for job in self.jobTitles {
             let dict = NSMutableDictionary()
             dict.setObject(job.jobTitle, forKey: Constants.ServerKey.jobtitleName as NSCopying)
@@ -259,22 +251,22 @@ class DMJobSearchVC : DMBaseVC {
 
             jobTitles.append(dict)
         }
-        
-        for location in self.preferredLocations {
+
+        for location in preferredLocations {
             let dict = NSMutableDictionary()
             dict.setObject(location.preferredLocationName, forKey: "preferredLocationName" as NSCopying)
             dict.setObject(location.id, forKey: "id" as NSCopying)
             preferredLocationsArray.append(dict)
         }
-        
+
         for job in self.jobTitles {
             jobTitleIds.append(job.jobId)
         }
-        
-        for location in self.preferredLocations {
+
+        for location in preferredLocations {
             preferredLocationIds.append(location.id)
         }
-        
+
 //        if location.coordinateSelected?.latitude != nil {
 //            searchParams[Constants.JobDetailKey.lat] = String(describing: location.coordinateSelected!.latitude)
 //        }
@@ -282,8 +274,8 @@ class DMJobSearchVC : DMBaseVC {
 //            searchParams[Constants.JobDetailKey.lng] = String(describing: location.coordinateSelected!.longitude)
 //        }
 //        searchParams[Constants.JobDetailKey.zipCode] = location.postalCode
-        searchParams[Constants.JobDetailKey.isFulltime] = self.isJobTypeFullTime
-        searchParams[Constants.JobDetailKey.isParttime] = self.isJobTypePartTime
+        searchParams[Constants.JobDetailKey.isFulltime] = isJobTypeFullTime
+        searchParams[Constants.JobDetailKey.isParttime] = isJobTypePartTime
         searchParams[Constants.JobDetailKey.parttimeDays] = partTimeJobDays
         searchParams[Constants.JobDetailKey.jobTitle] = jobTitleIds
         searchParams[Constants.JobDetailKey.jobTitles] = jobTitles
@@ -294,6 +286,6 @@ class DMJobSearchVC : DMBaseVC {
 //        searchParams[Constants.JobDetailKey.state] = self.state
 //        searchParams[Constants.JobDetailKey.country] = self.country
 //        searchParams[Constants.JobDetailKey.address] = location.address
-        self.goToSearchResult()
+        goToSearchResult()
     }
 }

@@ -10,33 +10,32 @@ import Foundation
 import GoogleMaps
 import GooglePlaces
 
-//MARK:- GoogleMaps Autocomplete Delegates
-extension DMRegisterMapsVC:GMSAutocompleteViewControllerDelegate,GMSMapViewDelegate {
-    
-    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
+// MARK: - GoogleMaps Autocomplete Delegates
+
+extension DMRegisterMapsVC: GMSAutocompleteViewControllerDelegate, GMSMapViewDelegate {
+    func viewController(_: GMSAutocompleteViewController, didAutocompleteWith _: GMSPlace) {
     }
-    
-    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
-        //debugPrint(error.localizedDescription)
+
+    func viewController(_: GMSAutocompleteViewController, didFailAutocompleteWithError _: Error) {
+        // debugPrint(error.localizedDescription)
     }
-    
-    func viewController(_ viewController: GMSAutocompleteViewController, didSelect prediction: GMSAutocompletePrediction) -> Bool {
+
+    func viewController(_: GMSAutocompleteViewController, didSelect _: GMSAutocompletePrediction) -> Bool {
         return true
     }
-    
-    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
-        //debugPrint("viewController")
 
+    func wasCancelled(_: GMSAutocompleteViewController) {
+        // debugPrint("viewController")
     }
-    
-    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
-        self.placeMarkerOnMap(coordinate: coordinate)
-        self.location.coordinateSelected = coordinate
+
+    func mapView(_: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+        placeMarkerOnMap(coordinate: coordinate)
+        location.coordinateSelected = coordinate
         reverseGeocodeCoordinate(coordinate: coordinate)
     }
-    
-    func mapView(_ mapView: GMSMapView, didEndDragging marker: GMSMarker) {
-        self.location.coordinateSelected = marker.position
+
+    func mapView(_: GMSMapView, didEndDragging marker: GMSMarker) {
+        location.coordinateSelected = marker.position
         reverseGeocodeCoordinate(coordinate: marker.position)
     }
 }

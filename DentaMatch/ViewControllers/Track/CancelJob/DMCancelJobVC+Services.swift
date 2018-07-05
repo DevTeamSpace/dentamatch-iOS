@@ -10,17 +10,15 @@ import Foundation
 import SwiftyJSON
 
 extension DMCancelJobVC {
-    
     func cancelJobAPI() {
-        
         let params = [
-            Constants.ServerKey.jobId:(job?.jobId)!,
-            Constants.ServerKey.cancelReason:self.reasonTextView.text!
-        ] as [String : Any]
-       // debugPrint("Cancel Paran \(params.description)")
-        
-        self.showLoader()
-        APIManager.apiPost(serviceName: Constants.API.cancelJob, parameters: params) { (response:JSON?, error:NSError?) in
+            Constants.ServerKey.jobId: (job?.jobId)!,
+            Constants.ServerKey.cancelReason: self.reasonTextView.text!,
+        ] as [String: Any]
+        // debugPrint("Cancel Paran \(params.description)")
+
+        showLoader()
+        APIManager.apiPost(serviceName: Constants.API.cancelJob, parameters: params) { (response: JSON?, error: NSError?) in
             self.hideLoader()
             if error != nil {
                 self.makeToast(toastString: (error?.localizedDescription)!)
@@ -33,14 +31,14 @@ extension DMCancelJobVC {
             self.handleCancelJobResponse(response: response)
         }
     }
-    
-    func handleCancelJobResponse(response:JSON?) {
+
+    func handleCancelJobResponse(response: JSON?) {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
                 if let delegate = delegate {
-                    delegate.cancelledJob(job: job!,fromApplied:fromApplied)
+                    delegate.cancelledJob(job: job!, fromApplied: fromApplied)
                 }
-                _ = self.navigationController?.popViewController(animated: true)
+                _ = navigationController?.popViewController(animated: true)
             }
         }
     }

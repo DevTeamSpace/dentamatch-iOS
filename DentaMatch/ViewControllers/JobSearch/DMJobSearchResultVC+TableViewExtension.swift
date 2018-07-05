@@ -9,14 +9,12 @@
 import Foundation
 import SwiftyJSON
 
-extension DMJobSearchResultVC : UITableViewDataSource, UITableViewDelegate, JobSearchResultCellDelegate {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.jobs.count
+extension DMJobSearchResultVC: UITableViewDataSource, UITableViewDelegate, JobSearchResultCellDelegate {
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
+        return jobs.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "JobSearchResultCell") as! JobSearchResultCell
         cell.selectionStyle = .none
         let objJob = jobs[indexPath.row]
@@ -25,68 +23,66 @@ extension DMJobSearchResultVC : UITableViewDataSource, UITableViewDelegate, JobS
         cell.setCellData(job: objJob)
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+
+    func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
         return cellHeight
     }
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+
+    func tableView(_: UITableView, estimatedHeightForRowAt _: IndexPath) -> CGFloat {
         return cellHeight
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         let jobDetailVC = UIStoryboard.jobSearchStoryBoard().instantiateViewController(type: DMJobDetailVC.self)!
-        jobDetailVC.job = self.jobs[indexPath.row]
+        jobDetailVC.job = jobs[indexPath.row]
         jobDetailVC.hidesBottomBarWhenPushed = true
         jobDetailVC.delegate = self
-        self.navigationController?.pushViewController(jobDetailVC, animated: true)
+        navigationController?.pushViewController(jobDetailVC, animated: true)
     }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath)
-    {
-        if indexPath.row == self.jobs.count - 1 {
-            self.callLoadMore()
+
+    func tableView(_: UITableView, willDisplay _: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == jobs.count - 1 {
+            callLoadMore()
         }
     }
-    
-    //MARK:- Call Load More
+
+    // MARK: - Call Load More
+
     func callLoadMore() {
         if loadingMoreJobs == true {
             return
-        }
-        else {
-            if self.totalJobsFromServer > self.jobs.count {
-                setupLoadingMoreOnTable(tableView: self.tblJobSearchResult)
+        } else {
+            if totalJobsFromServer > jobs.count {
+                setupLoadingMoreOnTable(tableView: tblJobSearchResult)
                 loadingMoreJobs = true
-                searchParams[Constants.JobDetailKey.page] = "\(self.jobsPageNo)"
-                self.fetchSearchResultAPI(params: searchParams)
+                searchParams[Constants.JobDetailKey.page] = "\(jobsPageNo)"
+                fetchSearchResultAPI(params: searchParams)
             }
         }
     }
-    
-    func setupLoadingMoreOnTable(tableView:UITableView) {
+
+    func setupLoadingMoreOnTable(tableView: UITableView) {
         let footer = Bundle.main.loadNibNamed("LoadMoreView", owner: nil, options: nil)?[0] as? LoadMoreView
-        footer!.frame = CGRect(x:0, y:0, width:tableView.frame.size.width,height:44)
-        footer?.layoutIfNeeded();
+        footer!.frame = CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 44)
+        footer?.layoutIfNeeded()
         footer?.activityIndicator.startAnimating()
         tableView.tableFooterView = footer
     }
-    
-    //MARK:- JobSearchResultCellDelegate Method
-    
+
+    // MARK: - JobSearchResultCellDelegate Method
+
     func saveOrUnsaveJob(index: Int) {
-        let job = self.jobs[index]
-        var status : Int!
+        let job = jobs[index]
+        var status: Int!
         if job.isSaved == 1 {
             status = 0
-        }
-        else {
+        } else {
             status = 1
         }
-        self.saveUnsaveJob(saveStatus: status, jobId: job.jobId) { (response:JSON?, error:NSError?) in
+        saveUnsaveJob(saveStatus: status, jobId: job.jobId) { (response: JSON?, _: NSError?) in
             if let response = response {
                 if response[Constants.ServerKey.status].boolValue {
-                    //Save Unsave success
+                    // Save Unsave success
                     job.isSaved = status
                     self.jobs.remove(at: index)
                     self.jobs.insert(job, at: index)
@@ -98,4 +94,3 @@ extension DMJobSearchResultVC : UITableViewDataSource, UITableViewDelegate, JobS
         }
     }
 }
-

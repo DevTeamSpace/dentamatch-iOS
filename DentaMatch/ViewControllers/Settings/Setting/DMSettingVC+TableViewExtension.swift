@@ -8,21 +8,19 @@
 
 import Foundation
 
-extension DMSettingVC : UITableViewDataSource,UITableViewDelegate {
-    
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        //Made preferred job cell to hide
+extension DMSettingVC: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        // Made preferred job cell to hide
         if indexPath.row == 0 {
             return 0
         }
         return 60
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return 5
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingTableCell") as! SettingTableCell
         cell.selectionStyle = .none
@@ -53,43 +51,40 @@ extension DMSettingVC : UITableViewDataSource,UITableViewDelegate {
             cell.leftIconImageView.image = UIImage(named: "logOut")
             cell.leftIconImageView.isHidden = false
 
-
         default: break
-            
         }
         cell.contentView.layoutIfNeeded()
         return cell
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
             let mapVC = UIStoryboard.registrationStoryBoard().instantiateViewController(type: DMRegisterMapsVC.self)!
             mapVC.fromSettings = true
             mapVC.delegate = self
-            self.navigationController?.pushViewController(mapVC, animated: true)
+            navigationController?.pushViewController(mapVC, animated: true)
         case 1:
-            self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToChangePassword, sender: self)
+            performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToChangePassword, sender: self)
         case 2:
             let termsVC = UIStoryboard.registrationStoryBoard().instantiateViewController(type: DMTermsAndConditionsVC.self)!
             termsVC.isPrivacyPolicy = false
-            self.navigationController?.pushViewController(termsVC, animated: true)
+            navigationController?.pushViewController(termsVC, animated: true)
         case 3:
             let termsVC = UIStoryboard.registrationStoryBoard().instantiateViewController(type: DMTermsAndConditionsVC.self)!
             termsVC.isPrivacyPolicy = true
-            self.navigationController?.pushViewController(termsVC, animated: true)
+            navigationController?.pushViewController(termsVC, animated: true)
         case 4:
-            //logout
+            // logout
             openLogin()
             break
         default: break
-            
         }
-        
     }
+
     func openLogin() {
-        
-        signOut { (check, error) in
-            
+        signOut { check, _ in
+
             if check == true {
 //                MixpanelOperations.trackMixpanelEvent(eventName: "Logout")
                 MixpanelOperations.mixpanepanelLogout()
@@ -102,26 +97,25 @@ extension DMSettingVC : UITableViewDataSource,UITableViewDelegate {
                 UserDefaultsManager.sharedInstance.isLoggedOut = true
                 UIView.transition(with: self.view.window!, duration: 0.25, options: .transitionCrossDissolve, animations: {
                     kAppDelegate.window?.rootViewController = registrationContainer
-                }) { (bool:Bool) in
-                    //completion
+                }) { (_: Bool) in
+                    // completion
                     DatabaseManager.clearDB()
                 }
-
             }
-            
         }
     }
-    
+
     func deleteFetchController() {
         NotificationCenter.default.post(name: .deleteFetchController, object: nil)
     }
 }
 
-//MARK:- LocationAddress Delegate
-extension DMSettingVC:LocationAddressDelegate {
+// MARK: - LocationAddress Delegate
+
+extension DMSettingVC: LocationAddressDelegate {
     func locationAddress(location: Location) {
         if let address = location.address {
-            //debugPrint(address)
+            // debugPrint(address)
             UserManager.shared().activeUser.preferredJobLocation = address
             UserManager.shared().activeUser.zipCode = location.postalCode
             UserManager.shared().activeUser.state = location.state
@@ -131,8 +125,7 @@ extension DMSettingVC:LocationAddressDelegate {
             UserManager.shared().activeUser.longitude = "\(location.coordinateSelected!.longitude)"
             UserManager.shared().saveActiveUser()
         } else {
-            //debugPrint("Address is empty")
+            // debugPrint("Address is empty")
         }
     }
 }
-

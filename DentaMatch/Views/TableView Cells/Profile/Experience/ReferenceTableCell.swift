@@ -9,15 +9,14 @@
 import UIKit
 
 class ReferenceTableCell: UITableViewCell {
-    @IBOutlet weak var nameTextField: AnimatedPHTextField!
-    @IBOutlet weak var mobileNoTextField: AnimatedPHTextField!
-    @IBOutlet weak var emailTextField: AnimatedPHTextField!
-    
-    @IBOutlet weak var deleteButton: UIButton!
-    @IBOutlet weak var addMoreReferenceButton: UIButton!
-    @IBOutlet weak var referenceLabel: UILabel!
-    @IBOutlet weak var addMoreButtonTopSpace: NSLayoutConstraint!
-    
+    @IBOutlet var nameTextField: AnimatedPHTextField!
+    @IBOutlet var mobileNoTextField: AnimatedPHTextField!
+    @IBOutlet var emailTextField: AnimatedPHTextField!
+
+    @IBOutlet var deleteButton: UIButton!
+    @IBOutlet var addMoreReferenceButton: UIButton!
+    @IBOutlet var referenceLabel: UILabel!
+    @IBOutlet var addMoreButtonTopSpace: NSLayoutConstraint!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,23 +28,18 @@ class ReferenceTableCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    func updateCell(empRef: EmployeeReferenceModel? , tag:Int) {
-    
-        referenceLabel.text = "Reference \(tag+1)"
-        self.deleteButton.tag = tag
-        self.addMoreReferenceButton.tag = tag
-        self.nameTextField.tag = tag
-        self.mobileNoTextField.tag = tag
-        self.emailTextField.tag = tag
-        self.mobileNoTextField.addRightToolBarButton(title: "Done")
-        
-        self.nameTextField.text = empRef?.referenceName
-        self.mobileNoTextField.text = empRef?.mobileNumber
-        self.emailTextField.text = empRef?.email
 
+    func updateCell(empRef: EmployeeReferenceModel?, tag: Int) {
+        referenceLabel.text = "Reference \(tag + 1)"
+        deleteButton.tag = tag
+        addMoreReferenceButton.tag = tag
+        nameTextField.tag = tag
+        mobileNoTextField.tag = tag
+        emailTextField.tag = tag
+        mobileNoTextField.addRightToolBarButton(title: "Done")
 
-
-
+        nameTextField.text = empRef?.referenceName
+        mobileNoTextField.text = empRef?.mobileNumber
+        emailTextField.text = empRef?.email
     }
-    
 }
