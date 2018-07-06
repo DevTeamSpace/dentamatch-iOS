@@ -86,9 +86,7 @@ extension DMChatVC: NSFetchedResultsControllerDelegate {
 
         // Add Sort Descriptors
         let sortDescriptor = NSSortDescriptor(key: "chatId", ascending: true)
-        // let sortDescriptor = NSSortDescriptor(key: "timeStamp", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
-        // fetchRequest.fetchBatchSize = 20
 
         // Initialize Fetched Results Controller
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: "dateString", cacheName: nil)

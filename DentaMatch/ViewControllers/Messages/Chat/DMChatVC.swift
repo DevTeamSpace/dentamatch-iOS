@@ -178,7 +178,6 @@ class DMChatVC: DMBaseVC {
 
     func getLeftMessages(lastMessageId: Int64) {
         SocketManager.sharedInstance.getLeftMessages(recruiterId: (chatList?.recruiterId)!, messageId: lastMessageId, completionHandler: { (params: [Any]) in
-            // self.hideLoader()
             // debugPrint(params)
             let chatObj = JSON(rawValue: params)
             DatabaseManager.insertChats(chats: chatObj?[0].array)

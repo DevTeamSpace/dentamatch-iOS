@@ -70,7 +70,7 @@ extension DMCalenderVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .normal, title: "Cancel Job", handler: { (_: UITableViewRowAction, indexPath: IndexPath) in
             let job = self.selectedDayList[indexPath.row]
-//                self.removeJobButtonPressed(job: job)
+
             self.openCancelJob(job: job, fromApplied: false)
             self.bookedJobsTableView.setEditing(false, animated: true)
         })

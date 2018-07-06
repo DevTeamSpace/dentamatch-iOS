@@ -65,7 +65,6 @@ extension DMCertificationsVC {
                     }
 
                     // debugPrint(response!)
-//                    self.handleUploadProfileResponse(response: response)
 
                     completionHandler(response, error)
 

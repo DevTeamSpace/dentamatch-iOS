@@ -268,8 +268,6 @@ extension DMWorkExperienceVC: UITableViewDataSource, UITableViewDelegate {
 
     @objc func CommonExperiencelTextFieldDidEnd(_ textField: UITextField) {
         switch textField.tag {
-        //        case 0:
-        //            self.currentExperience?.jobTitle = textField.text
         case 2:
             currentExperience?.officeName = textField.text
         case 3:

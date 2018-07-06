@@ -274,12 +274,6 @@ extension DMRegisterMapsVC: UISearchBarDelegate {
         } else {
             placesTableView.isHidden = false
         }
-
-        // For Google Auto Complete Controller
-//        let autocompleteController = GMSAutocompleteViewController()
-//        autocompleteController.delegate = self
-//        self.present(autocompleteController, animated: true, completion: nil)
-
         placeAutocomplete(autoCompleteString: searchText as NSString)
     }
 }

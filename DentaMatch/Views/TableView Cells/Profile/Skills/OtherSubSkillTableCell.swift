@@ -24,7 +24,6 @@ class OtherSubSkillTableCell: UITableViewCell {
         otherTextView.layer.borderColor = UIColor.white.cgColor
         otherTextView.textContainer.lineFragmentPadding = 12.0
         otherTextView.backgroundColor = UIColor.color(withHexCode: "0470C0")
-//        UITextView.appearance().tintColor = UIColor.white
         otherTextView.tintColor = UIColor.white
     }
 

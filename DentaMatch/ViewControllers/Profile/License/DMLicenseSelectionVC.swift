@@ -82,11 +82,6 @@ class DMLicenseSelectionVC: DMBaseVC, UITextFieldDelegate {
 
     @IBAction func nextButtonClikced(_: Any) {
         // Dental Stateboard Removed
-//        if self.stateBoardImage == nil{
-//            self.makeToast(toastString: Constants.AlertMessage.stateCertificate)
-//            return
-//        }
-
         for i in 0 ..< (licenseArray?.count)! {
             let text = licenseArray?[i] as! String
             if i == 0 {
@@ -94,7 +89,7 @@ class DMLicenseSelectionVC: DMBaseVC, UITextFieldDelegate {
                     makeToast(toastString: Constants.AlertMessage.emptyLicenseNumber)
                     return
                 } else {
-                    let newChar = text.characters.first
+                    let newChar = text.first
                     if newChar == "-" {
                         makeToast(toastString: Constants.AlertMessage.lienseNoStartError)
                         return
@@ -105,7 +100,7 @@ class DMLicenseSelectionVC: DMBaseVC, UITextFieldDelegate {
                     makeToast(toastString: Constants.AlertMessage.emptyState)
                     return
                 } else {
-                    let newChar = text.characters.first
+                    let newChar = text.first
                     if newChar == "-" {
                         makeToast(toastString: Constants.AlertMessage.stateStartError)
                         return

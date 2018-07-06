@@ -25,14 +25,14 @@ extension DMJobTitleSelectionVC: UITextViewDelegate {
     }
 
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        guard text.characters.count > 0 else {
+        guard text.count > 0 else {
             return true
         }
-        if textView.text.characters.count >= Constants.Limit.aboutMeLimit && range.length == 0 {
+        if textView.text.count >= Constants.Limit.aboutMeLimit && range.length == 0 {
             return false
         }
-        if textView.text.characters.count + text.characters.count > Constants.Limit.aboutMeLimit && range.length == 0 {
-            let remainingTextCount = Constants.Limit.aboutMeLimit - textView.text.characters.count
+        if textView.text.count + text.count > Constants.Limit.aboutMeLimit && range.length == 0 {
+            let remainingTextCount = Constants.Limit.aboutMeLimit - textView.text.count
             textView.text = textView.text + text.stringFrom(0, to: remainingTextCount)
             return false
         }

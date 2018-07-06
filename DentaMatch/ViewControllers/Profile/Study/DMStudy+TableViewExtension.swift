@@ -146,43 +146,25 @@ extension DMStudyVC: UITableViewDataSource, UITableViewDelegate {
 extension DMStudyVC: UITextFieldDelegate {
     @objc func textFieldDidChange(textField: UITextField) {
         let schoolCategory = schoolCategories.filter({ $0.schoolCategoryId == "\(textField.tag)" }).first
-
         let university = schoolCategory?.universities.filter({ $0.universityName == textField.text })
-
-        // selectedUniversities["\(textField.tag)"] = nil
-
         if (university?.count)! > 0 {
             // Its in the list
             // debugPrint("In the list")
         } else {
-            //            if textField.text!.isEmpty {
-            //                selectedUniversities["other_\(textField.tag)"] = nil
-            //                selectedUniversities["other_date\(textField.tag)"] = nil
-            //            } else {
-            //                selectedUniversities["other_date\(textField.tag)"] = "" as AnyObject?
-            //                selectedUniversities["other_\(textField.tag)"] = textField.text! as AnyObject?
-            //            }
+            // DO nothing
         }
-
-        // print(selectedUniversities)
-
         if textField.text!.isEmpty {
             hideAutoCompleteView()
         } else {
             let schoolId = "\(textField.tag)"
-
             var universities = schoolCategories.filter({ $0.schoolCategoryId == schoolId }).first?.universities
-
             universities = universities?.filter({ $0.universityName.range(of: textField.text!, options: .caseInsensitive, range: Range(uncheckedBounds: ($0.universityName.startIndex, $0.universityName.endIndex)), locale: nil) != nil })
-
             if let universities = universities {
                 autoCompleteTable.updateData(schoolCategoryId: schoolId, universities: universities)
             }
-
             let point = textField.superview?.convert(textField.center, to: view)
             let frame = textField.frame
             autoCompleteTable.frame = CGRect(x: frame.origin.x, y: (point?.y)! + 25, width: frame.width, height: 200)
-
             autoCompleteBackView.isHidden = false
             autoCompleteTable.isHidden = false
         }
@@ -199,7 +181,6 @@ extension DMStudyVC: UITextFieldDelegate {
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
-        //textFieldDidEndEditing
         // debugPrint("textFieldDidEndEditing")
         let school = schoolCategories.filter({ $0.schoolCategoryId == "\(textField.tag)" }).first
 

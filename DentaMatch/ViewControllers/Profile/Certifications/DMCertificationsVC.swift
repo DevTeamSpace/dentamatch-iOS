@@ -96,13 +96,12 @@ class DMCertificationsVC: DMBaseVC, DatePickerViewDelegate {
                         }
                         return
                     }
-//                    self.stateBoardImage = image!
+
                     let certObj = self.certicates[button!.tag]
                     certObj.certificateImage = image!
-//                    self.certicates[button!.tag] = certObj
+
                     DispatchQueue.main.async {
-                        //                        self.profileButton.setImage(image, for: .normal)
-//                        self.certificationsTableView.reloadData()
+     
                         self.uploadCetificatsImage(certObj: certObj, completionHandler: { response, _ in
 
                             if let response = response {
@@ -140,7 +139,7 @@ class DMCertificationsVC: DMBaseVC, DatePickerViewDelegate {
                                     self.certificationsTableView.reloadData()
 
                                 } else {
-                                    //                                    self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+                                    // DO Nothing
                                 }
                             }
 

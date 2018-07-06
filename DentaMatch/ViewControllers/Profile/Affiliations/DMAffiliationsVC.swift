@@ -53,9 +53,6 @@ class DMAffiliationsVC: DMBaseVC {
     @objc func keyboardWillShow(note: NSNotification) {
         if let keyboardSize = (note.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             affiliationsTableView.contentInset = UIEdgeInsetsMake(0, 0, keyboardSize.height + 10, 0)
-//            DispatchQueue.main.async {
-//                self.affiliationsTableView.scrollToRow(at: IndexPath(row: 0, section: 1), at: .top, animated: true)
-//            }
         }
     }
 

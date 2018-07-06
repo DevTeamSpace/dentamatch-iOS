@@ -407,11 +407,6 @@ class DMCalenderVC: DMBaseVC, FSCalendarDataSource, FSCalendarDelegate, FSCalend
         return dateEventColor(date: date)
     }
 
-//    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventColorsFor date: Date) -> [Any]? {
-//
-//        return [UIColor.red,UIColor.green,UIColor.blue]
-//
-//    }
 
     func calendar(_: FSCalendar, appearance _: FSCalendarAppearance, borderDefaultColorFor _: Date) -> UIColor? {
         return UIColor.clear

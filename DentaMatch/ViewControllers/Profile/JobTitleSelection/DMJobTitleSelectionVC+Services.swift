@@ -79,7 +79,6 @@ extension DMJobTitleSelectionVC {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
                 UserManager.shared().activeUser.profileImageURL = response[Constants.ServerKey.result][Constants.ServerKey.profileImageURL].stringValue
-//                UserDefaultsManager.sharedInstance.profileImageURL = response[Constants.ServerKey.result][Constants.ServerKey.profileImageURL].stringValue
                 makeToast(toastString: response[Constants.ServerKey.message].stringValue)
                 // openLicenseScreen()
             } else {

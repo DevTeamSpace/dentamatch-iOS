@@ -15,7 +15,7 @@ class DMJobTitleSelectionVC: DMBaseVC, ToolBarButtonDelegate {
     @IBOutlet var prefferedJobLocationLabel: UILabel!
     @IBOutlet var addPhotoButton: UIButton!
     @IBOutlet var profileButton: ProfileImageButton!
-//    @IBOutlet weak var currentJobTitleTextField: AnimatedPHTextField!
+
     @IBOutlet var profileHeaderView: UIView!
 
     var aboutMe = ""
@@ -43,7 +43,6 @@ class DMJobTitleSelectionVC: DMBaseVC, ToolBarButtonDelegate {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        // jobSelectionView?.frame = self.currentJobTitleTextField.frame
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -87,18 +86,6 @@ class DMJobTitleSelectionVC: DMBaseVC, ToolBarButtonDelegate {
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         jobTitleSelectionTableView.addGestureRecognizer(tap)
         changeUIOFCreateProfileButton(isCreateProfileButtonEnable())
-        // Right View for drop down
-//        let rightView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: currentJobTitleTextField.frame.size.height))
-//        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 40, height: currentJobTitleTextField.frame.size.height))
-//        label.font = UIFont.designFont(fontSize: 16.0)
-//        label.text = "c"
-//        label.textColor = UIColor.color(withHexCode: "a0a0a0")
-//        label.textAlignment = .center
-//        label.center = rightView.center
-//        rightView.addSubview(label)
-//        currentJobTitleTextField.rightView = rightView
-//        currentJobTitleTextField.rightViewMode = .always
-//        currentJobTitleTextField.rightView?.isUserInteractionEnabled = false
         perform(#selector(makeTip), with: nil, afterDelay: 0.2)
     }
 
@@ -270,12 +257,6 @@ class DMJobTitleSelectionVC: DMBaseVC, ToolBarButtonDelegate {
         let dashboardVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: TabBarVC.self)!
         kAppDelegate.window?.rootViewController = dashboardVC
         UserDefaultsManager.sharedInstance.isProfileSkipped = true
-
-//        UIView.transition(with: self.view.window!, duration: 0.5, options: .transitionCrossDissolve, animations: {
-//            kAppDelegate.window?.rootViewController = dashboardVC
-//        }) { (bool:Bool) in
-//
-//        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
@@ -302,20 +283,6 @@ class DMJobTitleSelectionVC: DMBaseVC, ToolBarButtonDelegate {
                 updateLicenseDetails(params: params)
             }
         }
-        //        self.alertMessage(title: "", message: Constants.AlertMessage.skipProfile, leftButtonText: "Cancel", rightButtonText: kOkButtonTitle) { (isLeftButtonPressed:Bool) in
-        //            if !isLeftButtonPressed {
-        //                DispatchQueue.main.async {
-        //                    UserDefaultsManager.sharedInstance.isProfileSkipped = true
-        //                    if UserDefaultsManager.sharedInstance.loadSearchParameter() == nil {
-        //                        kAppDelegate.goToSearch()
-        //                    }else {
-        //                        self.openDashboard()
-        //                    }
-        //                }
-        //            } else {
-        //               //Remain here
-        //            }
-        //        }
     }
 
     // MARK: - ToolBarButton Delegate
@@ -324,17 +291,4 @@ class DMJobTitleSelectionVC: DMBaseVC, ToolBarButtonDelegate {
         changeUIOFCreateProfileButton(isCreateProfileButtonEnable())
         view.endEditing(true)
     }
-
-    // MARK: - UITextFieldDelegates
-
-//    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-//        debugPrint("Open Picker")
-//        //currentJobTitleTextField.layer.borderColor = Constants.Color.textFieldColorSelected.cgColor
-//        return true
-//    }
-//
-//    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-//        //currentJobTitleTextField.layer.borderColor = Constants.Color.textFieldBorderColor.cgColor
-//        return true
-//    }
 }

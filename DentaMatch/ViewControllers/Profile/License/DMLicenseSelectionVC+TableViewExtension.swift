@@ -127,13 +127,13 @@ extension DMLicenseSelectionVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn _: NSRange, replacementString string: String) -> Bool {
-        guard string.characters.count > 0 else {
+        guard string.count > 0 else {
             return true
         }
 
         if textField.tag == 0 {
             let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ0123456789-")
-            if string == "-" && textField.text?.characters.count == 0 {
+            if string == "-" && textField.text?.count == 0 {
                 dismissKeyboard()
                 makeToast(toastString: Constants.AlertMessage.lienseNoStartError)
                 return false
@@ -143,13 +143,13 @@ extension DMLicenseSelectionVC: UITableViewDataSource, UITableViewDelegate {
                 return false
             }
 
-            if (textField.text?.characters.count)! >= Constants.Limit.licenseNumber {
+            if (textField.text?.count)! >= Constants.Limit.licenseNumber {
                 return false
             }
 
         } else {
             let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ- ")
-            if string == "-" && textField.text?.characters.count == 0 {
+            if string == "-" && textField.text?.count == 0 {
                 dismissKeyboard()
                 makeToast(toastString: Constants.AlertMessage.stateStartError)
                 return false
@@ -159,7 +159,7 @@ extension DMLicenseSelectionVC: UITableViewDataSource, UITableViewDelegate {
                 return false
             }
 
-            if (textField.text?.characters.count)! >= Constants.Limit.commonMaxLimit {
+            if (textField.text?.count)! >= Constants.Limit.commonMaxLimit {
                 return false
             }
         }

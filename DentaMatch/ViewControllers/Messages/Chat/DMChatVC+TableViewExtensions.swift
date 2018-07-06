@@ -72,10 +72,8 @@ extension DMChatVC: UITableViewDataSource, UITableViewDelegate {
         let chat = fetchedResultsController.object(at: indexPath) as! Chat
         if let _ = UserManager.shared().activeUser {
             if chat.fromId == UserManager.shared().activeUser.userId {
-                // self message
                 let cell = tableView.dequeueReusableCell(withIdentifier: "MessageSenderTableCell") as! MessageSenderTableCell
                 cell.chatTextView.text = chat.message
-//                cell.chatTextView.text = chat.message!.converttoASCIIString()
                 cell.timeLabel.text = chat.timeString
                 return cell
 
