@@ -125,8 +125,8 @@ extension DMJobTitleSelectionVC {
                 UserManager.shared().activeUser.state = user[Constants.ServerKey.state].stringValue
                 UserManager.shared().activeUser.licenseNumber = user[Constants.ServerKey.licenseNumber].stringValue
                 UserManager.shared().activeUser.isJobSeekerVerified = user["isJobSeekerVerified"].boolValue
-                let myuser = UserManager.shared().activeUser as! User
-                print("user job\(myuser.isJobSeekerVerified)")
+                let myuser : User = UserManager.shared().activeUser
+                print("user job\(myuser.isJobSeekerVerified ?? false)")
                 UserManager.shared().saveActiveUser()
 
                 navigationController?.pushViewController(profileSuccessPendingVC, animated: true)
