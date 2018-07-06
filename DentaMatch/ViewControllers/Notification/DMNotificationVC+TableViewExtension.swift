@@ -183,8 +183,8 @@ extension DMNotificationVC: UITableViewDataSource, UITableViewDelegate {
         case .chatMessgae: break
         // No need any action
         case .completeProfile: break
-            // open profile
-            tabBarController?.selectedIndex = 4
+            // open profile commented on 6/7/18 to remove warning
+            //tabBarController?.selectedIndex = 4
         case .deleteJob: break
         // No need any action
         case .hired, .InviteJob:
@@ -194,8 +194,8 @@ extension DMNotificationVC: UITableViewDataSource, UITableViewDelegate {
             // open job detail
             goToJobDetail(jobObj: notiObj.jobdetail!)
         case .verifyDocuments, .licenseAcceptReject: break
-            // open edit profile
-            tabBarController?.selectedIndex = 4
+            // open edit profile commented on 6/7/18 to remove warning
+            //tabBarController?.selectedIndex = 4
 
         case .other: break
         case .rejectJob:

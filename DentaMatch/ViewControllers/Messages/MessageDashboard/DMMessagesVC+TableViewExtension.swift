@@ -48,16 +48,17 @@ extension DMMessagesVC: UITableViewDataSource, UITableViewDelegate {
         cell.lastMessageLabel.text = chatList.lastMessage
         cell.badgeCountLabel.text = "\(chatList.unreadCount)"
         cell.badgeCountLabel.isHidden = chatList.unreadCount > 0 ? false : true
-        let chatDate = Date.getDateMMDDYYYY(date: dateFormatter.date(from: dateFormatter.string(from: chatList.date as! Date))!)
         cell.dateLabel.text = ""
-        if todaysDate == chatDate {
-            cell.dateLabel.text = "Today"
-        } else if (todaysDate - 86400) == chatDate {
-            cell.dateLabel.text = "Yesterday"
-        } else {
-            cell.dateLabel.text = Date.getDateDashedMMDDYYYY(date: chatDate)
+        if let date = chatList.date as Date?, let dateAfterFormat =  dateFormatter.date(from: dateFormatter.string(from: date)) {
+             let chatDate = Date.getDateMMDDYYYY(date:dateAfterFormat)
+            if todaysDate == chatDate {
+                cell.dateLabel.text = "Today"
+            } else if (todaysDate - 86400) == chatDate {
+                cell.dateLabel.text = "Yesterday"
+            } else {
+                cell.dateLabel.text = Date.getDateDashedMMDDYYYY(date: chatDate)
+            }
         }
-
         return cell
     }
 

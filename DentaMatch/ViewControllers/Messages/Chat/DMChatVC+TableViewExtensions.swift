@@ -21,7 +21,7 @@ extension DMChatVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {
         if printData == true {
             if let sections = fetchedResultsController.sections {
-                let sectionInfo = sections[section]
+                //let sectionInfo = sections[section]
                 for i in 0 ..< sections.count {
                     let sectionInfo = sections[i]
                     print(sectionInfo.name)
