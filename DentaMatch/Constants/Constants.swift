@@ -45,66 +45,6 @@ struct Constants {
         static let subHeading4 = "Quis nostrud exercitullamco laboris nisi ut aliquip consequat.quis nostrud exercitullamco laboris nisi ut."
     }
 
-    struct Color {
-        static let toolBarColor = UIColor.color(withHexCode: "10193e")
-
-        static let textFieldTextColor = UIColor.color(withHexCode: "383838")
-        static let textFieldLeftViewModeColor = UIColor.color(withHexCode: "aaafb8")
-        static let textFieldBorderColor = UIColor.color(withHexCode: "e4e4e4")
-        static let textFieldColorSelected = UIColor.color(withHexCode: "0470c0")
-        static let textFieldPlaceHolderColor = UIColor.color(withHexCode: "959595")
-        static let brickTextColor = UIColor.color(withHexCode: "959595")
-        static let unSaveJobColor = UIColor.color(withHexCode: "6F6F6F")
-        static let saveJobColor = UIColor.color(withHexCode: "0470c0")
-        static let cancelJobDeleteColor = UIColor.color(withHexCode: "fe3824")
-        static let textFieldErrorColor = UIColor.color(withHexCode: "ff0000")
-
-        static let profileProgressBarColor = UIColor.color(withHexCode: "a3d977")
-        static let profileProgressBarTrackColor = UIColor.color(withHexCode: "f4f4f4")
-
-        static let navBarColor = UIColor.color(withHexCode: "10193e")
-        static let navBarColorForExperienceScreen = UIColor.color(withHexCode: "f7f7f7")
-        static let navHeadingForExperienceScreen = UIColor(red: 9.0 / 255.0, green: 41.0 / 255.0, blue: 97.0 / 255.0, alpha: 1)
-
-        static let headerTitleColor = UIColor(red: 81.0 / 255.0, green: 81.0 / 255.0, blue: 81.0 / 255.0, alpha: 1)
-        static let weekdayTextColor = UIColor(red: 81.0 / 255.0, green: 81.0 / 255.0, blue: 81.0 / 255.0, alpha: 0.5)
-
-        static let selectionColor = UIColor(red: 241.0 / 255.0, green: 184.0 / 255.0, blue: 90.0 / 255.0, alpha: 1)
-
-        static let CalendarSelectionColor = UIColor(red: 15.0 / 255.0, green: 24.0 / 255.0, blue: 62.0 / 255.0, alpha: 1)
-        static let availabilitySeletedColor = UIColor(red: 4.0 / 255.0, green: 112.0 / 255.0, blue: 192.0 / 255.0, alpha: 1.0)
-        static let availabilityUnseletedColor = UIColor(red: 151.0 / 255.0, green: 151.0 / 255.0, blue: 151.0 / 255.0, alpha: 1.0)
-        static let jobSearchUnSelectedLabel = UIColor(red: 181.0 / 255.0, green: 181.0 / 255.0, blue: 181.0 / 255.0, alpha: 1.0)
-        static let jobSearchSelectedLabel = UIColor(red: 81.0 / 255.0, green: 81.0 / 255.0, blue: 81.0 / 255.0, alpha: 1.0)
-        static let jobSearchTitleLocationColor = UIColor(red: 229.0 / 255.0, green: 229.0 / 255.0, blue: 229.0 / 255.0, alpha: 1.0)
-        static let jobTitleLabelColor = UIColor(red: 169.0 / 255.0, green: 169.0 / 255.0, blue: 169.0 / 255.0, alpha: 1.0)
-        static let jobSkillBrickColor = UIColor(red: 233.0 / 255.0, green: 233.0 / 255.0, blue: 233.0 / 255.0, alpha: 1.0)
-        static let mapButtonBackGroundColor = UIColor(red: 4 / 255.0, green: 112 / 255.0, blue: 191.0 / 255.0, alpha: 1.0)
-        static let segmentViewBgColor = UIColor(red: 42 / 255.0, green: 85 / 255.0, blue: 169.0 / 255.0, alpha: 1.0)
-
-        static let loaderRingColor = UIColor.color(withHexCode: "10193e")
-
-        static let loaderBackgroundColor = UIColor.color(withHexCode: "959595")
-
-        static let tickSelectColor = UIColor(red: 4.0 / 255.0, green: 112.0 / 255.0, blue: 192.0 / 255.0, alpha: 1.0)
-        static let tickDeselectColor = UIColor(red: 151.0 / 255.0, green: 151.0 / 255.0, blue: 151.0 / 255.0, alpha: 1.0)
-        static let jobSearchBorderColor = UIColor(red: 229.0 / 255.0, green: 229.0 / 255.0, blue: 229.0 / 255.0, alpha: 1.0)
-        static let jobTitleBricksColor = UIColor(red: 169.0 / 255.0, green: 169.0 / 255.0, blue: 169.0 / 255.0, alpha: 1.0)
-        static let jobTypeLabelDeselectedColor = UIColor(red: 181.0 / 255.0, green: 181.0 / 255.0, blue: 181.0 / 255.0, alpha: 1.0)
-        static let partTimeDaySelectColor = UIColor(red: 142.0 / 255.0, green: 207.0 / 255.0, blue: 125.0 / 255.0, alpha: 1.0)
-        static let fullTimeBackgroundColor = UIColor(red: 69.0 / 255.0, green: 177.0 / 255.0, blue: 179.0 / 255.0, alpha: 1.0)
-        static let temporaryBackGroundColor = UIColor.color(withHexCode: "f1b85a")
-        static let segmentControlBorderColor = UIColor(red: 42 / 255.0, green: 85 / 255.0, blue: 169.0 / 255.0, alpha: 1.0)
-        static let segmentControlSelectionColor = UIColor(red: 4 / 255.0, green: 112 / 255.0, blue: 191.0 / 255.0, alpha: 1.0)
-        static let partTimeEventColor = UIColor(red: 142.0 / 255.0, green: 207.0 / 255.0, blue: 126.0 / 255.0, alpha: 1)
-        static let tempTimeEventColor = UIColor(red: 241.0 / 255.0, green: 184.0 / 255.0, blue: 90.0 / 255.0, alpha: 1)
-
-        static let notificationUnreadTextColor = UIColor(red: 15.0 / 255.0, green: 24.0 / 255.0, blue: 62.0 / 255.0, alpha: 1)
-        static let notificationUnreadTimeLabelColor = UIColor(red: 15.0 / 255.0, green: 24.0 / 255.0, blue: 62.0 / 255.0, alpha: 1)
-        static let notificationreadTextColor = UIColor(red: 71.0 / 255.0, green: 71.0 / 255.0, blue: 71.0 / 255.0, alpha: 1)
-        static let notificationreadTimeLabelColor = UIColor(red: 137.0 / 255.0, green: 137.0 / 255.0, blue: 137.0 / 255.0, alpha: 1)
-    }
-
     struct DesignFont {
         static let acceptTermsSelected = "w"
         static let acceptTermsDeSelected = "t"
@@ -119,7 +59,6 @@ struct Constants {
     }
 
     // MARK: - StoryBoards
-
     struct StoryBoard {
         static let onBoardingStoryboard = "Onboarding"
         static let registrationStoryboard = "Registration"
@@ -153,66 +92,7 @@ struct Constants {
         }
     }
 
-    // MARK: - API Urls
-
-    struct API {
-        // APIs
-        static let registration = Constants.API.apiURL("users/sign-up")
-        static let login = Constants.API.apiURL("users/sign-in")
-        static let forgotPassword = Constants.API.apiURL("users/forgot-password")
-        static let termsAndConditionsURL = Constants.API.apiURL("term-condition")
-        static let emailVerify = Constants.API.apiURL("users/is-verified")
-        static let privacyPolicyURL = Constants.API.apiURL("privacy-policy")
-        static let getPreferredJobLocations = Constants.API.apiURL("jobs/preferred-job-locations")
-        static let getJobTitle = Constants.API.apiURL("list-jobtitle")
-        static let uploadImage = Constants.API.apiURL("users/upload-image")
-        static let getSkillList = Constants.API.apiURL("list-skills")
-        static let updateSkillList = Constants.API.apiURL("users/update-skill")
-        static let getCertificationList = Constants.API.apiURL("list-certifications")
-        static let getAboutMe = Constants.API.apiURL("users/about-me-list")
-        static let saveAboutMe = Constants.API.apiURL("users/about-me-save")
-        static let getAffiliationList = Constants.API.apiURL("users/affiliation-list")
-        static let saveAffiliationList = Constants.API.apiURL("users/affiliation-save")
-        static let getSchoolListAPI = Constants.API.apiURL("users/school-list")
-        static let addSchoolAPI = Constants.API.apiURL("users/school-add")
-        static let getJobTitleAPI = Constants.API.apiURL("list-jobtitle")
-        static let uploadImageAPI = Constants.API.apiURL("users/upload-image")
-        static let JobSearchResultAPI = Constants.API.apiURL("users/search-jobs")
-        static let updateUserProfile = Constants.API.apiURL("users/user-profile-update")
-        static let updateDeviceToken = Constants.API.apiURL("users/update-devicetoken")
-        static let licenseNumberAndState = Constants.API.apiURL("users/update-license")
-        static let workExperienceSave = Constants.API.apiURL("users/work-experience-save")
-        static let getWorkExperience = Constants.API.apiURL("users/work-experience-list")
-        static let deleteExperience = Constants.API.apiURL("users/work-experience-delete")
-        static let updateCertificate = Constants.API.apiURL("users/update-certificate")
-        static let updateValidationDates = Constants.API.apiURL("users/update-certificate-validity")
-        static let changePassword = Constants.API.apiURL("users/change-password")
-        static let updateHomeLocation = Constants.API.apiURL("users/user-location-update")
-        static let userProfile = Constants.API.apiURL("users/user-profile")
-        static let signOut = Constants.API.apiURL("users/sign-out")
-        static let jobList = Constants.API.apiURL("users/job-list")
-        static let saveJob = Constants.API.apiURL("users/save-job")
-        static let cancelJob = Constants.API.apiURL("users/cancel-job")
-        static let jobDetail = Constants.API.apiURL("jobs/job-detail")
-        static let applyJob = Constants.API.apiURL("users/apply-job")
-
-        static let getNotificationList = Constants.API.apiURL("users/notification-list")
-        static let readNotification = Constants.API.apiURL("users/notification-read")
-        static let acceptRejectNotification = Constants.API.apiURL("users/acceptreject-job")
-        static let deleteNotification = Constants.API.apiURL("users/delete-notification")
-        static let unreadNotificationCount = Constants.API.apiURL("users/unread-notification")
-
-        static let setAvailabality = Constants.API.apiURL("users/update-availability")
-        static let getAvailabality = Constants.API.apiURL("users/availability-list")
-        static let getHiredJobs = Constants.API.apiURL("jobs/hired-jobs")
-        static let getChatUserList = Constants.API.apiURL("users/chat-user-list")
-        static let blockUnblockRecruiter = Constants.API.apiURL("users/chat-user-block-unblock")
-
-        static func apiURL(_ methodName: String) -> String {
-            return BASE_URL + methodName
-        }
-    }
-
+    
     struct ServerKey {
         static let deviceId = "deviceId"
         static let deviceType = "deviceType"
@@ -344,82 +224,7 @@ struct Constants {
         static let licenseImageURL = "kLicenseImageURL"
     }
 
-    // MARK: - Alert Messages
-
-    struct AlertMessage {
-        static let emptyEmail = "Email Id can not be left blank."
-        static let invalidEmail = "Please provide a valid Email Id."
-        static let passwordRange = "Password should be 6-25 characters long."
-        static let emptyName = "Name text can not be left blank."
-        static let emptyFirstName = "First Name text can not be left blank."
-        static let emptyLastName = "Last Name text can not be left blank."
-        static let emptyAboutMe = "About Me text can not be left blank."
-        static let emptyValidityDate = "Please enter the validity date"
-        static let emptyCancelReason = "Please enter the reason for the cancellation"
-        static let emptyJobTitle = "Please select a Job title"
-        static let emptyPinCode = "Pincode not found. Please select some other location"
-
-        static let emptyPreferredJobLocation = "Preferred Job Location can not be left blank."
-        // license no screen
-        static let emptyLicenseNumber = "Please enter License number"
-        static let emptyState = "Please enter License state"
-        static let stateCertificate = "Please upload photo for Dental state board"
-        static let lienseNoStartError = "License number can't start with hyphen (-)"
-        static let stateStartError = "State  can't start with hyphen (-)"
-
-        static let termsAndConditions = "Please accept Terms and Conditions/Privacy Policy."
-        static let emptyCurrentJobTitle = "Current Job Title can not be left blank."
-        static let emptyPassword = "Password can not be left blank."
-        static let skipProfile = "Completing your profile will help you stand out to potential Employers."
-        static let somethingWentWrong = "Something went wrong"
-
-        // Experience
-        static let emptyYearOfExperience = "Please select experience."
-        static let emptyOfficeName = "Office Name can not be left blank."
-        static let emptyOfficeAddress = "Office Field can not be left blank."
-        static let emptyCityName = "City Name can not be left blank."
-        static let referenceMobileNumber = "Please, Provide a valid Phone number of 10 digits."
-        static let atleastOneExperience = "Please add at least one experience"
-        static let partialFill = "You have partially filled experience. Do you want to Discard this?"
-        static let firstEmptyExperience = "Please add Reference 1 first."
-
-        static let morethen2refernce = "More than two references can not be added."
-        static let empptyFirstReference = "Please complete the reference"
-
-        static let emptyOldPassword = "Old password can never be blank."
-        static let emptyNewPassword = "New password can never be blank."
-        static let emptyConfirmPassword = "Confirm password can never be blank."
-        static let matchPassword = "New password and Confirm password should be same."
-
-        // setAvailability
-        static let selectAvailableDay = "Please select at least one day"
-        static let selectDate = "Please select at least date"
-        static let selectOneAvailableOption = "Please select at least one Avaialbe Option"
-
-        // Job Search
-        static let selectTitle = "Please select at least one title"
-        static let selectPreferredLocation = "Please select at least one location"
-
-        static let selectLocation = "Please select location"
-
-        // Apply Job
-        static let congratulations = "Congratulations"
-        static let jobApplied = "You have successfully applied for the job."
-        static let completeYourProfile = "Complete your profile"
-        static let completeYourProfileDetailMsg = "You’ll need to filling out your profile before applying for the job. Would you like to fill this out now?"
-
-        // Calendar Screen
-        static let canNotSelectPreDate = "Sorry you can't select previous date"
-        static let socketNotConnected = "Unable to connect to server. Please try again later"
-
-        // Notification Screen
-        static let noNotification = "You don’t have any Notifications right now."
-
-        // change password screen messgaes
-        struct AlertTitle {
-            static let invalidEmailTitle = ""
-        }
-    }
+    
 
     struct ScreenTitleNames {
         static let calendar = "Calendar"
@@ -435,7 +240,6 @@ struct Constants {
     }
 
     // MARK: - Strings
-
     struct Strings {
         static let whiteSpace = " "
         static let resultsFound = "results found"
@@ -463,7 +267,6 @@ struct Constants {
     }
 
     // MARK: - Weak Days
-
     struct DaysAbbreviation {
         static let sunday = "Su"
         static let monday = "Mo"
@@ -475,7 +278,6 @@ struct Constants {
     }
 
     // MARK: - Weak Days
-
     struct Days {
         static let sunday = "sunday"
         static let monday = "monday"
@@ -487,7 +289,6 @@ struct Constants {
     }
 
     // MARK: - Hardcoded Limits
-
     struct Limit {
         static let licenseNumberLimit = 16
         static let passwordLimit = 6

@@ -54,7 +54,7 @@ class DatabaseManager: NSObject {
 
             } else {
                 // New chat
-                let chat = NSEntityDescription.insertNewObject(forEntityName: "Chat", into: kAppDelegate.managedObjectContext) as! Chat
+                guard let chat = NSEntityDescription.insertNewObject(forEntityName: "Chat", into: kAppDelegate.managedObjectContext) as? Chat else {return}
                 chat.chatId = chatObj["messageId"].int64Value
                 chat.message = chatObj["message"].stringValue
                 chat.fromId = chatObj["fromId"].stringValue
@@ -151,7 +151,7 @@ class DatabaseManager: NSObject {
 
                 } else {
                     // New chat
-                    let chat = NSEntityDescription.insertNewObject(forEntityName: "Chat", into: kAppDelegate.managedObjectContext) as! Chat
+                    guard let chat = NSEntityDescription.insertNewObject(forEntityName: "Chat", into: kAppDelegate.managedObjectContext) as? Chat else {return}
                     chat.chatId = chatObj["messageId"].int64Value
                     chat.message = chatObj["message"].stringValue
                     chat.fromId = chatObj["fromId"].stringValue
@@ -191,7 +191,7 @@ class DatabaseManager: NSObject {
             // debugPrint("Update Chat")
         } else {
             // New chat
-            let chatList = NSEntityDescription.insertNewObject(forEntityName: "ChatList", into: kAppDelegate.managedObjectContext) as! ChatList
+           guard let chatList = NSEntityDescription.insertNewObject(forEntityName: "ChatList", into: kAppDelegate.managedObjectContext) as? ChatList else {return}
             chatList.lastMessage = chatObj["message"].stringValue
             chatList.recruiterId = chatObj["recruiterId"].stringValue
             chatList.isBlockedFromRecruiter = chatObj["recruiterBlock"].boolValue
@@ -221,7 +221,7 @@ class DatabaseManager: NSObject {
 
             } else {
                 // New chat
-                let chat = NSEntityDescription.insertNewObject(forEntityName: "Chat", into: kAppDelegate.managedObjectContext) as! Chat
+                guard let chat = NSEntityDescription.insertNewObject(forEntityName: "Chat", into: kAppDelegate.managedObjectContext) as? Chat else {return}
                 chat.chatId = chatObj["messageId"].int64Value
                 chat.message = chatObj["message"].stringValue
                 chat.fromId = chatObj["recruiterId"].stringValue

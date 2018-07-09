@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		270886FB07B603FF47668A72 /* Pods_DentaMatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C611E923856ECE4538FA4F38 /* Pods_DentaMatch.framework */; };
 		4831AC2020EF85FB0042B55C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4831AC1F20EF85FB0042B55C /* README.md */; };
+		4846B87720F3550000BAC18C /* Constants+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846B87620F3550000BAC18C /* Constants+Color.swift */; };
+		4846B87920F3564C00BAC18C /* Constants+AlertMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846B87820F3564C00BAC18C /* Constants+AlertMessage.swift */; };
+		4846B87D20F356CC00BAC18C /* Constants+Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846B87C20F356CC00BAC18C /* Constants+Api.swift */; };
 		4877D98320ECD54400264422 /* AppDelegate+InitialConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4877D98220ECD54400264422 /* AppDelegate+InitialConfiguration.swift */; };
 		5A0138241E6EBBA900D15783 /* MixpanelOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0138231E6EBBA900D15783 /* MixpanelOperations.swift */; };
 		5A1960FD1E208B67002A5F7C /* PhoneNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1960FB1E208B67002A5F7C /* PhoneNumberFormatter.swift */; };
@@ -417,6 +420,9 @@
 		158450992C392116A74F763C /* Pods-DentaMatch.qa.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DentaMatch.qa.xcconfig"; path = "Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch.qa.xcconfig"; sourceTree = "<group>"; };
 		19F54B802B7D87A34FEE97F2 /* Pods-DentaMatch.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DentaMatch.staging.xcconfig"; path = "Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch.staging.xcconfig"; sourceTree = "<group>"; };
 		4831AC1F20EF85FB0042B55C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		4846B87620F3550000BAC18C /* Constants+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constants+Color.swift"; sourceTree = "<group>"; };
+		4846B87820F3564C00BAC18C /* Constants+AlertMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constants+AlertMessage.swift"; sourceTree = "<group>"; };
+		4846B87C20F356CC00BAC18C /* Constants+Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constants+Api.swift"; sourceTree = "<group>"; };
 		4877D98220ECD54400264422 /* AppDelegate+InitialConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+InitialConfiguration.swift"; sourceTree = "<group>"; };
 		5A0138231E6EBBA900D15783 /* MixpanelOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixpanelOperations.swift; sourceTree = "<group>"; };
 		5A1960FB1E208B67002A5F7C /* PhoneNumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberFormatter.swift; sourceTree = "<group>"; };
@@ -1335,6 +1341,9 @@
 			isa = PBXGroup;
 			children = (
 				E55462F21DAE4A5D004163B2 /* Constants.swift */,
+				4846B87620F3550000BAC18C /* Constants+Color.swift */,
+				4846B87820F3564C00BAC18C /* Constants+AlertMessage.swift */,
+				4846B87C20F356CC00BAC18C /* Constants+Api.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -2693,6 +2702,7 @@
 				E54976F01E28CEDD006F21E5 /* Certification.swift in Sources */,
 				5A5266BD1E26413400C5B7A1 /* DMLicenseSelectionVC+Services.swift in Sources */,
 				E57681961E38A1DA00D912EA /* DMPublicProfileVC+Services.swift in Sources */,
+				4846B87920F3564C00BAC18C /* Constants+AlertMessage.swift in Sources */,
 				E597E58F1E151CFF001DDA78 /* FloatLabelTextField.swift in Sources */,
 				E5AE37621E4971CE0001EC3C /* SocketClientManager.swift in Sources */,
 				E558D8E01E2C80C200A6DF95 /* SchoolCategory.swift in Sources */,
@@ -2714,6 +2724,7 @@
 				5A3FD06E1E1BB0A000360B3C /* UINavigationBar+Awesome.m in Sources */,
 				E5AE37641E4971CE0001EC3C /* SocketEngineClient.swift in Sources */,
 				E587D2CF1E23438B006B7F06 /* DMJobTitleSelectionVC.swift in Sources */,
+				4846B87720F3550000BAC18C /* Constants+Color.swift in Sources */,
 				E5A0EB051E2BDE680092E21A /* SubSkillCollectionCell.swift in Sources */,
 				E5E7CBA31E3075A200D4FB59 /* DMEditLicenseVC.swift in Sources */,
 				E56C9FA81DED75D500EAA9DD /* CommonHelper.swift in Sources */,
@@ -2865,6 +2876,7 @@
 				5A50A2CA1E32163D0010AA31 /* SettingTableCell.swift in Sources */,
 				E558D9081E2E6FE700A6DF95 /* DMEditProfileVC.swift in Sources */,
 				E5F919451E9DD4A30021F008 /* FSCalendarCollectionView.m in Sources */,
+				4846B87D20F356CC00BAC18C /* Constants+Api.swift in Sources */,
 				5AC714521E34ACD400E433C1 /* DMCalenderVC.swift in Sources */,
 				E5A0EADE1E2944D50092E21A /* SSASideMenu.swift in Sources */,
 				E5496E0E1E273F1D00C54288 /* DMSkillsVC+Services.swift in Sources */,

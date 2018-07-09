@@ -189,11 +189,13 @@ class SocketManager: NSObject, SocketConnectionDelegate {
     func eventForLogoutPreviousSession() {
         socket.off("logoutPreviousSession")
         socket.on("logoutPreviousSession") { (dataArray, _) -> Void in
-            // var messageDictionary = [String: AnyObject]()
-            let messageDictionary = dataArray[0] as! [String: AnyObject]
-            if messageDictionary["logout"] as! Bool {
-                Utilities.logOutOfInvalidToken()
+            if let messageDictionary = dataArray[0] as? [String: AnyObject], let logout = messageDictionary["logout"] as? Bool {
+                if logout == true {
+                    Utilities.logOutOfInvalidToken()
+                }
             }
+            
+            
         }
     }
 
@@ -224,7 +226,7 @@ class SocketManager: NSObject, SocketConnectionDelegate {
     func handleReceivedChatMessage(params: [Any], isMine: Bool) {
         // var messageDictionary = [String: AnyObject]()
         // debugPrint(params)
-        let messageDictionary = params[0] as! [String: AnyObject]
+        guard let messageDictionary = params[0] as? [String: AnyObject] else {return}
 
         if let _ = self.chatCompletionHandler {
             chatCompletionHandler?(messageDictionary, isMine)
@@ -251,8 +253,7 @@ class SocketManager: NSObject, SocketConnectionDelegate {
     }
 
     func handleUpdateUnreadCounter(params: [Any]) {
-        // var messageDictionary = [String: AnyObject]()
-        let messageDictionary = params[0] as! [String: AnyObject]
+        guard let messageDictionary = params[0] as? [String: AnyObject] else {return}
         if let unreadCounterObject = JSON(rawValue: messageDictionary) {
             // debugPrint(unreadCounterObject)
             DatabaseManager.updateReadCount(recruiterId: unreadCounterObject["recruiterId"].stringValue)

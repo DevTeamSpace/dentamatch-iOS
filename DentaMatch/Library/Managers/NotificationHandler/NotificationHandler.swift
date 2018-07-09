@@ -58,14 +58,14 @@ class NotificationHandler: NSObject {
 
     class func notificationHandleforChat(fromId _: String?, toId _: String?, messgaeId _: String?, recurterId _: String?) {
         delay(time: 3.0) {
-            if let tabbar = ((UIApplication.shared.delegate) as! AppDelegate).window?.rootViewController as? TabBarVC {
+            if let tabbar = ((UIApplication.shared.delegate) as? AppDelegate)?.window?.rootViewController as? TabBarVC {
                 tabbar.selectedIndex = 3
             }
         }
     }
 
     class func notificationHandleforChatForGround(fromId _: String?, toId _: String?, messgaeId _: String?, recurterId _: String?) {
-        if let tabbar = ((UIApplication.shared.delegate) as! AppDelegate).window?.rootViewController as? TabBarVC {
+        if let tabbar = ((UIApplication.shared.delegate) as? AppDelegate)?.window?.rootViewController as? TabBarVC {
             tabbar.selectedIndex = 3
         }
     }
@@ -75,7 +75,7 @@ class NotificationHandler: NSObject {
     }
 
     class func openEditProfileScreen() {
-        if let tabbar = ((UIApplication.shared.delegate) as! AppDelegate).window?.rootViewController as? TabBarVC {
+        if let tabbar = ((UIApplication.shared.delegate) as? AppDelegate)?.window?.rootViewController as? TabBarVC {
 //            _=self.navigationController?.popToRootViewController(animated: false)
             tabbar.selectedIndex = 4
         }
@@ -91,7 +91,7 @@ class NotificationHandler: NSObject {
 
     class func openEditProfileScreenForBackground() {
         delay(time: 1.0) {
-            if let tabbar = ((UIApplication.shared.delegate) as! AppDelegate).window?.rootViewController as? TabBarVC {
+            if let tabbar = ((UIApplication.shared.delegate) as? AppDelegate)?.window?.rootViewController as? TabBarVC {
                 tabbar.selectedIndex = 4
             }
         }

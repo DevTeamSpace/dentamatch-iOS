@@ -17,7 +17,7 @@ class UserDefaultsManager: NSObject {
     var isLoggedIn: Bool {
         get {
             if kUserDefaults.value(forKey: Constants.UserDefaultsKey.isLoggedIn) != nil {
-                return kUserDefaults.value(forKey: Constants.UserDefaultsKey.isLoggedIn) as! Bool
+                return kUserDefaults.value(forKey: Constants.UserDefaultsKey.isLoggedIn) as? Bool ?? false
             }
             // Default is not logged in
             return false
@@ -31,7 +31,7 @@ class UserDefaultsManager: NSObject {
     var isLoggedOut: Bool {
         get {
             if kUserDefaults.value(forKey: Constants.UserDefaultsKey.isLoggedOut) != nil {
-                return kUserDefaults.value(forKey: Constants.UserDefaultsKey.isLoggedOut) as! Bool
+                return kUserDefaults.value(forKey: Constants.UserDefaultsKey.isLoggedOut) as? Bool ?? false
             }
             return false
         }
@@ -44,7 +44,7 @@ class UserDefaultsManager: NSObject {
     var isOnBoardingDone: Bool {
         get {
             if kUserDefaults.value(forKey: Constants.UserDefaultsKey.isOnBoardingDone) != nil {
-                return kUserDefaults.value(forKey: Constants.UserDefaultsKey.isOnBoardingDone) as! Bool
+                return kUserDefaults.value(forKey: Constants.UserDefaultsKey.isOnBoardingDone)  as? Bool ?? false
             }
             return false
         }
@@ -57,7 +57,7 @@ class UserDefaultsManager: NSObject {
     var isHistoryRetrieved: Bool {
         get {
             if kUserDefaults.value(forKey: Constants.UserDefaultsKey.isHistoryRetrieved) != nil {
-                return kUserDefaults.value(forKey: Constants.UserDefaultsKey.isHistoryRetrieved) as! Bool
+                return kUserDefaults.value(forKey: Constants.UserDefaultsKey.isHistoryRetrieved) as? Bool ?? false
             }
             return false
         }
@@ -70,7 +70,7 @@ class UserDefaultsManager: NSObject {
     var isProfileSkipped: Bool {
         get {
             if kUserDefaults.value(forKey: Constants.UserDefaultsKey.isProfileSkipped) != nil {
-                return kUserDefaults.value(forKey: Constants.UserDefaultsKey.isProfileSkipped) as! Bool
+                return kUserDefaults.value(forKey: Constants.UserDefaultsKey.isProfileSkipped) as? Bool ?? false
             }
             return false
         }
@@ -83,7 +83,7 @@ class UserDefaultsManager: NSObject {
     var isProfileCompleted: Bool {
         get {
             if kUserDefaults.value(forKey: Constants.UserDefaultsKey.isProfileCompleted) != nil {
-                return kUserDefaults.value(forKey: Constants.UserDefaultsKey.isProfileCompleted) as! Bool
+                return kUserDefaults.value(forKey: Constants.UserDefaultsKey.isProfileCompleted) as? Bool ?? false
             }
             return false
         }
@@ -96,7 +96,7 @@ class UserDefaultsManager: NSObject {
     var deviceToken: String {
         get {
             if kUserDefaults.value(forKey: Constants.UserDefaultsKey.deviceToken) != nil {
-                return kUserDefaults.value(forKey: Constants.UserDefaultsKey.deviceToken) as! String
+                return kUserDefaults.value(forKey: Constants.UserDefaultsKey.deviceToken) as? String ?? ""
             }
             return ""
         }

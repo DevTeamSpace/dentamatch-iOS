@@ -35,6 +35,9 @@ class UserAvailability: NSObject {
         isParttimeFriday = (newDict["isParttimeFriday"]?.boolValue)!
         isParttimeSaturday = (newDict["isParttimeSaturday"]?.boolValue)!
         isParttimeSunday = (newDict["isParttimeSunday"]?.boolValue)!
-        tempJobDates = dict["tempDatesAvailability"].arrayObject as! [String]
+        if let dates = dict["tempDatesAvailability"].arrayObject as? [String] {
+           tempJobDates = dates
+        }
+        
     }
 }

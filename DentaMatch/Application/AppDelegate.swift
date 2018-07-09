@@ -31,12 +31,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func goToRegistration() {
-        let registrationVC = UIStoryboard.registrationStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.registrationNav) as! UINavigationController
+        let registrationVC = UIStoryboard.registrationStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.registrationNav) as? UINavigationController
         window?.rootViewController = registrationVC
     }
 
     func goToProfile() {
-        let profileVC = UIStoryboard.profileStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.profileNav) as! UINavigationController
+        let profileVC = UIStoryboard.profileStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.profileNav) as? UINavigationController
         window?.rootViewController = profileVC
     }
 
@@ -58,8 +58,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func goToSearch() {
-        let jobSearchNAV = UIStoryboard.jobSearchStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.jobSearchNav) as! UINavigationController
-        if let jobSearchVC = jobSearchNAV.viewControllers[0] as? DMJobSearchVC {
+        let jobSearchNAV = UIStoryboard.jobSearchStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.jobSearchNav) as? UINavigationController
+        if let jobSearchVC = jobSearchNAV?.viewControllers[0] as? DMJobSearchVC {
             if let _ = UserDefaultsManager.sharedInstance.loadSearchParameter() {
                 jobSearchVC.firstTime = false
             } else {
@@ -118,7 +118,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     @objc func reachabilityChanged(notification: Notification) {
-        let reachability = notification.object as! Reachability
+        guard let reachability = notification.object as? Reachability else { return }
         if reachability.isReachable {
             if reachability.isReachableViaWiFi {
                 // debugPrint("Reachable via WiFi")
@@ -160,7 +160,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func chatSocketNotificationTap(recruiterId: String) {
-        if let tabbar = ((UIApplication.shared.delegate) as! AppDelegate).window?.rootViewController as? TabBarVC {
+        if let tabbar = ((UIApplication.shared.delegate) as? AppDelegate)?.window?.rootViewController as? TabBarVC {
             tabbar.selectedIndex = 3
             NotificationCenter.default.post(name: .chatRedirect, object: nil, userInfo: ["recruiterId": recruiterId])
         }
