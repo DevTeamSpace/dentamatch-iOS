@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		270886FB07B603FF47668A72 /* Pods_DentaMatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C611E923856ECE4538FA4F38 /* Pods_DentaMatch.framework */; };
+		4831AC2020EF85FB0042B55C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4831AC1F20EF85FB0042B55C /* README.md */; };
 		4877D98320ECD54400264422 /* AppDelegate+InitialConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4877D98220ECD54400264422 /* AppDelegate+InitialConfiguration.swift */; };
 		5A0138241E6EBBA900D15783 /* MixpanelOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0138231E6EBBA900D15783 /* MixpanelOperations.swift */; };
 		5A1960FD1E208B67002A5F7C /* PhoneNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1960FB1E208B67002A5F7C /* PhoneNumberFormatter.swift */; };
@@ -415,6 +416,7 @@
 /* Begin PBXFileReference section */
 		158450992C392116A74F763C /* Pods-DentaMatch.qa.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DentaMatch.qa.xcconfig"; path = "Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch.qa.xcconfig"; sourceTree = "<group>"; };
 		19F54B802B7D87A34FEE97F2 /* Pods-DentaMatch.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DentaMatch.staging.xcconfig"; path = "Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch.staging.xcconfig"; sourceTree = "<group>"; };
+		4831AC1F20EF85FB0042B55C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4877D98220ECD54400264422 /* AppDelegate+InitialConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+InitialConfiguration.swift"; sourceTree = "<group>"; };
 		5A0138231E6EBBA900D15783 /* MixpanelOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixpanelOperations.swift; sourceTree = "<group>"; };
 		5A1960FB1E208B67002A5F7C /* PhoneNumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberFormatter.swift; sourceTree = "<group>"; };
@@ -1589,6 +1591,7 @@
 		E56E45AF1DAE07C200AD4559 = {
 			isa = PBXGroup;
 			children = (
+				4831AC1F20EF85FB0042B55C /* README.md */,
 				E56E45BA1DAE07C200AD4559 /* DentaMatch */,
 				E56E45B91DAE07C200AD4559 /* Products */,
 				1D0F67C370B8BE4002393BBB /* Pods */,
@@ -2440,6 +2443,7 @@
 				E51C4D3C1FB051C7009FC3A0 /* AboutMeJobSelectionCell.xib in Resources */,
 				5A3B06C91E3375ED00EFCA6E /* ChangePasswordTableCell.xib in Resources */,
 				E597E57A1E151A99001DDA78 /* SF-UI-Display-Regular.otf in Resources */,
+				4831AC2020EF85FB0042B55C /* README.md in Resources */,
 				5A3BD4AB1E35D3D800A607AC /* EditProfileAffiliationBrickCell.xib in Resources */,
 				E5E7CB4B1E2F8CDE00D4FB59 /* EditLicenseTableCell.xib in Resources */,
 				E597E5751E151A99001DDA78 /* SF-UI-Display-Black.otf in Resources */,
