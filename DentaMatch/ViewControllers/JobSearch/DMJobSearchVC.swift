@@ -71,14 +71,14 @@ class DMJobSearchVC: DMBaseVC {
     func setup() {
         if let params = UserDefaultsManager.sharedInstance.loadSearchParameter() {
             searchParams = params
-            if searchParams[Constants.JobDetailKey.isParttime] as! String? == "1" {
+            if searchParams[Constants.JobDetailKey.isParttime] as? String ?? "" == "1" {
                 isPartTimeDayShow = true
                 isJobTypePartTime = "1"
-                partTimeJobDays = searchParams[Constants.JobDetailKey.parttimeDays] as! [String]
+                partTimeJobDays = searchParams[Constants.JobDetailKey.parttimeDays] as? [String] ?? []
             } else {
                 isJobTypePartTime = "0"
             }
-            if searchParams[Constants.JobDetailKey.isFulltime] as! String? == "1" {
+            if searchParams[Constants.JobDetailKey.isFulltime] as? String ?? "" == "1" {
                 isJobTypeFullTime = "1"
             } else {
                 isJobTypeFullTime = "0"
@@ -87,24 +87,27 @@ class DMJobSearchVC: DMBaseVC {
             jobTitles.removeAll()
             if let savedJobTitles = searchParams[Constants.JobDetailKey.jobTitles] as? [Any] {
                 for title in savedJobTitles {
-                    let objTilte = title as! [String: Any]
-                    let jobTitle = JobTitle()
-                    jobTitle.jobId = Int(objTilte[Constants.ServerKey.jobId] as! String)!
-                    jobTitle.jobTitle = objTilte[Constants.ServerKey.jobtitleName] as! String
-                    jobTitle.jobSelected = true
-                    jobTitles.append(jobTitle)
+                    if let objTilte = title as? [String: Any] {
+                        let jobTitle = JobTitle()
+                        jobTitle.jobId = Int(objTilte[Constants.ServerKey.jobId] as? String ?? "0")!
+                        jobTitle.jobTitle = objTilte[Constants.ServerKey.jobtitleName] as? String ?? ""
+                        jobTitle.jobSelected = true
+                        jobTitles.append(jobTitle)
+                    }
+                    
                 }
             }
 
             preferredLocations.removeAll()
             if let savedPreferredLocations = searchParams["preferredJobLocations"] as? [Any] {
                 for location in savedPreferredLocations {
-                    let objTilte = location as! [String: Any]
-                    let preferredLocation = PreferredLocation()
-                    preferredLocation.id = objTilte["id"] as! String
-                    preferredLocation.preferredLocationName = objTilte["preferredLocationName"] as! String
-                    preferredLocation.isSelected = true
-                    preferredLocations.append(preferredLocation)
+                    if let objTilte = location as? [String: Any] {
+                        let preferredLocation = PreferredLocation()
+                        preferredLocation.id = objTilte["id"] as? String ?? "0"
+                        preferredLocation.preferredLocationName = objTilte["preferredLocationName"] as? String ?? ""
+                        preferredLocation.isSelected = true
+                        preferredLocations.append(preferredLocation)
+                    }
                 }
             }
         } else {

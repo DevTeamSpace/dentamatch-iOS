@@ -10,7 +10,7 @@ import Foundation
 
 extension DMChatVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let chat = fetchedResultsController.object(at: indexPath) as! Chat
+       guard let chat = fetchedResultsController.object(at: indexPath) as? Chat else { return 0 }
         if let message = chat.message {
             return MessageSenderTableCell.calculateHeight(text: message)
         } else {
@@ -21,13 +21,11 @@ extension DMChatVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {
         if printData == true {
             if let sections = fetchedResultsController.sections {
-                //let sectionInfo = sections[section]
                 for i in 0 ..< sections.count {
                     let sectionInfo = sections[i]
                     print(sectionInfo.name)
                     print(sectionInfo.numberOfObjects)
                 }
-
                 printData = false
             }
         }
@@ -69,7 +67,7 @@ extension DMChatVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let chat = fetchedResultsController.object(at: indexPath) as! Chat
+        guard let chat = fetchedResultsController.object(at: indexPath) as? Chat else {return UITableViewCell()}
         if let _ = UserManager.shared().activeUser {
             if chat.fromId == UserManager.shared().activeUser.userId {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "MessageSenderTableCell") as! MessageSenderTableCell

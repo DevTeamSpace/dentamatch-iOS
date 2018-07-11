@@ -75,12 +75,9 @@ class DMJobTitleSelectionVC: DMBaseVC, ToolBarButtonDelegate {
 
         jobTitleSelectionTableView.register(UINib(nibName: "AnimatedPHTableCell", bundle: nil), forCellReuseIdentifier: "AnimatedPHTableCell")
         jobTitleSelectionTableView.register(UINib(nibName: "AboutMeJobSelectionCell", bundle: nil), forCellReuseIdentifier: "AboutMeJobSelectionCell")
-
-        // currentJobTitleTextField.tintColor = UIColor.clear
         nameLabel.text = "Hi " + UserManager.shared().activeUser.firstName! + " " + UserManager.shared().activeUser.lastName!
         prefferedJobLocationLabel.text = UserManager.shared().activeUser.preferredJobLocation
         addJobSelectionPickerViewTextField()
-        // currentJobTitleTextField.type = 1
         profileButton.isUserInteractionEnabled = false
 
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -118,7 +115,6 @@ class DMJobTitleSelectionVC: DMBaseVC, ToolBarButtonDelegate {
     func addJobSelectionPickerViewTextField() {
         // Job Title Picker
         jobSelectionPickerView = JobSelectionPickerView.loadJobSelectionView(withJobTitles: [])
-//        currentJobTitleTextField.inputView = jobSelectionPickerView
         jobSelectionPickerView.delegate = self
     }
 
@@ -261,7 +257,7 @@ class DMJobTitleSelectionVC: DMBaseVC, ToolBarButtonDelegate {
 
     override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
         if segue.identifier == Constants.StoryBoard.SegueIdentifier.goToLicense {
-            let destinationVC: DMLicenseSelectionVC = segue.destination as! DMLicenseSelectionVC
+            guard let destinationVC: DMLicenseSelectionVC = segue.destination as? DMLicenseSelectionVC else {return}
             destinationVC.jobTitles = jobTitles
             destinationVC.selectedJobTitle = selectedJobTitle
         }

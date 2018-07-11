@@ -14,12 +14,10 @@ extension DMChatVC: NSFetchedResultsControllerDelegate {
     func addUpdateChatToDB(chatObj: JSON?) {
         if let chatObj = chatObj {
             if let _ = chatExits(messageId: chatObj["messageId"].stringValue) {
-                // Update chat
-                ////debugPrint("Update Chat")
-
+                //debugPrint("Update Chat")
             } else {
                 // New chat
-                let chat = NSEntityDescription.insertNewObject(forEntityName: "Chat", into: context) as! Chat
+                guard let chat = NSEntityDescription.insertNewObject(forEntityName: "Chat", into: context) as? Chat else { return }
                 chat.chatId = chatObj["messageId"].int64Value
                 chat.message = chatObj["message"].stringValue
                 chat.fromId = chatObj["fromId"].stringValue
@@ -59,7 +57,7 @@ extension DMChatVC: NSFetchedResultsControllerDelegate {
                 }
             }
         }
-        kAppDelegate.saveContext()
+        appDelegate?.saveContext()
     }
 
     func chatExits(messageId: String) -> Chat? {

@@ -55,20 +55,15 @@ class TabBarVC: UITabBarController, UITabBarControllerDelegate {
         case .jobs, .track, .calender, .messages: break
         // print("jobs")
         case .profile:
-            let navController = viewController as! UINavigationController
-            if let profileVC = navController.viewControllers.first as? DMEditProfileVC {
+            if let navController = viewController as? UINavigationController, let profileVC = navController.viewControllers.first as? DMEditProfileVC  {
                 if profileVC.dashBoardVC != nil {
-//                    profileVC.userProfileAPI()
+                    //  profileVC.userProfileAPI()
                 }
             }
             // print("profile \(profileVC)")
         }
     }
 
-//    override func viewDidLayoutSubviews() {
-//        debugPrint("viewDidLayoutSubviews")
-//
-//    }
     override func removeFromParentViewController() {
         // debugPrint("removeFromParentViewController")
     }

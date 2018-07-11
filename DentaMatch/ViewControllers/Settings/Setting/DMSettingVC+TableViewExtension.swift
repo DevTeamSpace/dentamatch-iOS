@@ -86,14 +86,12 @@ extension DMSettingVC: UITableViewDataSource, UITableViewDelegate {
         signOut { check, _ in
 
             if check == true {
-//                MixpanelOperations.trackMixpanelEvent(eventName: "Logout")
                 MixpanelOperations.mixpanepanelLogout()
-
                 self.deleteFetchController()
                 SocketManager.sharedInstance.closeConnection()
                 UserManager.shared().deleteActiveUser()
                 UserDefaultsManager.sharedInstance.clearCache()
-                let registrationContainer = UIStoryboard.registrationStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.registrationNav) as! UINavigationController
+                guard let registrationContainer = UIStoryboard.registrationStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.registrationNav) as? UINavigationController else {return}
                 UserDefaultsManager.sharedInstance.isLoggedOut = true
                 UIView.transition(with: self.view.window!, duration: 0.25, options: .transitionCrossDissolve, animations: {
                     kAppDelegate.window?.rootViewController = registrationContainer

@@ -83,34 +83,35 @@ class DMLicenseSelectionVC: DMBaseVC, UITextFieldDelegate {
     @IBAction func nextButtonClikced(_: Any) {
         // Dental Stateboard Removed
         for i in 0 ..< (licenseArray?.count)! {
-            let text = licenseArray?[i] as! String
-            if i == 0 {
-                if text.isEmptyField {
-                    makeToast(toastString: Constants.AlertMessage.emptyLicenseNumber)
-                    return
-                } else {
-                    let newChar = text.first
-                    if newChar == "-" {
-                        makeToast(toastString: Constants.AlertMessage.lienseNoStartError)
+            if let text = licenseArray?[i] as? String {
+                if i == 0 {
+                    if text.isEmptyField {
+                        makeToast(toastString: Constants.AlertMessage.emptyLicenseNumber)
                         return
+                    } else {
+                        let newChar = text.first
+                        if newChar == "-" {
+                            makeToast(toastString: Constants.AlertMessage.lienseNoStartError)
+                            return
+                        }
                     }
-                }
-            } else {
-                if text.isEmptyField {
-                    makeToast(toastString: Constants.AlertMessage.emptyState)
-                    return
                 } else {
-                    let newChar = text.first
-                    if newChar == "-" {
-                        makeToast(toastString: Constants.AlertMessage.stateStartError)
+                    if text.isEmptyField {
+                        makeToast(toastString: Constants.AlertMessage.emptyState)
                         return
+                    } else {
+                        let newChar = text.first
+                        if newChar == "-" {
+                            makeToast(toastString: Constants.AlertMessage.stateStartError)
+                            return
+                        }
                     }
                 }
             }
         }
 
-        let params = ["license": self.licenseArray![0], "state": self.licenseArray![1], "jobTitleId": "\(self.selectedJobTitle.jobId)"]
-        updateLicenseAndStateAPI(params: params as! [String: String])
+        let params : [String: String] = ["license": self.licenseArray![0] as? String ?? "", "state": self.licenseArray![1] as? String ?? "", "jobTitleId": "\(self.selectedJobTitle.jobId)"]
+        updateLicenseAndStateAPI(params: params)
     }
 
     func openExperienceFirstScreen() {
@@ -161,7 +162,7 @@ class DMLicenseSelectionVC: DMBaseVC, UITextFieldDelegate {
         // Pass the selected object to the new view controller.
 
         if segue.identifier == "goToWorkExperience" {
-            let destinationVC: DMWorkExperienceStart = segue.destination as! DMWorkExperienceStart
+            guard let destinationVC: DMWorkExperienceStart = segue.destination as? DMWorkExperienceStart else { return }
             destinationVC.selectedJobTitle = selectedJobTitle
             destinationVC.jobTitles = jobTitles
         }

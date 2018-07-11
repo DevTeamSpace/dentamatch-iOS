@@ -24,7 +24,6 @@ extension DMEditProfileVC: UITableViewDataSource, UITableViewDelegate {
             return 305 + aboutTextHeight
 
         case .dentalStateboard:
-
             // Dental Stateboard Removed
 //            if dentalStateBoardURL.isEmpty {
 //                if indexPath.row == 0 {
@@ -175,28 +174,10 @@ extension DMEditProfileVC: UITableViewDataSource, UITableViewDelegate {
         case .profileHeader:
             let cell = tableView.dequeueReusableCell(withIdentifier: "EditProfileHeaderTableCell") as! EditProfileHeaderTableCell
             cell.nameLabel.text = UserManager.shared().activeUser.fullName()
-
-            // cell.placeLabel.attributedText = cell.fillPlaceAndJobTitle(jobTitle: UserManager.shared().activeUser.jobTitle!, place: UserManager.shared().activeUser.preferredJobLocation!)
             cell.profileButton.progressBar.setProgress(1.0, animated: false)
 
             let address = UserManager.shared().activeUser.preferredJobLocation
-//            if let city = UserManager.shared().activeUser.city {
-//                address = city
-//            }
-//
-//            if let state = UserManager.shared().activeUser.state {
-//                if UserManager.shared().activeUser.city!.isEmptyField {
-//                    address += state
-//                } else {
-//                    address += ", "+state
-//                }
-//            }
             cell.placeLabel.attributedText = cell.fillPlaceAndJobTitle(jobTitle: UserManager.shared().activeUser.jobTitle!, place: address!)
-
-//            if (UserManager.shared().activeUser.state?.isEmptyField)! {
-//                cell.placeLabel.attributedText = cell.fillPlaceAndJobTitle(jobTitle: UserManager.shared().activeUser.jobTitle!, place: UserManager.shared().activeUser.country!)
-//            }
-
             cell.profileButton.progressBar.progressBarTrackColor = UIColor.clear
 
             cell.statusButton.isHidden = true

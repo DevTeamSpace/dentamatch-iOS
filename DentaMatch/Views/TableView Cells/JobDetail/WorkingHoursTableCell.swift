@@ -58,7 +58,7 @@ class WorkingHoursTableCell: UITableViewCell {
     }
 
     class func makeWeekDayText(job: Job) -> NSMutableAttributedString {
-        let paragraphStyle = NSMutableParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
+        guard let paragraphStyle = NSMutableParagraphStyle.default.mutableCopy() as? NSMutableParagraphStyle else {return NSMutableAttributedString()}
         paragraphStyle.lineSpacing = 12.0
 
         var isStarted = false

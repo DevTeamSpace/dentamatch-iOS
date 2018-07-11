@@ -14,7 +14,7 @@ class DMMessagesVC: DMBaseVC {
     var placeHolderEmptyJobsView: PlaceHolderJobsView?
 
     let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let appDelegate = UIApplication.shared.delegate as? AppDelegate
     var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
 
     let todaysDate = Date.getTodaysDateMMDDYYYY()
@@ -143,11 +143,11 @@ class DMMessagesVC: DMBaseVC {
     }
 
     @objc func redirectToChat(notification: Notification) {
-        let recruiterId = notification.userInfo?["recruiterId"] as! String
+        guard let recruiterId = notification.userInfo?["recruiterId"] as? String else { return }
         if let chatList = DatabaseManager.chatListExists(recruiterId: recruiterId) {
             openChatPage(chatList: chatList)
         } else {
-            // Recruiter Doesn't exists in core data
+            LogManager.logDebug("Recruiter Doesn't exists in core data")
         }
     }
 

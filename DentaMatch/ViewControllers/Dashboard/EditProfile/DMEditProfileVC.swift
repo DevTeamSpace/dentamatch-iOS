@@ -48,7 +48,7 @@ class DMEditProfileVC: DMBaseVC {
         super.viewDidLoad()
         setup()
 
-        if let dashBoard = ((UIApplication.shared.delegate) as! AppDelegate).window?.rootViewController as? TabBarVC {
+        if let dashBoard = ((UIApplication.shared.delegate) as? AppDelegate)?.window?.rootViewController as? TabBarVC {
             dashBoardVC = dashBoard
         }
 
@@ -143,7 +143,7 @@ class DMEditProfileVC: DMBaseVC {
     }
 
     @objc func psuhRediectNotificationForProfile(userInfo _: Notification) {
-        if let tabbar = ((UIApplication.shared.delegate) as! AppDelegate).window?.rootViewController as? TabBarVC {
+        if let tabbar = ((UIApplication.shared.delegate) as? AppDelegate)?.window?.rootViewController as? TabBarVC {
             _ = navigationController?.popToRootViewController(animated: false)
             tabbar.selectedIndex = 4
         }
@@ -229,28 +229,27 @@ class DMEditProfileVC: DMBaseVC {
         }
 
         // For Work Experience
-        if let experiences = dict?["workExperiences"] {
-            self.experiences = experiences as! [ExperienceModel]
+        if let experiences = dict?["workExperiences"]  as? [ExperienceModel] {
+            self.experiences = experiences
         }
 
         // Upload for affiliation
-        if let affiliation = dict?["affiliations"] {
-            affiliations = affiliation as! [Affiliation]
+        if let affiliation = dict?["affiliations"] as? [Affiliation]{
+            affiliations = affiliation
         }
 
         // For Schools
-        if let schools = dict?["schools"] {
-            schoolCategories = schools as! [SelectedSchool]
+        if let schools = dict?["schools"] as? [SelectedSchool]{
+            schoolCategories = schools
         }
 
         // For Skills
-        if let skills = dict?["skills"] {
-            self.skills = skills as! [Skill]
+        if let skills = dict?["skills"] as? [Skill]{
+            self.skills = skills
         }
 
         // Update for certificate
-        if let certification = dict?["certification"] {
-            let certificateObj = certification as! Certification
+        if let certification = dict?["certification"], let certificateObj = certification as? Certification {
             for certificate in certifications {
                 if certificateObj.certificationId == certificate.certificationId {
                     certificate.certificateImageURL = certificateObj.certificateImageURL
@@ -258,8 +257,7 @@ class DMEditProfileVC: DMBaseVC {
             }
         }
 
-        if let dentalStateBoardURL = dict?["dentalStateBoardImageURL"] {
-            let url = dentalStateBoardURL as! String
+        if let dentalStateBoardURL = dict?["dentalStateBoardImageURL"], let url = dentalStateBoardURL as? String {
             self.dentalStateBoardURL = url
         }
         editProfileTableView.reloadData()
@@ -278,7 +276,6 @@ class DMEditProfileVC: DMBaseVC {
             destinationVC.jobTitles = jobTitles
             if let title = self.currentJobTitle {
                 destinationVC.selectedJob = JobTitle(jobTitle: title)
-
             } else {
                 destinationVC.selectedJob = JobTitle()
             }

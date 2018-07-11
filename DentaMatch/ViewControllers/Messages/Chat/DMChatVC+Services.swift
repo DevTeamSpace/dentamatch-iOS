@@ -46,7 +46,7 @@ extension DMChatVC {
                     }
                     makeToast(toastString: "Recruiter Unblocked")
                 }
-                appDelegate.saveContext()
+                appDelegate?.saveContext()
             } else {
                 makeToast(toastString: response[Constants.ServerKey.message].stringValue)
             }

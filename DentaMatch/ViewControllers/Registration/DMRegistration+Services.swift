@@ -32,8 +32,6 @@ extension DMRegistrationVC {
                 self.alertMessage(title: "Success", message: response![Constants.ServerKey.message].stringValue, buttonText: "Ok", completionHandler: {
                     self.openJobTitleSelection()
                 })
-                // self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
-                // self.goToLogin()
             } else {
                 self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
             }
@@ -100,7 +98,7 @@ extension DMRegistrationVC {
         if let viewControllers = kAppDelegate.window?.rootViewController?.childViewControllers {
             for viewController in viewControllers {
                 if viewController is DMRegistrationContainer {
-                    (viewController as! DMRegistrationContainer).goToLoginAfterRegistration()
+                    (viewController as? DMRegistrationContainer)?.goToLoginAfterRegistration()
                 }
             }
         }

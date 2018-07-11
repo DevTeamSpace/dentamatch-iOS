@@ -14,7 +14,7 @@ extension DMMessagesVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        let chatList = fetchedResultsController.object(at: indexPath) as! ChatList
+        guard let chatList = fetchedResultsController.object(at: indexPath) as? ChatList else { return false }
         if chatList.isBlockedFromSeeker {
             return false
         }
@@ -24,9 +24,10 @@ extension DMMessagesVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let blockAction = UITableViewRowAction(style: .normal, title: "Block", handler: { (_: UITableViewRowAction, indexPath: IndexPath) in
             self.messageListTableView.setEditing(false, animated: true)
-            let chatList = self.fetchedResultsController.object(at: indexPath) as! ChatList
-            DispatchQueue.main.async {
-                self.showBlockRecruiterAlert(chatList: chatList)
+            if let chatList = self.fetchedResultsController.object(at: indexPath) as? ChatList {
+                DispatchQueue.main.async {
+                    self.showBlockRecruiterAlert(chatList: chatList)
+                }
             }
         })
         blockAction.backgroundColor = Constants.Color.cancelJobDeleteColor
@@ -43,7 +44,7 @@ extension DMMessagesVC: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageListTableCell") as! MessageListTableCell
-        let chatList = fetchedResultsController.object(at: indexPath) as! ChatList
+        guard let chatList = fetchedResultsController.object(at: indexPath) as? ChatList else  { return UITableViewCell() }
         cell.recruiterNameLabel.text = chatList.officeName
         cell.lastMessageLabel.text = chatList.lastMessage
         cell.badgeCountLabel.text = "\(chatList.unreadCount)"
@@ -63,7 +64,7 @@ extension DMMessagesVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let chatList = fetchedResultsController.object(at: indexPath) as! ChatList
+        guard let chatList = fetchedResultsController.object(at: indexPath) as? ChatList else { return }
         let chatVC = UIStoryboard.messagesStoryBoard().instantiateViewController(type: DMChatVC.self)!
         chatVC.chatList = chatList
         chatVC.hidesBottomBarWhenPushed = true

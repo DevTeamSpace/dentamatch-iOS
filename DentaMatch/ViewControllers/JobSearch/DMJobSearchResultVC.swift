@@ -203,7 +203,7 @@ class DMJobSearchResultVC: DMBaseVC {
     }
 
     @objc func pushRediectNotificationOtherAll(userInfo _: Notification) {
-        if let tabbar = ((UIApplication.shared.delegate) as! AppDelegate).window?.rootViewController as? TabBarVC {
+        if let tabbar = ((UIApplication.shared.delegate) as? AppDelegate)?.window?.rootViewController as? TabBarVC {
             _ = navigationController?.popToRootViewController(animated: false)
             tabbar.selectedIndex = 0
             let notification = UIStoryboard.notificationStoryBoard().instantiateViewController(type: DMNotificationVC.self)!
@@ -213,7 +213,7 @@ class DMJobSearchResultVC: DMBaseVC {
     }
 
     @objc func pushRediectNotificationOtherAllBackGround(userInfo _: Notification) {
-        if let tabbar = ((UIApplication.shared.delegate) as! AppDelegate).window?.rootViewController as? TabBarVC {
+        if let tabbar = ((UIApplication.shared.delegate) as? AppDelegate)?.window?.rootViewController as? TabBarVC {
             _ = navigationController?.popToRootViewController(animated: false)
             tabbar.selectedIndex = 0
             let notification = UIStoryboard.notificationStoryBoard().instantiateViewController(type: DMNotificationVC.self)!
@@ -223,7 +223,7 @@ class DMJobSearchResultVC: DMBaseVC {
     }
 
     @objc func pushRediectNotificationForJobDetailForground(userInfo: Notification) {
-        if let tabbar = ((UIApplication.shared.delegate) as! AppDelegate).window?.rootViewController as? TabBarVC {
+        if let tabbar = ((UIApplication.shared.delegate) as? AppDelegate)?.window?.rootViewController as? TabBarVC {
             _ = navigationController?.popToRootViewController(animated: false)
             tabbar.selectedIndex = 0
         }
@@ -237,13 +237,12 @@ class DMJobSearchResultVC: DMBaseVC {
     }
 
     @objc func pushRediectNotificationForJobDetailBacground(userInfo: Notification) {
-        if let tabbar = ((UIApplication.shared.delegate) as! AppDelegate).window?.rootViewController as? TabBarVC {
+        if let tabbar = ((UIApplication.shared.delegate) as? AppDelegate)?.window?.rootViewController as? TabBarVC {
             tabbar.selectedIndex = 0
         }
 
         let dict = userInfo.userInfo
-        if let notification = dict?["notificationData"] {
-            let notiObj = notification as! Job
+        if let notification = dict?["notificationData"], let notiObj = notification as? Job  {
             goToJobDetail(jobObj: notiObj)
         }
     }

@@ -26,20 +26,21 @@ extension DMMessagesVC: NSFetchedResultsControllerDelegate {
                 chat.unreadCount = chatListObj["unreadCount"].int16Value
             } else {
                 // New Record
-                let chat = NSEntityDescription.insertNewObject(forEntityName: "ChatList", into: context) as! ChatList
-                chat.lastMessage = chatListObj["message"].stringValue
-                chat.recruiterId = chatListObj["recruiterId"].stringValue
-                chat.isBlockedFromRecruiter = chatListObj["recruiterBlock"].boolValue
-                chat.isBlockedFromSeeker = chatListObj["seekerBlock"].boolValue
-                chat.date = getDate(timestamp: chatListObj["timestamp"].stringValue) as NSDate?
-                chat.timeStamp = chatListObj["timestamp"].doubleValue
-                chat.officeName = chatListObj["name"].stringValue
-                chat.messageListId = chatListObj["messageListId"].stringValue
-                chat.lastMessageId = chatListObj["messageId"].stringValue
-                chat.unreadCount = chatListObj["unreadCount"].int16Value
+                if let chat = NSEntityDescription.insertNewObject(forEntityName: "ChatList", into: context) as? ChatList {
+                    chat.lastMessage = chatListObj["message"].stringValue
+                    chat.recruiterId = chatListObj["recruiterId"].stringValue
+                    chat.isBlockedFromRecruiter = chatListObj["recruiterBlock"].boolValue
+                    chat.isBlockedFromSeeker = chatListObj["seekerBlock"].boolValue
+                    chat.date = getDate(timestamp: chatListObj["timestamp"].stringValue) as NSDate?
+                    chat.timeStamp = chatListObj["timestamp"].doubleValue
+                    chat.officeName = chatListObj["name"].stringValue
+                    chat.messageListId = chatListObj["messageListId"].stringValue
+                    chat.lastMessageId = chatListObj["messageId"].stringValue
+                    chat.unreadCount = chatListObj["unreadCount"].int16Value
+                }
             }
         }
-        appDelegate.saveContext()
+        appDelegate?.saveContext()
     }
 
     func getDate(timestamp: String) -> Date {

@@ -84,7 +84,7 @@ class DMWorkExperienceStart: DMBaseVC, ExperiencePickerViewDelegate {
     // goToExperienceDetail
     @IBAction func nextButtonClicked(_: Any) {
         for i in 0 ..< experienceArray.count {
-            let text = experienceArray[i] as! String
+            let text = experienceArray[i] as? String ?? ""
             if i == 0 {
                 if text.isEmptyField {
                     makeToast(toastString: Constants.AlertMessage.emptyCurrentJobTitle)
@@ -113,7 +113,7 @@ class DMWorkExperienceStart: DMBaseVC, ExperiencePickerViewDelegate {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "goToExperienceDetail" {
-            let destinationVC: DMWorkExperienceVC = segue.destination as! DMWorkExperienceVC
+            guard let destinationVC: DMWorkExperienceVC = segue.destination as? DMWorkExperienceVC else { return }
             destinationVC.currentExperience?.jobTitleID = selectedJobTitle.jobId
             destinationVC.currentExperience?.jobTitle = experienceArray[0] as? String
             destinationVC.currentExperience?.yearOfExperience = experienceArray[1] as? String

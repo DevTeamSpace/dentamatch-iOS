@@ -119,7 +119,8 @@ extension DMWorkExperienceStart: UITableViewDataSource, UITableViewDelegate {
 
     func cellConfigureForExperience(cell: AnimatedPHTableCell, indexPath: IndexPath) {
         cell.commonTextField.placeholder = FieldType.YearOfExperience.description
-        let yearViewObj = ExperiencePickerView.loadExperiencePickerView(withText: experienceArray[indexPath.row - 2] as! String)
+        guard let experience = experienceArray[indexPath.row - 2] as? String else {return}
+        let yearViewObj = ExperiencePickerView.loadExperiencePickerView(withText: experience)
         yearViewObj.delegate = self
         cell.commonTextField.tag = 1
         cell.commonTextField.type = 1

@@ -48,8 +48,8 @@ class DMTrackVC: DMBaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let params = UserDefaultsManager.sharedInstance.loadSearchParameter() {
-            lat = params[Constants.JobDetailKey.lat] as! String
-            long = params[Constants.JobDetailKey.lng] as! String
+            lat = params[Constants.JobDetailKey.lat] as? String ?? "0"
+            long = params[Constants.JobDetailKey.lng] as? String ?? "0"
         }
 
         jobParams = [

@@ -58,12 +58,9 @@ class DMSkillsVC: DMBaseVC {
 
     @IBAction func nextButtonClicked(_: Any) {
         let params = prepareSkillUpdateData()
-        let others = params["other"] as! [[String: AnyObject]]
-        let skills = params["skills"] as! [String]
-
+        guard let others = params["other"] as? [[String: AnyObject]], let skills = params["skills"] as? [String] else { return }
         if skills.count > 0 {
             updateSkillsAPI(params: params)
-
         } else {
             if others.count > 1 {
                 updateSkillsAPI(params: params)

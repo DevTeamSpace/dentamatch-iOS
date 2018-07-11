@@ -45,13 +45,14 @@ extension DMEditStudyVC: UITableViewDataSource, UITableViewDelegate {
         cell.schoolNameTextField.keyboardType = .asciiCapable
 
         for dict in selectedData {
-            let selectedDict = dict as! NSDictionary
-            if selectedDict["parentId"] as! String == "\(school.schoolCategoryId)" {
-                if let schoolName = selectedDict["other"] as? String {
-                    cell.schoolNameTextField.text = schoolName
-                }
-                if let yearOfGraduation = selectedDict["yearOfGraduation"] as? String {
-                    cell.yearOfGraduationTextField.text = yearOfGraduation
+            if let selectedDict = dict as? NSDictionary, let parentId = selectedDict["parentId"] as? String {
+                if parentId == "\(school.schoolCategoryId)" {
+                    if let schoolName = selectedDict["other"] as? String {
+                        cell.schoolNameTextField.text = schoolName
+                    }
+                    if let yearOfGraduation = selectedDict["yearOfGraduation"] as? String {
+                        cell.yearOfGraduationTextField.text = yearOfGraduation
+                    }
                 }
             }
         }
@@ -79,17 +80,12 @@ extension DMEditStudyVC: UITableViewDataSource, UITableViewDelegate {
     func checkForEmptySchoolField() {
         let emptyData = NSMutableArray()
         for category in selectedData {
-            let dict = category as! NSMutableDictionary
-            if (dict["other"] as! String).isEmptyField {
-                emptyData.add(dict)
+            if let dict = category as? NSMutableDictionary, let other = dict["other"] as? String  {
+                if other.isEmptyField {
+                    emptyData.add(dict)
+                }
             }
         }
-//        selectedData.removeObjects(in: emptyData as [AnyObject])
-//        if emptyData.count > 0 {
-//            self.makeToast(toastString: "Please enter school name first")
-//        }
-        // debugPrint(selectedData)
-//        self.studyTableView.reloadData()
     }
 }
 
@@ -102,18 +98,10 @@ extension DMEditStudyVC: UITextFieldDelegate {
         // selectedUniversities["\(textField.tag)"] = nil
 
         if (university?.count)! > 0 {
-            // Its in the list
-            // debugPrint("In the list")
+            LogManager.logDebug("In the list")
         } else {
-            //            if textField.text!.isEmpty {
-            //                selectedUniversities["other_\(textField.tag)"] = nil
-            //                selectedUniversities["other_date\(textField.tag)"] = nil
-            //            } else {
-            //                selectedUniversities["other_date\(textField.tag)"] = "" as AnyObject?
-            //                selectedUniversities["other_\(textField.tag)"] = textField.text! as AnyObject?
-            //            }
+           LogManager.logDebug("Out of list")
         }
-
         // print(selectedUniversities)
 
         if textField.text!.isEmpty {
@@ -172,11 +160,11 @@ extension DMEditStudyVC: UITextFieldDelegate {
                     flag = 1
                 } else {
                     for category in selectedData {
-                        let dict = category as! NSMutableDictionary
-
-                        if dict["parentId"] as! String == "\(textField.tag)" {
-                            dict["other"] = textField.text!
-                            flag = 1
+                        if let dict = category as? NSMutableDictionary, let parentId = dict["parentId"] as? String  {
+                            if parentId == "\(textField.tag)" {
+                                dict["other"] = textField.text!
+                                flag = 1
+                            }
                         }
                     }
                 }

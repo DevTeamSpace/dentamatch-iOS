@@ -93,14 +93,16 @@ class DMEditStudyVC: DMBaseVC {
     func updateProfileScreen() {
         selectedSchoolCategories.removeAll()
         for school in selectedData {
-            let dict = school as! NSMutableDictionary
-            let selectedSchool = SelectedSchool()
-            selectedSchool.schoolCategoryId = dict["parentId"] as! String
-            selectedSchool.universityId = dict["schoolId"] as! String
-            selectedSchool.universityName = dict["other"] as! String
-            selectedSchool.yearOfGraduation = dict["yearOfGraduation"] as? String ?? ""
-            selectedSchool.schoolCategoryName = dict["parentName"] as! String
-            selectedSchoolCategories.append(selectedSchool)
+            if let dict = school as? NSMutableDictionary {
+                let selectedSchool = SelectedSchool()
+                selectedSchool.schoolCategoryId = (dict["parentId"] as? String) ?? ""
+                selectedSchool.universityId = (dict["schoolId"]  as? String) ?? ""
+                selectedSchool.universityName = (dict["other"]  as? String) ?? ""
+                selectedSchool.yearOfGraduation = dict["yearOfGraduation"] as? String ?? ""
+                selectedSchool.schoolCategoryName = dict["parentName"] as? String ?? ""
+                selectedSchoolCategories.append(selectedSchool)
+            }
+            
         }
         NotificationCenter.default.post(name: .updateProfileScreen, object: nil, userInfo: ["schools": self.selectedSchoolCategories])
     }
@@ -113,29 +115,27 @@ class DMEditStudyVC: DMBaseVC {
         let emptyData = NSMutableArray()
         var shouldSaveData = false
         for category in selectedData {
-            let dict = category as! NSMutableDictionary
-            if (dict["other"] as! String).isEmptyField {
-                emptyData.add(dict)
-            } else {
-                shouldSaveData = true
+            if let dict = category as? NSMutableDictionary {
+                if ((dict["other"] as? String) ?? "").isEmptyField {
+                    emptyData.add(dict)
+                } else {
+                    shouldSaveData = true
+                }
             }
         }
         // debugPrint(selectedData.description)
-//        if emptyData.count > 0 {
         if !shouldSaveData {
             makeToast(toastString: "Please enter school name first")
-//            selectedData.removeObjects(in: emptyData as [AnyObject])
             return
         }
-//        selectedData.removeObjects(in: emptyData as [AnyObject])
-        var finalData = NSMutableArray()
+        let finalData = NSMutableArray()
         for data in selectedData {
-            let dict = data as! NSMutableDictionary
-            if (dict["other"] as! String).isEmptyField == false {
-                finalData.add(dict)
+            if let dict = data as? NSMutableDictionary {
+                if ((dict["other"] as? String) ?? "").isEmptyField == false {
+                    finalData.add(dict)
+                }
             }
         }
-
         preparePostSchoolData(schoolsSelected: finalData)
     }
 }
@@ -145,7 +145,6 @@ extension DMEditStudyVC: AutoCompleteSelectedDelegate {
         hideAutoCompleteView()
 
         let school = schoolCategories.filter({ $0.schoolCategoryId == schoolCategoryId }).first
-
         isFilledFromAutoComplete = true
         var flag = 0
 
@@ -155,20 +154,19 @@ extension DMEditStudyVC: AutoCompleteSelectedDelegate {
             dict["schoolId"] = "\(university.universityId)"
             dict["other"] = university.universityName
             dict["parentName"] = school?.schoolCategoryName
-
             selectedData.add(dict)
             flag = 1
         } else {
             for category in selectedData {
-                let dict = category as! NSMutableDictionary
-                if dict["parentId"] as! String == "\(schoolCategoryId)" {
-                    dict["other"] = university.universityName
-                    dict["parentName"] = school?.schoolCategoryName
-                    flag = 1
+                if let dict = category as? NSMutableDictionary, let parentId = dict["parentId"] as? String {
+                    if parentId == "\(schoolCategoryId)" {
+                        dict["other"] = university.universityName
+                        dict["parentName"] = school?.schoolCategoryName
+                        flag = 1
+                    }
                 }
             }
         }
-
         // Array is > 0 but dict doesnt exists
         if flag == 0 {
             let dict = NSMutableDictionary()
@@ -179,18 +177,17 @@ extension DMEditStudyVC: AutoCompleteSelectedDelegate {
             dict["yearOfGraduation"] = ""
             selectedData.add(dict)
         }
-
         // debugPrint(selectedData)
-
         studyTableView.reloadData()
     }
 
     func removeEmptyYear() {
         let emptyData = NSMutableArray()
         for category in selectedData {
-            let dict = category as! NSMutableDictionary
-            if (dict["other"] as! String).isEmptyField {
-                emptyData.add(dict)
+            if let dict = category as? NSMutableDictionary {
+                if ((dict["other"] as? String) ?? "").isEmptyField {
+                    emptyData.add(dict)
+                }
             }
         }
         // debugPrint(selectedData.description)
@@ -206,12 +203,10 @@ extension DMEditStudyVC: YearPickerViewDelegate {
 
     func doneButtonAction(year: Int, tag: Int) {
         var flag = 0
-
         if selectedData.count == 0 {
             let dict = NSMutableDictionary()
             dict["parentId"] = "\(tag)"
             dict["schoolId"] = "\(tag)"
-            //            dict["yearOfGraduation"] = "\(year)"
             if year == -1 {
                 dict["yearOfGraduation"] = ""
                 removeEmptyYear()
@@ -222,30 +217,26 @@ extension DMEditStudyVC: YearPickerViewDelegate {
             if let _ = dict["other"] {
                 // debugPrint("Other dict")
             } else {
-//                self.makeToast(toastString: "Please enter school name first")
                 dict["other"] = ""
             }
             selectedData.add(dict)
             flag = 1
         } else {
             for category in selectedData {
-                let dict = category as! NSMutableDictionary
-                if dict["parentId"] as! String == "\(tag)" {
-//                    dict["yearOfGraduation"] = "\(year)"
-                    if year == -1 {
-                        dict["yearOfGraduation"] = ""
-//                        removeEmptyYear()
-                    } else {
-                        dict["yearOfGraduation"] = "\(year)"
+                if let dict = category as? NSMutableDictionary, let parentId = dict["parentId"] as? String {
+                    if parentId == "\(tag)" {
+                        if year == -1 {
+                            dict["yearOfGraduation"] = ""
+                        } else {
+                            dict["yearOfGraduation"] = "\(year)"
+                        }
+                        if let _ = dict["other"] {
+                            // debugPrint("Other dict")
+                        } else {
+                            dict["other"] = ""
+                        }
+                        flag = 1
                     }
-
-                    if let _ = dict["other"] {
-                        // debugPrint("Other dict")
-                    } else {
-//                        self.makeToast(toastString: "Please enter school name first")
-                        dict["other"] = ""
-                    }
-                    flag = 1
                 }
             }
         }
@@ -255,7 +246,6 @@ extension DMEditStudyVC: YearPickerViewDelegate {
             let dict = NSMutableDictionary()
             dict["parentId"] = "\(tag)"
             dict["schoolId"] = "\(tag)"
-//            dict["yearOfGraduation"] = "\(year)"
             if year == -1 {
                 dict["yearOfGraduation"] = ""
                 removeEmptyYear()
@@ -266,7 +256,6 @@ extension DMEditStudyVC: YearPickerViewDelegate {
             if let _ = dict["other"] {
                 // debugPrint("Other dict")
             } else {
-//                self.makeToast(toastString: "Please enter school name first")
                 dict["other"] = ""
             }
             selectedData.add(dict)

@@ -94,11 +94,11 @@ extension DMEditStudyVC {
                     flag = 1
                 } else {
                     for categoryObj in selectedData {
-                        let dict = categoryObj as! NSMutableDictionary
-
-                        if dict["parentId"] as! String == category.schoolCategoryId {
-                            dict["other"] = university.universityName
-                            flag = 1
+                        if let dict = categoryObj as? NSMutableDictionary, let parentId = dict["parentId"] as? String {
+                            if parentId == category.schoolCategoryId {
+                                dict["other"] = university.universityName
+                                flag = 1
+                            }
                         }
                     }
                 }
@@ -131,13 +131,13 @@ extension DMEditStudyVC {
                     flag = 1
                 } else {
                     for categoryObj in selectedData {
-                        let dict = categoryObj as! NSMutableDictionary
-
-                        if dict["parentId"] as! String == category.schoolCategoryId {
-                            if let other = category.othersArray {
-                                dict["other"] = other[0][Constants.ServerKey.otherSchooling].stringValue
+                        if let dict = categoryObj as? NSMutableDictionary, let parentId = dict["parentId"] as? String {
+                            if parentId == category.schoolCategoryId {
+                                if let other = category.othersArray {
+                                    dict["other"] = other[0][Constants.ServerKey.otherSchooling].stringValue
+                                }
+                                flag = 1
                             }
-                            flag = 1
                         }
                     }
                 }
@@ -171,10 +171,9 @@ extension DMEditStudyVC {
         }
         // selectedData
         var isGraduationListEmpty = false
-        var finalData = NSMutableArray()
+        let finalData = NSMutableArray()
         for school in schoolsSelected {
-            let dict = school as! NSMutableDictionary
-            if let yearOfGraduation = dict["yearOfGraduation"] as? String {
+            if let dict = school as? NSMutableDictionary, let yearOfGraduation = dict["yearOfGraduation"] as? String {
                 // Everything fine
                 if !yearOfGraduation.isEmpty {
                     finalData.add(school)
@@ -191,21 +190,22 @@ extension DMEditStudyVC {
         }
         selectedData.removeAllObjects()
         for school in finalData {
-            let dict = school as! NSMutableDictionary
-            checkAvailabilityInAutoComplete(dictionary: dict)
-            // debugPrint(dict)
-
-            let makeData = NSMutableDictionary()
-            makeData.setObject(dict["schoolId"] as! String, forKey: "schoolingChildId" as NSCopying)
-            makeData.setObject((dict["yearOfGraduation"] as? String) ?? "", forKey: "yearOfGraduation" as NSCopying)
-
-            if dict["isOther"] as! Bool {
-                makeData.setObject(dict["other"] as! String, forKey: "otherSchooling" as NSCopying)
-            } else {
-                makeData.setObject("", forKey: "otherSchooling" as NSCopying)
+            if let dict = school as? NSMutableDictionary {
+                checkAvailabilityInAutoComplete(dictionary: dict)
+                //debugPrint(dict)
+                let makeData = NSMutableDictionary()
+                makeData.setObject((dict["schoolId"] as? String) ?? "", forKey: "schoolingChildId" as NSCopying)
+                makeData.setObject((dict["yearOfGraduation"] as? String) ?? "", forKey: "yearOfGraduation" as NSCopying)
+                
+                if (dict["isOther"] as? Bool) ?? false {
+                    makeData.setObject((dict["other"] as? String) ?? "", forKey: "otherSchooling" as NSCopying)
+                } else {
+                    makeData.setObject("", forKey: "otherSchooling" as NSCopying)
+                }
+                
+                selectedArray.add(makeData)
             }
-
-            selectedArray.add(makeData)
+            
         }
         params["schoolDataArray"] = selectedArray as AnyObject
 
@@ -215,8 +215,8 @@ extension DMEditStudyVC {
 
     func checkAvailabilityInAutoComplete(dictionary: NSMutableDictionary) {
         let dict = dictionary
-        let schoolName = (dict["other"] as! String).trim()
-        let parentId = dict["parentId"] as! String
+        let schoolName = (dict["other"] as? String)?.trim()
+        let parentId = (dict["parentId"] as? String) ?? ""
         let universities = schoolCategories.filter({ $0.schoolCategoryId == parentId }).first?.universities
 
         let university = universities?.filter({ $0.universityName == schoolName })

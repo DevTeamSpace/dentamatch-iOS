@@ -31,7 +31,7 @@ class DMChatVC: DMBaseVC {
     var shouldFetchFromBeginning = false
 
     let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let appDelegate = UIApplication.shared.delegate as? AppDelegate
     var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
 
     var printData = true

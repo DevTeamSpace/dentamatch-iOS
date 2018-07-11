@@ -77,7 +77,7 @@ extension DMMessagesVC {
                     chatList.isBlockedFromSeeker = false
                     makeToast(toastString: "Recruiter Unblocked")
                 }
-                appDelegate.saveContext()
+                appDelegate?.saveContext()
             } else {
                 makeToast(toastString: response[Constants.ServerKey.message].stringValue)
             }

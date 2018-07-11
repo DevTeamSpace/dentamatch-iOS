@@ -48,11 +48,9 @@ class DMOnboardingVC: DMBaseVC {
     }
 
     // MARK: - IBActions
-
     @IBAction func skipButtonPressed(_: AnyObject) {
         // Go to login/Registration
-
-        let registrationContainer = UIStoryboard.registrationStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.registrationNav) as! UINavigationController
+        guard let registrationContainer = UIStoryboard.registrationStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.registrationNav) as? UINavigationController else {return}
 
         UIView.transition(with: view.window!, duration: 0.25, options: .transitionCrossDissolve, animations: {
             kAppDelegate.window?.rootViewController = registrationContainer

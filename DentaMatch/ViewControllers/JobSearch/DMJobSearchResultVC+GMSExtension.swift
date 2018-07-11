@@ -18,8 +18,7 @@ extension DMJobSearchResultVC: GMSMapViewDelegate {
     }
 
     func mapView(_: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        let marker = marker as! JobMarker
-
+        guard let marker = marker as? JobMarker else { return false }
         if let index = indexOfSelectedMarker {
             if marker.index != index {
                 deselectMarker()
