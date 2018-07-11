@@ -168,7 +168,7 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     
     //MARK:- Socket Delegates
     func didConnectSocket() {
-        debugPrint("Socket Connected")
+        LogManager.logDebug("Socket Connected")
         if let _ = UserManager.shared().activeUser {
             self.initServer()
             eventForReceiveMessage()
@@ -179,7 +179,7 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     }
     
     func didDisconnectSocket() {
-        debugPrint("Socket Disconnected")
+        LogManager.logDebug("Socket Connected")
     }
     
     //MARK:- Events for On
