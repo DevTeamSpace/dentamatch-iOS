@@ -29,11 +29,11 @@ class HiredJobNotificationTableCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
-    func configureHiredJobNotificationTableCell(userNotificationObj: UserNotification) {
-        notificationTextLabel.text = userNotificationObj.message
-        let address = "\((userNotificationObj.jobdetail?.officeName)!)!, \((userNotificationObj.jobdetail?.address)!)"
-        notificationJobLocationLabel.text = address
+    
+    func configureHiredJobNotificationTableCell(userNotificationObj:UserNotification) {
+        self.notificationTextLabel.text = userNotificationObj.message
+        let address = "\((userNotificationObj.jobdetail?.officeName)!), \((userNotificationObj.jobdetail?.address)!)"
+        self.notificationJobLocationLabel.text = address
         let date = Date.stringToDateForFormatter(date: userNotificationObj.createdAtTime, dateFormate: Date.dateFormatYYYYMMDDHHMMSS())
         notificationTimeLabel.text = timeAgoSince(date)
         if userNotificationObj.jobdetail?.jobType == 1 {

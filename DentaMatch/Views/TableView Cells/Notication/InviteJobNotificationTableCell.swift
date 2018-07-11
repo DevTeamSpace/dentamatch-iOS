@@ -31,11 +31,11 @@ class InviteJobNotificationTableCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
-    func configureInviteJobNotificationTableCell(userNotificationObj: UserNotification) {
-        notificationTextLabel.text = userNotificationObj.message
-        let address = "\((userNotificationObj.jobdetail?.officeName)!)!, \((userNotificationObj.jobdetail?.address)!)"
-        notificationJobLocationLabel.text = address
+    
+    func configureInviteJobNotificationTableCell(userNotificationObj:UserNotification) {
+        self.notificationTextLabel.text = userNotificationObj.message
+        let address = "\((userNotificationObj.jobdetail?.officeName)!), \((userNotificationObj.jobdetail?.address)!)"
+        self.notificationJobLocationLabel.text = address
         let date = Date.stringToDateForFormatter(date: userNotificationObj.createdAtTime, dateFormate: Date.dateFormatYYYYMMDDHHMMSS())
         notificationTimeLabel.text = timeAgoSince(date)
         if userNotificationObj.jobdetail?.jobType == 1 {
