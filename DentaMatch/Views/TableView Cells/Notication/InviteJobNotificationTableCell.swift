@@ -37,7 +37,7 @@ class InviteJobNotificationTableCell: UITableViewCell {
     
     func configureInviteJobNotificationTableCell(userNotificationObj:UserNotification) {
         self.notificationTextLabel.text = userNotificationObj.message
-        let address = "\((userNotificationObj.jobdetail?.officeName)!)!, \((userNotificationObj.jobdetail?.address)!)"
+        let address = "\((userNotificationObj.jobdetail?.officeName)!), \((userNotificationObj.jobdetail?.address)!)"
         self.notificationJobLocationLabel.text = address
         let date = Date.stringToDateForFormatter(date: userNotificationObj.createdAtTime, dateFormate: Date.dateFormatYYYYMMDDHHMMSS())
         notificationTimeLabel.text = timeAgoSince(date)
