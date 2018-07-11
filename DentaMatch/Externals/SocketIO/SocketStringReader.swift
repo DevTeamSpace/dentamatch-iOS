@@ -44,14 +44,39 @@ struct SocketStringReader {
         
         return currentIndex
     }
-    
-    mutating func read(count: Int) -> String {
+    /* Commented on 11 july 18 Original
+     * fatal error: cannot increment beyond endIndex
+     */
+    /*mutating func read(count: Int) -> String {
         let readString = message[currentIndex..<message.index(currentIndex, offsetBy: count)]
         
         advance(by: count)
         
         return String(readString)
+    }*/
+    
+    /* Added on 11 july 18
+     * Solution: -> fatal error: cannot increment beyond endIndex
+     */
+    mutating func read(count: Int) -> String {
+        let currentPosition = message.distance(from: message.startIndex, to: currentIndex)
+        let totalLength = message.distance(from: message.startIndex, to: message.endIndex)
+        let maxCount = min(count, totalLength - currentPosition)
+        
+        let readString = message[currentIndex..<message.index(currentIndex, offsetBy: maxCount)]
+        
+        advance(by: maxCount)
+        
+        return String(readString)
     }
+    
+    /*  let currentPosition = message.distance(from: message.startIndex, to: currentIndex)
+     let totalLength = message.distance(from: message.startIndex, to: message.endIndex)
+     let maxCount = min(count, totalLength - currentPosition)
+     
+     let readString = message[currentIndex..<message.characters.index(currentIndex, offsetBy: maxCount)]
+     
+     advance(by: maxCount)*/
     
     mutating func readUntilOccurence(of string: String) -> String {
         let substring = message[currentIndex..<message.endIndex]
