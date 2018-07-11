@@ -45,7 +45,7 @@ extension String {
         return false
     }
 
-    func dropLast(_ n: Int) -> String {
+    func dropLastCharacter(_ n: Int) -> String {
         return String(self.dropLast(n))
     }
 

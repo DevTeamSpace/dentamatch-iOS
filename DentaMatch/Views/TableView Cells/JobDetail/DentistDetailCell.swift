@@ -133,7 +133,7 @@ class DentistDetailCell: UITableViewCell {
             for date in job.jobTypeDates {
                 lblDays.text = lblDays.text! + Date.commonDateFormatEEMMDD(dateString: date) + ", "
             }
-            lblDays.text = lblDays.text?.dropLast(2)
+            lblDays.text = lblDays.text?.dropLastCharacter(2)
         }
         lblPercentSkill.text = String(format: "%.2f", job.percentSkillsMatch) + "%"
     }
