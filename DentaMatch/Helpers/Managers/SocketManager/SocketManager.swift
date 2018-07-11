@@ -179,7 +179,7 @@ class SocketManager: NSObject,SocketConnectionDelegate {
     }
     
     func didDisconnectSocket() {
-        LogManager.logDebug("Socket Connected")
+        LogManager.logDebug("Socket Disconnected")
     }
     
     //MARK:- Events for On
