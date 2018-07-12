@@ -665,8 +665,8 @@ open class WebSocket : NSObject, StreamDelegate {
                 len = UInt64(bufferLen-offset)
             }
             let data: Data
-            if len < 0 {
-                len = 0
+            if len == 0 {
+                //len = 0
                 data = Data()
             } else {
                 if receivedOpcode == .connectionClose && len > 0 {
