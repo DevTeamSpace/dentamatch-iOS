@@ -62,9 +62,11 @@ struct SocketStringReader {
         let currentPosition = message.distance(from: message.startIndex, to: currentIndex)
         let totalLength = message.distance(from: message.startIndex, to: message.endIndex)
         let maxCount = min(count, totalLength - currentPosition)
-        
         let readString = message[currentIndex..<message.index(currentIndex, offsetBy: maxCount)]
-        
+//        LogManager.logDebug("currentIndex.hashValue : \(currentIndex.hashValue)")
+//        if currentIndex.hashValue > maxCount {
+//            return ""
+//        }
         advance(by: maxCount)
         
         return String(readString)
