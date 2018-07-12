@@ -23,7 +23,7 @@ let kOkButtonTitle = "Ok"
 let kOpenGoogleMapUrl = "comgooglemaps://"
 let kGoogleSearchMap = "https://maps.google.com/?q="
 let kInstaBugKey = "AIzaSyD1xD10kM-xCzRswPNEoovElT2vhpJQSGo"
-
+// swiftlint:disable nesting
 struct Constants {
     static let BASE_URL = Constants.apiBaseURL()
 
@@ -298,3 +298,4 @@ struct Constants {
         static let aboutMeLimit = 500
     }
 }
+// swiftlint:enable nesting

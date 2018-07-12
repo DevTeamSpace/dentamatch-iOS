@@ -15,56 +15,31 @@ public func timeAgoSince(_ date: Date) -> String {
 
     if let year = components.year, year >= 2 {
         return "\(year) years ago"
-    }
-
-    if let year = components.year, year >= 1 {
+    }else if let year = components.year, year >= 1 {
         return "Last year"
-    }
-
-    if let month = components.month, month >= 2 {
+    }else if let month = components.month, month >= 2 {
         return "\(month) months ago"
-    }
-
-    if let month = components.month, month >= 1 {
+    }else if let month = components.month, month >= 1 {
         return "Last month"
-    }
-
-    if let week = components.weekOfYear, week >= 2 {
+    }else if let week = components.weekOfYear, week >= 2 {
         return "\(week) weeks ago"
-    }
-
-    if let week = components.weekOfYear, week >= 1 {
+    }else if let week = components.weekOfYear, week >= 1 {
         return "Last week"
-    }
-
-    if let day = components.day, day >= 2 {
+    }else if let day = components.day, day >= 2 {
         return "\(day) days ago"
-    }
-
-    if let day = components.day, day >= 1 {
+    }else if let day = components.day, day >= 1 {
         return "Yesterday"
-    }
-
-    if let hour = components.hour, hour >= 2 {
+    }else if let hour = components.hour, hour >= 2 {
         return "\(hour) hours ago"
-    }
-
-    if let hour = components.hour, hour >= 1 {
+    }else if let hour = components.hour, hour >= 1 {
         return "1 hour ago"
-    }
-
-    if let minute = components.minute, minute >= 2 {
+    }else if let minute = components.minute, minute >= 2 {
         return "\(minute) minutes ago"
-    }
-
-    if let minute = components.minute, minute >= 1 {
+    }else if let minute = components.minute, minute >= 1 {
         return "1 minute ago"
-    }
-
-    if let second = components.second, second >= 3 {
+    }else if let second = components.second, second >= 3 {
         return "\(second) seconds ago"
     }
-
     return "Just now"
 }
 
@@ -79,51 +54,27 @@ func timeAgoSinceDate(date: NSDate, numericDates: Bool) -> String {
     if components.year! >= 2 {
         return "\(components.year ?? 0) years ago"
     } else if components.year! >= 1 {
-        if numericDates {
-            return "1 year ago"
-        } else {
-            return "Last year"
-        }
+        return numericDates ? "1 year ago" : "Last year"
     } else if components.month! >= 2 {
         return "\(components.month ?? 0) months ago"
     } else if components.month! >= 1 {
-        if numericDates {
-            return "1 month ago"
-        } else {
-            return "Last month"
-        }
+        return numericDates ? "1 month ago" : "Last month"
     } else if components.weekOfYear! >= 2 {
         return "\(components.weekOfYear ?? 0) weeks ago"
     } else if components.weekOfYear! >= 1 {
-        if numericDates {
-            return "1 week ago"
-        } else {
-            return "Last week"
-        }
+        return numericDates ? "1 week ago" : "Last week"
     } else if components.day! >= 2 {
         return "\(components.day ?? 0) days ago"
     } else if components.day! >= 1 {
-        if numericDates {
-            return "1 day ago"
-        } else {
-            return "Yesterday"
-        }
+        return numericDates ? "1 day ago" : "Yesterday"
     } else if components.hour! >= 2 {
         return "\(components.hour ?? 0) hours ago"
     } else if components.hour! >= 1 {
-        if numericDates {
-            return "1 hour ago"
-        } else {
-            return "An hour ago"
-        }
+        return numericDates ? "1 hour ago" : "An hour ago"
     } else if components.minute! >= 2 {
         return "\(components.minute ?? 0) minutes ago"
     } else if components.minute! >= 1 {
-        if numericDates {
-            return "1 minute ago"
-        } else {
-            return "A minute ago"
-        }
+        return numericDates ? "1 minute ago" : "A minute ago"
     } else if components.second! >= 3 {
         return "\(components.second ?? 0) seconds ago"
     } else {
