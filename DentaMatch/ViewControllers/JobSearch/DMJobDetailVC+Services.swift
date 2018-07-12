@@ -133,7 +133,7 @@ extension DMJobDetailVC {
                     })
                 } else {
                     DispatchQueue.main.async {
-                        kAppDelegate.showOverlay(isJobSeekerVerified: true)
+                        kAppDelegate?.showOverlay(isJobSeekerVerified: true)
                     }
 //                    self.alertMessage(title: Constants.AlertMessage.completeYourProfile, message: Constants.AlertMessage.completeYourProfileDetailMsg, leftButtonText: Constants.Strings.no, rightButtonText: Constants.Strings.yes, completionHandler: { (isLeftButtonPressed) in
 //                        if isLeftButtonPressed {

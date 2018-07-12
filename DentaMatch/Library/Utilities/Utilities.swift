@@ -58,7 +58,7 @@ class Utilities: NSObject {
         guard let registrationContainer = UIStoryboard.registrationStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.registrationNav) as? UINavigationController else { return }
         UserDefaultsManager.sharedInstance.isLoggedOut = true
         UIView.transition(with: (UIApplication.shared.keyWindow?.rootViewController?.view.window)!, duration: 0.25, options: .transitionCrossDissolve, animations: {
-            kAppDelegate.window?.rootViewController = registrationContainer
+            kAppDelegate?.window?.rootViewController = registrationContainer
 
         }) { (_: Bool) in
             DatabaseManager.clearDB()

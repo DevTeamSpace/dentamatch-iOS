@@ -109,7 +109,7 @@ class UserDefaultsManager: NSObject {
     var accessToken: String {
         get {
             if kUserDefaults.value(forKey: Constants.UserDefaultsKey.accessToken) != nil {
-                return kUserDefaults.value(forKey: Constants.UserDefaultsKey.accessToken) as! String
+                return kUserDefaults.value(forKey: Constants.UserDefaultsKey.accessToken) as? String ?? ""
             }
             return ""
         }
@@ -122,7 +122,7 @@ class UserDefaultsManager: NSObject {
     var profileImageURL: String {
         get {
             if kUserDefaults.value(forKey: Constants.UserDefaultsKey.profileImageURL) != nil {
-                return kUserDefaults.value(forKey: Constants.UserDefaultsKey.profileImageURL) as! String
+                return kUserDefaults.value(forKey: Constants.UserDefaultsKey.profileImageURL) as? String ?? ""
             }
             return ""
         }
@@ -135,7 +135,7 @@ class UserDefaultsManager: NSObject {
     var licenseImageURL: String {
         get {
             if kUserDefaults.value(forKey: Constants.UserDefaultsKey.licenseImageURL) != nil {
-                return kUserDefaults.value(forKey: Constants.UserDefaultsKey.licenseImageURL) as! String
+                return kUserDefaults.value(forKey: Constants.UserDefaultsKey.licenseImageURL) as? String ?? ""
             }
             return ""
         }

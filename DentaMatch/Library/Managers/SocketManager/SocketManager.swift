@@ -78,7 +78,7 @@ class SocketManager: NSObject, SocketConnectionDelegate {
                 chatList.isBlockedFromSeeker = false
                 NotificationCenter.default.post(name: .refreshUnblockList, object: params)
             }
-            kAppDelegate.saveContext()
+            kAppDelegate?.saveContext()
         }
     }
 

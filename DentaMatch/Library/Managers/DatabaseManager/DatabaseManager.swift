@@ -17,17 +17,17 @@ class DatabaseManager: NSObject {
         clearChatList()
         clearChats()
         NSFetchedResultsController<NSFetchRequestResult>.deleteCache(withName: nil)
-        kAppDelegate.saveContext()
+        kAppDelegate?.saveContext()
     }
 
     private class func clearChatList() {
         let fetchRequest: NSFetchRequest<ChatList> = ChatList.fetchRequest()
         do {
-            let chatLists = try kAppDelegate.managedObjectContext.fetch(fetchRequest)
-            for chatList in chatLists {
-                kAppDelegate.managedObjectContext.delete(chatList)
+            let chatLists = try kAppDelegate?.managedObjectContext.fetch(fetchRequest)
+            for chatList in chatLists! {
+                kAppDelegate?.managedObjectContext.delete(chatList)
             }
-            kAppDelegate.saveContext()
+            kAppDelegate?.saveContext()
         } catch _ as NSError {
             // debugPrint(error.localizedDescription)
         }
@@ -36,11 +36,11 @@ class DatabaseManager: NSObject {
     private class func clearChats() {
         let fetchRequest: NSFetchRequest<Chat> = Chat.fetchRequest()
         do {
-            let chats = try kAppDelegate.managedObjectContext.fetch(fetchRequest)
-            for chat in chats {
-                kAppDelegate.managedObjectContext.delete(chat)
+            let chats = try kAppDelegate?.managedObjectContext.fetch(fetchRequest)
+            for chat in chats! {
+                kAppDelegate?.managedObjectContext.delete(chat)
             }
-            kAppDelegate.saveContext()
+            kAppDelegate?.saveContext()
         } catch _ as NSError {
             // debugPrint(error.localizedDescription)
         }
@@ -54,7 +54,7 @@ class DatabaseManager: NSObject {
 
             } else {
                 // New chat
-                guard let chat = NSEntityDescription.insertNewObject(forEntityName: "Chat", into: kAppDelegate.managedObjectContext) as? Chat else {return}
+                guard let chat = NSEntityDescription.insertNewObject(forEntityName: "Chat", into: (kAppDelegate?.managedObjectContext)!) as? Chat else {return}
                 chat.chatId = chatObj["messageId"].int64Value
                 chat.message = chatObj["message"].stringValue
                 chat.fromId = chatObj["fromId"].stringValue
@@ -82,14 +82,14 @@ class DatabaseManager: NSObject {
                             chatList.unreadCount = chatList.unreadCount + 1
 
                             ToastView.showNotificationToast(message: chatObj["message"].stringValue, name: chatObj["fromName"].stringValue, imageUrl: "", type: .White, onCompletion: {
-                                kAppDelegate.chatSocketNotificationTap(recruiterId: chatObj["fromId"].stringValue)
+                                kAppDelegate?.chatSocketNotificationTap(recruiterId: chatObj["fromId"].stringValue)
                             })
                         }
                     }
                 }
             }
         }
-        kAppDelegate.saveContext()
+        kAppDelegate?.saveContext()
     }
 
     class func updateReadCount(recruiterId: String) {
@@ -97,7 +97,7 @@ class DatabaseManager: NSObject {
             if let chatList = chatListExists(recruiterId: recruiterId) {
                 chatList.unreadCount = 0
             }
-            kAppDelegate.saveContext()
+            kAppDelegate?.saveContext()
         }
     }
 
@@ -105,9 +105,9 @@ class DatabaseManager: NSObject {
         let fetchRequest: NSFetchRequest<Chat> = Chat.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "chatId == %@", messageId)
         do {
-            let chats = try kAppDelegate.managedObjectContext.fetch(fetchRequest)
-            if chats.count > 0 {
-                return chats.first
+            let chats = try kAppDelegate?.managedObjectContext.fetch(fetchRequest)
+            if (chats?.count)! > 0 {
+                return chats?.first
             }
         } catch _ as NSError {
             // debugPrint(error.localizedDescription)
@@ -119,9 +119,9 @@ class DatabaseManager: NSObject {
         let fetchRequest: NSFetchRequest<ChatList> = ChatList.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "recruiterId == %@", recruiterId)
         do {
-            let chatLists = try kAppDelegate.managedObjectContext.fetch(fetchRequest)
-            if chatLists.count > 0 {
-                return chatLists.first
+            let chatLists = try kAppDelegate?.managedObjectContext.fetch(fetchRequest)
+            if (chatLists?.count)! > 0 {
+                return chatLists?.first
             }
         } catch _ as NSError {
             // debugPrint(error.localizedDescription)
@@ -134,8 +134,8 @@ class DatabaseManager: NSObject {
         let userId = UserManager.shared().activeUser.userId
         fetchRequest.predicate = NSPredicate(format: "(fromId == %@ AND toId == %@) or (fromId == %@ AND toId == %@)", userId!, recruiterId, recruiterId, userId!)
         do {
-            let chatList = try kAppDelegate.managedObjectContext.fetch(fetchRequest)
-            return chatList.count
+            let chatList = try kAppDelegate?.managedObjectContext.fetch(fetchRequest)
+            return chatList!.count
         } catch _ as NSError {
             // debugPrint(error.localizedDescription)
         }
@@ -151,7 +151,7 @@ class DatabaseManager: NSObject {
 
                 } else {
                     // New chat
-                    guard let chat = NSEntityDescription.insertNewObject(forEntityName: "Chat", into: kAppDelegate.managedObjectContext) as? Chat else {return}
+                    guard let chat = NSEntityDescription.insertNewObject(forEntityName: "Chat", into: (kAppDelegate?.managedObjectContext)!) as? Chat else {return}
                     chat.chatId = chatObj["messageId"].int64Value
                     chat.message = chatObj["message"].stringValue
                     chat.fromId = chatObj["fromId"].stringValue
@@ -181,7 +181,7 @@ class DatabaseManager: NSObject {
                     }
                 }
             }
-            kAppDelegate.saveContext()
+            kAppDelegate?.saveContext()
         }
     }
 
@@ -191,7 +191,7 @@ class DatabaseManager: NSObject {
             // debugPrint("Update Chat")
         } else {
             // New chat
-           guard let chatList = NSEntityDescription.insertNewObject(forEntityName: "ChatList", into: kAppDelegate.managedObjectContext) as? ChatList else {return}
+            guard let chatList = NSEntityDescription.insertNewObject(forEntityName: "ChatList", into: (kAppDelegate?.managedObjectContext)!) as? ChatList else {return}
             chatList.lastMessage = chatObj["message"].stringValue
             chatList.recruiterId = chatObj["recruiterId"].stringValue
             chatList.isBlockedFromRecruiter = chatObj["recruiterBlock"].boolValue
@@ -206,10 +206,10 @@ class DatabaseManager: NSObject {
             NotificationCenter.default.post(name: .hideMessagePlaceholder, object: nil)
 
             ToastView.showNotificationToast(message: chatObj["message"].stringValue, name: chatObj["name"].stringValue, imageUrl: "", type: .White, onCompletion: {
-                kAppDelegate.chatSocketNotificationTap(recruiterId: chatObj["recruiterId"].stringValue)
+                kAppDelegate?.chatSocketNotificationTap(recruiterId: chatObj["recruiterId"].stringValue)
             })
         }
-        kAppDelegate.saveContext()
+        kAppDelegate?.saveContext()
         addChatForFirstTimeMessage(chatObj: chatObj)
     }
 
@@ -221,7 +221,7 @@ class DatabaseManager: NSObject {
 
             } else {
                 // New chat
-                guard let chat = NSEntityDescription.insertNewObject(forEntityName: "Chat", into: kAppDelegate.managedObjectContext) as? Chat else {return}
+                guard let chat = NSEntityDescription.insertNewObject(forEntityName: "Chat", into: (kAppDelegate?.managedObjectContext)!) as? Chat else {return}
                 chat.chatId = chatObj["messageId"].int64Value
                 chat.message = chatObj["message"].stringValue
                 chat.fromId = chatObj["recruiterId"].stringValue
@@ -236,7 +236,7 @@ class DatabaseManager: NSObject {
                 // debugPrint("New Chat Saved")
             }
         }
-        kAppDelegate.saveContext()
+        kAppDelegate?.saveContext()
     }
 
     class func getDate(timestamp: Double) -> (time: String, date: String) {

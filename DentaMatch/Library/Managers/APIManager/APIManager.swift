@@ -131,14 +131,14 @@ class APIManager: NSObject {
             for (key, value) in parameters! {
                 if key == "image" {
                     multipartFormData.append(
-                        value as! Data,
+                        (value as? Data)!,
                         withName: key,
                         fileName: "profileImage.jpg",
                         mimeType: "image/jpg"
                     )
                 } else {
                     // multipartFormData
-                    multipartFormData.append((value as! String).data(using: .utf8)!, withName: key)
+                    multipartFormData.append((value as? String ?? "").data(using: .utf8)!, withName: key)
                 }
             }
         }, usingThreshold: 1, to: serviceName, method: .post, headers: [Constants.ServerKey.accessToken: getAccessToken()]) { (encodingResult: SessionManager.MultipartFormDataEncodingResult) in

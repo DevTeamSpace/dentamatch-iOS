@@ -53,7 +53,7 @@ class DMOnboardingVC: DMBaseVC {
         guard let registrationContainer = UIStoryboard.registrationStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.registrationNav) as? UINavigationController else {return}
 
         UIView.transition(with: view.window!, duration: 0.25, options: .transitionCrossDissolve, animations: {
-            kAppDelegate.window?.rootViewController = registrationContainer
+            kAppDelegate?.window?.rootViewController = registrationContainer
         }) { (_: Bool) in
             // completion
         }

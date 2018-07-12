@@ -251,7 +251,7 @@ class DMJobTitleSelectionVC: DMBaseVC, ToolBarButtonDelegate {
 
     func openDashboard() {
         let dashboardVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: TabBarVC.self)!
-        kAppDelegate.window?.rootViewController = dashboardVC
+        kAppDelegate?.window?.rootViewController = dashboardVC
         UserDefaultsManager.sharedInstance.isProfileSkipped = true
     }
 

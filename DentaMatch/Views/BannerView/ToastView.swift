@@ -73,7 +73,7 @@ class ToastView: UIView {
         let toastHeight = getHeightForText(messageString: message)
 
         // toast view
-        let toast: ToastView = UINib(nibName: "ToastView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! ToastView
+        let toast: ToastView = (UINib(nibName: "ToastView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as? ToastView) ?? ToastView()
         toast.messageLabel.text = message
 
         toast.imageviewIcon.image = image
@@ -99,7 +99,7 @@ class ToastView: UIView {
         let toastHeight = getHeightForText(messageString: message)
 
         // toast view
-        let toast: ToastView = UINib(nibName: "ToastView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! ToastView
+         let toast: ToastView = (UINib(nibName: "ToastView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as? ToastView) ?? ToastView()
         toast.messageLabel.text = message
 
         toast.nameLabel.text = name

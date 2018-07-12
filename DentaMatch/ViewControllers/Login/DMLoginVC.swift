@@ -91,7 +91,7 @@ class DMLoginVC: DMBaseVC {
     func openJobTitleSelection() {
         let jobTitleSectionVC = UIStoryboard.profileStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.profileNav)
         UIView.transition(with: view.window!, duration: 0.5, options: .transitionFlipFromRight, animations: {
-            kAppDelegate.window?.rootViewController = jobTitleSectionVC
+            kAppDelegate?.window?.rootViewController = jobTitleSectionVC
             SocketManager.sharedInstance.establishConnection()
         }) { (_: Bool) in
         }

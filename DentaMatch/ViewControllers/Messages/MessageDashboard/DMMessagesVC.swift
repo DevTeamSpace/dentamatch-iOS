@@ -13,7 +13,7 @@ class DMMessagesVC: DMBaseVC {
     @IBOutlet var messageListTableView: UITableView!
     var placeHolderEmptyJobsView: PlaceHolderJobsView?
 
-    let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
+    let context = ((UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext)!
     let appDelegate = UIApplication.shared.delegate as? AppDelegate
     var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
 

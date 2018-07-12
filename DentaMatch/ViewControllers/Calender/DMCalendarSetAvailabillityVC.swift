@@ -118,7 +118,7 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
         setMyAvailabilityOnServer { _, _ in
             // debugPrint(response ?? "response not available")
             if self.fromJobSelection {
-                kAppDelegate.goToDashBoard()
+                kAppDelegate?.goToDashBoard()
             } else {
                 _ = self.navigationController?.popViewController(animated: true)
             }

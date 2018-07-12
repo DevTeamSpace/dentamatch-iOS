@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 let kUserDefaults = UserDefaults.standard
-let kAppDelegate = UIApplication.shared.delegate as! AppDelegate
+let kAppDelegate = UIApplication.shared.delegate as? AppDelegate
 let kDeviceId = "com.appster.dentamatch.deviceId"
 let kCustomDesignFont = "dentamatch"
 let kLogEnabled = true

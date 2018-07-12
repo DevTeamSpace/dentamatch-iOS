@@ -33,7 +33,7 @@ class DMExecutiveSummaryVC: DMBaseVC {
     }
 
     func openDashboard() {
-        kAppDelegate.goToSearch()
+        kAppDelegate?.goToSearch()
 
     }
 

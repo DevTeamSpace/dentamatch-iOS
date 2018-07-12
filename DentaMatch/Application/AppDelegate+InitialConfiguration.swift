@@ -54,7 +54,7 @@ extension AppDelegate {
             if remoteNotification.allKeys.count > 0 {
                 //                    self.tabIndex = 4
                 if let noti = remoteNotification["data"] as? NSDictionary {
-                    let megCheck = noti["data"] as! NSDictionary
+                    guard let megCheck = noti["data"] as? NSDictionary else {return}
                     if megCheck["messageId"] != nil {
                         NotificationHandler.notificationHandleforChat(fromId: (megCheck["fromId"] as? String), toId: (megCheck["toId"] as? String), messgaeId: (megCheck["messageId"] as? String), recurterId: (megCheck["recurterId"] as? String))
                     } else {

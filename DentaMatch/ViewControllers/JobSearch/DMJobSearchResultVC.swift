@@ -227,11 +227,8 @@ class DMJobSearchResultVC: DMBaseVC {
             _ = navigationController?.popToRootViewController(animated: false)
             tabbar.selectedIndex = 0
         }
-
         let dict = userInfo.userInfo
-
-        if let notification = dict?["notificationData"] {
-            let notiObj = notification as! Job
+        if let notification = dict?["notificationData"], let notiObj = notification as? Job {
             goToJobDetail(jobObj: notiObj)
         }
     }

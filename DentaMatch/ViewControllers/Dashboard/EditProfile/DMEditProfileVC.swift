@@ -268,11 +268,11 @@ class DMEditProfileVC: DMBaseVC {
 
     override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
         if segue.identifier == Constants.StoryBoard.SegueIdentifier.goToEditLicense {
-            let destinationVC = segue.destination as! DMEditLicenseVC
+            guard let destinationVC = segue.destination as? DMEditLicenseVC else {return}
             destinationVC.license = license
             destinationVC.hidesBottomBarWhenPushed = true
         } else if segue.identifier == Constants.StoryBoard.SegueIdentifier.goToPublicProfile {
-            let destinationVC = segue.destination as! DMPublicProfileVC
+            guard let destinationVC = segue.destination as? DMPublicProfileVC else {return}
             destinationVC.jobTitles = jobTitles
             if let title = self.currentJobTitle {
                 destinationVC.selectedJob = JobTitle(jobTitle: title)
@@ -281,7 +281,7 @@ class DMEditProfileVC: DMBaseVC {
             }
             destinationVC.hidesBottomBarWhenPushed = true
         } else if segue.identifier == Constants.StoryBoard.SegueIdentifier.goToSetting {
-            let destinationVC = segue.destination as! DMSettingVC
+            guard let destinationVC = segue.destination as? DMSettingVC else {return}
             destinationVC.hidesBottomBarWhenPushed = true
         }
     }

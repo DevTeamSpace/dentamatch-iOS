@@ -24,7 +24,7 @@ class DMBaseVC: UIViewController {
 
     func openTabbar() {
         let dashboardVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: TabBarVC.self)!
-        kAppDelegate.window?.rootViewController = dashboardVC
+        kAppDelegate?.window?.rootViewController = dashboardVC
         UserDefaultsManager.sharedInstance.isProfileSkipped = true
         SocketManager.sharedInstance.establishConnection()
     }
@@ -59,22 +59,22 @@ class DMBaseVC: UIViewController {
     // MARK: - Toasts and Alerts
 
     func makeToast(toastString: String) {
-        kAppDelegate.window?.makeToast(toastString)
+        kAppDelegate?.window?.makeToast(toastString)
     }
 
     func makeToast(toastString: String, duration: TimeInterval) {
-        kAppDelegate.window?.makeToast(toastString, duration: duration, position: CSToastPositionBottom)
+        kAppDelegate?.window?.makeToast(toastString, duration: duration, position: CSToastPositionBottom)
     }
 
     func makeToast(toastString: String, duration: TimeInterval, position: ToastPosition) {
         if position == .top {
-            kAppDelegate.window?.makeToast(toastString, duration: duration, position: CSToastPositionTop)
+            kAppDelegate?.window?.makeToast(toastString, duration: duration, position: CSToastPositionTop)
 
         } else if position == .center {
-            kAppDelegate.window?.makeToast(toastString, duration: duration, position: CSToastPositionCenter)
+            kAppDelegate?.window?.makeToast(toastString, duration: duration, position: CSToastPositionCenter)
 
         } else {
-            kAppDelegate.window?.makeToast(toastString, duration: duration, position: CSToastPositionBottom)
+            kAppDelegate?.window?.makeToast(toastString, duration: duration, position: CSToastPositionBottom)
         }
     }
 

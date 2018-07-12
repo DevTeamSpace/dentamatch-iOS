@@ -94,7 +94,7 @@ extension DMSettingVC: UITableViewDataSource, UITableViewDelegate {
                 guard let registrationContainer = UIStoryboard.registrationStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.registrationNav) as? UINavigationController else {return}
                 UserDefaultsManager.sharedInstance.isLoggedOut = true
                 UIView.transition(with: self.view.window!, duration: 0.25, options: .transitionCrossDissolve, animations: {
-                    kAppDelegate.window?.rootViewController = registrationContainer
+                    kAppDelegate?.window?.rootViewController = registrationContainer
                 }) { (_: Bool) in
                     // completion
                     DatabaseManager.clearDB()
