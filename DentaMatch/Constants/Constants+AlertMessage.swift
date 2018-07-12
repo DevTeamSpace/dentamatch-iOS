@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+// swiftlint:disable nesting
 extension Constants {
 
     // MARK: - Alert Messages
@@ -88,3 +88,4 @@ extension Constants {
     }
 
 }
+// swiftlint:enable nesting
