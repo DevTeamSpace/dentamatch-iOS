@@ -311,14 +311,6 @@ extension DMPublicProfileVC: UITextFieldDelegate {
     }
 
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if let cell = self.publicProfileTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as?
-            EditPublicProfileTableCell {
-//            if textField == cell.locationTextField {
-//                openMapsScreen()
-//                return false
-//            }
-        }
-
         if let textField = textField as? AnimatedPHTextField {
             textField.layer.borderColor = Constants.Color.textFieldColorSelected.cgColor
         }

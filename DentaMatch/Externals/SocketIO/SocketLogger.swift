@@ -48,7 +48,7 @@ public extension SocketLogger {
         guard log else { return }
         
         let newArgs = args.map({arg -> CVarArg in String(describing: arg)})
-        let messageFormat = String(format: message, arguments: newArgs) 
+        let _ = String(format: message, arguments: newArgs)
         //debugPrint("\(logType) \(type): \(messageFormat)")
         //NSLog("\(logType) \(type): %@", messageFormat)
     }

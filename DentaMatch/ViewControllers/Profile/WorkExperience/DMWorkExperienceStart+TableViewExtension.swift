@@ -184,10 +184,10 @@ extension DMWorkExperienceStart: UITextFieldDelegate {
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn _: NSRange, replacementString string: String) -> Bool {
-        guard string.characters.count > 0 else {
+        guard string.count > 0 else {
             return true
         }
-        if (textField.text?.characters.count)! >= Constants.Limit.commonMaxLimit {
+        if (textField.text?.count)! >= Constants.Limit.commonMaxLimit {
             return false
         }
 

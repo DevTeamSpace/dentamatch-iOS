@@ -1,5 +1,5 @@
 Analyzing 279 files:
-.S...........S...S...................S........................................S...................................................................................................S.............S..........S......................S....................................................
+.........S...S....................................S..................................................S...........................................................................................S...........S..S.....S...............................................................S
 
 [44;30m**********[m [42;30m/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Application/AppDelegate+InitialConfiguration.swift[m [44;30m**********[m
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Application/AppDelegate+InitialConfiguration.swift:[44;30m14:[m[44;30m5:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it

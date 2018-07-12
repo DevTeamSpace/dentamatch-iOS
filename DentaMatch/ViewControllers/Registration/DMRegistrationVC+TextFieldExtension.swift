@@ -100,7 +100,7 @@ extension DMRegistrationVC: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn _: NSRange, replacementString string: String) -> Bool {
         let fieldSelected = TextField(rawValue: textField.tag)!
 
-        guard string.characters.count > 0 else {
+        guard string.count > 0 else {
             return true
         }
         let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ")
@@ -111,7 +111,7 @@ extension DMRegistrationVC: UITextFieldDelegate {
                 // debugPrint("string contains special characters")
                 return false
             }
-            if textField.text!.characters.count >= Constants.Limit.commonMaxLimit {
+            if textField.text!.count >= Constants.Limit.commonMaxLimit {
                 return false
             }
 
@@ -120,12 +120,12 @@ extension DMRegistrationVC: UITextFieldDelegate {
                 // debugPrint("string contains special characters")
                 return false
             }
-            if textField.text!.characters.count >= Constants.Limit.commonMaxLimit {
+            if textField.text!.count >= Constants.Limit.commonMaxLimit {
                 return false
             }
 
         case .password:
-            if textField.text!.characters.count >= Constants.Limit.maxPasswordLimit {
+            if textField.text!.count >= Constants.Limit.maxPasswordLimit {
                 return false
             }
         default:

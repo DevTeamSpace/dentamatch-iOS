@@ -50,7 +50,7 @@ class DMEditLicenseVC: DMBaseVC {
             makeToast(toastString: Constants.AlertMessage.emptyLicenseNumber)
             return false
         } else {
-            let newChar = licenseNumberTextField.text?.characters.first
+            let newChar = licenseNumberTextField.text?.first
             if newChar == "-" {
                 makeToast(toastString: Constants.AlertMessage.lienseNoStartError)
                 return false
@@ -61,7 +61,7 @@ class DMEditLicenseVC: DMBaseVC {
             makeToast(toastString: Constants.AlertMessage.emptyState)
             return false
         } else {
-            let newChar = stateTextField.text?.characters.first
+            let newChar = stateTextField.text?.first
             if newChar == "-" {
                 makeToast(toastString: Constants.AlertMessage.stateStartError)
                 return false
@@ -94,13 +94,13 @@ extension DMEditLicenseVC: UITextFieldDelegate {
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn _: NSRange, replacementString string: String) -> Bool {
-        guard string.characters.count > 0 else {
+        guard string.count > 0 else {
             return true
         }
 
         if textField.tag == 0 {
             let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ0123456789-")
-            if string == "-" && textField.text?.characters.count == 0 {
+            if string == "-" && textField.text?.count == 0 {
                 view.endEditing(true)
                 makeToast(toastString: Constants.AlertMessage.lienseNoStartError)
                 return false
@@ -110,13 +110,13 @@ extension DMEditLicenseVC: UITextFieldDelegate {
                 return false
             }
 
-            if (textField.text?.characters.count)! >= Constants.Limit.licenseNumber {
+            if (textField.text?.count)! >= Constants.Limit.licenseNumber {
                 return false
             }
 
         } else {
             let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ- ")
-            if string == "-" && textField.text?.characters.count == 0 {
+            if string == "-" && textField.text?.count == 0 {
                 view.endEditing(true)
                 makeToast(toastString: Constants.AlertMessage.stateStartError)
                 return false
@@ -126,7 +126,7 @@ extension DMEditLicenseVC: UITextFieldDelegate {
                 return false
             }
 
-            if (textField.text?.characters.count)! >= Constants.Limit.commonMaxLimit {
+            if (textField.text?.count)! >= Constants.Limit.commonMaxLimit {
                 return false
             }
         }
