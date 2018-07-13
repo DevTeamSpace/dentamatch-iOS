@@ -12,21 +12,9 @@ import UserNotifications
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
     func registerForPushNotifications() {
-        if #available(iOS 10.0, *) {
-            let center = UNUserNotificationCenter.current()
-            center.delegate = self
-            center.requestAuthorization(options: [.sound, .alert, .badge]) { _, error in
-                if error == nil {
-                    DispatchQueue.main.sync {
-                        UIApplication.shared.registerForRemoteNotifications()
-                    }
-                }
-            }
-        } else {
-            let pushSettings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-            UIApplication.shared.registerUserNotificationSettings(pushSettings)
-            UIApplication.shared.registerForRemoteNotifications()
-        }
+        let pushSettings = UIUserNotificationSettings(types: [.alert,.badge,.sound], categories: nil)
+        UIApplication.shared.registerUserNotificationSettings(pushSettings)
+        UIApplication.shared.registerForRemoteNotifications()
     }
 
     // MARK: - UIApplicationDelegate
