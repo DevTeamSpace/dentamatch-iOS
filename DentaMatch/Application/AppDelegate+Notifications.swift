@@ -77,9 +77,9 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         } else {
             if UserDefaultsManager.sharedInstance.isLoggedIn {
                 if let megCheck = userInfo["data"] as? NSDictionary {
-                    
-                    if megCheck["messageId"] != nil {
-                        NotificationHandler.notificationHandleforChat(fromId: (megCheck["fromId"] as? String), toId: (megCheck["toId"] as? String), messgaeId: (megCheck["messageId"] as? String), recurterId: (megCheck["recurterId"] as? String))
+                    guard let chatData = megCheck["data"] as? NSDictionary else {return}
+                    if chatData["messageId"] != nil {
+                        NotificationHandler.notificationHandleforChat(fromId: (chatData["fromId"] as? String), toId: (chatData["toId"] as? String), messgaeId: (chatData["messageId"] as? String), recurterId: (chatData["recurterId"] as? String))
                     } else {
                         let noti = userInfo["data"] as? NSDictionary
                         let newObjMSG = noti?["jobDetails"]
@@ -95,7 +95,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         }
     }
 
-    @available(iOS 10.0, *)
+    /*@available(iOS 10.0, *)
     func userNotificationCenter(_: UNUserNotificationCenter, willPresent _: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert, .badge])
     }
@@ -103,7 +103,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     @available(iOS 10.0, *)
     func userNotificationCenter(_: UNUserNotificationCenter, didReceive _: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         completionHandler()
-    }
+    }*/
 
     func updateDeviceTokenAPI() {
         if let user = UserManager.shared().activeUser {

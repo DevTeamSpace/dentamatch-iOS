@@ -39,8 +39,15 @@ struct SocketStringReader {
     }
     
     @discardableResult
+ 
     mutating func advance(by: Int) -> String.Index {
-        currentIndex = message.index(currentIndex, offsetBy: by)
+        LogManager.logDebug("##### message:\(message) ")
+        LogManager.logDebug("##### message.endIndex:\(message.endIndex)")
+        LogManager.logDebug("##### 'by' index:\(by) currentIndex: \(currentIndex) ")
+       // currentIndex = message.index(currentIndex, offsetBy: by)
+        if let current = message.index(currentIndex, offsetBy: by, limitedBy: message.endIndex) {
+            currentIndex = current
+        }
         
         return currentIndex
     }
@@ -63,10 +70,6 @@ struct SocketStringReader {
         let totalLength = message.distance(from: message.startIndex, to: message.endIndex)
         let maxCount = min(count, totalLength - currentPosition)
         let readString = message[currentIndex..<message.index(currentIndex, offsetBy: maxCount)]
-//        LogManager.logDebug("currentIndex.hashValue : \(currentIndex.hashValue)")
-//        if currentIndex.hashValue > maxCount {
-//            return ""
-//        }
         advance(by: maxCount)
         
         return String(readString)
