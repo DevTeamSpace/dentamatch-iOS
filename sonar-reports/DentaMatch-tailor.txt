@@ -1,5 +1,5 @@
 Analyzing 279 files:
-.........S...S....................................S..................................................S...........................................................................................S...........S..S.....S...............................................................S
+.S.........S...S...................................S........................................S.................................................................................................................S.......S..........................................S...............S.....
 
 [44;30m**********[m [42;30m/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Application/AppDelegate+InitialConfiguration.swift[m [44;30m**********[m
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Application/AppDelegate+InitialConfiguration.swift:[44;30m14:[m[44;30m5:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
@@ -7,8 +7,9 @@ Analyzing 279 files:
 
 [44;30m**********[m [42;30m/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Application/AppDelegate+Notifications.swift[m [44;30m**********[m
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Application/AppDelegate+Notifications.swift:[44;30m014:[m[44;30m05:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Application/AppDelegate+Notifications.swift:[44;30m080:[m[44;30m20:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Application/AppDelegate+Notifications.swift:[44;30m118:[m[44;30m06:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Application/AppDelegate+Notifications.swift:[44;30m015:[m[44;30m69:[m [43;30mwarning:[m [comma-whitespace] Comma at column 69 should have exactly one space after it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Application/AppDelegate+Notifications.swift:[44;30m015:[m[44;30m76:[m [43;30mwarning:[m [comma-whitespace] Comma at column 76 should have exactly one space after it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Application/AppDelegate+Notifications.swift:[44;30m107:[m[44;30m06:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
 
 [44;30m**********[m [42;30m/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Application/AppDelegate.swift[m [44;30m**********[m
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Application/AppDelegate.swift:[44;30m239:[m[44;30m6:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
@@ -796,7 +797,6 @@ DentaMatch/Externals/SocketIO/SocketEnginePacketType.swift could not be parsed s
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketLogger.swift:[44;30m49:[m[44;30m08:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketLogger.swift:[44;30m50:[m[44;30m32:[m [43;30mwarning:[m [trailing-closure] Closure is the function's final argument and may be passed as a trailing closure instead
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketLogger.swift:[44;30m50:[m[44;30m33:[m [43;30mwarning:[m [parenthesis-whitespace] Parameter clause in closure signature should be preceded by exactly one space
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketLogger.swift:[44;30m51:[m[44;30m72:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketLogger.swift:[44;30m52:[m[44;30m11:[m [43;30mwarning:[m [comment-whitespace] Single-line comment should start with whitespace
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketLogger.swift:[44;30m53:[m[44;30m11:[m [43;30mwarning:[m [comment-whitespace] Single-line comment should start with whitespace
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketLogger.swift:[44;30m54:[m[44;30m06:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
@@ -877,27 +877,28 @@ DentaMatch/Externals/SocketIO/SocketEnginePacketType.swift could not be parsed s
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketParsable.swift:[44;30m167:[m[44;30m06:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
 
 [44;30m**********[m [42;30m/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift[m [44;30m**********[m
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m31:[m[44;30m04:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m35:[m[44;30m04:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m40:[m[44;30m04:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m44:[m[44;30m08:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m50:[m[44;30m07:[m [43;30mwarning:[m [comment-whitespace] Multiline comment should start with whitespace
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m52:[m[44;30m08:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m54:[m[44;30m08:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m56:[m[44;30m06:[m [43;30mwarning:[m [comment-whitespace] Multiline comment should end with whitespace
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m57:[m[44;30m04:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m71:[m[44;30m08:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m74:[m[44;30m04:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m78:[m[44;30m05:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m80:[m[44;30m05:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m81:[m[44;30m27:[m [43;30mwarning:[m [comment-whitespace] Multiline comment should end with whitespace
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m82:[m[44;30m04:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m85:[m[44;30m08:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m88:[m[44;30m12:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m91:[m[44;30m08:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m93:[m[44;30m58:[m [43;30mwarning:[m [comment-whitespace] Single-line comment should start with whitespace
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m95:[m[44;30m04:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m98:[m[44;30m06:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m031:[m[44;30m04:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m035:[m[44;30m04:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m040:[m[44;30m04:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m042:[m[44;30m01:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m051:[m[44;30m08:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m057:[m[44;30m07:[m [43;30mwarning:[m [comment-whitespace] Multiline comment should start with whitespace
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m059:[m[44;30m08:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m061:[m[44;30m08:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m063:[m[44;30m06:[m [43;30mwarning:[m [comment-whitespace] Multiline comment should end with whitespace
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m064:[m[44;30m04:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m074:[m[44;30m08:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m077:[m[44;30m04:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m081:[m[44;30m05:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m083:[m[44;30m05:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m084:[m[44;30m27:[m [43;30mwarning:[m [comment-whitespace] Multiline comment should end with whitespace
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m085:[m[44;30m04:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m088:[m[44;30m08:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m091:[m[44;30m12:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m094:[m[44;30m08:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m096:[m[44;30m58:[m [43;30mwarning:[m [comment-whitespace] Single-line comment should start with whitespace
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m098:[m[44;30m04:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketStringReader.swift:[44;30m101:[m[44;30m06:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
 
 [44;30m**********[m [42;30m/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketTypes.swift[m [44;30m**********[m
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/SocketIO/SocketTypes.swift:[44;30m29:[m[44;30m17:[m [43;30mwarning:[m [colon-whitespace] Colon at column 17 should have no spaces before it
@@ -1339,11 +1340,11 @@ DentaMatch/ViewControllers/BaseVC/DMBaseVC.swift could not be parsed successfull
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/PublicProfile/DMPublicProfileVC.swift:[44;30m104:[m[44;30m7:[m [43;30mwarning:[m [comment-whitespace] Multiline comment should end with whitespace
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/PublicProfile/DMPublicProfileVC.swift:[44;30m227:[m[44;30m6:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/PublicProfile/DMPublicProfileVC.swift:[44;30m231:[m[44;30m5:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/PublicProfile/DMPublicProfileVC.swift:[44;30m373:[m[44;30m6:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/PublicProfile/DMPublicProfileVC.swift:[44;30m377:[m[44;30m5:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/PublicProfile/DMPublicProfileVC.swift:[44;30m393:[m[44;30m6:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/PublicProfile/DMPublicProfileVC.swift:[44;30m397:[m[44;30m5:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/PublicProfile/DMPublicProfileVC.swift:[44;30m408:[m[44;30m6:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/PublicProfile/DMPublicProfileVC.swift:[44;30m365:[m[44;30m6:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/PublicProfile/DMPublicProfileVC.swift:[44;30m369:[m[44;30m5:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/PublicProfile/DMPublicProfileVC.swift:[44;30m385:[m[44;30m6:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/PublicProfile/DMPublicProfileVC.swift:[44;30m389:[m[44;30m5:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/PublicProfile/DMPublicProfileVC.swift:[44;30m400:[m[44;30m6:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
 
 [44;30m**********[m [42;30m/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/Skills/DMEditSkillsVC+Services.swift[m [44;30m**********[m
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/Skills/DMEditSkillsVC+Services.swift:[44;30m013:[m[44;30m05:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
@@ -2087,6 +2088,8 @@ DentaMatch/ViewControllers/JobSearch/DMJobDetaiVC+TableViewExtension.swift could
 
 [44;30m**********[m [42;30m/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Views/TableView Cells/JobSearch/JobSeachTitleCell.swift[m [44;30m**********[m
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Views/TableView Cells/JobSearch/JobSeachTitleCell.swift:[44;30m038:[m[44;30m45:[m [43;30mwarning:[m [trailing-closure] Closure is the function's final argument and may be passed as a trailing closure instead
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Views/TableView Cells/JobSearch/JobSeachTitleCell.swift:[44;30m066:[m[44;30m36:[m [43;30mwarning:[m [colon-whitespace] Colon at column 36 should have no spaces before it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Views/TableView Cells/JobSearch/JobSeachTitleCell.swift:[44;30m101:[m[44;30m36:[m [43;30mwarning:[m [colon-whitespace] Colon at column 36 should have no spaces before it
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Views/TableView Cells/JobSearch/JobSeachTitleCell.swift:[44;30m140:[m[44;30m06:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
 
 [44;30m**********[m [42;30m/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Views/TableView Cells/JobSearch/JobSearchPartTimeCell.swift[m [44;30m**********[m
@@ -2214,5 +2217,5 @@ DentaMatch/ViewControllers/JobSearch/DMJobDetaiVC+TableViewExtension.swift could
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Views/TableView Cells/Setting/SettingTableCell.swift:[44;30m15:[m[44;30m19:[m [43;30mwarning:[m [lower-camel-case] Variable names should be lowerCamelCase
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Views/TableView Cells/Setting/SettingTableCell.swift:[44;30m27:[m[44;30m06:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
 
-Analyzed 270 files, skipped 9 files, and detected 1690 violations (0 errors, 1690 warnings).
+Analyzed 270 files, skipped 9 files, and detected 1693 violations (0 errors, 1693 warnings).
 

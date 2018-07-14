@@ -1,0 +1,6 @@
+projectKey=DentaMatch-iOS
+serverUrl=https://sonarqube.appster.in/sonar
+serverVersion=7.0.0.36138
+dashboardUrl=https://sonarqube.appster.in/sonar/dashboard/index/DentaMatch-iOS
+ceTaskId=AWSYBQCzDWKzx2rI6Zhj
+ceTaskUrl=https://sonarqube.appster.in/sonar/api/ce/task?id=AWSYBQCzDWKzx2rI6Zhj
