@@ -11,7 +11,7 @@ import Photos
 import UIKit
 
 class CameraGalleryManager: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    private var presentedFromController: UIViewController?
+    private weak var presentedFromController: UIViewController?
     private var allowsEditing = false
 
     private enum CameraError: String {
@@ -30,7 +30,7 @@ class CameraGalleryManager: UIViewController, UIImagePickerControllerDelegate, U
     typealias ImagePickedClosure = (_ image: UIImage?, _ error: NSError?) -> Void
     private var completionHandler: ImagePickedClosure?
 
-    private let imagePicker = UIImagePickerController()
+    //private let imagePicker = UIImagePickerController()
 
     // MARK: - Singleton Instance
 
@@ -98,11 +98,12 @@ class CameraGalleryManager: UIViewController, UIImagePickerControllerDelegate, U
         self.allowsEditing = allowsEditing
         checkGalleryPermission { success in
             if success {
-                self.imagePicker.delegate = self
-                self.imagePicker.allowsEditing = allowsEditing
-                self.imagePicker.sourceType = .photoLibrary
+                let imagePicker = UIImagePickerController()
+                imagePicker.delegate = self
+                imagePicker.allowsEditing = allowsEditing
+                imagePicker.sourceType = .photoLibrary
                 OperationQueue.main.addOperation({
-                    viewController.present(self.imagePicker, animated: true, completion: nil)
+                    viewController.present(imagePicker, animated: true, completion: nil)
                 })
             } else {
                 self.completionHandler?(nil, NSError(domain: "", code: PHPhotoLibrary.authorizationStatus().rawValue, userInfo:
@@ -130,11 +131,12 @@ class CameraGalleryManager: UIViewController, UIImagePickerControllerDelegate, U
 
             checkCameraPermission { success in
                 if success {
-                    self.imagePicker.allowsEditing = allowsEditing
-                    self.imagePicker.sourceType = .camera
-                    self.imagePicker.delegate = self
+                    let imagePicker = UIImagePickerController()
+                    imagePicker.allowsEditing = allowsEditing
+                    imagePicker.sourceType = .camera
+                   imagePicker.delegate = self
                     OperationQueue.main.addOperation({
-                        self.presentedFromController?.present(self.imagePicker, animated: true, completion: nil)
+                        self.presentedFromController?.present(imagePicker, animated: true, completion: nil)
                     })
                 } else {
                     self.completionHandler?(nil, NSError(domain: "", code: AVAuthorizationStatus.denied.rawValue,
@@ -157,7 +159,7 @@ class CameraGalleryManager: UIViewController, UIImagePickerControllerDelegate, U
 
     // MARK: - ImagePicker Delegates
 
-    func imagePickerController(_: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
+    func imagePickerController(_ imagePicker : UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
         if allowsEditing {
             if let pickedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
                 var image = pickedImage
@@ -172,10 +174,11 @@ class CameraGalleryManager: UIViewController, UIImagePickerControllerDelegate, U
                 completionHandler?(image, nil)
             }
         }
-        presentedFromController?.dismiss(animated: true, completion: nil)
+        //presentedFromController?.dismiss(animated: true, completion: nil)
+        imagePicker.dismiss(animated: true, completion: nil)
     }
 
-    func imagePickerControllerDidCancel(_: UIImagePickerController) {
-        presentedFromController?.dismiss(animated: true, completion: nil)
+    func imagePickerControllerDidCancel(_ imagePicker: UIImagePickerController) {
+        imagePicker.dismiss(animated: true, completion: nil)
     }
 }

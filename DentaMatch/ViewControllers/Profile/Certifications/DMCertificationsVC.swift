@@ -89,26 +89,26 @@ class DMCertificationsVC: DMBaseVC, DatePickerViewDelegate {
         cameraGalleryOptionActionSheet(title: "", message: "Please select", leftButtonText: "Camera", rightButtonText: "Gallery") { isCameraButtonPressed, _, isCancelButtonPressed in
             if isCancelButtonPressed {
             } else if isCameraButtonPressed {
-                CameraGalleryManager.shared.openCamera(viewController: self, allowsEditing: false, completionHandler: { (image: UIImage?, error: NSError?) in
+                CameraGalleryManager.shared.openCamera(viewController: self, allowsEditing: false, completionHandler: {[weak self] (image: UIImage?, error: NSError?) in
                     if error != nil {
                         DispatchQueue.main.async {
-                            self.makeToast(toastString: (error?.localizedDescription)!)
+                            self?.makeToast(toastString: (error?.localizedDescription)!)
                         }
                         return
                     }
 
-                    let certObj = self.certicates[button!.tag]
-                    certObj.certificateImage = image!
-
+                    guard let certObj = self?.certicates[button!.tag] else {
+                       return
+                    }
+                   certObj.certificateImage = image!
                     DispatchQueue.main.async {
      
-                        self.uploadCetificatsImage(certObj: certObj, completionHandler: { response, _ in
-
+                        self?.uploadCetificatsImage(certObj: certObj, completionHandler: { response, _ in
                             if let response = response {
                                 if response[Constants.ServerKey.status].boolValue {
                                     certObj.certificateImageURL = response[Constants.ServerKey.result][Constants.ServerKey.imageURLForPostResponse].stringValue
-                                    self.certicates[button!.tag] = certObj
-                                    self.certificationsTableView.reloadData()
+                                    self?.certicates[button!.tag] = certObj
+                                    self?.certificationsTableView.reloadData()
 
                                 } else {
 //                                    self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
@@ -119,24 +119,26 @@ class DMCertificationsVC: DMBaseVC, DatePickerViewDelegate {
                     }
                 })
             } else {
-                CameraGalleryManager.shared.openGallery(viewController: self, allowsEditing: false, completionHandler: { (image: UIImage?, error: NSError?) in
+                CameraGalleryManager.shared.openGallery(viewController: self, allowsEditing: false, completionHandler: { [weak self] (image: UIImage?, error: NSError?) in
                     if error != nil {
                         DispatchQueue.main.async {
-                            self.makeToast(toastString: (error?.localizedDescription)!)
+                            self?.makeToast(toastString: (error?.localizedDescription)!)
                         }
                         return
                     }
-                    let certObj = self.certicates[button!.tag]
+                    guard let certObj = self?.certicates[button!.tag] else {
+                        return
+                    }
                     certObj.certificateImage = image!
 //                    self.certicates[button!.tag] = certObj
                     DispatchQueue.main.async {
-                        self.uploadCetificatsImage(certObj: certObj, completionHandler: { response, _ in
+                        self?.uploadCetificatsImage(certObj: certObj, completionHandler: { response, _ in
 
                             if let response = response {
                                 if response[Constants.ServerKey.status].boolValue {
                                     certObj.certificateImageURL = response[Constants.ServerKey.result][Constants.ServerKey.imageURLForPostResponse].stringValue
-                                    self.certicates[button!.tag] = certObj
-                                    self.certificationsTableView.reloadData()
+                                    self?.certicates[button!.tag] = certObj
+                                    self?.certificationsTableView.reloadData()
 
                                 } else {
                                     // DO Nothing
@@ -154,10 +156,8 @@ class DMCertificationsVC: DMBaseVC, DatePickerViewDelegate {
 
     func checkAllCertitficates() -> Bool {
         var atLeastOneCheck = false
-
         for index in 0 ..< certicates.count {
             let certObj = certicates[index]
-
             if !(certObj.certificateImageURL?.isEmptyField)! {
                 if certObj.validityDate.isEmptyField {
                     makeToast(toastString: "Please select  \(certObj.certificationName) validity date")
@@ -165,7 +165,6 @@ class DMCertificationsVC: DMBaseVC, DatePickerViewDelegate {
                 }
                 atLeastOneCheck = true
             }
-
             if !(certObj.validityDate.isEmptyField) {
                 if (certObj.certificateImageURL?.isEmptyField)! {
                     makeToast(toastString: "Please select certificate for \(certObj.certificationName)")
@@ -175,7 +174,6 @@ class DMCertificationsVC: DMBaseVC, DatePickerViewDelegate {
         }
         if atLeastOneCheck == false {
             makeToast(toastString: "Please upload at least one certificate")
-
             return false
         }
         return true

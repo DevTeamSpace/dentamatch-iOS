@@ -116,25 +116,25 @@ class DMEditCertificateVC: DMBaseVC, DatePickerViewDelegate {
     }
 
     func getPhotoFromCamera() {
-        CameraGalleryManager.shared.openCamera(viewController: self, allowsEditing: false, completionHandler: { (image: UIImage?, error: NSError?) in
+        CameraGalleryManager.shared.openCamera(viewController: self, allowsEditing: false, completionHandler: { [weak self](image: UIImage?, error: NSError?) in
             if error != nil {
                 DispatchQueue.main.async {
-                    self.makeToast(toastString: (error?.localizedDescription)!)
+                    self?.makeToast(toastString: (error?.localizedDescription)!)
                 }
                 return
             }
-            self.certificateImage = image
+            self?.certificateImage = image
 
             DispatchQueue.main.async {
-                self.uploadCertificateImage(certObj: self.certificate!, completionHandler: { response, _ in
+                self?.uploadCertificateImage(certObj: (self?.certificate)!, completionHandler: { response, _ in
                     if let response = response {
                         if response[Constants.ServerKey.status].boolValue {
-                            self.certificateImageButton.setImage(image, for: .normal)
-                            self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
-                            self.certificate!.certificateImageURL = response[Constants.ServerKey.result][Constants.ServerKey.imageURLForPostResponse].stringValue
-                            self.updateProfileScreen()
+                            self?.certificateImageButton.setImage(image, for: .normal)
+                            self?.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+                            self?.certificate!.certificateImageURL = response[Constants.ServerKey.result][Constants.ServerKey.imageURLForPostResponse].stringValue
+                            self?.updateProfileScreen()
                         } else {
-                            self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+                            self?.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
                         }
                     }
 
@@ -144,25 +144,25 @@ class DMEditCertificateVC: DMBaseVC, DatePickerViewDelegate {
     }
 
     func getPhotoFromGallery() {
-        CameraGalleryManager.shared.openGallery(viewController: self, allowsEditing: false, completionHandler: { (image: UIImage?, error: NSError?) in
+        CameraGalleryManager.shared.openGallery(viewController: self, allowsEditing: false, completionHandler: {  [weak self](image: UIImage?, error: NSError?) in
             if error != nil {
                 DispatchQueue.main.async {
-                    self.makeToast(toastString: (error?.localizedDescription)!)
+                    self?.makeToast(toastString: (error?.localizedDescription)!)
                 }
                 return
             }
-            self.certificateImage = image
+            self?.certificateImage = image
 
             DispatchQueue.main.async {
-                self.uploadCertificateImage(certObj: self.certificate!, completionHandler: { response, _ in
+                self?.uploadCertificateImage(certObj: (self?.certificate)!, completionHandler: { response, _ in
                     if let response = response {
                         if response[Constants.ServerKey.status].boolValue {
-                            self.certificateImageButton.setImage(image, for: .normal)
-                            self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
-                            self.certificate!.certificateImageURL = response[Constants.ServerKey.result][Constants.ServerKey.imageURLForPostResponse].stringValue
-                            self.updateProfileScreen()
+                            self?.certificateImageButton.setImage(image, for: .normal)
+                            self?.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+                            self?.certificate!.certificateImageURL = response[Constants.ServerKey.result][Constants.ServerKey.imageURLForPostResponse].stringValue
+                            self?.updateProfileScreen()
                         } else {
-                            self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+                            self?.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
                         }
                     }
 

@@ -193,31 +193,31 @@ class DMJobTitleSelectionVC: DMBaseVC, ToolBarButtonDelegate {
     }
 
     func getPhotoFromCamera() {
-        CameraGalleryManager.shared.openCamera(viewController: self, allowsEditing: false, completionHandler: { (image: UIImage?, error: NSError?) in
+        CameraGalleryManager.shared.openCamera(viewController: self, allowsEditing: false, completionHandler: {  [weak self](image: UIImage?, error: NSError?) in
             if error != nil {
                 DispatchQueue.main.async {
-                    self.makeToast(toastString: (error?.localizedDescription)!)
+                    self?.makeToast(toastString: (error?.localizedDescription)!)
                 }
                 return
             }
-            self.profileImage = image
+            self?.profileImage = image
             DispatchQueue.main.async {
-                self.profileButton.setImage(image, for: .normal)
+                self?.profileButton.setImage(image, for: .normal)
             }
         })
     }
 
     func getPhotoFromGallery() {
-        CameraGalleryManager.shared.openGallery(viewController: self, allowsEditing: false, completionHandler: { (image: UIImage?, error: NSError?) in
+        CameraGalleryManager.shared.openGallery(viewController: self, allowsEditing: false, completionHandler: {  [weak self](image: UIImage?, error: NSError?) in
             if error != nil {
                 DispatchQueue.main.async {
-                    self.makeToast(toastString: (error?.localizedDescription)!)
+                    self?.makeToast(toastString: (error?.localizedDescription)!)
                 }
                 return
             }
-            self.profileImage = image
+            self?.profileImage = image
             DispatchQueue.main.async {
-                self.profileButton.setImage(image, for: .normal)
+                self?.profileButton.setImage(image, for: .normal)
             }
         })
     }

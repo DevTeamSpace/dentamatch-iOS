@@ -123,31 +123,31 @@ class DMLicenseSelectionVC: DMBaseVC, UITextFieldDelegate {
             if isCancelButtonPressed {
                 // debugPrint("Cancel Pressed")
             } else if isCameraButtonPressed {
-                CameraGalleryManager.shared.openCamera(viewController: self, allowsEditing: false, completionHandler: { (image: UIImage?, error: NSError?) in
+                CameraGalleryManager.shared.openCamera(viewController: self, allowsEditing: false, completionHandler: { [weak self] (image: UIImage?, error: NSError?) in
                     if error != nil {
                         DispatchQueue.main.async {
-                            self.makeToast(toastString: (error?.localizedDescription)!)
+                            self?.makeToast(toastString: (error?.localizedDescription)!)
                         }
                         return
                     }
-                    self.stateBoardImage = image!
-                    self.uploadDentalStateboardImage()
+                    self?.stateBoardImage = image!
+                    self?.uploadDentalStateboardImage()
                     DispatchQueue.main.async {
-                        self.licenseTableView.reloadData()
+                        self?.licenseTableView.reloadData()
                     }
                 })
             } else {
-                CameraGalleryManager.shared.openGallery(viewController: self, allowsEditing: false, completionHandler: { (image: UIImage?, error: NSError?) in
+                CameraGalleryManager.shared.openGallery(viewController: self, allowsEditing: false, completionHandler: {  [weak self](image: UIImage?, error: NSError?) in
                     if error != nil {
                         DispatchQueue.main.async {
-                            self.makeToast(toastString: (error?.localizedDescription)!)
+                            self?.makeToast(toastString: (error?.localizedDescription)!)
                         }
                         return
                     }
-                    self.stateBoardImage = image
-                    self.uploadDentalStateboardImage()
+                    self?.stateBoardImage = image
+                    self?.uploadDentalStateboardImage()
                     DispatchQueue.main.async {
-                        self.licenseTableView.reloadData()
+                        self?.licenseTableView.reloadData()
                     }
                 })
             }
