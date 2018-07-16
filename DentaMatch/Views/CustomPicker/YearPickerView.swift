@@ -8,14 +8,14 @@
 
 import UIKit
 
-protocol YearPickerViewDelegate {
+@objc protocol YearPickerViewDelegate {
     func canceButtonAction()
     func doneButtonAction(year: Int, tag: Int)
 }
 
 class YearPickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
     @IBOutlet var yearPickerView: UIPickerView!
-    var delegate: YearPickerViewDelegate?
+    weak var delegate: YearPickerViewDelegate?
     var currentYear: Int = 0
     var currentTag: Int = 0
 

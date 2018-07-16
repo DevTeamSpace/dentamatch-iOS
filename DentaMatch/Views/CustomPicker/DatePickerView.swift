@@ -7,14 +7,14 @@
 //
 
 import UIKit
-protocol DatePickerViewDelegate {
+@objc protocol DatePickerViewDelegate {
     func canceButtonAction()
     func doneButtonAction(date: String, tag: Int)
 }
 
 class DatePickerView: UIView {
     @IBOutlet var datePicker: UIDatePicker!
-    var delegate: DatePickerViewDelegate?
+    weak var delegate: DatePickerViewDelegate?
     var currentTag: Int?
 
     class func loadExperiencePickerView(withText: String, tag: Int) -> DatePickerView {

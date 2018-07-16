@@ -21,7 +21,7 @@ class DMJobDetailVC: DMBaseVC {
     var job: Job?
     var isReadMore = false
     var isReadMoreOffice = false
-    var delegate: JobSavedStatusUpdateDelegate?
+    weak var delegate: JobSavedStatusUpdateDelegate?
     var fromTrack = false
     var fromCalender = false
     var fromNotificationVC = false

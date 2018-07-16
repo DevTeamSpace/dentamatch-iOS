@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol CancelledJobDelegate {
+@objc protocol CancelledJobDelegate {
     func cancelledJob(job: Job, fromApplied: Bool)
 }
 
@@ -17,7 +17,7 @@ class DMCancelJobVC: DMBaseVC {
 
     var job: Job?
     var placeHolderLabel: UILabel!
-    var delegate: CancelledJobDelegate?
+    weak var delegate: CancelledJobDelegate?
     var fromApplied = false
 
     // MARK: - View LifeCycle

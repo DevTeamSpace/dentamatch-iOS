@@ -19,7 +19,7 @@ class JobSelectionPickerView: UIView, UIPickerViewDataSource, UIPickerViewDelega
 
     var jobTitles = [JobTitle]()
 
-    var delegate: JobSelectionPickerViewDelegate?
+    weak var delegate: JobSelectionPickerViewDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()

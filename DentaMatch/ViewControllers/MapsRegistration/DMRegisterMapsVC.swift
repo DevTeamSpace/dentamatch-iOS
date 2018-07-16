@@ -10,9 +10,7 @@ import GoogleMaps
 import GooglePlaces
 import UIKit
 
-protocol LocationAddressDelegate {
-    func locationAddress(location: Location)
-}
+
 
 struct Location {
     var postalCode = ""
@@ -21,6 +19,10 @@ struct Location {
     var city = ""
     var country = ""
     var state = ""
+}
+
+protocol LocationAddressDelegate : class{
+    func locationAddress(location: Location)
 }
 
 class DMRegisterMapsVC: DMBaseVC {
@@ -41,7 +43,7 @@ class DMRegisterMapsVC: DMBaseVC {
     var fromJobSearch = false
     var userSelectedCoordinate: CLLocationCoordinate2D?
     var addressSelectedFromProfile = ""
-    var delegate: LocationAddressDelegate?
+    weak var delegate: LocationAddressDelegate?
     var location = Location()
 
     // MARK: - View LifeCycle
