@@ -1351,8 +1351,6 @@
 		E55462D51DAE2F01004163B2 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				5A1960FA1E208B4B002A5F7C /* PhoneNumber */,
-				5A3FD06B1E1BAF9B00360B3C /* ParallaxNav */,
 				E5F47C901E0035B90051C4A1 /* UIImage+Additions */,
 				E55462D61DAE2F49004163B2 /* UIColor+HexCode.swift */,
 				E55462D81DAE3104004163B2 /* Array+Additions.swift */,
@@ -1389,6 +1387,8 @@
 		E55462E21DAE47A9004163B2 /* Externals */ = {
 			isa = PBXGroup;
 			children = (
+				5A3FD06B1E1BAF9B00360B3C /* ParallaxNav */,
+				5A1960FA1E208B4B002A5F7C /* PhoneNumber */,
 				E59467251FD8FFE60009C18B /* PopOverView */,
 				E5F9191F1E9DD4A30021F008 /* FSCalendar */,
 				E5AE37461E4971CE0001EC3C /* SocketIO */,
