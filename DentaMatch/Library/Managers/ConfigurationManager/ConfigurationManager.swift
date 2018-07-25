@@ -95,7 +95,7 @@ final class ConfigurationManager: NSObject {
     }
 
     private func debugConfiguration() -> AppConfiguration {
-        return AppConfiguration(apiEndPoint: "https://dev.dentamatch.co/api/",
+        return AppConfiguration(apiEndPoint: "https://dev.dentamatch.co/api/v1/",
                                 socketEndPoint: "http://dev.dentamatch.co:3000",
                                 loggingEnabled: true,
                                 analyticsKey: "baeda2003ca1585a7828ce1d02833836",
@@ -105,7 +105,7 @@ final class ConfigurationManager: NSObject {
 
     // TODO: Please change the key values
     private func qaConfiguration() -> AppConfiguration {
-        return AppConfiguration(apiEndPoint: "https://qa.dentamatch.co/api/",
+        return AppConfiguration(apiEndPoint: "https://qa.dentamatch.co/api/v1/",
                                 socketEndPoint: "https://qanode.dentamatch.co:8443",
                                 loggingEnabled: true,
                                 analyticsKey: "baeda2003ca1585a7828ce1d02833836",
@@ -115,7 +115,7 @@ final class ConfigurationManager: NSObject {
 
     // TODO: Please change the key values
     private func stagingConfiguration() -> AppConfiguration {
-        return AppConfiguration(apiEndPoint: "https://staging.dentamatch.co/api/",
+        return AppConfiguration(apiEndPoint: "https://staging.dentamatch.co/api/v1/",
                                 socketEndPoint: "https://staging.dentamatch.co:8443",
                                 loggingEnabled: true,
                                 analyticsKey: "3fd78d535c8e6d65ade83460a9272f66",
