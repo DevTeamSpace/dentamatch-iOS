@@ -25,7 +25,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         for i in 0 ..< deviceToken.count {
             token += String(format: "%02.2hhx", deviceToken[i] as CVarArg)
         }
-        // debugPrint(token)
+        LogManager.logDebug(token)
         if UserDefaultsManager.sharedInstance.deviceToken == token {
             // Nothing needed to call
         } else {

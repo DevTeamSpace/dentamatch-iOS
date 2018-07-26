@@ -142,7 +142,6 @@ class DMRegistrationVC: DMBaseVC {
     }
 
     // MARK: - IBActions
-
     @IBAction func registerButtonPressed(_: Any) {
         dismissKeyboard()
         registrationParams[Constants.ServerKey.deviceId] = Utilities.deviceId()

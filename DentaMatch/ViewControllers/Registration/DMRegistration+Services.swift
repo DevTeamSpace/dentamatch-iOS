@@ -11,7 +11,7 @@ import SwiftyJSON
 
 extension DMRegistrationVC {
     func registrationAPI(params: [String: String]) {
-        // debugPrint("Registration Parameters\n\(params.description))")
+        LogManager.logDebug("Registration Parameters: \n\(params.description)")
         showLoader()
         APIManager.apiPost(serviceName: Constants.API.registration, parameters: params) { (response: JSON?, error: NSError?) in
             self.hideLoader()
@@ -24,7 +24,6 @@ extension DMRegistrationVC {
                 return
             }
             // debugPrint(response!)
-
             if response![Constants.ServerKey.status].boolValue {
                 MixpanelOperations.trackMixpanelEventWithProperties(eventName: "SignUp", dict: params as NSDictionary)
                 self.clearData()
