@@ -47,7 +47,7 @@ extension DMJobSearchResultVC {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
                 let result = response[Constants.ServerKey.result]
-                if result["isJobSeekerVerified"].stringValue == "0" {
+                if result["isJobSeekerVerified"].stringValue == "0" || result["isJobSeekerVerified"].stringValue == "2"{
                     showBanner(status: 1)
                 } else if result["profileCompleted"].stringValue == "0" {
                     showBanner(status: 2)

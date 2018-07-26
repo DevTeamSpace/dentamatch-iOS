@@ -121,6 +121,7 @@ class DMJobSearchResultVC: DMBaseVC {
 
         NotificationCenter.default.addObserver(self, selector: #selector(pushRediectNotificationForJobDetailForground), name: .pushRedirectNotificationForground, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(pushRediectNotificationForJobDetailBacground), name: .pushRedirectNotificationBacground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(bannerUIStatus), name: .pushRedirectNotificationForProfile, object: nil)
 
         mapViewSearchResult.isHidden = true
         tblJobSearchResult.register(UINib(nibName: "JobSearchResultCell", bundle: nil), forCellReuseIdentifier: "JobSearchResultCell")
@@ -170,6 +171,10 @@ class DMJobSearchResultVC: DMBaseVC {
             bannerView.backgroundColor = UIColor.color(withHexCode: "fc3238") // red // profile completed = 0
             bannerLabel.text = "Your Profile is incomplete, please select the availability to be able to apply for jobs."
         }
+    }
+    
+   @objc func bannerUIStatus(userInfo: Notification){
+        getJobs()
     }
 
     func hideBanner() {

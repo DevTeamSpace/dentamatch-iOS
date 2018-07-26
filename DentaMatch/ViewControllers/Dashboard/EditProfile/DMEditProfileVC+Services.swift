@@ -25,7 +25,7 @@ extension DMEditProfileVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            // debugPrint(response!)
+            LogManager.logDebug(response?.description)
             if checkForCompletion {
                 self.handleUserResponse(user: response![Constants.ServerKey.result][Constants.ServerKey.user])
             } else {

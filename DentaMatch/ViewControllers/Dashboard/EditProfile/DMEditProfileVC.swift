@@ -74,8 +74,7 @@ class DMEditProfileVC: DMBaseVC {
 
     func setup() {
         NotificationCenter.default.addObserver(self, selector: #selector(updateProfileScreen), name: .updateProfileScreen, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(psuhRediectNotificationForProfile), name: .pushRedirectNotificationForProfile, object: nil)
-
+       NotificationCenter.default.addObserver(self, selector: #selector(psuhRediectNotificationForProfile), name: .pushRedirectNotificationForProfile, object: nil)
         navigationController?.setNavigationBarHidden(true, animated: true)
         editProfileTableView.register(UINib(nibName: "EditProfileHeaderTableCell", bundle: nil), forCellReuseIdentifier: "EditProfileHeaderTableCell")
         editProfileTableView.register(UINib(nibName: "SectionHeadingTableCell", bundle: nil), forCellReuseIdentifier: "SectionHeadingTableCell")
@@ -131,7 +130,7 @@ class DMEditProfileVC: DMBaseVC {
 
     @objc func statusButtonPressed() {
         if let cell = editProfileTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? EditProfileHeaderTableCell {
-            if isJobSeekerVerified == "0" {
+            if  isJobSeekerVerified == "0" || isJobSeekerVerified == "2"  {
                 popOverLabel.text = "Your profile is pending admin’s approval. You will be able to apply for jobs once its approved."
                 popover.show(popOverView, fromView: cell.statusButton) // Pending
 
@@ -146,6 +145,7 @@ class DMEditProfileVC: DMBaseVC {
         if let tabbar = ((UIApplication.shared.delegate) as? AppDelegate)?.window?.rootViewController as? TabBarVC {
             _ = navigationController?.popToRootViewController(animated: false)
             tabbar.selectedIndex = 4
+            userProfileAPI()
         }
     }
 
