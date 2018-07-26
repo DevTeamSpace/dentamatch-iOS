@@ -12,9 +12,22 @@ import UserNotifications
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
     func registerForPushNotifications() {
-        let pushSettings = UIUserNotificationSettings(types: [.alert,.badge,.sound], categories: nil)
-        UIApplication.shared.registerUserNotificationSettings(pushSettings)
-        UIApplication.shared.registerForRemoteNotifications()
+        if #available(iOS 10.0, *) {
+            let center = UNUserNotificationCenter.current()
+            center.delegate = self
+            center.requestAuthorization(options: [.sound, .alert, .badge]) { _, error in
+                if error == nil {
+                    DispatchQueue.main.sync {
+                        UIApplication.shared.registerForRemoteNotifications()
+                    }
+                }
+            }
+        } else {
+            UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound, .alert, .badge], categories: nil))
+            UIApplication.shared.registerForRemoteNotifications()
+        }
+        
+        
     }
 
     // MARK: - UIApplicationDelegate
@@ -90,8 +103,24 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     }
 
     @available(iOS 10.0, *)
-    func userNotificationCenter(_: UNUserNotificationCenter, didReceive _: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        completionHandler()
+    func userNotificationCenter(_: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        if let megCheck: NSDictionary = response.notification.request.content.userInfo["data"] as? NSDictionary {
+            LogManager.logDebug(megCheck.description)
+            guard let chatData = megCheck["data"] as? NSDictionary else {return}
+            if chatData["messageId"] != nil {
+                NotificationHandler.notificationHandleforChat(fromId: (chatData["fromId"] as? String), toId: (chatData["toId"] as? String), messgaeId: (chatData["messageId"] as? String), recurterId: (chatData["recurterId"] as? String))
+            } else {
+                let noti = megCheck
+                let newObjMSG = noti["jobDetails"]
+                let jobJson = JSON(newObjMSG ?? [:])
+                let jobObj = Job(job: jobJson)
+                let newObj = noti["data"]
+                let josnObj = JSON(newObj ?? [:])
+                let userNotiObj = UserNotification(dict: josnObj)
+                NotificationHandler.notificationHandleforBackground(notiObj: userNotiObj, jobObj: jobObj)
+            }
+            completionHandler()
+        }
     }
 
     func updateDeviceTokenAPI() {

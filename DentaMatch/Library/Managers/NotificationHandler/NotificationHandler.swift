@@ -10,7 +10,7 @@ import SwiftyJSON
 import UIKit
 
 class NotificationHandler: NSObject {
-    class func notificationHandleforForground(notiObj: UserNotification, jobObj: Job?, app _: UIApplication) {
+    class func notificationHandleforForground(notiObj: UserNotification, jobObj: Job?, app _: UIApplication? = nil) {
         let notificationType = UserNotificationType(rawValue: notiObj.notificationType!)!
 
         switch notificationType {
@@ -31,7 +31,7 @@ class NotificationHandler: NSObject {
         }
     }
 
-    class func notificationHandleforBackground(notiObj: UserNotification, jobObj: Job?, app _: UIApplication) {
+    class func notificationHandleforBackground(notiObj: UserNotification, jobObj: Job?, app _: UIApplication? = nil) {
         let notificationType = UserNotificationType(rawValue: notiObj.notificationType!)!
 
         switch notificationType {
@@ -56,10 +56,19 @@ class NotificationHandler: NSObject {
         }
     }
 
-    class func notificationHandleforChat(fromId _: String?, toId _: String?, messgaeId _: String?, recurterId _: String?) {
+    class func notificationHandleforChat(fromId _: String?, toId _: String?, messgaeId _: String?, recurterId rId: String?) {
         delay(time: 3.0) {
             if let tabbar = ((UIApplication.shared.delegate) as? AppDelegate)?.window?.rootViewController as? TabBarVC {
                 tabbar.selectedIndex = 3
+               /*if let messagesNavVC =  tabbar.selectedViewController as? UINavigationController, let messagesVC = messagesNavVC.viewControllers.first as? DMMessagesVC {
+                    let chatVC = UIStoryboard.messagesStoryBoard().instantiateViewController(type: DMChatVC.self)!
+                     chatVC.hidesBottomBarWhenPushed = true
+                     chatVC.delegate = messagesVC
+                   if let id = rId, DatabaseManager.getCountForChats(recruiterId: id) == 0 {
+                      chatVC.shouldFetchFromBeginning = true
+                    }
+                     messagesVC.navigationController?.pushViewController(chatVC, animated: false)
+                }*/
             }
         }
     }

@@ -112,7 +112,7 @@ class DMChatVC: DMBaseVC {
         placeHolderLabelForView.textColor = UIColor.color(withHexCode: "aaafb8")
         placeHolderLabelForView.textAlignment = .center
         placeHolderLabelForView.numberOfLines = 2
-        placeHolderLabelForView.text = "Start your conversation with\n \((chatList?.officeName)!)"
+        placeHolderLabelForView.text = "Start your conversation with\n \((chatList?.officeName) ?? "")"
         placeHolderLabelForView.center = view.center
         var frame = placeHolderLabelForView.frame
         frame = CGRect(x: frame.origin.x, y: frame.origin.y - 44, width: frame.size.width, height: frame.size.height)

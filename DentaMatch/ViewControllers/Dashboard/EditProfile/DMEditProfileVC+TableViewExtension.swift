@@ -309,7 +309,7 @@ extension DMEditProfileVC: UITableViewDataSource, UITableViewDelegate {
 
         case .schooling:
             if indexPath.row == 0 {
-                let cell = makeHeadingCell(heading: "EDUCATION / TRANNING")
+                let cell = makeHeadingCell(heading: "EDUCATION / TRAINING")
                 cell.editButton.isHidden = schoolCategories.count > 0 ? false : true
                 cell.editButton.removeTarget(nil, action: nil, for: .allEvents)
                 cell.editButton.addTarget(self, action: #selector(openSchoolsScreen), for: .touchUpInside)
@@ -317,7 +317,7 @@ extension DMEditProfileVC: UITableViewDataSource, UITableViewDelegate {
             } else {
                 if schoolCategories.count == 0 {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "AddProfileOptionTableCell") as! AddProfileOptionTableCell
-                    cell.profileOptionLabel.text = "Add education and trainning"
+                    cell.profileOptionLabel.text = "Add education and training"
                     return cell
                 } else {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "EditProfileSchoolCell") as! EditProfileSchoolCell
