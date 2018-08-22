@@ -1,15 +1,15 @@
 Analyzing 279 files:
-.S.........S...S...................................S........................................S.................................................................................................................S.......S..........................................S...............S.....
+....S.....S.............S.......................S............................................................................................S.S................................S..................S..S................................................................................
 
 [44;30m**********[m [42;30m/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Application/AppDelegate+InitialConfiguration.swift[m [44;30m**********[m
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Application/AppDelegate+InitialConfiguration.swift:[44;30m14:[m[44;30m5:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Application/AppDelegate+InitialConfiguration.swift:[44;30m72:[m[44;30m6:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
 
 [44;30m**********[m [42;30m/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Application/AppDelegate+Notifications.swift[m [44;30m**********[m
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Application/AppDelegate+Notifications.swift:[44;30m014:[m[44;30m05:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Application/AppDelegate+Notifications.swift:[44;30m015:[m[44;30m69:[m [43;30mwarning:[m [comma-whitespace] Comma at column 69 should have exactly one space after it
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Application/AppDelegate+Notifications.swift:[44;30m015:[m[44;30m76:[m [43;30mwarning:[m [comma-whitespace] Comma at column 76 should have exactly one space after it
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Application/AppDelegate+Notifications.swift:[44;30m107:[m[44;30m06:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Application/AppDelegate+Notifications.swift:[44;30m014:[m[44;30m5:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Application/AppDelegate+Notifications.swift:[44;30m029:[m[44;30m8:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Application/AppDelegate+Notifications.swift:[44;30m030:[m[44;30m8:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Application/AppDelegate+Notifications.swift:[44;30m136:[m[44;30m6:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
 
 [44;30m**********[m [42;30m/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Application/AppDelegate.swift[m [44;30m**********[m
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Application/AppDelegate.swift:[44;30m239:[m[44;30m6:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
@@ -195,6 +195,11 @@ Analyzing 279 files:
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/FloatLabel/FloatLabelTextView.swift:[44;30m205:[m[44;30m149:[m [43;30mwarning:[m [colon-whitespace] Colon at column 149 should have exactly one space after it
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/FloatLabel/FloatLabelTextView.swift:[44;30m211:[m[44;30m017:[m [43;30mwarning:[m [colon-whitespace] Colon at column 17 should have exactly one space after it
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/FloatLabel/FloatLabelTextView.swift:[44;30m212:[m[44;30m003:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
+
+[44;30m**********[m [42;30m/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/PhoneNumber/PhoneNumberFormatter.swift[m [44;30m**********[m
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/PhoneNumber/PhoneNumberFormatter.swift:[44;30m025:[m[44;30m14:[m [43;30mwarning:[m [lower-camel-case] Enum case names should be lowerCamelCase
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/PhoneNumber/PhoneNumberFormatter.swift:[44;30m026:[m[44;30m13:[m [43;30mwarning:[m [lower-camel-case] Enum case names should be lowerCamelCase
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/PhoneNumber/PhoneNumberFormatter.swift:[44;30m119:[m[44;30m06:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
 
 [44;30m**********[m [42;30m/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/PopOverView/Popover.swift[m [44;30m**********[m
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Externals/PopOverView/Popover.swift:[44;30m083:[m[44;30m59:[m [43;30mwarning:[m [brace-style] Opening brace should have exactly one space before it
@@ -1095,11 +1100,6 @@ DentaMatch/Helpers/Managers/SocketManager/SocketManager.swift could not be parse
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Library/Extensions/Date+Additions.swift:[44;30m011:[m[44;30m5:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Library/Extensions/Date+Additions.swift:[44;30m262:[m[44;30m6:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
 
-[44;30m**********[m [42;30m/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Library/Extensions/PhoneNumber/PhoneNumberFormatter.swift[m [44;30m**********[m
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Library/Extensions/PhoneNumber/PhoneNumberFormatter.swift:[44;30m025:[m[44;30m14:[m [43;30mwarning:[m [lower-camel-case] Enum case names should be lowerCamelCase
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Library/Extensions/PhoneNumber/PhoneNumberFormatter.swift:[44;30m026:[m[44;30m13:[m [43;30mwarning:[m [lower-camel-case] Enum case names should be lowerCamelCase
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Library/Extensions/PhoneNumber/PhoneNumberFormatter.swift:[44;30m119:[m[44;30m06:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
-
 [44;30m**********[m [42;30m/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Library/Extensions/String+Additons.swift[m [44;30m**********[m
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Library/Extensions/String+Additons.swift:[44;30m010:[m[44;30m01:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Library/Extensions/String+Additons.swift:[44;30m082:[m[44;30m46:[m [43;30mwarning:[m [brace-style] If statement closing brace should be isolated on a separate line
@@ -1157,8 +1157,10 @@ DentaMatch/Helpers/Managers/SocketManager/SocketManager.swift could not be parse
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Library/Managers/MixpanelManager/MixpanelOperations.swift:[44;30m52:[m[44;30m6:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
 
 [44;30m**********[m [42;30m/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Library/Managers/NotificationHandler/NotificationHandler.swift[m [44;30m**********[m
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Library/Managers/NotificationHandler/NotificationHandler.swift:[44;30m013:[m[44;30m5:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Library/Managers/NotificationHandler/NotificationHandler.swift:[44;30m120:[m[44;30m6:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Library/Managers/NotificationHandler/NotificationHandler.swift:[44;30m013:[m[44;30m05:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Library/Managers/NotificationHandler/NotificationHandler.swift:[44;30m063:[m[44;30m18:[m [43;30mwarning:[m [comment-whitespace] Multiline comment should start with whitespace
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Library/Managers/NotificationHandler/NotificationHandler.swift:[44;30m071:[m[44;30m18:[m [43;30mwarning:[m [comment-whitespace] Multiline comment should end with whitespace
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Library/Managers/NotificationHandler/NotificationHandler.swift:[44;30m129:[m[44;30m06:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
 
 [44;30m**********[m [42;30m/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Library/Managers/PhotoGalleryManager/CameraGalleryManager.swift[m [44;30m**********[m
 DentaMatch/Library/Managers/PhotoGalleryManager/CameraGalleryManager.swift could not be parsed successfully, skipping...
@@ -1269,16 +1271,20 @@ DentaMatch/ViewControllers/BaseVC/DMBaseVC.swift could not be parsed successfull
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/Certificate/DMEditCertificateVC+Services.swift:[44;30m71:[m[44;30m6:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
 
 [44;30m**********[m [42;30m/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/Certificate/DMEditCertificateVC.swift[m [44;30m**********[m
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/Certificate/DMEditCertificateVC.swift:[44;30m188:[m[44;30m6:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/Certificate/DMEditCertificateVC.swift:[44;30m192:[m[44;30m5:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/Certificate/DMEditCertificateVC.swift:[44;30m211:[m[44;30m6:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/Certificate/DMEditCertificateVC.swift:[44;30m119:[m[44;30m124:[m [43;30mwarning:[m [parenthesis-whitespace] Parameter clause in closure signature should be preceded by exactly one space
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/Certificate/DMEditCertificateVC.swift:[44;30m147:[m[44;30m126:[m [43;30mwarning:[m [parenthesis-whitespace] Parameter clause in closure signature should be preceded by exactly one space
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/Certificate/DMEditCertificateVC.swift:[44;30m188:[m[44;30m006:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/Certificate/DMEditCertificateVC.swift:[44;30m192:[m[44;30m005:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/Certificate/DMEditCertificateVC.swift:[44;30m211:[m[44;30m006:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
 
 [44;30m**********[m [42;30m/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/DentalStateBoard/DMEditDentalStateBoardVC+Services.swift[m [44;30m**********[m
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/DentalStateBoard/DMEditDentalStateBoardVC+Services.swift:[44;30m12:[m[44;30m5:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/DentalStateBoard/DMEditDentalStateBoardVC+Services.swift:[44;30m52:[m[44;30m6:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
 
 [44;30m**********[m [42;30m/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/DentalStateBoard/DMEditDentalStateBoardVC.swift[m [44;30m**********[m
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/DentalStateBoard/DMEditDentalStateBoardVC.swift:[44;30m104:[m[44;30m6:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/DentalStateBoard/DMEditDentalStateBoardVC.swift:[44;30m076:[m[44;30m124:[m [43;30mwarning:[m [parenthesis-whitespace] Parameter clause in closure signature should be preceded by exactly one space
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/DentalStateBoard/DMEditDentalStateBoardVC.swift:[44;30m091:[m[44;30m125:[m [43;30mwarning:[m [parenthesis-whitespace] Parameter clause in closure signature should be preceded by exactly one space
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/DentalStateBoard/DMEditDentalStateBoardVC.swift:[44;30m104:[m[44;30m006:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
 
 [44;30m**********[m [42;30m/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/EditProfile/DMEditProfileVC+Services.swift[m [44;30m**********[m
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/EditProfile/DMEditProfileVC+Services.swift:[44;30m013:[m[44;30m05:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
@@ -1310,6 +1316,7 @@ DentaMatch/ViewControllers/BaseVC/DMBaseVC.swift could not be parsed successfull
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/EditProfile/DMEditProfileVC+TableViewExtension.swift:[44;30m599:[m[44;30m006:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
 
 [44;30m**********[m [42;30m/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/EditProfile/DMEditProfileVC.swift[m [44;30m**********[m
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/EditProfile/DMEditProfileVC.swift:[44;30m133:[m[44;30m75:[m [43;30mwarning:[m [brace-style] Opening brace should have exactly one space before it
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/EditProfile/DMEditProfileVC.swift:[44;30m237:[m[44;30m69:[m [43;30mwarning:[m [brace-style] Opening brace should have exactly one space before it
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/EditProfile/DMEditProfileVC.swift:[44;30m242:[m[44;30m63:[m [43;30mwarning:[m [brace-style] Opening brace should have exactly one space before it
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/EditProfile/DMEditProfileVC.swift:[44;30m247:[m[44;30m52:[m [43;30mwarning:[m [brace-style] Opening brace should have exactly one space before it
@@ -1337,14 +1344,16 @@ DentaMatch/ViewControllers/BaseVC/DMBaseVC.swift could not be parsed successfull
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/PublicProfile/DMPublicProfileVC+TableViewExtension.swift:[44;30m108:[m[44;30m06:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
 
 [44;30m**********[m [42;30m/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/PublicProfile/DMPublicProfileVC.swift[m [44;30m**********[m
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/PublicProfile/DMPublicProfileVC.swift:[44;30m104:[m[44;30m7:[m [43;30mwarning:[m [comment-whitespace] Multiline comment should end with whitespace
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/PublicProfile/DMPublicProfileVC.swift:[44;30m227:[m[44;30m6:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/PublicProfile/DMPublicProfileVC.swift:[44;30m231:[m[44;30m5:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/PublicProfile/DMPublicProfileVC.swift:[44;30m365:[m[44;30m6:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/PublicProfile/DMPublicProfileVC.swift:[44;30m369:[m[44;30m5:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/PublicProfile/DMPublicProfileVC.swift:[44;30m385:[m[44;30m6:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/PublicProfile/DMPublicProfileVC.swift:[44;30m389:[m[44;30m5:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/PublicProfile/DMPublicProfileVC.swift:[44;30m400:[m[44;30m6:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/PublicProfile/DMPublicProfileVC.swift:[44;30m104:[m[44;30m007:[m [43;30mwarning:[m [comment-whitespace] Multiline comment should end with whitespace
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/PublicProfile/DMPublicProfileVC.swift:[44;30m188:[m[44;30m124:[m [43;30mwarning:[m [parenthesis-whitespace] Parameter clause in closure signature should be preceded by exactly one space
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/PublicProfile/DMPublicProfileVC.swift:[44;30m201:[m[44;30m125:[m [43;30mwarning:[m [parenthesis-whitespace] Parameter clause in closure signature should be preceded by exactly one space
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/PublicProfile/DMPublicProfileVC.swift:[44;30m227:[m[44;30m006:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/PublicProfile/DMPublicProfileVC.swift:[44;30m231:[m[44;30m005:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/PublicProfile/DMPublicProfileVC.swift:[44;30m365:[m[44;30m006:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/PublicProfile/DMPublicProfileVC.swift:[44;30m369:[m[44;30m005:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/PublicProfile/DMPublicProfileVC.swift:[44;30m385:[m[44;30m006:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/PublicProfile/DMPublicProfileVC.swift:[44;30m389:[m[44;30m005:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/PublicProfile/DMPublicProfileVC.swift:[44;30m400:[m[44;30m006:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
 
 [44;30m**********[m [42;30m/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/Skills/DMEditSkillsVC+Services.swift[m [44;30m**********[m
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Dashboard/Skills/DMEditSkillsVC+Services.swift:[44;30m013:[m[44;30m05:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
@@ -1429,8 +1438,9 @@ DentaMatch/ViewControllers/JobSearch/DMJobDetaiVC+TableViewExtension.swift could
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/JobSearch/DMJobSearchResultVC+GMSExtension.swift:[44;30m89:[m[44;30m6:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
 
 [44;30m**********[m [42;30m/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/JobSearch/DMJobSearchResultVC+Services.swift[m [44;30m**********[m
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/JobSearch/DMJobSearchResultVC+Services.swift:[44;30m013:[m[44;30m5:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/JobSearch/DMJobSearchResultVC+Services.swift:[44;30m108:[m[44;30m6:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/JobSearch/DMJobSearchResultVC+Services.swift:[44;30m013:[m[44;30m005:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/JobSearch/DMJobSearchResultVC+Services.swift:[44;30m050:[m[44;30m120:[m [43;30mwarning:[m [brace-style] Opening brace should have exactly one space before it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/JobSearch/DMJobSearchResultVC+Services.swift:[44;30m108:[m[44;30m006:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
 
 [44;30m**********[m [42;30m/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/JobSearch/DMJobSearchResultVC+TableViewExtension.swift[m [44;30m**********[m
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/JobSearch/DMJobSearchResultVC+TableViewExtension.swift:[44;30m13:[m[44;30m05:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
@@ -1438,13 +1448,15 @@ DentaMatch/ViewControllers/JobSearch/DMJobDetaiVC+TableViewExtension.swift could
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/JobSearch/DMJobSearchResultVC+TableViewExtension.swift:[44;30m95:[m[44;30m06:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
 
 [44;30m**********[m [42;30m/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/JobSearch/DMJobSearchResultVC.swift[m [44;30m**********[m
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/JobSearch/DMJobSearchResultVC.swift:[44;30m242:[m[44;30m94:[m [43;30mwarning:[m [brace-style] Opening brace should have exactly one space before it
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/JobSearch/DMJobSearchResultVC.swift:[44;30m344:[m[44;30m03:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/JobSearch/DMJobSearchResultVC.swift:[44;30m348:[m[44;30m05:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/JobSearch/DMJobSearchResultVC.swift:[44;30m355:[m[44;30m06:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/JobSearch/DMJobSearchResultVC.swift:[44;30m359:[m[44;30m05:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/JobSearch/DMJobSearchResultVC.swift:[44;30m360:[m[44;30m38:[m [43;30mwarning:[m [trailing-closure] Closure is the function's final argument and may be passed as a trailing closure instead
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/JobSearch/DMJobSearchResultVC.swift:[44;30m363:[m[44;30m06:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/JobSearch/DMJobSearchResultVC.swift:[44;30m175:[m[44;30m04:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/JobSearch/DMJobSearchResultVC.swift:[44;30m176:[m[44;30m53:[m [43;30mwarning:[m [brace-style] Opening brace should have exactly one space before it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/JobSearch/DMJobSearchResultVC.swift:[44;30m247:[m[44;30m94:[m [43;30mwarning:[m [brace-style] Opening brace should have exactly one space before it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/JobSearch/DMJobSearchResultVC.swift:[44;30m349:[m[44;30m03:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/JobSearch/DMJobSearchResultVC.swift:[44;30m353:[m[44;30m05:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/JobSearch/DMJobSearchResultVC.swift:[44;30m360:[m[44;30m06:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/JobSearch/DMJobSearchResultVC.swift:[44;30m364:[m[44;30m05:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/JobSearch/DMJobSearchResultVC.swift:[44;30m365:[m[44;30m38:[m [43;30mwarning:[m [trailing-closure] Closure is the function's final argument and may be passed as a trailing closure instead
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/JobSearch/DMJobSearchResultVC.swift:[44;30m368:[m[44;30m06:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
 
 [44;30m**********[m [42;30m/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/JobSearch/DMJobSearchVC+Services.swift[m [44;30m**********[m
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/JobSearch/DMJobSearchVC+Services.swift:[44;30m13:[m[44;30m5:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
@@ -1503,10 +1515,12 @@ DentaMatch/ViewControllers/JobSearch/DMJobDetaiVC+TableViewExtension.swift could
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/MapsRegistration/DMRegisterMapsVC+TableViewExtension.swift:[44;30m32:[m[44;30m06:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
 
 [44;30m**********[m [42;30m/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/MapsRegistration/DMRegisterMapsVC.swift[m [44;30m**********[m
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/MapsRegistration/DMRegisterMapsVC.swift:[44;30m155:[m[44;30m50:[m [43;30mwarning:[m [trailing-closure] Closure is the function's final argument and may be passed as a trailing closure instead
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/MapsRegistration/DMRegisterMapsVC.swift:[44;30m227:[m[44;30m06:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/MapsRegistration/DMRegisterMapsVC.swift:[44;30m233:[m[44;30m05:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/MapsRegistration/DMRegisterMapsVC.swift:[44;30m278:[m[44;30m06:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/MapsRegistration/DMRegisterMapsVC.swift:[44;30m024:[m[44;30m34:[m [43;30mwarning:[m [colon-whitespace] Colon at column 34 should have no spaces before it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/MapsRegistration/DMRegisterMapsVC.swift:[44;30m024:[m[44;30m41:[m [43;30mwarning:[m [brace-style] Opening brace should have exactly one space before it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/MapsRegistration/DMRegisterMapsVC.swift:[44;30m157:[m[44;30m50:[m [43;30mwarning:[m [trailing-closure] Closure is the function's final argument and may be passed as a trailing closure instead
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/MapsRegistration/DMRegisterMapsVC.swift:[44;30m229:[m[44;30m06:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/MapsRegistration/DMRegisterMapsVC.swift:[44;30m235:[m[44;30m05:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/MapsRegistration/DMRegisterMapsVC.swift:[44;30m280:[m[44;30m06:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
 
 [44;30m**********[m [42;30m/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Messages/Chat/DMChatVC+DBHandling.swift[m [44;30m**********[m
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Messages/Chat/DMChatVC+DBHandling.swift:[44;30m014:[m[44;30m05:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
@@ -1613,8 +1627,8 @@ DentaMatch/ViewControllers/JobSearch/DMJobDetaiVC+TableViewExtension.swift could
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Profile/Certifications/DMCertificationsVC+TableViewExtension.swift:[44;30m97:[m[44;30m06:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
 
 [44;30m**********[m [42;30m/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Profile/Certifications/DMCertificationsVC.swift[m [44;30m**********[m
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Profile/Certifications/DMCertificationsVC.swift:[44;30m104:[m[44;30m5:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Profile/Certifications/DMCertificationsVC.swift:[44;30m195:[m[44;30m6:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Profile/Certifications/DMCertificationsVC.swift:[44;30m105:[m[44;30m5:[m [43;30mwarning:[m [trailing-whitespace] Line should not have any trailing whitespace
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Profile/Certifications/DMCertificationsVC.swift:[44;30m193:[m[44;30m6:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
 
 [44;30m**********[m [42;30m/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Profile/Congratulations/DMCongratulationsVC.swift[m [44;30m**********[m
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Profile/Congratulations/DMCongratulationsVC.swift:[44;30m12:[m[44;30m5:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
@@ -1642,7 +1656,9 @@ DentaMatch/ViewControllers/JobSearch/DMJobDetaiVC+TableViewExtension.swift could
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Profile/JobTitleSelection/DMJobTitleSelectionVC+UIPickerViewExtension.swift:[44;30m28:[m[44;30m6:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
 
 [44;30m**********[m [42;30m/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Profile/JobTitleSelection/DMJobTitleSelectionVC.swift[m [44;30m**********[m
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Profile/JobTitleSelection/DMJobTitleSelectionVC.swift:[44;30m289:[m[44;30m6:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Profile/JobTitleSelection/DMJobTitleSelectionVC.swift:[44;30m196:[m[44;30m125:[m [43;30mwarning:[m [parenthesis-whitespace] Parameter clause in closure signature should be preceded by exactly one space
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Profile/JobTitleSelection/DMJobTitleSelectionVC.swift:[44;30m211:[m[44;30m126:[m [43;30mwarning:[m [parenthesis-whitespace] Parameter clause in closure signature should be preceded by exactly one space
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Profile/JobTitleSelection/DMJobTitleSelectionVC.swift:[44;30m289:[m[44;30m006:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
 
 [44;30m**********[m [42;30m/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Profile/License/DMLicenseSelectionVC+Services.swift[m [44;30m**********[m
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Profile/License/DMLicenseSelectionVC+Services.swift:[44;30m12:[m[44;30m5:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
@@ -1658,8 +1674,9 @@ DentaMatch/ViewControllers/JobSearch/DMJobDetaiVC+TableViewExtension.swift could
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Profile/License/DMLicenseSelectionVC+TableViewExtension.swift:[44;30m181:[m[44;30m06:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
 
 [44;30m**********[m [42;30m/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Profile/License/DMLicenseSelectionVC.swift[m [44;30m**********[m
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Profile/License/DMLicenseSelectionVC.swift:[44;30m113:[m[44;30m20:[m [43;30mwarning:[m [colon-whitespace] Colon at column 20 should have no spaces before it
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Profile/License/DMLicenseSelectionVC.swift:[44;30m169:[m[44;30m06:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Profile/License/DMLicenseSelectionVC.swift:[44;30m113:[m[44;30m020:[m [43;30mwarning:[m [colon-whitespace] Colon at column 20 should have no spaces before it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Profile/License/DMLicenseSelectionVC.swift:[44;30m140:[m[44;30m134:[m [43;30mwarning:[m [parenthesis-whitespace] Parameter clause in closure signature should be preceded by exactly one space
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Profile/License/DMLicenseSelectionVC.swift:[44;30m169:[m[44;30m006:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
 
 [44;30m**********[m [42;30m/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Profile/ProfileSuccessFailure/DMProfileSuccessPending+Services.swift[m [44;30m**********[m
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Profile/ProfileSuccessFailure/DMProfileSuccessPending+Services.swift:[44;30m13:[m[44;30m5:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
@@ -1887,8 +1904,8 @@ DentaMatch/ViewControllers/JobSearch/DMJobDetaiVC+TableViewExtension.swift could
 
 [44;30m**********[m [42;30m/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Registration/DMRegistration+Services.swift[m [44;30m**********[m
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Registration/DMRegistration+Services.swift:[44;30m013:[m[44;30m05:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Registration/DMRegistration+Services.swift:[44;30m064:[m[44;30m46:[m [43;30mwarning:[m [brace-style] If statement closing brace should be isolated on a separate line
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Registration/DMRegistration+Services.swift:[44;30m132:[m[44;30m06:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Registration/DMRegistration+Services.swift:[44;30m063:[m[44;30m46:[m [43;30mwarning:[m [brace-style] If statement closing brace should be isolated on a separate line
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Registration/DMRegistration+Services.swift:[44;30m131:[m[44;30m06:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
 
 [44;30m**********[m [42;30m/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Registration/DMRegistrationContainer.swift[m [44;30m**********[m
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Registration/DMRegistrationContainer.swift:[44;30m140:[m[44;30m6:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
@@ -1901,11 +1918,11 @@ DentaMatch/ViewControllers/JobSearch/DMJobDetaiVC+TableViewExtension.swift could
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Registration/DMRegistrationVC+TextFieldExtension.swift:[44;30m135:[m[44;30m6:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
 
 [44;30m**********[m [42;30m/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Registration/DMRegistrationVC.swift[m [44;30m**********[m
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Registration/DMRegistrationVC.swift:[44;30m159:[m[44;30m6:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Registration/DMRegistrationVC.swift:[44;30m165:[m[44;30m5:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Registration/DMRegistrationVC.swift:[44;30m178:[m[44;30m6:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Registration/DMRegistrationVC.swift:[44;30m182:[m[44;30m5:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
-/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Registration/DMRegistrationVC.swift:[44;30m195:[m[44;30m6:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Registration/DMRegistrationVC.swift:[44;30m158:[m[44;30m6:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Registration/DMRegistrationVC.swift:[44;30m164:[m[44;30m5:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Registration/DMRegistrationVC.swift:[44;30m177:[m[44;30m6:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Registration/DMRegistrationVC.swift:[44;30m181:[m[44;30m5:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
+/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Registration/DMRegistrationVC.swift:[44;30m194:[m[44;30m6:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
 
 [44;30m**********[m [42;30m/Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Settings/ChangePassword/DMChangePasswordVC+Services.swift[m [44;30m**********[m
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/ViewControllers/Settings/ChangePassword/DMChangePasswordVC+Services.swift:[44;30m12:[m[44;30m5:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line before it
@@ -2217,5 +2234,5 @@ DentaMatch/ViewControllers/JobSearch/DMJobDetaiVC+TableViewExtension.swift could
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Views/TableView Cells/Setting/SettingTableCell.swift:[44;30m15:[m[44;30m19:[m [43;30mwarning:[m [lower-camel-case] Variable names should be lowerCamelCase
 /Users/prashantgautam/Desktop/Projects-Repo/Dentamatch/DentaMatch/Views/TableView Cells/Setting/SettingTableCell.swift:[44;30m27:[m[44;30m06:[m [43;30mwarning:[m [function-whitespace] Function should have at least one blank line after it
 
-Analyzed 270 files, skipped 9 files, and detected 1693 violations (0 errors, 1693 warnings).
+Analyzed 270 files, skipped 9 files, and detected 1710 violations (0 errors, 1710 warnings).
 

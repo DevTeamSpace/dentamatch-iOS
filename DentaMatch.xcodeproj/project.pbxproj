@@ -3298,7 +3298,7 @@
 				OTHER_SWIFT_FLAGS = "-DSTAGING";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appster.dentamatch;
 				PRODUCT_NAME = "$(TARGET_NAME)-Staging";
-				PROVISIONING_PROFILE = "ee768954-fe4a-4a95-b16d-91497d00d316";
+				PROVISIONING_PROFILE = "c090df9e-bd0f-4096-8b55-3d092b58e375";
 				PROVISIONING_PROFILE_SPECIFIER = Dentamatch_distribution;
 				SWIFT_OBJC_BRIDGING_HEADER = "DentaMatch/Application/DentaMatch-BridgingHeader.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
