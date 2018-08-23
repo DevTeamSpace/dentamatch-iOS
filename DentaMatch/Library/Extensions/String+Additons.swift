@@ -157,10 +157,26 @@ extension String {
         return test.evaluate(with: self)
     }
 
-    func widthWithConstraintHeight(height: CGFloat, font: UIFont) -> CGFloat {
+    /*func widthWithConstraintHeight(height: CGFloat, font: UIFont) -> CGFloat {
         let constraintRect = CGSize(width: .greatestFiniteMagnitude, height: height)
         let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font: font], context: nil)
         return boundingBox.width
+    }*/
+    
+    /**
+     Get width of string
+     
+     - parameter width: Max width of string to calculate height
+     - parameter font:  Font of string
+     
+     - returns: Height of string
+     */
+    func widthWithConstrainetHeight(_ height: CGFloat, font: UIFont) -> CGFloat {
+        let constraintRect = CGSize(width: CGFloat.greatestFiniteMagnitude, height: height)
+        
+        let boundingBox = self.boundingRect(with: constraintRect, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font: font], context: nil)
+        
+        return ceil(boundingBox.width)
     }
 
     // convert emoji to utf8 string

@@ -71,6 +71,7 @@ class DMJobDetailVC: DMBaseVC {
     func setup() {
         title = Constants.ScreenTitleNames.jobDetails
         tblJobDetail.rowHeight = UITableViewAutomaticDimension
+        tblJobDetail.register(UINib(nibName: "TempJobDetailCell", bundle: nil), forCellReuseIdentifier: "TempJobDetailCell")
         tblJobDetail.register(UINib(nibName: "DentistDetailCell", bundle: nil), forCellReuseIdentifier: "DentistDetailCell")
         tblJobDetail.register(UINib(nibName: "AboutCell", bundle: nil), forCellReuseIdentifier: "AboutCell")
         tblJobDetail.register(UINib(nibName: "JobDescriptionCell", bundle: nil), forCellReuseIdentifier: "JobDescriptionCell")

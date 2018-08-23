@@ -17,6 +17,6 @@
 #import "FSCalendar.h"
 #import "FSCalendarExtensions.h"
 #import "FSCalendarAppearance.h"
-
+#import "DGCollectionViewLeftAlignFlowLayout.h"
 
 #endif /* DentaMatch_BridgingHeader_h */

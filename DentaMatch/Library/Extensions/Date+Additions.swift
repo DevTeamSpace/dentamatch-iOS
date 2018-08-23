@@ -148,7 +148,7 @@ extension Date {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
         if let date = dateFormatter.date(from: dateString) {
-            dateFormatter.dateFormat = "EEE,MMM d"
+            dateFormatter.dateFormat = "EEE, MMM d"
             return dateFormatter.string(from: date)
         }
         return dateString

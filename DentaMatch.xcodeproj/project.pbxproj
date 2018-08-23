@@ -8,11 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		270886FB07B603FF47668A72 /* Pods_DentaMatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C611E923856ECE4538FA4F38 /* Pods_DentaMatch.framework */; };
+		48067D49212E9E8F007F77E6 /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48067D47212E9E8F007F77E6 /* TagCell.swift */; };
+		48067D4A212E9E8F007F77E6 /* TagCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48067D48212E9E8F007F77E6 /* TagCell.xib */; };
+		48067D4D212EC5BD007F77E6 /* DGCollectionViewLeftAlignFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48067D4C212EC5BD007F77E6 /* DGCollectionViewLeftAlignFlowLayout.swift */; };
 		4831AC2020EF85FB0042B55C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4831AC1F20EF85FB0042B55C /* README.md */; };
 		4846B87720F3550000BAC18C /* Constants+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846B87620F3550000BAC18C /* Constants+Color.swift */; };
 		4846B87920F3564C00BAC18C /* Constants+AlertMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846B87820F3564C00BAC18C /* Constants+AlertMessage.swift */; };
 		4846B87D20F356CC00BAC18C /* Constants+Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846B87C20F356CC00BAC18C /* Constants+Api.swift */; };
 		4877D98320ECD54400264422 /* AppDelegate+InitialConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4877D98220ECD54400264422 /* AppDelegate+InitialConfiguration.swift */; };
+		48CD1505212D75F600E4B80E /* TempJobDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CD1503212D75F600E4B80E /* TempJobDetailCell.swift */; };
+		48CD1506212D75F600E4B80E /* TempJobDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48CD1504212D75F600E4B80E /* TempJobDetailCell.xib */; };
 		5A0138241E6EBBA900D15783 /* MixpanelOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0138231E6EBBA900D15783 /* MixpanelOperations.swift */; };
 		5A1960FD1E208B67002A5F7C /* PhoneNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1960FB1E208B67002A5F7C /* PhoneNumberFormatter.swift */; };
 		5A2CEF4B1E3C2F9600836654 /* DMCalendarSetAvailabillityVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2CEF4A1E3C2F9600836654 /* DMCalendarSetAvailabillityVC+Services.swift */; };
@@ -419,11 +424,17 @@
 /* Begin PBXFileReference section */
 		158450992C392116A74F763C /* Pods-DentaMatch.qa.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DentaMatch.qa.xcconfig"; path = "Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch.qa.xcconfig"; sourceTree = "<group>"; };
 		19F54B802B7D87A34FEE97F2 /* Pods-DentaMatch.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DentaMatch.staging.xcconfig"; path = "Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch.staging.xcconfig"; sourceTree = "<group>"; };
+		48067D47212E9E8F007F77E6 /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
+		48067D48212E9E8F007F77E6 /* TagCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagCell.xib; sourceTree = "<group>"; };
+		48067D4B212EC5BC007F77E6 /* DGCollectionViewLeftAlignFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGCollectionViewLeftAlignFlowLayout.h; sourceTree = "<group>"; };
+		48067D4C212EC5BD007F77E6 /* DGCollectionViewLeftAlignFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGCollectionViewLeftAlignFlowLayout.swift; sourceTree = "<group>"; };
 		4831AC1F20EF85FB0042B55C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4846B87620F3550000BAC18C /* Constants+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constants+Color.swift"; sourceTree = "<group>"; };
 		4846B87820F3564C00BAC18C /* Constants+AlertMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constants+AlertMessage.swift"; sourceTree = "<group>"; };
 		4846B87C20F356CC00BAC18C /* Constants+Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constants+Api.swift"; sourceTree = "<group>"; };
 		4877D98220ECD54400264422 /* AppDelegate+InitialConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+InitialConfiguration.swift"; sourceTree = "<group>"; };
+		48CD1503212D75F600E4B80E /* TempJobDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempJobDetailCell.swift; sourceTree = "<group>"; };
+		48CD1504212D75F600E4B80E /* TempJobDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TempJobDetailCell.xib; sourceTree = "<group>"; };
 		5A0138231E6EBBA900D15783 /* MixpanelOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixpanelOperations.swift; sourceTree = "<group>"; };
 		5A1960FB1E208B67002A5F7C /* PhoneNumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberFormatter.swift; sourceTree = "<group>"; };
 		5A2CEF4A1E3C2F9600836654 /* DMCalendarSetAvailabillityVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMCalendarSetAvailabillityVC+Services.swift"; sourceTree = "<group>"; };
@@ -2340,8 +2351,14 @@
 		F2F5E0C81E2F25A00082187C /* JobDetail */ = {
 			isa = PBXGroup;
 			children = (
+				48067D4B212EC5BC007F77E6 /* DGCollectionViewLeftAlignFlowLayout.h */,
+				48067D4C212EC5BD007F77E6 /* DGCollectionViewLeftAlignFlowLayout.swift */,
 				F2F5E0C91E2F292F0082187C /* DentistDetailCell.swift */,
 				F2F5E0CA1E2F292F0082187C /* DentistDetailCell.xib */,
+				48CD1503212D75F600E4B80E /* TempJobDetailCell.swift */,
+				48CD1504212D75F600E4B80E /* TempJobDetailCell.xib */,
+				48067D47212E9E8F007F77E6 /* TagCell.swift */,
+				48067D48212E9E8F007F77E6 /* TagCell.xib */,
 				F2F5E0CD1E2F62080082187C /* AboutCell.swift */,
 				F2F5E0CE1E2F62080082187C /* AboutCell.xib */,
 				F2F5E0D11E30CF310082187C /* JobDescriptionCell.swift */,
@@ -2452,6 +2469,7 @@
 				E51C4D3C1FB051C7009FC3A0 /* AboutMeJobSelectionCell.xib in Resources */,
 				5A3B06C91E3375ED00EFCA6E /* ChangePasswordTableCell.xib in Resources */,
 				E597E57A1E151A99001DDA78 /* SF-UI-Display-Regular.otf in Resources */,
+				48067D4A212E9E8F007F77E6 /* TagCell.xib in Resources */,
 				4831AC2020EF85FB0042B55C /* README.md in Resources */,
 				5A3BD4AB1E35D3D800A607AC /* EditProfileAffiliationBrickCell.xib in Resources */,
 				E5E7CB4B1E2F8CDE00D4FB59 /* EditLicenseTableCell.xib in Resources */,
@@ -2488,6 +2506,7 @@
 				E54B9A7D1E326A6C00805D9C /* EditCertificateTableCell.xib in Resources */,
 				5AC7143C1E34A89300E433C1 /* Track.storyboard in Resources */,
 				E5E7CB8E1E2FA23300D4FB59 /* SkillsTableCell.xib in Resources */,
+				48CD1506212D75F600E4B80E /* TempJobDetailCell.xib in Resources */,
 				5AB876521E249C0A007818D6 /* ExperiencePickerView.xib in Resources */,
 				E5AE2AF31DAF84AD00C008BD /* Onboarding.storyboard in Resources */,
 				E5AE37091E4897690001EC3C /* MessageSenderTableCell.xib in Resources */,
@@ -2816,6 +2835,7 @@
 				5A60A85B1E43309100789D14 /* UserAvailability.swift in Sources */,
 				E5AE375F1E4971CE0001EC3C /* SocketAckEmitter.swift in Sources */,
 				E54976F31E28CEDD006F21E5 /* User.swift in Sources */,
+				48067D49212E9E8F007F77E6 /* TagCell.swift in Sources */,
 				E5E7CB831E2FA23200D4FB59 /* ReferenceTableCell.swift in Sources */,
 				E5AE37761E4971CE0001EC3C /* WebSocket.swift in Sources */,
 				E5AE37671E4971CE0001EC3C /* SocketEngineSpec.swift in Sources */,
@@ -2836,6 +2856,7 @@
 				E5F919421E9DD4A30021F008 /* FSCalendarAppearance.m in Sources */,
 				E5496E081E25E4AA00C54288 /* DMSchoolListPopOverVC.swift in Sources */,
 				5A85D2121E2DFAD000AC4C89 /* TagContents.swift in Sources */,
+				48067D4D212EC5BD007F77E6 /* DGCollectionViewLeftAlignFlowLayout.swift in Sources */,
 				5A85D20F1E2DFAD000AC4C89 /* SeparatorWrapper.swift in Sources */,
 				E50FA8131E30A1DA00C20C93 /* DMPublicProfileVC+TableViewExtension.swift in Sources */,
 				5A50A2B81E320F6E0010AA31 /* TabBarVC.swift in Sources */,
@@ -2867,6 +2888,7 @@
 				5A8F62A51E399A550037C4A2 /* DMCalendarSetAvailabillityVC+TableViewExtension.swift in Sources */,
 				5AC714581E34F76900E433C1 /* DMSettingVC+Services.swift in Sources */,
 				5A737D091E56B040002472D4 /* NotificationHandler.swift in Sources */,
+				48CD1505212D75F600E4B80E /* TempJobDetailCell.swift in Sources */,
 				E587D2F61E24C0B0006B7F06 /* DMSkillsVC.swift in Sources */,
 				E50B3F501E194CD7004C5F32 /* RegistrationTableViewCell.swift in Sources */,
 				F2CBC10A1E41E9BE00345B9F /* DMJobDetailVC+Services.swift in Sources */,

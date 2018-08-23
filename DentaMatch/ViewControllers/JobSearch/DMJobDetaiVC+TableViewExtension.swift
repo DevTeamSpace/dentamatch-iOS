@@ -26,11 +26,20 @@ extension DMJobDetailVC: UITableViewDataSource, UITableViewDelegate, JobDescript
         cell.selectionStyle = .none
         switch indexPath.section {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DentistDetailCell") as? DentistDetailCell
-            cell?.selectionStyle = .none
-            cell?.delegate = self
-            cell?.setCellData(job: job!)
-            return cell!
+            if job!.jobType == 3 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "TempJobDetailCell") as? TempJobDetailCell
+                cell?.selectionStyle = .none
+                cell?.delegate = self
+                cell?.setCellData(job: job!)
+                return cell!
+            }else{
+                let cell = tableView.dequeueReusableCell(withIdentifier: "DentistDetailCell") as? DentistDetailCell
+                cell?.selectionStyle = .none
+                cell?.delegate = self
+                cell?.setCellData(job: job!)
+                return cell!
+            }
+            
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AboutCell") as? AboutCell
             cell?.selectionStyle = .none
@@ -118,7 +127,12 @@ extension DMJobDetailVC: UITableViewDataSource, UITableViewDelegate, JobDescript
     func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
+            if job!.jobType == 3 {
+                return  UITableViewAutomaticDimension
+            }
             return (job?.isApplied ?? 0 ) > 0 ? TableViewCellHeight.jobTitle.rawValue + 20: TableViewCellHeight.jobTitle.rawValue
+            
+            
         case 1:
             return UITableViewAutomaticDimension
         case 2:
