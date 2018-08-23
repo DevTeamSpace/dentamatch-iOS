@@ -396,7 +396,6 @@ extension DMEditProfileVC: UITableViewDataSource, UITableViewDelegate {
 
         case .certifications:
             let certificate = certifications[indexPath.row]
-
             // Certificate not uploaded cell
             if (certificate.certificateImageURL?.isEmpty)! {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyCertificateTableViewCell") as! EmptyCertificateTableViewCell
@@ -410,6 +409,11 @@ extension DMEditProfileVC: UITableViewDataSource, UITableViewDelegate {
                 cell.validityDateAttributedLabel.isHidden = false
                 cell.certificateNameLabel.isHidden = false
                 cell.validityDateAttributedLabel.attributedText = cell.createValidityDateAttributedText(date: certificate.validityDate)
+                if certificate.certificationName == "Resume" {
+                    cell.validityDateAttributedLabel.isHidden = true
+                }else{
+                   cell.validityDateAttributedLabel.isHidden = false
+                }
                 cell.editButton.tag = indexPath.row
                 cell.editButton.isHidden = false
                 cell.editButton.removeTarget(nil, action: nil, for: .allEvents)

@@ -19,6 +19,12 @@ class DMEditCertificateVC: DMBaseVC, DatePickerViewDelegate {
     var certificateImage: UIImage?
     var isEditMode = false
     var dateSelected = ""
+    private lazy var isEditingResume : Bool = {
+        if let certificateName = self.certificate?.certificationName, certificateName == "Resume" {
+            return true
+        }
+        return false
+    }()
 
     // MARK: - View LifeCycle
 
@@ -41,6 +47,7 @@ class DMEditCertificateVC: DMBaseVC, DatePickerViewDelegate {
     // MARK: - Private Methods
 
     func setup() {
+        title = "EDIT PROFILE"
         certificateImageButton.layer.cornerRadius = certificateImageButton.frame.size.width / 2
         certificateImageButton.clipsToBounds = true
         certificateImageButton.imageView?.contentMode = .scaleAspectFill
@@ -55,10 +62,11 @@ class DMEditCertificateVC: DMBaseVC, DatePickerViewDelegate {
             dateSelected = date
         }
         validityDatePicker.text = getCertificateDateFormat(dateString: dateSelected)
-
         validityDatePicker.inputView = dateView
         validityDatePicker.tintColor = UIColor.clear
-        title = "EDIT PROFILE"
+        if isEditingResume {
+           validityDatePicker.isHidden = true
+        }
         changeNavBarAppearanceForDefault()
         navigationItem.leftBarButtonItem = backBarButton()
         certificateNameLabel.text = certificate?.certificationName
@@ -87,12 +95,17 @@ class DMEditCertificateVC: DMBaseVC, DatePickerViewDelegate {
 
     @IBAction func saveButtonPressed(_: Any) {
         if !(certificate?.certificateImageURL?.isEmptyField)! {
+            if isEditingResume {
+                self.navigationController?.popViewController(animated: true)
+                self.updateProfileScreen()
+                return
+            }
             if !validityDatePicker.text!.isEmptyField {
                 uploadValidityDate { (response: JSON?, _: NSError?) in
                     if let _ = response {
                         self.certificate?.validityDate = self.dateSelected
                         self.updateProfileScreen()
-                        _ = self.navigationController?.popViewController(animated: true)
+                        self.navigationController?.popViewController(animated: true)
                     }
                 }
             } else {
