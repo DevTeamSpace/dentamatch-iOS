@@ -40,7 +40,7 @@ class EditCertificateTableCell: UITableViewCell {
     }
 
     func getCertificateDateFormat(dateString: String) -> String {
-        if !dateString.isEmptyField {
+        if !dateString.isEmptyField && dateString != Constants.kEmptyDate {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = Date.dateFormatYYYYMMDDDashed()
             let date = dateFormatter.date(from: dateString)

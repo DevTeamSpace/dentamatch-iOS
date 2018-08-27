@@ -86,6 +86,7 @@ extension DMSettingVC: UITableViewDataSource, UITableViewDelegate {
         signOut { check, _ in
 
             if check == true {
+                AppDelegate.delegate().resetBadgeCount()
                 MixpanelOperations.mixpanepanelLogout()
                 self.deleteFetchController()
                 SocketManager.sharedInstance.closeConnection()

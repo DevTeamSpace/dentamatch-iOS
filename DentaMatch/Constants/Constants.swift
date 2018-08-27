@@ -23,10 +23,12 @@ let kOkButtonTitle = "Ok"
 let kOpenGoogleMapUrl = "comgooglemaps://"
 let kGoogleSearchMap = "https://maps.google.com/?q="
 let kInstaBugKey = "AIzaSyD1xD10kM-xCzRswPNEoovElT2vhpJQSGo"
+
 // swiftlint:disable nesting
 struct Constants {
     static let BASE_URL = Constants.apiBaseURL()
-
+    static let kUnreadCount = "UnreadNotificationCount"
+    static let kEmptyDate = "0000-00-00"
     static func apiBaseURL() -> String {
         return ConfigurationManager.sharedManager().applicationEndPoint()
     }

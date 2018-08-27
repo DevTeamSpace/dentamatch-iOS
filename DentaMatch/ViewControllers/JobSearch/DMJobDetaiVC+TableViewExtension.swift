@@ -123,7 +123,7 @@ extension DMJobDetailVC: UITableViewDataSource, UITableViewDelegate, JobDescript
         }
         return 0
     }
-//(job?.isApplied ?? 0 ) > 0 ? TableViewCellHeight.jobTitle.rawValue + 20: TableViewCellHeight.jobTitle.rawValue
+
     func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
@@ -131,8 +131,6 @@ extension DMJobDetailVC: UITableViewDataSource, UITableViewDelegate, JobDescript
                 return  UITableViewAutomaticDimension
             }
             return (job?.isApplied ?? 0 ) > 0 ? TableViewCellHeight.jobTitle.rawValue + 20: TableViewCellHeight.jobTitle.rawValue
-            
-            
         case 1:
             return UITableViewAutomaticDimension
         case 2:

@@ -12,6 +12,7 @@
 		48067D4A212E9E8F007F77E6 /* TagCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48067D48212E9E8F007F77E6 /* TagCell.xib */; };
 		48067D4D212EC5BD007F77E6 /* DGCollectionViewLeftAlignFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48067D4C212EC5BD007F77E6 /* DGCollectionViewLeftAlignFlowLayout.swift */; };
 		4831AC2020EF85FB0042B55C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4831AC1F20EF85FB0042B55C /* README.md */; };
+		484174CE212FF52B00C86818 /* UserDefaults+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484174CD212FF52B00C86818 /* UserDefaults+Additions.swift */; };
 		4846B87720F3550000BAC18C /* Constants+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846B87620F3550000BAC18C /* Constants+Color.swift */; };
 		4846B87920F3564C00BAC18C /* Constants+AlertMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846B87820F3564C00BAC18C /* Constants+AlertMessage.swift */; };
 		4846B87D20F356CC00BAC18C /* Constants+Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846B87C20F356CC00BAC18C /* Constants+Api.swift */; };
@@ -429,6 +430,7 @@
 		48067D4B212EC5BC007F77E6 /* DGCollectionViewLeftAlignFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGCollectionViewLeftAlignFlowLayout.h; sourceTree = "<group>"; };
 		48067D4C212EC5BD007F77E6 /* DGCollectionViewLeftAlignFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGCollectionViewLeftAlignFlowLayout.swift; sourceTree = "<group>"; };
 		4831AC1F20EF85FB0042B55C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		484174CD212FF52B00C86818 /* UserDefaults+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Additions.swift"; sourceTree = "<group>"; };
 		4846B87620F3550000BAC18C /* Constants+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constants+Color.swift"; sourceTree = "<group>"; };
 		4846B87820F3564C00BAC18C /* Constants+AlertMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constants+AlertMessage.swift"; sourceTree = "<group>"; };
 		4846B87C20F356CC00BAC18C /* Constants+Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constants+Api.swift"; sourceTree = "<group>"; };
@@ -1373,6 +1375,7 @@
 				E55462F81DAE4DD1004163B2 /* UIView+Additions.swift */,
 				E56C9F9D1DED4BD100EAA9DD /* Character+Addition.swift */,
 				E51D4EFF1E3F207F00ACC631 /* Notifications+Name.swift */,
+				484174CD212FF52B00C86818 /* UserDefaults+Additions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2899,6 +2902,7 @@
 				E558D9081E2E6FE700A6DF95 /* DMEditProfileVC.swift in Sources */,
 				E5F919451E9DD4A30021F008 /* FSCalendarCollectionView.m in Sources */,
 				4846B87D20F356CC00BAC18C /* Constants+Api.swift in Sources */,
+				484174CE212FF52B00C86818 /* UserDefaults+Additions.swift in Sources */,
 				5AC714521E34ACD400E433C1 /* DMCalenderVC.swift in Sources */,
 				E5A0EADE1E2944D50092E21A /* SSASideMenu.swift in Sources */,
 				E5496E0E1E273F1D00C54288 /* DMSkillsVC+Services.swift in Sources */,

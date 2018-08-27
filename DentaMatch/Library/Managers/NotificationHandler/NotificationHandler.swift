@@ -33,7 +33,6 @@ class NotificationHandler: NSObject {
 
     class func notificationHandleforBackground(notiObj: UserNotification, jobObj: Job?, app _: UIApplication? = nil) {
         let notificationType = UserNotificationType(rawValue: notiObj.notificationType!)!
-
         switch notificationType {
         case .acceptJob:
             // open job detail

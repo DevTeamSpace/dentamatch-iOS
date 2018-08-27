@@ -55,6 +55,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     }
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
+        LogManager.logDebug(userInfo.description)
         let state: UIApplicationState = UIApplication.shared.applicationState
         if state == UIApplicationState.active {
             if UserDefaultsManager.sharedInstance.isLoggedIn {
@@ -93,18 +94,29 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                         NotificationHandler.notificationHandleforBackground(notiObj: userNotiObj, jobObj: jobObj, app: application)
                     }
                 }
+                //NotificationCenter.default.post(name: .decreaseBadgeCount, object: nil, userInfo: nil)
             }
         }
     }
 
     @available(iOS 10.0, *)
-    func userNotificationCenter(_: UNUserNotificationCenter, willPresent _: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+    func userNotificationCenter(_: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        if let dictionaryUserInfo: NSDictionary = notification.request.content.userInfo["data"] as? NSDictionary {
+            LogManager.logDebug(notification.request.content.userInfo.description)
+            guard let chatData = dictionaryUserInfo["data"] as? NSDictionary else {return}
+            if chatData["messageId"] != nil {
+                //Do nothing ...
+            } else {
+               NotificationCenter.default.post(name: .fetchBadgeCount, object: nil, userInfo: nil)
+            }
+        }
         completionHandler([.alert, .badge])
     }
 
     @available(iOS 10.0, *)
     func userNotificationCenter(_: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         if let megCheck: NSDictionary = response.notification.request.content.userInfo["data"] as? NSDictionary {
+            LogManager.logDebug(response.notification.request.content.userInfo.description)
             LogManager.logDebug(megCheck.description)
             guard let chatData = megCheck["data"] as? NSDictionary else {return}
             if chatData["messageId"] != nil {
@@ -119,6 +131,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                 let userNotiObj = UserNotification(dict: josnObj)
                 NotificationHandler.notificationHandleforBackground(notiObj: userNotiObj, jobObj: jobObj)
             }
+             //NotificationCenter.default.post(name: .decreaseBadgeCount, object: nil, userInfo: nil)
             completionHandler()
         }
     }
@@ -134,4 +147,41 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             })
         }
     }
+    
+    // MARK: Badge Count ...
+    func resetBadgeCount() {
+        UserDefaults.setObject(0 as NSNumber, forKey: Constants.kUnreadCount)
+        setIconBadgeOnApp(unreadCount: 0)
+    }
+    
+    func setAppBadgeCount(_ unreadCount: Int) {
+        UserDefaults.setObject(unreadCount as NSNumber, forKey: Constants.kUnreadCount)
+        setIconBadgeOnApp(unreadCount: unreadCount)
+    }
+    
+    func doNotificationIncrementByOne() {
+        if let count = UserDefaults.objectForKey(Constants.kUnreadCount) as! NSNumber? {
+            UserDefaults.setObject(count.intValue + 1 as NSNumber, forKey: Constants.kUnreadCount)
+            setIconBadgeOnApp(unreadCount: count.intValue + 1)
+        }
+    }
+    
+    func setIconBadgeOnApp(unreadCount: Int) {
+        UIApplication.shared.applicationIconBadgeNumber = unreadCount
+    }
+    
+    func decrementBadgeCount() {
+        if let count = UserDefaults.objectForKey(Constants.kUnreadCount) as? NSNumber, count.intValue > 0 {
+            UserDefaults.setObject(count.intValue - 1 as NSNumber, forKey: Constants.kUnreadCount)
+            setIconBadgeOnApp(unreadCount: count.intValue - 1)
+        }
+    }
+    
+    func badgeCount() -> Int {
+        if let count = UserDefaults.objectForKey(Constants.kUnreadCount) as? NSNumber, count.intValue > 0 {
+            return count.intValue
+        }
+        return 0
+    }
+    
 }

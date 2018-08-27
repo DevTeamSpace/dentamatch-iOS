@@ -64,11 +64,16 @@ class DMJobSearchResultVC: DMBaseVC {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.fetchBadgeCount()
+    }
+    
+    func fetchBadgeCount () {
         getUnreadNotificationCount { response, _ in
             if response![Constants.ServerKey.status].boolValue {
                 if let resultDic = response![Constants.ServerKey.result].dictionary {
                     let count = resultDic["notificationCount"]?.intValue
                     if self.notificationLabel != nil {
+                        AppDelegate.delegate().setAppBadgeCount(count ?? 0)
                         self.setNotificationLabelText(count: count!)
                     } else {
                         self.notificationLabel?.isHidden = true
@@ -122,7 +127,8 @@ class DMJobSearchResultVC: DMBaseVC {
         NotificationCenter.default.addObserver(self, selector: #selector(pushRediectNotificationForJobDetailForground), name: .pushRedirectNotificationForground, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(pushRediectNotificationForJobDetailBacground), name: .pushRedirectNotificationBacground, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(bannerUIStatus), name: .pushRedirectNotificationForProfile, object: nil)
-
+       NotificationCenter.default.addObserver(self, selector: #selector(decreaseBadgeCount(_:)), name: .decreaseBadgeCount, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(fetchBadgeCount(_:)), name: .fetchBadgeCount, object: nil)
         mapViewSearchResult.isHidden = true
         tblJobSearchResult.register(UINib(nibName: "JobSearchResultCell", bundle: nil), forCellReuseIdentifier: "JobSearchResultCell")
         mapViewSearchResult.delegate = self
@@ -247,6 +253,16 @@ class DMJobSearchResultVC: DMBaseVC {
         if let notification = dict?["notificationData"], let notiObj = notification as? Job  {
             goToJobDetail(jobObj: notiObj)
         }
+    }
+    
+    @objc func fetchBadgeCount(_ notification: Notification) {
+        self.fetchBadgeCount()
+    }
+    
+    @objc func decreaseBadgeCount(_ notification: Notification) {
+        AppDelegate.delegate().decrementBadgeCount()
+        self.setNotificationLabelText(count: AppDelegate.delegate().badgeCount())
+        self.fetchBadgeCount()
     }
 
     func goToJobDetail(jobObj: Job) {

@@ -19,7 +19,7 @@ class DMEditCertificateVC: DMBaseVC, DatePickerViewDelegate {
     var certificateImage: UIImage?
     var isEditMode = false
     var dateSelected = ""
-    private lazy var isEditingResume : Bool = {
+    lazy var isEditingResume : Bool = {
         if let certificateName = self.certificate?.certificationName, certificateName == "Resume" {
             return true
         }
@@ -73,7 +73,7 @@ class DMEditCertificateVC: DMBaseVC, DatePickerViewDelegate {
     }
 
     func getCertificateDateFormat(dateString: String) -> String {
-        if !dateString.isEmptyField {
+        if !dateString.isEmptyField && dateString != Constants.kEmptyDate {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = Date.dateFormatYYYYMMDDDashed()
             let date = dateFormatter.date(from: dateString)
@@ -95,12 +95,7 @@ class DMEditCertificateVC: DMBaseVC, DatePickerViewDelegate {
 
     @IBAction func saveButtonPressed(_: Any) {
         if !(certificate?.certificateImageURL?.isEmptyField)! {
-            if isEditingResume {
-                self.navigationController?.popViewController(animated: true)
-                self.updateProfileScreen()
-                return
-            }
-            if !validityDatePicker.text!.isEmptyField {
+            if isEditingResume || !validityDatePicker.text!.isEmptyField  {
                 uploadValidityDate { (response: JSON?, _: NSError?) in
                     if let _ = response {
                         self.certificate?.validityDate = self.dateSelected
@@ -108,14 +103,14 @@ class DMEditCertificateVC: DMBaseVC, DatePickerViewDelegate {
                         self.navigationController?.popViewController(animated: true)
                     }
                 }
-            } else {
+            }else {
                 makeToast(toastString: Constants.AlertMessage.emptyValidityDate)
             }
         } else {
             makeToast(toastString: "Please upload certificate image first")
         }
     }
-
+    
     func addPhoto() {
         cameraGalleryOptionActionSheet(title: "", message: "Please select", leftButtonText: "Camera", rightButtonText: "Gallery") { isCameraButtonPressed, _, isCancelButtonPressed in
             if isCancelButtonPressed {

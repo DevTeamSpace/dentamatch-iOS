@@ -40,13 +40,17 @@ extension DMEditCertificateVC {
         var params = [String: AnyObject]()
 
         var allValidatyDates = [AnyObject]()
-
-        let validityDict = ["id": self.certificate?.certificationId, "value": self.dateSelected]
+        /*var validityDict:[String:String] = [String:String]()
+        if isEditingResume {
+            validityDict = ["id": self.certificate?.certificationId, "value": ""]
+        }else{
+           validityDict = ["id": self.certificate?.certificationId, "value": self.dateSelected]
+        }*/
+        let validityDict = ["id": self.certificate?.certificationId, "value": self.dateSelected == Constants.kEmptyDate ? "" : self.dateSelected ]
         allValidatyDates.append(validityDict as AnyObject)
 
         params["certificateValidition"] = allValidatyDates as AnyObject?
-
-        // debugPrint("certificateValidition Parameters\n\(params.description)")
+        LogManager.logDebug("certificateValidition Parameters:\n\(params.description)")
         showLoader()
         APIManager.apiPostWithJSONEncode(serviceName: Constants.API.updateValidationDates, parameters: params) { (response: JSON?, error: NSError?) in
             self.hideLoader()

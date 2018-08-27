@@ -122,6 +122,7 @@ extension DMNotificationVC: UITableViewDataSource, UITableViewDelegate {
             // debugPrint(response!)
             if response![Constants.ServerKey.status].boolValue {
                 notifiObj.seen = 1
+                NotificationCenter.default.post(name: .decreaseBadgeCount, object: nil, userInfo: nil)
                 self.notificationTableView.reloadData()
             } else {
                 if response![Constants.ServerKey.statusCode].intValue == 201 {
@@ -142,6 +143,7 @@ extension DMNotificationVC: UITableViewDataSource, UITableViewDelegate {
                 self.inviteActionSendToServer(notificationObj: notifiObj, actionType: 0) { response, _ in
                     if response![Constants.ServerKey.status].boolValue {
                         notifiObj.seen = 1
+                        NotificationCenter.default.post(name: .decreaseBadgeCount, object: nil, userInfo: nil)
                         DispatchQueue.main.async {
                             self.notificationTableView.reloadData()
                         }
@@ -164,6 +166,7 @@ extension DMNotificationVC: UITableViewDataSource, UITableViewDelegate {
             } else {
                 readNotificationToServer(notificationObj: notifiObj) { response, _ in
                     if response![Constants.ServerKey.status].boolValue {
+                        NotificationCenter.default.post(name: .decreaseBadgeCount, object: nil, userInfo: nil)
                         notifiObj.seen = 1
                         self.notificationTableView.reloadData()
                         self.redirectToDetail(notiObj: notifiObj)
