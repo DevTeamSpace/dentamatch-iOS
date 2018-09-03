@@ -130,29 +130,6 @@ class TempJobDetailCell: UITableViewCell {
             btnJobType.backgroundColor = Constants.Color.partTimeDaySelectColor
         }
         lblDentistName.text = job.jobtitle
-        var partTimeJobDays = [String]()
-        if job.isSunday == 1 {
-            partTimeJobDays.append(Constants.DaysAbbreviation.sunday)
-        }
-        if job.isMonday == 1 {
-            partTimeJobDays.append(Constants.DaysAbbreviation.monday)
-        }
-        if job.isTuesday == 1 {
-            partTimeJobDays.append(Constants.DaysAbbreviation.tuesday)
-        }
-        if job.isWednesday == 1 {
-            partTimeJobDays.append(Constants.DaysAbbreviation.wednesday)
-        }
-        if job.isThursday == 1 {
-            partTimeJobDays.append(Constants.DaysAbbreviation.thursday)
-        }
-        if job.isFriday == 1 {
-            partTimeJobDays.append(Constants.DaysAbbreviation.friday)
-        }
-        if job.isSaturday == 1 {
-            partTimeJobDays.append(Constants.DaysAbbreviation.saturday)
-        }
-        //lblDays.text = partTimeJobDays.joined(separator: Constants.Strings.comma + Constants.Strings.whiteSpace)
         if job.jobPostedTimeGap == Constants.Strings.zero {
             lblPostTime.text = Constants.Strings.today.uppercased()
         } else if job.jobPostedTimeGap == Constants.Strings.one {
