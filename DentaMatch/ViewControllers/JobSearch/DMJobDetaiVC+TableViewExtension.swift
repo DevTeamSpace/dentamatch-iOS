@@ -30,7 +30,7 @@ extension DMJobDetailVC: UITableViewDataSource, UITableViewDelegate, JobDescript
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TempJobDetailCell") as? TempJobDetailCell
                 cell?.selectionStyle = .none
                 cell?.delegate = self
-                cell?.setCellData(job: job!)
+                cell?.setCellData(job: job!, isTagExpanded: self.isTagExpanded)
                 return cell!
             }else{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "DentistDetailCell") as? DentistDetailCell
@@ -227,8 +227,9 @@ extension DMJobDetailVC: UITableViewDataSource, UITableViewDelegate, JobDescript
         }
     }
 
-    // MARK: - DentistDetailCellDelegate Method
-
+    //*****************************************//
+    //MARK: - DentistDetailCellDelegate Method
+    //*****************************************//
     func saveOrUnsaveJob() {
         var status: Int!
         if job?.isSaved == 1 {
@@ -250,5 +251,12 @@ extension DMJobDetailVC: UITableViewDataSource, UITableViewDelegate, JobDescript
                 }
             }
         }
+    }
+    
+    func seeMoreTags(isExpanded: Bool) {
+        self.isTagExpanded = isExpanded
+        let indexpath = IndexPath(row: 0, section: 0)
+        tblJobDetail.reloadRows(at: [indexpath], with: .fade)
+        
     }
 }

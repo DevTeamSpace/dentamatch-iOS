@@ -15,6 +15,7 @@ class TempJobDetailCell: UITableViewCell {
     @IBOutlet var lblDentistName: UILabel!
     @IBOutlet var btnFavourite: UIButton!
     @IBOutlet var btnJobType: UIButton!
+    @IBOutlet var btnSeeMore: UIButton!
     @IBOutlet weak var daysCollectionView: UICollectionView!
     @IBOutlet weak var daysCollectionViewHeight: NSLayoutConstraint?
     //@IBOutlet weak var tagList: TagList!
@@ -23,6 +24,7 @@ class TempJobDetailCell: UITableViewCell {
     @IBOutlet var lblApplied: UILabel!
     var jobTypeDates = [String]()
     weak var delegate: DentistDetailCellDelegate?
+    //var isTagExpanded: Bool = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,6 +33,7 @@ class TempJobDetailCell: UITableViewCell {
         lblApplied.isHidden = true
         daysCollectionView.register(UINib(nibName: "TagCell", bundle: nil), forCellWithReuseIdentifier: "TagCell")
         daysCollectionView.collectionViewLayout = DGCollectionViewLeftAlignFlowLayout()
+        
         /*tagList.tagMargin = UIEdgeInsets(top: 3, left: 5, bottom: 3, right: 5)
          //        view.separator.image = UIImage(named: "")!
          tagList.separator.size = CGSize(width: 16, height: 16)
@@ -42,7 +45,20 @@ class TempJobDetailCell: UITableViewCell {
         delegate?.saveOrUnsaveJob!()
     }
     
-    func setCellData(job: Job) {
+    @IBAction func seeMoreAction(sender: UIButton) {
+        //self.isTagExpanded = !self.isTagExpanded
+        sender.isSelected = !sender.isSelected
+        //if sender.isSelected {
+            delegate?.seeMoreTags!(isExpanded: sender.isSelected)
+            //sender.setTitle("See less", for: .selected)
+        //}else{
+           // delegate?.seeMoreTags!(isExpanded: false)
+           // sender.setTitle("See more", for: .normal)
+        //}
+        
+    }
+    
+    func setCellData(job: Job, isTagExpanded: Bool = false) {
         /* For Job status
          INVITED = 1
          APPLIED = 2
@@ -129,15 +145,25 @@ class TempJobDetailCell: UITableViewCell {
             lblPostTime.text = job.jobPostedTimeGap + Constants.Strings.whiteSpace + Constants.Strings.daysAgo
         }
         //tagList.tags.removeAll()
+        self.jobTypeDates.removeAll()
         if job.jobType == 3 {
             for date in job.jobTypeDates {
                 self.jobTypeDates.append(Date.commonDateFormatEEMMDD(dateString: date))
             }
             self.daysCollectionView.reloadData()
-            self.daysCollectionViewHeight?.constant = self.daysCollectionView.collectionViewLayout.collectionViewContentSize.height
+            self.btnSeeMore.isSelected = isTagExpanded
+            if isTagExpanded {
+               self.btnSeeMore.setTitle("See less", for: .selected)
+               self.daysCollectionViewHeight?.constant = self.daysCollectionView.collectionViewLayout.collectionViewContentSize.height
+            } else {
+                self.daysCollectionViewHeight?.constant = 50.0
+                self.btnSeeMore.setTitle("See more", for: .normal)
+            }
+            
             //self.tagListViewHeight?.constant = self.tagList.intrinsicContentSize.height
         }
         lblPercentSkill.text = String(format: "%.2f", job.percentSkillsMatch) + "%"
+        self.btnSeeMore.isHidden = self.jobTypeDates.count < 7
     }
 }
 
@@ -161,7 +187,9 @@ extension TempJobDetailCell: UICollectionViewDelegate, UICollectionViewDataSourc
         var width = CGFloat(0)
         let title = jobTypeDates[indexPath.item]
         width = title.widthWithConstrainetHeight(20, font: UIFont.fontRegular(fontSize: 10)!)
+        LogManager.logDebug("\(width + 10)")
         return CGSize(width: width + 10, height: 20)
+        //return CGSize(width: 65.0 , height: 20.0)
     }
     
 }

@@ -16,6 +16,7 @@ import UIKit
 class DMJobDetailVC: DMBaseVC {
     @IBOutlet var tblJobDetail: UITableView!
     @IBOutlet var btnApplyForJob: UIButton!
+    @IBOutlet var constraintBtnApplyJobHeight: NSLayoutConstraint!
     var headerHeight: CGFloat = 49.0
     var jobDetailParams = [String: Any]()
     var job: Job?
@@ -25,8 +26,8 @@ class DMJobDetailVC: DMBaseVC {
     var fromTrack = false
     var fromCalender = false
     var fromNotificationVC = false
-
-    @IBOutlet var constraintBtnApplyJobHeight: NSLayoutConstraint!
+    var isTagExpanded: Bool = false
+    
 
     enum TableViewCellHeight: CGFloat {
         case jobTitle = 115.0

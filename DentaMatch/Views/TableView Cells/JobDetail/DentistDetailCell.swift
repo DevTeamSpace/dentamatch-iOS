@@ -10,6 +10,7 @@ import UIKit
 
 @objc protocol DentistDetailCellDelegate {
     @objc optional func saveOrUnsaveJob()
+    @objc optional func seeMoreTags(isExpanded: Bool)
 }
 
 class DentistDetailCell: UITableViewCell {
