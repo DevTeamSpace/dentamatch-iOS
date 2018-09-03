@@ -24,7 +24,23 @@ class TempJobDetailCell: UITableViewCell {
     @IBOutlet var lblApplied: UILabel!
     var jobTypeDates = [String]()
     weak var delegate: DentistDetailCellDelegate?
-    //var isTagExpanded: Bool = false
+    private lazy var cellWidth: CGFloat = {
+        /*if UIDevice.current.screenType == .iPhone4 || UIDevice.current.screenType == .iPhone5 {
+            return 70.0
+        }else if UIDevice.current.screenType == .iPhone6Plus {
+            return 75.0
+        }else if UIDevice.current.screenType == .iPhoneX {
+            return 75.0
+        }*/
+        return 70.0
+    }()
+    
+    private var seeMoreHidden: Bool {
+        if UIDevice.current.screenType == .iPhone6Plus {
+            return self.jobTypeDates.count < 7
+        }
+        return self.jobTypeDates.count < 5
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -163,7 +179,7 @@ class TempJobDetailCell: UITableViewCell {
             //self.tagListViewHeight?.constant = self.tagList.intrinsicContentSize.height
         }
         lblPercentSkill.text = String(format: "%.2f", job.percentSkillsMatch) + "%"
-        self.btnSeeMore.isHidden = self.jobTypeDates.count < 7
+        self.btnSeeMore.isHidden = seeMoreHidden
     }
 }
 
@@ -184,12 +200,12 @@ extension TempJobDetailCell: UICollectionViewDelegate, UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, layout _: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        var width = CGFloat(0)
+        /*var width = CGFloat(0)
         let title = jobTypeDates[indexPath.item]
         width = title.widthWithConstrainetHeight(20, font: UIFont.fontRegular(fontSize: 10)!)
         LogManager.logDebug("\(width + 10)")
-        return CGSize(width: width + 10, height: 20)
-        //return CGSize(width: 65.0 , height: 20.0)
+        // return CGSize(width: width + 10, height: 20)*/
+        return CGSize(width: cellWidth , height: 20.0)
     }
     
 }

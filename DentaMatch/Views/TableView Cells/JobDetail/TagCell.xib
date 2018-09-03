@@ -40,7 +40,7 @@
             <connections>
                 <outlet property="textLabel" destination="sJx-VF-K73" id="eNM-qG-u9R"/>
             </connections>
-            <point key="canvasLocation" x="-1.5" y="-1"/>
+            <point key="canvasLocation" x="-197.5" y="-116"/>
         </collectionViewCell>
     </objects>
 </document>

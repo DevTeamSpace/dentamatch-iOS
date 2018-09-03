@@ -12,6 +12,7 @@
 		48067D4A212E9E8F007F77E6 /* TagCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48067D48212E9E8F007F77E6 /* TagCell.xib */; };
 		48067D4D212EC5BD007F77E6 /* DGCollectionViewLeftAlignFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48067D4C212EC5BD007F77E6 /* DGCollectionViewLeftAlignFlowLayout.swift */; };
 		4831AC2020EF85FB0042B55C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4831AC1F20EF85FB0042B55C /* README.md */; };
+		483C6E71213D3AFE00A59AE9 /* UIDevice+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483C6E70213D3AFD00A59AE9 /* UIDevice+Additions.swift */; };
 		484174CE212FF52B00C86818 /* UserDefaults+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484174CD212FF52B00C86818 /* UserDefaults+Additions.swift */; };
 		4846B87720F3550000BAC18C /* Constants+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846B87620F3550000BAC18C /* Constants+Color.swift */; };
 		4846B87920F3564C00BAC18C /* Constants+AlertMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846B87820F3564C00BAC18C /* Constants+AlertMessage.swift */; };
@@ -430,6 +431,7 @@
 		48067D4B212EC5BC007F77E6 /* DGCollectionViewLeftAlignFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGCollectionViewLeftAlignFlowLayout.h; sourceTree = "<group>"; };
 		48067D4C212EC5BD007F77E6 /* DGCollectionViewLeftAlignFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGCollectionViewLeftAlignFlowLayout.swift; sourceTree = "<group>"; };
 		4831AC1F20EF85FB0042B55C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		483C6E70213D3AFD00A59AE9 /* UIDevice+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+Additions.swift"; sourceTree = "<group>"; };
 		484174CD212FF52B00C86818 /* UserDefaults+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Additions.swift"; sourceTree = "<group>"; };
 		4846B87620F3550000BAC18C /* Constants+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constants+Color.swift"; sourceTree = "<group>"; };
 		4846B87820F3564C00BAC18C /* Constants+AlertMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constants+AlertMessage.swift"; sourceTree = "<group>"; };
@@ -1376,6 +1378,7 @@
 				E56C9F9D1DED4BD100EAA9DD /* Character+Addition.swift */,
 				E51D4EFF1E3F207F00ACC631 /* Notifications+Name.swift */,
 				484174CD212FF52B00C86818 /* UserDefaults+Additions.swift */,
+				483C6E70213D3AFD00A59AE9 /* UIDevice+Additions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2802,6 +2805,7 @@
 				E587D2EE1E24C021006B7F06 /* DMWorkExperienceVC.swift in Sources */,
 				E54976F41E28CEDD006F21E5 /* EmployeeReferenceModel.swift in Sources */,
 				E59029A81DED2C7A00151E9B /* APIManager.swift in Sources */,
+				483C6E71213D3AFE00A59AE9 /* UIDevice+Additions.swift in Sources */,
 				E51C4D3B1FB051C7009FC3A0 /* AboutMeJobSelectionCell.swift in Sources */,
 				E5E7CBA51E3089B200D4FB59 /* DMEditLicenseVC+Services.swift in Sources */,
 				5A5523E31E4C40C1007D8C09 /* HiredJobNotificationTableCell.swift in Sources */,
