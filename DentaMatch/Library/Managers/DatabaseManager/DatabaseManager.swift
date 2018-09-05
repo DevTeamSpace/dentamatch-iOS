@@ -32,6 +32,21 @@ class DatabaseManager: NSObject {
             // debugPrint(error.localizedDescription)
         }
     }
+    
+    class func clearChatList(recruiterId: String) {
+        let fetchRequest: NSFetchRequest<ChatList> = ChatList.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "recruiterId == %@",recruiterId)
+        do {
+            let chatLists = try kAppDelegate?.managedObjectContext.fetch(fetchRequest)
+            for chatList in chatLists! {
+                kAppDelegate?.managedObjectContext.delete(chatList)
+            }
+            kAppDelegate?.saveContext()
+        } catch _ as NSError {
+            // debugPrint(error.localizedDescription)
+        }
+    }
+    
 
     private class func clearChats() {
         let fetchRequest: NSFetchRequest<Chat> = Chat.fetchRequest()
@@ -39,6 +54,21 @@ class DatabaseManager: NSObject {
             let chats = try kAppDelegate?.managedObjectContext.fetch(fetchRequest)
             for chat in chats! {
                 kAppDelegate?.managedObjectContext.delete(chat)
+            }
+            kAppDelegate?.saveContext()
+        } catch _ as NSError {
+            // debugPrint(error.localizedDescription)
+        }
+    }
+    
+    class func clearChats(recruiterId: String) {
+        let fetchRequest: NSFetchRequest<Chat> = Chat.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "fromId == %@ OR toId == %@",recruiterId,recruiterId)
+        do {
+            let chats = try kAppDelegate?.managedObjectContext.fetch(fetchRequest)
+            for chat in chats! {
+                kAppDelegate?.managedObjectContext.delete(chat)
+                
             }
             kAppDelegate?.saveContext()
         } catch _ as NSError {

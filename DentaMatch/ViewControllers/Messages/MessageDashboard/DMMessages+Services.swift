@@ -29,27 +29,6 @@ extension DMMessagesVC {
         }
     }
 
-    func blockRecruiter(chatList: ChatList) {
-        let params = [
-            Constants.ServerKey.recruiterId: chatList.recruiterId!,
-            Constants.ServerKey.blockStatus: "1",
-        ] as [String: Any]
-        showLoader()
-        APIManager.apiPost(serviceName: Constants.API.blockUnblockRecruiter, parameters: params) { (response: JSON?, error: NSError?) in
-            self.hideLoader()
-            if error != nil {
-                self.makeToast(toastString: (error?.localizedDescription)!)
-                return
-            }
-            guard let _ = response else {
-                self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
-                return
-            }
-            // debugPrint(response!)
-            self.handleBlockRecruiterResponse(chatList: chatList, response: response)
-        }
-    }
-
     func handleChatListResponse(response: JSON?) {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
@@ -66,6 +45,27 @@ extension DMMessagesVC {
             }
         }
     }
+    
+    func blockRecruiter(chatList: ChatList) {
+        let params = [
+            Constants.ServerKey.recruiterId: chatList.recruiterId!,
+            Constants.ServerKey.blockStatus: "1",
+            ] as [String: Any]
+        showLoader()
+        APIManager.apiPost(serviceName: Constants.API.blockUnblockRecruiter, parameters: params) { (response: JSON?, error: NSError?) in
+            self.hideLoader()
+            if error != nil {
+                self.makeToast(toastString: (error?.localizedDescription)!)
+                return
+            }
+            guard let _ = response else {
+                self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
+                return
+            }
+            // debugPrint(response!)
+            self.handleBlockRecruiterResponse(chatList: chatList, response: response)
+        }
+    }
 
     func handleBlockRecruiterResponse(chatList: ChatList, response: JSON?) {
         if let response = response {
@@ -78,6 +78,39 @@ extension DMMessagesVC {
                     makeToast(toastString: "Recruiter Unblocked")
                 }
                 appDelegate?.saveContext()
+            } else {
+                makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+            }
+        }
+    }
+    
+    func deleteChat(chatList: ChatList) {
+        let params = [
+            Constants.ServerKey.recruiterId: chatList.recruiterId!
+            ] as [String: Any]
+        showLoader()
+        APIManager.apiPost(serviceName: Constants.API.chatDelete, parameters: params) { (response: JSON?, error: NSError?) in
+            self.hideLoader()
+            if error != nil {
+                self.makeToast(toastString: (error?.localizedDescription)!)
+                return
+            }
+            guard let _ = response else {
+                self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
+                return
+            }
+            // debugPrint(response!)
+            self.handleChatDeleteResponse(chatList: chatList, response: response)
+        }
+    }
+    
+    func handleChatDeleteResponse(chatList: ChatList, response: JSON?) {
+        if let response = response {
+            if response[Constants.ServerKey.status].boolValue {
+                makeToast(toastString: "Chat Deleted")
+                DatabaseManager.clearChats(recruiterId: chatList.recruiterId ?? "0")
+                DatabaseManager.clearChatList(recruiterId: chatList.recruiterId ?? "0")
+                self.getMessageList()
             } else {
                 makeToast(toastString: response[Constants.ServerKey.message].stringValue)
             }
