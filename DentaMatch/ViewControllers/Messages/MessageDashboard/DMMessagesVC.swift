@@ -103,6 +103,19 @@ class DMMessagesVC: DMBaseVC {
             // debugPrint("\(fetchError), \(fetchError.userInfo)")
         }
     }
+    
+    func showChatDeleteAlert(chatList: ChatList) {
+        let alert = UIAlertController(title: "Alert!", message: "The chat will be deleted permanently.\nAre you sure you want to delete this chat? ", preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_: UIAlertAction) in
+            // debugPrint("Cancel Action")
+        }
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_: UIAlertAction) in
+            self.deleteChat(chatList: chatList)
+        }
+        alert.addAction(deleteAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+    }
 
     func showBlockRecruiterAlert(chatList: ChatList) {
         let alert = UIAlertController(title: "", message: "This Recruiter is BLOCKED and will no longer be able to see your profile or send you messages", preferredStyle: .actionSheet)

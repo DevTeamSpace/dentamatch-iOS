@@ -22,6 +22,15 @@ extension DMMessagesVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let chatDeleteAction = UITableViewRowAction(style: .normal, title: "Delete", handler: { (_: UITableViewRowAction, indexPath: IndexPath) in
+            self.messageListTableView.setEditing(false, animated: true)
+            if let chatList = self.fetchedResultsController.object(at: indexPath) as? ChatList {
+                DispatchQueue.main.async {
+                    self.showChatDeleteAlert(chatList: chatList)
+                }
+            }
+        })
+        chatDeleteAction.backgroundColor = Constants.Color.cancelJobDeleteColor
         let blockAction = UITableViewRowAction(style: .normal, title: "Block", handler: { (_: UITableViewRowAction, indexPath: IndexPath) in
             self.messageListTableView.setEditing(false, animated: true)
             if let chatList = self.fetchedResultsController.object(at: indexPath) as? ChatList {
@@ -31,7 +40,7 @@ extension DMMessagesVC: UITableViewDataSource, UITableViewDelegate {
             }
         })
         blockAction.backgroundColor = Constants.Color.cancelJobDeleteColor
-        return [blockAction]
+        return [chatDeleteAction,blockAction]
     }
 
     func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {
