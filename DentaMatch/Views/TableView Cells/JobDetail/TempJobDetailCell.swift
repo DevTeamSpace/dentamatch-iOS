@@ -15,31 +15,42 @@ class TempJobDetailCell: UITableViewCell {
     @IBOutlet var lblDentistName: UILabel!
     @IBOutlet var btnFavourite: UIButton!
     @IBOutlet var btnJobType: UIButton!
-    @IBOutlet var btnSeeMore: UIButton!
+    @IBOutlet var btnSeeMore: UIButton?
     @IBOutlet weak var daysCollectionView: UICollectionView!
     @IBOutlet weak var daysCollectionViewHeight: NSLayoutConstraint?
     //@IBOutlet weak var tagList: TagList!
     //@IBOutlet weak var tagListViewHeight: NSLayoutConstraint?
     @IBOutlet var lblPostTime: UILabel!
     @IBOutlet var lblApplied: UILabel!
+    
     var jobTypeDates = [String]()
+    private var datesCount : Int = 0
     weak var delegate: DentistDetailCellDelegate?
-    private lazy var cellWidth: CGFloat = {
-        /*if UIDevice.current.screenType == .iPhone4 || UIDevice.current.screenType == .iPhone5 {
-            return 70.0
-        }else if UIDevice.current.screenType == .iPhone6Plus {
-            return 75.0
-        }else if UIDevice.current.screenType == .iPhoneX {
-            return 75.0
-        }*/
-        return 70.0
-    }()
+    var isTagExpanded: Bool = false
+    private let cellWidth: CGFloat =  70.0
     
     private var seeMoreHidden: Bool {
         if UIDevice.current.screenType == .iPhone6Plus {
-            return self.jobTypeDates.count < 7
+            return self.jobTypeDates.count < 8
         }
-        return self.jobTypeDates.count < 5
+        return self.jobTypeDates.count < 6
+    }
+    
+    private var tagsCount: Int {
+        if self.jobTypeDates.count == 0 {
+            return 0
+        }
+        if UIDevice.current.screenType == .iPhone6Plus {
+            return isTagExpanded ? self.jobTypeDates.count + 1 : minimumNumberOfItems
+        }
+        return isTagExpanded ? self.jobTypeDates.count + 1 : minimumNumberOfItems
+    }
+    
+    private var minimumNumberOfItems : Int {
+        if UIDevice.current.screenType == .iPhone6Plus {
+            return self.seeMoreHidden ? self.jobTypeDates.count : 8
+        }
+        return self.seeMoreHidden ? self.jobTypeDates.count : 6
     }
     
     override func awakeFromNib() {
@@ -144,19 +155,19 @@ class TempJobDetailCell: UITableViewCell {
                 self.jobTypeDates.append(Date.commonDateFormatEEMMDD(dateString: date))
             }
             self.daysCollectionView.reloadData()
-            self.btnSeeMore.isSelected = isTagExpanded
+            self.isTagExpanded = isTagExpanded
             if isTagExpanded {
-               self.btnSeeMore.setTitle("See less", for: .selected)
+               //self.btnSeeMore.setTitle("See less", for: .selected)
                self.daysCollectionViewHeight?.constant = self.daysCollectionView.collectionViewLayout.collectionViewContentSize.height
             } else {
-                self.daysCollectionViewHeight?.constant = 50.0
-                self.btnSeeMore.setTitle("See more", for: .normal)
+                self.daysCollectionViewHeight?.constant = self.daysCollectionView.collectionViewLayout.collectionViewContentSize.height
+                //self.btnSeeMore.setTitle("See more", for: .normal)
             }
             
             //self.tagListViewHeight?.constant = self.tagList.intrinsicContentSize.height
         }
         lblPercentSkill.text = String(format: "%.2f", job.percentSkillsMatch) + "%"
-        self.btnSeeMore.isHidden = seeMoreHidden
+        //self.btnSeeMore?.isHidden = seeMoreHidden
     }
 }
 
@@ -166,13 +177,18 @@ extension TempJobDetailCell: UICollectionViewDelegate, UICollectionViewDataSourc
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection _: Int) -> Int {
         
-        return self.jobTypeDates.count
+        return tagsCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TagCell", for: indexPath) as! TagCell
-        let name = jobTypeDates[indexPath.item]
-        cell.setTag(with: name)
+        if indexPath.item == tagsCount - 1 && !seeMoreHidden {
+            let text = self.isTagExpanded ? "See Less" : "See More"
+            cell.setTag(with: text, type: .seeMore)
+        }else{
+            let name = jobTypeDates[indexPath.item]
+            cell.setTag(with: name)
+        }
         return cell
     }
     
@@ -183,6 +199,14 @@ extension TempJobDetailCell: UICollectionViewDelegate, UICollectionViewDataSourc
         LogManager.logDebug("\(width + 10)")
         // return CGSize(width: width + 10, height: 20)*/
         return CGSize(width: cellWidth , height: 20.0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: false)
+        if indexPath.item == tagsCount - 1 && !seeMoreHidden {
+            isTagExpanded = !isTagExpanded
+            delegate?.seeMoreTags!(isExpanded: isTagExpanded)
+        }
     }
     
 }

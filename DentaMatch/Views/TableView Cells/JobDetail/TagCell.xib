@@ -21,7 +21,7 @@
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sJx-VF-K73">
                         <rect key="frame" x="0.0" y="0.0" width="135" height="20"/>
-                        <color key="backgroundColor" red="0.058823529409999999" green="0.094117647060000004" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.058823525905609131" green="0.0941176638007164" blue="0.24313722550868988" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
