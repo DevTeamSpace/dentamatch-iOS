@@ -31,26 +31,26 @@ class TempJobDetailCell: UITableViewCell {
     
     private var seeMoreHidden: Bool {
         if UIDevice.current.screenType == .iPhone6Plus {
-            return self.jobTypeDates.count < 8
+            return self.datesCount < 8
         }
-        return self.jobTypeDates.count < 6
+        return self.datesCount < 6
     }
     
     private var tagsCount: Int {
-        if self.jobTypeDates.count == 0 {
+        if self.datesCount == 0 {
             return 0
         }
         if UIDevice.current.screenType == .iPhone6Plus {
-            return isTagExpanded ? self.jobTypeDates.count + 1 : minimumNumberOfItems
+            return isTagExpanded ? self.datesCount + 1 : minimumNumberOfItems
         }
-        return isTagExpanded ? self.jobTypeDates.count + 1 : minimumNumberOfItems
+        return isTagExpanded ? self.datesCount + 1 : minimumNumberOfItems
     }
     
     private var minimumNumberOfItems : Int {
         if UIDevice.current.screenType == .iPhone6Plus {
-            return self.seeMoreHidden ? self.jobTypeDates.count : 8
+            return self.seeMoreHidden ? self.datesCount : 8
         }
-        return self.seeMoreHidden ? self.jobTypeDates.count : 6
+        return self.seeMoreHidden ? self.datesCount : 6
     }
     
     override func awakeFromNib() {
@@ -60,12 +60,6 @@ class TempJobDetailCell: UITableViewCell {
         lblApplied.isHidden = true
         daysCollectionView.register(UINib(nibName: "TagCell", bundle: nil), forCellWithReuseIdentifier: "TagCell")
         daysCollectionView.collectionViewLayout = DGCollectionViewLeftAlignFlowLayout()
-        
-        /*tagList.tagMargin = UIEdgeInsets(top: 3, left: 5, bottom: 3, right: 5)
-         //        view.separator.image = UIImage(named: "")!
-         tagList.separator.size = CGSize(width: 16, height: 16)
-         tagList.separator.margin = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)*/
-        
     }
     
     @IBAction func actionFavourite(_: UIButton) {
@@ -73,16 +67,8 @@ class TempJobDetailCell: UITableViewCell {
     }
     
     @IBAction func seeMoreAction(sender: UIButton) {
-        //self.isTagExpanded = !self.isTagExpanded
         sender.isSelected = !sender.isSelected
-        //if sender.isSelected {
-            delegate?.seeMoreTags!(isExpanded: sender.isSelected)
-            //sender.setTitle("See less", for: .selected)
-        //}else{
-           // delegate?.seeMoreTags!(isExpanded: false)
-           // sender.setTitle("See more", for: .normal)
-        //}
-        
+        delegate?.seeMoreTags!(isExpanded: sender.isSelected)
     }
     
     func setCellData(job: Job, isTagExpanded: Bool = false) {
@@ -154,20 +140,12 @@ class TempJobDetailCell: UITableViewCell {
             for date in job.jobTypeDates {
                 self.jobTypeDates.append(Date.commonDateFormatEEMMDD(dateString: date))
             }
+            self.datesCount = self.jobTypeDates.count
             self.daysCollectionView.reloadData()
             self.isTagExpanded = isTagExpanded
-            if isTagExpanded {
-               //self.btnSeeMore.setTitle("See less", for: .selected)
-               self.daysCollectionViewHeight?.constant = self.daysCollectionView.collectionViewLayout.collectionViewContentSize.height
-            } else {
-                self.daysCollectionViewHeight?.constant = self.daysCollectionView.collectionViewLayout.collectionViewContentSize.height
-                //self.btnSeeMore.setTitle("See more", for: .normal)
-            }
-            
-            //self.tagListViewHeight?.constant = self.tagList.intrinsicContentSize.height
+            self.daysCollectionViewHeight?.constant = self.daysCollectionView.collectionViewLayout.collectionViewContentSize.height
         }
-        lblPercentSkill.text = String(format: "%.2f", job.percentSkillsMatch) + "%"
-        //self.btnSeeMore?.isHidden = seeMoreHidden
+        self.lblPercentSkill.text = String(format: "%.2f", job.percentSkillsMatch) + "%"
     }
 }
 
@@ -176,36 +154,30 @@ extension TempJobDetailCell: UICollectionViewDelegate, UICollectionViewDataSourc
     // MARK: - UICollectionViewDataSource Methods
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection _: Int) -> Int {
-        
-        return tagsCount
+        return self.tagsCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TagCell", for: indexPath) as! TagCell
-        if indexPath.item == tagsCount - 1 && !seeMoreHidden {
+        if (indexPath.item == self.tagsCount - 1) && !self.seeMoreHidden {
             let text = self.isTagExpanded ? "See Less" : "See More"
             cell.setTag(with: text, type: .seeMore)
         }else{
-            let name = jobTypeDates[indexPath.item]
+            let name = self.jobTypeDates[indexPath.item]
             cell.setTag(with: name)
         }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout _: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        /*var width = CGFloat(0)
-        let title = jobTypeDates[indexPath.item]
-        width = title.widthWithConstrainetHeight(20, font: UIFont.fontRegular(fontSize: 10)!)
-        LogManager.logDebug("\(width + 10)")
-        // return CGSize(width: width + 10, height: 20)*/
-        return CGSize(width: cellWidth , height: 20.0)
+        return CGSize(width: self.cellWidth , height: 20.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: false)
-        if indexPath.item == tagsCount - 1 && !seeMoreHidden {
-            isTagExpanded = !isTagExpanded
-            delegate?.seeMoreTags!(isExpanded: isTagExpanded)
+        if indexPath.item == self.tagsCount - 1 && !self.seeMoreHidden {
+            self.isTagExpanded = !self.isTagExpanded
+            self.delegate?.seeMoreTags!(isExpanded: self.isTagExpanded)
         }
     }
     
