@@ -56,6 +56,7 @@ class DMMessagesVC: DMBaseVC {
 
         navigationItem.title = "MESSAGES"
         messageListTableView.dataSource = nil
+        messageListTableView.delegate = nil
         messageListTableView.tableFooterView = UIView()
         messageListTableView.register(UINib(nibName: "MessageListTableCell", bundle: nil), forCellReuseIdentifier: "MessageListTableCell")
 
@@ -75,6 +76,7 @@ class DMMessagesVC: DMBaseVC {
 
     func getMessageList() {
         messageListTableView.dataSource = self
+        messageListTableView.delegate = self
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ChatList")
 
         // Add Sort Descriptors

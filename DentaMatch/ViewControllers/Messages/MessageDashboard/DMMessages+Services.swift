@@ -110,7 +110,8 @@ extension DMMessagesVC {
                 makeToast(toastString: "Chat Deleted")
                 DatabaseManager.clearChats(recruiterId: chatList.recruiterId ?? "0")
                 DatabaseManager.clearChatList(recruiterId: chatList.recruiterId ?? "0")
-                self.getMessageList()
+                //messageListTableView.reloadData()
+                self.refreshMessageList()
             } else {
                 makeToast(toastString: response[Constants.ServerKey.message].stringValue)
             }

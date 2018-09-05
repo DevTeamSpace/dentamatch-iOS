@@ -91,8 +91,10 @@ extension DMMessagesVC: NSFetchedResultsControllerDelegate {
             if let newIndexPath = newIndexPath {
                 messageListTableView.insertRows(at: [newIndexPath], with: .automatic)
             }
-        default:
-            break
+        case .delete:
+            if let indexPath = indexPath {
+                messageListTableView.deleteRows(at: [indexPath], with: .automatic)
+            }
         }
     }
 }
