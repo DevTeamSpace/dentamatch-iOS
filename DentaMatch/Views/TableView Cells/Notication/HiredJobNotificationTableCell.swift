@@ -32,8 +32,8 @@ class HiredJobNotificationTableCell: UITableViewCell {
     
     func configureHiredJobNotificationTableCell(userNotificationObj:UserNotification) {
         self.notificationTextLabel.text = userNotificationObj.message
-        let address = "\((userNotificationObj.jobdetail?.officeName)!), \((userNotificationObj.jobdetail?.address)!)"
-        self.notificationJobLocationLabel.text = address
+        //let address = "\((userNotificationObj.jobdetail?.officeName)!), \((userNotificationObj.jobdetail?.address)!)"
+        self.notificationJobLocationLabel.text = nil
         let date = Date.stringToDateForFormatter(date: userNotificationObj.createdAtTime, dateFormate: Date.dateFormatYYYYMMDDHHMMSS())
         notificationTimeLabel.text = timeAgoSince(date)
         if userNotificationObj.jobdetail?.jobType == 1 {
@@ -44,7 +44,6 @@ class HiredJobNotificationTableCell: UITableViewCell {
             btnJobType.backgroundColor = Constants.Color.partTimeDaySelectColor
 
         } else if userNotificationObj.jobdetail?.jobType == 3 {
-            self.notificationJobLocationLabel.text = nil
             btnJobType.setTitle("Temporary", for: .normal)
             btnJobType.backgroundColor = Constants.Color.temporaryBackGroundColor
             if userNotificationObj.currentAvailability.count > 0 {
@@ -65,13 +64,13 @@ class HiredJobNotificationTableCell: UITableViewCell {
         if userNotificationObj.seen == 0 {
             notificationTextLabel.textColor = Constants.Color.notificationUnreadTextColor
             notificationTimeLabel.textColor = Constants.Color.notificationUnreadTimeLabelColor
-            notificationJobLocationLabel.textColor = Constants.Color.notificationUnreadTextColor
+            //notificationJobLocationLabel.textColor = Constants.Color.notificationUnreadTextColor
             unreadView.isHidden = false
         } else {
             unreadView.isHidden = true
             notificationTextLabel.textColor = Constants.Color.notificationreadTextColor
             notificationTimeLabel.textColor = Constants.Color.notificationreadTimeLabelColor
-            notificationJobLocationLabel.textColor = Constants.Color.notificationreadTextColor
+            //notificationJobLocationLabel.textColor = Constants.Color.notificationreadTextColor
         }
     }
 }

@@ -10,11 +10,11 @@ import UIKit
 
 class NotificationJobTypeTableCell: UITableViewCell {
     @IBOutlet var notificationTextLabel: UILabel!
-
     @IBOutlet var btnJobType: UIButton!
     @IBOutlet var unreadView: UIView!
     @IBOutlet var viewForJobType: UIView!
     @IBOutlet var notificationTimeLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
