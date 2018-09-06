@@ -46,6 +46,19 @@ class HiredJobNotificationTableCell: UITableViewCell {
         } else if userNotificationObj.jobdetail?.jobType == 3 {
             btnJobType.setTitle("Temporary", for: .normal)
             btnJobType.backgroundColor = Constants.Color.temporaryBackGroundColor
+            if userNotificationObj.currentAvailability.count > 0 {
+                var dateArr = [Date]()
+                for dateStr in userNotificationObj.currentAvailability {
+                    let date = Date.stringToDateForFormatter(date: dateStr, dateFormate: "yyyy-MM-dd")
+                    dateArr.append(date)
+                }
+                dateArr = dateArr.sorted(by: { $0.compare($1) == .orderedAscending })
+                var availabilityArr = [String]()
+                for date in dateArr {
+                    availabilityArr.append(Date.dateToStringForFormatter(date: date, dateFormate: "dd MMM"))
+                }
+                notificationTextLabel.text = userNotificationObj.message + "\nYour availability: " + availabilityArr.joined(separator: ", ")
+            }
         }
 
         if userNotificationObj.seen == 0 {

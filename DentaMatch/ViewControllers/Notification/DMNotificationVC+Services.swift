@@ -28,7 +28,7 @@ extension DMNotificationVC {
                 return
             }
             
-            // debugPrint(response!)
+            debugPrint(response!)
             if self.pageNumber == 1 {
                 self.notificationList.removeAll()
             }

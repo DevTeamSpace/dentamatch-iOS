@@ -19,7 +19,8 @@ class UserNotification: NSObject {
     var senderID: Int?
     var reciverID: Int?
     var jobdetail: Job?
-
+    var currentAvailability: [String] = [String]()
+    
     override init() {
         /* For Default object of class */
     }
@@ -34,5 +35,8 @@ class UserNotification: NSObject {
         senderID = dict["senderId"].intValue
         reciverID = dict["receiverId"].intValue
         jobdetail = Job(forCalendarjob: dict["jobDetails"])
+        if let availabilityDates = dict["currentAvailability"].arrayObject as? [String] {
+            currentAvailability = availabilityDates
+        }
     }
 }
