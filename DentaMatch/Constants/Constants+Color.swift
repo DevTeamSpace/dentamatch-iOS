@@ -68,6 +68,7 @@ extension Constants {
         static let notificationUnreadTimeLabelColor = UIColor(red: 15.0 / 255.0, green: 24.0 / 255.0, blue: 62.0 / 255.0, alpha: 1)
         static let notificationreadTextColor = UIColor(red: 71.0 / 255.0, green: 71.0 / 255.0, blue: 71.0 / 255.0, alpha: 1)
         static let notificationreadTimeLabelColor = UIColor(red: 137.0 / 255.0, green: 137.0 / 255.0, blue: 137.0 / 255.0, alpha: 1)
+        static let dentaDarkBlueColor = UIColor(red: 15.0 / 255.0, green: 24.0 / 255.0, blue: 62.0 / 255.0, alpha: 1)
     }
     
 }

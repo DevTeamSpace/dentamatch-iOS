@@ -72,7 +72,7 @@ extension DMMessagesVC {
             if response[Constants.ServerKey.status].boolValue {
                 if response[Constants.ServerKey.result][Constants.ServerKey.blockStatus].stringValue == "1" {
                     chatList.isBlockedFromSeeker = true
-                    makeToast(toastString: "Recruiter Blocked")
+                    makeToast(toastString: "This Recruiter is Blocked and will no longer be able to see your profile or send you messages.")
                 } else {
                     chatList.isBlockedFromSeeker = false
                     makeToast(toastString: "Recruiter Unblocked")
@@ -107,10 +107,9 @@ extension DMMessagesVC {
     func handleChatDeleteResponse(chatList: ChatList, response: JSON?) {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
-                makeToast(toastString: "Chat Deleted")
+                makeToast(toastString: "This chat history with this Recruiter is deleted you will no longer be able to see the previous chat.")
                 DatabaseManager.clearChats(recruiterId: chatList.recruiterId ?? "0")
                 DatabaseManager.clearChatList(recruiterId: chatList.recruiterId ?? "0")
-                //messageListTableView.reloadData()
                 self.refreshMessageList()
             } else {
                 makeToast(toastString: response[Constants.ServerKey.message].stringValue)

@@ -44,6 +44,7 @@ class HiredJobNotificationTableCell: UITableViewCell {
             btnJobType.backgroundColor = Constants.Color.partTimeDaySelectColor
 
         } else if userNotificationObj.jobdetail?.jobType == 3 {
+            self.notificationJobLocationLabel.text = nil
             btnJobType.setTitle("Temporary", for: .normal)
             btnJobType.backgroundColor = Constants.Color.temporaryBackGroundColor
             if userNotificationObj.currentAvailability.count > 0 {
@@ -57,7 +58,7 @@ class HiredJobNotificationTableCell: UITableViewCell {
                 for date in dateArr {
                     availabilityArr.append(Date.dateToStringForFormatter(date: date, dateFormate: "dd MMM"))
                 }
-                notificationTextLabel.text = userNotificationObj.message + "\nYour availability: " + availabilityArr.joined(separator: ", ")
+                notificationTextLabel.text = userNotificationObj.message + " for " + availabilityArr.joined(separator: ", ")
             }
         }
 

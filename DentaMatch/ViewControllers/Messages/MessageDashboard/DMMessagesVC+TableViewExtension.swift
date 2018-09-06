@@ -30,7 +30,7 @@ extension DMMessagesVC: UITableViewDataSource, UITableViewDelegate {
                 }
             }
         })
-        chatDeleteAction.backgroundColor = Constants.Color.cancelJobDeleteColor
+        chatDeleteAction.backgroundColor = Constants.Color.dentaDarkBlueColor
         let blockAction = UITableViewRowAction(style: .normal, title: "Block", handler: { (_: UITableViewRowAction, indexPath: IndexPath) in
             self.messageListTableView.setEditing(false, animated: true)
             if let chatList = self.fetchedResultsController.object(at: indexPath) as? ChatList {
