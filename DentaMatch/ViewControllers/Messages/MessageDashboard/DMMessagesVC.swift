@@ -12,7 +12,7 @@ import UIKit
 class DMMessagesVC: DMBaseVC {
     @IBOutlet var messageListTableView: UITableView!
     var placeHolderEmptyJobsView: PlaceHolderJobsView?
-
+    var notificationLabel: UILabel?
     let context = ((UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext)!
     let appDelegate = UIApplication.shared.delegate as? AppDelegate
     var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
@@ -20,7 +20,8 @@ class DMMessagesVC: DMBaseVC {
     let todaysDate = Date.getTodaysDateMMDDYYYY()
 
     let dateFormatter = DateFormatter()
-
+ 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(redirectToChat), name: .chatRedirect, object: nil)
@@ -40,6 +41,8 @@ class DMMessagesVC: DMBaseVC {
         if let selectedIndex = self.messageListTableView.indexPathForSelectedRow {
             messageListTableView.deselectRow(at: selectedIndex, animated: true)
         }
+        self.setNotificationLabelText(count: AppDelegate.delegate().badgeCount())
+
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -72,6 +75,7 @@ class DMMessagesVC: DMBaseVC {
         placeHolderEmptyJobsView?.placeHolderMessageLabel.text = "No message in your chats yet."
 
         view.layoutIfNeeded()
+        navigationItem.leftBarButtonItem = customLeftBarButton()
     }
 
     func getMessageList() {
@@ -173,6 +177,45 @@ class DMMessagesVC: DMBaseVC {
 
     @objc func hideMessagePlaceholder() {
         placeHolderEmptyJobsView?.isHidden = true
+    }
+    
+    func customLeftBarButton() -> UIBarButtonItem {
+        notificationLabel = UILabel(frame: CGRect(x: 10, y: 0, width: 15, height: 15))
+        notificationLabel?.backgroundColor = UIColor.red
+        notificationLabel?.layer.cornerRadius = (notificationLabel?.bounds.size.height)! / 2
+        notificationLabel?.font = UIFont.fontRegular(fontSize: 10)
+        notificationLabel?.textAlignment = .center
+        notificationLabel?.textColor = UIColor.white
+        notificationLabel?.clipsToBounds = true
+        notificationLabel?.text = ""
+        notificationLabel?.isHidden = true
+        let customButton = UIButton(type: .system)
+        customButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        customButton.titleLabel?.font = UIFont.designFont(fontSize: 18)
+        customButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0)
+        customButton.setTitle(Constants.DesignFont.notification, for: .normal)
+        customButton.addTarget(self, action: #selector(actionLeftNavigationItem), for: .touchUpInside)
+        customButton.addSubview(notificationLabel!)
+        let barButton = UIBarButtonItem(customView: customButton)
+        return barButton
+    }
+    
+    @objc override func actionLeftNavigationItem() {
+        // will implement
+        let notification = UIStoryboard.notificationStoryBoard().instantiateViewController(type: DMNotificationVC.self)!
+        notification.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(notification, animated: true)
+    }
+    
+    func setNotificationLabelText(count: Int) {
+        if count != 0 {
+            notificationLabel?.text = "\(count)"
+            notificationLabel?.isHidden = false
+            notificationLabel?.adjustsFontSizeToFitWidth = true
+            
+        } else {
+            notificationLabel?.isHidden = true
+        }
     }
 }
 

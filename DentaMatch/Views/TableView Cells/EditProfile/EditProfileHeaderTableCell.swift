@@ -17,12 +17,17 @@ class EditProfileHeaderTableCell: UITableViewCell {
     @IBOutlet var aboutTextView: UITextView!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var profileButton: ProfileImageButton!
+    @IBOutlet var bellButton: UIButton!
+    @IBOutlet var notificationLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // self.aboutTextView.textContainer.lineFragmentPadding = 20.0
         clipsToBounds = true
         placeLabel.numberOfLines = 3
         // Initialization code
+        bellButton.setTitle(Constants.DesignFont.notification, for: .normal)
+        self.setNotificationLabelText(count: AppDelegate.delegate().badgeCount())
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -65,6 +70,38 @@ class EditProfileHeaderTableCell: UITableViewCell {
             return 109
         } else {
             return newFrame.height + 10
+        }
+    }
+    
+    func customLeftBarButton()  {
+        notificationLabel = UILabel(frame: CGRect(x: 10, y: 0, width: 15, height: 15))
+        notificationLabel?.backgroundColor = UIColor.red
+        notificationLabel?.layer.cornerRadius = (notificationLabel?.bounds.size.height)! / 2
+        notificationLabel?.font = UIFont.fontRegular(fontSize: 10)
+        notificationLabel?.textAlignment = .center
+        notificationLabel?.textColor = UIColor.white
+        notificationLabel?.clipsToBounds = true
+        notificationLabel?.text = ""
+        notificationLabel?.isHidden = true
+        let customButton = UIButton(type: .system)
+        customButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        customButton.titleLabel?.font = UIFont.designFont(fontSize: 18)
+        customButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0)
+        customButton.setTitle(Constants.DesignFont.notification, for: .normal)
+        //customButton.addTarget(self, action: #selector(actionLeftNavigationItem), for: .touchUpInside)
+        customButton.addSubview(notificationLabel!)
+        self.contentView.addSubview(customButton)
+        
+    }
+    
+    func setNotificationLabelText(count: Int) {
+        if count != 0 {
+            notificationLabel?.text = "\(count)"
+            notificationLabel?.isHidden = false
+            notificationLabel?.adjustsFontSizeToFitWidth = true
+            
+        } else {
+            notificationLabel?.isHidden = true
         }
     }
 }

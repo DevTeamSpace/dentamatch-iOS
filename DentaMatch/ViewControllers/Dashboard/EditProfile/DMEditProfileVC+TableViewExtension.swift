@@ -205,10 +205,11 @@ extension DMEditProfileVC: UITableViewDataSource, UITableViewDelegate {
             cell.statusButton.addTarget(self, action: #selector(statusButtonPressed), for: .touchUpInside)
             cell.settingButton.addTarget(self, action: #selector(openSettingScreen), for: .touchUpInside)
             cell.aboutTextView.text = UserManager.shared().activeUser.aboutMe
-
+    
             if let imageUrl = URL(string: UserManager.shared().activeUser.profileImageURL!) {
                 cell.profileButton.sd_setImage(with: imageUrl, for: .normal, placeholderImage: kPlaceHolderImage)
             }
+            //cell.customLeftBarButton()
             return cell
 
         case .dentalStateboard:

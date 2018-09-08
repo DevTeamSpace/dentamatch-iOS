@@ -23,11 +23,12 @@ class DMCalenderVC: DMBaseVC, FSCalendarDataSource, FSCalendarDelegate, FSCalend
     var selectedDayList = [Job]()
 
     var gregorian: NSCalendar?
-
+ var notificationLabel: UILabel?
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setup()
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -37,6 +38,7 @@ class DMCalenderVC: DMBaseVC, FSCalendarDataSource, FSCalendarDelegate, FSCalend
 //        if self.hiredList.count == 0 {
         getAllJobFromServer()
         // }
+        self.setNotificationLabelText(count: AppDelegate.delegate().badgeCount())
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,6 +55,7 @@ class DMCalenderVC: DMBaseVC, FSCalendarDataSource, FSCalendarDelegate, FSCalend
         monthTitleLabel.text = Date.dateToStringForFormatter(date: Date(), dateFormate: Date.dateFormatMMMMYYYY())
         monthTitleLabel.text = monthTitleLabel.text?.uppercased()
         navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationItem.leftBarButtonItem = customLeftBarButton()
         navigationItem.rightBarButtonItem = rightBarButton()
         bookedJobsTableView.separatorStyle = .none
         bookedJobsTableView.register(UINib(nibName: "SectionHeadingTableCell", bundle: nil), forCellReuseIdentifier: "SectionHeadingTableCell")
@@ -479,6 +482,45 @@ class DMCalenderVC: DMBaseVC, FSCalendarDataSource, FSCalendarDelegate, FSCalend
         let currentMonth: Date = calendar!.currentPage
         let previousMonth: Date = (gregorian?.date(byAdding: .month, value: -1, to: currentMonth, options: .matchFirst))!
         calendar?.setCurrentPage(previousMonth, animated: true)
+    }
+    
+    func customLeftBarButton() -> UIBarButtonItem {
+        notificationLabel = UILabel(frame: CGRect(x: 10, y: 0, width: 15, height: 15))
+        notificationLabel?.backgroundColor = UIColor.red
+        notificationLabel?.layer.cornerRadius = (notificationLabel?.bounds.size.height)! / 2
+        notificationLabel?.font = UIFont.fontRegular(fontSize: 10)
+        notificationLabel?.textAlignment = .center
+        notificationLabel?.textColor = UIColor.white
+        notificationLabel?.clipsToBounds = true
+        notificationLabel?.text = ""
+        notificationLabel?.isHidden = true
+        let customButton = UIButton(type: .system)
+        customButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        customButton.titleLabel?.font = UIFont.designFont(fontSize: 18)
+        customButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0)
+        customButton.setTitle(Constants.DesignFont.notification, for: .normal)
+        customButton.addTarget(self, action: #selector(actionLeftNavigationItem), for: .touchUpInside)
+        customButton.addSubview(notificationLabel!)
+        let barButton = UIBarButtonItem(customView: customButton)
+        return barButton
+    }
+    
+    @objc override func actionLeftNavigationItem() {
+        // will implement
+        let notification = UIStoryboard.notificationStoryBoard().instantiateViewController(type: DMNotificationVC.self)!
+        notification.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(notification, animated: true)
+    }
+    
+    func setNotificationLabelText(count: Int) {
+        if count != 0 {
+            notificationLabel?.text = "\(count)"
+            notificationLabel?.isHidden = false
+            notificationLabel?.adjustsFontSizeToFitWidth = true
+            
+        } else {
+            notificationLabel?.isHidden = true
+        }
     }
 }
 
