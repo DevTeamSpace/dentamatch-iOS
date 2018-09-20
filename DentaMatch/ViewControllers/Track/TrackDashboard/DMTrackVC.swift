@@ -45,7 +45,7 @@ class DMTrackVC: DMBaseVC {
 
     @IBOutlet var shortListedJobsTableView: UITableView!
     @IBOutlet var segmentedControl: CustomSegmentControl!
-    var notificationLabel: UILabel?
+    //var notificationLabel: UILabel?
     
     
     override func viewDidLoad() {
@@ -68,7 +68,7 @@ class DMTrackVC: DMBaseVC {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-       self.setNotificationLabelText(count: AppDelegate.delegate().badgeCount())
+       //self.setNotificationLabelText(count: AppDelegate.delegate().badgeCount())
     }
 
     func setup() {
@@ -106,7 +106,7 @@ class DMTrackVC: DMBaseVC {
         appliedJobsTableView.register(UINib(nibName: "JobSearchResultCell", bundle: nil), forCellReuseIdentifier: "JobSearchResultCell")
         shortListedJobsTableView.register(UINib(nibName: "JobSearchResultCell", bundle: nil), forCellReuseIdentifier: "JobSearchResultCell")
         
-         navigationItem.leftBarButtonItem = customLeftBarButton()
+         //navigationItem.leftBarButtonItem = customLeftBarButton()
     }
 
     @objc func pullToRefreshForSavedJobs() {
@@ -225,7 +225,7 @@ class DMTrackVC: DMBaseVC {
         }
     }
     
-    func customLeftBarButton() -> UIBarButtonItem {
+    /*func customLeftBarButton() -> UIBarButtonItem {
         notificationLabel = UILabel(frame: CGRect(x: 10, y: 0, width: 15, height: 15))
         notificationLabel?.backgroundColor = UIColor.red
         notificationLabel?.layer.cornerRadius = (notificationLabel?.bounds.size.height)! / 2
@@ -262,7 +262,7 @@ class DMTrackVC: DMBaseVC {
         } else {
             notificationLabel?.isHidden = true
         }
-    }
+    }*/
 }
 
 extension DMTrackVC: JobSavedStatusUpdateDelegate {

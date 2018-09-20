@@ -7,7 +7,9 @@
 //
 
 import UIKit
-
+protocol EditProfileHeaderTableCellDelegate: class {
+    func showNotificationList()
+}
 class EditProfileHeaderTableCell: UITableViewCell {
     @IBOutlet var settingButton: UIButton!
     @IBOutlet var editButton: UIButton!
@@ -19,7 +21,7 @@ class EditProfileHeaderTableCell: UITableViewCell {
     @IBOutlet var profileButton: ProfileImageButton!
     @IBOutlet var bellButton: UIButton!
     @IBOutlet var notificationLabel: UILabel!
-    
+    weak var delegate: EditProfileHeaderTableCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // self.aboutTextView.textContainer.lineFragmentPadding = 20.0
@@ -73,7 +75,7 @@ class EditProfileHeaderTableCell: UITableViewCell {
         }
     }
     
-    func customLeftBarButton()  {
+    /*func customLeftBarButton()  {
         notificationLabel = UILabel(frame: CGRect(x: 10, y: 0, width: 15, height: 15))
         notificationLabel?.backgroundColor = UIColor.red
         notificationLabel?.layer.cornerRadius = (notificationLabel?.bounds.size.height)! / 2
@@ -92,7 +94,7 @@ class EditProfileHeaderTableCell: UITableViewCell {
         customButton.addSubview(notificationLabel!)
         self.contentView.addSubview(customButton)
         
-    }
+    }*/
     
     func setNotificationLabelText(count: Int) {
         if count != 0 {
@@ -103,5 +105,9 @@ class EditProfileHeaderTableCell: UITableViewCell {
         } else {
             notificationLabel?.isHidden = true
         }
+    }
+    
+    @IBAction func openNotificationList(_:Any){
+        delegate?.showNotificationList()
     }
 }

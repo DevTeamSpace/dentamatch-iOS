@@ -21,7 +21,7 @@ class DMJobSearchResultVC: DMBaseVC {
     @IBOutlet var lblResultCount: UILabel!
 
     @IBOutlet var btnCurrentLocation: UIButton!
-    var notificationLabel: UILabel?
+    //var notificationLabel: UILabel?
     var bannerStatus = 0
     var rightBarBtn: UIButton = UIButton()
     var rightBarButtonItem: UIBarButtonItem = UIBarButtonItem()
@@ -66,36 +66,6 @@ class DMJobSearchResultVC: DMBaseVC {
         super.viewWillAppear(animated)
         self.fetchBadgeCount()
     }
-    
-    func fetchBadgeCount () {
-        getUnreadNotificationCount { response, _ in
-            if response![Constants.ServerKey.status].boolValue {
-                if let resultDic = response![Constants.ServerKey.result].dictionary {
-                    let count = resultDic["notificationCount"]?.intValue
-                    if self.notificationLabel != nil {
-                        AppDelegate.delegate().setAppBadgeCount(count ?? 0)
-                        self.setNotificationLabelText(count: count!)
-                        if let tabbarCtlr =  self.tabBarController as? TabBarVC {
-                            tabbarCtlr.updateBadgeOnProfileTab(value: count)
-                        }
-                    } else {
-                        self.notificationLabel?.isHidden = true
-                    }
-                }
-            }
-        }
-    }
-
-    func setNotificationLabelText(count: Int) {
-        if count != 0 {
-            notificationLabel?.text = "\(count)"
-            notificationLabel?.isHidden = false
-            notificationLabel?.adjustsFontSizeToFitWidth = true
-
-        } else {
-            notificationLabel?.isHidden = true
-        }
-    }
 
     func getJobs() {
         jobsPageNo = 1
@@ -138,7 +108,7 @@ class DMJobSearchResultVC: DMBaseVC {
         mapViewSearchResult.isMyLocationEnabled = false
         lblResultCount.text = String(jobs.count) + Constants.Strings.whiteSpace + Constants.Strings.resultsFound
 
-        navigationItem.leftBarButtonItem = customLeftBarButton()
+        navigationItem.leftBarButtonItem = nil//customLeftBarButton()
 
         setRightBarButton(title: "", imageName: "FilterImage", width: rightBarButtonWidth, font: UIFont.designFont(fontSize: 16.0)!)
         setUpSegmentControl()
@@ -161,6 +131,25 @@ class DMJobSearchResultVC: DMBaseVC {
         tblJobSearchResult.layer.shadowRadius = 1.0
         pullToRefreshJobs.addTarget(self, action: #selector(pullToRefreshForJobs), for: .valueChanged)
         tblJobSearchResult.addSubview(pullToRefreshJobs)
+    }
+    
+    func fetchBadgeCount () {
+        getUnreadNotificationCount { response, _ in
+            if response![Constants.ServerKey.status].boolValue {
+                if let resultDic = response![Constants.ServerKey.result].dictionary {
+                    let count = resultDic["notificationCount"]?.intValue
+                    //if self.notificationLabel != nil {
+                    AppDelegate.delegate().setAppBadgeCount(count ?? 0)
+                    //self.setNotificationLabelText(count: count!)
+                    if let tabbarCtlr =  self.tabBarController as? TabBarVC {
+                        tabbarCtlr.updateBadgeOnProfileTab(value: count)
+                    }
+                    //} else {
+                    //    self.notificationLabel?.isHidden = true
+                    //}
+                }
+            }
+        }
     }
 
     func showBanner(status: Int = 1) {
@@ -195,7 +184,7 @@ class DMJobSearchResultVC: DMBaseVC {
         }
     }
 
-    func customLeftBarButton() -> UIBarButtonItem {
+    /*func customLeftBarButton() -> UIBarButtonItem {
         notificationLabel = UILabel(frame: CGRect(x: 10, y: 0, width: 15, height: 15))
         notificationLabel?.backgroundColor = UIColor.red
         notificationLabel?.layer.cornerRadius = (notificationLabel?.bounds.size.height)! / 2
@@ -215,6 +204,25 @@ class DMJobSearchResultVC: DMBaseVC {
         let barButton = UIBarButtonItem(customView: customButton)
         return barButton
     }
+     
+     @objc override func actionLeftNavigationItem() {
+     // will implement
+     let notification = UIStoryboard.notificationStoryBoard().instantiateViewController(type: DMNotificationVC.self)!
+     notification.hidesBottomBarWhenPushed = true
+     navigationController?.pushViewController(notification, animated: true)
+     }
+     
+     func setNotificationLabelText(count: Int) {
+     if count != 0 {
+     notificationLabel?.text = "\(count)"
+     notificationLabel?.isHidden = false
+     notificationLabel?.adjustsFontSizeToFitWidth = true
+     
+     } else {
+     notificationLabel?.isHidden = true
+     }
+     }*/
+     
 
     @objc func pushRediectNotificationOtherAll(userInfo _: Notification) {
         if let tabbar = ((UIApplication.shared.delegate) as? AppDelegate)?.window?.rootViewController as? TabBarVC {
@@ -264,7 +272,7 @@ class DMJobSearchResultVC: DMBaseVC {
     
     @objc func decreaseBadgeCount(_ notification: Notification) {
         AppDelegate.delegate().decrementBadgeCount()
-        self.setNotificationLabelText(count: AppDelegate.delegate().badgeCount())
+        //self.setNotificationLabelText(count: AppDelegate.delegate().badgeCount())
         self.fetchBadgeCount()
     }
 
@@ -276,12 +284,7 @@ class DMJobSearchResultVC: DMBaseVC {
         navigationController?.pushViewController(jobDetailVC, animated: true)
     }
 
-    @objc override func actionLeftNavigationItem() {
-        // will implement
-        let notification = UIStoryboard.notificationStoryBoard().instantiateViewController(type: DMNotificationVC.self)!
-        notification.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(notification, animated: true)
-    }
+    
 
     @objc override func actionRightNavigationItem() {
         let jobSearchVC = UIStoryboard.jobSearchStoryBoard().instantiateViewController(type: DMJobSearchVC.self)!

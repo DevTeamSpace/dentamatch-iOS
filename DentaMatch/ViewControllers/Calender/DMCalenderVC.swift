@@ -23,7 +23,8 @@ class DMCalenderVC: DMBaseVC, FSCalendarDataSource, FSCalendarDelegate, FSCalend
     var selectedDayList = [Job]()
 
     var gregorian: NSCalendar?
- var notificationLabel: UILabel?
+    //var notificationLabel: UILabel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -38,7 +39,7 @@ class DMCalenderVC: DMBaseVC, FSCalendarDataSource, FSCalendarDelegate, FSCalend
 //        if self.hiredList.count == 0 {
         getAllJobFromServer()
         // }
-        self.setNotificationLabelText(count: AppDelegate.delegate().badgeCount())
+        //self.setNotificationLabelText(count: AppDelegate.delegate().badgeCount())
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,7 +56,7 @@ class DMCalenderVC: DMBaseVC, FSCalendarDataSource, FSCalendarDelegate, FSCalend
         monthTitleLabel.text = Date.dateToStringForFormatter(date: Date(), dateFormate: Date.dateFormatMMMMYYYY())
         monthTitleLabel.text = monthTitleLabel.text?.uppercased()
         navigationController?.setNavigationBarHidden(false, animated: true)
-        navigationItem.leftBarButtonItem = customLeftBarButton()
+        //navigationItem.leftBarButtonItem = customLeftBarButton()
         navigationItem.rightBarButtonItem = rightBarButton()
         bookedJobsTableView.separatorStyle = .none
         bookedJobsTableView.register(UINib(nibName: "SectionHeadingTableCell", bundle: nil), forCellReuseIdentifier: "SectionHeadingTableCell")
@@ -484,7 +485,7 @@ class DMCalenderVC: DMBaseVC, FSCalendarDataSource, FSCalendarDelegate, FSCalend
         calendar?.setCurrentPage(previousMonth, animated: true)
     }
     
-    func customLeftBarButton() -> UIBarButtonItem {
+    /*func customLeftBarButton() -> UIBarButtonItem {
         notificationLabel = UILabel(frame: CGRect(x: 10, y: 0, width: 15, height: 15))
         notificationLabel?.backgroundColor = UIColor.red
         notificationLabel?.layer.cornerRadius = (notificationLabel?.bounds.size.height)! / 2
@@ -521,7 +522,7 @@ class DMCalenderVC: DMBaseVC, FSCalendarDataSource, FSCalendarDelegate, FSCalend
         } else {
             notificationLabel?.isHidden = true
         }
-    }
+    }*/
 }
 
 extension Date {

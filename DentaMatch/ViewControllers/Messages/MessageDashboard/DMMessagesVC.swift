@@ -12,7 +12,7 @@ import UIKit
 class DMMessagesVC: DMBaseVC {
     @IBOutlet var messageListTableView: UITableView!
     var placeHolderEmptyJobsView: PlaceHolderJobsView?
-    var notificationLabel: UILabel?
+    //var notificationLabel: UILabel?
     let context = ((UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext)!
     let appDelegate = UIApplication.shared.delegate as? AppDelegate
     var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
@@ -41,7 +41,7 @@ class DMMessagesVC: DMBaseVC {
         if let selectedIndex = self.messageListTableView.indexPathForSelectedRow {
             messageListTableView.deselectRow(at: selectedIndex, animated: true)
         }
-        self.setNotificationLabelText(count: AppDelegate.delegate().badgeCount())
+        //self.setNotificationLabelText(count: AppDelegate.delegate().badgeCount())
 
     }
 
@@ -75,7 +75,7 @@ class DMMessagesVC: DMBaseVC {
         placeHolderEmptyJobsView?.placeHolderMessageLabel.text = "No message in your chats yet."
 
         view.layoutIfNeeded()
-        navigationItem.leftBarButtonItem = customLeftBarButton()
+        //navigationItem.leftBarButtonItem = customLeftBarButton()
     }
 
     func getMessageList() {
@@ -179,7 +179,7 @@ class DMMessagesVC: DMBaseVC {
         placeHolderEmptyJobsView?.isHidden = true
     }
     
-    func customLeftBarButton() -> UIBarButtonItem {
+    /*func customLeftBarButton() -> UIBarButtonItem {
         notificationLabel = UILabel(frame: CGRect(x: 10, y: 0, width: 15, height: 15))
         notificationLabel?.backgroundColor = UIColor.red
         notificationLabel?.layer.cornerRadius = (notificationLabel?.bounds.size.height)! / 2
@@ -216,7 +216,7 @@ class DMMessagesVC: DMBaseVC {
         } else {
             notificationLabel?.isHidden = true
         }
-    }
+    }*/
 }
 
 extension DMMessagesVC: ChatTapNotificationDelegate {

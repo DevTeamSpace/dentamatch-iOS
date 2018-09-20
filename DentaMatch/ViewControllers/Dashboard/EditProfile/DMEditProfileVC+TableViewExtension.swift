@@ -173,6 +173,7 @@ extension DMEditProfileVC: UITableViewDataSource, UITableViewDelegate {
         switch profileOptions {
         case .profileHeader:
             let cell = tableView.dequeueReusableCell(withIdentifier: "EditProfileHeaderTableCell") as! EditProfileHeaderTableCell
+            cell.delegate = self
             cell.nameLabel.text = UserManager.shared().activeUser.fullName()
             cell.profileButton.progressBar.setProgress(1.0, animated: false)
 
@@ -209,7 +210,6 @@ extension DMEditProfileVC: UITableViewDataSource, UITableViewDelegate {
             if let imageUrl = URL(string: UserManager.shared().activeUser.profileImageURL!) {
                 cell.profileButton.sd_setImage(with: imageUrl, for: .normal, placeholderImage: kPlaceHolderImage)
             }
-            //cell.customLeftBarButton()
             return cell
 
         case .dentalStateboard:
@@ -602,4 +602,13 @@ extension Double {
         let divisor = pow(10.0, Double(places))
         return (self * divisor).rounded() / divisor
     }
+}
+
+extension DMEditProfileVC: EditProfileHeaderTableCellDelegate {
+    func showNotificationList() {
+        let notification = UIStoryboard.notificationStoryBoard().instantiateViewController(type: DMNotificationVC.self)!
+        notification.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(notification, animated: true)
+    }
+    
 }
