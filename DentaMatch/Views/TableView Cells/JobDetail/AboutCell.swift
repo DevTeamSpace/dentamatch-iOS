@@ -14,11 +14,14 @@ class AboutCell: UITableViewCell {
     @IBOutlet var lblAddress: UILabel!
     @IBOutlet var lblOfficeType: UILabel!
     @IBOutlet var lblNoOfOpening: UILabel!
-
+    @IBOutlet var wagesView: UIView!
+    @IBOutlet var wagesLabel: UILabel!
+    
     @IBOutlet var constraintlblNoOfOpeningTop: NSLayoutConstraint!
     @IBOutlet var constraintLblNoOfOpeningHeight: NSLayoutConstraint!
     @IBOutlet var constraintLblNoOfOpeningValueHeight: NSLayoutConstraint!
-
+    @IBOutlet var constraintWagesOfferedHeight: NSLayoutConstraint!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -44,12 +47,19 @@ class AboutCell: UITableViewCell {
         lblAddress.text = job.address
         lblOfficeType.text = job.officeTypeName
         lblNoOfOpening.text = "\(job.noOfJobs)"
-
+        wagesView.isHidden = job.jobType == 3 ? false : true
+        constraintWagesOfferedHeight.constant = job.jobType == 3 ? 40 : 0
         // Show total openings in case of temp Jobs only i.e jobType = 3
         if job.jobType == 1 || job.jobType == 2 {
             constraintlblNoOfOpeningTop.constant = 0
             constraintLblNoOfOpeningHeight.constant = 0
             constraintLblNoOfOpeningValueHeight.constant = 0
+            constraintWagesOfferedHeight.constant = 0
         }
+        if job.jobType == 3 {
+            //job.wageOffered = 2.5
+            wagesLabel.text = "$\(job.wageOffered)"
+        }
+        
     }
 }

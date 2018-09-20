@@ -14,7 +14,7 @@ extension DMCalenderVC: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
-        return 170
+        return 225
     }
 
     func tableView(_: UITableView, heightForHeaderInSection _: Int) -> CGFloat {
