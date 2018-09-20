@@ -157,6 +157,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     func setAppBadgeCount(_ unreadCount: Int) {
         UserDefaults.setObject(unreadCount as NSNumber, forKey: Constants.kUnreadCount)
         setIconBadgeOnApp(unreadCount: unreadCount)
+        
     }
     
     func doNotificationIncrementByOne() {
@@ -168,6 +169,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     
     func setIconBadgeOnApp(unreadCount: Int) {
         UIApplication.shared.applicationIconBadgeNumber = unreadCount
+        
     }
     
     func decrementBadgeCount() {

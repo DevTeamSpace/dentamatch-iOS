@@ -75,6 +75,9 @@ class DMJobSearchResultVC: DMBaseVC {
                     if self.notificationLabel != nil {
                         AppDelegate.delegate().setAppBadgeCount(count ?? 0)
                         self.setNotificationLabelText(count: count!)
+                        if let tabbarCtlr =  self.tabBarController as? TabBarVC {
+                            tabbarCtlr.updateBadgeOnProfileTab(value: count)
+                        }
                     } else {
                         self.notificationLabel?.isHidden = true
                     }
