@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -28,15 +28,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="172" id="KGk-i7-Jjw" customClass="JobSearchResultCell" customModule="DentaMatch" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="172"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="225" id="KGk-i7-Jjw" customClass="JobSearchResultCell" customModule="DentaMatch" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="225"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="171.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="224.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uPo-7X-os1">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="171"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="224.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dental Assistance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MAg-4J-NbD">
                                 <rect key="frame" x="25" y="17" width="242" height="21"/>
@@ -72,13 +72,13 @@
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="90%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6k3-LB-8Mx">
-                                <rect key="frame" x="269" y="54" width="30" height="19"/>
+                                <rect key="frame" x="265" y="53" width="34" height="19"/>
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                 <color key="textColor" red="0.050980392156862744" green="0.066666666666666666" blue="0.18431372549019609" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Su, Mo, Tu, We, Th, Fr, Sa" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qkt-U2-9Ax">
-                                <rect key="frame" x="90" y="53" width="145.5" height="15"/>
+                                <rect key="frame" x="90" y="53" width="139" height="14"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="12"/>
                                 <color key="textColor" red="0.2196078431372549" green="0.2196078431372549" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -90,28 +90,56 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FGO-fW-AIo">
-                                <rect key="frame" x="25" y="105" width="287" height="31.5"/>
+                                <rect key="frame" x="25" y="105" width="287" height="30.5"/>
                                 <string key="text">628 Vermont Street
 San Francisco, CA 94107628</string>
                                 <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="To9-JG-Pyo" userLabel="Wages Offered View">
+                                <rect key="frame" x="25" y="145.5" width="227" height="40"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HOURLY WAGES ACCEPTED" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yn8-rN-zEU">
+                                        <rect key="frame" x="0.0" y="0.0" width="160.5" height="14"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="14" id="bPo-4U-9Se"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="12"/>
+                                        <color key="textColor" red="0.098039215690000001" green="0.15686274510000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V2G-9g-MMy">
+                                        <rect key="frame" x="0.0" y="18" width="0.0" height="0.0"/>
+                                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="13"/>
+                                        <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Yn8-rN-zEU" firstAttribute="leading" secondItem="To9-JG-Pyo" secondAttribute="leading" id="Mf9-uS-0Ob"/>
+                                    <constraint firstItem="V2G-9g-MMy" firstAttribute="leading" secondItem="To9-JG-Pyo" secondAttribute="leading" id="QQh-kY-9Vn"/>
+                                    <constraint firstItem="Yn8-rN-zEU" firstAttribute="top" secondItem="To9-JG-Pyo" secondAttribute="top" id="UGJ-mc-dH5"/>
+                                    <constraint firstItem="V2G-9g-MMy" firstAttribute="top" secondItem="Yn8-rN-zEU" secondAttribute="bottom" constant="4" id="fls-tw-Jam"/>
+                                    <constraint firstAttribute="height" constant="40" id="yQ6-WK-git"/>
+                                </constraints>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 DAYS AGO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="95O-Tl-7uR">
-                                <rect key="frame" x="25" y="144.5" width="59" height="12"/>
+                                <rect key="frame" x="25" y="195.5" width="59" height="12"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="10"/>
                                 <color key="textColor" red="0.58431372549019611" green="0.58431372549019611" blue="0.58431372549019611" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q8r-xD-GTF">
-                                <rect key="frame" x="0.0" y="170" width="320" height="1"/>
+                                <rect key="frame" x="0.0" y="223.5" width="320" height="1"/>
                                 <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="HfL-71-lTG"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MATCH" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fRr-WO-mH5">
-                                <rect key="frame" x="267" y="73" width="34.5" height="12"/>
+                                <rect key="frame" x="265" y="72" width="34.5" height="12"/>
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="10"/>
                                 <color key="textColor" red="0.050980392156862744" green="0.066666666666666666" blue="0.18431372549019609" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -135,14 +163,17 @@ San Francisco, CA 94107628</string>
                             <constraint firstItem="AYw-Gd-ePH" firstAttribute="leading" secondItem="1ZF-kL-maa" secondAttribute="leading" id="UW8-iu-pAB"/>
                             <constraint firstItem="1ZF-kL-maa" firstAttribute="top" secondItem="MAg-4J-NbD" secondAttribute="bottom" constant="10" id="UXu-An-Mnr"/>
                             <constraint firstItem="FGO-fW-AIo" firstAttribute="top" secondItem="AYw-Gd-ePH" secondAttribute="bottom" constant="8" id="Xf0-CN-kVb"/>
+                            <constraint firstItem="To9-JG-Pyo" firstAttribute="top" secondItem="FGO-fW-AIo" secondAttribute="bottom" constant="10" id="ZFZ-yq-fyt"/>
                             <constraint firstItem="1ZF-kL-maa" firstAttribute="leading" secondItem="MAg-4J-NbD" secondAttribute="leading" id="Zg1-d4-Ahh"/>
+                            <constraint firstAttribute="trailing" secondItem="To9-JG-Pyo" secondAttribute="trailing" constant="68" id="atW-se-iDB"/>
                             <constraint firstItem="Qkt-U2-9Ax" firstAttribute="centerY" secondItem="1ZF-kL-maa" secondAttribute="centerY" id="dJP-GX-pJo"/>
                             <constraint firstItem="fRr-WO-mH5" firstAttribute="top" secondItem="6k3-LB-8Mx" secondAttribute="bottom" id="eE7-Nx-AAY"/>
                             <constraint firstItem="q8r-xD-GTF" firstAttribute="leading" secondItem="uPo-7X-os1" secondAttribute="leading" id="fCb-Lt-LhA"/>
                             <constraint firstItem="6k3-LB-8Mx" firstAttribute="centerY" secondItem="Qkt-U2-9Ax" secondAttribute="centerY" constant="3" id="g1z-Ya-8rC"/>
-                            <constraint firstItem="95O-Tl-7uR" firstAttribute="top" secondItem="FGO-fW-AIo" secondAttribute="bottom" constant="8" id="hhL-16-qoB"/>
                             <constraint firstItem="AYw-Gd-ePH" firstAttribute="top" secondItem="1ZF-kL-maa" secondAttribute="bottom" constant="8" id="iwm-aA-Pcz"/>
                             <constraint firstAttribute="bottom" secondItem="q8r-xD-GTF" secondAttribute="bottom" id="mgS-RA-Tzm"/>
+                            <constraint firstItem="95O-Tl-7uR" firstAttribute="top" secondItem="To9-JG-Pyo" secondAttribute="bottom" constant="10" id="ui8-dU-C2d"/>
+                            <constraint firstItem="To9-JG-Pyo" firstAttribute="leading" secondItem="FGO-fW-AIo" secondAttribute="leading" id="vkI-Xm-eTu"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -169,8 +200,11 @@ San Francisco, CA 94107628</string>
                 <outlet property="lblDocName" destination="AYw-Gd-ePH" id="C3n-FM-LIn"/>
                 <outlet property="lblJobPostTime" destination="95O-Tl-7uR" id="ccC-Av-p9J"/>
                 <outlet property="lblJobTitle" destination="MAg-4J-NbD" id="Loj-Gh-MHi"/>
+                <outlet property="lblJobWages" destination="V2G-9g-MMy" id="wOa-nC-XDk"/>
+                <outlet property="wagesViewHeightConstraint" destination="yQ6-WK-git" id="G0s-aj-fGK"/>
+                <outlet property="wagesViewTopConstraint" destination="ZFZ-yq-fyt" id="7IT-sE-tMj"/>
             </connections>
-            <point key="canvasLocation" x="34" y="102"/>
+            <point key="canvasLocation" x="34" y="128.5"/>
         </tableViewCell>
     </objects>
 </document>

@@ -63,6 +63,7 @@ class Job: NSObject {
     var matchedSkills = 0
     var percentSkillsMatch = 0.0
     var wageOffered = 0.0
+    var wageAccepted = 0.0
     
     init(job: JSON) {
         isApplied = job["isApplied"].intValue
@@ -117,6 +118,7 @@ class Job: NSObject {
         matchedSkills = job["matchedSkills"].intValue
         percentSkillsMatch = job["percentaSkillsMatch"].doubleValue
         wageOffered = job["wageOffered"].doubleValue
+        wageAccepted = job["wageAccepted"].doubleValue
     }
 
     init(forCalendarjob: JSON) {

@@ -20,6 +20,8 @@ class JobSearchResultCell: UITableViewCell {
     }
 
     @IBOutlet var jobTitleLeftConstraint: NSLayoutConstraint!
+    @IBOutlet var wagesViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet var wagesViewTopConstraint: NSLayoutConstraint!
     @IBOutlet var lblJobTitle: UILabel!
     @IBOutlet var btnFavourite: UIButton!
     @IBOutlet var btnType: UIButton!
@@ -28,7 +30,8 @@ class JobSearchResultCell: UITableViewCell {
     @IBOutlet var lblDocName: UILabel!
     @IBOutlet var lblAddress: UILabel!
     @IBOutlet var lblJobPostTime: UILabel!
-
+    @IBOutlet var lblJobWages: UILabel!
+    
     weak var delegate: JobSearchResultCellDelegate?
     var index: Int!
 
@@ -47,9 +50,9 @@ class JobSearchResultCell: UITableViewCell {
         if job.isSaved == 0 {
             btnFavourite.setTitle(Constants.DesignFont.notFavourite, for: .normal)
             btnFavourite.titleLabel?.textColor = Constants.Color.unSaveJobColor
-            btnFavourite.setImage(UIImage(named: ""), for: .normal)
+            btnFavourite.setImage(nil, for: .normal)
         } else {
-            btnFavourite.setImage(UIImage(named: "saveStar"), for: .normal)
+            btnFavourite.setImage(#imageLiteral(resourceName: "saveStar"), for: .normal)
             btnFavourite.setTitle("", for: .normal)
         }
 
@@ -97,6 +100,8 @@ class JobSearchResultCell: UITableViewCell {
         } else {
             lblJobPostTime.text = job.days + Constants.Strings.whiteSpace + Constants.Strings.daysAgo
         }
+        
+        self.configureWagesLabel(job: job)
     }
 
     @IBAction func actionFavourite(_: UIButton) {
@@ -151,6 +156,18 @@ class JobSearchResultCell: UITableViewCell {
             } else {
                 lblJobPostTime.text = job.days + Constants.Strings.whiteSpace + Constants.Strings.daysAgo
             }
+        }
+    }
+    
+    private func configureWagesLabel(job: Job) {
+        if job.jobType == JobType.temporary.rawValue {
+            wagesViewHeightConstraint.constant = 40
+            wagesViewTopConstraint.constant = 10
+            lblJobWages.text = "\(job.wageOffered)"
+            
+        }else{
+            wagesViewHeightConstraint.constant = 0
+            wagesViewTopConstraint.constant = 0
         }
     }
 }
