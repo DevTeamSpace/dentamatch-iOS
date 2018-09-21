@@ -58,7 +58,7 @@ class AboutCell: UITableViewCell {
         }
         if job.jobType == 3 {
             //job.wageOffered = 2.5
-            wagesLabel.text = "$\(job.wageOffered)"
+            wagesLabel.text = "$\(job.payRate)"
         }
         
     }

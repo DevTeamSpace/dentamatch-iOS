@@ -32,7 +32,7 @@ extension DMCalenderVC {
                 return
             }
 
-            // debugPrint(response!)
+            LogManager.logDebug(response.debugDescription)
             self.hiredList.removeAll()
 
             if response![Constants.ServerKey.status].boolValue {

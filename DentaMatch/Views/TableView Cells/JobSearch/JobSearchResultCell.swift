@@ -30,6 +30,7 @@ class JobSearchResultCell: UITableViewCell {
     @IBOutlet var lblDocName: UILabel!
     @IBOutlet var lblAddress: UILabel!
     @IBOutlet var lblJobPostTime: UILabel!
+    @IBOutlet var viewJobWages: UIView!
     @IBOutlet var lblJobWages: UILabel!
     
     weak var delegate: JobSearchResultCellDelegate?
@@ -163,11 +164,12 @@ class JobSearchResultCell: UITableViewCell {
         if job.jobType == JobType.temporary.rawValue {
             wagesViewHeightConstraint.constant = 40
             wagesViewTopConstraint.constant = 10
-            lblJobWages.text = "\(job.wageOffered)"
-            
+            lblJobWages.text = "$\(job.payRate)"
+            viewJobWages.isHidden = false
         }else{
             wagesViewHeightConstraint.constant = 0
             wagesViewTopConstraint.constant = 0
+            viewJobWages.isHidden = true
         }
     }
 }

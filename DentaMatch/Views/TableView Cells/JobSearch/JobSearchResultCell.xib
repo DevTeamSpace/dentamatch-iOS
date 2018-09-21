@@ -72,13 +72,13 @@
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="90%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6k3-LB-8Mx">
-                                <rect key="frame" x="265" y="53" width="34" height="19"/>
+                                <rect key="frame" x="269" y="53" width="30" height="19"/>
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                 <color key="textColor" red="0.050980392156862744" green="0.066666666666666666" blue="0.18431372549019609" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Su, Mo, Tu, We, Th, Fr, Sa" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qkt-U2-9Ax">
-                                <rect key="frame" x="90" y="53" width="139" height="14"/>
+                                <rect key="frame" x="90" y="53" width="145.5" height="14.5"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="12"/>
                                 <color key="textColor" red="0.2196078431372549" green="0.2196078431372549" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -90,7 +90,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FGO-fW-AIo">
-                                <rect key="frame" x="25" y="105" width="287" height="30.5"/>
+                                <rect key="frame" x="25" y="105" width="287" height="31.5"/>
                                 <string key="text">628 Vermont Street
 San Francisco, CA 94107628</string>
                                 <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="13"/>
@@ -98,10 +98,10 @@ San Francisco, CA 94107628</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="To9-JG-Pyo" userLabel="Wages Offered View">
-                                <rect key="frame" x="25" y="145.5" width="227" height="40"/>
+                                <rect key="frame" x="25" y="146.5" width="227" height="40"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HOURLY WAGES ACCEPTED" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yn8-rN-zEU">
-                                        <rect key="frame" x="0.0" y="0.0" width="160.5" height="14"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="163.5" height="14"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="14" id="bPo-4U-9Se"/>
                                         </constraints>
@@ -126,7 +126,7 @@ San Francisco, CA 94107628</string>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 DAYS AGO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="95O-Tl-7uR">
-                                <rect key="frame" x="25" y="195.5" width="59" height="12"/>
+                                <rect key="frame" x="25" y="196.5" width="59" height="12"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="10"/>
                                 <color key="textColor" red="0.58431372549019611" green="0.58431372549019611" blue="0.58431372549019611" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -139,7 +139,7 @@ San Francisco, CA 94107628</string>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MATCH" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fRr-WO-mH5">
-                                <rect key="frame" x="265" y="72" width="34.5" height="12"/>
+                                <rect key="frame" x="267" y="72" width="34.5" height="12"/>
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="10"/>
                                 <color key="textColor" red="0.050980392156862744" green="0.066666666666666666" blue="0.18431372549019609" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -201,6 +201,7 @@ San Francisco, CA 94107628</string>
                 <outlet property="lblJobPostTime" destination="95O-Tl-7uR" id="ccC-Av-p9J"/>
                 <outlet property="lblJobTitle" destination="MAg-4J-NbD" id="Loj-Gh-MHi"/>
                 <outlet property="lblJobWages" destination="V2G-9g-MMy" id="wOa-nC-XDk"/>
+                <outlet property="viewJobWages" destination="To9-JG-Pyo" id="TiD-qm-pyu"/>
                 <outlet property="wagesViewHeightConstraint" destination="yQ6-WK-git" id="G0s-aj-fGK"/>
                 <outlet property="wagesViewTopConstraint" destination="ZFZ-yq-fyt" id="7IT-sE-tMj"/>
             </connections>
