@@ -11,6 +11,7 @@ import UIKit
 
 class JobTitle: NSObject {
     var jobTitle = ""
+    var shortName: String?
     var jobId = 0
     var jobSelected = false
     var isLicenseRequired = false
@@ -24,6 +25,7 @@ class JobTitle: NSObject {
         self.jobTitle = jobTitle.jobTitle
         jobId = jobTitle.jobId
         isLicenseRequired = jobTitle.isLicenseRequired
+        self.shortName = jobTitle.shortName
     }
 
     init(job: JSON) {
@@ -31,6 +33,10 @@ class JobTitle: NSObject {
         if job["jobtitle_name"].stringValue.isEmpty {
             jobTitle = job["jobtitleName"].stringValue
         }
+        if job["shortName"] != JSON.null{
+            jobTitle = job["shortName"].stringValue
+        }
+        shortName = job["shortName"].stringValue
         jobId = job["id"].intValue
         isLicenseRequired = job["isLicenseRequired"].boolValue
     }

@@ -48,7 +48,12 @@ class TabBarVC: UITabBarController, UITabBarControllerDelegate {
     func updateBadgeOnProfileTab(value: Int?) {
         if let tabItems = self.tabBar.items, let profileTab = tabItems.last {
             // In this case we want to modify the badge number of the third tab:
-            profileTab.badgeValue = value != nil ? "\(value!)" : nil
+            if let newValue = value, newValue > 0 {
+                profileTab.badgeValue = "\(newValue)"
+            }else{
+               profileTab.badgeValue = nil
+            }
+            
         }
     }
 

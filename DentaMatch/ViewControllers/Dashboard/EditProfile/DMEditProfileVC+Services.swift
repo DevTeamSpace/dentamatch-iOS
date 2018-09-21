@@ -64,6 +64,7 @@ extension DMEditProfileVC {
         if let jobLists = jobLists {
             for jobList in jobLists {
                 let jobTitle = JobTitle(job: jobList)
+                
                 jobTitles.append(jobTitle)
             }
         }
