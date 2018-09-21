@@ -56,7 +56,7 @@ class DMEditProfileVC: DMBaseVC {
         if #available(iOS 11.0, *) {
             editProfileTableView.contentInsetAdjustmentBehavior = .never
         }
-
+        
 //        self.userProfileAPI()
         // Do any additional setup after loading the view.
     }
@@ -75,6 +75,7 @@ class DMEditProfileVC: DMBaseVC {
     func setup() {
         NotificationCenter.default.addObserver(self, selector: #selector(updateProfileScreen), name: .updateProfileScreen, object: nil)
        NotificationCenter.default.addObserver(self, selector: #selector(psuhRediectNotificationForProfile), name: .pushRedirectNotificationForProfile, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateBadgeCount), name: .updateBadgeCount, object: nil)
         navigationController?.setNavigationBarHidden(true, animated: true)
         editProfileTableView.register(UINib(nibName: "EditProfileHeaderTableCell", bundle: nil), forCellReuseIdentifier: "EditProfileHeaderTableCell")
         editProfileTableView.register(UINib(nibName: "SectionHeadingTableCell", bundle: nil), forCellReuseIdentifier: "SectionHeadingTableCell")
@@ -122,6 +123,11 @@ class DMEditProfileVC: DMBaseVC {
 
         button.bottomAnchor.constraint(equalTo: popOverView.bottomAnchor, constant: -10.0).isActive = true
         button.trailingAnchor.constraint(equalTo: popOverView.trailingAnchor, constant: -10.0).isActive = true
+    }
+    
+    @objc func updateBadgeCount () {
+        let indexPath = IndexPath(item: 0, section: 0)
+       editProfileTableView.reloadRows(at: [indexPath], with: .none)
     }
 
     @objc func gotItButtonPressed() {

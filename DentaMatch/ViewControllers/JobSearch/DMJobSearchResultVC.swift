@@ -144,6 +144,7 @@ class DMJobSearchResultVC: DMBaseVC {
                     if let tabbarCtlr =  self.tabBarController as? TabBarVC {
                         tabbarCtlr.updateBadgeOnProfileTab(value: count)
                     }
+                    NotificationCenter.default.post(name: .updateBadgeCount, object: nil, userInfo: nil)
                     //} else {
                     //    self.notificationLabel?.isHidden = true
                     //}

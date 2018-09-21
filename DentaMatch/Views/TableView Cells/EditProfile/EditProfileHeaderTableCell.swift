@@ -29,7 +29,6 @@ class EditProfileHeaderTableCell: UITableViewCell {
         placeLabel.numberOfLines = 3
         // Initialization code
         bellButton.setTitle(Constants.DesignFont.notification, for: .normal)
-        self.setNotificationLabelText(count: AppDelegate.delegate().badgeCount())
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -96,7 +95,11 @@ class EditProfileHeaderTableCell: UITableViewCell {
         
     }*/
     
-    func setNotificationLabelText(count: Int) {
+    func updateBadge(){
+        self.setNotificationLabelText(count: AppDelegate.delegate().badgeCount())
+    }
+    
+   private func setNotificationLabelText(count: Int) {
         if count != 0 {
             notificationLabel?.text = "\(count)"
             notificationLabel?.isHidden = false

@@ -174,6 +174,7 @@ extension DMEditProfileVC: UITableViewDataSource, UITableViewDelegate {
         case .profileHeader:
             let cell = tableView.dequeueReusableCell(withIdentifier: "EditProfileHeaderTableCell") as! EditProfileHeaderTableCell
             cell.delegate = self
+            cell.updateBadge()
             cell.nameLabel.text = UserManager.shared().activeUser.fullName()
             cell.profileButton.progressBar.setProgress(1.0, animated: false)
 

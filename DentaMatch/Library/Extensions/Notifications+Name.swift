@@ -28,4 +28,5 @@ extension Notification.Name {
     static let pushRedirectNotificationForChatBackGround = Notification.Name("pushRedirectNoyificationForChatBackGround")
     static let decreaseBadgeCount = Notification.Name("decreaseBadgeCount")
     static let fetchBadgeCount = Notification.Name("fetchBadgeCount")
+    static let updateBadgeCount = Notification.Name("updateBadgeCount")
 }
