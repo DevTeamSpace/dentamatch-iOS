@@ -98,7 +98,7 @@
                         </state>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="atr-Q6-7NF">
-                        <rect key="frame" x="10" y="25" width="30" height="30"/>
+                        <rect key="frame" x="10" y="23" width="30" height="30"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="30" id="9Dn-ys-WiZ"/>
                             <constraint firstAttribute="height" constant="30" id="uEC-c9-3De"/>
@@ -112,7 +112,7 @@
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8np-rs-Pwe">
-                        <rect key="frame" x="25" y="25" width="15" height="15"/>
+                        <rect key="frame" x="25" y="23" width="15" height="15"/>
                         <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="15" id="bYb-Iz-X4W"/>
@@ -137,13 +137,13 @@
                     <constraint firstItem="yA5-c1-EgQ" firstAttribute="bottom" secondItem="Ant-ls-85M" secondAttribute="bottom" constant="1" id="7Kd-jB-swg"/>
                     <constraint firstItem="4hg-2h-wrq" firstAttribute="centerX" secondItem="two-jR-4bn" secondAttribute="centerX" id="7T4-md-D5E"/>
                     <constraint firstAttribute="trailing" secondItem="HPh-yt-bRc" secondAttribute="trailing" id="8hq-rC-aIi"/>
-                    <constraint firstItem="8np-rs-Pwe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="A4a-TV-1i1"/>
+                    <constraint firstItem="8np-rs-Pwe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="23" id="A4a-TV-1i1"/>
                     <constraint firstAttribute="trailing" secondItem="hOf-F1-8Sf" secondAttribute="trailing" constant="4" id="CHp-3h-5O3"/>
                     <constraint firstItem="Dxh-jx-qpg" firstAttribute="centerX" secondItem="UiG-3D-BXE" secondAttribute="centerX" id="EU7-aJ-hEv"/>
                     <constraint firstItem="Dxh-jx-qpg" firstAttribute="top" secondItem="UiG-3D-BXE" secondAttribute="bottom" constant="10" id="I5j-TJ-YJd"/>
                     <constraint firstAttribute="trailing" secondItem="4hg-2h-wrq" secondAttribute="trailing" constant="8" id="L5d-SF-Eyg"/>
                     <constraint firstItem="two-jR-4bn" firstAttribute="centerX" secondItem="UiG-3D-BXE" secondAttribute="centerX" id="LA2-JT-WkX"/>
-                    <constraint firstItem="atr-Q6-7NF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="M4f-ev-Lne"/>
+                    <constraint firstItem="atr-Q6-7NF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="23" id="M4f-ev-Lne"/>
                     <constraint firstItem="Ant-ls-85M" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="PzD-a0-3wR"/>
                     <constraint firstItem="atr-Q6-7NF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="QNA-ep-FOr"/>
                     <constraint firstItem="HPh-yt-bRc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Rsj-Bx-K4E"/>
