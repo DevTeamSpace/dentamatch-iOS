@@ -89,24 +89,24 @@ class DMProfileSuccessPending: DMBaseVC {
     func showUIForVerifyEmail() {
         letsGoButton.setTitle("RESEND VERIFICATION EMAIL", for: .normal)
         successPendingImageView.image = UIImage(named: "verifyEmail")
-        titleLabel.text = "Verify Email"
-        detailLabel.text = "We have sent a verification link on your registered email. Please verify it to proceed further."
+        titleLabel.text = "Almost There"
+        detailLabel.text = "Please check your email to activate your new account."
     }
 
     func showUIForCongrats() {
         hideAll(isHidden: false)
         letsGoButton.setTitle("LET'S GO", for: .normal)
         successPendingImageView.image = UIImage(named: "congratesTick")
-        titleLabel.text = "Congratulations!"
-        detailLabel.text = "Your profile has been created successfully.\nLet's set your availability so that dental offices can get to know about your timings."
+        titleLabel.text = Constants.AlertMessage.niceToMeetYou
+        detailLabel.text = "Now it’s time set your availability to get matched with jobs and temp work that fits your schedule."
     }
 
     func showUIForPending() {
         hideAll(isHidden: false)
         letsGoButton.setTitle("LET'S GO", for: .normal)
         successPendingImageView.image = UIImage(named: "pendingApproval")
-        titleLabel.text = "Pending Approval"
-        detailLabel.text = "Your profile has been sent for admin’s  approval. You can apply for jobs once your profile gets approved.\n\nIn the meantime, Lets set your availability so that dental offices can get to know about your timings."
+        titleLabel.text = "Nice to Meet You"
+        detailLabel.text = "We’ll confirm your license and approve your profile within 1 business day.\n\nIn the meantime, set your availability to get matched with jobs that fit your schedule and add skills and certifications to your profile."
     }
 
     @IBAction func letsGoButtonPressed(_: Any) {

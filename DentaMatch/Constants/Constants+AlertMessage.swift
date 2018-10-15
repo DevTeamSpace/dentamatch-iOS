@@ -25,7 +25,7 @@ extension Constants {
         static let emptyJobTitle = "Please select a Job title"
         static let emptyPinCode = "Pincode not found. Please select some other location"
         
-        static let emptyPreferredJobLocation = "Preferred Job Location can not be left blank."
+        static let emptyPreferredJobLocation = "Looking for Jobs In can not be left blank."
         // license no screen
         static let emptyLicenseNumber = "Please enter License number"
         static let emptyState = "Please enter License state"
@@ -70,6 +70,7 @@ extension Constants {
         
         // Apply Job
         static let congratulations = "Congratulations"
+        static let niceToMeetYou = "Nice to Meet You"
         static let jobApplied = "You have successfully applied for the job."
         static let completeYourProfile = "Complete your profile"
         static let completeYourProfileDetailMsg = "You’ll need to filling out your profile before applying for the job. Would you like to fill this out now?"

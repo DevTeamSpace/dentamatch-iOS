@@ -28,7 +28,7 @@ extension DMSettingVC: UITableViewDataSource, UITableViewDelegate {
         cell.leftIconImageView.contentMode = .scaleAspectFill
         switch indexPath.row {
         case 0:
-            cell.TextLabel.text = "Preferred Job Location"
+            cell.TextLabel.text = "Looking for Jobs In"
             cell.leftIconLabel.text = ""
             cell.leftIconImageView.image = UIImage(named: "preferredLocationIcon")
             cell.leftIconImageView.isHidden = false
