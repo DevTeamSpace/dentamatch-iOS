@@ -388,7 +388,7 @@ extension DMWorkExperienceVC: UITableViewDataSource, UITableViewDelegate {
     @objc func deleteExperience(_: Any) {
         view.endEditing(true)
 
-        let alertController = UIAlertController(title: "", message: "Are you sure you want to delete this experience ?", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "", message: "Are you sure you want to delete this work experience?", preferredStyle: .alert)
         let action1 = UIAlertAction(title: "OK", style: .default) { (_: UIAlertAction) in
             if self.currentExperience?.isEditMode == true {
                 self.deleteExperience(completionHandler: { check, _ in
@@ -456,7 +456,7 @@ extension DMWorkExperienceVC: UITableViewDataSource, UITableViewDelegate {
             }
             if !(empRef?.email?.isEmptyField)! {
                 if !(empRef?.email?.isValidEmail)! {
-                    makeToast(toastString: Constants.AlertMessage.invalidEmail)
+                    makeToast(toastString: Constants.AlertMessage.invalidEmailAddress)
                     return false
                 }
             }

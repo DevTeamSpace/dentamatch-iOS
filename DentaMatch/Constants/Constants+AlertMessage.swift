@@ -15,6 +15,7 @@ extension Constants {
     struct AlertMessage {
         static let emptyEmail = "Email Id can not be left blank."
         static let invalidEmail = "Please provide a valid Email Id."
+        static let invalidEmailAddress = "Please provide a valid email address."
         static let passwordRange = "Password should be 6-25 characters long."
         static let emptyName = "Name text can not be left blank."
         static let emptyFirstName = "First Name text can not be left blank."
