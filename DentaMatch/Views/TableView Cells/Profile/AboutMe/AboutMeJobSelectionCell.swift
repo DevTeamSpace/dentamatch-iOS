@@ -27,7 +27,7 @@ class AboutMeJobSelectionCell: UITableViewCell {
         placeHolderLabel.font = UIFont.fontRegular(fontSize: 14.0)
 
         placeHolderLabel.textColor = UIColor(red: CGFloat(170.0) / 255.0, green: CGFloat(170.0) / 255.0, blue: CGFloat(170.0) / 255.0, alpha: 0.7)
-        placeHolderLabel.text = "Write a brief introduction about yourself"
+        placeHolderLabel.text = "Here’s a sentence or two about me and the work I do."
         aboutMeTextView.addSubview(placeHolderLabel)
     }
 
