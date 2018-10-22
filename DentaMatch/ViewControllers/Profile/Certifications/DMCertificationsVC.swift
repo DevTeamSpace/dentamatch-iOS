@@ -86,7 +86,7 @@ class DMCertificationsVC: DMBaseVC, DatePickerViewDelegate {
     @objc func certificationImageButtonPressed(_ sender: Any) {
         let button = sender as? UIButton
 
-        cameraGalleryOptionActionSheet(title: "", message: "Please select", leftButtonText: "Camera", rightButtonText: "Gallery") { isCameraButtonPressed, _, isCancelButtonPressed in
+        cameraGalleryOptionActionSheet(title: "", message: "Please select", leftButtonText: "Take a Photo", rightButtonText: "Choose from Library") { isCameraButtonPressed, _, isCancelButtonPressed in
             if isCancelButtonPressed {
             } else if isCameraButtonPressed {
                 CameraGalleryManager.shared.openCamera(viewController: self, allowsEditing: false, completionHandler: {[weak self] (image: UIImage?, error: NSError?) in

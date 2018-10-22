@@ -33,7 +33,7 @@ enum FieldType: Int, CustomStringConvertible {
         case .ReferenceName:
             return "Reference Name (Optional)"
         case .ReferenceMobileNo:
-            return "Reference Mobile No. (Optional)"
+            return "Reference Phone Number (Optional)"
         case .ReferenceEmail:
             return "Reference Email (Optional)"
         }

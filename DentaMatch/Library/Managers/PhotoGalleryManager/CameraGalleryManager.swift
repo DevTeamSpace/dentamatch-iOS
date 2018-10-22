@@ -22,7 +22,7 @@ class CameraGalleryManager: UIViewController, UIImagePickerControllerDelegate, U
     }
 
     private enum GalleryError: String {
-        case denied = "Photo Gallery permissions are turned off. Please turn it on in Settings"
+        case denied = "Photo access is turned off. Please enable app access in Settings."
         case restricted = "Photo Gallery permissions are restricted"
         case notDetermined = "Photo Gallery permissions are not determined yet"
     }

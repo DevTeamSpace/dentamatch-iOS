@@ -119,7 +119,7 @@ class DMLicenseSelectionVC: DMBaseVC, UITextFieldDelegate {
     }
 
     @objc func stateBoardButtonPressed(_: Any) {
-        cameraGalleryOptionActionSheet(title: "", message: "Please select", leftButtonText: "Camera", rightButtonText: "Gallery") { isCameraButtonPressed, _, isCancelButtonPressed in
+        cameraGalleryOptionActionSheet(title: "", message: "Please select", leftButtonText: "Take a Photo", rightButtonText: "Choose from Library") { isCameraButtonPressed, _, isCancelButtonPressed in
             if isCancelButtonPressed {
                 // debugPrint("Cancel Pressed")
             } else if isCameraButtonPressed {
