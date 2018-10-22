@@ -138,7 +138,7 @@ class DMAffiliationsVC: DMBaseVC {
             if affiliation.isSelected {
                 if let otherAffiliation = affiliation.otherAffiliation {
                     if otherAffiliation.trim().isEmpty {
-                        makeToast(toastString: "Other Affiliation can't be empty")
+                        makeToast(toastString: "Other affiliation can't be empty")
                         return
                     }
                     otherObject[Constants.ServerKey.affiliationId] = affiliation.affiliationId
