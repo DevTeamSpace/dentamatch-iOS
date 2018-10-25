@@ -49,7 +49,7 @@
                         <color key="textColor" red="0.21960784310000001" green="0.21960784310000001" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OFFICE LOCATION" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K1R-C5-k18">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EMPLOYER" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K1R-C5-k18">
                         <rect key="frame" x="20" y="46" width="112" height="14"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="14" id="LyM-Tg-mXc"/>
