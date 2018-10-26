@@ -87,7 +87,7 @@ class DMProfileSuccessPending: DMBaseVC {
     }
 
     func showUIForVerifyEmail() {
-        letsGoButton.setTitle("RESEND VERIFICATION EMAIL", for: .normal)
+        letsGoButton.setTitle("LET'S GO", for: .normal)
         successPendingImageView.image = UIImage(named: "verifyEmail")
         titleLabel.text = "Almost There"
         detailLabel.text = "Please check your email to activate your new account."
@@ -105,7 +105,7 @@ class DMProfileSuccessPending: DMBaseVC {
         hideAll(isHidden: false)
         letsGoButton.setTitle("LET'S GO", for: .normal)
         successPendingImageView.image = UIImage(named: "pendingApproval")
-        titleLabel.text = "Nice to Meet You"
+        titleLabel.text = Constants.AlertMessage.niceToMeetYou
         detailLabel.text = "We’ll confirm your license and approve your profile within 1 business day.\n\nIn the meantime, set your availability to get matched with jobs that fit your schedule and add skills and certifications to your profile."
     }
 

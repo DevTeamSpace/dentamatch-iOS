@@ -75,7 +75,7 @@ class DMJobTitleSelectionVC: DMBaseVC, ToolBarButtonDelegate {
 
         jobTitleSelectionTableView.register(UINib(nibName: "AnimatedPHTableCell", bundle: nil), forCellReuseIdentifier: "AnimatedPHTableCell")
         jobTitleSelectionTableView.register(UINib(nibName: "AboutMeJobSelectionCell", bundle: nil), forCellReuseIdentifier: "AboutMeJobSelectionCell")
-        nameLabel.text = "Hi " + UserManager.shared().activeUser.firstName! + " " + UserManager.shared().activeUser.lastName!
+        nameLabel.text = "Hi " + UserManager.shared().activeUser.firstName!
         prefferedJobLocationLabel.text = UserManager.shared().activeUser.preferredJobLocation
         addJobSelectionPickerViewTextField()
         profileButton.isUserInteractionEnabled = false
