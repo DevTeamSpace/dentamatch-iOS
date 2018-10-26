@@ -13,7 +13,7 @@ extension DMJobTitleSelectionVC: JobSelectionPickerViewDelegate {
         if let jobTitle = job {
             selectedJobTitle = jobTitle
 
-            if let cell = self.jobTitleSelectionTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? AnimatedPHTableCell {
+            if let cell = self.jobTitleSelectionTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? AnimatedPHToolTipCell {
                 cell.commonTextField.text = jobTitle.jobTitle
                 jobTitleSelectionTableView.reloadData()
             }

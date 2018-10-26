@@ -73,7 +73,7 @@ class DMJobTitleSelectionVC: DMBaseVC, ToolBarButtonDelegate {
         headerView.frame = CGRect(x: 0, y: 0, width: Utilities.ScreenSize.SCREEN_WIDTH, height: 54)
         jobTitleSelectionTableView.tableHeaderView = headerView
 
-        jobTitleSelectionTableView.register(UINib(nibName: "AnimatedPHTableCell", bundle: nil), forCellReuseIdentifier: "AnimatedPHTableCell")
+        jobTitleSelectionTableView.register(UINib(nibName: "AnimatedPHToolTipCell", bundle: nil), forCellReuseIdentifier: "AnimatedPHToolTipCell")
         jobTitleSelectionTableView.register(UINib(nibName: "AboutMeJobSelectionCell", bundle: nil), forCellReuseIdentifier: "AboutMeJobSelectionCell")
         nameLabel.text = "Hi " + UserManager.shared().activeUser.firstName!
         prefferedJobLocationLabel.text = UserManager.shared().activeUser.preferredJobLocation

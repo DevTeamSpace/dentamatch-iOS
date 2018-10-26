@@ -17,15 +17,15 @@ extension DMJobTitleSelectionVC: UITableViewDataSource, UITableViewDelegate {
             if indexPath.row == 1 || indexPath.row == 2 {
                 return 0
             }
-            return 76
+            return UITableViewAutomaticDimension
         }
         if let selectedJobTitle = selectedJobTitle, selectedJobTitle.isLicenseRequired == false {
             if indexPath.row == 1 || indexPath.row == 2 {
                 return 0
             }
-            return 76
+            return UITableViewAutomaticDimension
         } else {
-            return 76
+            return UITableViewAutomaticDimension
         }
     }
 
@@ -41,7 +41,7 @@ extension DMJobTitleSelectionVC: UITableViewDataSource, UITableViewDelegate {
             cell.aboutMeTextView.inputAccessoryView = addToolBarOnTextView()
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AnimatedPHTableCell") as! AnimatedPHTableCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AnimatedPHToolTipCell") as! AnimatedPHToolTipCell
             updateCellForTextField(cell: cell, indexPath: indexPath)
             cell.clipsToBounds = true
             cell.commonTextField.delegate = self
@@ -50,7 +50,7 @@ extension DMJobTitleSelectionVC: UITableViewDataSource, UITableViewDelegate {
         }
     }
 
-    func updateCellForTextField(cell: AnimatedPHTableCell, indexPath: IndexPath) {
+    func updateCellForTextField(cell: AnimatedPHToolTipCell, indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
             cell.commonTextField.inputView = jobSelectionPickerView
@@ -60,6 +60,7 @@ extension DMJobTitleSelectionVC: UITableViewDataSource, UITableViewDelegate {
         case 1:
             cell.commonTextField.placeholder = "License Number"
             cell.commonTextField.tag = 2
+            cell.toolTipLabel?.text = "We’ll confirm your license within the next business day."
         case 2:
             cell.commonTextField.placeholder = "License State"
             cell.commonTextField.tag = 3
