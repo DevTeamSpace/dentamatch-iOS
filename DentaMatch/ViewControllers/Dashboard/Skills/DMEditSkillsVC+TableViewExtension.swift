@@ -27,7 +27,6 @@ extension DMEditSkillsVC: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let skillOption = Skills(rawValue: indexPath.section)!
-
         switch skillOption {
         case .skills:
             let height = getHeightOFCellForSkill(subSkills: skills[indexPath.row].subSkills.filter({ $0.isSelected == true }))

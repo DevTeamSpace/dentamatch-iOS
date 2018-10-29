@@ -147,6 +147,7 @@ class Job: NSObject {
         jobDate = forCalendarjob["jobDate"].stringValue
         tempjobDate = forCalendarjob["tempDates"].stringValue
         currentDate = forCalendarjob["currentDate"].stringValue
+        payRate = forCalendarjob["payRate"].intValue
     }
 }
 
