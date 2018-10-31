@@ -160,8 +160,8 @@ class JobSearchResultCell: UITableViewCell {
         }
     }
     
-    private func configureWagesLabel(job: Job) {
-        if job.jobType == JobType.temporary.rawValue {
+    func configureWagesLabel(job: Job, isSaved: Bool = false) {
+        if job.jobType == JobType.temporary.rawValue && !isSaved {
             wagesViewHeightConstraint.constant = 40
             wagesViewTopConstraint.constant = 10
             lblJobWages.text = "$\(job.payRate)"

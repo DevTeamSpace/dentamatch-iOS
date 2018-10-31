@@ -54,6 +54,7 @@ extension DMJobSearchResultVC {
                 }
 
                 if result["isJobSeekerVerified"].stringValue == "1" && result["profileCompleted"].stringValue == "1" {
+                    self.bannerStatus = 3 // approved
                     hideBanner()
                 }
 

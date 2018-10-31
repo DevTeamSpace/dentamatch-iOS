@@ -64,7 +64,7 @@ extension DMTrackVC: UITableViewDataSource, UITableViewDelegate {
             cell.btnFavourite.tag = indexPath.row
             cell.btnFavourite.isHidden = false
             cell.selectionStyle = .none
-
+            cell.configureWagesLabel(job: job, isSaved: true)
         case .applied:
             let job = appliedJobs[indexPath.row]
             populateJobCellData(cell: cell, job: job)
@@ -72,7 +72,7 @@ extension DMTrackVC: UITableViewDataSource, UITableViewDelegate {
             cell.btnFavourite.removeTarget(nil, action: nil, for: .allEvents)
             cell.btnFavourite.isHidden = true
             cell.selectionStyle = .none
-
+            cell.configureWagesLabel(job: job, isSaved: true)
         case .shortlisted:
             let job = shortListedJobs[indexPath.row]
             populateJobCellData(cell: cell, job: job)
@@ -84,8 +84,9 @@ extension DMTrackVC: UITableViewDataSource, UITableViewDelegate {
             cell.btnFavourite.removeTarget(nil, action: nil, for: .allEvents)
             cell.btnFavourite.addTarget(self, action: #selector(goToChatButton), for: .touchUpInside)
             cell.selectionStyle = .none
+            cell.configureWagesLabel(job: job, isSaved: true)
         }
-
+        
         return cell
     }
 
@@ -236,6 +237,7 @@ extension DMTrackVC: UITableViewDataSource, UITableViewDelegate {
         footer?.activityIndicator.startAnimating()
         tableView.tableFooterView = footer
     }
+    
 }
 
 extension DMTrackVC: CancelledJobDelegate {
