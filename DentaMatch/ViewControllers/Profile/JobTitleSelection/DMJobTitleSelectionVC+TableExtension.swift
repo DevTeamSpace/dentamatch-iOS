@@ -60,7 +60,7 @@ extension DMJobTitleSelectionVC: UITableViewDataSource, UITableViewDelegate {
         case 1:
             cell.commonTextField.placeholder = "License Number"
             cell.commonTextField.tag = 2
-            cell.toolTipLabel?.text = "We’ll confirm your license within the next business day."
+            cell.toolTipLabel?.text = "ⓘ We’ll confirm your license within the next business day."
         case 2:
             cell.commonTextField.placeholder = "License State"
             cell.commonTextField.tag = 3
