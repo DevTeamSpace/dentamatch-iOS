@@ -34,7 +34,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Fcm-PV-9mt">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ead-FC-dFg">
                                     <size key="itemSize" width="377" height="646"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -49,7 +49,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="377" height="646"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ege-92-4PZ">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ege-92-4PZ">
                                                     <rect key="frame" x="0.0" y="0.0" width="377" height="646"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </imageView>
@@ -147,25 +147,27 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="Fcm-PV-9mt" secondAttribute="bottom" id="0Ar-VR-ggQ"/>
-                            <constraint firstItem="Fcm-PV-9mt" firstAttribute="leading" secondItem="iyp-Fv-mPo" secondAttribute="leading" id="Bgk-IC-Xa6"/>
+                            <constraint firstItem="Fcm-PV-9mt" firstAttribute="leading" secondItem="iyp-Fv-mPo" secondAttribute="leading" id="BvS-YA-F01"/>
+                            <constraint firstAttribute="trailing" secondItem="Fcm-PV-9mt" secondAttribute="trailing" id="ITD-HR-jV9"/>
                             <constraint firstAttribute="trailing" secondItem="QWg-rm-8q8" secondAttribute="trailing" constant="10" id="Ngo-mg-xOJ"/>
                             <constraint firstItem="I0e-VI-fpG" firstAttribute="top" secondItem="Ddc-yP-oKV" secondAttribute="bottom" constant="10" id="U9M-0y-8vQ"/>
-                            <constraint firstItem="Fcm-PV-9mt" firstAttribute="top" secondItem="iyp-Fv-mPo" secondAttribute="top" id="XZ7-T8-xii"/>
                             <constraint firstItem="7Tl-dd-GP5" firstAttribute="centerX" secondItem="iyp-Fv-mPo" secondAttribute="centerX" id="aId-od-rjD"/>
-                            <constraint firstAttribute="trailing" secondItem="Fcm-PV-9mt" secondAttribute="trailing" id="cy9-88-6aX"/>
+                            <constraint firstItem="Fcm-PV-9mt" firstAttribute="top" secondItem="iyp-Fv-mPo" secondAttribute="top" id="eo1-iG-WwR"/>
                             <constraint firstAttribute="trailing" secondItem="Ddc-yP-oKV" secondAttribute="trailing" constant="10" id="g0u-UH-N7c"/>
                             <constraint firstItem="I0e-VI-fpG" firstAttribute="top" secondItem="7Tl-dd-GP5" secondAttribute="bottom" constant="60" id="n1Q-1Z-D21"/>
+                            <constraint firstAttribute="bottom" secondItem="Fcm-PV-9mt" secondAttribute="bottom" id="rT9-Bj-7dC"/>
                             <constraint firstItem="I0e-VI-fpG" firstAttribute="top" secondItem="QWg-rm-8q8" secondAttribute="bottom" constant="10" id="rya-Il-Bdd"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9b2-RU-UES"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="getStartedButton" destination="QWg-rm-8q8" id="PTv-Mc-7sG"/>
                         <outlet property="onboardingCollectionView" destination="Fcm-PV-9mt" id="vmk-AM-PmY"/>
                         <outlet property="pageControl" destination="7Tl-dd-GP5" id="RA2-t5-qp2"/>
+                        <outlet property="pageControlBottomConstraint" destination="n1Q-1Z-D21" id="EkD-XM-CCV"/>
                         <outlet property="skipButton" destination="Ddc-yP-oKV" id="ZhT-Fr-igv"/>
                     </connections>
                 </viewController>

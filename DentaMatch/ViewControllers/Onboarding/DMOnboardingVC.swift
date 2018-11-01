@@ -9,11 +9,11 @@
 import UIKit
 
 class DMOnboardingVC: DMBaseVC {
-    @IBOutlet var getStartedButton: UIButton!
-    @IBOutlet var skipButton: UIButton!
-    @IBOutlet var pageControl: UIPageControl!
-    @IBOutlet var onboardingCollectionView: UICollectionView!
-
+    @IBOutlet weak var getStartedButton: UIButton!
+    @IBOutlet weak var skipButton: UIButton!
+    @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var onboardingCollectionView: UICollectionView!
+    @IBOutlet weak var pageControlBottomConstraint: NSLayoutConstraint!
     var images = ["onBoarding1", "onBoarding2", "onBoarding3", "onBoarding4"]
 
     let headings = [
@@ -45,6 +45,9 @@ class DMOnboardingVC: DMBaseVC {
         skipButton.isExclusiveTouch = true
         getStartedButton.isHidden = true
         getStartedButton.isExclusiveTouch = true
+        if UIDevice.current.screenType == .iPhoneX {
+            pageControlBottomConstraint.constant = 30.0
+        }
     }
 
     // MARK: - IBActions
