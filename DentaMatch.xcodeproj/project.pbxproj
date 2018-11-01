@@ -22,6 +22,8 @@
 		484958F4218AC2A400096046 /* SearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484958F2218AC2A400096046 /* SearchField.swift */; };
 		484958F6218AC2F500096046 /* UITextField+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484958F5218AC2F500096046 /* UITextField+Additions.swift */; };
 		484958F9218AC7AB00096046 /* SearchStateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484958F8218AC7AB00096046 /* SearchStateViewController.swift */; };
+		484958FC218AD5C400096046 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484958FB218AD5C400096046 /* State.swift */; };
+		484958FF218ADCC000096046 /* StateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484958FE218ADCC000096046 /* StateCell.swift */; };
 		485DA9FD2183610C00CA8593 /* AnimatedPHToolTipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485DA9FB2183610C00CA8593 /* AnimatedPHToolTipCell.swift */; };
 		485DA9FE2183610C00CA8593 /* AnimatedPHToolTipCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 485DA9FC2183610C00CA8593 /* AnimatedPHToolTipCell.xib */; };
 		4877D98320ECD54400264422 /* AppDelegate+InitialConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4877D98220ECD54400264422 /* AppDelegate+InitialConfiguration.swift */; };
@@ -448,6 +450,8 @@
 		484958F2218AC2A400096046 /* SearchField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchField.swift; sourceTree = "<group>"; };
 		484958F5218AC2F500096046 /* UITextField+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Additions.swift"; sourceTree = "<group>"; };
 		484958F8218AC7AB00096046 /* SearchStateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStateViewController.swift; sourceTree = "<group>"; };
+		484958FB218AD5C400096046 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		484958FE218ADCC000096046 /* StateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateCell.swift; sourceTree = "<group>"; };
 		485DA9FB2183610C00CA8593 /* AnimatedPHToolTipCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedPHToolTipCell.swift; sourceTree = "<group>"; };
 		485DA9FC2183610C00CA8593 /* AnimatedPHToolTipCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnimatedPHToolTipCell.xib; sourceTree = "<group>"; };
 		4877D98220ECD54400264422 /* AppDelegate+InitialConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+InitialConfiguration.swift"; sourceTree = "<group>"; };
@@ -924,6 +928,22 @@
 			path = "State Search";
 			sourceTree = "<group>";
 		};
+		484958FA218AD59C00096046 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				484958FB218AD5C400096046 /* State.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		484958FD218ADCA300096046 /* StateCell */ = {
+			isa = PBXGroup;
+			children = (
+				484958FE218ADCC000096046 /* StateCell.swift */,
+			);
+			path = StateCell;
+			sourceTree = "<group>";
+		};
 		4877D98420EDF02500264422 /* Resourses */ = {
 			isa = PBXGroup;
 			children = (
@@ -987,6 +1007,7 @@
 		5A1E2A161E1E47340055D913 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				484958FA218AD59C00096046 /* State */,
 				E506AE531FAC374C00ABC7FA /* PreferredLocation */,
 				5A5523ED1E4D97C0007D8C09 /* Notification */,
 				E5AE37831E4986E10001EC3C /* CoreDataModels */,
@@ -1626,6 +1647,7 @@
 		E56B20A71DC0606A000512F6 /* TableView Cells */ = {
 			isa = PBXGroup;
 			children = (
+				484958FD218ADCA300096046 /* StateCell */,
 				5A988BC91E4AEF4100DECB49 /* Notication */,
 				E5AE37051E4897380001EC3C /* Messages */,
 				5A8F62A61E39EA7E0037C4A2 /* Calender */,
@@ -2876,6 +2898,7 @@
 				E5AE37041E485D800001EC3C /* PlaceHolderJobsView.swift in Sources */,
 				E5AE37661E4971CE0001EC3C /* SocketEnginePollable.swift in Sources */,
 				E5AE376B1E4971CE0001EC3C /* SocketIOClient.swift in Sources */,
+				484958FC218AD5C400096046 /* State.swift in Sources */,
 				F2F5E0CF1E2F62080082187C /* AboutCell.swift in Sources */,
 				E587D2D71E236B84006B7F06 /* DMRegisterMapsVC+GoogleMapsExtension.swift in Sources */,
 				5A3B06CD1E3387FF00EFCA6E /* DMSettingVC+TableViewExtension.swift in Sources */,
@@ -2977,6 +3000,7 @@
 				E597E5901E151CFF001DDA78 /* FloatLabelTextView.swift in Sources */,
 				E5F47C951E0035B90051C4A1 /* UIImageRotate.m in Sources */,
 				E5C5F31B1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift in Sources */,
+				484958FF218ADCC000096046 /* StateCell.swift in Sources */,
 				F223591B1E3F5ED100E984FC /* DMJobSearchResultVC+GMSExtension.swift in Sources */,
 				E5AE37721E4971CE0001EC3C /* SocketParsable.swift in Sources */,
 				484958F4218AC2A400096046 /* SearchField.swift in Sources */,

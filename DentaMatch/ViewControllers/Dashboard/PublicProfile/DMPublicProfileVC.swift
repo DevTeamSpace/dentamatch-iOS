@@ -225,6 +225,13 @@ class DMPublicProfileVC: DMBaseVC {
 
         NotificationCenter.default.post(name: .updateProfileScreen, object: nil, userInfo: nil)
     }
+    
+    func goToStates(_ text: String?) {
+        let searchVc = UIStoryboard.statesStoryBoard().instantiateViewController(withIdentifier: "SearchStateViewController") as! SearchStateViewController
+        searchVc.delegate = self
+        searchVc.preSelectedState = stateString
+        self.navigationController?.pushViewController(searchVc, animated: true)
+    }
 }
 
 extension DMPublicProfileVC: UITextFieldDelegate {
@@ -397,6 +404,14 @@ extension DMPublicProfileVC: PreferredLocationPickerViewDelegate {
             selectedLocation = preferredLocation
         }
         view.endEditing(true)
+    }
+}
+
+extension DMPublicProfileVC: SearchStateViewControllerDelegate {
+    func selectedState(state: String?) {
+        stateString = state
+        editProfileParams[Constants.ServerKey.state] = state
+        self.publicProfileTableView.reloadData()
     }
 }
 

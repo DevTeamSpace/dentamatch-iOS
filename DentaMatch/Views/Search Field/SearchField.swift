@@ -9,8 +9,10 @@
 import UIKit
 
 class SearchField: UIView {
-    @IBOutlet private var searchTextField: UITextField?
-    @IBOutlet private var placeholderView: UIView?
+    @IBOutlet private weak var searchImageView: UIImageView?
+    @IBOutlet private weak var searchLabel: UILabel?
+    @IBOutlet private weak var searchTextField: UITextField?
+    @IBOutlet private weak var placeholderView: UIView?
     private var _searchHandler: (String) -> Void = { _ in }
     var searchText: String {
         return searchTextField?.trimText() ?? ""
@@ -35,6 +37,7 @@ class SearchField: UIView {
         contentView?.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
         // Adding custom subview on top of our view (over any custom drawing > see note below)
         addSubview(contentView)
+        searchTextField?.changePlaceholderColor(UIColor.white)
     }
 
     func textChange(_ handler: @escaping (String) -> Void) {
@@ -60,10 +63,11 @@ extension SearchField: UITextFieldDelegate {
     }
 
     func textFieldDidBeginEditing(_: UITextField) {
-        placeholderView?.isHidden = true
+        //placeholderView?.isHidden = true
+        searchLabel?.isHidden = true
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
-        placeholderView?.isHidden = !textField.isEmpty()
+        searchLabel?.isHidden = !textField.isEmpty()
     }
 }

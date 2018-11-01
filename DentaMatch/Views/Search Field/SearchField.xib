@@ -13,11 +13,16 @@
         <array key="GothamRounded-Book.otf">
             <string>GothamRounded-Book</string>
         </array>
+        <array key="SF-UI-Text-Regular.otf">
+            <string>SFUIText-Regular</string>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchField" customModule="DentaMatch" customModuleProvider="target">
             <connections>
                 <outlet property="placeholderView" destination="XPh-GK-qeM" id="gl1-FW-Cgm"/>
+                <outlet property="searchImageView" destination="tNV-ZF-YzS" id="gSr-S4-v1c"/>
+                <outlet property="searchLabel" destination="9MP-lU-c6X" id="GYb-1q-5Zv"/>
                 <outlet property="searchTextField" destination="QzY-ko-tl6" id="XcS-Tu-U8u"/>
             </connections>
         </placeholder>
@@ -57,8 +62,8 @@
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="QzY-ko-tl6">
                     <rect key="frame" x="30" y="0.0" width="317" height="30"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <nil key="textColor"/>
-                    <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="12"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="12"/>
                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="webSearch" returnKeyType="search" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                     <connections>
                         <action selector="textFieldDidChangeValueWithTextfield:" destination="-1" eventType="editingChanged" id="zHU-0c-Oe1"/>

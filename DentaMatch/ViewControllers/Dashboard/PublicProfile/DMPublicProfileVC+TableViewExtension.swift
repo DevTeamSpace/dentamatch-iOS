@@ -19,7 +19,7 @@ extension DMPublicProfileVC: UITableViewDataSource, UITableViewDelegate, UITextV
         cell.lastNameTextField.delegate = self
         cell.jobTitleTextField.delegate = self
         cell.licenseNumberTextField.delegate = self
-        cell.stateTextField.delegate = self
+
 
         cell.preferredJobLocationTextField.delegate = self
         cell.aboutMeTextView.delegate = self
@@ -31,6 +31,9 @@ extension DMPublicProfileVC: UITableViewDataSource, UITableViewDelegate, UITextV
         cell.licenseNumberTextField.text = licenseString // UserManager.shared().activeUser.licenseNumber
         cell.preferredJobLocationTextField.text = UserManager.shared().activeUser.preferredJobLocation
         cell.stateTextField.text = stateString // UserManager.shared().activeUser.state
+        cell.stateFieldAction { [weak self](text) in
+            self?.goToStates(text)
+        }
         cell.jobTitleTextField.type = 1
         cell.jobTitleTextField.tintColor = UIColor.clear
         cell.jobTitleTextField.inputView = jobSelectionPickerView
@@ -43,6 +46,7 @@ extension DMPublicProfileVC: UITableViewDataSource, UITableViewDelegate, UITextV
         } else {
             cell.profileButton.setImage(profileImage, for: .normal)
         }
+        
         return cell
     }
 

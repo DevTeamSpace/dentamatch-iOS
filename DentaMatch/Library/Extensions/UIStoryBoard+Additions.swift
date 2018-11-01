@@ -54,4 +54,7 @@ extension UIStoryboard {
     class func dashBoardStoryBoard() -> UIStoryboard {
         return UIStoryboard(name: Constants.StoryBoard.dashboardStoryboard, bundle: nil)
     }
+    class func statesStoryBoard() -> UIStoryboard {
+        return UIStoryboard(name: Constants.StoryBoard.states, bundle: nil)
+    }
 }
