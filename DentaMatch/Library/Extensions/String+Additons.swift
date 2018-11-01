@@ -37,6 +37,10 @@ extension String {
         }
         return false
     }
+    
+    var trimText: String {
+        return trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+    }
 
     var isEmptyField: Bool {
         if trimmingCharacters(in: CharacterSet.whitespaces).count == 0 {

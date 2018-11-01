@@ -17,6 +17,11 @@
 		4846B87720F3550000BAC18C /* Constants+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846B87620F3550000BAC18C /* Constants+Color.swift */; };
 		4846B87920F3564C00BAC18C /* Constants+AlertMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846B87820F3564C00BAC18C /* Constants+AlertMessage.swift */; };
 		4846B87D20F356CC00BAC18C /* Constants+Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846B87C20F356CC00BAC18C /* Constants+Api.swift */; };
+		484958EF218AC1CD00096046 /* States.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 484958EE218AC1CD00096046 /* States.storyboard */; };
+		484958F3218AC2A400096046 /* SearchField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 484958F1218AC2A400096046 /* SearchField.xib */; };
+		484958F4218AC2A400096046 /* SearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484958F2218AC2A400096046 /* SearchField.swift */; };
+		484958F6218AC2F500096046 /* UITextField+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484958F5218AC2F500096046 /* UITextField+Additions.swift */; };
+		484958F9218AC7AB00096046 /* SearchStateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484958F8218AC7AB00096046 /* SearchStateViewController.swift */; };
 		485DA9FD2183610C00CA8593 /* AnimatedPHToolTipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485DA9FB2183610C00CA8593 /* AnimatedPHToolTipCell.swift */; };
 		485DA9FE2183610C00CA8593 /* AnimatedPHToolTipCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 485DA9FC2183610C00CA8593 /* AnimatedPHToolTipCell.xib */; };
 		4877D98320ECD54400264422 /* AppDelegate+InitialConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4877D98220ECD54400264422 /* AppDelegate+InitialConfiguration.swift */; };
@@ -438,6 +443,11 @@
 		4846B87620F3550000BAC18C /* Constants+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constants+Color.swift"; sourceTree = "<group>"; };
 		4846B87820F3564C00BAC18C /* Constants+AlertMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constants+AlertMessage.swift"; sourceTree = "<group>"; };
 		4846B87C20F356CC00BAC18C /* Constants+Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constants+Api.swift"; sourceTree = "<group>"; };
+		484958EE218AC1CD00096046 /* States.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = States.storyboard; sourceTree = "<group>"; };
+		484958F1218AC2A400096046 /* SearchField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchField.xib; sourceTree = "<group>"; };
+		484958F2218AC2A400096046 /* SearchField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchField.swift; sourceTree = "<group>"; };
+		484958F5218AC2F500096046 /* UITextField+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Additions.swift"; sourceTree = "<group>"; };
+		484958F8218AC7AB00096046 /* SearchStateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStateViewController.swift; sourceTree = "<group>"; };
 		485DA9FB2183610C00CA8593 /* AnimatedPHToolTipCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedPHToolTipCell.swift; sourceTree = "<group>"; };
 		485DA9FC2183610C00CA8593 /* AnimatedPHToolTipCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnimatedPHToolTipCell.xib; sourceTree = "<group>"; };
 		4877D98220ECD54400264422 /* AppDelegate+InitialConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+InitialConfiguration.swift"; sourceTree = "<group>"; };
@@ -895,6 +905,23 @@
 				19F54B802B7D87A34FEE97F2 /* Pods-DentaMatch.staging.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		484958F0218AC29700096046 /* Search Field */ = {
+			isa = PBXGroup;
+			children = (
+				484958F2218AC2A400096046 /* SearchField.swift */,
+				484958F1218AC2A400096046 /* SearchField.xib */,
+			);
+			path = "Search Field";
+			sourceTree = "<group>";
+		};
+		484958F7218AC78E00096046 /* State Search */ = {
+			isa = PBXGroup;
+			children = (
+				484958F8218AC7AB00096046 /* SearchStateViewController.swift */,
+			);
+			path = "State Search";
 			sourceTree = "<group>";
 		};
 		4877D98420EDF02500264422 /* Resourses */ = {
@@ -1374,6 +1401,7 @@
 			children = (
 				E5F47C901E0035B90051C4A1 /* UIImage+Additions */,
 				E55462D61DAE2F49004163B2 /* UIColor+HexCode.swift */,
+				484958F5218AC2F500096046 /* UITextField+Additions.swift */,
 				E55462D81DAE3104004163B2 /* Array+Additions.swift */,
 				E55462DA1DAE312C004163B2 /* String+Additons.swift */,
 				E55462DE1DAE31EA004163B2 /* UIFont+Additions.swift */,
@@ -1392,6 +1420,7 @@
 		E55462DD1DAE31A1004163B2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				484958F0218AC29700096046 /* Search Field */,
 				5AAE74751E5C1D0100B28851 /* BannerView */,
 				E5AE37001E485CAE0001EC3C /* PlaceHolderJobsView */,
 				E51D4F031E3FAB9100ACC631 /* LoadMore */,
@@ -1437,6 +1466,7 @@
 		E55462E71DAE47C6004163B2 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				484958F7218AC78E00096046 /* State Search */,
 				E5D2D8A91FE242E1001EFA68 /* CommonSuccessFailureScreen */,
 				5A988BC21E4AE95900DECB49 /* Notification */,
 				5AC714461E34AB5B00E433C1 /* Messages */,
@@ -1962,6 +1992,7 @@
 				5AC714411E34A9C700E433C1 /* Messages.storyboard */,
 				F2D03BA41E1F580C0005D3A4 /* JobSearch.storyboard */,
 				5A988BC01E4AE6A500DECB49 /* Notification.storyboard */,
+				484958EE218AC1CD00096046 /* States.storyboard */,
 			);
 			name = Storyboards;
 			path = ../Views/Storyboards;
@@ -2469,11 +2500,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				484958EF218AC1CD00096046 /* States.storyboard in Resources */,
 				E558D9161E2EA47500A6DF95 /* AddProfileOptionTableCell.xib in Resources */,
 				E597E5881E151A99001DDA78 /* SF-UI-Text-Semibold.otf in Resources */,
 				E51C4D361FB04FC5009FC3A0 /* TitleHeaderView.xib in Resources */,
 				E5F9194E1E9DD4A30021F008 /* Info.plist in Resources */,
 				E597E5841E151A99001DDA78 /* SF-UI-Text-Medium.otf in Resources */,
+				484958F3218AC2A400096046 /* SearchField.xib in Resources */,
 				F2F5E0E21E31D43A0082187C /* JobDetailHeaderView.xib in Resources */,
 				E597E57E1E151A99001DDA78 /* SF-UI-Text-Bold.otf in Resources */,
 				E5A0EB0F1E2BE7C40092E21A /* ASJTag.xib in Resources */,
@@ -2694,6 +2727,7 @@
 				E5BED5531E49AB85003EC833 /* DMMessagesVC+TableViewExtension.swift in Sources */,
 				E5B84B381E9DF835009665D1 /* Chat+CoreDataProperties.swift in Sources */,
 				E5F9194B1E9DD4A30021F008 /* FSCalendarScopeHandle.m in Sources */,
+				484958F9218AC7AB00096046 /* SearchStateViewController.swift in Sources */,
 				E59467271FD8FFE70009C18B /* Popover.swift in Sources */,
 				E5E7CB781E2FA23200D4FB59 /* AboutMeCell.swift in Sources */,
 				E50512BE1E82378700509328 /* WorkingHoursTableCell.swift in Sources */,
@@ -2911,6 +2945,7 @@
 				E5AE376D1E4971CE0001EC3C /* SocketIOClientOption.swift in Sources */,
 				5A85D2141E2DFAD000AC4C89 /* TagPresentable.swift in Sources */,
 				5A50A2CA1E32163D0010AA31 /* SettingTableCell.swift in Sources */,
+				484958F6218AC2F500096046 /* UITextField+Additions.swift in Sources */,
 				E558D9081E2E6FE700A6DF95 /* DMEditProfileVC.swift in Sources */,
 				E5F919451E9DD4A30021F008 /* FSCalendarCollectionView.m in Sources */,
 				4846B87D20F356CC00BAC18C /* Constants+Api.swift in Sources */,
@@ -2944,6 +2979,7 @@
 				E5C5F31B1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift in Sources */,
 				F223591B1E3F5ED100E984FC /* DMJobSearchResultVC+GMSExtension.swift in Sources */,
 				E5AE37721E4971CE0001EC3C /* SocketParsable.swift in Sources */,
+				484958F4218AC2A400096046 /* SearchField.swift in Sources */,
 				E5E7CB9F1E306E6300D4FB59 /* License.swift in Sources */,
 				E54976F21E28CEDD006F21E5 /* Skill.swift in Sources */,
 				F2F9B97B1E38978200639716 /* JobTitleCell.swift in Sources */,

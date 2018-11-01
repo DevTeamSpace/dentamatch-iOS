@@ -10,6 +10,12 @@ import Foundation
 import UIKit
 
 extension UIView {
+    func loadViewFromNib() -> UIView? {
+        let bundle = Bundle(for: type(of: self))
+        let nib = UINib(nibName: String(describing: type(of: self)), bundle: bundle)
+        return nib.instantiate(withOwner: self, options: nil)[0] as? UIView
+    }
+
     static func instanceFromNib<T: UIView>(type _: T.Type) -> T? {
         // debugPrint("type")
         var fullName: String = NSStringFromClass(T.self)
