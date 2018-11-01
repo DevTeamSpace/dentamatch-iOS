@@ -287,4 +287,20 @@ class DMJobTitleSelectionVC: DMBaseVC, ToolBarButtonDelegate {
         changeUIOFCreateProfileButton(isCreateProfileButtonEnable())
         view.endEditing(true)
     }
+    
+    func goToStates(_ text: String?) {
+        let searchVc = UIStoryboard.statesStoryBoard().instantiateViewController(withIdentifier: "SearchStateViewController") as! SearchStateViewController
+        searchVc.delegate = self
+        searchVc.preSelectedState = self.state
+        self.navigationController?.pushViewController(searchVc, animated: true)
+    }
+}
+
+extension DMJobTitleSelectionVC: SearchStateViewControllerDelegate {
+    func selectedState(state: String?) {
+        guard let text = state else {return}
+          self.state = text
+        //editProfileParams[Constants.ServerKey.state] = state
+        self.jobTitleSelectionTableView.reloadData()
+    }
 }

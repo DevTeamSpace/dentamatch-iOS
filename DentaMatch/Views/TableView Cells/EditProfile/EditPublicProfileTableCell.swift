@@ -26,7 +26,8 @@ class EditPublicProfileTableCell: UITableViewCell {
     @IBOutlet var aboutMeTextView: UITextView!
 
     var placeHolderLabel: UILabel!
-
+    private var stateFieldHandler: (String?) -> Void = { _ in }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -55,6 +56,7 @@ class EditPublicProfileTableCell: UITableViewCell {
         jobTitleTextField.rightViewMode = .always
 
         addPlaceHolderLabel()
+        stateTextField.delegate = self
     }
 
     func addPlaceHolderLabel() {
@@ -70,5 +72,25 @@ class EditPublicProfileTableCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func stateFieldAction(_ handler: @escaping (String?) -> Void) {
+        stateFieldHandler = handler
+    }
+    
+    
+}
+
+extension EditPublicProfileTableCell: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == stateTextField {
+            stateTextField.resignFirstResponder()
+            guard let keyword = self.stateTextField?.text else {
+                stateFieldHandler(nil)
+                return
+                
+            }
+            stateFieldHandler(keyword.trimText)
+        }
     }
 }

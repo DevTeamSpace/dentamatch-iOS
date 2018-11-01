@@ -88,6 +88,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="KGk-i7-Jjw" id="7B2-YJ-BUf"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <constraints>

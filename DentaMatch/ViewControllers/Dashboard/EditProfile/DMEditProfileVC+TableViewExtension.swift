@@ -247,12 +247,11 @@ extension DMEditProfileVC: UITableViewDataSource, UITableViewDelegate {
             } else {
                 if experiences.count == 0 {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "AddProfileOptionTableCell") as! AddProfileOptionTableCell
-                    cell.profileOptionLabel.text = "Add more experience"
+                    cell.profileOptionLabel.text = "Add work experience"
                     return cell
                 } else {
                     // Experience Cell
                     let cell = tableView.dequeueReusableCell(withIdentifier: "EditProfileExperienceCell") as! EditProfileExperienceCell
-
                     let experience = experiences[indexPath.row - 1]
                     cell.jobTitleLabel.text = experience.jobTitle
 //                    let yearExp:Double = Double(experience.experienceInMonth)/12

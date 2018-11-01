@@ -71,7 +71,7 @@ struct Constants {
         static let messagesStoryboard = "Messages"
         static let calenderStoryboard = "Calender"
         static let notificationStoryboard = "Notification"
-
+        static let states = "States"
         struct Identifer {
             static let registrationNav = "RegistrationNAV"
             static let profileNav = "ProfileNAV"
@@ -193,6 +193,8 @@ struct Constants {
         static let oldPass = "oldPassword"
         static let newPass = "newPassword"
         static let confirmPass = "confirmNewPassword"
+        //
+        static let statelist = "state_list"
     }
 
     struct JobDetailKey {

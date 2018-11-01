@@ -44,8 +44,10 @@ extension DMJobTitleSelectionVC: UITableViewDataSource, UITableViewDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AnimatedPHToolTipCell") as! AnimatedPHToolTipCell
             updateCellForTextField(cell: cell, indexPath: indexPath)
             cell.clipsToBounds = true
-            cell.commonTextField.delegate = self
             cell.commonTextField.type = 1
+            cell.editAction { [weak self](text) in
+                self?.goToStates(text)
+            }
             return cell
         }
     }
@@ -57,13 +59,17 @@ extension DMJobTitleSelectionVC: UITableViewDataSource, UITableViewDelegate {
             cell.commonTextField.placeholder = "Job Title"
             cell.commonTextField.tag = 1
             cell.commonTextField.tintColor = UIColor.clear
+            cell.commonTextField.delegate = self
         case 1:
             cell.commonTextField.placeholder = "License Number"
             cell.commonTextField.tag = 2
             cell.toolTipLabel?.text = "ⓘ We’ll confirm your license within the next business day."
+            cell.commonTextField.delegate = self
         case 2:
             cell.commonTextField.placeholder = "License State"
             cell.commonTextField.tag = 3
+            cell.showKeyboard = false
+            cell.commonTextField.text = self.state
 
         case 3:
             break

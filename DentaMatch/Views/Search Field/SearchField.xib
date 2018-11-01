@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="GothamRounded-Book.otf">
+            <string>GothamRounded-Book</string>
+        </array>
+        <array key="SF-UI-Text-Regular.otf">
+            <string>SFUIText-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchField" customModule="DentaMatch" customModuleProvider="target">
+            <connections>
+                <outlet property="placeholderView" destination="XPh-GK-qeM" id="gl1-FW-Cgm"/>
+                <outlet property="searchImageView" destination="tNV-ZF-YzS" id="gSr-S4-v1c"/>
+                <outlet property="searchLabel" destination="9MP-lU-c6X" id="GYb-1q-5Zv"/>
+                <outlet property="searchTextField" destination="QzY-ko-tl6" id="XcS-Tu-U8u"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="367" height="30"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XPh-GK-qeM" userLabel="PlaceholderView">
+                    <rect key="frame" x="10" y="0.0" width="70" height="30"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="tNV-ZF-YzS">
+                            <rect key="frame" x="0.0" y="8.5" width="13" height="13"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="13" id="gFA-yK-KQu"/>
+                                <constraint firstAttribute="height" constant="13" id="qa9-e3-3ut"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9MP-lU-c6X">
+                            <rect key="frame" x="21" y="0.0" width="49" height="30"/>
+                            <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="14"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="tNV-ZF-YzS" firstAttribute="leading" secondItem="XPh-GK-qeM" secondAttribute="leading" id="B1A-tX-12E"/>
+                        <constraint firstItem="9MP-lU-c6X" firstAttribute="leading" secondItem="tNV-ZF-YzS" secondAttribute="trailing" constant="8" id="CnX-XW-rKD"/>
+                        <constraint firstItem="9MP-lU-c6X" firstAttribute="top" secondItem="XPh-GK-qeM" secondAttribute="top" id="IQz-mc-oHa"/>
+                        <constraint firstAttribute="trailing" secondItem="9MP-lU-c6X" secondAttribute="trailing" id="VhL-ah-1wG"/>
+                        <constraint firstItem="tNV-ZF-YzS" firstAttribute="centerY" secondItem="XPh-GK-qeM" secondAttribute="centerY" id="bKX-QG-AAu"/>
+                        <constraint firstAttribute="width" constant="70" id="m3A-dq-1SM"/>
+                        <constraint firstAttribute="bottom" secondItem="9MP-lU-c6X" secondAttribute="bottom" id="qog-Bm-8Yk"/>
+                    </constraints>
+                </view>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="QzY-ko-tl6">
+                    <rect key="frame" x="30" y="0.0" width="317" height="30"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="12"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="webSearch" returnKeyType="search" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                    <connections>
+                        <action selector="textFieldDidChangeValueWithTextfield:" destination="-1" eventType="editingChanged" id="zHU-0c-Oe1"/>
+                        <outlet property="delegate" destination="-1" id="yxL-li-CWV"/>
+                    </connections>
+                </textField>
+            </subviews>
+            <color key="backgroundColor" red="0.015686274509803921" green="0.4392156862745098" blue="0.75294117647058822" alpha="1" colorSpace="deviceRGB"/>
+            <constraints>
+                <constraint firstItem="QzY-ko-tl6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="7bk-qF-LjA"/>
+                <constraint firstItem="XPh-GK-qeM" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="MYc-rk-YjB"/>
+                <constraint firstItem="QzY-ko-tl6" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="TwV-8x-hNx"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="QzY-ko-tl6" secondAttribute="trailing" constant="20" id="Udi-NT-lMi"/>
+                <constraint firstItem="XPh-GK-qeM" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="coV-EF-Nth"/>
+                <constraint firstAttribute="bottom" secondItem="QzY-ko-tl6" secondAttribute="bottom" id="olD-fs-Md2"/>
+                <constraint firstItem="XPh-GK-qeM" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="yKn-sP-jUq"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="48.5" y="-359"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="search" width="22" height="22"/>
+    </resources>
+</document>

@@ -39,7 +39,7 @@ extension DMWorkExperienceVC: UITableViewDataSource, UITableViewDelegate {
             let index = indexPath.row - 5
             var height = index == 0 ? ((currentExperience?.references.count)! > index ? 230 : 257) : ((currentExperience?.references.count)! - 1 > index ? 260 : 303)
             if (currentExperience?.references.count)! == 1 {
-                height = 250 // if single experience is added add more experience button should be clickable
+                height = 250 // if single experience is added add work experience button should be clickable
             }
             // debugPrint("row height \(height)")
             return CGFloat(height)
