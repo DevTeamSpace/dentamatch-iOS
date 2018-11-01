@@ -14,7 +14,7 @@ class DMOnboardingVC: DMBaseVC {
     @IBOutlet var pageControl: UIPageControl!
     @IBOutlet var onboardingCollectionView: UICollectionView!
 
-    var images = ["group1", "group1", "group1", "group1"]
+    var images = ["onBoarding1", "onBoarding2", "onBoarding3", "onBoarding4"]
 
     let headings = [
         Constants.Heading.heading1,

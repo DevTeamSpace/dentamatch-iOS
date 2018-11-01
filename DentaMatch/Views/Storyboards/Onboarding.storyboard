@@ -50,10 +50,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ege-92-4PZ">
-                                                    <rect key="frame" x="54" y="55" width="267" height="521"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="377" height="646"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </imageView>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yJy-iI-Ucp">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yJy-iI-Ucp" userLabel="BottomView">
                                                     <rect key="frame" x="0.0" y="412" width="377" height="234"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QRB-o3-I11">
@@ -84,12 +84,12 @@
                                         </view>
                                         <color key="backgroundColor" red="0.023529411764705882" green="0.11372549019607843" blue="0.34509803921568627" alpha="1" colorSpace="deviceRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="ege-92-4PZ" secondAttribute="bottom" constant="70" id="3Dc-Lb-3j2"/>
-                                            <constraint firstItem="ege-92-4PZ" firstAttribute="top" secondItem="2rr-RC-n6e" secondAttribute="top" constant="55" id="Qwt-RG-s4s"/>
+                                            <constraint firstAttribute="bottom" secondItem="ege-92-4PZ" secondAttribute="bottom" id="3Dc-Lb-3j2"/>
+                                            <constraint firstItem="ege-92-4PZ" firstAttribute="top" secondItem="2rr-RC-n6e" secondAttribute="top" id="Qwt-RG-s4s"/>
                                             <constraint firstAttribute="bottom" secondItem="yJy-iI-Ucp" secondAttribute="bottom" id="UJ7-ar-GqO"/>
                                             <constraint firstAttribute="trailing" secondItem="yJy-iI-Ucp" secondAttribute="trailing" id="X4G-Rd-axd"/>
-                                            <constraint firstAttribute="trailing" secondItem="ege-92-4PZ" secondAttribute="trailing" constant="56" id="ceR-U9-7Wx"/>
-                                            <constraint firstItem="ege-92-4PZ" firstAttribute="leading" secondItem="2rr-RC-n6e" secondAttribute="leading" constant="54" id="nqE-N9-jaR"/>
+                                            <constraint firstAttribute="trailing" secondItem="ege-92-4PZ" secondAttribute="trailing" id="ceR-U9-7Wx"/>
+                                            <constraint firstItem="ege-92-4PZ" firstAttribute="leading" secondItem="2rr-RC-n6e" secondAttribute="leading" id="nqE-N9-jaR"/>
                                             <constraint firstItem="yJy-iI-Ucp" firstAttribute="leading" secondItem="2rr-RC-n6e" secondAttribute="leading" id="web-MD-xk1"/>
                                         </constraints>
                                         <size key="customSize" width="377" height="646"/>
@@ -147,7 +147,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="I0e-VI-fpG" firstAttribute="top" secondItem="Fcm-PV-9mt" secondAttribute="bottom" id="0Ar-VR-ggQ"/>
+                            <constraint firstAttribute="bottom" secondItem="Fcm-PV-9mt" secondAttribute="bottom" id="0Ar-VR-ggQ"/>
                             <constraint firstItem="Fcm-PV-9mt" firstAttribute="leading" secondItem="iyp-Fv-mPo" secondAttribute="leading" id="Bgk-IC-Xa6"/>
                             <constraint firstAttribute="trailing" secondItem="QWg-rm-8q8" secondAttribute="trailing" constant="10" id="Ngo-mg-xOJ"/>
                             <constraint firstItem="I0e-VI-fpG" firstAttribute="top" secondItem="Ddc-yP-oKV" secondAttribute="bottom" constant="10" id="U9M-0y-8vQ"/>
@@ -160,6 +160,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9b2-RU-UES"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="getStartedButton" destination="QWg-rm-8q8" id="PTv-Mc-7sG"/>
                         <outlet property="onboardingCollectionView" destination="Fcm-PV-9mt" id="vmk-AM-PmY"/>
