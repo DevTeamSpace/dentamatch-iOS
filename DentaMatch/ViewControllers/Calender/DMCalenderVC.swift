@@ -57,7 +57,7 @@ class DMCalenderVC: DMBaseVC, FSCalendarDataSource, FSCalendarDelegate, FSCalend
         monthTitleLabel.text = monthTitleLabel.text?.uppercased()
         navigationController?.setNavigationBarHidden(false, animated: true)
         //navigationItem.leftBarButtonItem = customLeftBarButton()
-        navigationItem.rightBarButtonItem = rightBarButton()
+        //navigationItem.rightBarButtonItem = rightBarButton()
         bookedJobsTableView.separatorStyle = .none
         bookedJobsTableView.register(UINib(nibName: "SectionHeadingTableCell", bundle: nil), forCellReuseIdentifier: "SectionHeadingTableCell")
         bookedJobsTableView.register(UINib(nibName: "JobSearchResultCell", bundle: nil), forCellReuseIdentifier: "JobSearchResultCell")
@@ -108,7 +108,7 @@ class DMCalenderVC: DMBaseVC, FSCalendarDataSource, FSCalendarDelegate, FSCalend
         }
     }
 
-    func rightBarButton() -> UIBarButtonItem {
+    /*func rightBarButton() -> UIBarButtonItem {
         let customButton = UIButton(type: .system)
         customButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         customButton.titleLabel?.font = UIFont.designFont(fontSize: 30)
@@ -117,7 +117,7 @@ class DMCalenderVC: DMBaseVC, FSCalendarDataSource, FSCalendarDelegate, FSCalend
         customButton.addTarget(self, action: #selector(setAvailablityButtonClicked(_:)), for: .touchUpInside)
         let barButton = UIBarButtonItem(customView: customButton)
         return barButton
-    }
+    }*/
 
     func calculateNumberOfEvent(date: Date) -> Int {
         let dayPartTime = hiredList.filter { (newJob) -> Bool in
@@ -467,7 +467,7 @@ class DMCalenderVC: DMBaseVC, FSCalendarDataSource, FSCalendarDelegate, FSCalend
     }
 
     // plus button Action
-    @objc func setAvailablityButtonClicked(_: Any) {
+    @IBAction func setAvailablityButtonClicked(_: Any) {
         let termsVC = UIStoryboard.calenderStoryBoard().instantiateViewController(type: DMCalendarSetAvailabillityVC.self)!
         termsVC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(termsVC, animated: true)

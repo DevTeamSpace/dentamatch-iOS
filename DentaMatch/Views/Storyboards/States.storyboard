@@ -46,18 +46,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vfR-yr-ujK"/>
                     </view>
-                    <navigationItem key="navigationItem" title="States" id="pef-qp-Ufv">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="CKk-LR-zNA">
-                            <connections>
-                                <action selector="cancelAction:" destination="UbX-bg-gZj" id="mR1-cY-o0X"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="bfC-Hu-mAt">
-                            <connections>
-                                <action selector="doneAction:" destination="UbX-bg-gZj" id="cn7-ji-aEA"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="States" id="pef-qp-Ufv"/>
                     <connections>
                         <outlet property="searchField" destination="Ped-Wy-o4w" id="Wh8-lv-4SG"/>
                         <outlet property="tableView" destination="k4m-Ic-S7r" id="QZ8-Ml-sXK"/>

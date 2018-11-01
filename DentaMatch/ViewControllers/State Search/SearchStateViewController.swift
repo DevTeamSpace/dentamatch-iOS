@@ -27,8 +27,9 @@ class SearchStateViewController: DMBaseVC {
             self?.searchAction(text)
             print(text)
         }
-        
         self.getStates()
+        navigationItem.leftBarButtonItem = leftBarButton()
+        navigationItem.rightBarButtonItem = rightBarButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,7 +52,7 @@ class SearchStateViewController: DMBaseVC {
         tableView.reloadData()
     }
     
-    @IBAction func doneAction(_ : UIButton) {
+    @objc func doneAction() {
         guard let selctedState = self.selectedState()?.stateName else {
             self.navigationController?.popViewController(animated: true)
             return
@@ -60,7 +61,7 @@ class SearchStateViewController: DMBaseVC {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func cancelAction(_ : UIButton) {
+    @objc func cancelAction() {
         self.navigationController?.popViewController(animated: false)
     }
     
@@ -89,6 +90,28 @@ class SearchStateViewController: DMBaseVC {
         for state in states where state.stateName == text {
             state.isSelected = true
         }
+    }
+    
+    func rightBarButton() -> UIBarButtonItem {
+        let customButton = UIButton(type: .system)
+        customButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        customButton.titleLabel?.font = UIFont.fontRegular(fontSize: 16)
+        customButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0)
+        customButton.setTitle("Done", for: .normal)
+        customButton.addTarget(self, action: #selector(doneAction), for: .touchUpInside)
+        let barButton = UIBarButtonItem(customView: customButton)
+        return barButton
+    }
+    
+    func leftBarButton() -> UIBarButtonItem {
+        let customButton = UIButton(type: .system)
+        customButton.frame = CGRect(x: 0, y: 0, width: 50, height: 30)
+        customButton.titleLabel?.font = UIFont.fontRegular(fontSize: 16)
+        customButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0)
+        customButton.setTitle("Cancel", for: .normal)
+        customButton.addTarget(self, action: #selector(cancelAction), for: .touchUpInside)
+        let barButton = UIBarButtonItem(customView: customButton)
+        return barButton
     }
 
 }

@@ -17,9 +17,7 @@
 		4846B87720F3550000BAC18C /* Constants+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846B87620F3550000BAC18C /* Constants+Color.swift */; };
 		4846B87920F3564C00BAC18C /* Constants+AlertMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846B87820F3564C00BAC18C /* Constants+AlertMessage.swift */; };
 		4846B87D20F356CC00BAC18C /* Constants+Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846B87C20F356CC00BAC18C /* Constants+Api.swift */; };
-
 		484958ED218AAF3900096046 /* UILabel + Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484958EC218AAF3900096046 /* UILabel + Addition.swift */; };
-
 		484958EF218AC1CD00096046 /* States.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 484958EE218AC1CD00096046 /* States.storyboard */; };
 		484958F3218AC2A400096046 /* SearchField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 484958F1218AC2A400096046 /* SearchField.xib */; };
 		484958F4218AC2A400096046 /* SearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484958F2218AC2A400096046 /* SearchField.swift */; };
@@ -27,7 +25,6 @@
 		484958F9218AC7AB00096046 /* SearchStateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484958F8218AC7AB00096046 /* SearchStateViewController.swift */; };
 		484958FC218AD5C400096046 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484958FB218AD5C400096046 /* State.swift */; };
 		484958FF218ADCC000096046 /* StateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484958FE218ADCC000096046 /* StateCell.swift */; };
-
 		485DA9FD2183610C00CA8593 /* AnimatedPHToolTipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485DA9FB2183610C00CA8593 /* AnimatedPHToolTipCell.swift */; };
 		485DA9FE2183610C00CA8593 /* AnimatedPHToolTipCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 485DA9FC2183610C00CA8593 /* AnimatedPHToolTipCell.xib */; };
 		4877D98320ECD54400264422 /* AppDelegate+InitialConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4877D98220ECD54400264422 /* AppDelegate+InitialConfiguration.swift */; };
@@ -449,9 +446,7 @@
 		4846B87620F3550000BAC18C /* Constants+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constants+Color.swift"; sourceTree = "<group>"; };
 		4846B87820F3564C00BAC18C /* Constants+AlertMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constants+AlertMessage.swift"; sourceTree = "<group>"; };
 		4846B87C20F356CC00BAC18C /* Constants+Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constants+Api.swift"; sourceTree = "<group>"; };
-
 		484958EC218AAF3900096046 /* UILabel + Addition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel + Addition.swift"; sourceTree = "<group>"; };
-
 		484958EE218AC1CD00096046 /* States.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = States.storyboard; sourceTree = "<group>"; };
 		484958F1218AC2A400096046 /* SearchField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchField.xib; sourceTree = "<group>"; };
 		484958F2218AC2A400096046 /* SearchField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchField.swift; sourceTree = "<group>"; };
@@ -459,7 +454,6 @@
 		484958F8218AC7AB00096046 /* SearchStateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStateViewController.swift; sourceTree = "<group>"; };
 		484958FB218AD5C400096046 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		484958FE218ADCC000096046 /* StateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateCell.swift; sourceTree = "<group>"; };
-
 		485DA9FB2183610C00CA8593 /* AnimatedPHToolTipCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedPHToolTipCell.swift; sourceTree = "<group>"; };
 		485DA9FC2183610C00CA8593 /* AnimatedPHToolTipCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnimatedPHToolTipCell.xib; sourceTree = "<group>"; };
 		4877D98220ECD54400264422 /* AppDelegate+InitialConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+InitialConfiguration.swift"; sourceTree = "<group>"; };
