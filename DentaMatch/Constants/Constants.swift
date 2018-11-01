@@ -34,17 +34,17 @@ struct Constants {
     }
 
     struct Heading {
-        static let heading1 = "Find Jobs Near You"
-        static let heading2 = "Set Your Availability"
-        static let heading3 = "Get Quick Assignments"
-        static let heading4 = "Create \nYour Profile"
+        static let heading1 = "You Work Hard Enough"
+        static let heading2 = "Apply Away"
+        static let heading3 = "Set Your Schedule"
+        static let heading4 = "Build Your Profile"
     }
 
     struct SubHeading {
-        static let subHeading1 = "Quis nostrud exercitullamco laboris nisi ut aliquip consequat.quis nostrud exercitullamco laboris nisi ut."
-        static let subHeading2 = "Quis nostrud exercitullamco laboris nisi ut aliquip consequat.quis nostrud exercitullamco laboris nisi ut."
-        static let subHeading3 = "Quis nostrud exercitullamco laboris nisi ut aliquip consequat.quis nostrud exercitullamco laboris nisi ut."
-        static let subHeading4 = "Quis nostrud exercitullamco laboris nisi ut aliquip consequat.quis nostrud exercitullamco laboris nisi ut."
+        static let subHeading1 = "DentaMatch makes it easy to pick up an extra day, find a  part-time gig, or a new full-time position. "
+        static let subHeading2 = "Search and apply to job matches, star your favorites, and accept temp work from offices directly."
+        static let subHeading3 = "Select the type of work you’re looking for and the days you’re available to temp. You can update it anytime."
+        static let subHeading4 = "Who Need a resume? Just add your skills and certifications to your profile and we’ll do the matching."
     }
 
     struct DesignFont {

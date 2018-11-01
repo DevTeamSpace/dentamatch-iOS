@@ -14,7 +14,7 @@ class DMOnboardingVC: DMBaseVC {
     @IBOutlet var pageControl: UIPageControl!
     @IBOutlet var onboardingCollectionView: UICollectionView!
 
-    var images = ["onBoarding1", "onBoarding2", "onBoarding3", "onBoarding4"]
+    var images = ["group1", "group1", "group1", "group1"]
 
     let headings = [
         Constants.Heading.heading1,
@@ -72,7 +72,9 @@ extension DMOnboardingVC: UICollectionViewDataSource, UICollectionViewDelegateFl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OnboardingCollectionViewCell", for: indexPath) as! OnboardingCollectionViewCell
         cell.onBoardingImageView.image = UIImage(named: images[indexPath.row])
         cell.headingLabel.text = headings[indexPath.row]
+        cell.headingLabel.setLineHeightT(5.0)
         cell.subHeadingLabel.text = subHeadings[indexPath.row]
+        cell.subHeadingLabel.setLineHeightT(5.0)
         return cell
     }
 
