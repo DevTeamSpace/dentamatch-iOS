@@ -124,6 +124,7 @@ extension DMNotificationVC: UITableViewDataSource, UITableViewDelegate {
                 notifiObj.seen = 1
                 NotificationCenter.default.post(name: .decreaseBadgeCount, object: nil, userInfo: nil)
                 self.notificationTableView.reloadData()
+                NotificationCenter.default.post(name: .refreshMessageList, object: nil)
             } else {
                 if response![Constants.ServerKey.statusCode].intValue == 201 {
                     self.alertMessage(title: "Change Availability", message: response![Constants.ServerKey.message].stringValue, buttonText: "Ok", completionHandler: {

@@ -10,22 +10,24 @@ import Foundation
 import SwiftyJSON
 
 extension DMMessagesVC {
-    func getChatListAPI() {
-        showLoader()
-        APIManager.apiGet(serviceName: Constants.API.getChatUserList, parameters: [:]) { (response: JSON?, error: NSError?) in
-            self.hideLoader()
+    func getChatListAPI(isLoaderHidden: Bool = false) {
+        if !isLoaderHidden { showLoader() }
+        APIManager.apiGet(serviceName: Constants.API.getChatUserList, parameters: [:]) {[weak self] (response: JSON?, error: NSError?) in
+            self?.refreshControl.endRefreshing()
+            self?.hideLoader()
             if error != nil {
-                self.makeToast(toastString: (error?.localizedDescription)!)
-                self.getMessageList()
+                self?.makeToast(toastString: (error?.localizedDescription)!)
+                self?.getMessageList()
                 return
             }
             guard let _ = response else {
-                self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
+                self?.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
             // print(response!)
-            self.handleChatListResponse(response: response)
-            self.getMessageList()
+            DatabaseManager.clearChatList()
+            self?.handleChatListResponse(response: response)
+            self?.getMessageList()
         }
     }
 

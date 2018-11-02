@@ -20,7 +20,7 @@ class DatabaseManager: NSObject {
         kAppDelegate?.saveContext()
     }
 
-    private class func clearChatList() {
+     class func clearChatList() {
         let fetchRequest: NSFetchRequest<ChatList> = ChatList.fetchRequest()
         do {
             let chatLists = try kAppDelegate?.managedObjectContext.fetch(fetchRequest)
@@ -48,7 +48,7 @@ class DatabaseManager: NSObject {
     }
     
 
-    private class func clearChats() {
+    class func clearChats() {
         let fetchRequest: NSFetchRequest<Chat> = Chat.fetchRequest()
         do {
             let chats = try kAppDelegate?.managedObjectContext.fetch(fetchRequest)

@@ -12,7 +12,7 @@ import UIKit
 class DMMessagesVC: DMBaseVC {
     @IBOutlet var messageListTableView: UITableView!
     var placeHolderEmptyJobsView: PlaceHolderJobsView?
-    //var notificationLabel: UILabel?
+    var refreshControl: UIRefreshControl!
     let context = ((UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext)!
     let appDelegate = UIApplication.shared.delegate as? AppDelegate
     var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
@@ -32,11 +32,12 @@ class DMMessagesVC: DMBaseVC {
         SocketManager.sharedInstance.initServer()
         getChatListAPI()
         // Do any additional setup after loading the view.
+         NotificationCenter.default.addObserver(self, selector: #selector(refreshMessageList), name: .refreshMessageList, object: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(refreshMessageList), name: .refreshMessageList, object: nil)
+       
         SocketManager.sharedInstance.removeAllCompletionHandlers()
         if let selectedIndex = self.messageListTableView.indexPathForSelectedRow {
             messageListTableView.deselectRow(at: selectedIndex, animated: true)
@@ -47,7 +48,7 @@ class DMMessagesVC: DMBaseVC {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(self, name: .refreshMessageList, object: nil)
+       
         // NotificationCenter.default.removeObserver(self)
     }
 
@@ -56,13 +57,8 @@ class DMMessagesVC: DMBaseVC {
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
 
         NotificationCenter.default.addObserver(self, selector: #selector(deleteFetchController), name: .deleteFetchController, object: nil)
-
         navigationItem.title = "MESSAGES"
-        messageListTableView.dataSource = nil
-        messageListTableView.delegate = nil
-        messageListTableView.tableFooterView = UIView()
-        messageListTableView.register(UINib(nibName: "MessageListTableCell", bundle: nil), forCellReuseIdentifier: "MessageListTableCell")
-
+        self.configureTableView()
         placeHolderEmptyJobsView = PlaceHolderJobsView.loadPlaceHolderJobsView()
         placeHolderEmptyJobsView?.frame = CGRect(x: 0, y: 0, width: 300, height: 200)
         placeHolderEmptyJobsView?.center = view.center
@@ -73,9 +69,19 @@ class DMMessagesVC: DMBaseVC {
         view.addSubview(placeHolderEmptyJobsView!)
         placeHolderEmptyJobsView?.placeholderImageView.image = UIImage(named: "chatListPlaceHolder")
         placeHolderEmptyJobsView?.placeHolderMessageLabel.text = "No message in your chats yet."
-
         view.layoutIfNeeded()
-        //navigationItem.leftBarButtonItem = customLeftBarButton()
+        
+    }
+    
+    private func configureTableView() {
+        messageListTableView.dataSource = nil
+        messageListTableView.delegate = nil
+        messageListTableView.tableFooterView = UIView()
+        messageListTableView.register(UINib(nibName: "MessageListTableCell", bundle: nil), forCellReuseIdentifier: "MessageListTableCell")
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "")
+        refreshControl.addTarget(self, action: #selector(refreshMessageList), for: .valueChanged)
+        messageListTableView.addSubview(refreshControl)
     }
 
     func getMessageList() {
@@ -146,7 +152,7 @@ class DMMessagesVC: DMBaseVC {
         if fetchedResultsController != nil {
             fetchedResultsController.delegate = nil
             fetchedResultsController = nil
-            getChatListAPI()
+            getChatListAPI(isLoaderHidden: true)
         }
     }
 
@@ -217,6 +223,10 @@ class DMMessagesVC: DMBaseVC {
             notificationLabel?.isHidden = true
         }
     }*/
+    
+    deinit {
+         NotificationCenter.default.removeObserver(self, name: .refreshMessageList, object: nil)
+    }
 }
 
 extension DMMessagesVC: ChatTapNotificationDelegate {
