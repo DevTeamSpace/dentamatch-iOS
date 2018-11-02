@@ -106,6 +106,7 @@ extension DMJobDetailVC {
             }
             // debugPrint(response!)
             self.handleApplyJobResponse(response: response!)
+            NotificationCenter.default.post(name: .refreshMessageList, object: nil)
         }
     }
 
