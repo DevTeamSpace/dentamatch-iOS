@@ -151,7 +151,9 @@ extension DMWorkExperienceVC: UITableViewDataSource, UITableViewDelegate {
             cell.deleteButton.isHidden = false
             cell.topSpaceOfAddMoreExperience.constant = 57
         }
+        cell.addMoreExperienceButton.isHidden = true
         cell.layoutIfNeeded()
+        
     }
 
     func updateCellForAnimatedPHTableCell(cell: AnimatedPHTableCell, indexPath: IndexPath) {
