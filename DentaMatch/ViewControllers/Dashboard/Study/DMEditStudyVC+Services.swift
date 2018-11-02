@@ -170,24 +170,8 @@ extension DMEditStudyVC {
             return
         }
         // selectedData
-        var isGraduationListEmpty = false
-        let finalData = NSMutableArray()
-        for school in schoolsSelected {
-            if let dict = school as? NSMutableDictionary, let yearOfGraduation = dict["yearOfGraduation"] as? String {
-                // Everything fine
-                if !yearOfGraduation.isEmpty {
-                    finalData.add(school)
-                } else {
-                    isGraduationListEmpty = true
-                }
-            } else {
-                isGraduationListEmpty = true
-            }
-        }
-        if isGraduationListEmpty {
-            makeToast(toastString: "Please enter graduation year.")
-            return
-        }
+        let finalData : NSMutableArray = schoolsSelected.mutableCopy() as! NSMutableArray  // added on 2nd Nov 2018
+        
         selectedData.removeAllObjects()
         for school in finalData {
             if let dict = school as? NSMutableDictionary {

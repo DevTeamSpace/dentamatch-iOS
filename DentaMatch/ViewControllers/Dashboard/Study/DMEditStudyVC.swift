@@ -112,31 +112,35 @@ class DMEditStudyVC: DMBaseVC {
             makeToast(toastString: "Please fill atleast one school")
             return
         }
-        let emptyData = NSMutableArray()
-        var shouldSaveData = false
+       var isSchoolEmpty = false
+       var isYearEmpty = false
         for category in selectedData {
             if let dict = category as? NSMutableDictionary {
-                if ((dict["other"] as? String) ?? "").isEmptyField {
-                    emptyData.add(dict)
-                } else {
-                    shouldSaveData = true
+                // Both school name and year of graduation are empty ...
+                if ((dict["other"] as? String) ?? "").isEmptyField && ((dict["yearOfGraduation"] as? String) ?? "").isEmptyField {
+                    dict["schoolId"] = ""
+                    dict["yearOfGraduation"] = ""
+                } else if ((dict["other"] as? String) ?? "").isEmptyField && !((dict["yearOfGraduation"] as? String) ?? "").isEmptyField {
+                    //  school name is empty and year of graduation are non- empty ...
+                    isSchoolEmpty = true
+                    dict["schoolId"] = ""
+                }else if !((dict["other"] as? String) ?? "").isEmptyField && ((dict["yearOfGraduation"] as? String) ?? "").isEmptyField {
+                    //  school name is empty and year of graduation are non- empty ...
+                    isYearEmpty = true
+                    dict["yearOfGraduation"] = ""
                 }
             }
         }
-        // debugPrint(selectedData.description)
-        if !shouldSaveData {
+        debugPrint(selectedData.description)
+        if isSchoolEmpty {
             makeToast(toastString: "Please enter school name first")
             return
         }
-        let finalData = NSMutableArray()
-        for data in selectedData {
-            if let dict = data as? NSMutableDictionary {
-                if ((dict["other"] as? String) ?? "").isEmptyField == false {
-                    finalData.add(dict)
-                }
-            }
+        if isYearEmpty {
+            makeToast(toastString: "Please enter graduation year.")
+            return
         }
-        preparePostSchoolData(schoolsSelected: finalData)
+        preparePostSchoolData(schoolsSelected: selectedData)
     }
 }
 
