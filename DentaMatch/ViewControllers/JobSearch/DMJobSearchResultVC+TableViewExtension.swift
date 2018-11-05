@@ -89,6 +89,7 @@ extension DMJobSearchResultVC: UITableViewDataSource, UITableViewDelegate, JobSe
                     DispatchQueue.main.async {
                         self.tblJobSearchResult.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
                     }
+                    NotificationCenter.default.post(name: .refreshSavedJobs, object: nil, userInfo: nil)
                 }
             }
         }
