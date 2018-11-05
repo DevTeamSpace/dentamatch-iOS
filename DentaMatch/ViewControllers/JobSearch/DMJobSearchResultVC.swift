@@ -165,7 +165,7 @@ class DMJobSearchResultVC: DMBaseVC {
         }
         if status == 1 {
             bannerView.backgroundColor = UIColor.color(withHexCode: "e8ab43") // yellow /job seeker verified = 0
-            bannerLabel.text = "Your Profile is currently is being reviewed by Admin. Once it gets approved, you can start applying for jobs."
+            bannerLabel.text = "Once we confirm your license, you’ll be able apply for jobs."
         } else {
             bannerView.backgroundColor = UIColor.color(withHexCode: "fc3238") // red // profile completed = 0
             bannerLabel.text = "Your Profile is incomplete, please select the availability to be able to apply for jobs."
