@@ -30,4 +30,5 @@ extension Notification.Name {
     static let fetchBadgeCount = Notification.Name("fetchBadgeCount")
     static let updateBadgeCount = Notification.Name("updateBadgeCount")
     static let refreshSavedJobs = Notification.Name("RefreshSavedJob")
+    static let jobSavedUnsaved = Notification.Name("JobSavedUnsaved")
 }

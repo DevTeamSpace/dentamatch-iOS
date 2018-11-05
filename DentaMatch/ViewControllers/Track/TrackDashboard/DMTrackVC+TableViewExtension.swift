@@ -179,6 +179,8 @@ extension DMTrackVC: UITableViewDataSource, UITableViewDelegate {
                             DispatchQueue.main.async {
                                 self.savedJobsTableView.reloadData()
                             }
+                            
+                            NotificationCenter.default.post(name: .jobSavedUnsaved, object: job, userInfo: nil)
                         }
                     }
                 }

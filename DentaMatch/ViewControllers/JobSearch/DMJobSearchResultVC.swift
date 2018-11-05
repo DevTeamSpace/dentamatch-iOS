@@ -102,6 +102,7 @@ class DMJobSearchResultVC: DMBaseVC {
         NotificationCenter.default.addObserver(self, selector: #selector(bannerUIStatus), name: .pushRedirectNotificationForProfile, object: nil)
        NotificationCenter.default.addObserver(self, selector: #selector(decreaseBadgeCount(_:)), name: .decreaseBadgeCount, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(fetchBadgeCount(_:)), name: .fetchBadgeCount, object: nil)
+         NotificationCenter.default.addObserver(self, selector: #selector(refreshListForSaveUnsaveJob(_:)), name: .jobSavedUnsaved, object: nil)
         mapViewSearchResult.isHidden = true
         tblJobSearchResult.register(UINib(nibName: "JobSearchResultCell", bundle: nil), forCellReuseIdentifier: "JobSearchResultCell")
         mapViewSearchResult.delegate = self
@@ -185,46 +186,6 @@ class DMJobSearchResultVC: DMBaseVC {
         }
     }
 
-    /*func customLeftBarButton() -> UIBarButtonItem {
-        notificationLabel = UILabel(frame: CGRect(x: 10, y: 0, width: 15, height: 15))
-        notificationLabel?.backgroundColor = UIColor.red
-        notificationLabel?.layer.cornerRadius = (notificationLabel?.bounds.size.height)! / 2
-        notificationLabel?.font = UIFont.fontRegular(fontSize: 10)
-        notificationLabel?.textAlignment = .center
-        notificationLabel?.textColor = UIColor.white
-        notificationLabel?.clipsToBounds = true
-        notificationLabel?.text = ""
-        notificationLabel?.isHidden = true
-        let customButton = UIButton(type: .system)
-        customButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        customButton.titleLabel?.font = UIFont.designFont(fontSize: 18)
-        customButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0)
-        customButton.setTitle(Constants.DesignFont.notification, for: .normal)
-        customButton.addTarget(self, action: #selector(actionLeftNavigationItem), for: .touchUpInside)
-        customButton.addSubview(notificationLabel!)
-        let barButton = UIBarButtonItem(customView: customButton)
-        return barButton
-    }
-     
-     @objc override func actionLeftNavigationItem() {
-     // will implement
-     let notification = UIStoryboard.notificationStoryBoard().instantiateViewController(type: DMNotificationVC.self)!
-     notification.hidesBottomBarWhenPushed = true
-     navigationController?.pushViewController(notification, animated: true)
-     }
-     
-     func setNotificationLabelText(count: Int) {
-     if count != 0 {
-     notificationLabel?.text = "\(count)"
-     notificationLabel?.isHidden = false
-     notificationLabel?.adjustsFontSizeToFitWidth = true
-     
-     } else {
-     notificationLabel?.isHidden = true
-     }
-     }*/
-     
-
     @objc func pushRediectNotificationOtherAll(userInfo _: Notification) {
         if let tabbar = ((UIApplication.shared.delegate) as? AppDelegate)?.window?.rootViewController as? TabBarVC {
             _ = navigationController?.popToRootViewController(animated: false)
@@ -300,6 +261,20 @@ class DMJobSearchResultVC: DMBaseVC {
         pullToRefreshJobs.endRefreshing()
     }
 
+    @objc func refreshListForSaveUnsaveJob(_ notification: Notification) {
+        if let jobObj = notification.object as? Job, jobObj.jobId != 0 {
+            let filteredJobs = self.jobs.filter{$0.jobId == jobObj.jobId }
+            for job in filteredJobs {
+                job.isSaved = jobObj.isSaved
+            }
+            DispatchQueue.main.async {
+                if let visibleRows = self.tblJobSearchResult.indexPathsForVisibleRows {
+                    self.tblJobSearchResult.reloadRows(at: visibleRows, with: .none)
+                }
+            }
+        }
+    }
+    
     func setUpSegmentControl() {
         let segmentView: UIView! = UIView(frame: CGRect(x: 0, y: 0, width: 152, height: 29))
         segmentView.backgroundColor = UIColor.clear
@@ -369,7 +344,9 @@ class DMJobSearchResultVC: DMBaseVC {
         hideCard()
     }
 
-   
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }
 
 extension DMJobSearchResultVC: SearchJobDelegate {

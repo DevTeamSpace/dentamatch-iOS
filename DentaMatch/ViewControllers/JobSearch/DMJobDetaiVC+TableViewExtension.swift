@@ -249,6 +249,7 @@ extension DMJobDetailVC: UITableViewDataSource, UITableViewDelegate, JobDescript
                         self.tblJobDetail.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
                     }
                     NotificationCenter.default.post(name: .refreshSavedJobs, object: nil, userInfo: nil)
+                    NotificationCenter.default.post(name: .jobSavedUnsaved, object: self.job, userInfo: nil)
                 }
             }
         }
