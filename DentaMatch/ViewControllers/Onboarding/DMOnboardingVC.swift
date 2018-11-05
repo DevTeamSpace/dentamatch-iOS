@@ -13,6 +13,7 @@ class DMOnboardingVC: DMBaseVC {
     @IBOutlet weak var skipButton: UIButton!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var onboardingCollectionView: UICollectionView!
+    @IBOutlet weak var collectionviewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var pageControlBottomConstraint: NSLayoutConstraint!
     var images = ["onBoarding1", "onBoarding2", "onBoarding3", "onBoarding4"]
 
@@ -45,6 +46,10 @@ class DMOnboardingVC: DMBaseVC {
         skipButton.isExclusiveTouch = true
         getStartedButton.isHidden = true
         getStartedButton.isExclusiveTouch = true
+        if UIDevice.current.screenType == .iPhone5 {
+            collectionviewBottomConstraint.constant = 20
+            pageControlBottomConstraint.constant = 40.0
+        }
         if UIDevice.current.screenType == .iPhoneX {
             pageControlBottomConstraint.constant = 30.0
         }
