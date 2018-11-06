@@ -10,6 +10,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="SF-UI-Text-Regular.otf">
+            <string>SFUIText-Regular</string>
+        </array>
         <array key="dentamatch.ttf">
             <string>dentamatch</string>
         </array>
@@ -43,21 +46,29 @@
                         <color key="textColor" red="0.62745098040000002" green="0.62745098040000002" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qls-Nj-dxk">
-                        <rect key="frame" x="25" y="70" width="270" height="9.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ⓘ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hm8-HK-wpg">
+                        <rect key="frame" x="23" y="70" width="12" height="14.5"/>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="12"/>
+                        <color key="textColor" red="0.62745098040000002" green="0.62745098040000002" blue="0.62745098040000002" alpha="1" colorSpace="deviceRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qls-Nj-dxk">
+                        <rect key="frame" x="40" y="70" width="255" height="9.5"/>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="12"/>
                         <color key="textColor" red="0.62745098040000002" green="0.62745098040000002" blue="0.62745098040000002" alpha="1" colorSpace="deviceRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Qcd-LO-WXM" firstAttribute="trailing" secondItem="qX3-Ru-tuw" secondAttribute="trailing" id="FE5-qf-2Mi"/>
+                    <constraint firstItem="qls-Nj-dxk" firstAttribute="leading" secondItem="hm8-HK-wpg" secondAttribute="trailing" constant="5" id="FVr-Qq-z0m"/>
                     <constraint firstAttribute="bottom" secondItem="qls-Nj-dxk" secondAttribute="bottom" constant="5" id="LdL-Wj-g8l"/>
                     <constraint firstItem="qls-Nj-dxk" firstAttribute="top" secondItem="qX3-Ru-tuw" secondAttribute="bottom" constant="5" id="V5y-wY-X27"/>
                     <constraint firstItem="qX3-Ru-tuw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="XnY-z8-yz9"/>
                     <constraint firstAttribute="trailing" secondItem="qX3-Ru-tuw" secondAttribute="trailing" constant="20" id="YVd-BY-xv8"/>
-                    <constraint firstItem="qls-Nj-dxk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="dTr-jD-eiN"/>
+                    <constraint firstItem="qls-Nj-dxk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="40" id="dTr-jD-eiN"/>
                     <constraint firstItem="Qcd-LO-WXM" firstAttribute="bottom" secondItem="qX3-Ru-tuw" secondAttribute="bottom" id="dW1-Vz-BDJ"/>
+                    <constraint firstItem="hm8-HK-wpg" firstAttribute="top" secondItem="qX3-Ru-tuw" secondAttribute="bottom" constant="5" id="eiP-er-i92"/>
                     <constraint firstItem="Qcd-LO-WXM" firstAttribute="top" secondItem="qX3-Ru-tuw" secondAttribute="top" id="gkh-uW-SXY"/>
                     <constraint firstAttribute="trailing" secondItem="qls-Nj-dxk" secondAttribute="trailing" constant="25" id="lHx-gv-FgX"/>
                     <constraint firstItem="qX3-Ru-tuw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="o7y-e5-PHn"/>
@@ -67,6 +78,7 @@
             <connections>
                 <outlet property="accessoryLabel" destination="Qcd-LO-WXM" id="FfS-vi-Jcm"/>
                 <outlet property="commonTextField" destination="qX3-Ru-tuw" id="1vz-u5-ZTs"/>
+                <outlet property="toolTipIconLabel" destination="hm8-HK-wpg" id="MWG-zV-Ldr"/>
                 <outlet property="toolTipLabel" destination="qls-Nj-dxk" id="laY-6d-z97"/>
             </connections>
             <point key="canvasLocation" x="61" y="53.5"/>
