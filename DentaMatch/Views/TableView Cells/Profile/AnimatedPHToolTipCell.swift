@@ -12,8 +12,13 @@ class AnimatedPHToolTipCell: UITableViewCell {
     @IBOutlet weak var commonTextField: AnimatedPHTextField!
     @IBOutlet weak var accessoryLabel: UILabel!
     @IBOutlet weak var toolTipLabel: UILabel?
+    @IBOutlet weak var toolTipIconLabel: UILabel?
     var showKeyboard: Bool = true
-    
+    var isToolTipHidden: Bool = true {
+        willSet {
+          self.toolTipIconLabel?.isHidden = newValue
+        }
+    }
     private var editingHandler: (String?) -> Void = { _ in }
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -42,6 +42,7 @@ extension DMJobTitleSelectionVC: UITableViewDataSource, UITableViewDelegate {
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AnimatedPHToolTipCell") as! AnimatedPHToolTipCell
+            cell.isToolTipHidden = true
             updateCellForTextField(cell: cell, indexPath: indexPath)
             cell.clipsToBounds = true
             cell.commonTextField.type = 1
@@ -63,8 +64,9 @@ extension DMJobTitleSelectionVC: UITableViewDataSource, UITableViewDelegate {
         case 1:
             cell.commonTextField.placeholder = "License Number"
             cell.commonTextField.tag = 2
-            cell.toolTipLabel?.text = "ⓘ We’ll confirm your license within the next business day."
+            cell.toolTipLabel?.text = "We’ll confirm your license within the next business day."
             cell.commonTextField.delegate = self
+            cell.isToolTipHidden = false
         case 2:
             cell.commonTextField.placeholder = "License State"
             cell.commonTextField.tag = 3

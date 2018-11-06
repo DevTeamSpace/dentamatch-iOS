@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--States-->
+        <!--STATES-->
         <scene sceneID="7nP-W9-9Vy">
             <objects>
                 <viewController storyboardIdentifier="SearchStateViewController" extendedLayoutIncludesOpaqueBars="YES" id="UbX-bg-gZj" customClass="SearchStateViewController" customModule="DentaMatch" customModuleProvider="target" sceneMemberID="viewController">
@@ -46,7 +46,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vfR-yr-ujK"/>
                     </view>
-                    <navigationItem key="navigationItem" title="States" id="pef-qp-Ufv"/>
+                    <navigationItem key="navigationItem" title="STATES" id="pef-qp-Ufv"/>
                     <connections>
                         <outlet property="searchField" destination="Ped-Wy-o4w" id="Wh8-lv-4SG"/>
                         <outlet property="tableView" destination="k4m-Ic-S7r" id="QZ8-Ml-sXK"/>
