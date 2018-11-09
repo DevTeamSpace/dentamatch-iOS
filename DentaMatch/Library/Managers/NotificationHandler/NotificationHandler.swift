@@ -36,7 +36,7 @@ class NotificationHandler: NSObject {
         switch notificationType {
         case .acceptJob:
             // open job detail
-            openJobDetailScreenForBackGround(obj: notiObj.jobdetail!)
+            openJobDetailScreenForBackGround(obj: jobObj!)
 
         case .chatMessgae: break
             // No need any action
