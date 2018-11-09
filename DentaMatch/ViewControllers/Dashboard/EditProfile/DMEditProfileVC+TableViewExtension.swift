@@ -259,7 +259,7 @@ extension DMEditProfileVC: UITableViewDataSource, UITableViewDelegate {
 //                    let roundValue = yearExp.roundTo(places: 3)
                     cell.yearOfExperienceLabel.text = expInText
                     cell.officeNameLabel.text = experience.officeName
-                    cell.officeAddressLabel.text = "\(experience.officeAddress!) \n\(experience.cityName!)"
+                    cell.officeAddressLabel.text = "\(experience.officeAddress ?? "") \n\(experience.cityName ?? ""), \(experience.stateName ?? "")"
                     cell.reference1Name.isHidden = true
                     cell.reference1Email.isHidden = true
                     cell.reference1Mobile.isHidden = true

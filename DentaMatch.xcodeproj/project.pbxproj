@@ -1851,8 +1851,8 @@
 			children = (
 				E587D2E61E24C021006B7F06 /* DMWorkExperienceStart+TableViewExtension.swift */,
 				E587D2E71E24C021006B7F06 /* DMWorkExperienceStart.swift */,
-				E587D2E81E24C021006B7F06 /* DMWorkExperienceVC+TableViewExtension.swift */,
 				E587D2E91E24C021006B7F06 /* DMWorkExperienceVC.swift */,
+				E587D2E81E24C021006B7F06 /* DMWorkExperienceVC+TableViewExtension.swift */,
 				5AD246901E272E92009350BF /* DMWorkExperienceVC+Services.swift */,
 			);
 			path = WorkExperience;

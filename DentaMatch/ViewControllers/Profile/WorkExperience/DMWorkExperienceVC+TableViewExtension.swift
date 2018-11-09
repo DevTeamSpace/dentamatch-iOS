@@ -16,7 +16,7 @@ extension DMWorkExperienceVC: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection _: Int) -> Int {
         if tableView == workExperienceDetailTable {
-            return 6 + currentExperience!.references.count
+            return 7 + currentExperience!.references.count
         } else {
             return exprienceArray.count
         }
@@ -31,11 +31,11 @@ extension DMWorkExperienceVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func getHeightForworkExperienceDetailTable(indexPath: IndexPath) -> CGFloat {
-        if indexPath.row > (currentExperience?.references.count)! + 4 {
+        if indexPath.row > (currentExperience?.references.count)! + 5 {
             let height = currentExperience?.isFirstExperience == true ? 80 : 130
             return CGFloat(height)
         }
-        if indexPath.row > 4 {
+        if indexPath.row > 5 {
             let index = indexPath.row - 5
             var height = index == 0 ? ((currentExperience?.references.count)! > index ? 230 : 257) : ((currentExperience?.references.count)! - 1 > index ? 260 : 303)
             if (currentExperience?.references.count)! == 1 {
@@ -52,7 +52,7 @@ extension DMWorkExperienceVC: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == workExperienceDetailTable {
-            if indexPath.row > (currentExperience?.references.count)! + 4 {
+            if indexPath.row > (currentExperience?.references.count)! + 5 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AddDeleteExperienceCell") as! AddDeleteExperienceCell
                 cell.selectionStyle = .none
                 updateCellForAddDeleteExperienceCell(cell: cell, indexPth: indexPath)
@@ -60,9 +60,9 @@ extension DMWorkExperienceVC: UITableViewDataSource, UITableViewDelegate {
                 return cell
             }
 
-            if indexPath.row > 4 {
+            if indexPath.row > 5 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ReferenceTableCell") as! ReferenceTableCell
-                let tag = indexPath.row - 5
+                let tag = indexPath.row - 6
                 cell.selectionStyle = .none
                 cell.nameTextField.delegate = self
                 cell.mobileNoTextField.delegate = self
@@ -165,7 +165,7 @@ extension DMWorkExperienceVC: UITableViewDataSource, UITableViewDelegate {
         cell.cellBottomSpace.constant = 10.5
         cell.commonTextField.delegate = self
         cell.commonTextField.tag = indexPath.row
-
+        cell.commonTextField.autocapitalizationType = .sentences
         cell.commonTextField.addTarget(self, action: #selector(CommonExperiencelTextFieldDidEnd(_:)), for: .editingDidEnd)
 
         switch indexPath.row {
@@ -176,18 +176,18 @@ extension DMWorkExperienceVC: UITableViewDataSource, UITableViewDelegate {
         case 2:
             cell.commonTextField.placeholder = FieldType.OfficeName.description
             cell.commonTextField.text = currentExperience?.officeName
-            cell.commonTextField.autocapitalizationType = .sentences
 
         case 3:
             cell.commonTextField.placeholder = FieldType.OfficeAddress.description
             cell.commonTextField.text = currentExperience?.officeAddress
-            cell.commonTextField.autocapitalizationType = .sentences
 
         case 4:
             cell.commonTextField.placeholder = FieldType.CityName.description
             cell.commonTextField.text = currentExperience?.cityName
-            cell.commonTextField.autocapitalizationType = .sentences
-
+        case 5:
+            cell.commonTextField.placeholder = FieldType.StateName.description
+            cell.commonTextField.text = currentExperience?.stateName
+           
         default:
             LogManager.logDebug("default")
         }
@@ -276,9 +276,8 @@ extension DMWorkExperienceVC: UITableViewDataSource, UITableViewDelegate {
             currentExperience?.officeAddress = textField.text
         case 4:
             currentExperience?.cityName = textField.text
-
         default:
-            debugPrint("default")
+            LogManager.logDebug("default")
         }
     }
 
@@ -443,6 +442,9 @@ extension DMWorkExperienceVC: UITableViewDataSource, UITableViewDelegate {
         } else if (currentExperience?.cityName?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty)! {
             makeToast(toastString: Constants.AlertMessage.emptyCityName)
             return false
+        }else if (currentExperience?.stateName?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty)! {
+            makeToast(toastString: Constants.AlertMessage.emptyStateName)
+            return false
         }
 
         for index in 0 ..< (currentExperience?.references.count)! {
@@ -491,6 +493,9 @@ extension DMWorkExperienceVC: UITableViewDataSource, UITableViewDelegate {
         if !(currentExperience?.cityName?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty)! {
             return false
         }
+        if !(currentExperience?.stateName?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty)! {
+            return false
+        }
         return true
     }
 
@@ -509,6 +514,9 @@ extension DMWorkExperienceVC: UITableViewDataSource, UITableViewDelegate {
             return false
         }
         if (currentExperience?.cityName?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty)! {
+            return false
+        }
+        if (currentExperience?.stateName?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty)! {
             return false
         }
         return true
@@ -546,8 +554,15 @@ extension DMWorkExperienceVC: UITextFieldDelegate {
         return true
     }
 
-    func textFieldDidEndEditing(_: UITextField) {
-        //        textField.resignFirstResponder()
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField.tag == 5 {
+            self.goToStates(textField.text)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                
+                textField.resignFirstResponder()
+            }
+            
+        }
     }
 }
 

@@ -82,7 +82,6 @@ class DMWorkExperienceVC: DMBaseVC, ExperiencePickerViewDelegate, ToolBarButtonD
         super.viewDidLayoutSubviews()
         if isEditMode != true {
             topHeaderViewHeight.constant = 0
-
         } else {
         }
         view.layoutIfNeeded()
@@ -139,7 +138,7 @@ class DMWorkExperienceVC: DMBaseVC, ExperiencePickerViewDelegate, ToolBarButtonD
     }
 
     @IBAction func nextButtonClicked(_: Any) {
-        if checkAllFieldsAreFilled() {
+        if !checkAllFieldIsEmpty() {
             saveDataOnNextButton()
         } else if exprienceArray.count > 0 && checkAllFieldIsEmpty() {
             navigateAction()
@@ -284,6 +283,13 @@ class DMWorkExperienceVC: DMBaseVC, ExperiencePickerViewDelegate, ToolBarButtonD
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
+    
+    func goToStates(_ text: String?) {
+        let searchVc = UIStoryboard.statesStoryBoard().instantiateViewController(withIdentifier: "SearchStateViewController") as! SearchStateViewController
+        searchVc.delegate = self
+        searchVc.preSelectedState = currentExperience?.stateName
+        self.navigationController?.pushViewController(searchVc, animated: true)
+    }
 }
 
 extension DMWorkExperienceVC: JobSelectionPickerViewDelegate {
@@ -298,5 +304,13 @@ extension DMWorkExperienceVC: JobSelectionPickerViewDelegate {
 
     func jobPickerCancelButtonAction() {
         view.endEditing(true)
+    }
+}
+
+extension DMWorkExperienceVC: SearchStateViewControllerDelegate {
+    func selectedState(state: String?) {
+         currentExperience?.stateName = state
+        //editProfileParams[Constants.ServerKey.state] = state
+        self.workExperienceDetailTable.reloadData()
     }
 }

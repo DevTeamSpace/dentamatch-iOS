@@ -45,6 +45,7 @@ extension Constants {
         static let emptyOfficeName = "Office Name can not be left blank."
         static let emptyOfficeAddress = "Office Field can not be left blank."
         static let emptyCityName = "City Name can not be left blank."
+        static let emptyStateName = "State Name can not be left blank."
         static let referenceMobileNumber = "Please, Provide a valid Phone number of 10 digits."
         static let atleastOneExperience = "Please add at least one experience"
         static let partialFill = "You have partially filled experience. Do you want to Discard this?"
