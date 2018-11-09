@@ -155,6 +155,7 @@ struct Constants {
         static let officeName = "officeName"
         static let officeAddressExp = "officeAddress"
         static let cityName = "city"
+        static let stateName = "state"
         static let workExperience = "workExperience"
         static let preferredLocationName = "preferredLocationName"
         static let isActive = "isActive"

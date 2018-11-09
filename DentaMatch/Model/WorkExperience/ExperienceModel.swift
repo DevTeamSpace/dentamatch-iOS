@@ -18,6 +18,7 @@ class ExperienceModel: NSObject {
     var officeName: String? = ""
     var officeAddress: String? = ""
     var cityName: String? = ""
+    var stateName: String? = ""
     var isFirstExperience = true
     var isEditMode = false
 
@@ -36,7 +37,7 @@ class ExperienceModel: NSObject {
         officeName = json[Constants.ServerKey.officeName].stringValue
         officeAddress = json[Constants.ServerKey.officeAddressExp].stringValue
         cityName = json[Constants.ServerKey.cityName].stringValue
-
+        stateName = json[Constants.ServerKey.stateName].stringValue
         yearOfExperience = getyearExperience(totalMonths: experienceInMonth)
 
         let reference1Name = json[Constants.ServerKey.reference1Name].stringValue

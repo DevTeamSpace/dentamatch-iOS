@@ -14,9 +14,10 @@ enum FieldType: Int, CustomStringConvertible {
     case OfficeName = 3
     case OfficeAddress = 4
     case CityName = 5
-    case ReferenceName = 6
-    case ReferenceMobileNo = 7
-    case ReferenceEmail = 8
+    case StateName = 6
+    case ReferenceName = 7
+    case ReferenceMobileNo = 8
+    case ReferenceEmail = 9
 
     var description: String {
         switch self {
@@ -30,6 +31,8 @@ enum FieldType: Int, CustomStringConvertible {
             return "Office Address"
         case .CityName:
             return "City"
+        case .StateName:
+            return "State"
         case .ReferenceName:
             return "Reference Name (Optional)"
         case .ReferenceMobileNo:
