@@ -15,20 +15,20 @@ class DMOnboardingVC: DMBaseVC {
     @IBOutlet weak var onboardingCollectionView: UICollectionView!
     @IBOutlet weak var collectionviewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var pageControlBottomConstraint: NSLayoutConstraint!
-    var images = ["onBoarding1", "onBoarding2", "onBoarding3", "onBoarding4"]
+    var images = ["onBoarding1", "onBoarding3", "onBoarding4", "onBoarding2"]
 
     let headings = [
         Constants.Heading.heading1,
-        Constants.Heading.heading2,
         Constants.Heading.heading3,
         Constants.Heading.heading4,
+        Constants.Heading.heading2
     ]
 
     let subHeadings = [
         Constants.SubHeading.subHeading1,
-        Constants.SubHeading.subHeading2,
         Constants.SubHeading.subHeading3,
         Constants.SubHeading.subHeading4,
+        Constants.SubHeading.subHeading2
     ]
 
     // MARK: - View LifeCycle
