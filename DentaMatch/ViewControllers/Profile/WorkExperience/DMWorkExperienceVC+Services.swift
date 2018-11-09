@@ -57,7 +57,7 @@ extension DMWorkExperienceVC {
         params[Constants.ServerKey.officeName] = currentExperience?.officeName as AnyObject?
         params[Constants.ServerKey.officeAddressExp] = currentExperience?.officeAddress as AnyObject?
         params[Constants.ServerKey.cityName] = currentExperience?.cityName as AnyObject?
-
+        params[Constants.ServerKey.stateName] = currentExperience?.stateName as AnyObject?
         for index in 0 ..< (currentExperience!.references.count) {
             let refObj = currentExperience?.references[index]
             if index == 0 {

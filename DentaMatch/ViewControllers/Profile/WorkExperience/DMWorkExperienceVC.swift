@@ -14,9 +14,10 @@ enum FieldType: Int, CustomStringConvertible {
     case OfficeName = 3
     case OfficeAddress = 4
     case CityName = 5
-    case ReferenceName = 6
-    case ReferenceMobileNo = 7
-    case ReferenceEmail = 8
+    case StateName = 6
+    case ReferenceName = 7
+    case ReferenceMobileNo = 8
+    case ReferenceEmail = 9
 
     var description: String {
         switch self {
@@ -30,6 +31,8 @@ enum FieldType: Int, CustomStringConvertible {
             return "Office Address"
         case .CityName:
             return "City"
+        case .StateName:
+            return "State"
         case .ReferenceName:
             return "Reference Name (Optional)"
         case .ReferenceMobileNo:
@@ -79,7 +82,6 @@ class DMWorkExperienceVC: DMBaseVC, ExperiencePickerViewDelegate, ToolBarButtonD
         super.viewDidLayoutSubviews()
         if isEditMode != true {
             topHeaderViewHeight.constant = 0
-
         } else {
         }
         view.layoutIfNeeded()
@@ -136,7 +138,7 @@ class DMWorkExperienceVC: DMBaseVC, ExperiencePickerViewDelegate, ToolBarButtonD
     }
 
     @IBAction func nextButtonClicked(_: Any) {
-        if checkAllFieldsAreFilled() {
+        if !checkAllFieldIsEmpty() {
             saveDataOnNextButton()
         } else if exprienceArray.count > 0 && checkAllFieldIsEmpty() {
             navigateAction()
@@ -281,6 +283,13 @@ class DMWorkExperienceVC: DMBaseVC, ExperiencePickerViewDelegate, ToolBarButtonD
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
+    
+    func goToStates(_ text: String?) {
+        let searchVc = UIStoryboard.statesStoryBoard().instantiateViewController(withIdentifier: "SearchStateViewController") as! SearchStateViewController
+        searchVc.delegate = self
+        searchVc.preSelectedState = currentExperience?.stateName
+        self.navigationController?.pushViewController(searchVc, animated: true)
+    }
 }
 
 extension DMWorkExperienceVC: JobSelectionPickerViewDelegate {
@@ -295,5 +304,13 @@ extension DMWorkExperienceVC: JobSelectionPickerViewDelegate {
 
     func jobPickerCancelButtonAction() {
         view.endEditing(true)
+    }
+}
+
+extension DMWorkExperienceVC: SearchStateViewControllerDelegate {
+    func selectedState(state: String?) {
+         currentExperience?.stateName = state
+        //editProfileParams[Constants.ServerKey.state] = state
+        self.workExperienceDetailTable.reloadData()
     }
 }
