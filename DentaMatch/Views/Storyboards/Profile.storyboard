@@ -13,6 +13,9 @@
         <array key="SF-UI-Text-Bold.otf">
             <string>SFUIText-Bold</string>
         </array>
+        <array key="SF-UI-Text-Light.otf">
+            <string>SFUIText-Light</string>
+        </array>
         <array key="SF-UI-Text-Medium.otf">
             <string>SFUIText-Medium</string>
         </array>
@@ -311,6 +314,24 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TH3-RQ-eyt">
                                 <rect key="frame" x="0.0" y="297" width="375" height="321"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="9WB-gE-6sO">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let’s start with creating your profile." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999998807907104" translatesAutoresizingMaskIntoConstraints="NO" id="tn3-fO-rKB">
+                                            <rect key="frame" x="20" y="17" width="335" height="20"/>
+                                            <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="17"/>
+                                            <color key="textColor" red="0.058823529409999999" green="0.094117647060000004" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="tn3-fO-rKB" firstAttribute="centerY" secondItem="9WB-gE-6sO" secondAttribute="centerY" id="M3T-4d-TXH"/>
+                                        <constraint firstItem="tn3-fO-rKB" firstAttribute="leading" secondItem="9WB-gE-6sO" secondAttribute="leading" constant="20" id="e0h-z1-zwt"/>
+                                        <constraint firstAttribute="trailing" secondItem="tn3-fO-rKB" secondAttribute="trailing" constant="20" id="rRy-dy-HfC"/>
+                                    </constraints>
+                                </view>
                                 <connections>
                                     <outlet property="dataSource" destination="ZiM-x3-BTI" id="xg5-fW-idf"/>
                                     <outlet property="delegate" destination="ZiM-x3-BTI" id="KNi-XQ-DLU"/>

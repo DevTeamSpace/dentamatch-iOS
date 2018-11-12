@@ -107,6 +107,10 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             if chatData["messageId"] != nil {
                 //Do nothing ...
             } else {
+                let newObj = dictionaryUserInfo["data"]
+                let josnObj = JSON(newObj ?? [:])
+                let userNotiObj = UserNotification(dict: josnObj)
+                NotificationHandler.notificationHandleforMessagesRefresh(notiObj: userNotiObj, jobObj: nil)
                NotificationCenter.default.post(name: .fetchBadgeCount, object: nil, userInfo: nil)
             }
         }

@@ -23,6 +23,7 @@ class NotificationHandler: NSObject {
 
         case .hired, .jobCancellation, .rejectJob, .acceptJob:
             // open job detail
+            NotificationCenter.default.post(name: .refreshMessageList, object: nil, userInfo: nil)
             openJobDetailScreen(obj: jobObj!)
 
         case .other, .InviteJob, .deleteJob:
@@ -36,6 +37,7 @@ class NotificationHandler: NSObject {
         switch notificationType {
         case .acceptJob:
             // open job detail
+            NotificationCenter.default.post(name: .refreshMessageList, object: nil, userInfo: nil)
             openJobDetailScreenForBackGround(obj: jobObj!)
 
         case .chatMessgae: break
@@ -52,6 +54,21 @@ class NotificationHandler: NSObject {
         case .other, .InviteJob, .deleteJob:
             // No need any action
             openNotificationScreenInBackGround()
+        }
+    }
+    
+    class func notificationHandleforMessagesRefresh(notiObj: UserNotification, jobObj: Job?, app _: UIApplication? = nil) {
+        let notificationType = UserNotificationType(rawValue: notiObj.notificationType!)!
+        switch notificationType {
+        case .acceptJob:
+            NotificationCenter.default.post(name: .refreshMessageList, object: nil, userInfo: nil)
+            break
+        case .hired, .jobCancellation, .rejectJob:
+            // open job detail
+            break
+    case .other, .InviteJob, .deleteJob, .chatMessgae, .completeProfile, .verifyDocuments, .licenseAcceptReject:
+            // No need any action
+            break
         }
     }
 

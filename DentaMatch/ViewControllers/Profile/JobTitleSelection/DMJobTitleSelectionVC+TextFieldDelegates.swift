@@ -36,6 +36,10 @@ extension DMJobTitleSelectionVC: UITextViewDelegate {
             textView.text = textView.text + text.stringFrom(0, to: remainingTextCount)
             return false
         }
+        /*if text == "\n"{
+            textView.resignFirstResponder()
+            return false
+        }*/
 
         return true
     }

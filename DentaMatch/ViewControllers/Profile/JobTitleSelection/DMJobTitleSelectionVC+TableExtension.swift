@@ -47,6 +47,9 @@ extension DMJobTitleSelectionVC: UITableViewDataSource, UITableViewDelegate {
             cell.clipsToBounds = true
             cell.commonTextField.type = 1
             cell.editAction { [weak self](text) in
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
+                    self?.view.endEditing(true)
+                })
                 self?.goToStates(text)
             }
             return cell
