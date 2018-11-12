@@ -538,6 +538,9 @@ extension DMWorkExperienceVC: UITextFieldDelegate {
         if let textField = textField as? AnimatedPHTextField {
             textField.layer.borderColor = Constants.Color.textFieldColorSelected.cgColor
         }
+        if textField.tag == 5 {
+            textField.resignFirstResponder()
+        }
         return true
     }
 
@@ -556,12 +559,8 @@ extension DMWorkExperienceVC: UITextFieldDelegate {
 
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField.tag == 5 {
+            textField.resignFirstResponder()
             self.goToStates(textField.text)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                
-                textField.resignFirstResponder()
-            }
-            
         }
     }
 }
