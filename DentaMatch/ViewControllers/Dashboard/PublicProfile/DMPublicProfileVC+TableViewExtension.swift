@@ -54,10 +54,6 @@ extension DMPublicProfileVC: UITableViewDataSource, UITableViewDelegate, UITextV
         /*publicProfileTableView.contentInset = UIEdgeInsetsMake(0, 0, 200, 0)
         DispatchQueue.main.async {
             //self.publicProfileTableView.scrollToRow(at: IndexPath(row: 4, section: 0), at: .bottom, animated: true)
-            let kbSize = CGSize(width: UIScreen.main.bounds.width, height: 216)
-            var aRect = self.publicProfileTableView.frame
-            aRect.size.height += kbSize.height - 100;
-            self.publicProfileTableView.scrollRectToVisible(aRect, animated: true)
         }*/
         return true
     }
