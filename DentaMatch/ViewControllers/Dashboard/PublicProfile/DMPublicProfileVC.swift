@@ -44,7 +44,8 @@ class DMPublicProfileVC: DMBaseVC {
     // var selectedLocationCoordinate:CLLocationCoordinate2D?
     var licenseString: String?
     var stateString: String?
-
+    var activeField: UITextField?
+    var activeView: UITextView?
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -123,8 +124,37 @@ class DMPublicProfileVC: DMBaseVC {
     // MARK: - Keyboard Show Hide Observers
 
     @objc func keyboardWillShow(note: NSNotification) {
-        if let keyboardSize = (note.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            publicProfileTableView.contentInset = UIEdgeInsetsMake(0, 0, keyboardSize.height + 1, 0)
+        if let kbSize = (note.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            //publicProfileTableView.contentInset = UIEdgeInsetsMake(0, 0, kbSize.height + 1, 0)
+            
+            let contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0)
+            publicProfileTableView.contentInset = contentInsets
+            publicProfileTableView.scrollIndicatorInsets = contentInsets;
+            
+            // If active text field is hidden by keyboard, scroll it so it's visible
+            // Your app might not need or want this behavior.
+            var aRect = self.publicProfileTableView.frame
+           
+            if activeField != nil {
+                 aRect.size.height -= kbSize.height;
+                if (!aRect.contains((activeField?.frame.origin)!) ) {
+                    self.publicProfileTableView.scrollRectToVisible(aRect, animated: true)
+                }
+            }
+            if activeView != nil {
+                var reducingFactor : CGFloat = 120.0
+                if UIDevice.current.screenType == .iPhone5{
+                     reducingFactor = 0.0
+                }
+                if UIDevice.current.screenType == .iPhoneX{
+                    reducingFactor = 250.0
+                }
+                aRect.size.height += kbSize.height - reducingFactor
+                //if (!aRect.contains((activeView?.frame.origin)!) ) {
+                    self.publicProfileTableView.scrollRectToVisible(aRect, animated: true)
+                //}
+            }
+            
         }
     }
 
@@ -318,6 +348,8 @@ extension DMPublicProfileVC: UITextFieldDelegate {
     }
 
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        activeView = nil
+        activeField = textField
         if let textField = textField as? AnimatedPHTextField {
             textField.layer.borderColor = Constants.Color.textFieldColorSelected.cgColor
         }
@@ -333,6 +365,7 @@ extension DMPublicProfileVC: UITextFieldDelegate {
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
+        activeField = nil
         let profileOptions = ProfileOptions(rawValue: textField.tag)!
 
         switch profileOptions {

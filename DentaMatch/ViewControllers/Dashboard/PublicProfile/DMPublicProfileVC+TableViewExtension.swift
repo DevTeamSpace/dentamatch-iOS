@@ -48,11 +48,17 @@ extension DMPublicProfileVC: UITableViewDataSource, UITableViewDelegate, UITextV
         return cell
     }
 
-    func textViewShouldBeginEditing(_: UITextView) -> Bool {
-        publicProfileTableView.contentInset = UIEdgeInsetsMake(0, 0, 200, 0)
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        activeView = textView
+        activeField = nil
+        /*publicProfileTableView.contentInset = UIEdgeInsetsMake(0, 0, 200, 0)
         DispatchQueue.main.async {
-            self.publicProfileTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: true)
-        }
+            //self.publicProfileTableView.scrollToRow(at: IndexPath(row: 4, section: 0), at: .bottom, animated: true)
+            let kbSize = CGSize(width: UIScreen.main.bounds.width, height: 216)
+            var aRect = self.publicProfileTableView.frame
+            aRect.size.height += kbSize.height - 100;
+            self.publicProfileTableView.scrollRectToVisible(aRect, animated: true)
+        }*/
         return true
     }
 
@@ -100,6 +106,7 @@ extension DMPublicProfileVC: UITableViewDataSource, UITableViewDelegate, UITextV
     }
 
     func textViewDidEndEditing(_ textView: UITextView) {
+        activeView = nil
         if let cell = self.publicProfileTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? EditPublicProfileTableCell {
             if !textView.text.isEmpty {
                 cell.placeHolderLabel.isHidden = true

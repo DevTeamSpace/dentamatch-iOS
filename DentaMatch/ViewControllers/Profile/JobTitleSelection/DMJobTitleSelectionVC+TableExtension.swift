@@ -38,7 +38,7 @@ extension DMJobTitleSelectionVC: UITableViewDataSource, UITableViewDelegate {
         if indexPath.row > 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AboutMeJobSelectionCell") as! AboutMeJobSelectionCell
             cell.aboutMeTextView.delegate = self
-            cell.aboutMeTextView.inputAccessoryView = addToolBarOnTextView()
+            //cell.aboutMeTextView.inputAccessoryView = addToolBarOnTextView()
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AnimatedPHToolTipCell") as! AnimatedPHToolTipCell
