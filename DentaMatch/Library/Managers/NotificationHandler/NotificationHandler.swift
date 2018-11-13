@@ -60,10 +60,10 @@ class NotificationHandler: NSObject {
     class func notificationHandleforMessagesRefresh(notiObj: UserNotification, jobObj: Job?, app _: UIApplication? = nil) {
         let notificationType = UserNotificationType(rawValue: notiObj.notificationType!)!
         switch notificationType {
-        case .acceptJob:
+        case .acceptJob, .hired:
             NotificationCenter.default.post(name: .refreshMessageList, object: nil, userInfo: nil)
             break
-        case .hired, .jobCancellation, .rejectJob:
+        case .jobCancellation, .rejectJob:
             // open job detail
             break
     case .other, .InviteJob, .deleteJob, .chatMessgae, .completeProfile, .verifyDocuments, .licenseAcceptReject:
