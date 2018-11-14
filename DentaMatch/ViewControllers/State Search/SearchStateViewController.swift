@@ -23,9 +23,7 @@ class SearchStateViewController: DMBaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         searchField.textChange { [weak self] text in
-            //self?.refresh(sender: nil)
             self?.searchAction(text)
-            print(text)
         }
         self.getStates()
         navigationItem.leftBarButtonItem = leftBarButton()

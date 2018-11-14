@@ -8,14 +8,14 @@
 
 import UIKit
 
-protocol ExperiencePickerViewDelegate {
+protocol ExperiencePickerViewDelegate : class{
     func canceButtonAction()
     func doneButtonAction(year: Int, month: Int)
 }
 
 class ExperiencePickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
     @IBOutlet var yearExperiencePickerView: UIPickerView!
-    var delegate: ExperiencePickerViewDelegate?
+    weak var delegate: ExperiencePickerViewDelegate?
 
     class func loadExperiencePickerView(withText: String) -> ExperiencePickerView {
         guard let instance = Bundle.main.loadNibNamed("ExperiencePickerView", owner: self)?.first as? ExperiencePickerView else {

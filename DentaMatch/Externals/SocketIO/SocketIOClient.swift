@@ -24,7 +24,7 @@
 
 import Foundation
 
-protocol SocketConnectionDelegate {
+protocol SocketConnectionDelegate: class {
     func didConnectSocket()
     func didDisconnectSocket()
 
@@ -32,7 +32,7 @@ protocol SocketConnectionDelegate {
 
 public final class SocketIOClient : NSObject, SocketEngineClient, SocketParsable {
     
-    var delegate:SocketConnectionDelegate?
+    weak var delegate:SocketConnectionDelegate?
     public let socketURL: URL
 
     public private(set) var engine: SocketEngineSpec?

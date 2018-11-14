@@ -11,13 +11,13 @@ import GoogleMaps
 import GooglePlaces
 import UIKit
 
-protocol SearchJobDelegate {
+protocol SearchJobDelegate:class {
     func refreshJobList()
 }
 
 class DMJobSearchVC: DMBaseVC {
     @IBOutlet var tblViewJobSearch: UITableView!
-    var delegate: SearchJobDelegate?
+    weak var delegate: SearchJobDelegate?
     var isPartTimeDayShow: Bool = false
     var jobTitles = [JobTitle]()
     var preferredLocations = [PreferredLocation]()

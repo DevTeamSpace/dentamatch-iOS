@@ -18,7 +18,7 @@ class AutoCompleteTable: UIView, UITableViewDataSource, UITableViewDelegate {
     var universities = [University]()
     var schoolCategoryId = ""
 
-    var delegate: AutoCompleteSelectedDelegate?
+    weak var delegate: AutoCompleteSelectedDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()

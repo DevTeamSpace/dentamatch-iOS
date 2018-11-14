@@ -36,7 +36,6 @@ extension UITextField {
         // Put the buttons into the ToolBar and display the tool bar
         keyboardDoneButtonView.setItems(toolbarButtons, animated: false)
         inputAccessoryView = keyboardDoneButtonView
-        self.hasText
     }
 
     func addRightToolBarButton(title: String) {

@@ -16,7 +16,7 @@ import UIKit
 class PreferredLocationPickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
     @IBOutlet var toolBar: UIToolbar!
     @IBOutlet var pickerView: UIPickerView!
-    var delegate: PreferredLocationPickerViewDelegate?
+    weak var delegate: PreferredLocationPickerViewDelegate?
 
     var preferredLocations = [PreferredLocation]()
 
