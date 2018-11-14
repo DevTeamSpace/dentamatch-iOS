@@ -29,13 +29,12 @@ extension DMLicenseSelectionVC: UITableViewDataSource, UITableViewDelegate {
         case 2:
             return 0
             // Dental Stateboard removed
-
         case 3:
             return 45
         case 4, 5:
             return 109
         default:
-            debugPrint("Text")
+            LogManager.logDebug("Text")
         }
         return 109
     }
@@ -70,7 +69,7 @@ extension DMLicenseSelectionVC: UITableViewDataSource, UITableViewDelegate {
             return cell
 
         default:
-            debugPrint("Default")
+            LogManager.logDebug("Default")
         }
 
         return UITableViewCell()

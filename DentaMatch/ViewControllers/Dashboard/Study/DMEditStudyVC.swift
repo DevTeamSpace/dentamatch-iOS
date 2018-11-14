@@ -131,7 +131,7 @@ class DMEditStudyVC: DMBaseVC {
                 }
             }
         }
-        debugPrint(selectedData.description)
+        LogManager.logDebug(selectedData.description)
         if isSchoolEmpty {
             makeToast(toastString: "Please enter school name first")
             return

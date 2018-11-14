@@ -96,14 +96,6 @@ class DMPublicProfileVC: DMBaseVC {
         originalParams = editProfileParams
     }
 
-    /* func backButtonAction() {
-     if editProfileParams == originalParams {
-     print("same")
-     } else {
-     print("Different")
-     }
-     }*/
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)

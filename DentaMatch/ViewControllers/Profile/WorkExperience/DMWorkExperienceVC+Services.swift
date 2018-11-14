@@ -22,7 +22,7 @@ extension DMWorkExperienceVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            ////debugPrint(response!)
+            //debugPrint(response!)
             self.handleExperienceListResponse(response: response!)
         }
     }
@@ -135,7 +135,7 @@ extension DMWorkExperienceVC {
                 self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-//            //debugPrint(response!)
+           //debugPrint(response!)
 
             if response![Constants.ServerKey.status].boolValue {
                 self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)

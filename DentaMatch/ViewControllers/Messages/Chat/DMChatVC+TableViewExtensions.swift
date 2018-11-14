@@ -23,8 +23,8 @@ extension DMChatVC: UITableViewDataSource, UITableViewDelegate {
             if let sections = fetchedResultsController.sections {
                 for i in 0 ..< sections.count {
                     let sectionInfo = sections[i]
-                    print(sectionInfo.name)
-                    print(sectionInfo.numberOfObjects)
+                    LogManager.logDebug(sectionInfo.name)
+                    LogManager.logDebug(sectionInfo.numberOfObjects.description)
                 }
                 printData = false
             }

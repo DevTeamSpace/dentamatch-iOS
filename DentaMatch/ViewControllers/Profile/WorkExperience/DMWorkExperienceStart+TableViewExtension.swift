@@ -87,7 +87,7 @@ extension DMWorkExperienceStart: UITableViewDataSource, UITableViewDelegate {
             cell.commonTextField.tintColor = view.tintColor
             cell.commonTextField.autocapitalizationType = .sentences
         default:
-            debugPrint("default")
+            LogManager.logDebug("default")
         }
         cell.commonTextField.text = self.experienceArray[indexPath.row - 2] as? String
         cell.commonTextField.delegate = self
@@ -179,7 +179,7 @@ extension DMWorkExperienceStart: UITextFieldDelegate {
         case 2:
             experienceArray.replaceObject(at: 2, with: textField.text!)
         default:
-            debugPrint("default")
+            LogManager.logDebug("default")
         }
     }
 
