@@ -990,6 +990,15 @@
 			path = Reachability;
 			sourceTree = "<group>";
 		};
+		48A31C1E219BEE7A007EBBB4 /* DGFlowLayout */ = {
+			isa = PBXGroup;
+			children = (
+				48067D4B212EC5BC007F77E6 /* DGCollectionViewLeftAlignFlowLayout.h */,
+				48067D4C212EC5BD007F77E6 /* DGCollectionViewLeftAlignFlowLayout.swift */,
+			);
+			path = DGFlowLayout;
+			sourceTree = "<group>";
+		};
 		5A01381F1E6EBB6900D15783 /* MixpanelManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -1463,6 +1472,8 @@
 		E55462E21DAE47A9004163B2 /* Externals */ = {
 			isa = PBXGroup;
 			children = (
+				48A31C1E219BEE7A007EBBB4 /* DGFlowLayout */,
+				4877D98820EDF4ED00264422 /* Reachability */,
 				5A3FD06B1E1BAF9B00360B3C /* ParallaxNav */,
 				5A1960FA1E208B4B002A5F7C /* PhoneNumber */,
 				E59467251FD8FFE60009C18B /* PopOverView */,
@@ -1527,7 +1538,6 @@
 		E55462ED1DAE483F004163B2 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				4877D98820EDF4ED00264422 /* Reachability */,
 				5A01381F1E6EBB6900D15783 /* MixpanelManager */,
 				5A737D071E56AF9D002472D4 /* NotificationHandler */,
 				E5AE37801E4984270001EC3C /* DatabaseManager */,
@@ -2419,8 +2429,6 @@
 		F2F5E0C81E2F25A00082187C /* JobDetail */ = {
 			isa = PBXGroup;
 			children = (
-				48067D4B212EC5BC007F77E6 /* DGCollectionViewLeftAlignFlowLayout.h */,
-				48067D4C212EC5BD007F77E6 /* DGCollectionViewLeftAlignFlowLayout.swift */,
 				F2F5E0C91E2F292F0082187C /* DentistDetailCell.swift */,
 				F2F5E0CA1E2F292F0082187C /* DentistDetailCell.xib */,
 				48CD1503212D75F600E4B80E /* TempJobDetailCell.swift */,

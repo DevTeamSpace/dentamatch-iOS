@@ -72,7 +72,7 @@ class ExperiencePickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate
         delegate?.canceButtonAction()
     }
 
-    @IBAction func DoneButtonClicked(_: Any) {
+    @IBAction func doneButtonClicked(_: Any) {
         let year = yearExperiencePickerView.selectedRow(inComponent: 0)
         let month = yearExperiencePickerView.selectedRow(inComponent: 1)
 

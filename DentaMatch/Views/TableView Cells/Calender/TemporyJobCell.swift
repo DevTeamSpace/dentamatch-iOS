@@ -13,7 +13,7 @@ import UIKit
 }
 
 class TemporyJobCell: UITableViewCell {
-    @IBOutlet var TemporyJobLabel: UILabel!
+    @IBOutlet var temporyJobLabel: UILabel!
     @IBOutlet var temporyButton: UIButton!
     var isTemporaryTime: Bool! = false
     weak var delegate: TemporyJobCellDelegate?
@@ -28,12 +28,12 @@ class TemporyJobCell: UITableViewCell {
         if isTempTime {
             temporyButton.setTitle("w", for: .normal)
             temporyButton.setTitleColor(Constants.Color.tickSelectColor, for: .normal)
-            TemporyJobLabel.textColor = Constants.Color.headerTitleColor
+            temporyJobLabel.textColor = Constants.Color.headerTitleColor
 
         } else {
             temporyButton.setTitle("t", for: .normal)
             temporyButton.setTitleColor(Constants.Color.tickDeselectColor, for: .normal)
-            TemporyJobLabel.textColor = Constants.Color.jobTypeLabelDeselectedColor
+            temporyJobLabel.textColor = Constants.Color.jobTypeLabelDeselectedColor
         }
     }
 
@@ -43,16 +43,16 @@ class TemporyJobCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    @IBAction func TemporyButtonClicked(_: Any) {
+    @IBAction func temporyButtonClicked(_: Any) {
         if isTemporaryTime == false {
             temporyButton.setTitle("w", for: .normal)
             temporyButton.setTitleColor(Constants.Color.availabilitySeletedColor, for: .normal)
-            TemporyJobLabel.textColor = Constants.Color.headerTitleColor
+            temporyJobLabel.textColor = Constants.Color.headerTitleColor
             delegate?.selectTempJobType!(selected: true)
         } else {
             temporyButton.setTitle("t", for: .normal)
             temporyButton.setTitleColor(Constants.Color.availabilityUnseletedColor, for: .normal)
-            TemporyJobLabel.textColor = Constants.Color.jobTypeLabelDeselectedColor
+            temporyJobLabel.textColor = Constants.Color.jobTypeLabelDeselectedColor
             delegate?.selectTempJobType!(selected: false)
         }
         isTemporaryTime = !isTemporaryTime
