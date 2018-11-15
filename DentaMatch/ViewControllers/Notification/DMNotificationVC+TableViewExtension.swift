@@ -79,6 +79,9 @@ extension DMNotificationVC: UITableViewDataSource, UITableViewDelegate {
                     self.deleteNotification(notificationObj: notification, completionHandler: { isSucess, _ in
                         if isSucess! {
                             self.notificationList.remove(at: indexPath.row)
+                            if notification.seen == nil || notification.seen == 0 {
+                                NotificationCenter.default.post(name: .decreaseBadgeCount, object: nil, userInfo: nil)
+                            }
                             DispatchQueue.main.async {
                                 self.notificationTableView.reloadData()
                             }
