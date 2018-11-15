@@ -54,7 +54,7 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="PcK-4j-C6P" customClass="CustomSegmentControl" customModule="DentaMatch" customModuleProvider="target">
-                                        <rect key="frame" x="60" y="9" width="255" height="29"/>
+                                        <rect key="frame" x="20" y="9" width="335" height="29"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <segments>
                                             <segment title="Saved"/>
@@ -71,8 +71,8 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="2QZ-wa-zCo"/>
                                     <constraint firstAttribute="bottom" secondItem="PcK-4j-C6P" secondAttribute="bottom" constant="7" id="Rnn-Y5-TV1"/>
-                                    <constraint firstAttribute="trailing" secondItem="PcK-4j-C6P" secondAttribute="trailing" constant="60" id="hNh-7U-QDC"/>
-                                    <constraint firstItem="PcK-4j-C6P" firstAttribute="leading" secondItem="wHW-66-Hcr" secondAttribute="leading" constant="60" id="rC5-Cj-dTH"/>
+                                    <constraint firstAttribute="trailing" secondItem="PcK-4j-C6P" secondAttribute="trailing" constant="20" id="hNh-7U-QDC"/>
+                                    <constraint firstItem="PcK-4j-C6P" firstAttribute="leading" secondItem="wHW-66-Hcr" secondAttribute="leading" constant="20" id="rC5-Cj-dTH"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vVT-Xa-GkU">
