@@ -125,12 +125,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let reachability = notification.object as? Reachability else { return }
         if reachability.isReachable {
             if reachability.isReachableViaWiFi {
-                // debugPrint("Reachable via WiFi")
+                LogManager.logDebug("Reachable via WiFi")
             } else {
-                // debugPrint("Reachable via Cellular")
+                LogManager.logDebug("Reachable via Cellular")
             }
         } else {
-            // debugPrint("Network not reachable")
+            LogManager.logDebug("Network not reachable")
         }
     }
 
@@ -152,6 +152,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        NotificationCenter.default.post(name: .fetchBadgeCount, object: nil, userInfo: nil)
         configureSocket()
     }
 
