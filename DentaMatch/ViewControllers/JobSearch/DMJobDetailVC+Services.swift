@@ -127,6 +127,7 @@ extension DMJobDetailVC {
                     self.btnApplyForJob.setTitle(Constants.Strings.appliedForThisJob, for: .normal)
                     self.tblJobDetail.reloadData()
                 }
+                 //NotificationCenter.default.post(name: .refreshAppliedJobs, object: nil)
 
             } else {
                 if response[Constants.ServerKey.statusCode].intValue == 200 {
