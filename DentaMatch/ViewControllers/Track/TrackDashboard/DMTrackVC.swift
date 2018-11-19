@@ -107,6 +107,7 @@ class DMTrackVC: DMBaseVC {
         shortListedJobsTableView.register(UINib(nibName: "JobSearchResultCell", bundle: nil), forCellReuseIdentifier: "JobSearchResultCell")
         
          NotificationCenter.default.addObserver(self, selector: #selector(pullToRefreshForSavedJobs), name: .refreshSavedJobs, object: nil)
+         NotificationCenter.default.addObserver(self, selector: #selector(pullToRefreshForShortListedJobs), name: .refreshInterviewingJobs, object: nil)
     }
 
     @objc func pullToRefreshForSavedJobs() {
