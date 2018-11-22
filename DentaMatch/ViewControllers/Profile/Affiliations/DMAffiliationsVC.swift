@@ -26,7 +26,7 @@ class DMAffiliationsVC: DMBaseVC {
     var selectedAffiliationsFromProfile = [Affiliation]()
     var affiliations = [Affiliation]()
     var isEditMode = false
-
+    var activeView: UITextView?
     // MARK: - View LifeCycle
 
     override func viewDidLoad() {
@@ -51,8 +51,31 @@ class DMAffiliationsVC: DMBaseVC {
     // MARK: - Keyboard Show Hide Observers
 
     @objc func keyboardWillShow(note: NSNotification) {
-        if let keyboardSize = (note.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            affiliationsTableView.contentInset = UIEdgeInsetsMake(0, 0, keyboardSize.height + 10, 0)
+        if let kbSize = (note.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            let contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0)
+            affiliationsTableView.contentInset = contentInsets
+            affiliationsTableView.scrollIndicatorInsets = contentInsets;
+            
+            // If active text field is hidden by keyboard, scroll it so it's visible
+            // Your app might not need or want this behavior.
+            var aRect = self.affiliationsTableView.frame
+            if activeView != nil {
+                var reducingFactor : CGFloat = 300.0
+                if UIDevice.current.screenType == .iPhone5{
+                    reducingFactor = 220.0
+                }
+                if UIDevice.current.screenType == .iPhone6Plus{
+                    reducingFactor = 380.0
+                }
+                if UIDevice.current.screenType == .iPhoneX{
+                    reducingFactor = 500.0
+                }
+                aRect.size.height += kbSize.height - reducingFactor
+                //if (!aRect.contains((activeView?.frame.origin)!) ) {
+                self.affiliationsTableView.scrollRectToVisible(aRect, animated: true)
+                //}
+            }
+            
         }
     }
 
@@ -166,18 +189,16 @@ class DMAffiliationsVC: DMBaseVC {
 }
 
 extension DMAffiliationsVC: UITextViewDelegate {
-    func textViewShouldBeginEditing(_: UITextView) -> Bool {
-//        self.affiliationsTableView.contentInset =  UIEdgeInsetsMake(0, 0, 200, 0)
-//        DispatchQueue.main.async {
-//            self.affiliationsTableView.scrollToRow(at: IndexPath(row: 0, section: 1), at: .middle, animated: true)
-//        }
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        activeView = textView
         return true
     }
 
     func textViewShouldEndEditing(_: UITextView) -> Bool {
-        affiliationsTableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
-
         return true
+    }
+    func textViewDidEndEditing(_ textView: UITextView) {
+        activeView = nil
     }
 
     func textViewDidChange(_ textView: UITextView) {
@@ -189,4 +210,5 @@ extension DMAffiliationsVC: UITextViewDelegate {
         }
         otherText = textView.text
     }
+    
 }
