@@ -9,8 +9,8 @@
 import UIKit
 
 class DMEditStudyVC: DMBaseVC {
-    @IBOutlet var studyTableView: UITableView!
-
+    @IBOutlet weak var studyTableView: UITableView!
+    @IBOutlet weak var overlayView: UIView!
     var isFilledFromAutoComplete = false
     var schoolCategories = [SchoolCategory]()
     var selectedSchoolCategories = [SelectedSchool]()
@@ -18,7 +18,7 @@ class DMEditStudyVC: DMBaseVC {
     var selectedData = NSMutableArray()
     let autoCompleteBackView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
     var yearPicker: YearPickerView?
-
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -42,7 +42,7 @@ class DMEditStudyVC: DMBaseVC {
 
     @objc func keyboardWillShow(note: NSNotification) {
         if let keyboardSize = (note.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            studyTableView.contentInset = UIEdgeInsetsMake(0, 0, keyboardSize.height + 200, 0)
+            studyTableView.contentInset = UIEdgeInsetsMake(0, 0, keyboardSize.height + 140, 0)
         }
     }
 

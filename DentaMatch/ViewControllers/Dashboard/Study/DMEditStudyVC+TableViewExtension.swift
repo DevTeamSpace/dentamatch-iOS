@@ -134,9 +134,11 @@ extension DMEditStudyVC: UITextFieldDelegate {
 
     func textFieldDidBeginEditing(_: UITextField) {
         //textFieldDidBeginEditing
+        overlayView.isHidden = false
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
+        overlayView.isHidden = true
         //textFieldDidEndEditing
 //        textField.resignFirstResponder()
 
