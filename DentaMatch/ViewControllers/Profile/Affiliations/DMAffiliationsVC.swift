@@ -63,11 +63,9 @@ class DMAffiliationsVC: DMBaseVC {
                 var reducingFactor : CGFloat = 300.0
                 if UIDevice.current.screenType == .iPhone5{
                     reducingFactor = 220.0
-                }
-                if UIDevice.current.screenType == .iPhone6Plus{
+                } else if UIDevice.current.screenType == .iPhone6Plus{
                     reducingFactor = 380.0
-                }
-                if UIDevice.current.screenType == .iPhoneX{
+                } else if UIDevice.current.screenType == .iPhoneX{
                     reducingFactor = 500.0
                 }
                 aRect.size.height += kbSize.height - reducingFactor
