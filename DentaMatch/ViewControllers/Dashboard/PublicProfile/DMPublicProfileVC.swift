@@ -373,6 +373,7 @@ extension DMPublicProfileVC: UITextFieldDelegate {
             editProfileParams[Constants.ServerKey.state] = textField.text!
         case .license:
             editProfileParams[Constants.ServerKey.licenseNumber] = textField.text!
+            licenseString = textField.text!
         }
     }
 
