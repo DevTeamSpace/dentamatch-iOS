@@ -80,7 +80,13 @@ class EditProfileAffiliationBrickCell: UITableViewCell, TagListDelegate {
     }
 
     func createTag(tagString: String) -> Tag {
-        let tag = Tag(content: TagPresentableText(tagString) {
+//        let stringWidth = tagString.widthWithConstrainetHeight(30.0, font:  UIFont.fontRegular(fontSize: 14.0)!)
+//        var newString = tagString
+//        if UIDevice.current.screenType == .iPhone5 && stringWidth > 290 {
+//            newString = tagString.trunc(length: 35, trailing: "...")
+//        }
+        let str = tagString.tagString(height: 30.0, font: UIFont.fontRegular(fontSize: 14.0)!)
+        let tag = Tag(content: TagPresentableText(str) {
             $0.label.font = UIFont.fontRegular(fontSize: 14.0)
             $0.label.textColor = Constants.Color.brickTextColor
             $0.label.lineBreakMode = .byTruncatingTail
@@ -93,8 +99,11 @@ class EditProfileAffiliationBrickCell: UITableViewCell, TagListDelegate {
         }, onSelect: {
             $0.backgroundColor = Constants.Color.jobSkillBrickColor // $0.isSelected ? UIColor.orange : UIColor.white
         })
+        
         return tag
     }
+    
+    
     
     
 

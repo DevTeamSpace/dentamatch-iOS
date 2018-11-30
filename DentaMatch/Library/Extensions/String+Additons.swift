@@ -211,4 +211,34 @@ extension String {
         
     }
     
+   
+        /*
+         Truncates the string to the specified length number of characters and appends an optional trailing string if longer.
+         - Parameter length: Desired maximum lengths of a string
+         - Parameter trailing: A 'String' that will be appended after the truncation.
+         
+         - Returns: 'String' object.
+         */
+        func trunc(length: Int, trailing: String = "…") -> String {
+            return (self.count > length) ? self.prefix(length) + trailing : self
+        }
+
+    func tagString(height: CGFloat, font: UIFont) -> String {
+        let stringWidth = self.widthWithConstrainetHeight(height, font:font)
+        let paddingConstant = UIScreen.main.bounds.width - 50
+        var newString = self
+        if UIDevice.current.screenType == .iPhone5 && stringWidth > paddingConstant {
+            newString = self.trunc(length: 35, trailing: "...")
+        }
+        else if UIDevice.current.screenType == .iPhone6 && stringWidth > paddingConstant {
+            newString = self.trunc(length: 45, trailing: "...")
+        }else if UIDevice.current.screenType == .iPhone6Plus && stringWidth > paddingConstant {
+            newString = self.trunc(length: 50, trailing: "...")
+        }else if UIDevice.current.screenType == .iPhoneX && stringWidth > paddingConstant {
+            newString = self.trunc(length: 45, trailing: "...")
+        }
+        
+        return newString
+    }
+    
 }
