@@ -28,6 +28,7 @@ public class TagContentText: TagContent {
         addConstraint(NSLayoutConstraint(item: label, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 1, constant: 0))
         
         label.text = tag
+        label.lineBreakMode = .byTruncatingTail
     }
     
     public required init?(coder aDecoder: NSCoder) {

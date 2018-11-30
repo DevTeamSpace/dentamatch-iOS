@@ -83,16 +83,20 @@ class EditProfileAffiliationBrickCell: UITableViewCell, TagListDelegate {
         let tag = Tag(content: TagPresentableText(tagString) {
             $0.label.font = UIFont.fontRegular(fontSize: 14.0)
             $0.label.textColor = Constants.Color.brickTextColor
+            $0.label.lineBreakMode = .byTruncatingTail
         }, onInit: {
             $0.padding = UIEdgeInsets(top: 8, left: 10, bottom: 8, right: 10)
             $0.layer.borderColor = UIColor.clear.cgColor
             $0.layer.borderWidth = 1
             $0.layer.cornerRadius = 2
+
         }, onSelect: {
             $0.backgroundColor = Constants.Color.jobSkillBrickColor // $0.isSelected ? UIColor.orange : UIColor.white
         })
         return tag
     }
+    
+    
 
     func tagListUpdated(tagList: TagList) {
         tagScrollView.contentSize = tagList.intrinsicContentSize
