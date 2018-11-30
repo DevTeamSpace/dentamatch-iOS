@@ -108,7 +108,7 @@ class DMTrackVC: DMBaseVC {
         
          NotificationCenter.default.addObserver(self, selector: #selector(pullToRefreshForSavedJobs), name: .refreshSavedJobs, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(pullToRefreshForAppliedJobs), name: .refreshAppliedJobs, object: nil)
-         NotificationCenter.default.addObserver(self, selector: #selector(pullToRefreshForShortListedJobs), name: .refreshInterviewingJobs, object: nil)
+         //NotificationCenter.default.addObserver(self, selector: #selector(pullToRefreshForShortListedJobs), name: .refreshInterviewingJobs, object: nil)
     }
 
     @objc func pullToRefreshForSavedJobs() {

@@ -38,7 +38,7 @@ extension Constants {
         static let emptyCurrentJobTitle = "Current Job Title can not be left blank."
         static let emptyPassword = "Password can not be left blank."
         static let skipProfile = "Completing your profile will help you stand out to potential Employers."
-        static let somethingWentWrong = "Something went wrong"
+        static let somethingWentWrong = "Something went wrong."
         
         // Experience
         static let emptyYearOfExperience = "Please select experience."

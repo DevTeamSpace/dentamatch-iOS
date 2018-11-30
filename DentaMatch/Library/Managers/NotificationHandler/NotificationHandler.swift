@@ -23,7 +23,7 @@ class NotificationHandler: NSObject {
 
         case .hired, .jobCancellation, .rejectJob, .acceptJob:
             // open job detail
-            NotificationCenter.default.post(name: .refreshInterviewingJobs, object: nil, userInfo: nil)
+            //NotificationCenter.default.post(name: .refreshInterviewingJobs, object: nil, userInfo: nil)
             NotificationCenter.default.post(name: .refreshMessageList, object: nil, userInfo: nil)
             openJobDetailScreen(obj: jobObj!)
 
@@ -38,7 +38,7 @@ class NotificationHandler: NSObject {
         switch notificationType {
         case .acceptJob:
             // open job detail
-            NotificationCenter.default.post(name: .refreshInterviewingJobs, object: nil, userInfo: nil)
+            //NotificationCenter.default.post(name: .refreshInterviewingJobs, object: nil, userInfo: nil)
             NotificationCenter.default.post(name: .refreshMessageList, object: nil, userInfo: nil)
             openJobDetailScreenForBackGround(obj: jobObj!)
 
@@ -64,7 +64,7 @@ class NotificationHandler: NSObject {
         switch notificationType {
         case .acceptJob, .hired:
             NotificationCenter.default.post(name: .refreshMessageList, object: nil, userInfo: nil)
-            NotificationCenter.default.post(name: .refreshInterviewingJobs, object: nil, userInfo: nil)
+            //NotificationCenter.default.post(name: .refreshInterviewingJobs, object: nil, userInfo: nil)
             break
         case .jobCancellation, .rejectJob:
             // open job detail
