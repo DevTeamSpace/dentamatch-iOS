@@ -106,7 +106,7 @@ extension DMJobDetailVC: UITableViewDataSource, UITableViewDelegate, JobDescript
         case 0:
             return TableViewCellHeight.jobTitle.rawValue
         case 1:
-            return TableViewCellHeight.about.rawValue
+            return UITableViewAutomaticDimension//TableViewCellHeight.about.rawValue
         case 2:
             let height = JobDescriptionCell.requiredHeight(jobDescription: (job?.templateDesc)!, isReadMore: isReadMore)
             return height

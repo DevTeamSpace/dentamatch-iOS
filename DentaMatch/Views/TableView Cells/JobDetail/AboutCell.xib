@@ -31,7 +31,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OFFICE LOCATION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zl0-28-5Rh">
-                        <rect key="frame" x="15" y="26" width="107.5" height="14"/>
+                        <rect key="frame" x="15" y="26" width="104.5" height="14"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="14" id="0ro-gi-SWq"/>
                         </constraints>
@@ -39,20 +39,20 @@
                         <color key="textColor" red="0.098039215686274508" green="0.15686274509803921" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dr. Nacy LY " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCd-zC-eFR">
-                        <rect key="frame" x="15" y="48" width="290" height="18"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dr. Nacy LY " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCd-zC-eFR">
+                        <rect key="frame" x="15" y="48" width="290" height="17.5"/>
                         <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="15"/>
                         <color key="textColor" red="0.2196078431372549" green="0.2196078431372549" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dld-NX-eLi">
-                        <rect key="frame" x="15" y="67" width="290" height="0.0"/>
+                        <rect key="frame" x="15" y="66.5" width="290" height="0.0"/>
                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="13"/>
                         <color key="textColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OFFICE TYPE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hbn-r3-7Bj">
-                        <rect key="frame" x="15" y="85" width="77" height="14"/>
+                        <rect key="frame" x="15" y="84.5" width="75.5" height="14"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="14" id="PCw-tH-rGv"/>
                         </constraints>
@@ -61,7 +61,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SvP-gl-Lhb">
-                        <rect key="frame" x="15" y="103" width="290" height="16"/>
+                        <rect key="frame" x="15" y="102.5" width="290" height="16.5"/>
                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="13"/>
                         <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -70,7 +70,7 @@
                         <rect key="frame" x="16" y="137" width="288" height="40"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HOURLY WAGES OFFERED" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6w-qW-ko0">
-                                <rect key="frame" x="0.0" y="0.0" width="154" height="14"/>
+                                <rect key="frame" x="0.0" y="0.0" width="151.5" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="14" id="Qo5-u2-rWK"/>
                                 </constraints>
@@ -96,7 +96,7 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TOTAL JOB OPENING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2u-pb-vSy">
-                        <rect key="frame" x="15" y="195" width="124" height="14"/>
+                        <rect key="frame" x="15" y="195" width="120.5" height="14"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="14" id="Jen-qJ-zbX"/>
                         </constraints>
@@ -121,7 +121,7 @@
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WAj-ki-rV2">
-                        <rect key="frame" x="217" y="20.5" width="78" height="15"/>
+                        <rect key="frame" x="221" y="20.5" width="74" height="15"/>
                         <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="10"/>
                         <state key="normal" title=" View On Map" image="locationButton">
                             <color key="titleColor" red="0.015686274509803921" green="0.50196078431372548" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
