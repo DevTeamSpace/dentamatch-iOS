@@ -72,7 +72,7 @@
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="90%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6k3-LB-8Mx">
-                                <rect key="frame" x="269" y="53" width="30" height="19"/>
+                                <rect key="frame" x="269" y="45" width="30" height="19"/>
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                 <color key="textColor" red="0.050980392156862744" green="0.066666666666666666" blue="0.18431372549019609" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -139,7 +139,7 @@ San Francisco, CA 94107628</string>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MATCH" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fRr-WO-mH5">
-                                <rect key="frame" x="267" y="72" width="34.5" height="12"/>
+                                <rect key="frame" x="267" y="64" width="34.5" height="12"/>
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="10"/>
                                 <color key="textColor" red="0.050980392156862744" green="0.066666666666666666" blue="0.18431372549019609" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -169,7 +169,7 @@ San Francisco, CA 94107628</string>
                             <constraint firstItem="Qkt-U2-9Ax" firstAttribute="centerY" secondItem="1ZF-kL-maa" secondAttribute="centerY" id="dJP-GX-pJo"/>
                             <constraint firstItem="fRr-WO-mH5" firstAttribute="top" secondItem="6k3-LB-8Mx" secondAttribute="bottom" id="eE7-Nx-AAY"/>
                             <constraint firstItem="q8r-xD-GTF" firstAttribute="leading" secondItem="uPo-7X-os1" secondAttribute="leading" id="fCb-Lt-LhA"/>
-                            <constraint firstItem="6k3-LB-8Mx" firstAttribute="centerY" secondItem="Qkt-U2-9Ax" secondAttribute="centerY" constant="3" id="g1z-Ya-8rC"/>
+                            <constraint firstItem="6k3-LB-8Mx" firstAttribute="top" secondItem="uPo-7X-os1" secondAttribute="top" constant="45" id="ftL-Qi-7co"/>
                             <constraint firstItem="AYw-Gd-ePH" firstAttribute="top" secondItem="1ZF-kL-maa" secondAttribute="bottom" constant="8" id="iwm-aA-Pcz"/>
                             <constraint firstAttribute="bottom" secondItem="q8r-xD-GTF" secondAttribute="bottom" id="mgS-RA-Tzm"/>
                             <constraint firstItem="95O-Tl-7uR" firstAttribute="top" secondItem="To9-JG-Pyo" secondAttribute="bottom" constant="10" id="ui8-dU-C2d"/>
