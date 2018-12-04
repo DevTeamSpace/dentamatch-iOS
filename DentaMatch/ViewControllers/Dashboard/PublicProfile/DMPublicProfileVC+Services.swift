@@ -75,6 +75,7 @@ extension DMPublicProfileVC {
                 updateUserDetailsOnSuccess()
                 makeToast(toastString: response[Constants.ServerKey.message].stringValue)
                 updateProfileScreen()
+                NotificationCenter.default.post(name: .profileUpdated, object: nil, userInfo:nil)
                 _ = navigationController?.popViewController(animated: true)
             } else {
                 makeToast(toastString: response[Constants.ServerKey.message].stringValue)

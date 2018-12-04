@@ -101,10 +101,11 @@ class DMJobSearchResultVC: DMBaseVC {
 
         NotificationCenter.default.addObserver(self, selector: #selector(pushRediectNotificationForJobDetailForground), name: .pushRedirectNotificationForground, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(pushRediectNotificationForJobDetailBacground), name: .pushRedirectNotificationBacground, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(bannerUIStatus), name: .pushRedirectNotificationForProfile, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(bannerUIStatus(_:)), name: .pushRedirectNotificationForProfile, object: nil)
        NotificationCenter.default.addObserver(self, selector: #selector(decreaseBadgeCount(_:)), name: .decreaseBadgeCount, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(fetchBadgeCount(_:)), name: .fetchBadgeCount, object: nil)
          NotificationCenter.default.addObserver(self, selector: #selector(refreshListForSaveUnsaveJob(_:)), name: .jobSavedUnsaved, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(bannerUIStatus(_:)), name: .profileUpdated, object: nil)
         mapViewSearchResult.isHidden = true
         tblJobSearchResult.register(UINib(nibName: "JobSearchResultCell", bundle: nil), forCellReuseIdentifier: "JobSearchResultCell")
         mapViewSearchResult.delegate = self
@@ -175,7 +176,7 @@ class DMJobSearchResultVC: DMBaseVC {
         }
     }
     
-   @objc func bannerUIStatus(userInfo: Notification){
+   @objc func bannerUIStatus(_ userInfo: Notification){
         getJobs()
     }
 

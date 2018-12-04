@@ -34,4 +34,5 @@ extension Notification.Name {
     static let refreshAppliedJobs = Notification.Name("RefreshAppliedJob")
     static let jobSavedUnsaved = Notification.Name("JobSavedUnsaved")
     static let tabChanged = Notification.Name("TabChanged")
+    static let profileUpdated = Notification.Name("ProfileUpdated")
 }
