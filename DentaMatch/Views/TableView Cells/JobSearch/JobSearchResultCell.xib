@@ -78,18 +78,18 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Su, Mo, Tu, We, Th, Fr, Sa" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qkt-U2-9Ax">
-                                <rect key="frame" x="90" y="53" width="145.5" height="14.5"/>
+                                <rect key="frame" x="90" y="53.5" width="145.5" height="14.5"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="12"/>
                                 <color key="textColor" red="0.2196078431372549" green="0.2196078431372549" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dr. James Bond" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYw-Gd-ePH">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dr. James Bond" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYw-Gd-ePH">
                                 <rect key="frame" x="25" y="80" width="287" height="17"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="14"/>
                                 <color key="textColor" red="0.2196078431372549" green="0.2196078431372549" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FGO-fW-AIo">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FGO-fW-AIo">
                                 <rect key="frame" x="25" y="105" width="287" height="31.5"/>
                                 <string key="text">628 Vermont Street
 San Francisco, CA 94107628</string>
@@ -174,6 +174,7 @@ San Francisco, CA 94107628</string>
                             <constraint firstAttribute="bottom" secondItem="q8r-xD-GTF" secondAttribute="bottom" id="mgS-RA-Tzm"/>
                             <constraint firstItem="95O-Tl-7uR" firstAttribute="top" secondItem="To9-JG-Pyo" secondAttribute="bottom" constant="10" id="ui8-dU-C2d"/>
                             <constraint firstItem="To9-JG-Pyo" firstAttribute="leading" secondItem="FGO-fW-AIo" secondAttribute="leading" id="vkI-Xm-eTu"/>
+                            <constraint firstItem="q8r-xD-GTF" firstAttribute="top" secondItem="95O-Tl-7uR" secondAttribute="bottom" constant="15" id="xmw-Df-2Mk"/>
                         </constraints>
                     </view>
                 </subviews>

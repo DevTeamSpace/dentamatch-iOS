@@ -13,8 +13,16 @@ extension DMCalenderVC: UITableViewDelegate, UITableViewDataSource {
         return 1
     }
 
+//    func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
+//        return 225
+//    }
+    
     func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
-        return 225
+        return UITableViewAutomaticDimension
+    }
+    
+    func tableView(_: UITableView, estimatedHeightForRowAt _: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
 
     func tableView(_: UITableView, heightForHeaderInSection _: Int) -> CGFloat {

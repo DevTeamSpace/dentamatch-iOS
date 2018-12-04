@@ -10,8 +10,15 @@ import Foundation
 import SwiftyJSON
 
 extension DMTrackVC: UITableViewDataSource, UITableViewDelegate {
+//    func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
+//        return 170
+//    }
     func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
-        return 170
+        return UITableViewAutomaticDimension
+    }
+    
+    func tableView(_: UITableView, estimatedHeightForRowAt _: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
