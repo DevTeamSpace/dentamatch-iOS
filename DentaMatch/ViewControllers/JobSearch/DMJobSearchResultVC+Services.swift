@@ -67,7 +67,8 @@ extension DMJobSearchResultVC {
                     jobs.append(job)
                 }
                 placeHolderEmptyJobsView?.isHidden = jobs.count > 0 ? true : false
-
+                viewResultCount.isHidden = jobs.count == 0 ? true : false
+                constraintViewResultCountHeight.constant = jobs.count == 0 ? 0 : 32.0
                 totalJobsFromServer = response[Constants.ServerKey.result]["total"].intValue
                 jobsPageNo += 1
                 loadingMoreJobs = false
@@ -82,6 +83,8 @@ extension DMJobSearchResultVC {
                 }
             } else {
                 jobs.removeAll()
+                viewResultCount.isHidden = true
+                constraintViewResultCountHeight.constant =  0
                 DispatchQueue.main.async {
                     self.lblResultCount.text = Constants.Strings.zero + Constants.Strings.whiteSpace + Constants.Strings.resultsFound
                     self.tblJobSearchResult.reloadData()

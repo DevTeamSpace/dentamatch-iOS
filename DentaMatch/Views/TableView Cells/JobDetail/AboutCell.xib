@@ -121,7 +121,7 @@
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WAj-ki-rV2">
-                        <rect key="frame" x="217" y="25.5" width="78" height="15"/>
+                        <rect key="frame" x="217" y="20.5" width="78" height="15"/>
                         <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="10"/>
                         <state key="normal" title=" View On Map" image="locationButton">
                             <color key="titleColor" red="0.015686274509803921" green="0.50196078431372548" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
@@ -134,6 +134,7 @@
                     <constraint firstItem="zl0-28-5Rh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="15" id="2Sc-M5-cW2"/>
                     <constraint firstItem="SvP-gl-Lhb" firstAttribute="leading" secondItem="zl0-28-5Rh" secondAttribute="leading" id="39U-JJ-7nW"/>
                     <constraint firstAttribute="trailing" secondItem="0CF-g1-qW3" secondAttribute="trailing" id="4cE-G3-6X9"/>
+                    <constraint firstItem="WAj-ki-rV2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20.5" id="6e7-iv-LkP"/>
                     <constraint firstAttribute="bottomMargin" secondItem="Clh-xE-dDU" secondAttribute="bottom" constant="5" id="9Fg-CU-Pgf"/>
                     <constraint firstItem="SvP-gl-Lhb" firstAttribute="top" secondItem="Hbn-r3-7Bj" secondAttribute="bottom" constant="4" id="9l3-a2-Wpo"/>
                     <constraint firstItem="Dld-NX-eLi" firstAttribute="top" secondItem="YCd-zC-eFR" secondAttribute="bottom" constant="1" id="Dgx-0d-rAW"/>
@@ -147,7 +148,6 @@
                     <constraint firstItem="FHv-p7-AvP" firstAttribute="top" secondItem="SvP-gl-Lhb" secondAttribute="bottom" constant="18" id="bK3-1G-wcJ"/>
                     <constraint firstItem="YCd-zC-eFR" firstAttribute="top" secondItem="zl0-28-5Rh" secondAttribute="bottom" constant="8" id="dhl-6c-b49"/>
                     <constraint firstAttribute="trailing" secondItem="SvP-gl-Lhb" secondAttribute="trailing" constant="15" id="fKa-Pw-ZJs"/>
-                    <constraint firstItem="WAj-ki-rV2" firstAttribute="centerY" secondItem="zl0-28-5Rh" secondAttribute="centerY" id="hwE-H9-tGK"/>
                     <constraint firstItem="0CF-g1-qW3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="jhf-Lu-iO5"/>
                     <constraint firstItem="Clh-xE-dDU" firstAttribute="leading" secondItem="zl0-28-5Rh" secondAttribute="leading" id="lGE-wq-ukc"/>
                     <constraint firstItem="FHv-p7-AvP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="lSp-kJ-H5k"/>

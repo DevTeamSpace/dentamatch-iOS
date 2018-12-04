@@ -326,6 +326,9 @@ extension DMWorkExperienceVC: UITableViewDataSource, UITableViewDelegate {
                 currentExperience?.references.append(refere)
                 workExperienceDetailTable.reloadData()
                 reSizeTableViewsAndScrollView()
+                var aRect = self.workExperienceDetailTable.frame
+                aRect.size.height += 300
+                self.mainScrollView.scrollRectToVisible(aRect, animated: true)
             }
 
         } else {

@@ -24,7 +24,7 @@ class DMCalenderVC: DMBaseVC, FSCalendarDataSource, FSCalendarDelegate, FSCalend
 
     var gregorian: NSCalendar?
     //var notificationLabel: UILabel?
-    
+    var selectedDate: Date?
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -88,6 +88,11 @@ class DMCalenderVC: DMBaseVC, FSCalendarDataSource, FSCalendarDelegate, FSCalend
         calendar?.appearance.eventOffset = CGPoint(x: 0, y: -8)
         viewForCalender.addSubview(calendar!)
         viewForCalender.bringSubview(toFront: viewForHeader)
+        NotificationCenter.default.addObserver(self, selector: #selector(tabChangedAction), name: .tabChanged, object: nil)
+    }
+    
+    @objc private func tabChangedAction(notification _: Notification){
+        self.selectedDate = nil
     }
 
     func getAllJobFromServer() {
@@ -103,8 +108,8 @@ class DMCalenderVC: DMBaseVC, FSCalendarDataSource, FSCalendarDelegate, FSCalend
                 self.fulltimeJobIndicatorView.isHidden = true
             }
 
-            self.calendar?.select(Date())
-            self.calendar(self.calendar!, didSelect: Date(), at: FSCalendarMonthPosition.notFound)
+            self.calendar?.select(self.selectedDate ?? Date())
+            self.calendar(self.calendar!, didSelect: self.selectedDate ?? Date(), at: FSCalendarMonthPosition.notFound)
         }
     }
 
@@ -420,6 +425,7 @@ class DMCalenderVC: DMBaseVC, FSCalendarDataSource, FSCalendarDelegate, FSCalend
     }
 
     func calendar(_: FSCalendar, didSelect date: Date, at _: FSCalendarMonthPosition) {
+        selectedDate = date
         selectedDayList.removeAll()
         selectedDayList = dateAllEvents(date: date)
         // debugPrint(selectedDayList.description)
@@ -523,6 +529,10 @@ class DMCalenderVC: DMBaseVC, FSCalendarDataSource, FSCalendarDelegate, FSCalend
             notificationLabel?.isHidden = true
         }
     }*/
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .tabChanged, object: nil)
+    }
 }
 
 extension Date {

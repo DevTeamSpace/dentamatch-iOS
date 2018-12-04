@@ -10,16 +10,18 @@ import GoogleMaps
 import UIKit
 
 class DMJobSearchResultVC: DMBaseVC {
-    @IBOutlet var currentGPSButtonTopConstraint: NSLayoutConstraint!
-    @IBOutlet var bannerLabel: UILabel!
-    @IBOutlet var bannerView: UIView!
+    @IBOutlet weak var currentGPSButtonTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bannerLabel: UILabel!
+    @IBOutlet weak var bannerView: UIView!
 
-    @IBOutlet var bannerHeightConstraint: NSLayoutConstraint!
-    @IBOutlet var tblJobSearchResult: UITableView!
-    @IBOutlet var mapViewSearchResult: GMSMapView!
-    @IBOutlet var constraintTblViewSearchResultHeight: NSLayoutConstraint!
-    @IBOutlet var lblResultCount: UILabel!
-
+    @IBOutlet weak var bannerHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var tblJobSearchResult: UITableView!
+    @IBOutlet weak var mapViewSearchResult: GMSMapView!
+    @IBOutlet weak var constraintTblViewSearchResultHeight: NSLayoutConstraint!
+    @IBOutlet weak var viewResultCount: UIView!
+    @IBOutlet weak var lblResultCount: UILabel!
+    @IBOutlet weak var constraintViewResultCountHeight: NSLayoutConstraint!
+    
     @IBOutlet var btnCurrentLocation: UIButton!
     //var notificationLabel: UILabel?
     var bannerStatus = 0
@@ -92,7 +94,7 @@ class DMJobSearchResultVC: DMBaseVC {
         placeHolderEmptyJobsView?.isHidden = false
         placeHolderEmptyJobsView?.layoutIfNeeded()
         view.layoutIfNeeded()
-        placeHolderEmptyJobsView?.placeHolderMessageLabel.text = "You don’t have any jobs"
+        placeHolderEmptyJobsView?.placeHolderMessageLabel.text = "No jobs found"//"You don’t have any jobs"
 
         NotificationCenter.default.addObserver(self, selector: #selector(pushRediectNotificationOtherAll), name: .pushRedirectNotificationAllForground, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(pushRediectNotificationOtherAllBackGround), name: .pushRedirectNotificationAllBackGround, object: nil)

@@ -50,12 +50,12 @@ class DentistDetailCell: UITableViewCell {
          CANCELLED = 6
          */
         lblApplied.isHidden = true
-
+        lblApplied.textColor = Constants.Color.jobAppliedGreenColor
         switch job.isApplied {
         case 1:
             lblApplied.text = "INVITED"
             lblApplied.isHidden = false
-
+            
         case 2:
             lblApplied.text = "APPLIED"
             lblApplied.isHidden = false
@@ -71,11 +71,11 @@ class DentistDetailCell: UITableViewCell {
         case 5:
             lblApplied.text = "REJECTED"
             lblApplied.isHidden = false
-
+            lblApplied.textColor = Constants.Color.rejectedJobColor
         case 6:
             lblApplied.text = "CANCELLED"
             lblApplied.isHidden = false
-
+            lblApplied.textColor = Constants.Color.cancelledJobColor
         default:
             break
         }

@@ -16,7 +16,6 @@ class TabBarVC: UITabBarController, UITabBarControllerDelegate {
         case messages
         case profile
     }
-
     // MARK: - View LifeCycle
 
     override func viewDidLoad() {
@@ -64,8 +63,8 @@ class TabBarVC: UITabBarController, UITabBarControllerDelegate {
         let tabBarOptions = TabBarOptions(rawValue: (index + 1))!
 
         switch tabBarOptions {
-        case .jobs, .track, .calender, .messages: break
-        // print("jobs")
+        case .jobs, .track, .messages: break
+        case .calender : NotificationCenter.default.post(name: .tabChanged, object: nil, userInfo: nil)
         case .profile:
             if let navController = viewController as? UINavigationController, let profileVC = navController.viewControllers.first as? DMEditProfileVC  {
                 if profileVC.dashBoardVC != nil {

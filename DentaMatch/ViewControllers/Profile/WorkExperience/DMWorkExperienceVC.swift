@@ -306,7 +306,7 @@ extension DMWorkExperienceVC: JobSelectionPickerViewDelegate {
         view.endEditing(true)
     }
 }
-
+//MARK: SearchStateView Delegates
 extension DMWorkExperienceVC: SearchStateViewControllerDelegate {
     func selectedState(state: String?) {
          currentExperience?.stateName = state

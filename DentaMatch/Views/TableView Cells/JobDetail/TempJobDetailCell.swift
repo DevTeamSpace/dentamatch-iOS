@@ -81,7 +81,7 @@ class TempJobDetailCell: UITableViewCell {
          CANCELLED = 6
          */
         lblApplied.isHidden = true
-        
+        lblApplied.textColor = Constants.Color.jobAppliedGreenColor
         switch job.isApplied {
         case 1:
             lblApplied.text = "INVITED"
@@ -98,14 +98,14 @@ class TempJobDetailCell: UITableViewCell {
         case 4:
             lblApplied.text = "HIRED"
             lblApplied.isHidden = false
-            
         case 5:
             lblApplied.text = "REJECTED"
             lblApplied.isHidden = false
-            
+            lblApplied.textColor = Constants.Color.rejectedJobColor
         case 6:
             lblApplied.text = "CANCELLED"
             lblApplied.isHidden = false
+            lblApplied.textColor = Constants.Color.cancelledJobColor
             
         default:
             break

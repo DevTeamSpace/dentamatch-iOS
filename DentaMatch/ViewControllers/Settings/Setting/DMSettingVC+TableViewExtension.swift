@@ -76,7 +76,12 @@ extension DMSettingVC: UITableViewDataSource, UITableViewDelegate {
             navigationController?.pushViewController(termsVC, animated: true)
         case 4:
             // logout
-            openLogin()
+            self.alertMessage(title: "Logout", message: "Are you sure you want to logout?", leftButtonText: "Yes", rightButtonText: "No", completionHandler: { [weak self](isLeft: Bool) in
+                if isLeft {
+                  self?.openLogin()
+                }
+            })
+            
             break
         default: break
         }

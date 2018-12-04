@@ -22,6 +22,9 @@ extension Constants {
         static let unSaveJobColor = UIColor.color(withHexCode: "6F6F6F")
         static let saveJobColor = UIColor.color(withHexCode: "0470c0")
         static let cancelJobDeleteColor = UIColor.color(withHexCode: "fe3824")
+        static let rejectedJobColor = UIColor.color(withHexCode: "fe3824")
+        static let hiredJobColor = UIColor.color(withHexCode: "8ecf7e")
+        static let cancelledJobColor = UIColor.color(withHexCode: "0470c0")
         static let textFieldErrorColor = UIColor.color(withHexCode: "ff0000")
         
         static let profileProgressBarColor = UIColor.color(withHexCode: "a3d977")
@@ -69,6 +72,7 @@ extension Constants {
         static let notificationreadTextColor = UIColor(red: 71.0 / 255.0, green: 71.0 / 255.0, blue: 71.0 / 255.0, alpha: 1)
         static let notificationreadTimeLabelColor = UIColor(red: 137.0 / 255.0, green: 137.0 / 255.0, blue: 137.0 / 255.0, alpha: 1)
         static let dentaDarkBlueColor = UIColor(red: 15.0 / 255.0, green: 24.0 / 255.0, blue: 62.0 / 255.0, alpha: 1)
+        static let jobAppliedGreenColor = UIColor(red: 142.0 / 255.0, green: 207.0 / 255.0, blue: 126.0 / 255.0, alpha: 1)
     }
     
 }

@@ -200,11 +200,11 @@
                                     <constraint firstAttribute="bottom" secondItem="dhA-3Y-iU7" secondAttribute="bottom" constant="8" id="zAF-8d-txr"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NRE-fb-aTV">
-                                <rect key="frame" x="0.0" y="109" width="375" height="32"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NRE-fb-aTV">
+                                <rect key="frame" x="0.0" y="109" width="375" height="0.0"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20 results found" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vjm-2c-xgg">
-                                        <rect key="frame" x="20" y="0.0" width="355" height="32"/>
+                                        <rect key="frame" x="20" y="0.0" width="355" height="0.0"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="13"/>
                                         <color key="textColor" red="0.058823529409999999" green="0.094117647060000004" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -213,7 +213,7 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="7RR-9E-Vqc"/>
+                                    <constraint firstAttribute="height" id="7RR-9E-Vqc"/>
                                     <constraint firstAttribute="bottom" secondItem="Vjm-2c-xgg" secondAttribute="bottom" id="B2b-1r-vda"/>
                                     <constraint firstAttribute="trailing" secondItem="Vjm-2c-xgg" secondAttribute="trailing" id="hhC-nT-EkH"/>
                                     <constraint firstItem="Vjm-2c-xgg" firstAttribute="leading" secondItem="NRE-fb-aTV" secondAttribute="leading" constant="20" id="k6n-5s-zPS"/>
@@ -222,7 +222,7 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SWm-JO-UtE" customClass="GMSMapView">
                                 <rect key="frame" x="0.0" y="109" width="375" height="509"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="deviceRGB"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c5K-0a-VeV">
                                 <rect key="frame" x="320" y="119" width="40" height="40"/>
@@ -252,7 +252,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
                             <constraint firstItem="2dN-kZ-fns" firstAttribute="top" secondItem="0tZ-o3-vk0" secondAttribute="bottom" id="1fM-AM-npm"/>
                             <constraint firstItem="2dN-kZ-fns" firstAttribute="leading" secondItem="7JX-NO-s69" secondAttribute="leading" id="3ht-Er-RJY"/>
@@ -279,10 +279,12 @@
                         <outlet property="bannerView" destination="2dN-kZ-fns" id="TWa-f7-GQO"/>
                         <outlet property="btnCurrentLocation" destination="c5K-0a-VeV" id="Y6y-H3-Nga"/>
                         <outlet property="constraintTblViewSearchResultHeight" destination="JX9-Ab-gXI" id="ZBl-jd-CXN"/>
+                        <outlet property="constraintViewResultCountHeight" destination="7RR-9E-Vqc" id="vLl-4k-U7n"/>
                         <outlet property="currentGPSButtonTopConstraint" destination="FRr-5V-fy6" id="2qI-bO-C9r"/>
                         <outlet property="lblResultCount" destination="Vjm-2c-xgg" id="T1a-h8-wab"/>
                         <outlet property="mapViewSearchResult" destination="SWm-JO-UtE" id="pG6-er-2Jy"/>
                         <outlet property="tblJobSearchResult" destination="hUs-Hx-1cO" id="v2t-jR-aKr"/>
+                        <outlet property="viewResultCount" destination="NRE-fb-aTV" id="N6t-6k-cdk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6QG-Rh-cm0" userLabel="First Responder" sceneMemberID="firstResponder"/>
