@@ -1,0 +1,72 @@
+PODS:
+  - Alamofire (4.8.1)
+  - Crashlytics (3.12.0):
+    - Fabric (~> 1.9.0)
+  - Fabric (1.9.0)
+  - GoogleMaps (2.1.1):
+    - GoogleMaps/Maps (= 2.1.1)
+  - GoogleMaps/Base (2.1.1)
+  - GoogleMaps/Maps (2.1.1):
+    - GoogleMaps/Base
+  - GooglePlaces (2.1.1):
+    - GoogleMaps/Base (= 2.1.1)
+  - Instabug (8.0.17)
+  - KeychainAccess (3.1.2)
+  - Mixpanel (3.0.9):
+    - Mixpanel/Mixpanel (= 3.0.9)
+  - Mixpanel/Mixpanel (3.0.9)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
+  - SVProgressHUD (2.2.5)
+  - SwiftyJSON (4.2.0)
+  - XCGLogger (4.0.0):
+    - XCGLogger/Core (= 4.0.0)
+  - XCGLogger/Core (4.0.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.0)
+  - Crashlytics
+  - Fabric
+  - GoogleMaps (~> 2.1.1)
+  - GooglePlaces (~> 2.1.1)
+  - Instabug
+  - KeychainAccess
+  - Mixpanel (~> 3.0.8)
+  - SDWebImage (~> 3.8)
+  - SVProgressHUD
+  - SwiftyJSON
+  - XCGLogger (~> 4.0.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - Crashlytics
+    - Fabric
+    - GoogleMaps
+    - GooglePlaces
+    - Instabug
+    - KeychainAccess
+    - Mixpanel
+    - SDWebImage
+    - SVProgressHUD
+    - SwiftyJSON
+    - XCGLogger
+
+SPEC CHECKSUMS:
+  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
+  Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
+  Fabric: f988e33c97f08930a413e08123064d2e5f68d655
+  GoogleMaps: a5b5bbe47734e2443bde781a6aa64e69fdb6d785
+  GooglePlaces: 35636d86e5020cba3856eb988c09a5491de0a65a
+  Instabug: 399f0ce0ac407adcd157c4a0693918442b13d9c3
+  KeychainAccess: b3816fddcf28aa29d94b10ec305cd52be14c472b
+  Mixpanel: 106bad33d5b9a05312316a01938f17b6baa2d99f
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+  XCGLogger: 38063ea89b4c8b23232d18efd2e12eb0005f3ea4
+
+PODFILE CHECKSUM: 36b27a488afdd4b6b733b142d2af585e71d15f68
+
+COCOAPODS: 1.5.3
