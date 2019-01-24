@@ -47,8 +47,8 @@ class DMChatVC: DMBaseVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(refreshUnblockList), name: .refreshUnblockList, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(refreshChat), name: .refreshChat, object: nil)
         navigationItem.title = chatList?.officeName
         navigationItem.leftBarButtonItem = backBarButton()
@@ -71,7 +71,7 @@ class DMChatVC: DMBaseVC {
     // MARK: - Keyboard Show Hide Observers
 
     @objc func keyboardWillShow(note: NSNotification) {
-        if let keyboardSize = (note.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+        if let keyboardSize = (note.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             UIView.animate(withDuration: 0.25, animations: {
                 self.bottomConstraint.constant = keyboardSize.height
                 self.chatTableView.layoutIfNeeded()
@@ -88,7 +88,7 @@ class DMChatVC: DMBaseVC {
             self.view.layoutIfNeeded()
         }) { (_: Bool) in
         }
-        chatTableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        chatTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
 
     func setup() {
@@ -108,7 +108,7 @@ class DMChatVC: DMBaseVC {
         chatTextView.addSubview(placeHolderLabel)
 
         placeHolderLabelForView = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 40))
-        placeHolderLabelForView.font = UIFont.fontRegular(fontSize: 15.0)!
+        placeHolderLabelForView.font = UIFont.fontRegular(fontSize: 15.0)
         placeHolderLabelForView.textColor = UIColor.color(withHexCode: "aaafb8")
         placeHolderLabelForView.textAlignment = .center
         placeHolderLabelForView.numberOfLines = 2

@@ -36,7 +36,7 @@ extension DMJobSearchVC: LocationAddressDelegate {
             tblViewJobSearch.beginUpdates()
             tblViewJobSearch.reloadRows(at: [IndexPath(row: 0, section: 2)], with: .bottom)
             tblViewJobSearch.endUpdates()
-            tblViewJobSearch.scrollToRow(at: IndexPath(row: 0, section: 2), at: UITableViewScrollPosition.none, animated: false)
+            tblViewJobSearch.scrollToRow(at: IndexPath(row: 0, section: 2), at: UITableView.ScrollPosition.none, animated: false)
             // debugPrint(self.location.address!)
         } else {
             // debugPrint("Address is empty")
@@ -58,7 +58,7 @@ extension DMJobSearchVC: JobSearchTypeCellDelegate, JobSearchPartTimeCellDelegat
                 tblViewJobSearch.beginUpdates()
                 tblViewJobSearch.deleteRows(at: [IndexPath(row: 1, section: 1)], with: .none)
                 tblViewJobSearch.endUpdates()
-                tblViewJobSearch.scrollToRow(at: IndexPath(row: 0, section: 1), at: UITableViewScrollPosition.none, animated: false)
+                tblViewJobSearch.scrollToRow(at: IndexPath(row: 0, section: 1), at: UITableView.ScrollPosition.none, animated: false)
                 isPartTimeDayShow = false
                 isJobTypePartTime = "0"
                 partTimeJobDays.removeAll()
@@ -67,7 +67,7 @@ extension DMJobSearchVC: JobSearchTypeCellDelegate, JobSearchPartTimeCellDelegat
                 tblViewJobSearch.beginUpdates()
                 tblViewJobSearch.insertRows(at: [IndexPath(row: 1, section: 1)], with: .none)
                 tblViewJobSearch.endUpdates()
-                tblViewJobSearch.scrollToRow(at: IndexPath(row: 1, section: 1), at: UITableViewScrollPosition.none, animated: false)
+                tblViewJobSearch.scrollToRow(at: IndexPath(row: 1, section: 1), at: UITableView.ScrollPosition.none, animated: false)
             }
         } else {
             if selected == true {

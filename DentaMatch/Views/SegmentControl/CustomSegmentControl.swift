@@ -13,8 +13,8 @@ class CustomSegmentControl: UISegmentedControl {
         super.awakeFromNib()
         backgroundColor = UIColor.clear
         tintColor = UIColor.color(withHexCode: "0470c0")
-        setTitleTextAttributes([NSAttributedStringKey.font: UIFont.fontRegular(fontSize: 13.0)!, NSAttributedStringKey.foregroundColor: UIColor.white], for: .normal)
-        setTitleTextAttributes([NSAttributedStringKey.font: UIFont.fontRegular(fontSize: 13.0)!, NSAttributedStringKey.foregroundColor: UIColor.white], for: .selected)
+        setTitleTextAttributes([NSAttributedString.Key.font: UIFont.fontRegular(fontSize: 13.0), NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
+        setTitleTextAttributes([NSAttributedString.Key.font: UIFont.fontRegular(fontSize: 13.0), NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
     }
 
 }

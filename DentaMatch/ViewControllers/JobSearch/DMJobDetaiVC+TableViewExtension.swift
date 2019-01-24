@@ -106,7 +106,7 @@ extension DMJobDetailVC: UITableViewDataSource, UITableViewDelegate, JobDescript
         case 0:
             return TableViewCellHeight.jobTitle.rawValue
         case 1:
-            return UITableViewAutomaticDimension//TableViewCellHeight.about.rawValue
+            return UITableView.automaticDimension//TableViewCellHeight.about.rawValue
         case 2:
             let height = JobDescriptionCell.requiredHeight(jobDescription: (job?.templateDesc)!, isReadMore: isReadMore)
             return height
@@ -128,11 +128,11 @@ extension DMJobDetailVC: UITableViewDataSource, UITableViewDelegate, JobDescript
         switch indexPath.section {
         case 0:
             if job!.jobType == 3 {
-                return  UITableViewAutomaticDimension
+                return  UITableView.automaticDimension
             }
             return (job?.isApplied ?? 0 ) > 0 ? TableViewCellHeight.jobTitle.rawValue + 20: TableViewCellHeight.jobTitle.rawValue
         case 1:
-            return UITableViewAutomaticDimension
+            return UITableView.automaticDimension
         case 2:
             let height = JobDescriptionCell.requiredHeight(jobDescription: (job?.templateDesc)!, isReadMore: isReadMore)
             return height
@@ -142,7 +142,7 @@ extension DMJobDetailVC: UITableViewDataSource, UITableViewDelegate, JobDescript
         // return TableViewCellHeight.jobDescAndOfficeDesc.rawValue
         case 4:
             // Working hours
-            return UITableViewAutomaticDimension
+            return UITableView.automaticDimension
         // return WorkingHoursTableCell.requiredHeight(job: job!)
         case 5:
             return TableViewCellHeight.map.rawValue
@@ -209,7 +209,7 @@ extension DMJobDetailVC: UITableViewDataSource, UITableViewDelegate, JobDescript
             let url = URL(string: "\(kOpenGoogleMapUrl)?q=\(job!.latitude),\(job!.longitude)&zoom=14")!
 
             if #available(iOS 10.0, *) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                UIApplication.shared.open(url)
             } else {
                 // Fallback on earlier versions
                 UIApplication.shared.openURL(url)
@@ -219,7 +219,7 @@ extension DMJobDetailVC: UITableViewDataSource, UITableViewDelegate, JobDescript
             let url = URL(string: "\(kGoogleSearchMap)\(job!.latitude),\(job!.longitude)")!
 
             if #available(iOS 10.0, *) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                UIApplication.shared.open(url)
             } else {
                 // Fallback on earlier versions
                 UIApplication.shared.openURL(url)

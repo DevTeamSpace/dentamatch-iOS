@@ -124,7 +124,7 @@ class DMJobSearchVC: DMBaseVC {
             navigationItem.leftBarButtonItem = nil
         }
 
-        tblViewJobSearch.rowHeight = UITableViewAutomaticDimension
+        tblViewJobSearch.rowHeight = UITableView.automaticDimension
         tblViewJobSearch.register(UINib(nibName: "JobSeachTitleCell", bundle: nil), forCellReuseIdentifier: "JobSeachTitleCell")
         tblViewJobSearch.register(UINib(nibName: "JobSearchTypeCell", bundle: nil), forCellReuseIdentifier: "JobSearchTypeCell")
         tblViewJobSearch.register(UINib(nibName: "JobSearchPartTimeCell", bundle: nil), forCellReuseIdentifier: "JobSearchPartTimeCell")
@@ -180,7 +180,7 @@ class DMJobSearchVC: DMBaseVC {
                         self.tblViewJobSearch.beginUpdates()
                         self.tblViewJobSearch.reloadRows(at: [IndexPath(row: 0, section: 2)], with: .bottom)
                         self.tblViewJobSearch.endUpdates()
-                        self.tblViewJobSearch.scrollToRow(at: IndexPath(row: 0, section: 2), at: UITableViewScrollPosition.none, animated: false)
+                        self.tblViewJobSearch.scrollToRow(at: IndexPath(row: 0, section: 2), at: UITableView.ScrollPosition.none, animated: false)
                         // debugPrint(self.location.address ?? "Address not found")
                     } else {
                         // debugPrint("Address is empty")

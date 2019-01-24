@@ -48,7 +48,7 @@ class SocketManager: NSObject, SocketConnectionDelegate {
          */
 
         let params = [
-            "userId": UserManager.shared().activeUser.userId!,
+            "userId": UserManager.shared().activeUser.userId,
             "userName": UserManager.shared().activeUser.firstName!,
             "userType": 1,
         ] as [String: Any]
@@ -62,7 +62,7 @@ class SocketManager: NSObject, SocketConnectionDelegate {
 
     func handleBlockUnblock(chatList: ChatList, blockStatus: String) {
         let params = [
-            "fromId": UserManager.shared().activeUser.userId!,
+            "fromId": UserManager.shared().activeUser.userId,
             "toId": chatList.recruiterId!,
             "blockStatus": blockStatus,
         ]
@@ -84,7 +84,7 @@ class SocketManager: NSObject, SocketConnectionDelegate {
 
     func sendTextMessage(message: String, recruiterId: String) {
         let params = [
-            "fromId": UserManager.shared().activeUser.userId!,
+            "fromId": UserManager.shared().activeUser.userId,
             "toId": recruiterId,
             "message": message,
         ]
@@ -98,7 +98,7 @@ class SocketManager: NSObject, SocketConnectionDelegate {
 
     func updateMessageRead() {
         let params = [
-            "toId": UserManager.shared().activeUser.userId!,
+            "toId": UserManager.shared().activeUser.userId,
             "fromId": recruiterId,
         ]
 
@@ -109,7 +109,7 @@ class SocketManager: NSObject, SocketConnectionDelegate {
 
     func notOnChat() {
         let params = [
-            "fromId": UserManager.shared().activeUser.userId!,
+            "fromId": UserManager.shared().activeUser.userId,
         ]
         socket.emitWithAck("notOnChat", params).timingOut(after: 0) { (_: [Any]) in
             // debugPrint(params)
@@ -126,7 +126,7 @@ class SocketManager: NSObject, SocketConnectionDelegate {
         }
         if socket.status == .connected {
             let params = [
-                "fromId": UserManager.shared().activeUser.userId!,
+                "fromId": UserManager.shared().activeUser.userId,
             ]
             socket.emitWithAck("getChatHistory", params).timingOut(after: 0) { (_: [Any]) in
                 // debugPrint(params)
@@ -137,7 +137,7 @@ class SocketManager: NSObject, SocketConnectionDelegate {
     func getHistory(recruiterId: String, completionHandler: @escaping (_ messageInfo: [Any]) -> Void) {
         historyMessagesCompletionHandler = completionHandler
         let params = [
-            "fromId": UserManager.shared().activeUser.userId!,
+            "fromId": UserManager.shared().activeUser.userId,
             "toId": recruiterId,
         ] as [String: Any]
         socket.emit("getHistory", params)
@@ -146,7 +146,7 @@ class SocketManager: NSObject, SocketConnectionDelegate {
     func getLeftMessages(recruiterId: String, messageId: Int64, completionHandler: @escaping (_ messageInfo: [Any]) -> Void) {
         getLeftMessagesCompletionHandler = completionHandler
         let params = [
-            "fromId": UserManager.shared().activeUser.userId!,
+            "fromId": UserManager.shared().activeUser.userId,
             "toId": recruiterId,
             "messageId": messageId,
         ] as [String: Any]

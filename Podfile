@@ -1,22 +1,19 @@
-# Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, '9.0'
+use_frameworks!
 
 target 'DentaMatch' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
-  use_frameworks!
 
-
-pod 'Alamofire', '~> 4.0'
+pod 'Alamofire'
 pod 'SwiftyJSON'
-pod 'SDWebImage', '~>3.8'
+pod 'AlamofireImage'
 pod 'Fabric'
 pod 'Crashlytics'
 pod 'KeychainAccess'
-pod 'GoogleMaps', '~> 2.1.1'
-pod 'GooglePlaces', '~> 2.1.1'
-pod 'XCGLogger', '~> 4.0.0'
-pod 'SVProgressHUD'
+pod 'GoogleMaps'
+pod 'GooglePlaces'
+pod 'XCGLogger'
+pod 'IHProgressHUD'
 pod 'Instabug'
-pod 'Mixpanel', '~> 3.0.8'
+pod 'Mixpanel-swift'
 
 end

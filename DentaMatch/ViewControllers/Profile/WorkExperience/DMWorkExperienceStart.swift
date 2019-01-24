@@ -28,8 +28,8 @@ class DMWorkExperienceStart: DMBaseVC, ExperiencePickerViewDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         changeNavBarAppearanceForProfiles()
         navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
         navigationController?.navigationBar.shadowImage = nil
@@ -50,13 +50,13 @@ class DMWorkExperienceStart: DMBaseVC, ExperiencePickerViewDelegate {
     // MARK: - Keyboard Show Hide Observers
 
     @objc func keyboardWillShow(note: NSNotification) {
-        if let keyboardSize = (note.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            workExperienceTable.contentInset = UIEdgeInsetsMake(0, 0, keyboardSize.height + 1, 0)
+        if let keyboardSize = (note.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            workExperienceTable.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height + 1, right: 0)
         }
     }
 
     @objc func keyboardWillHide(note _: NSNotification) {
-        workExperienceTable.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        workExperienceTable.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
 
     func setUp() {

@@ -385,6 +385,11 @@ static const NSString * CSToastQueueKey             = @"CSToastQueueKey";
 
 - (CGPoint)cs_centerPointForPosition:(id)point withToast:(UIView *)toast {
     CSToastStyle *style = [CSToastManager sharedStyle];
+    CGFloat safeAreaInsetBottom = 0.f;
+    
+    if (@available(iOS 11.0, *)) {
+        safeAreaInsetBottom = self.safeAreaInsets.bottom;
+    }
     
     if([point isKindOfClass:[NSString class]]) {
         if([point caseInsensitiveCompare:CSToastPositionTop] == NSOrderedSame) {
@@ -397,7 +402,7 @@ static const NSString * CSToastQueueKey             = @"CSToastQueueKey";
     }
     
     // default to bottom
-    return CGPointMake(self.bounds.size.width/2, (self.bounds.size.height - (toast.frame.size.height / 2) - 49.0) - style.verticalPadding);
+    return CGPointMake(self.bounds.size.width/2, (self.bounds.size.height - (toast.frame.size.height / 2) - 49.0) - style.verticalPadding - safeAreaInsetBottom);
 }
 
 @end

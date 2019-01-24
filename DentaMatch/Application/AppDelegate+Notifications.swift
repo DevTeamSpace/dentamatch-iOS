@@ -56,8 +56,8 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
         LogManager.logDebug(userInfo.description)
-        let state: UIApplicationState = UIApplication.shared.applicationState
-        if state == UIApplicationState.active {
+        let state = UIApplication.shared.applicationState
+        if state == .active {
             if UserDefaultsManager.sharedInstance.isLoggedIn {
                 if let megCheck = userInfo["data"] as? NSDictionary {
                      guard let chatData = megCheck["data"] as? NSDictionary else {return}
@@ -71,7 +71,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                         let newObj = noti?["data"]
                         let josnObj = JSON(newObj ?? [:])
                         let userNotiObj = UserNotification(dict: josnObj)
-                        ToastView.showNotificationToast(message: userNotiObj.message, name: "Notification", imageUrl: "", type: ToastSkinType.White, onCompletion: {
+                        ToastView.showNotificationToast(message: userNotiObj.message, name: "Notification", imageUrl: "", type: .white, onCompletion: {
                             NotificationHandler.notificationHandleforForground(notiObj: userNotiObj, jobObj: jobObj, app: application)
                         })
                     }

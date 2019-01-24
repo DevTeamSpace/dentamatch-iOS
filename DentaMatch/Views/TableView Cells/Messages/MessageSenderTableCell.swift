@@ -41,7 +41,7 @@ class MessageSenderTableCell: UITableViewCell {
 
     class func calculateHeight(text: String) -> CGFloat {
         let textView = UITextView()
-        textView.font = UIFont.fontRegular(fontSize: 14.0)!
+        textView.font = UIFont.fontRegular(fontSize: 14.0)
         var newFrame: CGRect!
         textView.text = text
 

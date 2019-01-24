@@ -111,7 +111,7 @@ class DatabaseManager: NSObject {
                             chatList.timeStamp = chatObj["sentTime"].doubleValue
                             chatList.unreadCount = chatList.unreadCount + 1
 
-                            ToastView.showNotificationToast(message: chatObj["message"].stringValue, name: chatObj["fromName"].stringValue, imageUrl: "", type: .White, onCompletion: {
+                            ToastView.showNotificationToast(message: chatObj["message"].stringValue, name: chatObj["fromName"].stringValue, imageUrl: "", type: .white, onCompletion: {
                                 kAppDelegate?.chatSocketNotificationTap(recruiterId: chatObj["fromId"].stringValue)
                             })
                         }
@@ -162,7 +162,7 @@ class DatabaseManager: NSObject {
     class func getCountForChats(recruiterId: String) -> Int {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Chat")
         let userId = UserManager.shared().activeUser.userId
-        fetchRequest.predicate = NSPredicate(format: "(fromId == %@ AND toId == %@) or (fromId == %@ AND toId == %@)", userId!, recruiterId, recruiterId, userId!)
+        fetchRequest.predicate = NSPredicate(format: "(fromId == %@ AND toId == %@) or (fromId == %@ AND toId == %@)", userId, recruiterId, recruiterId, userId)
         do {
             let chatList = try kAppDelegate?.managedObjectContext.fetch(fetchRequest)
             return chatList!.count
@@ -235,7 +235,7 @@ class DatabaseManager: NSObject {
 
             NotificationCenter.default.post(name: .hideMessagePlaceholder, object: nil)
 
-            ToastView.showNotificationToast(message: chatObj["message"].stringValue, name: chatObj["name"].stringValue, imageUrl: "", type: .White, onCompletion: {
+            ToastView.showNotificationToast(message: chatObj["message"].stringValue, name: chatObj["name"].stringValue, imageUrl: "", type: .white, onCompletion: {
                 kAppDelegate?.chatSocketNotificationTap(recruiterId: chatObj["recruiterId"].stringValue)
             })
         }

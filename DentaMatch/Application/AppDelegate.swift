@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return UIApplication.shared.delegate as! AppDelegate
     }
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         setUpApplication()
         if UserDefaultsManager.sharedInstance.isProfileCompleted {
@@ -71,15 +71,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         window?.rootViewController = jobSearchNAV
-        UIApplication.shared.statusBarStyle = .lightContent
     }
 
     func changeNavBarAppearance() {
-        UIApplication.shared.statusBarStyle = .lightContent
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().isTranslucent = false
         UINavigationBar.appearance().barTintColor = Constants.Color.navBarColor
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont.fontRegular(fontSize: 14.0)!]
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.fontRegular(fontSize: 14.0)]
     }
 
     // MARK: - Configure Crashlytics

@@ -81,7 +81,7 @@ extension DMAffiliationsVC: UITableViewDataSource, UITableViewDelegate {
                 cell.nameLabel.text = "Affiliations"
                 cell.jobTitleLabel.text = "Lorem Ipsum is simply dummy text for the typing and printing industry"
                 if let imageURL = URL(string: UserManager.shared().activeUser.profileImageURL!) {
-                    cell.photoButton.sd_setImage(with: imageURL, for: .normal, placeholderImage: kPlaceHolderImage)
+                    cell.photoButton.setImage(for: .normal, url: imageURL, placeholder: kPlaceHolderImage)
                 }
                 cell.photoButton.progressBar.setProgress(profileProgress, animated: true)
                 return cell

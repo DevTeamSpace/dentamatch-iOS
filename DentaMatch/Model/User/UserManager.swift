@@ -84,9 +84,7 @@ class UserManager: NSObject {
     func saveActiveUser() {
         kUserDefaults.set(NSKeyedArchiver.archivedData(withRootObject: activeUser) as AnyObject?, forKey: ACTIVE_USER_KEY)
         kUserDefaults.synchronize()
-        if let email = self.activeUser.email {
-            kUserDefaults.set(email, forKey: LOGGED_USER_EMAIL_KEY)
-        }
+        kUserDefaults.set(self.activeUser.email, forKey: LOGGED_USER_EMAIL_KEY)
         kUserDefaults.synchronize()
     }
 

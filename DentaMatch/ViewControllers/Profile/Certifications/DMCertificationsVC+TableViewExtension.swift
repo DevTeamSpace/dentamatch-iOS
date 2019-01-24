@@ -61,7 +61,7 @@ extension DMCertificationsVC: UITableViewDataSource, UITableViewDelegate, UIText
         cell.photoButton.tag = indexPath.row
         cell.photoButton.addTarget(self, action: #selector(DMCertificationsVC.certificationImageButtonPressed(_:)), for: .touchUpInside)
         if let imageURL = URL(string: certificate.certificateImageURL!) {
-            cell.photoButton.sd_setImage(with: imageURL, for: .normal, placeholderImage: UIImage(named: ""))
+            cell.photoButton.setImage(for: .normal, url: imageURL, placeholder: UIImage(named: ""))
         } else {
             if certificate.certificateImage != nil {
                 cell.photoButton.setImage(certificate.certificateImage, for: .normal)

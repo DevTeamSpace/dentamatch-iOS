@@ -25,7 +25,7 @@ class AutoCompleteTable: UIView, UITableViewDataSource, UITableViewDelegate {
         autoCompleteTableView.dataSource = self
         autoCompleteTableView.delegate = self
         autoCompleteTableView.estimatedRowHeight = 50.0
-        autoCompleteTableView.rowHeight = UITableViewAutomaticDimension
+        autoCompleteTableView.rowHeight = UITableView.automaticDimension
         autoCompleteTableView.register(UINib(nibName: "AutoCompleteTableViewCell", bundle: nil), forCellReuseIdentifier: "AutoCompleteTableViewCell")
     }
 
@@ -49,7 +49,7 @@ class AutoCompleteTable: UIView, UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        return UITableView.automaticDimension
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -18,10 +18,10 @@ extension UILabel {
             style.lineSpacing = lineHeight
             style.alignment = textAlignment
             if let font = self.font {
-                let attrs = [NSAttributedStringKey.font: font]
+                let attrs = [NSAttributedString.Key.font: font]
                 attributeString.addAttributes(attrs, range: NSMakeRange(0, text.count))
             }
-            attributeString.addAttribute(NSAttributedStringKey.paragraphStyle,
+            attributeString.addAttribute(NSAttributedString.Key.paragraphStyle,
                                          value: style,
                                          range: NSMakeRange(0, text.count))
             attributedText = attributeString

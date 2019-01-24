@@ -80,10 +80,10 @@ class DMJobTitleVC: DMBaseVC {
         } else {
             title = Constants.ScreenTitleNames.jobTitle
         }
-        tblJobTitle.rowHeight = UITableViewAutomaticDimension
+        tblJobTitle.rowHeight = UITableView.automaticDimension
         tblJobTitle.register(UINib(nibName: "JobTitleCell", bundle: nil), forCellReuseIdentifier: "JobTitleCell")
         navigationItem.leftBarButtonItem = backBarButton()
-        setRightBarButton(title: Constants.Strings.save, imageName: "", width: rightBarButtonWidth, font: UIFont.fontRegular(fontSize: 16.0)!)
+        setRightBarButton(title: Constants.Strings.save, imageName: "", width: rightBarButtonWidth, font: UIFont.fontRegular(fontSize: 16.0))
     }
 }
 
@@ -125,7 +125,7 @@ extension DMJobTitleVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        return UITableView.automaticDimension
     }
 
     func tableView(_: UITableView, estimatedHeightForRowAt _: IndexPath) -> CGFloat {

@@ -85,7 +85,7 @@ class EditProfileAffiliationBrickCell: UITableViewCell, TagListDelegate {
 //        if UIDevice.current.screenType == .iPhone5 && stringWidth > 290 {
 //            newString = tagString.trunc(length: 35, trailing: "...")
 //        }
-        let str = tagString.tagString(height: 30.0, font: UIFont.fontRegular(fontSize: 14.0)!)
+        let str = tagString.tagString(height: 30.0, font: UIFont.fontRegular(fontSize: 14.0))
         let tag = Tag(content: TagPresentableText(str) {
             $0.label.font = UIFont.fontRegular(fontSize: 14.0)
             $0.label.textColor = Constants.Color.brickTextColor

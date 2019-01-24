@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0Ec-P8-wpD">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0Ec-P8-wpD">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -27,7 +28,7 @@
                     <tabBarItem key="tabBarItem" title="Messages" image="messages" id="oC1-ok-prH"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="lEc-xd-1YD">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -42,16 +43,12 @@
         <scene sceneID="Dug-z1-hvh">
             <objects>
                 <viewController storyboardIdentifier="DMMessagesVC" extendedLayoutIncludesOpaqueBars="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Fxn-uz-B0W" customClass="DMMessagesVC" customModule="DentaMatch" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="UnC-HP-PXI"/>
-                        <viewControllerLayoutGuide type="bottom" id="miW-mJ-JdX"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="H6a-Y0-VKh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kgg-RW-Zn7">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="690"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Fxn-uz-B0W" id="7yc-RQ-0wd"/>
@@ -61,11 +58,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="kgg-RW-Zn7" firstAttribute="leading" secondItem="H6a-Y0-VKh" secondAttribute="leading" id="DgE-Su-fTD"/>
-                            <constraint firstAttribute="trailing" secondItem="kgg-RW-Zn7" secondAttribute="trailing" id="ovW-ew-Cb0"/>
-                            <constraint firstItem="kgg-RW-Zn7" firstAttribute="top" secondItem="UnC-HP-PXI" secondAttribute="bottom" id="rUP-Vh-MZz"/>
-                            <constraint firstItem="miW-mJ-JdX" firstAttribute="top" secondItem="kgg-RW-Zn7" secondAttribute="bottom" id="zjp-hf-Wbn"/>
+                            <constraint firstItem="kgg-RW-Zn7" firstAttribute="leading" secondItem="jDi-Me-gGI" secondAttribute="leading" id="DgE-Su-fTD"/>
+                            <constraint firstItem="jDi-Me-gGI" firstAttribute="trailing" secondItem="kgg-RW-Zn7" secondAttribute="trailing" id="ovW-ew-Cb0"/>
+                            <constraint firstItem="kgg-RW-Zn7" firstAttribute="top" secondItem="jDi-Me-gGI" secondAttribute="top" id="rUP-Vh-MZz"/>
+                            <constraint firstItem="jDi-Me-gGI" firstAttribute="bottom" secondItem="kgg-RW-Zn7" secondAttribute="bottom" id="zjp-hf-Wbn"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="jDi-Me-gGI"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="jHS-A8-fnt"/>
@@ -83,16 +81,12 @@
         <scene sceneID="BhD-3B-laH">
             <objects>
                 <viewController storyboardIdentifier="DMChatVC" extendedLayoutIncludesOpaqueBars="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2QZ-xL-diH" customClass="DMChatVC" customModule="DentaMatch" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="F0I-4c-ZDo"/>
-                        <viewControllerLayoutGuide type="bottom" id="L5E-EO-oew"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eIY-1g-uT4">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Q39-U4-23E">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="555"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="642"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="2QZ-xL-diH" id="Z9j-HO-SdR"/>
@@ -100,7 +94,7 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QjC-bM-j5e">
-                                <rect key="frame" x="0.0" y="555" width="375" height="48"/>
+                                <rect key="frame" x="0.0" y="642" width="375" height="48"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZBR-Pw-p5e">
                                         <rect key="frame" x="316" y="0.0" width="59" height="48"/>
@@ -149,14 +143,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Q39-U4-23E" firstAttribute="top" secondItem="F0I-4c-ZDo" secondAttribute="bottom" id="BW4-qm-ksJ"/>
+                            <constraint firstItem="Q39-U4-23E" firstAttribute="top" secondItem="Dea-nZ-GK2" secondAttribute="top" id="BW4-qm-ksJ"/>
                             <constraint firstItem="QjC-bM-j5e" firstAttribute="top" secondItem="Q39-U4-23E" secondAttribute="bottom" id="DrL-pc-xHa"/>
-                            <constraint firstItem="Q39-U4-23E" firstAttribute="leading" secondItem="eIY-1g-uT4" secondAttribute="leading" id="E5o-cK-TVU"/>
-                            <constraint firstItem="L5E-EO-oew" firstAttribute="top" secondItem="QjC-bM-j5e" secondAttribute="bottom" id="Ec9-eO-S4m"/>
-                            <constraint firstAttribute="trailing" secondItem="QjC-bM-j5e" secondAttribute="trailing" id="WqM-8V-Pbx"/>
-                            <constraint firstAttribute="trailing" secondItem="Q39-U4-23E" secondAttribute="trailing" id="rqA-ge-UgB"/>
-                            <constraint firstItem="QjC-bM-j5e" firstAttribute="leading" secondItem="eIY-1g-uT4" secondAttribute="leading" id="z6e-lM-cfm"/>
+                            <constraint firstItem="Q39-U4-23E" firstAttribute="leading" secondItem="Dea-nZ-GK2" secondAttribute="leading" id="E5o-cK-TVU"/>
+                            <constraint firstItem="Dea-nZ-GK2" firstAttribute="bottom" secondItem="QjC-bM-j5e" secondAttribute="bottom" id="Ec9-eO-S4m"/>
+                            <constraint firstItem="Dea-nZ-GK2" firstAttribute="trailing" secondItem="QjC-bM-j5e" secondAttribute="trailing" id="WqM-8V-Pbx"/>
+                            <constraint firstItem="Dea-nZ-GK2" firstAttribute="trailing" secondItem="Q39-U4-23E" secondAttribute="trailing" id="rqA-ge-UgB"/>
+                            <constraint firstItem="QjC-bM-j5e" firstAttribute="leading" secondItem="Dea-nZ-GK2" secondAttribute="leading" id="z6e-lM-cfm"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Dea-nZ-GK2"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="jma-oK-W2O"/>

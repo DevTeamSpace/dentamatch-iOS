@@ -43,7 +43,7 @@ class DMEditDentalStateBoardVC: DMBaseVC {
         dentalStateBoardImageButton.clipsToBounds = true
         if let imageUrl = URL(string: dentalStateBoardImageURL) {
             dentalStateBoardImageButton.setTitle("", for: .normal)
-            dentalStateBoardImageButton.sd_setImage(with: imageUrl, for: .normal, placeholderImage: kCertificatePlaceHolder)
+            dentalStateBoardImageButton.setImage(for: .normal, url: imageUrl, placeholder: kPlaceHolderImage)
             dentalStateBoardImageButton.layoutIfNeeded()
         }
     }

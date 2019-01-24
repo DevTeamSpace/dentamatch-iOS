@@ -25,7 +25,7 @@ extension DMRegistrationVC {
             }
             // debugPrint(response!)
             if response![Constants.ServerKey.status].boolValue {
-                MixpanelOperations.trackMixpanelEventWithProperties(eventName: "SignUp", dict: params as NSDictionary)
+                MixpanelOperations.trackMixpanelEventWithProperties(eventName: "SignUp", dict: params)
                 self.clearData()
                 self.handleUserResponse(response: response)
                 self.alertMessage(title: "Success", message: response![Constants.ServerKey.message].stringValue, buttonText: "Ok", completionHandler: {
@@ -94,7 +94,7 @@ extension DMRegistrationVC {
     }
 
     func goToLogin() {
-        if let viewControllers = kAppDelegate?.window?.rootViewController?.childViewControllers {
+        if let viewControllers = kAppDelegate?.window?.rootViewController?.children {
             for viewController in viewControllers {
                 if viewController is DMRegistrationContainer {
                     (viewController as? DMRegistrationContainer)?.goToLoginAfterRegistration()

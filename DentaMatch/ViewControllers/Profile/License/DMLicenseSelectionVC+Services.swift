@@ -40,7 +40,7 @@ extension DMLicenseSelectionVC {
         var params = [String: AnyObject]()
         params["type"] = "dental_state_board" as AnyObject?
         if let profileImageData = self.stateBoardImage {
-            if let imageData = UIImageJPEGRepresentation(profileImageData, 0.5) {
+            if let imageData = profileImageData.jpegData(compressionQuality: 0.5) {
                 params["image"] = imageData as AnyObject?
                 showLoader()
                 APIManager.apiMultipart(serviceName: Constants.API.uploadImage, parameters: params, completionHandler: { (response: JSON?, error: NSError?) in

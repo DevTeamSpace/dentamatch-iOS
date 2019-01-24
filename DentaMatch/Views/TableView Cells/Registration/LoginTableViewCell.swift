@@ -23,7 +23,7 @@ class LoginTableViewCell: UITableViewCell {
         showButton = UIButton(type: .system)
         showButton.frame = CGRect(x: 0, y: 0, width: 50, height: passwordTextField.frame.height)
         showButton.setTitle("Show", for: .normal)
-        showButton.titleLabel?.font = UIFont.fontRegular(fontSize: 12.0)!
+        showButton.titleLabel?.font = UIFont.fontRegular(fontSize: 12.0)
         showButton.addTarget(self, action: #selector(showPasswordText), for: .touchUpInside)
         showButton.center = rightTextFieldView.center
         rightTextFieldView.addSubview(showButton)

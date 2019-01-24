@@ -29,7 +29,7 @@ class AboutCell: UITableViewCell {
         let paragraphStyle = NSMutableParagraphStyle()
         let attributedString = NSMutableAttributedString()
         paragraphStyle.lineSpacing = 130
-        attributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
         lblAddress.attributedText = attributedString
         lblOfficeType.attributedText = attributedString
         lblDentistName.attributedText = attributedString

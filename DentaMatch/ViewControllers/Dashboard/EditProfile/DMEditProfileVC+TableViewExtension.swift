@@ -209,7 +209,7 @@ extension DMEditProfileVC: UITableViewDataSource, UITableViewDelegate {
             cell.aboutTextView.text = UserManager.shared().activeUser.aboutMe
     
             if let imageUrl = URL(string: UserManager.shared().activeUser.profileImageURL!) {
-                cell.profileButton.sd_setImage(with: imageUrl, for: .normal, placeholderImage: kPlaceHolderImage)
+                cell.profileButton.setImage(for: .normal, url: imageUrl, placeholder: kPlaceHolderImage)
             }
             return cell
 
@@ -232,7 +232,8 @@ extension DMEditProfileVC: UITableViewDataSource, UITableViewDelegate {
                 cell.editButton.addTarget(self, action: #selector(openDentalStateBoardScreen), for: .touchUpInside)
                 cell.editButton.isHidden = false
                 if let imageUrl = URL(string: dentalStateBoardURL) {
-                    cell.certificateImageView.sd_setImage(with: imageUrl, placeholderImage: kCertificatePlaceHolder)
+                    cell.certificateImageView.setImage(withURL: imageUrl, placeholder: kCertificatePlaceHolder)
+                    
                 }
                 return cell
             }
@@ -420,7 +421,7 @@ extension DMEditProfileVC: UITableViewDataSource, UITableViewDelegate {
                 cell.editButton.removeTarget(nil, action: nil, for: .allEvents)
                 cell.editButton.addTarget(self, action: #selector(openCertificateScreen), for: .touchUpInside)
                 if let imageUrl = URL(string: certificate.certificateImageURL!) {
-                    cell.certificateImageView.sd_setImage(with: imageUrl, placeholderImage: kCertificatePlaceHolder)
+                    cell.certificateImageView.setImage(withURL: imageUrl, placeholder: kCertificatePlaceHolder)
                 }
                 return cell
             }

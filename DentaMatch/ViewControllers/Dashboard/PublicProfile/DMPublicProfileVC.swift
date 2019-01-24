@@ -89,7 +89,7 @@ class DMPublicProfileVC: DMBaseVC {
 
         title = "EDIT PROFILE"
         navigationItem.leftBarButtonItem = backBarButton()
-        publicProfileTableView.rowHeight = UITableViewAutomaticDimension
+        publicProfileTableView.rowHeight = UITableView.automaticDimension
         publicProfileTableView.estimatedRowHeight = 650
         publicProfileTableView.register(UINib(nibName: "EditPublicProfileTableCell", bundle: nil), forCellReuseIdentifier: "EditPublicProfileTableCell")
 
@@ -99,8 +99,8 @@ class DMPublicProfileVC: DMBaseVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     @objc func dismissKeyboard() {
@@ -116,10 +116,10 @@ class DMPublicProfileVC: DMBaseVC {
     // MARK: - Keyboard Show Hide Observers
 
     @objc func keyboardWillShow(note: NSNotification) {
-        if let kbSize = (note.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+        if let kbSize = (note.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             //publicProfileTableView.contentInset = UIEdgeInsetsMake(0, 0, kbSize.height + 1, 0)
             
-            let contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0)
+            let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: kbSize.height, right: 0.0)
             publicProfileTableView.contentInset = contentInsets
             publicProfileTableView.scrollIndicatorInsets = contentInsets;
             
@@ -151,7 +151,7 @@ class DMPublicProfileVC: DMBaseVC {
     }
 
     @objc func keyboardWillHide(note _: NSNotification) {
-        publicProfileTableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        publicProfileTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
 
     func validateFields() -> Bool {

@@ -36,8 +36,8 @@ class DMJobTitleSelectionVC: DMBaseVC, ToolBarButtonDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
 
@@ -53,13 +53,13 @@ class DMJobTitleSelectionVC: DMBaseVC, ToolBarButtonDelegate {
     // MARK: - Keyboard Show Hide Observers
 
     @objc func keyboardWillShow(note: NSNotification) {
-        if let keyboardSize = (note.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            jobTitleSelectionTableView.contentInset = UIEdgeInsetsMake(0, 0, keyboardSize.height + 1, 0)
+        if let keyboardSize = (note.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            jobTitleSelectionTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height + 1, right: 0)
         }
     }
 
     @objc func keyboardWillHide(note _: NSNotification) {
-        jobTitleSelectionTableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        jobTitleSelectionTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
 
     @objc func makeTip() {
@@ -96,11 +96,11 @@ class DMJobTitleSelectionVC: DMBaseVC, ToolBarButtonDelegate {
         keyboardDoneButtonView.sizeToFit()
         keyboardDoneButtonView.barTintColor = Constants.Color.toolBarColor
         // Setup the buttons to be put in the system.
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: self, action: nil)
 
         let item = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(toolBarButtonTapped))
         item.tag = 2
-        item.setTitleTextAttributes([NSAttributedStringKey.font: UIFont.fontRegular(fontSize: 20.0)!], for: UIControlState.normal)
+        item.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.fontRegular(fontSize: 20.0)], for: UIControl.State.normal)
 
         item.tintColor = UIColor.white
 

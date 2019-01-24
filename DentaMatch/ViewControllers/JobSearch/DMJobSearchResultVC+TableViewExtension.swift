@@ -25,11 +25,11 @@ extension DMJobSearchResultVC: UITableViewDataSource, UITableViewDelegate, JobSe
     }
 
     func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        return UITableView.automaticDimension
     }
 
     func tableView(_: UITableView, estimatedHeightForRowAt _: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        return UITableView.automaticDimension
     }
 
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {

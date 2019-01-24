@@ -16,7 +16,7 @@ class AnimatedLeftViewPHTextField: FloatLabelTextField {
         super.awakeFromNib()
         textColor = Constants.Color.textFieldTextColor
         titleYPadding = 5.0
-        titleFont = UIFont.fontRegular(fontSize: 12.0)!
+        titleFont = UIFont.fontRegular(fontSize: 12.0)
         titleActiveTextColour = Constants.Color.textFieldPlaceHolderColor
         titleTextColour = Constants.Color.textFieldPlaceHolderColor
         leftTextFieldView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: frame.size.height))

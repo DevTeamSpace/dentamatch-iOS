@@ -13,7 +13,7 @@ extension DMEditDentalStateBoardVC {
         var params = [String: AnyObject]()
         params["type"] = "dental_state_board" as AnyObject?
         if let dentalStateBoardImage = self.dentalStateBoardImage {
-            if let imageData = UIImageJPEGRepresentation(dentalStateBoardImage, 0.5) {
+            if let imageData = dentalStateBoardImage.jpegData(compressionQuality: 0.5) {
                 params["image"] = imageData as AnyObject?
                 showLoader()
                 APIManager.apiMultipart(serviceName: Constants.API.uploadImage, parameters: params, completionHandler: { (response: JSON?, error: NSError?) in

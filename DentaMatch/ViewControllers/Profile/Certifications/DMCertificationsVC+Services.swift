@@ -50,7 +50,7 @@ extension DMCertificationsVC {
 //        params["validityDate"] = certObj.validityDate as AnyObject?
 
         if let profileImageData = certObj.certificateImage {
-            if let imageData = UIImageJPEGRepresentation(profileImageData, 0.5) {
+            if let imageData = profileImageData.jpegData(compressionQuality: 0.5) {
                 params["image"] = imageData as AnyObject?
                 showLoader()
                 APIManager.apiMultipart(serviceName: Constants.API.updateCertificate, parameters: params, completionHandler: { (response: JSON?, error: NSError?) in

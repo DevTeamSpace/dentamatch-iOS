@@ -17,15 +17,15 @@ extension DMJobTitleSelectionVC: UITableViewDataSource, UITableViewDelegate {
             if indexPath.row == 1 || indexPath.row == 2 {
                 return 0
             }
-            return UITableViewAutomaticDimension
+            return UITableView.automaticDimension
         }
         if let selectedJobTitle = selectedJobTitle, selectedJobTitle.isLicenseRequired == false {
             if indexPath.row == 1 || indexPath.row == 2 {
                 return 0
             }
-            return UITableViewAutomaticDimension
+            return UITableView.automaticDimension
         } else {
-            return UITableViewAutomaticDimension
+            return UITableView.automaticDimension
         }
     }
 

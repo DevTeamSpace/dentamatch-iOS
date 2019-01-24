@@ -17,11 +17,11 @@ var screenWidth: CGFloat {
 }
 
 enum ToastSkinType: Int {
-    case White
-    case Black
+    case white
+    case black
 }
 
-typealias ToasClickClosure = (() -> Void)
+typealias ToastClickClosure = (() -> Void)
 
 class ToastView: UIView {
     @IBOutlet var imageviewIcon: UIImageView!
@@ -32,7 +32,7 @@ class ToastView: UIView {
     let animationDuration: Double = 0.3
     let showDuration: Double = 3.0
 
-    var tapClosure: ToasClickClosure?
+    var tapClosure: ToastClickClosure?
 
     // MARK: - Public Methods
 
@@ -44,21 +44,21 @@ class ToastView: UIView {
         showCrossToast(message: message, type: type, onCompletion: nil)
     }
 
-    class func showTickToast(message: String, type: ToastSkinType, onCompletion: ToasClickClosure?) {
+    class func showTickToast(message: String, type: ToastSkinType, onCompletion: ToastClickClosure?) {
         let theImage: UIImage? = UIImage(named: "profileButton")!
         let theToast = makeToast(message: message, image: theImage!, type: type)
         theToast.tapClosure = onCompletion
         theToast.showToast()
     }
 
-    class func showCrossToast(message: String, type: ToastSkinType, onCompletion: ToasClickClosure?) {
+    class func showCrossToast(message: String, type: ToastSkinType, onCompletion: ToastClickClosure?) {
         let theImage: UIImage = UIImage(named: "profileButton")! as UIImage
         let theToast = makeToast(message: message, image: theImage, type: type)
         theToast.tapClosure = onCompletion
         theToast.showToast()
     }
 
-    class func showNotificationToast(message: String, name: String, imageUrl: String?, type: ToastSkinType, onCompletion: ToasClickClosure?) {
+    class func showNotificationToast(message: String, name: String, imageUrl: String?, type: ToastSkinType, onCompletion: ToastClickClosure?) {
         let theImage: UIImage? = UIImage(named: "profileButton")!
 
         let theToast = makeNotificationToast(message: message, name: name, image: theImage, imageUrl: imageUrl, type: type)
@@ -86,7 +86,7 @@ class ToastView: UIView {
         toast.layer.shadowRadius = 10
 
         // Skin Type
-        if type == ToastSkinType.Black {
+        if type == ToastSkinType.black {
             toast.messageLabel.textColor = UIColor.white
             toast.backgroundColor = UIColor(red: 33.0 / 255.0, green: 40.0 / 255.0, blue: 52.0 / 255.0, alpha: 1.0)
         }
@@ -120,7 +120,7 @@ class ToastView: UIView {
         toast.clipsToBounds = true
 
         // Skin Type
-        if type == ToastSkinType.Black {
+        if type == .black {
             toast.messageLabel.textColor = UIColor.white
             toast.backgroundColor = UIColor(red: 33.0 / 255.0, green: 40.0 / 255.0, blue: 52.0 / 255.0, alpha: 1.0)
         }
@@ -161,7 +161,7 @@ class ToastView: UIView {
 
         let constraintRect = CGSize(width: labelMaxWidth, height: labelMaxHeight)
 
-        let boundingBox = messageString.boundingRect(with: constraintRect, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: fontSize)], context: nil)
+        let boundingBox = messageString.boundingRect(with: constraintRect, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: fontSize)], context: nil)
 
         LogManager.logDebug("\(boundingBox)")
         LogManager.logDebug("\(constraintRect)")
@@ -172,7 +172,7 @@ class ToastView: UIView {
     // MARK: - gesture
 
     @IBAction func swipeOccured(sender: UIPanGestureRecognizer) {
-        if sender.state == UIGestureRecognizerState.began {
+        if sender.state == UIGestureRecognizer.State.began {
             dismissToast()
         }
     }

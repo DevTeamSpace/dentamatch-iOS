@@ -17,6 +17,8 @@ class DMEditSkillsVC: DMBaseVC {
     @IBOutlet var navigationView: UIView!
 
     @IBOutlet var skillsTableView: UITableView!
+    @IBOutlet weak var customNavBarHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bottomSaveButtonConstraint: NSLayoutConstraint!
 
     var skills = [Skill]()
     var otherSkill: Skill?
@@ -31,6 +33,17 @@ class DMEditSkillsVC: DMBaseVC {
     func setup() {
         skillsTableView.register(UINib(nibName: "SkillsTableCell", bundle: nil), forCellReuseIdentifier: "SkillsTableCell")
         skillsTableView.register(UINib(nibName: "OtherSkillCell", bundle: nil), forCellReuseIdentifier: "OtherSkillCell")
+        
+        var topInset: CGFloat = 0
+        var bottomInset: CGFloat = 0
+        
+        if #available(iOS 11.0, *) {
+            topInset = navigationController?.view.safeAreaInsets.top ?? 0
+            bottomInset = navigationController?.view.safeAreaInsets.bottom ?? 0
+        }
+        
+        customNavBarHeightConstraint.constant = 44 + topInset
+        bottomSaveButtonConstraint.constant = -bottomInset
     }
 
     override func viewWillAppear(_ animated: Bool) {

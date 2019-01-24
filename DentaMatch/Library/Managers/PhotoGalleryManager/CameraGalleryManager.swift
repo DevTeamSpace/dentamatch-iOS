@@ -159,22 +159,22 @@ class CameraGalleryManager: UIViewController, UIImagePickerControllerDelegate, U
 
     // MARK: - ImagePicker Delegates
 
-    func imagePickerController(_ imagePicker : UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
+    func imagePickerController(_ imagePicker : UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+
         if allowsEditing {
-            if let pickedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
+            if let pickedImage = info[.editedImage] as? UIImage {
                 var image = pickedImage
                 image = image.rotateImageWithScaling()
                 completionHandler?(image, nil)
             }
 
         } else {
-            if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            if let pickedImage = info[.originalImage] as? UIImage {
                 var image = pickedImage
                 image = image.rotateImageWithScaling()
                 completionHandler?(image, nil)
             }
         }
-        //presentedFromController?.dismiss(animated: true, completion: nil)
         imagePicker.dismiss(animated: true, completion: nil)
     }
 

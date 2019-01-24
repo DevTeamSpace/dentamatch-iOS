@@ -39,7 +39,7 @@ extension DMPublicProfileVC: UITableViewDataSource, UITableViewDelegate, UITextV
         cell.addEditProfileButton.addTarget(self, action: #selector(addPhoto), for: .touchUpInside)
         if profileImage == nil {
             if let imageUrl = URL(string: UserManager.shared().activeUser.profileImageURL!) {
-                cell.profileButton.sd_setImage(with: imageUrl, for: .normal, placeholderImage: kPlaceHolderImage)
+                cell.profileButton.setImage(for: .normal, url: imageUrl, placeholder: kPlaceHolderImage)
             }
         } else {
             cell.profileButton.setImage(profileImage, for: .normal)
@@ -69,7 +69,7 @@ extension DMPublicProfileVC: UITableViewDataSource, UITableViewDelegate, UITextV
     }
 
     func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
-        publicProfileTableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        publicProfileTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         editProfileParams[Constants.ServerKey.aboutMe] = textView.text
         return true
     }

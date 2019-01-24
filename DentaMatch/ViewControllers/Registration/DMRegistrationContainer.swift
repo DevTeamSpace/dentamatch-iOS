@@ -29,20 +29,20 @@ class DMRegistrationContainer: DMBaseVC {
         loginVC = UIStoryboard.registrationStoryBoard().instantiateViewController(type: DMLoginVC.self)!
         loginVC?.view.frame = CGRect(x: 0, y: topView.frame.size.height, width: view.frame.size.width, height: view.frame.size.height - topView.frame.size.height)
 
-        addChildViewController(loginVC!)
+        addChild(loginVC!)
         view.addSubview((loginVC?.view)!)
-        addChildViewController(registrationVC!)
+        addChild(registrationVC!)
         view.addSubview((registrationVC?.view)!)
 
         if UserDefaultsManager.sharedInstance.isLoggedOut {
-            registrationVC?.didMove(toParentViewController: self)
-            loginVC?.didMove(toParentViewController: self)
+            registrationVC?.didMove(toParent: self)
+            loginVC?.didMove(toParent: self)
             registrationVC?.view.alpha = 0.0
             isRegistration = false
 
         } else {
-            loginVC?.didMove(toParentViewController: self)
-            registrationVC?.didMove(toParentViewController: self)
+            loginVC?.didMove(toParent: self)
+            registrationVC?.didMove(toParent: self)
             loginVC?.view.alpha = 0.0
         }
     }
@@ -57,12 +57,12 @@ class DMRegistrationContainer: DMBaseVC {
         UIView.removeTip(view: loginButton)
 
         if isRegistration {
-            registrationButton.titleLabel?.font = UIFont.fontSemiBold(fontSize: 14.0)!
-            loginButton.titleLabel?.font = UIFont.fontLight(fontSize: 14.0)!
+            registrationButton.titleLabel?.font = UIFont.fontSemiBold(fontSize: 14.0)
+            loginButton.titleLabel?.font = UIFont.fontLight(fontSize: 14.0)
             UIView.makeTip(view: registrationButton, size: 8, x: registrationButton.frame.midX / 2, y: registrationButton.frame.midY)
         } else {
-            registrationButton.titleLabel?.font = UIFont.fontLight(fontSize: 14.0)!
-            loginButton.titleLabel?.font = UIFont.fontSemiBold(fontSize: 14.0)!
+            registrationButton.titleLabel?.font = UIFont.fontLight(fontSize: 14.0)
+            loginButton.titleLabel?.font = UIFont.fontSemiBold(fontSize: 14.0)
             UIView.makeTip(view: loginButton, size: 8, x: loginButton.frame.midX / 2, y: loginButton.frame.midY)
         }
 
@@ -75,12 +75,12 @@ class DMRegistrationContainer: DMBaseVC {
 
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         isRegistration = false
-        registrationButton.titleLabel?.font = UIFont.fontLight(fontSize: 14.0)!
-        loginButton.titleLabel?.font = UIFont.fontSemiBold(fontSize: 14.0)!
+        registrationButton.titleLabel?.font = UIFont.fontLight(fontSize: 14.0)
+        loginButton.titleLabel?.font = UIFont.fontSemiBold(fontSize: 14.0)
         UIView.removeTip(view: registrationButton)
         UIView.makeTip(view: sender, size: 8, x: sender.frame.midX / 2, y: sender.frame.midY)
         view.endEditing(true)
-        view.bringSubview(toFront: (loginVC?.view)!)
+        view.bringSubviewToFront((loginVC?.view)!)
         UIView.animate(withDuration: 0.25, animations: {
             self.loginVC?.view.alpha = 1.0
             self.registrationVC?.view.alpha = 0.0
@@ -91,12 +91,12 @@ class DMRegistrationContainer: DMBaseVC {
 
     @IBAction func registrationButtonPressed(_ sender: UIButton) {
         isRegistration = true
-        registrationButton.titleLabel?.font = UIFont.fontSemiBold(fontSize: 14.0)!
-        loginButton.titleLabel?.font = UIFont.fontLight(fontSize: 14.0)!
+        registrationButton.titleLabel?.font = UIFont.fontSemiBold(fontSize: 14.0)
+        loginButton.titleLabel?.font = UIFont.fontLight(fontSize: 14.0)
         UIView.removeTip(view: loginButton)
         UIView.makeTip(view: sender, size: 8, x: sender.frame.midX / 2, y: sender.frame.midY)
         view.endEditing(true)
-        view.bringSubview(toFront: (registrationVC?.view)!)
+        view.bringSubviewToFront((registrationVC?.view)!)
         UIView.animate(withDuration: 0.25, animations: {
             self.registrationVC?.view.alpha = 1.0
             self.loginVC?.view.alpha = 0.0
@@ -107,12 +107,12 @@ class DMRegistrationContainer: DMBaseVC {
 
     func goToLoginAfterRegistration() {
         isRegistration = false
-        registrationButton.titleLabel?.font = UIFont.fontLight(fontSize: 14.0)!
-        loginButton.titleLabel?.font = UIFont.fontSemiBold(fontSize: 14.0)!
+        registrationButton.titleLabel?.font = UIFont.fontLight(fontSize: 14.0)
+        loginButton.titleLabel?.font = UIFont.fontSemiBold(fontSize: 14.0)
         UIView.removeTip(view: registrationButton)
         UIView.makeTip(view: loginButton, size: 8, x: loginButton.frame.midX / 2, y: loginButton.frame.midY)
         view.endEditing(true)
-        view.bringSubview(toFront: (loginVC?.view)!)
+        view.bringSubviewToFront((loginVC?.view)!)
         loginVC?.clearData()
         UIView.animate(withDuration: 0.25, animations: {
             self.loginVC?.view.alpha = 1.0
@@ -124,12 +124,12 @@ class DMRegistrationContainer: DMBaseVC {
 
     func goToLoginFromLogout() {
         isRegistration = false
-        registrationButton.titleLabel?.font = UIFont.fontLight(fontSize: 14.0)!
-        loginButton.titleLabel?.font = UIFont.fontSemiBold(fontSize: 14.0)!
+        registrationButton.titleLabel?.font = UIFont.fontLight(fontSize: 14.0)
+        loginButton.titleLabel?.font = UIFont.fontSemiBold(fontSize: 14.0)
         UIView.removeTip(view: registrationButton)
         UIView.makeTip(view: loginButton, size: 8, x: loginButton.frame.midX / 2, y: loginButton.frame.midY)
         view.endEditing(true)
-        view.bringSubview(toFront: (loginVC?.view)!)
+        view.bringSubviewToFront((loginVC?.view)!)
         loginVC?.clearData()
         loginVC?.view.alpha = 1.0
         registrationVC?.view.alpha = 0.0

@@ -72,7 +72,7 @@ class DMRegisterMapsVC: DMBaseVC {
         gpsNavigationButton.layer.shadowOpacity = 1.0
         gpsNavigationButton.layer.shadowRadius = 1.0
 
-        placesTableView.rowHeight = UITableViewAutomaticDimension
+        placesTableView.rowHeight = UITableView.automaticDimension
         placesTableView.estimatedRowHeight = 50
         placesTableView.isHidden = true
         placesTableView.backgroundColor = UIColor.clear
@@ -172,7 +172,7 @@ class DMRegisterMapsVC: DMBaseVC {
         // marker.icon = UIImage(named:"ic_pin")
 
         marker?.map = mapView
-        marker?.appearAnimation = kGMSMarkerAnimationPop
+        marker?.appearAnimation = GMSMarkerAnimation.pop
         if isAnimatingToLocation {
             mapView.animate(to: GMSCameraPosition(target: coordinate, zoom: 15, bearing: 0, viewingAngle: 0))
         }

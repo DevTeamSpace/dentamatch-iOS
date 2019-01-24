@@ -87,7 +87,7 @@ class DMCalenderVC: DMBaseVC, FSCalendarDataSource, FSCalendarDelegate, FSCalend
         calendar?.appearance.selectionColor = Constants.Color.CalendarSelectionColor
         calendar?.appearance.eventOffset = CGPoint(x: 0, y: -8)
         viewForCalender.addSubview(calendar!)
-        viewForCalender.bringSubview(toFront: viewForHeader)
+        viewForCalender.bringSubviewToFront(viewForHeader)
         NotificationCenter.default.addObserver(self, selector: #selector(tabChangedAction), name: .tabChanged, object: nil)
     }
     

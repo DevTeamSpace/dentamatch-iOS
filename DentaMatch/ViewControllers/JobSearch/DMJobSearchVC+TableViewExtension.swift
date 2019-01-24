@@ -70,7 +70,7 @@ extension DMJobSearchVC: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return UITableViewAutomaticDimension
+            return UITableView.automaticDimension
         } else if indexPath.section == 1 {
             if indexPath.row == 0 {
                 return TableViewCellHeight.jobType.rawValue
@@ -79,7 +79,7 @@ extension DMJobSearchVC: UITableViewDataSource, UITableViewDelegate {
             }
         } else if indexPath.section == 2 {
             if indexPath.row == 0 {
-                return UITableViewAutomaticDimension
+                return UITableView.automaticDimension
             }
         }
         return 0

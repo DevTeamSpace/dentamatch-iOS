@@ -86,9 +86,9 @@ class DMTrackVC: DMBaseVC {
         view.addSubview(placeHolderEmptyJobsView!)
         placeHolderEmptyJobsView?.placeHolderMessageLabel.text = "You don’t have any saved jobs"
 
-        view.bringSubview(toFront: savedJobsTableView)
-        view.bringSubview(toFront: appliedJobsTableView)
-        view.bringSubview(toFront: shortListedJobsTableView)
+        view.bringSubviewToFront(savedJobsTableView)
+        view.bringSubviewToFront(appliedJobsTableView)
+        view.bringSubviewToFront(shortListedJobsTableView)
 
         pullToRefreshSavedJobs.addTarget(self, action: #selector(pullToRefreshForSavedJobs), for: .valueChanged)
         savedJobsTableView.addSubview(pullToRefreshSavedJobs)

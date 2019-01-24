@@ -8,8 +8,15 @@
 
 import UIKit
 
+class FullScreenWebView: UIWebView {
+    
+    override var safeAreaInsets: UIEdgeInsets {
+        return UIEdgeInsets.zero
+    }
+}
+
 class DMTermsAndConditionsVC: DMBaseVC {
-    @IBOutlet var webView: UIWebView!
+    @IBOutlet var webView: FullScreenWebView!
     var isPrivacyPolicy = false
     var request: URLRequest!
 

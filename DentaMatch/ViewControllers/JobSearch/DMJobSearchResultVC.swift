@@ -114,7 +114,7 @@ class DMJobSearchResultVC: DMBaseVC {
 
         navigationItem.leftBarButtonItem = nil//customLeftBarButton()
 
-        setRightBarButton(title: "", imageName: "FilterImage", width: rightBarButtonWidth, font: UIFont.designFont(fontSize: 16.0)!)
+        setRightBarButton(title: "", imageName: "FilterImage", width: rightBarButtonWidth, font: UIFont.designFont(fontSize: 16.0))
         setUpSegmentControl()
         bannerHeightConstraint.constant = 0
         currentGPSButtonTopConstraint.constant = 15.0

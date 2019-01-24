@@ -40,13 +40,13 @@ class EditProfileHeaderTableCell: UITableViewCell {
     func fillPlaceAndJobTitle(jobTitle: String, place: String) -> NSMutableAttributedString {
         if jobTitle.isEmptyField {
             let attributedString = NSMutableAttributedString()
-            let placeText = NSAttributedString(string: place, attributes: [NSAttributedStringKey.font: UIFont.fontRegular(fontSize: 16.0)!, NSAttributedStringKey.foregroundColor: UIColor.white])
+            let placeText = NSAttributedString(string: place, attributes: [NSAttributedString.Key.font: UIFont.fontRegular(fontSize: 16.0), NSAttributedString.Key.foregroundColor: UIColor.white])
             attributedString.append(placeText)
             return attributedString
         } else {
             let attributedString = NSMutableAttributedString()
-            let jobTitleText = NSAttributedString(string: jobTitle, attributes: [NSAttributedStringKey.font: UIFont.fontSemiBold(fontSize: 16.0)!, NSAttributedStringKey.foregroundColor: UIColor.white])
-            let placeText = NSAttributedString(string: place, attributes: [NSAttributedStringKey.font: UIFont.fontRegular(fontSize: 16.0)!, NSAttributedStringKey.foregroundColor: UIColor.white])
+            let jobTitleText = NSAttributedString(string: jobTitle, attributes: [NSAttributedString.Key.font: UIFont.fontSemiBold(fontSize: 16.0), NSAttributedString.Key.foregroundColor: UIColor.white])
+            let placeText = NSAttributedString(string: place, attributes: [NSAttributedString.Key.font: UIFont.fontRegular(fontSize: 16.0), NSAttributedString.Key.foregroundColor: UIColor.white])
             attributedString.append(jobTitleText)
             attributedString.append(NSAttributedString(string: "\n"))
             attributedString.append(placeText)
@@ -56,7 +56,7 @@ class EditProfileHeaderTableCell: UITableViewCell {
 
     class func calculateHeight(text: String) -> CGFloat {
         let textView = UITextView()
-        textView.font = UIFont.fontRegular(fontSize: 16.0)!
+        textView.font = UIFont.fontRegular(fontSize: 16.0)
         var newFrame: CGRect!
         textView.text = text
 

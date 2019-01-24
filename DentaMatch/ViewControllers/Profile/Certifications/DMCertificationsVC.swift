@@ -26,8 +26,8 @@ class DMCertificationsVC: DMBaseVC, DatePickerViewDelegate {
         super.viewDidLoad()
         setup()
         getCertificationListAPI()
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
 
         dateView = DatePickerView.loadExperiencePickerView(withText: "", tag: 0)
         dateView?.delegate = self
@@ -54,13 +54,13 @@ class DMCertificationsVC: DMBaseVC, DatePickerViewDelegate {
     // MARK: - Keyboard Show Hide Observers
 
     @objc func keyboardWillShow(note: NSNotification) {
-        if let keyboardSize = (note.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            certificationsTableView.contentInset = UIEdgeInsetsMake(0, 0, keyboardSize.height + 1, 0)
+        if let keyboardSize = (note.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            certificationsTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height + 1, right: 0)
         }
     }
 
     @objc func keyboardWillHide(note _: NSNotification) {
-        certificationsTableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        certificationsTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
 
     // MARK: - Private Methods

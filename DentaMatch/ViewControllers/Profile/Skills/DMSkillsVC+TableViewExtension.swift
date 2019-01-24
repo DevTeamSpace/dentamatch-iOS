@@ -66,7 +66,7 @@ extension DMSkillsVC: UITableViewDataSource, UITableViewDelegate {
                 cell.nameLabel.text = "Skills & Experience"
                 cell.jobTitleLabel.text = "Lorem Ipsum is simply dummy text for the typing and printing industry"
                 if let imageURL = URL(string: UserManager.shared().activeUser.profileImageURL!) {
-                    cell.photoButton.sd_setImage(with: imageURL, for: .normal, placeholderImage: kPlaceHolderImage)
+                    cell.photoButton.setImage(for: .normal, url: imageURL, placeholder: kPlaceHolderImage)
                 }
                 cell.photoButton.progressBar.setProgress(profileProgress, animated: true)
                 return cell
@@ -152,7 +152,7 @@ extension DMSkillsVC: UITextViewDelegate {
     }
 
     func textViewShouldBeginEditing(_: UITextView) -> Bool {
-        skillsTableView.contentInset = UIEdgeInsetsMake(0, 0, 200, 0)
+        skillsTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 200, right: 0)
         DispatchQueue.main.async {
             self.skillsTableView.scrollToRow(at: IndexPath(row: 0, section: 2), at: .bottom, animated: true)
         }
@@ -160,7 +160,7 @@ extension DMSkillsVC: UITextViewDelegate {
     }
 
     func textViewShouldEndEditing(_: UITextView) -> Bool {
-        skillsTableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        skillsTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         return true
     }
 

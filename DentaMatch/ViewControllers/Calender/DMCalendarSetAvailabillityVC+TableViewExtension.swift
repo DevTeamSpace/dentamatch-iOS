@@ -222,7 +222,7 @@ extension DMCalendarSetAvailabillityVC: JobSearchTypeCellDelegate, TemporyJobCel
                     calenderTableView.beginUpdates()
                     calenderTableView.insertRows(at: [IndexPath(row: 0, section: 1)], with: .none)
                     calenderTableView.endUpdates()
-                    calenderTableView.scrollToRow(at: IndexPath(row: 0, section: 1), at: UITableViewScrollPosition.none, animated: false)
+                    calenderTableView.scrollToRow(at: IndexPath(row: 0, section: 1), at: UITableView.ScrollPosition.none, animated: false)
                 }
                 isJobTypePartTime = "1"
             } else {
@@ -230,7 +230,7 @@ extension DMCalendarSetAvailabillityVC: JobSearchTypeCellDelegate, TemporyJobCel
                 calenderTableView.beginUpdates()
                 calenderTableView.deleteRows(at: [IndexPath(row: 0, section: 1)], with: .none)
                 calenderTableView.endUpdates()
-                calenderTableView.scrollToRow(at: IndexPath(row: 0, section: 1), at: UITableViewScrollPosition.none, animated: false)
+                calenderTableView.scrollToRow(at: IndexPath(row: 0, section: 1), at: UITableView.ScrollPosition.none, animated: false)
                 isJobTypePartTime = "0"
             }
         } else {
@@ -304,13 +304,13 @@ extension DMCalendarSetAvailabillityVC: JobSearchTypeCellDelegate, TemporyJobCel
             calenderTableView.beginUpdates()
             calenderTableView.insertRows(at: [indexPath], with: .none)
             calenderTableView.endUpdates()
-            calenderTableView.scrollToRow(at: IndexPath(row: 0, section: 1), at: UITableViewScrollPosition.none, animated: false)
+            calenderTableView.scrollToRow(at: IndexPath(row: 0, section: 1), at: UITableView.ScrollPosition.none, animated: false)
         } else {
             // delete
             calenderTableView.beginUpdates()
             calenderTableView.deleteRows(at: [indexPath], with: .none)
             calenderTableView.endUpdates()
-            calenderTableView.scrollToRow(at: IndexPath(row: 0, section: 1), at: UITableViewScrollPosition.none, animated: false)
+            calenderTableView.scrollToRow(at: IndexPath(row: 0, section: 1), at: UITableView.ScrollPosition.none, animated: false)
         }
     }
 

@@ -27,7 +27,7 @@ class DMLicenseSelectionVC: DMBaseVC, UITextFieldDelegate {
 
     override func viewDidLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        licenseTableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        licenseTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -41,8 +41,8 @@ class DMLicenseSelectionVC: DMBaseVC, UITextFieldDelegate {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         licenseTableView.reloadData()
     }
 
@@ -54,13 +54,13 @@ class DMLicenseSelectionVC: DMBaseVC, UITextFieldDelegate {
     // MARK: - Keyboard Show Hide Observers
 
     @objc func keyboardWillShow(note: NSNotification) {
-        if let keyboardSize = (note.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            licenseTableView.contentInset = UIEdgeInsetsMake(0, 0, keyboardSize.height + 1, 0)
+        if let keyboardSize = (note.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            licenseTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height + 1, right: 0)
         }
     }
 
     @objc func keyboardWillHide(note _: NSNotification) {
-        licenseTableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        licenseTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
 
     func setUp() {

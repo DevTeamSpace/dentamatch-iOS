@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SDWebImage
 
 extension DMLicenseSelectionVC: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in _: UITableView) -> Int {

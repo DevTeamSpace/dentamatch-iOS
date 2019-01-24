@@ -41,7 +41,7 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
     func setup() {
         title = Constants.ScreenTitleNames.setAvailibility
         gregorian = NSCalendar(calendarIdentifier: .gregorian)
-        calenderTableView.rowHeight = UITableViewAutomaticDimension
+        calenderTableView.rowHeight = UITableView.automaticDimension
         calenderTableView.separatorStyle = .none
         calenderTableView.register(UINib(nibName: "JobSearchTypeCell", bundle: nil), forCellReuseIdentifier: "JobSearchTypeCell")
         calenderTableView.register(UINib(nibName: "JobSearchPartTimeCell", bundle: nil), forCellReuseIdentifier: "JobSearchPartTimeCell")

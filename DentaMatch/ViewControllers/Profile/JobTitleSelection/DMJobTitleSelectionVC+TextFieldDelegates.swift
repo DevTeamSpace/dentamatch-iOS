@@ -45,7 +45,7 @@ extension DMJobTitleSelectionVC: UITextViewDelegate {
     }
 
     func textViewDidBeginEditing(_ textView: UITextView) {
-        jobTitleSelectionTableView.contentInset = UIEdgeInsetsMake(0, 0, 200, 0)
+        jobTitleSelectionTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 200, right: 0)
         DispatchQueue.main.async {
             self.jobTitleSelectionTableView.scrollToRow(at: IndexPath(row: 3, section: 0), at: .bottom, animated: true)
         }
@@ -60,7 +60,7 @@ extension DMJobTitleSelectionVC: UITextViewDelegate {
     }
 
     func textViewShouldEndEditing(_: UITextView) -> Bool {
-        jobTitleSelectionTableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        jobTitleSelectionTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         return true
     }
 

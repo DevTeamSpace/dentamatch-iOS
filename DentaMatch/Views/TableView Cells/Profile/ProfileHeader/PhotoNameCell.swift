@@ -29,7 +29,7 @@ class PhotoNameCell: UITableViewCell {
         nameLabel.text = nametext
         jobTitleLabel.text = jobTitleText
         if let imageURL = URL(string: UserManager.shared().activeUser.profileImageURL!) {
-            photoButton.sd_setImage(with: imageURL, for: .normal, placeholderImage: kPlaceHolderImage)
+            photoButton.setImage(for: .normal, url: imageURL, placeholder: kPlaceHolderImage)
         }
         photoButton.progressBar.setProgress(profileProgress, animated: true)
     }

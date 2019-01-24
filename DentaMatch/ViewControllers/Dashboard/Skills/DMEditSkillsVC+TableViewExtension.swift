@@ -111,7 +111,7 @@ extension DMEditSkillsVC: UITextViewDelegate {
     }
 
     func textViewShouldBeginEditing(_: UITextView) -> Bool {
-        skillsTableView.contentInset = UIEdgeInsetsMake(0, 0, 200, 0)
+        skillsTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 200, right: 0)
         DispatchQueue.main.async {
             self.skillsTableView.scrollToRow(at: IndexPath(row: 0, section: 1), at: .bottom, animated: true)
         }
@@ -119,7 +119,7 @@ extension DMEditSkillsVC: UITextViewDelegate {
     }
 
     func textViewShouldEndEditing(_: UITextView) -> Bool {
-        skillsTableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        skillsTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         return true
     }
 

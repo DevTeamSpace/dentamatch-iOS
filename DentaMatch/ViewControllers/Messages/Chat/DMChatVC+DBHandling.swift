@@ -48,7 +48,7 @@ extension DMChatVC: NSFetchedResultsControllerDelegate {
                                 chatList.unreadCount = chatList.unreadCount + 1
                                 // Someone other messaged than the one whose chat page is opened
 
-                                ToastView.showNotificationToast(message: chatObj["message"].stringValue, name: chatObj["fromName"].stringValue, imageUrl: "", type: .White, onCompletion: {
+                                ToastView.showNotificationToast(message: chatObj["message"].stringValue, name: chatObj["fromName"].stringValue, imageUrl: "", type: .white, onCompletion: {
                                     self.notificationTapHandling(recruiterId: chatObj["fromId"].stringValue)
                                 })
                             }
@@ -80,7 +80,7 @@ extension DMChatVC: NSFetchedResultsControllerDelegate {
         let userId = UserManager.shared().activeUser.userId
         let recruiterId = chatList?.recruiterId
 
-        fetchRequest.predicate = NSPredicate(format: "(fromId == %@ AND toId == %@) or (fromId == %@ AND toId == %@)", userId!, recruiterId!, recruiterId!, userId!)
+        fetchRequest.predicate = NSPredicate(format: "(fromId == %@ AND toId == %@) or (fromId == %@ AND toId == %@)", userId, recruiterId!, recruiterId!, userId)
 
         // Add Sort Descriptors
         let sortDescriptor = NSSortDescriptor(key: "chatId", ascending: true)

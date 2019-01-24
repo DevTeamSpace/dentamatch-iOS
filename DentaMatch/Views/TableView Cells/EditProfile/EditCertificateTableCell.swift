@@ -31,9 +31,9 @@ class EditCertificateTableCell: UITableViewCell {
 
     func createValidityDateAttributedText(date: String) -> NSMutableAttributedString {
         let attributedString = NSMutableAttributedString()
-        let validityDateText = NSAttributedString(string: "Validity date ", attributes: [NSAttributedStringKey.font: UIFont.fontRegular(fontSize: 14.0)!, NSAttributedStringKey.foregroundColor: Constants.Color.textFieldTextColor])
+        let validityDateText = NSAttributedString(string: "Validity date ", attributes: [NSAttributedString.Key.font: UIFont.fontRegular(fontSize: 14.0), NSAttributedString.Key.foregroundColor: Constants.Color.textFieldTextColor])
         let convertedDate = getCertificateDateFormat(dateString: date)
-        let dateString = NSAttributedString(string: convertedDate, attributes: [NSAttributedStringKey.font: UIFont.fontSemiBold(fontSize: 14.0)!, NSAttributedStringKey.foregroundColor: Constants.Color.textFieldTextColor])
+        let dateString = NSAttributedString(string: convertedDate, attributes: [NSAttributedString.Key.font: UIFont.fontSemiBold(fontSize: 14.0), NSAttributedString.Key.foregroundColor: Constants.Color.textFieldTextColor])
         attributedString.append(validityDateText)
         attributedString.append(dateString)
         return attributedString

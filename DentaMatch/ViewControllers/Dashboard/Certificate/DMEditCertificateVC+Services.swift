@@ -14,7 +14,7 @@ extension DMEditCertificateVC {
         var params = [String: AnyObject]()
         params["certificateId"] = certObj.certificationId as AnyObject?
         if let certificateImageData = certificateImage {
-            if let imageData = UIImageJPEGRepresentation(certificateImageData, 0.5) {
+            if let imageData = certificateImageData.jpegData(compressionQuality: 0.5) {
                 params["image"] = imageData as AnyObject?
                 showLoader()
                 APIManager.apiMultipart(serviceName: Constants.API.updateCertificate, parameters: params, completionHandler: { (response: JSON?, error: NSError?) in

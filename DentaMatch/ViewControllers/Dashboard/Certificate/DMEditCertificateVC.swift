@@ -53,7 +53,7 @@ class DMEditCertificateVC: DMBaseVC, DatePickerViewDelegate {
         certificateImageButton.imageView?.contentMode = .scaleAspectFill
 
         if let imageUrl = URL(string: (certificate?.certificateImageURL)!) {
-            certificateImageButton.sd_setImage(with: imageUrl, for: .normal, placeholderImage: kCertificatePlaceHolder)
+            certificateImageButton.setImage(for: .normal, url: imageUrl, placeholder: kCertificatePlaceHolder)
         }
 
         dateView = DatePickerView.loadExperiencePickerView(withText: "", tag: 0)

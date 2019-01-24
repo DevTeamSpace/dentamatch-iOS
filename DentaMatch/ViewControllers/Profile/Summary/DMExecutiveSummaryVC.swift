@@ -42,11 +42,11 @@ class DMExecutiveSummaryVC: DMBaseVC {
         keyboardDoneButtonView.sizeToFit()
         keyboardDoneButtonView.barTintColor = Constants.Color.toolBarColor
         // Setup the buttons to be put in the system.
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: self, action: nil)
 
         let item = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(toolBarButtonPressed))
         item.tag = 2
-        item.setTitleTextAttributes([NSAttributedStringKey.font: UIFont.fontRegular(fontSize: 20.0)!], for: UIControlState.normal)
+        item.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.fontRegular(fontSize: 20.0)], for: UIControl.State.normal)
 
         item.tintColor = UIColor.white
 
@@ -99,7 +99,7 @@ extension DMExecutiveSummaryVC: UITextViewDelegate {
     }
 
     func textViewDidBeginEditing(_ textView: UITextView) {
-        executiveSummaryTableView.contentInset = UIEdgeInsetsMake(0, 0, 200, 0)
+        executiveSummaryTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 200, right: 0)
         DispatchQueue.main.async {
             self.executiveSummaryTableView.scrollToRow(at: IndexPath(row: 0, section: 1), at: .bottom, animated: true)
         }
@@ -114,7 +114,7 @@ extension DMExecutiveSummaryVC: UITextViewDelegate {
     }
 
     func textViewShouldEndEditing(_: UITextView) -> Bool {
-        executiveSummaryTableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        executiveSummaryTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         return true
     }
 

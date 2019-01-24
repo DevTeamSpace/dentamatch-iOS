@@ -69,7 +69,7 @@ class DMSelectSkillsVC: UIViewController {
         subSkillTableView.backgroundColor = UIColor.color(withHexCode: "0470C0")
         subSkillTableView.register(UINib(nibName: "SubSkillCell", bundle: nil), forCellReuseIdentifier: "SubSkillCell")
         subSkillTableView.register(UINib(nibName: "OtherSubSkillTableCell", bundle: nil), forCellReuseIdentifier: "OtherSubSkillTableCell")
-        subSkillTableView.rowHeight = UITableViewAutomaticDimension
+        subSkillTableView.rowHeight = UITableView.automaticDimension
         subSkillTableView.estimatedRowHeight = 50.0
     }
 }
@@ -97,7 +97,7 @@ extension DMSelectSkillsVC: UITableViewDataSource, UITableViewDelegate {
 
         switch subSkillOption {
         case .subSkill:
-            return UITableViewAutomaticDimension
+            return UITableView.automaticDimension
         case .other:
             var otherHeight = 0
             if let otherSkill = otherSkill {
@@ -160,7 +160,7 @@ extension DMSelectSkillsVC: UITableViewDataSource, UITableViewDelegate {
 
 extension DMSelectSkillsVC: UITextViewDelegate {
     func textViewShouldBeginEditing(_: UITextView) -> Bool {
-        subSkillTableView.contentInset = UIEdgeInsetsMake(0, 0, 200, 0)
+        subSkillTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 200, right: 0)
         DispatchQueue.main.async {
             self.subSkillTableView.scrollToRow(at: IndexPath(row: 0, section: 1), at: .bottom, animated: true)
         }
@@ -168,7 +168,7 @@ extension DMSelectSkillsVC: UITextViewDelegate {
     }
 
     func textViewShouldEndEditing(_: UITextView) -> Bool {
-        subSkillTableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        subSkillTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         return true
     }
 

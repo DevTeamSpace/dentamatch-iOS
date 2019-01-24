@@ -14,7 +14,7 @@ extension UIStoryboard {
         // debugPrint(type)
         var fullName: String = NSStringFromClass(T.self)
         if let range = fullName.range(of: ".", options: .backwards, range: nil, locale: nil) {
-            fullName = fullName.substring(from: range.upperBound)
+            fullName = String(fullName[range.upperBound...])
         }
         return instantiateViewController(withIdentifier: fullName) as? T
     }

@@ -39,8 +39,8 @@ class DMAffiliationsVC: DMBaseVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -51,8 +51,8 @@ class DMAffiliationsVC: DMBaseVC {
     // MARK: - Keyboard Show Hide Observers
 
     @objc func keyboardWillShow(note: NSNotification) {
-        if let kbSize = (note.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            let contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0)
+        if let kbSize = (note.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: kbSize.height, right: 0.0)
             affiliationsTableView.contentInset = contentInsets
             affiliationsTableView.scrollIndicatorInsets = contentInsets;
             
@@ -78,7 +78,7 @@ class DMAffiliationsVC: DMBaseVC {
     }
 
     @objc func keyboardWillHide(note _: NSNotification) {
-        affiliationsTableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        affiliationsTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
 
     // MARK: - Private Methods
@@ -105,11 +105,11 @@ class DMAffiliationsVC: DMBaseVC {
         keyboardDoneButtonView.sizeToFit()
         keyboardDoneButtonView.barTintColor = Constants.Color.toolBarColor
         // Setup the buttons to be put in the system.
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: self, action: nil)
 
         let item = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(toolBarButtonPressed))
         item.tag = 2
-        item.setTitleTextAttributes([NSAttributedStringKey.font: UIFont.fontRegular(fontSize: 20.0)!], for: UIControlState.normal)
+        item.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.fontRegular(fontSize: 20.0)], for: UIControl.State.normal)
 
         item.tintColor = UIColor.white
 

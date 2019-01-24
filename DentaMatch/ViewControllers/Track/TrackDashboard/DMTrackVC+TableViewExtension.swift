@@ -14,11 +14,11 @@ extension DMTrackVC: UITableViewDataSource, UITableViewDelegate {
 //        return 170
 //    }
     func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        return UITableView.automaticDimension
     }
     
     func tableView(_: UITableView, estimatedHeightForRowAt _: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        return UITableView.automaticDimension
     }
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {

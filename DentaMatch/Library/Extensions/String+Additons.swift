@@ -64,7 +64,8 @@ extension String {
     subscript(r: Range<Int>) -> String {
         let start = index(startIndex, offsetBy: r.lowerBound)
         let end = index(start, offsetBy: r.upperBound)
-        return String(self[start..<end])
+        let range = start ..< end
+        return String(self[range])
     }
 
     func lpad(_ padding: String, length: Int) -> String {
@@ -136,7 +137,7 @@ extension String {
         let j = end < 0 ? self.endIndex : self.startIndex
         let joffset = min(maximum, max(-1 * maximum, end ?? 0))
         let endIndex = end != nil && end! < self.count ? index(j, offsetBy: joffset) : self.endIndex
-        return substring(with: (startIndex ..< endIndex))
+        return String(self[startIndex ..< endIndex])
     }
 
     /**
@@ -168,7 +169,7 @@ extension String {
     }*/
     func heightWithConstrainedWidth(_ width: CGFloat, font: UIFont) -> CGFloat {
         let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
-        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font: font], context: nil)
+        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
         
         return ceil(boundingBox.height)
     }
@@ -184,7 +185,7 @@ extension String {
     func widthWithConstrainetHeight(_ height: CGFloat, font: UIFont) -> CGFloat {
         let constraintRect = CGSize(width: CGFloat.greatestFiniteMagnitude, height: height)
         
-        let boundingBox = self.boundingRect(with: constraintRect, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font: font], context: nil)
+        let boundingBox = self.boundingRect(with: constraintRect, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
         
         return ceil(boundingBox.width)
     }

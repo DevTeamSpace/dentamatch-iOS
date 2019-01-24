@@ -7,7 +7,7 @@
 //
 
 import Photos
-import SVProgressHUD
+import IHProgressHUD
 import UIKit
 
 enum ToastPosition {
@@ -30,7 +30,7 @@ class DMBaseVC: UIViewController {
     }
 
     func setUpControls() {
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont.fontRegular(fontSize: 14.0)!, NSAttributedStringKey.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.fontRegular(fontSize: 14.0), NSAttributedString.Key.foregroundColor: UIColor.white]
     }
 
     func setRightBarButton(title: String, imageName: String, width: CGFloat, font: UIFont) {
@@ -127,13 +127,13 @@ class DMBaseVC: UIViewController {
     func puttingErrorPlaceholder(textfield: UITextField, placeholderText: String, placeholderColor: UIColor) {
         textfield.text = ""
         textfield.placeholder = placeholderText
-        textfield.attributedPlaceholder = NSAttributedString(string: textfield.placeholder!, attributes: [NSAttributedStringKey.foregroundColor: placeholderColor])
+        textfield.attributedPlaceholder = NSAttributedString(string: textfield.placeholder!, attributes: [NSAttributedString.Key.foregroundColor: placeholderColor])
     }
 
     func backBarButton() -> UIBarButtonItem {
         let customButton = UIButton(type: .system)
         customButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        customButton.titleLabel?.font = UIFont.designFont(fontSize: 19)!
+        customButton.titleLabel?.font = UIFont.designFont(fontSize: 19)
         customButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0)
         customButton.setTitle("l", for: .normal)
         customButton.addTarget(self, action: #selector(backBarButtonItemPressed), for: .touchUpInside)
@@ -146,19 +146,17 @@ class DMBaseVC: UIViewController {
     }
 
     func changeNavBarAppearanceForProfiles() {
-        UIApplication.shared.statusBarStyle = .default
         navigationController?.navigationBar.tintColor = Constants.Color.navHeadingForExperienceScreen
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.barTintColor = Constants.Color.navBarColorForExperienceScreen
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: Constants.Color.navHeadingForExperienceScreen, NSAttributedStringKey.font: UIFont.fontMedium(fontSize: 14.0)!]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Constants.Color.navHeadingForExperienceScreen, NSAttributedString.Key.font: UIFont.fontMedium(fontSize: 14.0)]
     }
 
     func changeNavBarAppearanceForWithoutHeader() {
-        UIApplication.shared.statusBarStyle = .default
         navigationController?.navigationBar.tintColor = Constants.Color.navHeadingForExperienceScreen
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.barTintColor = UIColor.white
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: Constants.Color.navHeadingForExperienceScreen, NSAttributedStringKey.font: UIFont.fontMedium(fontSize: 14.0)!]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Constants.Color.navHeadingForExperienceScreen, NSAttributedString.Key.font: UIFont.fontMedium(fontSize: 14.0)]
     }
 
     func changeNavBarToTransparent() {
@@ -169,11 +167,10 @@ class DMBaseVC: UIViewController {
     }
 
     func changeNavBarAppearanceForDefault() {
-        UIApplication.shared.statusBarStyle = .lightContent
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.barTintColor = Constants.Color.navBarColor
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont.fontRegular(fontSize: 14.0)!]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.fontRegular(fontSize: 14.0)]
     }
 
     func delay(time _: TimeInterval, completionHandler: @escaping () -> Void) {
@@ -184,40 +181,44 @@ class DMBaseVC: UIViewController {
     }
 
     func showLoader() {
-        SVProgressHUD.setDefaultMaskType(.black)
-        SVProgressHUD.setForegroundColor(Constants.Color.loaderRingColor)
-        SVProgressHUD.setBackgroundColor(Constants.Color.loaderBackgroundColor)
-        SVProgressHUD.show()
+        IHProgressHUD.set(defaultMaskType: .black)
+        IHProgressHUD.set(foregroundColor: Constants.Color.loaderRingColor)
+        IHProgressHUD.setHUD(backgroundColor: Constants.Color.loaderBackgroundColor)
+        IHProgressHUD.set(backgroundLayerColor: UIColor.clear)
+        IHProgressHUD.show()
     }
 
     func showLoader(text: String) {
-        SVProgressHUD.setDefaultMaskType(.black)
-        SVProgressHUD.setForegroundColor(Constants.Color.loaderRingColor)
-        SVProgressHUD.setBackgroundColor(Constants.Color.loaderBackgroundColor)
-        SVProgressHUD.setFont(UIFont.fontRegular(fontSize: 12.0)!)
-        SVProgressHUD.show(withStatus: text)
+        IHProgressHUD.set(defaultMaskType: .black)
+        IHProgressHUD.set(foregroundColor: Constants.Color.loaderRingColor)
+        IHProgressHUD.setHUD(backgroundColor: Constants.Color.loaderBackgroundColor)
+        IHProgressHUD.set(backgroundLayerColor: UIColor.clear)
+        IHProgressHUD.set(font: UIFont.fontRegular(fontSize: 12.0))
+        IHProgressHUD.show(withStatus: text)
     }
 
     func showLoaderWithInteractionOn() {
-        SVProgressHUD.setDefaultMaskType(.none)
-        SVProgressHUD.setForegroundColor(Constants.Color.loaderRingColor)
-        SVProgressHUD.setBackgroundColor(Constants.Color.loaderBackgroundColor)
-        SVProgressHUD.show()
+        IHProgressHUD.set(defaultMaskType: .none)
+        IHProgressHUD.set(foregroundColor: Constants.Color.loaderRingColor)
+        IHProgressHUD.setHUD(backgroundColor: Constants.Color.loaderBackgroundColor)
+        IHProgressHUD.set(backgroundLayerColor: UIColor.clear)
+        IHProgressHUD.show()
     }
 
     func showLoaderWithInteractionOn(text: String) {
-        SVProgressHUD.setDefaultMaskType(.none)
-        SVProgressHUD.setForegroundColor(Constants.Color.loaderRingColor)
-        SVProgressHUD.setBackgroundColor(Constants.Color.loaderBackgroundColor)
-        SVProgressHUD.setFont(UIFont.fontRegular(fontSize: 12.0)!)
-        SVProgressHUD.show(withStatus: text)
+        IHProgressHUD.set(defaultMaskType: .none)
+        IHProgressHUD.set(foregroundColor: Constants.Color.loaderRingColor)
+        IHProgressHUD.setHUD(backgroundColor: Constants.Color.loaderBackgroundColor)
+        IHProgressHUD.set(backgroundLayerColor: UIColor.clear)
+        IHProgressHUD.set(font: UIFont.fontRegular(fontSize: 12.0))
+        IHProgressHUD.show(withStatus: text)
     }
 
     func hideLoader() {
-        SVProgressHUD.dismiss()
+        IHProgressHUD.dismiss()
     }
 
     func hideLoader(delay: TimeInterval) {
-        SVProgressHUD.dismiss(withDelay: delay)
+        IHProgressHUD.dismissWithDelay(delay)
     }
 }

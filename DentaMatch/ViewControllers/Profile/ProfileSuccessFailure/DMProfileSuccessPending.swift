@@ -26,11 +26,11 @@ class DMProfileSuccessPending: DMBaseVC {
     }
 
     func addNotificationObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForgeGroundCalled), name: .UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForgeGroundCalled), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
 
     func removeObserversForNotification() {
-        NotificationCenter.default.removeObserver(self, name: .UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIApplication.willEnterForegroundNotification, object: nil)
     }
 
     @objc func willEnterForgeGroundCalled() {

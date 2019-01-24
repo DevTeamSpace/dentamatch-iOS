@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		270886FB07B603FF47668A72 /* Pods_DentaMatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C611E923856ECE4538FA4F38 /* Pods_DentaMatch.framework */; };
 		48067D49212E9E8F007F77E6 /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48067D47212E9E8F007F77E6 /* TagCell.swift */; };
 		48067D4A212E9E8F007F77E6 /* TagCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48067D48212E9E8F007F77E6 /* TagCell.xib */; };
 		48067D4D212EC5BD007F77E6 /* DGCollectionViewLeftAlignFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48067D4C212EC5BD007F77E6 /* DGCollectionViewLeftAlignFlowLayout.swift */; };
@@ -89,6 +88,7 @@
 		5A988BC61E4AE9D200DECB49 /* DMNotificationVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A988BC51E4AE9D200DECB49 /* DMNotificationVC+TableViewExtension.swift */; };
 		5A988BC81E4AEA0E00DECB49 /* DMNotificationVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A988BC71E4AEA0E00DECB49 /* DMNotificationVC+Services.swift */; };
 		5A9A3A971E2B58600002C5B6 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9A3A961E2B58600002C5B6 /* UserManager.swift */; };
+		5AA9CB999C96FBB42F0C471A /* Pods_DentaMatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6FD70F6CEE32CA0ED0D2D7E /* Pods_DentaMatch.framework */; };
 		5AAE74781E5C1D0E00B28851 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAE74761E5C1D0E00B28851 /* ToastView.swift */; };
 		5AAE74791E5C1D0E00B28851 /* ToastView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AAE74771E5C1D0E00B28851 /* ToastView.xib */; };
 		5AB876501E249B62007818D6 /* ExperiencePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB8764F1E249B62007818D6 /* ExperiencePickerView.swift */; };
@@ -104,6 +104,8 @@
 		5AD246951E273CE7009350BF /* DatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AD246941E273CE7009350BF /* DatePickerView.xib */; };
 		5AD246971E27799F009350BF /* PickerAnimatedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD246961E27799F009350BF /* PickerAnimatedTextField.swift */; };
 		5AE5F50A1E16563D006C328A /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AE5F5091E16563D006C328A /* Profile.storyboard */; };
+		6EA372E521F8BF16007BE373 /* ImageView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA372E421F8BF16007BE373 /* ImageView+Additions.swift */; };
+		6EA372E721F8E1B7007BE373 /* UIButton+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA372E621F8E1B7007BE373 /* UIButton+Additions.swift */; };
 		E50512BE1E82378700509328 /* WorkingHoursTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50512BC1E82378700509328 /* WorkingHoursTableCell.swift */; };
 		E50512BF1E82378700509328 /* WorkingHoursTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E50512BD1E82378700509328 /* WorkingHoursTableCell.xib */; };
 		E506AE501FAC329400ABC7FA /* PreferredLocationPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E506AE4F1FAC329400ABC7FA /* PreferredLocationPickerView.swift */; };
@@ -534,8 +536,10 @@
 		5AD246961E27799F009350BF /* PickerAnimatedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerAnimatedTextField.swift; sourceTree = "<group>"; };
 		5AD8AC4AE71CBA67916D21CE /* Pods-DentaMatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DentaMatch.release.xcconfig"; path = "Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch.release.xcconfig"; sourceTree = "<group>"; };
 		5AE5F5091E16563D006C328A /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		6EA372E421F8BF16007BE373 /* ImageView+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageView+Additions.swift"; sourceTree = "<group>"; };
+		6EA372E621F8E1B7007BE373 /* UIButton+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Additions.swift"; sourceTree = "<group>"; };
 		A69AB47303239A016127D8D8 /* Pods-DentaMatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DentaMatch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch.debug.xcconfig"; sourceTree = "<group>"; };
-		C611E923856ECE4538FA4F38 /* Pods_DentaMatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DentaMatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6FD70F6CEE32CA0ED0D2D7E /* Pods_DentaMatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DentaMatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E50512BC1E82378700509328 /* WorkingHoursTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkingHoursTableCell.swift; sourceTree = "<group>"; };
 		E50512BD1E82378700509328 /* WorkingHoursTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkingHoursTableCell.xib; sourceTree = "<group>"; };
 		E506AE4F1FAC329400ABC7FA /* PreferredLocationPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferredLocationPickerView.swift; sourceTree = "<group>"; };
@@ -894,7 +898,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				270886FB07B603FF47668A72 /* Pods_DentaMatch.framework in Frameworks */,
+				5AA9CB999C96FBB42F0C471A /* Pods_DentaMatch.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1252,14 +1256,6 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
-		7A2D50B5324DAF5AE3D23655 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C611E923856ECE4538FA4F38 /* Pods_DentaMatch.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		E506AE531FAC374C00ABC7FA /* PreferredLocation */ = {
 			isa = PBXGroup;
 			children = (
@@ -1445,6 +1441,8 @@
 				E51D4EFF1E3F207F00ACC631 /* Notifications+Name.swift */,
 				484174CD212FF52B00C86818 /* UserDefaults+Additions.swift */,
 				483C6E70213D3AFD00A59AE9 /* UIDevice+Additions.swift */,
+				6EA372E421F8BF16007BE373 /* ImageView+Additions.swift */,
+				6EA372E621F8E1B7007BE373 /* UIButton+Additions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1691,7 +1689,7 @@
 				E56E45BA1DAE07C200AD4559 /* DentaMatch */,
 				E56E45B91DAE07C200AD4559 /* Products */,
 				1D0F67C370B8BE4002393BBB /* Pods */,
-				7A2D50B5324DAF5AE3D23655 /* Frameworks */,
+				FECB7D6645DBF2487EC80908 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2459,6 +2457,14 @@
 			path = JobTitle;
 			sourceTree = "<group>";
 		};
+		FECB7D6645DBF2487EC80908 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D6FD70F6CEE32CA0ED0D2D7E /* Pods_DentaMatch.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2496,14 +2502,14 @@
 					E56E45B71DAE07C200AD4559 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 37YG7ABMG2;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
 							};
 							com.apple.Push = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -2673,8 +2679,8 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch-resources.sh",
-				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle",
-				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Versions/A/Resources/GooglePlaces.bundle",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -2694,24 +2700,26 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/IHProgressHUD/IHProgressHUD.framework",
 				"${PODS_ROOT}/Instabug/Instabug.framework",
 				"${PODS_ROOT}/Instabug/Instabug.framework.dSYM",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
-				"${BUILT_PRODUCTS_DIR}/Mixpanel/Mixpanel.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
-				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/Mixpanel-swift/Mixpanel.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjcExceptionBridging/ObjcExceptionBridging.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/XCGLogger/XCGLogger.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IHProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Instabug.framework",
 				"${DWARF_DSYM_FOLDER_PATH}/Instabug.framework.dSYM",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mixpanel.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjcExceptionBridging.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XCGLogger.framework",
 			);
@@ -2849,6 +2857,7 @@
 				E5FBE9D91E1CCF940025683C /* DMRegistration+Services.swift in Sources */,
 				E58654FE1DEFEF7F006FEB2D /* ConfigurationManager.swift in Sources */,
 				E5AE2AF61DAF878900C008BD /* OnboardingCollectionViewCell.swift in Sources */,
+				6EA372E721F8E1B7007BE373 /* UIButton+Additions.swift in Sources */,
 				5A3B06D11E33883C00EFCA6E /* DMChangePasswordVC+TableViewExtension.swift in Sources */,
 				5A1960FD1E208B67002A5F7C /* PhoneNumberFormatter.swift in Sources */,
 				E5C5F3151DC0AACA001A5A3F /* DMRegisterMapsVC.swift in Sources */,
@@ -2989,6 +2998,7 @@
 				E5F919481E9DD4A30021F008 /* FSCalendarDelegateProxy.m in Sources */,
 				F2540F5D1E274258004B0538 /* DMJobSearchResultVC.swift in Sources */,
 				E53738F21DB373C200967876 /* Reachability.swift in Sources */,
+				6EA372E521F8BF16007BE373 /* ImageView+Additions.swift in Sources */,
 				E5AE37711E4971CE0001EC3C /* SocketPacket.swift in Sources */,
 				E55462F51DAE4B9E004163B2 /* UIStoryBoard+Additions.swift in Sources */,
 				E587D2EB1E24C021006B7F06 /* DMWorkExperienceStart+TableViewExtension.swift in Sources */,
@@ -3195,9 +3205,8 @@
 			baseConfigurationReference = A69AB47303239A016127D8D8 /* Pods-DentaMatch.debug.xcconfig */;
 			buildSettings = {
 				ACTIVE_CONFIGURATION = Development;
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "DentaMatch/DentaMatch-Dev.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer: dentamatch@gmail.com (86U27BGBEN)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
@@ -3206,14 +3215,13 @@
 				INFOPLIST_FILE = DentaMatch/Application/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_SWIFT_FLAGS = "-DDEVELOPMENT";
+				OTHER_SWIFT_FLAGS = "$(inherited) -DDEVELOPMENT";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appster.dentamatch;
 				PRODUCT_NAME = "$(TARGET_NAME)-Dev";
 				PROVISIONING_PROFILE = "35ac7f31-607c-4f0b-8566-8f60e995d36d";
 				PROVISIONING_PROFILE_SPECIFIER = "DentaMatch Development";
 				SWIFT_OBJC_BRIDGING_HEADER = "DentaMatch/Application/DentaMatch-BridgingHeader.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -3222,9 +3230,8 @@
 			baseConfigurationReference = 5AD8AC4AE71CBA67916D21CE /* Pods-DentaMatch.release.xcconfig */;
 			buildSettings = {
 				ACTIVE_CONFIGURATION = Production;
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "DentaMatch/DentaMatch-Dev.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
@@ -3232,14 +3239,13 @@
 				INFOPLIST_FILE = DentaMatch/Application/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_SWIFT_FLAGS = "-DPRODUCTION";
+				OTHER_SWIFT_FLAGS = "$(inherited) -DPRODUCTION";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appster.dentamatch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "979e1642-8e1f-472b-800f-488334cf4573";
 				PROVISIONING_PROFILE_SPECIFIER = DentaMatch_AppStore;
 				SWIFT_OBJC_BRIDGING_HEADER = "DentaMatch/Application/DentaMatch-BridgingHeader.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -3311,9 +3317,8 @@
 			baseConfigurationReference = 158450992C392116A74F763C /* Pods-DentaMatch.qa.xcconfig */;
 			buildSettings = {
 				ACTIVE_CONFIGURATION = QA;
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "DentaMatch/DentaMatch-Dev.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer: dentamatch@gmail.com (86U27BGBEN)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
@@ -3322,14 +3327,13 @@
 				INFOPLIST_FILE = DentaMatch/Application/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_SWIFT_FLAGS = "-DQA";
+				OTHER_SWIFT_FLAGS = "$(inherited) -DQA";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appster.dentamatch;
 				PRODUCT_NAME = "$(TARGET_NAME)-QA";
 				PROVISIONING_PROFILE = "35ac7f31-607c-4f0b-8566-8f60e995d36d";
 				PROVISIONING_PROFILE_SPECIFIER = "DentaMatch Development";
 				SWIFT_OBJC_BRIDGING_HEADER = "DentaMatch/Application/DentaMatch-BridgingHeader.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = QA;
 		};
@@ -3396,9 +3400,8 @@
 			baseConfigurationReference = 19F54B802B7D87A34FEE97F2 /* Pods-DentaMatch.staging.xcconfig */;
 			buildSettings = {
 				ACTIVE_CONFIGURATION = Staging;
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "DentaMatch/DentaMatch-Dev.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Health Match Inc (37YG7ABMG2)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Health Match Inc (37YG7ABMG2)";
 				CODE_SIGN_STYLE = Manual;
@@ -3407,14 +3410,13 @@
 				INFOPLIST_FILE = DentaMatch/Application/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_SWIFT_FLAGS = "-DSTAGING";
+				OTHER_SWIFT_FLAGS = "$(inherited) -DSTAGING";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appster.dentamatch;
 				PRODUCT_NAME = "$(TARGET_NAME)-Staging";
 				PROVISIONING_PROFILE = "c090df9e-bd0f-4096-8b55-3d092b58e375";
 				PROVISIONING_PROFILE_SPECIFIER = Dentamatch_distribution;
 				SWIFT_OBJC_BRIDGING_HEADER = "DentaMatch/Application/DentaMatch-BridgingHeader.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Staging;
 		};

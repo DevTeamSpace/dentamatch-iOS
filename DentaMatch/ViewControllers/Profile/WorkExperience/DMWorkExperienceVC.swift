@@ -89,8 +89,8 @@ class DMWorkExperienceVC: DMBaseVC, ExperiencePickerViewDelegate, ToolBarButtonD
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
 
         navigationController?.setNavigationBarHidden(false, animated: true)
         navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
@@ -189,13 +189,13 @@ class DMWorkExperienceVC: DMBaseVC, ExperiencePickerViewDelegate, ToolBarButtonD
     // MARK: - Keyboard Show Hide Observers
 
     @objc func keyboardWillShow(note: NSNotification) {
-        if let keyboardSize = (note.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            mainScrollView.contentInset = UIEdgeInsetsMake(0, 0, keyboardSize.height + 10, 0)
+        if let keyboardSize = (note.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            mainScrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height + 10, right: 0)
         }
     }
 
     @objc func keyboardWillHide(note _: NSNotification) {
-        mainScrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        mainScrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
 
     func initialDataSetup() {

@@ -20,7 +20,7 @@ extension UIView {
         // debugPrint("type")
         var fullName: String = NSStringFromClass(T.self)
         if let range = fullName.range(of: ".", options: .backwards, range: nil, locale: nil) {
-            fullName = fullName.substring(from: range.upperBound)
+            fullName = String(fullName[range.upperBound...])
         }
         return UINib(nibName: fullName, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as? T
     }

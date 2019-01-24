@@ -10,27 +10,27 @@ import Foundation
 import UIKit
 
 extension UIFont {
-    class func designFont(fontSize: CGFloat) -> UIFont? {
-        return UIFont(name: kCustomDesignFont, size: fontSize)
+    class func designFont(fontSize: CGFloat) -> UIFont {
+        return UIFont(name: kCustomDesignFont, size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
     }
 
-    class func fontRegular(fontSize: CGFloat) -> UIFont? {
-        return UIFont(name: "SFUIText-Regular", size: fontSize)
+    class func fontRegular(fontSize: CGFloat) -> UIFont {
+        return UIFont(name: "SFUIText-Regular", size: fontSize) ?? UIFont.systemFont(ofSize: fontSize, weight: .regular)
     }
 
-    class func fontHeavy(fontSize: CGFloat) -> UIFont? {
-        return UIFont(name: "SFUIText-Heavy", size: fontSize)
+    class func fontHeavy(fontSize: CGFloat) -> UIFont {
+        return UIFont(name: "SFUIText-Heavy", size: fontSize) ?? UIFont.systemFont(ofSize: fontSize, weight: .heavy)
     }
 
-    class func fontLight(fontSize: CGFloat) -> UIFont? {
-        return UIFont(name: "SFUIText-Light", size: fontSize)
+    class func fontLight(fontSize: CGFloat) -> UIFont {
+        return UIFont(name: "SFUIText-Light", size: fontSize) ?? UIFont.systemFont(ofSize: fontSize, weight: .light)
     }
 
-    class func fontSemiBold(fontSize: CGFloat) -> UIFont? {
-        return UIFont(name: "SFUIText-Semibold", size: fontSize)
+    class func fontSemiBold(fontSize: CGFloat) -> UIFont {
+        return UIFont(name: "SFUIText-Semibold", size: fontSize) ?? UIFont.systemFont(ofSize: fontSize, weight: .semibold)
     }
 
-    class func fontMedium(fontSize: CGFloat) -> UIFont? {
-        return UIFont(name: "SFUIText-Medium", size: fontSize)
+    class func fontMedium(fontSize: CGFloat) -> UIFont {
+        return UIFont(name: "SFUIText-Medium", size: fontSize) ?? UIFont.systemFont(ofSize: fontSize, weight: .medium)
     }
 }

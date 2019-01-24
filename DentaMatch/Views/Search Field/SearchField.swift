@@ -34,7 +34,7 @@ class SearchField: UIView {
         // use bounds not frame or it'll be offset
         contentView?.frame = bounds
         // Make the view stretch with containing view
-        contentView?.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+        contentView?.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
         // Adding custom subview on top of our view (over any custom drawing > see note below)
         addSubview(contentView)
         searchTextField?.changePlaceholderColor(UIColor.white)

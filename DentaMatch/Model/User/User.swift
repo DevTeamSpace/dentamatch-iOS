@@ -10,9 +10,9 @@ import UIKit
 
 class User: NSObject, NSCoding {
     var zipCode: String!
-    var userName: String!
-    var userId: String!
-    var email: String!
+    var userName: String = ""
+    var userId: String = ""
+    var email: String = ""
     var accessToken: String!
     var firstName: String?
     var lastName: String?
@@ -54,9 +54,9 @@ class User: NSObject, NSCoding {
     required init?(coder aDecoder: NSCoder) {
         super.init()
         zipCode = aDecoder.decodeObject(forKey: "zipCode") as? String
-        userName = aDecoder.decodeObject(forKey: "userName") as? String
-        userId = aDecoder.decodeObject(forKey: "userId") as? String
-        email = aDecoder.decodeObject(forKey: "email") as? String
+        userName = aDecoder.decodeObject(forKey: "userName") as? String ?? ""
+        userId = aDecoder.decodeObject(forKey: "userId") as? String ?? ""
+        email = aDecoder.decodeObject(forKey: "email") as? String ?? ""
         accessToken = aDecoder.decodeObject(forKey: "accessToken") as? String
         firstName = aDecoder.decodeObject(forKey: "firstName") as? String
         lastName = aDecoder.decodeObject(forKey: "lastName") as? String

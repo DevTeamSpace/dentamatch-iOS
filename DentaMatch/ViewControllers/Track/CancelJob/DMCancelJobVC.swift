@@ -59,11 +59,11 @@ class DMCancelJobVC: DMBaseVC {
         keyboardDoneButtonView.sizeToFit()
         keyboardDoneButtonView.barTintColor = Constants.Color.toolBarColor
         // Setup the buttons to be put in the system.
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: self, action: nil)
 
         let item = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(toolBarButtonPressed))
         item.tag = 2
-        item.setTitleTextAttributes([NSAttributedStringKey.font: UIFont.fontRegular(fontSize: 20.0)!], for: UIControlState.normal)
+        item.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.fontRegular(fontSize: 20.0)], for: UIControl.State.normal)
 
         item.tintColor = UIColor.white
 

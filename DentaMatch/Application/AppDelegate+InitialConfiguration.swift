@@ -13,7 +13,7 @@ import SwiftyJSON
 extension AppDelegate {
     func setUpApplication() {
         MixpanelOperations.startSessionForMixpanelWithToken()
-        Instabug.start(withToken: kInstaBugKey, invocationEvent: .shake)
+        Instabug.start(withToken: kInstaBugKey, invocationEvents: [.shake])
 
         configureCrashlytics()
 
@@ -30,7 +30,7 @@ extension AppDelegate {
         configureNetworkReachability()
     }
 
-    func setUpApplicationUI(_ application: UIApplication, _ launchOptions: [UIApplicationLaunchOptionsKey: Any]?) {
+    func setUpApplicationUI(_ application: UIApplication, _ launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
         if !UserDefaultsManager.sharedInstance.isProfileSkipped {
             if UserDefaultsManager.sharedInstance.isLoggedIn {
                 if !UserManager.shared().activeUser.jobTitle!.isEmptyField {
@@ -49,8 +49,8 @@ extension AppDelegate {
         }
     }
 
-    private func checkForNotificationTapAction(_ application: UIApplication, _ launchOptions: [UIApplicationLaunchOptionsKey: Any]?) {
-        if let remoteNotification = launchOptions?[UIApplicationLaunchOptionsKey.remoteNotification] as? NSDictionary {
+    private func checkForNotificationTapAction(_ application: UIApplication, _ launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
+        if let remoteNotification = launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification] as? NSDictionary {
             if remoteNotification.allKeys.count > 0 {
                 //                    self.tabIndex = 4
                 if let noti = remoteNotification["data"] as? NSDictionary {
