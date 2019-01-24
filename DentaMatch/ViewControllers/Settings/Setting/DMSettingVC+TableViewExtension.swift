@@ -60,20 +60,23 @@ extension DMSettingVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            let mapVC = UIStoryboard.registrationStoryBoard().instantiateViewController(type: DMRegisterMapsVC.self)!
-            mapVC.fromSettings = true
-            mapVC.delegate = self
-            navigationController?.pushViewController(mapVC, animated: true)
+            if let mapVC = DMRegisterMapsInitializer.initialize() as? DMRegisterMapsVC {
+                mapVC.fromSettings = true
+                mapVC.delegate = self
+                navigationController?.pushViewController(mapVC, animated: true)
+            }
         case 1:
             performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToChangePassword, sender: self)
         case 2:
-            let termsVC = UIStoryboard.registrationStoryBoard().instantiateViewController(type: DMTermsAndConditionsVC.self)!
-            termsVC.isPrivacyPolicy = false
-            navigationController?.pushViewController(termsVC, animated: true)
+            if let vc = DMTermsAndConditionsInitializer.initialize() as? DMTermsAndConditionsVC {
+                vc.isPrivacyPolicy = false
+                navigationController?.pushViewController(vc, animated: true)
+            }
         case 3:
-            let termsVC = UIStoryboard.registrationStoryBoard().instantiateViewController(type: DMTermsAndConditionsVC.self)!
-            termsVC.isPrivacyPolicy = true
-            navigationController?.pushViewController(termsVC, animated: true)
+            if let vc = DMTermsAndConditionsInitializer.initialize() as? DMTermsAndConditionsVC {
+                vc.isPrivacyPolicy = true
+                navigationController?.pushViewController(vc, animated: true)
+            }
         case 4:
             // logout
             self.alertMessage(title: "Logout", message: "Are you sure you want to logout?", leftButtonText: "Yes", rightButtonText: "No", completionHandler: { [weak self](isLeft: Bool) in
@@ -97,10 +100,13 @@ extension DMSettingVC: UITableViewDataSource, UITableViewDelegate {
                 SocketManager.sharedInstance.closeConnection()
                 UserManager.shared().deleteActiveUser()
                 UserDefaultsManager.sharedInstance.clearCache()
-                guard let registrationContainer = UIStoryboard.registrationStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.registrationNav) as? UINavigationController else {return}
+                
+                let navController = UINavigationController(rootViewController: DMRegistrationContainerInitializer.initialize())
+                navController.setNavigationBarHidden(true, animated: false)
+                
                 UserDefaultsManager.sharedInstance.isLoggedOut = true
                 UIView.transition(with: self.view.window!, duration: 0.25, options: .transitionCrossDissolve, animations: {
-                    kAppDelegate?.window?.rootViewController = registrationContainer
+                    kAppDelegate?.window?.rootViewController = navController
                 }) { (_: Bool) in
                     // completion
                     DatabaseManager.clearDB()

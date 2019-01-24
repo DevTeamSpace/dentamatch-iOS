@@ -13,6 +13,8 @@ import GoogleMaps
 import GooglePlaces
 import Mixpanel
 import UIKit
+import Swinject
+import SwinjectStoryboard
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,6 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     class func delegate() -> AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate
     }
+    
+    lazy var container: Container = {
+        return defaultContainer()
+    }()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -33,15 +39,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setUpApplicationUI(application, launchOptions)
         return true
     }
+    
+    func goToOnboarding() {
+        let navController = UINavigationController(rootViewController: DMOnboardingInitializer.initialize())
+        navController.setNavigationBarHidden(true, animated: false)
+        
+        makeRoot(viewController: navController)
+    }
 
     func goToRegistration() {
-        let registrationVC = UIStoryboard.registrationStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.registrationNav) as? UINavigationController
-        window?.rootViewController = registrationVC
+        
+        let navController = UINavigationController(rootViewController: DMRegistrationContainerInitializer.initialize())
+        navController.setNavigationBarHidden(true, animated: false)
+        
+        makeRoot(viewController: navController)
     }
 
     func goToProfile() {
+        
         let profileVC = UIStoryboard.profileStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.profileNav) as? UINavigationController
-        window?.rootViewController = profileVC
+        
+        makeRoot(viewController: profileVC)
     }
 
     func goToSuccessPendingScreen() {
@@ -49,28 +67,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         profileSuccessPendingVC.fromRoot = true
         let navigationVC = UINavigationController(rootViewController: profileSuccessPendingVC)
         navigationVC.setNavigationBarHidden(true, animated: false)
-        window?.rootViewController = navigationVC
+        
+        makeRoot(viewController: navigationVC)
     }
 
     func goToDashBoard() {
         // if let _ =  UserDefaultsManager.sharedInstance.loadSearchParameter() {
-        let dashboardVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: TabBarVC.self)!
-        window?.rootViewController = dashboardVC
+        let dashboardVC = TabBarInitializer.initialize()
+        
+        makeRoot(viewController: dashboardVC)
         //  } else {
         //       self.goToSearch()
         //   }
     }
 
     func goToSearch() {
-        let jobSearchNAV = UIStoryboard.jobSearchStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.jobSearchNav) as? UINavigationController
-        if let jobSearchVC = jobSearchNAV?.viewControllers[0] as? DMJobSearchVC {
-            if let _ = UserDefaultsManager.sharedInstance.loadSearchParameter() {
-                jobSearchVC.firstTime = false
-            } else {
-                jobSearchVC.firstTime = true
-            }
+        guard let jobSearchVc = DMJobSearchInitializer.initialize() as? DMJobSearchVC else { return }
+        let navController = UINavigationController(rootViewController: jobSearchVc)
+        
+        if let _ = UserDefaultsManager.sharedInstance.loadSearchParameter() {
+            jobSearchVc.firstTime = false
+        } else {
+            jobSearchVc.firstTime = true
         }
-        window?.rootViewController = jobSearchNAV
+        
+        makeRoot(viewController: navController)
+    }
+    
+    func makeRoot(viewController: UIViewController?) {
+        guard let viewController = viewController else { return }
+        
+        defer {
+            window?.rootViewController = viewController
+            window?.makeKeyAndVisible()
+        }
+        
+        if window == nil {
+            window = UIWindow(frame: UIScreen.main.bounds)
+        }
     }
 
     func changeNavBarAppearance() {

@@ -41,6 +41,8 @@ extension AppDelegate {
             } else {
                 if UserDefaultsManager.sharedInstance.isOnBoardingDone {
                     goToRegistration()
+                } else {
+                    goToOnboarding()
                 }
             }
         } else {

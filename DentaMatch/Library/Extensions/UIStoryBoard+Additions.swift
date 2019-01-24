@@ -19,10 +19,6 @@ extension UIStoryboard {
         return instantiateViewController(withIdentifier: fullName) as? T
     }
 
-    class func registrationStoryBoard() -> UIStoryboard {
-        return UIStoryboard(name: Constants.StoryBoard.registrationStoryboard, bundle: nil)
-    }
-
     class func notificationStoryBoard() -> UIStoryboard {
         return UIStoryboard(name: Constants.StoryBoard.notificationStoryboard, bundle: nil)
     }
@@ -37,18 +33,6 @@ extension UIStoryboard {
 
     class func profileStoryBoard() -> UIStoryboard {
         return UIStoryboard(name: Constants.StoryBoard.profileStoryboard, bundle: nil)
-    }
-
-    class func trackStoryBoard() -> UIStoryboard {
-        return UIStoryboard(name: Constants.StoryBoard.trackStoryboard, bundle: nil)
-    }
-
-    class func jobSearchStoryBoard() -> UIStoryboard {
-        return UIStoryboard(name: Constants.StoryBoard.jobSearchStoryboard, bundle: nil)
-    }
-
-    class func onBoardingStoryBoard() -> UIStoryboard {
-        return UIStoryboard(name: Constants.StoryBoard.onBoardingStoryboard, bundle: nil)
     }
 
     class func dashBoardStoryBoard() -> UIStoryboard {

@@ -96,7 +96,7 @@ extension DMCalenderVC: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let jobDetailVC = UIStoryboard.jobSearchStoryBoard().instantiateViewController(type: DMJobDetailVC.self)!
+        guard let jobDetailVC = DMJobDetailInitializer.initialize() as? DMJobDetailVC else { return }
         jobDetailVC.fromCalender = false
         jobDetailVC.job = selectedDayList[indexPath.row]
         jobDetailVC.hidesBottomBarWhenPushed = true
@@ -104,7 +104,7 @@ extension DMCalenderVC: UITableViewDelegate, UITableViewDataSource {
     }
 
     func openCancelJob(job: Job, fromApplied: Bool) {
-        let cancelJobVC = UIStoryboard.trackStoryBoard().instantiateViewController(type: DMCancelJobVC.self)!
+        guard let cancelJobVC = DMCancelJobInitializer.initialize() as? DMCancelJobVC else { return }
         cancelJobVC.job = job
         cancelJobVC.hidesBottomBarWhenPushed = true
         cancelJobVC.fromApplied = fromApplied

@@ -218,7 +218,7 @@ extension DMNotificationVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func goToJobDetail(jobObj: Job) {
-        let jobDetailVC = UIStoryboard.jobSearchStoryBoard().instantiateViewController(type: DMJobDetailVC.self)!
+        guard let jobDetailVC = DMJobDetailInitializer.initialize() as? DMJobDetailVC else { return }
         jobDetailVC.fromNotificationVC = false
         jobDetailVC.job = jobObj
         jobDetailVC.hidesBottomBarWhenPushed = true
