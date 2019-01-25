@@ -12,66 +12,8 @@ import SwiftyJSON
 
 extension DMChatVC: NSFetchedResultsControllerDelegate {
     func addUpdateChatToDB(chatObj: JSON?) {
-        if let chatObj = chatObj {
-            if let _ = chatExits(messageId: chatObj["messageId"].stringValue) {
-                //debugPrint("Update Chat")
-            } else {
-                // New chat
-                guard let chat = NSEntityDescription.insertNewObject(forEntityName: "Chat", into: context) as? Chat else { return }
-                chat.chatId = chatObj["messageId"].int64Value
-                chat.message = chatObj["message"].stringValue
-                chat.fromId = chatObj["fromId"].stringValue
-                chat.toId = chatObj["toId"].stringValue
-                chat.timeStamp = chatObj["sentTime"].doubleValue
-                let filteredDateTime = DatabaseManager.getDate(timestamp: chatObj["sentTime"].doubleValue)
-                chat.timeString = filteredDateTime.time
-                chat.dateString = filteredDateTime.date
-
-                if let user = UserManager.shared().activeUser {
-                    if chatObj["fromId"].stringValue == user.userId {
-                        // Sender's Chat
-                        if let chatList = DatabaseManager.chatListExists(recruiterId: chatObj["toId"].stringValue) {
-                            chatList.lastMessage = chatObj["message"].stringValue
-                            chatList.lastMessageId = chatObj["messageId"].stringValue
-                            chatList.timeStamp = chatObj["sentTime"].doubleValue
-                            chatList.date = Date.getDate(timestamp: chatObj["sentTime"].stringValue) as NSDate?
-                            // TODO: - Time Handling
-                        }
-                    } else {
-                        // Recruiter's Chat
-                        if let chatList = DatabaseManager.chatListExists(recruiterId: chatObj["fromId"].stringValue) {
-                            chatList.lastMessage = chatObj["message"].stringValue
-                            chatList.lastMessageId = chatObj["messageId"].stringValue
-                            chatList.timeStamp = chatObj["sentTime"].doubleValue
-                            chatList.date = Date.getDate(timestamp: chatObj["sentTime"].stringValue) as NSDate?
-                            if self.chatList?.recruiterId != chatList.recruiterId {
-                                chatList.unreadCount = chatList.unreadCount + 1
-                                // Someone other messaged than the one whose chat page is opened
-
-                                ToastView.showNotificationToast(message: chatObj["message"].stringValue, name: chatObj["fromName"].stringValue, imageUrl: "", type: .white, onCompletion: {
-                                    self.notificationTapHandling(recruiterId: chatObj["fromId"].stringValue)
-                                })
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        appDelegate?.saveContext()
-    }
-
-    func chatExits(messageId: String) -> Chat? {
-        let fetchRequest: NSFetchRequest<Chat> = Chat.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "chatId == %@", messageId)
-        do {
-            let chats = try context.fetch(fetchRequest)
-            if chats.count > 0 {
-                return chats.first
-            }
-        } catch _ as NSError {
-            // debugPrint(error.localizedDescription)
-        }
-        return nil
+        
+        DatabaseManager.addUpdateChatToDB(chatObj: chatObj)
     }
 
     func getChats() {

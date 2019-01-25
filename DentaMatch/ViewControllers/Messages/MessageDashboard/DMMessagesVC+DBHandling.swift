@@ -9,38 +9,22 @@
 import CoreData
 import Foundation
 import SwiftyJSON
+import RealmSwift
 
 extension DMMessagesVC: NSFetchedResultsControllerDelegate {
     func addUpdateMessageToDB(chatList: [JSON]?) {
-        for chatListObj in chatList! {
-            if let chat = self.chatListExits(messageListId: chatListObj["messageListId"].stringValue) {
-                // Update Record
-                chat.lastMessage = chatListObj["message"].stringValue
-                chat.recruiterId = chatListObj["recruiterId"].stringValue
-                chat.isBlockedFromRecruiter = chatListObj["recruiterBlock"].boolValue
-                chat.isBlockedFromSeeker = chatListObj["seekerBlock"].boolValue
-                chat.date = getDate(timestamp: chatListObj["timestamp"].stringValue) as NSDate?
-                chat.timeStamp = chatListObj["timestamp"].doubleValue
-                chat.officeName = chatListObj["name"].stringValue
-                chat.lastMessageId = chatListObj["messageId"].stringValue
-                chat.unreadCount = chatListObj["unreadCount"].int16Value
-            } else {
-                // New Record
-                if let chat = NSEntityDescription.insertNewObject(forEntityName: "ChatList", into: context) as? ChatList {
-                    chat.lastMessage = chatListObj["message"].stringValue
-                    chat.recruiterId = chatListObj["recruiterId"].stringValue
-                    chat.isBlockedFromRecruiter = chatListObj["recruiterBlock"].boolValue
-                    chat.isBlockedFromSeeker = chatListObj["seekerBlock"].boolValue
-                    chat.date = getDate(timestamp: chatListObj["timestamp"].stringValue) as NSDate?
-                    chat.timeStamp = chatListObj["timestamp"].doubleValue
-                    chat.officeName = chatListObj["name"].stringValue
-                    chat.messageListId = chatListObj["messageListId"].stringValue
-                    chat.lastMessageId = chatListObj["messageId"].stringValue
-                    chat.unreadCount = chatListObj["unreadCount"].int16Value
-                }
-            }
+        guard let chatList = chatList else { return }
+        
+        let realm = try! Realm()
+        try! realm.write {
+            
+            realm.add(chatList.map({
+                
+                let model = ChatListModel(chatListObj: $0)
+                model.date = getDate(timestamp: $0["timestamp"].stringValue)
+                return model
+            }), update: true)
         }
-        appDelegate?.saveContext()
     }
 
     func getDate(timestamp: String) -> Date {
@@ -48,21 +32,6 @@ extension DMMessagesVC: NSFetchedResultsControllerDelegate {
         let lastMessageDate = Date(timeIntervalSince1970: doubleTime! / 1000)
         return lastMessageDate
     }
-
-    func chatListExits(messageListId: String) -> ChatList? {
-        let fetchRequest: NSFetchRequest<ChatList> = ChatList.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "messageListId == %@", messageListId)
-        do {
-            let chatLists = try context.fetch(fetchRequest)
-            if chatLists.count > 0 {
-                return chatLists.first
-            }
-        } catch _ as NSError {
-            // debugPrint(error.localizedDescription)
-        }
-        return nil
-    }
-
     // MARK: - NSFetchedResultsControllerDelegate
 
     func controllerWillChangeContent(_: NSFetchedResultsController<NSFetchRequestResult>) {

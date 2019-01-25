@@ -9,9 +9,9 @@
 import CoreData
 import Foundation
 
-extension Chat {
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Chat> {
-        return NSFetchRequest<Chat>(entityName: "Chat")
+extension Chat1 {
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Chat1> {
+        return NSFetchRequest<Chat1>(entityName: "Chat")
     }
 
     @NSManaged public var chatId: Int64

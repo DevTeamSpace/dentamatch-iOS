@@ -28,6 +28,8 @@ extension AppDelegate {
         changeNavBarAppearance()
 
         configureNetworkReachability()
+        
+        configureRealm()
     }
 
     func setUpApplicationUI(_ application: UIApplication, _ launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {

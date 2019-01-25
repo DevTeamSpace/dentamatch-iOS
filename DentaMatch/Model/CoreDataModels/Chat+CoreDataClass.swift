@@ -9,5 +9,5 @@
 import CoreData
 import Foundation
 
-public class Chat: NSManagedObject {
+public class Chat1: NSManagedObject {
 }

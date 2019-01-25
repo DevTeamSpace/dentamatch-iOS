@@ -9,9 +9,9 @@
 import CoreData
 import Foundation
 
-extension ChatList {
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<ChatList> {
-        return NSFetchRequest<ChatList>(entityName: "ChatList")
+extension ChatList1 {
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<ChatList1> {
+        return NSFetchRequest<ChatList1>(entityName: "ChatList")
     }
 
     @NSManaged public var date: NSDate?

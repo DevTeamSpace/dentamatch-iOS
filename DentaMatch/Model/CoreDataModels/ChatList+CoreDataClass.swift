@@ -9,5 +9,5 @@
 import CoreData
 import Foundation
 
-public class ChatList: NSManagedObject {
+public class ChatList1: NSManagedObject {
 }

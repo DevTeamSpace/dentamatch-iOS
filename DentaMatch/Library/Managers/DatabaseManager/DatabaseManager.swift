@@ -1,217 +1,128 @@
-//
-//  DatabaseManager.swift
-//  DentaMatch
-//
-//  Created by Rajan Maheshwari on 07/02/17.
-//  Copyright © 2017 Appster. All rights reserved.
-//
-
-import CoreData
+import RealmSwift
 import SwiftyJSON
 import UIKit
 
 class DatabaseManager: NSObject {
-//    static let sharedInstance = DatabaseManager()
 
     class func clearDB() {
         clearChatList()
         clearChats()
-        NSFetchedResultsController<NSFetchRequestResult>.deleteCache(withName: nil)
-        kAppDelegate?.saveContext()
     }
 
      class func clearChatList() {
-        let fetchRequest: NSFetchRequest<ChatList> = ChatList.fetchRequest()
-        do {
-            let chatLists = try kAppDelegate?.managedObjectContext.fetch(fetchRequest)
-            for chatList in chatLists! {
-                kAppDelegate?.managedObjectContext.delete(chatList)
-            }
-            kAppDelegate?.saveContext()
-        } catch _ as NSError {
-            // debugPrint(error.localizedDescription)
+        
+        let realm = try! Realm()
+        try! realm.write {
+            realm.delete(realm.objects(ChatListModel.self))
         }
     }
     
     class func clearChatList(recruiterId: String) {
-        let fetchRequest: NSFetchRequest<ChatList> = ChatList.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "recruiterId == %@",recruiterId)
-        do {
-            let chatLists = try kAppDelegate?.managedObjectContext.fetch(fetchRequest)
-            for chatList in chatLists! {
-                kAppDelegate?.managedObjectContext.delete(chatList)
-            }
-            kAppDelegate?.saveContext()
-        } catch _ as NSError {
-            // debugPrint(error.localizedDescription)
+        
+        let realm = try! Realm()
+        try! realm.write {
+            let chatLists = realm.objects(ChatListModel.self).filter({ $0.recruiterId == recruiterId })
+            realm.delete(chatLists)
         }
     }
     
 
     class func clearChats() {
-        let fetchRequest: NSFetchRequest<Chat> = Chat.fetchRequest()
-        do {
-            let chats = try kAppDelegate?.managedObjectContext.fetch(fetchRequest)
-            for chat in chats! {
-                kAppDelegate?.managedObjectContext.delete(chat)
-            }
-            kAppDelegate?.saveContext()
-        } catch _ as NSError {
-            // debugPrint(error.localizedDescription)
+        
+        let realm = try! Realm()
+        try! realm.write {
+            realm.delete(realm.objects(ChatModel.self))
         }
     }
     
     class func clearChats(recruiterId: String) {
-        let fetchRequest: NSFetchRequest<Chat> = Chat.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "fromId == %@ OR toId == %@",recruiterId,recruiterId)
-        do {
-            let chats = try kAppDelegate?.managedObjectContext.fetch(fetchRequest)
-            for chat in chats! {
-                kAppDelegate?.managedObjectContext.delete(chat)
-                
-            }
-            kAppDelegate?.saveContext()
-        } catch _ as NSError {
-            // debugPrint(error.localizedDescription)
+        
+        let realm = try! Realm()
+        try! realm.write {
+            let chats = realm.objects(ChatModel.self).filter({ $0.toId == recruiterId || $0.fromId == recruiterId })
+            realm.delete(chats)
         }
     }
 
     class func addUpdateChatToDB(chatObj: JSON?) {
-        if let chatObj = chatObj {
-            if let _ = chatExits(messageId: chatObj["messageId"].stringValue) {
-                // Update chat
-                // debugPrint("Update Chat")
-
-            } else {
-                // New chat
-                guard let chat = NSEntityDescription.insertNewObject(forEntityName: "Chat", into: (kAppDelegate?.managedObjectContext)!) as? Chat else {return}
-                chat.chatId = chatObj["messageId"].int64Value
-                chat.message = chatObj["message"].stringValue
-                chat.fromId = chatObj["fromId"].stringValue
-                chat.toId = chatObj["toId"].stringValue
-                chat.timeStamp = chatObj["sentTime"].doubleValue
-                let filteredDateTime = DatabaseManager.getDate(timestamp: chatObj["sentTime"].doubleValue)
-                chat.timeString = filteredDateTime.time
-                chat.dateString = filteredDateTime.date
-
-                if let user = UserManager.shared().activeUser {
-                    if chatObj["fromId"].stringValue == user.userId {
-                        // Sender's Chat
-                        if let chatList = chatListExists(recruiterId: chatObj["toId"].stringValue) {
-                            chatList.lastMessage = chatObj["message"].stringValue
-                            chatList.lastMessageId = chatObj["messageId"].stringValue
-                            chatList.timeStamp = chatObj["sentTime"].doubleValue
-                            // TODO: - Time Handling
-                        }
-                    } else {
-                        // Recruiter's Chat
-                        if let chatList = chatListExists(recruiterId: chatObj["fromId"].stringValue) {
-                            chatList.lastMessage = chatObj["message"].stringValue
-                            chatList.lastMessageId = chatObj["messageId"].stringValue
-                            chatList.timeStamp = chatObj["sentTime"].doubleValue
+        guard let chatObj = chatObj else { return }
+        
+        if let _ = chatExits(messageId: chatObj["messageId"].stringValue) {
+            // Update chat
+            // debugPrint("Update Chat")
+            
+        } else {
+            // New chat
+            let chatModel = ChatModel(chatObj: chatObj)
+            
+            let filteredDateTime = DatabaseManager.getDate(timestamp: chatObj["sentTime"].doubleValue)
+            chatModel.timeString = filteredDateTime.time
+            chatModel.dateString = filteredDateTime.date
+            
+            if let user = UserManager.shared().activeUser {
+                
+                let realm = try! Realm()
+                try! realm.write {
+                    
+                    realm.add(chatModel, update: true)
+                    
+                    let isSenderChat = chatObj["fromId"].stringValue == user.userId
+                    if let chatList = chatListExists(recruiterId: isSenderChat ? chatObj["toId"].stringValue : chatObj["fromId"].stringValue) {
+                        
+                        chatList.lastMessage = chatObj["message"].stringValue
+                        chatList.lastMessageId = chatObj["messageId"].stringValue
+                        chatList.timeStamp = chatObj["sentTime"].doubleValue
+                        
+                        if !isSenderChat {
+                            
                             chatList.unreadCount = chatList.unreadCount + 1
-
+                            
                             ToastView.showNotificationToast(message: chatObj["message"].stringValue, name: chatObj["fromName"].stringValue, imageUrl: "", type: .white, onCompletion: {
                                 kAppDelegate?.chatSocketNotificationTap(recruiterId: chatObj["fromId"].stringValue)
                             })
                         }
+                        
+                        realm.add(chatList, update: true)
                     }
                 }
             }
         }
-        kAppDelegate?.saveContext()
     }
 
     class func updateReadCount(recruiterId: String) {
-        if recruiterId != "0" {
-            if let chatList = chatListExists(recruiterId: recruiterId) {
-                chatList.unreadCount = 0
+        
+        try! Realm().write {
+            
+            if recruiterId != "0" {
+                if let chatList = chatListExists(recruiterId: recruiterId) {
+                    chatList.unreadCount = 0
+                }
             }
-            kAppDelegate?.saveContext()
         }
     }
 
-    class func chatExits(messageId: String) -> Chat? {
-        let fetchRequest: NSFetchRequest<Chat> = Chat.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "chatId == %@", messageId)
-        do {
-            let chats = try kAppDelegate?.managedObjectContext.fetch(fetchRequest)
-            if (chats?.count)! > 0 {
-                return chats?.first
-            }
-        } catch _ as NSError {
-            // debugPrint(error.localizedDescription)
-        }
-        return nil
+    class func chatExits(messageId: String) -> ChatModel? {
+        return try! Realm().object(ofType: ChatModel.self, forPrimaryKey: messageId)
     }
 
-    class func chatListExists(recruiterId: String) -> ChatList? {
-        let fetchRequest: NSFetchRequest<ChatList> = ChatList.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "recruiterId == %@", recruiterId)
-        do {
-            let chatLists = try kAppDelegate?.managedObjectContext.fetch(fetchRequest)
-            if (chatLists?.count)! > 0 {
-                return chatLists?.first
-            }
-        } catch _ as NSError {
-            // debugPrint(error.localizedDescription)
-        }
-        return nil
+    class func chatListExists(recruiterId: String) -> ChatListModel? {
+        return try! Realm().objects(ChatListModel.self).filter({ $0.recruiterId == recruiterId }).first
     }
 
     class func getCountForChats(recruiterId: String) -> Int {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Chat")
+        
+        let realm = try! Realm()
         let userId = UserManager.shared().activeUser.userId
-        fetchRequest.predicate = NSPredicate(format: "(fromId == %@ AND toId == %@) or (fromId == %@ AND toId == %@)", userId, recruiterId, recruiterId, userId)
-        do {
-            let chatList = try kAppDelegate?.managedObjectContext.fetch(fetchRequest)
-            return chatList!.count
-        } catch _ as NSError {
-            // debugPrint(error.localizedDescription)
-        }
-        return 0
+        let chatModel = realm.objects(ChatModel.self).filter({ ($0.fromId == userId && $0.toId == recruiterId) || ($0.fromId == recruiterId && $0.toId == userId) })
+        
+        return chatModel.count
     }
 
     class func insertChats(chats: [JSON]?) {
-        if let chats = chats {
-            for chatObj in chats {
-                if let _ = chatExits(messageId: chatObj["messageId"].stringValue) {
-                    // Update chat
-                    // debugPrint("Update Chat")
-
-                } else {
-                    // New chat
-                    guard let chat = NSEntityDescription.insertNewObject(forEntityName: "Chat", into: (kAppDelegate?.managedObjectContext)!) as? Chat else {return}
-                    chat.chatId = chatObj["messageId"].int64Value
-                    chat.message = chatObj["message"].stringValue
-                    chat.fromId = chatObj["fromId"].stringValue
-                    chat.toId = chatObj["toId"].stringValue
-                    chat.timeStamp = chatObj["sentTime"].doubleValue
-                    let filteredDateTime = DatabaseManager.getDate(timestamp: chatObj["sentTime"].doubleValue)
-                    chat.timeString = filteredDateTime.time
-                    chat.dateString = filteredDateTime.date
-
-                    if let user = UserManager.shared().activeUser {
-                        if chatObj["fromId"].stringValue == user.userId {
-                            // Sender's Chat
-                            if let chatList = chatListExists(recruiterId: chatObj["toId"].stringValue) {
-                                chatList.lastMessage = chatObj["message"].stringValue
-                                chatList.lastMessageId = chatObj["messageId"].stringValue
-                                chatList.timeStamp = chatObj["sentTime"].doubleValue
-                                // TODO: - Time Handling
-                            }
-                        } else {
-                            // Recruiter's Chat
-                            if let chatList = chatListExists(recruiterId: chatObj["fromId"].stringValue) {
-                                chatList.lastMessage = chatObj["message"].stringValue
-                                chatList.lastMessageId = chatObj["messageId"].stringValue
-                                chatList.timeStamp = chatObj["sentTime"].doubleValue
-                            }
-                        }
-                    }
-                }
-            }
-            kAppDelegate?.saveContext()
+        guard let chats = chats else { return }
+        
+        for chatObj in chats {
+            addUpdateChatToDB(chatObj: chatObj)
         }
     }
 
@@ -220,53 +131,50 @@ class DatabaseManager: NSObject {
             // Update chat
             // debugPrint("Update Chat")
         } else {
-            // New chat
-            guard let chatList = NSEntityDescription.insertNewObject(forEntityName: "ChatList", into: (kAppDelegate?.managedObjectContext)!) as? ChatList else {return}
-            chatList.lastMessage = chatObj["message"].stringValue
-            chatList.recruiterId = chatObj["recruiterId"].stringValue
-            chatList.isBlockedFromRecruiter = chatObj["recruiterBlock"].boolValue
-            chatList.isBlockedFromSeeker = chatObj["seekerBlock"].boolValue
-            chatList.date = getMessageDate(timestamp: chatObj["timestamp"].stringValue) as NSDate?
-            chatList.timeStamp = chatObj["timestamp"].doubleValue
-            chatList.officeName = chatObj["name"].stringValue
-            chatList.messageListId = chatObj["messageListId"].stringValue
-            chatList.lastMessageId = chatObj["messageId"].stringValue
-            chatList.unreadCount = 1
-
+            
+            let chatList = ChatListModel(chatListObj: chatObj)
+            chatList.date = getMessageDate(timestamp: chatObj["timestamp"].stringValue)
+            
+            let realm = try! Realm()
+            try! realm.write {
+                realm.add(chatList, update: true)
+            }
+            
             NotificationCenter.default.post(name: .hideMessagePlaceholder, object: nil)
 
             ToastView.showNotificationToast(message: chatObj["message"].stringValue, name: chatObj["name"].stringValue, imageUrl: "", type: .white, onCompletion: {
                 kAppDelegate?.chatSocketNotificationTap(recruiterId: chatObj["recruiterId"].stringValue)
             })
         }
-        kAppDelegate?.saveContext()
+        
         addChatForFirstTimeMessage(chatObj: chatObj)
     }
 
     class func addChatForFirstTimeMessage(chatObj: JSON?) {
-        if let chatObj = chatObj {
-            if let _ = chatExits(messageId: chatObj["messageId"].stringValue) {
-                // Update chat
-                // debugPrint("Update Chat")
-
-            } else {
-                // New chat
-                guard let chat = NSEntityDescription.insertNewObject(forEntityName: "Chat", into: (kAppDelegate?.managedObjectContext)!) as? Chat else {return}
-                chat.chatId = chatObj["messageId"].int64Value
-                chat.message = chatObj["message"].stringValue
-                chat.fromId = chatObj["recruiterId"].stringValue
-
-                if let user = UserManager.shared().activeUser {
-                    chat.toId = user.userId
-                    chat.timeStamp = chatObj["timestamp"].doubleValue
-                    let filteredDateTime = DatabaseManager.getDate(timestamp: chatObj["timestamp"].doubleValue)
-                    chat.timeString = filteredDateTime.time
-                    chat.dateString = filteredDateTime.date
-                }
-                // debugPrint("New Chat Saved")
+        guard let chatObj = chatObj else { return }
+        
+        if let _ = chatExits(messageId: chatObj["messageId"].stringValue) {
+            // Update chat
+            // debugPrint("Update Chat")
+            
+        } else {
+            
+            let chatModel = ChatModel(chatObj: chatObj)
+            
+            if let user = UserManager.shared().activeUser {
+                
+                chatModel.toId = user.userId
+                chatModel.timeStamp = chatObj["timestamp"].doubleValue
+                let filteredDateTime = DatabaseManager.getDate(timestamp: chatObj["timestamp"].doubleValue)
+                chatModel.timeString = filteredDateTime.time
+                chatModel.dateString = filteredDateTime.date
+            }
+            
+            let realm = try! Realm()
+            try! realm.write {
+                realm.add(chatModel, update: true)
             }
         }
-        kAppDelegate?.saveContext()
     }
 
     class func getDate(timestamp: Double) -> (time: String, date: String) {
@@ -284,8 +192,8 @@ class DatabaseManager: NSObject {
     }
 
     class func getMessageDate(timestamp: String) -> Date {
-        let doubleTime = Double(timestamp)
-        let lastMessageDate = Date(timeIntervalSince1970: doubleTime! / 1000)
+        guard let time = TimeInterval(timestamp) else { return Date() }
+        let lastMessageDate = Date(timeIntervalSince1970: time / 1000)
         return lastMessageDate
     }
 }

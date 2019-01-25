@@ -13,6 +13,7 @@ import GoogleMaps
 import GooglePlaces
 import Mixpanel
 import UIKit
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -71,6 +72,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         window?.rootViewController = jobSearchNAV
+    }
+    
+    func configureRealm() {
+        var config = Realm.Configuration.defaultConfiguration
+        config.schemaVersion = 0
+        config.deleteRealmIfMigrationNeeded = true
+        Realm.Configuration.defaultConfiguration = config
+        let realm = try! Realm()
+        print(realm.configuration.fileURL?.absoluteString ?? "")
     }
 
     func changeNavBarAppearance() {

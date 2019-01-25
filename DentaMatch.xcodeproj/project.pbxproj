@@ -104,6 +104,8 @@
 		5AD246951E273CE7009350BF /* DatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AD246941E273CE7009350BF /* DatePickerView.xib */; };
 		5AD246971E27799F009350BF /* PickerAnimatedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD246961E27799F009350BF /* PickerAnimatedTextField.swift */; };
 		5AE5F50A1E16563D006C328A /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AE5F5091E16563D006C328A /* Profile.storyboard */; };
+		6E85B88521FB3DC500DB137F /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B88421FB3DC500DB137F /* ChatModel.swift */; };
+		6E85B88721FB406E00DB137F /* ChatListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B88621FB406E00DB137F /* ChatListModel.swift */; };
 		6EA372E521F8BF16007BE373 /* ImageView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA372E421F8BF16007BE373 /* ImageView+Additions.swift */; };
 		6EA372E721F8E1B7007BE373 /* UIButton+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA372E621F8E1B7007BE373 /* UIButton+Additions.swift */; };
 		E50512BE1E82378700509328 /* WorkingHoursTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50512BC1E82378700509328 /* WorkingHoursTableCell.swift */; };
@@ -536,6 +538,8 @@
 		5AD246961E27799F009350BF /* PickerAnimatedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerAnimatedTextField.swift; sourceTree = "<group>"; };
 		5AD8AC4AE71CBA67916D21CE /* Pods-DentaMatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DentaMatch.release.xcconfig"; path = "Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch.release.xcconfig"; sourceTree = "<group>"; };
 		5AE5F5091E16563D006C328A /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		6E85B88421FB3DC500DB137F /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
+		6E85B88621FB406E00DB137F /* ChatListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListModel.swift; sourceTree = "<group>"; };
 		6EA372E421F8BF16007BE373 /* ImageView+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageView+Additions.swift"; sourceTree = "<group>"; };
 		6EA372E621F8E1B7007BE373 /* UIButton+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Additions.swift"; sourceTree = "<group>"; };
 		A69AB47303239A016127D8D8 /* Pods-DentaMatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DentaMatch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1256,6 +1260,15 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		6E85B88321FB3DB700DB137F /* models */ = {
+			isa = PBXGroup;
+			children = (
+				6E85B88421FB3DC500DB137F /* ChatModel.swift */,
+				6E85B88621FB406E00DB137F /* ChatListModel.swift */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
 		E506AE531FAC374C00ABC7FA /* PreferredLocation */ = {
 			isa = PBXGroup;
 			children = (
@@ -1704,6 +1717,7 @@
 		E56E45BA1DAE07C200AD4559 /* DentaMatch */ = {
 			isa = PBXGroup;
 			children = (
+				6E85B88321FB3DB700DB137F /* models */,
 				5A2CEF4C1E3F030400836654 /* Entitlements */,
 				E55462EA1DAE47F5004163B2 /* Application */,
 				E55462E21DAE47A9004163B2 /* Externals */,
@@ -2707,6 +2721,8 @@
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 				"${BUILT_PRODUCTS_DIR}/Mixpanel-swift/Mixpanel.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjcExceptionBridging/ObjcExceptionBridging.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/XCGLogger/XCGLogger.framework",
 			);
@@ -2720,6 +2736,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mixpanel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjcExceptionBridging.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XCGLogger.framework",
 			);
@@ -2828,6 +2846,7 @@
 				E587D2CF1E23438B006B7F06 /* DMJobTitleSelectionVC.swift in Sources */,
 				4846B87720F3550000BAC18C /* Constants+Color.swift in Sources */,
 				E5A0EB051E2BDE680092E21A /* SubSkillCollectionCell.swift in Sources */,
+				6E85B88521FB3DC500DB137F /* ChatModel.swift in Sources */,
 				E5E7CBA31E3075A200D4FB59 /* DMEditLicenseVC.swift in Sources */,
 				E56C9FA81DED75D500EAA9DD /* CommonHelper.swift in Sources */,
 				E51D4EFC1E3B818400ACC631 /* CustomSegmentControl.swift in Sources */,
@@ -2914,6 +2933,7 @@
 				E5AE37661E4971CE0001EC3C /* SocketEnginePollable.swift in Sources */,
 				E5AE376B1E4971CE0001EC3C /* SocketIOClient.swift in Sources */,
 				484958FC218AD5C400096046 /* State.swift in Sources */,
+				6E85B88721FB406E00DB137F /* ChatListModel.swift in Sources */,
 				F2F5E0CF1E2F62080082187C /* AboutCell.swift in Sources */,
 				E587D2D71E236B84006B7F06 /* DMRegisterMapsVC+GoogleMapsExtension.swift in Sources */,
 				5A3B06CD1E3387FF00EFCA6E /* DMSettingVC+TableViewExtension.swift in Sources */,
