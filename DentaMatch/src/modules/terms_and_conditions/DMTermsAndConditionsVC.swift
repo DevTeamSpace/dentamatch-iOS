@@ -35,7 +35,11 @@ class DMTermsAndConditionsVC: DMBaseVC {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: true)
+        
+        if navigationController?.viewControllers.contains(where: { $0 is DMSettingVC }) == false {
+            navigationController?.setNavigationBarHidden(true, animated: true)
+        }
+        
         hideLoader()
     }
 

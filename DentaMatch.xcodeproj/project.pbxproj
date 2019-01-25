@@ -104,6 +104,34 @@
 		5AD246951E273CE7009350BF /* DatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AD246941E273CE7009350BF /* DatePickerView.xib */; };
 		5AD246971E27799F009350BF /* PickerAnimatedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD246961E27799F009350BF /* PickerAnimatedTextField.swift */; };
 		5AE5F50A1E16563D006C328A /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AE5F5091E16563D006C328A /* Profile.storyboard */; };
+		6E85B82721FAD9E700DB137F /* DMCalendarInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B82621FAD9E700DB137F /* DMCalendarInitializer.swift */; };
+		6E85B82A21FADA7400DB137F /* DMCalendarSetAvailabilityInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B82921FADA7400DB137F /* DMCalendarSetAvailabilityInitializer.swift */; };
+		6E85B82D21FADC2100DB137F /* DMMessagesInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B82C21FADC2100DB137F /* DMMessagesInitializer.swift */; };
+		6E85B83021FADD0F00DB137F /* DMChatInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B82F21FADD0F00DB137F /* DMChatInitializer.swift */; };
+		6E85B83321FADF3C00DB137F /* DMNotificationInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B83221FADF3C00DB137F /* DMNotificationInitializer.swift */; };
+		6E85B83621FAE54B00DB137F /* DMSettingsInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B83521FAE54B00DB137F /* DMSettingsInitializer.swift */; };
+		6E85B83921FAE85700DB137F /* DMChangePasswordInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B83821FAE85700DB137F /* DMChangePasswordInitializer.swift */; };
+		6E85B83C21FAEADC00DB137F /* SearchStateInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B83B21FAEADC00DB137F /* SearchStateInitializer.swift */; };
+		6E85B83F21FAECBC00DB137F /* DMCommonSuccessFailureInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B83E21FAECBC00DB137F /* DMCommonSuccessFailureInitializer.swift */; };
+		6E85B84221FAF12900DB137F /* DMEditStudyInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B84121FAF12900DB137F /* DMEditStudyInitializer.swift */; };
+		6E85B84521FAF24D00DB137F /* DMEditSkillsInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B84421FAF24D00DB137F /* DMEditSkillsInitializer.swift */; };
+		6E85B84821FAF34500DB137F /* DMEditDentalStateInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B84721FAF34500DB137F /* DMEditDentalStateInitializer.swift */; };
+		6E85B84B21FAF64D00DB137F /* DMEditCertificateInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B84A21FAF64D00DB137F /* DMEditCertificateInitializer.swift */; };
+		6E85B84E21FAF75200DB137F /* DMPublicProfileInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B84D21FAF75200DB137F /* DMPublicProfileInitializer.swift */; };
+		6E85B85121FAF94500DB137F /* DMEditLiceseInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B85021FAF94500DB137F /* DMEditLiceseInitializer.swift */; };
+		6E85B85421FAFAE400DB137F /* DMEditProfileInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B85321FAFAE400DB137F /* DMEditProfileInitializer.swift */; };
+		6E85B85721FAFCB600DB137F /* DMProfileSuccessPendingInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B85621FAFCB600DB137F /* DMProfileSuccessPendingInitializer.swift */; };
+		6E85B85B21FAFF3D00DB137F /* DMAffiliationsInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B85A21FAFF3D00DB137F /* DMAffiliationsInitializer.swift */; };
+		6E85B85E21FB007300DB137F /* DMCertificationsInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B85D21FB007300DB137F /* DMCertificationsInitializer.swift */; };
+		6E85B86121FB14C800DB137F /* DMLicenseSelectionInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B86021FB14C800DB137F /* DMLicenseSelectionInitializer.swift */; };
+		6E85B86421FB15C000DB137F /* DMSkillsInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B86321FB15C000DB137F /* DMSkillsInitializer.swift */; };
+		6E85B86721FB16A100DB137F /* DMSelectSkillsInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B86621FB16A100DB137F /* DMSelectSkillsInitializer.swift */; };
+		6E85B86C21FB17B900DB137F /* DMStudyInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B86B21FB17B900DB137F /* DMStudyInitializer.swift */; };
+		6E85B86E21FB17E300DB137F /* DMSchoolListPopOverInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B86D21FB17E300DB137F /* DMSchoolListPopOverInitializer.swift */; };
+		6E85B87121FB196000DB137F /* DMExecutiveSummaryInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B87021FB196000DB137F /* DMExecutiveSummaryInitializer.swift */; };
+		6E85B87421FB1A0F00DB137F /* DMWorkExperienceInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B87321FB1A0F00DB137F /* DMWorkExperienceInitializer.swift */; };
+		6E85B87721FB1C1800DB137F /* DMJobTitleSelectionInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B87621FB1C1800DB137F /* DMJobTitleSelectionInitializer.swift */; };
+		6E85B87A21FB1DAA00DB137F /* DMWorkExperienceStartInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B87921FB1DAA00DB137F /* DMWorkExperienceStartInitializer.swift */; };
 		6EA372E521F8BF16007BE373 /* ImageView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA372E421F8BF16007BE373 /* ImageView+Additions.swift */; };
 		6EA372E721F8E1B7007BE373 /* UIButton+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA372E621F8E1B7007BE373 /* UIButton+Additions.swift */; };
 		6EF2F1E521F9C82300F6F38D /* ContainerInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF2F1E421F9C82300F6F38D /* ContainerInitializer.swift */; };
@@ -188,7 +216,6 @@
 		E55462E61DAE47A9004163B2 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = E55462E51DAE47A9004163B2 /* UIView+Toast.m */; };
 		E55462EC1DAE47F5004163B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55462EB1DAE47F5004163B2 /* AppDelegate.swift */; };
 		E55462F31DAE4A5D004163B2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55462F21DAE4A5D004163B2 /* Constants.swift */; };
-		E55462F51DAE4B9E004163B2 /* UIStoryBoard+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55462F41DAE4B9E004163B2 /* UIStoryBoard+Additions.swift */; };
 		E55462F71DAE4C6F004163B2 /* UITextField+ToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55462F61DAE4C6F004163B2 /* UITextField+ToolBar.swift */; };
 		E55462F91DAE4DD1004163B2 /* UIView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55462F81DAE4DD1004163B2 /* UIView+Additions.swift */; };
 		E55462FC1DAE4EA1004163B2 /* DMBaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55462FB1DAE4EA1004163B2 /* DMBaseVC.swift */; };
@@ -252,7 +279,6 @@
 		E59029A81DED2C7A00151E9B /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59029A31DED2C7A00151E9B /* APIManager.swift */; };
 		E59029A91DED2C7A00151E9B /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59029A51DED2C7A00151E9B /* LogManager.swift */; };
 		E59029AA1DED2C7A00151E9B /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59029A71DED2C7A00151E9B /* UserDefaultsManager.swift */; };
-		E59073571FB023C7007381E8 /* DMCongratulationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59073561FB023C7007381E8 /* DMCongratulationsVC.swift */; };
 		E59073591FB02C4F007381E8 /* DMJobTitleSelectionVC+TableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59073581FB02C4F007381E8 /* DMJobTitleSelectionVC+TableExtension.swift */; };
 		E590735B1FB02D36007381E8 /* DMJobTitleSelectionVC+TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590735A1FB02D36007381E8 /* DMJobTitleSelectionVC+TextFieldExtension.swift */; };
 		E59467271FD8FFE70009C18B /* Popover.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59467261FD8FFE60009C18B /* Popover.swift */; };
@@ -551,6 +577,34 @@
 		5AD246961E27799F009350BF /* PickerAnimatedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerAnimatedTextField.swift; sourceTree = "<group>"; };
 		5AD8AC4AE71CBA67916D21CE /* Pods-DentaMatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DentaMatch.release.xcconfig"; path = "Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch.release.xcconfig"; sourceTree = "<group>"; };
 		5AE5F5091E16563D006C328A /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		6E85B82621FAD9E700DB137F /* DMCalendarInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMCalendarInitializer.swift; sourceTree = "<group>"; };
+		6E85B82921FADA7400DB137F /* DMCalendarSetAvailabilityInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMCalendarSetAvailabilityInitializer.swift; sourceTree = "<group>"; };
+		6E85B82C21FADC2100DB137F /* DMMessagesInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMMessagesInitializer.swift; sourceTree = "<group>"; };
+		6E85B82F21FADD0F00DB137F /* DMChatInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMChatInitializer.swift; sourceTree = "<group>"; };
+		6E85B83221FADF3C00DB137F /* DMNotificationInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMNotificationInitializer.swift; sourceTree = "<group>"; };
+		6E85B83521FAE54B00DB137F /* DMSettingsInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMSettingsInitializer.swift; sourceTree = "<group>"; };
+		6E85B83821FAE85700DB137F /* DMChangePasswordInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMChangePasswordInitializer.swift; sourceTree = "<group>"; };
+		6E85B83B21FAEADC00DB137F /* SearchStateInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStateInitializer.swift; sourceTree = "<group>"; };
+		6E85B83E21FAECBC00DB137F /* DMCommonSuccessFailureInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMCommonSuccessFailureInitializer.swift; sourceTree = "<group>"; };
+		6E85B84121FAF12900DB137F /* DMEditStudyInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMEditStudyInitializer.swift; sourceTree = "<group>"; };
+		6E85B84421FAF24D00DB137F /* DMEditSkillsInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMEditSkillsInitializer.swift; sourceTree = "<group>"; };
+		6E85B84721FAF34500DB137F /* DMEditDentalStateInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMEditDentalStateInitializer.swift; sourceTree = "<group>"; };
+		6E85B84A21FAF64D00DB137F /* DMEditCertificateInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMEditCertificateInitializer.swift; sourceTree = "<group>"; };
+		6E85B84D21FAF75200DB137F /* DMPublicProfileInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMPublicProfileInitializer.swift; sourceTree = "<group>"; };
+		6E85B85021FAF94500DB137F /* DMEditLiceseInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMEditLiceseInitializer.swift; sourceTree = "<group>"; };
+		6E85B85321FAFAE400DB137F /* DMEditProfileInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMEditProfileInitializer.swift; sourceTree = "<group>"; };
+		6E85B85621FAFCB600DB137F /* DMProfileSuccessPendingInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMProfileSuccessPendingInitializer.swift; sourceTree = "<group>"; };
+		6E85B85A21FAFF3D00DB137F /* DMAffiliationsInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMAffiliationsInitializer.swift; sourceTree = "<group>"; };
+		6E85B85D21FB007300DB137F /* DMCertificationsInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMCertificationsInitializer.swift; sourceTree = "<group>"; };
+		6E85B86021FB14C800DB137F /* DMLicenseSelectionInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMLicenseSelectionInitializer.swift; sourceTree = "<group>"; };
+		6E85B86321FB15C000DB137F /* DMSkillsInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMSkillsInitializer.swift; sourceTree = "<group>"; };
+		6E85B86621FB16A100DB137F /* DMSelectSkillsInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMSelectSkillsInitializer.swift; sourceTree = "<group>"; };
+		6E85B86B21FB17B900DB137F /* DMStudyInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMStudyInitializer.swift; sourceTree = "<group>"; };
+		6E85B86D21FB17E300DB137F /* DMSchoolListPopOverInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMSchoolListPopOverInitializer.swift; sourceTree = "<group>"; };
+		6E85B87021FB196000DB137F /* DMExecutiveSummaryInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMExecutiveSummaryInitializer.swift; sourceTree = "<group>"; };
+		6E85B87321FB1A0F00DB137F /* DMWorkExperienceInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMWorkExperienceInitializer.swift; sourceTree = "<group>"; };
+		6E85B87621FB1C1800DB137F /* DMJobTitleSelectionInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMJobTitleSelectionInitializer.swift; sourceTree = "<group>"; };
+		6E85B87921FB1DAA00DB137F /* DMWorkExperienceStartInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMWorkExperienceStartInitializer.swift; sourceTree = "<group>"; };
 		6EA372E421F8BF16007BE373 /* ImageView+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageView+Additions.swift"; sourceTree = "<group>"; };
 		6EA372E621F8E1B7007BE373 /* UIButton+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Additions.swift"; sourceTree = "<group>"; };
 		6EF2F1E421F9C82300F6F38D /* ContainerInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerInitializer.swift; sourceTree = "<group>"; };
@@ -640,7 +694,6 @@
 		E55462E51DAE47A9004163B2 /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
 		E55462EB1DAE47F5004163B2 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E55462F21DAE4A5D004163B2 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		E55462F41DAE4B9E004163B2 /* UIStoryBoard+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryBoard+Additions.swift"; sourceTree = "<group>"; };
 		E55462F61DAE4C6F004163B2 /* UITextField+ToolBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+ToolBar.swift"; sourceTree = "<group>"; };
 		E55462F81DAE4DD1004163B2 /* UIView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Additions.swift"; sourceTree = "<group>"; };
 		E55462FB1DAE4EA1004163B2 /* DMBaseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMBaseVC.swift; sourceTree = "<group>"; };
@@ -706,7 +759,6 @@
 		E59029A31DED2C7A00151E9B /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		E59029A51DED2C7A00151E9B /* LogManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
 		E59029A71DED2C7A00151E9B /* UserDefaultsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
-		E59073561FB023C7007381E8 /* DMCongratulationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMCongratulationsVC.swift; sourceTree = "<group>"; };
 		E59073581FB02C4F007381E8 /* DMJobTitleSelectionVC+TableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DMJobTitleSelectionVC+TableExtension.swift"; sourceTree = "<group>"; };
 		E590735A1FB02D36007381E8 /* DMJobTitleSelectionVC+TextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DMJobTitleSelectionVC+TextFieldExtension.swift"; sourceTree = "<group>"; };
 		E59467261FD8FFE60009C18B /* Popover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Popover.swift; sourceTree = "<group>"; };
@@ -955,14 +1007,6 @@
 			path = "Search Field";
 			sourceTree = "<group>";
 		};
-		484958F7218AC78E00096046 /* State Search */ = {
-			isa = PBXGroup;
-			children = (
-				484958F8218AC7AB00096046 /* SearchStateViewController.swift */,
-			);
-			path = "State Search";
-			sourceTree = "<group>";
-		};
 		484958FA218AD59C00096046 /* State */ = {
 			isa = PBXGroup;
 			children = (
@@ -1105,35 +1149,6 @@
 			path = ProfileHeaderView;
 			sourceTree = "<group>";
 		};
-		5A50A2B91E3212D10010AA31 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				5A50A2BB1E3213020010AA31 /* Setting */,
-				5A50A2BA1E3212F60010AA31 /* ChangePassword */,
-			);
-			path = Settings;
-			sourceTree = "<group>";
-		};
-		5A50A2BA1E3212F60010AA31 /* ChangePassword */ = {
-			isa = PBXGroup;
-			children = (
-				5A3B06CE1E33881D00EFCA6E /* DMChangePasswordVC.swift */,
-				5A3B06D01E33883C00EFCA6E /* DMChangePasswordVC+TableViewExtension.swift */,
-				5A3B06D21E33885A00EFCA6E /* DMChangePasswordVC+Services.swift */,
-			);
-			path = ChangePassword;
-			sourceTree = "<group>";
-		};
-		5A50A2BB1E3213020010AA31 /* Setting */ = {
-			isa = PBXGroup;
-			children = (
-				5A3B06CA1E3387DA00EFCA6E /* DMSettingVC.swift */,
-				5A3B06CC1E3387FF00EFCA6E /* DMSettingVC+TableViewExtension.swift */,
-				5AC714571E34F76900E433C1 /* DMSettingVC+Services.swift */,
-			);
-			path = Setting;
-			sourceTree = "<group>";
-		};
 		5A50A2C61E3216010010AA31 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
@@ -1195,16 +1210,6 @@
 			path = Calender;
 			sourceTree = "<group>";
 		};
-		5A988BC21E4AE95900DECB49 /* Notification */ = {
-			isa = PBXGroup;
-			children = (
-				5A988BC31E4AE99800DECB49 /* DMNotificationVC.swift */,
-				5A988BC51E4AE9D200DECB49 /* DMNotificationVC+TableViewExtension.swift */,
-				5A988BC71E4AEA0E00DECB49 /* DMNotificationVC+Services.swift */,
-			);
-			path = Notification;
-			sourceTree = "<group>";
-		};
 		5A988BC91E4AEF4100DECB49 /* Notication */ = {
 			isa = PBXGroup;
 			children = (
@@ -1229,43 +1234,9 @@
 			path = BannerView;
 			sourceTree = "<group>";
 		};
-		5AC714441E34AB3300E433C1 /* Calender */ = {
-			isa = PBXGroup;
-			children = (
-				5AC714511E34ACD400E433C1 /* DMCalenderVC.swift */,
-				5A3525CC1E3F372A0018EB4A /* DMCalenderVC+TableViewExtension.swift */,
-				5A60A8551E42FF1800789D14 /* DMCalenderVC+Services.swift */,
-				5A8F62A21E399A080037C4A2 /* DMCalendarSetAvailabillityVC.swift */,
-				5A8F62A41E399A550037C4A2 /* DMCalendarSetAvailabillityVC+TableViewExtension.swift */,
-				5A2CEF4A1E3C2F9600836654 /* DMCalendarSetAvailabillityVC+Services.swift */,
-			);
-			path = Calender;
-			sourceTree = "<group>";
-		};
-		5AC714451E34AB4500E433C1 /* Track */ = {
-			isa = PBXGroup;
-			children = (
-				E51D4F081E40744C00ACC631 /* CancelJob */,
-				E51D4F091E40744C00ACC631 /* TrackDashboard */,
-			);
-			path = Track;
-			sourceTree = "<group>";
-		};
-		5AC714461E34AB5B00E433C1 /* Messages */ = {
-			isa = PBXGroup;
-			children = (
-				E5BED5491E49AB85003EC833 /* Chat */,
-				E5BED54C1E49AB85003EC833 /* MessageDashboard */,
-			);
-			path = Messages;
-			sourceTree = "<group>";
-		};
 		5AE5F50B1E16569B006C328A /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				E5433AF01FCD13E400D152D9 /* ProfileSuccessFailure */,
-				E59073551FB023B2007381E8 /* Congratulations */,
-				E587D2DE1E24C021006B7F06 /* Affiliations */,
 				E587D2DF1E24C021006B7F06 /* Certifications */,
 				E587D2E01E24C021006B7F06 /* License */,
 				E587D2E21E24C021006B7F06 /* Skills */,
@@ -1275,6 +1246,307 @@
 				E587D2CD1E23438B006B7F06 /* JobTitleSelection */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		6E85B82521FAD9BF00DB137F /* calendar */ = {
+			isa = PBXGroup;
+			children = (
+				5AC714511E34ACD400E433C1 /* DMCalenderVC.swift */,
+				5A3525CC1E3F372A0018EB4A /* DMCalenderVC+TableViewExtension.swift */,
+				5A60A8551E42FF1800789D14 /* DMCalenderVC+Services.swift */,
+				6E85B82621FAD9E700DB137F /* DMCalendarInitializer.swift */,
+			);
+			path = calendar;
+			sourceTree = "<group>";
+		};
+		6E85B82821FADA4000DB137F /* calendar_set_availability */ = {
+			isa = PBXGroup;
+			children = (
+				5A8F62A21E399A080037C4A2 /* DMCalendarSetAvailabillityVC.swift */,
+				5A8F62A41E399A550037C4A2 /* DMCalendarSetAvailabillityVC+TableViewExtension.swift */,
+				5A2CEF4A1E3C2F9600836654 /* DMCalendarSetAvailabillityVC+Services.swift */,
+				6E85B82921FADA7400DB137F /* DMCalendarSetAvailabilityInitializer.swift */,
+			);
+			path = calendar_set_availability;
+			sourceTree = "<group>";
+		};
+		6E85B82B21FADBF800DB137F /* messages */ = {
+			isa = PBXGroup;
+			children = (
+				E5BED54F1E49AB85003EC833 /* DMMessagesVC.swift */,
+				E5BED54D1E49AB85003EC833 /* DMMessages+Services.swift */,
+				E5BED54E1E49AB85003EC833 /* DMMessagesVC+TableViewExtension.swift */,
+				E5BED5651E49BA0B003EC833 /* DMMessagesVC+DBHandling.swift */,
+				6E85B82C21FADC2100DB137F /* DMMessagesInitializer.swift */,
+			);
+			path = messages;
+			sourceTree = "<group>";
+		};
+		6E85B82E21FADCF800DB137F /* chat */ = {
+			isa = PBXGroup;
+			children = (
+				E5BED54B1E49AB85003EC833 /* DMChatVC.swift */,
+				E5BED54A1E49AB85003EC833 /* DMChatVC+TableViewExtensions.swift */,
+				E5310E0C1E4B2B3F004403A0 /* DMChatVC+Services.swift */,
+				E5310E0E1E4EDE71004403A0 /* DMChatVC+DBHandling.swift */,
+				6E85B82F21FADD0F00DB137F /* DMChatInitializer.swift */,
+			);
+			path = chat;
+			sourceTree = "<group>";
+		};
+		6E85B83121FADF1A00DB137F /* notification */ = {
+			isa = PBXGroup;
+			children = (
+				5A988BC31E4AE99800DECB49 /* DMNotificationVC.swift */,
+				5A988BC51E4AE9D200DECB49 /* DMNotificationVC+TableViewExtension.swift */,
+				5A988BC71E4AEA0E00DECB49 /* DMNotificationVC+Services.swift */,
+				6E85B83221FADF3C00DB137F /* DMNotificationInitializer.swift */,
+			);
+			path = notification;
+			sourceTree = "<group>";
+		};
+		6E85B83421FAE4F300DB137F /* settings */ = {
+			isa = PBXGroup;
+			children = (
+				5A3B06CA1E3387DA00EFCA6E /* DMSettingVC.swift */,
+				5A3B06CC1E3387FF00EFCA6E /* DMSettingVC+TableViewExtension.swift */,
+				5AC714571E34F76900E433C1 /* DMSettingVC+Services.swift */,
+				6E85B83521FAE54B00DB137F /* DMSettingsInitializer.swift */,
+			);
+			path = settings;
+			sourceTree = "<group>";
+		};
+		6E85B83721FAE83400DB137F /* change_password */ = {
+			isa = PBXGroup;
+			children = (
+				5A3B06CE1E33881D00EFCA6E /* DMChangePasswordVC.swift */,
+				5A3B06D01E33883C00EFCA6E /* DMChangePasswordVC+TableViewExtension.swift */,
+				5A3B06D21E33885A00EFCA6E /* DMChangePasswordVC+Services.swift */,
+				6E85B83821FAE85700DB137F /* DMChangePasswordInitializer.swift */,
+			);
+			path = change_password;
+			sourceTree = "<group>";
+		};
+		6E85B83A21FAEAB200DB137F /* states */ = {
+			isa = PBXGroup;
+			children = (
+				484958F8218AC7AB00096046 /* SearchStateViewController.swift */,
+				6E85B83B21FAEADC00DB137F /* SearchStateInitializer.swift */,
+			);
+			path = states;
+			sourceTree = "<group>";
+		};
+		6E85B83D21FAEC9500DB137F /* common_success_failure */ = {
+			isa = PBXGroup;
+			children = (
+				E5D2D8AA1FE24305001EFA68 /* DMCommonSuccessFailureVC.swift */,
+				6E85B83E21FAECBC00DB137F /* DMCommonSuccessFailureInitializer.swift */,
+			);
+			path = common_success_failure;
+			sourceTree = "<group>";
+		};
+		6E85B84021FAF0B900DB137F /* edit_study */ = {
+			isa = PBXGroup;
+			children = (
+				E51D4EF21E3AFCA700ACC631 /* DMEditStudyVC.swift */,
+				E51D4EF41E3AFEA600ACC631 /* DMEditStudyVC+Services.swift */,
+				E51D4EF61E3B029D00ACC631 /* DMEditStudyVC+TableViewExtension.swift */,
+				6E85B84121FAF12900DB137F /* DMEditStudyInitializer.swift */,
+			);
+			path = edit_study;
+			sourceTree = "<group>";
+		};
+		6E85B84321FAF1ED00DB137F /* edit_skills */ = {
+			isa = PBXGroup;
+			children = (
+				E57681981E3A234700D912EA /* DMEditSkillsVC.swift */,
+				E576819A1E3A25F100D912EA /* DMEditSkillsVC+Services.swift */,
+				E576819C1E3A289D00D912EA /* DMEditSkillsVC+TableViewExtension.swift */,
+				6E85B84421FAF24D00DB137F /* DMEditSkillsInitializer.swift */,
+			);
+			path = edit_skills;
+			sourceTree = "<group>";
+		};
+		6E85B84621FAF30400DB137F /* dental_state_board */ = {
+			isa = PBXGroup;
+			children = (
+				E57F29DE1E3695060025B9DE /* DMEditDentalStateBoardVC.swift */,
+				E57F29E01E3696A60025B9DE /* DMEditDentalStateBoardVC+Services.swift */,
+				6E85B84721FAF34500DB137F /* DMEditDentalStateInitializer.swift */,
+			);
+			path = dental_state_board;
+			sourceTree = "<group>";
+		};
+		6E85B84921FAF61900DB137F /* edit_certificate */ = {
+			isa = PBXGroup;
+			children = (
+				E54B9A831E32870B00805D9C /* DMEditCertificateVC.swift */,
+				E57F29DB1E368D070025B9DE /* DMEditCertificateVC+Services.swift */,
+				6E85B84A21FAF64D00DB137F /* DMEditCertificateInitializer.swift */,
+			);
+			path = edit_certificate;
+			sourceTree = "<group>";
+		};
+		6E85B84C21FAF73A00DB137F /* edit_public_profile */ = {
+			isa = PBXGroup;
+			children = (
+				E5E7CBAB1E3099DF00D4FB59 /* DMPublicProfileVC.swift */,
+				E50FA8121E30A1DA00C20C93 /* DMPublicProfileVC+TableViewExtension.swift */,
+				E57681951E38A1DA00D912EA /* DMPublicProfileVC+Services.swift */,
+				6E85B84D21FAF75200DB137F /* DMPublicProfileInitializer.swift */,
+			);
+			path = edit_public_profile;
+			sourceTree = "<group>";
+		};
+		6E85B84F21FAF92700DB137F /* edit_license */ = {
+			isa = PBXGroup;
+			children = (
+				E5E7CBA21E3075A200D4FB59 /* DMEditLicenseVC.swift */,
+				E5E7CBA41E3089B200D4FB59 /* DMEditLicenseVC+Services.swift */,
+				6E85B85021FAF94500DB137F /* DMEditLiceseInitializer.swift */,
+			);
+			path = edit_license;
+			sourceTree = "<group>";
+		};
+		6E85B85221FAFAC600DB137F /* edit_profile */ = {
+			isa = PBXGroup;
+			children = (
+				E558D9071E2E6FE700A6DF95 /* DMEditProfileVC.swift */,
+				E558D9091E2E7A3200A6DF95 /* DMEditProfileVC+TableViewExtension.swift */,
+				E5E7CB421E2F39D500D4FB59 /* DMEditProfileVC+Services.swift */,
+				6E85B85321FAFAE400DB137F /* DMEditProfileInitializer.swift */,
+			);
+			path = edit_profile;
+			sourceTree = "<group>";
+		};
+		6E85B85521FAFC8900DB137F /* profile_success_failure */ = {
+			isa = PBXGroup;
+			children = (
+				E5433AF11FCD140800D152D9 /* DMProfileSuccessPending.swift */,
+				E540CBBF1FDE426E00A8A56E /* DMProfileSuccessPending+Services.swift */,
+				6E85B85621FAFCB600DB137F /* DMProfileSuccessPendingInitializer.swift */,
+			);
+			path = profile_success_failure;
+			sourceTree = "<group>";
+		};
+		6E85B85921FAFF0400DB137F /* affiliations */ = {
+			isa = PBXGroup;
+			children = (
+				E587D2F31E24C095006B7F06 /* DMAffiliationsVC.swift */,
+				E587D3071E253719006B7F06 /* DMAffiliationsVC+TableViewExtension.swift */,
+				E57EE6C91E28EB440090434F /* DMAffiliationsVC+Services.swift */,
+				6E85B85A21FAFF3D00DB137F /* DMAffiliationsInitializer.swift */,
+			);
+			path = affiliations;
+			sourceTree = "<group>";
+		};
+		6E85B85C21FB005700DB137F /* certifications */ = {
+			isa = PBXGroup;
+			children = (
+				E587D2EF1E24C05D006B7F06 /* DMCertificationsVC.swift */,
+				E5496DFB1E25547300C54288 /* DMCertificationsVC+TableViewExtension.swift */,
+				E514E5B91E28B472005F6712 /* DMCertificationsVC+Services.swift */,
+				6E85B85D21FB007300DB137F /* DMCertificationsInitializer.swift */,
+			);
+			path = certifications;
+			sourceTree = "<group>";
+		};
+		6E85B85F21FB14AA00DB137F /* license */ = {
+			isa = PBXGroup;
+			children = (
+				E587D2E11E24C021006B7F06 /* DMLicenseSelectionVC.swift */,
+				E5496E0B1E26435C00C54288 /* DMLicenseSelectionVC+TableViewExtension.swift */,
+				5A5266BC1E26413400C5B7A1 /* DMLicenseSelectionVC+Services.swift */,
+				6E85B86021FB14C800DB137F /* DMLicenseSelectionInitializer.swift */,
+			);
+			path = license;
+			sourceTree = "<group>";
+		};
+		6E85B86221FB15A800DB137F /* skills */ = {
+			isa = PBXGroup;
+			children = (
+				E587D2F51E24C0B0006B7F06 /* DMSkillsVC.swift */,
+				E5496E0D1E273F1D00C54288 /* DMSkillsVC+Services.swift */,
+				E5496E151E2784D500C54288 /* DMSkillsVC+TableViewExtension.swift */,
+				6E85B86321FB15C000DB137F /* DMSkillsInitializer.swift */,
+			);
+			path = skills;
+			sourceTree = "<group>";
+		};
+		6E85B86521FB166E00DB137F /* select_skills */ = {
+			isa = PBXGroup;
+			children = (
+				E587D2F71E24C0C0006B7F06 /* DMSelectSkillsVC.swift */,
+				6E85B86621FB16A100DB137F /* DMSelectSkillsInitializer.swift */,
+			);
+			path = select_skills;
+			sourceTree = "<group>";
+		};
+		6E85B86821FB177F00DB137F /* study */ = {
+			isa = PBXGroup;
+			children = (
+				E587D2F91E24C102006B7F06 /* DMStudyVC.swift */,
+				E587D3011E24E97B006B7F06 /* DMStudy+TableViewExtension.swift */,
+				E5A0EB011E2A9C760092E21A /* DMStudy+Services.swift */,
+				6E85B86B21FB17B900DB137F /* DMStudyInitializer.swift */,
+			);
+			path = study;
+			sourceTree = "<group>";
+		};
+		6E85B86921FB179000DB137F /* school_list_popover */ = {
+			isa = PBXGroup;
+			children = (
+				E5496E071E25E4AA00C54288 /* DMSchoolListPopOverVC.swift */,
+				E5496E091E25E52600C54288 /* DMSchoolListPopOverVC+TableViewExtension.swift */,
+				6E85B86D21FB17E300DB137F /* DMSchoolListPopOverInitializer.swift */,
+			);
+			path = school_list_popover;
+			sourceTree = "<group>";
+		};
+		6E85B86F21FB193C00DB137F /* executive_summary */ = {
+			isa = PBXGroup;
+			children = (
+				E587D2F11E24C07C006B7F06 /* DMExecutiveSummaryVC.swift */,
+				E5496E011E255A9E00C54288 /* DMExecutiveSummaryVC+TableViewExtension.swift */,
+				E54976F61E28D243006F21E5 /* DMExecutiveSummaryVC+Services.swift */,
+				6E85B87021FB196000DB137F /* DMExecutiveSummaryInitializer.swift */,
+			);
+			path = executive_summary;
+			sourceTree = "<group>";
+		};
+		6E85B87221FB19F100DB137F /* work_experience */ = {
+			isa = PBXGroup;
+			children = (
+				E587D2E91E24C021006B7F06 /* DMWorkExperienceVC.swift */,
+				E587D2E81E24C021006B7F06 /* DMWorkExperienceVC+TableViewExtension.swift */,
+				5AD246901E272E92009350BF /* DMWorkExperienceVC+Services.swift */,
+				6E85B87321FB1A0F00DB137F /* DMWorkExperienceInitializer.swift */,
+			);
+			path = work_experience;
+			sourceTree = "<group>";
+		};
+		6E85B87521FB1BF700DB137F /* job_title_selection */ = {
+			isa = PBXGroup;
+			children = (
+				E587D2CE1E23438B006B7F06 /* DMJobTitleSelectionVC.swift */,
+				E587D2D01E2343A5006B7F06 /* DMJobTitleSelectionVC+UIPickerViewExtension.swift */,
+				E587D2D41E2357A9006B7F06 /* DMJobTitleSelectionVC+Services.swift */,
+				E59073581FB02C4F007381E8 /* DMJobTitleSelectionVC+TableExtension.swift */,
+				E590735A1FB02D36007381E8 /* DMJobTitleSelectionVC+TextFieldExtension.swift */,
+				E51C4D3D1FB05591009FC3A0 /* DMJobTitleSelectionVC+TextFieldDelegates.swift */,
+				6E85B87621FB1C1800DB137F /* DMJobTitleSelectionInitializer.swift */,
+			);
+			path = job_title_selection;
+			sourceTree = "<group>";
+		};
+		6E85B87821FB1D6F00DB137F /* work_experience_start */ = {
+			isa = PBXGroup;
+			children = (
+				E587D2E71E24C021006B7F06 /* DMWorkExperienceStart.swift */,
+				E587D2E61E24C021006B7F06 /* DMWorkExperienceStart+TableViewExtension.swift */,
+				6E85B87921FB1DAA00DB137F /* DMWorkExperienceStartInitializer.swift */,
+			);
+			path = work_experience_start;
 			sourceTree = "<group>";
 		};
 		6EF2F1E221F9C7AB00F6F38D /* src */ = {
@@ -1298,6 +1570,34 @@
 			isa = PBXGroup;
 			children = (
 				E55462FB1DAE4EA1004163B2 /* DMBaseVC.swift */,
+				6E85B87521FB1BF700DB137F /* job_title_selection */,
+				6E85B87821FB1D6F00DB137F /* work_experience_start */,
+				6E85B87221FB19F100DB137F /* work_experience */,
+				6E85B86F21FB193C00DB137F /* executive_summary */,
+				6E85B86921FB179000DB137F /* school_list_popover */,
+				6E85B86821FB177F00DB137F /* study */,
+				6E85B86521FB166E00DB137F /* select_skills */,
+				6E85B86221FB15A800DB137F /* skills */,
+				6E85B85F21FB14AA00DB137F /* license */,
+				6E85B85C21FB005700DB137F /* certifications */,
+				6E85B85921FAFF0400DB137F /* affiliations */,
+				6E85B85521FAFC8900DB137F /* profile_success_failure */,
+				6E85B85221FAFAC600DB137F /* edit_profile */,
+				6E85B84F21FAF92700DB137F /* edit_license */,
+				6E85B84C21FAF73A00DB137F /* edit_public_profile */,
+				6E85B84921FAF61900DB137F /* edit_certificate */,
+				6E85B84621FAF30400DB137F /* dental_state_board */,
+				6E85B84321FAF1ED00DB137F /* edit_skills */,
+				6E85B84021FAF0B900DB137F /* edit_study */,
+				6E85B83D21FAEC9500DB137F /* common_success_failure */,
+				6E85B83A21FAEAB200DB137F /* states */,
+				6E85B83721FAE83400DB137F /* change_password */,
+				6E85B83421FAE4F300DB137F /* settings */,
+				6E85B83121FADF1A00DB137F /* notification */,
+				6E85B82E21FADCF800DB137F /* chat */,
+				6E85B82B21FADBF800DB137F /* messages */,
+				6E85B82821FADA4000DB137F /* calendar_set_availability */,
+				6E85B82521FAD9BF00DB137F /* calendar */,
 				6EF2F21121FA1DB700F6F38D /* cancel_job */,
 				6EF2F20E21FA1CD600F6F38D /* track */,
 				6EF2F20B21FA14BA00F6F38D /* job_detail */,
@@ -1505,16 +1805,6 @@
 			path = Registration;
 			sourceTree = "<group>";
 		};
-		E51D4EEF1E3AFC7500ACC631 /* Study */ = {
-			isa = PBXGroup;
-			children = (
-				E51D4EF21E3AFCA700ACC631 /* DMEditStudyVC.swift */,
-				E51D4EF41E3AFEA600ACC631 /* DMEditStudyVC+Services.swift */,
-				E51D4EF61E3B029D00ACC631 /* DMEditStudyVC+TableViewExtension.swift */,
-			);
-			path = Study;
-			sourceTree = "<group>";
-		};
 		E51D4EFA1E3B816B00ACC631 /* SegmentControl */ = {
 			isa = PBXGroup;
 			children = (
@@ -1530,29 +1820,6 @@
 				E51D4F061E3FABB400ACC631 /* LoadMoreView.swift */,
 			);
 			path = LoadMore;
-			sourceTree = "<group>";
-		};
-		E51D4F081E40744C00ACC631 /* CancelJob */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CancelJob;
-			sourceTree = "<group>";
-		};
-		E51D4F091E40744C00ACC631 /* TrackDashboard */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = TrackDashboard;
-			sourceTree = "<group>";
-		};
-		E5433AF01FCD13E400D152D9 /* ProfileSuccessFailure */ = {
-			isa = PBXGroup;
-			children = (
-				E5433AF11FCD140800D152D9 /* DMProfileSuccessPending.swift */,
-				E540CBBF1FDE426E00A8A56E /* DMProfileSuccessPending+Services.swift */,
-			);
-			path = ProfileSuccessFailure;
 			sourceTree = "<group>";
 		};
 		E54976E51E28CEDD006F21E5 /* Certification */ = {
@@ -1597,15 +1864,6 @@
 			path = WorkExperience;
 			sourceTree = "<group>";
 		};
-		E54B9A821E3286E700805D9C /* Certificate */ = {
-			isa = PBXGroup;
-			children = (
-				E54B9A831E32870B00805D9C /* DMEditCertificateVC.swift */,
-				E57F29DB1E368D070025B9DE /* DMEditCertificateVC+Services.swift */,
-			);
-			path = Certificate;
-			sourceTree = "<group>";
-		};
 		E55462D41DAE1558004163B2 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
@@ -1628,7 +1886,6 @@
 				E55462DA1DAE312C004163B2 /* String+Additons.swift */,
 				E55462DE1DAE31EA004163B2 /* UIFont+Additions.swift */,
 				E55462E01DAE41FB004163B2 /* Date+Additions.swift */,
-				E55462F41DAE4B9E004163B2 /* UIStoryBoard+Additions.swift */,
 				E55462F61DAE4C6F004163B2 /* UITextField+ToolBar.swift */,
 				E55462F81DAE4DD1004163B2 /* UIView+Additions.swift */,
 				E56C9F9D1DED4BD100EAA9DD /* Character+Addition.swift */,
@@ -1693,14 +1950,6 @@
 		E55462E71DAE47C6004163B2 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				484958F7218AC78E00096046 /* State Search */,
-				E5D2D8A91FE242E1001EFA68 /* CommonSuccessFailureScreen */,
-				5A988BC21E4AE95900DECB49 /* Notification */,
-				5AC714461E34AB5B00E433C1 /* Messages */,
-				5AC714451E34AB4500E433C1 /* Track */,
-				5AC714441E34AB3300E433C1 /* Calender */,
-				5A50A2B91E3212D10010AA31 /* Settings */,
-				E558D9011E2E085200A6DF95 /* Dashboard */,
 				5AE5F50B1E16569B006C328A /* Profile */,
 			);
 			path = ViewControllers;
@@ -1757,30 +2006,6 @@
 				E558D8FB1E2CB5D400A6DF95 /* AutoCompleteTable.swift */,
 			);
 			path = AutoCompleteTable;
-			sourceTree = "<group>";
-		};
-		E558D9011E2E085200A6DF95 /* Dashboard */ = {
-			isa = PBXGroup;
-			children = (
-				E51D4EEF1E3AFC7500ACC631 /* Study */,
-				E57681971E3A233100D912EA /* Skills */,
-				E57F29DD1E3694EF0025B9DE /* DentalStateBoard */,
-				E54B9A821E3286E700805D9C /* Certificate */,
-				E5E7CBAA1E3099CB00D4FB59 /* PublicProfile */,
-				E5E7CBA11E30758E00D4FB59 /* License */,
-				E558D9061E2E6FD800A6DF95 /* EditProfile */,
-			);
-			path = Dashboard;
-			sourceTree = "<group>";
-		};
-		E558D9061E2E6FD800A6DF95 /* EditProfile */ = {
-			isa = PBXGroup;
-			children = (
-				E558D9071E2E6FE700A6DF95 /* DMEditProfileVC.swift */,
-				E558D9091E2E7A3200A6DF95 /* DMEditProfileVC+TableViewExtension.swift */,
-				E5E7CB421E2F39D500D4FB59 /* DMEditProfileVC+Services.swift */,
-			);
-			path = EditProfile;
 			sourceTree = "<group>";
 		};
 		E558D90B1E2E871900A6DF95 /* EditProfile */ = {
@@ -1892,31 +2117,12 @@
 			path = PhotoGalleryManager;
 			sourceTree = "<group>";
 		};
-		E57681971E3A233100D912EA /* Skills */ = {
-			isa = PBXGroup;
-			children = (
-				E57681981E3A234700D912EA /* DMEditSkillsVC.swift */,
-				E576819A1E3A25F100D912EA /* DMEditSkillsVC+Services.swift */,
-				E576819C1E3A289D00D912EA /* DMEditSkillsVC+TableViewExtension.swift */,
-			);
-			path = Skills;
-			sourceTree = "<group>";
-		};
 		E57EE6CB1E28EBA90090434F /* Affiliation */ = {
 			isa = PBXGroup;
 			children = (
 				E57EE6CC1E28EBC00090434F /* Affiliation.swift */,
 			);
 			path = Affiliation;
-			sourceTree = "<group>";
-		};
-		E57F29DD1E3694EF0025B9DE /* DentalStateBoard */ = {
-			isa = PBXGroup;
-			children = (
-				E57F29DE1E3695060025B9DE /* DMEditDentalStateBoardVC.swift */,
-				E57F29E01E3696A60025B9DE /* DMEditDentalStateBoardVC+Services.swift */,
-			);
-			path = DentalStateBoard;
 			sourceTree = "<group>";
 		};
 		E58654FB1DEFEF7F006FEB2D /* ConfigurationManager */ = {
@@ -1947,32 +2153,13 @@
 		E587D2CD1E23438B006B7F06 /* JobTitleSelection */ = {
 			isa = PBXGroup;
 			children = (
-				E587D2CE1E23438B006B7F06 /* DMJobTitleSelectionVC.swift */,
-				E587D2D01E2343A5006B7F06 /* DMJobTitleSelectionVC+UIPickerViewExtension.swift */,
-				E587D2D41E2357A9006B7F06 /* DMJobTitleSelectionVC+Services.swift */,
-				E59073581FB02C4F007381E8 /* DMJobTitleSelectionVC+TableExtension.swift */,
-				E590735A1FB02D36007381E8 /* DMJobTitleSelectionVC+TextFieldExtension.swift */,
-				E51C4D3D1FB05591009FC3A0 /* DMJobTitleSelectionVC+TextFieldDelegates.swift */,
 			);
 			path = JobTitleSelection;
-			sourceTree = "<group>";
-		};
-		E587D2DE1E24C021006B7F06 /* Affiliations */ = {
-			isa = PBXGroup;
-			children = (
-				E587D2F31E24C095006B7F06 /* DMAffiliationsVC.swift */,
-				E587D3071E253719006B7F06 /* DMAffiliationsVC+TableViewExtension.swift */,
-				E57EE6C91E28EB440090434F /* DMAffiliationsVC+Services.swift */,
-			);
-			path = Affiliations;
 			sourceTree = "<group>";
 		};
 		E587D2DF1E24C021006B7F06 /* Certifications */ = {
 			isa = PBXGroup;
 			children = (
-				E587D2EF1E24C05D006B7F06 /* DMCertificationsVC.swift */,
-				E5496DFB1E25547300C54288 /* DMCertificationsVC+TableViewExtension.swift */,
-				E514E5B91E28B472005F6712 /* DMCertificationsVC+Services.swift */,
 			);
 			path = Certifications;
 			sourceTree = "<group>";
@@ -1980,9 +2167,6 @@
 		E587D2E01E24C021006B7F06 /* License */ = {
 			isa = PBXGroup;
 			children = (
-				E587D2E11E24C021006B7F06 /* DMLicenseSelectionVC.swift */,
-				E5496E0B1E26435C00C54288 /* DMLicenseSelectionVC+TableViewExtension.swift */,
-				5A5266BC1E26413400C5B7A1 /* DMLicenseSelectionVC+Services.swift */,
 			);
 			path = License;
 			sourceTree = "<group>";
@@ -1990,10 +2174,6 @@
 		E587D2E21E24C021006B7F06 /* Skills */ = {
 			isa = PBXGroup;
 			children = (
-				E587D2F51E24C0B0006B7F06 /* DMSkillsVC.swift */,
-				E587D2F71E24C0C0006B7F06 /* DMSelectSkillsVC.swift */,
-				E5496E0D1E273F1D00C54288 /* DMSkillsVC+Services.swift */,
-				E5496E151E2784D500C54288 /* DMSkillsVC+TableViewExtension.swift */,
 			);
 			path = Skills;
 			sourceTree = "<group>";
@@ -2001,11 +2181,6 @@
 		E587D2E31E24C021006B7F06 /* Study */ = {
 			isa = PBXGroup;
 			children = (
-				E587D2F91E24C102006B7F06 /* DMStudyVC.swift */,
-				E587D3011E24E97B006B7F06 /* DMStudy+TableViewExtension.swift */,
-				E5496E071E25E4AA00C54288 /* DMSchoolListPopOverVC.swift */,
-				E5496E091E25E52600C54288 /* DMSchoolListPopOverVC+TableViewExtension.swift */,
-				E5A0EB011E2A9C760092E21A /* DMStudy+Services.swift */,
 			);
 			path = Study;
 			sourceTree = "<group>";
@@ -2013,9 +2188,6 @@
 		E587D2E41E24C021006B7F06 /* Summary */ = {
 			isa = PBXGroup;
 			children = (
-				E587D2F11E24C07C006B7F06 /* DMExecutiveSummaryVC.swift */,
-				E5496E011E255A9E00C54288 /* DMExecutiveSummaryVC+TableViewExtension.swift */,
-				E54976F61E28D243006F21E5 /* DMExecutiveSummaryVC+Services.swift */,
 			);
 			path = Summary;
 			sourceTree = "<group>";
@@ -2023,11 +2195,6 @@
 		E587D2E51E24C021006B7F06 /* WorkExperience */ = {
 			isa = PBXGroup;
 			children = (
-				E587D2E61E24C021006B7F06 /* DMWorkExperienceStart+TableViewExtension.swift */,
-				E587D2E71E24C021006B7F06 /* DMWorkExperienceStart.swift */,
-				E587D2E91E24C021006B7F06 /* DMWorkExperienceVC.swift */,
-				E587D2E81E24C021006B7F06 /* DMWorkExperienceVC+TableViewExtension.swift */,
-				5AD246901E272E92009350BF /* DMWorkExperienceVC+Services.swift */,
 			);
 			path = WorkExperience;
 			sourceTree = "<group>";
@@ -2054,14 +2221,6 @@
 				E59029A71DED2C7A00151E9B /* UserDefaultsManager.swift */,
 			);
 			path = UserDefaultsManager;
-			sourceTree = "<group>";
-		};
-		E59073551FB023B2007381E8 /* Congratulations */ = {
-			isa = PBXGroup;
-			children = (
-				E59073561FB023C7007381E8 /* DMCongratulationsVC.swift */,
-			);
-			path = Congratulations;
 			sourceTree = "<group>";
 		};
 		E59467251FD8FFE60009C18B /* PopOverView */ = {
@@ -2276,28 +2435,6 @@
 			path = CoreDataModels;
 			sourceTree = "<group>";
 		};
-		E5BED5491E49AB85003EC833 /* Chat */ = {
-			isa = PBXGroup;
-			children = (
-				E5BED54B1E49AB85003EC833 /* DMChatVC.swift */,
-				E5BED54A1E49AB85003EC833 /* DMChatVC+TableViewExtensions.swift */,
-				E5310E0C1E4B2B3F004403A0 /* DMChatVC+Services.swift */,
-				E5310E0E1E4EDE71004403A0 /* DMChatVC+DBHandling.swift */,
-			);
-			path = Chat;
-			sourceTree = "<group>";
-		};
-		E5BED54C1E49AB85003EC833 /* MessageDashboard */ = {
-			isa = PBXGroup;
-			children = (
-				E5BED54F1E49AB85003EC833 /* DMMessagesVC.swift */,
-				E5BED54D1E49AB85003EC833 /* DMMessages+Services.swift */,
-				E5BED54E1E49AB85003EC833 /* DMMessagesVC+TableViewExtension.swift */,
-				E5BED5651E49BA0B003EC833 /* DMMessagesVC+DBHandling.swift */,
-			);
-			path = MessageDashboard;
-			sourceTree = "<group>";
-		};
 		E5C5F30C1DC074C9001A5A3F /* fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -2306,14 +2443,6 @@
 				E597E55A1E150638001DDA78 /* dentamatch.ttf */,
 			);
 			path = fonts;
-			sourceTree = "<group>";
-		};
-		E5D2D8A91FE242E1001EFA68 /* CommonSuccessFailureScreen */ = {
-			isa = PBXGroup;
-			children = (
-				E5D2D8AA1FE24305001EFA68 /* DMCommonSuccessFailureVC.swift */,
-			);
-			path = CommonSuccessFailureScreen;
 			sourceTree = "<group>";
 		};
 		E5E7CB531E2FA23200D4FB59 /* AboutMe */ = {
@@ -2418,25 +2547,6 @@
 				E5E7CB9E1E306E6300D4FB59 /* License.swift */,
 			);
 			path = License;
-			sourceTree = "<group>";
-		};
-		E5E7CBA11E30758E00D4FB59 /* License */ = {
-			isa = PBXGroup;
-			children = (
-				E5E7CBA21E3075A200D4FB59 /* DMEditLicenseVC.swift */,
-				E5E7CBA41E3089B200D4FB59 /* DMEditLicenseVC+Services.swift */,
-			);
-			path = License;
-			sourceTree = "<group>";
-		};
-		E5E7CBAA1E3099CB00D4FB59 /* PublicProfile */ = {
-			isa = PBXGroup;
-			children = (
-				E5E7CBAB1E3099DF00D4FB59 /* DMPublicProfileVC.swift */,
-				E50FA8121E30A1DA00C20C93 /* DMPublicProfileVC+TableViewExtension.swift */,
-				E57681951E38A1DA00D912EA /* DMPublicProfileVC+Services.swift */,
-			);
-			path = PublicProfile;
 			sourceTree = "<group>";
 		};
 		E5F47C901E0035B90051C4A1 /* UIImage+Additions */ = {
@@ -2868,6 +2978,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E85B84821FAF34500DB137F /* DMEditDentalStateInitializer.swift in Sources */,
 				F2F5E0D31E30CF310082187C /* JobDescriptionCell.swift in Sources */,
 				5A60A8561E42FF1800789D14 /* DMCalenderVC+Services.swift in Sources */,
 				E56B20A41DC0526E000512F6 /* DMRegistrationContainer.swift in Sources */,
@@ -2883,6 +2994,7 @@
 				E5B84B381E9DF835009665D1 /* Chat+CoreDataProperties.swift in Sources */,
 				E5F9194B1E9DD4A30021F008 /* FSCalendarScopeHandle.m in Sources */,
 				484958F9218AC7AB00096046 /* SearchStateViewController.swift in Sources */,
+				6E85B85121FAF94500DB137F /* DMEditLiceseInitializer.swift in Sources */,
 				E59467271FD8FFE70009C18B /* Popover.swift in Sources */,
 				E5E7CB781E2FA23200D4FB59 /* AboutMeCell.swift in Sources */,
 				E50512BE1E82378700509328 /* WorkingHoursTableCell.swift in Sources */,
@@ -2894,11 +3006,13 @@
 				E5310E0F1E4EDE71004403A0 /* DMChatVC+DBHandling.swift in Sources */,
 				E5AE376A1E4971CE0001EC3C /* SocketExtensions.swift in Sources */,
 				E5E7CB871E2FA23200D4FB59 /* SectionHeadingTableCell.swift in Sources */,
+				6E85B86121FB14C800DB137F /* DMLicenseSelectionInitializer.swift in Sources */,
 				E55462DF1DAE31EA004163B2 /* UIFont+Additions.swift in Sources */,
 				E587D2EA1E24C021006B7F06 /* DMLicenseSelectionVC.swift in Sources */,
 				E558D9151E2EA47500A6DF95 /* AddProfileOptionTableCell.swift in Sources */,
 				E5AE37751E4971CE0001EC3C /* SSLSecurity.swift in Sources */,
 				E587D2D51E2357A9006B7F06 /* DMJobTitleSelectionVC+Services.swift in Sources */,
+				6E85B82D21FADC2100DB137F /* DMMessagesInitializer.swift in Sources */,
 				E5AE37681E4971CE0001EC3C /* SocketEngineWebsocket.swift in Sources */,
 				E5496E0C1E26435C00C54288 /* DMLicenseSelectionVC+TableViewExtension.swift in Sources */,
 				E587D2EC1E24C021006B7F06 /* DMWorkExperienceStart.swift in Sources */,
@@ -2907,6 +3021,7 @@
 				E54B9A801E32729C00805D9C /* EmptyCertificateTableViewCell.swift in Sources */,
 				5AD246971E27799F009350BF /* PickerAnimatedTextField.swift in Sources */,
 				E5E7CB7E1E2FA23200D4FB59 /* CertificationsCell.swift in Sources */,
+				6E85B83321FADF3C00DB137F /* DMNotificationInitializer.swift in Sources */,
 				5A3BD4B21E35FCBA00A607AC /* EditProfileExperienceCell.swift in Sources */,
 				6EF2F1F821F9E26600F6F38D /* DMTermsAndConditionsInitializer.swift in Sources */,
 				E594BEA21E1E014F00310AE5 /* DMLoginVC.swift in Sources */,
@@ -2923,6 +3038,7 @@
 				E576819B1E3A25F100D912EA /* DMEditSkillsVC+Services.swift in Sources */,
 				E594BEA61E1E07C900310AE5 /* DMLoginVC+TableViewExtension.swift in Sources */,
 				E54976F01E28CEDD006F21E5 /* Certification.swift in Sources */,
+				6E85B84E21FAF75200DB137F /* DMPublicProfileInitializer.swift in Sources */,
 				5A5266BD1E26413400C5B7A1 /* DMLicenseSelectionVC+Services.swift in Sources */,
 				E57681961E38A1DA00D912EA /* DMPublicProfileVC+Services.swift in Sources */,
 				4846B87920F3564C00BAC18C /* Constants+AlertMessage.swift in Sources */,
@@ -2934,6 +3050,7 @@
 				5A85D2111E2DFAD000AC4C89 /* TagContent.swift in Sources */,
 				E5D2D8A81FE10B6E001EFA68 /* DMJobTitleVC+Services.swift in Sources */,
 				E558D9111E2E873700A6DF95 /* EditProfileHeaderTableCell.swift in Sources */,
+				6E85B87421FB1A0F00DB137F /* DMWorkExperienceInitializer.swift in Sources */,
 				E5496DFC1E25547300C54288 /* DMCertificationsVC+TableViewExtension.swift in Sources */,
 				5AD246931E273CC9009350BF /* DatePickerView.swift in Sources */,
 				E59029A91DED2C7A00151E9B /* LogManager.swift in Sources */,
@@ -2941,6 +3058,7 @@
 				5A3FD0751E1CC79700360B3C /* DMProfileHeaderView.swift in Sources */,
 				E5AE376F1E4971CE0001EC3C /* SocketIOClientStatus.swift in Sources */,
 				E5302CD61DFE7AB100984A0B /* DMForgotPasswordVC.swift in Sources */,
+				6E85B83F21FAECBC00DB137F /* DMCommonSuccessFailureInitializer.swift in Sources */,
 				F2540F601E274360004B0538 /* JobSearchResultCell.swift in Sources */,
 				E51D4EF51E3AFEA600ACC631 /* DMEditStudyVC+Services.swift in Sources */,
 				E5E7CB851E2FA23200D4FB59 /* PhotoNameCell.swift in Sources */,
@@ -2982,6 +3100,7 @@
 				E58654FE1DEFEF7F006FEB2D /* ConfigurationManager.swift in Sources */,
 				E5AE2AF61DAF878900C008BD /* OnboardingCollectionViewCell.swift in Sources */,
 				6EA372E721F8E1B7007BE373 /* UIButton+Additions.swift in Sources */,
+				6E85B86C21FB17B900DB137F /* DMStudyInitializer.swift in Sources */,
 				5A3B06D11E33883C00EFCA6E /* DMChangePasswordVC+TableViewExtension.swift in Sources */,
 				5A1960FD1E208B67002A5F7C /* PhoneNumberFormatter.swift in Sources */,
 				E5C5F3151DC0AACA001A5A3F /* DMRegisterMapsVC.swift in Sources */,
@@ -2995,7 +3114,6 @@
 				E5E7CB981E2FA28000D4FB59 /* PhotoCell.swift in Sources */,
 				F2F5E0E01E31D40E0082187C /* JobDetailHeaderView.swift in Sources */,
 				E51D4F0F1E40744C00ACC631 /* DMTrackVC.swift in Sources */,
-				E59073571FB023C7007381E8 /* DMCongratulationsVC.swift in Sources */,
 				F2540F4E1E23A834004B0538 /* JobSearchTypeCell.swift in Sources */,
 				E587D2ED1E24C021006B7F06 /* DMWorkExperienceVC+TableViewExtension.swift in Sources */,
 				E587D2F21E24C07C006B7F06 /* DMExecutiveSummaryVC.swift in Sources */,
@@ -3026,6 +3144,7 @@
 				E55463001DAE510A004163B2 /* Utilities.swift in Sources */,
 				6EF2F20A21FA103C00F6F38D /* DMJobTitleInitializer.swift in Sources */,
 				6EF2F21421FA1E7900F6F38D /* DMCancelJobInitializer.swift in Sources */,
+				6E85B84521FAF24D00DB137F /* DMEditSkillsInitializer.swift in Sources */,
 				E56E90801DFF31740096A31B /* CameraGalleryManager.swift in Sources */,
 				E5E7CBAC1E3099DF00D4FB59 /* DMPublicProfileVC.swift in Sources */,
 				E576BA3C1E5C0CB40097B781 /* ChatList+CoreDataClass.swift in Sources */,
@@ -3040,7 +3159,9 @@
 				E5AE37661E4971CE0001EC3C /* SocketEnginePollable.swift in Sources */,
 				6EF2F20721FA0E3B00F6F38D /* DMJobSearchInitializer.swift in Sources */,
 				E5AE376B1E4971CE0001EC3C /* SocketIOClient.swift in Sources */,
+				6E85B83921FAE85700DB137F /* DMChangePasswordInitializer.swift in Sources */,
 				484958FC218AD5C400096046 /* State.swift in Sources */,
+				6E85B83C21FAEADC00DB137F /* SearchStateInitializer.swift in Sources */,
 				F2F5E0CF1E2F62080082187C /* AboutCell.swift in Sources */,
 				E587D2D71E236B84006B7F06 /* DMRegisterMapsVC+GoogleMapsExtension.swift in Sources */,
 				5A3B06CD1E3387FF00EFCA6E /* DMSettingVC+TableViewExtension.swift in Sources */,
@@ -3055,6 +3176,8 @@
 				6EF2F20D21FA15A100F6F38D /* DMJobDetailInitializer.swift in Sources */,
 				E5AE37761E4971CE0001EC3C /* WebSocket.swift in Sources */,
 				E5AE37671E4971CE0001EC3C /* SocketEngineSpec.swift in Sources */,
+				6E85B82A21FADA7400DB137F /* DMCalendarSetAvailabilityInitializer.swift in Sources */,
+				6E85B86721FB16A100DB137F /* DMSelectSkillsInitializer.swift in Sources */,
 				E51D4F151E41070700ACC631 /* DMRegisterMapsVC+Services.swift in Sources */,
 				E5F919491E9DD4A30021F008 /* FSCalendarExtensions.m in Sources */,
 				E5B84B371E9DF835009665D1 /* Chat+CoreDataClass.swift in Sources */,
@@ -3066,15 +3189,19 @@
 				E57EE6CA1E28EB440090434F /* DMAffiliationsVC+Services.swift in Sources */,
 				E506AE501FAC329400ABC7FA /* PreferredLocationPickerView.swift in Sources */,
 				E54B9A7C1E326A6C00805D9C /* EditCertificateTableCell.swift in Sources */,
+				6E85B87721FB1C1800DB137F /* DMJobTitleSelectionInitializer.swift in Sources */,
 				5AD246911E272E92009350BF /* DMWorkExperienceVC+Services.swift in Sources */,
+				6E85B85721FAFCB600DB137F /* DMProfileSuccessPendingInitializer.swift in Sources */,
 				E5E7CB8F1E2FA23300D4FB59 /* SubSkillCell.swift in Sources */,
 				E5BED5511E49AB85003EC833 /* DMChatVC.swift in Sources */,
+				6E85B83021FADD0F00DB137F /* DMChatInitializer.swift in Sources */,
 				E5433AF21FCD140800D152D9 /* DMProfileSuccessPending.swift in Sources */,
 				E5F919421E9DD4A30021F008 /* FSCalendarAppearance.m in Sources */,
 				E5496E081E25E4AA00C54288 /* DMSchoolListPopOverVC.swift in Sources */,
 				5A85D2121E2DFAD000AC4C89 /* TagContents.swift in Sources */,
 				48067D4D212EC5BD007F77E6 /* DGCollectionViewLeftAlignFlowLayout.swift in Sources */,
 				5A85D20F1E2DFAD000AC4C89 /* SeparatorWrapper.swift in Sources */,
+				6E85B85B21FAFF3D00DB137F /* DMAffiliationsInitializer.swift in Sources */,
 				E50FA8131E30A1DA00C20C93 /* DMPublicProfileVC+TableViewExtension.swift in Sources */,
 				5A50A2B81E320F6E0010AA31 /* TabBarVC.swift in Sources */,
 				E594BEA41E1E076D00310AE5 /* DMLoginVC+TextFieldExtension.swift in Sources */,
@@ -3096,6 +3223,7 @@
 				E5E7CB891E2FA23200D4FB59 /* OtherSkillCell.swift in Sources */,
 				E5D2D8AB1FE24305001EFA68 /* DMCommonSuccessFailureVC.swift in Sources */,
 				E54976F71E28D243006F21E5 /* DMExecutiveSummaryVC+Services.swift in Sources */,
+				6E85B86E21FB17E300DB137F /* DMSchoolListPopOverInitializer.swift in Sources */,
 				E5AE37611E4971CE0001EC3C /* SocketAnyEvent.swift in Sources */,
 				E587D2CC1E23362C006B7F06 /* JobSelectionPickerView.swift in Sources */,
 				E5E7CB801E2FA23200D4FB59 /* AddDeleteExperienceCell.swift in Sources */,
@@ -3103,12 +3231,14 @@
 				E5F47C941E0035B90051C4A1 /* UIImage+Rotations.swift in Sources */,
 				E576819D1E3A289D00D912EA /* DMEditSkillsVC+TableViewExtension.swift in Sources */,
 				5A8F62A51E399A550037C4A2 /* DMCalendarSetAvailabillityVC+TableViewExtension.swift in Sources */,
+				6E85B83621FAE54B00DB137F /* DMSettingsInitializer.swift in Sources */,
 				6EF2F1E521F9C82300F6F38D /* ContainerInitializer.swift in Sources */,
 				5AC714581E34F76900E433C1 /* DMSettingVC+Services.swift in Sources */,
 				5A737D091E56B040002472D4 /* NotificationHandler.swift in Sources */,
 				48CD1505212D75F600E4B80E /* TempJobDetailCell.swift in Sources */,
 				E587D2F61E24C0B0006B7F06 /* DMSkillsVC.swift in Sources */,
 				E50B3F501E194CD7004C5F32 /* RegistrationTableViewCell.swift in Sources */,
+				6E85B85421FAFAE400DB137F /* DMEditProfileInitializer.swift in Sources */,
 				F2CBC10A1E41E9BE00345B9F /* DMJobDetailVC+Services.swift in Sources */,
 				E5F919461E9DD4A30021F008 /* FSCalendarCollectionViewLayout.m in Sources */,
 				E5AE376D1E4971CE0001EC3C /* SocketIOClientOption.swift in Sources */,
@@ -3119,19 +3249,21 @@
 				E5F919451E9DD4A30021F008 /* FSCalendarCollectionView.m in Sources */,
 				4846B87D20F356CC00BAC18C /* Constants+Api.swift in Sources */,
 				484174CE212FF52B00C86818 /* UserDefaults+Additions.swift in Sources */,
+				6E85B85E21FB007300DB137F /* DMCertificationsInitializer.swift in Sources */,
 				5AC714521E34ACD400E433C1 /* DMCalenderVC.swift in Sources */,
+				6E85B86421FB15C000DB137F /* DMSkillsInitializer.swift in Sources */,
 				E5A0EADE1E2944D50092E21A /* SSASideMenu.swift in Sources */,
 				E5496E0E1E273F1D00C54288 /* DMSkillsVC+Services.swift in Sources */,
 				5A3BD4B61E36065E00A607AC /* EditProfileReferenceCell.swift in Sources */,
 				5A8F62A31E399A080037C4A2 /* DMCalendarSetAvailabillityVC.swift in Sources */,
 				E54976F11E28CEDD006F21E5 /* JobTitle.swift in Sources */,
+				6E85B82721FAD9E700DB137F /* DMCalendarInitializer.swift in Sources */,
 				E59073591FB02C4F007381E8 /* DMJobTitleSelectionVC+TableExtension.swift in Sources */,
 				E5F919481E9DD4A30021F008 /* FSCalendarDelegateProxy.m in Sources */,
 				F2540F5D1E274258004B0538 /* DMJobSearchResultVC.swift in Sources */,
 				E53738F21DB373C200967876 /* Reachability.swift in Sources */,
 				6EA372E521F8BF16007BE373 /* ImageView+Additions.swift in Sources */,
 				E5AE37711E4971CE0001EC3C /* SocketPacket.swift in Sources */,
-				E55462F51DAE4B9E004163B2 /* UIStoryBoard+Additions.swift in Sources */,
 				E587D2EB1E24C021006B7F06 /* DMWorkExperienceStart+TableViewExtension.swift in Sources */,
 				E5E7CB931E2FA23300D4FB59 /* StudyCell.swift in Sources */,
 				6EF2F1FB21F9EA4000F6F38D /* DMRegisterMapsInitializer.swift in Sources */,
@@ -3142,12 +3274,14 @@
 				F2F5E0DE1E31CE2A0082187C /* DMJobDetailVC.swift in Sources */,
 				E590735B1FB02D36007381E8 /* DMJobTitleSelectionVC+TextFieldExtension.swift in Sources */,
 				6EF2F20421FA096100F6F38D /* DMJobSearchResultInitializer.swift in Sources */,
+				6E85B87121FB196000DB137F /* DMExecutiveSummaryInitializer.swift in Sources */,
 				6EF2F1EB21F9DBFF00F6F38D /* DMRegistrationContainerInitializer.swift in Sources */,
 				E5DC3E731DAF2C45002DA20E /* DentaMatch.xcdatamodeld in Sources */,
 				5A3B06C81E3375ED00EFCA6E /* ChangePasswordTableCell.swift in Sources */,
 				5A463EC81E5D9E4B00B119D6 /* InviteJobNotificationTableCell.swift in Sources */,
 				E590299F1DED25C400151E9B /* AppDelegate+Notifications.swift in Sources */,
 				E597E5901E151CFF001DDA78 /* FloatLabelTextView.swift in Sources */,
+				6E85B84B21FAF64D00DB137F /* DMEditCertificateInitializer.swift in Sources */,
 				E5F47C951E0035B90051C4A1 /* UIImageRotate.m in Sources */,
 				E5C5F31B1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift in Sources */,
 				484958FF218ADCC000096046 /* StateCell.swift in Sources */,
@@ -3162,6 +3296,7 @@
 				E5A0EB0E1E2BE7C40092E21A /* ASJTag.m in Sources */,
 				F2540F591E263613004B0538 /* DMJobTitleVC.swift in Sources */,
 				E51D4EF71E3B029D00ACC631 /* DMEditStudyVC+TableViewExtension.swift in Sources */,
+				6E85B87A21FB1DAA00DB137F /* DMWorkExperienceStartInitializer.swift in Sources */,
 				E57681991E3A234700D912EA /* DMEditSkillsVC.swift in Sources */,
 				E587D2F01E24C05D006B7F06 /* DMCertificationsVC.swift in Sources */,
 				E5F9194D1E9DD4A30021F008 /* FSCalendarWeekdayView.m in Sources */,
@@ -3177,6 +3312,7 @@
 				E54B9A841E32870B00805D9C /* DMEditCertificateVC.swift in Sources */,
 				5A5523E71E4C4136007D8C09 /* NotificationJobTypeTableCell.swift in Sources */,
 				E56F78561E1F602200F07814 /* DMForgotPasswordVC+Services.swift in Sources */,
+				6E85B84221FAF12900DB137F /* DMEditStudyInitializer.swift in Sources */,
 				E5BED5501E49AB85003EC833 /* DMChatVC+TableViewExtensions.swift in Sources */,
 				5A3B06CB1E3387DA00EFCA6E /* DMSettingVC.swift in Sources */,
 				E5496E161E2784D500C54288 /* DMSkillsVC+TableViewExtension.swift in Sources */,

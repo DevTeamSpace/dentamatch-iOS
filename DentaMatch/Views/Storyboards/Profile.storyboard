@@ -30,62 +30,6 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="h2y-8K-0Am">
-            <objects>
-                <navigationController storyboardIdentifier="ProfileNAV" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="aBo-Dm-4RQ" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="p5y-OV-SJO">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="ZiM-x3-BTI" kind="relationship" relationship="rootViewController" id="7v2-4y-KLg"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="80Q-4o-1e6" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3" y="206"/>
-        </scene>
-        <!--CongratulationsVC-->
-        <scene sceneID="rfw-mL-QcL">
-            <objects>
-                <viewController storyboardIdentifier="DMCongratulationsVC" id="y3Q-mk-0v1" customClass="DMCongratulationsVC" customModule="DentaMatch" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="WWi-fg-lIH">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AQA-fw-gVs">
-                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
-                                <color key="backgroundColor" red="0.0" green="0.5572199821472168" blue="0.79884916543960571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7uQ-C0-CD2">
-                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
-                                <color key="backgroundColor" red="0.015686274510000001" green="0.47843137250000001" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="49" id="71p-kt-xY9"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="16"/>
-                                <state key="normal" title="LET'S GO">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="AQA-fw-gVs" firstAttribute="trailing" secondItem="7uQ-C0-CD2" secondAttribute="trailing" id="7Zo-lR-zCr"/>
-                            <constraint firstItem="AQA-fw-gVs" firstAttribute="top" secondItem="7uQ-C0-CD2" secondAttribute="top" id="9Hh-sv-PzE"/>
-                            <constraint firstItem="7uQ-C0-CD2" firstAttribute="leading" secondItem="7dT-Ij-2Oe" secondAttribute="leading" id="DLg-fD-2HU"/>
-                            <constraint firstItem="AQA-fw-gVs" firstAttribute="leading" secondItem="7uQ-C0-CD2" secondAttribute="leading" id="Qya-b8-NUw"/>
-                            <constraint firstAttribute="bottom" secondItem="AQA-fw-gVs" secondAttribute="bottom" id="h3Z-K8-iZw"/>
-                            <constraint firstItem="7dT-Ij-2Oe" firstAttribute="trailing" secondItem="7uQ-C0-CD2" secondAttribute="trailing" id="jh6-0k-ykq"/>
-                            <constraint firstItem="7uQ-C0-CD2" firstAttribute="bottom" secondItem="7dT-Ij-2Oe" secondAttribute="bottom" id="zrC-vF-ibf"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="7dT-Ij-2Oe"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mhF-VS-YIb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="29" y="1011"/>
-        </scene>
         <!--Profile Success Pending-->
         <scene sceneID="onG-bw-Pax">
             <objects>
@@ -239,7 +183,7 @@
         <!--Job Title SelectionVC-->
         <scene sceneID="Vv0-tw-bFG">
             <objects>
-                <viewController id="ZiM-x3-BTI" customClass="DMJobTitleSelectionVC" customModule="DentaMatch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DMJobTitleSelectionVC" id="ZiM-x3-BTI" customClass="DMJobTitleSelectionVC" customModule="DentaMatch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JWl-iL-mpX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -388,7 +332,6 @@
                         <outlet property="prefferedJobLocationLabel" destination="cxY-E7-KZM" id="qeP-hD-SW3"/>
                         <outlet property="profileButton" destination="bzg-gA-Lmz" id="Cs7-fd-iD0"/>
                         <outlet property="profileHeaderView" destination="pY0-aJ-eeT" id="g6s-qj-euu"/>
-                        <segue destination="aDP-Aa-d1Q" kind="show" identifier="goToLicense" id="QeE-OD-GzG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qcP-f7-cjY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -449,7 +392,6 @@
                     </view>
                     <connections>
                         <outlet property="studyTableView" destination="3ps-qs-Mar" id="RQY-cW-uC0"/>
-                        <segue destination="CTM-uI-DFi" kind="show" identifier="goToSkillsVC" id="OAf-Lj-4iO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Upt-RW-IiD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -527,7 +469,6 @@
                     </view>
                     <connections>
                         <outlet property="skillsTableView" destination="DeN-8W-RI7" id="aJX-g6-1Ff"/>
-                        <segue destination="eL1-Hu-WzL" kind="show" identifier="goToAffiliationsVC" id="U8l-Ut-Q0B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aoS-or-PwV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -621,12 +562,11 @@
                         <outlet property="headerViewForEditProfile" destination="bCI-Bq-EwA" id="rsq-j4-gop"/>
                         <outlet property="headerViewForEditProfileHeight" destination="KjO-Te-2FU" id="S0S-rP-lUe"/>
                         <outlet property="nextButton" destination="GMA-LT-4Dr" id="6er-3L-eKb"/>
-                        <segue destination="4zK-dF-WEd" kind="show" identifier="goToCertificationsVC" id="Kla-Dd-Qhq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zzR-Yg-FEV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4925.6000000000004" y="205.54722638680661"/>
+            <point key="canvasLocation" x="4985" y="206"/>
         </scene>
         <!--CertificationsVC-->
         <scene sceneID="PIA-AR-sbf">
@@ -682,7 +622,6 @@
                     </view>
                     <connections>
                         <outlet property="certificationsTableView" destination="26C-XT-V4S" id="SjJ-EZ-SVR"/>
-                        <segue destination="zgI-T6-SuA" kind="show" identifier="goToExecutiveSummaryVC" id="Xtm-Gr-oTF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mpw-5w-d4W" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -867,17 +806,16 @@
                     </view>
                     <connections>
                         <outlet property="licenseTableView" destination="y2M-vx-6TQ" id="wlt-Ry-9RQ"/>
-                        <segue destination="utd-tM-XFi" kind="show" identifier="goToWorkExperience" id="6Xc-SR-4nT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bh2-3l-ca3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1437.5999999999999" y="205.54722638680661"/>
+            <point key="canvasLocation" x="1394" y="206"/>
         </scene>
         <!--Work Experience Start-->
         <scene sceneID="RJx-xL-cqp">
             <objects>
-                <viewController id="utd-tM-XFi" customClass="DMWorkExperienceStart" customModule="DentaMatch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DMWorkExperienceStart" id="utd-tM-XFi" customClass="DMWorkExperienceStart" customModule="DentaMatch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BdP-1q-gcS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -928,7 +866,6 @@
                     </view>
                     <connections>
                         <outlet property="workExperienceTable" destination="14r-xE-KWl" id="qFh-YP-yw8"/>
-                        <segue destination="PnT-uO-30T" kind="show" identifier="goToExperienceDetail" id="PVi-mg-jQL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lfc-G5-vhq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1111,7 +1048,6 @@
                         <outlet property="viewForTopHeader" destination="p9K-xJ-Lnn" id="0BG-bn-Vug"/>
                         <outlet property="workExperienceDetailTable" destination="rVW-12-Kp5" id="yd3-S4-ptG"/>
                         <outlet property="workExperienceTable" destination="doc-LL-LMX" id="GHB-g1-ClX"/>
-                        <segue destination="hOs-vL-yuf" kind="show" identifier="goToStudyVC" id="K0S-Hd-McV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SCS-5a-CC7" userLabel="First Responder" sceneMemberID="firstResponder"/>

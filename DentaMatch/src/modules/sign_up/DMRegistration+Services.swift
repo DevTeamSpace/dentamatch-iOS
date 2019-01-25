@@ -50,9 +50,12 @@ extension DMRegistrationVC {
     }
 
     func openJobTitleSelection() {
-        let jobTitleSectionVC = UIStoryboard.profileStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.profileNav)
+        let vc = DMJobTitleSelectionInitializer.initialize()
+        
+        let navController = UINavigationController(rootViewController: vc)
+        navController.setNavigationBarHidden(true, animated: false)
         UIView.transition(with: view.window!, duration: 0.5, options: .transitionFlipFromRight, animations: {
-            kAppDelegate?.window?.rootViewController = jobTitleSectionVC
+            kAppDelegate?.window?.rootViewController = navController
             SocketManager.sharedInstance.establishConnection()
         }) { (_: Bool) in
         }

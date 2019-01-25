@@ -57,13 +57,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func goToProfile() {
         
-        let profileVC = UIStoryboard.profileStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.profileNav) as? UINavigationController
+        let vc = DMJobTitleSelectionInitializer.initialize()
         
-        makeRoot(viewController: profileVC)
+        let navController = UINavigationController(rootViewController: vc)
+        navController.setNavigationBarHidden(true, animated: false)
+        
+        makeRoot(viewController: navController)
     }
 
     func goToSuccessPendingScreen() {
-        let profileSuccessPendingVC = UIStoryboard.profileStoryBoard().instantiateViewController(type: DMProfileSuccessPending.self)!
+        guard let profileSuccessPendingVC = DMProfileSuccessPendingInitializer.initialize() as? DMProfileSuccessPending else { return }
         profileSuccessPendingVC.fromRoot = true
         let navigationVC = UINavigationController(rootViewController: profileSuccessPendingVC)
         navigationVC.setNavigationBarHidden(true, animated: false)
@@ -74,7 +77,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func goToDashBoard() {
         // if let _ =  UserDefaultsManager.sharedInstance.loadSearchParameter() {
         let dashboardVC = TabBarInitializer.initialize()
-        
         makeRoot(viewController: dashboardVC)
         //  } else {
         //       self.goToSearch()
@@ -90,6 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             jobSearchVc.firstTime = true
         }
+        
         
         makeRoot(viewController: navController)
     }
@@ -204,7 +207,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func showOverlay(isJobSeekerVerified: Bool = false) {
-        let commonSuccessFailureVC = UIStoryboard.profileStoryBoard().instantiateViewController(type: DMCommonSuccessFailureVC.self)!
+        guard let commonSuccessFailureVC = DMCommonSuccessFailureInitializer.initialize() as? DMCommonSuccessFailureVC else { return }
         commonSuccessFailureVC.isJobSeekerVerified = isJobSeekerVerified
         commonSuccessFailureVC.modalPresentationStyle = .overCurrentContext
         commonSuccessFailureVC.modalTransitionStyle = .coverVertical

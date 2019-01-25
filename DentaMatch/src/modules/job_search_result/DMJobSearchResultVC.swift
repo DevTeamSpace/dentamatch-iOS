@@ -193,7 +193,7 @@ class DMJobSearchResultVC: DMBaseVC {
         if let tabbar = ((UIApplication.shared.delegate) as? AppDelegate)?.window?.rootViewController as? TabBarVC {
             _ = navigationController?.popToRootViewController(animated: false)
             tabbar.selectedIndex = 0
-            let notification = UIStoryboard.notificationStoryBoard().instantiateViewController(type: DMNotificationVC.self)!
+            guard let notification = DMNotificationInitializer.initialize() as? DMNotificationVC else { return }
             notification.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(notification, animated: true)
         }
@@ -203,7 +203,7 @@ class DMJobSearchResultVC: DMBaseVC {
         if let tabbar = ((UIApplication.shared.delegate) as? AppDelegate)?.window?.rootViewController as? TabBarVC {
             _ = navigationController?.popToRootViewController(animated: false)
             tabbar.selectedIndex = 0
-            let notification = UIStoryboard.notificationStoryBoard().instantiateViewController(type: DMNotificationVC.self)!
+            guard let notification = DMNotificationInitializer.initialize() as? DMNotificationVC else { return }
             notification.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(notification, animated: true)
         }
