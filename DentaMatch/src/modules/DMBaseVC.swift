@@ -21,6 +21,10 @@ class DMBaseVC: UIViewController {
         super.viewDidLoad()
         // self.setUpControls()
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 
     func openTabbar() {
         let dashboardVC = TabBarInitializer.initialize()

@@ -132,6 +132,7 @@
 		6E85B87421FB1A0F00DB137F /* DMWorkExperienceInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B87321FB1A0F00DB137F /* DMWorkExperienceInitializer.swift */; };
 		6E85B87721FB1C1800DB137F /* DMJobTitleSelectionInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B87621FB1C1800DB137F /* DMJobTitleSelectionInitializer.swift */; };
 		6E85B87A21FB1DAA00DB137F /* DMWorkExperienceStartInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B87921FB1DAA00DB137F /* DMWorkExperienceStartInitializer.swift */; };
+		6E85B87C21FB27F500DB137F /* NavigationControllerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B87B21FB27F500DB137F /* NavigationControllerUtils.swift */; };
 		6EA372E521F8BF16007BE373 /* ImageView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA372E421F8BF16007BE373 /* ImageView+Additions.swift */; };
 		6EA372E721F8E1B7007BE373 /* UIButton+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA372E621F8E1B7007BE373 /* UIButton+Additions.swift */; };
 		6EF2F1E521F9C82300F6F38D /* ContainerInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF2F1E421F9C82300F6F38D /* ContainerInitializer.swift */; };
@@ -605,6 +606,7 @@
 		6E85B87321FB1A0F00DB137F /* DMWorkExperienceInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMWorkExperienceInitializer.swift; sourceTree = "<group>"; };
 		6E85B87621FB1C1800DB137F /* DMJobTitleSelectionInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMJobTitleSelectionInitializer.swift; sourceTree = "<group>"; };
 		6E85B87921FB1DAA00DB137F /* DMWorkExperienceStartInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMWorkExperienceStartInitializer.swift; sourceTree = "<group>"; };
+		6E85B87B21FB27F500DB137F /* NavigationControllerUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerUtils.swift; sourceTree = "<group>"; };
 		6EA372E421F8BF16007BE373 /* ImageView+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageView+Additions.swift"; sourceTree = "<group>"; };
 		6EA372E621F8E1B7007BE373 /* UIButton+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Additions.swift"; sourceTree = "<group>"; };
 		6EF2F1E421F9C82300F6F38D /* ContainerInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerInitializer.swift; sourceTree = "<group>"; };
@@ -1234,20 +1236,6 @@
 			path = BannerView;
 			sourceTree = "<group>";
 		};
-		5AE5F50B1E16569B006C328A /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-				E587D2DF1E24C021006B7F06 /* Certifications */,
-				E587D2E01E24C021006B7F06 /* License */,
-				E587D2E21E24C021006B7F06 /* Skills */,
-				E587D2E31E24C021006B7F06 /* Study */,
-				E587D2E41E24C021006B7F06 /* Summary */,
-				E587D2E51E24C021006B7F06 /* WorkExperience */,
-				E587D2CD1E23438B006B7F06 /* JobTitleSelection */,
-			);
-			path = Profile;
-			sourceTree = "<group>";
-		};
 		6E85B82521FAD9BF00DB137F /* calendar */ = {
 			isa = PBXGroup;
 			children = (
@@ -1562,6 +1550,7 @@
 			isa = PBXGroup;
 			children = (
 				6EF2F1E421F9C82300F6F38D /* ContainerInitializer.swift */,
+				6E85B87B21FB27F500DB137F /* NavigationControllerUtils.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -1947,14 +1936,6 @@
 			path = Toast;
 			sourceTree = "<group>";
 		};
-		E55462E71DAE47C6004163B2 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				5AE5F50B1E16569B006C328A /* Profile */,
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
 		E55462EA1DAE47F5004163B2 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -2103,7 +2084,6 @@
 				E5FCBE091DAE109F00F59D05 /* Library */,
 				5A1E2A161E1E47340055D913 /* Model */,
 				E55462DD1DAE31A1004163B2 /* Views */,
-				E55462E71DAE47C6004163B2 /* ViewControllers */,
 				4877D98420EDF02500264422 /* Resourses */,
 			);
 			path = DentaMatch;
@@ -2148,55 +2128,6 @@
 				E54B9A891E36119700805D9C /* YearPickerView.xib */,
 			);
 			path = CustomPicker;
-			sourceTree = "<group>";
-		};
-		E587D2CD1E23438B006B7F06 /* JobTitleSelection */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = JobTitleSelection;
-			sourceTree = "<group>";
-		};
-		E587D2DF1E24C021006B7F06 /* Certifications */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Certifications;
-			sourceTree = "<group>";
-		};
-		E587D2E01E24C021006B7F06 /* License */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = License;
-			sourceTree = "<group>";
-		};
-		E587D2E21E24C021006B7F06 /* Skills */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Skills;
-			sourceTree = "<group>";
-		};
-		E587D2E31E24C021006B7F06 /* Study */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Study;
-			sourceTree = "<group>";
-		};
-		E587D2E41E24C021006B7F06 /* Summary */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Summary;
-			sourceTree = "<group>";
-		};
-		E587D2E51E24C021006B7F06 /* WorkExperience */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = WorkExperience;
 			sourceTree = "<group>";
 		};
 		E59029A21DED2C7A00151E9B /* APIManager */ = {
@@ -3025,6 +2956,7 @@
 				5A3BD4B21E35FCBA00A607AC /* EditProfileExperienceCell.swift in Sources */,
 				6EF2F1F821F9E26600F6F38D /* DMTermsAndConditionsInitializer.swift in Sources */,
 				E594BEA21E1E014F00310AE5 /* DMLoginVC.swift in Sources */,
+				6E85B87C21FB27F500DB137F /* NavigationControllerUtils.swift in Sources */,
 				5A9A3A971E2B58600002C5B6 /* UserManager.swift in Sources */,
 				E5E7CB7C1E2FA23200D4FB59 /* AffliliationsOthersCell.swift in Sources */,
 				E5A0EB101E2BE7C40092E21A /* ASJTagsView.m in Sources */,

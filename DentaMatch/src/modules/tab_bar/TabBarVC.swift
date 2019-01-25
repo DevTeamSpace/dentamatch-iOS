@@ -78,8 +78,4 @@ class TabBarVC: UITabBarController, UITabBarControllerDelegate {
     override func removeFromParent() {
         // debugPrint("removeFromParentViewController")
     }
-
-    override var childForStatusBarStyle: UIViewController? {
-        return nil
-    }
 }
