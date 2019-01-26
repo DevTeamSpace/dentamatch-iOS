@@ -1,110 +1,45 @@
-//
-//  DMChatVC+DBHandling.swift
-//  DentaMatch
-//
-//  Created by Rajan Maheshwari on 11/02/17.
-//  Copyright © 2017 Appster. All rights reserved.
-//
-
-import CoreData
 import Foundation
 import SwiftyJSON
+import RealmSwift
 
-extension DMChatVC: NSFetchedResultsControllerDelegate {
+extension DMChatVC {
+    
     func addUpdateChatToDB(chatObj: JSON?) {
         
         DatabaseManager.addUpdateChatToDB(chatObj: chatObj)
     }
 
     func getChats() {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Chat")
-
+        
+        let realm = try! Realm()
         let userId = UserManager.shared().activeUser.userId
-        let recruiterId = chatList?.recruiterId
-
-        fetchRequest.predicate = NSPredicate(format: "(fromId == %@ AND toId == %@) or (fromId == %@ AND toId == %@)", userId, recruiterId!, recruiterId!, userId)
-
-        // Add Sort Descriptors
-        let sortDescriptor = NSSortDescriptor(key: "chatId", ascending: true)
-        fetchRequest.sortDescriptors = [sortDescriptor]
-
-        // Initialize Fetched Results Controller
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: "dateString", cacheName: nil)
-
-        // Configure Fetched Results Controller
-        fetchedResultsController.delegate = self
-
-        do {
-            try fetchedResultsController.performFetch()
-            DispatchQueue.main.async {
-                self.chatTableView.reloadData()
-                self.scrollTableToBottom()
+        
+        guard let recruiterId = chatList?.recruiterId else { return }
+        
+        let chats = Array(realm.objects(ChatModel.self).filter({ ($0.fromId == userId && $0.toId == recruiterId) || ($0.fromId == recruiterId && $0.toId == userId) })).sorted(by: { $0.timeStamp > $1.timeStamp })
+        
+        let uniqueDateStrings = Array(NSOrderedSet(array: chats.map({ $0.dateString })))
+        
+        var final: [[ChatModel]] = Array(repeating: [], count: uniqueDateStrings.count)
+        
+        for (idx, dateString) in uniqueDateStrings.enumerated() {
+            if let dateString = dateString as? String {
+                let filteredChats = chats.filter({ $0.dateString == dateString })
+                final[idx].append(contentsOf: filteredChats)
             }
-
-        } catch {
-            let _ = error as NSError
-            // debugPrint("\(fetchError), \(fetchError.userInfo)")
+        }
+        
+        chatsArray.removeAll()
+        chatsArray = final
+        
+        DispatchQueue.main.async {
+            self.chatTableView.reloadData()
+            self.scrollTableToBottom()
         }
     }
 
     func scrollTableToBottom() {
-        if fetchedResultsController != nil {
-            if let sections = fetchedResultsController.sections {
-                if sections.count > 0 {
-                    let sectionInfo = sections[sections.count - 1]
-                    if (sectionInfo.objects?.count)! > 0 {
-                        chatTableView.scrollToRow(at: IndexPath(row: (sectionInfo.objects?.count)! - 1, section: sections.count - 1), at: .bottom, animated: false)
-                    }
-                }
-            }
-        }
-    }
-
-    // MARK: - NSFetchedResultsControllerDelegate
-
-    func controllerWillChangeContent(_: NSFetchedResultsController<NSFetchRequestResult>) {
-        chatTableView.beginUpdates()
-    }
-
-    func controllerDidChangeContent(_: NSFetchedResultsController<NSFetchRequestResult>) {
-        chatTableView.endUpdates()
-        // self.chatTableView.reloadData()
-    }
-
-    func controller(_: NSFetchedResultsController<NSFetchRequestResult>, didChange _: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
-        switch type {
-        case .insert:
-            chatTableView.insertSections([sectionIndex], with: .automatic)
-        case .delete:
-            chatTableView.deleteSections([sectionIndex], with: .automatic)
-        default:
-            break
-        }
-    }
-
-    func controller(_: NSFetchedResultsController<NSFetchRequestResult>, didChange _: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        switch type {
-        case .insert:
-            if let indexPath = newIndexPath {
-                chatTableView.insertRows(at: [indexPath], with: .none)
-                let when = DispatchTime.now() + 0.1
-                DispatchQueue.main.asyncAfter(deadline: when) {
-                    self.chatTableView.scrollToRow(at: newIndexPath!, at: .bottom, animated: true)
-                }
-            }
-        case .update:
-            chatTableView.reloadRows(at: [indexPath!], with: .none)
-
-        case .move:
-            if let indexPath = indexPath {
-                chatTableView.deleteRows(at: [indexPath], with: .fade)
-            }
-
-            if let newIndexPath = newIndexPath {
-                chatTableView.insertRows(at: [newIndexPath], with: .fade)
-            }
-        default:
-            break
-        }
+        
+        chatTableView.scrollToRow(at: IndexPath(row: chatsArray[chatsArray.count - 1].count - 1, section: chatsArray.count - 1), at: .bottom, animated: false)
     }
 }

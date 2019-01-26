@@ -1,14 +1,7 @@
-//
-//  SocketManager.swift
-//  DentaMatch
-//
-//  Created by Rajan Maheshwari on 10/11/16.
-//  Copyright © 2016 Rajan Maheshwari. All rights reserved.
-//
-
 import SwiftyJSON
 import UIKit
 import UserNotifications
+import RealmSwift
 
 class SocketManager: NSObject, SocketConnectionDelegate {
     static let sharedInstance = SocketManager()
@@ -60,10 +53,10 @@ class SocketManager: NSObject, SocketConnectionDelegate {
         }
     }
 
-    func handleBlockUnblock(chatList: ChatList, blockStatus: String) {
+    func handleBlockUnblock(chatList: ChatListModel, blockStatus: String) {
         let params = [
             "fromId": UserManager.shared().activeUser.userId,
-            "toId": chatList.recruiterId!,
+            "toId": chatList.recruiterId,
             "blockStatus": blockStatus,
         ]
 
@@ -71,14 +64,16 @@ class SocketManager: NSObject, SocketConnectionDelegate {
 
         socket.emitWithAck("blockUnblock", params).timingOut(after: 0) { (params: [Any]) in
             // debugPrint(params)
-            if blockStatus == "1" {
-                chatList.isBlockedFromSeeker = true
-                NotificationCenter.default.post(name: .refreshBlockList, object: params)
-            } else {
-                chatList.isBlockedFromSeeker = false
-                NotificationCenter.default.post(name: .refreshUnblockList, object: params)
+            
+            try! Realm().write {
+                if blockStatus == "1" {
+                    chatList.isBlockedFromSeeker = true
+                    NotificationCenter.default.post(name: .refreshBlockList, object: params)
+                } else {
+                    chatList.isBlockedFromSeeker = false
+                    NotificationCenter.default.post(name: .refreshUnblockList, object: params)
+                }
             }
-            kAppDelegate?.saveContext()
         }
     }
 
@@ -143,7 +138,7 @@ class SocketManager: NSObject, SocketConnectionDelegate {
         socket.emit("getHistory", params)
     }
 
-    func getLeftMessages(recruiterId: String, messageId: Int64, completionHandler: @escaping (_ messageInfo: [Any]) -> Void) {
+    func getLeftMessages(recruiterId: String, messageId: Int, completionHandler: @escaping (_ messageInfo: [Any]) -> Void) {
         getLeftMessagesCompletionHandler = completionHandler
         let params = [
             "fromId": UserManager.shared().activeUser.userId,

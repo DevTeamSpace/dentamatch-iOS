@@ -1,13 +1,6 @@
-//
-//  DMMessages+Services.swift
-//  DentaMatch
-//
-//  Created by Rajan Maheshwari on 07/02/17.
-//  Copyright © 2017 Appster. All rights reserved.
-//
-
 import Foundation
 import SwiftyJSON
+import RealmSwift
 
 extension DMMessagesVC {
     func getChatListAPI(isLoaderHidden: Bool = false) {
@@ -48,9 +41,9 @@ extension DMMessagesVC {
         }
     }
     
-    func blockRecruiter(chatList: ChatList) {
+    func blockRecruiter(chatList: ChatListModel) {
         let params = [
-            Constants.ServerKey.recruiterId: chatList.recruiterId!,
+            Constants.ServerKey.recruiterId: chatList.recruiterId,
             Constants.ServerKey.blockStatus: "1",
             ] as [String: Any]
         showLoader()
@@ -69,26 +62,28 @@ extension DMMessagesVC {
         }
     }
 
-    func handleBlockRecruiterResponse(chatList: ChatList, response: JSON?) {
+    func handleBlockRecruiterResponse(chatList: ChatListModel, response: JSON?) {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
-                if response[Constants.ServerKey.result][Constants.ServerKey.blockStatus].stringValue == "1" {
-                    chatList.isBlockedFromSeeker = true
-                    makeToast(toastString: "This Recruiter is Blocked and will no longer be able to see your profile or send you messages.")
-                } else {
-                    chatList.isBlockedFromSeeker = false
-                    makeToast(toastString: "Recruiter Unblocked")
+                
+                try! Realm().write {
+                    if response[Constants.ServerKey.result][Constants.ServerKey.blockStatus].stringValue == "1" {
+                        chatList.isBlockedFromSeeker = true
+                        makeToast(toastString: "This Recruiter is Blocked and will no longer be able to see your profile or send you messages.")
+                    } else {
+                        chatList.isBlockedFromSeeker = false
+                        makeToast(toastString: "Recruiter Unblocked")
+                    }
                 }
-                appDelegate?.saveContext()
             } else {
                 makeToast(toastString: response[Constants.ServerKey.message].stringValue)
             }
         }
     }
     
-    func deleteChat(chatList: ChatList) {
+    func deleteChat(chatList: ChatListModel) {
         let params = [
-            Constants.ServerKey.recruiterId: chatList.recruiterId!
+            Constants.ServerKey.recruiterId: chatList.recruiterId
             ] as [String: Any]
         showLoader()
         APIManager.apiPost(serviceName: Constants.API.chatDelete, parameters: params) { (response: JSON?, error: NSError?) in
@@ -106,12 +101,12 @@ extension DMMessagesVC {
         }
     }
     
-    func handleChatDeleteResponse(chatList: ChatList, response: JSON?) {
+    func handleChatDeleteResponse(chatList: ChatListModel, response: JSON?) {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
                 makeToast(toastString: "This chat history with this Recruiter is deleted you will no longer be able to see the previous chat.")
-                DatabaseManager.clearChats(recruiterId: chatList.recruiterId ?? "0")
-                DatabaseManager.clearChatList(recruiterId: chatList.recruiterId ?? "0")
+                DatabaseManager.clearChats(recruiterId: chatList.recruiterId)
+                DatabaseManager.clearChatList(recruiterId: chatList.recruiterId)
                 self.refreshMessageList()
             } else {
                 makeToast(toastString: response[Constants.ServerKey.message].stringValue)

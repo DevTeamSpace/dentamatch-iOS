@@ -1,26 +1,16 @@
-//
-//  DMMessagesVC.swift
-//  DentaMatch
-//
-//  Created by Sanjay Kumar Yadav on 22/01/17.
-//  Copyright © 2017 Appster. All rights reserved.
-//
-
-import CoreData
+import RealmSwift
 import UIKit
 
 class DMMessagesVC: DMBaseVC {
     @IBOutlet var messageListTableView: UITableView!
     var placeHolderEmptyJobsView: PlaceHolderJobsView?
     var refreshControl: UIRefreshControl!
-    let context = ((UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext)!
     let appDelegate = UIApplication.shared.delegate as? AppDelegate
-    var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
-
     let todaysDate = Date.getTodaysDateMMDDYYYY()
 
     let dateFormatter = DateFormatter()
  
+    var chatListArray = [ChatListModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +46,6 @@ class DMMessagesVC: DMBaseVC {
         dateFormatter.dateFormat = Date.dateFormatMMDDYYYY()
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
 
-        NotificationCenter.default.addObserver(self, selector: #selector(deleteFetchController), name: .deleteFetchController, object: nil)
         navigationItem.title = "MESSAGES"
         self.configureTableView()
         placeHolderEmptyJobsView = PlaceHolderJobsView.loadPlaceHolderJobsView()
@@ -87,36 +76,19 @@ class DMMessagesVC: DMBaseVC {
     func getMessageList() {
         messageListTableView.dataSource = self
         messageListTableView.delegate = self
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ChatList")
+        
+        let realm = try! Realm()
+        let chatLists = realm.objects(ChatListModel.self).sorted(by: { $0.timeStamp > $1.timeStamp })
+        
+        chatListArray.removeAll()
+        chatListArray.append(contentsOf: chatLists)
+        
+        placeHolderEmptyJobsView?.isHidden = chatListArray.count != 0
 
-        // Add Sort Descriptors
-        let sortDescriptor = NSSortDescriptor(key: "timeStamp", ascending: false)
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        // fetchRequest.fetchBatchSize = 20
-
-        // Initialize Fetched Results Controller
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
-
-        // Configure Fetched Results Controller
-        fetchedResultsController.delegate = self
-
-        do {
-            try fetchedResultsController.performFetch()
-            messageListTableView.reloadData()
-            if let sections = self.fetchedResultsController.sections {
-                if sections.count > 0 {
-                    if sections[0].numberOfObjects > 0 {
-                        placeHolderEmptyJobsView?.isHidden = true
-                    }
-                }
-            }
-        } catch {
-            // let fetchError = error as NSError
-            // debugPrint("\(fetchError), \(fetchError.userInfo)")
-        }
+        messageListTableView.reloadData()
     }
     
-    func showChatDeleteAlert(chatList: ChatList) {
+    func showChatDeleteAlert(chatList: ChatListModel) {
         let alert = UIAlertController(title: "Alert!", message: "The chat will be deleted permanently.\nAre you sure you want to delete this chat? ", preferredStyle: .actionSheet)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_: UIAlertAction) in
             // debugPrint("Cancel Action")
@@ -129,7 +101,7 @@ class DMMessagesVC: DMBaseVC {
         present(alert, animated: true, completion: nil)
     }
 
-    func showBlockRecruiterAlert(chatList: ChatList) {
+    func showBlockRecruiterAlert(chatList: ChatListModel) {
         let alert = UIAlertController(title: "", message: "This Recruiter is BLOCKED and will no longer be able to see your profile or send you messages", preferredStyle: .actionSheet)
         let blockAction = UIAlertAction(title: "Block", style: .destructive) { (_: UIAlertAction) in
             SocketManager.sharedInstance.handleBlockUnblock(chatList: chatList, blockStatus: "1")
@@ -142,26 +114,17 @@ class DMMessagesVC: DMBaseVC {
         alert.addAction(cancelAction)
         present(alert, animated: true, completion: nil)
     }
-
-    @objc func deleteFetchController() {
-        fetchedResultsController.delegate = nil
-        NSFetchedResultsController<NSFetchRequestResult>.deleteCache(withName: nil)
-    }
-
+    
     @objc func refreshMessageList() {
-        if fetchedResultsController != nil {
-            fetchedResultsController.delegate = nil
-            fetchedResultsController = nil
-            getChatListAPI(isLoaderHidden: true)
-        }
+        getChatListAPI(isLoaderHidden: true)
     }
 
-    func openChatPage(chatList: ChatList) {
+    func openChatPage(chatList: ChatListModel) {
         let chatVC = UIStoryboard.messagesStoryBoard().instantiateViewController(type: DMChatVC.self)!
         chatVC.chatList = chatList
         chatVC.hidesBottomBarWhenPushed = true
         chatVC.delegate = self
-        if DatabaseManager.getCountForChats(recruiterId: chatList.recruiterId!) == 0 {
+        if DatabaseManager.getCountForChats(recruiterId: chatList.recruiterId) == 0 {
             chatVC.shouldFetchFromBeginning = true
         }
         navigationController?.pushViewController(chatVC, animated: true)

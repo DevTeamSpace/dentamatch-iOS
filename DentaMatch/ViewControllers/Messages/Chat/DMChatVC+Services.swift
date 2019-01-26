@@ -1,18 +1,11 @@
-//
-//  DMChatVC+Services.swift
-//  DentaMatch
-//
-//  Created by Rajan Maheshwari on 08/02/17.
-//  Copyright © 2017 Appster. All rights reserved.
-//
-
 import Foundation
 import SwiftyJSON
+import RealmSwift
 
 extension DMChatVC {
-    func unBlockRecruiter(chatList: ChatList) {
+    func unBlockRecruiter(chatList: ChatListModel) {
         let params = [
-            Constants.ServerKey.recruiterId: chatList.recruiterId!,
+            Constants.ServerKey.recruiterId: chatList.recruiterId,
             Constants.ServerKey.blockStatus: "0",
         ] as [String: Any]
         showLoader()
@@ -31,22 +24,25 @@ extension DMChatVC {
         }
     }
 
-    func handleUnblockRecruiterResponse(chatList: ChatList, response: JSON?) {
+    func handleUnblockRecruiterResponse(chatList: ChatListModel, response: JSON?) {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
-                if response[Constants.ServerKey.result][Constants.ServerKey.blockStatus].stringValue == "1" {
-                    chatList.isBlockedFromSeeker = true
-                    makeToast(toastString: "Recruiter Blocked")
-                } else {
-                    chatList.isBlockedFromSeeker = false
-                    DispatchQueue.main.async {
-                        self.chatTextView.isHidden = false
-                        self.sendButton.isHidden = false
-                        self.unblockButton.isHidden = true
+                
+                try! Realm().write {
+                    
+                    if response[Constants.ServerKey.result][Constants.ServerKey.blockStatus].stringValue == "1" {
+                        chatList.isBlockedFromSeeker = true
+                        makeToast(toastString: "Recruiter Blocked")
+                    } else {
+                        chatList.isBlockedFromSeeker = false
+                        DispatchQueue.main.async {
+                            self.chatTextView.isHidden = false
+                            self.sendButton.isHidden = false
+                            self.unblockButton.isHidden = true
+                        }
+                        makeToast(toastString: "Recruiter Unblocked")
                     }
-                    makeToast(toastString: "Recruiter Unblocked")
                 }
-                appDelegate?.saveContext()
             } else {
                 makeToast(toastString: response[Constants.ServerKey.message].stringValue)
             }

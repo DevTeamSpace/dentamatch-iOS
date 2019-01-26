@@ -1,12 +1,3 @@
-//
-//  DMChatVC.swift
-//  DentaMatch
-//
-//  Created by Rajan Maheshwari on 06/02/17.
-//  Copyright © 2017 Appster. All rights reserved.
-//
-
-import CoreData
 import SwiftyJSON
 import UIKit
 
@@ -26,13 +17,11 @@ class DMChatVC: DMBaseVC {
     weak var delegate: ChatTapNotificationDelegate?
     var placeHolderLabelForView: UILabel!
     var placeHolderLabel: UILabel!
-    var chatList: ChatList?
+    var chatList: ChatListModel?
+    var chatsArray: [[ChatModel]] = []
     var messages = [String]()
     var shouldFetchFromBeginning = false
     let appDelegate = UIApplication.shared.delegate as? AppDelegate
-    let context = ((UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext)!
-    
-    var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
 
     var printData = true
 
@@ -168,7 +157,7 @@ class DMChatVC: DMBaseVC {
             } else {
                 getChats()
                 if let chat = getLastChat() {
-                    getLeftMessages(lastMessageId: chat.chatId)
+                    getLeftMessages(lastMessageId: chat.id)
                 }
             }
         } else {
@@ -176,7 +165,7 @@ class DMChatVC: DMBaseVC {
         }
     }
 
-    func getLeftMessages(lastMessageId: Int64) {
+    func getLeftMessages(lastMessageId: Int) {
         SocketManager.sharedInstance.getLeftMessages(recruiterId: (chatList?.recruiterId)!, messageId: lastMessageId, completionHandler: { (params: [Any]) in
             // debugPrint(params)
             let chatObj = JSON(rawValue: params)
@@ -186,21 +175,12 @@ class DMChatVC: DMBaseVC {
 
     @objc func refreshChat() {
         if let chat = getLastChat() {
-            getLeftMessages(lastMessageId: chat.chatId)
+            getLeftMessages(lastMessageId: chat.id)
         }
     }
 
-    func getLastChat() -> Chat? {
-        if let fetchedResultsController = fetchedResultsController {
-            if let section = fetchedResultsController.sections {
-                if section.count > 0 {
-                    let lastRow = section[section.count - 1].numberOfObjects - 1
-                    let indexPath = IndexPath(row: lastRow, section: section.count - 1)
-                    return fetchedResultsController.object(at: indexPath) as? Chat
-                }
-            }
-        }
-        return nil
+    func getLastChat() -> ChatModel? {
+        return chatsArray.last?.last
     }
 
     @IBAction func sendMessageButtonPressed(_: Any) {
