@@ -39,6 +39,8 @@ class DMTrackVC: DMBaseVC {
 
     var jobParams = [String: String]()
     var placeHolderEmptyJobsView: PlaceHolderJobsView?
+    
+    weak var moduleOutput: DMTrackModuleOutput?
 
     @IBOutlet var savedJobsTableView: UITableView!
     @IBOutlet var appliedJobsTableView: UITableView!
@@ -68,7 +70,12 @@ class DMTrackVC: DMBaseVC {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-       //self.setNotificationLabelText(count: AppDelegate.delegate().badgeCount())
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: false)
     }
 
     func setup() {

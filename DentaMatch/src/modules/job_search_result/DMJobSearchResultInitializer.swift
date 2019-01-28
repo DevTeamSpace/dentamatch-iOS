@@ -4,8 +4,11 @@ import SwinjectStoryboard
 
 class DMJobSearchResultInitializer {
     
-    class func initialize() -> UIViewController {
-        return SwinjectStoryboard.create(name: Constants.StoryBoard.jobSearchStoryboard, bundle: nil, container: appContainer).instantiateViewController(withIdentifier: String(describing: DMJobSearchResultVC.self))
+    class func initialize(moduleOutput: DMJobSearchResultModuleOutput) -> UIViewController? {
+        
+        let vc = SwinjectStoryboard.create(name: Constants.StoryBoard.jobSearchStoryboard, bundle: nil, container: appContainer).instantiateViewController(withIdentifier: String(describing: DMJobSearchResultVC.self)) as? DMJobSearchResultVC
+        vc?.moduleOutput = moduleOutput
+        return vc
     }
     
     class func register(for container: Container) {

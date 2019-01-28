@@ -14,6 +14,8 @@ class DMForgotPasswordVC: DMBaseVC {
     var forgotPasswordParams = [
         Constants.ServerKey.email: "",
     ]
+    
+    weak var moduleOutput: DMForgotPasswordModuleOutput?
 
     // MARK: - View LifeCycle
 

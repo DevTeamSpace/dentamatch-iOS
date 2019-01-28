@@ -244,13 +244,6 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="tintColor" red="0.015686274509803921" green="0.50196078431372548" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
-                    <connections>
-                        <segue destination="0ef-oy-3Ce" kind="relationship" relationship="viewControllers" id="dFB-W8-iXE"/>
-                        <segue destination="qUU-hR-gEe" kind="relationship" relationship="viewControllers" id="YLV-bz-clS"/>
-                        <segue destination="7kn-iu-ARI" kind="relationship" relationship="viewControllers" id="Qzy-KD-ysI"/>
-                        <segue destination="bkx-9j-cxJ" kind="relationship" relationship="viewControllers" id="5on-3C-QbP"/>
-                        <segue destination="8Ar-Ah-Bfh" kind="relationship" relationship="viewControllers" id="2cP-gn-Zq7"/>
-                    </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1cw-Ga-fpJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -838,36 +831,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EFz-uM-9Oe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3306" y="2415"/>
-        </scene>
-        <!--JobSearchListNAV-->
-        <scene sceneID="U2H-rx-sod">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="JobSearchListNAV" storyboardName="JobSearch" referencedIdentifier="JobSearchListNAV" id="0ef-oy-3Ce" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="t5L-f2-hAd"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4aG-Z9-f2m" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2595" y="615"/>
-        </scene>
-        <!--TrackNav-->
-        <scene sceneID="LQM-zK-W6m">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="TrackNav" storyboardName="Track" referencedIdentifier="TrackNav" id="qUU-hR-gEe" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="fnn-QB-dHg"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jUM-tg-0od" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2474" y="778"/>
-        </scene>
-        <!--CanederNav-->
-        <scene sceneID="OJG-Hy-djb">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="CanederNav" storyboardName="Calender" referencedIdentifier="CanederNav" id="7kn-iu-ARI" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="XbV-tV-7sn"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mMf-fx-3pY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2477" y="870"/>
         </scene>
         <!--MessageNav-->
         <scene sceneID="Lq4-hC-iAf">

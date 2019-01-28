@@ -249,10 +249,7 @@ class DMPublicProfileVC: DMBaseVC {
     }
     
     func goToStates(_ text: String?) {
-        guard let searchVc = SearchStateInitializer.initialize() as? SearchStateViewController else { return }
-        searchVc.delegate = self
-        searchVc.preSelectedState = stateString
-        self.navigationController?.pushViewController(searchVc, animated: true)
+        assertionFailure("Implement")
     }
 }
 

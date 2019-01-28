@@ -283,10 +283,7 @@ class DMWorkExperienceVC: DMBaseVC, ExperiencePickerViewDelegate, ToolBarButtonD
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     
     func goToStates(_ text: String?) {
-        guard let searchVc = SearchStateInitializer.initialize() as? SearchStateViewController else { return }
-        searchVc.delegate = self
-        searchVc.preSelectedState = currentExperience?.stateName
-        self.navigationController?.pushViewController(searchVc, animated: true)
+        assertionFailure("Implement")
     }
 }
 

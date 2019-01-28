@@ -20,6 +20,7 @@ class DMTermsAndConditionsVC: DMBaseVC {
     var isPrivacyPolicy = false
     var request: URLRequest!
 
+    weak var moduleOutput: DMTermsAndConditionsModuleOutput?
     // MARK: - View LifeCycle
 
     override func viewDidLoad() {

@@ -16,6 +16,8 @@ class TabBarVC: UITabBarController, UITabBarControllerDelegate {
         case messages
         case profile
     }
+    
+    weak var moduleOutput: TabBarModuleOutput?
     // MARK: - View LifeCycle
 
     override func viewDidLoad() {
@@ -31,13 +33,15 @@ class TabBarVC: UITabBarController, UITabBarControllerDelegate {
         delegate = self
         tabBar.tintColor = UIColor(red: 4.0 / 255.0, green: 128.0 / 255.0, blue: 220.0 / 255.0, alpha: 1)
     }
-
-    override func viewWillDisappear(_: Bool) {
-        // debugPrint("viewWillDisappear")
-    }
-
-    override func viewWillAppear(_: Bool) {
-        // debugPrint("viewWillAppear")
+    
+    func setTabBarIcons() {
+        let titles = ["Jobs", "Track", "Calendar", "Messages", "Profile"]
+        let images = titles.compactMap({ UIImage(named: $0.lowercased()) })
+        
+        for (idx, item) in (tabBar.items ?? []).enumerated() {
+            item.title = titles[idx]
+            item.image = images[idx]
+        }
     }
 
     @objc func setTabBarToProfile() {

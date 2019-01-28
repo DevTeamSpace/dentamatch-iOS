@@ -30,6 +30,8 @@ class DMOnboardingVC: DMBaseVC {
         Constants.SubHeading.subHeading4,
         Constants.SubHeading.subHeading2
     ]
+    
+    weak var moduleOutput: DMOnboardingModuleOutput?
 
     // MARK: - View LifeCycle
 
@@ -57,15 +59,17 @@ class DMOnboardingVC: DMBaseVC {
 
     // MARK: - IBActions
     @IBAction func skipButtonPressed(_: AnyObject) {
-        // Go to login/Registration
-        let navController = UINavigationController(rootViewController: DMRegistrationContainerInitializer.initialize())
-        navController.setNavigationBarHidden(true, animated: false)
-
-        UIView.transition(with: view.window!, duration: 0.25, options: .transitionCrossDissolve, animations: {
-            kAppDelegate?.window?.rootViewController = navController
-        }) { (_: Bool) in
-            // completion
-        }
+        
+//        let navController = UINavigationController(rootViewController: DMRegistrationContainerInitializer.initialize())
+//        navController.setNavigationBarHidden(true, animated: false)
+//
+//        UIView.transition(with: view.window!, duration: 0.25, options: .transitionCrossDissolve, animations: {
+//            kAppDelegate?.window?.rootViewController = navController
+//        }) { (_: Bool) in
+//            // completion
+//        }
+        UserDefaultsManager.sharedInstance.isOnBoardingDone = true
+        dismiss(animated: true)
     }
 }
 

@@ -50,15 +50,8 @@ extension DMRegistrationVC {
     }
 
     func openJobTitleSelection() {
-        let vc = DMJobTitleSelectionInitializer.initialize()
-        
-        let navController = UINavigationController(rootViewController: vc)
-        navController.setNavigationBarHidden(true, animated: false)
-        UIView.transition(with: view.window!, duration: 0.5, options: .transitionFlipFromRight, animations: {
-            kAppDelegate?.window?.rootViewController = navController
-            SocketManager.sharedInstance.establishConnection()
-        }) { (_: Bool) in
-        }
+        SocketManager.sharedInstance.establishConnection()
+        moduleOutput?.showJobTitleSelection()
     }
 
     func getPreferredLocations(shouldShowKeyboard: Bool = false) {

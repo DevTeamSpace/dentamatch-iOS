@@ -56,16 +56,16 @@ class Utilities: NSObject {
     class func logOutOfInvalidToken() {
         
         UserDefaultsManager.sharedInstance.clearCache()
-        
-        let navController = UINavigationController(rootViewController: DMRegistrationContainerInitializer.initialize())
-        navController.setNavigationBarHidden(true, animated: false)
-        
-        UserDefaultsManager.sharedInstance.isLoggedOut = true
-        UIView.transition(with: (UIApplication.shared.keyWindow?.rootViewController?.view.window)!, duration: 0.25, options: .transitionCrossDissolve, animations: {
-            kAppDelegate?.window?.rootViewController = navController
-
-        }) { (_: Bool) in
-            DatabaseManager.clearDB()
-        }
+        assertionFailure("Implement")
+//        let navController = UINavigationController(rootViewController: DMRegistrationContainerInitializer.initialize())
+//        navController.setNavigationBarHidden(true, animated: false)
+//
+//        UserDefaultsManager.sharedInstance.isLoggedOut = true
+//        UIView.transition(with: (UIApplication.shared.keyWindow?.rootViewController?.view.window)!, duration: 0.25, options: .transitionCrossDissolve, animations: {
+//            kAppDelegate?.window?.rootViewController = navController
+//
+//        }) { (_: Bool) in
+//            DatabaseManager.clearDB()
+//        }
     }
 }

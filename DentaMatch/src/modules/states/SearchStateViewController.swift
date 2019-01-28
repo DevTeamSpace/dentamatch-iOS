@@ -20,6 +20,9 @@ class SearchStateViewController: DMBaseVC {
     var isSearchOn: Bool = false
     weak var delegate:SearchStateViewControllerDelegate?
     var preSelectedState: String?
+    
+    weak var moduleOutput: SearchStateModuleOutput?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         searchField.textChange { [weak self] text in

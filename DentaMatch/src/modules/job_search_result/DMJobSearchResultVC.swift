@@ -47,6 +47,8 @@ class DMJobSearchResultVC: DMBaseVC {
     var indexOfSelectedMarker: Int?
     var selectedMarker: JobMarker?
     var placeHolderEmptyJobsView: PlaceHolderJobsView?
+    
+    weak var moduleOutput: DMJobSearchResultModuleOutput?
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -25,6 +25,8 @@ class DMJobTitleSelectionVC: DMBaseVC, ToolBarButtonDelegate {
     var selectedJobTitle: JobTitle?
     var licenseNumber = ""
     var state = ""
+    
+    weak var moduleOutput: DMJobTitleSelectionModuleOutput?
 
     // MARK: - View LifeCycle
 
@@ -254,9 +256,8 @@ class DMJobTitleSelectionVC: DMBaseVC, ToolBarButtonDelegate {
     }
 
     func openDashboard() {
-        let dashboardVC = TabBarInitializer.initialize()
-        kAppDelegate?.window?.rootViewController = dashboardVC
         UserDefaultsManager.sharedInstance.isProfileSkipped = true
+        moduleOutput?.showTabBar()
     }
 
     @IBAction func createProfileButtonPressed(_: Any) {
@@ -285,10 +286,7 @@ class DMJobTitleSelectionVC: DMBaseVC, ToolBarButtonDelegate {
     }
     
     func goToStates(_ text: String?) {
-        guard let searchVc = SearchStateInitializer.initialize() as? SearchStateViewController else { return }
-        searchVc.delegate = self
-        searchVc.preSelectedState = self.state
-        self.navigationController?.pushViewController(searchVc, animated: true)
+        moduleOutput?.showStates(preselectedState: text, delegate: self)
     }
 }
 

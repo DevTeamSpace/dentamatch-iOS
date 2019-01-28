@@ -29,25 +29,25 @@ extension DMLoginVC {
     }
 
     func handleLoginResponse(response: JSON?) {
-        UserManager.shared().loginResponseHandler(response: response) { (success: Bool, _: String) in
-            self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
+        UserManager.shared().loginResponseHandler(response: response) { [weak self] (success: Bool, _: String) in
+            
+            self?.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
+            
             if success {
                 MixpanelOperations.manageMixpanelUserIdentity()
                 MixpanelOperations.registerMixpanelUser()
                 MixpanelOperations.trackMixpanelEvent(eventName: "Login")
-                // debugPrint("Login Success......")
-                // debugPrint("Socket Operation done......")
-                self.saveSearchedData(response: response!)
-                // let userDetails = response?[Constants.ServerKey.result][Constants.ServerKey.userDetails].dictionary
+                
+                
+                self?.saveSearchedData(response: response!)
+                
+                SocketManager.sharedInstance.establishConnection()
                 if (UserManager.shared().activeUser.jobTitleId?.isEmptyField)! {
-                    self.openJobTitleSelection()
+                    self?.moduleOutput?.showJobTitleSelection()
                 } else {
-                    self.openTabbar()
+                    UserDefaultsManager.sharedInstance.isProfileSkipped = true
+                    self?.moduleOutput?.showTabBar()
                 }
-//                if userDetails?["profileCompleted"]?.boolValue == true {
-//                }else {
-//
-//                }
             }
         }
     }

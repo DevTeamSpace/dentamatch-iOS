@@ -199,9 +199,10 @@ class DMJobSearchVC: DMBaseVC {
             }
             _ = navigationController?.popViewController(animated: true)
         } else {
+            assertionFailure("Implement")
             // open dashboard
-            let dashboardVC = TabBarInitializer.initialize()
-            kAppDelegate?.window?.rootViewController = dashboardVC
+//            let dashboardVC = TabBarInitializer.initialize()
+//            kAppDelegate?.window?.rootViewController = dashboardVC
         }
     }
 

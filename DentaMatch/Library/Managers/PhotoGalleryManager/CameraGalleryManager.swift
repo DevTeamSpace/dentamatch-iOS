@@ -10,6 +10,17 @@ import AVFoundation
 import Photos
 import UIKit
 
+extension UIImagePickerController {
+    
+    override open var childForStatusBarStyle: UIViewController? {
+        return nil
+    }
+    
+    override open var preferredStatusBarStyle: UIStatusBarStyle {
+        return sourceType == .photoLibrary ? .lightContent : .default
+    }
+}
+
 class CameraGalleryManager: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     private weak var presentedFromController: UIViewController?
     private var allowsEditing = false
