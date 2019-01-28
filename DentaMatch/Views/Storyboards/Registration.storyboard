@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ido-Jt-Y82">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -99,6 +99,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="gtB-b3-XIa"/>
                     <nil key="simulatedBottomBarMetrics"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="swinjectRegistrationName" value="DMRegistrationContainer"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="loginButton" destination="8gm-lD-jgY" id="Rl6-gQ-XgB"/>
                         <outlet property="registrationButton" destination="dg5-jr-Tk6" id="NiD-4n-jsy"/>
@@ -108,7 +111,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y4s-jZ-7vs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="397.60000000000002" y="214.54272863568218"/>
+            <point key="canvasLocation" x="-314" y="215"/>
         </scene>
         <!--Register MapsVC-->
         <scene sceneID="UTS-gd-Si3">
@@ -388,7 +391,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zcL-XB-2XR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1085.5999999999999" y="214.54272863568218"/>
+            <point key="canvasLocation" x="398" y="215"/>
         </scene>
         <!--LoginVC-->
         <scene sceneID="ZF5-gr-67V">
@@ -447,24 +450,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I8Q-Um-X4A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1764" y="214.54272863568218"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="dkB-pA-Z8p">
-            <objects>
-                <navigationController storyboardIdentifier="RegistrationNAV" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="Ido-Jt-Y82" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="mF5-zQ-7eP">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="lsa-fw-BC6" kind="relationship" relationship="rootViewController" id="3Cy-PF-G1G"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cHs-ja-MM1" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-303.19999999999999" y="215.44227886056973"/>
+            <point key="canvasLocation" x="1086" y="215"/>
         </scene>
     </scenes>
     <resources>
