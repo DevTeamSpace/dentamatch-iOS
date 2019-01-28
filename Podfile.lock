@@ -22,6 +22,9 @@ PODS:
     - ObjcExceptionBridging/ObjcExceptionBridging (= 1.0.1)
   - ObjcExceptionBridging/ObjcExceptionBridging (1.0.1)
   - SwiftyJSON (4.2.0)
+  - Swinject (2.5.0)
+  - SwinjectStoryboard (2.1.0):
+    - Swinject (~> 2.5)
   - XCGLogger (6.1.0):
     - XCGLogger/Core (= 6.1.0)
   - XCGLogger/Core (6.1.0):
@@ -39,6 +42,8 @@ DEPENDENCIES:
   - KeychainAccess
   - Mixpanel-swift
   - SwiftyJSON
+  - Swinject
+  - SwinjectStoryboard
   - XCGLogger
 
 SPEC REPOS:
@@ -55,6 +60,8 @@ SPEC REPOS:
     - Mixpanel-swift
     - ObjcExceptionBridging
     - SwiftyJSON
+    - Swinject
+    - SwinjectStoryboard
     - XCGLogger
 
 SPEC CHECKSUMS:
@@ -70,8 +77,10 @@ SPEC CHECKSUMS:
   Mixpanel-swift: 79135619a67fadf6ad1da5a6d0548f0c51b359aa
   ObjcExceptionBridging: c30e00eb3700467e695faeea30e26e18bd445001
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+  Swinject: 82cdb851f63f91bba974e3eca1d69780f2f7677e
+  SwinjectStoryboard: 688f096033103e66ffcf6ca678211acd7d7be505
   XCGLogger: 7f7f43f15dfe3a305fa1342b7dc29af656289abd
 
-PODFILE CHECKSUM: 534fd68bdef14537aaa3930710f2fa9130f76642
+PODFILE CHECKSUM: 53945eb4f67ee2f2d0b27e1e99f10fef414a2a96
 
 COCOAPODS: 1.5.3
