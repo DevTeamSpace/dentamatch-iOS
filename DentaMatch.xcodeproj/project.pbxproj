@@ -3422,7 +3422,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.appster.dentamatch;
 				PRODUCT_NAME = "$(TARGET_NAME)-Dev";
 				PROVISIONING_PROFILE = "35ac7f31-607c-4f0b-8566-8f60e995d36d";
-				PROVISIONING_PROFILE_SPECIFIER = "DentaMatch Development";
+				PROVISIONING_PROFILE_SPECIFIER = "DentaMatch Developing";
 				SWIFT_OBJC_BRIDGING_HEADER = "DentaMatch/Application/DentaMatch-BridgingHeader.h";
 				SWIFT_VERSION = 4.2;
 			};
@@ -3446,7 +3446,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.appster.dentamatch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "979e1642-8e1f-472b-800f-488334cf4573";
-				PROVISIONING_PROFILE_SPECIFIER = DentaMatch_AppStore;
+				PROVISIONING_PROFILE_SPECIFIER = "DentaMatch Developing";
 				SWIFT_OBJC_BRIDGING_HEADER = "DentaMatch/Application/DentaMatch-BridgingHeader.h";
 				SWIFT_VERSION = 4.2;
 			};
@@ -3534,7 +3534,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.appster.dentamatch;
 				PRODUCT_NAME = "$(TARGET_NAME)-QA";
 				PROVISIONING_PROFILE = "35ac7f31-607c-4f0b-8566-8f60e995d36d";
-				PROVISIONING_PROFILE_SPECIFIER = "DentaMatch Development";
+				PROVISIONING_PROFILE_SPECIFIER = "DentaMatch Developing";
 				SWIFT_OBJC_BRIDGING_HEADER = "DentaMatch/Application/DentaMatch-BridgingHeader.h";
 				SWIFT_VERSION = 4.2;
 			};
@@ -3617,7 +3617,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.appster.dentamatch;
 				PRODUCT_NAME = "$(TARGET_NAME)-Staging";
 				PROVISIONING_PROFILE = "c090df9e-bd0f-4096-8b55-3d092b58e375";
-				PROVISIONING_PROFILE_SPECIFIER = Dentamatch_distribution;
+				PROVISIONING_PROFILE_SPECIFIER = "DentaMatch Distribution";
 				SWIFT_OBJC_BRIDGING_HEADER = "DentaMatch/Application/DentaMatch-BridgingHeader.h";
 				SWIFT_VERSION = 4.2;
 			};
