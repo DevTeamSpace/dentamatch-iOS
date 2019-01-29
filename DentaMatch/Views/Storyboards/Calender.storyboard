@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="NUS-Px-Ne8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -17,24 +17,6 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Calendar-->
-        <scene sceneID="4zl-fy-AwR">
-            <objects>
-                <navigationController storyboardIdentifier="CanederNav" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NUS-Px-Ne8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Calendar" image="calender" id="GmI-ki-020"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="B76-yd-D1j">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="XWc-W3-0AS" kind="relationship" relationship="rootViewController" id="bFr-jN-rAe"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wDK-US-oNe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-562" y="127"/>
-        </scene>
         <!--Calender-->
         <scene sceneID="EaB-Fk-4bO">
             <objects>
@@ -48,13 +30,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n4g-8V-4t2">
-                                <rect key="frame" x="0.0" y="64" width="375" height="311"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="311"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BGV-tH-gOZ">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="61"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dZB-9f-bX8">
-                                                <rect key="frame" x="0.0" y="20" width="59" height="22"/>
+                                                <rect key="frame" x="0.0" y="19.5" width="59" height="22"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="59" id="PfR-Zh-wdq"/>
                                                     <constraint firstAttribute="height" constant="22" id="Yxl-dr-CmD"/>
@@ -65,7 +47,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3YL-VO-reo">
-                                                <rect key="frame" x="310" y="20" width="65" height="22"/>
+                                                <rect key="frame" x="310" y="19.5" width="65" height="22"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="65" id="fNs-D7-jv7"/>
                                                     <constraint firstAttribute="height" constant="22" id="ubc-cM-gry"/>
@@ -79,7 +61,7 @@
                                                 <rect key="frame" x="89" y="-1" width="197" height="63"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5tt-0w-7DO">
-                                                        <rect key="frame" x="66" y="26" width="10" height="10"/>
+                                                        <rect key="frame" x="66" y="26.5" width="10" height="10"/>
                                                         <color key="backgroundColor" red="0.2627450980392157" green="0.69411764705882351" blue="0.69803921568627447" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="10" id="62p-gS-PmE"/>
@@ -128,7 +110,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fvI-CN-5K4">
-                                <rect key="frame" x="0.0" y="455" width="375" height="163"/>
+                                <rect key="frame" x="0.0" y="411" width="375" height="207"/>
                                 <string key="text">You don’t have any booked jobs 
 on this date yet.</string>
                                 <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
@@ -136,7 +118,7 @@ on this date yet.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VEq-HL-k4t">
-                                <rect key="frame" x="0.0" y="415" width="375" height="203"/>
+                                <rect key="frame" x="0.0" y="371" width="375" height="247"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="XWc-W3-0AS" id="PIP-nq-AyV"/>
@@ -144,7 +126,7 @@ on this date yet.</string>
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lWM-el-2mK" userLabel="Update Availability View">
-                                <rect key="frame" x="0.0" y="375" width="375" height="40"/>
+                                <rect key="frame" x="0.0" y="331" width="375" height="40"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mQ6-WR-P5Z">
                                         <rect key="frame" x="90" y="0.0" width="195.5" height="40"/>
@@ -160,7 +142,7 @@ on this date yet.</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Update my availability" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SKm-Y3-ZAd">
-                                                <rect key="frame" x="30" y="10" width="165.5" height="19.5"/>
+                                                <rect key="frame" x="30" y="10.5" width="165.5" height="19.5"/>
                                                 <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -227,7 +209,7 @@ on this date yet.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jCI-fB-4M2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="176.80000000000001" y="127.28635682158921"/>
+            <point key="canvasLocation" x="161" y="125"/>
         </scene>
         <!--Calendar Set AvailabillityVC-->
         <scene sceneID="1jV-be-PcP">
@@ -268,7 +250,6 @@ on this date yet.</string>
         </scene>
     </scenes>
     <resources>
-        <image name="calender" width="22" height="22"/>
         <image name="disclosureIndicator" width="8" height="13"/>
         <image name="disclosureIndicatorleft" width="8" height="13"/>
     </resources>

@@ -53,6 +53,8 @@ class DMWorkExperienceVC: DMBaseVC, ExperiencePickerViewDelegate, ToolBarButtonD
     var selectedIndex: Int = 0
     var isHiddenExperienceTable: Bool = false
     var isEditMode = false
+    
+    weak var moduleOutput: DMWorkExperienceModuleOutput?
 
     @IBOutlet var viewForTopHeader: UIView!
     @IBOutlet var nextButton: UIButton!
@@ -182,8 +184,9 @@ class DMWorkExperienceVC: DMBaseVC, ExperiencePickerViewDelegate, ToolBarButtonD
         if isEditMode == true {
             _ = navigationController?.popViewController(animated: true)
         } else {
-            guard let vc = DMStudyInitializer.initialize() as? DMStudyVC else { return }
-            navigationController?.pushViewController(vc, animated: true)
+            assertionFailure("Implement")
+//            guard let vc = DMStudyInitializer.initialize() as? DMStudyVC else { return }
+//            navigationController?.pushViewController(vc, animated: true)
         }
     }
 
@@ -263,8 +266,9 @@ class DMWorkExperienceVC: DMBaseVC, ExperiencePickerViewDelegate, ToolBarButtonD
                 if self.isEditMode == true {
                     _ = self.navigationController?.popViewController(animated: true)
                 } else {
-                    guard let vc = DMStudyInitializer.initialize() as? DMStudyVC else { return }
-                    self.navigationController?.pushViewController(vc, animated: true)
+                    assertionFailure("Implement")
+//                    guard let vc = DMStudyInitializer.initialize() as? DMStudyVC else { return }
+//                    self.navigationController?.pushViewController(vc, animated: true)
                 }
             }
         })
@@ -283,10 +287,7 @@ class DMWorkExperienceVC: DMBaseVC, ExperiencePickerViewDelegate, ToolBarButtonD
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     
     func goToStates(_ text: String?) {
-        guard let searchVc = SearchStateInitializer.initialize() as? SearchStateViewController else { return }
-        searchVc.delegate = self
-        searchVc.preSelectedState = currentExperience?.stateName
-        self.navigationController?.pushViewController(searchVc, animated: true)
+        moduleOutput?.showStates(preselectedState: text, delegate: self)
     }
 }
 

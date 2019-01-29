@@ -78,8 +78,9 @@ class DMCertificationsVC: DMBaseVC, DatePickerViewDelegate {
         if checkAllCertitficates() {
             uploadAllValidityDates(completionHandler: { _, _ in
                 
-                guard let vc = DMExecutiveSummaryInitializer.initialize() as? DMExecutiveSummaryVC else { return }
-                self.navigationController?.pushViewController(vc, animated: true)
+                assertionFailure("Implement")
+//                guard let vc = DMExecutiveSummaryInitializer.initialize() as? DMExecutiveSummaryVC else { return }
+//                self.navigationController?.pushViewController(vc, animated: true)
             })
         }
     }

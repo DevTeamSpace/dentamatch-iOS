@@ -4,8 +4,11 @@ import SwinjectStoryboard
 
 class DMLoginInitializer {
     
-    class func initialize() -> UIViewController {
-        return SwinjectStoryboard.create(name: Constants.StoryBoard.registrationStoryboard, bundle: nil, container: appContainer).instantiateViewController(withIdentifier: String(describing: DMLoginVC.self))
+    class func initialize(moduleOutput: DMLoginModuleOutput) -> UIViewController? {
+        
+        let vc = SwinjectStoryboard.create(name: Constants.StoryBoard.registrationStoryboard, bundle: nil, container: appContainer).instantiateViewController(withIdentifier: String(describing: DMLoginVC.self)) as? DMLoginVC
+        vc?.moduleOutput = moduleOutput
+        return vc
     }
     
     class func register(for container: Container) {

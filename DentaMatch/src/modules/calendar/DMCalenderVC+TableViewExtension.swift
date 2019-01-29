@@ -96,20 +96,11 @@ extension DMCalenderVC: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let jobDetailVC = DMJobDetailInitializer.initialize() as? DMJobDetailVC else { return }
-        jobDetailVC.fromCalender = false
-        jobDetailVC.job = selectedDayList[indexPath.row]
-        jobDetailVC.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(jobDetailVC, animated: true)
+        moduleOutput?.showJobDetail(job: selectedDayList[indexPath.row])
     }
 
     func openCancelJob(job: Job, fromApplied: Bool) {
-        guard let cancelJobVC = DMCancelJobInitializer.initialize() as? DMCancelJobVC else { return }
-        cancelJobVC.job = job
-        cancelJobVC.hidesBottomBarWhenPushed = true
-        cancelJobVC.fromApplied = fromApplied
-        cancelJobVC.delegate = self
-        navigationController?.pushViewController(cancelJobVC, animated: true)
+        moduleOutput?.showCancelJob(job: job, fromApplied: fromApplied, delegate: self)
     }
 
     func getJobTypeText(jobType: Int) -> String {

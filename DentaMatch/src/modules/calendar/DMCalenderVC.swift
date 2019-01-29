@@ -25,6 +25,9 @@ class DMCalenderVC: DMBaseVC, FSCalendarDataSource, FSCalendarDelegate, FSCalend
     var gregorian: NSCalendar?
     //var notificationLabel: UILabel?
     var selectedDate: Date?
+    
+    weak var moduleOutput: DMCalendarModuleOutput?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -474,9 +477,7 @@ class DMCalenderVC: DMBaseVC, FSCalendarDataSource, FSCalendarDelegate, FSCalend
 
     // plus button Action
     @IBAction func setAvailablityButtonClicked(_: Any) {
-        guard let termsVC = DMCalendarSetAvailabilityInitializer.initialize() as? DMCalendarSetAvailabillityVC else { return }
-        termsVC.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(termsVC, animated: true)
+        moduleOutput?.showCalendar()
     }
 
     @IBAction func nextButtonClicked(_: Any) {

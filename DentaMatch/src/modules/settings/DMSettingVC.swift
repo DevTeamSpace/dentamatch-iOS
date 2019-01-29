@@ -16,6 +16,8 @@ class DMSettingVC: DMBaseVC {
         // Do any additional setup after loading the view.
         setup()
     }
+    
+    weak var moduleOutput: DMSettingsModuleOutput?
 
     func setup() {
         navigationController?.setNavigationBarHidden(false, animated: true)

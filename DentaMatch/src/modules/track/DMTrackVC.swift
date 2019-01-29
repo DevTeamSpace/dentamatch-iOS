@@ -39,6 +39,8 @@ class DMTrackVC: DMBaseVC {
 
     var jobParams = [String: String]()
     var placeHolderEmptyJobsView: PlaceHolderJobsView?
+    
+    weak var moduleOutput: DMTrackModuleOutput?
 
     @IBOutlet var savedJobsTableView: UITableView!
     @IBOutlet var appliedJobsTableView: UITableView!
@@ -68,7 +70,12 @@ class DMTrackVC: DMBaseVC {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-       //self.setNotificationLabelText(count: AppDelegate.delegate().badgeCount())
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: false)
     }
 
     func setup() {
@@ -148,23 +155,22 @@ class DMTrackVC: DMBaseVC {
     }
 
     func openJobDetails(indexPath: IndexPath) {
+        
         let segmentControlOptions = SegmentControlOption(rawValue: segmentedControl.selectedSegmentIndex)!
-
-        guard let jobDetailVC = DMJobDetailInitializer.initialize() as? DMJobDetailVC else { return }
-        jobDetailVC.fromTrack = true
+        var job: Job? = nil
+        
         switch segmentControlOptions {
         case .saved:
-            jobDetailVC.job = savedJobs[indexPath.row]
+            job = savedJobs[indexPath.row]
 
         case .applied:
-            jobDetailVC.job = appliedJobs[indexPath.row]
+            job = appliedJobs[indexPath.row]
 
         case .shortlisted:
-            jobDetailVC.job = shortListedJobs[indexPath.row]
+            job = shortListedJobs[indexPath.row]
         }
-        jobDetailVC.hidesBottomBarWhenPushed = true
-        jobDetailVC.delegate = self
-        self.navigationController?.pushViewController(jobDetailVC, animated: true)
+        
+        moduleOutput?.showJobDetails(job: job, delegate: self)
     }
 
     @IBAction func segmentControlValueChanged(_ sender: UISegmentedControl) {

@@ -33,6 +33,8 @@ class DMRegistrationVC: DMBaseVC {
         // Constants.ServerKey.latitude:"",
         // Constants.ServerKey.longitude:""
     ]
+    
+    weak var moduleOutput: DMRegistrationModuleOutput?
 
     // MARK: - View LifeCycle
 
@@ -75,7 +77,6 @@ class DMRegistrationVC: DMBaseVC {
     func setup() {
         preferredLocationPickerView = PreferredLocationPickerView.loadPreferredLocationPickerView(preferredLocations: preferredLocations)
         preferredLocationPickerView.delegate = self
-        UserDefaultsManager.sharedInstance.isOnBoardingDone = true
         registrationTableView.register(UINib(nibName: "RegistrationTableViewCell", bundle: nil), forCellReuseIdentifier: "RegistrationTableViewCell")
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         registrationTableView.addGestureRecognizer(tap)
@@ -132,9 +133,7 @@ class DMRegistrationVC: DMBaseVC {
 
     func openTermsAndConditions(isPrivacyPolicy: Bool) {
         view.endEditing(true)
-        guard let termsVC = DMTermsAndConditionsInitializer.initialize() as? DMTermsAndConditionsVC else { return }
-        termsVC.isPrivacyPolicy = isPrivacyPolicy
-        navigationController?.pushViewController(termsVC, animated: true)
+        moduleOutput?.showTermsAndConditions(isPrivacyPolicy: isPrivacyPolicy)
     }
 
     @objc func dismissKeyboard() {

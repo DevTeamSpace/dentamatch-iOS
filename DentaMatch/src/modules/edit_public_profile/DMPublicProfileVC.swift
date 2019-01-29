@@ -20,6 +20,8 @@ class DMPublicProfileVC: DMBaseVC {
     }
 
     @IBOutlet var publicProfileTableView: UITableView!
+    
+    weak var moduleOutput: DMPublicProfileModuleOutput?
 
     var originalParams = [String: String]()
 
@@ -249,10 +251,7 @@ class DMPublicProfileVC: DMBaseVC {
     }
     
     func goToStates(_ text: String?) {
-        guard let searchVc = SearchStateInitializer.initialize() as? SearchStateViewController else { return }
-        searchVc.delegate = self
-        searchVc.preSelectedState = stateString
-        self.navigationController?.pushViewController(searchVc, animated: true)
+        moduleOutput?.showStates(preselectedState: text, delegate: self)
     }
 }
 

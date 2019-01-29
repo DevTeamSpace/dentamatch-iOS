@@ -4,8 +4,14 @@ import SwinjectStoryboard
 
 class DMAffiliationsInitializer {
     
-    class func initialize() -> UIViewController {
-        return SwinjectStoryboard.create(name: Constants.StoryBoard.profileStoryboard, bundle: nil, container: appContainer).instantiateViewController(withIdentifier: String(describing: DMAffiliationsVC.self))
+    class func initialize(selectedAffiliations: [Affiliation]?, isEditMode: Bool, moduleOutput: DMAffiliationsModuleOutput) -> UIViewController? {
+        
+        let vc = SwinjectStoryboard.create(name: Constants.StoryBoard.profileStoryboard, bundle: nil, container: appContainer).instantiateViewController(withIdentifier: String(describing: DMAffiliationsVC.self)) as? DMAffiliationsVC
+        vc?.selectedAffiliationsFromProfile = selectedAffiliations ?? []
+        vc?.isEditMode = isEditMode
+        vc?.moduleOutput = moduleOutput
+        
+        return vc
     }
     
     class func register(for container: Container) {

@@ -15,12 +15,15 @@ import Mixpanel
 import UIKit
 import Swinject
 import SwinjectStoryboard
+import SwiftyJSON
+import Instabug
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
     var window: UIWindow?
     private var reachability: Reachability!
-    // MARK: - App Delegate Ref
+    
     class func delegate() -> AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate
     }
@@ -29,72 +32,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return defaultContainer()
     }()
     
+    lazy var rootFlowCoordinator: RootFlowCoordinatorProtocol? = {
+        return appContainer.resolve(RootFlowCoordinatorProtocol.self)
+    }()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
         setUpApplication()
-        if UserDefaultsManager.sharedInstance.isProfileCompleted {
-            goToDashBoard()
-            return true
+        makeRoot(viewController: rootFlowCoordinator?.launchViewController())
+
+        if !UserDefaultsManager.sharedInstance.isProfileSkipped {
+            checkForNotificationTapAction(application, launchOptions)
         }
-        setUpApplicationUI(application, launchOptions)
+        
         return true
     }
     
-    func goToOnboarding() {
-        let navController = UINavigationController(rootViewController: DMOnboardingInitializer.initialize())
-        navController.setNavigationBarHidden(true, animated: false)
-        
-        makeRoot(viewController: navController)
-    }
+    func setUpApplication() {
+        MixpanelOperations.startSessionForMixpanelWithToken()
+        //Instabug.start(withToken: kInstaBugKey, invocationEvents: [.shake])
 
-    func goToRegistration() {
-        
-        let navController = UINavigationController(rootViewController: DMRegistrationContainerInitializer.initialize())
-        navController.setNavigationBarHidden(true, animated: false)
-        
-        makeRoot(viewController: navController)
-    }
+        configureCrashlytics()
 
-    func goToProfile() {
-        
-        let vc = DMJobTitleSelectionInitializer.initialize()
-        
-        let navController = UINavigationController(rootViewController: vc)
-        navController.setNavigationBarHidden(true, animated: false)
-        
-        makeRoot(viewController: navController)
-    }
+        configureSocket()
 
-    func goToSuccessPendingScreen() {
-        guard let profileSuccessPendingVC = DMProfileSuccessPendingInitializer.initialize() as? DMProfileSuccessPending else { return }
-        profileSuccessPendingVC.fromRoot = true
-        let navigationVC = UINavigationController(rootViewController: profileSuccessPendingVC)
-        navigationVC.setNavigationBarHidden(true, animated: false)
-        
-        makeRoot(viewController: navigationVC)
-    }
+        configureGoogleServices()
 
-    func goToDashBoard() {
-        // if let _ =  UserDefaultsManager.sharedInstance.loadSearchParameter() {
-        let dashboardVC = TabBarInitializer.initialize()
-        makeRoot(viewController: dashboardVC)
-        //  } else {
-        //       self.goToSearch()
-        //   }
-    }
+        registerForPushNotifications()
 
-    func goToSearch() {
-        guard let jobSearchVc = DMJobSearchInitializer.initialize() as? DMJobSearchVC else { return }
-        let navController = UINavigationController(rootViewController: jobSearchVc)
-        
-        if let _ = UserDefaultsManager.sharedInstance.loadSearchParameter() {
-            jobSearchVc.firstTime = false
-        } else {
-            jobSearchVc.firstTime = true
-        }
-        
-        
-        makeRoot(viewController: navController)
+        // configureRichNotifications()
+
+        changeNavBarAppearance()
+
+        configureNetworkReachability()
     }
     
     func makeRoot(viewController: UIViewController?) {
@@ -107,6 +77,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if window == nil {
             window = UIWindow(frame: UIScreen.main.bounds)
+        }
+    }
+    
+    private func checkForNotificationTapAction(_ application: UIApplication, _ launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
+        if let remoteNotification = launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification] as? NSDictionary {
+            if remoteNotification.allKeys.count > 0 {
+                //                    self.tabIndex = 4
+                if let noti = remoteNotification["data"] as? NSDictionary {
+                    guard let megCheck = noti["data"] as? NSDictionary else {return}
+                    if megCheck["messageId"] != nil {
+                        NotificationHandler.notificationHandleforChat(fromId: (megCheck["fromId"] as? String), toId: (megCheck["toId"] as? String), messgaeId: (megCheck["messageId"] as? String), recurterId: (megCheck["recurterId"] as? String))
+                    } else {
+                        let newObjMSG = noti["jobDetails"]
+                        let jobJson = JSON(newObjMSG ?? "")
+                        let jobObj = Job(job: jobJson)
+                        let newObj = noti["data"]
+                        let josnObj = JSON(newObj ?? [:])
+                        let userNotiObj = UserNotification(dict: josnObj)
+                        NotificationHandler.notificationHandleforBackground(notiObj: userNotiObj, jobObj: jobObj, app: application)
+                    }
+                }
+            }
         }
     }
 

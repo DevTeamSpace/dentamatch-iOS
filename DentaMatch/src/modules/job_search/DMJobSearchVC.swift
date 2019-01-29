@@ -40,6 +40,8 @@ class DMJobSearchVC: DMBaseVC {
         case jobType = 189.0
         case jobTypePartTime = 76.0
     }
+    
+    weak var moduleOutput: DMJobSearchModuleOutput?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -199,9 +201,10 @@ class DMJobSearchVC: DMBaseVC {
             }
             _ = navigationController?.popViewController(animated: true)
         } else {
+            assertionFailure("Implement")
             // open dashboard
-            let dashboardVC = TabBarInitializer.initialize()
-            kAppDelegate?.window?.rootViewController = dashboardVC
+//            let dashboardVC = TabBarInitializer.initialize()
+//            kAppDelegate?.window?.rootViewController = dashboardVC
         }
     }
 

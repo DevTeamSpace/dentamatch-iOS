@@ -18,6 +18,8 @@ class DMLoginVC: DMBaseVC {
         Constants.ServerKey.email: "",
         Constants.ServerKey.password: "",
     ]
+    
+    weak var moduleOutput: DMLoginModuleOutput?
 
     // MARK: - View LifeCycle
 
@@ -88,26 +90,11 @@ class DMLoginVC: DMBaseVC {
         view.endEditing(true)
     }
 
-    func openJobTitleSelection() {
-        
-        let vc = DMJobTitleSelectionInitializer.initialize()
-        
-        let navController = UINavigationController(rootViewController: vc)
-        navController.setNavigationBarHidden(true, animated: false)
-        
-        UIView.transition(with: view.window!, duration: 0.5, options: .transitionFlipFromRight, animations: {
-            kAppDelegate?.window?.rootViewController = navController
-            SocketManager.sharedInstance.establishConnection()
-        }) { (_: Bool) in
-        }
-    }
-
     // MARK: - IBActions
 
     @objc func forgotPasswordButtonPressed() {
         view.endEditing(true)
-        let forgotPasswordVC = DMForgotPasswordInitializer.initialize()
-        navigationController?.pushViewController(forgotPasswordVC, animated: true)
+        moduleOutput?.showForgotPassword()
     }
 
     @IBAction func loginButtonPressed(_: Any) {

@@ -109,14 +109,7 @@ extension DMJobTitleSelectionVC {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
                 // move to congrats screen
-                guard let profileSuccessPendingVC = DMProfileSuccessPendingInitializer.initialize() as? DMProfileSuccessPending else { return }
                 let user = response[Constants.ServerKey.result]["userDetails"]
-                if user["isVerified"].stringValue == "1" {
-                    profileSuccessPendingVC.isEmailVerified = true
-                }
-                if selectedJobTitle!.isLicenseRequired {
-                    profileSuccessPendingVC.isLicenseRequired = true
-                }
                 UserManager.shared().activeUser.jobTitle = user[Constants.ServerKey.jobtitleName].stringValue
                 UserManager.shared().activeUser.jobTitleId = user[Constants.ServerKey.jobTitileId].stringValue
                 UserManager.shared().activeUser.profileImageURL = user[Constants.ServerKey.profilePic].stringValue
@@ -129,7 +122,10 @@ extension DMJobTitleSelectionVC {
                 print("user job\(myuser.isJobSeekerVerified ?? false)")
                 UserManager.shared().saveActiveUser()
 
-                navigationController?.pushViewController(profileSuccessPendingVC, animated: true)
+                
+                moduleOutput?.showSuccessPending(isEmailVerified: user["isVerified"].stringValue == "1",
+                                                 isLicenseRequired: selectedJobTitle!.isLicenseRequired,
+                                                 fromRoot: false)
             } else {
                 makeToast(toastString: response[Constants.ServerKey.message].stringValue)
             }

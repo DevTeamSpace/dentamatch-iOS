@@ -19,6 +19,8 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
     var availablitytModel: UserAvailability? = UserAvailability()
     var gregorian: NSCalendar?
     var fromRoot = false
+    
+    weak var moduleOutput: DMCalendarSetAvailabilityModuleOutput?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -115,12 +117,13 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
             return
         }
 
-        setMyAvailabilityOnServer { _, _ in
+        setMyAvailabilityOnServer { [weak self] _, _ in
             // debugPrint(response ?? "response not available")
-            if self.fromJobSelection {
-                kAppDelegate?.goToDashBoard()
+            if self?.fromJobSelection == true {
+                
+                self?.moduleOutput?.showTabBar()
             } else {
-                _ = self.navigationController?.popViewController(animated: true)
+                self?.navigationController?.popViewController(animated: true)
             }
         }
     }

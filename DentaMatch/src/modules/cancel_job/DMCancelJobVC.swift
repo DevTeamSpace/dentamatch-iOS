@@ -19,6 +19,8 @@ class DMCancelJobVC: DMBaseVC {
     var placeHolderLabel: UILabel!
     weak var delegate: CancelledJobDelegate?
     var fromApplied = false
+    
+    weak var moduleOutput: DMCancelJobModuleOutput?
 
     // MARK: - View LifeCycle
 

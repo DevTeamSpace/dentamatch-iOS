@@ -4,8 +4,11 @@ import SwinjectStoryboard
 
 class DMForgotPasswordInitializer {
     
-    class func initialize() -> UIViewController {
-        return SwinjectStoryboard.create(name: Constants.StoryBoard.registrationStoryboard, bundle: nil, container: appContainer).instantiateViewController(withIdentifier: String(describing: DMForgotPasswordVC.self))
+    class func initialize(moduleOutput: DMForgotPasswordModuleOutput) -> UIViewController? {
+        
+        let vc = SwinjectStoryboard.create(name: Constants.StoryBoard.registrationStoryboard, bundle: nil, container: appContainer).instantiateViewController(withIdentifier: String(describing: DMForgotPasswordVC.self)) as? DMForgotPasswordVC
+        vc?.moduleOutput = moduleOutput
+        return vc
     }
     
     class func register(for container: Container) {

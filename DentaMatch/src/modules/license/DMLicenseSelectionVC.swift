@@ -115,10 +115,11 @@ class DMLicenseSelectionVC: DMBaseVC, UITextFieldDelegate {
     }
 
     func openExperienceFirstScreen() {
-        guard let vc = DMWorkExperienceStartInitializer.initialize() as? DMWorkExperienceStart else { return }
-        vc.selectedJobTitle = selectedJobTitle
-        vc.jobTitles = jobTitles
-        navigationController?.pushViewController(vc, animated: true)
+        assertionFailure("Implement")
+//        guard let vc = DMWorkExperienceStartInitializer.initialize() as? DMWorkExperienceStart else { return }
+//        vc.selectedJobTitle = selectedJobTitle
+//        vc.jobTitles = jobTitles
+//        navigationController?.pushViewController(vc, animated: true)
     }
 
     @objc func stateBoardButtonPressed(_: Any) {

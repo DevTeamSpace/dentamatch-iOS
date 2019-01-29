@@ -45,6 +45,8 @@ class DMRegisterMapsVC: DMBaseVC {
     var addressSelectedFromProfile = ""
     weak var delegate: LocationAddressDelegate?
     var location = Location()
+    
+    weak var moduleOutput: DMRegisterMapsModuleOutput?
 
     // MARK: - View LifeCycle
 

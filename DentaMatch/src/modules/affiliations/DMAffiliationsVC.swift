@@ -27,6 +27,8 @@ class DMAffiliationsVC: DMBaseVC {
     var affiliations = [Affiliation]()
     var isEditMode = false
     var activeView: UITextView?
+    
+    weak var moduleOutput: DMAffiliationsModuleOutput?
     // MARK: - View LifeCycle
 
     override func viewDidLoad() {
@@ -122,8 +124,9 @@ class DMAffiliationsVC: DMBaseVC {
     }
 
     func openCertificationScreen() {
-        guard let vc = DMCertificationsInitializer.initialize() as? DMCertificationsVC else { return }
-        navigationController?.pushViewController(vc, animated: true)
+        assertionFailure("Implement")
+//        guard let vc = DMCertificationsInitializer.initialize() as? DMCertificationsVC else { return }
+//        navigationController?.pushViewController(vc, animated: true)
     }
 
     @objc func toolBarButtonPressed() {

@@ -33,11 +33,7 @@ extension DMJobSearchResultVC: UITableViewDataSource, UITableViewDelegate, JobSe
     }
 
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let jobDetailVC = DMJobDetailInitializer.initialize() as? DMJobDetailVC else { return }
-        jobDetailVC.job = jobs[indexPath.row]
-        jobDetailVC.hidesBottomBarWhenPushed = true
-        jobDetailVC.delegate = self
-        navigationController?.pushViewController(jobDetailVC, animated: true)
+        moduleOutput?.showJobDetail(job: jobs[indexPath.row], delegate: self)
     }
 
     func tableView(_: UITableView, willDisplay _: UITableViewCell, forRowAt indexPath: IndexPath) {

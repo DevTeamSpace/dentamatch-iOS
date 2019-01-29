@@ -20,6 +20,8 @@ class DMSelectSkillsVC: UIViewController {
     var subSkillWithoutOther = [SubSkill]()
     var otherSkill: SubSkill?
     var otherText = ""
+    
+    weak var moduleOutput: DMSelectSkillsModuleOutput?
 
     // MARK: - View LifeCycle
 
