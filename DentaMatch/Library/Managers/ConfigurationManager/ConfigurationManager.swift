@@ -90,7 +90,7 @@ final class ConfigurationManager: NSObject {
         case .staging:
             return stagingConfiguration()
         case .production:
-            return productionConfiguration()
+            return stagingConfiguration()
         }
     }
 
