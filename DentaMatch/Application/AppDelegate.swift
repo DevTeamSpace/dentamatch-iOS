@@ -66,20 +66,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         configureNetworkReachability()
     }
-
-    func goToSearch() {
-        guard let jobSearchVc = DMJobSearchInitializer.initialize() as? DMJobSearchVC else { return }
-        let navController = UINavigationController(rootViewController: jobSearchVc)
-        
-        if let _ = UserDefaultsManager.sharedInstance.loadSearchParameter() {
-            jobSearchVc.firstTime = false
-        } else {
-            jobSearchVc.firstTime = true
-        }
-        
-        
-        makeRoot(viewController: navController)
-    }
     
     func makeRoot(viewController: UIViewController?) {
         guard let viewController = viewController else { return }

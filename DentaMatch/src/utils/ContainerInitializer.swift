@@ -35,6 +35,14 @@ func defaultContainer() -> Container {
         return CalendarFlowCoordinator(delegate: delegate)
     }
     
+    container.register(MessagesFlowCoordinatorProtocol.self) { r, delegate in
+        return MessagesFlowCoordinator(delegate: delegate)
+    }
+    
+    container.register(ProfileFlowCoordinatorProtocol.self) { r, delegate in
+        return ProfileFlowCoordinator(delegate: delegate)
+    }
+    
     RootScreenInitializer.register(for: container)
     DMRegistrationContainerInitializer.register(for: container)
     DMRegistrationInitializer.register(for: container)

@@ -24,6 +24,7 @@ class DMChatVC: DMBaseVC {
     @IBOutlet var textContainerViewHeight: NSLayoutConstraint!
 
     weak var delegate: ChatTapNotificationDelegate?
+    weak var moduleOutput: DMChatModuleOutput?
     var placeHolderLabelForView: UILabel!
     var placeHolderLabel: UILabel!
     var chatList: ChatList?

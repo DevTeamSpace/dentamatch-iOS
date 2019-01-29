@@ -33,7 +33,8 @@ class DMExecutiveSummaryVC: DMBaseVC {
     }
 
     func openDashboard() {
-        kAppDelegate?.goToSearch()
+        assertionFailure("Implement")
+        //kAppDelegate?.goToSearch()
 
     }
 

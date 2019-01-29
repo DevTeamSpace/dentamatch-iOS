@@ -248,11 +248,12 @@ class DMJobTitleSelectionVC: DMBaseVC, ToolBarButtonDelegate {
     }
 
     func openLicenseScreen() {
-        guard let vc = DMLicenseSelectionInitializer.initialize() as? DMLicenseSelectionVC else { return }
-        vc.jobTitles = jobTitles
-        vc.selectedJobTitle = selectedJobTitle
-        
-        navigationController?.pushViewController(vc, animated: true)
+        assertionFailure("Implement")
+//        guard let vc = DMLicenseSelectionInitializer.initialize() as? DMLicenseSelectionVC else { return }
+//        vc.jobTitles = jobTitles
+//        vc.selectedJobTitle = selectedJobTitle
+//
+//        navigationController?.pushViewController(vc, animated: true)
     }
 
     func openDashboard() {

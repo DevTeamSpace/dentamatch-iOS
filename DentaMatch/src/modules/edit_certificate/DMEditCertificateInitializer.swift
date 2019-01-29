@@ -4,8 +4,14 @@ import SwinjectStoryboard
 
 class DMEditCertificateInitializer {
     
-    class func initialize() -> UIViewController {
-        return SwinjectStoryboard.create(name: Constants.StoryBoard.dashboardStoryboard, bundle: nil, container: appContainer).instantiateViewController(withIdentifier: String(describing: DMEditCertificateVC.self))
+    class func initialize(certificate: Certification?, isEditMode: Bool, moduleOutput: DMEditCertificateModuleOutput) -> UIViewController? {
+        
+        let vc = SwinjectStoryboard.create(name: Constants.StoryBoard.dashboardStoryboard, bundle: nil, container: appContainer).instantiateViewController(withIdentifier: String(describing: DMEditCertificateVC.self)) as? DMEditCertificateVC
+        vc?.certificate = certificate
+        vc?.isEditMode = isEditMode
+        vc?.moduleOutput = moduleOutput
+        
+        return vc
     }
     
     class func register(for container: Container) {

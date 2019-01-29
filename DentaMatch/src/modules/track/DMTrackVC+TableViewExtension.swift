@@ -140,12 +140,7 @@ extension DMTrackVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func openCancelJob(job: Job, fromApplied: Bool) {
-        guard let cancelJobVC = DMCancelJobInitializer.initialize() as? DMCancelJobVC else { return }
-        cancelJobVC.job = job
-        cancelJobVC.fromApplied = fromApplied
-        cancelJobVC.hidesBottomBarWhenPushed = true
-        cancelJobVC.delegate = self
-        navigationController?.pushViewController(cancelJobVC, animated: true)
+        moduleOutput?.showCancelJob(job: job, fromApplied: fromApplied, delegate: self)
     }
 
     func populateJobCellData(cell: JobSearchResultCell, job: Job) {

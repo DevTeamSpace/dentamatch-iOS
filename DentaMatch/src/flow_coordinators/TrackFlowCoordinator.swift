@@ -30,5 +30,25 @@ class TrackFlowCoordinator: BaseFlowCoordinator, TrackFlowCoordinatorProtocol {
 
 extension TrackFlowCoordinator: DMTrackModuleOutput {
     
+    func showJobDetails(job: Job?, delegate: JobSavedStatusUpdateDelegate) {
+        guard let vc = DMJobDetailInitializer.initialize(job: job, fromTrack: true, delegate: delegate, moduleOutput: self) else { return }
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func showCancelJob(job: Job?, fromApplied: Bool, delegate: CancelledJobDelegate) {
+        guard let vc = DMCancelJobInitializer.initialize(job: job, fromApplied: fromApplied, delegate: delegate, moduleOutput: self) else { return }
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+extension TrackFlowCoordinator: DMJobDetailModuleOutput {
+    
+    
+}
+
+extension TrackFlowCoordinator: DMCancelJobModuleOutput {
+    
     
 }

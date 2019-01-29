@@ -22,8 +22,6 @@ class DMEditProfileVC: DMBaseVC {
 
     @IBOutlet var editProfileTableView: UITableView!
 
-    var dashBoardVC: TabBarVC?
-
     var isJobSeekerVerified = ""
     var isProfileCompleted = ""
     var license: License?
@@ -43,15 +41,12 @@ class DMEditProfileVC: DMBaseVC {
         .type(.down),
         .blackOverlayColor(UIColor(white: 0.0, alpha: 0.6)),
     ]
+    
+    weak var moduleOutput: DMEditProfileModuleOutput?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-
-        if let dashBoard = ((UIApplication.shared.delegate) as? AppDelegate)?.window?.rootViewController as? TabBarVC {
-            dashBoardVC = dashBoard
-        }
-
         // To remove the top white line which came in iOS 11
         if #available(iOS 11.0, *) {
             editProfileTableView.contentInsetAdjustmentBehavior = .never
@@ -148,91 +143,45 @@ class DMEditProfileVC: DMBaseVC {
     }
 
     @objc func psuhRediectNotificationForProfile(userInfo _: Notification) {
-        if let tabbar = ((UIApplication.shared.delegate) as? AppDelegate)?.window?.rootViewController as? TabBarVC {
-            _ = navigationController?.popToRootViewController(animated: false)
-            tabbar.selectedIndex = 4
-            userProfileAPI()
-        }
+        navigationController?.popToRootViewController(animated: false)
+        tabBarController?.selectedIndex = 4
+        userProfileAPI()
     }
 
     @objc func openEditLicenseScreen(editMode: Bool = false) {
-        guard let editLicenseVC = DMEditLicenseInitializer.initialize() as? DMEditLicenseVC else { return }
-        editLicenseVC.isEditMode = editMode
-        editLicenseVC.license = license
-        editLicenseVC.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(editLicenseVC, animated: true)
+        assertionFailure("Removed da84dbd")
     }
 
     @objc func openEditPublicProfileScreen() {
-        
-        guard let vc = DMPublicProfileInitializer.initialize() as? DMPublicProfileVC else { return }
-        vc.jobTitles = jobTitles
-        if let title = self.currentJobTitle {
-            vc.selectedJob = JobTitle(jobTitle: title)
-        } else {
-            vc.selectedJob = JobTitle()
-        }
-        vc.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(vc, animated: true)
+        moduleOutput?.showEditProfile(jobTitles: jobTitles, selectedJob: JobTitle(jobTitle: currentJobTitle))
     }
 
     @objc func openSettingScreen() {
-        let vc = DMSettingsInitializer.initialize()
-        vc.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(vc, animated: true)
+        moduleOutput?.showSettings()
     }
 
     @objc func openAffiliationsScreen() {
-        guard let affiliationVC = DMAffiliationsInitializer.initialize() as? DMAffiliationsVC else { return }
-        affiliationVC.isEditMode = true
-        affiliationVC.hidesBottomBarWhenPushed = true
-        affiliationVC.selectedAffiliationsFromProfile = affiliations
-        navigationController?.pushViewController(affiliationVC, animated: true)
+        moduleOutput?.showEditAffiliations(selectedAffiliations: affiliations, isEditMode: true)
     }
 
     @objc func openSchoolsScreen() {
-        guard let studyVC = DMEditStudyInitializer.initialize() as? DMEditStudyVC else { return }
-        studyVC.hidesBottomBarWhenPushed = true
-        studyVC.selectedSchoolCategories = schoolCategories
-        navigationController?.pushViewController(studyVC, animated: true)
+        moduleOutput?.showEditStudy(selectedSchoolCategories: schoolCategories)
     }
 
     @objc func openSkillsScreen() {
-        guard let skillsVC = DMEditSkillsInitializer.initialize() as? DMEditSkillsVC,
-            let selectSkillsVC = DMSelectSkillsInitializer.initialize() as? DMSelectSkillsVC else { return }
-        
-        skillsVC.selectedSkills = skills
-
-        let sideMenu = SSASideMenu(contentViewController: skillsVC, rightMenuViewController: selectSkillsVC)
-        sideMenu.panGestureEnabled = false
-        sideMenu.delegate = skillsVC
-        sideMenu.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(sideMenu, animated: true)
+        moduleOutput?.showEditSkills(skills: skills)
     }
 
     @objc func openDentalStateBoardScreen(isEditMode: Bool = true) {
-        guard let dentalStateboardVC = DMEditDentalStateInitializer.initialize() as? DMEditDentalStateBoardVC else { return }
-        dentalStateboardVC.dentalStateBoardImageURL = dentalStateBoardURL
-        dentalStateboardVC.hidesBottomBarWhenPushed = true
-        dentalStateboardVC.isEditMode = isEditMode
-        navigationController?.pushViewController(dentalStateboardVC, animated: true)
+        assertionFailure("Removed e38190f")
     }
 
     @objc func openWorkExperienceScreen() {
-        guard let workExpVC = DMWorkExperienceInitializer.initialize() as? DMWorkExperienceVC else { return }
-        workExpVC.hidesBottomBarWhenPushed = true
-        workExpVC.isEditMode = true
-        workExpVC.jobTitles = jobTitles
-//        workExpVC.exprienceArray = self.experiences
-        navigationController?.pushViewController(workExpVC, animated: true)
+        moduleOutput?.showEditWorkExperience(jobTitles: jobTitles, isEditMode: true)
     }
 
     @objc func openCertificateScreen(sender: UIButton) {
-        guard let editCertificateVC = DMEditCertificateInitializer.initialize() as? DMEditCertificateVC else  { return }
-        editCertificateVC.certificate = certifications[sender.tag]
-        editCertificateVC.hidesBottomBarWhenPushed = true
-        editCertificateVC.isEditMode = true
-        navigationController?.pushViewController(editCertificateVC, animated: true)
+        moduleOutput?.showEditCertificate(certificate: certifications[sender.tag], isEditMode: true)
     }
 
     @objc func updateProfileScreen(userInfo: Notification) {

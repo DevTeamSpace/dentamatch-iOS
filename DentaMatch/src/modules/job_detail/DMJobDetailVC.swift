@@ -35,6 +35,8 @@ class DMJobDetailVC: DMBaseVC {
         case jobDescAndOfficeDesc = 175.0
         case map = 199.0
     }
+    
+    weak var moduleOutput: DMJobDetailModuleOutput?
 
     override func viewDidLoad() {
         super.viewDidLoad()

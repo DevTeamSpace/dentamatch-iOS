@@ -147,7 +147,7 @@ class DMJobSearchResultVC: DMBaseVC {
                     //if self.notificationLabel != nil {
                     AppDelegate.delegate().setAppBadgeCount(count ?? 0)
                     //self.setNotificationLabelText(count: count!)
-                    if let tabbarCtlr =  self.tabBarController as? TabBarVC {
+                    if let tabbarCtlr = self.tabBarController as? TabBarVC {
                         tabbarCtlr.updateBadgeOnProfileTab(value: count)
                     }
                     NotificationCenter.default.post(name: .updateBadgeCount, object: nil, userInfo: nil)
@@ -192,30 +192,14 @@ class DMJobSearchResultVC: DMBaseVC {
     }
 
     @objc func pushRediectNotificationOtherAll(userInfo _: Notification) {
-        if let tabbar = ((UIApplication.shared.delegate) as? AppDelegate)?.window?.rootViewController as? TabBarVC {
-            _ = navigationController?.popToRootViewController(animated: false)
-            tabbar.selectedIndex = 0
-            guard let notification = DMNotificationInitializer.initialize() as? DMNotificationVC else { return }
-            notification.hidesBottomBarWhenPushed = true
-            navigationController?.pushViewController(notification, animated: true)
-        }
+        moduleOutput?.showNotifications()
     }
 
     @objc func pushRediectNotificationOtherAllBackGround(userInfo _: Notification) {
-        if let tabbar = ((UIApplication.shared.delegate) as? AppDelegate)?.window?.rootViewController as? TabBarVC {
-            _ = navigationController?.popToRootViewController(animated: false)
-            tabbar.selectedIndex = 0
-            guard let notification = DMNotificationInitializer.initialize() as? DMNotificationVC else { return }
-            notification.hidesBottomBarWhenPushed = true
-            navigationController?.pushViewController(notification, animated: true)
-        }
+        moduleOutput?.showNotifications()
     }
 
     @objc func pushRediectNotificationForJobDetailForground(userInfo: Notification) {
-        if let tabbar = ((UIApplication.shared.delegate) as? AppDelegate)?.window?.rootViewController as? TabBarVC {
-            _ = navigationController?.popToRootViewController(animated: false)
-            tabbar.selectedIndex = 0
-        }
         let dict = userInfo.userInfo
         if let notification = dict?["notificationData"], let notiObj = notification as? Job {
             goToJobDetail(jobObj: notiObj)
@@ -223,10 +207,6 @@ class DMJobSearchResultVC: DMBaseVC {
     }
 
     @objc func pushRediectNotificationForJobDetailBacground(userInfo: Notification) {
-        if let tabbar = ((UIApplication.shared.delegate) as? AppDelegate)?.window?.rootViewController as? TabBarVC {
-            tabbar.selectedIndex = 0
-        }
-
         let dict = userInfo.userInfo
         if let notification = dict?["notificationData"], let notiObj = notification as? Job  {
             goToJobDetail(jobObj: notiObj)
@@ -244,21 +224,13 @@ class DMJobSearchResultVC: DMBaseVC {
     }
 
     func goToJobDetail(jobObj: Job) {
-        guard let jobDetailVC = DMJobDetailInitializer.initialize() as? DMJobDetailVC else { return }
-        jobDetailVC.job = jobObj
-        jobDetailVC.hidesBottomBarWhenPushed = true
-        jobDetailVC.delegate = self
-        navigationController?.pushViewController(jobDetailVC, animated: true)
+        
+        moduleOutput?.showJobDetail(job: jobObj, delegate: self)
     }
-
     
 
     @objc override func actionRightNavigationItem() {
-        guard let jobSearchVC = DMJobSearchInitializer.initialize() as? DMJobSearchVC else { return }
-        jobSearchVC.fromJobSearchResults = true
-        jobSearchVC.delegate = self
-        jobSearchVC.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(jobSearchVC, animated: true)
+        moduleOutput?.showJobSearch(fromJobResult: true, delegate: self)
     }
 
     @objc func pullToRefreshForJobs() {

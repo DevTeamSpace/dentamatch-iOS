@@ -23,6 +23,8 @@ class DMEditSkillsVC: DMBaseVC {
     var skills = [Skill]()
     var otherSkill: Skill?
     var selectedSkills = [Skill]()
+    
+    weak var moduleOutput: DMEditSkillsModuleOutput?
 
     override func viewDidLoad() {
         super.viewDidLoad()

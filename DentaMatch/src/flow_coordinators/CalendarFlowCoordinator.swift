@@ -32,6 +32,19 @@ extension CalendarFlowCoordinator: DMCalendarModuleOutput {
     
     func showCalendar() {
         guard let vc = DMCalendarSetAvailabilityInitializer.initialize(moduleOutput: self) else { return }
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func showJobDetail(job: Job?) {
+        guard let vc = DMJobDetailInitializer.initialize(job: job, moduleOutput: self) else { return }
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func showCancelJob(job: Job?, fromApplied: Bool, delegate: CancelledJobDelegate) {
+        guard let vc = DMCancelJobInitializer.initialize(job: job, fromApplied: fromApplied, delegate: delegate, moduleOutput: self) else { return }
+        vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -41,4 +54,14 @@ extension CalendarFlowCoordinator: DMCalendarSetAvailabilityModuleOutput {
     func showTabBar() {
         
     }
+}
+
+extension CalendarFlowCoordinator: DMJobDetailModuleOutput {
+    
+    
+}
+
+extension CalendarFlowCoordinator: DMCancelJobModuleOutput {
+    
+    
 }

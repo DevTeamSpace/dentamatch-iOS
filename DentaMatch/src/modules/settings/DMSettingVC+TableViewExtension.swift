@@ -60,20 +60,13 @@ extension DMSettingVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            if let mapVC = DMRegisterMapsInitializer.initialize() as? DMRegisterMapsVC {
-                mapVC.fromSettings = true
-                mapVC.delegate = self
-                navigationController?.pushViewController(mapVC, animated: true)
-            }
+            moduleOutput?.showRegisterMaps(delegate: self)
         case 1:
-            let vc = DMChangePasswordInitializer.initialize()
-            navigationController?.pushViewController(vc, animated: true)
+            moduleOutput?.showResetPassword()
         case 2:
-            assertionFailure("Implement")
-            break
+            moduleOutput?.showTermsAndConditions(isPrivacyPolicy: false)
         case 3:
-            assertionFailure("Implement")
-            break
+            moduleOutput?.showTermsAndConditions(isPrivacyPolicy: true)
         case 4:
             // logout
             self.alertMessage(title: "Logout", message: "Are you sure you want to logout?", leftButtonText: "Yes", rightButtonText: "No", completionHandler: { [weak self](isLeft: Bool) in
@@ -88,28 +81,19 @@ extension DMSettingVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func openLogin() {
-        signOut { check, _ in
+        signOut { [weak self] check, _ in
 
-            assertionFailure("Implement")
-//            if check == true {
-//                AppDelegate.delegate().resetBadgeCount()
-//                MixpanelOperations.mixpanepanelLogout()
-//                self.deleteFetchController()
-//                SocketManager.sharedInstance.closeConnection()
-//                UserManager.shared().deleteActiveUser()
-//                UserDefaultsManager.sharedInstance.clearCache()
-//                
-//                let navController = UINavigationController(rootViewController: DMRegistrationContainerInitializer.initialize())
-//                navController.setNavigationBarHidden(true, animated: false)
-//                
-//                UserDefaultsManager.sharedInstance.isLoggedOut = true
-//                UIView.transition(with: self.view.window!, duration: 0.25, options: .transitionCrossDissolve, animations: {
-//                    kAppDelegate?.window?.rootViewController = navController
-//                }) { (_: Bool) in
-//                    // completion
-//                    DatabaseManager.clearDB()
-//                }
-//            }
+            if check == true {
+                AppDelegate.delegate().resetBadgeCount()
+                MixpanelOperations.mixpanepanelLogout()
+                self?.deleteFetchController()
+                SocketManager.sharedInstance.closeConnection()
+                UserManager.shared().deleteActiveUser()
+                UserDefaultsManager.sharedInstance.clearCache()
+                UserDefaultsManager.sharedInstance.isLoggedOut = true
+                
+                self?.moduleOutput?.showLoginScreen()
+            }
         }
     }
 

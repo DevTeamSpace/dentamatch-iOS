@@ -25,6 +25,8 @@ class DMEditCertificateVC: DMBaseVC, DatePickerViewDelegate {
         }
         return false
     }()
+    
+    weak var moduleOutput: DMEditCertificateModuleOutput?
 
     // MARK: - View LifeCycle
 

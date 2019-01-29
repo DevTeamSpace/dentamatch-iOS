@@ -30,6 +30,8 @@ class DMNotificationVC: DMBaseVC {
     var placeHolderEmptyJobsView: PlaceHolderJobsView?
 
     var notificationList = [UserNotification]()
+    
+    weak var moduleOutput: DMNotificationsModuleOutput?
 
     override func viewDidLoad() {
         super.viewDidLoad()

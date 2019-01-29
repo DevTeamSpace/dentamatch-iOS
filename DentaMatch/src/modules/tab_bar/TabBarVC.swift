@@ -71,9 +71,9 @@ class TabBarVC: UITabBarController, UITabBarControllerDelegate {
         case .calender : NotificationCenter.default.post(name: .tabChanged, object: nil, userInfo: nil)
         case .profile:
             if let navController = viewController as? UINavigationController, let profileVC = navController.viewControllers.first as? DMEditProfileVC  {
-                if profileVC.dashBoardVC != nil {
+                //if profileVC.dashBoardVC != nil {
                     //  profileVC.userProfileAPI()
-                }
+                //}
             }
             // print("profile \(profileVC)")
         }

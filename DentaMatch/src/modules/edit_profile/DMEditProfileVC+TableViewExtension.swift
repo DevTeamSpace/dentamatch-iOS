@@ -607,9 +607,8 @@ extension Double {
 
 extension DMEditProfileVC: EditProfileHeaderTableCellDelegate {
     func showNotificationList() {
-        guard let notification = DMNotificationInitializer.initialize() as? DMNotificationVC else { return }
-        notification.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(notification, animated: true)
+        
+        moduleOutput?.showNotifications()
     }
     
 }

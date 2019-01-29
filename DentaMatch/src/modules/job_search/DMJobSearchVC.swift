@@ -40,6 +40,8 @@ class DMJobSearchVC: DMBaseVC {
         case jobType = 189.0
         case jobTypePartTime = 76.0
     }
+    
+    weak var moduleOutput: DMJobSearchModuleOutput?
 
     override func viewDidLoad() {
         super.viewDidLoad()

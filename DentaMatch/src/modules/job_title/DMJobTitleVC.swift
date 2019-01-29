@@ -27,6 +27,8 @@ class DMJobTitleVC: DMBaseVC {
     var rightBarButtonWidth: CGFloat = 40.0
     var forPreferredLocations = false
     weak var delegate: DMJobTitleVCDelegate?
+    
+    weak var moduleOutput: DMJobTitleModuleOutput?
 
     override func viewDidLoad() {
         super.viewDidLoad()

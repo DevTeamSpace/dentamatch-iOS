@@ -21,6 +21,7 @@ class DMMessagesVC: DMBaseVC {
 
     let dateFormatter = DateFormatter()
  
+    weak var moduleOutput: DMMessagesModuleOutput?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -157,14 +158,10 @@ class DMMessagesVC: DMBaseVC {
     }
 
     func openChatPage(chatList: ChatList) {
-        guard let chatVC = DMChatInitializer.initialize() as? DMChatVC else { return }
-        chatVC.chatList = chatList
-        chatVC.hidesBottomBarWhenPushed = true
-        chatVC.delegate = self
-        if DatabaseManager.getCountForChats(recruiterId: chatList.recruiterId!) == 0 {
-            chatVC.shouldFetchFromBeginning = true
-        }
-        navigationController?.pushViewController(chatVC, animated: true)
+        
+        moduleOutput?.showChat(chatList: chatList,
+                               fetchFromBegin: DatabaseManager.getCountForChats(recruiterId: chatList.recruiterId!) == 0,
+                               delegate: self)
     }
 
     @objc func redirectToChat(notification: Notification) {

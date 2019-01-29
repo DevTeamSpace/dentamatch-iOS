@@ -4,8 +4,13 @@ import SwinjectStoryboard
 
 class DMEditSkillsInitializer {
     
-    class func initialize() -> UIViewController {
-        return SwinjectStoryboard.create(name: Constants.StoryBoard.dashboardStoryboard, bundle: nil, container: appContainer).instantiateViewController(withIdentifier: String(describing: DMEditSkillsVC.self))
+    class func initialize(skills: [Skill]?, moduleOutput: DMEditSkillsModuleOutput) -> UIViewController? {
+        
+        let vc = SwinjectStoryboard.create(name: Constants.StoryBoard.dashboardStoryboard, bundle: nil, container: appContainer).instantiateViewController(withIdentifier: String(describing: DMEditSkillsVC.self)) as? DMEditSkillsVC
+        vc?.selectedSkills = skills ?? []
+        vc?.moduleOutput = moduleOutput
+        
+        return vc
     }
     
     class func register(for container: Container) {

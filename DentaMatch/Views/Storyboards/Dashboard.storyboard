@@ -61,7 +61,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MYo-T3-88e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2375.1999999999998" y="2414.8425787106448"/>
+            <point key="canvasLocation" x="-2375" y="2366"/>
         </scene>
         <!--Edit LicenseVC-->
         <scene sceneID="2Sr-G7-Eyb">
@@ -247,7 +247,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1cw-Ga-fpJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3306" y="994"/>
+            <point key="canvasLocation" x="-2375" y="1672"/>
         </scene>
         <!--SettingVC-->
         <scene sceneID="Nqh-uf-kIY">
@@ -814,36 +814,5 @@
             </objects>
             <point key="canvasLocation" x="-449" y="3462"/>
         </scene>
-        <!--Profile-->
-        <scene sceneID="P7V-iT-9Fe">
-            <objects>
-                <navigationController storyboardIdentifier="EditProfileNAV" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="8Ar-Ah-Bfh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="5" title="Profile" image="profile" id="frf-SB-pmR"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="lT7-8Y-N7V">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="S5D-7C-7Nn" kind="relationship" relationship="rootViewController" id="r9x-1I-F3v"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EFz-uM-9Oe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3306" y="2415"/>
-        </scene>
-        <!--MessageNav-->
-        <scene sceneID="Lq4-hC-iAf">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Messages" referencedIdentifier="MessageNav" id="bkx-9j-cxJ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="cyh-dz-PgH"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cke-Yb-58K" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2645" y="1073"/>
-        </scene>
     </scenes>
-    <resources>
-        <image name="profile" width="16" height="23"/>
-    </resources>
 </document>

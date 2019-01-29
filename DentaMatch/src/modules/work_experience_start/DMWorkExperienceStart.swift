@@ -103,16 +103,17 @@ class DMWorkExperienceStart: DMBaseVC, ExperiencePickerViewDelegate {
             }
         }
 
-        guard let vc = DMWorkExperienceInitializer.initialize() as? DMWorkExperienceVC else { return }
-        
-        vc.currentExperience?.jobTitleID = selectedJobTitle.jobId
-        vc.currentExperience?.jobTitle = experienceArray[0] as? String
-        vc.currentExperience?.yearOfExperience = experienceArray[1] as? String
-        vc.jobTitles = jobTitles
-        vc.currentExperience?.experienceInMonth = totalExperience
-        vc.currentExperience?.officeName = experienceArray[2] as? String
-        
-        navigationController?.pushViewController(vc, animated: true)
+        assertionFailure("Implement")
+//        guard let vc = DMWorkExperienceInitializer.initialize() as? DMWorkExperienceVC else { return }
+//
+//        vc.currentExperience?.jobTitleID = selectedJobTitle.jobId
+//        vc.currentExperience?.jobTitle = experienceArray[0] as? String
+//        vc.currentExperience?.yearOfExperience = experienceArray[1] as? String
+//        vc.jobTitles = jobTitles
+//        vc.currentExperience?.experienceInMonth = totalExperience
+//        vc.currentExperience?.officeName = experienceArray[2] as? String
+//
+//        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

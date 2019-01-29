@@ -3,6 +3,8 @@ import UIKit
 import Swinject
 
 protocol RootFlowCoordinatorProtocol: BaseFlowProtocol {
+    
+    func logout()
 }
 
 class RootFlowCoordinator: BaseFlowCoordinator, RootFlowCoordinatorProtocol {
@@ -77,7 +79,11 @@ extension RootFlowCoordinator: RegistrationFlowCoordinatorDelegate {
 
 extension RootFlowCoordinator: TabBarFlowCoordinatorDelegate {
     
-    
+    func logout() {
+        viewController?.dismiss(animated: true, completion: {
+            DatabaseManager.clearDB()
+        })
+    }
 }
 
 extension RootFlowCoordinator: DMOnboardingModuleOutput {

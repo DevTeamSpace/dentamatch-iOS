@@ -218,11 +218,7 @@ extension DMNotificationVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func goToJobDetail(jobObj: Job) {
-        guard let jobDetailVC = DMJobDetailInitializer.initialize() as? DMJobDetailVC else { return }
-        jobDetailVC.fromNotificationVC = false
-        jobDetailVC.job = jobObj
-        jobDetailVC.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(jobDetailVC, animated: true)
+        moduleOutput?.showJobDetails(job: jobObj)
     }
 
     func setupLoadingMoreOnTable(tableView: UITableView) {

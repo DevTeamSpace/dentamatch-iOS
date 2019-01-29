@@ -73,15 +73,10 @@ extension DMMessagesVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let chatList = fetchedResultsController.object(at: indexPath) as? ChatList,
-            let chatVC = DMChatInitializer.initialize() as? DMChatVC else { return }
+        guard let chatList = fetchedResultsController.object(at: indexPath) as? ChatList  else { return }
         
-        chatVC.chatList = chatList
-        chatVC.hidesBottomBarWhenPushed = true
-        chatVC.delegate = self
-        if DatabaseManager.getCountForChats(recruiterId: chatList.recruiterId!) == 0 {
-            chatVC.shouldFetchFromBeginning = true
-        }
-        navigationController?.pushViewController(chatVC, animated: true)
+        moduleOutput?.showChat(chatList: chatList,
+                               fetchFromBegin: DatabaseManager.getCountForChats(recruiterId: chatList.recruiterId!) == 0,
+                               delegate: self)
     }
 }

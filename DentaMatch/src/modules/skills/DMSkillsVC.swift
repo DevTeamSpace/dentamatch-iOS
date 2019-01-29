@@ -77,8 +77,9 @@ class DMSkillsVC: DMBaseVC {
     }
 
     func openAffiliationScreen() {
-        guard let vc = DMAffiliationsInitializer.initialize() as? DMAffiliationsVC else { return }
-        navigationController?.pushViewController(vc, animated: true)
+        assertionFailure("Implement")
+//        guard let vc = DMAffiliationsInitializer.initialize() as? DMAffiliationsVC else { return }
+//        navigationController?.pushViewController(vc, animated: true)
     }
 
     @IBAction func backButtonPressed(_: Any) {

@@ -128,9 +128,7 @@ extension DMJobSearchVC: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            guard let jobTitleVC = DMJobTitleInitializer.initialize(delegate: self) as? DMJobTitleVC else { return }
-            jobTitleVC.selectedJobs = jobTitles
-            navigationController?.pushViewController(jobTitleVC, animated: true)
+            moduleOutput?.showJobTitle(selectedTitles: jobTitles, isLocation: false, locations: nil, delegate: self)
         } else if indexPath.section == 1 {
             if indexPath.row == 0 {
                 // will implement
@@ -138,16 +136,7 @@ extension DMJobSearchVC: UITableViewDataSource, UITableViewDelegate {
                 // will implement
             }
         } else if indexPath.section == 2 {
-            guard let jobTitleVC = DMJobTitleInitializer.initialize(delegate: self) as? DMJobTitleVC else { return }
-            jobTitleVC.delegate = self
-            jobTitleVC.forPreferredLocations = true
-            jobTitleVC.selectedPreferredLocations = preferredLocations
-            navigationController?.pushViewController(jobTitleVC, animated: true)
-
-//                let registerMapsVC = UIStoryboard.registrationStoryBoard().instantiateViewController(type: DMRegisterMapsVC.self)!
-//                registerMapsVC.delegate = self
-//                registerMapsVC.fromJobSearch = true
-//                self.navigationController?.pushViewController(registerMapsVC, animated: true)
+            moduleOutput?.showJobTitle(selectedTitles: nil, isLocation: true, locations: preferredLocations, delegate: self)
         }
     }
 }

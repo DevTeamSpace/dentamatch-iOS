@@ -4,8 +4,12 @@ import SwinjectStoryboard
 
 class DMMessagesInitializer {
     
-    class func initialize() -> UIViewController {
-        return SwinjectStoryboard.create(name: Constants.StoryBoard.messagesStoryboard, bundle: nil, container: appContainer).instantiateViewController(withIdentifier: String(describing: DMMessagesVC.self))
+    class func initialize(moduleOutput: DMMessagesModuleOutput) -> UIViewController? {
+        
+        let vc = SwinjectStoryboard.create(name: Constants.StoryBoard.messagesStoryboard, bundle: nil, container: appContainer).instantiateViewController(withIdentifier: String(describing: DMMessagesVC.self)) as? DMMessagesVC
+        vc?.moduleOutput = moduleOutput
+        
+        return vc
     }
     
     class func register(for container: Container) {

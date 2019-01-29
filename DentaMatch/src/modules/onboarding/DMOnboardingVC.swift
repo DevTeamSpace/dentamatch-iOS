@@ -59,15 +59,6 @@ class DMOnboardingVC: DMBaseVC {
 
     // MARK: - IBActions
     @IBAction func skipButtonPressed(_: AnyObject) {
-        
-//        let navController = UINavigationController(rootViewController: DMRegistrationContainerInitializer.initialize())
-//        navController.setNavigationBarHidden(true, animated: false)
-//
-//        UIView.transition(with: view.window!, duration: 0.25, options: .transitionCrossDissolve, animations: {
-//            kAppDelegate?.window?.rootViewController = navController
-//        }) { (_: Bool) in
-//            // completion
-//        }
         UserDefaultsManager.sharedInstance.isOnBoardingDone = true
         dismiss(animated: true)
     }

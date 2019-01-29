@@ -106,6 +106,26 @@
 		5AD246971E27799F009350BF /* PickerAnimatedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD246961E27799F009350BF /* PickerAnimatedTextField.swift */; };
 		5AE5F50A1E16563D006C328A /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AE5F5091E16563D006C328A /* Profile.storyboard */; };
 		63D32752915A935906D26086 /* RootScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DF4A230301EEEA4DAA70 /* RootScreen.swift */; };
+		6E35FBE22200273700AB84A3 /* DMMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35FBE12200273700AB84A3 /* DMMessages.swift */; };
+		6E35FBE42200279800AB84A3 /* MessagesFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35FBE32200279800AB84A3 /* MessagesFlowCoordinator.swift */; };
+		6E35FBE62200292200AB84A3 /* DMEditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35FBE52200292200AB84A3 /* DMEditProfile.swift */; };
+		6E35FBE82200297E00AB84A3 /* ProfileFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35FBE72200297E00AB84A3 /* ProfileFlowCoordinator.swift */; };
+		6E35FBEA22002BBE00AB84A3 /* DMSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35FBE922002BBE00AB84A3 /* DMSettings.swift */; };
+		6E35FBEC2200310200AB84A3 /* DMChangePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35FBEB2200310200AB84A3 /* DMChangePassword.swift */; };
+		6E35FBEE2200346F00AB84A3 /* DMNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35FBED2200346F00AB84A3 /* DMNotifications.swift */; };
+		6E35FBF02200366500AB84A3 /* DMPublicProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35FBEF2200366500AB84A3 /* DMPublicProfile.swift */; };
+		6E35FBF222003C1200AB84A3 /* DMWorkExperience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35FBF122003C1200AB84A3 /* DMWorkExperience.swift */; };
+		6E35FBF422003E9700AB84A3 /* DMEditStudy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35FBF322003E9700AB84A3 /* DMEditStudy.swift */; };
+		6E35FBF622005C3D00AB84A3 /* DMEditSkills.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35FBF522005C3D00AB84A3 /* DMEditSkills.swift */; };
+		6E35FBF822005CD500AB84A3 /* DMSelectSkills.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35FBF722005CD500AB84A3 /* DMSelectSkills.swift */; };
+		6E35FBFA22005F4800AB84A3 /* DMAffiliations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35FBF922005F4800AB84A3 /* DMAffiliations.swift */; };
+		6E35FBFC220064AA00AB84A3 /* DMEditCertificate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35FBFB220064AA00AB84A3 /* DMEditCertificate.swift */; };
+		6E35FBFE22006CE700AB84A3 /* DMJobDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35FBFD22006CE700AB84A3 /* DMJobDetail.swift */; };
+		6E35FC002200792100AB84A3 /* DMChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35FBFF2200792100AB84A3 /* DMChat.swift */; };
+		6E35FC0222007C6700AB84A3 /* DMCancelJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35FC0122007C6700AB84A3 /* DMCancelJob.swift */; };
+		6E35FC0422007FBC00AB84A3 /* DMJobSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35FC0322007FBC00AB84A3 /* DMJobSearch.swift */; };
+		6E35FC06220083AC00AB84A3 /* DMJobTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35FC05220083AC00AB84A3 /* DMJobTitle.swift */; };
+		6E35FC08220091D300AB84A3 /* DMRegisterMaps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35FC07220091D300AB84A3 /* DMRegisterMaps.swift */; };
 		6E4D593021FEC0F00008EDBA /* BaseFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4D592F21FEC0F00008EDBA /* BaseFlowCoordinator.swift */; };
 		6E4D593221FEC10F0008EDBA /* BaseFlowProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4D593121FEC10E0008EDBA /* BaseFlowProtocol.swift */; };
 		6E4D593421FEC1B30008EDBA /* RootFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4D593321FEC1B30008EDBA /* RootFlowCoordinator.swift */; };
@@ -609,6 +629,26 @@
 		5AD246961E27799F009350BF /* PickerAnimatedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerAnimatedTextField.swift; sourceTree = "<group>"; };
 		5AD8AC4AE71CBA67916D21CE /* Pods-DentaMatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DentaMatch.release.xcconfig"; path = "Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch.release.xcconfig"; sourceTree = "<group>"; };
 		5AE5F5091E16563D006C328A /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		6E35FBE12200273700AB84A3 /* DMMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMMessages.swift; sourceTree = "<group>"; };
+		6E35FBE32200279800AB84A3 /* MessagesFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesFlowCoordinator.swift; sourceTree = "<group>"; };
+		6E35FBE52200292200AB84A3 /* DMEditProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMEditProfile.swift; sourceTree = "<group>"; };
+		6E35FBE72200297E00AB84A3 /* ProfileFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFlowCoordinator.swift; sourceTree = "<group>"; };
+		6E35FBE922002BBE00AB84A3 /* DMSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMSettings.swift; sourceTree = "<group>"; };
+		6E35FBEB2200310200AB84A3 /* DMChangePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMChangePassword.swift; sourceTree = "<group>"; };
+		6E35FBED2200346F00AB84A3 /* DMNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMNotifications.swift; sourceTree = "<group>"; };
+		6E35FBEF2200366500AB84A3 /* DMPublicProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMPublicProfile.swift; sourceTree = "<group>"; };
+		6E35FBF122003C1200AB84A3 /* DMWorkExperience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMWorkExperience.swift; sourceTree = "<group>"; };
+		6E35FBF322003E9700AB84A3 /* DMEditStudy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMEditStudy.swift; sourceTree = "<group>"; };
+		6E35FBF522005C3D00AB84A3 /* DMEditSkills.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMEditSkills.swift; sourceTree = "<group>"; };
+		6E35FBF722005CD500AB84A3 /* DMSelectSkills.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMSelectSkills.swift; sourceTree = "<group>"; };
+		6E35FBF922005F4800AB84A3 /* DMAffiliations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMAffiliations.swift; sourceTree = "<group>"; };
+		6E35FBFB220064AA00AB84A3 /* DMEditCertificate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMEditCertificate.swift; sourceTree = "<group>"; };
+		6E35FBFD22006CE700AB84A3 /* DMJobDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMJobDetail.swift; sourceTree = "<group>"; };
+		6E35FBFF2200792100AB84A3 /* DMChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMChat.swift; sourceTree = "<group>"; };
+		6E35FC0122007C6700AB84A3 /* DMCancelJob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMCancelJob.swift; sourceTree = "<group>"; };
+		6E35FC0322007FBC00AB84A3 /* DMJobSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMJobSearch.swift; sourceTree = "<group>"; };
+		6E35FC05220083AC00AB84A3 /* DMJobTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMJobTitle.swift; sourceTree = "<group>"; };
+		6E35FC07220091D300AB84A3 /* DMRegisterMaps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMRegisterMaps.swift; sourceTree = "<group>"; };
 		6E4D592F21FEC0F00008EDBA /* BaseFlowCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseFlowCoordinator.swift; sourceTree = "<group>"; };
 		6E4D593121FEC10E0008EDBA /* BaseFlowProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseFlowProtocol.swift; sourceTree = "<group>"; };
 		6E4D593321FEC1B30008EDBA /* RootFlowCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootFlowCoordinator.swift; sourceTree = "<group>"; };
@@ -1312,6 +1352,8 @@
 				6E99691521FF3F940007CF40 /* JobsFlowCoordinator.swift */,
 				6E99691921FF42390007CF40 /* TrackFlowCoordinator.swift */,
 				6E99691D21FF48E50007CF40 /* CalendarFlowCoordinator.swift */,
+				6E35FBE32200279800AB84A3 /* MessagesFlowCoordinator.swift */,
+				6E35FBE72200297E00AB84A3 /* ProfileFlowCoordinator.swift */,
 			);
 			path = flow_coordinators;
 			sourceTree = "<group>";
@@ -1343,11 +1385,12 @@
 		6E85B82B21FADBF800DB137F /* messages */ = {
 			isa = PBXGroup;
 			children = (
+				6E35FBE12200273700AB84A3 /* DMMessages.swift */,
+				6E85B82C21FADC2100DB137F /* DMMessagesInitializer.swift */,
 				E5BED54F1E49AB85003EC833 /* DMMessagesVC.swift */,
 				E5BED54D1E49AB85003EC833 /* DMMessages+Services.swift */,
 				E5BED54E1E49AB85003EC833 /* DMMessagesVC+TableViewExtension.swift */,
 				E5BED5651E49BA0B003EC833 /* DMMessagesVC+DBHandling.swift */,
-				6E85B82C21FADC2100DB137F /* DMMessagesInitializer.swift */,
 			);
 			path = messages;
 			sourceTree = "<group>";
@@ -1355,11 +1398,12 @@
 		6E85B82E21FADCF800DB137F /* chat */ = {
 			isa = PBXGroup;
 			children = (
+				6E35FBFF2200792100AB84A3 /* DMChat.swift */,
+				6E85B82F21FADD0F00DB137F /* DMChatInitializer.swift */,
 				E5BED54B1E49AB85003EC833 /* DMChatVC.swift */,
 				E5BED54A1E49AB85003EC833 /* DMChatVC+TableViewExtensions.swift */,
 				E5310E0C1E4B2B3F004403A0 /* DMChatVC+Services.swift */,
 				E5310E0E1E4EDE71004403A0 /* DMChatVC+DBHandling.swift */,
-				6E85B82F21FADD0F00DB137F /* DMChatInitializer.swift */,
 			);
 			path = chat;
 			sourceTree = "<group>";
@@ -1367,10 +1411,11 @@
 		6E85B83121FADF1A00DB137F /* notification */ = {
 			isa = PBXGroup;
 			children = (
+				6E35FBED2200346F00AB84A3 /* DMNotifications.swift */,
+				6E85B83221FADF3C00DB137F /* DMNotificationInitializer.swift */,
 				5A988BC31E4AE99800DECB49 /* DMNotificationVC.swift */,
 				5A988BC51E4AE9D200DECB49 /* DMNotificationVC+TableViewExtension.swift */,
 				5A988BC71E4AEA0E00DECB49 /* DMNotificationVC+Services.swift */,
-				6E85B83221FADF3C00DB137F /* DMNotificationInitializer.swift */,
 			);
 			path = notification;
 			sourceTree = "<group>";
@@ -1378,10 +1423,11 @@
 		6E85B83421FAE4F300DB137F /* settings */ = {
 			isa = PBXGroup;
 			children = (
+				6E35FBE922002BBE00AB84A3 /* DMSettings.swift */,
+				6E85B83521FAE54B00DB137F /* DMSettingsInitializer.swift */,
 				5A3B06CA1E3387DA00EFCA6E /* DMSettingVC.swift */,
 				5A3B06CC1E3387FF00EFCA6E /* DMSettingVC+TableViewExtension.swift */,
 				5AC714571E34F76900E433C1 /* DMSettingVC+Services.swift */,
-				6E85B83521FAE54B00DB137F /* DMSettingsInitializer.swift */,
 			);
 			path = settings;
 			sourceTree = "<group>";
@@ -1389,10 +1435,11 @@
 		6E85B83721FAE83400DB137F /* change_password */ = {
 			isa = PBXGroup;
 			children = (
+				6E35FBEB2200310200AB84A3 /* DMChangePassword.swift */,
+				6E85B83821FAE85700DB137F /* DMChangePasswordInitializer.swift */,
 				5A3B06CE1E33881D00EFCA6E /* DMChangePasswordVC.swift */,
 				5A3B06D01E33883C00EFCA6E /* DMChangePasswordVC+TableViewExtension.swift */,
 				5A3B06D21E33885A00EFCA6E /* DMChangePasswordVC+Services.swift */,
-				6E85B83821FAE85700DB137F /* DMChangePasswordInitializer.swift */,
 			);
 			path = change_password;
 			sourceTree = "<group>";
@@ -1419,10 +1466,11 @@
 		6E85B84021FAF0B900DB137F /* edit_study */ = {
 			isa = PBXGroup;
 			children = (
+				6E35FBF322003E9700AB84A3 /* DMEditStudy.swift */,
+				6E85B84121FAF12900DB137F /* DMEditStudyInitializer.swift */,
 				E51D4EF21E3AFCA700ACC631 /* DMEditStudyVC.swift */,
 				E51D4EF41E3AFEA600ACC631 /* DMEditStudyVC+Services.swift */,
 				E51D4EF61E3B029D00ACC631 /* DMEditStudyVC+TableViewExtension.swift */,
-				6E85B84121FAF12900DB137F /* DMEditStudyInitializer.swift */,
 			);
 			path = edit_study;
 			sourceTree = "<group>";
@@ -1430,10 +1478,11 @@
 		6E85B84321FAF1ED00DB137F /* edit_skills */ = {
 			isa = PBXGroup;
 			children = (
+				6E35FBF522005C3D00AB84A3 /* DMEditSkills.swift */,
+				6E85B84421FAF24D00DB137F /* DMEditSkillsInitializer.swift */,
 				E57681981E3A234700D912EA /* DMEditSkillsVC.swift */,
 				E576819A1E3A25F100D912EA /* DMEditSkillsVC+Services.swift */,
 				E576819C1E3A289D00D912EA /* DMEditSkillsVC+TableViewExtension.swift */,
-				6E85B84421FAF24D00DB137F /* DMEditSkillsInitializer.swift */,
 			);
 			path = edit_skills;
 			sourceTree = "<group>";
@@ -1451,9 +1500,10 @@
 		6E85B84921FAF61900DB137F /* edit_certificate */ = {
 			isa = PBXGroup;
 			children = (
+				6E35FBFB220064AA00AB84A3 /* DMEditCertificate.swift */,
+				6E85B84A21FAF64D00DB137F /* DMEditCertificateInitializer.swift */,
 				E54B9A831E32870B00805D9C /* DMEditCertificateVC.swift */,
 				E57F29DB1E368D070025B9DE /* DMEditCertificateVC+Services.swift */,
-				6E85B84A21FAF64D00DB137F /* DMEditCertificateInitializer.swift */,
 			);
 			path = edit_certificate;
 			sourceTree = "<group>";
@@ -1461,10 +1511,11 @@
 		6E85B84C21FAF73A00DB137F /* edit_public_profile */ = {
 			isa = PBXGroup;
 			children = (
+				6E35FBEF2200366500AB84A3 /* DMPublicProfile.swift */,
+				6E85B84D21FAF75200DB137F /* DMPublicProfileInitializer.swift */,
 				E5E7CBAB1E3099DF00D4FB59 /* DMPublicProfileVC.swift */,
 				E50FA8121E30A1DA00C20C93 /* DMPublicProfileVC+TableViewExtension.swift */,
 				E57681951E38A1DA00D912EA /* DMPublicProfileVC+Services.swift */,
-				6E85B84D21FAF75200DB137F /* DMPublicProfileInitializer.swift */,
 			);
 			path = edit_public_profile;
 			sourceTree = "<group>";
@@ -1482,10 +1533,11 @@
 		6E85B85221FAFAC600DB137F /* edit_profile */ = {
 			isa = PBXGroup;
 			children = (
+				6E35FBE52200292200AB84A3 /* DMEditProfile.swift */,
+				6E85B85321FAFAE400DB137F /* DMEditProfileInitializer.swift */,
 				E558D9071E2E6FE700A6DF95 /* DMEditProfileVC.swift */,
 				E558D9091E2E7A3200A6DF95 /* DMEditProfileVC+TableViewExtension.swift */,
 				E5E7CB421E2F39D500D4FB59 /* DMEditProfileVC+Services.swift */,
-				6E85B85321FAFAE400DB137F /* DMEditProfileInitializer.swift */,
 			);
 			path = edit_profile;
 			sourceTree = "<group>";
@@ -1504,10 +1556,11 @@
 		6E85B85921FAFF0400DB137F /* affiliations */ = {
 			isa = PBXGroup;
 			children = (
+				6E35FBF922005F4800AB84A3 /* DMAffiliations.swift */,
+				6E85B85A21FAFF3D00DB137F /* DMAffiliationsInitializer.swift */,
 				E587D2F31E24C095006B7F06 /* DMAffiliationsVC.swift */,
 				E587D3071E253719006B7F06 /* DMAffiliationsVC+TableViewExtension.swift */,
 				E57EE6C91E28EB440090434F /* DMAffiliationsVC+Services.swift */,
-				6E85B85A21FAFF3D00DB137F /* DMAffiliationsInitializer.swift */,
 			);
 			path = affiliations;
 			sourceTree = "<group>";
@@ -1548,8 +1601,9 @@
 		6E85B86521FB166E00DB137F /* select_skills */ = {
 			isa = PBXGroup;
 			children = (
-				E587D2F71E24C0C0006B7F06 /* DMSelectSkillsVC.swift */,
+				6E35FBF722005CD500AB84A3 /* DMSelectSkills.swift */,
 				6E85B86621FB16A100DB137F /* DMSelectSkillsInitializer.swift */,
+				E587D2F71E24C0C0006B7F06 /* DMSelectSkillsVC.swift */,
 			);
 			path = select_skills;
 			sourceTree = "<group>";
@@ -1557,10 +1611,10 @@
 		6E85B86821FB177F00DB137F /* study */ = {
 			isa = PBXGroup;
 			children = (
+				6E85B86B21FB17B900DB137F /* DMStudyInitializer.swift */,
 				E587D2F91E24C102006B7F06 /* DMStudyVC.swift */,
 				E587D3011E24E97B006B7F06 /* DMStudy+TableViewExtension.swift */,
 				E5A0EB011E2A9C760092E21A /* DMStudy+Services.swift */,
-				6E85B86B21FB17B900DB137F /* DMStudyInitializer.swift */,
 			);
 			path = study;
 			sourceTree = "<group>";
@@ -1589,10 +1643,11 @@
 		6E85B87221FB19F100DB137F /* work_experience */ = {
 			isa = PBXGroup;
 			children = (
+				6E35FBF122003C1200AB84A3 /* DMWorkExperience.swift */,
+				6E85B87321FB1A0F00DB137F /* DMWorkExperienceInitializer.swift */,
 				E587D2E91E24C021006B7F06 /* DMWorkExperienceVC.swift */,
 				E587D2E81E24C021006B7F06 /* DMWorkExperienceVC+TableViewExtension.swift */,
 				5AD246901E272E92009350BF /* DMWorkExperienceVC+Services.swift */,
-				6E85B87321FB1A0F00DB137F /* DMWorkExperienceInitializer.swift */,
 			);
 			path = work_experience;
 			sourceTree = "<group>";
@@ -1764,11 +1819,12 @@
 		6EF2F1F921F9EA2200F6F38D /* maps_registration */ = {
 			isa = PBXGroup;
 			children = (
+				6E35FC07220091D300AB84A3 /* DMRegisterMaps.swift */,
+				6EF2F1FA21F9EA4000F6F38D /* DMRegisterMapsInitializer.swift */,
 				E5C5F3141DC0AACA001A5A3F /* DMRegisterMapsVC.swift */,
 				E587D2D61E236B84006B7F06 /* DMRegisterMapsVC+GoogleMapsExtension.swift */,
 				E587D2D81E236EAE006B7F06 /* DMRegisterMapsVC+TableViewExtension.swift */,
 				E51D4F141E41070700ACC631 /* DMRegisterMapsVC+Services.swift */,
-				6EF2F1FA21F9EA4000F6F38D /* DMRegisterMapsInitializer.swift */,
 			);
 			path = maps_registration;
 			sourceTree = "<group>";
@@ -1809,11 +1865,12 @@
 		6EF2F20521FA0D6D00F6F38D /* job_search */ = {
 			isa = PBXGroup;
 			children = (
+				6E35FC0322007FBC00AB84A3 /* DMJobSearch.swift */,
+				6EF2F20621FA0E3B00F6F38D /* DMJobSearchInitializer.swift */,
 				F2D03BA71E1F67BA0005D3A4 /* DMJobSearchVC.swift */,
 				F22359181E3F3F2100E984FC /* DMJobSearchVC+TableViewCellDelegateExtension.swift */,
 				F22359161E3F3E3300E984FC /* DMJobSearchVC+TableViewExtension.swift */,
 				F2F5E0E51E35DE390082187C /* DMJobSearchVC+Services.swift */,
-				6EF2F20621FA0E3B00F6F38D /* DMJobSearchInitializer.swift */,
 			);
 			path = job_search;
 			sourceTree = "<group>";
@@ -1821,9 +1878,10 @@
 		6EF2F20821FA100C00F6F38D /* job_title */ = {
 			isa = PBXGroup;
 			children = (
+				6E35FC05220083AC00AB84A3 /* DMJobTitle.swift */,
+				6EF2F20921FA103C00F6F38D /* DMJobTitleInitializer.swift */,
 				F2540F581E263613004B0538 /* DMJobTitleVC.swift */,
 				E5D2D8A71FE10B6E001EFA68 /* DMJobTitleVC+Services.swift */,
-				6EF2F20921FA103C00F6F38D /* DMJobTitleInitializer.swift */,
 			);
 			path = job_title;
 			sourceTree = "<group>";
@@ -1831,10 +1889,11 @@
 		6EF2F20B21FA14BA00F6F38D /* job_detail */ = {
 			isa = PBXGroup;
 			children = (
+				6E35FBFD22006CE700AB84A3 /* DMJobDetail.swift */,
+				6EF2F20C21FA15A100F6F38D /* DMJobDetailInitializer.swift */,
 				F2F5E0DD1E31CE2A0082187C /* DMJobDetailVC.swift */,
 				F223591E1E3F608900E984FC /* DMJobDetaiVC+TableViewExtension.swift */,
 				F2CBC1091E41E9BE00345B9F /* DMJobDetailVC+Services.swift */,
-				6EF2F20C21FA15A100F6F38D /* DMJobDetailInitializer.swift */,
 			);
 			path = job_detail;
 			sourceTree = "<group>";
@@ -1854,9 +1913,10 @@
 		6EF2F21121FA1DB700F6F38D /* cancel_job */ = {
 			isa = PBXGroup;
 			children = (
+				6E35FC0122007C6700AB84A3 /* DMCancelJob.swift */,
+				6EF2F21321FA1E7900F6F38D /* DMCancelJobInitializer.swift */,
 				E51D4F101E40745A00ACC631 /* DMCancelJobVC.swift */,
 				E51D4F121E4086BD00ACC631 /* DMCancelJobVC+Services.swift */,
-				6EF2F21321FA1E7900F6F38D /* DMCancelJobInitializer.swift */,
 			);
 			path = cancel_job;
 			sourceTree = "<group>";
@@ -3039,11 +3099,13 @@
 				E5AE37631E4971CE0001EC3C /* SocketEngine.swift in Sources */,
 				485DA9FD2183610C00CA8593 /* AnimatedPHToolTipCell.swift in Sources */,
 				E5BED5541E49AB85003EC833 /* DMMessagesVC.swift in Sources */,
+				6E35FC06220083AC00AB84A3 /* DMJobTitle.swift in Sources */,
 				E5AE37791E49743C0001EC3C /* SocketManager.swift in Sources */,
 				6E99691C21FF47E00007CF40 /* DMCalender.swift in Sources */,
 				5A3B06CF1E33881D00EFCA6E /* DMChangePasswordVC.swift in Sources */,
 				F223591D1E3F5F4900E984FC /* DMJobSearchResultVC+TableViewExtension.swift in Sources */,
 				E5BED5531E49AB85003EC833 /* DMMessagesVC+TableViewExtension.swift in Sources */,
+				6E35FC0222007C6700AB84A3 /* DMCancelJob.swift in Sources */,
 				E5B84B381E9DF835009665D1 /* Chat+CoreDataProperties.swift in Sources */,
 				E5F9194B1E9DD4A30021F008 /* FSCalendarScopeHandle.m in Sources */,
 				484958F9218AC7AB00096046 /* SearchStateViewController.swift in Sources */,
@@ -3111,10 +3173,12 @@
 				E5496DFC1E25547300C54288 /* DMCertificationsVC+TableViewExtension.swift in Sources */,
 				5AD246931E273CC9009350BF /* DatePickerView.swift in Sources */,
 				E59029A91DED2C7A00151E9B /* LogManager.swift in Sources */,
+				6E35FBF02200366500AB84A3 /* DMPublicProfile.swift in Sources */,
 				E5F9193F1E9DD4A30021F008 /* FSCalendar+Deprecated.m in Sources */,
 				5A3FD0751E1CC79700360B3C /* DMProfileHeaderView.swift in Sources */,
 				E5AE376F1E4971CE0001EC3C /* SocketIOClientStatus.swift in Sources */,
 				E5302CD61DFE7AB100984A0B /* DMForgotPasswordVC.swift in Sources */,
+				6E35FBFC220064AA00AB84A3 /* DMEditCertificate.swift in Sources */,
 				6E85B83F21FAECBC00DB137F /* DMCommonSuccessFailureInitializer.swift in Sources */,
 				F2540F601E274360004B0538 /* JobSearchResultCell.swift in Sources */,
 				E51D4EF51E3AFEA600ACC631 /* DMEditStudyVC+Services.swift in Sources */,
@@ -3172,6 +3236,7 @@
 				E56B20A21DBF749D000512F6 /* DMRegistrationVC.swift in Sources */,
 				6E99691A21FF42390007CF40 /* TrackFlowCoordinator.swift in Sources */,
 				E57F29DF1E3695060025B9DE /* DMEditDentalStateBoardVC.swift in Sources */,
+				6E35FBE82200297E00AB84A3 /* ProfileFlowCoordinator.swift in Sources */,
 				E54976F51E28CEDD006F21E5 /* ExperienceModel.swift in Sources */,
 				E5E7CB981E2FA28000D4FB59 /* PhotoCell.swift in Sources */,
 				F2F5E0E01E31D40E0082187C /* JobDetailHeaderView.swift in Sources */,
@@ -3186,6 +3251,7 @@
 				6E99690E21FF11170007CF40 /* SearchState.swift in Sources */,
 				6E88699521FEE48A00898925 /* DMLogin.swift in Sources */,
 				E5E7CB4A1E2F8CDE00D4FB59 /* EditLicenseTableCell.swift in Sources */,
+				6E35FBEA22002BBE00AB84A3 /* DMSettings.swift in Sources */,
 				6E4D593021FEC0F00008EDBA /* BaseFlowCoordinator.swift in Sources */,
 				6E4D593B21FEC54D0008EDBA /* ViewInput.swift in Sources */,
 				E514E5BA1E28B472005F6712 /* DMCertificationsVC+Services.swift in Sources */,
@@ -3194,6 +3260,7 @@
 				E59029A81DED2C7A00151E9B /* APIManager.swift in Sources */,
 				483C6E71213D3AFE00A59AE9 /* UIDevice+Additions.swift in Sources */,
 				E51C4D3B1FB051C7009FC3A0 /* AboutMeJobSelectionCell.swift in Sources */,
+				6E35FBE62200292200AB84A3 /* DMEditProfile.swift in Sources */,
 				E5E7CBA51E3089B200D4FB59 /* DMEditLicenseVC+Services.swift in Sources */,
 				5A5523E31E4C40C1007D8C09 /* HiredJobNotificationTableCell.swift in Sources */,
 				E5AE377E1E497D8D0001EC3C /* MessageListTableCell.swift in Sources */,
@@ -3215,12 +3282,14 @@
 				E56E90801DFF31740096A31B /* CameraGalleryManager.swift in Sources */,
 				E5E7CBAC1E3099DF00D4FB59 /* DMPublicProfileVC.swift in Sources */,
 				E576BA3C1E5C0CB40097B781 /* ChatList+CoreDataClass.swift in Sources */,
+				6E35FBF422003E9700AB84A3 /* DMEditStudy.swift in Sources */,
 				E5AE37821E4984420001EC3C /* DatabaseManager.swift in Sources */,
 				E5AE376C1E4971CE0001EC3C /* SocketIOClientConfiguration.swift in Sources */,
 				F2540F4A1E23A81C004B0538 /* JobSeachTitleCell.swift in Sources */,
 				F22359171E3F3E3300E984FC /* DMJobSearchVC+TableViewExtension.swift in Sources */,
 				F2F5E0DA1E31BDD00082187C /* MapCell.swift in Sources */,
 				E55462F71DAE4C6F004163B2 /* UITextField+ToolBar.swift in Sources */,
+				6E35FBF622005C3D00AB84A3 /* DMEditSkills.swift in Sources */,
 				5A5523EF1E4D97DF007D8C09 /* UserNotification.swift in Sources */,
 				E5AE37041E485D800001EC3C /* PlaceHolderJobsView.swift in Sources */,
 				E5AE37661E4971CE0001EC3C /* SocketEnginePollable.swift in Sources */,
@@ -3264,6 +3333,7 @@
 				E5BED5511E49AB85003EC833 /* DMChatVC.swift in Sources */,
 				6E85B83021FADD0F00DB137F /* DMChatInitializer.swift in Sources */,
 				E5433AF21FCD140800D152D9 /* DMProfileSuccessPendingViewController.swift in Sources */,
+				6E35FC08220091D300AB84A3 /* DMRegisterMaps.swift in Sources */,
 				E5F919421E9DD4A30021F008 /* FSCalendarAppearance.m in Sources */,
 				E5496E081E25E4AA00C54288 /* DMSchoolListPopOverVC.swift in Sources */,
 				5A85D2121E2DFAD000AC4C89 /* TagContents.swift in Sources */,
@@ -3288,15 +3358,18 @@
 				E5F919401E9DD4A30021F008 /* FSCalendar.m in Sources */,
 				5A988BC81E4AEA0E00DECB49 /* DMNotificationVC+Services.swift in Sources */,
 				E5F919431E9DD4A30021F008 /* FSCalendarCalculator.m in Sources */,
+				6E35FBEE2200346F00AB84A3 /* DMNotifications.swift in Sources */,
 				E5F9194A1E9DD4A30021F008 /* FSCalendarHeaderView.m in Sources */,
 				E5E7CB891E2FA23200D4FB59 /* OtherSkillCell.swift in Sources */,
 				E5D2D8AB1FE24305001EFA68 /* DMCommonSuccessFailureVC.swift in Sources */,
 				6E4D593221FEC10F0008EDBA /* BaseFlowProtocol.swift in Sources */,
 				E54976F71E28D243006F21E5 /* DMExecutiveSummaryVC+Services.swift in Sources */,
 				6E85B86E21FB17E300DB137F /* DMSchoolListPopOverInitializer.swift in Sources */,
+				6E35FBEC2200310200AB84A3 /* DMChangePassword.swift in Sources */,
 				E5AE37611E4971CE0001EC3C /* SocketAnyEvent.swift in Sources */,
 				E587D2CC1E23362C006B7F06 /* JobSelectionPickerView.swift in Sources */,
 				E5E7CB801E2FA23200D4FB59 /* AddDeleteExperienceCell.swift in Sources */,
+				6E35FBF222003C1200AB84A3 /* DMWorkExperience.swift in Sources */,
 				E587D3001E24E5C1006B7F06 /* ProfileTextField.swift in Sources */,
 				E5F47C941E0035B90051C4A1 /* UIImage+Rotations.swift in Sources */,
 				E576819D1E3A289D00D912EA /* DMEditSkillsVC+TableViewExtension.swift in Sources */,
@@ -3313,11 +3386,14 @@
 				F2CBC10A1E41E9BE00345B9F /* DMJobDetailVC+Services.swift in Sources */,
 				E5F919461E9DD4A30021F008 /* FSCalendarCollectionViewLayout.m in Sources */,
 				E5AE376D1E4971CE0001EC3C /* SocketIOClientOption.swift in Sources */,
+				6E35FC002200792100AB84A3 /* DMChat.swift in Sources */,
 				5A85D2141E2DFAD000AC4C89 /* TagPresentable.swift in Sources */,
 				5A50A2CA1E32163D0010AA31 /* SettingTableCell.swift in Sources */,
+				6E35FC0422007FBC00AB84A3 /* DMJobSearch.swift in Sources */,
 				484958F6218AC2F500096046 /* UITextField+Additions.swift in Sources */,
 				E558D9081E2E6FE700A6DF95 /* DMEditProfileVC.swift in Sources */,
 				E5F919451E9DD4A30021F008 /* FSCalendarCollectionView.m in Sources */,
+				6E35FBFA22005F4800AB84A3 /* DMAffiliations.swift in Sources */,
 				4846B87D20F356CC00BAC18C /* Constants+Api.swift in Sources */,
 				484174CE212FF52B00C86818 /* UserDefaults+Additions.swift in Sources */,
 				6E85B85E21FB007300DB137F /* DMCertificationsInitializer.swift in Sources */,
@@ -3346,6 +3422,7 @@
 				E5F919471E9DD4A30021F008 /* FSCalendarConstants.m in Sources */,
 				F2F5E0DE1E31CE2A0082187C /* DMJobDetailVC.swift in Sources */,
 				E590735B1FB02D36007381E8 /* DMJobTitleSelectionVC+TextFieldExtension.swift in Sources */,
+				6E35FBE22200273700AB84A3 /* DMMessages.swift in Sources */,
 				6EF2F20421FA096100F6F38D /* DMJobSearchResultInitializer.swift in Sources */,
 				6E85B87121FB196000DB137F /* DMExecutiveSummaryInitializer.swift in Sources */,
 				6EF2F1EB21F9DBFF00F6F38D /* DMRegistrationContainerInitializer.swift in Sources */,
@@ -3399,6 +3476,7 @@
 				E587D2FA1E24C102006B7F06 /* DMStudyVC.swift in Sources */,
 				E587D3021E24E97B006B7F06 /* DMStudy+TableViewExtension.swift in Sources */,
 				5A3BD4AE1E35DB1E00A607AC /* EditProfileSkillBrickCell.swift in Sources */,
+				6E35FBFE22006CE700AB84A3 /* DMJobDetail.swift in Sources */,
 				6E99691821FF414E0007CF40 /* DMTrack.swift in Sources */,
 				6EF2F21021FA1D0200F6F38D /* DMTrackInitializer.swift in Sources */,
 				E57F29DC1E368D070025B9DE /* DMEditCertificateVC+Services.swift in Sources */,
@@ -3411,7 +3489,9 @@
 				E5496E0A1E25E52600C54288 /* DMSchoolListPopOverVC+TableViewExtension.swift in Sources */,
 				E51D4F131E4086BD00ACC631 /* DMCancelJobVC+Services.swift in Sources */,
 				E50B3F4E1E194CD7004C5F32 /* LoginTableViewCell.swift in Sources */,
+				6E35FBE42200279800AB84A3 /* MessagesFlowCoordinator.swift in Sources */,
 				F22359151E3F351C00E984FC /* Job.swift in Sources */,
+				6E35FBF822005CD500AB84A3 /* DMSelectSkills.swift in Sources */,
 				63D32752915A935906D26086 /* RootScreen.swift in Sources */,
 				42E0DF7D801DEC5007372D27 /* RootScreenInitializer.swift in Sources */,
 				9ED2ECF22A285308E5F52DD1 /* RootScreenPresenter.swift in Sources */,

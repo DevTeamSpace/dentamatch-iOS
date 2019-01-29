@@ -11,6 +11,8 @@ import UIKit
 class DMChangePasswordVC: DMBaseVC {
     @IBOutlet var changePasswordTableView: UITableView!
     var passwordArray: [String] = []
+    
+    weak var moduleOutput: DMChangePasswordModuleOutput?
 
     override func viewDidLoad() {
         super.viewDidLoad()

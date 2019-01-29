@@ -4,8 +4,12 @@ import SwinjectStoryboard
 
 class DMSelectSkillsInitializer {
     
-    class func initialize() -> UIViewController {
-        return SwinjectStoryboard.create(name: Constants.StoryBoard.profileStoryboard, bundle: nil, container: appContainer).instantiateViewController(withIdentifier: String(describing: DMSelectSkillsVC.self))
+    class func initialize(moduleOutput: DMSelectSkillsModuleOutput) -> UIViewController? {
+        
+        let vc = SwinjectStoryboard.create(name: Constants.StoryBoard.profileStoryboard, bundle: nil, container: appContainer).instantiateViewController(withIdentifier: String(describing: DMSelectSkillsVC.self)) as? DMSelectSkillsVC
+        vc?.moduleOutput = moduleOutput
+        
+        return vc
     }
     
     class func register(for container: Container) {

@@ -20,6 +20,8 @@ class DMPublicProfileVC: DMBaseVC {
     }
 
     @IBOutlet var publicProfileTableView: UITableView!
+    
+    weak var moduleOutput: DMPublicProfileModuleOutput?
 
     var originalParams = [String: String]()
 
@@ -249,7 +251,7 @@ class DMPublicProfileVC: DMBaseVC {
     }
     
     func goToStates(_ text: String?) {
-        assertionFailure("Implement")
+        moduleOutput?.showStates(preselectedState: text, delegate: self)
     }
 }
 
