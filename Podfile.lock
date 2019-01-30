@@ -27,6 +27,9 @@ PODS:
   - RealmSwift (3.13.1):
     - Realm (= 3.13.1)
   - SwiftyJSON (4.2.0)
+  - Swinject (2.5.0)
+  - SwinjectStoryboard (2.1.0):
+    - Swinject (~> 2.5)
   - XCGLogger (6.1.0):
     - XCGLogger/Core (= 6.1.0)
   - XCGLogger/Core (6.1.0):
@@ -45,6 +48,8 @@ DEPENDENCIES:
   - Mixpanel-swift
   - RealmSwift
   - SwiftyJSON
+  - Swinject
+  - SwinjectStoryboard
   - XCGLogger
 
 SPEC REPOS:
@@ -63,6 +68,8 @@ SPEC REPOS:
     - Realm
     - RealmSwift
     - SwiftyJSON
+    - Swinject
+    - SwinjectStoryboard
     - XCGLogger
 
 SPEC CHECKSUMS:
@@ -80,8 +87,10 @@ SPEC CHECKSUMS:
   Realm: 50071da38fe079e0735e47c9f2eae738c68c5996
   RealmSwift: 8a1e6a02b7a08cd17a31e3115143fb69fe5f3fb9
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+  Swinject: 82cdb851f63f91bba974e3eca1d69780f2f7677e
+  SwinjectStoryboard: 688f096033103e66ffcf6ca678211acd7d7be505
   XCGLogger: 7f7f43f15dfe3a305fa1342b7dc29af656289abd
 
-PODFILE CHECKSUM: f02ed88cfecb709d04232162b32d26b5e65df5bb
+PODFILE CHECKSUM: fa98db6c4adde519434bdb445a142e0fdb0f3158
 
 COCOAPODS: 1.5.3

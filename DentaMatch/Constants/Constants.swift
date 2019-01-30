@@ -72,26 +72,6 @@ struct Constants {
         static let calenderStoryboard = "Calender"
         static let notificationStoryboard = "Notification"
         static let states = "States"
-        struct Identifer {
-            static let registrationNav = "RegistrationNAV"
-            static let profileNav = "ProfileNAV"
-            static let jobSearchNav = "JobSearchNav"
-            static let editProfileNav = "EditProfileNAV"
-        }
-
-        struct SegueIdentifier {
-            static let goToStudyVC = "goToStudyVC"
-            static let goToSkillsVC = "goToSkillsVC"
-            static let goToPublicProfile = "goToPublicProfile"
-            static let goToAffiliationsVC = "goToAffiliationsVC"
-            static let goToCertificationsVC = "goToCertificationsVC"
-            static let goToExecutiveSummaryVC = "goToExecutiveSummaryVC"
-            static let goToLicense = "goToLicense"
-            static let goToEditLicense = "goToEditLicense"
-            static let goToSetting = "goToSetting"
-            static let goToChangePassword = "goToChangePassword"
-            static let goToEditCertificate = "goToEditCertificate"
-        }
     }
 
     

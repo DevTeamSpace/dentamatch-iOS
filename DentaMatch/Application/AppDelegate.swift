@@ -4,65 +4,94 @@ import GoogleMaps
 import GooglePlaces
 import Mixpanel
 import UIKit
+import Swinject
+import SwinjectStoryboard
+import SwiftyJSON
+import Instabug
 import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
     var window: UIWindow?
     private var reachability: Reachability!
-    // MARK: - App Delegate Ref
+    
     class func delegate() -> AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate
     }
     
+    lazy var container: Container = {
+        return defaultContainer()
+    }()
+    
+    lazy var rootFlowCoordinator: RootFlowCoordinatorProtocol? = {
+        return appContainer.resolve(RootFlowCoordinatorProtocol.self)
+    }()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
         setUpApplication()
-        if UserDefaultsManager.sharedInstance.isProfileCompleted {
-            goToDashBoard()
-            return true
+        makeRoot(viewController: rootFlowCoordinator?.launchViewController())
+
+        if !UserDefaultsManager.sharedInstance.isProfileSkipped {
+            checkForNotificationTapAction(application, launchOptions)
         }
-        setUpApplicationUI(application, launchOptions)
+        
         return true
     }
+    
+    func setUpApplication() {
+        MixpanelOperations.startSessionForMixpanelWithToken()
+        //Instabug.start(withToken: kInstaBugKey, invocationEvents: [.shake])
 
-    func goToRegistration() {
-        let registrationVC = UIStoryboard.registrationStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.registrationNav) as? UINavigationController
-        window?.rootViewController = registrationVC
+        configureCrashlytics()
+
+        configureSocket()
+
+        configureGoogleServices()
+
+        registerForPushNotifications()
+
+        // configureRichNotifications()
+
+        changeNavBarAppearance()
+
+        configureNetworkReachability()
     }
-
-    func goToProfile() {
-        let profileVC = UIStoryboard.profileStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.profileNav) as? UINavigationController
-        window?.rootViewController = profileVC
+    
+    func makeRoot(viewController: UIViewController?) {
+        guard let viewController = viewController else { return }
+        
+        defer {
+            window?.rootViewController = viewController
+            window?.makeKeyAndVisible()
+        }
+        
+        if window == nil {
+            window = UIWindow(frame: UIScreen.main.bounds)
+        }
     }
-
-    func goToSuccessPendingScreen() {
-        let profileSuccessPendingVC = UIStoryboard.profileStoryBoard().instantiateViewController(type: DMProfileSuccessPending.self)!
-        profileSuccessPendingVC.fromRoot = true
-        let navigationVC = UINavigationController(rootViewController: profileSuccessPendingVC)
-        navigationVC.setNavigationBarHidden(true, animated: false)
-        window?.rootViewController = navigationVC
-    }
-
-    func goToDashBoard() {
-        // if let _ =  UserDefaultsManager.sharedInstance.loadSearchParameter() {
-        let dashboardVC = UIStoryboard.dashBoardStoryBoard().instantiateViewController(type: TabBarVC.self)!
-        window?.rootViewController = dashboardVC
-        //  } else {
-        //       self.goToSearch()
-        //   }
-    }
-
-    func goToSearch() {
-        let jobSearchNAV = UIStoryboard.jobSearchStoryBoard().instantiateViewController(withIdentifier: Constants.StoryBoard.Identifer.jobSearchNav) as? UINavigationController
-        if let jobSearchVC = jobSearchNAV?.viewControllers[0] as? DMJobSearchVC {
-            if let _ = UserDefaultsManager.sharedInstance.loadSearchParameter() {
-                jobSearchVC.firstTime = false
-            } else {
-                jobSearchVC.firstTime = true
+    
+    private func checkForNotificationTapAction(_ application: UIApplication, _ launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
+        if let remoteNotification = launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification] as? NSDictionary {
+            if remoteNotification.allKeys.count > 0 {
+                //                    self.tabIndex = 4
+                if let noti = remoteNotification["data"] as? NSDictionary {
+                    guard let megCheck = noti["data"] as? NSDictionary else {return}
+                    if megCheck["messageId"] != nil {
+                        NotificationHandler.notificationHandleforChat(fromId: (megCheck["fromId"] as? String), toId: (megCheck["toId"] as? String), messgaeId: (megCheck["messageId"] as? String), recurterId: (megCheck["recurterId"] as? String))
+                    } else {
+                        let newObjMSG = noti["jobDetails"]
+                        let jobJson = JSON(newObjMSG ?? "")
+                        let jobObj = Job(job: jobJson)
+                        let newObj = noti["data"]
+                        let josnObj = JSON(newObj ?? [:])
+                        let userNotiObj = UserNotification(dict: josnObj)
+                        NotificationHandler.notificationHandleforBackground(notiObj: userNotiObj, jobObj: jobObj, app: application)
+                    }
+                }
             }
         }
-        window?.rootViewController = jobSearchNAV
     }
     
     func configureRealm() {
@@ -171,7 +200,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func showOverlay(isJobSeekerVerified: Bool = false) {
-        let commonSuccessFailureVC = UIStoryboard.profileStoryBoard().instantiateViewController(type: DMCommonSuccessFailureVC.self)!
+        guard let commonSuccessFailureVC = DMCommonSuccessFailureInitializer.initialize() as? DMCommonSuccessFailureVC else { return }
         commonSuccessFailureVC.isJobSeekerVerified = isJobSeekerVerified
         commonSuccessFailureVC.modalPresentationStyle = .overCurrentContext
         commonSuccessFailureVC.modalTransitionStyle = .coverVertical

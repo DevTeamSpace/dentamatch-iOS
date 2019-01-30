@@ -15,6 +15,8 @@ pod 'XCGLogger'
 pod 'IHProgressHUD'
 pod 'Instabug'
 pod 'Mixpanel-swift'
+pod 'Swinject'
+pod 'SwinjectStoryboard'
 pod 'RealmSwift'
 
 end
