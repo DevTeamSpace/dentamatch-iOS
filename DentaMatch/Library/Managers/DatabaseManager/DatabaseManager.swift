@@ -47,7 +47,7 @@ class DatabaseManager: NSObject {
     class func addUpdateChatToDB(chatObj: JSON?) {
         guard let chatObj = chatObj else { return }
         
-        if let _ = chatExits(messageId: chatObj["messageId"].stringValue) {
+        if let _ = chatExits(messageId: chatObj["messageId"].intValue) {
             // Update chat
             // debugPrint("Update Chat")
             
@@ -101,7 +101,7 @@ class DatabaseManager: NSObject {
         }
     }
 
-    class func chatExits(messageId: String) -> ChatModel? {
+    class func chatExits(messageId: Int) -> ChatModel? {
         return try! Realm().object(ofType: ChatModel.self, forPrimaryKey: messageId)
     }
 
@@ -153,7 +153,7 @@ class DatabaseManager: NSObject {
     class func addChatForFirstTimeMessage(chatObj: JSON?) {
         guard let chatObj = chatObj else { return }
         
-        if let _ = chatExits(messageId: chatObj["messageId"].stringValue) {
+        if let _ = chatExits(messageId: chatObj["messageId"].intValue) {
             // Update chat
             // debugPrint("Update Chat")
             

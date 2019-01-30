@@ -387,31 +387,7 @@
 		E5AE37091E4897690001EC3C /* MessageSenderTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5AE37071E4897690001EC3C /* MessageSenderTableCell.xib */; };
 		E5AE370C1E4897790001EC3C /* MessageReceiverTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE370A1E4897790001EC3C /* MessageReceiverTableCell.swift */; };
 		E5AE370D1E4897790001EC3C /* MessageReceiverTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5AE370B1E4897790001EC3C /* MessageReceiverTableCell.xib */; };
-		E5AE375F1E4971CE0001EC3C /* SocketAckEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37471E4971CE0001EC3C /* SocketAckEmitter.swift */; };
-		E5AE37601E4971CE0001EC3C /* SocketAckManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37481E4971CE0001EC3C /* SocketAckManager.swift */; };
-		E5AE37611E4971CE0001EC3C /* SocketAnyEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37491E4971CE0001EC3C /* SocketAnyEvent.swift */; };
-		E5AE37621E4971CE0001EC3C /* SocketClientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE374A1E4971CE0001EC3C /* SocketClientManager.swift */; };
-		E5AE37631E4971CE0001EC3C /* SocketEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE374B1E4971CE0001EC3C /* SocketEngine.swift */; };
-		E5AE37641E4971CE0001EC3C /* SocketEngineClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE374C1E4971CE0001EC3C /* SocketEngineClient.swift */; };
-		E5AE37651E4971CE0001EC3C /* SocketEnginePacketType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE374D1E4971CE0001EC3C /* SocketEnginePacketType.swift */; };
-		E5AE37661E4971CE0001EC3C /* SocketEnginePollable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE374E1E4971CE0001EC3C /* SocketEnginePollable.swift */; };
-		E5AE37671E4971CE0001EC3C /* SocketEngineSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE374F1E4971CE0001EC3C /* SocketEngineSpec.swift */; };
-		E5AE37681E4971CE0001EC3C /* SocketEngineWebsocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37501E4971CE0001EC3C /* SocketEngineWebsocket.swift */; };
-		E5AE37691E4971CE0001EC3C /* SocketEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37511E4971CE0001EC3C /* SocketEventHandler.swift */; };
-		E5AE376A1E4971CE0001EC3C /* SocketExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37521E4971CE0001EC3C /* SocketExtensions.swift */; };
-		E5AE376B1E4971CE0001EC3C /* SocketIOClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37531E4971CE0001EC3C /* SocketIOClient.swift */; };
-		E5AE376C1E4971CE0001EC3C /* SocketIOClientConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37541E4971CE0001EC3C /* SocketIOClientConfiguration.swift */; };
-		E5AE376D1E4971CE0001EC3C /* SocketIOClientOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37551E4971CE0001EC3C /* SocketIOClientOption.swift */; };
-		E5AE376E1E4971CE0001EC3C /* SocketIOClientSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37561E4971CE0001EC3C /* SocketIOClientSpec.swift */; };
-		E5AE376F1E4971CE0001EC3C /* SocketIOClientStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37571E4971CE0001EC3C /* SocketIOClientStatus.swift */; };
-		E5AE37701E4971CE0001EC3C /* SocketLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37581E4971CE0001EC3C /* SocketLogger.swift */; };
-		E5AE37711E4971CE0001EC3C /* SocketPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37591E4971CE0001EC3C /* SocketPacket.swift */; };
-		E5AE37721E4971CE0001EC3C /* SocketParsable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE375A1E4971CE0001EC3C /* SocketParsable.swift */; };
-		E5AE37731E4971CE0001EC3C /* SocketStringReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE375B1E4971CE0001EC3C /* SocketStringReader.swift */; };
-		E5AE37741E4971CE0001EC3C /* SocketTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE375C1E4971CE0001EC3C /* SocketTypes.swift */; };
-		E5AE37751E4971CE0001EC3C /* SSLSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE375D1E4971CE0001EC3C /* SSLSecurity.swift */; };
-		E5AE37761E4971CE0001EC3C /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE375E1E4971CE0001EC3C /* WebSocket.swift */; };
-		E5AE37791E49743C0001EC3C /* SocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37781E49743C0001EC3C /* SocketManager.swift */; };
+		E5AE37791E49743C0001EC3C /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37781E49743C0001EC3C /* SocketIOManager.swift */; };
 		E5AE377E1E497D8D0001EC3C /* MessageListTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE377C1E497D8D0001EC3C /* MessageListTableCell.swift */; };
 		E5AE377F1E497D8D0001EC3C /* MessageListTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5AE377D1E497D8D0001EC3C /* MessageListTableCell.xib */; };
 		E5AE37821E4984420001EC3C /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37811E4984420001EC3C /* DatabaseManager.swift */; };
@@ -918,31 +894,7 @@
 		E5AE37071E4897690001EC3C /* MessageSenderTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageSenderTableCell.xib; sourceTree = "<group>"; };
 		E5AE370A1E4897790001EC3C /* MessageReceiverTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageReceiverTableCell.swift; sourceTree = "<group>"; };
 		E5AE370B1E4897790001EC3C /* MessageReceiverTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageReceiverTableCell.xib; sourceTree = "<group>"; };
-		E5AE37471E4971CE0001EC3C /* SocketAckEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAckEmitter.swift; sourceTree = "<group>"; };
-		E5AE37481E4971CE0001EC3C /* SocketAckManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAckManager.swift; sourceTree = "<group>"; };
-		E5AE37491E4971CE0001EC3C /* SocketAnyEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAnyEvent.swift; sourceTree = "<group>"; };
-		E5AE374A1E4971CE0001EC3C /* SocketClientManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketClientManager.swift; sourceTree = "<group>"; };
-		E5AE374B1E4971CE0001EC3C /* SocketEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEngine.swift; sourceTree = "<group>"; };
-		E5AE374C1E4971CE0001EC3C /* SocketEngineClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEngineClient.swift; sourceTree = "<group>"; };
-		E5AE374D1E4971CE0001EC3C /* SocketEnginePacketType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEnginePacketType.swift; sourceTree = "<group>"; };
-		E5AE374E1E4971CE0001EC3C /* SocketEnginePollable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEnginePollable.swift; sourceTree = "<group>"; };
-		E5AE374F1E4971CE0001EC3C /* SocketEngineSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEngineSpec.swift; sourceTree = "<group>"; };
-		E5AE37501E4971CE0001EC3C /* SocketEngineWebsocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEngineWebsocket.swift; sourceTree = "<group>"; };
-		E5AE37511E4971CE0001EC3C /* SocketEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEventHandler.swift; sourceTree = "<group>"; };
-		E5AE37521E4971CE0001EC3C /* SocketExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketExtensions.swift; sourceTree = "<group>"; };
-		E5AE37531E4971CE0001EC3C /* SocketIOClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOClient.swift; sourceTree = "<group>"; };
-		E5AE37541E4971CE0001EC3C /* SocketIOClientConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOClientConfiguration.swift; sourceTree = "<group>"; };
-		E5AE37551E4971CE0001EC3C /* SocketIOClientOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOClientOption.swift; sourceTree = "<group>"; };
-		E5AE37561E4971CE0001EC3C /* SocketIOClientSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOClientSpec.swift; sourceTree = "<group>"; };
-		E5AE37571E4971CE0001EC3C /* SocketIOClientStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOClientStatus.swift; sourceTree = "<group>"; };
-		E5AE37581E4971CE0001EC3C /* SocketLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketLogger.swift; sourceTree = "<group>"; };
-		E5AE37591E4971CE0001EC3C /* SocketPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketPacket.swift; sourceTree = "<group>"; };
-		E5AE375A1E4971CE0001EC3C /* SocketParsable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketParsable.swift; sourceTree = "<group>"; };
-		E5AE375B1E4971CE0001EC3C /* SocketStringReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketStringReader.swift; sourceTree = "<group>"; };
-		E5AE375C1E4971CE0001EC3C /* SocketTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketTypes.swift; sourceTree = "<group>"; };
-		E5AE375D1E4971CE0001EC3C /* SSLSecurity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSLSecurity.swift; sourceTree = "<group>"; };
-		E5AE375E1E4971CE0001EC3C /* WebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSocket.swift; sourceTree = "<group>"; };
-		E5AE37781E49743C0001EC3C /* SocketManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketManager.swift; sourceTree = "<group>"; };
+		E5AE37781E49743C0001EC3C /* SocketIOManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
 		E5AE377C1E497D8D0001EC3C /* MessageListTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageListTableCell.swift; sourceTree = "<group>"; };
 		E5AE377D1E497D8D0001EC3C /* MessageListTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageListTableCell.xib; sourceTree = "<group>"; };
 		E5AE37811E4984420001EC3C /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
@@ -2092,7 +2044,6 @@
 				5A1960FA1E208B4B002A5F7C /* PhoneNumber */,
 				E59467251FD8FFE60009C18B /* PopOverView */,
 				E5F9191F1E9DD4A30021F008 /* FSCalendar */,
-				E5AE37461E4971CE0001EC3C /* SocketIO */,
 				5A85D2051E2DFA5100AC4C89 /* TagView */,
 				E5A0EB071E2BE7C40092E21A /* ASJTagsView */,
 				E5A0EADC1E2944D50092E21A /* SSASideMenu */,
@@ -2483,41 +2434,10 @@
 			path = Messages;
 			sourceTree = "<group>";
 		};
-		E5AE37461E4971CE0001EC3C /* SocketIO */ = {
-			isa = PBXGroup;
-			children = (
-				E5AE37471E4971CE0001EC3C /* SocketAckEmitter.swift */,
-				E5AE37481E4971CE0001EC3C /* SocketAckManager.swift */,
-				E5AE37491E4971CE0001EC3C /* SocketAnyEvent.swift */,
-				E5AE374A1E4971CE0001EC3C /* SocketClientManager.swift */,
-				E5AE374B1E4971CE0001EC3C /* SocketEngine.swift */,
-				E5AE374C1E4971CE0001EC3C /* SocketEngineClient.swift */,
-				E5AE374D1E4971CE0001EC3C /* SocketEnginePacketType.swift */,
-				E5AE374E1E4971CE0001EC3C /* SocketEnginePollable.swift */,
-				E5AE374F1E4971CE0001EC3C /* SocketEngineSpec.swift */,
-				E5AE37501E4971CE0001EC3C /* SocketEngineWebsocket.swift */,
-				E5AE37511E4971CE0001EC3C /* SocketEventHandler.swift */,
-				E5AE37521E4971CE0001EC3C /* SocketExtensions.swift */,
-				E5AE37531E4971CE0001EC3C /* SocketIOClient.swift */,
-				E5AE37541E4971CE0001EC3C /* SocketIOClientConfiguration.swift */,
-				E5AE37551E4971CE0001EC3C /* SocketIOClientOption.swift */,
-				E5AE37561E4971CE0001EC3C /* SocketIOClientSpec.swift */,
-				E5AE37571E4971CE0001EC3C /* SocketIOClientStatus.swift */,
-				E5AE37581E4971CE0001EC3C /* SocketLogger.swift */,
-				E5AE37591E4971CE0001EC3C /* SocketPacket.swift */,
-				E5AE375A1E4971CE0001EC3C /* SocketParsable.swift */,
-				E5AE375B1E4971CE0001EC3C /* SocketStringReader.swift */,
-				E5AE375C1E4971CE0001EC3C /* SocketTypes.swift */,
-				E5AE375D1E4971CE0001EC3C /* SSLSecurity.swift */,
-				E5AE375E1E4971CE0001EC3C /* WebSocket.swift */,
-			);
-			path = SocketIO;
-			sourceTree = "<group>";
-		};
 		E5AE37771E49743C0001EC3C /* SocketManager */ = {
 			isa = PBXGroup;
 			children = (
-				E5AE37781E49743C0001EC3C /* SocketManager.swift */,
+				E5AE37781E49743C0001EC3C /* SocketIOManager.swift */,
 			);
 			path = SocketManager;
 			sourceTree = "<group>";
@@ -3031,6 +2951,8 @@
 				"${BUILT_PRODUCTS_DIR}/ObjcExceptionBridging/ObjcExceptionBridging.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
 				"${BUILT_PRODUCTS_DIR}/SwinjectStoryboard/SwinjectStoryboard.framework",
@@ -3048,6 +2970,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjcExceptionBridging.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwinjectStoryboard.framework",
@@ -3084,11 +3008,10 @@
 				E56B20A41DC0526E000512F6 /* DMRegistrationContainerViewController.swift in Sources */,
 				F22359191E3F3F2100E984FC /* DMJobSearchVC+TableViewCellDelegateExtension.swift in Sources */,
 				5A3BD4AA1E35D3D800A607AC /* EditProfileAffiliationBrickCell.swift in Sources */,
-				E5AE37631E4971CE0001EC3C /* SocketEngine.swift in Sources */,
 				485DA9FD2183610C00CA8593 /* AnimatedPHToolTipCell.swift in Sources */,
 				E5BED5541E49AB85003EC833 /* DMMessagesVC.swift in Sources */,
 				6E35FC06220083AC00AB84A3 /* DMJobTitle.swift in Sources */,
-				E5AE37791E49743C0001EC3C /* SocketManager.swift in Sources */,
+				E5AE37791E49743C0001EC3C /* SocketIOManager.swift in Sources */,
 				6E99691C21FF47E00007CF40 /* DMCalender.swift in Sources */,
 				5A3B06CF1E33881D00EFCA6E /* DMChangePasswordVC.swift in Sources */,
 				F223591D1E3F5F4900E984FC /* DMJobSearchResultVC+TableViewExtension.swift in Sources */,
@@ -3101,24 +3024,20 @@
 				E5E7CB781E2FA23200D4FB59 /* AboutMeCell.swift in Sources */,
 				6E99690C21FEF7450007CF40 /* RegistrationFlowCoordinator.swift in Sources */,
 				E50512BE1E82378700509328 /* WorkingHoursTableCell.swift in Sources */,
-				E5AE37741E4971CE0001EC3C /* SocketTypes.swift in Sources */,
 				E5A174C71E201DE40044B17E /* ProfileImageButton.swift in Sources */,
 				E5A174C21E201D450044B17E /* CircleProgressBar.m in Sources */,
 				6E99691E21FF48E50007CF40 /* CalendarFlowCoordinator.swift in Sources */,
 				E55462F91DAE4DD1004163B2 /* UIView+Additions.swift in Sources */,
 				E51D4F0D1E40744C00ACC631 /* DMTrackVC+Services.swift in Sources */,
 				E5310E0F1E4EDE71004403A0 /* DMChatVC+DBHandling.swift in Sources */,
-				E5AE376A1E4971CE0001EC3C /* SocketExtensions.swift in Sources */,
 				E5E7CB871E2FA23200D4FB59 /* SectionHeadingTableCell.swift in Sources */,
 				6E4D593C21FEC54D0008EDBA /* ModuleInput.swift in Sources */,
 				6E85B86121FB14C800DB137F /* DMLicenseSelectionInitializer.swift in Sources */,
 				E55462DF1DAE31EA004163B2 /* UIFont+Additions.swift in Sources */,
 				E587D2EA1E24C021006B7F06 /* DMLicenseSelectionVC.swift in Sources */,
 				E558D9151E2EA47500A6DF95 /* AddProfileOptionTableCell.swift in Sources */,
-				E5AE37751E4971CE0001EC3C /* SSLSecurity.swift in Sources */,
 				E587D2D51E2357A9006B7F06 /* DMJobTitleSelectionVC+Services.swift in Sources */,
 				6E85B82D21FADC2100DB137F /* DMMessagesInitializer.swift in Sources */,
-				E5AE37681E4971CE0001EC3C /* SocketEngineWebsocket.swift in Sources */,
 				E5496E0C1E26435C00C54288 /* DMLicenseSelectionVC+TableViewExtension.swift in Sources */,
 				E587D2EC1E24C021006B7F06 /* DMWorkExperienceStart.swift in Sources */,
 				F209C3411E435A43005C9594 /* SearchParameters.swift in Sources */,
@@ -3149,7 +3068,6 @@
 				E57681961E38A1DA00D912EA /* DMPublicProfileVC+Services.swift in Sources */,
 				4846B87920F3564C00BAC18C /* Constants+AlertMessage.swift in Sources */,
 				E597E58F1E151CFF001DDA78 /* FloatLabelTextField.swift in Sources */,
-				E5AE37621E4971CE0001EC3C /* SocketClientManager.swift in Sources */,
 				E558D8E01E2C80C200A6DF95 /* SchoolCategory.swift in Sources */,
 				5A85D2101E2DFAD000AC4C89 /* Tag.swift in Sources */,
 				E5E7CB821E2FA23200D4FB59 /* ExperienceTableCell.swift in Sources */,
@@ -3163,7 +3081,6 @@
 				6E35FBF02200366500AB84A3 /* DMPublicProfile.swift in Sources */,
 				E5F9193F1E9DD4A30021F008 /* FSCalendar+Deprecated.m in Sources */,
 				5A3FD0751E1CC79700360B3C /* DMProfileHeaderView.swift in Sources */,
-				E5AE376F1E4971CE0001EC3C /* SocketIOClientStatus.swift in Sources */,
 				E5302CD61DFE7AB100984A0B /* DMForgotPasswordVC.swift in Sources */,
 				6E35FBFC220064AA00AB84A3 /* DMEditCertificate.swift in Sources */,
 				6E85B83F21FAECBC00DB137F /* DMCommonSuccessFailureInitializer.swift in Sources */,
@@ -3171,7 +3088,6 @@
 				E51D4EF51E3AFEA600ACC631 /* DMEditStudyVC+Services.swift in Sources */,
 				E5E7CB851E2FA23200D4FB59 /* PhotoNameCell.swift in Sources */,
 				5A3FD06E1E1BB0A000360B3C /* UINavigationBar+Awesome.m in Sources */,
-				E5AE37641E4971CE0001EC3C /* SocketEngineClient.swift in Sources */,
 				E587D2CF1E23438B006B7F06 /* DMJobTitleSelectionVC.swift in Sources */,
 				4846B87720F3550000BAC18C /* Constants+Color.swift in Sources */,
 				E5A0EB051E2BDE680092E21A /* SubSkillCollectionCell.swift in Sources */,
@@ -3206,7 +3122,6 @@
 				E55462D91DAE3104004163B2 /* Array+Additions.swift in Sources */,
 				E594BE9F1E1DFFA900310AE5 /* DMRegistrationVC+TextFieldExtension.swift in Sources */,
 				E57EE6CD1E28EBC00090434F /* Affiliation.swift in Sources */,
-				E5AE37701E4971CE0001EC3C /* SocketLogger.swift in Sources */,
 				6E99691421FF2BE90007CF40 /* DMJobSearchResult.swift in Sources */,
 				E5FBE9D91E1CCF940025683C /* DMRegistration+Services.swift in Sources */,
 				E58654FE1DEFEF7F006FEB2D /* ConfigurationManager.swift in Sources */,
@@ -3220,7 +3135,6 @@
 				E55462E11DAE41FB004163B2 /* Date+Additions.swift in Sources */,
 				E55462D71DAE2F49004163B2 /* UIColor+HexCode.swift in Sources */,
 				F2540F521E23A854004B0538 /* JobSearchPartTimeCell.swift in Sources */,
-				E5AE37651E4971CE0001EC3C /* SocketEnginePacketType.swift in Sources */,
 				E56B20A21DBF749D000512F6 /* DMRegistrationVC.swift in Sources */,
 				6E99691A21FF42390007CF40 /* TrackFlowCoordinator.swift in Sources */,
 				E57F29DF1E3695060025B9DE /* DMEditDentalStateBoardVC.swift in Sources */,
@@ -3262,7 +3176,6 @@
 				E558D90E1E2E871900A6DF95 /* GooglePlacesTableViewCell.swift in Sources */,
 				E587D2D91E236EAE006B7F06 /* DMRegisterMapsVC+TableViewExtension.swift in Sources */,
 				5A85D2151E2DFAD000AC4C89 /* TagPresentables.swift in Sources */,
-				E5AE37731E4971CE0001EC3C /* SocketStringReader.swift in Sources */,
 				E55463001DAE510A004163B2 /* Utilities.swift in Sources */,
 				6EF2F20A21FA103C00F6F38D /* DMJobTitleInitializer.swift in Sources */,
 				6EF2F21421FA1E7900F6F38D /* DMCancelJobInitializer.swift in Sources */,
@@ -3271,7 +3184,6 @@
 				E5E7CBAC1E3099DF00D4FB59 /* DMPublicProfileVC.swift in Sources */,
 				6E35FBF422003E9700AB84A3 /* DMEditStudy.swift in Sources */,
 				E5AE37821E4984420001EC3C /* DatabaseManager.swift in Sources */,
-				E5AE376C1E4971CE0001EC3C /* SocketIOClientConfiguration.swift in Sources */,
 				F2540F4A1E23A81C004B0538 /* JobSeachTitleCell.swift in Sources */,
 				F22359171E3F3E3300E984FC /* DMJobSearchVC+TableViewExtension.swift in Sources */,
 				F2F5E0DA1E31BDD00082187C /* MapCell.swift in Sources */,
@@ -3279,9 +3191,7 @@
 				6E35FBF622005C3D00AB84A3 /* DMEditSkills.swift in Sources */,
 				5A5523EF1E4D97DF007D8C09 /* UserNotification.swift in Sources */,
 				E5AE37041E485D800001EC3C /* PlaceHolderJobsView.swift in Sources */,
-				E5AE37661E4971CE0001EC3C /* SocketEnginePollable.swift in Sources */,
 				6EF2F20721FA0E3B00F6F38D /* DMJobSearchInitializer.swift in Sources */,
-				E5AE376B1E4971CE0001EC3C /* SocketIOClient.swift in Sources */,
 				6E85B83921FAE85700DB137F /* DMChangePasswordInitializer.swift in Sources */,
 				484958FC218AD5C400096046 /* State.swift in Sources */,
 				6E85B83C21FAEADC00DB137F /* SearchStateInitializer.swift in Sources */,
@@ -3289,24 +3199,19 @@
 				F2F5E0CF1E2F62080082187C /* AboutCell.swift in Sources */,
 				E587D2D71E236B84006B7F06 /* DMRegisterMapsVC+GoogleMapsExtension.swift in Sources */,
 				5A3B06CD1E3387FF00EFCA6E /* DMSettingVC+TableViewExtension.swift in Sources */,
-				E5AE37691E4971CE0001EC3C /* SocketEventHandler.swift in Sources */,
 				5A5523F11E4DCDF3007D8C09 /* TimeAgo.swift in Sources */,
 				6E99691221FF213B0007CF40 /* DMCalendarSetAvailabillity.swift in Sources */,
 				5A60A85B1E43309100789D14 /* UserAvailability.swift in Sources */,
-				E5AE375F1E4971CE0001EC3C /* SocketAckEmitter.swift in Sources */,
 				E54976F31E28CEDD006F21E5 /* User.swift in Sources */,
 				6EF2F1EF21F9DD3400F6F38D /* DMRegistrationInitializer.swift in Sources */,
 				48067D49212E9E8F007F77E6 /* TagCell.swift in Sources */,
 				E5E7CB831E2FA23200D4FB59 /* ReferenceTableCell.swift in Sources */,
 				6EF2F20D21FA15A100F6F38D /* DMJobDetailInitializer.swift in Sources */,
-				E5AE37761E4971CE0001EC3C /* WebSocket.swift in Sources */,
-				E5AE37671E4971CE0001EC3C /* SocketEngineSpec.swift in Sources */,
 				6E85B82A21FADA7400DB137F /* DMCalendarSetAvailabilityInitializer.swift in Sources */,
 				6E85B86721FB16A100DB137F /* DMSelectSkillsInitializer.swift in Sources */,
 				E51D4F151E41070700ACC631 /* DMRegisterMapsVC+Services.swift in Sources */,
 				E5F919491E9DD4A30021F008 /* FSCalendarExtensions.m in Sources */,
 				E56C9F9E1DED4BD100EAA9DD /* Character+Addition.swift in Sources */,
-				E5AE37601E4971CE0001EC3C /* SocketAckManager.swift in Sources */,
 				E5E7CB8D1E2FA23200D4FB59 /* SkillsTableCell.swift in Sources */,
 				E587D2F81E24C0C0006B7F06 /* DMSelectSkillsVC.swift in Sources */,
 				6EF2F1F221F9DEC200F6F38D /* DMLoginInitializer.swift in Sources */,
@@ -3353,7 +3258,6 @@
 				E54976F71E28D243006F21E5 /* DMExecutiveSummaryVC+Services.swift in Sources */,
 				6E85B86E21FB17E300DB137F /* DMSchoolListPopOverInitializer.swift in Sources */,
 				6E35FBEC2200310200AB84A3 /* DMChangePassword.swift in Sources */,
-				E5AE37611E4971CE0001EC3C /* SocketAnyEvent.swift in Sources */,
 				E587D2CC1E23362C006B7F06 /* JobSelectionPickerView.swift in Sources */,
 				E5E7CB801E2FA23200D4FB59 /* AddDeleteExperienceCell.swift in Sources */,
 				6E35FBF222003C1200AB84A3 /* DMWorkExperience.swift in Sources */,
@@ -3372,7 +3276,6 @@
 				6E85B85421FAFAE400DB137F /* DMEditProfileInitializer.swift in Sources */,
 				F2CBC10A1E41E9BE00345B9F /* DMJobDetailVC+Services.swift in Sources */,
 				E5F919461E9DD4A30021F008 /* FSCalendarCollectionViewLayout.m in Sources */,
-				E5AE376D1E4971CE0001EC3C /* SocketIOClientOption.swift in Sources */,
 				6E35FC002200792100AB84A3 /* DMChat.swift in Sources */,
 				5A85D2141E2DFAD000AC4C89 /* TagPresentable.swift in Sources */,
 				5A50A2CA1E32163D0010AA31 /* SettingTableCell.swift in Sources */,
@@ -3398,7 +3301,6 @@
 				F2540F5D1E274258004B0538 /* DMJobSearchResultVC.swift in Sources */,
 				E53738F21DB373C200967876 /* Reachability.swift in Sources */,
 				6EA372E521F8BF16007BE373 /* ImageView+Additions.swift in Sources */,
-				E5AE37711E4971CE0001EC3C /* SocketPacket.swift in Sources */,
 				6E4D594021FECB1F0008EDBA /* DMRegistrationContainer.swift in Sources */,
 				E587D2EB1E24C021006B7F06 /* DMWorkExperienceStart+TableViewExtension.swift in Sources */,
 				E5E7CB931E2FA23300D4FB59 /* StudyCell.swift in Sources */,
@@ -3423,7 +3325,6 @@
 				E5C5F31B1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift in Sources */,
 				484958FF218ADCC000096046 /* StateCell.swift in Sources */,
 				F223591B1E3F5ED100E984FC /* DMJobSearchResultVC+GMSExtension.swift in Sources */,
-				E5AE37721E4971CE0001EC3C /* SocketParsable.swift in Sources */,
 				484958F4218AC2A400096046 /* SearchField.swift in Sources */,
 				E5E7CB9F1E306E6300D4FB59 /* License.swift in Sources */,
 				E54976F21E28CEDD006F21E5 /* Skill.swift in Sources */,
@@ -3454,7 +3355,6 @@
 				E5BED5501E49AB85003EC833 /* DMChatVC+TableViewExtensions.swift in Sources */,
 				5A3B06CB1E3387DA00EFCA6E /* DMSettingVC.swift in Sources */,
 				E5496E161E2784D500C54288 /* DMSkillsVC+TableViewExtension.swift in Sources */,
-				E5AE376E1E4971CE0001EC3C /* SocketIOClientSpec.swift in Sources */,
 				6E99691621FF3F940007CF40 /* JobsFlowCoordinator.swift in Sources */,
 				6E88699321FEDDEF00898925 /* AuthorizationFlowCoordinator.swift in Sources */,
 				E51D4F111E40745A00ACC631 /* DMCancelJobVC.swift in Sources */,

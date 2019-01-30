@@ -50,7 +50,7 @@ extension DMRegistrationVC {
     }
 
     func openJobTitleSelection() {
-        SocketManager.sharedInstance.establishConnection()
+        SocketIOManager.sharedInstance.establishConnection()
         moduleOutput?.showJobTitleSelection()
     }
 

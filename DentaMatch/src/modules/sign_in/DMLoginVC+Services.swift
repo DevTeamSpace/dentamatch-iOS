@@ -41,7 +41,7 @@ extension DMLoginVC {
                 
                 self?.saveSearchedData(response: response!)
                 
-                SocketManager.sharedInstance.establishConnection()
+                SocketIOManager.sharedInstance.establishConnection()
                 if (UserManager.shared().activeUser.jobTitleId?.isEmptyField)! {
                     self?.moduleOutput?.showJobTitleSelection()
                 } else {

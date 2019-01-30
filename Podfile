@@ -18,5 +18,6 @@ pod 'Mixpanel-swift'
 pod 'Swinject'
 pod 'SwinjectStoryboard'
 pod 'RealmSwift'
+pod 'Socket.IO-Client-Swift'
 
 end

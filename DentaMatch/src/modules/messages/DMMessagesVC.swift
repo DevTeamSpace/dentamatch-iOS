@@ -20,7 +20,7 @@ class DMMessagesVC: DMBaseVC {
         NotificationCenter.default.addObserver(self, selector: #selector(hideMessagePlaceholder), name: .hideMessagePlaceholder, object: nil)
 
         setup()
-        SocketManager.sharedInstance.initServer()
+        SocketIOManager.sharedInstance.initServer()
         getChatListAPI()
         // Do any additional setup after loading the view.
          NotificationCenter.default.addObserver(self, selector: #selector(refreshMessageList), name: .refreshMessageList, object: nil)
@@ -29,7 +29,7 @@ class DMMessagesVC: DMBaseVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
        
-        SocketManager.sharedInstance.removeAllCompletionHandlers()
+        SocketIOManager.sharedInstance.removeAllCompletionHandlers()
         if let selectedIndex = self.messageListTableView.indexPathForSelectedRow {
             messageListTableView.deselectRow(at: selectedIndex, animated: true)
         }
@@ -105,7 +105,7 @@ class DMMessagesVC: DMBaseVC {
     func showBlockRecruiterAlert(chatList: ChatListModel) {
         let alert = UIAlertController(title: "", message: "This Recruiter is BLOCKED and will no longer be able to see your profile or send you messages", preferredStyle: .actionSheet)
         let blockAction = UIAlertAction(title: "Block", style: .destructive) { (_: UIAlertAction) in
-            SocketManager.sharedInstance.handleBlockUnblock(chatList: chatList, blockStatus: "1")
+            SocketIOManager.sharedInstance.handleBlockUnblock(chatList: chatList, blockStatus: "1")
             // self.blockRecruiter(chatList: chatList)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_: UIAlertAction) in

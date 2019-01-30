@@ -16,7 +16,13 @@ extension DMChatVC {
         
         guard let recruiterId = chatList?.recruiterId else { return }
         
-        let chats = Array(realm.objects(ChatModel.self).filter({ ($0.fromId == userId && $0.toId == recruiterId) || ($0.fromId == recruiterId && $0.toId == userId) })).sorted(by: { $0.timeStamp > $1.timeStamp })
+        let chats = Array(realm.objects(ChatModel.self).filter({ ($0.fromId == userId && $0.toId == recruiterId) || ($0.fromId == recruiterId && $0.toId == userId) })).sorted(by: { $0.timeStamp < $1.timeStamp })
+        
+        if notificationToken == nil {
+            notificationToken = realm.objects(ChatModel.self).observe({ [weak self] _ in
+                self?.getChats()
+            })
+        }
         
         let uniqueDateStrings = Array(NSOrderedSet(array: chats.map({ $0.dateString })))
         

@@ -114,13 +114,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func configureSocket() {
         if UserDefaultsManager.sharedInstance.isLoggedIn {
-            SocketManager.sharedInstance.establishConnection()
+            SocketIOManager.sharedInstance.establishConnection()
         }
     }
 
     func destroySocket() {
         if let _ = UserManager.shared().activeUser {
-            SocketManager.sharedInstance.closeConnection()
+            SocketIOManager.sharedInstance.closeConnection()
         }
     }
 
@@ -174,7 +174,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         // self.destroySocket()
         if let _ = UserManager.shared().activeUser {
-            SocketManager.sharedInstance.socket.disconnect()
+            SocketIOManager.sharedInstance.closeConnection()
         }
     }
 

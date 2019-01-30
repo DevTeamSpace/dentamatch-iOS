@@ -2,9 +2,17 @@ import SwiftyJSON
 import UIKit
 import UserNotifications
 import RealmSwift
+import SocketIO
 
-class SocketManager: NSObject, SocketConnectionDelegate {
-    static let sharedInstance = SocketManager()
+class SocketIOManager {
+    
+    static let sharedInstance = SocketIOManager()
+    
+    var isConnected: Bool {
+        return manager.defaultSocket.status == .connected
+    }
+    
+    private let manager = SocketManager(socketURL: URL(string: ConfigurationManager.sharedManager().socketEndPoint())!)
 
     typealias ReceiveMessageClosure = ((_ messageInfo: [String: AnyObject], _ isMine: Bool) -> Void)
     private var chatCompletionHandler: ReceiveMessageClosure?
@@ -18,19 +26,30 @@ class SocketManager: NSObject, SocketConnectionDelegate {
     typealias GetLeftMessagesCallBackClosure = ((_ messageInfo: [Any]) -> Void)
     private var getLeftMessagesCompletionHandler: GetLeftMessagesCallBackClosure?
 
-    var socket = SocketIOClient(socketURL: URL(string: ConfigurationManager.sharedManager().socketEndPoint())!)
-
-    override init() {
-        super.init()
+    init() {
+        configureSocket()
+    }
+    
+    private func configureSocket() {
+        
+        manager.defaultSocket.on(clientEvent: .connect) { [weak self] (data, ack) in
+            
+            if let _ = UserManager.shared().activeUser {
+                
+                self?.initServer()
+                self?.eventForReceiveMessage()
+                self?.eventForHistoryMessages()
+                self?.eventForLogoutPreviousSession()
+            }
+        }
     }
 
     func establishConnection() {
-        socket.delegate = self
-        socket.connect()
+        manager.defaultSocket.connect()
     }
 
     func closeConnection() {
-        socket.disconnect()
+        manager.defaultSocket.disconnect()
     }
 
     func initServer() {
@@ -45,7 +64,8 @@ class SocketManager: NSObject, SocketConnectionDelegate {
             "userName": UserManager.shared().activeUser.firstName!,
             "userType": 1,
         ] as [String: Any]
-        socket.emitWithAck("init", params).timingOut(after: 0) { (_: [Any]) in
+        
+        manager.defaultSocket.emitWithAck("init", params).timingOut(after: 0) { (_: [Any]) in
             // debugPrint(params)
             NotificationCenter.default.post(name: .refreshMessageList, object: nil)
             NotificationCenter.default.post(name: .refreshChat, object: nil)
@@ -62,7 +82,7 @@ class SocketManager: NSObject, SocketConnectionDelegate {
 
         // debugPrint(params)
 
-        socket.emitWithAck("blockUnblock", params).timingOut(after: 0) { (params: [Any]) in
+        manager.defaultSocket.emitWithAck("blockUnblock", params).timingOut(after: 0) { (params: [Any]) in
             // debugPrint(params)
             
             try! Realm().write {
@@ -84,11 +104,9 @@ class SocketManager: NSObject, SocketConnectionDelegate {
             "message": message,
         ]
 
-        socket.emitWithAck("sendMessage", params).timingOut(after: 0) { (params: [Any]) in
+        manager.defaultSocket.emitWithAck("sendMessage", params).timingOut(after: 0) { (params: [Any]) in
             self.handleReceivedChatMessage(params: params, isMine: true)
         }
-
-        // socket.emit("sendMessage", with: [params])
     }
 
     func updateMessageRead() {
@@ -97,7 +115,7 @@ class SocketManager: NSObject, SocketConnectionDelegate {
             "fromId": recruiterId,
         ]
 
-        socket.emitWithAck("updateReadCount", params).timingOut(after: 0) { (params: [Any]) in
+        manager.defaultSocket.emitWithAck("updateReadCount", params).timingOut(after: 0) { (params: [Any]) in
             self.handleUpdateUnreadCounter(params: params)
         }
     }
@@ -106,7 +124,7 @@ class SocketManager: NSObject, SocketConnectionDelegate {
         let params = [
             "fromId": UserManager.shared().activeUser.userId,
         ]
-        socket.emitWithAck("notOnChat", params).timingOut(after: 0) { (_: [Any]) in
+        manager.defaultSocket.emitWithAck("notOnChat", params).timingOut(after: 0) { (_: [Any]) in
             // debugPrint(params)
         }
     }
@@ -119,11 +137,11 @@ class SocketManager: NSObject, SocketConnectionDelegate {
         if UserDefaultsManager.sharedInstance.isHistoryRetrieved {
             return
         }
-        if socket.status == .connected {
+        if manager.defaultSocket.status == .connected {
             let params = [
                 "fromId": UserManager.shared().activeUser.userId,
             ]
-            socket.emitWithAck("getChatHistory", params).timingOut(after: 0) { (_: [Any]) in
+            manager.defaultSocket.emitWithAck("getChatHistory", params).timingOut(after: 0) { (_: [Any]) in
                 // debugPrint(params)
             }
         }
@@ -135,7 +153,7 @@ class SocketManager: NSObject, SocketConnectionDelegate {
             "fromId": UserManager.shared().activeUser.userId,
             "toId": recruiterId,
         ] as [String: Any]
-        socket.emit("getHistory", params)
+        manager.defaultSocket.emit("getHistory", params)
     }
 
     func getLeftMessages(recruiterId: String, messageId: Int, completionHandler: @escaping (_ messageInfo: [Any]) -> Void) {
@@ -145,45 +163,29 @@ class SocketManager: NSObject, SocketConnectionDelegate {
             "toId": recruiterId,
             "messageId": messageId,
         ] as [String: Any]
-        socket.emitWithAck("getLeftMessages", params).timingOut(after: 0) { (params: [Any]) in
+        manager.defaultSocket.emitWithAck("getLeftMessages", params).timingOut(after: 0) { (params: [Any]) in
             self.getLeftMessagesCompletionHandler!(params)
         }
     }
 
     private func listenForOtherMessages() {
-        socket.on("userTypingUpdate") { (dataArray, _) -> Void in
+        manager.defaultSocket.on("userTypingUpdate") { (dataArray, _) -> Void in
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "userTypingNotification"), object: dataArray[0] as? [String: AnyObject])
         }
     }
-
-    // MARK: - Socket Delegates
-
-    func didConnectSocket() {
-        // debugPrint("Socket Connected")
-        if let _ = UserManager.shared().activeUser {
-            initServer()
-            eventForReceiveMessage()
-            eventForHistoryMessages()
-            eventForLogoutPreviousSession()
-        }
-    }
-
-    func didDisconnectSocket() {
-        // debugPrint("Socket Disconnected")
-    }
-
+    
     // MARK: - Events for On
 
     func eventForReceiveMessage() {
-        socket.off("receiveMessage")
-        socket.on("receiveMessage") { (dataArray, _) -> Void in
+        manager.defaultSocket.off("receiveMessage")
+        manager.defaultSocket.on("receiveMessage") { (dataArray, _) -> Void in
             self.handleReceivedChatMessage(params: dataArray, isMine: false)
         }
     }
 
     func eventForLogoutPreviousSession() {
-        socket.off("logoutPreviousSession")
-        socket.on("logoutPreviousSession") { (dataArray, _) -> Void in
+        manager.defaultSocket.off("logoutPreviousSession")
+        manager.defaultSocket.on("logoutPreviousSession") { (dataArray, _) -> Void in
             if let messageDictionary = dataArray[0] as? [String: AnyObject], let logout = messageDictionary["logout"] as? Bool {
                 if logout == true {
                     Utilities.logOutOfInvalidToken()
@@ -195,8 +197,8 @@ class SocketManager: NSObject, SocketConnectionDelegate {
     }
 
     func eventForHistoryMessages() {
-        socket.off("getMessages")
-        socket.on("getMessages") { (dataArray, _) -> Void in
+        manager.defaultSocket.off("getMessages")
+        manager.defaultSocket.on("getMessages") { (dataArray, _) -> Void in
             let messageDictionary = dataArray
             if let _ = self.historyMessagesCompletionHandler {
                 self.historyMessagesCompletionHandler?(messageDictionary)
@@ -219,8 +221,6 @@ class SocketManager: NSObject, SocketConnectionDelegate {
     // MARK: - Handling
 
     func handleReceivedChatMessage(params: [Any], isMine: Bool) {
-        // var messageDictionary = [String: AnyObject]()
-        // debugPrint(params)
         guard let messageDictionary = params[0] as? [String: AnyObject] else {return}
 
         if let _ = self.chatCompletionHandler {

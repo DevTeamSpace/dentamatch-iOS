@@ -87,7 +87,7 @@ extension DMSettingVC: UITableViewDataSource, UITableViewDelegate {
                 AppDelegate.delegate().resetBadgeCount()
                 MixpanelOperations.mixpanepanelLogout()
                 self?.deleteFetchController()
-                SocketManager.sharedInstance.closeConnection()
+                SocketIOManager.sharedInstance.closeConnection()
                 UserManager.shared().deleteActiveUser()
                 UserDefaultsManager.sharedInstance.clearCache()
                 UserDefaultsManager.sharedInstance.isLoggedOut = true
