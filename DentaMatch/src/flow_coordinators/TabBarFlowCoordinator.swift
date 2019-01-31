@@ -4,6 +4,8 @@ import Swinject
 
 protocol TabBarFlowCoordinatorProtocol: BaseFlowProtocol {
     
+    func currentSelectedIndex() -> Int
+    func showTab(withIndex index: Int)
 }
 
 protocol TabBarFlowCoordinatorDelegate: class {
@@ -47,6 +49,14 @@ class TabBarFlowCoordinator: BaseFlowCoordinator, TabBarFlowCoordinatorProtocol 
         mainController.setTabBarIcons()
         
         return mainController
+    }
+    
+    func currentSelectedIndex() -> Int {
+        return viewController?.selectedIndex ?? 3
+    }
+    
+    func showTab(withIndex index: Int) {
+        viewController?.selectedIndex = index
     }
 }
 

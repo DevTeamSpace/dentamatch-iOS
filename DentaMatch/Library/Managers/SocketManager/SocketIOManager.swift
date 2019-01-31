@@ -228,13 +228,6 @@ class SocketIOManager {
             let chatObj = JSON(rawValue: messageDictionary)
             if chatObj!["messageListId"].exists() {
                 handleFirstTimeRecruiterMessage(chatObj: chatObj)
-            } else {
-                if chatObj!["fromId"].stringValue == recruiterId || chatObj!["toId"].stringValue == recruiterId {
-                    // If app is in background but same chat page is opened
-                    return
-                } else {
-                    makeNotificationData(chat: chatObj)
-                }
             }
         } else {
             // debugPrint("not on chat page")

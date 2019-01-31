@@ -193,10 +193,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func chatSocketNotificationTap(recruiterId: String) {
-        if let tabbar = ((UIApplication.shared.delegate) as? AppDelegate)?.window?.rootViewController as? TabBarVC {
-            tabbar.selectedIndex = 3
-            NotificationCenter.default.post(name: .chatRedirect, object: nil, userInfo: ["recruiterId": recruiterId])
-        }
+        kAppDelegate?.rootFlowCoordinator?.showMessagesTab()
+        NotificationCenter.default.post(name: .chatRedirect, object: nil, userInfo: ["recruiterId": recruiterId])
     }
 
     func showOverlay(isJobSeekerVerified: Bool = false) {

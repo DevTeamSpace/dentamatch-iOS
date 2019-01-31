@@ -13,6 +13,13 @@ class DMMessagesVC: DMBaseVC {
     var chatListArray = [ChatListModel]()
     weak var moduleOutput: DMMessagesModuleOutput?
     
+    var notificationToken: NotificationToken?
+    
+    deinit {
+        notificationToken?.invalidate()
+        NotificationCenter.default.removeObserver(self, name: .refreshMessageList, object: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(redirectToChat), name: .chatRedirect, object: nil)
@@ -79,7 +86,15 @@ class DMMessagesVC: DMBaseVC {
         messageListTableView.delegate = self
         
         let realm = try! Realm()
-        let chatLists = realm.objects(ChatListModel.self).sorted(by: { $0.timeStamp > $1.timeStamp })
+        
+        let chatListModels = realm.objects(ChatListModel.self)
+        let chatLists = chatListModels.sorted(by: { $0.timeStamp > $1.timeStamp })
+        
+        if notificationToken == nil {
+            notificationToken = chatListModels.observe({ [weak self] _ in
+                self?.getMessageList()
+            })
+        }
         
         chatListArray.removeAll()
         chatListArray.append(contentsOf: chatLists)
@@ -184,9 +199,6 @@ class DMMessagesVC: DMBaseVC {
         }
     }*/
     
-    deinit {
-         NotificationCenter.default.removeObserver(self, name: .refreshMessageList, object: nil)
-    }
 }
 
 extension DMMessagesVC: ChatTapNotificationDelegate {

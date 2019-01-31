@@ -21,6 +21,7 @@ extension DMChatVC {
         if notificationToken == nil {
             notificationToken = realm.objects(ChatModel.self).observe({ [weak self] _ in
                 self?.getChats()
+                SocketIOManager.sharedInstance.updateMessageRead()
             })
         }
         

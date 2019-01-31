@@ -4,7 +4,13 @@ import RealmSwift
 
 extension DMMessagesVC {
     func getChatListAPI(isLoaderHidden: Bool = false) {
-        if !isLoaderHidden { showLoader() }
+        
+        getMessageList()
+        
+        if !isLoaderHidden, chatListArray.isEmpty {
+            showLoader()
+        }
+        
         APIManager.apiGet(serviceName: Constants.API.getChatUserList, parameters: [:]) {[weak self] (response: JSON?, error: NSError?) in
             self?.refreshControl.endRefreshing()
             self?.hideLoader()

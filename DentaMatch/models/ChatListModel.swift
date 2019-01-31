@@ -31,6 +31,6 @@ class ChatListModel: Object {
         timeStamp = chatListObj["timestamp"].doubleValue
         officeName = chatListObj["name"].stringValue
         lastMessageId = chatListObj["messageId"].stringValue
-        unreadCount = 1
+        unreadCount = chatListObj["unreadCount"].intValue
     }
 }

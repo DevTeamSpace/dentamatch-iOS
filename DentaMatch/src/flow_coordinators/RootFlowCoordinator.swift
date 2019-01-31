@@ -5,17 +5,29 @@ import Swinject
 protocol RootFlowCoordinatorProtocol: BaseFlowProtocol {
     
     func logout()
+    func canShowChatNotification() -> Bool
+    func showMessagesTab()
 }
 
 class RootFlowCoordinator: BaseFlowCoordinator, RootFlowCoordinatorProtocol {
 
     weak var viewController: UIViewController?
+    
+    weak var tabbarCoordinator: TabBarFlowCoordinatorProtocol?
 
     func launchViewController() -> UIViewController? {
         
         guard let vc = RootScreenInitializer.initialize(moduleOutput: self) else { return nil }
         viewController = vc
         return vc
+    }
+    
+    func canShowChatNotification() -> Bool {
+        return tabbarCoordinator?.currentSelectedIndex() != 3
+    }
+    
+    func showMessagesTab() {
+        tabbarCoordinator?.showTab(withIndex: 3)
     }
 }
 
@@ -47,6 +59,7 @@ extension RootFlowCoordinator: RootScreenModuleOutput {
         guard let tabbarCoordinator = appContainer.resolve(TabBarFlowCoordinatorProtocol.self, argument: self as TabBarFlowCoordinatorDelegate),
             let vc = tabbarCoordinator.launchViewController() else { return }
         
+        self.tabbarCoordinator = tabbarCoordinator
         addChildFlowCoordinator(tabbarCoordinator)
         viewController?.present(vc, animated: true)
     }

@@ -49,6 +49,7 @@ class DMChatVC: DMBaseVC {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(refreshChat), name: .refreshChat, object: nil)
+       
         navigationItem.title = chatList?.officeName
         navigationItem.leftBarButtonItem = backBarButton()
         SocketIOManager.sharedInstance.recruiterId = (chatList?.recruiterId)!
