@@ -1,16 +1,6 @@
-//
-//  DMRegisterMapsVC.swift
-//  DentaMatch
-//
-//  Created by Rajan Maheshwari on 26/10/16.
-//  Copyright © 2016 Appster. All rights reserved.
-//
-
 import GoogleMaps
 import GooglePlaces
 import UIKit
-
-
 
 struct Location {
     var postalCode = ""
@@ -46,15 +36,15 @@ class DMRegisterMapsVC: DMBaseVC {
     weak var delegate: LocationAddressDelegate?
     var location = Location()
     
-    weak var moduleOutput: DMRegisterMapsModuleOutput?
-
-    // MARK: - View LifeCycle
+    var viewOutput: DMRegisterMapsViewOutput?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
         navigationController?.setNavigationBarHidden(true, animated: true)
         setup()
+        
+        viewOutput?.didLoad()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -231,7 +221,20 @@ class DMRegisterMapsVC: DMBaseVC {
     }
 }
 
-// MARK: - SearchBar Delegates
+extension DMRegisterMapsVC: DMRegisterMapsViewInput {
+    
+    func configureViewInput(fromSettings: Bool, delegate: LocationAddressDelegate?) {
+        self.fromSettings = fromSettings
+        self.delegate = delegate
+    }
+    
+    func selectedLocation(_ location: Location) {
+        if let delegate = self.delegate {
+            addressSelected = placeSearchBar.text!
+            delegate.locationAddress(location: location)
+        }
+    }
+}
 
 extension DMRegisterMapsVC: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_: UISearchBar) {
@@ -244,7 +247,7 @@ extension DMRegisterMapsVC: UISearchBarDelegate {
                                 self.alertMessage(title: "Postal Code", message: "No Postal Code found. Try some other nearby location", buttonText: "Ok", completionHandler: nil)
                                 return
                             }
-                            self.locationUpdateAPI(location: self.location)
+                            self.viewOutput?.locationUpdateApi(location: self.location)
                         } else {
                             if let delegate = self.delegate {
                                 self.addressSelected = self.placeSearchBar.text!

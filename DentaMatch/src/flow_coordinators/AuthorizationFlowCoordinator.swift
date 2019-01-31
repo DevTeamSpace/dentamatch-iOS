@@ -20,9 +20,9 @@ class AuthorizationFlowCoordinator: BaseFlowCoordinator, AuthorizationFlowCoordi
     }
     
     func launchViewController() -> UIViewController? {
-        guard let vc = DMRegistrationContainerInitializer.initialize(moduleOutput: self) else { return nil }
+        guard let moduleInput = DMRegistrationContainerInitializer.initialize(moduleOutput: self) else { return nil }
         
-        let navController = UINavigationController(rootViewController: vc)
+        let navController = UINavigationController(rootViewController: moduleInput.viewController())
         navController.setNavigationBarHidden(true, animated: false)
         navigationController = navController
         return navController
@@ -31,23 +31,24 @@ class AuthorizationFlowCoordinator: BaseFlowCoordinator, AuthorizationFlowCoordi
 
 extension AuthorizationFlowCoordinator: DMRegistrationContainerModuleOutput {
     
-    func getLoginController() -> DMLoginVC? {
-        return DMLoginInitializer.initialize(moduleOutput: self) as? DMLoginVC
+    func getLoginController() -> DMLoginModuleInput? {
+        return DMLoginInitializer.initialize(moduleOutput: self)
     }
     
-    func getRegistrationController() -> DMRegistrationVC? {
-        return DMRegistrationInitializer.initialize(moduleOutput: self) as? DMRegistrationVC
+    func getRegistrationController() -> DMRegistrationModuleInput? {
+        return DMRegistrationInitializer.initialize(moduleOutput: self)
     }
 }
 
 extension AuthorizationFlowCoordinator: DMLoginModuleOutput {
     
     func showForgotPassword() {
-        guard let vc = DMForgotPasswordInitializer.initialize(moduleOutput: self) else { return }
-        navigationController?.pushViewController(vc, animated: true)
+        guard let moduleInput = DMForgotPasswordInitializer.initialize(moduleOutput: self) else { return }
+        navigationController?.pushViewController(moduleInput.viewController(), animated: true)
     }
     
     func showTabBar() {
+        UserDefaultsManager.sharedInstance.isProfileSkipped = true
         navigationController?.dismiss(animated: true)
     }
     
@@ -59,8 +60,8 @@ extension AuthorizationFlowCoordinator: DMLoginModuleOutput {
 extension AuthorizationFlowCoordinator: DMRegistrationModuleOutput {
     
     func showTermsAndConditions(isPrivacyPolicy: Bool) {
-        guard let vc = DMTermsAndConditionsInitializer.initialize(isPrivacyPolicy: isPrivacyPolicy, moduleOutput: self) else { return }
-        navigationController?.pushViewController(vc, animated: true)
+        guard let moduleInput = DMTermsAndConditionsInitializer.initialize(isPrivacyPolicy: isPrivacyPolicy, moduleOutput: self) else { return }
+        navigationController?.pushViewController(moduleInput.viewController(), animated: true)
     }
 }
 

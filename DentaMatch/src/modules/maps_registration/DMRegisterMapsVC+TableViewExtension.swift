@@ -1,16 +1,6 @@
-//
-//  DMRegisterMapsVC+TableViewExtension.swift
-//  DentaMatch
-//
-//  Created by Rajan Maheshwari on 09/01/17.
-//  Copyright © 2017 Appster. All rights reserved.
-//
-
 import Foundation
 
 extension DMRegisterMapsVC: UITableViewDataSource, UITableViewDelegate {
-
-    // MARK: - TableView DataSource/Delegates
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return placesArray.count

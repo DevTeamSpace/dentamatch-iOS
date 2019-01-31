@@ -103,7 +103,7 @@ class UserManager: NSObject {
 }
 
 extension UserManager {
-    func loginResponseHandler(response: JSON?, completionHandler: ((_ success: Bool, _ message: String) -> Void)?) {
+    func loginResponseHandler(response: JSON?, completionHandler: ((_ success: Bool, _ message: String) -> Void)? = nil) {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
                 let user = User()

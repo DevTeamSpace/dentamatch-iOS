@@ -1,11 +1,3 @@
-//
-//  DMRegistrationContainer.swift
-//  DentaMatch
-//
-//  Created by Rajan Maheshwari on 26/10/16.
-//  Copyright © 2016 Appster. All rights reserved.
-//
-
 import UIKit
 
 class DMRegistrationContainer: DMBaseVC {
@@ -14,39 +6,18 @@ class DMRegistrationContainer: DMBaseVC {
     @IBOutlet var loginButton: UIButton!
     @IBOutlet var registrationHeaderImageView: UIImageView!
 
+    var viewOutput: DMRegistrationContainerViewOutput?
+    
     weak var registrationVC: DMRegistrationVC?
     weak var loginVC: DMLoginVC?
     var isRegistration = true
-    
-    weak var moduleOutput: DMRegistrationContainerModuleOutput?
 
     // MARK: - View LifeCycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        registrationVC = moduleOutput?.getRegistrationController()
-        registrationVC?.view.frame = CGRect(x: 0, y: topView.frame.size.height, width: view.frame.size.width, height: view.frame.size.height - topView.frame.size.height)
-
-        loginVC = moduleOutput?.getLoginController()
-        loginVC?.view.frame = CGRect(x: 0, y: topView.frame.size.height, width: view.frame.size.width, height: view.frame.size.height - topView.frame.size.height)
-
-        addChild(loginVC!)
-        view.addSubview((loginVC?.view)!)
-        addChild(registrationVC!)
-        view.addSubview((registrationVC?.view)!)
-
-        if UserDefaultsManager.sharedInstance.isLoggedOut {
-            registrationVC?.didMove(toParent: self)
-            loginVC?.didMove(toParent: self)
-            registrationVC?.view.alpha = 0.0
-            isRegistration = false
-
-        } else {
-            loginVC?.didMove(toParent: self)
-            registrationVC?.didMove(toParent: self)
-            loginVC?.view.alpha = 0.0
-        }
+        initSubModules()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -66,10 +37,6 @@ class DMRegistrationContainer: DMBaseVC {
             registrationButton.titleLabel?.font = UIFont.fontLight(fontSize: 14.0)
             loginButton.titleLabel?.font = UIFont.fontSemiBold(fontSize: 14.0)
             UIView.makeTip(view: loginButton, size: 8, x: loginButton.frame.midX / 2, y: loginButton.frame.midY)
-        }
-
-        if UserDefaultsManager.sharedInstance.isLoggedOut {
-            // goToLoginFromLogout()
         }
     }
 
@@ -139,5 +106,38 @@ class DMRegistrationContainer: DMBaseVC {
 
     override func touchesBegan(_: Set<UITouch>, with _: UIEvent?) {
         view.endEditing(true)
+    }
+}
+
+extension DMRegistrationContainer: DMRegistrationContainerViewInput {
+    
+}
+
+extension DMRegistrationContainer {
+    
+    private func initSubModules() {
+        
+        registrationVC = viewOutput?.getRegistrationController()
+        registrationVC?.view.frame = CGRect(x: 0, y: topView.frame.size.height, width: view.frame.size.width, height: view.frame.size.height - topView.frame.size.height)
+        
+        loginVC = viewOutput?.getLoginController()
+        loginVC?.view.frame = CGRect(x: 0, y: topView.frame.size.height, width: view.frame.size.width, height: view.frame.size.height - topView.frame.size.height)
+        
+        addChild(loginVC!)
+        view.addSubview((loginVC?.view)!)
+        addChild(registrationVC!)
+        view.addSubview((registrationVC?.view)!)
+        
+        if UserDefaultsManager.sharedInstance.isLoggedOut {
+            registrationVC?.didMove(toParent: self)
+            loginVC?.didMove(toParent: self)
+            registrationVC?.view.alpha = 0.0
+            isRegistration = false
+            
+        } else {
+            loginVC?.didMove(toParent: self)
+            registrationVC?.didMove(toParent: self)
+            loginVC?.view.alpha = 0.0
+        }
     }
 }

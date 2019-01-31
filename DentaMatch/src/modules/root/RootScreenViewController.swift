@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-class RootScreenViewController: UIViewController {
+class RootScreenViewController: DMBaseVC {
     
     var viewOutput: RootScreenViewOutput?
     

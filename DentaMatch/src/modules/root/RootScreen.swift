@@ -23,6 +23,6 @@ protocol RootScreenViewOutput: BaseViewOutput {
     func didAppear()
 }
 
-protocol RootScreenPresenterProtocol: RootScreenModuleInput, RootScreenViewOutput {
+protocol RootScreenPresenterProtocol: PresenterProtocol, RootScreenModuleInput, RootScreenViewOutput {
     
 }

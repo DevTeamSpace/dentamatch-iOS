@@ -65,8 +65,8 @@ extension RootFlowCoordinator: RootScreenModuleOutput {
     }
     
     func showOnboarding() {
-        guard let vc = DMOnboardingInitializer.initialize(moduleOutput: self) else { return }
-        viewController?.present(vc, animated: true)
+        guard let moduleOutput = DMOnboardingInitializer.initialize(moduleOutput: self) else { return }
+        viewController?.present(moduleOutput.viewController(), animated: true)
     }
     
     func showRegistration() {

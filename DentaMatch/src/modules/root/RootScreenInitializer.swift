@@ -25,5 +25,4 @@ class RootScreenInitializer {
             RootScreenViewController(nibName: "RootScreenView", bundle: nil)
         }
     }
-
 }

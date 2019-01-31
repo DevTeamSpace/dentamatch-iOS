@@ -1,11 +1,3 @@
-//
-//  DMTermsAndConditionsVC.swift
-//  DentaMatch
-//
-//  Created by Rajan Maheshwari on 27/10/16.
-//  Copyright © 2016 Appster. All rights reserved.
-//
-
 import UIKit
 
 class FullScreenWebView: UIWebView {
@@ -17,16 +9,13 @@ class FullScreenWebView: UIWebView {
 
 class DMTermsAndConditionsVC: DMBaseVC {
     @IBOutlet var webView: FullScreenWebView!
-    var isPrivacyPolicy = false
-    var request: URLRequest!
-
-    weak var moduleOutput: DMTermsAndConditionsModuleOutput?
-    // MARK: - View LifeCycle
+    
+    var viewOutput: DMTermsAndConditionsViewOutput?
 
     override func viewDidLoad() {
-        // Do any additional setup after loading the view.
         super.viewDidLoad()
-        setup()
+        
+        viewOutput?.didLoad()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -43,13 +32,15 @@ class DMTermsAndConditionsVC: DMBaseVC {
         
         hideLoader()
     }
+}
 
-    // MARK: - Private Methods
-
-    func setup() {
+extension DMTermsAndConditionsVC: DMTermsAndConditionsViewInput {
+    
+    func configureWebView(isPrivacyPolicy: Bool) {
+        
         showLoader()
         title = isPrivacyPolicy ? "PRIVACY POLICY" : "TERMS & CONDITIONS"
-        request = isPrivacyPolicy ?
+        let request = isPrivacyPolicy ?
             URLRequest(url: URL(string: Constants.API.privacyPolicyURL)!) :
             URLRequest(url: URL(string: Constants.API.termsAndConditionsURL)!)
         webView.delegate = self
@@ -60,8 +51,6 @@ class DMTermsAndConditionsVC: DMBaseVC {
 }
 
 extension DMTermsAndConditionsVC: UIWebViewDelegate {
-
-    // MARK: - WebView Delegates
 
     func webView(_: UIWebView, didFailLoadWithError _: Error) {
         hideLoader()

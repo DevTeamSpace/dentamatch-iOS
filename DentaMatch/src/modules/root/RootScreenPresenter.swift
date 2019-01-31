@@ -1,13 +1,20 @@
 import Foundation
 
 class RootScreenPresenter: RootScreenPresenterProtocol {
-
+    
     unowned let viewInput: RootScreenViewInput
     unowned let moduleOutput: RootScreenModuleOutput
 
     init(viewInput: RootScreenViewInput, moduleOutput: RootScreenModuleOutput) {
         self.viewInput = viewInput
         self.moduleOutput = moduleOutput
+    }
+}
+
+extension RootScreenPresenter: RootScreenModuleInput {
+    
+    func viewController() -> UIViewController {
+        return viewInput.viewController()
     }
 }
 

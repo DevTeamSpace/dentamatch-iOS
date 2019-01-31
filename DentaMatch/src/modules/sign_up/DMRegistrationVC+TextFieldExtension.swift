@@ -1,11 +1,3 @@
-//
-//  DMRegistrationVC+TextViewExtension.swift
-//  DentaMatch
-//
-//  Created by Rajan Maheshwari on 05/01/17.
-//  Copyright © 2017 Appster. All rights reserved.
-//
-
 import Foundation
 
 extension DMRegistrationVC: UITextFieldDelegate {
@@ -52,18 +44,10 @@ extension DMRegistrationVC: UITextFieldDelegate {
         if let cell = self.registrationTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as?
             RegistrationTableViewCell {
             if textField == cell.preferredLocationTextField {
-//                let mapVC = UIStoryboard.registrationStoryBoard().instantiateViewController(type: DMRegisterMapsVC.self)!
-//                mapVC.delegate = self
-//                mapVC.fromRegistration = true
-//                self.navigationController?.pushViewController(mapVC, animated: true)
-//                self.view.endEditing(true)
-//                return true
-                if preferredLocations.count == 0 {
-                    getPreferredLocations(shouldShowKeyboard: true)
-                    return false
-                }
+                cell.preferredLocationTextField.inputView = viewOutput?.preferredLocations.count == 0 ? nil : preferredLocationPickerView
             }
         }
+        
         if let textField = textField as? AnimatedLeftViewPHTextField {
             textField.layer.borderColor = Constants.Color.textFieldColorSelected.cgColor
             textField.leftViewLabel?.textColor = Constants.Color.textFieldColorSelected

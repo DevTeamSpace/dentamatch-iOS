@@ -93,8 +93,8 @@ extension ProfileFlowCoordinator: DMSettingsModuleOutput {
     }
     
     func showTermsAndConditions(isPrivacyPolicy: Bool) {
-        guard let vc = DMTermsAndConditionsInitializer.initialize(isPrivacyPolicy: isPrivacyPolicy, moduleOutput: self) else { return }
-        navigationController?.pushViewController(vc, animated: true)
+        guard let moduleInput = DMTermsAndConditionsInitializer.initialize(isPrivacyPolicy: isPrivacyPolicy, moduleOutput: self) else { return }
+        navigationController?.pushViewController(moduleInput.viewController(), animated: true)
     }
     
     func showResetPassword() {
@@ -103,8 +103,8 @@ extension ProfileFlowCoordinator: DMSettingsModuleOutput {
     }
     
     func showRegisterMaps(delegate: LocationAddressDelegate?) {
-        guard let vc = DMRegisterMapsInitializer.initialize(fromSettings: true, delegate: delegate, moduleOutput: self) else { return }
-        navigationController?.pushViewController(vc, animated: true)
+        guard let moduleInput = DMRegisterMapsInitializer.initialize(fromSettings: true, delegate: delegate, moduleOutput: self) else { return }
+        navigationController?.pushViewController(moduleInput.viewController(), animated: true)
     }
 }
 
