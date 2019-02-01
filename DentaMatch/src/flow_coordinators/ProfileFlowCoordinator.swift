@@ -130,8 +130,8 @@ extension ProfileFlowCoordinator: DMNotificationsModuleOutput {
 extension ProfileFlowCoordinator: DMPublicProfileModuleOutput {
     
     func showStates(preselectedState: String?, delegate: SearchStateViewControllerDelegate?) {
-        guard let vc = SearchStateInitializer.initialize(preselectedState: preselectedState, delegate: delegate, moduleOutput: self) else { return }
-        navigationController?.pushViewController(vc, animated: true)
+        guard let moduleInput = SearchStateInitializer.initialize(preselectedState: preselectedState, delegate: delegate, moduleOutput: self) else { return }
+        navigationController?.pushViewController(moduleInput.viewController(), animated: true)
     }
 }
 

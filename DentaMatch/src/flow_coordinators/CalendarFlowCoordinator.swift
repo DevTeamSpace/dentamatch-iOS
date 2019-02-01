@@ -31,7 +31,8 @@ class CalendarFlowCoordinator: BaseFlowCoordinator, CalendarFlowCoordinatorProto
 extension CalendarFlowCoordinator: DMCalendarModuleOutput {
     
     func showCalendar() {
-        guard let vc = DMCalendarSetAvailabilityInitializer.initialize(moduleOutput: self) else { return }
+        guard let moduleInput = DMCalendarSetAvailabilityInitializer.initialize(moduleOutput: self) else { return }
+        let vc = moduleInput.viewController()
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }

@@ -1,11 +1,3 @@
-//
-//  DMJobTitleSelectionVC+TextFieldDelegates.swift
-//  DentaMatch
-//
-//  Created by Rajan Maheshwari on 06/11/17.
-//  Copyright © 2017 Appster. All rights reserved.
-//
-
 import Foundation
 
 extension DMJobTitleSelectionVC: UITextViewDelegate {

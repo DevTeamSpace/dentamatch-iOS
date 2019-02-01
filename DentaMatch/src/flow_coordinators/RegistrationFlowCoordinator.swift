@@ -21,17 +21,17 @@ class RegistrationFlowCoordinator: BaseFlowCoordinator, RegistrationFlowCoordina
     }
     
     func launchViewController() -> UIViewController? {
-        guard let vc = DMJobTitleSelectionInitializer.initialize(moduleOutput: self) else { return nil }
+        guard let moduleInput = DMJobTitleSelectionInitializer.initialize(moduleOutput: self) else { return nil }
         
-        let navController = UINavigationController(rootViewController: vc)
+        let navController = UINavigationController(rootViewController: moduleInput.viewController())
         navigationController = navController
         return navController
     }
     
     func launchViewControllerFromPending() -> UIViewController? {
-        guard let vc = DMProfileSuccessPendingInitializer.initialize(fromRoot: true, moduleOutput: self) else { return nil }
+        guard let moduleInput = DMProfileSuccessPendingInitializer.initialize(fromRoot: true, moduleOutput: self) else { return nil }
         
-        let navController = UINavigationController(rootViewController: vc)
+        let navController = UINavigationController(rootViewController: moduleInput.viewController())
         navigationController = navController
         return navController
     }
@@ -44,13 +44,13 @@ extension RegistrationFlowCoordinator: DMJobTitleSelectionModuleOutput {
     }
     
     func showStates(preselectedState: String?, delegate: SearchStateViewControllerDelegate?) {
-        guard let vc = SearchStateInitializer.initialize(preselectedState: preselectedState, delegate: delegate, moduleOutput: self) else { return }
-        navigationController?.pushViewController(vc, animated: true)
+        guard let moduleInput = SearchStateInitializer.initialize(preselectedState: preselectedState, delegate: delegate, moduleOutput: self) else { return }
+        navigationController?.pushViewController(moduleInput.viewController(), animated: true)
     }
     
     func showSuccessPending(isEmailVerified: Bool, isLicenseRequired: Bool, fromRoot: Bool) {
-        guard let vc = DMProfileSuccessPendingInitializer.initialize(isEmailVerified: isEmailVerified, isLicenseRequired: isLicenseRequired, fromRoot: fromRoot, moduleOutput: self) else { return }
-        navigationController?.pushViewController(vc, animated: true)
+        guard let moduleInput = DMProfileSuccessPendingInitializer.initialize(isEmailVerified: isEmailVerified, isLicenseRequired: isLicenseRequired, fromRoot: fromRoot, moduleOutput: self) else { return }
+        navigationController?.pushViewController(moduleInput.viewController(), animated: true)
     }
 }
 
@@ -62,8 +62,8 @@ extension RegistrationFlowCoordinator: SearchStateModuleOutput {
 extension RegistrationFlowCoordinator: DMProfileSuccessPendingModuleOutput {
     
     func showCalendar(fromJobSelection: Bool) {
-        guard let vc = DMCalendarSetAvailabilityInitializer.initialize(fromJobSelection: fromJobSelection, moduleOutput: self) else { return }
-        navigationController?.pushViewController(vc, animated: true)
+        guard let moduleInput = DMCalendarSetAvailabilityInitializer.initialize(fromJobSelection: fromJobSelection, moduleOutput: self) else { return }
+        navigationController?.pushViewController(moduleInput.viewController(), animated: true)
     }
 }
 

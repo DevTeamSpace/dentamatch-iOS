@@ -1,11 +1,3 @@
-//
-//  DMJobTitleSelectionVC+TableExtension.swift
-//  DentaMatch
-//
-//  Created by Rajan Maheshwari on 06/11/17.
-//  Copyright © 2017 Appster. All rights reserved.
-//
-
 import Foundation
 
 extension DMJobTitleSelectionVC: UITableViewDataSource, UITableViewDelegate {
@@ -13,13 +5,13 @@ extension DMJobTitleSelectionVC: UITableViewDataSource, UITableViewDelegate {
         if indexPath.row > 2 {
             return 110
         }
-        if selectedJobTitle == nil {
+        if viewOutput?.selectedJobTitle == nil {
             if indexPath.row == 1 || indexPath.row == 2 {
                 return 0
             }
             return UITableView.automaticDimension
         }
-        if let selectedJobTitle = selectedJobTitle, selectedJobTitle.isLicenseRequired == false {
+        if let selectedJobTitle = viewOutput?.selectedJobTitle, selectedJobTitle.isLicenseRequired == false {
             if indexPath.row == 1 || indexPath.row == 2 {
                 return 0
             }

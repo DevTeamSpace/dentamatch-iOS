@@ -18,12 +18,15 @@ class DMProfileSuccessPending: DMBaseVC {
     var isEmailVerified = false
     var fromRoot = false
     
-    weak var moduleOutput: DMProfileSuccessPendingModuleOutput?
+    var viewOutput: DMProfileSuccessPendingViewOutput?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         addNotificationObserver()
         setup()
+        
+        viewOutput?.didLoad()
     }
 
     func addNotificationObserver() {
@@ -36,36 +39,18 @@ class DMProfileSuccessPending: DMBaseVC {
 
     @objc func willEnterForgeGroundCalled() {
         if isEmailVerified == false {
-            verifyEmailAPI()
+            viewOutput?.verifyEmail(silent: true)
         }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // print("viewWillDisappear called ")
+        
         removeObserversForNotification()
     }
 
     deinit {
-        // print("deinit called ")
         self.removeObserversForNotification()
-        // Logger.debug("deinit TLStory")
-    }
-
-    func verifyEmailAPI() {
-        verifyEmail(completionHandler: { (isVerified: Bool, _: String, error: NSError?) in
-            if error == nil && isVerified {
-                DispatchQueue.main.async {
-                    self.showPendingCongrats()
-                    if self.isEmailVerified {
-                        return
-                    }
-                }
-            } else {
-                self.hideAll(isHidden: false)
-                self.showUIForVerifyEmail()
-            }
-        })
     }
 
     func hideAll(isHidden: Bool) {
@@ -78,6 +63,7 @@ class DMProfileSuccessPending: DMBaseVC {
     func setup() {
         if fromRoot {
             hideAll(isHidden: true)
+            viewOutput?.verifyEmail(silent: true)
         }
         if !isEmailVerified {
             showUIForVerifyEmail()
@@ -114,37 +100,43 @@ class DMProfileSuccessPending: DMBaseVC {
 
     @IBAction func letsGoButtonPressed(_: Any) {
         if !isEmailVerified {
-            verifyEmail(completionHandler: { (isVerified: Bool, message: String, error: NSError?) in
-                if error == nil {
-                    if isVerified {
-                        DispatchQueue.main.async {
-                            self.showPendingCongrats()
-                        }
-                    } else {
-                        DispatchQueue.main.async {
-                            self.alertMessage(title: "Message", message: message, buttonText: "Ok", completionHandler: nil)
-                        }
-                    }
-                }
-            })
-            // print("Check with new email verify api")
+            viewOutput?.verifyEmail(silent: false)
         } else {
-            goToCalendar()
+            viewOutput?.openCalendar()
         }
     }
 
     func showPendingCongrats() {
         isEmailVerified = true
         if UserManager.shared().activeUser.isJobSeekerVerified == true {
-            // congrats UI
             showUIForCongrats()
         } else {
-            // pending UI
+
             showUIForPending()
         }
     }
+}
 
-    func goToCalendar() {
-        moduleOutput?.showCalendar(fromJobSelection: true)
+extension DMProfileSuccessPending: DMProfileSuccessPendingViewInput {
+    
+    func configure(isEmailVerified: Bool, isLicenseRequired: Bool, fromRoot: Bool) {
+        self.isEmailVerified = isEmailVerified
+        self.isLicenseRequired = isLicenseRequired
+        self.fromRoot = fromRoot
+    }
+    
+    func configureViewOnVerify(isVerified: Bool, message: String, silent: Bool) {
+        
+        if isVerified {
+            showPendingCongrats()
+            return
+        }
+        
+        if !silent {
+            showAlertMessage(title: "Message", body: message)
+        } else {
+            hideAll(isHidden: false)
+            showUIForVerifyEmail()
+        }
     }
 }

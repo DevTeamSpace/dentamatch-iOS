@@ -1,11 +1,3 @@
-//
-//  SearchStateViewController.swift
-//  DentaMatch
-//
-//  Created by Prashant Gautam on 01/11/18.
-//  Copyright © 2018 Appster. All rights reserved.
-//
-
 import UIKit
 import SwiftyJSON
 protocol SearchStateViewControllerDelegate:class {
@@ -15,22 +7,26 @@ protocol SearchStateViewControllerDelegate:class {
 class SearchStateViewController: DMBaseVC {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var searchField: SearchField!
+    
     var states: [State] = [State]()
     var searchStates: [State] = [State]()
     var isSearchOn: Bool = false
     weak var delegate:SearchStateViewControllerDelegate?
     var preSelectedState: String?
     
-    weak var moduleOutput: SearchStateModuleOutput?
+    var viewOutput: SearchStateViewOutput?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         searchField.textChange { [weak self] text in
             self?.searchAction(text)
         }
-        self.getStates()
+
         navigationItem.leftBarButtonItem = leftBarButton()
         navigationItem.rightBarButtonItem = rightBarButton()
+        
+        viewOutput?.didLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -117,48 +113,18 @@ class SearchStateViewController: DMBaseVC {
 
 }
 
-extension SearchStateViewController {
+extension SearchStateViewController: SearchStateViewInput {
     
-    func getStates(){
-        showLoader()
-        APIManager.apiGet(serviceName: Constants.API.listStatesApi, parameters: [:]) {[weak self] (response: JSON?, error: NSError?) in
-            self?.hideLoader()
-            if error != nil {
-                self?.makeToast(toastString: (error?.localizedDescription)!)
-                return
-            }
-            guard let _ = response else {
-                self?.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
-                return
-            }
-            LogManager.logDebug(response?.description)
-             self?.handleResponse( response)
-        }
+    func configureView(preselectedState: String?, delegate: SearchStateViewControllerDelegate?) {
+        preSelectedState = preselectedState
+        self.delegate = delegate
     }
     
-    func handleResponse(_ response: JSON?){
-        if let response = response {
-            if response[Constants.ServerKey.status].boolValue {
-                //let result = response[Constants.ServerKey.result]
-                let stateDicts = response[Constants.ServerKey.result][Constants.ServerKey.statelist].array
-                states.removeAll()
-                for object in stateDicts! {
-                    let state = State(object)
-                    states.append(state)
-                }
-                self.setSelectedState(self.preSelectedState)
-                self.tableView.reloadData()
-            }
-        }else {
-            states.removeAll()
-            DispatchQueue.main.async {
-                //self.lblResultCount.text = Constants.Strings.zero + Constants.Strings.whiteSpace + Constants.Strings.resultsFound
-                self.tableView.reloadData()
-            }
-           // makeToast(toastString: response![Constants.ServerKey.message].stringValue)
-        }
+    func updateStates(_ states: [State]) {
+        self.states = states
+        setSelectedState(preSelectedState)
+        self.tableView.reloadData()
     }
-
 }
 
 

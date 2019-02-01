@@ -20,6 +20,6 @@ protocol DMRegistrationContainerViewOutput: BaseViewOutput {
     func getRegistrationController() -> DMRegistrationVC?
 }
 
-protocol DMRegistrationContainerPresenterProtocol: PresenterProtocol, DMRegistrationContainerModuleInput, DMRegistrationContainerViewOutput {
+protocol DMRegistrationContainerPresenterProtocol: DMRegistrationContainerModuleInput, DMRegistrationContainerViewOutput {
     
 }

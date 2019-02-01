@@ -1,6 +1,5 @@
 import Foundation
 
-
 protocol RootScreenModuleInput: BaseModuleInput {
     
 }
@@ -23,6 +22,6 @@ protocol RootScreenViewOutput: BaseViewOutput {
     func didAppear()
 }
 
-protocol RootScreenPresenterProtocol: PresenterProtocol, RootScreenModuleInput, RootScreenViewOutput {
+protocol RootScreenPresenterProtocol: RootScreenModuleInput, RootScreenViewOutput {
     
 }
