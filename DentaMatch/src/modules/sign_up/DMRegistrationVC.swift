@@ -24,8 +24,8 @@ class DMRegistrationVC: DMBaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setup()
         viewOutput?.didLoad()
+        setup()
     }
 
     override func viewWillAppear(_ animated: Bool) {

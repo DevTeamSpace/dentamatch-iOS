@@ -1,11 +1,3 @@
-//
-//  DMJobDetaiVC+TableViewExtension.swift
-//  DentaMatch
-//
-//  Created by Shailesh Tyagi on 30/01/17.
-//  Copyright © 2017 Appster. All rights reserved.
-//
-
 import Foundation
 import SwiftyJSON
 
@@ -231,28 +223,7 @@ extension DMJobDetailVC: UITableViewDataSource, UITableViewDelegate, JobDescript
     //MARK: - DentistDetailCellDelegate Method
     //*****************************************//
     func saveOrUnsaveJob() {
-        var status: Int!
-        if job?.isSaved == 1 {
-            status = 0
-        } else {
-            status = 1
-        }
-        saveUnsaveJob(saveStatus: status, jobId: (job?.jobId)!) { (response: JSON?, _: NSError?) in
-            if let response = response {
-                if response[Constants.ServerKey.status].boolValue {
-                    // Save Unsave success
-                    self.job?.isSaved = status
-                    if let delegate = self.delegate {
-                        delegate.jobUpdate!(job: self.job!)
-                    }
-                    DispatchQueue.main.async {
-                        self.tblJobDetail.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
-                    }
-                    NotificationCenter.default.post(name: .refreshSavedJobs, object: nil, userInfo: nil)
-                    NotificationCenter.default.post(name: .jobSavedUnsaved, object: self.job, userInfo: nil)
-                }
-            }
-        }
+        viewOutput?.saveUnsave(job: job)
     }
     
     func seeMoreTags(isExpanded: Bool) {

@@ -1,23 +1,15 @@
-//
-//  DMJobSearchResult+TableViewExtension.swift
-//  DentaMatch
-//
-//  Created by Shailesh Tyagi on 30/01/17.
-//  Copyright © 2017 Appster. All rights reserved.
-//
-
 import Foundation
 import SwiftyJSON
 
 extension DMJobSearchResultVC: UITableViewDataSource, UITableViewDelegate, JobSearchResultCellDelegate {
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        return jobs.count
+        return viewOutput?.jobs.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "JobSearchResultCell") as! JobSearchResultCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "JobSearchResultCell") as? JobSearchResultCell,
+            let objJob = viewOutput?.jobs[indexPath.row] else { return UITableViewCell() }
         cell.selectionStyle = .none
-        let objJob = jobs[indexPath.row]
         cell.index = indexPath.row
         cell.delegate = self
         cell.setCellData(job: objJob)
@@ -33,11 +25,11 @@ extension DMJobSearchResultVC: UITableViewDataSource, UITableViewDelegate, JobSe
     }
 
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-        moduleOutput?.showJobDetail(job: jobs[indexPath.row], delegate: self)
+        viewOutput?.openJobDetail(job: viewOutput?.jobs[indexPath.row], delegate: self)
     }
 
     func tableView(_: UITableView, willDisplay _: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == jobs.count - 1 {
+        if let jobsCount = viewOutput?.jobs.count, indexPath.row == jobsCount - 1 {
             callLoadMore()
         }
     }
@@ -48,11 +40,15 @@ extension DMJobSearchResultVC: UITableViewDataSource, UITableViewDelegate, JobSe
         if loadingMoreJobs == true {
             return
         } else {
-            if totalJobsFromServer > jobs.count {
+            if let total = viewOutput?.totalJobsFromServer,
+                let jobsCount = viewOutput?.jobs.count,
+                let jobsPageNo = viewOutput?.jobsPageNo,
+                total > jobsCount {
+                
                 setupLoadingMoreOnTable(tableView: tblJobSearchResult)
                 loadingMoreJobs = true
                 searchParams[Constants.JobDetailKey.page] = "\(jobsPageNo)"
-                fetchSearchResultAPI(params: searchParams)
+                viewOutput?.fetchSearchResult(params: searchParams)
             }
         }
     }
@@ -68,26 +64,6 @@ extension DMJobSearchResultVC: UITableViewDataSource, UITableViewDelegate, JobSe
     // MARK: - JobSearchResultCellDelegate Method
 
     func saveOrUnsaveJob(index: Int) {
-        let job = jobs[index]
-        var status: Int!
-        if job.isSaved == 1 {
-            status = 0
-        } else {
-            status = 1
-        }
-        saveUnsaveJob(saveStatus: status, jobId: job.jobId) { (response: JSON?, _: NSError?) in
-            if let response = response {
-                if response[Constants.ServerKey.status].boolValue {
-                    // Save Unsave success
-                    job.isSaved = status
-                    self.jobs.remove(at: index)
-                    self.jobs.insert(job, at: index)
-                    DispatchQueue.main.async {
-                        self.tblJobSearchResult.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
-                    }
-                    NotificationCenter.default.post(name: .refreshSavedJobs, object: nil, userInfo: nil)
-                }
-            }
-        }
+        viewOutput?.saveOrUnsaveJob(index: index)
     }
 }

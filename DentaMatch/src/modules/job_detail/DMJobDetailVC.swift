@@ -1,12 +1,5 @@
-//
-//  DMJobDetailVC.swift
-//  DentaMatch
-//
-//  Created by Shailesh Tyagi on 20/01/17.
-//  Copyright © 2017 Appster. All rights reserved.
-//
-
 import UIKit
+import SwiftyJSON
 
 @objc protocol JobSavedStatusUpdateDelegate {
     @objc optional func jobUpdate(job: Job)
@@ -36,14 +29,16 @@ class DMJobDetailVC: DMBaseVC {
         case map = 199.0
     }
     
-    weak var moduleOutput: DMJobDetailModuleOutput?
+    var viewOutput: DMJobDetailViewOutput?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        viewOutput?.didLoad()
         setup()
         tblJobDetail.isHidden = true
         btnApplyForJob.isHidden = true
-        fetchJobAPI(params: jobDetailParams)
+        viewOutput?.fetchJob(params: jobDetailParams)
     }
 
     override func didReceiveMemoryWarning() {
@@ -94,6 +89,103 @@ class DMJobDetailVC: DMBaseVC {
     // MARK: - @IBAction
 
     @IBAction func actionApplyForJob(_: UIButton) {
-        applyJobAPI(params: jobDetailParams)
+        viewOutput?.applyJob(params: jobDetailParams)
+    }
+}
+
+extension DMJobDetailVC: DMJobDetailViewInput {
+    
+    func configureView(job: Job?, fromTrack: Bool, delegate: JobSavedStatusUpdateDelegate?) {
+        self.job = job
+        self.fromTrack = fromTrack
+        self.delegate = delegate
+    }
+    
+    func configureFetch(job: Job) {
+        self.job = job
+        
+        /* For Job status
+         INVITED = 1
+         APPLIED = 2
+         SHORTLISTED = 3
+         HIRED = 4
+         REJECTED = 5
+         CANCELLED = 6
+         */
+        
+        if job.isApplied == 1 || job.isApplied == 2 || job.isApplied == 3 || job.isApplied == 4 || job.isApplied == 5 {
+            // Hide apply for job button
+            btnApplyForJob.isUserInteractionEnabled = false
+            btnApplyForJob.isHidden = true
+            constraintBtnApplyJobHeight.constant = 0
+            btnApplyForJob.setTitle(Constants.Strings.appliedForThisJob, for: .normal)
+            DispatchQueue.main.async {
+                self.view.layoutIfNeeded()
+            }
+        } else {
+            // If its temp job and cancelled
+            if job.jobType == 3 {
+                btnApplyForJob.isUserInteractionEnabled = false
+                btnApplyForJob.isHidden = true
+                constraintBtnApplyJobHeight.constant = 0
+                DispatchQueue.main.async {
+                    self.view.layoutIfNeeded()
+                }
+            } else {
+                btnApplyForJob.isUserInteractionEnabled = true
+                btnApplyForJob.isHidden = false
+                constraintBtnApplyJobHeight.constant = 49
+                btnApplyForJob.setTitle(Constants.Strings.applyForJob, for: .normal)
+                DispatchQueue.main.async {
+                    self.view.layoutIfNeeded()
+                }
+            }
+        }
+        tblJobDetail.isHidden = false
+        tblJobDetail.reloadData()
+    }
+    
+    func configureJobApply(response: JSON) {
+        
+        if response[Constants.ServerKey.status].boolValue {
+            alertMessage(title: Constants.AlertMessage.congratulations, message: Constants.AlertMessage.jobApplied, buttonText: kOkButtonTitle, completionHandler: {
+            })
+            job?.isApplied = 2
+            if let delegate = self.delegate {
+                if fromTrack {
+                    delegate.jobApplied!(job: job!)
+                }
+            }
+            DispatchQueue.main.async {
+                self.btnApplyForJob.isHidden = true
+                self.constraintBtnApplyJobHeight.constant = 0
+                self.btnApplyForJob.setTitle(Constants.Strings.appliedForThisJob, for: .normal)
+                self.tblJobDetail.reloadData()
+            }
+            //NotificationCenter.default.post(name: .refreshAppliedJobs, object: nil)
+            
+        } else {
+            if response[Constants.ServerKey.statusCode].intValue == 200 {
+                alertMessage(title: "", message: response[Constants.ServerKey.message].stringValue, buttonText: "Ok", completionHandler: {
+                })
+            } else {
+                DispatchQueue.main.async {
+                    kAppDelegate?.showOverlay(isJobSeekerVerified: true)
+                }
+            }
+        }
+    }
+    
+    func configureSaveUnsave(status: Int) {
+        
+        self.job?.isSaved = status
+        if let delegate = self.delegate {
+            delegate.jobUpdate!(job: self.job!)
+        }
+        DispatchQueue.main.async {
+            self.tblJobDetail.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
+        }
+        NotificationCenter.default.post(name: .refreshSavedJobs, object: nil, userInfo: nil)
+        NotificationCenter.default.post(name: .jobSavedUnsaved, object: self.job, userInfo: nil)
     }
 }

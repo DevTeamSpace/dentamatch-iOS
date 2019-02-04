@@ -42,9 +42,9 @@ class DMRegisterMapsVC: DMBaseVC {
         super.viewDidLoad()
         
         navigationController?.setNavigationBarHidden(true, animated: true)
-        setup()
         
         viewOutput?.didLoad()
+        setup()
     }
 
     override func viewWillDisappear(_ animated: Bool) {

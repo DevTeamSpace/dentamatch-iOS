@@ -87,7 +87,6 @@
 		5A988BC11E4AE6A500DECB49 /* Notification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A988BC01E4AE6A500DECB49 /* Notification.storyboard */; };
 		5A988BC41E4AE99800DECB49 /* DMNotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A988BC31E4AE99800DECB49 /* DMNotificationVC.swift */; };
 		5A988BC61E4AE9D200DECB49 /* DMNotificationVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A988BC51E4AE9D200DECB49 /* DMNotificationVC+TableViewExtension.swift */; };
-		5A988BC81E4AEA0E00DECB49 /* DMNotificationVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A988BC71E4AEA0E00DECB49 /* DMNotificationVC+Services.swift */; };
 		5A9A3A971E2B58600002C5B6 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9A3A961E2B58600002C5B6 /* UserManager.swift */; };
 		5AA9CB999C96FBB42F0C471A /* Pods_DentaMatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6FD70F6CEE32CA0ED0D2D7E /* Pods_DentaMatch.framework */; };
 		5AAE74781E5C1D0E00B28851 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAE74761E5C1D0E00B28851 /* ToastView.swift */; };
@@ -199,6 +198,11 @@
 		6E99691E21FF48E50007CF40 /* CalendarFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E99691D21FF48E50007CF40 /* CalendarFlowCoordinator.swift */; };
 		6EA372E521F8BF16007BE373 /* ImageView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA372E421F8BF16007BE373 /* ImageView+Additions.swift */; };
 		6EA372E721F8E1B7007BE373 /* UIButton+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA372E621F8E1B7007BE373 /* UIButton+Additions.swift */; };
+		6EA434FB2207D790001E64A0 /* DMJobSearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA434FA2207D790001E64A0 /* DMJobSearchPresenter.swift */; };
+		6EA434FD2207E00A001E64A0 /* DMJobSearchResultPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA434FC2207E00A001E64A0 /* DMJobSearchResultPresenter.swift */; };
+		6EA434FF2207F49B001E64A0 /* DMJobDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA434FE2207F49B001E64A0 /* DMJobDetailPresenter.swift */; };
+		6EA435012208097C001E64A0 /* DMNotificationsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA435002208097C001E64A0 /* DMNotificationsPresenter.swift */; };
+		6EA4350322081D95001E64A0 /* DMJobTitlePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA4350222081D95001E64A0 /* DMJobTitlePresenter.swift */; };
 		6EF2F1E521F9C82300F6F38D /* ContainerInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF2F1E421F9C82300F6F38D /* ContainerInitializer.swift */; };
 		6EF2F1EB21F9DBFF00F6F38D /* DMRegistrationContainerInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF2F1EA21F9DBFF00F6F38D /* DMRegistrationContainerInitializer.swift */; };
 		6EF2F1EF21F9DD3400F6F38D /* DMRegistrationInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF2F1EE21F9DD3400F6F38D /* DMRegistrationInitializer.swift */; };
@@ -405,7 +409,6 @@
 		E5BED5661E49BA0B003EC833 /* DMMessagesVC+DBHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BED5651E49BA0B003EC833 /* DMMessagesVC+DBHandling.swift */; };
 		E5C5F3151DC0AACA001A5A3F /* DMRegisterMapsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C5F3141DC0AACA001A5A3F /* DMRegisterMapsVC.swift */; };
 		E5C5F31B1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C5F31A1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift */; };
-		E5D2D8A81FE10B6E001EFA68 /* DMJobTitleVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D2D8A71FE10B6E001EFA68 /* DMJobTitleVC+Services.swift */; };
 		E5D2D8AB1FE24305001EFA68 /* DMCommonSuccessFailureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D2D8AA1FE24305001EFA68 /* DMCommonSuccessFailureVC.swift */; };
 		E5E7CB431E2F39D500D4FB59 /* DMEditProfileVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E7CB421E2F39D500D4FB59 /* DMEditProfileVC+Services.swift */; };
 		E5E7CB4A1E2F8CDE00D4FB59 /* EditLicenseTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E7CB481E2F8CDE00D4FB59 /* EditLicenseTableCell.swift */; };
@@ -471,7 +474,6 @@
 		F223591B1E3F5ED100E984FC /* DMJobSearchResultVC+GMSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F223591A1E3F5ED100E984FC /* DMJobSearchResultVC+GMSExtension.swift */; };
 		F223591D1E3F5F4900E984FC /* DMJobSearchResultVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F223591C1E3F5F4900E984FC /* DMJobSearchResultVC+TableViewExtension.swift */; };
 		F223591F1E3F608900E984FC /* DMJobDetaiVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F223591E1E3F608900E984FC /* DMJobDetaiVC+TableViewExtension.swift */; };
-		F22E13DC1E409B9D0076F61E /* DMJobSearchResultVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22E13DB1E409B9D0076F61E /* DMJobSearchResultVC+Services.swift */; };
 		F239E2E01E28D0890071909E /* JobMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F239E2DF1E28D0890071909E /* JobMarker.swift */; };
 		F2540F4A1E23A81C004B0538 /* JobSeachTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2540F481E23A81C004B0538 /* JobSeachTitleCell.swift */; };
 		F2540F4B1E23A81C004B0538 /* JobSeachTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2540F491E23A81C004B0538 /* JobSeachTitleCell.xib */; };
@@ -485,7 +487,6 @@
 		F2540F5D1E274258004B0538 /* DMJobSearchResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2540F5C1E274258004B0538 /* DMJobSearchResultVC.swift */; };
 		F2540F601E274360004B0538 /* JobSearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2540F5E1E274360004B0538 /* JobSearchResultCell.swift */; };
 		F2540F611E274360004B0538 /* JobSearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2540F5F1E274360004B0538 /* JobSearchResultCell.xib */; };
-		F2CBC10A1E41E9BE00345B9F /* DMJobDetailVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CBC1091E41E9BE00345B9F /* DMJobDetailVC+Services.swift */; };
 		F2D03BA51E1F580C0005D3A4 /* JobSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2D03BA41E1F580C0005D3A4 /* JobSearch.storyboard */; };
 		F2D03BA81E1F67BA0005D3A4 /* DMJobSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D03BA71E1F67BA0005D3A4 /* DMJobSearchVC.swift */; };
 		F2F5E0CB1E2F292F0082187C /* DentistDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F5E0C91E2F292F0082187C /* DentistDetailCell.swift */; };
@@ -501,7 +502,6 @@
 		F2F5E0DE1E31CE2A0082187C /* DMJobDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F5E0DD1E31CE2A0082187C /* DMJobDetailVC.swift */; };
 		F2F5E0E01E31D40E0082187C /* JobDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F5E0DF1E31D40E0082187C /* JobDetailHeaderView.swift */; };
 		F2F5E0E21E31D43A0082187C /* JobDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2F5E0E11E31D43A0082187C /* JobDetailHeaderView.xib */; };
-		F2F5E0E61E35DE390082187C /* DMJobSearchVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F5E0E51E35DE390082187C /* DMJobSearchVC+Services.swift */; };
 		F2F9B97B1E38978200639716 /* JobTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F9B9791E38978200639716 /* JobTitleCell.swift */; };
 		F2F9B97C1E38978200639716 /* JobTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2F9B97A1E38978200639716 /* JobTitleCell.xib */; };
 /* End PBXBuildFile section */
@@ -589,7 +589,6 @@
 		5A988BC01E4AE6A500DECB49 /* Notification.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Notification.storyboard; sourceTree = "<group>"; };
 		5A988BC31E4AE99800DECB49 /* DMNotificationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMNotificationVC.swift; sourceTree = "<group>"; };
 		5A988BC51E4AE9D200DECB49 /* DMNotificationVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMNotificationVC+TableViewExtension.swift"; sourceTree = "<group>"; };
-		5A988BC71E4AEA0E00DECB49 /* DMNotificationVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMNotificationVC+Services.swift"; sourceTree = "<group>"; };
 		5A9A3A961E2B58600002C5B6 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		5AAE74761E5C1D0E00B28851 /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		5AAE74771E5C1D0E00B28851 /* ToastView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToastView.xib; sourceTree = "<group>"; };
@@ -700,6 +699,11 @@
 		6E99691D21FF48E50007CF40 /* CalendarFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarFlowCoordinator.swift; sourceTree = "<group>"; };
 		6EA372E421F8BF16007BE373 /* ImageView+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageView+Additions.swift"; sourceTree = "<group>"; };
 		6EA372E621F8E1B7007BE373 /* UIButton+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Additions.swift"; sourceTree = "<group>"; };
+		6EA434FA2207D790001E64A0 /* DMJobSearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMJobSearchPresenter.swift; sourceTree = "<group>"; };
+		6EA434FC2207E00A001E64A0 /* DMJobSearchResultPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DMJobSearchResultPresenter.swift; path = "DMJobSearchResultVC.swift~refs/remotes/origin/DMJobSearchResultPresenter.swift"; sourceTree = "<group>"; };
+		6EA434FE2207F49B001E64A0 /* DMJobDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMJobDetailPresenter.swift; sourceTree = "<group>"; };
+		6EA435002208097C001E64A0 /* DMNotificationsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMNotificationsPresenter.swift; sourceTree = "<group>"; };
+		6EA4350222081D95001E64A0 /* DMJobTitlePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMJobTitlePresenter.swift; sourceTree = "<group>"; };
 		6EF2F1E421F9C82300F6F38D /* ContainerInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerInitializer.swift; sourceTree = "<group>"; };
 		6EF2F1EA21F9DBFF00F6F38D /* DMRegistrationContainerInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMRegistrationContainerInitializer.swift; sourceTree = "<group>"; };
 		6EF2F1EE21F9DD3400F6F38D /* DMRegistrationInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMRegistrationInitializer.swift; sourceTree = "<group>"; };
@@ -829,7 +833,6 @@
 		E587D2CB1E23362C006B7F06 /* JobSelectionPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobSelectionPickerView.swift; sourceTree = "<group>"; };
 		E587D2CE1E23438B006B7F06 /* DMJobTitleSelectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMJobTitleSelectionVC.swift; sourceTree = "<group>"; };
 		E587D2D01E2343A5006B7F06 /* DMJobTitleSelectionVC+UIPickerViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMJobTitleSelectionVC+UIPickerViewExtension.swift"; sourceTree = "<group>"; };
-		E587D2D41E2357A9006B7F06 /* DMJobTitleSelectionVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMJobTitleSelectionVC+Services.swift"; sourceTree = "<group>"; };
 		E587D2D61E236B84006B7F06 /* DMRegisterMapsVC+GoogleMapsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMRegisterMapsVC+GoogleMapsExtension.swift"; sourceTree = "<group>"; };
 		E587D2D81E236EAE006B7F06 /* DMRegisterMapsVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMRegisterMapsVC+TableViewExtension.swift"; sourceTree = "<group>"; };
 		E587D2DC1E2396E9006B7F06 /* JobSelectionPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobSelectionPickerView.xib; sourceTree = "<group>"; };
@@ -918,7 +921,6 @@
 		E5BED5651E49BA0B003EC833 /* DMMessagesVC+DBHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMMessagesVC+DBHandling.swift"; sourceTree = "<group>"; };
 		E5C5F3141DC0AACA001A5A3F /* DMRegisterMapsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMRegisterMapsVC.swift; sourceTree = "<group>"; };
 		E5C5F31A1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMTermsAndConditionsVC.swift; sourceTree = "<group>"; };
-		E5D2D8A71FE10B6E001EFA68 /* DMJobTitleVC+Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DMJobTitleVC+Services.swift"; sourceTree = "<group>"; };
 		E5D2D8AA1FE24305001EFA68 /* DMCommonSuccessFailureVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMCommonSuccessFailureVC.swift; sourceTree = "<group>"; };
 		E5E7CB421E2F39D500D4FB59 /* DMEditProfileVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMEditProfileVC+Services.swift"; sourceTree = "<group>"; };
 		E5E7CB481E2F8CDE00D4FB59 /* EditLicenseTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditLicenseTableCell.swift; sourceTree = "<group>"; };
@@ -1003,7 +1005,6 @@
 		F223591A1E3F5ED100E984FC /* DMJobSearchResultVC+GMSExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMJobSearchResultVC+GMSExtension.swift"; sourceTree = "<group>"; };
 		F223591C1E3F5F4900E984FC /* DMJobSearchResultVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMJobSearchResultVC+TableViewExtension.swift"; sourceTree = "<group>"; };
 		F223591E1E3F608900E984FC /* DMJobDetaiVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMJobDetaiVC+TableViewExtension.swift"; sourceTree = "<group>"; };
-		F22E13DB1E409B9D0076F61E /* DMJobSearchResultVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMJobSearchResultVC+Services.swift"; sourceTree = "<group>"; };
 		F239E2DF1E28D0890071909E /* JobMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobMarker.swift; sourceTree = "<group>"; };
 		F2540F481E23A81C004B0538 /* JobSeachTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobSeachTitleCell.swift; sourceTree = "<group>"; };
 		F2540F491E23A81C004B0538 /* JobSeachTitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobSeachTitleCell.xib; sourceTree = "<group>"; };
@@ -1017,7 +1018,6 @@
 		F2540F5C1E274258004B0538 /* DMJobSearchResultVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMJobSearchResultVC.swift; sourceTree = "<group>"; };
 		F2540F5E1E274360004B0538 /* JobSearchResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobSearchResultCell.swift; sourceTree = "<group>"; };
 		F2540F5F1E274360004B0538 /* JobSearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobSearchResultCell.xib; sourceTree = "<group>"; };
-		F2CBC1091E41E9BE00345B9F /* DMJobDetailVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMJobDetailVC+Services.swift"; sourceTree = "<group>"; };
 		F2D03BA41E1F580C0005D3A4 /* JobSearch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = JobSearch.storyboard; sourceTree = "<group>"; };
 		F2D03BA71E1F67BA0005D3A4 /* DMJobSearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMJobSearchVC.swift; sourceTree = "<group>"; };
 		F2F5E0C91E2F292F0082187C /* DentistDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DentistDetailCell.swift; sourceTree = "<group>"; };
@@ -1033,7 +1033,6 @@
 		F2F5E0DD1E31CE2A0082187C /* DMJobDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMJobDetailVC.swift; sourceTree = "<group>"; };
 		F2F5E0DF1E31D40E0082187C /* JobDetailHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobDetailHeaderView.swift; sourceTree = "<group>"; };
 		F2F5E0E11E31D43A0082187C /* JobDetailHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobDetailHeaderView.xib; sourceTree = "<group>"; };
-		F2F5E0E51E35DE390082187C /* DMJobSearchVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMJobSearchVC+Services.swift"; sourceTree = "<group>"; };
 		F2F9B9791E38978200639716 /* JobTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobTitleCell.swift; sourceTree = "<group>"; };
 		F2F9B97A1E38978200639716 /* JobTitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobTitleCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1361,9 +1360,9 @@
 			children = (
 				6E35FBED2200346F00AB84A3 /* DMNotifications.swift */,
 				6E85B83221FADF3C00DB137F /* DMNotificationInitializer.swift */,
+				6EA435002208097C001E64A0 /* DMNotificationsPresenter.swift */,
 				5A988BC31E4AE99800DECB49 /* DMNotificationVC.swift */,
 				5A988BC51E4AE9D200DECB49 /* DMNotificationVC+TableViewExtension.swift */,
-				5A988BC71E4AEA0E00DECB49 /* DMNotificationVC+Services.swift */,
 			);
 			path = notification;
 			sourceTree = "<group>";
@@ -1610,7 +1609,6 @@
 				6E85B57422041E1400CD2CCE /* DMJobTitleSelectionPresenter.swift */,
 				E587D2CE1E23438B006B7F06 /* DMJobTitleSelectionVC.swift */,
 				E587D2D01E2343A5006B7F06 /* DMJobTitleSelectionVC+UIPickerViewExtension.swift */,
-				E587D2D41E2357A9006B7F06 /* DMJobTitleSelectionVC+Services.swift */,
 				E59073581FB02C4F007381E8 /* DMJobTitleSelectionVC+TableExtension.swift */,
 				E590735A1FB02D36007381E8 /* DMJobTitleSelectionVC+TextFieldExtension.swift */,
 				E51C4D3D1FB05591009FC3A0 /* DMJobTitleSelectionVC+TextFieldDelegates.swift */,
@@ -1818,10 +1816,10 @@
 			children = (
 				6E99691321FF2BE90007CF40 /* DMJobSearchResult.swift */,
 				6EF2F20321FA096100F6F38D /* DMJobSearchResultInitializer.swift */,
+				6EA434FC2207E00A001E64A0 /* DMJobSearchResultPresenter.swift */,
 				F2540F5C1E274258004B0538 /* DMJobSearchResultVC.swift */,
 				F223591C1E3F5F4900E984FC /* DMJobSearchResultVC+TableViewExtension.swift */,
 				F223591A1E3F5ED100E984FC /* DMJobSearchResultVC+GMSExtension.swift */,
-				F22E13DB1E409B9D0076F61E /* DMJobSearchResultVC+Services.swift */,
 			);
 			path = job_search_result;
 			sourceTree = "<group>";
@@ -1831,10 +1829,10 @@
 			children = (
 				6E35FC0322007FBC00AB84A3 /* DMJobSearch.swift */,
 				6EF2F20621FA0E3B00F6F38D /* DMJobSearchInitializer.swift */,
+				6EA434FA2207D790001E64A0 /* DMJobSearchPresenter.swift */,
 				F2D03BA71E1F67BA0005D3A4 /* DMJobSearchVC.swift */,
 				F22359181E3F3F2100E984FC /* DMJobSearchVC+TableViewCellDelegateExtension.swift */,
 				F22359161E3F3E3300E984FC /* DMJobSearchVC+TableViewExtension.swift */,
-				F2F5E0E51E35DE390082187C /* DMJobSearchVC+Services.swift */,
 			);
 			path = job_search;
 			sourceTree = "<group>";
@@ -1844,8 +1842,8 @@
 			children = (
 				6E35FC05220083AC00AB84A3 /* DMJobTitle.swift */,
 				6EF2F20921FA103C00F6F38D /* DMJobTitleInitializer.swift */,
+				6EA4350222081D95001E64A0 /* DMJobTitlePresenter.swift */,
 				F2540F581E263613004B0538 /* DMJobTitleVC.swift */,
-				E5D2D8A71FE10B6E001EFA68 /* DMJobTitleVC+Services.swift */,
 			);
 			path = job_title;
 			sourceTree = "<group>";
@@ -1855,9 +1853,9 @@
 			children = (
 				6E35FBFD22006CE700AB84A3 /* DMJobDetail.swift */,
 				6EF2F20C21FA15A100F6F38D /* DMJobDetailInitializer.swift */,
+				6EA434FE2207F49B001E64A0 /* DMJobDetailPresenter.swift */,
 				F2F5E0DD1E31CE2A0082187C /* DMJobDetailVC.swift */,
 				F223591E1E3F608900E984FC /* DMJobDetaiVC+TableViewExtension.swift */,
-				F2CBC1091E41E9BE00345B9F /* DMJobDetailVC+Services.swift */,
 			);
 			path = job_detail;
 			sourceTree = "<group>";
@@ -3054,7 +3052,6 @@
 				E55462DF1DAE31EA004163B2 /* UIFont+Additions.swift in Sources */,
 				E587D2EA1E24C021006B7F06 /* DMLicenseSelectionVC.swift in Sources */,
 				E558D9151E2EA47500A6DF95 /* AddProfileOptionTableCell.swift in Sources */,
-				E587D2D51E2357A9006B7F06 /* DMJobTitleSelectionVC+Services.swift in Sources */,
 				6E85B82D21FADC2100DB137F /* DMMessagesInitializer.swift in Sources */,
 				E5496E0C1E26435C00C54288 /* DMLicenseSelectionVC+TableViewExtension.swift in Sources */,
 				E587D2EC1E24C021006B7F06 /* DMWorkExperienceStart.swift in Sources */,
@@ -3077,7 +3074,6 @@
 				5A0138241E6EBBA900D15783 /* MixpanelOperations.swift in Sources */,
 				E587D2F41E24C095006B7F06 /* DMAffiliationsVC.swift in Sources */,
 				F2F5E0CB1E2F292F0082187C /* DentistDetailCell.swift in Sources */,
-				F22E13DC1E409B9D0076F61E /* DMJobSearchResultVC+Services.swift in Sources */,
 				E576819B1E3A25F100D912EA /* DMEditSkillsVC+Services.swift in Sources */,
 				E54976F01E28CEDD006F21E5 /* Certification.swift in Sources */,
 				6E85B84E21FAF75200DB137F /* DMPublicProfileInitializer.swift in Sources */,
@@ -3089,10 +3085,10 @@
 				5A85D2101E2DFAD000AC4C89 /* Tag.swift in Sources */,
 				E5E7CB821E2FA23200D4FB59 /* ExperienceTableCell.swift in Sources */,
 				5A85D2111E2DFAD000AC4C89 /* TagContent.swift in Sources */,
-				E5D2D8A81FE10B6E001EFA68 /* DMJobTitleVC+Services.swift in Sources */,
 				6E85B5632202FB4600CD2CCE /* DMRegistrationContainerPresenter.swift in Sources */,
 				E558D9111E2E873700A6DF95 /* EditProfileHeaderTableCell.swift in Sources */,
 				6E85B87421FB1A0F00DB137F /* DMWorkExperienceInitializer.swift in Sources */,
+				6EA434FB2207D790001E64A0 /* DMJobSearchPresenter.swift in Sources */,
 				E5496DFC1E25547300C54288 /* DMCertificationsVC+TableViewExtension.swift in Sources */,
 				5AD246931E273CC9009350BF /* DatePickerView.swift in Sources */,
 				E59029A91DED2C7A00151E9B /* LogManager.swift in Sources */,
@@ -3267,7 +3263,6 @@
 				E5BED5661E49BA0B003EC833 /* DMMessagesVC+DBHandling.swift in Sources */,
 				5A3B06D31E33885A00EFCA6E /* DMChangePasswordVC+Services.swift in Sources */,
 				E5F919401E9DD4A30021F008 /* FSCalendar.m in Sources */,
-				5A988BC81E4AEA0E00DECB49 /* DMNotificationVC+Services.swift in Sources */,
 				E5F919431E9DD4A30021F008 /* FSCalendarCalculator.m in Sources */,
 				6E35FBEE2200346F00AB84A3 /* DMNotifications.swift in Sources */,
 				E5F9194A1E9DD4A30021F008 /* FSCalendarHeaderView.m in Sources */,
@@ -3293,13 +3288,13 @@
 				E50B3F501E194CD7004C5F32 /* RegistrationTableViewCell.swift in Sources */,
 				6E88699721FEE50100898925 /* DMRegistration.swift in Sources */,
 				6E85B85421FAFAE400DB137F /* DMEditProfileInitializer.swift in Sources */,
-				F2CBC10A1E41E9BE00345B9F /* DMJobDetailVC+Services.swift in Sources */,
 				E5F919461E9DD4A30021F008 /* FSCalendarCollectionViewLayout.m in Sources */,
 				6E35FC002200792100AB84A3 /* DMChat.swift in Sources */,
 				5A85D2141E2DFAD000AC4C89 /* TagPresentable.swift in Sources */,
 				5A50A2CA1E32163D0010AA31 /* SettingTableCell.swift in Sources */,
 				6E85B5732203476C00CD2CCE /* DMRegisterMapsPresenter.swift in Sources */,
 				6E35FC0422007FBC00AB84A3 /* DMJobSearch.swift in Sources */,
+				6EA434FD2207E00A001E64A0 /* DMJobSearchResultPresenter.swift in Sources */,
 				484958F6218AC2F500096046 /* UITextField+Additions.swift in Sources */,
 				E558D9081E2E6FE700A6DF95 /* DMEditProfileVC.swift in Sources */,
 				E5F919451E9DD4A30021F008 /* FSCalendarCollectionView.m in Sources */,
@@ -3308,6 +3303,7 @@
 				4846B87D20F356CC00BAC18C /* Constants+Api.swift in Sources */,
 				484174CE212FF52B00C86818 /* UserDefaults+Additions.swift in Sources */,
 				6E85B85E21FB007300DB137F /* DMCertificationsInitializer.swift in Sources */,
+				6EA435012208097C001E64A0 /* DMNotificationsPresenter.swift in Sources */,
 				5AC714521E34ACD400E433C1 /* DMCalenderVC.swift in Sources */,
 				6E85B86421FB15C000DB137F /* DMSkillsInitializer.swift in Sources */,
 				E5A0EADE1E2944D50092E21A /* SSASideMenu.swift in Sources */,
@@ -3344,6 +3340,7 @@
 				E597E5901E151CFF001DDA78 /* FloatLabelTextView.swift in Sources */,
 				6E85B84B21FAF64D00DB137F /* DMEditCertificateInitializer.swift in Sources */,
 				E5F47C951E0035B90051C4A1 /* UIImageRotate.m in Sources */,
+				6EA4350322081D95001E64A0 /* DMJobTitlePresenter.swift in Sources */,
 				6E85B5692203188400CD2CCE /* MessageUtils.swift in Sources */,
 				E5C5F31B1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift in Sources */,
 				484958FF218ADCC000096046 /* StateCell.swift in Sources */,
@@ -3367,13 +3364,13 @@
 				E51C4D3E1FB05591009FC3A0 /* DMJobTitleSelectionVC+TextFieldDelegates.swift in Sources */,
 				E5310E0D1E4B2B3F004403A0 /* DMChatVC+Services.swift in Sources */,
 				E5E7CB8B1E2FA23200D4FB59 /* OtherSubSkillTableCell.swift in Sources */,
-				F2F5E0E61E35DE390082187C /* DMJobSearchVC+Services.swift in Sources */,
 				E5A3E8EE1E160ABF00B10937 /* AnimatedLeftViewPHTextField.swift in Sources */,
 				E5496E021E255A9E00C54288 /* DMExecutiveSummaryVC+TableViewExtension.swift in Sources */,
 				E54B9A841E32870B00805D9C /* DMEditCertificateVC.swift in Sources */,
 				6E85B56B22032D4400CD2CCE /* DMLoginPresenter.swift in Sources */,
 				5A5523E71E4C4136007D8C09 /* NotificationJobTypeTableCell.swift in Sources */,
 				6E85B84221FAF12900DB137F /* DMEditStudyInitializer.swift in Sources */,
+				6EA434FF2207F49B001E64A0 /* DMJobDetailPresenter.swift in Sources */,
 				E5BED5501E49AB85003EC833 /* DMChatVC+TableViewExtensions.swift in Sources */,
 				5A3B06CB1E3387DA00EFCA6E /* DMSettingVC.swift in Sources */,
 				E5496E161E2784D500C54288 /* DMSkillsVC+TableViewExtension.swift in Sources */,

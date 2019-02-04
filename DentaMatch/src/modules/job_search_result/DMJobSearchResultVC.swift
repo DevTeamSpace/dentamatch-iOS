@@ -1,11 +1,3 @@
-//
-//  DMJobSearchResultVC.swift
-//  DentaMatch
-//
-//  Created by Shailesh Tyagi on 12/01/17.
-//  Copyright © 2017 Appster. All rights reserved.
-//
-
 import GoogleMaps
 import UIKit
 
@@ -24,7 +16,6 @@ class DMJobSearchResultVC: DMBaseVC {
     
     @IBOutlet var btnCurrentLocation: UIButton!
     //var notificationLabel: UILabel?
-    var bannerStatus = 0
     var rightBarBtn: UIButton = UIButton()
     var rightBarButtonItem: UIBarButtonItem = UIBarButtonItem()
     var isListShow: Bool = false
@@ -33,12 +24,9 @@ class DMJobSearchResultVC: DMBaseVC {
     var btnMap: UIButton!
     var currentCoordinate: CLLocationCoordinate2D! = CLLocationCoordinate2D(latitude: 0.00, longitude: 0.00)
     var arrMarkers = [JobMarker]()
-    var jobs = [Job]()
     var rightBarButtonWidth: CGFloat = 20.0
     var cellHeight: CGFloat = 172.0
     var loadingMoreJobs = false
-    var totalJobsFromServer = 0
-    var jobsPageNo = 1
 
     var searchParams = [String: Any]()
     var markers = [JobMarker]()
@@ -48,7 +36,7 @@ class DMJobSearchResultVC: DMBaseVC {
     var selectedMarker: JobMarker?
     var placeHolderEmptyJobsView: PlaceHolderJobsView?
     
-    weak var moduleOutput: DMJobSearchResultModuleOutput?
+    var viewOutput: DMJobSearchResultViewOutput?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,12 +60,12 @@ class DMJobSearchResultVC: DMBaseVC {
     }
 
     func getJobs() {
-        jobsPageNo = 1
+        viewOutput?.jobsPageNo = 1
         if let params = UserDefaultsManager.sharedInstance.loadSearchParameter() {
             searchParams = params
         }
-        searchParams[Constants.JobDetailKey.page] = "\(jobsPageNo)"
-        fetchSearchResultAPI(params: searchParams)
+        searchParams[Constants.JobDetailKey.page] = "\(1)"
+        viewOutput?.fetchSearchResult(params: searchParams)
     }
 
     // MARK: Private Method
@@ -112,7 +100,8 @@ class DMJobSearchResultVC: DMBaseVC {
         tblJobSearchResult.register(UINib(nibName: "JobSearchResultCell", bundle: nil), forCellReuseIdentifier: "JobSearchResultCell")
         mapViewSearchResult.delegate = self
         mapViewSearchResult.isMyLocationEnabled = false
-        lblResultCount.text = String(jobs.count) + Constants.Strings.whiteSpace + Constants.Strings.resultsFound
+        
+        lblResultCount.text = String(viewOutput?.jobs.count ?? 0) + Constants.Strings.whiteSpace + Constants.Strings.resultsFound
 
         navigationItem.leftBarButtonItem = nil//customLeftBarButton()
 
@@ -140,29 +129,13 @@ class DMJobSearchResultVC: DMBaseVC {
     }
     
     func fetchBadgeCount () {
-        getUnreadNotificationCount { response, _ in
-            if response![Constants.ServerKey.status].boolValue {
-                if let resultDic = response![Constants.ServerKey.result].dictionary {
-                    let count = resultDic["notificationCount"]?.intValue
-                    //if self.notificationLabel != nil {
-                    AppDelegate.delegate().setAppBadgeCount(count ?? 0)
-                    //self.setNotificationLabelText(count: count!)
-                    if let tabbarCtlr = self.tabBarController as? TabBarVC {
-                        tabbarCtlr.updateBadgeOnProfileTab(value: count)
-                    }
-                    NotificationCenter.default.post(name: .updateBadgeCount, object: nil, userInfo: nil)
-                    //} else {
-                    //    self.notificationLabel?.isHidden = true
-                    //}
-                }
-            }
-        }
+        viewOutput?.getUnreadedNotifications()
     }
 
     func showBanner(status: Int = 1) {
         // if status is 1 it means yellow banner i.e. profile not verified
         // if status is 2 it means red banner i.e. needs attention
-        bannerStatus = status
+        viewOutput?.bannerStatus = status
         bannerHeightConstraint.constant = 45.0
         constraintTblViewSearchResultHeight.constant = UIScreen.main.bounds.height - (navigationController?.navigationBar.frame.height)! - UIApplication.shared.statusBarFrame.height - (tabBarController?.tabBar.frame.height)! - 32.0 - 45.0
         currentGPSButtonTopConstraint.constant = 55.0
@@ -192,11 +165,11 @@ class DMJobSearchResultVC: DMBaseVC {
     }
 
     @objc func pushRediectNotificationOtherAll(userInfo _: Notification) {
-        moduleOutput?.showNotifications()
+        viewOutput?.openNotifications()
     }
 
     @objc func pushRediectNotificationOtherAllBackGround(userInfo _: Notification) {
-        moduleOutput?.showNotifications()
+        viewOutput?.openNotifications()
     }
 
     @objc func pushRediectNotificationForJobDetailForground(userInfo: Notification) {
@@ -224,13 +197,12 @@ class DMJobSearchResultVC: DMBaseVC {
     }
 
     func goToJobDetail(jobObj: Job) {
-        
-        moduleOutput?.showJobDetail(job: jobObj, delegate: self)
+        viewOutput?.openJobDetail(job: jobObj, delegate: self)
     }
     
 
     @objc override func actionRightNavigationItem() {
-        moduleOutput?.showJobSearch(fromJobResult: true, delegate: self)
+        viewOutput?.openJobSearch(fromJobResult: true, delegate: self)
     }
 
     @objc func pullToRefreshForJobs() {
@@ -240,8 +212,8 @@ class DMJobSearchResultVC: DMBaseVC {
 
     @objc func refreshListForSaveUnsaveJob(_ notification: Notification) {
         if let jobObj = notification.object as? Job, jobObj.jobId != 0 {
-            let filteredJobs = self.jobs.filter{$0.jobId == jobObj.jobId }
-            for job in filteredJobs {
+            let filteredJobs = viewOutput?.jobs.filter{$0.jobId == jobObj.jobId }
+            for job in filteredJobs ?? [] {
                 job.isSaved = jobObj.isSaved
             }
             DispatchQueue.main.async {
@@ -288,8 +260,8 @@ class DMJobSearchResultVC: DMBaseVC {
             mapViewSearchResult.isHidden = true
             tblJobSearchResult.isHidden = false
             constraintTblViewSearchResultHeight.constant = UIScreen.main.bounds.height - (navigationController?.navigationBar.frame.height)! - UIApplication.shared.statusBarFrame.height - (tabBarController?.tabBar.frame.height)! - 32.0
-            if bannerStatus == 1 || bannerStatus == 2 {
-                showBanner(status: bannerStatus)
+            if viewOutput?.bannerStatus == 1 || viewOutput?.bannerStatus == 2 {
+                showBanner(status: viewOutput?.bannerStatus ?? 1)
             }
 
             view.layoutIfNeeded()
@@ -326,20 +298,60 @@ class DMJobSearchResultVC: DMBaseVC {
     }
 }
 
+extension DMJobSearchResultVC: DMJobSearchResultViewInput {
+    
+    func reloadAt(_ indexPaths: [IndexPath]) {
+        tblJobSearchResult.reloadRows(at: indexPaths, with: .none)
+    }
+    
+    func configureTableView(jobsCount: Int, totalJobsCount: Int, status: Bool) {
+        
+        if status {
+         
+            placeHolderEmptyJobsView?.isHidden = jobsCount > 0 ? true : false
+            viewResultCount.isHidden = jobsCount == 0 ? true : false
+            constraintViewResultCountHeight.constant = jobsCount == 0 ? 0 : 32.0
+            loadingMoreJobs = false
+            
+            if isMapShow {
+                restoreAllMarkers()
+            } else {
+                tblJobSearchResult.tableFooterView = nil
+                lblResultCount.text = String(totalJobsCount) + Constants.Strings.whiteSpace + Constants.Strings.resultsFound
+            }
+        } else {
+            
+            viewResultCount.isHidden = true
+            constraintViewResultCountHeight.constant =  0
+            lblResultCount.text = Constants.Strings.zero + Constants.Strings.whiteSpace + Constants.Strings.resultsFound
+        }
+        
+        tblJobSearchResult.reloadData()
+    }
+    
+    func updateBadge(count: Int) {
+        if let tabbarCtlr = self.tabBarController as? TabBarVC {
+            tabbarCtlr.updateBadgeOnProfileTab(value: count)
+        }
+        NotificationCenter.default.post(name: .updateBadgeCount, object: nil, userInfo: nil)
+    }
+}
+
 extension DMJobSearchResultVC: SearchJobDelegate {
     func refreshJobList() {
-        jobsPageNo = 1
+        
+        viewOutput?.jobsPageNo = 1
         if let params = UserDefaultsManager.sharedInstance.loadSearchParameter() {
             searchParams = params
         }
-        searchParams[Constants.JobDetailKey.page] = "\(jobsPageNo)"
-        fetchSearchResultAPI(params: searchParams)
+        searchParams[Constants.JobDetailKey.page] = "\(1)"
+        viewOutput?.fetchSearchResult(params: searchParams)
     }
 }
 
 extension DMJobSearchResultVC: JobSavedStatusUpdateDelegate {
     func jobUpdate(job: Job) {
-        let updatedJob = jobs.filter({ $0.jobId == job.jobId }).first
+        let updatedJob = viewOutput?.jobs.filter({ $0.jobId == job.jobId }).first
         updatedJob?.isSaved = job.isSaved
         tblJobSearchResult.reloadData()
     }

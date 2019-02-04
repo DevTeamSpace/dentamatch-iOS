@@ -50,6 +50,7 @@ extension DMRegistrationPresenter: DMRegistrationViewOutput {
             
             if let error = error {
                 self?.viewInput.show(toastMessage: error.localizedDescription)
+                return
             }
             
             guard let response = response else {
@@ -85,6 +86,7 @@ extension DMRegistrationPresenter {
             
             if let error = error  {
                 self?.viewInput.show(toastMessage: error.localizedDescription)
+                return
             }
             
             guard let response = response else {

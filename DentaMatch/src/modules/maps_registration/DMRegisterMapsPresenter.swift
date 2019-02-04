@@ -51,6 +51,7 @@ extension DMRegisterMapsPresenter: DMRegisterMapsViewOutput {
             
             if let error = error  {
                 self?.viewInput.show(toastMessage: error.localizedDescription)
+                return
             }
             
             guard let response = response else {

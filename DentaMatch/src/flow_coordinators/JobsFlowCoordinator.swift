@@ -21,9 +21,9 @@ class JobsFlowCoordinator: BaseFlowCoordinator, JobsFlowCoordinatorProtocol {
     }
     
     func launchViewController() -> UIViewController? {
-        guard let vc = DMJobSearchResultInitializer.initialize(moduleOutput: self) else { return nil }
+        guard let moduleInput = DMJobSearchResultInitializer.initialize(moduleOutput: self) else { return nil }
         
-        let navController = UINavigationController(rootViewController: vc)
+        let navController = UINavigationController(rootViewController: moduleInput.viewController())
         navigationController = navController
         return navController
     }
@@ -32,20 +32,23 @@ class JobsFlowCoordinator: BaseFlowCoordinator, JobsFlowCoordinatorProtocol {
 extension JobsFlowCoordinator: DMJobSearchResultModuleOutput {
     
     func showJobDetail(job: Job?, delegate: JobSavedStatusUpdateDelegate?) {
-        guard let vc = DMJobDetailInitializer.initialize(job: job, delegate: delegate, moduleOutput: self) else { return }
+        guard let moduleInput = DMJobDetailInitializer.initialize(job: job, delegate: delegate, moduleOutput: self) else { return }
+        let vc = moduleInput.viewController()
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }
     
     func showJobSearch(fromJobResult: Bool, delegate: SearchJobDelegate) {
-        guard let vc = DMJobSearchInitializer.initialize(fromJobResult: fromJobResult, delegate: delegate, moduleOutput: self) else { return }
+        guard let moduleInput = DMJobSearchInitializer.initialize(fromJobResult: fromJobResult, delegate: delegate, moduleOutput: self) else { return }
+        let vc = moduleInput.viewController()
         vc.hidesBottomBarWhenPushed = true
         self.delegate.selectTabBarIndex(0)
         navigationController?.pushViewController(vc, animated: true)
     }
     
     func showNotifications() {
-        guard let vc = DMNotificationInitializer.initialize(moduleOutput: self) else { return }
+        guard let moduleInput = DMNotificationInitializer.initialize(moduleOutput: self) else { return }
+        let vc = moduleInput.viewController()
         
         vc.hidesBottomBarWhenPushed = true
         delegate.selectTabBarIndex(0)
@@ -63,7 +66,8 @@ extension JobsFlowCoordinator: DMJobDetailModuleOutput {
 extension JobsFlowCoordinator: DMJobSearchModuleOutput {
     
     func showJobTitle(selectedTitles: [JobTitle]?, isLocation: Bool, locations: [PreferredLocation]?, delegate: DMJobTitleVCDelegate) {
-        guard let vc = DMJobTitleInitializer.initialize(selectedTitles: selectedTitles, forLocation: isLocation, locations: locations, delegate: delegate, moduleOutput: self) else { return }
+        guard let moduleInput = DMJobTitleInitializer.initialize(selectedTitles: selectedTitles, forLocation: isLocation, locations: locations, delegate: delegate, moduleOutput: self) else { return }
+        let vc = moduleInput.viewController()
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }

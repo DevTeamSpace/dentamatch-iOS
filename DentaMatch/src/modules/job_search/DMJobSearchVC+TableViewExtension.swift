@@ -1,11 +1,3 @@
-//
-//  DMJobSearchVC+TableViewExtension.swift
-//  DentaMatch
-//
-//  Created by Shailesh Tyagi on 30/01/17.
-//  Copyright © 2017 Appster. All rights reserved.
-//
-
 import Foundation
 
 extension DMJobSearchVC: UITableViewDataSource, UITableViewDelegate {
@@ -128,7 +120,7 @@ extension DMJobSearchVC: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            moduleOutput?.showJobTitle(selectedTitles: jobTitles, isLocation: false, locations: nil, delegate: self)
+            viewOutput?.openJobTitle(selectedTitles: jobTitles, isLocation: false, locations: nil, delegate: self)
         } else if indexPath.section == 1 {
             if indexPath.row == 0 {
                 // will implement
@@ -136,7 +128,7 @@ extension DMJobSearchVC: UITableViewDataSource, UITableViewDelegate {
                 // will implement
             }
         } else if indexPath.section == 2 {
-            moduleOutput?.showJobTitle(selectedTitles: nil, isLocation: true, locations: preferredLocations, delegate: self)
+            viewOutput?.openJobTitle(selectedTitles: nil, isLocation: true, locations: preferredLocations, delegate: self)
         }
     }
 }

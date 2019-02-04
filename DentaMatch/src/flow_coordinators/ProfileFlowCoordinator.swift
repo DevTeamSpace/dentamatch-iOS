@@ -38,7 +38,8 @@ extension ProfileFlowCoordinator: DMEditProfileModuleOutput {
     }
     
     func showNotifications() {
-        guard let vc = DMNotificationInitializer.initialize(moduleOutput: self) else { return }
+        guard let moduleInput = DMNotificationInitializer.initialize(moduleOutput: self) else { return }
+        let vc = moduleInput.viewController()
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -121,7 +122,8 @@ extension ProfileFlowCoordinator: DMChangePasswordModuleOutput {
 extension ProfileFlowCoordinator: DMNotificationsModuleOutput {
     
     func showJobDetails(job: Job?) {
-        guard let vc = DMJobDetailInitializer.initialize(job: job, moduleOutput: self) else { return }
+        guard let moduleInput = DMJobDetailInitializer.initialize(job: job, moduleOutput: self) else { return }
+        let vc = moduleInput.viewController()
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }

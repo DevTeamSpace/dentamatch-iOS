@@ -1,11 +1,3 @@
-//
-//  DMNotificationVC+TableViewExtension.swift
-//  DentaMatch
-//
-//  Created by Sanjay Kumar Yadav on 08/02/17.
-//  Copyright © 2017 Appster. All rights reserved.
-//
-
 import Foundation
 
 extension DMNotificationVC: UITableViewDataSource, UITableViewDelegate {
@@ -14,7 +6,7 @@ extension DMNotificationVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        return notificationList.count
+        return viewOutput?.notificationList.count ?? 0
     }
 
     func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
@@ -22,6 +14,8 @@ extension DMNotificationVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let notificationList = viewOutput?.notificationList else { return UITableViewCell() }
+        
         let notificationObj = notificationList[indexPath.row]
         let notificationType = UserNotificationType(rawValue: notificationObj.notificationType!)!
 
@@ -63,6 +57,8 @@ extension DMNotificationVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_: UITableView, willDisplay _: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let notificationList = viewOutput?.notificationList else { return }
+        
         if notificationList.count > 9 {
             if indexPath.row == notificationList.count - 2 {
                 loadMoreNotification()
@@ -71,22 +67,13 @@ extension DMNotificationVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        guard let notificationList = viewOutput?.notificationList else { return nil }
         let deleteAction = UITableViewRowAction(style: .normal, title: "Delete", handler: { (_: UITableViewRowAction, indexPath: IndexPath) in
-            let notification = self.notificationList[indexPath.row]
+            let notification = notificationList[indexPath.row]
 
-            self.alertMessage(title: "Confirm Deletion", message: "Are you sure you want to delete this notification?", leftButtonText: "Yes", rightButtonText: "No", completionHandler: { (isLeft: Bool) in
+            self.alertMessage(title: "Confirm Deletion", message: "Are you sure you want to delete this notification?", leftButtonText: "Yes", rightButtonText: "No", completionHandler: { [weak self] (isLeft: Bool) in
                 if isLeft {
-                    self.deleteNotification(notificationObj: notification, completionHandler: { isSucess, _ in
-                        if isSucess! {
-                            self.notificationList.remove(at: indexPath.row)
-                            if notification.seen == nil || notification.seen == 0 {
-                                NotificationCenter.default.post(name: .decreaseBadgeCount, object: nil, userInfo: nil)
-                            }
-                            DispatchQueue.main.async {
-                                self.notificationTableView.reloadData()
-                            }
-                        }
-                    })
+                    self?.viewOutput?.deleteNotification(notification)
                 }
             })
         })
@@ -95,77 +82,27 @@ extension DMNotificationVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func loadMoreNotification() {
-        if loadingMoreNotifications == true {
-            return
-        } else {
-            if totalNotificationOnServer > notificationList.count {
-                setupLoadingMoreOnTable(tableView: notificationTableView)
-                loadingMoreNotifications = true
-                getNotificationList { isSucess, _ in
-                    if isSucess! {
-                        self.loadingMoreNotifications = false
-
-                        self.notificationTableView.reloadData()
-                    } else {
-                        self.loadingMoreNotifications = false
-                    }
-                }
-            }
-        }
+        viewOutput?.loadingMore()
     }
 
-    @objc func btnAcceptButtonClicked(_ sender: Any) {
-        let tag = (sender as AnyObject).tag
-        let notifiObj = notificationList[tag!]
-
-        inviteActionSendToServer(notificationObj: notifiObj, actionType: 1) { response, error in
-            if error != nil {
-                return
-            }
-            // debugPrint(response!)
-            if response![Constants.ServerKey.status].boolValue {
-                notifiObj.seen = 1
-                NotificationCenter.default.post(name: .decreaseBadgeCount, object: nil, userInfo: nil)
-                self.notificationTableView.reloadData()
-                NotificationCenter.default.post(name: .refreshMessageList, object: nil)
-            } else {
-                if response![Constants.ServerKey.statusCode].intValue == 201 {
-                    self.alertMessage(title: "Change Availability", message: response![Constants.ServerKey.message].stringValue, buttonText: "Ok", completionHandler: {
-                    })
-                } else {
-                    self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
-                }
-            }
-        }
+    @objc func btnAcceptButtonClicked(_ sender: UIButton) {
+        guard let notificationList = viewOutput?.notificationList else { return }
+        viewOutput?.inviteActionSend(notificationList[sender.tag], actionType: 1)
     }
 
-    @objc func btnRejectButtonClicked(_ sender: Any) {
-        let tag = (sender as AnyObject).tag
-        let notifiObj = notificationList[tag!]
-        alertMessage(title: "Confirm Rejection", message: "Are you sure you want to reject this job invitation?", leftButtonText: "Yes", rightButtonText: "No") { (isLeft: Bool) in
+    @objc func btnRejectButtonClicked(_ sender: UIButton) {
+        guard let notificationList = viewOutput?.notificationList else { return }
+        alertMessage(title: "Confirm Rejection", message: "Are you sure you want to reject this job invitation?", leftButtonText: "Yes", rightButtonText: "No") { [weak self] (isLeft: Bool) in
             if isLeft {
-                self.inviteActionSendToServer(notificationObj: notifiObj, actionType: 0) { response, _ in
-                    if response![Constants.ServerKey.status].boolValue {
-                        notifiObj.seen = 1
-                        NotificationCenter.default.post(name: .decreaseBadgeCount, object: nil, userInfo: nil)
-                        DispatchQueue.main.async {
-                            self.notificationTableView.reloadData()
-                        }
-                    }else {
-                        if response![Constants.ServerKey.statusCode].intValue == 201 {
-                            self.alertMessage(title: "Change Availability", message: response![Constants.ServerKey.message].stringValue, buttonText: "Ok", completionHandler: {
-                            })
-                        } else {
-                            self.makeToast(toastString: response![Constants.ServerKey.message].stringValue)
-                        }
-                    }
-                }
+                self?.viewOutput?.inviteActionSend(notificationList[sender.tag], actionType: 0)
             }
         }
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let notificationList = viewOutput?.notificationList else { return }
         tableView.deselectRow(at: indexPath, animated: true)
+        
         let notifiObj = notificationList[indexPath.row]
         if notifiObj.seen == 1 {
             // need to implement
@@ -175,14 +112,7 @@ extension DMNotificationVC: UITableViewDataSource, UITableViewDelegate {
                 // in case of invite we need to no need to call service
                 redirectToDetail(notiObj: notifiObj)
             } else {
-                readNotificationToServer(notificationObj: notifiObj) { response, _ in
-                    if response![Constants.ServerKey.status].boolValue {
-                        NotificationCenter.default.post(name: .decreaseBadgeCount, object: nil, userInfo: nil)
-                        notifiObj.seen = 1
-                        self.notificationTableView.reloadData()
-                        self.redirectToDetail(notiObj: notifiObj)
-                    }
-                }
+                viewOutput?.readNotificationToServer(notifiObj)
             }
         }
     }
@@ -218,14 +148,6 @@ extension DMNotificationVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func goToJobDetail(jobObj: Job) {
-        moduleOutput?.showJobDetails(job: jobObj)
-    }
-
-    func setupLoadingMoreOnTable(tableView: UITableView) {
-        let footer = Bundle.main.loadNibNamed("LoadMoreView", owner: nil, options: nil)?[0] as? LoadMoreView
-        footer!.frame = CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 44)
-        footer?.layoutIfNeeded()
-        footer?.activityIndicator.startAnimating()
-        tableView.tableFooterView = footer
+        viewOutput?.openJobDetails(job: jobObj)
     }
 }

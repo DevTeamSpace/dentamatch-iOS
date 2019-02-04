@@ -1,11 +1,3 @@
-//
-//  DMJobSearchResultVC+GMSExtension.swift
-//  DentaMatch
-//
-//  Created by Shailesh Tyagi on 30/01/17.
-//  Copyright © 2017 Appster. All rights reserved.
-//
-
 import Foundation
 import GoogleMaps
 
@@ -46,7 +38,7 @@ extension DMJobSearchResultVC: GMSMapViewDelegate {
     func restoreAllMarkers() {
         mapViewSearchResult.selectedMarker = nil
         mapViewSearchResult.clear()
-        for (index, objJob) in jobs.enumerated() {
+        for (index, objJob) in (viewOutput?.jobs ?? []).enumerated() {
             let latStr = objJob.latitude as NSString
             let latDbl: Double = Double(latStr.doubleValue)
             let langStr = objJob.longitude as NSString

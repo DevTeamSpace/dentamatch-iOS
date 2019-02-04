@@ -1,11 +1,3 @@
-//
-//  DMNotificationVC.swift
-//  DentaMatch
-//
-//  Created by Sanjay Kumar Yadav on 08/02/17.
-//  Copyright © 2017 Appster. All rights reserved.
-//
-
 import UIKit
 enum UserNotificationType: Int {
     case acceptJob = 1
@@ -24,20 +16,14 @@ enum UserNotificationType: Int {
 class DMNotificationVC: DMBaseVC {
     @IBOutlet var notificationTableView: UITableView!
     var pullToRefreshNotifications = UIRefreshControl()
-    var loadingMoreNotifications = false
-    var pageNumber = 1
-    var totalNotificationOnServer = 0
     var placeHolderEmptyJobsView: PlaceHolderJobsView?
-
-    var notificationList = [UserNotification]()
     
-    weak var moduleOutput: DMNotificationsModuleOutput?
+    var viewOutput: DMNotificationsViewOutput?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setup()
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -73,25 +59,34 @@ class DMNotificationVC: DMBaseVC {
         pullToRefreshNotifications.addTarget(self, action: #selector(pullToRefreshForNotification), for: .valueChanged)
         notificationTableView.addSubview(pullToRefreshNotifications)
 
-        pageNumber = 1
-        getNotificationList { isSucess, _ in
-            if isSucess! {
-                self.notificationTableView.reloadData()
-            } else {
-            }
-        }
+        showLoading()
+        viewOutput?.refreshData()
     }
 
     @objc func pullToRefreshForNotification() {
-        pageNumber = 1
-        getNotificationList { isSucess, _ in
-            if isSucess! {
-                self.notificationTableView.reloadData()
-            } else {
-            }
-        }
-        pullToRefreshNotifications.endRefreshing()
+        viewOutput?.refreshData()
     }
 
     
+}
+
+extension DMNotificationVC: DMNotificationsViewInput {
+    
+    func reloadData() {
+        pullToRefreshNotifications.endRefreshing()
+        notificationTableView.reloadData()
+        
+        placeHolderEmptyJobsView?.isHidden = viewOutput?.notificationList.count != 0
+        notificationTableView.tableFooterView = nil
+    }
+    
+    func addLoadingFooter() {
+        
+        let footer = Bundle.main.loadNibNamed("LoadMoreView", owner: nil, options: nil)?[0] as? LoadMoreView
+        footer!.frame = CGRect(x: 0, y: 0, width: notificationTableView.frame.size.width, height: 44)
+        footer?.layoutIfNeeded()
+        footer?.activityIndicator.startAnimating()
+        
+        notificationTableView.tableFooterView = footer
+    }
 }

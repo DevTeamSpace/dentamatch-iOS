@@ -24,9 +24,8 @@ class DMProfileSuccessPending: DMBaseVC {
         super.viewDidLoad()
         
         addNotificationObserver()
-        setup()
-        
         viewOutput?.didLoad()
+        setup()
     }
 
     func addNotificationObserver() {

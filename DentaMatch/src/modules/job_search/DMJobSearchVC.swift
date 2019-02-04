@@ -1,11 +1,3 @@
-//
-//  DMJobSearchVC.swift
-//  DentaMatch
-//
-//  Created by Shailesh Tyagi on 06/01/17.
-//  Copyright © 2017 Appster. All rights reserved.
-//
-
 import CoreLocation
 import GoogleMaps
 import GooglePlaces
@@ -17,17 +9,17 @@ protocol SearchJobDelegate:class {
 
 class DMJobSearchVC: DMBaseVC {
     @IBOutlet var tblViewJobSearch: UITableView!
+    
     weak var delegate: SearchJobDelegate?
+    
     var isPartTimeDayShow: Bool = false
     var jobTitles = [JobTitle]()
     var preferredLocations = [PreferredLocation]()
-    var jobs = [Job]()
     var partTimeJobDays = [String]()
     var location: Location! = Location()
     var isJobTypeFullTime: String! = "0"
     var isJobTypePartTime: String! = "0"
     var searchParams = [String: Any]()
-    var totalJobsFromServer = 0
     var fromJobSearchResults = false
     var firstTime = false
 
@@ -41,11 +33,14 @@ class DMJobSearchVC: DMBaseVC {
         case jobTypePartTime = 76.0
     }
     
-    weak var moduleOutput: DMJobSearchModuleOutput?
+    var viewOutput: DMJobSearchViewOutput?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         title = Constants.ScreenTitleNames.jobSearch
+        
+        viewOutput?.didLoad()
         setup()
     }
 
@@ -192,22 +187,6 @@ class DMJobSearchVC: DMBaseVC {
         }
     }
 
-    func goToSearchResult() {
-        UserDefaultsManager.sharedInstance.deleteSearchParameter()
-        UserDefaultsManager.sharedInstance.saveSearchParameter(seachParam: searchParams as Any)
-        if fromJobSearchResults {
-            if let delegate = delegate {
-                delegate.refreshJobList()
-            }
-            _ = navigationController?.popViewController(animated: true)
-        } else {
-            assertionFailure("Implement")
-            // open dashboard
-//            let dashboardVC = TabBarInitializer.initialize()
-//            kAppDelegate?.window?.rootViewController = dashboardVC
-        }
-    }
-
     func actionSearchButton() {
         view.endEditing(true)
         var jobTitles = [Any]()
@@ -246,6 +225,14 @@ class DMJobSearchVC: DMBaseVC {
         searchParams["preferredJobLocations"] = preferredLocationsArray
         searchParams["preferredJobLocationId"] = preferredLocationIds
 
-        goToSearchResult()
+        viewOutput?.goToSearchResult(params: searchParams)
+    }
+}
+
+extension DMJobSearchVC: DMJobSearchViewInput {
+    
+    func configureView(fromJobSelection: Bool, delegate: SearchJobDelegate?) {
+        self.fromJobSearchResults = fromJobSelection
+        self.delegate = delegate
     }
 }
