@@ -137,6 +137,7 @@
 		6E4D594221FECCA50008EDBA /* DMOnboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4D594121FECCA50008EDBA /* DMOnboarding.swift */; };
 		6E5F84BD2209288000AF54CF /* DMTrackPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5F84BC2209288000AF54CF /* DMTrackPresenter.swift */; };
 		6E5F84BF220949B900AF54CF /* DMCancelJobPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5F84BE220949B900AF54CF /* DMCancelJobPresenter.swift */; };
+		6E6F460622098B080023238B /* DMMessagesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6F460522098B080023238B /* DMMessagesPresenter.swift */; };
 		6E85B5632202FB4600CD2CCE /* DMRegistrationContainerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B5622202FB4600CD2CCE /* DMRegistrationContainerPresenter.swift */; };
 		6E85B56722030CEE00CD2CCE /* DMRegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B56622030CEE00CD2CCE /* DMRegistrationPresenter.swift */; };
 		6E85B5692203188400CD2CCE /* MessageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B5682203188400CD2CCE /* MessageUtils.swift */; };
@@ -403,10 +404,8 @@
 		E5AE37821E4984420001EC3C /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37811E4984420001EC3C /* DatabaseManager.swift */; };
 		E5BED5501E49AB85003EC833 /* DMChatVC+TableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BED54A1E49AB85003EC833 /* DMChatVC+TableViewExtensions.swift */; };
 		E5BED5511E49AB85003EC833 /* DMChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BED54B1E49AB85003EC833 /* DMChatVC.swift */; };
-		E5BED5521E49AB85003EC833 /* DMMessages+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BED54D1E49AB85003EC833 /* DMMessages+Services.swift */; };
 		E5BED5531E49AB85003EC833 /* DMMessagesVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BED54E1E49AB85003EC833 /* DMMessagesVC+TableViewExtension.swift */; };
 		E5BED5541E49AB85003EC833 /* DMMessagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BED54F1E49AB85003EC833 /* DMMessagesVC.swift */; };
-		E5BED5661E49BA0B003EC833 /* DMMessagesVC+DBHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BED5651E49BA0B003EC833 /* DMMessagesVC+DBHandling.swift */; };
 		E5C5F3151DC0AACA001A5A3F /* DMRegisterMapsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C5F3141DC0AACA001A5A3F /* DMRegisterMapsVC.swift */; };
 		E5C5F31B1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C5F31A1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift */; };
 		E5D2D8AB1FE24305001EFA68 /* DMCommonSuccessFailureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D2D8AA1FE24305001EFA68 /* DMCommonSuccessFailureVC.swift */; };
@@ -638,6 +637,7 @@
 		6E4D594121FECCA50008EDBA /* DMOnboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMOnboarding.swift; sourceTree = "<group>"; };
 		6E5F84BC2209288000AF54CF /* DMTrackPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMTrackPresenter.swift; sourceTree = "<group>"; };
 		6E5F84BE220949B900AF54CF /* DMCancelJobPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMCancelJobPresenter.swift; sourceTree = "<group>"; };
+		6E6F460522098B080023238B /* DMMessagesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMMessagesPresenter.swift; sourceTree = "<group>"; };
 		6E85B5622202FB4600CD2CCE /* DMRegistrationContainerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMRegistrationContainerPresenter.swift; sourceTree = "<group>"; };
 		6E85B56622030CEE00CD2CCE /* DMRegistrationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMRegistrationPresenter.swift; sourceTree = "<group>"; };
 		6E85B5682203188400CD2CCE /* MessageUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageUtils.swift; sourceTree = "<group>"; };
@@ -915,10 +915,8 @@
 		E5AE37811E4984420001EC3C /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		E5BED54A1E49AB85003EC833 /* DMChatVC+TableViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMChatVC+TableViewExtensions.swift"; sourceTree = "<group>"; };
 		E5BED54B1E49AB85003EC833 /* DMChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMChatVC.swift; sourceTree = "<group>"; };
-		E5BED54D1E49AB85003EC833 /* DMMessages+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMMessages+Services.swift"; sourceTree = "<group>"; };
 		E5BED54E1E49AB85003EC833 /* DMMessagesVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMMessagesVC+TableViewExtension.swift"; sourceTree = "<group>"; };
 		E5BED54F1E49AB85003EC833 /* DMMessagesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMMessagesVC.swift; sourceTree = "<group>"; };
-		E5BED5651E49BA0B003EC833 /* DMMessagesVC+DBHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMMessagesVC+DBHandling.swift"; sourceTree = "<group>"; };
 		E5C5F3141DC0AACA001A5A3F /* DMRegisterMapsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMRegisterMapsVC.swift; sourceTree = "<group>"; };
 		E5C5F31A1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMTermsAndConditionsVC.swift; sourceTree = "<group>"; };
 		E5D2D8AA1FE24305001EFA68 /* DMCommonSuccessFailureVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMCommonSuccessFailureVC.swift; sourceTree = "<group>"; };
@@ -1334,10 +1332,9 @@
 			children = (
 				6E35FBE12200273700AB84A3 /* DMMessages.swift */,
 				6E85B82C21FADC2100DB137F /* DMMessagesInitializer.swift */,
+				6E6F460522098B080023238B /* DMMessagesPresenter.swift */,
 				E5BED54F1E49AB85003EC833 /* DMMessagesVC.swift */,
-				E5BED54D1E49AB85003EC833 /* DMMessages+Services.swift */,
 				E5BED54E1E49AB85003EC833 /* DMMessagesVC+TableViewExtension.swift */,
-				E5BED5651E49BA0B003EC833 /* DMMessagesVC+DBHandling.swift */,
 			);
 			path = messages;
 			sourceTree = "<group>";
@@ -3038,6 +3035,7 @@
 				E59467271FD8FFE70009C18B /* Popover.swift in Sources */,
 				E5E7CB781E2FA23200D4FB59 /* AboutMeCell.swift in Sources */,
 				6E99690C21FEF7450007CF40 /* RegistrationFlowCoordinator.swift in Sources */,
+				6E6F460622098B080023238B /* DMMessagesPresenter.swift in Sources */,
 				E50512BE1E82378700509328 /* WorkingHoursTableCell.swift in Sources */,
 				E5A174C71E201DE40044B17E /* ProfileImageButton.swift in Sources */,
 				E5A174C21E201D450044B17E /* CircleProgressBar.m in Sources */,
@@ -3122,7 +3120,6 @@
 				484958ED218AAF3900096046 /* UILabel + Addition.swift in Sources */,
 				5A8F62AD1E39F2550037C4A2 /* TemporyJobCell.swift in Sources */,
 				E5AE37081E4897690001EC3C /* MessageSenderTableCell.swift in Sources */,
-				E5BED5521E49AB85003EC833 /* DMMessages+Services.swift in Sources */,
 				E5E7CBA81E30970700D4FB59 /* EditPublicProfileTableCell.swift in Sources */,
 				6EF2F1F521F9E14000F6F38D /* DMForgotPasswordInitializer.swift in Sources */,
 				E55462DB1DAE312C004163B2 /* String+Additons.swift in Sources */,
@@ -3261,7 +3258,6 @@
 				F223591F1E3F608900E984FC /* DMJobDetaiVC+TableViewExtension.swift in Sources */,
 				E51D4EF31E3AFCA700ACC631 /* DMEditStudyVC.swift in Sources */,
 				E558D90A1E2E7A3200A6DF95 /* DMEditProfileVC+TableViewExtension.swift in Sources */,
-				E5BED5661E49BA0B003EC833 /* DMMessagesVC+DBHandling.swift in Sources */,
 				5A3B06D31E33885A00EFCA6E /* DMChangePasswordVC+Services.swift in Sources */,
 				E5F919401E9DD4A30021F008 /* FSCalendar.m in Sources */,
 				E5F919431E9DD4A30021F008 /* FSCalendarCalculator.m in Sources */,

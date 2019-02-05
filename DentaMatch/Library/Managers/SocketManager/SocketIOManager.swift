@@ -84,10 +84,7 @@ class SocketIOManager {
             "blockStatus": blockStatus,
         ]
 
-        // debugPrint(params)
-
         manager.defaultSocket.emitWithAck("blockUnblock", params).timingOut(after: 0) { (params: [Any]) in
-            // debugPrint(params)
             
             try! Realm().write {
                 if blockStatus == "1" {
