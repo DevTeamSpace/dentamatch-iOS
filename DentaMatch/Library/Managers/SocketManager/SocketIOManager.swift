@@ -42,6 +42,10 @@ class SocketIOManager {
                 self?.eventForLogoutPreviousSession()
             }
         }
+        
+        manager.defaultSocket.on(clientEvent: .error) { (data, ack) in
+            print("SocketIOManager: error occured – \(data)")
+        }
     }
 
     func establishConnection() {

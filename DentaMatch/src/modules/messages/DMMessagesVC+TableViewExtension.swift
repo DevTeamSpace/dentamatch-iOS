@@ -69,7 +69,10 @@ extension DMMessagesVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        guard SocketIOManager.sharedInstance.isConnected else {
+            makeToast(toastString: "Chat anavailable")
+            return
+        }
         let chatList = chatListArray[indexPath.row]
         
         moduleOutput?.showChat(chatList: chatList,

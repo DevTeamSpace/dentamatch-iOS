@@ -1,18 +1,8 @@
-//
-//  DMTrackVC+TableViewExtension.swift
-//  DentaMatch
-//
-//  Created by Rajan Maheshwari on 30/01/17.
-//  Copyright © 2017 Appster. All rights reserved.
-//
-
 import Foundation
 import SwiftyJSON
 
 extension DMTrackVC: UITableViewDataSource, UITableViewDelegate {
-//    func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
-//        return 170
-//    }
+
     func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
@@ -22,46 +12,50 @@ extension DMTrackVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
+        guard let viewOutput = viewOutput else { return 0 }
         let segmentControlOptions = SegmentControlOption(rawValue: segmentedControl.selectedSegmentIndex)!
 
         switch segmentControlOptions {
         case .saved:
-            return savedJobs.count
+            return viewOutput.savedJobs.count
 
         case .applied:
-            return appliedJobs.count
+            return viewOutput.appliedJobs.count
 
         case .shortlisted:
-            return shortListedJobs.count
+            return viewOutput.shortListedJobs.count
         }
     }
 
     func tableView(_: UITableView, willDisplay _: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let viewOutput = viewOutput else { return }
+        
         let segmentControlOptions = SegmentControlOption(rawValue: segmentedControl.selectedSegmentIndex)!
         switch segmentControlOptions {
         case .saved:
-            if indexPath.row == savedJobs.count - 2 {
+            if indexPath.row == viewOutput.savedJobs.count - 2 {
                 callLoadMore(type: 1)
             }
         case .applied:
-            if indexPath.row == appliedJobs.count - 2 {
+            if indexPath.row == viewOutput.appliedJobs.count - 2 {
                 callLoadMore(type: 2)
             }
         case .shortlisted:
-            if indexPath.row == shortListedJobs.count - 2 {
+            if indexPath.row == viewOutput.shortListedJobs.count - 2 {
                 callLoadMore(type: 3)
             }
         }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let viewOutput = viewOutput else { return UITableViewCell() }
         let segmentControlOptions = SegmentControlOption(rawValue: segmentedControl.selectedSegmentIndex)!
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "JobSearchResultCell") as! JobSearchResultCell
 
         switch segmentControlOptions {
         case .saved:
-            let job = savedJobs[indexPath.row]
+            let job = viewOutput.savedJobs[indexPath.row]
             populateJobCellData(cell: cell, job: job)
             cell.handlePartTimeLabel(job: job)
             cell.btnFavourite.setImage(UIImage(named: "saveStar"), for: .normal)
@@ -73,7 +67,7 @@ extension DMTrackVC: UITableViewDataSource, UITableViewDelegate {
             cell.selectionStyle = .none
             cell.configureWagesLabel(job: job, isSaved: true)
         case .applied:
-            let job = appliedJobs[indexPath.row]
+            let job = viewOutput.appliedJobs[indexPath.row]
             populateJobCellData(cell: cell, job: job)
             cell.handlePartTimeLabel(job: job)
             cell.btnFavourite.removeTarget(nil, action: nil, for: .allEvents)
@@ -81,7 +75,7 @@ extension DMTrackVC: UITableViewDataSource, UITableViewDelegate {
             cell.selectionStyle = .none
             cell.configureWagesLabel(job: job, isSaved: true)
         case .shortlisted:
-            let job = shortListedJobs[indexPath.row]
+            let job = viewOutput.shortListedJobs[indexPath.row]
             populateJobCellData(cell: cell, job: job)
             cell.handlePartTimeLabel(job: job)
             cell.btnFavourite.isHidden = false
@@ -118,8 +112,7 @@ extension DMTrackVC: UITableViewDataSource, UITableViewDelegate {
         switch segmentControlOptions {
         case .applied:
             let deleteAction = UITableViewRowAction(style: .normal, title: "Cancel Job", handler: { (_: UITableViewRowAction, indexPath: IndexPath) in
-                let job = self.appliedJobs[indexPath.row]
-                self.openCancelJob(job: job, fromApplied: true)
+                self.viewOutput?.openCancelJob(index: indexPath.row, type: .applied, fromApplied: true, delegate: self)
                 self.appliedJobsTableView.setEditing(false, animated: true)
             })
             deleteAction.backgroundColor = Constants.Color.cancelJobDeleteColor
@@ -127,8 +120,7 @@ extension DMTrackVC: UITableViewDataSource, UITableViewDelegate {
 
         case .shortlisted:
             let deleteAction = UITableViewRowAction(style: .normal, title: "Cancel Job", handler: { (_: UITableViewRowAction, indexPath: IndexPath) in
-                let job = self.shortListedJobs[indexPath.row]
-                self.openCancelJob(job: job, fromApplied: false)
+                self.viewOutput?.openCancelJob(index: indexPath.row, type: .shortlisted, fromApplied: false, delegate: self)
                 self.shortListedJobsTableView.setEditing(false, animated: true)
             })
             deleteAction.backgroundColor = Constants.Color.cancelJobDeleteColor
@@ -137,10 +129,6 @@ extension DMTrackVC: UITableViewDataSource, UITableViewDelegate {
         default:
             return nil
         }
-    }
-
-    func openCancelJob(job: Job, fromApplied: Bool) {
-        moduleOutput?.showCancelJob(job: job, fromApplied: fromApplied, delegate: self)
     }
 
     func populateJobCellData(cell: JobSearchResultCell, job: Job) {
@@ -162,76 +150,20 @@ extension DMTrackVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     @objc func removeFavouriteJobButtonPressed(sender: UIButton) {
+        
         alertMessage(title: "Confirm your action", message: "Are you sure you want to unsave the job?", leftButtonText: "Cancel", rightButtonText: "Ok") { (isLeftButton: Bool) in
             if !isLeftButton {
-                let job = self.savedJobs[sender.tag]
-                self.saveUnsaveJob(saveStatus: 0, jobId: job.jobId) { (response: JSON?, _: NSError?) in
-                    if let response = response {
-                        if response[Constants.ServerKey.status].boolValue {
-                            // Save Unsave success
-                            // debugPrint(response)
-                            job.isSaved = 0
-                            self.savedJobs.remove(at: sender.tag)
-                            if self.savedJobs.count == 0 {
-                                self.savedJobsPageNo = 1
-                                self.placeHolderEmptyJobsView?.isHidden = false
-                                self.placeHolderEmptyJobsView?.placeHolderMessageLabel.text = "You don’t have any saved jobs"
-                            }
-                            self.totalSavedJobsFromServer -= 1
-                            DispatchQueue.main.async {
-                                self.savedJobsTableView.reloadData()
-                            }
-                            
-                            NotificationCenter.default.post(name: .jobSavedUnsaved, object: job, userInfo: nil)
-                        }
-                    }
-                }
+                self.viewOutput?.saveUnsaveJob(status: 0, index: sender.tag)
             }
         }
     }
 
     @objc func goToChatButton(sender: UIButton) {
-        _ = shortListedJobs[sender.tag]
+        //_ = shortListedJobs[sender.tag]
     }
 
     func callLoadMore(type: Int) {
-        if type == 1 {
-            if loadingMoreSavedJobs == true {
-                return
-            } else {
-                if totalSavedJobsFromServer > savedJobs.count {
-                    setupLoadingMoreOnTable(tableView: savedJobsTableView)
-                    loadingMoreSavedJobs = true
-                    jobParams["type"] = "\(type)"
-                    jobParams["page"] = "\(savedJobsPageNo)"
-                    getJobList(params: jobParams)
-                }
-            }
-        } else if type == 2 {
-            if loadingMoreAppliedJobs == true {
-                return
-            } else {
-                if totalAppliedJobsFromServer > appliedJobs.count {
-                    setupLoadingMoreOnTable(tableView: appliedJobsTableView)
-                    loadingMoreAppliedJobs = true
-                    jobParams["type"] = "\(type)"
-                    jobParams["page"] = "\(appliedJobsPageNo)"
-                    getJobList(params: jobParams)
-                }
-            }
-        } else {
-            if loadingMoreShortListedJobs == true {
-                return
-            } else {
-                if totalShortListedJobsFromServer > shortListedJobs.count {
-                    setupLoadingMoreOnTable(tableView: shortListedJobsTableView)
-                    loadingMoreShortListedJobs = true
-                    jobParams["type"] = "\(type)"
-                    jobParams["page"] = "\(shortListedJobsPageNo)"
-                    getJobList(params: jobParams)
-                }
-            }
-        }
+        viewOutput?.callLoadMore(type: type)
     }
 
     func setupLoadingMoreOnTable(tableView: UITableView) {
@@ -246,28 +178,6 @@ extension DMTrackVC: UITableViewDataSource, UITableViewDelegate {
 
 extension DMTrackVC: CancelledJobDelegate {
     func cancelledJob(job: Job, fromApplied: Bool) {
-        if fromApplied {
-            appliedJobs.removeObject(object: job)
-            totalAppliedJobsFromServer -= 1
-            appliedJobsTableView.reloadData()
-            if appliedJobs.count == 0 {
-                appliedJobsPageNo = 1
-                placeHolderEmptyJobsView?.isHidden = false
-                placeHolderEmptyJobsView?.placeHolderMessageLabel.text = "You don’t have any applied jobs"
-            } else {
-                placeHolderEmptyJobsView?.isHidden = true
-            }
-        } else {
-            shortListedJobs.removeObject(object: job)
-            totalShortListedJobsFromServer -= 1
-            shortListedJobsTableView.reloadData()
-            if shortListedJobs.count == 0 {
-                shortListedJobsPageNo = 1
-                placeHolderEmptyJobsView?.isHidden = false
-                placeHolderEmptyJobsView?.placeHolderMessageLabel.text = "You don’t have any interviewing jobs"
-            } else {
-                placeHolderEmptyJobsView?.isHidden = true
-            }
-        }
+        viewOutput?.cancelledJob(job, fromApplied: fromApplied)
     }
 }

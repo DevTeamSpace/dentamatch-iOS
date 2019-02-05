@@ -136,7 +136,10 @@ class DMMessagesVC: DMBaseVC {
     }
 
     func openChatPage(chatList: ChatListModel) {
-        
+        guard SocketIOManager.sharedInstance.isConnected else {
+            makeToast(toastString: "Chat anavailable")
+            return
+        }
         moduleOutput?.showChat(chatList: chatList,
                                fetchFromBegin: DatabaseManager.getCountForChats(recruiterId: chatList.recruiterId) == 0,
                                delegate: self)

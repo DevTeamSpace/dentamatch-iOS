@@ -1,11 +1,3 @@
-//
-//  DMTrackVC.swift
-//  DentaMatch
-//
-//  Created by Sanjay Kumar Yadav on 22/01/17.
-//  Copyright © 2017 Appster. All rights reserved.
-//
-
 import UIKit
 
 class DMTrackVC: DMBaseVC {
@@ -15,32 +7,12 @@ class DMTrackVC: DMBaseVC {
         case shortlisted
     }
 
-    var loadingMoreSavedJobs = false
-    var loadingMoreAppliedJobs = false
-    var loadingMoreShortListedJobs = false
-
-    var savedJobs = [Job]()
-    var appliedJobs = [Job]()
-    var shortListedJobs = [Job]()
-    var savedJobsPageNo = 1
-    var appliedJobsPageNo = 1
-    var shortListedJobsPageNo = 1
-    var totalSavedJobsFromServer = 0
-    var totalAppliedJobsFromServer = 0
-    var totalShortListedJobsFromServer = 0
-
     var pullToRefreshSavedJobs = UIRefreshControl()
     var pullToRefreshAppliedJobs = UIRefreshControl()
     var pullToRefreshShortListedJobs = UIRefreshControl()
-
-    var isFromJobDetailApplied = false
-    var lat = ""
-    var long = ""
-
-    var jobParams = [String: String]()
     var placeHolderEmptyJobsView: PlaceHolderJobsView?
     
-    weak var moduleOutput: DMTrackModuleOutput?
+    var viewOutput: DMTrackViewOutput?
 
     @IBOutlet var savedJobsTableView: UITableView!
     @IBOutlet var appliedJobsTableView: UITableView!
@@ -52,20 +24,10 @@ class DMTrackVC: DMBaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let params = UserDefaultsManager.sharedInstance.loadSearchParameter() {
-            lat = params[Constants.JobDetailKey.lat] as? String ?? "0"
-            long = params[Constants.JobDetailKey.lng] as? String ?? "0"
-        }
-
-        jobParams = [
-            "type": "1",
-            "page": "1",
-            "lat": lat,
-            "lng": long,
-        ]
+        
+        
         setup()
-        getJobList(params: jobParams)
-        // Do any additional setup after loading the view.
+        viewOutput?.didLoad()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -113,64 +75,39 @@ class DMTrackVC: DMBaseVC {
         appliedJobsTableView.register(UINib(nibName: "JobSearchResultCell", bundle: nil), forCellReuseIdentifier: "JobSearchResultCell")
         shortListedJobsTableView.register(UINib(nibName: "JobSearchResultCell", bundle: nil), forCellReuseIdentifier: "JobSearchResultCell")
         
-         NotificationCenter.default.addObserver(self, selector: #selector(pullToRefreshForSavedJobs), name: .refreshSavedJobs, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(pullToRefreshForSavedJobs), name: .refreshSavedJobs, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(pullToRefreshForAppliedJobs), name: .refreshAppliedJobs, object: nil)
          //NotificationCenter.default.addObserver(self, selector: #selector(pullToRefreshForShortListedJobs), name: .refreshInterviewingJobs, object: nil)
     }
 
     @objc func pullToRefreshForSavedJobs() {
-        savedJobsPageNo = 1
-        jobParams["type"] = "1"
-        jobParams["page"] = "1"
-        jobParams["lat"] = lat
-        jobParams["lng"] = long
         savedJobsTableView.tableFooterView = nil
-        loadingMoreSavedJobs = false
-        getJobList(params: jobParams)
-        pullToRefreshSavedJobs.endRefreshing()
+        viewOutput?.refreshData(type: .saved)
     }
 
     @objc func pullToRefreshForAppliedJobs() {
-        appliedJobsPageNo = 1
-        jobParams["type"] = "2"
-        jobParams["page"] = "1"
-        jobParams["lat"] = lat
-        jobParams["lng"] = long
         appliedJobsTableView.tableFooterView = nil
-        loadingMoreAppliedJobs = false
-        getJobList(params: jobParams)
-        pullToRefreshAppliedJobs.endRefreshing()
+        viewOutput?.refreshData(type: .applied)
     }
 
     @objc func pullToRefreshForShortListedJobs() {
-        shortListedJobsPageNo = 1
-        jobParams["type"] = "3"
-        jobParams["page"] = "1"
-        jobParams["lat"] = lat
-        jobParams["lng"] = long
         shortListedJobsTableView.tableFooterView = nil
-        loadingMoreShortListedJobs = false
-        getJobList(params: jobParams)
-        pullToRefreshShortListedJobs.endRefreshing()
+        viewOutput?.refreshData(type: .shortlisted)
     }
 
     func openJobDetails(indexPath: IndexPath) {
         
         let segmentControlOptions = SegmentControlOption(rawValue: segmentedControl.selectedSegmentIndex)!
-        var job: Job? = nil
         
         switch segmentControlOptions {
         case .saved:
-            job = savedJobs[indexPath.row]
-
+            viewOutput?.openJobDetails(index: indexPath.row, type: .saved, delegate: self)
         case .applied:
-            job = appliedJobs[indexPath.row]
+            viewOutput?.openJobDetails(index: indexPath.row, type: .applied, delegate: self)
 
         case .shortlisted:
-            job = shortListedJobs[indexPath.row]
+            viewOutput?.openJobDetails(index: indexPath.row, type: .shortlisted, delegate: self)
         }
-        
-        moduleOutput?.showJobDetails(job: job, delegate: self)
     }
 
     @IBAction func segmentControlValueChanged(_ sender: UISegmentedControl) {
@@ -186,16 +123,7 @@ class DMTrackVC: DMBaseVC {
             shortListedJobsTableView.dataSource = nil
 
             placeHolderEmptyJobsView?.placeHolderMessageLabel.text = "You don’t have any saved jobs"
-
-            placeHolderEmptyJobsView?.isHidden = savedJobs.count == 0 ? false : true
-
-            if savedJobsPageNo == 1 {
-                jobParams["type"] = "1"
-                jobParams["page"] = "1"
-                getJobList(params: jobParams)
-            } else {
-                savedJobsTableView.reloadData()
-            }
+            viewOutput?.switchToType(.saved)
         case .applied:
             savedJobsTableView.isHidden = true
             shortListedJobsTableView.isHidden = true
@@ -205,14 +133,7 @@ class DMTrackVC: DMBaseVC {
             shortListedJobsTableView.dataSource = nil
 
             placeHolderEmptyJobsView?.placeHolderMessageLabel.text = "You don’t have any applied jobs"
-            placeHolderEmptyJobsView?.isHidden = appliedJobs.count == 0 ? false : true
-            if appliedJobsPageNo == 1 {
-                jobParams["type"] = "2"
-                jobParams["page"] = "1"
-                getJobList(params: jobParams)
-            } else {
-                appliedJobsTableView.reloadData()
-            }
+            viewOutput?.switchToType(.applied)
         case .shortlisted:
             savedJobsTableView.isHidden = true
             appliedJobsTableView.isHidden = true
@@ -222,14 +143,7 @@ class DMTrackVC: DMBaseVC {
             shortListedJobsTableView.dataSource = self
 
             placeHolderEmptyJobsView?.placeHolderMessageLabel.text = "You don’t have any interviewing jobs"
-            placeHolderEmptyJobsView?.isHidden = shortListedJobs.count == 0 ? false : true
-            if shortListedJobsPageNo == 1 {
-                jobParams["type"] = "3"
-                jobParams["page"] = "1"
-                getJobList(params: jobParams)
-            } else {
-                shortListedJobsTableView.reloadData()
-            }
+            viewOutput?.switchToType(.shortlisted)
         }
     }
     deinit {
@@ -237,21 +151,50 @@ class DMTrackVC: DMBaseVC {
     }
 }
 
+extension DMTrackVC: DMTrackViewInput {
+    
+    func reloadData() {
+        
+        pullToRefreshSavedJobs.endRefreshing()
+        pullToRefreshAppliedJobs.endRefreshing()
+        pullToRefreshShortListedJobs.endRefreshing()
+        
+        savedJobsTableView.reloadData()
+        appliedJobsTableView.reloadData()
+        shortListedJobsTableView.reloadData()
+        
+        savedJobsTableView.tableFooterView = nil
+        appliedJobsTableView.tableFooterView = nil
+        shortListedJobsTableView.tableFooterView = nil
+    }
+    
+    func configureEmptyView(isHidden: Bool, message: String?) {
+        placeHolderEmptyJobsView?.isHidden = isHidden
+        
+        if let message = message {
+            placeHolderEmptyJobsView?.placeHolderMessageLabel.text = message
+        }
+    }
+    
+    func addLoadingCell(to type: PTRType) {
+        switch type {
+        case .saved:
+            setupLoadingMoreOnTable(tableView: savedJobsTableView)
+        case .applied:
+            setupLoadingMoreOnTable(tableView: appliedJobsTableView)
+        case .shortlisted:
+            setupLoadingMoreOnTable(tableView: shortListedJobsTableView)
+        }
+    }
+}
+
 extension DMTrackVC: JobSavedStatusUpdateDelegate {
     func jobUpdate(job: Job) {
         // unsave status
-        let jobs = savedJobs.filter({ $0.jobId == job.jobId }).first
-        if let _ = jobs {
-            jobs?.isSaved = job.isSaved
-            savedJobs.removeObject(object: jobs!)
-            totalSavedJobsFromServer -= 1
-            savedJobsTableView.reloadData()
-        }
+        viewOutput?.jobUpdate(job)
     }
 
     func jobApplied(job _: Job) {
-        isFromJobDetailApplied = true
-        appliedJobs.removeAll()
-        appliedJobsPageNo = 1
+        viewOutput?.jobApplied()
     }
 }

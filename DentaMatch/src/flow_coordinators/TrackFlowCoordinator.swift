@@ -20,9 +20,9 @@ class TrackFlowCoordinator: BaseFlowCoordinator, TrackFlowCoordinatorProtocol {
     }
     
     func launchViewController() -> UIViewController? {
-        guard let vc = DMTrackInitializer.initialize(moduleOutput: self) else { return nil }
+        guard let moduleInput = DMTrackInitializer.initialize(moduleOutput: self) else { return nil }
         
-        let navController = UINavigationController(rootViewController: vc)
+        let navController = UINavigationController(rootViewController: moduleInput.viewController())
         navigationController = navController
         return navController
     }
@@ -38,7 +38,8 @@ extension TrackFlowCoordinator: DMTrackModuleOutput {
     }
     
     func showCancelJob(job: Job?, fromApplied: Bool, delegate: CancelledJobDelegate) {
-        guard let vc = DMCancelJobInitializer.initialize(job: job, fromApplied: fromApplied, delegate: delegate, moduleOutput: self) else { return }
+        guard let moduleInput = DMCancelJobInitializer.initialize(job: job, fromApplied: fromApplied, delegate: delegate, moduleOutput: self) else { return }
+        let vc = moduleInput.viewController()
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }

@@ -45,7 +45,8 @@ extension CalendarFlowCoordinator: DMCalendarModuleOutput {
     }
     
     func showCancelJob(job: Job?, fromApplied: Bool, delegate: CancelledJobDelegate) {
-        guard let vc = DMCancelJobInitializer.initialize(job: job, fromApplied: fromApplied, delegate: delegate, moduleOutput: self) else { return }
+        guard let moduleInput = DMCancelJobInitializer.initialize(job: job, fromApplied: fromApplied, delegate: delegate, moduleOutput: self) else { return }
+        let vc = moduleInput.viewController()
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }
