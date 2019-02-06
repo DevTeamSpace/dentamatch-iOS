@@ -31,7 +31,8 @@ class MessagesFlowCoordinator: BaseFlowCoordinator, MessagesFlowCoordinatorProto
 extension MessagesFlowCoordinator: DMMessagesModuleOutput {
     
     func showChat(chatList: ChatListModel, fetchFromBegin: Bool, delegate: ChatTapNotificationDelegate) {
-        guard let vc = DMChatInitializer.initialize(chatList: chatList, delegate: delegate, fetchFromBegin: fetchFromBegin, moduleOutput: self) else { return }
+        guard let moduleInput = DMChatInitializer.initialize(chatListId: chatList.messageListId, delegate: delegate, fetchFromBegin: fetchFromBegin, moduleOutput: self) else { return }
+        let vc = moduleInput.viewController()
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }

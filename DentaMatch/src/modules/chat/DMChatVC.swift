@@ -2,8 +2,8 @@ import SwiftyJSON
 import UIKit
 import RealmSwift
 
-@objc protocol ChatTapNotificationDelegate {
-    @objc optional func notificationTapped(recruiterId: String)
+protocol ChatTapNotificationDelegate: class {
+    func notificationTapped(recruiterId: String)
 }
 
 class DMChatVC: DMBaseVC {
@@ -14,63 +14,37 @@ class DMChatVC: DMBaseVC {
     @IBOutlet var unblockButton: UIButton!
     @IBOutlet var chatTextView: UITextView!
     @IBOutlet var textContainerViewHeight: NSLayoutConstraint!
-
-    weak var delegate: ChatTapNotificationDelegate?
-    weak var moduleOutput: DMChatModuleOutput?
+    
     var placeHolderLabelForView: UILabel!
     var placeHolderLabel: UILabel!
-    var chatList: ChatListModel?
-    var chatsArray: [[ChatModel]] = []
-    var messages = [String]()
-    var shouldFetchFromBeginning = false
-    let appDelegate = UIApplication.shared.delegate as? AppDelegate
     
-    var notificationToken: NotificationToken?
-    
-    deinit {
-        notificationToken?.invalidate()
-    }
-
-    var printData = true
+    var viewOutput: DMChatViewOutput?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        showLoader(text: "Loading Chats")
-        setup()
-        receiveChatMessageEvent()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshUnblockList), name: .refreshUnblockList, object: nil)
         
-        sendButton.isUserInteractionEnabled = false
+        setup()
+        
+        viewOutput?.didLoad()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(refreshUnblockList), name: .refreshUnblockList, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(refreshChat), name: .refreshChat, object: nil)
-       
-        navigationItem.title = chatList?.officeName
-        navigationItem.leftBarButtonItem = backBarButton()
-        SocketIOManager.sharedInstance.recruiterId = (chatList?.recruiterId)!
-        SocketIOManager.sharedInstance.updateMessageRead()
-    }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        getHistory()
-        hideLoader()
+        viewOutput?.willAppear()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(self)
-        SocketIOManager.sharedInstance.notOnChat()
+        
+        viewOutput?.willDisappear()
     }
 
-    // MARK: - Keyboard Show Hide Observers
-
+    
     @objc func keyboardWillShow(note: NSNotification) {
         if let keyboardSize = (note.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             UIView.animate(withDuration: 0.25, animations: {
@@ -95,6 +69,7 @@ class DMChatVC: DMBaseVC {
     func setup() {
         chatTextView.text = ""
         chatTextView.textContainer.lineFragmentPadding = 10.0
+        
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         chatTableView.addGestureRecognizer(tap)
         chatTextView.delegate = self
@@ -113,87 +88,23 @@ class DMChatVC: DMBaseVC {
         placeHolderLabelForView.textColor = UIColor.color(withHexCode: "aaafb8")
         placeHolderLabelForView.textAlignment = .center
         placeHolderLabelForView.numberOfLines = 2
-        placeHolderLabelForView.text = "Start your conversation with\n \((chatList?.officeName) ?? "")"
+        
         placeHolderLabelForView.center = view.center
         var frame = placeHolderLabelForView.frame
         frame = CGRect(x: frame.origin.x, y: frame.origin.y - 44, width: frame.size.width, height: frame.size.height)
         placeHolderLabelForView.frame = frame
         placeHolderLabelForView.isHidden = true
         view.addSubview(placeHolderLabelForView)
-
-        if (chatList?.isBlockedFromSeeker)! {
-            chatTextView.isHidden = true
-            sendButton.isHidden = true
-            unblockButton.isHidden = false
-        } else {
-            chatTextView.isHidden = false
-            sendButton.isHidden = false
-            unblockButton.isHidden = true
-        }
+        
+        navigationItem.leftBarButtonItem = backBarButton()
+        sendButton.isUserInteractionEnabled = false
     }
 
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
 
-    func receiveChatMessageEvent() {
-        SocketIOManager.sharedInstance.getChatMessage { (object: [String: AnyObject], isMine: Bool) in
-            
-            let chatObj = JSON(rawValue: object)
-            if let chatObj = chatObj {
-                if chatObj["blocked"].exists() {
-                    if isMine {
-                        self.view.endEditing(true)
-                        self.makeToast(toastString: "Recruiter has blocked you from messaging")
-                        return
-                    }
-                }
-            }
-            self.addUpdateChatToDB(chatObj: chatObj)
-            if isMine {
-                self.sendButton.isUserInteractionEnabled = false
-                self.chatTextView.text = ""
-                self.placeHolderLabel.isHidden = false
-            }
-        }
-    }
-
-    func getHistory() {
-        if SocketIOManager.sharedInstance.isConnected {
-            if shouldFetchFromBeginning {
-                SocketIOManager.sharedInstance.getHistory(recruiterId: (chatList?.recruiterId)!) { (params: [Any]) in
-                    let chatObj = JSON(rawValue: params)
-                    DatabaseManager.insertChats(chats: chatObj?[0].array)
-                    self.getChats()
-                }
-            } else {
-                getChats()
-                if let chat = getLastChat() {
-                    getLeftMessages(lastMessageId: chat.id)
-                }
-            }
-        } else {
-            getChats()
-        }
-    }
-
-    func getLeftMessages(lastMessageId: Int) {
-        SocketIOManager.sharedInstance.getLeftMessages(recruiterId: (chatList?.recruiterId)!, messageId: lastMessageId, completionHandler: { (params: [Any]) in
-            // debugPrint(params)
-            let chatObj = JSON(rawValue: params)
-            DatabaseManager.insertChats(chats: chatObj?[0].array)
-        })
-    }
-
-    @objc func refreshChat() {
-        if let chat = getLastChat() {
-            getLeftMessages(lastMessageId: chat.id)
-        }
-    }
-
-    func getLastChat() -> ChatModel? {
-        return chatsArray.last?.last
-    }
+    
 
     @IBAction func sendMessageButtonPressed(_: Any) {
         if chatTextView.text.isEmptyField {
@@ -201,22 +112,20 @@ class DMChatVC: DMBaseVC {
             placeHolderLabel.isHidden = false
             return
         }
-        // Send Message
-        if SocketIOManager.sharedInstance.isConnected {
-         //  let encodedMessage = self.chatTextView.text!.convertToUTF8()
 
-            SocketIOManager.sharedInstance.sendTextMessage(message: chatTextView.text, recruiterId: (chatList?.recruiterId)!)
+        if SocketIOManager.sharedInstance.isConnected {
+         
+            viewOutput?.sendMessage(text: chatTextView.text)
             chatTextView.text = ""
             placeHolderLabel.isHidden = false
+            
         } else {
             alertMessage(title: "Connection Problem", message: "Unable to connect to server. Please try again later.", buttonText: "Ok", completionHandler: nil)
-            // debugPrint("Socket not connected")
         }
     }
 
     @IBAction func unblockButtonPressed(_: Any) {
-        // self.unBlockRecruiter(chatList: chatList!)
-        SocketIOManager.sharedInstance.handleBlockUnblock(chatList: chatList!, blockStatus: "0")
+        viewOutput?.onUblockButtonTap()
     }
 
     @objc func refreshUnblockList(notification _: Notification) {
@@ -227,8 +136,39 @@ class DMChatVC: DMBaseVC {
     }
 
     func notificationTapHandling(recruiterId: String) {
-        if let delegate = delegate {
-            delegate.notificationTapped!(recruiterId: recruiterId)
+        viewOutput?.onNotificationTap(recruiterId: recruiterId)
+    }
+}
+
+extension DMChatVC: DMChatViewInput {
+    
+    func reloadData() {
+        chatTableView.reloadData()
+    }
+    
+    func scrollToBottom() {
+        scrollTableToBottom()
+    }
+    
+    func configureMessageReceive() {
+        sendButton.isUserInteractionEnabled = false
+        chatTextView.text = ""
+        placeHolderLabel.isHidden = false
+    }
+    
+    func configureView(title: String?, isBlockFromSeeker: Bool) {
+        
+        navigationItem.title = title
+        placeHolderLabelForView.text = "Start your conversation with\n \((title) ?? "")"
+        
+        if isBlockFromSeeker {
+            chatTextView.isHidden = true
+            sendButton.isHidden = true
+            unblockButton.isHidden = false
+        } else {
+            chatTextView.isHidden = false
+            sendButton.isHidden = false
+            unblockButton.isHidden = true
         }
     }
 }

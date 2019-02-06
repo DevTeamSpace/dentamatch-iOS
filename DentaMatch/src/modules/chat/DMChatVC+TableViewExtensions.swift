@@ -3,25 +3,16 @@ import Foundation
 extension DMChatVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        guard let chatsArray = viewOutput?.chatsArray else { return 0.0 }
         return MessageSenderTableCell.calculateHeight(text: chatsArray[indexPath.section][indexPath.row].message)
     }
 
     func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if printData == true {
-            
-            for section in chatsArray {
-                LogManager.logDebug(section.first?.dateString)
-                LogManager.logDebug(section.count.description)
-            }
-            
-            printData = false
-        }
-        
-        return chatsArray[section].count
+        return viewOutput?.chatsArray[section].count ?? 0
     }
 
     func numberOfSections(in _: UITableView) -> Int {
-        return chatsArray.count
+        return viewOutput?.chatsArray.count ?? 0
     }
 
     func tableView(_: UITableView, heightForHeaderInSection _: Int) -> CGFloat {
@@ -29,7 +20,8 @@ extension DMChatVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let dateString = chatsArray[section].first?.dateString else { return nil }
+        guard let chatsArray = viewOutput?.chatsArray,
+            let dateString = chatsArray[section].first?.dateString else { return nil }
         
         let sectionView = UIView(frame: CGRect(x: 0, y: 0, width: Utilities.ScreenSize.SCREEN_WIDTH, height: 40))
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 30))
@@ -43,6 +35,7 @@ extension DMChatVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let chatsArray = viewOutput?.chatsArray else { return UITableViewCell() }
         let chat = chatsArray[indexPath.section][indexPath.row]
         
         if let _ = UserManager.shared().activeUser {

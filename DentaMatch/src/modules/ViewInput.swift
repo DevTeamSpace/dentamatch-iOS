@@ -6,6 +6,7 @@ protocol BaseViewInput: class {
     func popViewController()
     func viewController() -> UIViewController
     func showLoading()
+    func showLoading(text: String)
     func hideLoading()
     func show(toastMessage: String)
     func showAlertMessage(title: String, body: String)
@@ -39,6 +40,10 @@ extension BaseViewInput where Self: DMBaseVC {
     
     func hideLoading() {
         hideLoader()
+    }
+    
+    func showLoading(text: String) {
+        showLoader(text: text)
     }
     
     func show(toastMessage: String) {

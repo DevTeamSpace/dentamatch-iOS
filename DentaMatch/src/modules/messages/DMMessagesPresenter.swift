@@ -61,8 +61,6 @@ extension DMMessagesPresenter: DMMessagesViewOutput {
             moduleOutput.showChat(chatList: chatList,
                                   fetchFromBegin: DatabaseManager.getCountForChats(recruiterId: recruiterId) == 0,
                                   delegate: viewInput)
-        } else {
-            LogManager.logDebug("Recruiter Doesn't exists in core data")
         }
     }
     

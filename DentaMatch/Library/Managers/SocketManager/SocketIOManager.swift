@@ -122,12 +122,11 @@ class SocketIOManager {
     }
 
     func notOnChat() {
+        
         let params = [
             "fromId": UserManager.shared().activeUser.userId,
         ]
-        manager.defaultSocket.emitWithAck("notOnChat", params).timingOut(after: 0) { (_: [Any]) in
-            // debugPrint(params)
-        }
+        manager.defaultSocket.emitWithAck("notOnChat", params)
     }
 
     func getChatMessage(completionHandler: @escaping (_ messageInfo: [String: AnyObject], _ isMine: Bool) -> Void) {
