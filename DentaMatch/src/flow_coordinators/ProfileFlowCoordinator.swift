@@ -21,9 +21,9 @@ class ProfileFlowCoordinator: BaseFlowCoordinator, ProfileFlowCoordinatorProtoco
     }
     
     func launchViewController() -> UIViewController? {
-        guard let vc = DMEditProfileInitializer.initialize(moduleOutput: self) else { return nil }
+        guard let moduleInput = DMEditProfileInitializer.initialize(moduleOutput: self) else { return nil }
         
-        let navController = UINavigationController(rootViewController: vc)
+        let navController = UINavigationController(rootViewController: moduleInput.viewController())
         navigationController = navController
         return navController
     }
@@ -32,7 +32,8 @@ class ProfileFlowCoordinator: BaseFlowCoordinator, ProfileFlowCoordinatorProtoco
 extension ProfileFlowCoordinator: DMEditProfileModuleOutput {
     
     func showSettings() {
-        guard let vc = DMSettingsInitializer.initialize(moduleOutput: self) else { return }
+        guard let moduleInput = DMSettingsInitializer.initialize(moduleOutput: self) else { return }
+        let vc = moduleInput.viewController()
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -45,13 +46,15 @@ extension ProfileFlowCoordinator: DMEditProfileModuleOutput {
     }
     
     func showEditProfile(jobTitles: [JobTitle]?, selectedJob: JobTitle?) {
-        guard let vc = DMPublicProfileInitializer.initialize(jobTitles: jobTitles, selectedJob: selectedJob, moduleOutput: self) else { return }
+        guard let moduleInput = DMPublicProfileInitializer.initialize(jobTitles: jobTitles, selectedJob: selectedJob, moduleOutput: self) else { return }
+        let vc = moduleInput.viewController()
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }
 
     func showEditWorkExperience(jobTitles: [JobTitle]?, isEditMode: Bool) {
-        guard let vc = DMWorkExperienceInitializer.initialize(jobTitles: jobTitles, isEditMode: isEditMode, moduleOutput: self) else { return }
+        guard let moduleInput = DMWorkExperienceInitializer.initialize(jobTitles: jobTitles, isEditMode: isEditMode, moduleOutput: self) else { return }
+        let vc = moduleInput.viewController()
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }

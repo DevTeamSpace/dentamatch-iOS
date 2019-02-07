@@ -1,11 +1,3 @@
-//
-//  DMSettingVC+TableViewExtension.swift
-//  DentaMatch
-//
-//  Created by Sanjay Kumar Yadav on 21/01/17.
-//  Copyright © 2017 Appster. All rights reserved.
-//
-
 import Foundation
 
 extension DMSettingVC: UITableViewDataSource, UITableViewDelegate {
@@ -60,45 +52,24 @@ extension DMSettingVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            moduleOutput?.showRegisterMaps(delegate: self)
+            viewOutput?.openRegisterMaps(delegate: self)
         case 1:
-            moduleOutput?.showResetPassword()
+            viewOutput?.openResetPassword()
         case 2:
-            moduleOutput?.showTermsAndConditions(isPrivacyPolicy: false)
+            viewOutput?.openTermsAndConditions(isPrivacyPolicy: false)
         case 3:
-            moduleOutput?.showTermsAndConditions(isPrivacyPolicy: true)
+            viewOutput?.openTermsAndConditions(isPrivacyPolicy: true)
         case 4:
             // logout
             self.alertMessage(title: "Logout", message: "Are you sure you want to logout?", leftButtonText: "Yes", rightButtonText: "No", completionHandler: { [weak self](isLeft: Bool) in
                 if isLeft {
-                  self?.openLogin()
+                  self?.viewOutput?.signOut()
                 }
             })
             
             break
         default: break
         }
-    }
-
-    func openLogin() {
-        signOut { [weak self] check, _ in
-
-            if check == true {
-                AppDelegate.delegate().resetBadgeCount()
-                MixpanelOperations.mixpanepanelLogout()
-                self?.deleteFetchController()
-                SocketIOManager.sharedInstance.closeConnection()
-                UserManager.shared().deleteActiveUser()
-                UserDefaultsManager.sharedInstance.clearCache()
-                UserDefaultsManager.sharedInstance.isLoggedOut = true
-                
-                self?.moduleOutput?.showLoginScreen()
-            }
-        }
-    }
-
-    func deleteFetchController() {
-        NotificationCenter.default.post(name: .deleteFetchController, object: nil)
     }
 }
 

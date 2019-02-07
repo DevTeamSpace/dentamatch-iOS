@@ -33,7 +33,7 @@ class SocketIOManager {
     private func configureSocket() {
         
         manager.defaultSocket.on(clientEvent: .connect) { [weak self] (data, ack) in
-            
+            print("SocketIOManager: connected")
             if let _ = UserManager.shared().activeUser {
                 
                 self?.initServer()
@@ -45,6 +45,10 @@ class SocketIOManager {
         
         manager.defaultSocket.on(clientEvent: .error) { (data, ack) in
             print("SocketIOManager: error occured – \(data)")
+        }
+        
+        manager.defaultSocket.on(clientEvent: .disconnect) { (data, ack) in
+            print("SocketIOManager: disconnected")
         }
     }
 
@@ -126,7 +130,9 @@ class SocketIOManager {
         let params = [
             "fromId": UserManager.shared().activeUser.userId,
         ]
-        manager.defaultSocket.emitWithAck("notOnChat", params)
+        manager.defaultSocket.emitWithAck("notOnChat", params).timingOut(after: 0) { (_: [Any]) in
+            
+        }
     }
 
     func getChatMessage(completionHandler: @escaping (_ messageInfo: [String: AnyObject], _ isMine: Bool) -> Void) {

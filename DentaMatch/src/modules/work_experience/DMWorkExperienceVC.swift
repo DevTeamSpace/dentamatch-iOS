@@ -45,16 +45,10 @@ enum FieldType: Int, CustomStringConvertible {
 
 class DMWorkExperienceVC: DMBaseVC, ExperiencePickerViewDelegate, ToolBarButtonDelegate {
     let NAVBAR_CHANGE_POINT: CGFloat = 64
-    var exprienceArray = [ExperienceModel]()
-    var exprienceDetailArray: NSMutableArray?
-    var currentExperience: ExperienceModel? = ExperienceModel(empty: "")
-    var phoneFormatter = PhoneNumberFormatter()
-    var jobTitles = [JobTitle]()
-    var selectedIndex: Int = 0
-    var isHiddenExperienceTable: Bool = false
-    var isEditMode = false
     
-    weak var moduleOutput: DMWorkExperienceModuleOutput?
+    var phoneFormatter = PhoneNumberFormatter()
+    
+    var viewOutput: DMWorkExperienceViewOutput?
 
     @IBOutlet var viewForTopHeader: UIView!
     @IBOutlet var nextButton: UIButton!
@@ -69,20 +63,19 @@ class DMWorkExperienceVC: DMBaseVC, ExperiencePickerViewDelegate, ToolBarButtonD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setup()
         initialDataSetup()
-        getExperienceAPI()
+        viewOutput?.getExperience()
 
-        if isEditMode != true {
-//            getExperienceAPI()
-        } else {
+        if viewOutput?.isEditing == true {
             nextButton.setTitle("SAVE", for: .normal)
         }
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        if isEditMode != true {
+        if viewOutput?.isEditing == false {
             topHeaderViewHeight.constant = 0
         } else {
         }
@@ -126,7 +119,7 @@ class DMWorkExperienceVC: DMBaseVC, ExperiencePickerViewDelegate, ToolBarButtonD
 //        self.mainScrollView.isExclusiveTouch = true
 
         workExperienceDetailTable.reloadData()
-        if isEditMode {
+        if viewOutput?.isEditing == true {
             title = "EDIT PROFILE"
             changeNavBarAppearanceForDefault()
         } else {
@@ -142,7 +135,7 @@ class DMWorkExperienceVC: DMBaseVC, ExperiencePickerViewDelegate, ToolBarButtonD
     @IBAction func nextButtonClicked(_: Any) {
         if !checkAllFieldIsEmpty() {
             saveDataOnNextButton()
-        } else if exprienceArray.count > 0 && checkAllFieldIsEmpty() {
+        } else if viewOutput?.exprienceArray.count != 0 && checkAllFieldIsEmpty() {
             navigateAction()
         } else {
             // alert here for
@@ -163,25 +156,10 @@ class DMWorkExperienceVC: DMBaseVC, ExperiencePickerViewDelegate, ToolBarButtonD
 
             present(alert, animated: true, completion: nil)
         }
-
-//        if self.exprienceArray.count > 0
-//        {
-//            if checkAllFieldIsEmpty() {
-//                if isEditMode == true {
-//                    _ = self.navigationController?.popViewController(animated: true)
-//                }else {
-//                    self.performSegue(withIdentifier: Constants.StoryBoard.SegueIdentifier.goToStudyVC, sender: self)
-//                }
-//            }else {
-//                saveDataOnNextButton()
-//            }
-//        }else {
-//            self.makeToast(toastString: Constants.AlertMessage.atleastOneExperience)
-//        }
     }
 
     func navigateAction() {
-        if isEditMode == true {
+        if viewOutput?.isEditing == true {
             _ = navigationController?.popViewController(animated: true)
         } else {
             assertionFailure("Implement")
@@ -204,18 +182,20 @@ class DMWorkExperienceVC: DMBaseVC, ExperiencePickerViewDelegate, ToolBarButtonD
 
     func initialDataSetup() {
         let exp = ExperienceModel(empty: "")
-        exprienceDetailArray?.add(exp)
-        if exprienceArray.count > 0 {
-            currentExperience?.isFirstExperience = false
+        viewOutput?.exprienceDetailArray.add(exp)
+        
+        if viewOutput?.exprienceArray.count != 0 {
+            viewOutput?.currentExperience.isFirstExperience = false
         }
-        currentExperience?.references.append(EmployeeReferenceModel(empty: ""))
+        
+        viewOutput?.currentExperience.references.append(EmployeeReferenceModel(empty: ""))
         workExperienceTable.reloadData()
         workExperienceDetailTable.reloadData()
         reSizeTableViewsAndScrollView()
     }
 
     func reSizeTableViewsAndScrollView() {
-        if isHiddenExperienceTable == true {
+        if viewOutput?.isHiddenExperienceTable == true {
             hightOfExperienceTable.constant = 0
 
         } else {
@@ -232,54 +212,12 @@ class DMWorkExperienceVC: DMBaseVC, ExperiencePickerViewDelegate, ToolBarButtonD
         if !checkValidations() {
             return
         }
-        var param = [String: AnyObject]()
-        if currentExperience?.isEditMode == true {
-            param = getParamsForSaveAndUpdate(isEdit: true)
-        } else {
-            param = getParamsForSaveAndUpdate(isEdit: false)
-        }
-        saveUpdateExperience(params: param, completionHandler: { response, _ in
-
-            if response![Constants.ServerKey.status].boolValue {
-                let resultArray = response![Constants.ServerKey.result][Constants.ServerKey.list].array
-                if (resultArray?.count)! > 0 {
-                    let dict = resultArray?[0].dictionary
-                    self.currentExperience?.experienceID = (dict?[Constants.ServerKey.experienceId]?.intValue)!
-                }
-                if self.currentExperience?.isEditMode == true {
-                    self.exprienceArray[self.selectedIndex] = self.currentExperience!
-
-                } else {
-                    self.exprienceArray.append(self.currentExperience!)
-                }
-                self.isHiddenExperienceTable = false
-
-                self.currentExperience = nil
-                self.currentExperience = ExperienceModel(empty: "")
-                self.currentExperience?.isFirstExperience = false
-                self.currentExperience?.references.append(EmployeeReferenceModel(empty: ""))
-                self.workExperienceTable.reloadData()
-                self.workExperienceDetailTable.reloadData()
-                self.reSizeTableViewsAndScrollView()
-
-                self.updateProfileScreen()
-                if self.isEditMode == true {
-                    _ = self.navigationController?.popViewController(animated: true)
-                } else {
-                    assertionFailure("Implement")
-//                    guard let vc = DMStudyInitializer.initialize() as? DMStudyVC else { return }
-//                    self.navigationController?.pushViewController(vc, animated: true)
-                }
-            }
-        })
-        workExperienceTable.reloadData()
-        workExperienceDetailTable.reloadData()
-        //        self.makeToast(toastString: "Experience Added")
-        reSizeTableViewsAndScrollView()
+        
+        viewOutput?.saveUpdateExperience()
     }
 
     func updateProfileScreen() {
-        NotificationCenter.default.post(name: .updateProfileScreen, object: nil, userInfo: ["workExperiences": self.exprienceArray])
+        NotificationCenter.default.post(name: .updateProfileScreen, object: nil, userInfo: ["workExperiences": viewOutput?.exprienceArray ?? []])
     }
 
     // MARK: - Navigation
@@ -287,15 +225,25 @@ class DMWorkExperienceVC: DMBaseVC, ExperiencePickerViewDelegate, ToolBarButtonD
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     
     func goToStates(_ text: String?) {
-        moduleOutput?.showStates(preselectedState: text, delegate: self)
+        viewOutput?.openStates(preselectedState: text, delegate: self)
+    }
+}
+
+extension DMWorkExperienceVC: DMWorkExperienceViewInput {
+    
+    func reloadData() {
+        
+        workExperienceTable.reloadData()
+        workExperienceDetailTable.reloadData()
+        reSizeTableViewsAndScrollView()
     }
 }
 
 extension DMWorkExperienceVC: JobSelectionPickerViewDelegate {
     func jobPickerDoneButtonAction(job: JobTitle?) {
         if let jobTitle = job {
-            currentExperience?.jobTitle = jobTitle.jobTitle
-            currentExperience?.jobTitleID = jobTitle.jobId
+            viewOutput?.currentExperience.jobTitle = jobTitle.jobTitle
+            viewOutput?.currentExperience.jobTitleID = jobTitle.jobId
             workExperienceDetailTable.reloadData()
         }
         view.endEditing(true)
@@ -308,7 +256,7 @@ extension DMWorkExperienceVC: JobSelectionPickerViewDelegate {
 //MARK: SearchStateView Delegates
 extension DMWorkExperienceVC: SearchStateViewControllerDelegate {
     func selectedState(state: String?) {
-         currentExperience?.stateName = state
+         viewOutput?.currentExperience.stateName = state
         //editProfileParams[Constants.ServerKey.state] = state
         self.workExperienceDetailTable.reloadData()
     }

@@ -1,11 +1,3 @@
-//
-//  DMWorkExperienceVC+TableViewExtension.swift
-//  DentaMatch
-//
-//  Created by Sanjay Kumar Yadav on 04/01/17.
-//  Copyright © 2017 Appster. All rights reserved.
-//
-
 import Foundation
 import UIKit
 
@@ -15,10 +7,11 @@ extension DMWorkExperienceVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection _: Int) -> Int {
+        guard let viewOutput = viewOutput else { return 0 }
         if tableView == workExperienceDetailTable {
-            return 7 + currentExperience!.references.count
+            return 7 + viewOutput.currentExperience.references.count
         } else {
-            return exprienceArray.count
+            return viewOutput.exprienceArray.count
         }
     }
 
@@ -31,17 +24,19 @@ extension DMWorkExperienceVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func getHeightForworkExperienceDetailTable(indexPath: IndexPath) -> CGFloat {
-        if indexPath.row > (currentExperience?.references.count)! + 5 {
-            let height = currentExperience?.isFirstExperience == true ? 80 : 130
+        guard let viewOutput = viewOutput else { return 0.0 }
+        if indexPath.row > viewOutput.currentExperience.references.count + 5 {
+            let height = viewOutput.currentExperience.isFirstExperience ? 80 : 130
             return CGFloat(height)
         }
+        
         if indexPath.row > 5 {
             let index = indexPath.row - 5
-            var height = index == 0 ? ((currentExperience?.references.count)! > index ? 230 : 257) : ((currentExperience?.references.count)! - 1 > index ? 260 : 303)
-            if (currentExperience?.references.count)! == 1 {
+            var height = index == 0 ? (viewOutput.currentExperience.references.count > index ? 230 : 257) : (viewOutput.currentExperience.references.count - 1 > index ? 260 : 303)
+            if viewOutput.currentExperience.references.count == 1 {
                 height = 250 // if single experience is added add work experience button should be clickable
             }
-            // debugPrint("row height \(height)")
+            
             return CGFloat(height)
         }
         if indexPath.row == 0 {
@@ -51,8 +46,9 @@ extension DMWorkExperienceVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let viewOutput = viewOutput else { return UITableViewCell() }
         if tableView == workExperienceDetailTable {
-            if indexPath.row > (currentExperience?.references.count)! + 5 {
+            if indexPath.row > viewOutput.currentExperience.references.count + 5 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AddDeleteExperienceCell") as! AddDeleteExperienceCell
                 cell.selectionStyle = .none
                 updateCellForAddDeleteExperienceCell(cell: cell, indexPth: indexPath)
@@ -67,7 +63,7 @@ extension DMWorkExperienceVC: UITableViewDataSource, UITableViewDelegate {
                 cell.nameTextField.delegate = self
                 cell.mobileNoTextField.delegate = self
                 cell.emailTextField.delegate = self
-                let empRef = currentExperience?.references[tag]
+                let empRef = viewOutput.currentExperience.references[tag]
                 cell.updateCell(empRef: empRef, tag: tag)
                 cell.nameTextField.addTarget(self, action: #selector(referenceNameTextFieldDidEnd(_:)), for: .editingDidEnd)
                 cell.nameTextField.autocapitalizationType = .sentences
@@ -78,9 +74,9 @@ extension DMWorkExperienceVC: UITableViewDataSource, UITableViewDelegate {
                 cell.deleteButton.addTarget(self, action: #selector(DMWorkExperienceVC.deleteReference(_:)), for: .touchUpInside)
                 cell.addMoreReferenceButton.addTarget(self, action: #selector(DMWorkExperienceVC.addMoreReference(_:)), for: .touchUpInside)
                 if tag == 0 {
-                    if (currentExperience?.references.count)! - 1 > tag {
+                    if viewOutput.currentExperience.references.count - 1 > tag {
                         cell.addMoreReferenceButton.isHidden = true
-                    } else if (currentExperience?.references.count)! >= 2 {
+                    } else if viewOutput.currentExperience.references.count >= 2 {
                         cell.addMoreReferenceButton.isHidden = true
                     } else {
                         cell.addMoreReferenceButton.isHidden = false
@@ -89,11 +85,11 @@ extension DMWorkExperienceVC: UITableViewDataSource, UITableViewDelegate {
                     cell.addMoreButtonTopSpace.constant = 10
 
                 } else {
-                    if (currentExperience?.references.count)! - 1 > tag {
+                    if viewOutput.currentExperience.references.count - 1 > tag {
                         cell.deleteButton.isHidden = false
                         cell.addMoreButtonTopSpace.constant = 10
                         cell.addMoreReferenceButton.isHidden = true
-                    } else if (currentExperience?.references.count)! >= 2 {
+                    } else if viewOutput.currentExperience.references.count >= 2 {
                         cell.addMoreButtonTopSpace.constant = 10
                         cell.addMoreReferenceButton.isHidden = true
                     } else {
@@ -120,7 +116,7 @@ extension DMWorkExperienceVC: UITableViewDataSource, UITableViewDelegate {
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ExperienceTableCell") as! ExperienceTableCell
             cell.selectionStyle = .none
-            let exp = exprienceArray[indexPath.row]
+            let exp = viewOutput.exprienceArray[indexPath.row]
 
             cell.experienceLabel.text = exp.yearOfExperience
             cell.jobTitleLable.text = exp.jobTitle
@@ -131,11 +127,12 @@ extension DMWorkExperienceVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func updateCellForAddDeleteExperienceCell(cell: AddDeleteExperienceCell, indexPth: IndexPath) {
-        let tag = indexPth.row - 5 - (currentExperience?.references.count)!
+        guard let viewOutput = viewOutput else { return }
+        let tag = indexPth.row - 5 - viewOutput.currentExperience.references.count
         cell.addMoreExperienceButton.tag = tag
         cell.deleteButton.tag = tag
 
-        if currentExperience?.isEditMode == true {
+        if viewOutput.currentExperience.isEditMode == true {
             cell.addMoreExperienceButton.setTitle(" Save", for: .normal)
         } else {
             cell.addMoreExperienceButton.setTitle(" Save Job", for: .normal)
@@ -144,7 +141,7 @@ extension DMWorkExperienceVC: UITableViewDataSource, UITableViewDelegate {
         cell.deleteButton.addTarget(self, action: #selector(DMWorkExperienceVC.deleteExperience(_:)), for: .touchUpInside)
         cell.addMoreExperienceButton.addTarget(self, action: #selector(DMWorkExperienceVC.addMoreExperience(_:)), for: .touchUpInside)
 
-        if currentExperience?.isFirstExperience == true {
+        if viewOutput.currentExperience.isFirstExperience == true {
             cell.deleteButton.isHidden = true
             cell.topSpaceOfAddMoreExperience.constant = 10
         } else {
@@ -157,6 +154,7 @@ extension DMWorkExperienceVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func updateCellForAnimatedPHTableCell(cell: AnimatedPHTableCell, indexPath: IndexPath) {
+        guard let viewOutput = viewOutput else { return }
         if indexPath.row == 0 {
             cell.cellTopSpace.constant = 30
         } else {
@@ -175,18 +173,18 @@ extension DMWorkExperienceVC: UITableViewDataSource, UITableViewDelegate {
             cellConfigureForExperience(cell: cell, indexPath: indexPath)
         case 2:
             cell.commonTextField.placeholder = FieldType.OfficeName.description
-            cell.commonTextField.text = currentExperience?.officeName
+            cell.commonTextField.text = viewOutput.currentExperience.officeName
 
         case 3:
             cell.commonTextField.placeholder = FieldType.OfficeAddress.description
-            cell.commonTextField.text = currentExperience?.officeAddress
+            cell.commonTextField.text = viewOutput.currentExperience.officeAddress
 
         case 4:
             cell.commonTextField.placeholder = FieldType.CityName.description
-            cell.commonTextField.text = currentExperience?.cityName
+            cell.commonTextField.text = viewOutput.currentExperience.cityName
         case 5:
             cell.commonTextField.placeholder = FieldType.StateName.description
-            cell.commonTextField.text = currentExperience?.stateName
+            cell.commonTextField.text = viewOutput.currentExperience.stateName
            
         default:
             LogManager.logDebug("default")
@@ -194,6 +192,7 @@ extension DMWorkExperienceVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func cellConfigureForJobSelection(cell: AnimatedPHTableCell, indexPath _: IndexPath) {
+        guard let viewOutput = viewOutput else { return }
         cell.commonTextField.placeholder = FieldType.CurrentJobTitle.description
         // Right View for drop down
         let rightView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: cell.commonTextField.frame.size.height))
@@ -208,8 +207,8 @@ extension DMWorkExperienceVC: UITableViewDataSource, UITableViewDelegate {
         cell.commonTextField.rightViewMode = .always
         cell.commonTextField.rightView?.isUserInteractionEnabled = false
 
-        cell.commonTextField.text = currentExperience?.jobTitle
-        let pickerView = JobSelectionPickerView.loadJobSelectionView(withJobTitles: jobTitles)
+        cell.commonTextField.text = viewOutput.currentExperience.jobTitle
+        let pickerView = JobSelectionPickerView.loadJobSelectionView(withJobTitles: viewOutput.jobTitles)
         cell.commonTextField.type = 1
         cell.commonTextField.tintColor = UIColor.clear
         cell.commonTextField.inputView = pickerView
@@ -219,9 +218,10 @@ extension DMWorkExperienceVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func cellConfigureForExperience(cell: AnimatedPHTableCell, indexPath _: IndexPath) {
+        guard let viewOutput = viewOutput else { return }
         cell.commonTextField.placeholder = FieldType.YearOfExperience.description
-        cell.commonTextField.text = currentExperience?.yearOfExperience!
-        let yearViewObj = ExperiencePickerView.loadExperiencePickerView(withText: (currentExperience?.yearOfExperience!)!)
+        cell.commonTextField.text = viewOutput.currentExperience.yearOfExperience!
+        let yearViewObj = ExperiencePickerView.loadExperiencePickerView(withText: viewOutput.currentExperience.yearOfExperience ?? "")
         yearViewObj.delegate = self
         cell.commonTextField.type = 1
         cell.commonTextField.tintColor = UIColor.clear
@@ -229,14 +229,15 @@ extension DMWorkExperienceVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         if tableView == workExperienceTable {
-            isHiddenExperienceTable = true
-            selectedIndex = indexPath.row
+            viewOutput?.isHiddenExperienceTable = true
+            viewOutput?.selectedIndex = indexPath.row
 //            let check  = indexPath.row == 0 ? true : false
-            currentExperience = nil
-            currentExperience = exprienceArray[indexPath.row]
-            currentExperience?.isFirstExperience = false
-            currentExperience?.isEditMode = true
+            let model = viewOutput?.exprienceArray[indexPath.row] ?? ExperienceModel(empty: "")
+            viewOutput?.currentExperience = model
+            viewOutput?.currentExperience.isFirstExperience = false
+            viewOutput?.currentExperience.isEditMode = true
             workExperienceTable.reloadData()
             workExperienceDetailTable.reloadData()
             reSizeTableViewsAndScrollView()
@@ -244,24 +245,27 @@ extension DMWorkExperienceVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     @objc func referenceNameTextFieldDidEnd(_ textField: UITextField) {
+        guard let viewOutput = viewOutput else { return }
         let tag = textField.tag
-        let empRef = currentExperience?.references[tag]
-        empRef?.referenceName = textField.text
-        currentExperience?.references[tag] = empRef!
+        let empRef = viewOutput.currentExperience.references[tag]
+        empRef.referenceName = textField.text
+        viewOutput.currentExperience.references[tag] = empRef
     }
 
     @objc func referenceMobileNumberTextFieldDidEnd(_ textField: UITextField) {
+        guard let viewOutput = viewOutput else { return }
         let tag = textField.tag
-        let empRef = currentExperience?.references[tag]
-        empRef?.mobileNumber = textField.text
-        currentExperience?.references[tag] = empRef!
+        let empRef = viewOutput.currentExperience.references[tag]
+        empRef.mobileNumber = textField.text
+        viewOutput.currentExperience.references[tag] = empRef
     }
 
     @objc func referenceEmailTextFieldDidEnd(_ textField: UITextField) {
+        guard let viewOutput = viewOutput else { return }
         let tag = textField.tag
-        let empRef = currentExperience?.references[tag]
-        empRef?.email = textField.text
-        currentExperience?.references[tag] = empRef!
+        let empRef = viewOutput.currentExperience.references[tag]
+        empRef.email = textField.text
+        viewOutput.currentExperience.references[tag] = empRef
     }
 
     @objc func textFieldDidChange(_ textField: UITextField) {
@@ -269,13 +273,14 @@ extension DMWorkExperienceVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     @objc func CommonExperiencelTextFieldDidEnd(_ textField: UITextField) {
+        guard let viewOutput = viewOutput else { return }
         switch textField.tag {
         case 2:
-            currentExperience?.officeName = textField.text
+            viewOutput.currentExperience.officeName = textField.text
         case 3:
-            currentExperience?.officeAddress = textField.text
+            viewOutput.currentExperience.officeAddress = textField.text
         case 4:
-            currentExperience?.cityName = textField.text
+            viewOutput.currentExperience.cityName = textField.text
         default:
             LogManager.logDebug("default")
         }
@@ -286,6 +291,7 @@ extension DMWorkExperienceVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func doneButtonAction(year: Int, month: Int) {
+        guard let viewOutput = viewOutput else { return }
         workExperienceTable.endEditing(true)
 
         var text: String = ""
@@ -307,8 +313,8 @@ extension DMWorkExperienceVC: UITableViewDataSource, UITableViewDelegate {
         }
         let total = (year * 12) + month
 
-        currentExperience?.yearOfExperience = text
-        currentExperience?.experienceInMonth = total
+        viewOutput.currentExperience.yearOfExperience = text
+        viewOutput.currentExperience.experienceInMonth = total
         workExperienceDetailTable.reloadData()
     }
 
@@ -317,13 +323,15 @@ extension DMWorkExperienceVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     @objc func addMoreReference(_: Any) {
-        if (currentExperience?.references.count)! < 2 {
-            if (currentExperience?.references[0].referenceName?.isEmptyField)! && (currentExperience?.references[0].mobileNumber?.isEmptyField)! && (currentExperience?.references[0].email?.isEmptyField)! {
+        guard let viewOutput = viewOutput else { return }
+        if viewOutput.currentExperience.references.count < 2 {
+            if viewOutput.currentExperience.references[0].referenceName?.isEmptyField == true && viewOutput.currentExperience.references[0].mobileNumber?.isEmptyField == true && viewOutput.currentExperience.references[0].email?.isEmptyField == true {
+                
                 makeToast(toastString: Constants.AlertMessage.firstEmptyExperience)
 
             } else {
                 let refere = EmployeeReferenceModel(empty: "")
-                currentExperience?.references.append(refere)
+                viewOutput.currentExperience.references.append(refere)
                 workExperienceDetailTable.reloadData()
                 reSizeTableViewsAndScrollView()
                 var aRect = self.workExperienceDetailTable.frame
@@ -337,84 +345,39 @@ extension DMWorkExperienceVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     @objc func addMoreExperience(_: Any) {
+
         view.endEditing(true)
         if !checkValidations() {
             return
         }
-        var param = [String: AnyObject]()
-        var isEdit = false
-
-        if currentExperience?.isEditMode == true {
-            isEdit = true
-        }
-        param = getParamsForSaveAndUpdate(isEdit: isEdit)
-
-        saveUpdateExperience(params: param, completionHandler: { response, _ in
-
-            if response![Constants.ServerKey.status].boolValue {
-                let resultArray = response![Constants.ServerKey.result][Constants.ServerKey.list].array
-                if (resultArray?.count)! > 0 {
-                    let dict = resultArray?[0].dictionary
-                    self.currentExperience?.experienceID = (dict?[Constants.ServerKey.experienceId]?.intValue)!
-                }
-                if self.currentExperience?.isEditMode == true {
-                    self.exprienceArray[self.selectedIndex] = self.currentExperience!
-
-                } else {
-                    self.exprienceArray.append(self.currentExperience!)
-                }
-                self.isHiddenExperienceTable = false
-                self.currentExperience = nil
-                self.currentExperience = ExperienceModel(empty: "")
-                self.currentExperience?.isFirstExperience = false
-                self.currentExperience?.references.append(EmployeeReferenceModel(empty: ""))
-                self.workExperienceTable.reloadData()
-                self.workExperienceDetailTable.reloadData()
-                self.reSizeTableViewsAndScrollView()
-                self.updateProfileScreen()
-            }
-        })
-        workExperienceTable.reloadData()
-        workExperienceDetailTable.reloadData()
-//        self.makeToast(toastString: "Experience Added")
-        reSizeTableViewsAndScrollView()
+        
+        viewOutput?.saveUpdateExperience(isAddExperience: true)
     }
 
     @objc func deleteReference(_ sender: Any) {
+        guard let viewOutput = viewOutput else { return }
         view.endEditing(true)
         let tag = (sender as AnyObject).tag
-        currentExperience?.references.remove(at: tag!)
+        viewOutput.currentExperience.references.remove(at: tag!)
         workExperienceTable.reloadData()
         workExperienceDetailTable.reloadData()
         reSizeTableViewsAndScrollView()
     }
 
     @objc func deleteExperience(_: Any) {
+        guard let viewOutput = viewOutput else { return }
         view.endEditing(true)
 
         let alertController = UIAlertController(title: "", message: "Are you sure you want to delete this work experience?", preferredStyle: .alert)
         let action1 = UIAlertAction(title: "OK", style: .default) { (_: UIAlertAction) in
-            if self.currentExperience?.isEditMode == true {
-                self.deleteExperience(completionHandler: { check, _ in
-                    if check == true {
-                        self.exprienceArray.removeObject(object: self.currentExperience!)
-                        self.currentExperience = nil
-                        self.currentExperience = ExperienceModel(empty: "")
-                        self.currentExperience?.isFirstExperience = false
-                        self.currentExperience?.references.append(EmployeeReferenceModel(empty: ""))
-                        self.isHiddenExperienceTable = false
-                        self.workExperienceTable.reloadData()
-                        self.workExperienceDetailTable.reloadData()
-                        self.reSizeTableViewsAndScrollView()
-                        self.updateProfileScreen()
-                    }
-                })
+            if viewOutput.currentExperience.isEditMode == true {
+                viewOutput.deleteExperience()
             } else {
-                self.currentExperience = nil
-                self.currentExperience = ExperienceModel(empty: "")
-                self.currentExperience?.isFirstExperience = false
-                self.currentExperience?.references.append(EmployeeReferenceModel(empty: ""))
-                self.isHiddenExperienceTable = false
+                self.viewOutput?.currentExperience = ExperienceModel(empty: "")
+                self.viewOutput?.currentExperience.isFirstExperience = false
+                self.viewOutput?.currentExperience.references.append(EmployeeReferenceModel(empty: ""))
+                self.viewOutput?.isHiddenExperienceTable = false
+                
                 self.workExperienceTable.reloadData()
                 self.workExperienceDetailTable.reloadData()
                 self.reSizeTableViewsAndScrollView()
@@ -430,46 +393,45 @@ extension DMWorkExperienceVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func checkValidations() -> Bool {
-        if (currentExperience?.jobTitle?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty)! {
+        guard let viewOutput = viewOutput else { return false }
+        if viewOutput.currentExperience.jobTitle?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty == true {
             makeToast(toastString: Constants.AlertMessage.emptyCurrentJobTitle)
             return false
-        } else if (currentExperience?.yearOfExperience?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty)! {
+        } else if viewOutput.currentExperience.yearOfExperience?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty == true {
             makeToast(toastString: Constants.AlertMessage.emptyYearOfExperience)
             return false
-        } else if (currentExperience?.officeName?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty)! {
+        } else if viewOutput.currentExperience.officeName?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty == true {
             makeToast(toastString: Constants.AlertMessage.emptyOfficeName)
             return false
-        } else if (currentExperience?.officeAddress?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty)! {
+        } else if viewOutput.currentExperience.officeAddress?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty == true {
             makeToast(toastString: Constants.AlertMessage.emptyOfficeAddress)
             return false
-        } else if (currentExperience?.cityName?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty)! {
+        } else if viewOutput.currentExperience.cityName?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty == true {
             makeToast(toastString: Constants.AlertMessage.emptyCityName)
             return false
-        }else if (currentExperience?.stateName?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty)! {
+        }else if viewOutput.currentExperience.stateName?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty == true {
             makeToast(toastString: Constants.AlertMessage.emptyStateName)
             return false
         }
 
-        for index in 0 ..< (currentExperience?.references.count)! {
-            let empRef = currentExperience?.references[index]
+        for index in 0 ..< viewOutput.currentExperience.references.count {
+            let empRef = viewOutput.currentExperience.references[index]
 
-            if (empRef?.referenceName?.isEmptyField)! {
-            }
-            if !(empRef?.mobileNumber?.isEmptyField)! {
-                if !phoneFormatter.isValid((empRef?.mobileNumber!)!) {
+            if empRef.mobileNumber?.isEmptyField == false {
+                if !phoneFormatter.isValid((empRef.mobileNumber!)) {
                     makeToast(toastString: Constants.AlertMessage.referenceMobileNumber)
                     return false
                 }
             }
-            if !(empRef?.email?.isEmptyField)! {
-                if !(empRef?.email?.isValidEmail)! {
+            if empRef.email?.isEmptyField == false {
+                if !(empRef.email?.isValidEmail)! {
                     makeToast(toastString: Constants.AlertMessage.invalidEmailAddress)
                     return false
                 }
             }
 
             if index == 1 {
-                if (currentExperience?.references[0].referenceName?.isEmptyField)! && (currentExperience?.references[0].mobileNumber?.isEmptyField)! && (currentExperience?.references[0].email?.isEmptyField)! {
+                if viewOutput.currentExperience.references[0].referenceName?.isEmptyField == true && viewOutput.currentExperience.references[0].mobileNumber?.isEmptyField == true && viewOutput.currentExperience.references[0].email?.isEmptyField == true {
                     makeToast(toastString: Constants.AlertMessage.empptyFirstReference)
                     return false
                 }
@@ -480,46 +442,48 @@ extension DMWorkExperienceVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func checkAllFieldIsEmpty() -> Bool {
-        if !(currentExperience?.jobTitle?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty)! {
+        guard let viewOutput = viewOutput else { return false }
+        if viewOutput.currentExperience.jobTitle?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty == false {
             return false
         }
-        if !(currentExperience?.yearOfExperience?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty)! {
+        if viewOutput.currentExperience.yearOfExperience?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty == false {
             return false
         }
-        if !(currentExperience?.officeName?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty)! {
+        if viewOutput.currentExperience.officeName?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty == false {
             makeToast(toastString: Constants.AlertMessage.emptyOfficeName)
             return false
         }
-        if !(currentExperience?.officeAddress?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty)! {
+        if viewOutput.currentExperience.officeAddress?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty == false {
             return false
         }
-        if !(currentExperience?.cityName?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty)! {
+        if viewOutput.currentExperience.cityName?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty == false {
             return false
         }
-        if !(currentExperience?.stateName?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty)! {
+        if viewOutput.currentExperience.stateName?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty == false {
             return false
         }
         return true
     }
 
     func checkAllFieldsAreFilled() -> Bool {
-        if (currentExperience?.jobTitle?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty)! {
+        guard let viewOutput = viewOutput else { return false }
+        if viewOutput.currentExperience.jobTitle?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty == true {
             return false
         }
-        if (currentExperience?.yearOfExperience?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty)! {
+        if viewOutput.currentExperience.yearOfExperience?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty == true {
             return false
         }
-        if (currentExperience?.officeName?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty)! {
+        if viewOutput.currentExperience.officeName?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty == true {
             makeToast(toastString: Constants.AlertMessage.emptyOfficeName)
             return false
         }
-        if (currentExperience?.officeAddress?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty)! {
+        if viewOutput.currentExperience.officeAddress?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty == true {
             return false
         }
-        if (currentExperience?.cityName?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty)! {
+        if viewOutput.currentExperience.cityName?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty == true {
             return false
         }
-        if (currentExperience?.stateName?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty)! {
+        if viewOutput.currentExperience.stateName?.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty == true {
             return false
         }
         return true

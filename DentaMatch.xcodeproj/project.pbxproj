@@ -99,7 +99,6 @@
 		5AC714421E34A9C700E433C1 /* Messages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AC714411E34A9C700E433C1 /* Messages.storyboard */; };
 		5AC714521E34ACD400E433C1 /* DMCalenderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC714511E34ACD400E433C1 /* DMCalenderVC.swift */; };
 		5AC714581E34F76900E433C1 /* DMSettingVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC714571E34F76900E433C1 /* DMSettingVC+Services.swift */; };
-		5AD246911E272E92009350BF /* DMWorkExperienceVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD246901E272E92009350BF /* DMWorkExperienceVC+Services.swift */; };
 		5AD246931E273CC9009350BF /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD246921E273CC9009350BF /* DatePickerView.swift */; };
 		5AD246951E273CE7009350BF /* DatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AD246941E273CE7009350BF /* DatePickerView.xib */; };
 		5AD246971E27799F009350BF /* PickerAnimatedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD246961E27799F009350BF /* PickerAnimatedTextField.swift */; };
@@ -185,6 +184,10 @@
 		6E88699521FEE48A00898925 /* DMLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E88699421FEE48A00898925 /* DMLogin.swift */; };
 		6E88699721FEE50100898925 /* DMRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E88699621FEE50100898925 /* DMRegistration.swift */; };
 		6E90E5DD220A7A4900E04344 /* DMChatPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E90E5DC220A7A4900E04344 /* DMChatPresenter.swift */; };
+		6E90E5DF220A913000E04344 /* DMEditProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E90E5DE220A913000E04344 /* DMEditProfilePresenter.swift */; };
+		6E90E5E1220AA5A700E04344 /* DMSettingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E90E5E0220AA5A700E04344 /* DMSettingPresenter.swift */; };
+		6E90E5E3220AB1AF00E04344 /* DMPublicProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E90E5E2220AB1AF00E04344 /* DMPublicProfilePresenter.swift */; };
+		6E90E5E5220AD9B000E04344 /* DMWorkExperiencePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E90E5E4220AD9B000E04344 /* DMWorkExperiencePresenter.swift */; };
 		6E99690221FEE84A0007CF40 /* DMForgotPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E99690121FEE84A0007CF40 /* DMForgotPassword.swift */; };
 		6E99690421FEEAE10007CF40 /* DMTermsAndConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E99690321FEEAE10007CF40 /* DMTermsAndConditions.swift */; };
 		6E99690621FEEFE40007CF40 /* DMJobTitleSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E99690521FEEFE40007CF40 /* DMJobTitleSelection.swift */; };
@@ -254,8 +257,6 @@
 		E51D4F0F1E40744C00ACC631 /* DMTrackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4F0C1E40744C00ACC631 /* DMTrackVC.swift */; };
 		E51D4F111E40745A00ACC631 /* DMCancelJobVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4F101E40745A00ACC631 /* DMCancelJobVC.swift */; };
 		E5302CD61DFE7AB100984A0B /* DMForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5302CD51DFE7AB100984A0B /* DMForgotPasswordVC.swift */; };
-		E5310E0D1E4B2B3F004403A0 /* DMChatVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5310E0C1E4B2B3F004403A0 /* DMChatVC+Services.swift */; };
-		E5310E0F1E4EDE71004403A0 /* DMChatVC+DBHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5310E0E1E4EDE71004403A0 /* DMChatVC+DBHandling.swift */; };
 		E53738F21DB373C200967876 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53738F11DB373C200967876 /* Reachability.swift */; };
 		E540CBC01FDE426E00A8A56E /* DMProfileSuccessPending+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E540CBBF1FDE426E00A8A56E /* DMProfileSuccessPending+Services.swift */; };
 		E5433AF21FCD140800D152D9 /* DMProfileSuccessPendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5433AF11FCD140800D152D9 /* DMProfileSuccessPendingViewController.swift */; };
@@ -313,7 +314,6 @@
 		E56E45C31DAE07C200AD4559 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E56E45C21DAE07C200AD4559 /* Assets.xcassets */; };
 		E56E45C61DAE07C200AD4559 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E56E45C41DAE07C200AD4559 /* LaunchScreen.storyboard */; };
 		E56E90801DFF31740096A31B /* CameraGalleryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56E907F1DFF31740096A31B /* CameraGalleryManager.swift */; };
-		E57681961E38A1DA00D912EA /* DMPublicProfileVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57681951E38A1DA00D912EA /* DMPublicProfileVC+Services.swift */; };
 		E57681991E3A234700D912EA /* DMEditSkillsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57681981E3A234700D912EA /* DMEditSkillsVC.swift */; };
 		E576819B1E3A25F100D912EA /* DMEditSkillsVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E576819A1E3A25F100D912EA /* DMEditSkillsVC+Services.swift */; };
 		E576819D1E3A289D00D912EA /* DMEditSkillsVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E576819C1E3A289D00D912EA /* DMEditSkillsVC+TableViewExtension.swift */; };
@@ -410,7 +410,6 @@
 		E5C5F3151DC0AACA001A5A3F /* DMRegisterMapsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C5F3141DC0AACA001A5A3F /* DMRegisterMapsVC.swift */; };
 		E5C5F31B1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C5F31A1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift */; };
 		E5D2D8AB1FE24305001EFA68 /* DMCommonSuccessFailureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D2D8AA1FE24305001EFA68 /* DMCommonSuccessFailureVC.swift */; };
-		E5E7CB431E2F39D500D4FB59 /* DMEditProfileVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E7CB421E2F39D500D4FB59 /* DMEditProfileVC+Services.swift */; };
 		E5E7CB4A1E2F8CDE00D4FB59 /* EditLicenseTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E7CB481E2F8CDE00D4FB59 /* EditLicenseTableCell.swift */; };
 		E5E7CB4B1E2F8CDE00D4FB59 /* EditLicenseTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5E7CB491E2F8CDE00D4FB59 /* EditLicenseTableCell.xib */; };
 		E5E7CB781E2FA23200D4FB59 /* AboutMeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E7CB541E2FA23200D4FB59 /* AboutMeCell.swift */; };
@@ -600,7 +599,6 @@
 		5AC714411E34A9C700E433C1 /* Messages.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Messages.storyboard; sourceTree = "<group>"; };
 		5AC714511E34ACD400E433C1 /* DMCalenderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMCalenderVC.swift; sourceTree = "<group>"; };
 		5AC714571E34F76900E433C1 /* DMSettingVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMSettingVC+Services.swift"; sourceTree = "<group>"; };
-		5AD246901E272E92009350BF /* DMWorkExperienceVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMWorkExperienceVC+Services.swift"; sourceTree = "<group>"; };
 		5AD246921E273CC9009350BF /* DatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		5AD246941E273CE7009350BF /* DatePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerView.xib; sourceTree = "<group>"; };
 		5AD246961E27799F009350BF /* PickerAnimatedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerAnimatedTextField.swift; sourceTree = "<group>"; };
@@ -686,6 +684,10 @@
 		6E88699421FEE48A00898925 /* DMLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMLogin.swift; sourceTree = "<group>"; };
 		6E88699621FEE50100898925 /* DMRegistration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMRegistration.swift; sourceTree = "<group>"; };
 		6E90E5DC220A7A4900E04344 /* DMChatPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMChatPresenter.swift; sourceTree = "<group>"; };
+		6E90E5DE220A913000E04344 /* DMEditProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMEditProfilePresenter.swift; sourceTree = "<group>"; };
+		6E90E5E0220AA5A700E04344 /* DMSettingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMSettingPresenter.swift; sourceTree = "<group>"; };
+		6E90E5E2220AB1AF00E04344 /* DMPublicProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMPublicProfilePresenter.swift; sourceTree = "<group>"; };
+		6E90E5E4220AD9B000E04344 /* DMWorkExperiencePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMWorkExperiencePresenter.swift; sourceTree = "<group>"; };
 		6E99690121FEE84A0007CF40 /* DMForgotPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMForgotPassword.swift; sourceTree = "<group>"; };
 		6E99690321FEEAE10007CF40 /* DMTermsAndConditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMTermsAndConditions.swift; sourceTree = "<group>"; };
 		6E99690521FEEFE40007CF40 /* DMJobTitleSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMJobTitleSelection.swift; sourceTree = "<group>"; };
@@ -758,8 +760,6 @@
 		E51D4F0C1E40744C00ACC631 /* DMTrackVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMTrackVC.swift; sourceTree = "<group>"; };
 		E51D4F101E40745A00ACC631 /* DMCancelJobVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMCancelJobVC.swift; sourceTree = "<group>"; };
 		E5302CD51DFE7AB100984A0B /* DMForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMForgotPasswordVC.swift; sourceTree = "<group>"; };
-		E5310E0C1E4B2B3F004403A0 /* DMChatVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMChatVC+Services.swift"; sourceTree = "<group>"; };
-		E5310E0E1E4EDE71004403A0 /* DMChatVC+DBHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMChatVC+DBHandling.swift"; sourceTree = "<group>"; };
 		E53738F11DB373C200967876 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		E538FA7C1DFFD76000AECE26 /* DentaMatch-Dev.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DentaMatch-Dev.entitlements"; sourceTree = "<group>"; };
 		E540CBBF1FDE426E00A8A56E /* DMProfileSuccessPending+Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DMProfileSuccessPending+Services.swift"; sourceTree = "<group>"; };
@@ -822,7 +822,6 @@
 		E56E45C21DAE07C200AD4559 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E56E45C51DAE07C200AD4559 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E56E907F1DFF31740096A31B /* CameraGalleryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraGalleryManager.swift; sourceTree = "<group>"; };
-		E57681951E38A1DA00D912EA /* DMPublicProfileVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMPublicProfileVC+Services.swift"; sourceTree = "<group>"; };
 		E57681981E3A234700D912EA /* DMEditSkillsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMEditSkillsVC.swift; sourceTree = "<group>"; };
 		E576819A1E3A25F100D912EA /* DMEditSkillsVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMEditSkillsVC+Services.swift"; sourceTree = "<group>"; };
 		E576819C1E3A289D00D912EA /* DMEditSkillsVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMEditSkillsVC+TableViewExtension.swift"; sourceTree = "<group>"; };
@@ -922,7 +921,6 @@
 		E5C5F3141DC0AACA001A5A3F /* DMRegisterMapsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMRegisterMapsVC.swift; sourceTree = "<group>"; };
 		E5C5F31A1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMTermsAndConditionsVC.swift; sourceTree = "<group>"; };
 		E5D2D8AA1FE24305001EFA68 /* DMCommonSuccessFailureVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMCommonSuccessFailureVC.swift; sourceTree = "<group>"; };
-		E5E7CB421E2F39D500D4FB59 /* DMEditProfileVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMEditProfileVC+Services.swift"; sourceTree = "<group>"; };
 		E5E7CB481E2F8CDE00D4FB59 /* EditLicenseTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditLicenseTableCell.swift; sourceTree = "<group>"; };
 		E5E7CB491E2F8CDE00D4FB59 /* EditLicenseTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditLicenseTableCell.xib; sourceTree = "<group>"; };
 		E5E7CB541E2FA23200D4FB59 /* AboutMeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutMeCell.swift; sourceTree = "<group>"; };
@@ -1349,8 +1347,6 @@
 				6E90E5DC220A7A4900E04344 /* DMChatPresenter.swift */,
 				E5BED54B1E49AB85003EC833 /* DMChatVC.swift */,
 				E5BED54A1E49AB85003EC833 /* DMChatVC+TableViewExtensions.swift */,
-				E5310E0C1E4B2B3F004403A0 /* DMChatVC+Services.swift */,
-				E5310E0E1E4EDE71004403A0 /* DMChatVC+DBHandling.swift */,
 			);
 			path = chat;
 			sourceTree = "<group>";
@@ -1372,6 +1368,7 @@
 			children = (
 				6E35FBE922002BBE00AB84A3 /* DMSettings.swift */,
 				6E85B83521FAE54B00DB137F /* DMSettingsInitializer.swift */,
+				6E90E5E0220AA5A700E04344 /* DMSettingPresenter.swift */,
 				5A3B06CA1E3387DA00EFCA6E /* DMSettingVC.swift */,
 				5A3B06CC1E3387FF00EFCA6E /* DMSettingVC+TableViewExtension.swift */,
 				5AC714571E34F76900E433C1 /* DMSettingVC+Services.swift */,
@@ -1461,9 +1458,9 @@
 			children = (
 				6E35FBEF2200366500AB84A3 /* DMPublicProfile.swift */,
 				6E85B84D21FAF75200DB137F /* DMPublicProfileInitializer.swift */,
+				6E90E5E2220AB1AF00E04344 /* DMPublicProfilePresenter.swift */,
 				E5E7CBAB1E3099DF00D4FB59 /* DMPublicProfileVC.swift */,
 				E50FA8121E30A1DA00C20C93 /* DMPublicProfileVC+TableViewExtension.swift */,
-				E57681951E38A1DA00D912EA /* DMPublicProfileVC+Services.swift */,
 			);
 			path = edit_public_profile;
 			sourceTree = "<group>";
@@ -1483,9 +1480,9 @@
 			children = (
 				6E35FBE52200292200AB84A3 /* DMEditProfile.swift */,
 				6E85B85321FAFAE400DB137F /* DMEditProfileInitializer.swift */,
+				6E90E5DE220A913000E04344 /* DMEditProfilePresenter.swift */,
 				E558D9071E2E6FE700A6DF95 /* DMEditProfileVC.swift */,
 				E558D9091E2E7A3200A6DF95 /* DMEditProfileVC+TableViewExtension.swift */,
-				E5E7CB421E2F39D500D4FB59 /* DMEditProfileVC+Services.swift */,
 			);
 			path = edit_profile;
 			sourceTree = "<group>";
@@ -1594,9 +1591,9 @@
 			children = (
 				6E35FBF122003C1200AB84A3 /* DMWorkExperience.swift */,
 				6E85B87321FB1A0F00DB137F /* DMWorkExperienceInitializer.swift */,
+				6E90E5E4220AD9B000E04344 /* DMWorkExperiencePresenter.swift */,
 				E587D2E91E24C021006B7F06 /* DMWorkExperienceVC.swift */,
 				E587D2E81E24C021006B7F06 /* DMWorkExperienceVC+TableViewExtension.swift */,
-				5AD246901E272E92009350BF /* DMWorkExperienceVC+Services.swift */,
 			);
 			path = work_experience;
 			sourceTree = "<group>";
@@ -3043,10 +3040,10 @@
 				E5A174C71E201DE40044B17E /* ProfileImageButton.swift in Sources */,
 				6E90E5DD220A7A4900E04344 /* DMChatPresenter.swift in Sources */,
 				E5A174C21E201D450044B17E /* CircleProgressBar.m in Sources */,
+				6E90E5E1220AA5A700E04344 /* DMSettingPresenter.swift in Sources */,
 				6E99691E21FF48E50007CF40 /* CalendarFlowCoordinator.swift in Sources */,
 				6E85B56F22033D8B00CD2CCE /* DMTermsAndConditionsPresenter.swift in Sources */,
 				E55462F91DAE4DD1004163B2 /* UIView+Additions.swift in Sources */,
-				E5310E0F1E4EDE71004403A0 /* DMChatVC+DBHandling.swift in Sources */,
 				E5E7CB871E2FA23200D4FB59 /* SectionHeadingTableCell.swift in Sources */,
 				6E4D593C21FEC54D0008EDBA /* ModuleInput.swift in Sources */,
 				6E85B86121FB14C800DB137F /* DMLicenseSelectionInitializer.swift in Sources */,
@@ -3080,7 +3077,6 @@
 				E54976F01E28CEDD006F21E5 /* Certification.swift in Sources */,
 				6E85B84E21FAF75200DB137F /* DMPublicProfileInitializer.swift in Sources */,
 				5A5266BD1E26413400C5B7A1 /* DMLicenseSelectionVC+Services.swift in Sources */,
-				E57681961E38A1DA00D912EA /* DMPublicProfileVC+Services.swift in Sources */,
 				4846B87920F3564C00BAC18C /* Constants+AlertMessage.swift in Sources */,
 				E597E58F1E151CFF001DDA78 /* FloatLabelTextField.swift in Sources */,
 				E558D8E01E2C80C200A6DF95 /* SchoolCategory.swift in Sources */,
@@ -3138,6 +3134,7 @@
 				E57EE6CD1E28EBC00090434F /* Affiliation.swift in Sources */,
 				6E99691421FF2BE90007CF40 /* DMJobSearchResult.swift in Sources */,
 				E58654FE1DEFEF7F006FEB2D /* ConfigurationManager.swift in Sources */,
+				6E90E5E3220AB1AF00E04344 /* DMPublicProfilePresenter.swift in Sources */,
 				E5AE2AF61DAF878900C008BD /* OnboardingCollectionViewCell.swift in Sources */,
 				6EA372E721F8E1B7007BE373 /* UIButton+Additions.swift in Sources */,
 				6E85B86C21FB17B900DB137F /* DMStudyInitializer.swift in Sources */,
@@ -3186,7 +3183,6 @@
 				E558D8FC1E2CB5D400A6DF95 /* AutoCompleteTable.swift in Sources */,
 				E50B3F4C1E194CD7004C5F32 /* AnimatedPHTableCell.swift in Sources */,
 				E55462E61DAE47A9004163B2 /* UIView+Toast.m in Sources */,
-				E5E7CB431E2F39D500D4FB59 /* DMEditProfileVC+Services.swift in Sources */,
 				E587D2D11E2343A5006B7F06 /* DMJobTitleSelectionVC+UIPickerViewExtension.swift in Sources */,
 				6E99690421FEEAE10007CF40 /* DMTermsAndConditions.swift in Sources */,
 				E558D90E1E2E871900A6DF95 /* GooglePlacesTableViewCell.swift in Sources */,
@@ -3236,7 +3232,6 @@
 				E506AE501FAC329400ABC7FA /* PreferredLocationPickerView.swift in Sources */,
 				E54B9A7C1E326A6C00805D9C /* EditCertificateTableCell.swift in Sources */,
 				6E85B87721FB1C1800DB137F /* DMJobTitleSelectionInitializer.swift in Sources */,
-				5AD246911E272E92009350BF /* DMWorkExperienceVC+Services.swift in Sources */,
 				6E85B85721FAFCB600DB137F /* DMProfileSuccessPendingInitializer.swift in Sources */,
 				E5E7CB8F1E2FA23300D4FB59 /* SubSkillCell.swift in Sources */,
 				E5BED5511E49AB85003EC833 /* DMChatVC.swift in Sources */,
@@ -3252,6 +3247,7 @@
 				E50FA8131E30A1DA00C20C93 /* DMPublicProfileVC+TableViewExtension.swift in Sources */,
 				6E4D593E21FEC54D0008EDBA /* ViewOutput.swift in Sources */,
 				5A50A2B81E320F6E0010AA31 /* TabBarVC.swift in Sources */,
+				6E90E5DF220A913000E04344 /* DMEditProfilePresenter.swift in Sources */,
 				E594BEA41E1E076D00310AE5 /* DMLoginVC+TextFieldExtension.swift in Sources */,
 				E5E7CB7A1E2FA23200D4FB59 /* AffiliationsCell.swift in Sources */,
 				E55462EC1DAE47F5004163B2 /* AppDelegate.swift in Sources */,
@@ -3363,7 +3359,6 @@
 				E55462FC1DAE4EA1004163B2 /* DMBaseVC.swift in Sources */,
 				E5A0EB021E2A9C760092E21A /* DMStudy+Services.swift in Sources */,
 				E51C4D3E1FB05591009FC3A0 /* DMJobTitleSelectionVC+TextFieldDelegates.swift in Sources */,
-				E5310E0D1E4B2B3F004403A0 /* DMChatVC+Services.swift in Sources */,
 				E5E7CB8B1E2FA23200D4FB59 /* OtherSubSkillTableCell.swift in Sources */,
 				E5A3E8EE1E160ABF00B10937 /* AnimatedLeftViewPHTextField.swift in Sources */,
 				E5496E021E255A9E00C54288 /* DMExecutiveSummaryVC+TableViewExtension.swift in Sources */,
@@ -3397,6 +3392,7 @@
 				F22359151E3F351C00E984FC /* Job.swift in Sources */,
 				6E85B5792204407A00CD2CCE /* DMProfileSuccessPendingPresenter.swift in Sources */,
 				6E35FBF822005CD500AB84A3 /* DMSelectSkills.swift in Sources */,
+				6E90E5E5220AD9B000E04344 /* DMWorkExperiencePresenter.swift in Sources */,
 				63D32752915A935906D26086 /* RootScreen.swift in Sources */,
 				42E0DF7D801DEC5007372D27 /* RootScreenInitializer.swift in Sources */,
 				9ED2ECF22A285308E5F52DD1 /* RootScreenPresenter.swift in Sources */,

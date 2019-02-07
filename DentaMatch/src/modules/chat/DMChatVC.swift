@@ -138,6 +138,14 @@ class DMChatVC: DMBaseVC {
     func notificationTapHandling(recruiterId: String) {
         viewOutput?.onNotificationTap(recruiterId: recruiterId)
     }
+    
+    func scrollTableToBottom() {
+        if let chatsArray = viewOutput?.chatsArray, chatsArray.count > 0,
+            let innerDateChats = chatsArray.first, innerDateChats.count > 0 {
+            
+            chatTableView.scrollToRow(at: IndexPath(row: chatsArray[chatsArray.count - 1].count - 1, section: chatsArray.count - 1), at: .bottom, animated: false)
+        }
+    }
 }
 
 extension DMChatVC: DMChatViewInput {

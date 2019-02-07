@@ -14,6 +14,7 @@ extension DMPublicProfileVC: UITableViewDataSource, UITableViewDelegate, UITextV
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt _: IndexPath) -> UITableViewCell {
+        guard let viewOutput = viewOutput else { return UITableViewCell() }
         let cell = tableView.dequeueReusableCell(withIdentifier: "EditPublicProfileTableCell") as! EditPublicProfileTableCell
         cell.firstNameTextField.delegate = self
         cell.lastNameTextField.delegate = self
@@ -21,14 +22,14 @@ extension DMPublicProfileVC: UITableViewDataSource, UITableViewDelegate, UITextV
         cell.licenseNumberTextField.delegate = self
         cell.preferredJobLocationTextField.delegate = self
         cell.aboutMeTextView.delegate = self
-        cell.aboutMeTextView.text = editProfileParams[Constants.ServerKey.aboutMe]
-        cell.placeHolderLabel.isHidden = editProfileParams[Constants.ServerKey.aboutMe]!.isEmpty ? false : true
-        cell.firstNameTextField.text = editProfileParams[Constants.ServerKey.firstName]
-        cell.lastNameTextField.text = editProfileParams[Constants.ServerKey.lastName]
+        cell.aboutMeTextView.text = viewOutput.editProfileParams[Constants.ServerKey.aboutMe]
+        cell.placeHolderLabel.isHidden = viewOutput.editProfileParams[Constants.ServerKey.aboutMe]!.isEmpty ? false : true
+        cell.firstNameTextField.text = viewOutput.editProfileParams[Constants.ServerKey.firstName]
+        cell.lastNameTextField.text = viewOutput.editProfileParams[Constants.ServerKey.lastName]
         cell.jobTitleTextField.text = UserManager.shared().activeUser.jobTitle
-        cell.licenseNumberTextField.text = licenseString // UserManager.shared().activeUser.licenseNumber
+        cell.licenseNumberTextField.text = viewOutput.licenseString // UserManager.shared().activeUser.licenseNumber
         cell.preferredJobLocationTextField.text = UserManager.shared().activeUser.preferredJobLocation
-        cell.stateTextField.text = stateString // UserManager.shared().activeUser.state
+        cell.stateTextField.text = viewOutput.stateString // UserManager.shared().activeUser.state
         cell.stateFieldAction { [weak self](text) in
             self?.goToStates(text)
         }
@@ -37,12 +38,12 @@ extension DMPublicProfileVC: UITableViewDataSource, UITableViewDelegate, UITextV
         cell.jobTitleTextField.inputView = jobSelectionPickerView
         cell.preferredJobLocationTextField.inputView = preferredJobLocationPickerView
         cell.addEditProfileButton.addTarget(self, action: #selector(addPhoto), for: .touchUpInside)
-        if profileImage == nil {
+        if viewOutput.profileImage == nil {
             if let imageUrl = URL(string: UserManager.shared().activeUser.profileImageURL!) {
                 cell.profileButton.setImage(for: .normal, url: imageUrl, placeholder: kPlaceHolderImage)
             }
-        } else {
-            cell.profileButton.setImage(profileImage, for: .normal)
+        } else if let image = viewOutput.profileImage {
+            cell.profileButton.setImage(image, for: .normal)
         }
         
         return cell
@@ -70,7 +71,7 @@ extension DMPublicProfileVC: UITableViewDataSource, UITableViewDelegate, UITextV
 
     func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
         publicProfileTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        editProfileParams[Constants.ServerKey.aboutMe] = textView.text
+        viewOutput?.editProfileParams[Constants.ServerKey.aboutMe] = textView.text
         return true
     }
 
@@ -91,7 +92,7 @@ extension DMPublicProfileVC: UITableViewDataSource, UITableViewDelegate, UITextV
     }
 
     func textViewDidChange(_ textView: UITextView) {
-        editProfileParams[Constants.ServerKey.aboutMe] = textView.text
+        viewOutput?.editProfileParams[Constants.ServerKey.aboutMe] = textView.text
         if let cell = self.publicProfileTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? EditPublicProfileTableCell {
             if !textView.text.isEmpty {
                 cell.placeHolderLabel.isHidden = true
