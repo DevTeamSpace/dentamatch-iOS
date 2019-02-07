@@ -60,7 +60,8 @@ extension ProfileFlowCoordinator: DMEditProfileModuleOutput {
     }
     
     func showEditStudy(selectedSchoolCategories: [SelectedSchool]?) {
-        guard let vc = DMEditStudyInitializer.initialize(selectedSchoolCategories: selectedSchoolCategories, moduleOutput: self) else { return }
+        guard let moduleInput = DMEditStudyInitializer.initialize(selectedSchoolCategories: selectedSchoolCategories, moduleOutput: self) else { return }
+        let vc = moduleInput.viewController()
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -102,8 +103,8 @@ extension ProfileFlowCoordinator: DMSettingsModuleOutput {
     }
     
     func showResetPassword() {
-        guard let vc = DMChangePasswordInitializer.initialize(moduleOutput: self) else { return }
-        navigationController?.pushViewController(vc, animated: true)
+        guard let moduleInput = DMChangePasswordInitializer.initialize(moduleOutput: self) else { return }
+        navigationController?.pushViewController(moduleInput.viewController(), animated: true)
     }
     
     func showRegisterMaps(delegate: LocationAddressDelegate?) {

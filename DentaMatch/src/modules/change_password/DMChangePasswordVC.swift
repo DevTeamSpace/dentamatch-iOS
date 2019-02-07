@@ -1,24 +1,15 @@
-//
-//  DMChangePasswordVC.swift
-//  DentaMatch
-//
-//  Created by Sanjay Kumar Yadav on 21/01/17.
-//  Copyright © 2017 Appster. All rights reserved.
-//
-
 import UIKit
 
 class DMChangePasswordVC: DMBaseVC {
     @IBOutlet var changePasswordTableView: UITableView!
     var passwordArray: [String] = []
     
-    weak var moduleOutput: DMChangePasswordModuleOutput?
+    var viewOutput: DMChangePasswordViewOutput?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         passwordArray = ["", "", ""]
-        // Do any additional setup after loading the view.
         setup()
     }
 
@@ -81,11 +72,7 @@ class DMChangePasswordVC: DMBaseVC {
             return
         }
         // do next
-        changePasswordAPI()
-    }
-
-    func gobackToSetting() {
-        _ = navigationController?.popViewController(animated: true)
+        viewOutput?.changePassword(passwords: passwordArray)
     }
 
     func checkValidation() -> Bool {
@@ -135,4 +122,9 @@ class DMChangePasswordVC: DMBaseVC {
         }
         return false
     }
+}
+
+extension DMChangePasswordVC: DMChangePasswordViewInput {
+    
+    
 }

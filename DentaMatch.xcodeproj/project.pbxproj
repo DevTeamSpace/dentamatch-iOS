@@ -40,7 +40,6 @@
 		5A3B06CD1E3387FF00EFCA6E /* DMSettingVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B06CC1E3387FF00EFCA6E /* DMSettingVC+TableViewExtension.swift */; };
 		5A3B06CF1E33881D00EFCA6E /* DMChangePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B06CE1E33881D00EFCA6E /* DMChangePasswordVC.swift */; };
 		5A3B06D11E33883C00EFCA6E /* DMChangePasswordVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B06D01E33883C00EFCA6E /* DMChangePasswordVC+TableViewExtension.swift */; };
-		5A3B06D31E33885A00EFCA6E /* DMChangePasswordVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B06D21E33885A00EFCA6E /* DMChangePasswordVC+Services.swift */; };
 		5A3BD4AA1E35D3D800A607AC /* EditProfileAffiliationBrickCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3BD4A81E35D3D800A607AC /* EditProfileAffiliationBrickCell.swift */; };
 		5A3BD4AB1E35D3D800A607AC /* EditProfileAffiliationBrickCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A3BD4A91E35D3D800A607AC /* EditProfileAffiliationBrickCell.xib */; };
 		5A3BD4AE1E35DB1E00A607AC /* EditProfileSkillBrickCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3BD4AC1E35DB1E00A607AC /* EditProfileSkillBrickCell.swift */; };
@@ -98,7 +97,6 @@
 		5AC714401E34A9B100E433C1 /* Calender.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AC7143F1E34A9B100E433C1 /* Calender.storyboard */; };
 		5AC714421E34A9C700E433C1 /* Messages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AC714411E34A9C700E433C1 /* Messages.storyboard */; };
 		5AC714521E34ACD400E433C1 /* DMCalenderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC714511E34ACD400E433C1 /* DMCalenderVC.swift */; };
-		5AC714581E34F76900E433C1 /* DMSettingVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC714571E34F76900E433C1 /* DMSettingVC+Services.swift */; };
 		5AD246931E273CC9009350BF /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD246921E273CC9009350BF /* DatePickerView.swift */; };
 		5AD246951E273CE7009350BF /* DatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AD246941E273CE7009350BF /* DatePickerView.xib */; };
 		5AD246971E27799F009350BF /* PickerAnimatedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD246961E27799F009350BF /* PickerAnimatedTextField.swift */; };
@@ -188,6 +186,8 @@
 		6E90E5E1220AA5A700E04344 /* DMSettingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E90E5E0220AA5A700E04344 /* DMSettingPresenter.swift */; };
 		6E90E5E3220AB1AF00E04344 /* DMPublicProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E90E5E2220AB1AF00E04344 /* DMPublicProfilePresenter.swift */; };
 		6E90E5E5220AD9B000E04344 /* DMWorkExperiencePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E90E5E4220AD9B000E04344 /* DMWorkExperiencePresenter.swift */; };
+		6E95F797220C21F2001B7035 /* DMEditStudyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E95F796220C21F2001B7035 /* DMEditStudyPresenter.swift */; };
+		6E95F799220C33AB001B7035 /* DMChangePasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E95F798220C33AB001B7035 /* DMChangePasswordPresenter.swift */; };
 		6E99690221FEE84A0007CF40 /* DMForgotPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E99690121FEE84A0007CF40 /* DMForgotPassword.swift */; };
 		6E99690421FEEAE10007CF40 /* DMTermsAndConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E99690321FEEAE10007CF40 /* DMTermsAndConditions.swift */; };
 		6E99690621FEEFE40007CF40 /* DMJobTitleSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E99690521FEEFE40007CF40 /* DMJobTitleSelection.swift */; };
@@ -247,7 +247,6 @@
 		E51C4D3C1FB051C7009FC3A0 /* AboutMeJobSelectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E51C4D3A1FB051C7009FC3A0 /* AboutMeJobSelectionCell.xib */; };
 		E51C4D3E1FB05591009FC3A0 /* DMJobTitleSelectionVC+TextFieldDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51C4D3D1FB05591009FC3A0 /* DMJobTitleSelectionVC+TextFieldDelegates.swift */; };
 		E51D4EF31E3AFCA700ACC631 /* DMEditStudyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4EF21E3AFCA700ACC631 /* DMEditStudyVC.swift */; };
-		E51D4EF51E3AFEA600ACC631 /* DMEditStudyVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4EF41E3AFEA600ACC631 /* DMEditStudyVC+Services.swift */; };
 		E51D4EF71E3B029D00ACC631 /* DMEditStudyVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4EF61E3B029D00ACC631 /* DMEditStudyVC+TableViewExtension.swift */; };
 		E51D4EFC1E3B818400ACC631 /* CustomSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4EFB1E3B818400ACC631 /* CustomSegmentControl.swift */; };
 		E51D4F001E3F207F00ACC631 /* Notifications+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4EFF1E3F207F00ACC631 /* Notifications+Name.swift */; };
@@ -540,7 +539,6 @@
 		5A3B06CC1E3387FF00EFCA6E /* DMSettingVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMSettingVC+TableViewExtension.swift"; sourceTree = "<group>"; };
 		5A3B06CE1E33881D00EFCA6E /* DMChangePasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMChangePasswordVC.swift; sourceTree = "<group>"; };
 		5A3B06D01E33883C00EFCA6E /* DMChangePasswordVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMChangePasswordVC+TableViewExtension.swift"; sourceTree = "<group>"; };
-		5A3B06D21E33885A00EFCA6E /* DMChangePasswordVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMChangePasswordVC+Services.swift"; sourceTree = "<group>"; };
 		5A3BD4A81E35D3D800A607AC /* EditProfileAffiliationBrickCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileAffiliationBrickCell.swift; sourceTree = "<group>"; };
 		5A3BD4A91E35D3D800A607AC /* EditProfileAffiliationBrickCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileAffiliationBrickCell.xib; sourceTree = "<group>"; };
 		5A3BD4AC1E35DB1E00A607AC /* EditProfileSkillBrickCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileSkillBrickCell.swift; sourceTree = "<group>"; };
@@ -598,7 +596,6 @@
 		5AC7143F1E34A9B100E433C1 /* Calender.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Calender.storyboard; sourceTree = "<group>"; };
 		5AC714411E34A9C700E433C1 /* Messages.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Messages.storyboard; sourceTree = "<group>"; };
 		5AC714511E34ACD400E433C1 /* DMCalenderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMCalenderVC.swift; sourceTree = "<group>"; };
-		5AC714571E34F76900E433C1 /* DMSettingVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMSettingVC+Services.swift"; sourceTree = "<group>"; };
 		5AD246921E273CC9009350BF /* DatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		5AD246941E273CE7009350BF /* DatePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerView.xib; sourceTree = "<group>"; };
 		5AD246961E27799F009350BF /* PickerAnimatedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerAnimatedTextField.swift; sourceTree = "<group>"; };
@@ -688,6 +685,8 @@
 		6E90E5E0220AA5A700E04344 /* DMSettingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMSettingPresenter.swift; sourceTree = "<group>"; };
 		6E90E5E2220AB1AF00E04344 /* DMPublicProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMPublicProfilePresenter.swift; sourceTree = "<group>"; };
 		6E90E5E4220AD9B000E04344 /* DMWorkExperiencePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMWorkExperiencePresenter.swift; sourceTree = "<group>"; };
+		6E95F796220C21F2001B7035 /* DMEditStudyPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMEditStudyPresenter.swift; sourceTree = "<group>"; };
+		6E95F798220C33AB001B7035 /* DMChangePasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMChangePasswordPresenter.swift; sourceTree = "<group>"; };
 		6E99690121FEE84A0007CF40 /* DMForgotPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMForgotPassword.swift; sourceTree = "<group>"; };
 		6E99690321FEEAE10007CF40 /* DMTermsAndConditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMTermsAndConditions.swift; sourceTree = "<group>"; };
 		6E99690521FEEFE40007CF40 /* DMJobTitleSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMJobTitleSelection.swift; sourceTree = "<group>"; };
@@ -750,7 +749,6 @@
 		E51C4D3A1FB051C7009FC3A0 /* AboutMeJobSelectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutMeJobSelectionCell.xib; sourceTree = "<group>"; };
 		E51C4D3D1FB05591009FC3A0 /* DMJobTitleSelectionVC+TextFieldDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DMJobTitleSelectionVC+TextFieldDelegates.swift"; sourceTree = "<group>"; };
 		E51D4EF21E3AFCA700ACC631 /* DMEditStudyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMEditStudyVC.swift; sourceTree = "<group>"; };
-		E51D4EF41E3AFEA600ACC631 /* DMEditStudyVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMEditStudyVC+Services.swift"; sourceTree = "<group>"; };
 		E51D4EF61E3B029D00ACC631 /* DMEditStudyVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMEditStudyVC+TableViewExtension.swift"; sourceTree = "<group>"; };
 		E51D4EFB1E3B818400ACC631 /* CustomSegmentControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegmentControl.swift; sourceTree = "<group>"; };
 		E51D4EFF1E3F207F00ACC631 /* Notifications+Name.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Notifications+Name.swift"; sourceTree = "<group>"; };
@@ -1371,7 +1369,6 @@
 				6E90E5E0220AA5A700E04344 /* DMSettingPresenter.swift */,
 				5A3B06CA1E3387DA00EFCA6E /* DMSettingVC.swift */,
 				5A3B06CC1E3387FF00EFCA6E /* DMSettingVC+TableViewExtension.swift */,
-				5AC714571E34F76900E433C1 /* DMSettingVC+Services.swift */,
 			);
 			path = settings;
 			sourceTree = "<group>";
@@ -1381,9 +1378,9 @@
 			children = (
 				6E35FBEB2200310200AB84A3 /* DMChangePassword.swift */,
 				6E85B83821FAE85700DB137F /* DMChangePasswordInitializer.swift */,
+				6E95F798220C33AB001B7035 /* DMChangePasswordPresenter.swift */,
 				5A3B06CE1E33881D00EFCA6E /* DMChangePasswordVC.swift */,
 				5A3B06D01E33883C00EFCA6E /* DMChangePasswordVC+TableViewExtension.swift */,
-				5A3B06D21E33885A00EFCA6E /* DMChangePasswordVC+Services.swift */,
 			);
 			path = change_password;
 			sourceTree = "<group>";
@@ -1413,8 +1410,8 @@
 			children = (
 				6E35FBF322003E9700AB84A3 /* DMEditStudy.swift */,
 				6E85B84121FAF12900DB137F /* DMEditStudyInitializer.swift */,
+				6E95F796220C21F2001B7035 /* DMEditStudyPresenter.swift */,
 				E51D4EF21E3AFCA700ACC631 /* DMEditStudyVC.swift */,
-				E51D4EF41E3AFEA600ACC631 /* DMEditStudyVC+Services.swift */,
 				E51D4EF61E3B029D00ACC631 /* DMEditStudyVC+TableViewExtension.swift */,
 			);
 			path = edit_study;
@@ -3030,6 +3027,7 @@
 				E5BED5531E49AB85003EC833 /* DMMessagesVC+TableViewExtension.swift in Sources */,
 				6E35FC0222007C6700AB84A3 /* DMCancelJob.swift in Sources */,
 				E5F9194B1E9DD4A30021F008 /* FSCalendarScopeHandle.m in Sources */,
+				6E95F797220C21F2001B7035 /* DMEditStudyPresenter.swift in Sources */,
 				484958F9218AC7AB00096046 /* SearchStateViewController.swift in Sources */,
 				6E85B85121FAF94500DB137F /* DMEditLiceseInitializer.swift in Sources */,
 				E59467271FD8FFE70009C18B /* Popover.swift in Sources */,
@@ -3097,7 +3095,6 @@
 				6E35FBFC220064AA00AB84A3 /* DMEditCertificate.swift in Sources */,
 				6E85B83F21FAECBC00DB137F /* DMCommonSuccessFailureInitializer.swift in Sources */,
 				F2540F601E274360004B0538 /* JobSearchResultCell.swift in Sources */,
-				E51D4EF51E3AFEA600ACC631 /* DMEditStudyVC+Services.swift in Sources */,
 				E5E7CB851E2FA23200D4FB59 /* PhotoNameCell.swift in Sources */,
 				5A3FD06E1E1BB0A000360B3C /* UINavigationBar+Awesome.m in Sources */,
 				E587D2CF1E23438B006B7F06 /* DMJobTitleSelectionVC.swift in Sources */,
@@ -3258,7 +3255,6 @@
 				F223591F1E3F608900E984FC /* DMJobDetaiVC+TableViewExtension.swift in Sources */,
 				E51D4EF31E3AFCA700ACC631 /* DMEditStudyVC.swift in Sources */,
 				E558D90A1E2E7A3200A6DF95 /* DMEditProfileVC+TableViewExtension.swift in Sources */,
-				5A3B06D31E33885A00EFCA6E /* DMChangePasswordVC+Services.swift in Sources */,
 				E5F919401E9DD4A30021F008 /* FSCalendar.m in Sources */,
 				E5F919431E9DD4A30021F008 /* FSCalendarCalculator.m in Sources */,
 				6E35FBEE2200346F00AB84A3 /* DMNotifications.swift in Sources */,
@@ -3278,7 +3274,6 @@
 				5A8F62A51E399A550037C4A2 /* DMCalendarSetAvailabillityVC+TableViewExtension.swift in Sources */,
 				6E85B83621FAE54B00DB137F /* DMSettingsInitializer.swift in Sources */,
 				6EF2F1E521F9C82300F6F38D /* ContainerInitializer.swift in Sources */,
-				5AC714581E34F76900E433C1 /* DMSettingVC+Services.swift in Sources */,
 				5A737D091E56B040002472D4 /* NotificationHandler.swift in Sources */,
 				48CD1505212D75F600E4B80E /* TempJobDetailCell.swift in Sources */,
 				E587D2F61E24C0B0006B7F06 /* DMSkillsVC.swift in Sources */,
@@ -3363,6 +3358,7 @@
 				E5A3E8EE1E160ABF00B10937 /* AnimatedLeftViewPHTextField.swift in Sources */,
 				E5496E021E255A9E00C54288 /* DMExecutiveSummaryVC+TableViewExtension.swift in Sources */,
 				E54B9A841E32870B00805D9C /* DMEditCertificateVC.swift in Sources */,
+				6E95F799220C33AB001B7035 /* DMChangePasswordPresenter.swift in Sources */,
 				6E85B56B22032D4400CD2CCE /* DMLoginPresenter.swift in Sources */,
 				5A5523E71E4C4136007D8C09 /* NotificationJobTypeTableCell.swift in Sources */,
 				6E85B84221FAF12900DB137F /* DMEditStudyInitializer.swift in Sources */,
