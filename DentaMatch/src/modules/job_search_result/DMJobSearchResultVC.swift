@@ -216,9 +216,9 @@ class DMJobSearchResultVC: DMBaseVC {
             for job in filteredJobs ?? [] {
                 job.isSaved = jobObj.isSaved
             }
-            DispatchQueue.main.async {
-                if let visibleRows = self.tblJobSearchResult.indexPathsForVisibleRows {
-                    self.tblJobSearchResult.reloadRows(at: visibleRows, with: .none)
+            DispatchQueue.main.async { [weak self] in
+                if let visibleRows = self?.tblJobSearchResult.indexPathsForVisibleRows {
+                    self?.tblJobSearchResult.reloadRows(at: visibleRows, with: .none)
                 }
             }
         }
@@ -306,9 +306,9 @@ extension DMJobSearchResultVC: DMJobSearchResultViewInput {
     
     func configureTableView(jobsCount: Int, totalJobsCount: Int, status: Bool) {
         
+        placeHolderEmptyJobsView?.isHidden = jobsCount > 0 ? true : false
         if status {
          
-            placeHolderEmptyJobsView?.isHidden = jobsCount > 0 ? true : false
             viewResultCount.isHidden = jobsCount == 0 ? true : false
             constraintViewResultCountHeight.constant = jobsCount == 0 ? 0 : 32.0
             loadingMoreJobs = false

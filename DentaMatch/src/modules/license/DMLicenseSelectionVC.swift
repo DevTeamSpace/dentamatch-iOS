@@ -129,28 +129,28 @@ class DMLicenseSelectionVC: DMBaseVC, UITextFieldDelegate {
             } else if isCameraButtonPressed {
                 CameraGalleryManager.shared.openCamera(viewController: self, allowsEditing: false, completionHandler: { [weak self] (image: UIImage?, error: NSError?) in
                     if error != nil {
-                        DispatchQueue.main.async {
+                        DispatchQueue.main.async { [weak self] in
                             self?.makeToast(toastString: (error?.localizedDescription)!)
                         }
                         return
                     }
                     self?.stateBoardImage = image!
                     self?.uploadDentalStateboardImage()
-                    DispatchQueue.main.async {
+                    DispatchQueue.main.async { [weak self] in
                         self?.licenseTableView.reloadData()
                     }
                 })
             } else {
                 CameraGalleryManager.shared.openGallery(viewController: self, allowsEditing: false, completionHandler: {  [weak self](image: UIImage?, error: NSError?) in
                     if error != nil {
-                        DispatchQueue.main.async {
+                        DispatchQueue.main.async { [weak self] in
                             self?.makeToast(toastString: (error?.localizedDescription)!)
                         }
                         return
                     }
                     self?.stateBoardImage = image
                     self?.uploadDentalStateboardImage()
-                    DispatchQueue.main.async {
+                    DispatchQueue.main.async { [weak self] in
                         self?.licenseTableView.reloadData()
                     }
                 })

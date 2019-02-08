@@ -369,19 +369,19 @@ extension DMWorkExperienceVC: UITableViewDataSource, UITableViewDelegate {
         view.endEditing(true)
 
         let alertController = UIAlertController(title: "", message: "Are you sure you want to delete this work experience?", preferredStyle: .alert)
-        let action1 = UIAlertAction(title: "OK", style: .default) { (_: UIAlertAction) in
+        let action1 = UIAlertAction(title: "OK", style: .default) { [weak self] (_: UIAlertAction) in
             if viewOutput.currentExperience.isEditMode == true {
                 viewOutput.deleteExperience()
             } else {
-                self.viewOutput?.currentExperience = ExperienceModel(empty: "")
-                self.viewOutput?.currentExperience.isFirstExperience = false
-                self.viewOutput?.currentExperience.references.append(EmployeeReferenceModel(empty: ""))
-                self.viewOutput?.isHiddenExperienceTable = false
+                self?.viewOutput?.currentExperience = ExperienceModel(empty: "")
+                self?.viewOutput?.currentExperience.isFirstExperience = false
+                self?.viewOutput?.currentExperience.references.append(EmployeeReferenceModel(empty: ""))
+                self?.viewOutput?.isHiddenExperienceTable = false
                 
-                self.workExperienceTable.reloadData()
-                self.workExperienceDetailTable.reloadData()
-                self.reSizeTableViewsAndScrollView()
-                self.updateProfileScreen()
+                self?.workExperienceTable.reloadData()
+                self?.workExperienceDetailTable.reloadData()
+                self?.reSizeTableViewsAndScrollView()
+                self?.updateProfileScreen()
             }
         }
         let action2 = UIAlertAction(title: "CANCEL", style: .default) { (_: UIAlertAction) in

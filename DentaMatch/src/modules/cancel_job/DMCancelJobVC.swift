@@ -87,9 +87,9 @@ class DMCancelJobVC: DMBaseVC {
         if reasonTextView.text!.isEmptyField {
             makeToast(toastString: Constants.AlertMessage.emptyCancelReason)
         } else {
-            alertMessage(title: "Confirm your cancellation", message: "\nAre you sure you want to cancel the job? (Multiple cancellations can result in suspension of your account)", leftButtonText: "Cancel", rightButtonText: "Ok", completionHandler: { (isLeftButton: Bool) in
+            alertMessage(title: "Confirm your cancellation", message: "\nAre you sure you want to cancel the job? (Multiple cancellations can result in suspension of your account)", leftButtonText: "Cancel", rightButtonText: "Ok", completionHandler: { [weak self] (isLeftButton: Bool) in
                 if !isLeftButton {
-                    self.viewOutput?.cancelJob(reason: self.reasonTextView.text)
+                    self?.viewOutput?.cancelJob(reason: self?.reasonTextView.text ?? "")
                 }
             })
         }

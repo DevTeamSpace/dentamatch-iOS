@@ -5,7 +5,7 @@ extension DMJobSearchVC: DMJobTitleVCDelegate {
         self.jobTitles.removeAll()
         self.jobTitles = jobTitles
         tblViewJobSearch.beginUpdates()
-        tblViewJobSearch.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .top)
+        tblViewJobSearch.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .fade)
         tblViewJobSearch.endUpdates()
     }
 

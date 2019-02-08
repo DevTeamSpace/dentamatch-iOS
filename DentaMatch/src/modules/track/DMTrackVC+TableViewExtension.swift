@@ -151,9 +151,9 @@ extension DMTrackVC: UITableViewDataSource, UITableViewDelegate {
 
     @objc func removeFavouriteJobButtonPressed(sender: UIButton) {
         
-        alertMessage(title: "Confirm your action", message: "Are you sure you want to unsave the job?", leftButtonText: "Cancel", rightButtonText: "Ok") { (isLeftButton: Bool) in
+        alertMessage(title: "Confirm your action", message: "Are you sure you want to unsave the job?", leftButtonText: "Cancel", rightButtonText: "Ok") { [weak self] (isLeftButton: Bool) in
             if !isLeftButton {
-                self.viewOutput?.saveUnsaveJob(status: 0, index: sender.tag)
+                self?.viewOutput?.saveUnsaveJob(status: 0, index: sender.tag)
             }
         }
     }

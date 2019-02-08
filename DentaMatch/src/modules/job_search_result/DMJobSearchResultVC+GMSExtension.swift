@@ -63,9 +63,9 @@ extension DMJobSearchResultVC: GMSMapViewDelegate {
         UIView.animate(withDuration: 0.5, animations: {
             self.view.layoutIfNeeded()
         }) { (_: Bool) in
-            DispatchQueue.main.async {
-                self.tblJobSearchResult.scrollToRow(at: IndexPath(row: index, section: 0), at: .none, animated: false)
-                self.tblJobSearchResult.isScrollEnabled = false
+            DispatchQueue.main.async { [weak self] in
+                self?.tblJobSearchResult.scrollToRow(at: IndexPath(row: index, section: 0), at: .none, animated: false)
+                self?.tblJobSearchResult.isScrollEnabled = false
             }
         }
     }

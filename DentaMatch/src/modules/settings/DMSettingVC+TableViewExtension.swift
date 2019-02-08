@@ -61,7 +61,7 @@ extension DMSettingVC: UITableViewDataSource, UITableViewDelegate {
             viewOutput?.openTermsAndConditions(isPrivacyPolicy: true)
         case 4:
             // logout
-            self.alertMessage(title: "Logout", message: "Are you sure you want to logout?", leftButtonText: "Yes", rightButtonText: "No", completionHandler: { [weak self](isLeft: Bool) in
+            self.alertMessage(title: "Logout", message: "Are you sure you want to logout?", leftButtonText: "Yes", rightButtonText: "No", completionHandler: { [weak self] (isLeft: Bool) in
                 if isLeft {
                   self?.viewOutput?.signOut()
                 }

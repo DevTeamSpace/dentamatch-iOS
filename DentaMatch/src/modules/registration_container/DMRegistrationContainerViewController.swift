@@ -17,6 +17,7 @@ class DMRegistrationContainer: DMBaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        hideLoading()
         initSubModules()
     }
 

@@ -125,8 +125,8 @@ extension DMStudyVC: UITableViewDataSource, UITableViewDelegate {
         // school[sender.tag] = dict
         
         studyTableView.reloadRows(at: [IndexPath(row: sender.tag, section: 1)], with: .automatic)
-        DispatchQueue.main.async {
-            self.studyTableView.scrollToRow(at: IndexPath(row: sender.tag, section: 1), at: .bottom, animated: true)
+        DispatchQueue.main.async { [weak self] in
+            self?.studyTableView.scrollToRow(at: IndexPath(row: sender.tag, section: 1), at: .bottom, animated: true)
         }
     }
     

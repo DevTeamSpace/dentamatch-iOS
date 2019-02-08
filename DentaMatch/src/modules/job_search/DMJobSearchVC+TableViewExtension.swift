@@ -28,7 +28,9 @@ extension DMJobSearchVC: UITableViewDataSource, UITableViewDelegate {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "JobSeachTitleCell") as? JobSeachTitleCell
             cell?.selectionStyle = .none
+            cell?.lblJobTitle.text = "JOB TITLE"
             cell?.jobTitles = jobTitles
+            cell?.forPreferredLocation = false
             cell!.updateJobTitle()
             return cell!
         case 1:

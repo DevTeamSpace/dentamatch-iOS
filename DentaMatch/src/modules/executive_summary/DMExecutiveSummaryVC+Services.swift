@@ -16,17 +16,17 @@ extension DMExecutiveSummaryVC {
             return
         }
         showLoader()
-        APIManager.apiPost(serviceName: Constants.API.saveAboutMe, parameters: [Constants.ServerKey.aboutMe: aboutMe]) { (response: JSON?, error: NSError?) in
-            self.hideLoader()
+        APIManager.apiPost(serviceName: Constants.API.saveAboutMe, parameters: [Constants.ServerKey.aboutMe: aboutMe]) { [weak self] (response: JSON?, error: NSError?) in
+            self?.hideLoader()
             if error != nil {
-                self.makeToast(toastString: (error?.localizedDescription)!)
+                self?.makeToast(toastString: (error?.localizedDescription)!)
                 return
             }
             if response == nil {
-                self.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
+                self?.makeToast(toastString: Constants.AlertMessage.somethingWentWrong)
                 return
             }
-            self.handleAboutMeResponse(response: response)
+            self?.handleAboutMeResponse(response: response)
         }
     }
 
@@ -34,9 +34,9 @@ extension DMExecutiveSummaryVC {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
                 UserDefaultsManager.sharedInstance.isProfileCompleted = true
-                DispatchQueue.main.async {
-                    self.openDashboard()
-                    self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+                DispatchQueue.main.async { [weak self] in
+                    self?.openDashboard()
+                    self?.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
                 }
             } else {
                 makeToast(toastString: response[Constants.ServerKey.message].stringValue)

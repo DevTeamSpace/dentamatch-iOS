@@ -127,21 +127,21 @@ class DMPublicProfileVC: DMBaseVC {
     }
 
     @objc func addPhoto() {
-        cameraGalleryOptionActionSheet(title: "", message: "Please select", leftButtonText: "Take a Photo", rightButtonText: "Choose from Library") { isCameraButtonPressed, _, isCancelButtonPressed in
+        cameraGalleryOptionActionSheet(title: "", message: "Please select", leftButtonText: "Take a Photo", rightButtonText: "Choose from Library") { [weak self] isCameraButtonPressed, _, isCancelButtonPressed in
             if isCancelButtonPressed {
                 // cancel action
             } else if isCameraButtonPressed {
-                self.getPhotoFromCamera()
+                self?.getPhotoFromCamera()
             } else {
-                self.getPhotoFromGallery()
+                self?.getPhotoFromGallery()
             }
         }
     }
 
     func getPhotoFromCamera() {
-        CameraGalleryManager.shared.openCamera(viewController: self, allowsEditing: false, completionHandler: { [weak self](image: UIImage?, error: NSError?) in
+        CameraGalleryManager.shared.openCamera(viewController: self, allowsEditing: false, completionHandler: { [weak self] (image: UIImage?, error: NSError?) in
             if error != nil {
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [weak self] in
                     self?.makeToast(toastString: (error?.localizedDescription)!)
                 }
                 return
@@ -154,9 +154,9 @@ class DMPublicProfileVC: DMBaseVC {
     }
 
     func getPhotoFromGallery() {
-        CameraGalleryManager.shared.openGallery(viewController: self, allowsEditing: false, completionHandler: { [weak self](image: UIImage?, error: NSError?) in
+        CameraGalleryManager.shared.openGallery(viewController: self, allowsEditing: false, completionHandler: { [weak self] (image: UIImage?, error: NSError?) in
             if error != nil {
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [weak self] in
                     self?.makeToast(toastString: (error?.localizedDescription)!)
                 }
                 return

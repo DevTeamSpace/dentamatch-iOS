@@ -140,15 +140,15 @@ class DMWorkExperienceVC: DMBaseVC, ExperiencePickerViewDelegate, ToolBarButtonD
         } else {
             // alert here for
             let alert = UIAlertController(title: "WORK EXPERIENCE", message: Constants.AlertMessage.partialFill, preferredStyle: .alert)
-            let leftButtonAction = UIAlertAction(title: "DISCARD", style: .default) { (_: UIAlertAction) in
+            let leftButtonAction = UIAlertAction(title: "DISCARD", style: .default) { [weak self] (_: UIAlertAction) in
                 alert.dismiss(animated: true, completion: nil)
-                self.navigateAction()
+                self?.navigateAction()
             }
 
-            let rightButtonAction = UIAlertAction(title: "SAVE", style: .default) { (_: UIAlertAction) in
+            let rightButtonAction = UIAlertAction(title: "SAVE", style: .default) { [weak self] (_: UIAlertAction) in
                 alert.dismiss(animated: true, completion: nil)
 
-                self.saveDataOnNextButton()
+                self?.saveDataOnNextButton()
             }
 
             alert.addAction(leftButtonAction)

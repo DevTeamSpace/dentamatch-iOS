@@ -166,8 +166,8 @@ extension DMAffiliationsVC: UITableViewDataSource, UITableViewDelegate {
         case .affiliation:
             let affiliation = viewOutput?.affiliations[indexPath.row]
             viewOutput?.affiliations[indexPath.row].isSelected = affiliation?.isSelected == true ? false : true
-            DispatchQueue.main.async {
-                self.affiliationsTableView.reloadRows(at: [indexPath], with: .automatic)
+            DispatchQueue.main.async { [weak self] in
+                self?.affiliationsTableView.reloadRows(at: [indexPath], with: .automatic)
             }
 
         case .affiliationOther:
@@ -176,8 +176,8 @@ extension DMAffiliationsVC: UITableViewDataSource, UITableViewDelegate {
             viewOutput?.affiliations.last?.isSelected = !isSelected
             viewOutput?.isOtherSelected = !isSelected
             affiliationsTableView.reloadSections(IndexSet(integer: affiliationOption.rawValue), with: .automatic)
-            DispatchQueue.main.async {
-                self.affiliationsTableView.scrollToRow(at: IndexPath(row: 0, section: affiliationOption.rawValue), at: .bottom, animated: true)
+            DispatchQueue.main.async { [weak self] in
+                self?.affiliationsTableView.scrollToRow(at: IndexPath(row: 0, section: affiliationOption.rawValue), at: .bottom, animated: true)
             }
         default:
             break

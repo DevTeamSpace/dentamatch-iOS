@@ -107,8 +107,8 @@ extension DMEditSkillsVC: UITextViewDelegate {
 
     func textViewShouldBeginEditing(_: UITextView) -> Bool {
         skillsTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 200, right: 0)
-        DispatchQueue.main.async {
-            self.skillsTableView.scrollToRow(at: IndexPath(row: 0, section: 1), at: .bottom, animated: true)
+        DispatchQueue.main.async { [weak self] in
+            self?.skillsTableView.scrollToRow(at: IndexPath(row: 0, section: 1), at: .bottom, animated: true)
         }
         return true
     }

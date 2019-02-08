@@ -135,8 +135,8 @@ extension DMSelectSkillsVC: UITableViewDataSource, UITableViewDelegate {
                 viewOutput?.otherSkill?.isSelected = !isSelected
                 viewOutput?.otherSkill?.isOpenForOther = !isOpen
                 subSkillTableView.reloadRows(at: [indexPath], with: .automatic)
-                DispatchQueue.main.async {
-                    self.subSkillTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                DispatchQueue.main.async { [weak self] in
+                    self?.subSkillTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
                 }
             }
         }
@@ -146,8 +146,8 @@ extension DMSelectSkillsVC: UITableViewDataSource, UITableViewDelegate {
 extension DMSelectSkillsVC: UITextViewDelegate {
     func textViewShouldBeginEditing(_: UITextView) -> Bool {
         subSkillTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 200, right: 0)
-        DispatchQueue.main.async {
-            self.subSkillTableView.scrollToRow(at: IndexPath(row: 0, section: 1), at: .bottom, animated: true)
+        DispatchQueue.main.async { [weak self] in
+            self?.subSkillTableView.scrollToRow(at: IndexPath(row: 0, section: 1), at: .bottom, animated: true)
         }
         return true
     }

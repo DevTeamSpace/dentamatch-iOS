@@ -9,7 +9,8 @@ import SwiftyJSON
 class DMJobDetailVC: DMBaseVC {
     @IBOutlet var tblJobDetail: UITableView!
     @IBOutlet var btnApplyForJob: UIButton!
-    @IBOutlet var constraintBtnApplyJobHeight: NSLayoutConstraint!
+    @IBOutlet weak var buttonTemplateView: UIView!
+    @IBOutlet weak var bottomBtnConstainer: NSLayoutConstraint!
     var headerHeight: CGFloat = 49.0
     var jobDetailParams = [String: Any]()
     var job: Job?
@@ -37,7 +38,7 @@ class DMJobDetailVC: DMBaseVC {
         viewOutput?.didLoad()
         setup()
         tblJobDetail.isHidden = true
-        btnApplyForJob.isHidden = true
+        setBottomButtonHidden(true)
         viewOutput?.fetchJob(params: jobDetailParams)
     }
 
@@ -65,6 +66,22 @@ class DMJobDetailVC: DMBaseVC {
     }
 
     // MARK: - Private Method
+    
+    private func setBottomButtonHidden(_ isHidden: Bool) {
+        var bottomInset: CGFloat = 0
+        
+        if #available(iOS 11.0, *) {
+            bottomInset += view.safeAreaInsets.bottom
+        }
+        
+        btnApplyForJob.isHidden = isHidden
+        buttonTemplateView.isHidden = isHidden
+        bottomBtnConstainer.constant = isHidden ? btnApplyForJob.frame.height + bottomInset : 0
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.view.layoutIfNeeded()
+        }
+    }
 
     func setup() {
         title = Constants.ScreenTitleNames.jobDetails
@@ -116,29 +133,17 @@ extension DMJobDetailVC: DMJobDetailViewInput {
         if job.isApplied == 1 || job.isApplied == 2 || job.isApplied == 3 || job.isApplied == 4 || job.isApplied == 5 {
             // Hide apply for job button
             btnApplyForJob.isUserInteractionEnabled = false
-            btnApplyForJob.isHidden = true
-            constraintBtnApplyJobHeight.constant = 0
+            setBottomButtonHidden(true)
             btnApplyForJob.setTitle(Constants.Strings.appliedForThisJob, for: .normal)
-            DispatchQueue.main.async {
-                self.view.layoutIfNeeded()
-            }
         } else {
             // If its temp job and cancelled
             if job.jobType == 3 {
                 btnApplyForJob.isUserInteractionEnabled = false
-                btnApplyForJob.isHidden = true
-                constraintBtnApplyJobHeight.constant = 0
-                DispatchQueue.main.async {
-                    self.view.layoutIfNeeded()
-                }
+                setBottomButtonHidden(true)
             } else {
                 btnApplyForJob.isUserInteractionEnabled = true
-                btnApplyForJob.isHidden = false
-                constraintBtnApplyJobHeight.constant = 49
+                setBottomButtonHidden(false)
                 btnApplyForJob.setTitle(Constants.Strings.applyForJob, for: .normal)
-                DispatchQueue.main.async {
-                    self.view.layoutIfNeeded()
-                }
             }
         }
         tblJobDetail.isHidden = false
@@ -156,11 +161,10 @@ extension DMJobDetailVC: DMJobDetailViewInput {
                     delegate.jobApplied!(job: job!)
                 }
             }
-            DispatchQueue.main.async {
-                self.btnApplyForJob.isHidden = true
-                self.constraintBtnApplyJobHeight.constant = 0
-                self.btnApplyForJob.setTitle(Constants.Strings.appliedForThisJob, for: .normal)
-                self.tblJobDetail.reloadData()
+            DispatchQueue.main.async { [weak self] in
+                self?.setBottomButtonHidden(true)
+                self?.btnApplyForJob.setTitle(Constants.Strings.appliedForThisJob, for: .normal)
+                self?.tblJobDetail.reloadData()
             }
             //NotificationCenter.default.post(name: .refreshAppliedJobs, object: nil)
             
@@ -182,8 +186,8 @@ extension DMJobDetailVC: DMJobDetailViewInput {
         if let delegate = self.delegate {
             delegate.jobUpdate!(job: self.job!)
         }
-        DispatchQueue.main.async {
-            self.tblJobDetail.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
+        DispatchQueue.main.async { [weak self] in
+            self?.tblJobDetail.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
         }
         NotificationCenter.default.post(name: .refreshSavedJobs, object: nil, userInfo: nil)
         NotificationCenter.default.post(name: .jobSavedUnsaved, object: self.job, userInfo: nil)

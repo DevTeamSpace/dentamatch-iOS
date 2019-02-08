@@ -172,12 +172,12 @@ class DMJobSearchVC: DMBaseVC {
                 }
                 // debugPrint(lines.joined(separator: " "))
                 self.location.address = lines.joined(separator: " ")
-                DispatchQueue.main.async {
-                    if self.location.address != nil {
-                        self.tblViewJobSearch.beginUpdates()
-                        self.tblViewJobSearch.reloadRows(at: [IndexPath(row: 0, section: 2)], with: .bottom)
-                        self.tblViewJobSearch.endUpdates()
-                        self.tblViewJobSearch.scrollToRow(at: IndexPath(row: 0, section: 2), at: UITableView.ScrollPosition.none, animated: false)
+                DispatchQueue.main.async {  [weak self] in
+                    if self?.location.address != nil {
+                        self?.tblViewJobSearch.beginUpdates()
+                        self?.tblViewJobSearch.reloadRows(at: [IndexPath(row: 0, section: 2)], with: .bottom)
+                        self?.tblViewJobSearch.endUpdates()
+                        self?.tblViewJobSearch.scrollToRow(at: IndexPath(row: 0, section: 2), at: UITableView.ScrollPosition.none, animated: false)
                         // debugPrint(self.location.address ?? "Address not found")
                     } else {
                         // debugPrint("Address is empty")
