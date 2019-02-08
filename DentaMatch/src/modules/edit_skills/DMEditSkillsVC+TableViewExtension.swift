@@ -1,11 +1,3 @@
-//
-//  DMSkillsVC+TableViewExtension.swift
-//  DentaMatch
-//
-//  Created by Rajan Maheshwari on 26/01/17.
-//  Copyright © 2017 Appster. All rights reserved.
-//
-
 import Foundation
 
 extension DMEditSkillsVC: UITableViewDataSource, UITableViewDelegate {
@@ -18,7 +10,7 @@ extension DMEditSkillsVC: UITableViewDataSource, UITableViewDelegate {
 
         switch skillsOption {
         case .skills:
-            return skills.count
+            return viewOutput?.skills.count ?? 0
 
         case .other:
             return 0
@@ -29,7 +21,7 @@ extension DMEditSkillsVC: UITableViewDataSource, UITableViewDelegate {
         let skillOption = Skills(rawValue: indexPath.section)!
         switch skillOption {
         case .skills:
-            let height = getHeightOFCellForSkill(subSkills: skills[indexPath.row].subSkills.filter({ $0.isSelected == true }))
+            let height = getHeightOFCellForSkill(subSkills: viewOutput?.skills[indexPath.row].subSkills.filter({ $0.isSelected == true }) ?? [])
             return 56 + height
         case .other:
             return 144
@@ -42,17 +34,17 @@ extension DMEditSkillsVC: UITableViewDataSource, UITableViewDelegate {
         switch skillsOption {
         case .skills:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SkillsTableCell") as! SkillsTableCell
-            let skill = skills[indexPath.row]
+            let skill = viewOutput?.skills[indexPath.row]
             cell.subSkillsTagView.tag = indexPath.row
-            cell.updateSkills(subSkills: skills[indexPath.row].subSkills.filter({ $0.isSelected == true }))
-            cell.skillLabel.text = skill.skillName
+            cell.updateSkills(subSkills: viewOutput?.skills[indexPath.row].subSkills.filter({ $0.isSelected == true }) ?? [])
+            cell.skillLabel.text = skill?.skillName
             return cell
 
         case .other:
             let cell = tableView.dequeueReusableCell(withIdentifier: "OtherSkillCell") as! OtherSkillCell
             cell.otherTextView.delegate = self
-            if let _ = otherSkill {
-                cell.otherTextView.text = otherSkill?.otherText
+            if let _ = viewOutput?.otherSkill {
+                cell.otherTextView.text = viewOutput?.otherSkill?.otherText
             }
             return cell
         }
@@ -63,8 +55,11 @@ extension DMEditSkillsVC: UITableViewDataSource, UITableViewDelegate {
 
         switch skillsOption {
         case .skills:
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "getSubSkillData"), object: nil, userInfo: ["skill": skills[indexPath.row]])
-            presentRightMenuViewController()
+            
+            if let skill = viewOutput?.skills[indexPath.row] {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "getSubSkillData"), object: nil, userInfo: ["skill": skill])
+                presentRightMenuViewController()
+            }
 
         default:
             break
@@ -105,8 +100,8 @@ extension DMEditSkillsVC: UITableViewDataSource, UITableViewDelegate {
 
 extension DMEditSkillsVC: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
-        if let _ = otherSkill {
-            otherSkill?.otherText = textView.text.trim()
+        if let _ = viewOutput?.otherSkill {
+            viewOutput?.otherSkill?.otherText = textView.text.trim()
         }
     }
 

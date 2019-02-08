@@ -67,24 +67,26 @@ extension ProfileFlowCoordinator: DMEditProfileModuleOutput {
     }
     
     func showEditSkills(skills: [Skill]?) {
-        guard let skillsVC = DMEditSkillsInitializer.initialize(skills: skills, moduleOutput: self) as? DMEditSkillsVC,
-            let selectSkillsVC = DMSelectSkillsInitializer.initialize(moduleOutput: self) else { return }
+        guard let skillsModuleInput = DMEditSkillsInitializer.initialize(skills: skills, moduleOutput: self),
+            let selectSkillsModuleInput = DMSelectSkillsInitializer.initialize(moduleOutput: self) else { return }
 
-        let sideMenu = SSASideMenu(contentViewController: skillsVC, rightMenuViewController: selectSkillsVC)
+        let sideMenu = SSASideMenu(contentViewController: skillsModuleInput.viewController(), rightMenuViewController: selectSkillsModuleInput.viewController())
         sideMenu.panGestureEnabled = false
-        sideMenu.delegate = skillsVC
+        sideMenu.delegate = skillsModuleInput.viewController() as? DMEditSkillsVC
         sideMenu.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(sideMenu, animated: true)
     }
     
     func showEditAffiliations(selectedAffiliations: [Affiliation]?, isEditMode: Bool) {
-        guard let vc = DMAffiliationsInitializer.initialize(selectedAffiliations: selectedAffiliations, isEditMode: isEditMode, moduleOutput: self) else { return }
+        guard let moduleInput = DMAffiliationsInitializer.initialize(selectedAffiliations: selectedAffiliations, isEditMode: isEditMode, moduleOutput: self) else { return }
+        let vc = moduleInput.viewController()
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }
     
     func showEditCertificate(certificate: Certification?, isEditMode: Bool) {
-        guard let vc = DMEditCertificateInitializer.initialize(certificate: certificate, isEditMode: isEditMode, moduleOutput: self) else { return }
+        guard let moduleInput = DMEditCertificateInitializer.initialize(certificate: certificate, isEditMode: isEditMode, moduleOutput: self) else { return }
+        let vc = moduleInput.viewController()
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }

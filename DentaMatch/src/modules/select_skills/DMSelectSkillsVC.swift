@@ -8,62 +8,33 @@
 
 import UIKit
 
-class DMSelectSkillsVC: UIViewController {
+class DMSelectSkillsVC: DMBaseVC {
     enum SubSkillOption: Int {
         case subSkill
         case other
     }
 
     @IBOutlet var subSkillTableView: UITableView!
-    var skill: Skill?
-    var subSkills = [SubSkill]()
-    var subSkillWithoutOther = [SubSkill]()
-    var otherSkill: SubSkill?
-    var otherText = ""
     
-    weak var moduleOutput: DMSelectSkillsModuleOutput?
+    var viewOutput: DMSelectSkillsViewOutput?
 
     // MARK: - View LifeCycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setup()
-        NotificationCenter.default.addObserver(self, selector: #selector(getSubSkillData), name: NSNotification.Name(rawValue: "getSubSkillData"), object: nil)
-        // Do any additional setup after loading the view.
+        viewOutput?.didLoad()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let skill = skill {
-            subSkills.removeAll()
-            subSkills = skill.subSkills
-            subSkillWithoutOther = subSkills.filter({ $0.isOther == false })
-            otherSkill = subSkills.filter({ $0.isOther == true }).first
-            subSkills = subSkillWithoutOther
-            if let _ = otherSkill {
-                subSkills.append(otherSkill!)
-                otherText = (otherSkill?.otherText)!
-                if otherText.isEmptyField {
-                    otherSkill?.isSelected = false
-                    otherSkill?.otherText = ""
-                }
-            }
-            subSkillTableView.reloadData()
-        }
+        
+        viewOutput?.willAppear()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-    }
-
-    // MARK: - Private Methods
-
-    @objc func getSubSkillData(info: Notification) {
-        let userInfo = info.userInfo
-        skill = userInfo?["skill"] as? Skill
-        subSkills.removeAll()
-        subSkills = (skill?.subSkills)!
-        subSkillTableView.reloadData()
     }
 
     func setup() {
@@ -76,9 +47,16 @@ class DMSelectSkillsVC: UIViewController {
     }
 }
 
+extension DMSelectSkillsVC: DMSelectSkillsViewInput {
+
+    func reloadData() {
+        subSkillTableView.reloadData()
+    }
+}
+
 extension DMSelectSkillsVC: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in _: UITableView) -> Int {
-        if let _ = skill {
+        if let _ = viewOutput?.skill {
             return 2
         }
         return 1
@@ -88,7 +66,7 @@ extension DMSelectSkillsVC: UITableViewDataSource, UITableViewDelegate {
         let subSkillOption = SubSkillOption(rawValue: section)!
         switch subSkillOption {
         case .subSkill:
-            return subSkillWithoutOther.count
+            return viewOutput?.subSkillWithoutOther.count ?? 0
         case .other:
             return 1
         }
@@ -102,7 +80,7 @@ extension DMSelectSkillsVC: UITableViewDataSource, UITableViewDelegate {
             return UITableView.automaticDimension
         case .other:
             var otherHeight = 0
-            if let otherSkill = otherSkill {
+            if let otherSkill = viewOutput?.otherSkill {
                 otherHeight = otherSkill.isSelected ? 120 : 50
             }
             return CGFloat(otherHeight)
@@ -110,13 +88,14 @@ extension DMSelectSkillsVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let viewOutput = viewOutput else { return UITableViewCell() }
         let subSkillOption = SubSkillOption(rawValue: indexPath.section)!
 
         switch subSkillOption {
         case .subSkill:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SubSkillCell") as! SubSkillCell
-            cell.subSkillLabel.text = subSkillWithoutOther[indexPath.row].subSkillName
-            if subSkills[indexPath.row].isSelected {
+            cell.subSkillLabel.text = viewOutput.subSkillWithoutOther[indexPath.row].subSkillName
+            if viewOutput.subSkills[indexPath.row].isSelected {
                 cell.tickButton.setTitle(Constants.DesignFont.acceptTermsSelected, for: .normal)
             } else {
                 cell.tickButton.setTitle(Constants.DesignFont.acceptTermsDeSelected, for: .normal)
@@ -124,9 +103,9 @@ extension DMSelectSkillsVC: UITableViewDataSource, UITableViewDelegate {
             return cell
         case .other:
             let cell = tableView.dequeueReusableCell(withIdentifier: "OtherSubSkillTableCell") as! OtherSubSkillTableCell
-            cell.otherTextView.text = otherSkill?.otherText
-            if let _ = otherSkill {
-                if (otherSkill?.isSelected)! {
+            cell.otherTextView.text = viewOutput.otherSkill?.otherText
+            if let _ = viewOutput.otherSkill {
+                if viewOutput.otherSkill?.isSelected == true {
                     cell.tickButton.setTitle(Constants.DesignFont.acceptTermsSelected, for: .normal)
                     cell.tickButton.setTitleColor(UIColor.white, for: .normal)
                 } else {
@@ -145,12 +124,16 @@ extension DMSelectSkillsVC: UITableViewDataSource, UITableViewDelegate {
 
         switch subSkillOption {
         case .subSkill:
-            subSkills[indexPath.row].isSelected = subSkills[indexPath.row].isSelected ? false : true
+            let isSelected = viewOutput?.subSkills[indexPath.row].isSelected == true
+            
+            viewOutput?.subSkills[indexPath.row].isSelected = !isSelected
             subSkillTableView.reloadRows(at: [indexPath], with: .automatic)
         case .other:
-            if let _ = otherSkill {
-                otherSkill?.isSelected = (otherSkill?.isSelected)! ? false : true
-                otherSkill?.isOpenForOther = (otherSkill?.isOpenForOther)! ? false : true
+            if let _ = viewOutput?.otherSkill {
+                let isSelected = viewOutput?.otherSkill?.isSelected == true
+                let isOpen = viewOutput?.otherSkill?.isOpenForOther == true
+                viewOutput?.otherSkill?.isSelected = !isSelected
+                viewOutput?.otherSkill?.isOpenForOther = !isOpen
                 subSkillTableView.reloadRows(at: [indexPath], with: .automatic)
                 DispatchQueue.main.async {
                     self.subSkillTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
@@ -183,7 +166,7 @@ extension DMSelectSkillsVC: UITextViewDelegate {
     }
 
     func textViewDidChange(_ textView: UITextView) {
-        otherText = textView.text.trim()
-        otherSkill?.otherText = otherText
+        viewOutput?.otherText = textView.text.trim()
+        viewOutput?.otherSkill?.otherText = textView.text.trim()
     }
 }

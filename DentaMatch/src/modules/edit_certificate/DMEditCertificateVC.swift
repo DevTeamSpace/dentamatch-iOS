@@ -13,27 +13,23 @@ class DMEditCertificateVC: DMBaseVC, DatePickerViewDelegate {
     @IBOutlet var certificateNameLabel: UILabel!
     @IBOutlet var certificateImageButton: UIButton!
     @IBOutlet var validityDatePicker: PickerAnimatedTextField!
-
-    var certificate: Certification?
+    
     var dateView: DatePickerView?
-    var certificateImage: UIImage?
-    var isEditMode = false
-    var dateSelected = ""
+    
+    var viewOutput: DMEditCertificateViewOutput?
+
     lazy var isEditingResume : Bool = {
-        if let certificateName = self.certificate?.certificationName, certificateName == "Resume" {
+        if let certificateName = viewOutput?.certificate?.certificationName, certificateName == "Resume" {
             return true
         }
         return false
     }()
-    
-    weak var moduleOutput: DMEditCertificateModuleOutput?
-
     // MARK: - View LifeCycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        // Do any additional setup after loading the view.
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -54,16 +50,16 @@ class DMEditCertificateVC: DMBaseVC, DatePickerViewDelegate {
         certificateImageButton.clipsToBounds = true
         certificateImageButton.imageView?.contentMode = .scaleAspectFill
 
-        if let imageUrl = URL(string: (certificate?.certificateImageURL)!) {
+        if let imageUrl = URL(string: viewOutput?.certificate?.certificateImageURL ?? "") {
             certificateImageButton.setImage(for: .normal, url: imageUrl, placeholder: kCertificatePlaceHolder)
         }
 
         dateView = DatePickerView.loadExperiencePickerView(withText: "", tag: 0)
         dateView?.delegate = self
-        if let date = certificate?.validityDate {
-            dateSelected = date
+        if let date = viewOutput?.certificate?.validityDate {
+            viewOutput?.dateSelected = date
         }
-        validityDatePicker.text = getCertificateDateFormat(dateString: dateSelected)
+        validityDatePicker.text = getCertificateDateFormat(dateString: viewOutput?.dateSelected)
         validityDatePicker.inputView = dateView
         validityDatePicker.tintColor = UIColor.clear
         if isEditingResume {
@@ -71,10 +67,11 @@ class DMEditCertificateVC: DMBaseVC, DatePickerViewDelegate {
         }
         changeNavBarAppearanceForDefault()
         navigationItem.leftBarButtonItem = backBarButton()
-        certificateNameLabel.text = certificate?.certificationName
+        certificateNameLabel.text = viewOutput?.certificate?.certificationName
     }
 
-    func getCertificateDateFormat(dateString: String) -> String {
+    func getCertificateDateFormat(dateString: String?) -> String {
+        guard let dateString = dateString else { return "" }
         if !dateString.isEmptyField && dateString != Constants.kEmptyDate {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = Date.dateFormatYYYYMMDDDashed()
@@ -96,15 +93,9 @@ class DMEditCertificateVC: DMBaseVC, DatePickerViewDelegate {
     // MARK: - IBActions
 
     @IBAction func saveButtonPressed(_: Any) {
-        if !(certificate?.certificateImageURL?.isEmptyField)! {
+        if viewOutput?.certificate?.certificateImageURL?.isEmptyField == false {
             if isEditingResume || !validityDatePicker.text!.isEmptyField  {
-                uploadValidityDate { (response: JSON?, _: NSError?) in
-                    if let _ = response {
-                        self.certificate?.validityDate = self.dateSelected
-                        self.updateProfileScreen()
-                        self.navigationController?.popViewController(animated: true)
-                    }
-                }
+                viewOutput?.uploadValidityDate()
             }else {
                 makeToast(toastString: Constants.AlertMessage.emptyValidityDate)
             }
@@ -133,22 +124,9 @@ class DMEditCertificateVC: DMBaseVC, DatePickerViewDelegate {
                 }
                 return
             }
-            self?.certificateImage = image
-
-            DispatchQueue.main.async {
-                self?.uploadCertificateImage(certObj: (self?.certificate)!, completionHandler: { response, _ in
-                    if let response = response {
-                        if response[Constants.ServerKey.status].boolValue {
-                            self?.certificateImageButton.setImage(image, for: .normal)
-                            self?.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
-                            self?.certificate!.certificateImageURL = response[Constants.ServerKey.result][Constants.ServerKey.imageURLForPostResponse].stringValue
-                            self?.updateProfileScreen()
-                        } else {
-                            self?.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
-                        }
-                    }
-
-                })
+            
+            if let image = image {
+                self?.viewOutput?.uploadCertificateImage(image)
             }
         })
     }
@@ -161,22 +139,9 @@ class DMEditCertificateVC: DMBaseVC, DatePickerViewDelegate {
                 }
                 return
             }
-            self?.certificateImage = image
-
-            DispatchQueue.main.async {
-                self?.uploadCertificateImage(certObj: (self?.certificate)!, completionHandler: { response, _ in
-                    if let response = response {
-                        if response[Constants.ServerKey.status].boolValue {
-                            self?.certificateImageButton.setImage(image, for: .normal)
-                            self?.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
-                            self?.certificate!.certificateImageURL = response[Constants.ServerKey.result][Constants.ServerKey.imageURLForPostResponse].stringValue
-                            self?.updateProfileScreen()
-                        } else {
-                            self?.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
-                        }
-                    }
-
-                })
+            
+            if let image = image {
+                self?.viewOutput?.uploadCertificateImage(image)
             }
         })
     }
@@ -189,18 +154,21 @@ class DMEditCertificateVC: DMBaseVC, DatePickerViewDelegate {
 
     func doneButtonAction(date: String, tag _: Int) {
         view.endEditing(true)
-        dateSelected = date
-        validityDatePicker.text = getCertificateDateFormat(dateString: dateSelected)
+        viewOutput?.dateSelected = date
+        validityDatePicker.text = getCertificateDateFormat(dateString: viewOutput?.dateSelected)
     }
+}
 
-    func updateProfileScreen() {
-        NotificationCenter.default.post(name: .updateProfileScreen, object: nil, userInfo: ["certification": self.certificate!])
+extension DMEditCertificateVC: DMEditCertificateViewInput {
+    
+    func configureImageButton(image: UIImage) {
+        certificateImageButton.setImage(image, for: .normal)
     }
 }
 
 extension DMEditCertificateVC: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        dateView?.getPreSelectedValues(dateString: dateSelected, curTag: textField.tag)
+        dateView?.getPreSelectedValues(dateString: viewOutput?.dateSelected ?? "", curTag: textField.tag)
         // debugPrint("set Tag =\(textField.tag)")
         if let textField = textField as? PickerAnimatedTextField {
             textField.layer.borderColor = Constants.Color.textFieldColorSelected.cgColor

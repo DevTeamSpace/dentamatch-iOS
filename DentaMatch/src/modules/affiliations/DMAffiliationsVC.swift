@@ -21,20 +21,16 @@ class DMAffiliationsVC: DMBaseVC {
     @IBOutlet var affiliationsTableView: UITableView!
 
     let profileProgress: CGFloat = 0.80
-    var isOtherSelected = false
-    var otherText = ""
-    var selectedAffiliationsFromProfile = [Affiliation]()
-    var affiliations = [Affiliation]()
-    var isEditMode = false
     var activeView: UITextView?
     
-    weak var moduleOutput: DMAffiliationsModuleOutput?
+    var viewOutput: DMAffiliationsViewOutput?
+    
     // MARK: - View LifeCycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        getAffiliationListAPI()
+        viewOutput?.getAffiliations()
         // Do any additional setup after loading the view.
     }
 
@@ -92,7 +88,7 @@ class DMAffiliationsVC: DMBaseVC {
         affiliationsTableView.register(UINib(nibName: "SectionHeadingTableCell", bundle: nil), forCellReuseIdentifier: "SectionHeadingTableCell")
         affiliationsTableView.register(UINib(nibName: "AffiliationsCell", bundle: nil), forCellReuseIdentifier: "AffiliationsCell")
         affiliationsTableView.register(UINib(nibName: "AffliliationsOthersCell", bundle: nil), forCellReuseIdentifier: "AffliliationsOthersCell")
-        if isEditMode {
+        if viewOutput?.isEditing == true {
             title = "EDIT PROFILE"
             nextButton.setTitle("SAVE", for: .normal)
             headerViewForEditProfile.isHidden = false
@@ -142,51 +138,15 @@ class DMAffiliationsVC: DMBaseVC {
     // Making the post data for affiliation post API
     func makeAffiliationData() {
         view.endEditing(true)
-        var params = [String: AnyObject]()
-        var other = [[String: String]]()
-        var otherObject = [String: String]()
-        var selectedAffiliationIds = [String]()
-        for affiliation in affiliations {
-            if affiliation.isSelected {
-                if !affiliation.isOther {
-                    selectedAffiliationIds.append(affiliation.affiliationId)
-                }
-            }
-        }
-
-        // For other affiliation
-        let affiliationArray = affiliations.filter { (obj) -> Bool in
-            obj.affiliationId == "9"
-        } // affiliations[affiliations.count - 1]
-        if affiliationArray.count > 0 {
-            let affiliation = affiliationArray[0]
-            if affiliation.isSelected {
-                if let otherAffiliation = affiliation.otherAffiliation {
-                    if otherAffiliation.trim().isEmpty {
-                        makeToast(toastString: "Other affiliation can't be empty")
-                        return
-                    }
-                    otherObject[Constants.ServerKey.affiliationId] = affiliation.affiliationId
-                    otherObject[Constants.ServerKey.otherAffiliation] = otherText
-                    other.append(otherObject)
-                }
-            }
-            if !affiliation.isSelected {
-                if selectedAffiliationIds.count == 0 {
-                    makeToast(toastString: "Please select atleast one affiliation")
-                    return
-                }
-            }
-        }
-
-        params[Constants.ServerKey.affiliationDataArray] = selectedAffiliationIds as AnyObject?
-        params[Constants.ServerKey.other] = other as AnyObject?
-        saveAffiliationData(params: params)
+        
+        viewOutput?.saveAffiliationData()
     }
+}
 
-    // For edit mode from Edit Profile
-    func manageSelectedAffiliations() {
-        NotificationCenter.default.post(name: .updateProfileScreen, object: nil, userInfo: ["affiliations": affiliations.filter({ $0.isSelected == true })])
+extension DMAffiliationsVC: DMAffiliationsViewInput {
+    
+    func reloadData() {
+        affiliationsTableView.reloadData()
     }
 }
 
@@ -204,13 +164,13 @@ extension DMAffiliationsVC: UITextViewDelegate {
     }
 
     func textViewDidChange(_ textView: UITextView) {
-        let affiliation = affiliations.filter { (obj) -> Bool in
+        let affiliation = viewOutput?.affiliations.filter { (obj) -> Bool in
             obj.affiliationId == "9"
         } // affiliations[affiliations.count - 1]
-        if affiliation.count > 0 {
-            affiliation[0].otherAffiliation = textView.text!
+        if affiliation?.count != 0 {
+            affiliation?[0].otherAffiliation = textView.text!
         }
-        otherText = textView.text
+        viewOutput?.otherText = textView.text
     }
     
 }

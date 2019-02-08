@@ -18,16 +18,16 @@ extension DMAffiliationsVC: UITableViewDataSource, UITableViewDelegate {
 
         switch affiliationOption {
         case .profileHeader:
-            if isEditMode {
+            if viewOutput?.isEditing == true {
                 return 0
             }
             return 2
 
         case .affiliation:
-            return affiliations.count
+            return viewOutput?.affiliations.count ?? 0
 
         case .affiliationOther:
-            if affiliations.count > 0 {
+            if viewOutput?.affiliations.count != 0 {
                 return 1
             } else { return 0 }
         }
@@ -40,13 +40,13 @@ extension DMAffiliationsVC: UITableViewDataSource, UITableViewDelegate {
         case .profileHeader:
             switch indexPath.row {
             case 0:
-                if isEditMode {
+                if viewOutput?.isEditing == true {
                     return 0
                 }
 
                 return 213
             case 1:
-                if isEditMode {
+                if viewOutput?.isEditing == true {
                     return 0
                 }
                 return 46
@@ -55,17 +55,17 @@ extension DMAffiliationsVC: UITableViewDataSource, UITableViewDelegate {
             }
 
         case .affiliation:
-            let affiliation = affiliations[indexPath.row]
-            if affiliation.affiliationId == "9" {
-                let returnValue = affiliation.isSelected ? 186 : 54
+            let affiliation = viewOutput?.affiliations[indexPath.row]
+            if affiliation?.affiliationId == "9" {
+                let returnValue = affiliation?.isSelected == true ? 186 : 54
                 return CGFloat(returnValue)
             }
 
             return 56
 
         case .affiliationOther:
-            let affiliation = affiliations[affiliations.count - 1]
-            let returnValue = affiliation.isSelected ? 186 : 54
+            let affiliation = viewOutput?.affiliations.last
+            let returnValue = affiliation?.isSelected == true ? 186 : 54
             return CGFloat(returnValue)
         }
     }
@@ -97,7 +97,7 @@ extension DMAffiliationsVC: UITableViewDataSource, UITableViewDelegate {
 
         case .affiliation:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AffiliationsCell") as! AffiliationsCell
-            let affiliation = affiliations[indexPath.row]
+            guard let affiliation = viewOutput?.affiliations[indexPath.row] else { return UITableViewCell() }
             // debugPrint("affiliationName:-  \(affiliation.affiliationName)")
             cell.affiliationLabel.text = affiliation.affiliationName
             if affiliation.isSelected {
@@ -118,7 +118,7 @@ extension DMAffiliationsVC: UITableViewDataSource, UITableViewDelegate {
 
         case .affiliationOther:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AffliliationsOthersCell") as! AffliliationsOthersCell
-            let affiliation = affiliations[affiliations.count - 1]
+            guard let affiliation = viewOutput?.affiliations.last else { return UITableViewCell() }
             cell.tickButton.isEnabled = false
             cell.otherAffiliationTextView.delegate = self
             cell.otherAffiliationTextView.inputAccessoryView = addToolBarOnTextView()
@@ -126,12 +126,12 @@ extension DMAffiliationsVC: UITableViewDataSource, UITableViewDelegate {
 
             if affiliation.isSelected {
                 cell.otherAffiliationTextView.text = affiliation.otherAffiliation
-                otherText = affiliation.otherAffiliation!
+                viewOutput?.otherText = affiliation.otherAffiliation!
                 cell.tickButton.setTitle(Constants.DesignFont.acceptTermsSelected, for: .normal)
                 cell.tickButton.setTitleColor(Constants.Color.textFieldColorSelected, for: .normal)
             } else {
                 cell.otherAffiliationTextView.text = ""
-                otherText = ""
+                viewOutput?.otherText = ""
                 cell.tickButton.setTitle(Constants.DesignFont.acceptTermsDeSelected, for: .normal)
                 cell.tickButton.setTitleColor(Constants.Color.textFieldPlaceHolderColor, for: .normal)
             }
@@ -140,7 +140,7 @@ extension DMAffiliationsVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func cellSetpUpForOther(cell: AffliliationsOthersCell, indexPath: IndexPath) {
-        let affiliation = affiliations[indexPath.row]
+        guard let affiliation = viewOutput?.affiliations[indexPath.row] else { return }
         cell.tickButton.isEnabled = false
         cell.otherAffiliationTextView.delegate = self
         cell.otherAffiliationTextView.inputAccessoryView = addToolBarOnTextView()
@@ -148,12 +148,12 @@ extension DMAffiliationsVC: UITableViewDataSource, UITableViewDelegate {
 
         if affiliation.isSelected {
             cell.otherAffiliationTextView.text = affiliation.otherAffiliation
-            otherText = affiliation.otherAffiliation!
+            viewOutput?.otherText = affiliation.otherAffiliation!
             cell.tickButton.setTitle(Constants.DesignFont.acceptTermsSelected, for: .normal)
             cell.tickButton.setTitleColor(Constants.Color.textFieldColorSelected, for: .normal)
         } else {
             cell.otherAffiliationTextView.text = ""
-            otherText = ""
+            viewOutput?.otherText = ""
             cell.tickButton.setTitle(Constants.DesignFont.acceptTermsDeSelected, for: .normal)
             cell.tickButton.setTitleColor(Constants.Color.textFieldPlaceHolderColor, for: .normal)
         }
@@ -164,14 +164,17 @@ extension DMAffiliationsVC: UITableViewDataSource, UITableViewDelegate {
 
         switch affiliationOption {
         case .affiliation:
-            affiliations[indexPath.row].isSelected = affiliations[indexPath.row].isSelected ? false : true
+            let affiliation = viewOutput?.affiliations[indexPath.row]
+            viewOutput?.affiliations[indexPath.row].isSelected = affiliation?.isSelected == true ? false : true
             DispatchQueue.main.async {
                 self.affiliationsTableView.reloadRows(at: [indexPath], with: .automatic)
             }
 
         case .affiliationOther:
-            affiliations[affiliations.count - 1].isSelected = affiliations[affiliations.count - 1].isSelected ? false : true
-            isOtherSelected = affiliations[affiliations.count - 1].isSelected
+            let affiliation = viewOutput?.affiliations.last
+            let isSelected = affiliation?.isSelected == true
+            viewOutput?.affiliations.last?.isSelected = !isSelected
+            viewOutput?.isOtherSelected = !isSelected
             affiliationsTableView.reloadSections(IndexSet(integer: affiliationOption.rawValue), with: .automatic)
             DispatchQueue.main.async {
                 self.affiliationsTableView.scrollToRow(at: IndexPath(row: 0, section: affiliationOption.rawValue), at: .bottom, animated: true)
