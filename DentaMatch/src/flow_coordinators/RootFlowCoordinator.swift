@@ -93,6 +93,7 @@ extension RootFlowCoordinator: RegistrationFlowCoordinatorDelegate {
 extension RootFlowCoordinator: TabBarFlowCoordinatorDelegate {
     
     func logout() {
+        guard !(childCoordinators.first is AuthorizationFlowCoordinator) else { return }
         viewController?.dismiss(animated: true, completion: {
             DatabaseManager.clearDB()
         })

@@ -57,6 +57,7 @@ class Utilities: NSObject {
         
         UserDefaultsManager.sharedInstance.clearCache()
         UserDefaultsManager.sharedInstance.isLoggedOut = true
+        UserDefaultsManager.sharedInstance.isLoggedIn = false
         kAppDelegate?.rootFlowCoordinator?.logout()
     }
 }
