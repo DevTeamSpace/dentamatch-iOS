@@ -117,6 +117,8 @@ extension DMMessagesPresenter: DMMessagesViewOutput {
         viewInput.showLoading()
         APIManager.apiPost(serviceName: Constants.API.chatDelete, parameters: params) { [weak self] (response: JSON?, error: NSError?) in
             
+            self?.viewInput.hideLoading()
+            
             if let error = error {
                 self?.viewInput.show(toastMessage: error.localizedDescription)
                 return
