@@ -127,25 +127,19 @@ class DatabaseManager: NSObject {
     }
 
     class func insertNewMessageListObj(chatObj: JSON) {
-        if let _ = chatListExists(recruiterId: chatObj["recruiterId"].stringValue) {
-            // Update chat
-            // debugPrint("Update Chat")
-        } else {
-            
-            let chatList = ChatListModel(chatListObj: chatObj)
-            chatList.date = getMessageDate(timestamp: chatObj["timestamp"].stringValue)
-            
-            let realm = try! Realm()
-            try! realm.write {
-                realm.add(chatList, update: true)
-            }
-            
-            NotificationCenter.default.post(name: .hideMessagePlaceholder, object: nil)
-
-            ToastView.showNotificationToast(message: chatObj["message"].stringValue, name: chatObj["name"].stringValue, imageUrl: "", type: .white, onCompletion: {
-                kAppDelegate?.chatSocketNotificationTap(recruiterId: chatObj["recruiterId"].stringValue)
-            })
+        let chatList = ChatListModel(chatListObj: chatObj)
+        chatList.date = getMessageDate(timestamp: chatObj["timestamp"].stringValue)
+        chatList.unreadCount = 1
+        let realm = try! Realm()
+        try! realm.write {
+            realm.add(chatList, update: true)
         }
+        
+        NotificationCenter.default.post(name: .hideMessagePlaceholder, object: nil)
+        
+        ToastView.showNotificationToast(message: chatObj["message"].stringValue, name: chatObj["name"].stringValue, imageUrl: "", type: .white, onCompletion: {
+            kAppDelegate?.chatSocketNotificationTap(recruiterId: chatObj["recruiterId"].stringValue)
+        })
         
         addChatForFirstTimeMessage(chatObj: chatObj)
     }
@@ -163,6 +157,7 @@ class DatabaseManager: NSObject {
             
             if let user = UserManager.shared().activeUser {
                 
+                chatModel.fromId = chatObj["recruiterId"].stringValue
                 chatModel.toId = user.userId
                 chatModel.timeStamp = chatObj["timestamp"].doubleValue
                 let filteredDateTime = DatabaseManager.getDate(timestamp: chatObj["timestamp"].doubleValue)
