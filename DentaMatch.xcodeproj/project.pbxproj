@@ -2762,7 +2762,7 @@
 								enabled = 0;
 							};
 							com.apple.Push = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -3543,6 +3543,7 @@
 				ACTIVE_CONFIGURATION = Development;
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "DentaMatch/DentaMatch-Dev.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer: dentamatch@gmail.com (86U27BGBEN)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
@@ -3642,6 +3643,7 @@
 				ACTIVE_CONFIGURATION = Production;
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "DentaMatch/DentaMatch-Dev.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
@@ -3803,6 +3805,7 @@
 				ACTIVE_CONFIGURATION = QA;
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "DentaMatch/DentaMatch-Dev.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer: dentamatch@gmail.com (86U27BGBEN)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
@@ -3960,6 +3963,7 @@
 				ACTIVE_CONFIGURATION = Staging;
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "DentaMatch/DentaMatch-Dev.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Health Match Inc (37YG7ABMG2)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Health Match Inc (37YG7ABMG2)";
 				CODE_SIGN_STYLE = Manual;
