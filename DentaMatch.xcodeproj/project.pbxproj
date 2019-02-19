@@ -1633,18 +1633,10 @@
 			path = ../models;
 			sourceTree = "<group>";
 		};
-		6E88698F21FED13500898925 /* views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = views;
-			sourceTree = "<group>";
-		};
 		6EF2F1E221F9C7AB00F6F38D /* src */ = {
 			isa = PBXGroup;
 			children = (
 				6E85B88321FB3DB700DB137F /* models */,
-				6E88698F21FED13500898925 /* views */,
 				6E4D592E21FEC0D40008EDBA /* flow_coordinators */,
 				6EF2F1E721F9D82200F6F38D /* modules */,
 				6EF2F1E321F9C80F00F6F38D /* utils */,

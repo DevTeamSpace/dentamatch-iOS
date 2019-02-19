@@ -175,7 +175,7 @@ struct Constants {
         static let newPass = "newPassword"
         static let confirmPass = "confirmNewPassword"
         //
-        static let statelist = "state_list"
+        static let statelist = "stateList"
     }
 
     struct JobDetailKey {
