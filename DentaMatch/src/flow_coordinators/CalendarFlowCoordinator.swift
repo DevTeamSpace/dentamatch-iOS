@@ -20,8 +20,8 @@ class CalendarFlowCoordinator: BaseFlowCoordinator, CalendarFlowCoordinatorProto
     }
     
     func launchViewController() -> UIViewController? {
-        guard let vc = DMCalendarInitializer.initialize(moduleOutput: self) else { return nil }
-        
+        guard let moduleInput = DMCalendarInitializer.initialize(moduleOutput: self) else { return nil }
+        let vc = moduleInput.viewController()
         let navController = UINavigationController(rootViewController: vc)
         navigationController = navController
         return navController
