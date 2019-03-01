@@ -43,29 +43,60 @@ class DatabaseManager: NSObject {
             realm.delete(chats)
         }
     }
-
-    class func addUpdateChatToDB(chatObj: JSON?) {
-        guard let chatObj = chatObj else { return }
+    
+    class func makeNotificationData(chatObj: JSON?) {
+        guard let chatObj = chatObj,
+            let user = UserManager.shared().activeUser,
+            chatExits(messageId: chatObj["messageId"].intValue) == nil else { return }
         
-        if let _ = chatExits(messageId: chatObj["messageId"].intValue) {
-            // Update chat
-            // debugPrint("Update Chat")
+        let realm = try! Realm()
+        try! realm.write {
             
-        } else {
-            // New chat
-            let chatModel = ChatModel(chatObj: chatObj)
-            
-            let filteredDateTime = DatabaseManager.getDate(timestamp: chatObj["sentTime"].doubleValue)
-            chatModel.timeString = filteredDateTime.time
-            chatModel.dateString = filteredDateTime.date
-            
-            if let user = UserManager.shared().activeUser {
+            let isSenderChat = chatObj["fromId"].stringValue == user.userId
+            if let chatList = chatListExists(recruiterId: isSenderChat ? chatObj["toId"].stringValue : chatObj["fromId"].stringValue) {
                 
-                let realm = try! Realm()
-                try! realm.write {
+                chatList.lastMessage = chatObj["message"].stringValue
+                chatList.lastMessageId = chatObj["messageId"].stringValue
+                chatList.timeStamp = chatObj["sentTime"].doubleValue
+                
+                if !isSenderChat {
                     
-                    realm.add(chatModel, update: true)
+                    chatList.unreadCount = chatList.unreadCount + 1
                     
+                    ToastView.showNotificationToast(message: chatObj["message"].stringValue, name: chatObj["fromName"].stringValue, imageUrl: "", type: .white, onCompletion: {
+                        kAppDelegate?.chatSocketNotificationTap(recruiterId: chatObj["fromId"].stringValue)
+                    })
+                }
+                
+                realm.add(chatList, update: true)
+            }
+        }
+        
+        kAppDelegate?.rootFlowCoordinator?.updateMessagesBadgeValue(count: getUnreadedMessages())
+    }
+
+    class func addUpdateChatsToDB(chatObjs: [JSON]) {
+        
+        let chatModels = chatObjs.map({ (obj) -> ChatModel in
+            let model = ChatModel(chatObj: obj)
+            
+            let filteredDateTime = DatabaseManager.getDate(timestamp: obj["sentTime"].doubleValue)
+            model.timeString = filteredDateTime.time
+            model.dateString = filteredDateTime.date
+            
+            return model
+        })
+        
+        if let user = UserManager.shared().activeUser {
+            
+            let realm = try! Realm()
+            try! realm.write {
+                
+                realm.add(chatModels, update: true)
+                
+                var chatLists = [ChatListModel]()
+                
+                for chatObj in chatObjs {
                     let isSenderChat = chatObj["fromId"].stringValue == user.userId
                     if let chatList = chatListExists(recruiterId: isSenderChat ? chatObj["toId"].stringValue : chatObj["fromId"].stringValue) {
                         
@@ -74,24 +105,24 @@ class DatabaseManager: NSObject {
                         chatList.timeStamp = chatObj["sentTime"].doubleValue
                         
                         if !isSenderChat {
-                            
                             chatList.unreadCount = chatList.unreadCount + 1
-                            
-                            ToastView.showNotificationToast(message: chatObj["message"].stringValue, name: chatObj["fromName"].stringValue, imageUrl: "", type: .white, onCompletion: {
-                                kAppDelegate?.chatSocketNotificationTap(recruiterId: chatObj["fromId"].stringValue)
-                            })
                         }
                         
-                        realm.add(chatList, update: true)
+                        chatLists.append(chatList)
                     }
                 }
+                
+                realm.add(chatLists, update: true)
             }
+            
+            kAppDelegate?.rootFlowCoordinator?.updateMessagesBadgeValue(count: getUnreadedMessages())
         }
     }
 
     class func updateReadCount(recruiterId: String) {
         
-        try! Realm().write {
+        let realm = try! Realm()
+        try! realm.write {
             
             if recruiterId != "0" {
                 if let chatList = chatListExists(recruiterId: recruiterId) {
@@ -99,6 +130,8 @@ class DatabaseManager: NSObject {
                 }
             }
         }
+        
+        kAppDelegate?.rootFlowCoordinator?.updateMessagesBadgeValue(count: getUnreadedMessages())
     }
 
     class func chatExits(messageId: Int) -> ChatModel? {
@@ -120,10 +153,7 @@ class DatabaseManager: NSObject {
 
     class func insertChats(chats: [JSON]?) {
         guard let chats = chats else { return }
-        
-        for chatObj in chats {
-            addUpdateChatToDB(chatObj: chatObj)
-        }
+        addUpdateChatsToDB(chatObjs: chats)
     }
 
     class func insertNewMessageListObj(chatObj: JSON) {
@@ -190,5 +220,9 @@ class DatabaseManager: NSObject {
         guard let time = TimeInterval(timestamp) else { return Date() }
         let lastMessageDate = Date(timeIntervalSince1970: time / 1000)
         return lastMessageDate
+    }
+    
+    class func getUnreadedMessages() -> Int {
+        return try! Realm().objects(ChatListModel.self).map({ $0.unreadCount }).reduce(0, +)
     }
 }

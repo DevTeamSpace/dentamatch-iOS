@@ -151,6 +151,7 @@ class DMChatVC: DMBaseVC {
 extension DMChatVC: DMChatViewInput {
     
     func reloadData() {
+        hideLoading()
         chatTableView.reloadData()
     }
     

@@ -6,6 +6,7 @@ protocol TabBarFlowCoordinatorProtocol: BaseFlowProtocol {
     
     func currentSelectedIndex() -> Int
     func showTab(withIndex index: Int)
+    func updateMessagesTabBadge(count: Int)
 }
 
 protocol TabBarFlowCoordinatorDelegate: class {
@@ -47,6 +48,7 @@ class TabBarFlowCoordinator: BaseFlowCoordinator, TabBarFlowCoordinatorProtocol 
         mainController.viewControllers = controllers.compactMap({ $0 })
         
         mainController.setTabBarIcons()
+        updateMessagesTabBadge(count: DatabaseManager.getUnreadedMessages())
         
         return mainController
     }
@@ -57,6 +59,18 @@ class TabBarFlowCoordinator: BaseFlowCoordinator, TabBarFlowCoordinatorProtocol 
     
     func showTab(withIndex index: Int) {
         viewController?.selectedIndex = index
+    }
+    
+    func updateMessagesTabBadge(count: Int) {
+        guard let index = viewController?.viewControllers?.firstIndex(where: { (vc) -> Bool in
+            if let vc = vc as? UINavigationController, vc.viewControllers.first is DMMessagesVC {
+                return true
+            }
+            
+            return false
+        }) else { return }
+        
+        viewController?.tabBar.items?[index].badgeValue = count == 0 ? nil : String(count)
     }
 }
 
@@ -83,7 +97,6 @@ extension TabBarFlowCoordinator: CalendarFlowCoordinatorDelegate {
 }
 
 extension TabBarFlowCoordinator: MessagesFlowCoordinatorDelegate {
-    
     
 }
 

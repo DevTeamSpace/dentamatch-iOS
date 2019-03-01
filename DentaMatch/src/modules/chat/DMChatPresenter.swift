@@ -99,7 +99,7 @@ extension DMChatPresenter {
                 }
             }
             
-            DatabaseManager.addUpdateChatToDB(chatObj: chatObj)
+            DatabaseManager.addUpdateChatsToDB(chatObjs: [chatObj].compactMap({ $0 }))
             
             if isMine {
                 self?.viewInput.configureMessageReceive()
@@ -117,6 +117,7 @@ extension DMChatPresenter {
         if SocketIOManager.sharedInstance.isConnected {
             
             if fromBegin {
+                viewInput.showLoading()
                 SocketIOManager.sharedInstance.getHistory(recruiterId: chatList?.recruiterId ?? "0") { [weak self] (params: [Any]) in
                     
                     let chatObj = JSON(rawValue: params)

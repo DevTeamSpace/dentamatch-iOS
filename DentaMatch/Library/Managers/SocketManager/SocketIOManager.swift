@@ -40,6 +40,7 @@ class SocketIOManager {
                 self?.eventForReceiveMessage()
                 self?.eventForHistoryMessages()
                 self?.eventForLogoutPreviousSession()
+                self?.getChatListMessages()
             }
         }
         
@@ -221,7 +222,7 @@ class SocketIOManager {
     }
 
     func makeNotificationData(chat: JSON?) {
-        DatabaseManager.addUpdateChatToDB(chatObj: chat)
+        DatabaseManager.makeNotificationData(chatObj: chat)
     }
 
     // MARK: - Handling
@@ -258,6 +259,35 @@ class SocketIOManager {
         if let chatObj = chatObj {
             // First time recruiter message
             DatabaseManager.insertNewMessageListObj(chatObj: chatObj)
+        }
+    }
+    
+    func getChatListMessages() {
+        APIManager.apiGet(serviceName: Constants.API.getChatUserList, parameters: [:]) { (response: JSON?, error: NSError?) in
+            
+            guard let response = response else { return }
+            
+            let chatUserList = response[Constants.ServerKey.result][Constants.ServerKey.list].arrayValue
+            
+            if chatUserList.count > 0 {
+                
+                let realm = try! Realm()
+                var models = [ChatListModel]()
+                try! realm.write {
+                    
+                    models = chatUserList.map({ obj in
+                        
+                        let model = ChatListModel(chatListObj: obj)
+                        model.date = Date(timeIntervalSince1970: (TimeInterval(obj["timestamp"].stringValue) ?? 0) / 1000)
+                        return model
+                        
+                    })
+                    
+                    realm.add(models, update: true)
+                }
+                
+                kAppDelegate?.rootFlowCoordinator?.updateMessagesBadgeValue(count: DatabaseManager.getUnreadedMessages())
+            }
         }
     }
 }
