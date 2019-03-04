@@ -109,8 +109,8 @@ extension DMNotificationsPresenter: DMNotificationsViewOutput {
         }
     }
     
-    func openJobDetails(job: Job?) {
-        moduleOutput.showJobDetails(job: job)
+    func openJobDetails(job: Job?, recruiterId: String?) {
+        moduleOutput.showJobDetails(job: job,recruiterId: recruiterId)
     }
     
     func readNotificationToServer(_ notification: UserNotification) {

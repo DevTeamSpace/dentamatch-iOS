@@ -62,8 +62,7 @@ extension DMMessagesPresenter: DMMessagesViewOutput {
                                         officeName: chatList.officeName,
                                         isBlockFromSeeker: chatList.isBlockedFromSeeker)
             
-            moduleOutput.showChat(chatObject: chatObject,
-                                  delegate: viewInput)
+            moduleOutput.showChat(chatObject: chatObject)
         }
     }
     
@@ -145,12 +144,12 @@ extension DMMessagesPresenter: DMMessagesViewOutput {
         }
     }
     
-    func openChat(chatList: ChatListModel, delegate: ChatTapNotificationDelegate) {
+    func openChat(chatList: ChatListModel) {
         let chatObject = ChatObject(recruiterId: chatList.recruiterId,
                                     officeName: chatList.officeName,
                                     isBlockFromSeeker: chatList.isBlockedFromSeeker)
         
-        moduleOutput.showChat(chatObject: chatObject, delegate: delegate)
+        moduleOutput.showChat(chatObject: chatObject)
     }
 }
 

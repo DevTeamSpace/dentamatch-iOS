@@ -127,7 +127,7 @@ extension DMNotificationVC: UITableViewDataSource, UITableViewDelegate {
         switch notificationType {
         case .acceptJob:
             // open job detail
-            goToJobDetail(jobObj: notiObj.jobdetail!)
+            goToJobDetail(jobObj: notiObj.jobdetail!, recruiterId: String(notiObj.senderID ?? 0))
         case .chatMessgae: break
         // No need any action
         case .completeProfile: break
@@ -137,22 +137,22 @@ extension DMNotificationVC: UITableViewDataSource, UITableViewDelegate {
         // No need any action
         case .hired, .InviteJob:
             // open job detail
-            goToJobDetail(jobObj: notiObj.jobdetail!)
+            goToJobDetail(jobObj: notiObj.jobdetail!, recruiterId: String(notiObj.senderID ?? 0))
         case .jobCancellation:
             // open job detail
-            goToJobDetail(jobObj: notiObj.jobdetail!)
+            goToJobDetail(jobObj: notiObj.jobdetail!, recruiterId: String(notiObj.senderID ?? 0))
         case .verifyDocuments, .licenseAcceptReject: break
             // open edit profile commented on 6/7/18 to remove warning
             //tabBarController?.selectedIndex = 4
 
         case .other: break
         case .rejectJob:
-            goToJobDetail(jobObj: notiObj.jobdetail!)
+            goToJobDetail(jobObj: notiObj.jobdetail!, recruiterId: String(notiObj.senderID ?? 0))
         }
     }
 
-    func goToJobDetail(jobObj: Job) {
-        viewOutput?.openJobDetails(job: jobObj)
+    func goToJobDetail(jobObj: Job, recruiterId: String?) {
+        viewOutput?.openJobDetails(job: jobObj, recruiterId: recruiterId)
     }
 }
 

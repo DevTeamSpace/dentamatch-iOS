@@ -127,25 +127,18 @@ extension ProfileFlowCoordinator: DMChangePasswordModuleOutput {
 
 extension ProfileFlowCoordinator: DMNotificationsModuleOutput {
     
-    func showJobDetails(job: Job?) {
-        guard let moduleInput = DMJobDetailInitializer.initialize(job: job, moduleOutput: self) else { return }
+    func showJobDetails(job: Job?, recruiterId: String?) {
+        guard let moduleInput = DMJobDetailInitializer.initialize(job: job, recruiterId: recruiterId, moduleOutput: self) else { return }
         let vc = moduleInput.viewController()
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }
     
     func presentChat(chatObject: ChatObject) {
-        guard let moduleInput = DMChatInitializer.initialize(chatObject: chatObject, delegate: self, moduleOutput: self) else { return }
+        guard let moduleInput = DMChatInitializer.initialize(chatObject: chatObject, moduleOutput: self) else { return }
         
         let navCon = UINavigationController(rootViewController: moduleInput.viewController())
         navigationController?.present(navCon, animated: true)
-    }
-}
-
-extension ProfileFlowCoordinator: ChatTapNotificationDelegate {
-    
-    func notificationTapped(recruiterId: String) {
-        
     }
 }
 

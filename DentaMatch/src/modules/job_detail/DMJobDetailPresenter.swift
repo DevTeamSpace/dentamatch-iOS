@@ -108,6 +108,10 @@ extension DMJobDetailPresenter: DMJobDetailViewOutput {
             }
         }
     }
+    
+    func openChat(chatObject: ChatObject) {
+        moduleOutput.presentChat(chatObject: chatObject)
+    }
 }
 
 extension DMJobDetailPresenter {

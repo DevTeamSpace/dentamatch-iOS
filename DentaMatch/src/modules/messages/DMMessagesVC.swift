@@ -101,8 +101,7 @@ class DMMessagesVC: DMBaseVC {
             return
         }
         
-        viewOutput?.openChat(chatList: chatList,
-                             delegate: self)
+        viewOutput?.openChat(chatList: chatList)
     }
 
     @objc func refreshBlockList(notification _: Notification) {
@@ -119,16 +118,5 @@ extension DMMessagesVC: DMMessagesViewInput {
     
     func configureEmptyView(isHidden: Bool) {
         placeHolderEmptyJobsView?.isHidden = isHidden
-    }
-}
-
-extension DMMessagesVC: ChatTapNotificationDelegate {
-    
-    func notificationTapped(recruiterId: String) {
-        _ = navigationController?.popToRootViewController(animated: false)
-        
-        if let chatList = DatabaseManager.chatListExists(recruiterId: recruiterId) {
-            openChatPage(chatList: chatList)
-        }
     }
 }

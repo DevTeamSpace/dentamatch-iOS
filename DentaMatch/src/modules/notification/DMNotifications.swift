@@ -6,7 +6,7 @@ protocol DMNotificationsModuleInput: BaseModuleInput {
 
 protocol DMNotificationsModuleOutput: BaseModuleOutput {
     
-    func showJobDetails(job: Job?)
+    func showJobDetails(job: Job?, recruiterId: String?)
     func presentChat(chatObject: ChatObject)
 }
 
@@ -26,7 +26,7 @@ protocol DMNotificationsViewOutput: BaseViewOutput {
     
     func refreshData()
     func loadingMore()
-    func openJobDetails(job: Job?)
+    func openJobDetails(job: Job?, recruiterId: String?)
     func readNotificationToServer(_ notification: UserNotification)
     func deleteNotification(_ notification: UserNotification)
     func inviteActionSend(_ notification: UserNotification, actionType: Int)

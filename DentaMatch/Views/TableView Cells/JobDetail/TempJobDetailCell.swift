@@ -1,15 +1,6 @@
-//
-//  TempJobDetailCell.swift
-//  DentaMatch
-//
-//  Created by Prashant Gautam on 22/08/18.
-//  Copyright © 2018 Appster. All rights reserved.
-//
-
 import UIKit
-/*@objc protocol TempJobDetailCellDelegate {
- @objc optional func favouriteAction()
- }*/
+import RealmSwift
+
 class TempJobDetailCell: UITableViewCell {
     @IBOutlet var lblPercentSkill: UILabel!
     @IBOutlet var lblDentistName: UILabel!
@@ -22,12 +13,25 @@ class TempJobDetailCell: UITableViewCell {
     //@IBOutlet weak var tagListViewHeight: NSLayoutConstraint?
     @IBOutlet var lblPostTime: UILabel!
     @IBOutlet var lblApplied: UILabel!
+    @IBOutlet weak var messageButton: UIButton! {
+        didSet {
+            messageButton.layer.cornerRadius = 3.0
+            messageButton.addTarget(self, action: #selector(messageButtonAction), for: .touchUpInside)
+        }
+    }
     
     var jobTypeDates = [String]()
     private var datesCount : Int = 0
     weak var delegate: DentistDetailCellDelegate?
     var isTagExpanded: Bool = false
     private let cellWidth: CGFloat =  70.0
+    
+    var chatObject: ChatObject?
+    @objc private func messageButtonAction() {
+        guard let chatObject = chatObject else { return }
+        
+        delegate?.openChat(chatObject: chatObject)
+    }
     
     private var seeMoreHidden: Bool {
         if UIDevice.current.screenType == .iPhone6Plus {
@@ -63,15 +67,15 @@ class TempJobDetailCell: UITableViewCell {
     }
     
     @IBAction func actionFavourite(_: UIButton) {
-        delegate?.saveOrUnsaveJob!()
+        delegate?.saveOrUnsaveJob()
     }
     
     @IBAction func seeMoreAction(sender: UIButton) {
         sender.isSelected = !sender.isSelected
-        delegate?.seeMoreTags!(isExpanded: sender.isSelected)
+        delegate?.seeMoreTags(isExpanded: sender.isSelected)
     }
     
-    func setCellData(job: Job, isTagExpanded: Bool = false) {
+    func setCellData(job: Job, isTagExpanded: Bool = false, recruiterId: String?) {
         /* For Job status
          INVITED = 1
          APPLIED = 2
@@ -80,12 +84,20 @@ class TempJobDetailCell: UITableViewCell {
          REJECTED = 5
          CANCELLED = 6
          */
+        if let recruiterId = recruiterId {
+            let isBlockedFromSeeker = try! Realm().objects(ChatListModel.self)
+                .first(where: { $0.recruiterId == String(recruiterId) })?.isBlockedFromSeeker ?? false
+            chatObject = ChatObject(recruiterId: recruiterId, officeName: job.officeName, isBlockFromSeeker: isBlockedFromSeeker)
+        }
+        
+        messageButton.isHidden = true
         lblApplied.isHidden = true
         lblApplied.textColor = Constants.Color.jobAppliedGreenColor
         switch job.isApplied {
         case 1:
             lblApplied.text = "INVITED"
             lblApplied.isHidden = false
+            messageButton.isHidden = !(recruiterId != nil)
             
         case 2:
             lblApplied.text = "APPLIED"
@@ -94,10 +106,12 @@ class TempJobDetailCell: UITableViewCell {
         case 3:
             lblApplied.text = "INTERVIEWING"
             lblApplied.isHidden = false
+            messageButton.isHidden = !(recruiterId != nil)
             
         case 4:
             lblApplied.text = "HIRED"
             lblApplied.isHidden = false
+            messageButton.isHidden = !(recruiterId != nil)
         case 5:
             lblApplied.text = "REJECTED"
             lblApplied.isHidden = false
@@ -177,7 +191,7 @@ extension TempJobDetailCell: UICollectionViewDelegate, UICollectionViewDataSourc
         collectionView.deselectItem(at: indexPath, animated: false)
         if indexPath.item == self.tagsCount - 1 && !self.seeMoreHidden {
             self.isTagExpanded = !self.isTagExpanded
-            self.delegate?.seeMoreTags!(isExpanded: self.isTagExpanded)
+            self.delegate?.seeMoreTags(isExpanded: self.isTagExpanded)
         }
     }
     

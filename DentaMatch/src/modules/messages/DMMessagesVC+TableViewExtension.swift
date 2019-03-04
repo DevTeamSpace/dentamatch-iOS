@@ -71,7 +71,6 @@ extension DMMessagesVC: UITableViewDataSource, UITableViewDelegate {
             return
         }
         
-        viewOutput?.openChat(chatList: chatList,
-                             delegate: self)
+        viewOutput?.openChat(chatList: chatList)
     }
 }

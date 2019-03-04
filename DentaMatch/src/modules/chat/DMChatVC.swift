@@ -2,10 +2,6 @@ import SwiftyJSON
 import UIKit
 import RealmSwift
 
-protocol ChatTapNotificationDelegate: class {
-    func notificationTapped(recruiterId: String)
-}
-
 class DMChatVC: DMBaseVC {
     @IBOutlet var chatTableView: UITableView!
     @IBOutlet var bottomConstraint: NSLayoutConstraint!
@@ -137,10 +133,6 @@ class DMChatVC: DMBaseVC {
         sendButton.isHidden = false
         unblockButton.isHidden = true
         makeToast(toastString: "Recruiter Unblocked")
-    }
-
-    func notificationTapHandling(recruiterId: String) {
-        viewOutput?.onNotificationTap(recruiterId: recruiterId)
     }
     
     func scrollTableToBottom() {

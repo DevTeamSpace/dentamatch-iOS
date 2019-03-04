@@ -16,15 +16,13 @@ class DMChatPresenter: DMChatPresenterProtocol {
     let recruiterId: String
     let officeName: String
     let isBlockFromSeeker: Bool
-    weak var delegate: ChatTapNotificationDelegate?
     
-    init(chatObject: ChatObject, delegate: ChatTapNotificationDelegate, viewInput: DMChatViewInput, moduleOutput: DMChatModuleOutput) {
+    init(chatObject: ChatObject, viewInput: DMChatViewInput, moduleOutput: DMChatModuleOutput) {
         
         self.recruiterId = chatObject.recruiterId
         self.officeName = chatObject.officeName
         self.isBlockFromSeeker = chatObject.isBlockFromSeeker
         
-        self.delegate = delegate
         self.viewInput = viewInput
         self.moduleOutput = moduleOutput
     }
@@ -83,10 +81,6 @@ extension DMChatPresenter: DMChatViewOutput {
     
     func onUblockButtonTap() {
         SocketIOManager.sharedInstance.handleBlockUnblock(recruiterId: recruiterId, blockStatus: "0")
-    }
-    
-    func onNotificationTap(recruiterId: String) {
-        delegate?.notificationTapped(recruiterId: recruiterId)
     }
 }
 

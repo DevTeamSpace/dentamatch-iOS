@@ -25,7 +25,6 @@ protocol DMChatViewOutput: BaseViewOutput {
     func willDisappear()
     func sendMessage(text: String)
     func onUblockButtonTap()
-    func onNotificationTap(recruiterId: String)
 }
 
 protocol DMChatPresenterProtocol: DMChatModuleInput, DMChatViewOutput {

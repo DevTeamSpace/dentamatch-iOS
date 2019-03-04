@@ -22,7 +22,8 @@ class DMJobDetailVC: DMBaseVC {
     var fromNotificationVC = false
     var isTagExpanded: Bool = false
     
-
+    var recruiterId: String?
+    
     enum TableViewCellHeight: CGFloat {
         case jobTitle = 115.0
         case about = 190.0

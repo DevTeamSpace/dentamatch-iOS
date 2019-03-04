@@ -47,7 +47,9 @@ extension TrackFlowCoordinator: DMTrackModuleOutput {
 
 extension TrackFlowCoordinator: DMJobDetailModuleOutput {
     
-    
+    func presentChat(chatObject: ChatObject) {
+        
+    }
 }
 
 extension TrackFlowCoordinator: DMCancelJobModuleOutput {

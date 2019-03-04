@@ -22,13 +22,13 @@ extension DMJobDetailVC: UITableViewDataSource, UITableViewDelegate, JobDescript
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TempJobDetailCell") as? TempJobDetailCell
                 cell?.selectionStyle = .none
                 cell?.delegate = self
-                cell?.setCellData(job: job!, isTagExpanded: self.isTagExpanded)
+                cell?.setCellData(job: job!, isTagExpanded: self.isTagExpanded, recruiterId: recruiterId)
                 return cell!
             }else{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "DentistDetailCell") as? DentistDetailCell
                 cell?.selectionStyle = .none
                 cell?.delegate = self
-                cell?.setCellData(job: job!)
+                cell?.setCellData(job: job!, recruiterId: recruiterId)
                 return cell!
             }
             
@@ -231,5 +231,9 @@ extension DMJobDetailVC: UITableViewDataSource, UITableViewDelegate, JobDescript
         let indexpath = IndexPath(row: 0, section: 0)
         tblJobDetail.reloadRows(at: [indexpath], with: .fade)
         
+    }
+    
+    func openChat(chatObject: ChatObject) {
+        viewOutput?.openChat(chatObject: chatObject)
     }
 }

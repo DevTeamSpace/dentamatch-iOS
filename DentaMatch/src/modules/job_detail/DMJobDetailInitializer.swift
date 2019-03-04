@@ -4,11 +4,12 @@ import SwinjectStoryboard
 
 class DMJobDetailInitializer {
     
-    class func initialize(job: Job?, fromTrack: Bool = false, delegate: JobSavedStatusUpdateDelegate? = nil, moduleOutput: DMJobDetailModuleOutput) -> DMJobDetailModuleInput? {
+    class func initialize(job: Job?, recruiterId: String? = nil, fromTrack: Bool = false, delegate: JobSavedStatusUpdateDelegate? = nil, moduleOutput: DMJobDetailModuleOutput) -> DMJobDetailModuleInput? {
         guard let viewInput = SwinjectStoryboard.create(name: Constants.StoryBoard.jobSearchStoryboard, bundle: nil, container: appContainer).instantiateViewController(withIdentifier: String(describing: DMJobDetailVC.self)) as? DMJobDetailViewInput else { return nil }
         
         let presenter = appContainer.resolve(DMJobDetailPresenterProtocol.self, arguments: job, fromTrack, delegate, viewInput, moduleOutput)
         viewInput.viewOutput = presenter
+        viewInput.recruiterId = recruiterId
         
         return presenter
     }

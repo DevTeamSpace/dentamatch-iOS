@@ -61,7 +61,9 @@ extension CalendarFlowCoordinator: DMCalendarSetAvailabilityModuleOutput {
 
 extension CalendarFlowCoordinator: DMJobDetailModuleOutput {
     
-    
+    func presentChat(chatObject: ChatObject) {
+        
+    }
 }
 
 extension CalendarFlowCoordinator: DMCancelJobModuleOutput {
