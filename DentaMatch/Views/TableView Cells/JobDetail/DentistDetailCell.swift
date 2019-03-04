@@ -1,12 +1,5 @@
-//
-//  DentistDetailCell.swift
-//  DentaMatch
-//
-//  Created by Shailesh Tyagi on 18/01/17.
-//  Copyright © 2017 Appster. All rights reserved.
-//
-
 import UIKit
+import RealmSwift
 
 @objc protocol DentistDetailCellDelegate {
     @objc optional func saveOrUnsaveJob()
@@ -22,8 +15,15 @@ class DentistDetailCell: UITableViewCell {
     @IBOutlet var lblPostTime: UILabel!
     @IBOutlet var lblApplied: UILabel!
     @IBOutlet weak var daysCollectionView: UICollectionView!
+    @IBOutlet weak var messageButton: UIButton! {
+        didSet {
+            messageButton.layer.cornerRadius = 3.0
+        }
+    }
+    
     weak var delegate: DentistDetailCellDelegate?
-
+    var chatObject: ChatObject?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -49,12 +49,14 @@ class DentistDetailCell: UITableViewCell {
          REJECTED = 5
          CANCELLED = 6
          */
+        messageButton.isHidden = true
         lblApplied.isHidden = true
         lblApplied.textColor = Constants.Color.jobAppliedGreenColor
         switch job.isApplied {
         case 1:
             lblApplied.text = "INVITED"
             lblApplied.isHidden = false
+            messageButton.isHidden = false
             
         case 2:
             lblApplied.text = "APPLIED"
@@ -63,10 +65,12 @@ class DentistDetailCell: UITableViewCell {
         case 3:
             lblApplied.text = "INTERVIEWING"
             lblApplied.isHidden = false
+            messageButton.isHidden = false
 
         case 4:
             lblApplied.text = "HIRED"
             lblApplied.isHidden = false
+            messageButton.isHidden = false
 
         case 5:
             lblApplied.text = "REJECTED"

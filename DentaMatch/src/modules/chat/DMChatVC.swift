@@ -95,9 +95,13 @@ class DMChatVC: DMBaseVC {
         placeHolderLabelForView.frame = frame
         placeHolderLabelForView.isHidden = true
         view.addSubview(placeHolderLabelForView)
-        
-        navigationItem.leftBarButtonItem = backBarButton()
         sendButton.isUserInteractionEnabled = false
+        
+        if presentingViewController is UITabBarController {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(leftBarButtonAction))
+        } else {
+            navigationItem.leftBarButtonItem = backBarButton()
+        }
     }
 
     @objc func dismissKeyboard() {
@@ -145,6 +149,10 @@ class DMChatVC: DMBaseVC {
             
             chatTableView.scrollToRow(at: IndexPath(row: chatsArray[chatsArray.count - 1].count - 1, section: chatsArray.count - 1), at: .bottom, animated: false)
         }
+    }
+    
+    @objc private func leftBarButtonAction() {
+        dismiss(animated: true)
     }
 }
 

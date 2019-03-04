@@ -133,6 +133,25 @@ extension ProfileFlowCoordinator: DMNotificationsModuleOutput {
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    func presentChat(chatObject: ChatObject) {
+        guard let moduleInput = DMChatInitializer.initialize(chatObject: chatObject, delegate: self, moduleOutput: self) else { return }
+        
+        let navCon = UINavigationController(rootViewController: moduleInput.viewController())
+        navigationController?.present(navCon, animated: true)
+    }
+}
+
+extension ProfileFlowCoordinator: ChatTapNotificationDelegate {
+    
+    func notificationTapped(recruiterId: String) {
+        
+    }
+}
+
+extension ProfileFlowCoordinator: DMChatModuleOutput {
+    
+    
 }
 
 extension ProfileFlowCoordinator: DMPublicProfileModuleOutput {

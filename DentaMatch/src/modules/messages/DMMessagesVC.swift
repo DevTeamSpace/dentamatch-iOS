@@ -102,7 +102,6 @@ class DMMessagesVC: DMBaseVC {
         }
         
         viewOutput?.openChat(chatList: chatList,
-                             fetchFromBegin: DatabaseManager.getCountForChats(recruiterId: chatList.recruiterId) == 0,
                              delegate: self)
     }
 

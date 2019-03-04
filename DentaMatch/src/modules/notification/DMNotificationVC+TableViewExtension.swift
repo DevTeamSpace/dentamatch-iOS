@@ -23,11 +23,13 @@ extension DMNotificationVC: UITableViewDataSource, UITableViewDelegate {
         case .acceptJob, .jobCancellation, .deleteJob, .rejectJob, .licenseAcceptReject:
             let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationJobTypeTableCell") as? NotificationJobTypeTableCell
             cell?.configureNotificationJobTypeTableCell(userNotificationObj: notificationObj)
+            cell?.delegate = self
             return cell!
 
         case .hired:
             let cell = tableView.dequeueReusableCell(withIdentifier: "HiredJobNotificationTableCell") as? HiredJobNotificationTableCell
             cell?.configureHiredJobNotificationTableCell(userNotificationObj: notificationObj)
+            cell?.delegate = self
             return cell!
 
         case .InviteJob:
@@ -149,5 +151,12 @@ extension DMNotificationVC: UITableViewDataSource, UITableViewDelegate {
 
     func goToJobDetail(jobObj: Job) {
         viewOutput?.openJobDetails(job: jobObj)
+    }
+}
+
+extension DMNotificationVC: NotificationTableCellDelegate {
+    
+    func onMessageButtonTapped(chatObject: ChatObject) {
+        viewOutput?.openChat(chatObject: chatObject)
     }
 }

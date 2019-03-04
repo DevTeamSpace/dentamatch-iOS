@@ -6,7 +6,7 @@ protocol DMMessagesModuleInput: BaseModuleInput {
 
 protocol DMMessagesModuleOutput: BaseModuleOutput {
     
-    func showChat(chatList: ChatListModel, fetchFromBegin: Bool, delegate: ChatTapNotificationDelegate)
+    func showChat(chatObject: ChatObject, delegate: ChatTapNotificationDelegate)
 }
 
 protocol DMMessagesViewInput: BaseViewInput, ChatTapNotificationDelegate {
@@ -24,7 +24,7 @@ protocol DMMessagesViewOutput: BaseViewOutput {
     func refreshData()
     func blockUnblockRecruiter(id: String, isBlocked: Bool)
     func deleteChat(recruiterId: String)
-    func openChat(chatList: ChatListModel, fetchFromBegin: Bool, delegate: ChatTapNotificationDelegate)
+    func openChat(chatList: ChatListModel, delegate: ChatTapNotificationDelegate)
 }
 
 protocol DMMessagesPresenterProtocol: DMMessagesModuleInput, DMMessagesViewOutput {

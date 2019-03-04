@@ -2,24 +2,33 @@ import Foundation
 import SwiftyJSON
 import RealmSwift
 
+struct ChatObject {
+    let recruiterId: String
+    let officeName: String
+    let isBlockFromSeeker: Bool
+}
+
 class DMChatPresenter: DMChatPresenterProtocol {
     
     unowned let viewInput: DMChatViewInput
     unowned let moduleOutput: DMChatModuleOutput
     
-    let chatListId: String
-    let fromBegin: Bool
+    let recruiterId: String
+    let officeName: String
+    let isBlockFromSeeker: Bool
     weak var delegate: ChatTapNotificationDelegate?
     
-    init(chatListId: String, fromBegin: Bool, delegate: ChatTapNotificationDelegate, viewInput: DMChatViewInput, moduleOutput: DMChatModuleOutput) {
-        self.chatListId  = chatListId
-        self.fromBegin = fromBegin
+    init(chatObject: ChatObject, delegate: ChatTapNotificationDelegate, viewInput: DMChatViewInput, moduleOutput: DMChatModuleOutput) {
+        
+        self.recruiterId = chatObject.recruiterId
+        self.officeName = chatObject.officeName
+        self.isBlockFromSeeker = chatObject.isBlockFromSeeker
+        
         self.delegate = delegate
         self.viewInput = viewInput
         self.moduleOutput = moduleOutput
     }
     
-    var chatList: ChatListModel?
     var chatsArray: [[ChatModel]] = []
     var messages = [String]()
     
@@ -44,14 +53,13 @@ extension DMChatPresenter: DMChatViewOutput {
     func didLoad() {
         
         let realm = try! Realm()
-        chatList = realm.object(ofType: ChatListModel.self, forPrimaryKey: chatListId)
         
         notificationToken = realm.objects(ChatModel.self).observe({ [weak self] _ in
             self?.updateUI()
             SocketIOManager.sharedInstance.updateMessageRead()
         })
         
-        SocketIOManager.sharedInstance.recruiterId = chatList?.recruiterId ?? "0"
+        SocketIOManager.sharedInstance.recruiterId = recruiterId
         NotificationCenter.default.addObserver(self, selector: #selector(refreshChat), name: .refreshChat, object: nil)
         
         receiveChatMessageEvent()
@@ -70,12 +78,11 @@ extension DMChatPresenter: DMChatViewOutput {
     }
     
     func sendMessage(text: String) {
-        SocketIOManager.sharedInstance.sendTextMessage(message: text.trim(), recruiterId: chatList?.recruiterId ?? "0")
+        SocketIOManager.sharedInstance.sendTextMessage(message: text.trim(), recruiterId: recruiterId)
     }
     
     func onUblockButtonTap() {
-        guard let chatList = chatList else { return }
-        SocketIOManager.sharedInstance.handleBlockUnblock(chatList: chatList, blockStatus: "0")
+        SocketIOManager.sharedInstance.handleBlockUnblock(recruiterId: recruiterId, blockStatus: "0")
     }
     
     func onNotificationTap(recruiterId: String) {
@@ -116,9 +123,9 @@ extension DMChatPresenter {
     private func getHistory() {
         if SocketIOManager.sharedInstance.isConnected {
             
-            if fromBegin {
+            if DatabaseManager.getCountForChats(recruiterId: recruiterId) == 0 {
                 viewInput.showLoading()
-                SocketIOManager.sharedInstance.getHistory(recruiterId: chatList?.recruiterId ?? "0") { [weak self] (params: [Any]) in
+                SocketIOManager.sharedInstance.getHistory(recruiterId: recruiterId) { [weak self] (params: [Any]) in
                     
                     let chatObj = JSON(rawValue: params)
                     DatabaseManager.insertChats(chats: chatObj?[0].array)
@@ -138,7 +145,7 @@ extension DMChatPresenter {
     }
     
     func getLeftMessages(lastMessageId: Int) {
-        SocketIOManager.sharedInstance.getLeftMessages(recruiterId: (chatList?.recruiterId)!, messageId: lastMessageId, completionHandler: { (params: [Any]) in
+        SocketIOManager.sharedInstance.getLeftMessages(recruiterId: recruiterId, messageId: lastMessageId, completionHandler: { (params: [Any]) in
             
             let chatObj = JSON(rawValue: params)
             DatabaseManager.insertChats(chats: chatObj?[0].array)
@@ -150,9 +157,12 @@ extension DMChatPresenter {
         let realm = try! Realm()
         let userId = UserManager.shared().activeUser.userId
         
-        guard let recruiterId = chatList?.recruiterId else { return }
-        
-        let chats = Array(realm.objects(ChatModel.self).filter({ ($0.fromId == userId && $0.toId == recruiterId) || ($0.fromId == recruiterId && $0.toId == userId) })).sorted(by: { $0.timeStamp < $1.timeStamp })
+        let chats = Array(realm.objects(ChatModel.self)
+            .filter({ [unowned self] in
+                ($0.fromId == userId && $0.toId == self.recruiterId) ||
+                ($0.fromId == self.recruiterId && $0.toId == userId)
+            }))
+            .sorted(by: { $0.timeStamp < $1.timeStamp })
 
         let uniqueDateStrings = Array(NSOrderedSet(array: chats.map({ $0.dateString })))
         
@@ -168,7 +178,7 @@ extension DMChatPresenter {
         chatsArray.removeAll()
         chatsArray = final
         
-        viewInput.configureView(title: chatList?.officeName, isBlockFromSeeker: chatList?.isBlockedFromSeeker == true)
+        viewInput.configureView(title: officeName, isBlockFromSeeker: isBlockFromSeeker)
         viewInput.reloadData()
         viewInput.scrollToBottom()
     }

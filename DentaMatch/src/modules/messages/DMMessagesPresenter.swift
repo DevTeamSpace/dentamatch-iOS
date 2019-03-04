@@ -58,8 +58,11 @@ extension DMMessagesPresenter: DMMessagesViewOutput {
         guard let recruiterId = notification.userInfo?["recruiterId"] as? String else { return }
         
         if let chatList = DatabaseManager.chatListExists(recruiterId: recruiterId) {
-            moduleOutput.showChat(chatList: chatList,
-                                  fetchFromBegin: DatabaseManager.getCountForChats(recruiterId: recruiterId) == 0,
+            let chatObject = ChatObject(recruiterId: chatList.recruiterId,
+                                        officeName: chatList.officeName,
+                                        isBlockFromSeeker: chatList.isBlockedFromSeeker)
+            
+            moduleOutput.showChat(chatObject: chatObject,
                                   delegate: viewInput)
         }
     }
@@ -142,8 +145,12 @@ extension DMMessagesPresenter: DMMessagesViewOutput {
         }
     }
     
-    func openChat(chatList: ChatListModel, fetchFromBegin: Bool, delegate: ChatTapNotificationDelegate) {
-        moduleOutput.showChat(chatList: chatList, fetchFromBegin: fetchFromBegin, delegate: delegate)
+    func openChat(chatList: ChatListModel, delegate: ChatTapNotificationDelegate) {
+        let chatObject = ChatObject(recruiterId: chatList.recruiterId,
+                                    officeName: chatList.officeName,
+                                    isBlockFromSeeker: chatList.isBlockedFromSeeker)
+        
+        moduleOutput.showChat(chatObject: chatObject, delegate: delegate)
     }
 }
 

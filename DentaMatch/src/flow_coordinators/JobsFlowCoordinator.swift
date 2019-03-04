@@ -83,4 +83,20 @@ extension JobsFlowCoordinator: DMNotificationsModuleOutput {
     func showJobDetails(job: Job?) {
         showJobDetail(job: job, delegate: nil)
     }
+    
+    func presentChat(chatObject: ChatObject) {
+        guard let moduleInput = DMChatInitializer.initialize(chatObject: chatObject, delegate: self, moduleOutput: self) else { return }
+        navigationController?.present(moduleInput.viewController(), animated: true)
+    }
+}
+
+extension JobsFlowCoordinator: ChatTapNotificationDelegate {
+    
+    func notificationTapped(recruiterId: String) {
+        
+    }
+}
+
+extension JobsFlowCoordinator: DMChatModuleOutput {
+    
 }

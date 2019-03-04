@@ -210,6 +210,10 @@ extension DMNotificationsPresenter: DMNotificationsViewOutput {
             }
         }
     }
+    
+    func openChat(chatObject: ChatObject) {
+        moduleOutput.presentChat(chatObject: chatObject)
+    }
 }
 
 extension DMNotificationsPresenter {

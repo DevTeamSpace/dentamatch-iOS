@@ -7,6 +7,7 @@ protocol DMNotificationsModuleInput: BaseModuleInput {
 protocol DMNotificationsModuleOutput: BaseModuleOutput {
     
     func showJobDetails(job: Job?)
+    func presentChat(chatObject: ChatObject)
 }
 
 protocol DMNotificationsViewInput: BaseViewInput {
@@ -29,6 +30,7 @@ protocol DMNotificationsViewOutput: BaseViewOutput {
     func readNotificationToServer(_ notification: UserNotification)
     func deleteNotification(_ notification: UserNotification)
     func inviteActionSend(_ notification: UserNotification, actionType: Int)
+    func openChat(chatObject: ChatObject)
 }
 
 protocol DMNotificationsPresenterProtocol: DMNotificationsModuleInput, DMNotificationsViewOutput {

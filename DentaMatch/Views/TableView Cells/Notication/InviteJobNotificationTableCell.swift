@@ -1,12 +1,5 @@
-//
-//  InviteJobNotificationTableCell.swift
-//  DentaMatch
-//
-//  Created by Sanjay Kumar Yadav on 22/02/17.
-//  Copyright © 2017 Appster. All rights reserved.
-//
-
 import UIKit
+import RealmSwift
 
 class InviteJobNotificationTableCell: UITableViewCell {
     @IBOutlet var notificationTextLabel: UILabel!
@@ -18,6 +11,14 @@ class InviteJobNotificationTableCell: UITableViewCell {
     @IBOutlet var btnAccept: UIButton!
     @IBOutlet var btnDelete: UIButton!
     @IBOutlet var acceptRejectView: UIView!
+    @IBOutlet weak var messageButton: UIButton! {
+        didSet {
+            messageButton.addTarget(self, action: #selector(messageButtonAction), for: .touchUpInside)
+        }
+    }
+    
+    weak var delegate: NotificationTableCellDelegate?
+    weak var userNotificationObject: UserNotification?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,6 +34,8 @@ class InviteJobNotificationTableCell: UITableViewCell {
     }
     
     func configureInviteJobNotificationTableCell(userNotificationObj:UserNotification) {
+        userNotificationObject = userNotificationObj
+        
         self.notificationTextLabel.text = userNotificationObj.message
         //let address = "\((userNotificationObj.jobdetail?.officeName)!), \((userNotificationObj.jobdetail?.address)!)"
         self.notificationJobLocationLabel.text = nil
@@ -74,5 +77,29 @@ class InviteJobNotificationTableCell: UITableViewCell {
             notificationTimeLabel.textColor = Constants.Color.notificationreadTimeLabelColor
             //notificationJobLocationLabel.textColor = Constants.Color.notificationreadTextColor
         }
+        
+        if let rawType = userNotificationObj.notificationType, let type =  UserNotificationType(rawValue: rawType),
+            type == .InviteJob {
+            
+            messageButton.isHidden = false
+        } else {
+            messageButton.isHidden = true
+        }
+    }
+}
+
+extension InviteJobNotificationTableCell {
+    
+    @objc private func messageButtonAction() {
+        guard let notify = userNotificationObject,
+            let recruiterId = notify.senderID,
+            let officeName = notify.jobdetail?.officeName else { return }
+        
+        let isBlockedFromSeeker = try! Realm().objects(ChatListModel.self)
+            .first(where: { $0.recruiterId == String(recruiterId) })?.isBlockedFromSeeker ?? false
+        
+        let chatObj = ChatObject(recruiterId: String(recruiterId), officeName: officeName, isBlockFromSeeker: isBlockedFromSeeker)
+        
+        delegate?.onMessageButtonTapped(chatObject: chatObj)
     }
 }

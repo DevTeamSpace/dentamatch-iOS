@@ -129,6 +129,7 @@ extension UserManager {
                 activeUser = user
 //                self.saveActiveUser()
                 UserDefaultsManager.sharedInstance.isLoggedIn = true
+                SocketIOManager.sharedInstance.establishConnection()
 
                 completionHandler?(true, response[Constants.ServerKey.message].stringValue)
 

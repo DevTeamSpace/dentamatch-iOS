@@ -139,7 +139,7 @@ class DMBaseVC: UIViewController {
     }
 
     @objc func backBarButtonItemPressed() {
-        _ = navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
 
     func changeNavBarAppearanceForProfiles() {

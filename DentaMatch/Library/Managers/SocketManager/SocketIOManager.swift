@@ -54,7 +54,11 @@ class SocketIOManager {
     }
 
     func establishConnection() {
-        manager.defaultSocket.connect()
+        if manager.defaultSocket.status == .notConnected ||
+            manager.defaultSocket.status == .disconnected {
+            
+            manager.defaultSocket.connect()
+        }
     }
 
     func closeConnection() {
@@ -82,16 +86,19 @@ class SocketIOManager {
         }
     }
 
-    func handleBlockUnblock(chatList: ChatListModel, blockStatus: String) {
+    func handleBlockUnblock(recruiterId: String, blockStatus: String) {
         let params = [
             "fromId": UserManager.shared().activeUser.userId,
-            "toId": chatList.recruiterId,
+            "toId": recruiterId,
             "blockStatus": blockStatus,
         ]
 
         manager.defaultSocket.emitWithAck("blockUnblock", params).timingOut(after: 0) { (params: [Any]) in
             
-            try! Realm().write {
+            let realm = try! Realm()
+            try! realm.write {
+                guard let chatList = realm.objects(ChatListModel.self).first(where: { $0.recruiterId == recruiterId }) else { return }
+                
                 if blockStatus == "1" {
                     chatList.isBlockedFromSeeker = true
                     NotificationCenter.default.post(name: .refreshBlockList, object: params)
