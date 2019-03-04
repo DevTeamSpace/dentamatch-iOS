@@ -192,9 +192,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-    func chatSocketNotificationTap(recruiterId: String) {
-        kAppDelegate?.rootFlowCoordinator?.showMessagesTab()
-        NotificationCenter.default.post(name: .chatRedirect, object: nil, userInfo: ["recruiterId": recruiterId])
+    func chatSocketNotificationTap(recruiterId: String, officeName: String) {
+        kAppDelegate?.rootFlowCoordinator?.presentChat(chatObject: ChatObject(recruiterId: recruiterId, officeName: officeName))
     }
 
     func showOverlay(isJobSeekerVerified: Bool = false) {

@@ -7,6 +7,7 @@ protocol TabBarFlowCoordinatorProtocol: BaseFlowProtocol {
     func currentSelectedIndex() -> Int
     func showTab(withIndex index: Int)
     func updateMessagesTabBadge(count: Int)
+    func presentChat(chatObj: ChatObject)
 }
 
 protocol TabBarFlowCoordinatorDelegate: class {
@@ -18,6 +19,8 @@ class TabBarFlowCoordinator: BaseFlowCoordinator, TabBarFlowCoordinatorProtocol 
     
     weak var viewController: UITabBarController?
     unowned let delegate: TabBarFlowCoordinatorDelegate
+    
+    weak var profileCoordinator: ProfileFlowCoordinatorProtocol?
     
     init(delegate: TabBarFlowCoordinatorDelegate) {
         self.delegate = delegate
@@ -38,6 +41,8 @@ class TabBarFlowCoordinator: BaseFlowCoordinator, TabBarFlowCoordinatorProtocol 
         addChildFlowCoordinator(calendarCoordinator)
         addChildFlowCoordinator(messagesCoordinator)
         addChildFlowCoordinator(profileCoordinator)
+        
+        self.profileCoordinator = profileCoordinator
         
         let controllers = [jobsCoordinator.launchViewController(),
                            trackCoordinator.launchViewController(),
@@ -71,6 +76,10 @@ class TabBarFlowCoordinator: BaseFlowCoordinator, TabBarFlowCoordinatorProtocol 
         }) else { return }
         
         viewController?.tabBar.items?[index].badgeValue = count == 0 ? nil : String(count)
+    }
+    
+    func presentChat(chatObj: ChatObject) {
+        profileCoordinator?.presentChat(chatObject: chatObj)
     }
 }
 

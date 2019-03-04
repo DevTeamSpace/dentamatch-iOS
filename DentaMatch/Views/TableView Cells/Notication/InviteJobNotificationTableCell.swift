@@ -1,5 +1,4 @@
 import UIKit
-import RealmSwift
 
 class InviteJobNotificationTableCell: UITableViewCell {
     @IBOutlet var notificationTextLabel: UILabel!
@@ -95,10 +94,7 @@ extension InviteJobNotificationTableCell {
             let recruiterId = notify.senderID,
             let officeName = notify.jobdetail?.officeName else { return }
         
-        let isBlockedFromSeeker = try! Realm().objects(ChatListModel.self)
-            .first(where: { $0.recruiterId == String(recruiterId) })?.isBlockedFromSeeker ?? false
-        
-        let chatObj = ChatObject(recruiterId: String(recruiterId), officeName: officeName, isBlockFromSeeker: isBlockedFromSeeker)
+        let chatObj = ChatObject(recruiterId: String(recruiterId), officeName: officeName)
         
         delegate?.onMessageButtonTapped(chatObject: chatObj)
     }

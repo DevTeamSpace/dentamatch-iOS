@@ -8,6 +8,7 @@ protocol RootFlowCoordinatorProtocol: BaseFlowProtocol {
     func canShowChatNotification() -> Bool
     func showMessagesTab()
     func updateMessagesBadgeValue(count: Int)
+    func presentChat(chatObject: ChatObject)
 }
 
 class RootFlowCoordinator: BaseFlowCoordinator, RootFlowCoordinatorProtocol {
@@ -33,6 +34,10 @@ class RootFlowCoordinator: BaseFlowCoordinator, RootFlowCoordinatorProtocol {
     
     func updateMessagesBadgeValue(count: Int) {
         tabbarCoordinator?.updateMessagesTabBadge(count: count)
+    }
+    
+    func presentChat(chatObject: ChatObject) {
+        tabbarCoordinator?.presentChat(chatObj: chatObject)
     }
 }
 

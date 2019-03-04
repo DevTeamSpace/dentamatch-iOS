@@ -64,7 +64,7 @@ class DatabaseManager: NSObject {
                     chatList.unreadCount = chatList.unreadCount + 1
                     
                     ToastView.showNotificationToast(message: chatObj["message"].stringValue, name: chatObj["fromName"].stringValue, imageUrl: "", type: .white, onCompletion: {
-                        kAppDelegate?.chatSocketNotificationTap(recruiterId: chatObj["fromId"].stringValue)
+                        kAppDelegate?.chatSocketNotificationTap(recruiterId: chatObj["fromId"].stringValue, officeName: chatObj["fromName"].stringValue)
                     })
                 }
                 
@@ -168,7 +168,7 @@ class DatabaseManager: NSObject {
         NotificationCenter.default.post(name: .hideMessagePlaceholder, object: nil)
         
         ToastView.showNotificationToast(message: chatObj["message"].stringValue, name: chatObj["name"].stringValue, imageUrl: "", type: .white, onCompletion: {
-            kAppDelegate?.chatSocketNotificationTap(recruiterId: chatObj["recruiterId"].stringValue)
+            kAppDelegate?.chatSocketNotificationTap(recruiterId: chatObj["recruiterId"].stringValue, officeName: chatList.officeName)
         })
         
         addChatForFirstTimeMessage(chatObj: chatObj)

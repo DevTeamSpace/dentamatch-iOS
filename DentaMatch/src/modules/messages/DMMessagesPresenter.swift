@@ -59,8 +59,7 @@ extension DMMessagesPresenter: DMMessagesViewOutput {
         
         if let chatList = DatabaseManager.chatListExists(recruiterId: recruiterId) {
             let chatObject = ChatObject(recruiterId: chatList.recruiterId,
-                                        officeName: chatList.officeName,
-                                        isBlockFromSeeker: chatList.isBlockedFromSeeker)
+                                        officeName: chatList.officeName)
             
             moduleOutput.showChat(chatObject: chatObject)
         }
@@ -146,8 +145,7 @@ extension DMMessagesPresenter: DMMessagesViewOutput {
     
     func openChat(chatList: ChatListModel) {
         let chatObject = ChatObject(recruiterId: chatList.recruiterId,
-                                    officeName: chatList.officeName,
-                                    isBlockFromSeeker: chatList.isBlockedFromSeeker)
+                                    officeName: chatList.officeName)
         
         moduleOutput.showChat(chatObject: chatObject)
     }

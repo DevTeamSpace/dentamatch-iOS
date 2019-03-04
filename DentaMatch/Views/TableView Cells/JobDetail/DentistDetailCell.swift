@@ -58,9 +58,7 @@ class DentistDetailCell: UITableViewCell {
          CANCELLED = 6
          */
         if let recruiterId = recruiterId {
-            let isBlockedFromSeeker = try! Realm().objects(ChatListModel.self)
-                .first(where: { $0.recruiterId == String(recruiterId) })?.isBlockedFromSeeker ?? false
-            chatObject = ChatObject(recruiterId: recruiterId, officeName: job.officeName, isBlockFromSeeker: isBlockedFromSeeker)
+            chatObject = ChatObject(recruiterId: recruiterId, officeName: job.officeName)
         }
         
         messageButton.isHidden = true

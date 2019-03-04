@@ -5,7 +5,6 @@ import RealmSwift
 struct ChatObject {
     let recruiterId: String
     let officeName: String
-    let isBlockFromSeeker: Bool
 }
 
 class DMChatPresenter: DMChatPresenterProtocol {
@@ -15,18 +14,17 @@ class DMChatPresenter: DMChatPresenterProtocol {
     
     let recruiterId: String
     let officeName: String
-    let isBlockFromSeeker: Bool
     
     init(chatObject: ChatObject, viewInput: DMChatViewInput, moduleOutput: DMChatModuleOutput) {
         
         self.recruiterId = chatObject.recruiterId
         self.officeName = chatObject.officeName
-        self.isBlockFromSeeker = chatObject.isBlockFromSeeker
         
         self.viewInput = viewInput
         self.moduleOutput = moduleOutput
     }
     
+    var isBlockFromSeeker = false
     var chatsArray: [[ChatModel]] = []
     var messages = [String]()
     
@@ -51,6 +49,9 @@ extension DMChatPresenter: DMChatViewOutput {
     func didLoad() {
         
         let realm = try! Realm()
+        
+        isBlockFromSeeker = realm.objects(ChatListModel.self)
+            .first(where: { $0.recruiterId == String(recruiterId) })?.isBlockedFromSeeker ?? false
         
         notificationToken = realm.objects(ChatModel.self).observe({ [weak self] _ in
             self?.updateUI()

@@ -3,7 +3,7 @@ import UIKit
 import Swinject
 
 protocol ProfileFlowCoordinatorProtocol: BaseFlowProtocol {
-    
+    func presentChat(chatObject: ChatObject)
 }
 
 protocol ProfileFlowCoordinatorDelegate: class {
