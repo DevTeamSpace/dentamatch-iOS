@@ -50,10 +50,12 @@ extension DMNotificationVC: UITableViewDataSource, UITableViewDelegate {
             cell?.btnAccept.tag = indexPath.row
             cell?.btnAccept.addTarget(self, action: #selector(btnAcceptButtonClicked(_:)), for: .touchUpInside)
             cell?.btnDelete.addTarget(self, action: #selector(btnRejectButtonClicked(_:)), for: .touchUpInside)
+            cell?.delegate = self
             return cell!
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "HiredJobNotificationTableCell") as? HiredJobNotificationTableCell
             cell?.configureHiredJobNotificationTableCell(userNotificationObj: notification)
+            cell?.delegate = self
             return cell!
         }
     }
