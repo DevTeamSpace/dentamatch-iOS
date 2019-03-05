@@ -74,6 +74,7 @@ extension ProfileFlowCoordinator: DMEditProfileModuleOutput {
         sideMenu.panGestureEnabled = false
         sideMenu.delegate = skillsModuleInput.viewController() as? DMEditSkillsVC
         sideMenu.hidesBottomBarWhenPushed = true
+        sideMenu.statusBarStyle = .light
         navigationController?.pushViewController(sideMenu, animated: true)
     }
     

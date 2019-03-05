@@ -10,6 +10,20 @@ import Photos
 import IHProgressHUD
 import UIKit
 
+protocol BaseViewProtocol {
+    associatedtype ViewClass: UIView
+}
+
+extension BaseViewProtocol where Self: UIViewController {
+    
+    var rootView: ViewClass {
+        get {
+            return view as! ViewClass
+        }
+    }
+    
+}
+
 enum ToastPosition {
     case top
     case bottom

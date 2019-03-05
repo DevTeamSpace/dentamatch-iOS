@@ -16,9 +16,6 @@
         <array key="SF-UI-Text-Semibold.otf">
             <string>SFUIText-Semibold</string>
         </array>
-        <array key="dentamatch.ttf">
-            <string>dentamatch</string>
-        </array>
     </customFonts>
     <scenes>
         <!--Job SearchVC-->
@@ -179,110 +176,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2dN-kZ-fns">
-                                <rect key="frame" x="0.0" y="44" width="414" height="45"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FVS-Pr-6ko">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Profile is currently is being reviewed by Admin. Once it gets approved, you can start applying for jobs." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhA-3Y-iU7">
-                                        <rect key="frame" x="17" y="8" width="380" height="29"/>
-                                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="12"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yf2-Jw-Lus">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="45"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Profile is currently is being reviewed by Admin. Once it gets approved, you can start applying for jobs." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOu-cn-CdN">
+                                                <rect key="frame" x="17" y="8" width="380" height="29"/>
+                                                <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="12"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.90980392160000001" green="0.6705882353" blue="0.26274509800000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="EX2-5w-jhb"/>
+                                            <constraint firstAttribute="bottom" secondItem="AOu-cn-CdN" secondAttribute="bottom" constant="8" id="Flw-W8-Y8r"/>
+                                            <constraint firstAttribute="trailing" secondItem="AOu-cn-CdN" secondAttribute="trailing" constant="17" id="KJQ-BZ-uzZ"/>
+                                            <constraint firstItem="AOu-cn-CdN" firstAttribute="leading" secondItem="Yf2-Jw-Lus" secondAttribute="leading" constant="17" id="Rbf-de-8d6"/>
+                                            <constraint firstItem="AOu-cn-CdN" firstAttribute="top" secondItem="Yf2-Jw-Lus" secondAttribute="top" constant="8" id="scA-fP-154"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PF1-8o-e8z">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.90980392156862744" green="0.6705882352941176" blue="0.2627450980392157" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="dhA-3Y-iU7" secondAttribute="trailing" constant="17" id="6ft-uc-NsY"/>
-                                    <constraint firstItem="dhA-3Y-iU7" firstAttribute="leading" secondItem="2dN-kZ-fns" secondAttribute="leading" constant="17" id="TxZ-WB-pBf"/>
-                                    <constraint firstItem="dhA-3Y-iU7" firstAttribute="top" secondItem="2dN-kZ-fns" secondAttribute="top" constant="8" id="uBA-YQ-SDQ"/>
-                                    <constraint firstAttribute="height" constant="45" id="z4o-up-LtP"/>
-                                    <constraint firstAttribute="bottom" secondItem="dhA-3Y-iU7" secondAttribute="bottom" constant="8" id="zAF-8d-txr"/>
-                                </constraints>
-                            </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NRE-fb-aTV">
-                                <rect key="frame" x="0.0" y="89" width="414" height="0.0"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20 results found" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vjm-2c-xgg">
-                                        <rect key="frame" x="20" y="0.0" width="394" height="0.0"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="13"/>
-                                        <color key="textColor" red="0.058823529409999999" green="0.094117647060000004" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" id="7RR-9E-Vqc"/>
-                                    <constraint firstAttribute="bottom" secondItem="Vjm-2c-xgg" secondAttribute="bottom" id="B2b-1r-vda"/>
-                                    <constraint firstAttribute="trailing" secondItem="Vjm-2c-xgg" secondAttribute="trailing" id="hhC-nT-EkH"/>
-                                    <constraint firstItem="Vjm-2c-xgg" firstAttribute="leading" secondItem="NRE-fb-aTV" secondAttribute="leading" constant="20" id="k6n-5s-zPS"/>
-                                    <constraint firstItem="Vjm-2c-xgg" firstAttribute="top" secondItem="NRE-fb-aTV" secondAttribute="top" id="n6k-bu-ZSK"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SWm-JO-UtE" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="89" width="414" height="807"/>
-                                <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="deviceRGB"/>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c5K-0a-VeV">
-                                <rect key="frame" x="359" y="99" width="40" height="40"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="VVx-P3-wUd"/>
-                                    <constraint firstAttribute="width" constant="40" id="udj-jQ-Sjo"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="dentamatch" family="dentamatch" pointSize="24"/>
-                                <inset key="titleEdgeInsets" minX="-2" minY="2" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="s">
-                                    <color key="titleColor" red="0.015686274510000001" green="0.43921568630000002" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="actionCurrentLocaton:" destination="VbB-48-aza" eventType="touchUpInside" id="f20-ua-mAY"/>
-                                </connections>
-                            </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hUs-Hx-1cO">
-                                <rect key="frame" x="0.0" y="398" width="414" height="464"/>
-                                <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="464" id="JX9-Ab-gXI"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="dataSource" destination="VbB-48-aza" id="2t6-8d-k9O"/>
-                                    <outlet property="delegate" destination="VbB-48-aza" id="pkY-H8-bqR"/>
-                                </connections>
-                            </tableView>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
-                            <constraint firstItem="2dN-kZ-fns" firstAttribute="top" secondItem="2a3-dd-xVy" secondAttribute="top" id="1fM-AM-npm"/>
-                            <constraint firstItem="2dN-kZ-fns" firstAttribute="leading" secondItem="2a3-dd-xVy" secondAttribute="leading" id="3ht-Er-RJY"/>
-                            <constraint firstItem="2a3-dd-xVy" firstAttribute="trailing" secondItem="NRE-fb-aTV" secondAttribute="trailing" id="6Yx-4l-ve4"/>
-                            <constraint firstItem="c5K-0a-VeV" firstAttribute="top" secondItem="2a3-dd-xVy" secondAttribute="top" constant="55" id="FRr-5V-fy6"/>
-                            <constraint firstItem="SWm-JO-UtE" firstAttribute="top" secondItem="2dN-kZ-fns" secondAttribute="bottom" id="GEC-Q6-2ff"/>
-                            <constraint firstAttribute="bottom" secondItem="SWm-JO-UtE" secondAttribute="bottom" id="J12-4r-HLf"/>
-                            <constraint firstItem="hUs-Hx-1cO" firstAttribute="leading" secondItem="2a3-dd-xVy" secondAttribute="leading" id="JJn-wY-gV2"/>
-                            <constraint firstItem="2a3-dd-xVy" firstAttribute="trailing" secondItem="c5K-0a-VeV" secondAttribute="trailing" constant="15" id="JXZ-BQ-Yjx"/>
-                            <constraint firstItem="NRE-fb-aTV" firstAttribute="leading" secondItem="2a3-dd-xVy" secondAttribute="leading" id="NWp-nf-wZ4"/>
-                            <constraint firstItem="2a3-dd-xVy" firstAttribute="trailing" secondItem="2dN-kZ-fns" secondAttribute="trailing" id="YSB-eJ-gnJ"/>
-                            <constraint firstItem="2a3-dd-xVy" firstAttribute="trailing" secondItem="hUs-Hx-1cO" secondAttribute="trailing" id="ZZh-El-tjX"/>
-                            <constraint firstItem="2a3-dd-xVy" firstAttribute="bottom" secondItem="hUs-Hx-1cO" secondAttribute="bottom" id="Zxg-ul-HBC"/>
-                            <constraint firstItem="SWm-JO-UtE" firstAttribute="leading" secondItem="2a3-dd-xVy" secondAttribute="leading" id="hg8-Ez-DEU"/>
-                            <constraint firstItem="2a3-dd-xVy" firstAttribute="trailing" secondItem="SWm-JO-UtE" secondAttribute="trailing" id="nTa-Df-pML"/>
-                            <constraint firstItem="NRE-fb-aTV" firstAttribute="top" secondItem="2dN-kZ-fns" secondAttribute="bottom" id="vqa-f8-wt1"/>
+                            <constraint firstItem="FVS-Pr-6ko" firstAttribute="leading" secondItem="2a3-dd-xVy" secondAttribute="leading" id="2js-sF-zlW"/>
+                            <constraint firstAttribute="trailing" secondItem="FVS-Pr-6ko" secondAttribute="trailing" id="e3K-X3-vTD"/>
+                            <constraint firstItem="2a3-dd-xVy" firstAttribute="bottom" secondItem="FVS-Pr-6ko" secondAttribute="bottom" id="oLq-Ld-vbx"/>
+                            <constraint firstItem="FVS-Pr-6ko" firstAttribute="top" secondItem="2a3-dd-xVy" secondAttribute="top" id="oqU-Tw-Bxr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2a3-dd-xVy"/>
                     </view>
                     <navigationItem key="navigationItem" id="bha-nN-R4F"/>
                     <connections>
-                        <outlet property="bannerHeightConstraint" destination="z4o-up-LtP" id="Hh1-xp-iY4"/>
-                        <outlet property="bannerLabel" destination="dhA-3Y-iU7" id="hmr-68-CXw"/>
-                        <outlet property="bannerView" destination="2dN-kZ-fns" id="TWa-f7-GQO"/>
-                        <outlet property="btnCurrentLocation" destination="c5K-0a-VeV" id="Y6y-H3-Nga"/>
-                        <outlet property="constraintTblViewSearchResultHeight" destination="JX9-Ab-gXI" id="ZBl-jd-CXN"/>
-                        <outlet property="constraintViewResultCountHeight" destination="7RR-9E-Vqc" id="vLl-4k-U7n"/>
-                        <outlet property="currentGPSButtonTopConstraint" destination="FRr-5V-fy6" id="2qI-bO-C9r"/>
-                        <outlet property="lblResultCount" destination="Vjm-2c-xgg" id="T1a-h8-wab"/>
-                        <outlet property="mapViewSearchResult" destination="SWm-JO-UtE" id="pG6-er-2Jy"/>
-                        <outlet property="tblJobSearchResult" destination="hUs-Hx-1cO" id="v2t-jR-aKr"/>
-                        <outlet property="viewResultCount" destination="NRE-fb-aTV" id="N6t-6k-cdk"/>
+                        <outlet property="containerView" destination="PF1-8o-e8z" id="UhT-0P-QTs"/>
+                        <outlet property="profileInReviewLabel" destination="AOu-cn-CdN" id="Xkc-T0-iB1"/>
+                        <outlet property="profileInReviewView" destination="Yf2-Jw-Lus" id="vui-gE-Ykj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6QG-Rh-cm0" userLabel="First Responder" sceneMemberID="firstResponder"/>

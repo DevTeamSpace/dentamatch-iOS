@@ -24,116 +24,48 @@ extension DMJobSearchResultPresenter: DMJobSearchResultModuleInput {
     }
 }
 
-extension DMJobSearchResultPresenter: DMJobSearchResultViewOutput {
+extension DMJobSearchResultPresenter: JobSearchListScreenModuleOutput {
     
-    func openNotifications() {
-        moduleOutput.showNotifications()
+    func showWarningView(status: Int) {
+        viewInput.showBanner(status: status)
     }
     
-    func saveOrUnsaveJob(index: Int) {
-        
-        let job = jobs[index]
-        let status = job.isSaved == 1 ? 0 : 1
-        
-        let params = [
-            Constants.ServerKey.jobId: job.jobId,
-            Constants.ServerKey.status: status,
-            ]
-        
-        viewInput.showLoading()
-        APIManager.apiPost(serviceName: Constants.API.saveJob, parameters: params) { [weak self] (response: JSON?, error: NSError?) in
-            
-            self?.viewInput.hideLoading()
-            
-            if let error = error {
-                self?.viewInput.show(toastMessage: error.localizedDescription)
-                return
-            }
-            
-            guard let response = response else {
-                self?.viewInput.show(toastMessage: Constants.AlertMessage.somethingWentWrong)
-                return
-            }
-            
-            if response[Constants.ServerKey.status].boolValue {
-                job.isSaved = status
-                self?.jobs.remove(at: index)
-                self?.jobs.insert(job, at: index)
-                self?.viewInput.reloadAt([IndexPath(row: index, section: 0)])
-                NotificationCenter.default.post(name: .refreshSavedJobs, object: nil, userInfo: nil)
-            }
-        }
+    func hideWarningView() {
+        viewInput.hideBanner()
     }
-    
+
     func openJobDetail(job: Job?, delegate: JobSavedStatusUpdateDelegate?) {
         moduleOutput.showJobDetail(job: job, delegate: delegate)
     }
     
-    func fetchSearchResult(params: [String : Any]) {
+    func currentJobList(jobs: [Job]) {
+        viewInput.updateMapMarkers(jobs: jobs)
+    }
+}
+
+extension DMJobSearchResultPresenter: DMJobSearchResultViewOutput {
+    
+    func didLoad() {
+        NotificationCenter.default.addObserver(self, selector: #selector(pushRediectNotificationOtherAll), name: .pushRedirectNotificationAllForground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(pushRediectNotificationOtherAllBackGround), name: .pushRedirectNotificationAllBackGround, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(pushRediectNotificationForJobDetailForground), name: .pushRedirectNotificationForground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(pushRediectNotificationForJobDetailBacground), name: .pushRedirectNotificationBacground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(bannerUIStatus(_:)), name: .pushRedirectNotificationForProfile, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(decreaseBadgeCount(_:)), name: .decreaseBadgeCount, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(fetchBadgeCount(_:)), name: .fetchBadgeCount, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(bannerUIStatus(_:)), name: .profileUpdated, object: nil)
         
-        if jobsPageNo == 1 {
-            viewInput.showLoading()
-        }
-        APIManager.apiPostWithJSONEncode(serviceName: Constants.API.JobSearchResultAPI, parameters: params) { [weak self] (response: JSON?, error: NSError?) in
-            
-            self?.viewInput.hideLoading()
-            if let error = error {
-                self?.viewInput.show(toastMessage: error.localizedDescription)
-                return
-            }
-            
-            guard let response = response else {
-                self?.viewInput.show(toastMessage: Constants.AlertMessage.somethingWentWrong)
-                return
-            }
-            
-            if response[Constants.ServerKey.status].boolValue {
-                
-                let result = response[Constants.ServerKey.result]
-                
-                if result["isJobSeekerVerified"].stringValue == "0" || result["isJobSeekerVerified"].stringValue == "2"{
-                    self?.viewInput.showBanner(status: 1)
-                } else if result["profileCompleted"].stringValue == "0" {
-                    self?.viewInput.showBanner(status: 2)
-                }
-                
-                if result["isJobSeekerVerified"].stringValue == "1" && result["profileCompleted"].stringValue == "1" {
-                    self?.bannerStatus = 3 // approved
-                    self?.viewInput.hideBanner()
-                }
-                
-                let skillList = response[Constants.ServerKey.result][Constants.ServerKey.joblist].array
-                
-                if self?.jobsPageNo == 1 {
-                    self?.jobs.removeAll()
-                }
-                
-                for jobObject in skillList! {
-                    let job = Job(job: jobObject)
-                    self?.jobs.append(job)
-                }
-                
-                
-                
-                self?.totalJobsFromServer = response[Constants.ServerKey.result]["total"].intValue
-                self?.jobsPageNo += 1
-                
-                self?.viewInput.configureTableView(jobsCount: self?.jobs.count ?? 0, totalJobsCount: self?.totalJobsFromServer ?? 0, status: true)
-            } else {
-                
-                self?.jobs.removeAll()
-                self?.viewInput.configureTableView(jobsCount: 0, totalJobsCount: 0, status: false)
-                self?.viewInput.show(toastMessage: response[Constants.ServerKey.message].stringValue)
-            }
-        }
+        fetchBadgeCount()
     }
     
     func openJobSearch(fromJobResult: Bool, delegate: SearchJobDelegate) {
         moduleOutput.showJobSearch(fromJobResult: fromJobResult, delegate: delegate)
     }
+}
+
+extension DMJobSearchResultPresenter {
     
-    func getUnreadedNotifications() {
-        
+    func fetchBadgeCount () {
         APIManager.apiGet(serviceName: Constants.API.unreadNotificationCount, parameters: nil) { [weak self] (response: JSON?, error: NSError?) in
             
             if let error = error {
@@ -148,8 +80,39 @@ extension DMJobSearchResultPresenter: DMJobSearchResultViewOutput {
             }
         }
     }
-}
-
-extension DMJobSearchResultPresenter {
     
+    @objc func bannerUIStatus(_ userInfo: Notification){
+        viewInput.refreshJobList()
+    }
+    
+    @objc func pushRediectNotificationOtherAll(userInfo _: Notification) {
+        moduleOutput.showNotifications()
+    }
+    
+    @objc func pushRediectNotificationOtherAllBackGround(userInfo _: Notification) {
+        moduleOutput.showNotifications()
+    }
+    
+    @objc func pushRediectNotificationForJobDetailForground(userInfo: Notification) {
+        let dict = userInfo.userInfo
+        if let notification = dict?["notificationData"], let notiObj = notification as? Job {
+            moduleOutput.showJobDetail(job: notiObj, delegate: nil)
+        }
+    }
+    
+    @objc func pushRediectNotificationForJobDetailBacground(userInfo: Notification) {
+        let dict = userInfo.userInfo
+        if let notification = dict?["notificationData"], let notiObj = notification as? Job  {
+            moduleOutput.showJobDetail(job: notiObj, delegate: nil)
+        }
+    }
+    
+    @objc func fetchBadgeCount(_ notification: Notification) {
+        self.fetchBadgeCount()
+    }
+    
+    @objc func decreaseBadgeCount(_ notification: Notification) {
+        AppDelegate.delegate().decrementBadgeCount()
+        self.fetchBadgeCount()
+    }
 }

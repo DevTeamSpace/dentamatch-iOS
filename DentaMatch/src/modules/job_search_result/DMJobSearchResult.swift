@@ -14,25 +14,18 @@ protocol DMJobSearchResultModuleOutput: BaseModuleOutput {
 protocol DMJobSearchResultViewInput: BaseViewInput {
     var viewOutput: DMJobSearchResultViewOutput? { get set }
     
-    func reloadAt(_ indexPaths: [IndexPath])
     func showBanner(status: Int)
     func hideBanner()
-    func configureTableView(jobsCount: Int, totalJobsCount: Int, status: Bool)
     func updateBadge(count: Int)
+    func refreshJobList()
+    func updateMapMarkers(jobs: [Job])
 }
 
-protocol DMJobSearchResultViewOutput: BaseViewOutput {
-    var jobs: [Job] { get set }
-    var totalJobsFromServer: Int { get set }
-    var jobsPageNo: Int { get set }
-    var bannerStatus: Int { get set }
+protocol DMJobSearchResultViewOutput: BaseViewOutput, JobSearchMapScreenModuleOutput, JobSearchListScreenModuleOutput {
     
-    func openNotifications()
-    func saveOrUnsaveJob(index: Int)
+    func didLoad()
     func openJobDetail(job: Job?, delegate: JobSavedStatusUpdateDelegate?)
     func openJobSearch(fromJobResult: Bool, delegate: SearchJobDelegate)
-    func fetchSearchResult(params: [String: Any])
-    func getUnreadedNotifications()
 }
 
 protocol DMJobSearchResultPresenterProtocol: DMJobSearchResultModuleInput, DMJobSearchResultViewOutput {

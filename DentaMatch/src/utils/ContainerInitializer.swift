@@ -86,6 +86,8 @@ func defaultContainer() -> Container {
     DMWorkExperienceInitializer.register(for: container)
     DMJobTitleSelectionInitializer.register(for: container)
     DMWorkExperienceStartInitializer.register(for: container)
+    JobSearchListScreenInitializer.register(for: container)
+    JobSearchMapScreenInitializer.register(for: container)
     
     return container
 }
