@@ -66,6 +66,7 @@ extension Constants {
         static let blockUnblockRecruiter = Constants.API.apiURL("users/chat-user-block-unblock")
         static let chatDelete = Constants.API.apiURL("chat/delete")
         static let listStatesApi = Constants.API.apiURL("list-states")
+        static let getChatList = Constants.API.apiURL("chat/init-chat")
         static func apiURL(_ methodName: String) -> String {
             return BASE_URL + methodName
         }

@@ -94,7 +94,10 @@ class DMChatVC: DMBaseVC {
         sendButton.isUserInteractionEnabled = false
         
         if presentingViewController is UITabBarController {
-            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(leftBarButtonAction))
+            let barButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(leftBarButtonAction))
+            barButton.setTitleTextAttributes([.font: UIFont.fontRegular(fontSize: 14.0)], for: .normal)
+            barButton.setTitleTextAttributes([.font: UIFont.fontRegular(fontSize: 14.0)], for: .highlighted)
+            navigationItem.leftBarButtonItem = barButton
         } else {
             navigationItem.leftBarButtonItem = backBarButton()
         }

@@ -58,24 +58,27 @@ extension DMJobSearchResultVC: GMSMapViewDelegate {
     }
 
     func showCard(index: Int) {
-        tblJobSearchResult.isHidden = false
-        constraintTblViewSearchResultHeight.constant = cellHeight
-        UIView.animate(withDuration: 0.5, animations: {
-            self.view.layoutIfNeeded()
-        }) { (_: Bool) in
-            DispatchQueue.main.async { [weak self] in
-                self?.tblJobSearchResult.scrollToRow(at: IndexPath(row: index, section: 0), at: .none, animated: false)
-                self?.tblJobSearchResult.isScrollEnabled = false
-            }
+        if constraintTblViewSearchResultHeight.constant > cellHeight {
+            constraintTblViewSearchResultHeight.constant = 0.0
+            view.layoutIfNeeded()
         }
+        tblJobSearchResult.isHidden = false
+        tblJobSearchResult.alpha = 0.0
+        constraintTblViewSearchResultHeight.constant = cellHeight
+        tblJobSearchResult.scrollToRow(at: IndexPath(row: index, section: 0), at: .top, animated: false)
+        tblJobSearchResult.isScrollEnabled = false
+        UIView.animate(withDuration: 0.3, animations: { [unowned self] in
+            self.view.layoutIfNeeded()
+            self.tblJobSearchResult.alpha = 1.0
+        })
     }
 
     func hideCard() {
-        tblJobSearchResult.isHidden = true
         constraintTblViewSearchResultHeight.constant = 0.0
-        UIView.animate(withDuration: 0.5, animations: {
+        UIView.animate(withDuration: 0.3, animations: { [unowned self] in
             self.view.layoutIfNeeded()
-        }) { (_: Bool) in
+        }) { [unowned self] (_) in
+            self.tblJobSearchResult.isHidden = true
             self.tblJobSearchResult.isScrollEnabled = true
         }
     }

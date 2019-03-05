@@ -50,9 +50,6 @@ extension DMChatPresenter: DMChatViewOutput {
         
         let realm = try! Realm()
         
-        isBlockFromSeeker = realm.objects(ChatListModel.self)
-            .first(where: { $0.recruiterId == String(recruiterId) })?.isBlockedFromSeeker ?? false
-        
         notificationToken = realm.objects(ChatModel.self).observe({ [weak self] _ in
             self?.updateUI()
             SocketIOManager.sharedInstance.updateMessageRead()
@@ -61,6 +58,7 @@ extension DMChatPresenter: DMChatViewOutput {
         SocketIOManager.sharedInstance.recruiterId = recruiterId
         NotificationCenter.default.addObserver(self, selector: #selector(refreshChat), name: .refreshChat, object: nil)
         
+        getChatList(recruiterId: recruiterId)
         receiveChatMessageEvent()
         updateUI()
         getHistory()
@@ -114,6 +112,36 @@ extension DMChatPresenter {
             getLeftMessages(lastMessageId: chat.id)
         }
     }
+    
+    private func getChatList(recruiterId: String) {
+        
+        APIManager.apiPost(serviceName: Constants.API.getChatList, parameters: ["recruiterId": recruiterId]) { [weak self] (response, error) in
+            
+            self?.viewInput.hideLoading()
+            if let error = error {
+                self?.viewInput.show(toastMessage: error.localizedDescription)
+                return
+            }
+            
+            guard let response = response else {
+                self?.viewInput.show(toastMessage: Constants.AlertMessage.somethingWentWrong)
+                return
+            }
+            
+            if response[Constants.ServerKey.status].boolValue {
+                let result = response[Constants.ServerKey.result]
+                
+                let realm = try! Realm()
+                try! realm.write {
+                    let model = ChatListModel(chatListObj: result)
+                    realm.add(model, update: true)
+                }
+                
+            } else {
+                self?.viewInput.show(toastMessage: response[Constants.ServerKey.message].stringValue)
+            }
+        }
+    }
 
     private func getHistory() {
         if SocketIOManager.sharedInstance.isConnected {
@@ -151,6 +179,9 @@ extension DMChatPresenter {
         
         let realm = try! Realm()
         let userId = UserManager.shared().activeUser.userId
+        
+        isBlockFromSeeker = realm.objects(ChatListModel.self)
+            .first(where: { $0.recruiterId == String(recruiterId) })?.isBlockedFromSeeker ?? false
         
         let chats = Array(realm.objects(ChatModel.self)
             .filter({ [unowned self] in

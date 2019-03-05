@@ -155,7 +155,9 @@ extension DMMessagesPresenter {
     
     private func updateUI() {
         
-        chatListArray = try! Realm().objects(ChatListModel.self).sorted(by: { $0.timeStamp > $1.timeStamp })
+        chatListArray = try! Realm().objects(ChatListModel.self)
+            .filter({ !$0.messageListId.isEmpty })
+            .sorted(by: { $0.timeStamp > $1.timeStamp })
         
         viewInput.configureEmptyView(isHidden: chatListArray.count > 0)
         
