@@ -163,8 +163,8 @@ extension JobSearchListScreenPresenter: JobSearchResultCellDelegate {
                 job.isSaved = status
                 self?.jobs.remove(at: index)
                 self?.jobs.insert(job, at: index)
-                self?.viewInput.reloadAt([IndexPath(row: index, section: 0)])
-                NotificationCenter.default.post(name: .refreshSavedJobs, object: nil, userInfo: nil)
+                NotificationCenter.default.post(name: .refreshSavedJobs, object: nil, userInfo: ["from": "list"])
+                NotificationCenter.default.post(name: .jobSavedUnsaved, object: job, userInfo: nil)
             }
         }
     }

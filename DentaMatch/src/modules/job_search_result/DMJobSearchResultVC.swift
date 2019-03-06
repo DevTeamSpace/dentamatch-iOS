@@ -229,7 +229,12 @@ extension DMJobSearchResultVC: DMJobSearchResultViewInput {
 }
 
 extension DMJobSearchResultVC: SearchJobDelegate {
+    
     func refreshJobList() {
         jobListModuleInput?.refreshData(true)
+    }
+    
+    func refreshJobList(showLoading: Bool) {
+        jobListModuleInput?.refreshData(showLoading)
     }
 }

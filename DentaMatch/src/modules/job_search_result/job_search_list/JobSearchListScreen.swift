@@ -4,6 +4,7 @@ import Foundation
 protocol JobSearchListScreenModuleInput: BaseModuleInput {
     
     func refreshData(_ showLoading: Bool)
+    func saveOrUnsaveJob(index: Int)
 }
 
 protocol JobSearchListScreenModuleOutput: BaseModuleOutput {

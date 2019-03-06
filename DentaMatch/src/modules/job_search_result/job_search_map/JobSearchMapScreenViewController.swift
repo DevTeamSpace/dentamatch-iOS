@@ -16,10 +16,11 @@ class JobSearchMapScreenViewController: DMBaseVC, BaseViewProtocol {
         super.viewDidLoad()
         
         configureView()
+        viewOutput?.didLoad()
     }
     
     @IBAction func actionCurrentLocaton(_: UIButton) {
-        rootView.mapView.animate(to: GMSCameraPosition(target: currentCoordinate, zoom: 15, bearing: 0, viewingAngle: 0))
+        //rootView.mapView.animate(to: GMSCameraPosition(target: currentCoordinate, zoom: 15, bearing: 0, viewingAngle: 0))
         hideCard()
     }
 }
@@ -28,6 +29,11 @@ extension JobSearchMapScreenViewController: JobSearchMapScreenViewInput {
 
     func reloadData() {
         restoreAllMarkers()
+    }
+    
+    func updateDetailView(with job: Job, index: Int) {
+        guard index == rootView.jobMapDetailView.currentIndex else { return }
+        rootView.jobMapDetailView.updateWithJob(job, index: index)
     }
 }
 
@@ -89,11 +95,13 @@ extension JobSearchMapScreenViewController: GMSMapViewDelegate {
     }
     
     func showCard(index: Int) {
-        //jobmapdetailview.setJob(––––––)
-        rootView.jobMapDetailView.layoutIfNeeded()
-        rootView.detailViewTopConstraint.constant = -rootView.jobMapDetailView.frame.height
+        guard let jobs = viewOutput?.jobs else { return }
+        
+        rootView.jobMapDetailView.updateWithJob(jobs[index], index: index)
         
         UIView.animate(withDuration: 0.2) { [unowned self] in
+            self.rootView.jobMapDetailView.layoutIfNeeded()
+            self.rootView.detailViewTopConstraint.constant = -self.rootView.jobMapDetailView.frame.height
             self.rootView.layoutIfNeeded()
         }
     }
@@ -112,5 +120,6 @@ extension JobSearchMapScreenViewController {
     private func configureView() {
         rootView.mapView.delegate = self
         rootView.mapView.isMyLocationEnabled = false
+        rootView.jobMapDetailView.delegate = viewOutput
     }
 }

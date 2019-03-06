@@ -82,7 +82,7 @@ extension DMJobSearchResultPresenter {
     }
     
     @objc func bannerUIStatus(_ userInfo: Notification){
-        viewInput.refreshJobList()
+        viewInput.refreshJobList(showLoading: true)
     }
     
     @objc func pushRediectNotificationOtherAll(userInfo _: Notification) {

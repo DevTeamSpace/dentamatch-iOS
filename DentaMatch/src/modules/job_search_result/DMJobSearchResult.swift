@@ -17,7 +17,7 @@ protocol DMJobSearchResultViewInput: BaseViewInput {
     func showBanner(status: Int)
     func hideBanner()
     func updateBadge(count: Int)
-    func refreshJobList()
+    func refreshJobList(showLoading: Bool)
     func updateMapMarkers(jobs: [Job])
 }
 
