@@ -198,10 +198,23 @@
                                             <constraint firstItem="AOu-cn-CdN" firstAttribute="top" secondItem="Yf2-Jw-Lus" secondAttribute="top" constant="8" id="scA-fP-154"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PF1-8o-e8z">
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M9w-LM-80i">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0hq-yW-Fid">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="0hq-yW-Fid" firstAttribute="centerX" secondItem="M9w-LM-80i" secondAttribute="centerX" priority="200" id="BzF-pW-UFG"/>
+                                            <constraint firstAttribute="bottom" secondItem="0hq-yW-Fid" secondAttribute="bottom" id="DML-YO-Xmt"/>
+                                            <constraint firstItem="0hq-yW-Fid" firstAttribute="leading" secondItem="M9w-LM-80i" secondAttribute="leading" id="VdV-UM-N5T"/>
+                                            <constraint firstItem="0hq-yW-Fid" firstAttribute="centerY" secondItem="M9w-LM-80i" secondAttribute="centerY" id="fsV-QG-tpV"/>
+                                            <constraint firstItem="0hq-yW-Fid" firstAttribute="top" secondItem="M9w-LM-80i" secondAttribute="top" id="hYx-8P-ndc"/>
+                                            <constraint firstAttribute="trailing" secondItem="0hq-yW-Fid" secondAttribute="trailing" id="s9E-7O-5iy"/>
+                                        </constraints>
+                                    </scrollView>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -216,9 +229,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="bha-nN-R4F"/>
                     <connections>
-                        <outlet property="containerView" destination="PF1-8o-e8z" id="UhT-0P-QTs"/>
+                        <outlet property="containerView" destination="0hq-yW-Fid" id="Fek-lE-6VY"/>
                         <outlet property="profileInReviewLabel" destination="AOu-cn-CdN" id="Xkc-T0-iB1"/>
                         <outlet property="profileInReviewView" destination="Yf2-Jw-Lus" id="vui-gE-Ykj"/>
+                        <outlet property="scrollView" destination="M9w-LM-80i" id="6yw-eI-iA0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6QG-Rh-cm0" userLabel="First Responder" sceneMemberID="firstResponder"/>

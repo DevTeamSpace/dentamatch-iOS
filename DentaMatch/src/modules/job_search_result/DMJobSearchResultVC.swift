@@ -3,52 +3,26 @@ import UIKit
 
 class DMJobSearchResultVC: DMBaseVC {
     
-    enum JobSearchState {
-        case list
-        case map
+    enum JobSearchState: Int {
+        case list = 0
+        case map = 1
     }
     
     @IBOutlet weak var profileInReviewView: UIView!
     @IBOutlet weak var profileInReviewLabel: UILabel!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var containerView: UIView!
-
-//    @IBOutlet weak var currentGPSButtonTopConstraint: NSLayoutConstraint!
-//    @IBOutlet weak var bannerLabel: UILabel!
-//    @IBOutlet weak var bannerView: UIView!
-//
-//    @IBOutlet weak var bannerHeightConstraint: NSLayoutConstraint!
-//    @IBOutlet weak var tblJobSearchResult: UITableView!
-//    @IBOutlet weak var mapViewSearchResult: GMSMapView!
-//    @IBOutlet weak var constraintTblViewSearchResultHeight: NSLayoutConstraint!
-//    @IBOutlet weak var viewResultCount: UIView!
-//    @IBOutlet weak var lblResultCount: UILabel!
-//    @IBOutlet weak var constraintViewResultCountHeight: NSLayoutConstraint!
-//
-//    @IBOutlet var btnCurrentLocation: UIButton!
-//    var notificationLabel: UILabel?
-//    var rightBarBtn: UIButton = UIButton()
-//    var rightBarButtonItem: UIBarButtonItem = UIBarButtonItem()
-//    var isListShow: Bool = false
-//    var isMapShow: Bool = false
-//    var btnList: UIButton!
-//    var btnMap: UIButton!
-//    var arrMarkers = [JobMarker]()
-//    var rightBarButtonWidth: CGFloat = 20.0
-//    var cellHeight: CGFloat = 172.0
-//    var loadingMoreJobs = false
-//
-//    var searchParams = [String: Any]()
-//    var markers = [JobMarker]()
-//    var pullToRefreshJobs = UIRefreshControl()
-//
-//    var placeHolderEmptyJobsView: PlaceHolderJobsView?
     
     var viewOutput: DMJobSearchResultViewOutput?
     
     private weak var jobListModuleInput: JobSearchListScreenModuleInput?
     private weak var jobMapModuleInput: JobSearchMapScreenModuleInput?
     
-    private var currentState = JobSearchState.list
+    private var currentState = JobSearchState.list {
+        willSet {
+            changeState(newValue)
+        }
+    }
     
     private var listSegmentButton: UIButton?
     private var mapSegmentButton: UIButton?
@@ -77,25 +51,28 @@ class DMJobSearchResultVC: DMBaseVC {
         jobListVc.view.translatesAutoresizingMaskIntoConstraints = false
         jobMapVc.view.translatesAutoresizingMaskIntoConstraints = false
         
-        containerView.addSubview(jobMapVc.view)
         containerView.addSubview(jobListVc.view)
-        
+        containerView.addSubview(jobMapVc.view)
+
         NSLayoutConstraint.activate([
             containerView.topAnchor.constraint(equalTo: jobListVc.view.topAnchor),
             containerView.leadingAnchor.constraint(equalTo: jobListVc.view.leadingAnchor),
-            containerView.trailingAnchor.constraint(equalTo: jobListVc.view.trailingAnchor),
             containerView.bottomAnchor.constraint(equalTo: jobListVc.view.bottomAnchor),
+            jobListVc.view.widthAnchor.constraint(equalTo: view.widthAnchor),
+            
             containerView.topAnchor.constraint(equalTo: jobMapVc.view.topAnchor),
-            containerView.leadingAnchor.constraint(equalTo: jobMapVc.view.leadingAnchor),
+            jobMapVc.view.leadingAnchor.constraint(equalTo: jobListVc.view.trailingAnchor),
             containerView.trailingAnchor.constraint(equalTo: jobMapVc.view.trailingAnchor),
-            containerView.bottomAnchor.constraint(equalTo: jobMapVc.view.bottomAnchor)
+            containerView.bottomAnchor.constraint(equalTo: jobMapVc.view.bottomAnchor),
+            jobMapVc.view.widthAnchor.constraint(equalTo: view.widthAnchor)
         ])
+
         
         view.layoutIfNeeded()
         jobListVc.didMove(toParent: self)
         jobMapVc.didMove(toParent: self)
         
-        jobMapVc.view.isHidden = true
+        scrollView.delegate = self
         
         self.jobListModuleInput = jobListModuleInput
         self.jobMapModuleInput =  jobMapModuleInput
@@ -139,60 +116,35 @@ class DMJobSearchResultVC: DMBaseVC {
         listSegmentButton = btnList
         mapSegmentButton = btnMap
     }
-
+    
     @objc func actionListButton() {
-        guard let toVc = jobListModuleInput?.viewController(), currentState != .list,
-            let fromVc = jobMapModuleInput?.viewController() else { return }
+        guard let toVc = jobListModuleInput?.viewController(), currentState != .list else { return }
         
-        fromVc.view.isHidden = true
-        toVc.view.isHidden = false
-        listSegmentButton?.backgroundColor = Constants.Color.mapButtonBackGroundColor
-        listSegmentButton?.titleLabel!.font = UIFont.fontSemiBold(fontSize: 13.0)
-        mapSegmentButton?.titleLabel!.font = UIFont.fontLight(fontSize: 13.0)
-        mapSegmentButton?.backgroundColor = UIColor.clear
-//
-//        view.addSubview(toVc.view)
-//        containerView.removeConstraints(containerView.constraints)
-//
-//        NSLayoutConstraint.activate([
-//            containerView.topAnchor.constraint(equalTo: toVc.view.topAnchor),
-//            containerView.leadingAnchor.constraint(equalTo: toVc.view.leadingAnchor),
-//            containerView.trailingAnchor.constraint(equalTo: toVc.view.trailingAnchor),
-//            containerView.bottomAnchor.constraint(equalTo: toVc.view.bottomAnchor)
-//        ])
-//
-//        view.layoutIfNeeded()
-//        fromVc.view.removeFromSuperview()
-        
+        scrollView.setContentOffset(CGPoint(x: toVc.view.frame.minX, y: 0), animated: true)
         currentState = .list
     }
 
     @objc func actionMapButton() {
-        guard let toVc = jobMapModuleInput?.viewController(), currentState != .map,
-            let fromVc = jobListModuleInput?.viewController() else { return }
+        guard let toVc = jobMapModuleInput?.viewController(), currentState != .map else { return }
         
-        fromVc.view.isHidden = true
-        toVc.view.isHidden = false
-//        fromVc.view.removeFromSuperview()
-//
-        mapSegmentButton?.backgroundColor = Constants.Color.mapButtonBackGroundColor
-        mapSegmentButton?.titleLabel!.font = UIFont.fontSemiBold(fontSize: 13.0)
-        listSegmentButton?.titleLabel!.font = UIFont.fontLight(fontSize: 13.0)
-        listSegmentButton?.backgroundColor = UIColor.clear
-//
-//        view.addSubview(toVc.view)
-//        containerView.removeConstraints(containerView.constraints)
-//
-//        NSLayoutConstraint.activate([
-//            containerView.topAnchor.constraint(equalTo: toVc.view.topAnchor),
-//            containerView.leadingAnchor.constraint(equalTo: toVc.view.leadingAnchor),
-//            containerView.trailingAnchor.constraint(equalTo: toVc.view.trailingAnchor),
-//            containerView.bottomAnchor.constraint(equalTo: toVc.view.bottomAnchor)
-//        ])
-//
-//        view.layoutIfNeeded()
-        
+        scrollView.setContentOffset(CGPoint(x: toVc.view.frame.minX, y: 0), animated: true)
         currentState = .map
+    }
+    
+    func changeState(_ newState: JobSearchState) {
+        
+        switch newState {
+        case .list:
+            listSegmentButton?.backgroundColor = Constants.Color.mapButtonBackGroundColor
+            listSegmentButton?.titleLabel!.font = UIFont.fontSemiBold(fontSize: 13.0)
+            mapSegmentButton?.titleLabel!.font = UIFont.fontLight(fontSize: 13.0)
+            mapSegmentButton?.backgroundColor = UIColor.clear
+        case .map:
+            mapSegmentButton?.backgroundColor = Constants.Color.mapButtonBackGroundColor
+            mapSegmentButton?.titleLabel!.font = UIFont.fontSemiBold(fontSize: 13.0)
+            listSegmentButton?.titleLabel!.font = UIFont.fontLight(fontSize: 13.0)
+            listSegmentButton?.backgroundColor = UIColor.clear
+        }
     }
 }
 
@@ -225,6 +177,14 @@ extension DMJobSearchResultVC: DMJobSearchResultViewInput {
     
     func updateMapMarkers(jobs: [Job]) {
         jobMapModuleInput?.populateWithJobs(jobs: jobs)
+    }
+}
+
+extension DMJobSearchResultVC: UIScrollViewDelegate {
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        guard let newState = JobSearchState(rawValue: Int(scrollView.contentOffset.x / scrollView.frame.width)) else { return }
+        currentState = newState
     }
 }
 
