@@ -41,6 +41,12 @@ extension JobSearchMapScreenPresenter: JobMapDetailViewDelegate {
         
         saveOrUnsaveJob(index: jobIndex)
     }
+    
+    func onDetailViewTapped(jobIndex: Int) {
+        guard jobIndex != -1 else { return }
+        
+        moduleOutput.openJobDetail(job: jobs[jobIndex])
+    }
 }
 
 extension JobSearchMapScreenPresenter {

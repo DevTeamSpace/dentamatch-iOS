@@ -44,8 +44,9 @@ extension DMCalenderVC: UITableViewDelegate, UITableViewDataSource {
         return cellCount == 0 ? 1 : cellCount
     }
 
-    func tableView(_: UITableView, canEditRowAt _: IndexPath) -> Bool {
-        return true
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        guard let cell = tableView.cellForRow(at: indexPath) else { return false }
+        return !(cell is EmptyJobsCalendarCell)
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

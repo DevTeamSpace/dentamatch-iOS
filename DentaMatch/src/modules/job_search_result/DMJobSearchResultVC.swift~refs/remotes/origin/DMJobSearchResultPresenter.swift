@@ -43,6 +43,13 @@ extension DMJobSearchResultPresenter: JobSearchListScreenModuleOutput {
     }
 }
 
+extension DMJobSearchResultPresenter: JobSearchMapScreenModuleOutput {
+    
+    func openJobDetail(job: Job) {
+        moduleOutput.showJobDetail(job: job, delegate: nil)
+    }
+}
+
 extension DMJobSearchResultPresenter: DMJobSearchResultViewOutput {
     
     func didLoad() {

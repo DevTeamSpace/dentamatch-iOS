@@ -3,6 +3,7 @@ import UIKit
 
 protocol JobMapDetailViewDelegate: class {
     func onFavoriteButtonTapped(jobIndex: Int)
+    func onDetailViewTapped(jobIndex: Int)
 }
 
 final class JobMapDetailView: BaseView {
@@ -26,6 +27,12 @@ final class JobMapDetailView: BaseView {
     weak var delegate: JobMapDetailViewDelegate?
     
     var currentIndex = -1
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapAction)))
+    }
     
     @IBAction func favoriteButtonAction() {
         delegate?.onFavoriteButtonTapped(jobIndex: currentIndex)
@@ -96,5 +103,9 @@ final class JobMapDetailView: BaseView {
         }else{
             wagesStackView.isHidden = true
         }
+    }
+    
+    @objc private func tapAction() {
+        delegate?.onDetailViewTapped(jobIndex: currentIndex)
     }
 }

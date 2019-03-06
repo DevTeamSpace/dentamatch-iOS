@@ -8,6 +8,7 @@ protocol JobSearchMapScreenModuleInput: BaseModuleInput {
 
 protocol JobSearchMapScreenModuleOutput: BaseModuleOutput {
     
+    func openJobDetail(job: Job)
 }
 
 protocol JobSearchMapScreenViewInput: BaseViewInput {
