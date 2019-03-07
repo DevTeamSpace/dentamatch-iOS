@@ -47,7 +47,7 @@ class DatabaseManager: NSObject {
     class func makeNotificationData(chatObj: JSON?) {
         guard let chatObj = chatObj,
             let user = UserManager.shared().activeUser,
-            chatExits(messageId: chatObj["messageId"].intValue) == nil else { return }
+            chat(with: chatObj["messageId"].intValue) == nil else { return }
         
         let realm = try! Realm()
         try! realm.write {
@@ -134,7 +134,7 @@ class DatabaseManager: NSObject {
         kAppDelegate?.rootFlowCoordinator?.updateMessagesBadgeValue(count: getUnreadedMessages())
     }
 
-    class func chatExits(messageId: Int) -> ChatModel? {
+    class func chat(with messageId: Int) -> ChatModel? {
         return try! Realm().object(ofType: ChatModel.self, forPrimaryKey: messageId)
     }
 
@@ -178,7 +178,7 @@ class DatabaseManager: NSObject {
     class func addChatForFirstTimeMessage(chatObj: JSON?) {
         guard let chatObj = chatObj else { return }
         
-        if let _ = chatExits(messageId: chatObj["messageId"].intValue) {
+        if let _ = chat(with: chatObj["messageId"].intValue) {
             // Update chat
             // debugPrint("Update Chat")
             
