@@ -155,10 +155,11 @@ extension DMMessagesPresenter {
     
     private func updateUI() {
         
-        chatListArray = try! Realm().objects(ChatListModel.self)
-            .filter({ !$0.messageListId.isEmpty })
-            .sorted(by: { $0.timeStamp > $1.timeStamp })
+        let chatListResults = try! Realm().objects(ChatListModel.self)
+            .filter("messageListId != ''")
+            .sorted(byKeyPath: "timeStamp", ascending: false)
         
+        chatListArray = Array(chatListResults)
         viewInput.configureEmptyView(isHidden: chatListArray.count > 0)
         
         viewInput.reloadData()

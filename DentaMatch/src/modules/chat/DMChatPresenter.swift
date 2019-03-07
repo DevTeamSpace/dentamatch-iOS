@@ -183,12 +183,9 @@ extension DMChatPresenter {
         isBlockFromSeeker = realm.objects(ChatListModel.self)
             .first(where: { $0.recruiterId == String(recruiterId) })?.isBlockedFromSeeker ?? false
         
-        let chats = Array(realm.objects(ChatModel.self)
-            .filter({ [unowned self] in
-                ($0.fromId == userId && $0.toId == self.recruiterId) ||
-                ($0.fromId == self.recruiterId && $0.toId == userId)
-            }))
-            .sorted(by: { $0.timeStamp < $1.timeStamp })
+        let chats = realm.objects(ChatModel.self)
+            .filter("(fromId == %@ AND toId == %@) OR (fromId == %@ AND toId == %@)", userId, recruiterId, recruiterId, userId)
+            .sorted(byKeyPath: "timeStamp")
 
         let uniqueDateStrings = Array(NSOrderedSet(array: chats.map({ $0.dateString })))
         
@@ -196,7 +193,7 @@ extension DMChatPresenter {
         
         for (idx, dateString) in uniqueDateStrings.enumerated() {
             if let dateString = dateString as? String {
-                let filteredChats = chats.filter({ $0.dateString == dateString })
+                let filteredChats = chats.filter("dateString == %@", dateString)
                 final[idx].append(contentsOf: filteredChats)
             }
         }

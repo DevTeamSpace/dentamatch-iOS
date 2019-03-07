@@ -21,7 +21,7 @@ class DatabaseManager: NSObject {
         
         let realm = try! Realm()
         try! realm.write {
-            let chatLists = realm.objects(ChatListModel.self).filter({ $0.recruiterId == recruiterId })
+            let chatLists = realm.objects(ChatListModel.self).filter("recruiterId == %@", recruiterId)
             realm.delete(chatLists)
         }
     }
@@ -39,7 +39,7 @@ class DatabaseManager: NSObject {
         
         let realm = try! Realm()
         try! realm.write {
-            let chats = realm.objects(ChatModel.self).filter({ $0.toId == recruiterId || $0.fromId == recruiterId })
+            let chats = realm.objects(ChatModel.self).filter("toId == %@ OR fromId == %@", recruiterId, recruiterId)
             realm.delete(chats)
         }
     }
@@ -139,14 +139,15 @@ class DatabaseManager: NSObject {
     }
 
     class func chatListExists(recruiterId: String) -> ChatListModel? {
-        return try! Realm().objects(ChatListModel.self).filter({ $0.recruiterId == recruiterId }).first
+        return try! Realm().objects(ChatListModel.self).filter("recruiterId == %@", recruiterId).first
     }
 
     class func getCountForChats(recruiterId: String) -> Int {
         
         let realm = try! Realm()
         let userId = UserManager.shared().activeUser.userId
-        let chatModel = realm.objects(ChatModel.self).filter({ ($0.fromId == userId && $0.toId == recruiterId) || ($0.fromId == recruiterId && $0.toId == userId) })
+        let chatModel = realm.objects(ChatModel.self)
+            .filter("(fromId == %@ AND toId == %@) OR (fromId == %@ AND toId == %@)", userId, recruiterId, recruiterId, userId)
         
         return chatModel.count
     }
