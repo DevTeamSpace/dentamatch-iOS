@@ -77,7 +77,7 @@ class HiredJobNotificationTableCell: UITableViewCell {
         }
         
         if let rawType = userNotificationObj.notificationType, let type =  UserNotificationType(rawValue: rawType),
-            type == .hired {
+            type == .hired || type == .InviteJob {
             
             messageButton.isHidden = false
         } else {

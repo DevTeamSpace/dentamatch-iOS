@@ -60,6 +60,10 @@ extension CalendarFlowCoordinator: DMCalendarSetAvailabilityModuleOutput {
 }
 
 extension CalendarFlowCoordinator: DMJobDetailModuleOutput {
+    func refreshNotificationList() {
+        
+    }
+    
     
     func presentChat(chatObject: ChatObject) {
         

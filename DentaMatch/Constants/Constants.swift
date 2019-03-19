@@ -248,6 +248,7 @@ struct Constants {
         static let readLess = "READ LESS"
         static let appliedForThisJob = "APPLIED FOR THIS JOB"
         static let applyForJob = "APPLY FOR JOB"
+        static let acceptJob = "ACCEPT JOB"
         static let workingHours = "WORKING HOURS"
     }
 

@@ -46,6 +46,10 @@ extension TrackFlowCoordinator: DMTrackModuleOutput {
 }
 
 extension TrackFlowCoordinator: DMJobDetailModuleOutput {
+    func refreshNotificationList() {
+        
+    }
+    
     
     func presentChat(chatObject: ChatObject) {
         

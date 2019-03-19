@@ -13,35 +13,37 @@ extension DMJobDetailVC: UITableViewDataSource, UITableViewDelegate, JobDescript
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let job = viewOutput?.job else { return UITableViewCell() }
+        
         let cell = UITableViewCell(style: .default, reuseIdentifier: "Blank")
         cell.backgroundColor = UIColor.clear
         cell.selectionStyle = .none
         switch indexPath.section {
         case 0:
-            if job!.jobType == 3 {
+            if job.jobType == 3 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TempJobDetailCell") as? TempJobDetailCell
                 cell?.selectionStyle = .none
                 cell?.delegate = self
-                cell?.setCellData(job: job!, isTagExpanded: self.isTagExpanded, recruiterId: recruiterId)
+                cell?.setCellData(job: job, isTagExpanded: self.isTagExpanded, recruiterId: recruiterId)
                 return cell!
             }else{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "DentistDetailCell") as? DentistDetailCell
                 cell?.selectionStyle = .none
                 cell?.delegate = self
-                cell?.setCellData(job: job!, recruiterId: recruiterId)
+                cell?.setCellData(job: job, recruiterId: recruiterId)
                 return cell!
             }
             
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AboutCell") as? AboutCell
             cell?.selectionStyle = .none
-            cell?.setCellData(job: job!)
+            cell?.setCellData(job: job)
             cell?.googleMapButton.addTarget(self, action: #selector(openMaps), for: .touchUpInside)
             return cell!
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "JobDescriptionCell") as! JobDescriptionCell
-            cell.lblDescription.text = job?.templateDesc
-            let height = JobDescriptionCell.requiredHeight(jobDescription: (job?.templateDesc)!, isReadMore: isReadMore)
+            cell.lblDescription.text = job.templateDesc
+            let height = JobDescriptionCell.requiredHeight(jobDescription: job.templateDesc, isReadMore: isReadMore)
             if height > 91 {
                 cell.constarintBtnReadMoreLessHeight.constant = 41 // Button Show
                 if isReadMore == true {
@@ -59,8 +61,8 @@ extension DMJobDetailVC: UITableViewDataSource, UITableViewDelegate, JobDescript
             return cell
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "OfficeDescriptionCell") as! OfficeDescriptionCell
-            cell.officeDescriptionLabel.text = job?.officeDesc
-            let height = OfficeDescriptionCell.requiredHeight(jobDescription: (job?.officeDesc)!, isReadMore: isReadMoreOffice)
+            cell.officeDescriptionLabel.text = job.officeDesc
+            let height = OfficeDescriptionCell.requiredHeight(jobDescription: job.officeDesc, isReadMore: isReadMoreOffice)
             if height > 91 {
                 cell.heightConstraintReadMoreButton.constant = 41 // Button Show
                 if isReadMoreOffice == true {
@@ -79,13 +81,13 @@ extension DMJobDetailVC: UITableViewDataSource, UITableViewDelegate, JobDescript
 
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "WorkingHoursTableCell") as! WorkingHoursTableCell
-            cell.workingHoursLabel.attributedText = WorkingHoursTableCell.setAllDayText(job: job!)
+            cell.workingHoursLabel.attributedText = WorkingHoursTableCell.setAllDayText(job: job)
             return cell
 
         case 5:
             let cell = tableView.dequeueReusableCell(withIdentifier: "MapCell") as! MapCell
             cell.selectionStyle = .none
-            cell.setPinOnMap(job: job!)
+            cell.setPinOnMap(job: job)
             return cell
         default:
             break
@@ -94,20 +96,21 @@ extension DMJobDetailVC: UITableViewDataSource, UITableViewDelegate, JobDescript
     }
 
     func tableView(_: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        guard let job = viewOutput?.job else { return 0 }
         switch indexPath.section {
         case 0:
             return TableViewCellHeight.jobTitle.rawValue
         case 1:
             return UITableView.automaticDimension//TableViewCellHeight.about.rawValue
         case 2:
-            let height = JobDescriptionCell.requiredHeight(jobDescription: (job?.templateDesc)!, isReadMore: isReadMore)
+            let height = JobDescriptionCell.requiredHeight(jobDescription: job.templateDesc, isReadMore: isReadMore)
             return height
         case 3:
-            let height = OfficeDescriptionCell.requiredHeight(jobDescription: (job?.officeDesc)!, isReadMore: isReadMoreOffice)
+            let height = OfficeDescriptionCell.requiredHeight(jobDescription: job.officeDesc, isReadMore: isReadMoreOffice)
             return height
         case 4:
             // Working hours
-            return WorkingHoursTableCell.requiredHeight(job: job!)
+            return WorkingHoursTableCell.requiredHeight(job: job)
         case 5:
             return TableViewCellHeight.map.rawValue
         default:
@@ -117,19 +120,21 @@ extension DMJobDetailVC: UITableViewDataSource, UITableViewDelegate, JobDescript
     }
 
     func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        guard let job = viewOutput?.job else { return 0 }
+        
         switch indexPath.section {
         case 0:
-            if job!.jobType == 3 {
+            if job.jobType == 3 {
                 return  UITableView.automaticDimension
             }
-            return (job?.isApplied ?? 0 ) > 0 ? TableViewCellHeight.jobTitle.rawValue + 20: TableViewCellHeight.jobTitle.rawValue
+            return job.isApplied > 0 ? TableViewCellHeight.jobTitle.rawValue + 20: TableViewCellHeight.jobTitle.rawValue
         case 1:
             return UITableView.automaticDimension
         case 2:
-            let height = JobDescriptionCell.requiredHeight(jobDescription: (job?.templateDesc)!, isReadMore: isReadMore)
+            let height = JobDescriptionCell.requiredHeight(jobDescription: job.templateDesc, isReadMore: isReadMore)
             return height
         case 3:
-            let height = OfficeDescriptionCell.requiredHeight(jobDescription: (job?.officeDesc)!, isReadMore: isReadMoreOffice)
+            let height = OfficeDescriptionCell.requiredHeight(jobDescription: job.officeDesc, isReadMore: isReadMoreOffice)
             return height
         // return TableViewCellHeight.jobDescAndOfficeDesc.rawValue
         case 4:
@@ -197,8 +202,10 @@ extension DMJobDetailVC: UITableViewDataSource, UITableViewDelegate, JobDescript
     }
 
     @objc func openMaps() {
+        guard let job = viewOutput?.job else { return }
+        
         if UIApplication.shared.canOpenURL(URL(string: kOpenGoogleMapUrl)!) {
-            let url = URL(string: "\(kOpenGoogleMapUrl)?q=\(job!.latitude),\(job!.longitude)&zoom=14")!
+            let url = URL(string: "\(kOpenGoogleMapUrl)?q=\(job.latitude),\(job.longitude)&zoom=14")!
 
             if #available(iOS 10.0, *) {
                 UIApplication.shared.open(url)
@@ -208,7 +215,7 @@ extension DMJobDetailVC: UITableViewDataSource, UITableViewDelegate, JobDescript
             }
 
         } else {
-            let url = URL(string: "\(kGoogleSearchMap)\(job!.latitude),\(job!.longitude)")!
+            let url = URL(string: "\(kGoogleSearchMap)\(job.latitude),\(job.longitude)")!
 
             if #available(iOS 10.0, *) {
                 UIApplication.shared.open(url)
@@ -223,7 +230,7 @@ extension DMJobDetailVC: UITableViewDataSource, UITableViewDelegate, JobDescript
     //MARK: - DentistDetailCellDelegate Method
     //*****************************************//
     func saveOrUnsaveJob() {
-        viewOutput?.saveUnsave(job: job)
+        viewOutput?.saveUnsave()
     }
     
     func seeMoreTags(isExpanded: Bool) {

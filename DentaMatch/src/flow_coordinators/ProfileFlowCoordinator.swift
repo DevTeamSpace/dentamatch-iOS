@@ -16,6 +16,8 @@ class ProfileFlowCoordinator: BaseFlowCoordinator, ProfileFlowCoordinatorProtoco
     weak var navigationController: UINavigationController?
     unowned let delegate: ProfileFlowCoordinatorDelegate
     
+    weak var notificationListModuleInput: DMNotificationsModuleInput?
+    
     init(delegate: ProfileFlowCoordinatorDelegate) {
         self.delegate = delegate
     }
@@ -40,6 +42,8 @@ extension ProfileFlowCoordinator: DMEditProfileModuleOutput {
     
     func showNotifications() {
         guard let moduleInput = DMNotificationInitializer.initialize(moduleOutput: self) else { return }
+        
+        notificationListModuleInput = moduleInput
         let vc = moduleInput.viewController()
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
@@ -128,8 +132,8 @@ extension ProfileFlowCoordinator: DMChangePasswordModuleOutput {
 
 extension ProfileFlowCoordinator: DMNotificationsModuleOutput {
     
-    func showJobDetails(job: Job?, recruiterId: String?) {
-        guard let moduleInput = DMJobDetailInitializer.initialize(job: job, recruiterId: recruiterId, moduleOutput: self) else { return }
+    func showJobDetails(job: Job?, recruiterId: String?, notificationId: String?) {
+        guard let moduleInput = DMJobDetailInitializer.initialize(job: job, recruiterId: recruiterId, notificationId: notificationId, moduleOutput: self) else { return }
         let vc = moduleInput.viewController()
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
@@ -140,6 +144,10 @@ extension ProfileFlowCoordinator: DMNotificationsModuleOutput {
         
         let navCon = UINavigationController(rootViewController: moduleInput.viewController())
         navigationController?.present(navCon, animated: true)
+    }
+    
+    func refreshNotificationList() {
+        notificationListModuleInput?.refreshData()
     }
 }
 

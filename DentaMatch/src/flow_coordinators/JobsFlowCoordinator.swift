@@ -59,8 +59,9 @@ extension JobsFlowCoordinator: DMJobSearchResultModuleOutput {
 }
 
 extension JobsFlowCoordinator: DMJobDetailModuleOutput {
-    
-    
+    func refreshNotificationList() {
+        
+    }
 }
 
 extension JobsFlowCoordinator: DMJobSearchModuleOutput {
@@ -79,8 +80,7 @@ extension JobsFlowCoordinator: DMJobTitleModuleOutput {
 }
 
 extension JobsFlowCoordinator: DMNotificationsModuleOutput {
-    
-    func showJobDetails(job: Job?, recruiterId: String?) {
+    func showJobDetails(job: Job?, recruiterId: String?, notificationId: String?) {
         showJobDetail(job: job, delegate: nil)
     }
     

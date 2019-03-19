@@ -11,13 +11,10 @@ class DMJobDetailVC: DMBaseVC {
     @IBOutlet var btnApplyForJob: UIButton!
     @IBOutlet weak var buttonTemplateView: UIView!
     @IBOutlet weak var bottomBtnConstainer: NSLayoutConstraint!
+    
     var headerHeight: CGFloat = 49.0
-    var jobDetailParams = [String: Any]()
-    var job: Job?
     var isReadMore = false
     var isReadMoreOffice = false
-    weak var delegate: JobSavedStatusUpdateDelegate?
-    var fromTrack = false
     var fromCalender = false
     var fromNotificationVC = false
     var isTagExpanded: Bool = false
@@ -36,11 +33,11 @@ class DMJobDetailVC: DMBaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewOutput?.didLoad()
         setup()
         tblJobDetail.isHidden = true
         setBottomButtonHidden(true)
-        viewOutput?.fetchJob(params: jobDetailParams)
+        
+        viewOutput?.didLoad()
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,7 +46,7 @@ class DMJobDetailVC: DMBaseVC {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if fromTrack {
+        if viewOutput?.fromTrack == true {
             navigationItem.leftBarButtonItem = backBarButton()
             navigationController?.setNavigationBarHidden(false, animated: true)
         }
@@ -57,7 +54,7 @@ class DMJobDetailVC: DMBaseVC {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        if fromTrack {
+        if viewOutput?.fromTrack == true {
             navigationController?.setNavigationBarHidden(true, animated: true)
         }
     }
@@ -95,32 +92,18 @@ class DMJobDetailVC: DMBaseVC {
         tblJobDetail.register(UINib(nibName: "WorkingHoursTableCell", bundle: nil), forCellReuseIdentifier: "WorkingHoursTableCell")
         tblJobDetail.register(UINib(nibName: "MapCell", bundle: nil), forCellReuseIdentifier: "MapCell")
         navigationItem.leftBarButtonItem = backBarButton()
-        // if let params =  UserDefaultsManager.sharedInstance.loadSearchParameter() {
-//            let latStr = params[Constants.JobDetailKey.lat] as! NSString
-//            let longStr = params[Constants.JobDetailKey.lng] as! NSString
-        jobDetailParams = [
-            Constants.ServerKey.jobId: job?.jobId ?? 0,
-        ]
-        // }
     }
 
     // MARK: - @IBAction
 
     @IBAction func actionApplyForJob(_: UIButton) {
-        viewOutput?.applyJob(params: jobDetailParams)
+        viewOutput?.onBottomButtonTapped()
     }
 }
 
 extension DMJobDetailVC: DMJobDetailViewInput {
     
-    func configureView(job: Job?, fromTrack: Bool, delegate: JobSavedStatusUpdateDelegate?) {
-        self.job = job
-        self.fromTrack = fromTrack
-        self.delegate = delegate
-    }
-    
     func configureFetch(job: Job) {
-        self.job = job
         
         /* For Job status
          INVITED = 1
@@ -133,9 +116,17 @@ extension DMJobDetailVC: DMJobDetailViewInput {
         
         if job.isApplied == 1 || job.isApplied == 2 || job.isApplied == 3 || job.isApplied == 4 || job.isApplied == 5 {
             // Hide apply for job button
-            btnApplyForJob.isUserInteractionEnabled = false
-            setBottomButtonHidden(true)
-            btnApplyForJob.setTitle(Constants.Strings.appliedForThisJob, for: .normal)
+            if job.jobType == 3, job.isApplied == 1, viewOutput?.notificationId != nil {
+                btnApplyForJob.isUserInteractionEnabled = true
+                setBottomButtonHidden(false)
+                btnApplyForJob.setTitle(Constants.Strings.acceptJob, for: .normal)
+                
+            } else {
+                
+                btnApplyForJob.isUserInteractionEnabled = false
+                setBottomButtonHidden(true)
+                btnApplyForJob.setTitle(Constants.Strings.appliedForThisJob, for: .normal)
+            }
         } else {
             // If its temp job and cancelled
             if job.jobType == 3 {
@@ -151,46 +142,17 @@ extension DMJobDetailVC: DMJobDetailViewInput {
         tblJobDetail.reloadData()
     }
     
-    func configureJobApply(response: JSON) {
-        
-        if response[Constants.ServerKey.status].boolValue {
-            alertMessage(title: Constants.AlertMessage.congratulations, message: Constants.AlertMessage.jobApplied, buttonText: kOkButtonTitle, completionHandler: {
-            })
-            job?.isApplied = 2
-            if let delegate = self.delegate {
-                if fromTrack {
-                    delegate.jobApplied!(job: job!)
-                }
-            }
-            DispatchQueue.main.async { [weak self] in
-                self?.setBottomButtonHidden(true)
-                self?.btnApplyForJob.setTitle(Constants.Strings.appliedForThisJob, for: .normal)
-                self?.tblJobDetail.reloadData()
-            }
-            //NotificationCenter.default.post(name: .refreshAppliedJobs, object: nil)
-            
-        } else {
-            if response[Constants.ServerKey.statusCode].intValue == 200 {
-                alertMessage(title: "", message: response[Constants.ServerKey.message].stringValue, buttonText: "Ok", completionHandler: {
-                })
-            } else {
-                DispatchQueue.main.async {
-                    kAppDelegate?.showOverlay(isJobSeekerVerified: true)
-                }
-            }
+    func configureJobApply() {
+        DispatchQueue.main.async { [weak self] in
+            self?.setBottomButtonHidden(true)
+            self?.btnApplyForJob.setTitle(Constants.Strings.appliedForThisJob, for: .normal)
+            self?.tblJobDetail.reloadData()
         }
     }
     
-    func configureSaveUnsave(status: Int) {
-        
-        self.job?.isSaved = status
-        if let delegate = self.delegate {
-            delegate.jobUpdate!(job: self.job!)
-        }
+    func reloadRows(at indexPaths: [IndexPath]) {
         DispatchQueue.main.async { [weak self] in
-            self?.tblJobDetail.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
+            self?.tblJobDetail.reloadRows(at: indexPaths, with: .none)
         }
-        NotificationCenter.default.post(name: .refreshSavedJobs, object: nil, userInfo: nil)
-        NotificationCenter.default.post(name: .jobSavedUnsaved, object: self.job, userInfo: nil)
     }
 }
