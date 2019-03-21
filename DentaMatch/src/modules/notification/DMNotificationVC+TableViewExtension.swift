@@ -70,16 +70,11 @@ extension DMNotificationVC: UITableViewDataSource, UITableViewDelegate {
         }
     }
 
-    func tableView(_: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         guard let notificationList = viewOutput?.notificationList else { return nil }
-        let deleteAction = UITableViewRowAction(style: .normal, title: "Delete", handler: { (_: UITableViewRowAction, indexPath: IndexPath) in
-            let notification = notificationList[indexPath.row]
-
-            self.alertMessage(title: "Confirm Deletion", message: "Are you sure you want to delete this notification?", leftButtonText: "Yes", rightButtonText: "No", completionHandler: { [weak self] (isLeft: Bool) in
-                if isLeft {
-                    self?.viewOutput?.deleteNotification(notification)
-                }
-            })
+        let deleteAction = UITableViewRowAction(style: .normal, title: "Delete", handler: { [weak self] (_: UITableViewRowAction, indexPath: IndexPath) in
+            self?.viewOutput?.deleteNotification(notificationList[indexPath.row])
+            tableView.deleteRows(at: [indexPath], with: .automatic)
         })
         deleteAction.backgroundColor = Constants.Color.cancelJobDeleteColor
         return [deleteAction]

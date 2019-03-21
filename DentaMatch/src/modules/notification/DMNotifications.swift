@@ -13,7 +13,6 @@ protocol DMNotificationsModuleOutput: BaseModuleOutput {
 
 protocol DMNotificationsViewInput: BaseViewInput {
     var viewOutput: DMNotificationsViewOutput? { get set }
-    
     func reloadData()
     func addLoadingFooter()
     func redirectToDetail(notiObj: UserNotification)

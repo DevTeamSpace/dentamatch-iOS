@@ -71,7 +71,6 @@ class DMNotificationVC: DMBaseVC {
 }
 
 extension DMNotificationVC: DMNotificationsViewInput {
-    
     func reloadData() {
         pullToRefreshNotifications.endRefreshing()
         notificationTableView.reloadData()

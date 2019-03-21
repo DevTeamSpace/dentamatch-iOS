@@ -3024,7 +3024,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-DentaMatch/Pods-DentaMatch-resources.sh",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 			);
@@ -3035,7 +3035,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DentaMatch/Pods-DentaMatch-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D34E4DE8B9029F6121255E47 /* [CP] Embed Pods Frameworks */ = {
@@ -3044,7 +3044,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-DentaMatch/Pods-DentaMatch-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/IHProgressHUD/IHProgressHUD.framework",
@@ -3083,7 +3083,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DentaMatch/Pods-DentaMatch-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E5302CD81DFE9CAB00984A0B /* ShellScript */ = {

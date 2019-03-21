@@ -15,6 +15,7 @@ class DMNotificationsPresenter: DMNotificationsPresenterProtocol {
     var pageNumber = 1
     var totalNotificationOnServer = 0
     var notificationList = [UserNotification]()
+    var deletedNotificationList = [Int: UserNotification]()
 }
 
 extension DMNotificationsPresenter: DMNotificationsModuleInput {
@@ -140,35 +141,49 @@ extension DMNotificationsPresenter: DMNotificationsViewOutput {
     }
     
     func deleteNotification(_ notification: UserNotification) {
-        guard let notificationId = notification.notificationID else { return }
-        
-        viewInput.showLoading()
+        guard let notificationId = notification.notificationID,
+            let index = notificationList.firstIndex(of: notification)
+        else { return }
+
         APIManager.apiPost(serviceName: Constants.API.deleteNotification, parameters: ["notificationId": notificationId]) { [weak self] (response: JSON?, error: NSError?) in
-            
-            self?.viewInput.hideLoading()
             if let error = error {
                 self?.viewInput.show(toastMessage: error.localizedDescription)
+                self?.returnDeletedNotification(id: notificationId)
                 return
             }
-            
+
             guard let response = response else {
                 self?.viewInput.show(toastMessage: Constants.AlertMessage.somethingWentWrong)
+                self?.returnDeletedNotification(id: notificationId)
                 return
             }
-            
-            if response[Constants.ServerKey.status].boolValue, let index = self?.notificationList.firstIndex(of: notification) {
-                self?.notificationList.remove(at: index)
-                
+
+            if response[Constants.ServerKey.status].boolValue {
+                self?.deletedNotificationList.removeValue(forKey: notificationId)
+
                 if notification.seen == nil || notification.seen == 0 {
                     NotificationCenter.default.post(name: .decreaseBadgeCount, object: nil, userInfo: nil)
                 }
-                
+                self?.viewInput.reloadData()
             } else {
                 self?.viewInput.show(toastMessage: response[Constants.ServerKey.message].stringValue)
+                self?.returnDeletedNotification(id: notificationId)
             }
-            
-            self?.viewInput.reloadData()
         }
+        
+        deletedNotificationList.updateValue(
+            notification,
+            forKey: notificationId
+        )
+        notificationList.remove(at: index)
+    }
+    
+    func returnDeletedNotification(id: Int) {
+        guard let deletedNotification = deletedNotificationList[id] else { return }
+        notificationList.append(deletedNotification)
+        notificationList = notificationList.sorted(by: {$0.notificationID ?? 0 > $1.notificationID ?? 0})
+        deletedNotificationList.removeValue(forKey: id)
+        viewInput.reloadData()
     }
     
     func inviteActionSend(_ notification: UserNotification, actionType: Int) {
