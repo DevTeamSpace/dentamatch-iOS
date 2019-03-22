@@ -15,15 +15,28 @@ enum UserNotificationType: Int {
 
 class DMNotificationVC: DMBaseVC {
     @IBOutlet var notificationTableView: UITableView!
+    @IBOutlet var deleteNotificationLabel: UILabel!
+    @IBOutlet var deletingBarHeightConstraint: NSLayoutConstraint!
+    
+    
     var pullToRefreshNotifications = UIRefreshControl()
     var placeHolderEmptyJobsView: PlaceHolderJobsView?
+    
+    var deletingBarIsHidden = true {
+        willSet {
+            deletingBarHeightConstraint.constant = newValue ? 0 : 60
+            UIView.animate(withDuration: 0.5) { [weak self] in
+                self?.view.layoutIfNeeded()
+            }
+        }
+    }
     
     var viewOutput: DMNotificationsViewOutput?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setup()
+        deletingBarIsHidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,6 +80,9 @@ class DMNotificationVC: DMBaseVC {
         viewOutput?.refreshData()
     }
 
+    @IBAction func cancelDeletionAction(_ sender: Any) {
+        viewOutput?.returnDeletedNotifications()
+    }
     
 }
 
@@ -87,5 +103,16 @@ extension DMNotificationVC: DMNotificationsViewInput {
         footer?.activityIndicator.startAnimating()
         
         notificationTableView.tableFooterView = footer
+    }
+    
+    func setDeletingBar(_ notificationsCount: Int) {
+        if notificationsCount > 0 {
+            if deletingBarIsHidden {
+                deletingBarIsHidden = false
+            }
+            deleteNotificationLabel.text = notificationsCount == 1 ? "1 notification was deleted" : "\(notificationsCount) notifications were deleted"
+        } else {
+            deletingBarIsHidden = true
+        }
     }
 }

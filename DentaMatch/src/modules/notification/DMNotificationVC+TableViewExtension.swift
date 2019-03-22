@@ -74,7 +74,16 @@ extension DMNotificationVC: UITableViewDataSource, UITableViewDelegate {
         guard let notificationList = viewOutput?.notificationList else { return nil }
         let deleteAction = UITableViewRowAction(style: .normal, title: "Delete", handler: { [weak self] (_: UITableViewRowAction, indexPath: IndexPath) in
             self?.viewOutput?.deleteNotification(notificationList[indexPath.row])
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+            if #available(iOS 11.0, *) {
+                tableView.performBatchUpdates({
+                    tableView.deleteRows(at: [indexPath], with: .automatic)
+                }, completion: { _ in
+                    self?.reloadData()
+                })
+            } else {
+                self?.reloadData()
+            }
+            
         })
         deleteAction.backgroundColor = Constants.Color.cancelJobDeleteColor
         return [deleteAction]

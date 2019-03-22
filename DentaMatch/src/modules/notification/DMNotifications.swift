@@ -16,6 +16,7 @@ protocol DMNotificationsViewInput: BaseViewInput {
     func reloadData()
     func addLoadingFooter()
     func redirectToDetail(notiObj: UserNotification)
+    func setDeletingBar(_ notificationsCount: Int)
 }
 
 protocol DMNotificationsViewOutput: BaseViewOutput {
@@ -31,6 +32,7 @@ protocol DMNotificationsViewOutput: BaseViewOutput {
     func deleteNotification(_ notification: UserNotification)
     func inviteActionSend(_ notification: UserNotification, actionType: Int)
     func openChat(chatObject: ChatObject)
+    func returnDeletedNotifications()
 }
 
 protocol DMNotificationsPresenterProtocol: DMNotificationsModuleInput, DMNotificationsViewOutput {
