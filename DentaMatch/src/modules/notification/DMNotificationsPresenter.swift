@@ -149,32 +149,6 @@ extension DMNotificationsPresenter: DMNotificationsViewOutput {
         guard let notificationId = notification.notificationID,
             let index = notificationList.firstIndex(of: notification)
         else { return }
-
-//        APIManager.apiPost(serviceName: Constants.API.deleteNotification, parameters: ["notificationId": notificationId]) { [weak self] (response: JSON?, error: NSError?) in
-//            if let error = error {
-//                self?.viewInput.show(toastMessage: error.localizedDescription)
-//                self?.returnDeletedNotification(id: notificationId)
-//                return
-//            }
-//
-//            guard let response = response else {
-//                self?.viewInput.show(toastMessage: Constants.AlertMessage.somethingWentWrong)
-//                self?.returnDeletedNotification(id: notificationId)
-//                return
-//            }
-//
-//            if response[Constants.ServerKey.status].boolValue {
-//                self?.deletedNotificationList.removeValue(forKey: notificationId)
-//
-//                if notification.seen == nil || notification.seen == 0 {
-//                    NotificationCenter.default.post(name: .decreaseBadgeCount, object: nil, userInfo: nil)
-//                }
-//                self?.viewInput.reloadData()
-//            } else {
-//                self?.viewInput.show(toastMessage: response[Constants.ServerKey.message].stringValue)
-//                self?.returnDeletedNotification(id: notificationId)
-//            }
-//        }
         
         deletedNotificationList.updateValue(
             notification,
@@ -186,13 +160,39 @@ extension DMNotificationsPresenter: DMNotificationsViewOutput {
         deletingNotificationsQueue = DispatchWorkItem(block: { [weak self] in
             self?.deleteNotifications()
         })
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: deletingNotificationsQueue!)
+        guard let deletingQueue = deletingNotificationsQueue else { return }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: deletingQueue)
     }
     
     func deleteNotifications() {
-        //Request
-        deletedNotificationList.removeAll()
-        print("deleted after 3 secs")
+        APIManager.apiPost(serviceName: Constants.API.deleteNotification, parameters: ["notificationIds": deletedNotificationList.keys.map({$0})]) { [weak self] (response: JSON?, error: NSError?) in
+            if let error = error {
+                self?.viewInput.show(toastMessage: error.localizedDescription)
+                self?.returnDeletedNotifications()
+                return
+            }
+
+            guard let response = response else {
+                self?.viewInput.show(toastMessage: Constants.AlertMessage.somethingWentWrong)
+                self?.returnDeletedNotifications()
+                return
+            }
+
+            if response[Constants.ServerKey.status].boolValue {
+                if let deletedNotifications = self?.deletedNotificationList.values {
+                    for notification in deletedNotifications {
+                        if notification.seen == nil || notification.seen == 0 {
+                            NotificationCenter.default.post(name: .decreaseBadgeCount, object: nil, userInfo: nil)
+                        }
+                    }
+                }
+                self?.deletedNotificationList.removeAll()
+                self?.viewInput.reloadData()
+            } else {
+                self?.viewInput.show(toastMessage: response[Constants.ServerKey.message].stringValue)
+                self?.returnDeletedNotifications()
+            }
+        }
     }
     
     func returnDeletedNotifications() {
@@ -200,14 +200,6 @@ extension DMNotificationsPresenter: DMNotificationsViewOutput {
         notificationList.append(contentsOf: deletedNotificationList.values)
         notificationList = notificationList.sorted(by: {$0.notificationID ?? 0 > $1.notificationID ?? 0})
         deletedNotificationList.removeAll()
-        viewInput.reloadData()
-    }
-    
-    func returnDeletedNotification(id: Int) {
-        guard let deletedNotification = deletedNotificationList[id] else { return }
-        notificationList.append(deletedNotification)
-        notificationList = notificationList.sorted(by: {$0.notificationID ?? 0 > $1.notificationID ?? 0})
-        deletedNotificationList.removeValue(forKey: id)
         viewInput.reloadData()
     }
     
