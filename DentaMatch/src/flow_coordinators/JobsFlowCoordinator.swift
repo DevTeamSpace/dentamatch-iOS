@@ -88,8 +88,19 @@ extension JobsFlowCoordinator: DMNotificationsModuleOutput {
         guard let moduleInput = DMChatInitializer.initialize(chatObject: chatObject, moduleOutput: self) else { return }
         navigationController?.present(moduleInput.viewController(), animated: true)
     }
+    
+    func showDaySelect(selectedDates: [Date]) {
+        let (mI, vC) = DaySelectScreenInitializer.initialize(selectedDates: selectedDates, moduleOutput: self)
+        guard let moduleInput = mI, let vc = vC else { return }
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 extension JobsFlowCoordinator: DMChatModuleOutput {
+    
+}
+
+extension JobsFlowCoordinator: DaySelectScreenModuleOutput {
     
 }

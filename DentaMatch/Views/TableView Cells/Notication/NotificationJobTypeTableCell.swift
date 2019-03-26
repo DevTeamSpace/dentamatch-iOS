@@ -21,7 +21,7 @@ class NotificationJobTypeTableCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
         unreadView.layer.cornerRadius = unreadView.bounds.size.height / 2
         unreadView.clipsToBounds = true
         selectionStyle = .none
@@ -29,7 +29,7 @@ class NotificationJobTypeTableCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        // Configure the view for the selected state
+        
     }
 
     func configureNotificationJobTypeTableCell(userNotificationObj: UserNotification) {

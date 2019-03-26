@@ -9,6 +9,7 @@ protocol DMNotificationsModuleOutput: BaseModuleOutput {
     
     func showJobDetails(job: Job?, recruiterId: String?, notificationId: String?)
     func presentChat(chatObject: ChatObject)
+    func showDaySelect(selectedDates: [Date])
 }
 
 protocol DMNotificationsViewInput: BaseViewInput {

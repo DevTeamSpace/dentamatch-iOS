@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DaySelectScreenViewController" customModule="DentaMatch" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="iN0-l3-epB" id="e7w-c6-vxM"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DaySelectScreenView" customModule="DentaMatch" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="Aw4-Kf-Syp">
+                    <rect key="frame" x="0.0" y="45" width="375" height="582"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IqI-B1-hPz">
+                            <rect key="frame" x="53" y="0.0" width="269.5" height="43"/>
+                            <string key="text">Select the days you would like to
+work for this job listing</string>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                            <color key="textColor" red="0.12941176470588234" green="0.22352941176470587" blue="0.47450980392156861" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pyB-Rd-yzg">
+                            <rect key="frame" x="0.0" y="68" width="375" height="451"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </tableView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E3R-Vh-CHV">
+                            <rect key="frame" x="33.5" y="544" width="308" height="38"/>
+                            <color key="backgroundColor" red="0.062745098039215685" green="0.098039215686274508" blue="0.24313725490196078" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="38" id="Wod-Eu-PWN"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                            <inset key="contentEdgeInsets" minX="77" minY="0.0" maxX="77" maxY="0.0"/>
+                            <state key="normal" title="ACCEPT INVITATION">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="acceptButtonAction" destination="-1" eventType="touchUpInside" id="t4L-XZ-c6e"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="pyB-Rd-yzg" firstAttribute="width" secondItem="Aw4-Kf-Syp" secondAttribute="width" id="9GD-e2-GIr"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Aw4-Kf-Syp" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="4VT-y6-Y24"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Aw4-Kf-Syp" secondAttribute="trailing" id="JEL-jh-Nx6"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Aw4-Kf-Syp" secondAttribute="bottom" constant="40" id="bcI-hH-GxS"/>
+                <constraint firstItem="Aw4-Kf-Syp" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="25" id="lE6-vA-djh"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="acceptButton" destination="E3R-Vh-CHV" id="mN0-rZ-0TS"/>
+                <outlet property="tableView" destination="pyB-Rd-yzg" id="qIu-Cr-mev"/>
+            </connections>
+        </view>
+    </objects>
+</document>

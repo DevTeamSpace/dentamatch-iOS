@@ -132,6 +132,13 @@ extension ProfileFlowCoordinator: DMChangePasswordModuleOutput {
 
 extension ProfileFlowCoordinator: DMNotificationsModuleOutput {
     
+    func showDaySelect(selectedDates: [Date]) {
+        let (mI, vC) = DaySelectScreenInitializer.initialize(selectedDates: selectedDates, moduleOutput: self)
+        guard let moduleInput = mI, let vc = vC else { return }
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func showJobDetails(job: Job?, recruiterId: String?, notificationId: String?) {
         guard let moduleInput = DMJobDetailInitializer.initialize(job: job, recruiterId: recruiterId, notificationId: notificationId, moduleOutput: self) else { return }
         let vc = moduleInput.viewController()
@@ -205,6 +212,11 @@ extension ProfileFlowCoordinator: DMJobDetailModuleOutput {
 }
 
 extension ProfileFlowCoordinator: DMRegisterMapsModuleOutput {
+    
+    
+}
+
+extension ProfileFlowCoordinator: DaySelectScreenModuleOutput {
     
     
 }

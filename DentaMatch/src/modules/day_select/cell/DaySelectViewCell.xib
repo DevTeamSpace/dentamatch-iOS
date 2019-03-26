@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="107" id="z9V-Td-a3O" customClass="DaySelectViewCell" customModule="DentaMatch" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="107"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="z9V-Td-a3O" id="bNb-uU-qEO">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="106.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="IVb-b4-d0R">
+                        <rect key="frame" x="24" y="7.5" width="366" height="24"/>
+                        <subviews>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eGl-rP-djX">
+                                <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="MCi-ua-9Ck"/>
+                                    <constraint firstAttribute="width" constant="24" id="tIk-ak-FyR"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Siy-jQ-a8i">
+                                <rect key="frame" x="39" y="0.0" width="327" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="0.11372549019607843" green="0.14901960784313725" blue="0.17254901960784313" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="IVb-b4-d0R" secondAttribute="trailing" constant="24" id="FcX-Jw-JA8"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="IVb-b4-d0R" secondAttribute="bottom" constant="7.5" id="RoQ-bk-IZP"/>
+                    <constraint firstItem="IVb-b4-d0R" firstAttribute="top" secondItem="bNb-uU-qEO" secondAttribute="top" constant="7.5" id="sz4-70-Opj"/>
+                    <constraint firstItem="IVb-b4-d0R" firstAttribute="leading" secondItem="bNb-uU-qEO" secondAttribute="leading" constant="24" id="vap-yb-ghB"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="checkView" destination="eGl-rP-djX" id="pf4-4f-Pur"/>
+                <outlet property="dateLabel" destination="Siy-jQ-a8i" id="z6U-3d-iri"/>
+                <outlet property="stackView" destination="IVb-b4-d0R" id="kHH-Qh-FEa"/>
+            </connections>
+            <point key="canvasLocation" x="231.8840579710145" y="228.01339285714283"/>
+        </tableViewCell>
+    </objects>
+</document>
