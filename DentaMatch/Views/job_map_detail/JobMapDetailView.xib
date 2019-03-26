@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+        <array key="SF-UI-Text-Bold.otf">
+            <string>SFUIText-Bold</string>
+        </array>
+        <array key="SF-UI-Text-Medium.otf">
+            <string>SFUIText-Medium</string>
+        </array>
+        <array key="SF-UI-Text-Regular.otf">
+            <string>SFUIText-Regular</string>
+        </array>
+        <array key="SF-UI-Text-Semibold.otf">
+            <string>SFUIText-Semibold</string>
+        </array>
+        <array key="dentamatch.ttf">
+            <string>dentamatch</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JobMapDetailView" customModule="DentaMatch" customModuleProvider="target">
+            <connections>
+                <outlet property="addressLabel" destination="Iuf-FL-iPl" id="6Ox-bL-qA1"/>
+                <outlet property="availableDaysLabel" destination="Qll-Ii-GuR" id="fpY-s3-tAv"/>
+                <outlet property="favoriteButton" destination="5ik-k2-Agq" id="4gM-3r-c9x"/>
+                <outlet property="jobTitleLabel" destination="mqk-dJ-Nd3" id="Nzs-J3-S0D"/>
+                <outlet property="jobTypeButton" destination="oqN-qC-0vu" id="XgO-1S-Vsy"/>
+                <outlet property="lastUpdatedLabel" destination="r0u-hR-mPu" id="kYz-d7-cPW"/>
+                <outlet property="matchPercentLabel" destination="ntc-dg-7yu" id="DeA-W6-BY5"/>
+                <outlet property="officeNameLabel" destination="QWj-oE-nZN" id="JXw-uj-qLE"/>
+                <outlet property="view" destination="iN0-l3-epB" id="yrB-kM-1Jx"/>
+                <outlet property="wagesStackView" destination="jlP-hz-HeK" id="LFR-Sw-W3X"/>
+                <outlet property="wagesValueLabel" destination="Avc-1b-eW8" id="bLa-8c-G2c"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="260"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="scX-Gp-Xun">
+                    <rect key="frame" x="25" y="17" width="285" height="146"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="HLI-ZT-nE9">
+                            <rect key="frame" x="0.0" y="0.0" width="285" height="55.5"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="UM9-ZY-kUh">
+                                    <rect key="frame" x="0.0" y="0.0" width="215" height="55.5"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="Dental Assistance" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mqk-dJ-Nd3">
+                                            <rect key="frame" x="0.0" y="0.0" width="156" height="21.5"/>
+                                            <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="18"/>
+                                            <color key="textColor" red="0.015686274510000001" green="0.43921568630000002" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="k6I-hZ-3ve">
+                                            <rect key="frame" x="0.0" y="31.5" width="214.5" height="24"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oqN-qC-0vu">
+                                                    <rect key="frame" x="0.0" y="0.0" width="61" height="24"/>
+                                                    <color key="backgroundColor" red="0.5568627451" green="0.81176470590000005" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="61" id="VG9-0C-b81"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="10"/>
+                                                    <state key="normal" title="Part Time">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="248" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Su, Mo, Tu, We, Th, Fr, Sa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qll-Ii-GuR">
+                                                    <rect key="frame" x="69" y="0.0" width="145.5" height="24"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="145.5" id="ecw-EO-NW1"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="12"/>
+                                                    <color key="textColor" red="0.21960784310000001" green="0.21960784310000001" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="24" id="m28-Gx-z87"/>
+                                            </constraints>
+                                        </stackView>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="siR-vN-CCr">
+                                    <rect key="frame" x="220" y="0.0" width="65" height="50"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="flL-js-wYH">
+                                            <rect key="frame" x="0.0" y="0.0" width="65" height="50"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="9mD-9R-WuC">
+                                                    <rect key="frame" x="0.0" y="0.0" width="65" height="55"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ik-k2-Agq">
+                                                            <rect key="frame" x="23" y="0.0" width="42" height="24"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="24" id="XDM-Il-Yb7"/>
+                                                                <constraint firstAttribute="width" constant="42" id="cc1-VT-t4F"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="dentamatch" family="dentamatch" pointSize="20"/>
+                                                            <inset key="titleEdgeInsets" minX="-8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                            <inset key="imageEdgeInsets" minX="-8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                            <state key="normal" title="r">
+                                                                <color key="titleColor" red="0.015686274510000001" green="0.43921568630000002" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="favoriteButtonAction" destination="-1" eventType="touchUpInside" id="eQd-iG-PKD"/>
+                                                            </connections>
+                                                        </button>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mbV-ve-3K7">
+                                                            <rect key="frame" x="8.5" y="24" width="56.5" height="31"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="16.00%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ntc-dg-7yu">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="56.5" height="19"/>
+                                                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
+                                                                    <color key="textColor" red="0.050980392159999999" green="0.066666666669999999" blue="0.1843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MATCH" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qjd-st-uzD">
+                                                                    <rect key="frame" x="0.0" y="19" width="56.5" height="12"/>
+                                                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="10"/>
+                                                                    <color key="textColor" red="0.050980392159999999" green="0.066666666669999999" blue="0.1843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="9WK-Vd-rHF"/>
+                                                <constraint firstAttribute="width" constant="65" id="MaG-hI-yjC"/>
+                                                <constraint firstAttribute="trailing" secondItem="9mD-9R-WuC" secondAttribute="trailing" id="hZ6-7x-Ee5"/>
+                                                <constraint firstItem="9mD-9R-WuC" firstAttribute="leading" secondItem="flL-js-wYH" secondAttribute="leading" id="nC0-IE-sMN"/>
+                                                <constraint firstItem="9mD-9R-WuC" firstAttribute="top" secondItem="flL-js-wYH" secondAttribute="top" id="w79-dG-J6d"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                        </stackView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dr. James Bond" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWj-oE-nZN">
+                            <rect key="frame" x="0.0" y="65.5" width="285" height="17"/>
+                            <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="14"/>
+                            <color key="textColor" red="0.21960784310000001" green="0.21960784310000001" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iuf-FL-iPl">
+                            <rect key="frame" x="0.0" y="92.5" width="285" height="31.5"/>
+                            <string key="text">628 Vermont Street
+San Francisco, CA 94107628</string>
+                            <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="13"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="jlP-hz-HeK">
+                            <rect key="frame" x="0.0" y="129" width="285" height="4"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HOURLY WAGES ACCEPTED" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pUE-TQ-rwY">
+                                    <rect key="frame" x="0.0" y="0.0" width="285" height="0.0"/>
+                                    <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="12"/>
+                                    <color key="textColor" red="0.098039215690000001" green="0.15686274510000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" text="11" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Avc-1b-eW8">
+                                    <rect key="frame" x="0.0" y="4" width="285" height="0.0"/>
+                                    <fontDescription key="fontDescription" name="SFUIText-Bold" family="SF UI Text" pointSize="13"/>
+                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 DAYS AGO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r0u-hR-mPu">
+                            <rect key="frame" x="0.0" y="134" width="285" height="12"/>
+                            <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="10"/>
+                            <color key="textColor" red="0.58431372550000005" green="0.58431372550000005" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="scX-Gp-Xun" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="17" id="kGl-Ft-f54"/>
+                <constraint firstItem="scX-Gp-Xun" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="25" id="tFZ-Ud-mhd"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="scX-Gp-Xun" secondAttribute="bottom" constant="17" id="vTn-AS-QsO"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="scX-Gp-Xun" secondAttribute="trailing" constant="10" id="vas-7p-jet"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="94.400000000000006" y="-29.685157421289357"/>
+        </view>
+    </objects>
+</document>

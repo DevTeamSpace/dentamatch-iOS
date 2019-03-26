@@ -103,7 +103,7 @@ class UserManager: NSObject {
 }
 
 extension UserManager {
-    func loginResponseHandler(response: JSON?, completionHandler: ((_ success: Bool, _ message: String) -> Void)?) {
+    func loginResponseHandler(response: JSON?, completionHandler: ((_ success: Bool, _ message: String) -> Void)? = nil) {
         if let response = response {
             if response[Constants.ServerKey.status].boolValue {
                 let user = User()
@@ -129,6 +129,7 @@ extension UserManager {
                 activeUser = user
 //                self.saveActiveUser()
                 UserDefaultsManager.sharedInstance.isLoggedIn = true
+                SocketIOManager.sharedInstance.establishConnection()
 
                 completionHandler?(true, response[Constants.ServerKey.message].stringValue)
 

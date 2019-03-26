@@ -1,16 +1,10 @@
-//
-//  DentistDetailCell.swift
-//  DentaMatch
-//
-//  Created by Shailesh Tyagi on 18/01/17.
-//  Copyright © 2017 Appster. All rights reserved.
-//
-
 import UIKit
+import RealmSwift
 
-@objc protocol DentistDetailCellDelegate {
-    @objc optional func saveOrUnsaveJob()
-    @objc optional func seeMoreTags(isExpanded: Bool)
+protocol DentistDetailCellDelegate: class {
+    func saveOrUnsaveJob()
+    func seeMoreTags(isExpanded: Bool)
+    func openChat(chatObject: ChatObject)
 }
 
 class DentistDetailCell: UITableViewCell {
@@ -22,8 +16,16 @@ class DentistDetailCell: UITableViewCell {
     @IBOutlet var lblPostTime: UILabel!
     @IBOutlet var lblApplied: UILabel!
     @IBOutlet weak var daysCollectionView: UICollectionView!
+    @IBOutlet weak var messageButton: UIButton! {
+        didSet {
+            messageButton.layer.cornerRadius = 3.0
+            messageButton.addTarget(self, action: #selector(messageButtonAction), for: .touchUpInside)
+        }
+    }
+    
     weak var delegate: DentistDetailCellDelegate?
-
+    var chatObject: ChatObject?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -37,10 +39,16 @@ class DentistDetailCell: UITableViewCell {
     }
 
     @IBAction func actionFavourite(_: UIButton) {
-        delegate?.saveOrUnsaveJob!()
+        delegate?.saveOrUnsaveJob()
+    }
+    
+    @objc private func messageButtonAction() {
+        guard let chatObject = chatObject else { return }
+        
+        delegate?.openChat(chatObject: chatObject)
     }
 
-    func setCellData(job: Job) {
+    func setCellData(job: Job, recruiterId: String? = nil) {
         /* For Job status
          INVITED = 1
          APPLIED = 2
@@ -49,12 +57,18 @@ class DentistDetailCell: UITableViewCell {
          REJECTED = 5
          CANCELLED = 6
          */
+        if let recruiterId = recruiterId {
+            chatObject = ChatObject(recruiterId: recruiterId, officeName: job.officeName)
+        }
+        
+        messageButton.isHidden = true
         lblApplied.isHidden = true
         lblApplied.textColor = Constants.Color.jobAppliedGreenColor
         switch job.isApplied {
         case 1:
             lblApplied.text = "INVITED"
             lblApplied.isHidden = false
+            messageButton.isHidden = !(recruiterId != nil)
             
         case 2:
             lblApplied.text = "APPLIED"
@@ -63,10 +77,12 @@ class DentistDetailCell: UITableViewCell {
         case 3:
             lblApplied.text = "INTERVIEWING"
             lblApplied.isHidden = false
+            messageButton.isHidden = !(recruiterId != nil)
 
         case 4:
             lblApplied.text = "HIRED"
             lblApplied.isHidden = false
+            messageButton.isHidden = !(recruiterId != nil)
 
         case 5:
             lblApplied.text = "REJECTED"

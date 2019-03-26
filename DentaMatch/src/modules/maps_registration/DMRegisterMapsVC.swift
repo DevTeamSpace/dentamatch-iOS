@@ -1,16 +1,6 @@
-//
-//  DMRegisterMapsVC.swift
-//  DentaMatch
-//
-//  Created by Rajan Maheshwari on 26/10/16.
-//  Copyright © 2016 Appster. All rights reserved.
-//
-
 import GoogleMaps
 import GooglePlaces
 import UIKit
-
-
 
 struct Location {
     var postalCode = ""
@@ -45,13 +35,15 @@ class DMRegisterMapsVC: DMBaseVC {
     var addressSelectedFromProfile = ""
     weak var delegate: LocationAddressDelegate?
     var location = Location()
-
-    // MARK: - View LifeCycle
+    
+    var viewOutput: DMRegisterMapsViewOutput?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
         navigationController?.setNavigationBarHidden(true, animated: true)
+        
+        viewOutput?.didLoad()
         setup()
     }
 
@@ -98,8 +90,8 @@ class DMRegisterMapsVC: DMBaseVC {
     }
 
     func goBack() {
-        DispatchQueue.main.async {
-            _ = self.navigationController?.popViewController(animated: true)
+        DispatchQueue.main.async { [weak self] in
+            _ = self?.navigationController?.popViewController(animated: true)
         }
     }
 
@@ -121,21 +113,21 @@ class DMRegisterMapsVC: DMBaseVC {
         filter.type = .noFilter
         let placesClient = GMSPlacesClient()
 
-        placesClient.autocompleteQuery(autoCompleteString as String, bounds: nil, filter: filter) { (results: [GMSAutocompletePrediction]?, error: Error?) in
+        placesClient.autocompleteQuery(autoCompleteString as String, bounds: nil, filter: filter) { [weak self] (results: [GMSAutocompletePrediction]?, error: Error?) in
 
             if error != nil {
                 // debugPrint(error.debugDescription)
                 return
             }
 
-            if self.placesArray.count > 0 {
-                self.placesArray.removeAll()
+            if self?.placesArray.count != 0 {
+                self?.placesArray.removeAll()
             }
 
             for result in results! {
-                self.placesArray.append(result)
+                self?.placesArray.append(result)
             }
-            self.placesTableView.reloadData()
+            self?.placesTableView.reloadData()
         }
     }
 
@@ -208,8 +200,8 @@ class DMRegisterMapsVC: DMBaseVC {
                 }
                 // debugPrint(lines.joined(separator: " "))
                 self.location.address = lines.joined(separator: " ")
-                DispatchQueue.main.async {
-                    self.placeSearchBar.text = lines.joined(separator: " ")
+                DispatchQueue.main.async { [weak self] in
+                    self?.placeSearchBar.text = lines.joined(separator: " ")
                 }
             }
         }
@@ -229,33 +221,46 @@ class DMRegisterMapsVC: DMBaseVC {
     }
 }
 
-// MARK: - SearchBar Delegates
+extension DMRegisterMapsVC: DMRegisterMapsViewInput {
+    
+    func configureViewInput(fromSettings: Bool, delegate: LocationAddressDelegate?) {
+        self.fromSettings = fromSettings
+        self.delegate = delegate
+    }
+    
+    func selectedLocation(_ location: Location) {
+        if let delegate = self.delegate {
+            addressSelected = placeSearchBar.text!
+            delegate.locationAddress(location: location)
+        }
+    }
+}
 
 extension DMRegisterMapsVC: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_: UISearchBar) {
         if fromEditProfile || fromSettings || fromJobSearch {
             if UserManager.shared().activeUser.preferredJobLocation != location.address! {
-                alertMessage(title: "Change Location", message: "Are you sure you want to change the location?", leftButtonText: "No", rightButtonText: "Yes", completionHandler: { (isLeft: Bool) in
+                alertMessage(title: "Change Location", message: "Are you sure you want to change the location?", leftButtonText: "No", rightButtonText: "Yes", completionHandler: { [weak self] (isLeft: Bool) in
                     if !isLeft {
-                        if self.fromSettings {
-                            if self.location.postalCode.isEmptyField {
-                                self.alertMessage(title: "Postal Code", message: "No Postal Code found. Try some other nearby location", buttonText: "Ok", completionHandler: nil)
+                        if self?.fromSettings == true {
+                            if self?.location.postalCode.isEmptyField == true {
+                                self?.alertMessage(title: "Postal Code", message: "No Postal Code found. Try some other nearby location", buttonText: "Ok", completionHandler: nil)
                                 return
                             }
-                            self.locationUpdateAPI(location: self.location)
+                            self?.viewOutput?.locationUpdateApi(location: self?.location ?? Location())
                         } else {
-                            if let delegate = self.delegate {
-                                self.addressSelected = self.placeSearchBar.text!
-                                if self.location.postalCode.isEmptyField {
-                                    self.alertMessage(title: "Postal Code", message: "No Postal Code found. Try some other nearby location", buttonText: "Ok", completionHandler: nil)
+                            if let delegate = self?.delegate {
+                                self?.addressSelected = self?.placeSearchBar.text ?? ""
+                                if self?.location.postalCode.isEmptyField == true {
+                                    self?.alertMessage(title: "Postal Code", message: "No Postal Code found. Try some other nearby location", buttonText: "Ok", completionHandler: nil)
                                     return
                                 }
-                                delegate.locationAddress(location: self.location)
+                                delegate.locationAddress(location: self?.location ?? Location())
                             }
-                            self.goBack()
+                            self?.goBack()
                         }
                     } else {
-                        self.goBack()
+                        self?.goBack()
                     }
                 })
             } else {

@@ -10,6 +10,20 @@ import Photos
 import IHProgressHUD
 import UIKit
 
+protocol BaseViewProtocol {
+    associatedtype ViewClass: UIView
+}
+
+extension BaseViewProtocol where Self: UIViewController {
+    
+    var rootView: ViewClass {
+        get {
+            return view as! ViewClass
+        }
+    }
+    
+}
+
 enum ToastPosition {
     case top
     case bottom
@@ -24,13 +38,6 @@ class DMBaseVC: UIViewController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
-    }
-
-    func openTabbar() {
-        let dashboardVC = TabBarInitializer.initialize()
-        kAppDelegate?.window?.rootViewController = dashboardVC
-        UserDefaultsManager.sharedInstance.isProfileSkipped = true
-        SocketManager.sharedInstance.establishConnection()
     }
 
     func setUpControls() {
@@ -146,7 +153,7 @@ class DMBaseVC: UIViewController {
     }
 
     @objc func backBarButtonItemPressed() {
-        _ = navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
 
     func changeNavBarAppearanceForProfiles() {

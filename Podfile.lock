@@ -21,6 +21,14 @@ PODS:
   - ObjcExceptionBridging (1.0.1):
     - ObjcExceptionBridging/ObjcExceptionBridging (= 1.0.1)
   - ObjcExceptionBridging/ObjcExceptionBridging (1.0.1)
+  - Realm (3.13.1):
+    - Realm/Headers (= 3.13.1)
+  - Realm/Headers (3.13.1)
+  - RealmSwift (3.13.1):
+    - Realm (= 3.13.1)
+  - Socket.IO-Client-Swift (14.0.0):
+    - Starscream (~> 3.0.6)
+  - Starscream (3.0.6)
   - SwiftyJSON (4.2.0)
   - Swinject (2.5.0)
   - SwinjectStoryboard (2.1.0):
@@ -41,6 +49,8 @@ DEPENDENCIES:
   - Instabug
   - KeychainAccess
   - Mixpanel-swift
+  - RealmSwift
+  - Socket.IO-Client-Swift
   - SwiftyJSON
   - Swinject
   - SwinjectStoryboard
@@ -59,6 +69,10 @@ SPEC REPOS:
     - KeychainAccess
     - Mixpanel-swift
     - ObjcExceptionBridging
+    - Realm
+    - RealmSwift
+    - Socket.IO-Client-Swift
+    - Starscream
     - SwiftyJSON
     - Swinject
     - SwinjectStoryboard
@@ -76,11 +90,15 @@ SPEC CHECKSUMS:
   KeychainAccess: b3816fddcf28aa29d94b10ec305cd52be14c472b
   Mixpanel-swift: 79135619a67fadf6ad1da5a6d0548f0c51b359aa
   ObjcExceptionBridging: c30e00eb3700467e695faeea30e26e18bd445001
+  Realm: 50071da38fe079e0735e47c9f2eae738c68c5996
+  RealmSwift: 8a1e6a02b7a08cd17a31e3115143fb69fe5f3fb9
+  Socket.IO-Client-Swift: 21e6a8a23a7d367d5ddfab6cbbd3c679cf3c25d6
+  Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   Swinject: 82cdb851f63f91bba974e3eca1d69780f2f7677e
   SwinjectStoryboard: 688f096033103e66ffcf6ca678211acd7d7be505
   XCGLogger: 7f7f43f15dfe3a305fa1342b7dc29af656289abd
 
-PODFILE CHECKSUM: 53945eb4f67ee2f2d0b27e1e99f10fef414a2a96
+PODFILE CHECKSUM: 8e31cb291828d83a7d6cb47b75d52eca1b521265
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.1

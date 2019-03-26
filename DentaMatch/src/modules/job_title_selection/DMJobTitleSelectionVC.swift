@@ -1,11 +1,3 @@
-//
-//  DMJobTitleSelectionVC.swift
-//  DentaMatch
-//
-//  Created by Rajan Maheshwari on 30/12/16.
-//  Copyright © 2016 Appster. All rights reserved.
-//
-
 import UIKit
 
 class DMJobTitleSelectionVC: DMBaseVC, ToolBarButtonDelegate {
@@ -15,23 +7,21 @@ class DMJobTitleSelectionVC: DMBaseVC, ToolBarButtonDelegate {
     @IBOutlet var prefferedJobLocationLabel: UILabel!
     @IBOutlet var addPhotoButton: UIButton!
     @IBOutlet var profileButton: ProfileImageButton!
-
     @IBOutlet var profileHeaderView: UIView!
 
     var aboutMe = ""
     var profileImage: UIImage?
     var jobSelectionPickerView: JobSelectionPickerView!
-    var jobTitles = [JobTitle]()
-    var selectedJobTitle: JobTitle?
     var licenseNumber = ""
     var state = ""
-
-    // MARK: - View LifeCycle
+    
+    var viewOutput: DMJobTitleSelectionViewOutput?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        viewOutput?.didLoad()
         setup()
-        getJobsAPI()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -69,12 +59,10 @@ class DMJobTitleSelectionVC: DMBaseVC, ToolBarButtonDelegate {
     // MARK: - Private Methods
 
     func setup() {
-        /*let headerView = TitleHeaderView.loadTitleHeaderView()
-        headerView.frame = CGRect(x: 0, y: 0, width: Utilities.ScreenSize.SCREEN_WIDTH, height: 54)
-        jobTitleSelectionTableView.tableHeaderView = headerView*/
 
         jobTitleSelectionTableView.register(UINib(nibName: "AnimatedPHToolTipCell", bundle: nil), forCellReuseIdentifier: "AnimatedPHToolTipCell")
         jobTitleSelectionTableView.register(UINib(nibName: "AboutMeJobSelectionCell", bundle: nil), forCellReuseIdentifier: "AboutMeJobSelectionCell")
+        
         nameLabel.text = "Hi " + UserManager.shared().activeUser.firstName!
         prefferedJobLocationLabel.text = UserManager.shared().activeUser.preferredJobLocation
         addJobSelectionPickerViewTextField()
@@ -119,11 +107,11 @@ class DMJobTitleSelectionVC: DMBaseVC, ToolBarButtonDelegate {
     }
 
     func validateFields() -> Bool {
-        if selectedJobTitle == nil {
+        if viewOutput?.selectedJobTitle == nil {
             makeToast(toastString: "Please select job title")
             return false
         }
-        if selectedJobTitle!.isLicenseRequired {
+        if viewOutput?.selectedJobTitle?.isLicenseRequired == true {
             if licenseNumber.count == 0 {
                 makeToast(toastString: "Please fill license number")
                 return false
@@ -142,10 +130,10 @@ class DMJobTitleSelectionVC: DMBaseVC, ToolBarButtonDelegate {
     }
 
     func isCreateProfileButtonEnable() -> Bool {
-        if selectedJobTitle == nil {
+        if viewOutput?.selectedJobTitle == nil {
             return false
         }
-        if selectedJobTitle!.isLicenseRequired {
+        if viewOutput?.selectedJobTitle?.isLicenseRequired == true {
             if licenseNumber.count == 0 {
                 return false
             }
@@ -181,27 +169,27 @@ class DMJobTitleSelectionVC: DMBaseVC, ToolBarButtonDelegate {
     }
 
     func addPhoto() {
-        cameraGalleryOptionActionSheet(title: "", message: "Please select", leftButtonText: "Take a Photo", rightButtonText: "Choose from Library") { isCameraButtonPressed, _, isCancelButtonPressed in
+        cameraGalleryOptionActionSheet(title: "", message: "Please select", leftButtonText: "Take a Photo", rightButtonText: "Choose from Library") { [weak self] isCameraButtonPressed, _, isCancelButtonPressed in
             if isCancelButtonPressed {
                 // cancel action
             } else if isCameraButtonPressed {
-                self.getPhotoFromCamera()
+                self?.getPhotoFromCamera()
             } else {
-                self.getPhotoFromGallery()
+                self?.getPhotoFromGallery()
             }
         }
     }
 
     func getPhotoFromCamera() {
-        CameraGalleryManager.shared.openCamera(viewController: self, allowsEditing: false, completionHandler: {  [weak self](image: UIImage?, error: NSError?) in
+        CameraGalleryManager.shared.openCamera(viewController: self, allowsEditing: false, completionHandler: { [weak self] (image: UIImage?, error: NSError?) in
             if error != nil {
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [weak self] in
                     self?.makeToast(toastString: (error?.localizedDescription)!)
                 }
                 return
             }
             self?.profileImage = image
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
                 self?.profileButton.setImage(image, for: .normal)
             }
         })
@@ -210,13 +198,13 @@ class DMJobTitleSelectionVC: DMBaseVC, ToolBarButtonDelegate {
     func getPhotoFromGallery() {
         CameraGalleryManager.shared.openGallery(viewController: self, allowsEditing: false, completionHandler: {  [weak self](image: UIImage?, error: NSError?) in
             if error != nil {
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [weak self] in
                     self?.makeToast(toastString: (error?.localizedDescription)!)
                 }
                 return
             }
             self?.profileImage = image
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
                 self?.profileButton.setImage(image, for: .normal)
             }
         })
@@ -234,7 +222,7 @@ class DMJobTitleSelectionVC: DMBaseVC, ToolBarButtonDelegate {
 
     @IBAction func nextButtonPressed(_: Any) {
         if profileImage != nil {
-            if selectedJobTitle != nil {
+            if viewOutput?.selectedJobTitle != nil {
                 // openLicenseScreen()
                 // uploadProfileImageAPI()
             } else {
@@ -246,34 +234,32 @@ class DMJobTitleSelectionVC: DMBaseVC, ToolBarButtonDelegate {
     }
 
     func openLicenseScreen() {
-        guard let vc = DMLicenseSelectionInitializer.initialize() as? DMLicenseSelectionVC else { return }
-        vc.jobTitles = jobTitles
-        vc.selectedJobTitle = selectedJobTitle
-        
-        navigationController?.pushViewController(vc, animated: true)
-    }
-
-    func openDashboard() {
-        let dashboardVC = TabBarInitializer.initialize()
-        kAppDelegate?.window?.rootViewController = dashboardVC
-        UserDefaultsManager.sharedInstance.isProfileSkipped = true
+        assertionFailure("Implement")
+//        guard let vc = DMLicenseSelectionInitializer.initialize() as? DMLicenseSelectionVC else { return }
+//        vc.jobTitles = jobTitles
+//        vc.selectedJobTitle = selectedJobTitle
+//
+//        navigationController?.pushViewController(vc, animated: true)
     }
 
     @IBAction func createProfileButtonPressed(_: Any) {
         if validateFields() {
-            var params = [
-                "jobTitleId": selectedJobTitle!.jobId,
+            
+            var params: [String: Any] = [
+                "jobTitleId": viewOutput?.selectedJobTitle?.jobId ?? -1,
                 "aboutMe": aboutMe,
-            ] as [String: Any]
-            if selectedJobTitle!.isLicenseRequired {
+            ]
+            
+            if viewOutput?.selectedJobTitle?.isLicenseRequired == true {
                 params["license"] = licenseNumber
                 params["state"] = state
             }
+            
             if profileImage != nil {
-                uploadProfileImageAPI(textParams: params)
-            } else {
-                updateLicenseDetails(params: params)
+                params["type"] = "profile_pic"
             }
+            
+            viewOutput?.onCreateProfileButtonTap(profileImage: profileImage, params: params)
         }
     }
 
@@ -285,18 +271,25 @@ class DMJobTitleSelectionVC: DMBaseVC, ToolBarButtonDelegate {
     }
     
     func goToStates(_ text: String?) {
-        guard let searchVc = SearchStateInitializer.initialize() as? SearchStateViewController else { return }
-        searchVc.delegate = self
-        searchVc.preSelectedState = self.state
-        self.navigationController?.pushViewController(searchVc, animated: true)
+        viewOutput?.openStates(preselectedState: text, delegate: self)
+    }
+}
+
+extension DMJobTitleSelectionVC: DMJobTitleSelectionViewInput {
+    
+    func configureView(jobTitles: [JobTitle]) {
+        jobSelectionPickerView.setup(jobTitles: jobTitles)
+        jobSelectionPickerView.pickerView.reloadAllComponents()
+        jobSelectionPickerView.backgroundColor = UIColor.white
     }
 }
 
 extension DMJobTitleSelectionVC: SearchStateViewControllerDelegate {
+    
     func selectedState(state: String?) {
         guard let text = state else {return}
-          self.state = text
-        //editProfileParams[Constants.ServerKey.state] = state
+        
+        self.state = text
         self.jobTitleSelectionTableView.reloadData()
     }
 }

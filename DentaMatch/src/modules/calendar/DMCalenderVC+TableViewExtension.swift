@@ -1,11 +1,3 @@
-//
-//  DMCalenderVC+TableViewExtension.swift
-//  DentaMatch
-//
-//  Created by Sanjay Kumar Yadav on 30/01/17.
-//  Copyright © 2017 Appster. All rights reserved.
-//
-
 import Foundation
 
 extension DMCalenderVC: UITableViewDelegate, UITableViewDataSource {
@@ -48,41 +40,52 @@ extension DMCalenderVC: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        return selectedDayList.count
+        let cellCount = viewOutput?.selectedDayList.count ?? 0
+        return cellCount == 0 ? 1 : cellCount
     }
 
-    func tableView(_: UITableView, canEditRowAt _: IndexPath) -> Bool {
-        return true
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        guard let cell = tableView.cellForRow(at: indexPath) else { return false }
+        return !(cell is EmptyJobsCalendarCell)
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "JobSearchResultCell") as? JobSearchResultCell
-        let job = selectedDayList[indexPath.row]
-        cell?.setCellData(job: job)
-        cell?.handlePartTimeLabel(job: job)
-
-        cell?.lblJobTitle.text = job.jobtitle
-        cell?.lblDocName.text = job.officeName
-        cell?.lblAddress.text = job.address
-        cell?.lblDistance.isHidden = true
-        cell?.selectionStyle = .none
-
-//            cell?.lblDistance.text = String(format: "%.2f", job.distance) + " miles"
-        cell?.btnType.setTitle(getJobTypeText(jobType: job.jobType), for: .normal)
-        cell?.btnFavourite.isHidden = true
-        cell?.jobTitleLeftConstraint.constant = 20
-        cell?.contentView.layoutIfNeeded()
-        return cell!
+        
+        if viewOutput?.selectedDayList.count == 0 {
+            
+            return tableView.dequeueReusableCell(withIdentifier: EmptyJobsCalendarCell.identifier, for: indexPath)
+        } else {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "JobSearchResultCell") as? JobSearchResultCell
+            guard let job = viewOutput?.selectedDayList[indexPath.row] else { return UITableViewCell() }
+            cell?.setCellData(job: job)
+            cell?.handlePartTimeLabel(job: job)
+            
+            cell?.lblJobTitle.text = job.jobtitle
+            cell?.lblDocName.text = job.officeName
+            cell?.lblAddress.text = job.address
+            cell?.lblDistance.isHidden = true
+            cell?.selectionStyle = .none
+            
+            //            cell?.lblDistance.text = String(format: "%.2f", job.distance) + " miles"
+            cell?.btnType.setTitle(getJobTypeText(jobType: job.jobType), for: .normal)
+            cell?.btnFavourite.isHidden = true
+            cell?.jobTitleLeftConstraint.constant = 20
+            cell?.contentView.layoutIfNeeded()
+            return cell!
+        }
     }
 
     func tableView(_: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let deleteAction = UITableViewRowAction(style: .normal, title: "Cancel Job", handler: { (_: UITableViewRowAction, indexPath: IndexPath) in
-            let job = self.selectedDayList[indexPath.row]
+        
+        let deleteAction = UITableViewRowAction(style: .normal, title: "Cancel Job", handler: { [unowned self] (_: UITableViewRowAction, indexPath: IndexPath) in
+            guard let job = self.viewOutput?.selectedDayList[indexPath.row] else { return }
 
             self.openCancelJob(job: job, fromApplied: false)
             self.bookedJobsTableView.setEditing(false, animated: true)
         })
-        let job = selectedDayList[indexPath.row]
+        
+        guard let job = viewOutput?.selectedDayList[indexPath.row] else { return nil }
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         let currentDate = formatter.date(from: job.currentDate) ?? Date()
@@ -95,21 +98,18 @@ extension DMCalenderVC: UITableViewDelegate, UITableViewDataSource {
         return [deleteAction]
     }
 
-    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let jobDetailVC = DMJobDetailInitializer.initialize() as? DMJobDetailVC else { return }
-        jobDetailVC.fromCalender = false
-        jobDetailVC.job = selectedDayList[indexPath.row]
-        jobDetailVC.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(jobDetailVC, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        
+        if tableView.cellForRow(at: indexPath) is EmptyJobsCalendarCell {
+            return
+        }
+        
+        viewOutput?.openJobDetail(index: indexPath.row)
     }
 
     func openCancelJob(job: Job, fromApplied: Bool) {
-        guard let cancelJobVC = DMCancelJobInitializer.initialize() as? DMCancelJobVC else { return }
-        cancelJobVC.job = job
-        cancelJobVC.hidesBottomBarWhenPushed = true
-        cancelJobVC.fromApplied = fromApplied
-        cancelJobVC.delegate = self
-        navigationController?.pushViewController(cancelJobVC, animated: true)
+        viewOutput?.openCancelJob(job: job, fromApplied: fromApplied, delegate: self)
     }
 
     func getJobTypeText(jobType: Int) -> String {
@@ -125,17 +125,15 @@ extension DMCalenderVC: UITableViewDelegate, UITableViewDataSource {
 
 extension DMCalenderVC: CancelledJobDelegate {
     func cancelledJob(job: Job, fromApplied _: Bool) {
-        hiredList.removeObject(object: job)
-        selectedDayList.removeObject(object: job)
+        
+        viewOutput?.hiredList.removeObject(object: job)
+        viewOutput?.selectedDayList.removeObject(object: job)
         calendar?.reloadData()
         bookedJobsTableView.reloadData()
-        let fullTime = hiredList.filter({ (job) -> Bool in
+        guard let fullTime = viewOutput?.hiredList.filter({ (job) -> Bool in
             job.jobType == 1
-        })
-        if fullTime.count > 0 {
-            fulltimeJobIndicatorView.isHidden = false
-        } else {
-            fulltimeJobIndicatorView.isHidden = true
-        }
+        }) else { return }
+        
+        fulltimeIndicatorViewHidden(fullTime.count > 0)
     }
 }

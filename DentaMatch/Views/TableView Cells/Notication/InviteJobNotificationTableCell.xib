@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -19,17 +20,17 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="215"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DdN-tD-iCB" id="mYF-c6-KOm">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="214"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="214.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="You have been hired for Dental Hygienists job" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Scf-N1-CSh">
-                        <rect key="frame" x="39" y="16" width="242" height="47"/>
+                        <rect key="frame" x="39" y="16" width="242" height="47.5"/>
                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="15"/>
                         <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Em-sq-rtW">
-                        <rect key="frame" x="39" y="71" width="242" height="54"/>
+                        <rect key="frame" x="39" y="71.5" width="242" height="54"/>
                         <string key="text">Dr. Bensen Lab
 628 Vermont Street
 San Francisco, CA 94107</string>
@@ -38,7 +39,7 @@ San Francisco, CA 94107</string>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WqE-so-pEu">
-                        <rect key="frame" x="39" y="160" width="242" height="10"/>
+                        <rect key="frame" x="39" y="160.5" width="242" height="10"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="10" id="8Wr-tP-E1Z"/>
                         </constraints>
@@ -47,21 +48,39 @@ San Francisco, CA 94107</string>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PW2-Pc-cq8">
-                        <rect key="frame" x="39" y="131" width="242" height="21"/>
+                        <rect key="frame" x="39" y="131.5" width="242" height="21"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X3S-2m-CFG">
-                                <rect key="frame" x="1" y="0.0" width="61" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.94509803920000002" green="0.72156862749999995" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="10"/>
-                                <state key="normal" title="Temporary">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="jeG-uv-pjU">
+                                <rect key="frame" x="0.0" y="0.0" width="138" height="21"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X3S-2m-CFG">
+                                        <rect key="frame" x="0.0" y="0.0" width="61" height="21"/>
+                                        <color key="backgroundColor" red="0.94509803920000002" green="0.72156862749999995" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="61" id="5FC-4V-ESf"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="10"/>
+                                        <state key="normal" title="Temporary">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hQp-6g-pHz">
+                                        <rect key="frame" x="77" y="0.0" width="61" height="21"/>
+                                        <color key="backgroundColor" red="0.01597504504" green="0.43919795750000001" blue="0.7537487745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <state key="normal" title="Message">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="jeG-uv-pjU" secondAttribute="bottom" id="4RC-39-sFm"/>
+                            <constraint firstItem="jeG-uv-pjU" firstAttribute="top" secondItem="PW2-Pc-cq8" secondAttribute="top" id="Kjg-W5-jCX"/>
                             <constraint firstAttribute="height" constant="21" id="ovb-5n-aa8"/>
+                            <constraint firstItem="jeG-uv-pjU" firstAttribute="leading" secondItem="PW2-Pc-cq8" secondAttribute="leading" id="shW-4O-kvC"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6L8-Bc-dFB">
@@ -73,14 +92,14 @@ San Francisco, CA 94107</string>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ts5-Xu-rLG">
-                        <rect key="frame" x="0.0" y="213" width="320" height="1"/>
+                        <rect key="frame" x="0.0" y="213.5" width="320" height="1"/>
                         <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="mMT-fR-TRo"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b77-E0-R6u">
-                        <rect key="frame" x="39" y="175" width="147" height="30"/>
+                        <rect key="frame" x="39" y="175.5" width="147" height="30"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sdp-ap-Ink">
                                 <rect key="frame" x="0.0" y="0.0" width="57" height="30"/>
@@ -149,6 +168,7 @@ San Francisco, CA 94107</string>
                 <outlet property="btnDelete" destination="K5L-cg-6HT" id="V2M-yX-eN7"/>
                 <outlet property="btnJobType" destination="X3S-2m-CFG" id="lKQ-bu-j0H"/>
                 <outlet property="jobTypeView" destination="PW2-Pc-cq8" id="ZLw-da-hTd"/>
+                <outlet property="messageButton" destination="hQp-6g-pHz" id="9xB-us-Znh"/>
                 <outlet property="notificationJobLocationLabel" destination="0Em-sq-rtW" id="Ytd-gb-Fy4"/>
                 <outlet property="notificationTextLabel" destination="Scf-N1-CSh" id="qol-Zq-Jwr"/>
                 <outlet property="notificationTimeLabel" destination="WqE-so-pEu" id="LHL-aG-Agd"/>

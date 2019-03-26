@@ -1,11 +1,3 @@
-//
-//  DMJobSearchVC+TableViewCellDelegateExtension.swift
-//  DentaMatch
-//
-//  Created by Shailesh Tyagi on 30/01/17.
-//  Copyright © 2017 Appster. All rights reserved.
-//
-
 import Foundation
 
 extension DMJobSearchVC: DMJobTitleVCDelegate {
@@ -13,7 +5,7 @@ extension DMJobSearchVC: DMJobTitleVCDelegate {
         self.jobTitles.removeAll()
         self.jobTitles = jobTitles
         tblViewJobSearch.beginUpdates()
-        tblViewJobSearch.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .top)
+        tblViewJobSearch.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .fade)
         tblViewJobSearch.endUpdates()
     }
 

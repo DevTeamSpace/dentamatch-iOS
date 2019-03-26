@@ -1,11 +1,3 @@
-//
-//  DMSettingVC+TableViewExtension.swift
-//  DentaMatch
-//
-//  Created by Sanjay Kumar Yadav on 21/01/17.
-//  Copyright © 2017 Appster. All rights reserved.
-//
-
 import Foundation
 
 extension DMSettingVC: UITableViewDataSource, UITableViewDelegate {
@@ -60,64 +52,24 @@ extension DMSettingVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            if let mapVC = DMRegisterMapsInitializer.initialize() as? DMRegisterMapsVC {
-                mapVC.fromSettings = true
-                mapVC.delegate = self
-                navigationController?.pushViewController(mapVC, animated: true)
-            }
+            viewOutput?.openRegisterMaps(delegate: self)
         case 1:
-            let vc = DMChangePasswordInitializer.initialize()
-            navigationController?.pushViewController(vc, animated: true)
+            viewOutput?.openResetPassword()
         case 2:
-            if let vc = DMTermsAndConditionsInitializer.initialize() as? DMTermsAndConditionsVC {
-                vc.isPrivacyPolicy = false
-                navigationController?.pushViewController(vc, animated: true)
-            }
+            viewOutput?.openTermsAndConditions(isPrivacyPolicy: false)
         case 3:
-            if let vc = DMTermsAndConditionsInitializer.initialize() as? DMTermsAndConditionsVC {
-                vc.isPrivacyPolicy = true
-                navigationController?.pushViewController(vc, animated: true)
-            }
+            viewOutput?.openTermsAndConditions(isPrivacyPolicy: true)
         case 4:
             // logout
-            self.alertMessage(title: "Logout", message: "Are you sure you want to logout?", leftButtonText: "Yes", rightButtonText: "No", completionHandler: { [weak self](isLeft: Bool) in
+            self.alertMessage(title: "Logout", message: "Are you sure you want to logout?", leftButtonText: "Yes", rightButtonText: "No", completionHandler: { [weak self] (isLeft: Bool) in
                 if isLeft {
-                  self?.openLogin()
+                  self?.viewOutput?.signOut()
                 }
             })
             
             break
         default: break
         }
-    }
-
-    func openLogin() {
-        signOut { check, _ in
-
-            if check == true {
-                AppDelegate.delegate().resetBadgeCount()
-                MixpanelOperations.mixpanepanelLogout()
-                self.deleteFetchController()
-                SocketManager.sharedInstance.closeConnection()
-                UserManager.shared().deleteActiveUser()
-                UserDefaultsManager.sharedInstance.clearCache()
-                
-                let navController = UINavigationController(rootViewController: DMRegistrationContainerInitializer.initialize())
-                navController.setNavigationBarHidden(true, animated: false)
-                
-                UserDefaultsManager.sharedInstance.isLoggedOut = true
-                UIView.transition(with: self.view.window!, duration: 0.25, options: .transitionCrossDissolve, animations: {
-                    kAppDelegate?.window?.rootViewController = navController
-                }) { (_: Bool) in
-                    // completion
-                    DatabaseManager.clearDB()
-                }
-            }
-        }
-    }
-
-    func deleteFetchController() {
-        NotificationCenter.default.post(name: .deleteFetchController, object: nil)
     }
 }
 

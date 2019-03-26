@@ -1,12 +1,5 @@
-//
-//  DMCalendarSetAvailabillityVC.swift
-//  DentaMatch
-//
-//  Created by Sanjay Kumar Yadav on 26/01/17.
-//  Copyright © 2017 Appster. All rights reserved.
-//
-
 import UIKit
+import SwiftyJSON
 
 class DMCalendarSetAvailabillityVC: DMBaseVC {
     @IBOutlet var calenderTableView: UITableView!
@@ -19,10 +12,13 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
     var availablitytModel: UserAvailability? = UserAvailability()
     var gregorian: NSCalendar?
     var fromRoot = false
+    
+    var viewOutput: DMCalendarSetAvailabilityViewOutput?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        viewOutput?.didLoad()
         setup()
     }
 
@@ -49,18 +45,6 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
         calenderTableView.register(UINib(nibName: "TemporyJobCell", bundle: nil), forCellReuseIdentifier: "TemporyJobCell")
 
         navigationItem.rightBarButtonItem = rightBarButton()
-        if fromJobSelection {
-            UserDefaultsManager.sharedInstance.isProfileCompleted = true
-            // self.autoFillData()
-            navigationItem.hidesBackButton = true
-        } else {
-            navigationItem.leftBarButtonItem = backBarButton()
-        }
-        let month1 = Date.getMonthAndYearForm(date: Date())
-        getMyAvailabilityFromServer(month: month1.month, year: month1.year) { _, _ in
-
-            self.calenderTableView.reloadData()
-        }
     }
 
     // By Default set all days as available
@@ -115,14 +99,7 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
             return
         }
 
-        setMyAvailabilityOnServer { _, _ in
-            // debugPrint(response ?? "response not available")
-            if self.fromJobSelection {
-                kAppDelegate?.goToDashBoard()
-            } else {
-                _ = self.navigationController?.popViewController(animated: true)
-            }
-        }
+        setMyAvailabilityOnServer()
     }
 
     func checkValidations() -> Bool {
@@ -142,6 +119,7 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
                 return false
             }
         }
+        
         return true
     }
 
@@ -154,5 +132,58 @@ class DMCalendarSetAvailabillityVC: DMBaseVC {
             return true
         }
         return false
+    }
+}
+
+extension DMCalendarSetAvailabillityVC: DMCalendarSetAvailabilityViewInput {
+    
+    func configureView(fromJobSelection: Bool) {
+        
+        self.fromJobSelection = fromJobSelection
+        
+        if fromJobSelection {
+            UserDefaultsManager.sharedInstance.isProfileCompleted = true
+            navigationItem.hidesBackButton = true
+        } else {
+            navigationItem.leftBarButtonItem = backBarButton()
+        }
+    }
+    
+    func reloadData() {
+        calenderTableView.reloadData()
+    }
+    
+    func configureWithAvailability(response: JSON) {
+        
+        if response[Constants.ServerKey.status].boolValue {
+            let resultDic = response[Constants.ServerKey.result]
+            self.availablitytModel = UserAvailability(dict: resultDic)
+            if (self.availablitytModel?.isParttimeMonday)! || (self.availablitytModel?.isParttimeTuesday)! || (self.availablitytModel?.isParttimeWednesday)! || (self.availablitytModel?.isParttimeThursday)! || (self.availablitytModel?.isParttimeFriday)! || (self.availablitytModel?.isParttimeSaturday)! || (self.availablitytModel?.isParttimeSunday)! {
+                self.availablitytModel?.isParttime = true
+                self.isPartTimeDayShow = true
+                self.isJobTypePartTime = "1"
+                
+            } else {
+                self.availablitytModel?.isParttime = false
+                self.isPartTimeDayShow = false
+                self.isJobTypePartTime = "0"
+            }
+            if self.availablitytModel?.isFulltime == true {
+                self.isJobTypeFullTime = "1"
+                
+            } else {
+                self.isJobTypeFullTime = "0"
+            }
+            if (self.availablitytModel?.tempJobDates.count)! > 0 {
+                self.isTemporyAvail = true
+            } else {
+                self.isTemporyAvail = false
+            }
+            
+        } else {
+            self.makeToast(toastString: response[Constants.ServerKey.message].stringValue)
+        }
+        
+        calenderTableView.reloadData()
     }
 }

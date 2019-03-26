@@ -74,6 +74,7 @@ extension Constants {
         static let congratulations = "Congratulations"
         static let niceToMeetYou = "Nice to Meet You"
         static let jobApplied = "You have successfully applied for the job."
+        static let jobAccepted = "You have successfully accept this job."
         static let completeYourProfile = "Complete your profile"
         static let completeYourProfileDetailMsg = "You’ll need to filling out your profile before applying for the job. Would you like to fill this out now?"
         

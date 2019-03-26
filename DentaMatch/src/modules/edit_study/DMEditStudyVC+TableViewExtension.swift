@@ -10,11 +10,11 @@ import Foundation
 
 extension DMEditStudyVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        return schoolCategories.count
+        return viewOutput?.schoolCategories.count ?? 0
     }
 
     func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let schoolCategory = schoolCategories[indexPath.row]
+        guard let schoolCategory = viewOutput?.schoolCategories[indexPath.row] else { return 0 }
         if !schoolCategory.isOpen {
             return 60
         } else { return 202 }
@@ -27,7 +27,8 @@ extension DMEditStudyVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func updateCellForStudyCell(cell: StudyCell, indexPath: IndexPath) {
-        let school = schoolCategories[indexPath.row]
+        guard let viewOutput = viewOutput else { return }
+        let school = viewOutput.schoolCategories[indexPath.row]
         cell.headingButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         cell.schoolNameTextField.text = ""
         cell.yearOfGraduationTextField.text = ""
@@ -44,7 +45,7 @@ extension DMEditStudyVC: UITableViewDataSource, UITableViewDelegate {
         cell.yearOfGraduationTextField.returnKeyType = .done
         cell.schoolNameTextField.keyboardType = .asciiCapable
 
-        for dict in selectedData {
+        for dict in viewOutput.selectedData {
             if let selectedDict = dict as? NSDictionary, let parentId = selectedDict["parentId"] as? String {
                 if parentId == "\(school.schoolCategoryId)" {
                     if let schoolName = selectedDict["other"] as? String {
@@ -63,7 +64,7 @@ extension DMEditStudyVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     @objc func buttonTapped(sender: UIButton) {
-        let school = schoolCategories[sender.tag]
+        guard let school = viewOutput?.schoolCategories[sender.tag] else { return }
         if school.isOpen {
             school.isOpen = false
         } else {
@@ -72,26 +73,15 @@ extension DMEditStudyVC: UITableViewDataSource, UITableViewDelegate {
         // school[sender.tag] = dict
 
         studyTableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .automatic)
-        DispatchQueue.main.async {
-            self.studyTableView.scrollToRow(at: IndexPath(row: sender.tag, section: 0), at: .bottom, animated: true)
-        }
-    }
-
-    func checkForEmptySchoolField() {
-        let emptyData = NSMutableArray()
-        for category in selectedData {
-            if let dict = category as? NSMutableDictionary, let other = dict["other"] as? String  {
-                if other.isEmptyField {
-                    emptyData.add(dict)
-                }
-            }
+        DispatchQueue.main.async { [weak self] in
+            self?.studyTableView.scrollToRow(at: IndexPath(row: sender.tag, section: 0), at: .bottom, animated: true)
         }
     }
 }
 
 extension DMEditStudyVC: UITextFieldDelegate {
     @objc func textFieldDidChange(textField: UITextField) {
-        let schoolCategory = schoolCategories.filter({ $0.schoolCategoryId == "\(textField.tag)" }).first
+        let schoolCategory = viewOutput?.schoolCategories.filter({ $0.schoolCategoryId == "\(textField.tag)" }).first
 
         let university = schoolCategory?.universities.filter({ $0.universityName == textField.text })
 
@@ -109,7 +99,7 @@ extension DMEditStudyVC: UITextFieldDelegate {
         } else {
             let schoolId = "\(textField.tag)"
 
-            var universities = schoolCategories.filter({ $0.schoolCategoryId == schoolId }).first?.universities
+            var universities = viewOutput?.schoolCategories.filter({ $0.schoolCategoryId == schoolId }).first?.universities
 
             universities = universities?.filter({ $0.universityName.range(of: textField.text!, options: .caseInsensitive, range: Range(uncheckedBounds: ($0.universityName.startIndex, $0.universityName.endIndex)), locale: nil) != nil })
 
@@ -144,24 +134,24 @@ extension DMEditStudyVC: UITextFieldDelegate {
 
         // debugPrint("textFieldDidEndEditing")
 
-        let school = schoolCategories.filter({ $0.schoolCategoryId == "\(textField.tag)" }).first
+        let school = viewOutput?.schoolCategories.filter({ $0.schoolCategoryId == "\(textField.tag)" }).first
 
         if textField.inputView is YearPickerView {
             // debugPrint("year picker")
         } else {
-            if !isFilledFromAutoComplete {
+            if viewOutput?.isFilledFromAutoComplete == false {
                 var flag = 0
 
-                if selectedData.count == 0 {
+                if viewOutput?.selectedData.count == 0 {
                     let dict = NSMutableDictionary()
                     dict["parentId"] = "\(textField.tag)"
                     dict["schoolId"] = "\(textField.tag)"
                     dict["other"] = textField.text!
                     dict["parentName"] = school?.schoolCategoryName
-                    selectedData.add(dict)
+                    viewOutput?.selectedData.add(dict)
                     flag = 1
                 } else {
-                    for category in selectedData {
+                    for category in viewOutput?.selectedData ?? NSMutableArray() {
                         if let dict = category as? NSMutableDictionary, let parentId = dict["parentId"] as? String  {
                             if parentId == "\(textField.tag)" {
                                 dict["other"] = textField.text!
@@ -178,12 +168,12 @@ extension DMEditStudyVC: UITextFieldDelegate {
                     dict["schoolId"] = "\(textField.tag)"
                     dict["other"] = textField.text!
                     dict["parentName"] = school?.schoolCategoryName
-                    selectedData.add(dict)
+                    viewOutput?.selectedData.add(dict)
                 }
             }
-            isFilledFromAutoComplete = false
+            viewOutput?.isFilledFromAutoComplete = false
         }
-        checkForEmptySchoolField()
+        viewOutput?.checkForEmptySchoolField()
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

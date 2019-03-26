@@ -1,11 +1,3 @@
-//
-//  DMJobTitleSelectionVC+TextFieldDelegates.swift
-//  DentaMatch
-//
-//  Created by Rajan Maheshwari on 06/11/17.
-//  Copyright © 2017 Appster. All rights reserved.
-//
-
 import Foundation
 
 extension DMJobTitleSelectionVC: UITextViewDelegate {
@@ -46,8 +38,8 @@ extension DMJobTitleSelectionVC: UITextViewDelegate {
 
     func textViewDidBeginEditing(_ textView: UITextView) {
         jobTitleSelectionTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 200, right: 0)
-        DispatchQueue.main.async {
-            self.jobTitleSelectionTableView.scrollToRow(at: IndexPath(row: 3, section: 0), at: .bottom, animated: true)
+        DispatchQueue.main.async { [weak self] in
+            self?.jobTitleSelectionTableView.scrollToRow(at: IndexPath(row: 3, section: 0), at: .bottom, animated: true)
         }
 
         if let cell = self.jobTitleSelectionTableView.cellForRow(at: IndexPath(row: 3, section: 0)) as? AboutMeJobSelectionCell {

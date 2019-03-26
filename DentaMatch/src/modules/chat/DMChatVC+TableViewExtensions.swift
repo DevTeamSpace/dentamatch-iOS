@@ -1,49 +1,18 @@
-//
-//  DMChatVC+TableViewExtensions.swift
-//  DentaMatch
-//
-//  Created by Rajan Maheshwari on 06/02/17.
-//  Copyright © 2017 Appster. All rights reserved.
-//
-
 import Foundation
 
 extension DMChatVC: UITableViewDataSource, UITableViewDelegate {
+    
     func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-       guard let chat = fetchedResultsController.object(at: indexPath) as? Chat else { return 0 }
-        if let message = chat.message {
-            return MessageSenderTableCell.calculateHeight(text: message)
-        } else {
-            return 0
-        }
+        guard let chatsArray = viewOutput?.chatsArray else { return 0.0 }
+        return MessageSenderTableCell.calculateHeight(text: chatsArray[indexPath.section][indexPath.row].message)
     }
 
     func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if printData == true {
-            if let sections = fetchedResultsController.sections {
-                for i in 0 ..< sections.count {
-                    let sectionInfo = sections[i]
-                    LogManager.logDebug(sectionInfo.name)
-                    LogManager.logDebug(sectionInfo.numberOfObjects.description)
-                }
-                printData = false
-            }
-        }
-        if let sections = fetchedResultsController.sections {
-            let sectionInfo = sections[section]
-            return sectionInfo.numberOfObjects
-        }
-        return 0
+        return viewOutput?.chatsArray[section].count ?? 0
     }
 
     func numberOfSections(in _: UITableView) -> Int {
-        if fetchedResultsController != nil {
-            if let sections = fetchedResultsController.sections {
-                return sections.count
-            }
-            return 0
-        }
-        return 0
+        return viewOutput?.chatsArray.count ?? 0
     }
 
     func tableView(_: UITableView, heightForHeaderInSection _: Int) -> CGFloat {
@@ -51,23 +20,24 @@ extension DMChatVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if let sections = fetchedResultsController.sections {
-            let section = sections[section]
-            let sectionView = UIView(frame: CGRect(x: 0, y: 0, width: Utilities.ScreenSize.SCREEN_WIDTH, height: 40))
-            let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 30))
-            label.font = UIFont.fontRegular(fontSize: 13.0)
-            label.textColor = UIColor.color(withHexCode: "8e9091")
-            label.textAlignment = .center
-            label.text = section.name
-            label.center = sectionView.center
-            sectionView.addSubview(label)
-            return sectionView
-        }
-        return nil
+        guard let chatsArray = viewOutput?.chatsArray,
+            let dateString = chatsArray[section].first?.dateString else { return nil }
+        
+        let sectionView = UIView(frame: CGRect(x: 0, y: 0, width: Utilities.ScreenSize.SCREEN_WIDTH, height: 40))
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 30))
+        label.font = UIFont.fontRegular(fontSize: 13.0)
+        label.textColor = UIColor.color(withHexCode: "8e9091")
+        label.textAlignment = .center
+        label.text = dateString
+        label.center = sectionView.center
+        sectionView.addSubview(label)
+        return sectionView
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let chat = fetchedResultsController.object(at: indexPath) as? Chat else {return UITableViewCell()}
+        guard let chatsArray = viewOutput?.chatsArray else { return UITableViewCell() }
+        let chat = chatsArray[indexPath.section][indexPath.row]
+        
         if let _ = UserManager.shared().activeUser {
             if chat.fromId == UserManager.shared().activeUser.userId {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "MessageSenderTableCell") as! MessageSenderTableCell

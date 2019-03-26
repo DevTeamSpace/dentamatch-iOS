@@ -129,6 +129,7 @@ class ToastView: UIView {
     }
 
     private func showToast() {
+        guard kAppDelegate?.rootFlowCoordinator?.canShowChatNotification() == true else { return }
         UIApplication.shared.keyWindow?.addSubview(self)
         UIView.animate(withDuration: animationDuration, animations: {
             self.frame = CGRect(x: 0, y: 0, width: screenWidth, height: self.frame.size.height)

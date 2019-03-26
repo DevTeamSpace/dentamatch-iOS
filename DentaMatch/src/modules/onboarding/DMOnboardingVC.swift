@@ -1,11 +1,3 @@
-//
-//  DMOnboardingVC.swift
-//  DentaMatch
-//
-//  Created by Rajan Maheshwari on 13/10/16.
-//  Copyright © 2016 Appster. All rights reserved.
-//
-
 import UIKit
 
 class DMOnboardingVC: DMBaseVC {
@@ -15,6 +7,8 @@ class DMOnboardingVC: DMBaseVC {
     @IBOutlet weak var onboardingCollectionView: UICollectionView!
     @IBOutlet weak var collectionviewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var pageControlBottomConstraint: NSLayoutConstraint!
+    
+    var viewOutput: DMOnboardingViewOutput?
     var images = ["onBoarding1", "onBoarding3", "onBoarding4", "onBoarding2"]
 
     let headings = [
@@ -31,17 +25,21 @@ class DMOnboardingVC: DMBaseVC {
         Constants.SubHeading.subHeading2
     ]
 
-    // MARK: - View LifeCycle
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         automaticallyAdjustsScrollViewInsets = false
         setup()
-        // Do any additional setup after loading the view.
     }
+}
 
-    // MARK: - Private Methods
+extension DMOnboardingVC: DMOnboardingViewInput {
+    
+    
+}
 
+extension DMOnboardingVC {
+    
     func setup() {
         skipButton.isExclusiveTouch = true
         getStartedButton.isHidden = true
@@ -54,24 +52,14 @@ class DMOnboardingVC: DMBaseVC {
             pageControlBottomConstraint.constant = 30.0
         }
     }
-
-    // MARK: - IBActions
+    
     @IBAction func skipButtonPressed(_: AnyObject) {
-        // Go to login/Registration
-        let navController = UINavigationController(rootViewController: DMRegistrationContainerInitializer.initialize())
-        navController.setNavigationBarHidden(true, animated: false)
-
-        UIView.transition(with: view.window!, duration: 0.25, options: .transitionCrossDissolve, animations: {
-            kAppDelegate?.window?.rootViewController = navController
-        }) { (_: Bool) in
-            // completion
-        }
+        UserDefaultsManager.sharedInstance.isOnBoardingDone = true
+        dismiss(animated: true)
     }
 }
 
 extension DMOnboardingVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-
-    // MARK: - CollectionView Datasource
 
     func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
         return images.count
@@ -87,8 +75,6 @@ extension DMOnboardingVC: UICollectionViewDataSource, UICollectionViewDelegateFl
         return cell
     }
 
-    // MARK: - CollectionView Delegate
-
     func collectionView(_ collectionView: UICollectionView, layout _: UICollectionViewLayout, sizeForItemAt _: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.size.width, height: collectionView.frame.size.height)
     }
@@ -96,8 +82,6 @@ extension DMOnboardingVC: UICollectionViewDataSource, UICollectionViewDelegateFl
     func collectionView(_: UICollectionView, layout _: UICollectionViewLayout, minimumLineSpacingForSectionAt _: Int) -> CGFloat {
         return 0
     }
-
-    // MARK: - ScrollView Delegates
 
     func scrollViewDidEndDecelerating(_: UIScrollView) {
         let pageWidth = onboardingCollectionView.frame.size.width
@@ -110,6 +94,5 @@ extension DMOnboardingVC: UICollectionViewDataSource, UICollectionViewDelegateFl
             skipButton.isHidden = false
             getStartedButton.isHidden = true
         }
-        // debugPrint(page)
     }
 }

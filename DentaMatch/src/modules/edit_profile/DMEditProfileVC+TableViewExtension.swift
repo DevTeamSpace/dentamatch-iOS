@@ -1,11 +1,3 @@
-//
-//  DMEditProfileVC+TableViewExtension.swift
-//  DentaMatch
-//
-//  Created by Rajan Maheshwari on 17/01/17.
-//  Copyright © 2017 Appster. All rights reserved.
-//
-
 import Foundation
 
 extension DMEditProfileVC: UITableViewDataSource, UITableViewDelegate {
@@ -14,6 +6,7 @@ extension DMEditProfileVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        guard let viewOutput = viewOutput else { return 0 }
         let profileOptions = EditProfileOptions(rawValue: indexPath.section)!
         switch profileOptions {
         case .profileHeader:
@@ -40,28 +33,28 @@ extension DMEditProfileVC: UITableViewDataSource, UITableViewDelegate {
             if indexPath.row == 0 {
                 return 45
             }
-            if experiences.count == 0 {
+            if viewOutput.experiences.count == 0 {
                 return 72
             } else {
                 // Experience Cell
                 let row = indexPath.row - 1
-                let references = experiences[row].references.count
+                let references = viewOutput.experiences[row].references.count
 
                 if references == 0 {
                     return 128
                 } else if references == 1 {
                     // 200 if one reference is present
                     // 128 if no reference is present
-                    let height = checkReferenceIsAvaialble(ref: experiences[row].references[0]) == true ? 200 : 120
+                    let height = checkReferenceIsAvaialble(ref: viewOutput.experiences[row].references[0]) == true ? 200 : 120
 
-                    if indexPath.row == experiences.count {
+                    if indexPath.row == viewOutput.experiences.count {
                         // maintain space to bottom
                         return CGFloat(height + 20)
                     }
                     return CGFloat(height)
 
                 } else if references == 2 {
-                    if indexPath.row == experiences.count {
+                    if indexPath.row == viewOutput.experiences.count {
                         return 285
                     }
                     // 2 reference
@@ -75,7 +68,7 @@ extension DMEditProfileVC: UITableViewDataSource, UITableViewDelegate {
                 return 45
             } else {
                 var height: CGFloat = 0
-                height = schoolCategories.count == 0 ? CGFloat(72) : EditProfileSchoolCell.requiredHeight(school: schoolCategories[indexPath.row - 1])
+                height = viewOutput.schoolCategories.count == 0 ? CGFloat(72) : EditProfileSchoolCell.requiredHeight(school: viewOutput.schoolCategories[indexPath.row - 1])
                 return height
             }
 
@@ -83,11 +76,11 @@ extension DMEditProfileVC: UITableViewDataSource, UITableViewDelegate {
             if indexPath.row == 0 {
                 return 45
             }
-            if skills.count == 0 {
+            if viewOutput.skills.count == 0 {
                 return 72
             } else {
                 // Brick skill cell height
-                if indexPath.row == skills.count {
+                if indexPath.row == viewOutput.skills.count {
                     return (getHeightForSkillsRow(indexPath: indexPath) + 55)
                 }
                 return (getHeightForSkillsRow(indexPath: indexPath) + 35)
@@ -97,11 +90,11 @@ extension DMEditProfileVC: UITableViewDataSource, UITableViewDelegate {
             if indexPath.row == 0 {
                 return 45
             }
-            if affiliations.count == 0 {
+            if viewOutput.affiliations.count == 0 {
                 return 72
             } else {
                 // Brick affiliation cell height
-                return (getHeightForAffilation(affiliations: affiliations) + 60)
+                return (getHeightForAffilation(affiliations: viewOutput.affiliations) + 60)
 //                return 72
             }
 
@@ -117,7 +110,7 @@ extension DMEditProfileVC: UITableViewDataSource, UITableViewDelegate {
             return 0
 
         case .certifications:
-            let certificate = certifications[indexPath.row]
+            let certificate = viewOutput.certifications[indexPath.row]
             if (certificate.certificateImageURL?.isEmpty)! {
                 return 110
             } else {
@@ -127,39 +120,40 @@ extension DMEditProfileVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let viewOutput = viewOutput else { return 0 }
         let profileOptions = EditProfileOptions(rawValue: section)!
 
         switch profileOptions {
         case .profileHeader:
             return 1
         case .dentalStateboard:
-            if dentalStateBoardURL.isEmpty {
+            if viewOutput.dentalStateBoardURL.isEmpty {
                 return 2
             } else {
                 return 1
             }
 
         case .keySkills:
-            if skills.count == 0 {
+            if viewOutput.skills.count == 0 {
                 return 2
             } else {
-                return skills.count + 1
+                return viewOutput.skills.count + 1
             }
 
         case .schooling:
-            if schoolCategories.count == 0 {
+            if viewOutput.schoolCategories.count == 0 {
                 return 2
             } else {
-                return schoolCategories.count + 1
+                return viewOutput.schoolCategories.count + 1
             }
 
         case .affiliations:
             return 2
         case .certifications:
-            return certifications.count
+            return viewOutput.certifications.count
         case .experience:
-            if experiences.count > 0 {
-                return experiences.count + 1
+            if viewOutput.experiences.count > 0 {
+                return viewOutput.experiences.count + 1
             } else {
                 return 2
             }
@@ -168,6 +162,7 @@ extension DMEditProfileVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let viewOutput = viewOutput else { return UITableViewCell() }
         let profileOptions = EditProfileOptions(rawValue: indexPath.section)!
 
         switch profileOptions {
@@ -184,19 +179,19 @@ extension DMEditProfileVC: UITableViewDataSource, UITableViewDelegate {
 
             cell.statusButton.isHidden = true
 
-            if isJobSeekerVerified == "0" || isJobSeekerVerified == "2" {
+            if viewOutput.isJobSeekerVerified == "0" || viewOutput.isJobSeekerVerified == "2" {
                 cell.statusButton.isHidden = false
                 cell.statusButton.setBackgroundImage(UIImage(named: "pendingButton"), for: .normal)
                 cell.statusButton.setTitle("Pending", for: .normal)
                 cell.profileButton.progressBar.progressBarProgressColor = UIColor.color(withHexCode: "e7aa4d")
-            } else if isProfileCompleted == "0" {
+            } else if viewOutput.isProfileCompleted == "0" {
                 cell.statusButton.isHidden = false
                 cell.statusButton.setBackgroundImage(UIImage(named: "needsAttention"), for: .normal)
                 cell.statusButton.setTitle("Needs Attention", for: .normal)
                 cell.profileButton.progressBar.progressBarProgressColor = UIColor.color(withHexCode: "fc3238")
             }
 
-            if isJobSeekerVerified == "1" && isProfileCompleted == "1" {
+            if viewOutput.isJobSeekerVerified == "1" && viewOutput.isProfileCompleted == "1" {
                 cell.statusButton.isHidden = false
                 cell.statusButton.setBackgroundImage(UIImage(named: "activeButton"), for: .normal)
                 cell.statusButton.setTitle("Active", for: .normal)
@@ -214,7 +209,7 @@ extension DMEditProfileVC: UITableViewDataSource, UITableViewDelegate {
             return cell
 
         case .dentalStateboard:
-            if dentalStateBoardURL.isEmpty {
+            if viewOutput.dentalStateBoardURL.isEmpty {
                 if indexPath.row == 0 {
                     let cell = makeHeadingCell(heading: "DENTAL STATE BOARD")
                     return cell
@@ -229,9 +224,9 @@ extension DMEditProfileVC: UITableViewDataSource, UITableViewDelegate {
                 cell.validityDateAttributedLabel.isHidden = true
                 cell.certificateNameLabel.isHidden = true
                 cell.editButton.removeTarget(nil, action: nil, for: .allEvents)
-                cell.editButton.addTarget(self, action: #selector(openDentalStateBoardScreen), for: .touchUpInside)
+                //cell.editButton.addTarget(self, action: #selector(openDentalStateBoardScreen), for: .touchUpInside)
                 cell.editButton.isHidden = false
-                if let imageUrl = URL(string: dentalStateBoardURL) {
+                if let imageUrl = URL(string: viewOutput.dentalStateBoardURL) {
                     cell.certificateImageView.setImage(withURL: imageUrl, placeholder: kCertificatePlaceHolder)
                     
                 }
@@ -241,19 +236,19 @@ extension DMEditProfileVC: UITableViewDataSource, UITableViewDelegate {
         case .experience:
             if indexPath.row == 0 {
                 let cell = makeHeadingCell(heading: "EXPERIENCE")
-                cell.editButton.isHidden = experiences.count > 0 ? false : true
+                cell.editButton.isHidden = viewOutput.experiences.count > 0 ? false : true
                 cell.editButton.removeTarget(nil, action: nil, for: .allEvents)
                 cell.editButton.addTarget(self, action: #selector(openWorkExperienceScreen), for: .touchUpInside)
                 return cell
             } else {
-                if experiences.count == 0 {
+                if viewOutput.experiences.count == 0 {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "AddProfileOptionTableCell") as! AddProfileOptionTableCell
                     cell.profileOptionLabel.text = "Add work experience"
                     return cell
                 } else {
                     // Experience Cell
                     let cell = tableView.dequeueReusableCell(withIdentifier: "EditProfileExperienceCell") as! EditProfileExperienceCell
-                    let experience = experiences[indexPath.row - 1]
+                    let experience = viewOutput.experiences[indexPath.row - 1]
                     cell.jobTitleLabel.text = experience.jobTitle
 //                    let yearExp:Double = Double(experience.experienceInMonth)/12
                     let expInText = calculateMothsAndYear(expInMoth: experience.experienceInMonth)
@@ -312,18 +307,18 @@ extension DMEditProfileVC: UITableViewDataSource, UITableViewDelegate {
         case .schooling:
             if indexPath.row == 0 {
                 let cell = makeHeadingCell(heading: "EDUCATION / TRAINING")
-                cell.editButton.isHidden = schoolCategories.count > 0 ? false : true
+                cell.editButton.isHidden = viewOutput.schoolCategories.count > 0 ? false : true
                 cell.editButton.removeTarget(nil, action: nil, for: .allEvents)
                 cell.editButton.addTarget(self, action: #selector(openSchoolsScreen), for: .touchUpInside)
                 return cell
             } else {
-                if schoolCategories.count == 0 {
+                if viewOutput.schoolCategories.count == 0 {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "AddProfileOptionTableCell") as! AddProfileOptionTableCell
                     cell.profileOptionLabel.text = "Add education and training"
                     return cell
                 } else {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "EditProfileSchoolCell") as! EditProfileSchoolCell
-                    let school = schoolCategories[indexPath.row - 1]
+                    let school = viewOutput.schoolCategories[indexPath.row - 1]
                     cell.schoolCategoryLabel.text = school.schoolCategoryName
                     cell.universityNameLabel.text = EditProfileSchoolCell.makeUniversityText(school: school)
                     return cell
@@ -333,18 +328,18 @@ extension DMEditProfileVC: UITableViewDataSource, UITableViewDelegate {
         case .keySkills:
             if indexPath.row == 0 {
                 let cell = makeHeadingCell(heading: "KEY SKILLS")
-                cell.editButton.isHidden = skills.count > 0 ? false : true
+                cell.editButton.isHidden = viewOutput.skills.count > 0 ? false : true
                 cell.editButton.removeTarget(nil, action: nil, for: .allEvents)
                 cell.editButton.addTarget(self, action: #selector(openSkillsScreen), for: .touchUpInside)
                 return cell
             } else {
-                if skills.count == 0 {
+                if viewOutput.skills.count == 0 {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "AddProfileOptionTableCell") as! AddProfileOptionTableCell
                     cell.profileOptionLabel.text = "Add skills category"
                     return cell
                 } else {
                     // Brick Skill Cell
-                    let skill = skills[indexPath.row - 1]
+                    let skill = viewOutput.skills[indexPath.row - 1]
                     let cell = tableView.dequeueReusableCell(withIdentifier: "EditProfileSkillBrickCell") as! EditProfileSkillBrickCell
                     cell.skillLabel.text = skill.skillName
                     cell.updateSkills(subSkills: skill.subSkills)
@@ -355,19 +350,19 @@ extension DMEditProfileVC: UITableViewDataSource, UITableViewDelegate {
         case .affiliations:
             if indexPath.row == 0 {
                 let cell = makeHeadingCell(heading: "PROFESSIONAL AFFILIATIONS")
-                cell.editButton.isHidden = affiliations.count > 0 ? false : true
+                cell.editButton.isHidden = viewOutput.affiliations.count > 0 ? false : true
                 cell.editButton.removeTarget(nil, action: nil, for: .allEvents)
                 cell.editButton.addTarget(self, action: #selector(openAffiliationsScreen), for: .touchUpInside)
                 return cell
             } else {
-                if affiliations.count == 0 {
+                if viewOutput.affiliations.count == 0 {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "AddProfileOptionTableCell") as! AddProfileOptionTableCell
                     cell.profileOptionLabel.text = "Add professional affiliations"
                     return cell
                 } else {
                     // Affiliation brick cell
                     let cell = tableView.dequeueReusableCell(withIdentifier: "EditProfileAffiliationBrickCell") as! EditProfileAffiliationBrickCell
-                    cell.updateAffiliations(affiliation: affiliations)
+                    cell.updateAffiliations(affiliation: viewOutput.affiliations)
                     return cell
                 }
             }
@@ -379,15 +374,15 @@ extension DMEditProfileVC: UITableViewDataSource, UITableViewDelegate {
                 cell.editButton.isHidden = true
                 cell.editButton.removeTarget(nil, action: nil, for: .allEvents)
                 cell.editButton.addTarget(self, action: #selector(openEditLicenseScreen), for: .touchUpInside)
-                if let _ = license {
+                if let _ = viewOutput.license {
                     cell.editButton.isHidden = false
                 }
                 return cell
             } else {
-                if let _ = license {
+                if let _ = viewOutput.license {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "EditLicenseTableCell") as! EditLicenseTableCell
-                    cell.stateLabel.text = license?.state
-                    cell.licenceNumberLabel.text = license?.number
+                    cell.stateLabel.text = viewOutput.license?.state
+                    cell.licenceNumberLabel.text = viewOutput.license?.number
                     return cell
                 } else {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "AddProfileOptionTableCell") as! AddProfileOptionTableCell
@@ -397,7 +392,7 @@ extension DMEditProfileVC: UITableViewDataSource, UITableViewDelegate {
             }
 
         case .certifications:
-            let certificate = certifications[indexPath.row]
+            let certificate = viewOutput.certifications[indexPath.row]
             // Certificate not uploaded cell
             if (certificate.certificateImageURL?.isEmpty)! {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyCertificateTableViewCell") as! EmptyCertificateTableViewCell
@@ -453,37 +448,38 @@ extension DMEditProfileVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let viewOutput = viewOutput else { return }
         let profileOptions = EditProfileOptions(rawValue: indexPath.section)!
 
         switch profileOptions {
         case .dentalStateboard:
-            if dentalStateBoardURL.isEmpty {
-                openDentalStateBoardScreen(isEditMode: false)
+            if viewOutput.dentalStateBoardURL.isEmpty {
+                //openDentalStateBoardScreen(isEditMode: false)
             }
         case .licenseNumber:
-            guard let _ = license else {
+            guard let _ = viewOutput.license else {
                 // debugPrint("License Not added")
                 openEditLicenseScreen(editMode: false)
                 return
             }
 
         case .experience:
-            if experiences.count == 0 {
+            if viewOutput.experiences.count == 0 {
                 openWorkExperienceScreen()
             }
 
         case .schooling:
-            if schoolCategories.count == 0 {
+            if viewOutput.schoolCategories.count == 0 {
                 openSchoolsScreen()
             }
 
         case .keySkills:
-            if skills.count == 0 {
+            if viewOutput.skills.count == 0 {
                 openSkillsScreen()
             }
 
         case .affiliations:
-            if affiliations.count == 0 {
+            if viewOutput.affiliations.count == 0 {
                 openAffiliationsScreen()
             }
 
@@ -492,7 +488,7 @@ extension DMEditProfileVC: UITableViewDataSource, UITableViewDelegate {
             button.tag = indexPath.row
 
             // Only open on cell touch when no certificate is there for the category
-            if (certifications[indexPath.row].certificateImageURL?.isEmpty)! {
+            if (viewOutput.certifications[indexPath.row].certificateImageURL?.isEmpty)! {
                 openCertificateScreen(sender: button)
             }
 
@@ -568,7 +564,8 @@ extension DMEditProfileVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func getHeightForSkillsRow(indexPath: IndexPath) -> CGFloat {
-        let subSkills = skills[indexPath.row - 1].subSkills
+        guard let viewOutput = viewOutput else { return 0 }
+        let subSkills = viewOutput.skills[indexPath.row - 1].subSkills
         let tagList: TagList = {
             let view = TagList()
             view.backgroundColor = Constants.Color.jobSkillBrickColor
@@ -607,9 +604,8 @@ extension Double {
 
 extension DMEditProfileVC: EditProfileHeaderTableCellDelegate {
     func showNotificationList() {
-        guard let notification = DMNotificationInitializer.initialize() as? DMNotificationVC else { return }
-        notification.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(notification, animated: true)
+        
+        viewOutput?.openNotifications()
     }
     
 }

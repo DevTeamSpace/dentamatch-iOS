@@ -4,15 +4,20 @@ import SwinjectStoryboard
 
 class DMJobTitleInitializer {
     
-    class func initialize(delegate: DMJobTitleVCDelegate?) -> UIViewController? {
+    class func initialize(selectedTitles: [JobTitle]?, forLocation: Bool, locations: [PreferredLocation]?, delegate: DMJobTitleVCDelegate, moduleOutput: DMJobTitleModuleOutput) -> DMJobTitleModuleInput? {
+        guard let viewInput = SwinjectStoryboard.create(name: Constants.StoryBoard.jobSearchStoryboard, bundle: nil, container: appContainer).instantiateViewController(withIdentifier: String(describing: DMJobTitleVC.self)) as? DMJobTitleViewInput else { return nil }
         
-        let vc = SwinjectStoryboard.create(name: Constants.StoryBoard.jobSearchStoryboard, bundle: nil, container: appContainer).instantiateViewController(withIdentifier: String(describing: DMJobTitleVC.self)) as? DMJobTitleVC
-        vc?.delegate = delegate
+        let presenter = appContainer.resolve(DMJobTitlePresenterProtocol.self, arguments: selectedTitles, forLocation, locations, delegate, viewInput, moduleOutput)
+        viewInput.viewOutput = presenter
         
-        return vc
+        return presenter
     }
     
     class func register(for container: Container) {
+        
+        container.register(DMJobTitlePresenterProtocol.self) { r, selectedTitles, forLocation, locations, delegate, viewInput, moduleOutput in
+            return DMJobTitlePresenter(selectedTitles: selectedTitles, forLocation: forLocation, locations: locations, delegate: delegate, viewInput: viewInput, moduleOutput: moduleOutput)
+        }
         
         container.storyboardInitCompleted(DMJobTitleVC.self, name: String(describing: DMJobTitleVC.self)) { _, _ in }
     }

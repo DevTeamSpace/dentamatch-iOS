@@ -114,13 +114,14 @@ class DMStudyVC: DMBaseVC {
     }
     
     func openSkillsScreen() {
-        guard let skillsVC = DMSkillsInitializer.initialize() as? DMSkillsVC,
-            let selectSkillsVC = DMSelectSkillsInitializer.initialize() as? DMSelectSkillsVC else { return }
-        
-        let sideMenu = SSASideMenu(contentViewController: skillsVC, rightMenuViewController: selectSkillsVC)
-        sideMenu.panGestureEnabled = false
-        sideMenu.delegate = skillsVC
-        navigationController?.pushViewController(sideMenu, animated: true)
+        assertionFailure("Implement")
+//        guard let skillsVC = DMSkillsInitializer.initialize() as? DMSkillsVC,
+//            let selectSkillsVC = DMSelectSkillsInitializer.initialize() as? DMSelectSkillsVC else { return }
+//
+//        let sideMenu = SSASideMenu(contentViewController: skillsVC, rightMenuViewController: selectSkillsVC)
+//        sideMenu.panGestureEnabled = false
+//        sideMenu.delegate = skillsVC
+//        navigationController?.pushViewController(sideMenu, animated: true)
     }
 }
 

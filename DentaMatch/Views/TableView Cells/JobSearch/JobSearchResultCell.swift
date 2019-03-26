@@ -8,16 +8,17 @@
 
 import UIKit
 
+enum JobType: Int {
+    case fullTime = 1
+    case partTime = 2
+    case temporary = 3
+}
+
 @objc protocol JobSearchResultCellDelegate {
     @objc optional func saveOrUnsaveJob(index: Int)
 }
 
 class JobSearchResultCell: UITableViewCell {
-    enum JobType: Int {
-        case fullTime = 1
-        case partTime = 2
-        case temporary = 3
-    }
 
     @IBOutlet var jobTitleLeftConstraint: NSLayoutConstraint!
     @IBOutlet var wagesViewHeightConstraint: NSLayoutConstraint!

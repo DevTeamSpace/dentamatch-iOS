@@ -1,19 +1,23 @@
-//
-//  NotificationJobTypeTableCell.swift
-//  DentaMatch
-//
-//  Created by Sanjay Kumar Yadav on 09/02/17.
-//  Copyright © 2017 Appster. All rights reserved.
-//
-
 import UIKit
+
+protocol NotificationTableCellDelegate: class {
+    
+    func onMessageButtonTapped(chatObject: ChatObject)
+}
 
 class NotificationJobTypeTableCell: UITableViewCell {
     @IBOutlet var notificationTextLabel: UILabel!
     @IBOutlet var btnJobType: UIButton!
     @IBOutlet var unreadView: UIView!
-    @IBOutlet var viewForJobType: UIView!
+    @IBOutlet weak var messageButton: UIButton! {
+        didSet {
+            messageButton.addTarget(self, action: #selector(messageButtonAction), for: .touchUpInside)
+        }
+    }
     @IBOutlet var notificationTimeLabel: UILabel!
+    
+    weak var delegate: NotificationTableCellDelegate?
+    weak var userNotificationObject: UserNotification?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,6 +33,8 @@ class NotificationJobTypeTableCell: UITableViewCell {
     }
 
     func configureNotificationJobTypeTableCell(userNotificationObj: UserNotification) {
+        userNotificationObject = userNotificationObj
+        
         notificationTextLabel.text = userNotificationObj.message
         let date = Date.stringToDateForFormatter(date: userNotificationObj.createdAtTime, dateFormate: Date.dateFormatYYYYMMDDHHMMSS())
         notificationTimeLabel.text = timeAgoSince(date)
@@ -66,5 +72,26 @@ class NotificationJobTypeTableCell: UITableViewCell {
             notificationTextLabel.textColor = Constants.Color.notificationreadTextColor
             notificationTimeLabel.textColor = Constants.Color.notificationreadTimeLabelColor
         }
+        
+        if let rawType = userNotificationObj.notificationType, let type =  UserNotificationType(rawValue: rawType),
+            type == .acceptJob {
+            
+            messageButton.isHidden = false
+        } else {
+            messageButton.isHidden = true
+        }
+    }
+}
+
+extension NotificationJobTypeTableCell {
+    
+    @objc private func messageButtonAction() {
+        guard let notify = userNotificationObject,
+            let recruiterId = notify.senderID,
+            let officeName = notify.jobdetail?.officeName else { return }
+        
+        let chatObj = ChatObject(recruiterId: String(recruiterId), officeName: officeName)
+        
+        delegate?.onMessageButtonTapped(chatObject: chatObj)
     }
 }

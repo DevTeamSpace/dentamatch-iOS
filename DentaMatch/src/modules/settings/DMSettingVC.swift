@@ -1,11 +1,3 @@
-//
-//  DMSettingVC.swift
-//  DentaMatch
-//
-//  Created by Sanjay Kumar Yadav on 21/01/17.
-//  Copyright © 2017 Appster. All rights reserved.
-//
-
 import UIKit
 
 class DMSettingVC: DMBaseVC {
@@ -13,9 +5,11 @@ class DMSettingVC: DMBaseVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
         setup()
     }
+    
+    var viewOutput: DMSettingsViewOutput?
 
     func setup() {
         navigationController?.setNavigationBarHidden(false, animated: true)
@@ -32,4 +26,9 @@ class DMSettingVC: DMBaseVC {
         navigationController?.setNavigationBarHidden(false, animated: true)
         changeNavBarAppearanceForDefault()
     }
+}
+
+extension DMSettingVC: DMSettingsViewInput {
+    
+    
 }

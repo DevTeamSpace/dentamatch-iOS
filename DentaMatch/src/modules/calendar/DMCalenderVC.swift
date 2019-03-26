@@ -1,45 +1,25 @@
-//
-//  DMCalenderVC.swift
-//  DentaMatch
-//
-//  Created by Sanjay Kumar Yadav on 22/01/17.
-//  Copyright © 2017 Appster. All rights reserved.
-//
-
 import UIKit
 
 class DMCalenderVC: DMBaseVC, FSCalendarDataSource, FSCalendarDelegate, FSCalendarDelegateAppearance {
-    @IBOutlet var viewForCalender: UIView!
+    
     @IBOutlet var bookedJobsTableView: UITableView!
-
+    
     var calendar: FSCalendar?
-    @IBOutlet var fulltimeJobIndicatorView: UIView!
-
-    @IBOutlet var viewForHeader: UIView!
-    @IBOutlet var monthTitleLabel: UILabel!
-    @IBOutlet var noEventLabel: UILabel!
-
-    var hiredList = [Job]()
-    var selectedDayList = [Job]()
-
-    var gregorian: NSCalendar?
-    //var notificationLabel: UILabel?
-    var selectedDate: Date?
+    private var gregorian: NSCalendar?
+    private var calendarHeaderView: CalendarHeaderView?
+    
+    var viewOutput: DMCalendarViewOutput?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        setup()
         
+        setup()
+        getAllJobFromServer()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
-
-//        if self.hiredList.count == 0 {
-        getAllJobFromServer()
-        // }
-        //self.setNotificationLabelText(count: AppDelegate.delegate().badgeCount())
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,19 +28,22 @@ class DMCalenderVC: DMBaseVC, FSCalendarDataSource, FSCalendarDelegate, FSCalend
     }
 
     func setup() {
-        fulltimeJobIndicatorView.layer.cornerRadius = fulltimeJobIndicatorView.bounds.size.height / 2
-        fulltimeJobIndicatorView.clipsToBounds = true
+        
+        let calendarHeaderView = CalendarHeaderView()
+        calendarHeaderView.translatesAutoresizingMaskIntoConstraints = false
+        calendarHeaderView.delegate = self
+        
         title = Constants.ScreenTitleNames.calendar
         navigationItem.title = "CALENDAR"
         gregorian = NSCalendar(calendarIdentifier: .gregorian)
-        monthTitleLabel.text = Date.dateToStringForFormatter(date: Date(), dateFormate: Date.dateFormatMMMMYYYY())
-        monthTitleLabel.text = monthTitleLabel.text?.uppercased()
+        calendarHeaderView.monthTitleLabel.text = Date.dateToStringForFormatter(date: Date(), dateFormate: Date.dateFormatMMMMYYYY())
+        calendarHeaderView.monthTitleLabel.text = calendarHeaderView.monthTitleLabel.text?.uppercased()
         navigationController?.setNavigationBarHidden(false, animated: true)
-        //navigationItem.leftBarButtonItem = customLeftBarButton()
-        //navigationItem.rightBarButtonItem = rightBarButton()
+        
         bookedJobsTableView.separatorStyle = .none
         bookedJobsTableView.register(UINib(nibName: "SectionHeadingTableCell", bundle: nil), forCellReuseIdentifier: "SectionHeadingTableCell")
         bookedJobsTableView.register(UINib(nibName: "JobSearchResultCell", bundle: nil), forCellReuseIdentifier: "JobSearchResultCell")
+        bookedJobsTableView.register(UINib(nibName: EmptyJobsCalendarCell.identifier, bundle: nil), forCellReuseIdentifier: EmptyJobsCalendarCell.identifier)
 
         calendar = FSCalendar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 311))
         calendar?.dataSource = self
@@ -86,321 +69,34 @@ class DMCalenderVC: DMBaseVC, FSCalendarDataSource, FSCalendarDelegate, FSCalend
         calendar?.appearance.titleDefaultColor = Constants.Color.headerTitleColor
         calendar?.appearance.selectionColor = Constants.Color.CalendarSelectionColor
         calendar?.appearance.eventOffset = CGPoint(x: 0, y: -8)
-        viewForCalender.addSubview(calendar!)
-        viewForCalender.bringSubviewToFront(viewForHeader)
+        calendarHeaderView.viewForCalendar.addSubview(calendar!)
+        calendarHeaderView.viewForCalendar.bringSubviewToFront(calendarHeaderView.viewForHeader)
         NotificationCenter.default.addObserver(self, selector: #selector(tabChangedAction), name: .tabChanged, object: nil)
+        
+        bookedJobsTableView.tableHeaderView = calendarHeaderView
+
+        NSLayoutConstraint.activate([
+            calendarHeaderView.centerXAnchor.constraint(equalTo: bookedJobsTableView.centerXAnchor),
+            calendarHeaderView.widthAnchor.constraint(equalTo: bookedJobsTableView.widthAnchor),
+            calendarHeaderView.topAnchor.constraint(equalTo: bookedJobsTableView.topAnchor)
+        ])
+
+        calendarHeaderView.layoutIfNeeded()
+        self.calendarHeaderView = calendarHeaderView
     }
     
     @objc private func tabChangedAction(notification _: Notification){
-        self.selectedDate = nil
+        viewOutput?.selectedDate = nil
     }
 
     func getAllJobFromServer() {
-        getHiredJobsFromServer(date: Date()) { _, _ in
-            // debugPrint(self.hiredList.description)
-            self.calendar?.reloadData()
-            let fullTime = self.hiredList.filter({ (job) -> Bool in
-                job.jobType == 1
-            })
-            if fullTime.count > 0 {
-                self.fulltimeJobIndicatorView.isHidden = false
-            } else {
-                self.fulltimeJobIndicatorView.isHidden = true
-            }
-
-            self.calendar?.select(self.selectedDate ?? Date())
-            self.calendar(self.calendar!, didSelect: self.selectedDate ?? Date(), at: FSCalendarMonthPosition.notFound)
-        }
-    }
-
-    /*func rightBarButton() -> UIBarButtonItem {
-        let customButton = UIButton(type: .system)
-        customButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        customButton.titleLabel?.font = UIFont.designFont(fontSize: 30)
-        customButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0)
-        customButton.setImage(UIImage(named: "plusSymbol"), for: .normal)
-        customButton.addTarget(self, action: #selector(setAvailablityButtonClicked(_:)), for: .touchUpInside)
-        let barButton = UIBarButtonItem(customView: customButton)
-        return barButton
-    }*/
-
-    func calculateNumberOfEvent(date: Date) -> Int {
-        let dayPartTime = hiredList.filter { (newJob) -> Bool in
-            (newJob.jobType == 2)
-        }
-
-        let dateStrToday = Date.dateToString(date: date)
-        let dateToday = Date.stringToDate(dateString: dateStrToday)
-
-        var eventcount = 0
-        switch getDayOfWeek(today: date) {
-        case 1:
-            let sundayJob = dayPartTime.filter { (newJob) -> Bool in
-                let eventDate = Date.stringToDate(dateString: newJob.jobDate)
-                return (newJob.isSunday == 1 && eventDate <= dateToday)
-            }
-            if sundayJob.count > 0 {
-                eventcount = eventcount + 1
-            }
-
-        case 2:
-            let mondayJob = dayPartTime.filter { (newJob) -> Bool in
-                let eventDate = Date.stringToDate(dateString: newJob.jobDate)
-                return (newJob.isMonday == 1 && eventDate <= dateToday)
-            }
-            if mondayJob.count > 0 {
-                eventcount = eventcount + 1
-            }
-
-        case 3:
-            let tuesdayJob = dayPartTime.filter { (newJob) -> Bool in
-                let eventDate = Date.stringToDate(dateString: newJob.jobDate)
-                return (newJob.isTuesday == 1 && eventDate <= dateToday)
-            }
-            if tuesdayJob.count > 0 {
-                eventcount = eventcount + 1
-            }
-        case 4:
-            let wednesdayJob = dayPartTime.filter { (newJob) -> Bool in
-                let eventDate = Date.stringToDate(dateString: newJob.jobDate)
-                return (newJob.isWednesday == 1 && eventDate <= dateToday)
-            }
-            if wednesdayJob.count > 0 {
-                eventcount = eventcount + 1
-            }
-        case 5:
-            let thursdayJob = dayPartTime.filter { (newJob) -> Bool in
-                let eventDate = Date.stringToDate(dateString: newJob.jobDate)
-                return (newJob.isThursday == 1 && eventDate <= dateToday)
-            }
-            if thursdayJob.count > 0 {
-                eventcount = eventcount + 1
-            }
-        case 6:
-            let firdayJob = dayPartTime.filter { (newJob) -> Bool in
-                let eventDate = Date.stringToDate(dateString: newJob.jobDate)
-                return (newJob.isFriday == 1 && eventDate <= dateToday)
-            }
-            if firdayJob.count > 0 {
-                eventcount = eventcount + 1
-            }
-        case 7:
-            let saturdayJob = dayPartTime.filter { (newJob) -> Bool in
-                let eventDate = Date.stringToDate(dateString: newJob.jobDate)
-                return (newJob.isSaturday == 1 && eventDate <= dateToday)
-            }
-            if saturdayJob.count > 0 {
-                eventcount = eventcount + 1
-            }
-
-        default:
-            break
-        }
-
-        let dayTempTime = hiredList.filter { (newJob) -> Bool in
-            (newJob.jobType == 3)
-        }
-
-        let tempJobs = dayTempTime.filter { (newJob) -> Bool in
-            let eventDate = Date.stringToDate(dateString: newJob.tempjobDate)
-            return (eventDate == dateToday)
-        }
-
-        if tempJobs.count > 0 {
-            eventcount = eventcount + 1
-        }
-        return eventcount
-    }
-
-    func dateEventColor(date: Date) -> [UIColor] {
-        let dayPartTime = hiredList.filter { (newJob) -> Bool in
-            (newJob.jobType == 2)
-        }
-        let dateStrToday = Date.dateToString(date: date)
-        let dateToday = Date.stringToDate(dateString: dateStrToday)
-
-        var color = [UIColor]()
-        switch getDayOfWeek(today: date) {
-        case 1:
-            let sundayJob = dayPartTime.filter { (newJob) -> Bool in
-                let eventDate = Date.stringToDate(dateString: newJob.jobDate)
-                return (newJob.isSunday == 1 && eventDate <= dateToday)
-            }
-            if sundayJob.count > 0 {
-                color.append(Constants.Color.partTimeEventColor)
-            }
-
-        case 2:
-            let mondayJob = dayPartTime.filter { (newJob) -> Bool in
-                let eventDate = Date.stringToDate(dateString: newJob.jobDate)
-                return (newJob.isMonday == 1 && eventDate <= dateToday)
-            }
-            if mondayJob.count > 0 {
-                color.append(Constants.Color.partTimeEventColor)
-            }
-
-        case 3:
-            let tuesdayJob = dayPartTime.filter { (newJob) -> Bool in
-                let eventDate = Date.stringToDate(dateString: newJob.jobDate)
-                return (newJob.isTuesday == 1 && eventDate <= dateToday)
-            }
-            if tuesdayJob.count > 0 {
-                color.append(Constants.Color.partTimeEventColor)
-            }
-        case 4:
-            let wednesdayJob = dayPartTime.filter { (newJob) -> Bool in
-                let eventDate = Date.stringToDate(dateString: newJob.jobDate)
-                return (newJob.isWednesday == 1 && eventDate <= dateToday)
-            }
-            if wednesdayJob.count > 0 {
-                color.append(Constants.Color.partTimeEventColor)
-            }
-        case 5:
-            let thursdayJob = dayPartTime.filter { (newJob) -> Bool in
-                let eventDate = Date.stringToDate(dateString: newJob.jobDate)
-                return (newJob.isThursday == 1 && eventDate <= dateToday)
-            }
-            if thursdayJob.count > 0 {
-                color.append(Constants.Color.partTimeEventColor)
-            }
-        case 6:
-            let firdayJob = dayPartTime.filter { (newJob) -> Bool in
-                let eventDate = Date.stringToDate(dateString: newJob.jobDate)
-                return (newJob.isFriday == 1 && eventDate <= dateToday)
-            }
-            if firdayJob.count > 0 {
-                color.append(Constants.Color.partTimeEventColor)
-            }
-        case 7:
-            let saturdayJob = dayPartTime.filter { (newJob) -> Bool in
-                let eventDate = Date.stringToDate(dateString: newJob.jobDate)
-                return (newJob.isSaturday == 1 && eventDate <= dateToday)
-            }
-            if saturdayJob.count > 0 {
-                color.append(Constants.Color.partTimeEventColor)
-                break
-            }
-
-        default:
-            break
-        }
-
-        let dayTempTime = hiredList.filter { (newJob) -> Bool in
-            (newJob.jobType == 3)
-        }
-
-        let tempJobs = dayTempTime.filter { (newJob) -> Bool in
-            let eventDate = Date.stringToDate(dateString: newJob.tempjobDate)
-            return (eventDate == dateToday)
-        }
-
-        if tempJobs.count > 0 {
-            color.append(Constants.Color.tempTimeEventColor)
-        }
-
-        return color
-    }
-
-    func dateAllEvents(date: Date) -> [Job] {
-        let dayPartTime = hiredList.filter { (newJob) -> Bool in
-            (newJob.jobType == 2)
-        }
-        var todayAllEvent = [Job]()
-
-        let dateStrToday = Date.dateToString(date: date)
-        let dateToday = Date.stringToDate(dateString: dateStrToday)
-
-//        todayAllEvent.append(contentsOf: dayFullTime)
-        switch getDayOfWeek(today: date) {
-        case 1:
-            let sundayJob = dayPartTime.filter { (newJob) -> Bool in
-                let eventDate = Date.stringToDate(dateString: newJob.jobDate)
-                return (newJob.isSunday == 1 && eventDate <= dateToday)
-            }
-            if sundayJob.count > 0 {
-                todayAllEvent.append(contentsOf: sundayJob)
-            }
-
-        case 2:
-            let mondayJob = dayPartTime.filter { (newJob) -> Bool in
-                let eventDate = Date.stringToDate(dateString: newJob.jobDate)
-                return (newJob.isMonday == 1 && eventDate <= dateToday)
-            }
-            if mondayJob.count > 0 {
-                todayAllEvent.append(contentsOf: mondayJob)
-            }
-
-        case 3:
-            let tuesdayJob = dayPartTime.filter { (newJob) -> Bool in
-                let eventDate = Date.stringToDate(dateString: newJob.jobDate)
-                return (newJob.isTuesday == 1 && eventDate <= dateToday)
-            }
-            if tuesdayJob.count > 0 {
-                todayAllEvent.append(contentsOf: tuesdayJob)
-            }
-        case 4:
-            let wednesdayJob = dayPartTime.filter { (newJob) -> Bool in
-                let eventDate = Date.stringToDate(dateString: newJob.jobDate)
-                return (newJob.isWednesday == 1 && eventDate <= dateToday)
-            }
-            if wednesdayJob.count > 0 {
-                todayAllEvent.append(contentsOf: wednesdayJob)
-            }
-        case 5:
-            let thursdayJob = dayPartTime.filter { (newJob) -> Bool in
-                let eventDate = Date.stringToDate(dateString: newJob.jobDate)
-                return (newJob.isThursday == 1 && eventDate <= dateToday)
-            }
-            if thursdayJob.count > 0 {
-                todayAllEvent.append(contentsOf: thursdayJob)
-            }
-        case 6:
-            let firdayJob = dayPartTime.filter { (newJob) -> Bool in
-                let eventDate = Date.stringToDate(dateString: newJob.jobDate)
-                return (newJob.isFriday == 1 && eventDate <= dateToday)
-            }
-            if firdayJob.count > 0 {
-                todayAllEvent.append(contentsOf: firdayJob)
-            }
-        case 7:
-            let saturdayJob = dayPartTime.filter { (newJob) -> Bool in
-                let eventDate = Date.stringToDate(dateString: newJob.jobDate)
-                return (newJob.isSaturday == 1 && eventDate <= dateToday)
-            }
-            if saturdayJob.count > 0 {
-                todayAllEvent.append(contentsOf: saturdayJob)
-            }
-
-        default:
-            break
-        }
-
-        let dayTempTime = hiredList.filter { (newJob) -> Bool in
-            (newJob.jobType == 3)
-        }
-        let tempJobs = dayTempTime.filter { (newJob) -> Bool in
-            let eventDate = Date.stringToDate(dateString: newJob.tempjobDate)
-            return (eventDate == dateToday)
-        }
-        if tempJobs.count > 0 {
-            todayAllEvent.append(contentsOf: tempJobs)
-        }
-
-        return todayAllEvent
-    }
-
-    func getDayOfWeek(today: Date) -> Int {
-        // 1-sunday , 4- wednesday 7- saturday
-        let myCalendar = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)!
-        let myComponents = myCalendar.components(.weekday, from: today)
-        let weekDay = myComponents.weekday
-        return weekDay!
+        viewOutput?.getHiredJobsFromServer(date: Date(), pageChanged: false)
     }
 
     // MARK: - Calender Methods
 
     func calendar(_: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        let count = calculateNumberOfEvent(date: date)
+        let count = viewOutput?.calculateNumberOfEvent(date: date) ?? 0
         return count
     }
 
@@ -409,11 +105,11 @@ class DMCalenderVC: DMBaseVC, FSCalendarDataSource, FSCalendarDelegate, FSCalend
     }
 
     func calendar(_: FSCalendar, appearance _: FSCalendarAppearance, eventSelectionColorsFor date: Date) -> [UIColor]? {
-        return dateEventColor(date: date)
+        return viewOutput?.dateEventColor(date: date)
     }
 
     func calendar(_: FSCalendar, appearance _: FSCalendarAppearance, eventDefaultColorsFor date: Date) -> [UIColor]? {
-        return dateEventColor(date: date)
+        return viewOutput?.dateEventColor(date: date)
     }
 
 
@@ -425,15 +121,11 @@ class DMCalenderVC: DMBaseVC, FSCalendarDataSource, FSCalendarDelegate, FSCalend
     }
 
     func calendar(_: FSCalendar, didSelect date: Date, at _: FSCalendarMonthPosition) {
-        selectedDate = date
-        selectedDayList.removeAll()
-        selectedDayList = dateAllEvents(date: date)
-        // debugPrint(selectedDayList.description)
-        if selectedDayList.count > 0 {
-            noEventLabel.isHidden = true
-        } else {
-            noEventLabel.isHidden = false
-        }
+        viewOutput?.selectedDate = date
+        viewOutput?.selectedDayList.removeAll()
+        let events = viewOutput?.dateAllEvents(date: date) ?? []
+        viewOutput?.selectedDayList = events
+
         bookedJobsTableView.reloadData()
     }
 
@@ -441,97 +133,66 @@ class DMCalenderVC: DMBaseVC, FSCalendarDataSource, FSCalendarDelegate, FSCalend
     }
 
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-        // debugPrint("new Page  = \(calendar.currentPage)")
-        monthTitleLabel.text = Date.dateToStringForFormatter(date: calendar.currentPage, dateFormate: Date.dateFormatMMMMYYYY())
-        monthTitleLabel.text = monthTitleLabel.text?.uppercased()
+        
+        calendarHeaderView?.monthTitleLabel.text = Date.dateToStringForFormatter(date: calendar.currentPage, dateFormate: Date.dateFormatMMMMYYYY())
+        calendarHeaderView?.monthTitleLabel.text = calendarHeaderView?.monthTitleLabel.text?.uppercased()
+        viewOutput?.getHiredJobsFromServer(date: calendar.currentPage, pageChanged: true)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .tabChanged, object: nil)
+    }
+}
 
-        getHiredJobsFromServer(date: calendar.currentPage) { _, _ in
-            // debugPrint(self.hiredList.description)
-            self.calendar?.reloadData()
-            let fullTime = self.hiredList.filter({ (job) -> Bool in
-                job.jobType == 1
-            })
-            if fullTime.count > 0 {
-                self.fulltimeJobIndicatorView.isHidden = false
-            } else {
-                self.fulltimeJobIndicatorView.isHidden = true
-            }
-
+extension DMCalenderVC: DMCalendarViewInput {
+    
+    func fulltimeIndicatorViewHidden(_ isHidden: Bool) {
+        calendarHeaderView?.fullTimeJobIndicatorView.isHidden = isHidden
+    }
+    
+    func reloadCalendar() {
+        calendar?.reloadData()
+    }
+    
+    func calendarSelectDate(date: Date, pageChanged: Bool) {
+        guard let calendar = calendar else { return }
+        
+        if pageChanged {
             let month = Date.getMonthAndYearForm(date: calendar.currentPage)
             let currentMonth = Date.getMonthAndYearForm(date: Date())
-
+            
             if month.month == currentMonth.month {
                 self.calendar?.select(Date())
-                self.calendar(self.calendar!, didSelect: Date(), at: FSCalendarMonthPosition.notFound)
-
+                self.calendar(calendar, didSelect: Date(), at: FSCalendarMonthPosition.notFound)
+                
             } else {
                 let dateNew = calendar.currentPage.startOfMonth()
                 self.calendar?.select(dateNew)
-                self.calendar(self.calendar!, didSelect: calendar.currentPage, at: FSCalendarMonthPosition.notFound)
+                self.calendar(calendar, didSelect: calendar.currentPage, at: FSCalendarMonthPosition.notFound)
             }
+        } else {
+            calendar.select(date)
+            self.calendar(calendar, didSelect: date, at: FSCalendarMonthPosition.notFound)
         }
     }
+}
 
-    // plus button Action
-    @IBAction func setAvailablityButtonClicked(_: Any) {
-        guard let termsVC = DMCalendarSetAvailabilityInitializer.initialize() as? DMCalendarSetAvailabillityVC else { return }
-        termsVC.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(termsVC, animated: true)
+extension DMCalenderVC: CalendarHeaderViewDelegate {
+    
+    func onSetAvailabilityTapped() {
+        viewOutput?.openCalendar()
     }
-
-    @IBAction func nextButtonClicked(_: Any) {
+    
+    func onNextMonthButtonTapped() {
         let currentMonth: Date = calendar!.currentPage
         let previousMonth: Date = (gregorian?.date(byAdding: .month, value: 1, to: currentMonth, options: .matchFirst))!
         calendar?.setCurrentPage(previousMonth, animated: true)
     }
-
-    @IBAction func previouseButtonClicked(_: Any) {
+    
+    func onPrevMonthButtonTapped() {
         let currentMonth: Date = calendar!.currentPage
         let previousMonth: Date = (gregorian?.date(byAdding: .month, value: -1, to: currentMonth, options: .matchFirst))!
         calendar?.setCurrentPage(previousMonth, animated: true)
-    }
-    
-    /*func customLeftBarButton() -> UIBarButtonItem {
-        notificationLabel = UILabel(frame: CGRect(x: 10, y: 0, width: 15, height: 15))
-        notificationLabel?.backgroundColor = UIColor.red
-        notificationLabel?.layer.cornerRadius = (notificationLabel?.bounds.size.height)! / 2
-        notificationLabel?.font = UIFont.fontRegular(fontSize: 10)
-        notificationLabel?.textAlignment = .center
-        notificationLabel?.textColor = UIColor.white
-        notificationLabel?.clipsToBounds = true
-        notificationLabel?.text = ""
-        notificationLabel?.isHidden = true
-        let customButton = UIButton(type: .system)
-        customButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        customButton.titleLabel?.font = UIFont.designFont(fontSize: 18)
-        customButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0)
-        customButton.setTitle(Constants.DesignFont.notification, for: .normal)
-        customButton.addTarget(self, action: #selector(actionLeftNavigationItem), for: .touchUpInside)
-        customButton.addSubview(notificationLabel!)
-        let barButton = UIBarButtonItem(customView: customButton)
-        return barButton
-    }
-    
-    @objc override func actionLeftNavigationItem() {
-        // will implement
-        let notification = UIStoryboard.notificationStoryBoard().instantiateViewController(type: DMNotificationVC.self)!
-        notification.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(notification, animated: true)
-    }
-    
-    func setNotificationLabelText(count: Int) {
-        if count != 0 {
-            notificationLabel?.text = "\(count)"
-            notificationLabel?.isHidden = false
-            notificationLabel?.adjustsFontSizeToFitWidth = true
-            
-        } else {
-            notificationLabel?.isHidden = true
-        }
-    }*/
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: .tabChanged, object: nil)
     }
 }
 

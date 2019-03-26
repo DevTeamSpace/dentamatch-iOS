@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B93ABBB0289F31185016B81 /* JobSearchMapScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09942F59C93A38EE2706350 /* JobSearchMapScreenView.swift */; };
+		1C9D9A2BA48C3455C2759C79 /* RootScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EAA1B375B32E8EBF8FE401 /* RootScreenViewController.swift */; };
+		1D63EC6BC4FD60560F7D3A5B /* JobSearchListScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E50D2071A67A9DEBB1509 /* JobSearchListScreenPresenter.swift */; };
+		28964A7AA4F471846C45B1F1 /* JobSearchMapScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7F213BA39E0010C6490C39 /* JobSearchMapScreenPresenter.swift */; };
+		42E0DF7D801DEC5007372D27 /* RootScreenInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3369D610C243D2DA1EEBAA7 /* RootScreenInitializer.swift */; };
+		430E317029FD659F8A96BF1C /* JobSearchListScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4554378ED6FEC5B025F5436E /* JobSearchListScreenView.swift */; };
+		4745FF5432807C4E412074F1 /* JobSearchListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177AB987BBF7C00C0472C696 /* JobSearchListScreen.swift */; };
 		48067D49212E9E8F007F77E6 /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48067D47212E9E8F007F77E6 /* TagCell.swift */; };
 		48067D4A212E9E8F007F77E6 /* TagCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48067D48212E9E8F007F77E6 /* TagCell.xib */; };
 		48067D4D212EC5BD007F77E6 /* DGCollectionViewLeftAlignFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48067D4C212EC5BD007F77E6 /* DGCollectionViewLeftAlignFlowLayout.swift */; };
@@ -26,7 +33,6 @@
 		484958FF218ADCC000096046 /* StateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484958FE218ADCC000096046 /* StateCell.swift */; };
 		485DA9FD2183610C00CA8593 /* AnimatedPHToolTipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485DA9FB2183610C00CA8593 /* AnimatedPHToolTipCell.swift */; };
 		485DA9FE2183610C00CA8593 /* AnimatedPHToolTipCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 485DA9FC2183610C00CA8593 /* AnimatedPHToolTipCell.xib */; };
-		4877D98320ECD54400264422 /* AppDelegate+InitialConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4877D98220ECD54400264422 /* AppDelegate+InitialConfiguration.swift */; };
 		48CD1505212D75F600E4B80E /* TempJobDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CD1503212D75F600E4B80E /* TempJobDetailCell.swift */; };
 		48CD1506212D75F600E4B80E /* TempJobDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48CD1504212D75F600E4B80E /* TempJobDetailCell.xib */; };
 		5A0138241E6EBBA900D15783 /* MixpanelOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0138231E6EBBA900D15783 /* MixpanelOperations.swift */; };
@@ -39,7 +45,6 @@
 		5A3B06CD1E3387FF00EFCA6E /* DMSettingVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B06CC1E3387FF00EFCA6E /* DMSettingVC+TableViewExtension.swift */; };
 		5A3B06CF1E33881D00EFCA6E /* DMChangePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B06CE1E33881D00EFCA6E /* DMChangePasswordVC.swift */; };
 		5A3B06D11E33883C00EFCA6E /* DMChangePasswordVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B06D01E33883C00EFCA6E /* DMChangePasswordVC+TableViewExtension.swift */; };
-		5A3B06D31E33885A00EFCA6E /* DMChangePasswordVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B06D21E33885A00EFCA6E /* DMChangePasswordVC+Services.swift */; };
 		5A3BD4AA1E35D3D800A607AC /* EditProfileAffiliationBrickCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3BD4A81E35D3D800A607AC /* EditProfileAffiliationBrickCell.swift */; };
 		5A3BD4AB1E35D3D800A607AC /* EditProfileAffiliationBrickCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A3BD4A91E35D3D800A607AC /* EditProfileAffiliationBrickCell.xib */; };
 		5A3BD4AE1E35DB1E00A607AC /* EditProfileSkillBrickCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3BD4AC1E35DB1E00A607AC /* EditProfileSkillBrickCell.swift */; };
@@ -65,7 +70,6 @@
 		5A5523EC1E4C419F007D8C09 /* CommonTextNotificationTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A5523EA1E4C419F007D8C09 /* CommonTextNotificationTableCell.xib */; };
 		5A5523EF1E4D97DF007D8C09 /* UserNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5523EE1E4D97DF007D8C09 /* UserNotification.swift */; };
 		5A5523F11E4DCDF3007D8C09 /* TimeAgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5523F01E4DCDF3007D8C09 /* TimeAgo.swift */; };
-		5A60A8561E42FF1800789D14 /* DMCalenderVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A60A8551E42FF1800789D14 /* DMCalenderVC+Services.swift */; };
 		5A60A85B1E43309100789D14 /* UserAvailability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A60A85A1E43309100789D14 /* UserAvailability.swift */; };
 		5A737D091E56B040002472D4 /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A737D081E56B040002472D4 /* NotificationHandler.swift */; };
 		5A85D20F1E2DFAD000AC4C89 /* SeparatorWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A85D2061E2DFAD000AC4C89 /* SeparatorWrapper.swift */; };
@@ -86,7 +90,6 @@
 		5A988BC11E4AE6A500DECB49 /* Notification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A988BC01E4AE6A500DECB49 /* Notification.storyboard */; };
 		5A988BC41E4AE99800DECB49 /* DMNotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A988BC31E4AE99800DECB49 /* DMNotificationVC.swift */; };
 		5A988BC61E4AE9D200DECB49 /* DMNotificationVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A988BC51E4AE9D200DECB49 /* DMNotificationVC+TableViewExtension.swift */; };
-		5A988BC81E4AEA0E00DECB49 /* DMNotificationVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A988BC71E4AEA0E00DECB49 /* DMNotificationVC+Services.swift */; };
 		5A9A3A971E2B58600002C5B6 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9A3A961E2B58600002C5B6 /* UserManager.swift */; };
 		5AA9CB999C96FBB42F0C471A /* Pods_DentaMatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6FD70F6CEE32CA0ED0D2D7E /* Pods_DentaMatch.framework */; };
 		5AAE74781E5C1D0E00B28851 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAE74761E5C1D0E00B28851 /* ToastView.swift */; };
@@ -98,12 +101,68 @@
 		5AC714401E34A9B100E433C1 /* Calender.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AC7143F1E34A9B100E433C1 /* Calender.storyboard */; };
 		5AC714421E34A9C700E433C1 /* Messages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AC714411E34A9C700E433C1 /* Messages.storyboard */; };
 		5AC714521E34ACD400E433C1 /* DMCalenderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC714511E34ACD400E433C1 /* DMCalenderVC.swift */; };
-		5AC714581E34F76900E433C1 /* DMSettingVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC714571E34F76900E433C1 /* DMSettingVC+Services.swift */; };
-		5AD246911E272E92009350BF /* DMWorkExperienceVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD246901E272E92009350BF /* DMWorkExperienceVC+Services.swift */; };
 		5AD246931E273CC9009350BF /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD246921E273CC9009350BF /* DatePickerView.swift */; };
 		5AD246951E273CE7009350BF /* DatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AD246941E273CE7009350BF /* DatePickerView.xib */; };
 		5AD246971E27799F009350BF /* PickerAnimatedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD246961E27799F009350BF /* PickerAnimatedTextField.swift */; };
 		5AE5F50A1E16563D006C328A /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AE5F5091E16563D006C328A /* Profile.storyboard */; };
+		63D32752915A935906D26086 /* RootScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DF4A230301EEEA4DAA70 /* RootScreen.swift */; };
+		6E0C496A222E3F180010CC2E /* JobSearchListScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E0C4969222E3F180010CC2E /* JobSearchListScreenView.xib */; };
+		6E0C496C222E40440010CC2E /* JobSearchMapScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E0C496B222E40440010CC2E /* JobSearchMapScreenView.xib */; };
+		6E0C496E222E4C1F0010CC2E /* TableViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0C496D222E4C1F0010CC2E /* TableViewUtils.swift */; };
+		6E0C4970222E4C2C0010CC2E /* CollectionViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0C496F222E4C2C0010CC2E /* CollectionViewUtils.swift */; };
+		6E0C4973222E4C5F0010CC2E /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0C4971222E4C5F0010CC2E /* BaseTableViewCell.swift */; };
+		6E0C4974222E4C5F0010CC2E /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0C4972222E4C5F0010CC2E /* BaseCollectionViewCell.swift */; };
+		6E0C4977222EA1D90010CC2E /* JobMapDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0C4976222EA1D90010CC2E /* JobMapDetailView.swift */; };
+		6E0C4979222EA1E00010CC2E /* JobMapDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E0C4978222EA1E00010CC2E /* JobMapDetailView.xib */; };
+		6E35FBE22200273700AB84A3 /* DMMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35FBE12200273700AB84A3 /* DMMessages.swift */; };
+		6E35FBE42200279800AB84A3 /* MessagesFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35FBE32200279800AB84A3 /* MessagesFlowCoordinator.swift */; };
+		6E35FBE62200292200AB84A3 /* DMEditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35FBE52200292200AB84A3 /* DMEditProfile.swift */; };
+		6E35FBE82200297E00AB84A3 /* ProfileFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35FBE72200297E00AB84A3 /* ProfileFlowCoordinator.swift */; };
+		6E35FBEA22002BBE00AB84A3 /* DMSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35FBE922002BBE00AB84A3 /* DMSettings.swift */; };
+		6E35FBEC2200310200AB84A3 /* DMChangePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35FBEB2200310200AB84A3 /* DMChangePassword.swift */; };
+		6E35FBEE2200346F00AB84A3 /* DMNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35FBED2200346F00AB84A3 /* DMNotifications.swift */; };
+		6E35FBF02200366500AB84A3 /* DMPublicProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35FBEF2200366500AB84A3 /* DMPublicProfile.swift */; };
+		6E35FBF222003C1200AB84A3 /* DMWorkExperience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35FBF122003C1200AB84A3 /* DMWorkExperience.swift */; };
+		6E35FBF422003E9700AB84A3 /* DMEditStudy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35FBF322003E9700AB84A3 /* DMEditStudy.swift */; };
+		6E35FBF622005C3D00AB84A3 /* DMEditSkills.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35FBF522005C3D00AB84A3 /* DMEditSkills.swift */; };
+		6E35FBF822005CD500AB84A3 /* DMSelectSkills.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35FBF722005CD500AB84A3 /* DMSelectSkills.swift */; };
+		6E35FBFA22005F4800AB84A3 /* DMAffiliations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35FBF922005F4800AB84A3 /* DMAffiliations.swift */; };
+		6E35FBFC220064AA00AB84A3 /* DMEditCertificate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35FBFB220064AA00AB84A3 /* DMEditCertificate.swift */; };
+		6E35FBFE22006CE700AB84A3 /* DMJobDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35FBFD22006CE700AB84A3 /* DMJobDetail.swift */; };
+		6E35FC002200792100AB84A3 /* DMChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35FBFF2200792100AB84A3 /* DMChat.swift */; };
+		6E35FC0222007C6700AB84A3 /* DMCancelJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35FC0122007C6700AB84A3 /* DMCancelJob.swift */; };
+		6E35FC0422007FBC00AB84A3 /* DMJobSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35FC0322007FBC00AB84A3 /* DMJobSearch.swift */; };
+		6E35FC06220083AC00AB84A3 /* DMJobTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35FC05220083AC00AB84A3 /* DMJobTitle.swift */; };
+		6E35FC08220091D300AB84A3 /* DMRegisterMaps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E35FC07220091D300AB84A3 /* DMRegisterMaps.swift */; };
+		6E4D593021FEC0F00008EDBA /* BaseFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4D592F21FEC0F00008EDBA /* BaseFlowCoordinator.swift */; };
+		6E4D593221FEC10F0008EDBA /* BaseFlowProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4D593121FEC10E0008EDBA /* BaseFlowProtocol.swift */; };
+		6E4D593421FEC1B30008EDBA /* RootFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4D593321FEC1B30008EDBA /* RootFlowCoordinator.swift */; };
+		6E4D593621FEC4A00008EDBA /* RootScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E4D593521FEC4A00008EDBA /* RootScreenView.xib */; };
+		6E4D593B21FEC54D0008EDBA /* ViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4D593721FEC54C0008EDBA /* ViewInput.swift */; };
+		6E4D593C21FEC54D0008EDBA /* ModuleInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4D593821FEC54C0008EDBA /* ModuleInput.swift */; };
+		6E4D593D21FEC54D0008EDBA /* ModuleOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4D593921FEC54D0008EDBA /* ModuleOutput.swift */; };
+		6E4D593E21FEC54D0008EDBA /* ViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4D593A21FEC54D0008EDBA /* ViewOutput.swift */; };
+		6E4D594021FECB1F0008EDBA /* DMRegistrationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4D593F21FECB1F0008EDBA /* DMRegistrationContainer.swift */; };
+		6E4D594221FECCA50008EDBA /* DMOnboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4D594121FECCA50008EDBA /* DMOnboarding.swift */; };
+		6E5F84BD2209288000AF54CF /* DMTrackPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5F84BC2209288000AF54CF /* DMTrackPresenter.swift */; };
+		6E5F84BF220949B900AF54CF /* DMCancelJobPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5F84BE220949B900AF54CF /* DMCancelJobPresenter.swift */; };
+		6E6F460622098B080023238B /* DMMessagesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6F460522098B080023238B /* DMMessagesPresenter.swift */; };
+		6E7A5B15222814DA007A916C /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7A5B14222814DA007A916C /* BaseView.swift */; };
+		6E7A5B172228152E007A916C /* CalendarHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E7A5B162228152E007A916C /* CalendarHeaderView.xib */; };
+		6E7A5B3D22282E4C007A916C /* EmptyJobsCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7A5B3C22282E4C007A916C /* EmptyJobsCalendarCell.swift */; };
+		6E7A5B3F22282E56007A916C /* EmptyJobsCalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E7A5B3E22282E56007A916C /* EmptyJobsCalendarCell.xib */; };
+		6E85B5632202FB4600CD2CCE /* DMRegistrationContainerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B5622202FB4600CD2CCE /* DMRegistrationContainerPresenter.swift */; };
+		6E85B56722030CEE00CD2CCE /* DMRegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B56622030CEE00CD2CCE /* DMRegistrationPresenter.swift */; };
+		6E85B5692203188400CD2CCE /* MessageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B5682203188400CD2CCE /* MessageUtils.swift */; };
+		6E85B56B22032D4400CD2CCE /* DMLoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B56A22032D4400CD2CCE /* DMLoginPresenter.swift */; };
+		6E85B56D2203330C00CD2CCE /* DMForgotPasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B56C2203330C00CD2CCE /* DMForgotPasswordPresenter.swift */; };
+		6E85B56F22033D8B00CD2CCE /* DMTermsAndConditionsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B56E22033D8B00CD2CCE /* DMTermsAndConditionsPresenter.swift */; };
+		6E85B5712203423B00CD2CCE /* DMOnboardingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B5702203423B00CD2CCE /* DMOnboardingPresenter.swift */; };
+		6E85B5732203476C00CD2CCE /* DMRegisterMapsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B5722203476C00CD2CCE /* DMRegisterMapsPresenter.swift */; };
+		6E85B57522041E1400CD2CCE /* DMJobTitleSelectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B57422041E1400CD2CCE /* DMJobTitleSelectionPresenter.swift */; };
+		6E85B57722042B7000CD2CCE /* SearchStatePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B57622042B7000CD2CCE /* SearchStatePresenter.swift */; };
+		6E85B5792204407A00CD2CCE /* DMProfileSuccessPendingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B5782204407A00CD2CCE /* DMProfileSuccessPendingPresenter.swift */; };
+		6E85B57B2204521600CD2CCE /* DMCalendarSetAvailabillityPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B57A2204521600CD2CCE /* DMCalendarSetAvailabillityPresenter.swift */; };
 		6E85B82721FAD9E700DB137F /* DMCalendarInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B82621FAD9E700DB137F /* DMCalendarInitializer.swift */; };
 		6E85B82A21FADA7400DB137F /* DMCalendarSetAvailabilityInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B82921FADA7400DB137F /* DMCalendarSetAvailabilityInitializer.swift */; };
 		6E85B82D21FADC2100DB137F /* DMMessagesInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B82C21FADC2100DB137F /* DMMessagesInitializer.swift */; };
@@ -133,8 +192,46 @@
 		6E85B87721FB1C1800DB137F /* DMJobTitleSelectionInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B87621FB1C1800DB137F /* DMJobTitleSelectionInitializer.swift */; };
 		6E85B87A21FB1DAA00DB137F /* DMWorkExperienceStartInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B87921FB1DAA00DB137F /* DMWorkExperienceStartInitializer.swift */; };
 		6E85B87C21FB27F500DB137F /* NavigationControllerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B87B21FB27F500DB137F /* NavigationControllerUtils.swift */; };
+		6E85B88521FB3DC500DB137F /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B88421FB3DC500DB137F /* ChatModel.swift */; };
+		6E85B88721FB406E00DB137F /* ChatListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E85B88621FB406E00DB137F /* ChatListModel.swift */; };
+		6E88699321FEDDEF00898925 /* AuthorizationFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E88699221FEDDEF00898925 /* AuthorizationFlowCoordinator.swift */; };
+		6E88699521FEE48A00898925 /* DMLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E88699421FEE48A00898925 /* DMLogin.swift */; };
+		6E88699721FEE50100898925 /* DMRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E88699621FEE50100898925 /* DMRegistration.swift */; };
+		6E90E5DD220A7A4900E04344 /* DMChatPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E90E5DC220A7A4900E04344 /* DMChatPresenter.swift */; };
+		6E90E5DF220A913000E04344 /* DMEditProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E90E5DE220A913000E04344 /* DMEditProfilePresenter.swift */; };
+		6E90E5E1220AA5A700E04344 /* DMSettingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E90E5E0220AA5A700E04344 /* DMSettingPresenter.swift */; };
+		6E90E5E3220AB1AF00E04344 /* DMPublicProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E90E5E2220AB1AF00E04344 /* DMPublicProfilePresenter.swift */; };
+		6E90E5E5220AD9B000E04344 /* DMWorkExperiencePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E90E5E4220AD9B000E04344 /* DMWorkExperiencePresenter.swift */; };
+		6E95F797220C21F2001B7035 /* DMEditStudyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E95F796220C21F2001B7035 /* DMEditStudyPresenter.swift */; };
+		6E95F799220C33AB001B7035 /* DMChangePasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E95F798220C33AB001B7035 /* DMChangePasswordPresenter.swift */; };
+		6E99690221FEE84A0007CF40 /* DMForgotPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E99690121FEE84A0007CF40 /* DMForgotPassword.swift */; };
+		6E99690421FEEAE10007CF40 /* DMTermsAndConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E99690321FEEAE10007CF40 /* DMTermsAndConditions.swift */; };
+		6E99690621FEEFE40007CF40 /* DMJobTitleSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E99690521FEEFE40007CF40 /* DMJobTitleSelection.swift */; };
+		6E99690821FEF13D0007CF40 /* TabBarFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E99690721FEF13D0007CF40 /* TabBarFlowCoordinator.swift */; };
+		6E99690A21FEF2C10007CF40 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E99690921FEF2C10007CF40 /* TabBar.swift */; };
+		6E99690C21FEF7450007CF40 /* RegistrationFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E99690B21FEF7450007CF40 /* RegistrationFlowCoordinator.swift */; };
+		6E99690E21FF11170007CF40 /* SearchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E99690D21FF11170007CF40 /* SearchState.swift */; };
+		6E99691021FF1A6C0007CF40 /* DMProfileSuccessPending.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E99690F21FF1A6C0007CF40 /* DMProfileSuccessPending.swift */; };
+		6E99691221FF213B0007CF40 /* DMCalendarSetAvailabillity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E99691121FF213B0007CF40 /* DMCalendarSetAvailabillity.swift */; };
+		6E99691421FF2BE90007CF40 /* DMJobSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E99691321FF2BE90007CF40 /* DMJobSearchResult.swift */; };
+		6E99691621FF3F940007CF40 /* JobsFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E99691521FF3F940007CF40 /* JobsFlowCoordinator.swift */; };
+		6E99691821FF414E0007CF40 /* DMTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E99691721FF414E0007CF40 /* DMTrack.swift */; };
+		6E99691A21FF42390007CF40 /* TrackFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E99691921FF42390007CF40 /* TrackFlowCoordinator.swift */; };
+		6E99691C21FF47E00007CF40 /* DMCalender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E99691B21FF47E00007CF40 /* DMCalender.swift */; };
+		6E99691E21FF48E50007CF40 /* CalendarFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E99691D21FF48E50007CF40 /* CalendarFlowCoordinator.swift */; };
 		6EA372E521F8BF16007BE373 /* ImageView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA372E421F8BF16007BE373 /* ImageView+Additions.swift */; };
 		6EA372E721F8E1B7007BE373 /* UIButton+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA372E621F8E1B7007BE373 /* UIButton+Additions.swift */; };
+		6EA434FB2207D790001E64A0 /* DMJobSearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA434FA2207D790001E64A0 /* DMJobSearchPresenter.swift */; };
+		6EA434FD2207E00A001E64A0 /* DMJobSearchResultPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA434FC2207E00A001E64A0 /* DMJobSearchResultPresenter.swift */; };
+		6EA434FF2207F49B001E64A0 /* DMJobDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA434FE2207F49B001E64A0 /* DMJobDetailPresenter.swift */; };
+		6EA435012208097C001E64A0 /* DMNotificationsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA435002208097C001E64A0 /* DMNotificationsPresenter.swift */; };
+		6EA4350322081D95001E64A0 /* DMJobTitlePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA4350222081D95001E64A0 /* DMJobTitlePresenter.swift */; };
+		6ECBBE2C220D5389004A936A /* DMEditCertificatePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ECBBE2B220D5389004A936A /* DMEditCertificatePresenter.swift */; };
+		6ECBBE2E220D601C004A936A /* DMAffiliationsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ECBBE2D220D601C004A936A /* DMAffiliationsPresenter.swift */; };
+		6ECBBE30220D6B20004A936A /* DMSelectSkillsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ECBBE2F220D6B20004A936A /* DMSelectSkillsPresenter.swift */; };
+		6ECBBE32220D8501004A936A /* DMEditSkillsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ECBBE31220D8501004A936A /* DMEditSkillsPresenter.swift */; };
+		6ED7FBB82228016100CEB64B /* DMCalenderPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED7FBB72228016100CEB64B /* DMCalenderPresenter.swift */; };
+		6ED7FBBB222813C400CEB64B /* CalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED7FBBA222813C400CEB64B /* CalendarHeaderView.swift */; };
 		6EF2F1E521F9C82300F6F38D /* ContainerInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF2F1E421F9C82300F6F38D /* ContainerInitializer.swift */; };
 		6EF2F1EB21F9DBFF00F6F38D /* DMRegistrationContainerInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF2F1EA21F9DBFF00F6F38D /* DMRegistrationContainerInitializer.swift */; };
 		6EF2F1EF21F9DD3400F6F38D /* DMRegistrationInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF2F1EE21F9DD3400F6F38D /* DMRegistrationInitializer.swift */; };
@@ -150,6 +247,12 @@
 		6EF2F20D21FA15A100F6F38D /* DMJobDetailInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF2F20C21FA15A100F6F38D /* DMJobDetailInitializer.swift */; };
 		6EF2F21021FA1D0200F6F38D /* DMTrackInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF2F20F21FA1D0200F6F38D /* DMTrackInitializer.swift */; };
 		6EF2F21421FA1E7900F6F38D /* DMCancelJobInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF2F21321FA1E7900F6F38D /* DMCancelJobInitializer.swift */; };
+		79398CE80CD210E4C245A3DB /* JobSearchMapScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98819DFC0C5E131E0546C8A /* JobSearchMapScreen.swift */; };
+		9B3FBE7B4A661382546852AF /* JobSearchListScreenInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DEFE28DCF17B32C833D487 /* JobSearchListScreenInitializer.swift */; };
+		9E32717D03FB488265058F43 /* JobSearchListScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C39A77826110C77E6DAE6AE /* JobSearchListScreenViewController.swift */; };
+		9ED2ECF22A285308E5F52DD1 /* RootScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3BA0404AEA5A297113406 /* RootScreenPresenter.swift */; };
+		B5EA6039623E49EE0194620C /* RootScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB832692793607ACCBEA65F8 /* RootScreenView.swift */; };
+		C7B31F961D207B490EFBD067 /* JobSearchMapScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825B91B9AAE5E85278E8C292 /* JobSearchMapScreenViewController.swift */; };
 		E50512BE1E82378700509328 /* WorkingHoursTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50512BC1E82378700509328 /* WorkingHoursTableCell.swift */; };
 		E50512BF1E82378700509328 /* WorkingHoursTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E50512BD1E82378700509328 /* WorkingHoursTableCell.xib */; };
 		E506AE501FAC329400ABC7FA /* PreferredLocationPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E506AE4F1FAC329400ABC7FA /* PreferredLocationPickerView.swift */; };
@@ -170,24 +273,18 @@
 		E51C4D3C1FB051C7009FC3A0 /* AboutMeJobSelectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E51C4D3A1FB051C7009FC3A0 /* AboutMeJobSelectionCell.xib */; };
 		E51C4D3E1FB05591009FC3A0 /* DMJobTitleSelectionVC+TextFieldDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51C4D3D1FB05591009FC3A0 /* DMJobTitleSelectionVC+TextFieldDelegates.swift */; };
 		E51D4EF31E3AFCA700ACC631 /* DMEditStudyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4EF21E3AFCA700ACC631 /* DMEditStudyVC.swift */; };
-		E51D4EF51E3AFEA600ACC631 /* DMEditStudyVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4EF41E3AFEA600ACC631 /* DMEditStudyVC+Services.swift */; };
 		E51D4EF71E3B029D00ACC631 /* DMEditStudyVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4EF61E3B029D00ACC631 /* DMEditStudyVC+TableViewExtension.swift */; };
 		E51D4EFC1E3B818400ACC631 /* CustomSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4EFB1E3B818400ACC631 /* CustomSegmentControl.swift */; };
 		E51D4F001E3F207F00ACC631 /* Notifications+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4EFF1E3F207F00ACC631 /* Notifications+Name.swift */; };
 		E51D4F051E3FABA300ACC631 /* LoadMoreView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E51D4F041E3FABA300ACC631 /* LoadMoreView.xib */; };
 		E51D4F071E3FABB400ACC631 /* LoadMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4F061E3FABB400ACC631 /* LoadMoreView.swift */; };
-		E51D4F0D1E40744C00ACC631 /* DMTrackVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4F0A1E40744C00ACC631 /* DMTrackVC+Services.swift */; };
 		E51D4F0E1E40744C00ACC631 /* DMTrackVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4F0B1E40744C00ACC631 /* DMTrackVC+TableViewExtension.swift */; };
 		E51D4F0F1E40744C00ACC631 /* DMTrackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4F0C1E40744C00ACC631 /* DMTrackVC.swift */; };
 		E51D4F111E40745A00ACC631 /* DMCancelJobVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4F101E40745A00ACC631 /* DMCancelJobVC.swift */; };
-		E51D4F131E4086BD00ACC631 /* DMCancelJobVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4F121E4086BD00ACC631 /* DMCancelJobVC+Services.swift */; };
-		E51D4F151E41070700ACC631 /* DMRegisterMapsVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D4F141E41070700ACC631 /* DMRegisterMapsVC+Services.swift */; };
 		E5302CD61DFE7AB100984A0B /* DMForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5302CD51DFE7AB100984A0B /* DMForgotPasswordVC.swift */; };
-		E5310E0D1E4B2B3F004403A0 /* DMChatVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5310E0C1E4B2B3F004403A0 /* DMChatVC+Services.swift */; };
-		E5310E0F1E4EDE71004403A0 /* DMChatVC+DBHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5310E0E1E4EDE71004403A0 /* DMChatVC+DBHandling.swift */; };
 		E53738F21DB373C200967876 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53738F11DB373C200967876 /* Reachability.swift */; };
 		E540CBC01FDE426E00A8A56E /* DMProfileSuccessPending+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E540CBBF1FDE426E00A8A56E /* DMProfileSuccessPending+Services.swift */; };
-		E5433AF21FCD140800D152D9 /* DMProfileSuccessPending.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5433AF11FCD140800D152D9 /* DMProfileSuccessPending.swift */; };
+		E5433AF21FCD140800D152D9 /* DMProfileSuccessPendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5433AF11FCD140800D152D9 /* DMProfileSuccessPendingViewController.swift */; };
 		E5496DFC1E25547300C54288 /* DMCertificationsVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5496DFB1E25547300C54288 /* DMCertificationsVC+TableViewExtension.swift */; };
 		E5496E021E255A9E00C54288 /* DMExecutiveSummaryVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5496E011E255A9E00C54288 /* DMExecutiveSummaryVC+TableViewExtension.swift */; };
 		E5496E081E25E4AA00C54288 /* DMSchoolListPopOverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5496E071E25E4AA00C54288 /* DMSchoolListPopOverVC.swift */; };
@@ -234,7 +331,7 @@
 		E558D9161E2EA47500A6DF95 /* AddProfileOptionTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E558D9141E2EA47500A6DF95 /* AddProfileOptionTableCell.xib */; };
 		E56B209F1DBF7467000512F6 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E56B209E1DBF7467000512F6 /* Registration.storyboard */; };
 		E56B20A21DBF749D000512F6 /* DMRegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56B20A11DBF749D000512F6 /* DMRegistrationVC.swift */; };
-		E56B20A41DC0526E000512F6 /* DMRegistrationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56B20A31DC0526E000512F6 /* DMRegistrationContainer.swift */; };
+		E56B20A41DC0526E000512F6 /* DMRegistrationContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56B20A31DC0526E000512F6 /* DMRegistrationContainerViewController.swift */; };
 		E56C9F9E1DED4BD100EAA9DD /* Character+Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C9F9D1DED4BD100EAA9DD /* Character+Addition.swift */; };
 		E56C9FA81DED75D500EAA9DD /* CommonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C9FA71DED75D500EAA9DD /* CommonHelper.swift */; };
 		E56E315D1E3A8275009FF0FC /* EditProfileSchoolCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56E315B1E3A8275009FF0FC /* EditProfileSchoolCell.swift */; };
@@ -242,23 +339,15 @@
 		E56E45C31DAE07C200AD4559 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E56E45C21DAE07C200AD4559 /* Assets.xcassets */; };
 		E56E45C61DAE07C200AD4559 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E56E45C41DAE07C200AD4559 /* LaunchScreen.storyboard */; };
 		E56E90801DFF31740096A31B /* CameraGalleryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56E907F1DFF31740096A31B /* CameraGalleryManager.swift */; };
-		E56F78561E1F602200F07814 /* DMForgotPasswordVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56F78551E1F602200F07814 /* DMForgotPasswordVC+Services.swift */; };
-		E57681961E38A1DA00D912EA /* DMPublicProfileVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57681951E38A1DA00D912EA /* DMPublicProfileVC+Services.swift */; };
 		E57681991E3A234700D912EA /* DMEditSkillsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57681981E3A234700D912EA /* DMEditSkillsVC.swift */; };
-		E576819B1E3A25F100D912EA /* DMEditSkillsVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E576819A1E3A25F100D912EA /* DMEditSkillsVC+Services.swift */; };
 		E576819D1E3A289D00D912EA /* DMEditSkillsVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E576819C1E3A289D00D912EA /* DMEditSkillsVC+TableViewExtension.swift */; };
-		E576BA3C1E5C0CB40097B781 /* ChatList+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E576BA3A1E5C0CB40097B781 /* ChatList+CoreDataClass.swift */; };
-		E576BA3D1E5C0CB40097B781 /* ChatList+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E576BA3B1E5C0CB40097B781 /* ChatList+CoreDataProperties.swift */; };
-		E57EE6CA1E28EB440090434F /* DMAffiliationsVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57EE6C91E28EB440090434F /* DMAffiliationsVC+Services.swift */; };
 		E57EE6CD1E28EBC00090434F /* Affiliation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57EE6CC1E28EBC00090434F /* Affiliation.swift */; };
-		E57F29DC1E368D070025B9DE /* DMEditCertificateVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57F29DB1E368D070025B9DE /* DMEditCertificateVC+Services.swift */; };
 		E57F29DF1E3695060025B9DE /* DMEditDentalStateBoardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57F29DE1E3695060025B9DE /* DMEditDentalStateBoardVC.swift */; };
 		E57F29E11E3696A60025B9DE /* DMEditDentalStateBoardVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57F29E01E3696A60025B9DE /* DMEditDentalStateBoardVC+Services.swift */; };
 		E58654FE1DEFEF7F006FEB2D /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58654FC1DEFEF7F006FEB2D /* ConfigurationManager.swift */; };
 		E587D2CC1E23362C006B7F06 /* JobSelectionPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2CB1E23362C006B7F06 /* JobSelectionPickerView.swift */; };
 		E587D2CF1E23438B006B7F06 /* DMJobTitleSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2CE1E23438B006B7F06 /* DMJobTitleSelectionVC.swift */; };
 		E587D2D11E2343A5006B7F06 /* DMJobTitleSelectionVC+UIPickerViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2D01E2343A5006B7F06 /* DMJobTitleSelectionVC+UIPickerViewExtension.swift */; };
-		E587D2D51E2357A9006B7F06 /* DMJobTitleSelectionVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2D41E2357A9006B7F06 /* DMJobTitleSelectionVC+Services.swift */; };
 		E587D2D71E236B84006B7F06 /* DMRegisterMapsVC+GoogleMapsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2D61E236B84006B7F06 /* DMRegisterMapsVC+GoogleMapsExtension.swift */; };
 		E587D2D91E236EAE006B7F06 /* DMRegisterMapsVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587D2D81E236EAE006B7F06 /* DMRegisterMapsVC+TableViewExtension.swift */; };
 		E587D2DD1E2396E9006B7F06 /* JobSelectionPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E587D2DC1E2396E9006B7F06 /* JobSelectionPickerView.xib */; };
@@ -283,12 +372,9 @@
 		E59073591FB02C4F007381E8 /* DMJobTitleSelectionVC+TableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59073581FB02C4F007381E8 /* DMJobTitleSelectionVC+TableExtension.swift */; };
 		E590735B1FB02D36007381E8 /* DMJobTitleSelectionVC+TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590735A1FB02D36007381E8 /* DMJobTitleSelectionVC+TextFieldExtension.swift */; };
 		E59467271FD8FFE70009C18B /* Popover.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59467261FD8FFE60009C18B /* Popover.swift */; };
-		E594BE9D1E1DFF4400310AE5 /* DMRegistrationVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E594BE9C1E1DFF4400310AE5 /* DMRegistrationVC+TableViewExtension.swift */; };
 		E594BE9F1E1DFFA900310AE5 /* DMRegistrationVC+TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E594BE9E1E1DFFA900310AE5 /* DMRegistrationVC+TextFieldExtension.swift */; };
 		E594BEA21E1E014F00310AE5 /* DMLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E594BEA11E1E014F00310AE5 /* DMLoginVC.swift */; };
 		E594BEA41E1E076D00310AE5 /* DMLoginVC+TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E594BEA31E1E076D00310AE5 /* DMLoginVC+TextFieldExtension.swift */; };
-		E594BEA61E1E07C900310AE5 /* DMLoginVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E594BEA51E1E07C900310AE5 /* DMLoginVC+TableViewExtension.swift */; };
-		E594BEA81E1E07F500310AE5 /* DMLoginVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E594BEA71E1E07F500310AE5 /* DMLoginVC+Services.swift */; };
 		E597E55B1E150638001DDA78 /* dentamatch.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E597E55A1E150638001DDA78 /* dentamatch.ttf */; };
 		E597E5751E151A99001DDA78 /* SF-UI-Display-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = E597E55D1E151A99001DDA78 /* SF-UI-Display-Black.otf */; };
 		E597E5761E151A99001DDA78 /* SF-UI-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E597E55E1E151A99001DDA78 /* SF-UI-Display-Bold.otf */; };
@@ -335,48 +421,17 @@
 		E5AE37091E4897690001EC3C /* MessageSenderTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5AE37071E4897690001EC3C /* MessageSenderTableCell.xib */; };
 		E5AE370C1E4897790001EC3C /* MessageReceiverTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE370A1E4897790001EC3C /* MessageReceiverTableCell.swift */; };
 		E5AE370D1E4897790001EC3C /* MessageReceiverTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5AE370B1E4897790001EC3C /* MessageReceiverTableCell.xib */; };
-		E5AE375F1E4971CE0001EC3C /* SocketAckEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37471E4971CE0001EC3C /* SocketAckEmitter.swift */; };
-		E5AE37601E4971CE0001EC3C /* SocketAckManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37481E4971CE0001EC3C /* SocketAckManager.swift */; };
-		E5AE37611E4971CE0001EC3C /* SocketAnyEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37491E4971CE0001EC3C /* SocketAnyEvent.swift */; };
-		E5AE37621E4971CE0001EC3C /* SocketClientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE374A1E4971CE0001EC3C /* SocketClientManager.swift */; };
-		E5AE37631E4971CE0001EC3C /* SocketEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE374B1E4971CE0001EC3C /* SocketEngine.swift */; };
-		E5AE37641E4971CE0001EC3C /* SocketEngineClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE374C1E4971CE0001EC3C /* SocketEngineClient.swift */; };
-		E5AE37651E4971CE0001EC3C /* SocketEnginePacketType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE374D1E4971CE0001EC3C /* SocketEnginePacketType.swift */; };
-		E5AE37661E4971CE0001EC3C /* SocketEnginePollable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE374E1E4971CE0001EC3C /* SocketEnginePollable.swift */; };
-		E5AE37671E4971CE0001EC3C /* SocketEngineSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE374F1E4971CE0001EC3C /* SocketEngineSpec.swift */; };
-		E5AE37681E4971CE0001EC3C /* SocketEngineWebsocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37501E4971CE0001EC3C /* SocketEngineWebsocket.swift */; };
-		E5AE37691E4971CE0001EC3C /* SocketEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37511E4971CE0001EC3C /* SocketEventHandler.swift */; };
-		E5AE376A1E4971CE0001EC3C /* SocketExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37521E4971CE0001EC3C /* SocketExtensions.swift */; };
-		E5AE376B1E4971CE0001EC3C /* SocketIOClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37531E4971CE0001EC3C /* SocketIOClient.swift */; };
-		E5AE376C1E4971CE0001EC3C /* SocketIOClientConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37541E4971CE0001EC3C /* SocketIOClientConfiguration.swift */; };
-		E5AE376D1E4971CE0001EC3C /* SocketIOClientOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37551E4971CE0001EC3C /* SocketIOClientOption.swift */; };
-		E5AE376E1E4971CE0001EC3C /* SocketIOClientSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37561E4971CE0001EC3C /* SocketIOClientSpec.swift */; };
-		E5AE376F1E4971CE0001EC3C /* SocketIOClientStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37571E4971CE0001EC3C /* SocketIOClientStatus.swift */; };
-		E5AE37701E4971CE0001EC3C /* SocketLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37581E4971CE0001EC3C /* SocketLogger.swift */; };
-		E5AE37711E4971CE0001EC3C /* SocketPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37591E4971CE0001EC3C /* SocketPacket.swift */; };
-		E5AE37721E4971CE0001EC3C /* SocketParsable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE375A1E4971CE0001EC3C /* SocketParsable.swift */; };
-		E5AE37731E4971CE0001EC3C /* SocketStringReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE375B1E4971CE0001EC3C /* SocketStringReader.swift */; };
-		E5AE37741E4971CE0001EC3C /* SocketTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE375C1E4971CE0001EC3C /* SocketTypes.swift */; };
-		E5AE37751E4971CE0001EC3C /* SSLSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE375D1E4971CE0001EC3C /* SSLSecurity.swift */; };
-		E5AE37761E4971CE0001EC3C /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE375E1E4971CE0001EC3C /* WebSocket.swift */; };
-		E5AE37791E49743C0001EC3C /* SocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37781E49743C0001EC3C /* SocketManager.swift */; };
+		E5AE37791E49743C0001EC3C /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37781E49743C0001EC3C /* SocketIOManager.swift */; };
 		E5AE377E1E497D8D0001EC3C /* MessageListTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE377C1E497D8D0001EC3C /* MessageListTableCell.swift */; };
 		E5AE377F1E497D8D0001EC3C /* MessageListTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5AE377D1E497D8D0001EC3C /* MessageListTableCell.xib */; };
 		E5AE37821E4984420001EC3C /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE37811E4984420001EC3C /* DatabaseManager.swift */; };
-		E5B84B371E9DF835009665D1 /* Chat+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B84B351E9DF835009665D1 /* Chat+CoreDataClass.swift */; };
-		E5B84B381E9DF835009665D1 /* Chat+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B84B361E9DF835009665D1 /* Chat+CoreDataProperties.swift */; };
 		E5BED5501E49AB85003EC833 /* DMChatVC+TableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BED54A1E49AB85003EC833 /* DMChatVC+TableViewExtensions.swift */; };
 		E5BED5511E49AB85003EC833 /* DMChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BED54B1E49AB85003EC833 /* DMChatVC.swift */; };
-		E5BED5521E49AB85003EC833 /* DMMessages+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BED54D1E49AB85003EC833 /* DMMessages+Services.swift */; };
 		E5BED5531E49AB85003EC833 /* DMMessagesVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BED54E1E49AB85003EC833 /* DMMessagesVC+TableViewExtension.swift */; };
 		E5BED5541E49AB85003EC833 /* DMMessagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BED54F1E49AB85003EC833 /* DMMessagesVC.swift */; };
-		E5BED5661E49BA0B003EC833 /* DMMessagesVC+DBHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BED5651E49BA0B003EC833 /* DMMessagesVC+DBHandling.swift */; };
 		E5C5F3151DC0AACA001A5A3F /* DMRegisterMapsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C5F3141DC0AACA001A5A3F /* DMRegisterMapsVC.swift */; };
 		E5C5F31B1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C5F31A1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift */; };
-		E5D2D8A81FE10B6E001EFA68 /* DMJobTitleVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D2D8A71FE10B6E001EFA68 /* DMJobTitleVC+Services.swift */; };
 		E5D2D8AB1FE24305001EFA68 /* DMCommonSuccessFailureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D2D8AA1FE24305001EFA68 /* DMCommonSuccessFailureVC.swift */; };
-		E5DC3E731DAF2C45002DA20E /* DentaMatch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E5DC3E711DAF2C45002DA20E /* DentaMatch.xcdatamodeld */; };
-		E5E7CB431E2F39D500D4FB59 /* DMEditProfileVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E7CB421E2F39D500D4FB59 /* DMEditProfileVC+Services.swift */; };
 		E5E7CB4A1E2F8CDE00D4FB59 /* EditLicenseTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E7CB481E2F8CDE00D4FB59 /* EditLicenseTableCell.swift */; };
 		E5E7CB4B1E2F8CDE00D4FB59 /* EditLicenseTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5E7CB491E2F8CDE00D4FB59 /* EditLicenseTableCell.xib */; };
 		E5E7CB781E2FA23200D4FB59 /* AboutMeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E7CB541E2FA23200D4FB59 /* AboutMeCell.swift */; };
@@ -433,15 +488,11 @@
 		E5F9194B1E9DD4A30021F008 /* FSCalendarScopeHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F919391E9DD4A30021F008 /* FSCalendarScopeHandle.m */; };
 		E5F9194C1E9DD4A30021F008 /* FSCalendarStickyHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F9193B1E9DD4A30021F008 /* FSCalendarStickyHeader.m */; };
 		E5F9194D1E9DD4A30021F008 /* FSCalendarWeekdayView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F9193D1E9DD4A30021F008 /* FSCalendarWeekdayView.m */; };
-		E5FBE9D91E1CCF940025683C /* DMRegistration+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FBE9D81E1CCF940025683C /* DMRegistration+Services.swift */; };
 		F209C3411E435A43005C9594 /* SearchParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = F209C3401E435A43005C9594 /* SearchParameters.swift */; };
 		F22359151E3F351C00E984FC /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22359141E3F351C00E984FC /* Job.swift */; };
 		F22359171E3F3E3300E984FC /* DMJobSearchVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22359161E3F3E3300E984FC /* DMJobSearchVC+TableViewExtension.swift */; };
 		F22359191E3F3F2100E984FC /* DMJobSearchVC+TableViewCellDelegateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22359181E3F3F2100E984FC /* DMJobSearchVC+TableViewCellDelegateExtension.swift */; };
-		F223591B1E3F5ED100E984FC /* DMJobSearchResultVC+GMSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F223591A1E3F5ED100E984FC /* DMJobSearchResultVC+GMSExtension.swift */; };
-		F223591D1E3F5F4900E984FC /* DMJobSearchResultVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F223591C1E3F5F4900E984FC /* DMJobSearchResultVC+TableViewExtension.swift */; };
 		F223591F1E3F608900E984FC /* DMJobDetaiVC+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F223591E1E3F608900E984FC /* DMJobDetaiVC+TableViewExtension.swift */; };
-		F22E13DC1E409B9D0076F61E /* DMJobSearchResultVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22E13DB1E409B9D0076F61E /* DMJobSearchResultVC+Services.swift */; };
 		F239E2E01E28D0890071909E /* JobMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F239E2DF1E28D0890071909E /* JobMarker.swift */; };
 		F2540F4A1E23A81C004B0538 /* JobSeachTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2540F481E23A81C004B0538 /* JobSeachTitleCell.swift */; };
 		F2540F4B1E23A81C004B0538 /* JobSeachTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2540F491E23A81C004B0538 /* JobSeachTitleCell.xib */; };
@@ -455,7 +506,6 @@
 		F2540F5D1E274258004B0538 /* DMJobSearchResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2540F5C1E274258004B0538 /* DMJobSearchResultVC.swift */; };
 		F2540F601E274360004B0538 /* JobSearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2540F5E1E274360004B0538 /* JobSearchResultCell.swift */; };
 		F2540F611E274360004B0538 /* JobSearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2540F5F1E274360004B0538 /* JobSearchResultCell.xib */; };
-		F2CBC10A1E41E9BE00345B9F /* DMJobDetailVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CBC1091E41E9BE00345B9F /* DMJobDetailVC+Services.swift */; };
 		F2D03BA51E1F580C0005D3A4 /* JobSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2D03BA41E1F580C0005D3A4 /* JobSearch.storyboard */; };
 		F2D03BA81E1F67BA0005D3A4 /* DMJobSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D03BA71E1F67BA0005D3A4 /* DMJobSearchVC.swift */; };
 		F2F5E0CB1E2F292F0082187C /* DentistDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F5E0C91E2F292F0082187C /* DentistDetailCell.swift */; };
@@ -471,14 +521,18 @@
 		F2F5E0DE1E31CE2A0082187C /* DMJobDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F5E0DD1E31CE2A0082187C /* DMJobDetailVC.swift */; };
 		F2F5E0E01E31D40E0082187C /* JobDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F5E0DF1E31D40E0082187C /* JobDetailHeaderView.swift */; };
 		F2F5E0E21E31D43A0082187C /* JobDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2F5E0E11E31D43A0082187C /* JobDetailHeaderView.xib */; };
-		F2F5E0E61E35DE390082187C /* DMJobSearchVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F5E0E51E35DE390082187C /* DMJobSearchVC+Services.swift */; };
 		F2F9B97B1E38978200639716 /* JobTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F9B9791E38978200639716 /* JobTitleCell.swift */; };
 		F2F9B97C1E38978200639716 /* JobTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2F9B97A1E38978200639716 /* JobTitleCell.xib */; };
+		FC760044811536DBE9D092DE /* JobSearchMapScreenInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C17510D07F6A4B1106F1552 /* JobSearchMapScreenInitializer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C39A77826110C77E6DAE6AE /* JobSearchListScreenViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JobSearchListScreenViewController.swift; sourceTree = "<group>"; };
 		158450992C392116A74F763C /* Pods-DentaMatch.qa.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DentaMatch.qa.xcconfig"; path = "Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch.qa.xcconfig"; sourceTree = "<group>"; };
+		177AB987BBF7C00C0472C696 /* JobSearchListScreen.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JobSearchListScreen.swift; sourceTree = "<group>"; };
 		19F54B802B7D87A34FEE97F2 /* Pods-DentaMatch.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DentaMatch.staging.xcconfig"; path = "Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch.staging.xcconfig"; sourceTree = "<group>"; };
+		4554378ED6FEC5B025F5436E /* JobSearchListScreenView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JobSearchListScreenView.swift; sourceTree = "<group>"; };
+		45DEFE28DCF17B32C833D487 /* JobSearchListScreenInitializer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JobSearchListScreenInitializer.swift; sourceTree = "<group>"; };
 		48067D47212E9E8F007F77E6 /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
 		48067D48212E9E8F007F77E6 /* TagCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagCell.xib; sourceTree = "<group>"; };
 		48067D4B212EC5BC007F77E6 /* DGCollectionViewLeftAlignFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGCollectionViewLeftAlignFlowLayout.h; sourceTree = "<group>"; };
@@ -499,7 +553,6 @@
 		484958FE218ADCC000096046 /* StateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateCell.swift; sourceTree = "<group>"; };
 		485DA9FB2183610C00CA8593 /* AnimatedPHToolTipCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedPHToolTipCell.swift; sourceTree = "<group>"; };
 		485DA9FC2183610C00CA8593 /* AnimatedPHToolTipCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnimatedPHToolTipCell.xib; sourceTree = "<group>"; };
-		4877D98220ECD54400264422 /* AppDelegate+InitialConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+InitialConfiguration.swift"; sourceTree = "<group>"; };
 		48CD1503212D75F600E4B80E /* TempJobDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempJobDetailCell.swift; sourceTree = "<group>"; };
 		48CD1504212D75F600E4B80E /* TempJobDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TempJobDetailCell.xib; sourceTree = "<group>"; };
 		5A0138231E6EBBA900D15783 /* MixpanelOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixpanelOperations.swift; sourceTree = "<group>"; };
@@ -512,7 +565,6 @@
 		5A3B06CC1E3387FF00EFCA6E /* DMSettingVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMSettingVC+TableViewExtension.swift"; sourceTree = "<group>"; };
 		5A3B06CE1E33881D00EFCA6E /* DMChangePasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMChangePasswordVC.swift; sourceTree = "<group>"; };
 		5A3B06D01E33883C00EFCA6E /* DMChangePasswordVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMChangePasswordVC+TableViewExtension.swift"; sourceTree = "<group>"; };
-		5A3B06D21E33885A00EFCA6E /* DMChangePasswordVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMChangePasswordVC+Services.swift"; sourceTree = "<group>"; };
 		5A3BD4A81E35D3D800A607AC /* EditProfileAffiliationBrickCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileAffiliationBrickCell.swift; sourceTree = "<group>"; };
 		5A3BD4A91E35D3D800A607AC /* EditProfileAffiliationBrickCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileAffiliationBrickCell.xib; sourceTree = "<group>"; };
 		5A3BD4AC1E35DB1E00A607AC /* EditProfileSkillBrickCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileSkillBrickCell.swift; sourceTree = "<group>"; };
@@ -539,7 +591,6 @@
 		5A5523EA1E4C419F007D8C09 /* CommonTextNotificationTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommonTextNotificationTableCell.xib; sourceTree = "<group>"; };
 		5A5523EE1E4D97DF007D8C09 /* UserNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNotification.swift; sourceTree = "<group>"; };
 		5A5523F01E4DCDF3007D8C09 /* TimeAgo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeAgo.swift; sourceTree = "<group>"; };
-		5A60A8551E42FF1800789D14 /* DMCalenderVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMCalenderVC+Services.swift"; sourceTree = "<group>"; };
 		5A60A85A1E43309100789D14 /* UserAvailability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAvailability.swift; sourceTree = "<group>"; };
 		5A737D081E56B040002472D4 /* NotificationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
 		5A85D2061E2DFAD000AC4C89 /* SeparatorWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatorWrapper.swift; sourceTree = "<group>"; };
@@ -560,7 +611,6 @@
 		5A988BC01E4AE6A500DECB49 /* Notification.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Notification.storyboard; sourceTree = "<group>"; };
 		5A988BC31E4AE99800DECB49 /* DMNotificationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMNotificationVC.swift; sourceTree = "<group>"; };
 		5A988BC51E4AE9D200DECB49 /* DMNotificationVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMNotificationVC+TableViewExtension.swift"; sourceTree = "<group>"; };
-		5A988BC71E4AEA0E00DECB49 /* DMNotificationVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMNotificationVC+Services.swift"; sourceTree = "<group>"; };
 		5A9A3A961E2B58600002C5B6 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		5AAE74761E5C1D0E00B28851 /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		5AAE74771E5C1D0E00B28851 /* ToastView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToastView.xib; sourceTree = "<group>"; };
@@ -571,13 +621,69 @@
 		5AC7143F1E34A9B100E433C1 /* Calender.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Calender.storyboard; sourceTree = "<group>"; };
 		5AC714411E34A9C700E433C1 /* Messages.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Messages.storyboard; sourceTree = "<group>"; };
 		5AC714511E34ACD400E433C1 /* DMCalenderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMCalenderVC.swift; sourceTree = "<group>"; };
-		5AC714571E34F76900E433C1 /* DMSettingVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMSettingVC+Services.swift"; sourceTree = "<group>"; };
-		5AD246901E272E92009350BF /* DMWorkExperienceVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMWorkExperienceVC+Services.swift"; sourceTree = "<group>"; };
 		5AD246921E273CC9009350BF /* DatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		5AD246941E273CE7009350BF /* DatePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerView.xib; sourceTree = "<group>"; };
 		5AD246961E27799F009350BF /* PickerAnimatedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerAnimatedTextField.swift; sourceTree = "<group>"; };
 		5AD8AC4AE71CBA67916D21CE /* Pods-DentaMatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DentaMatch.release.xcconfig"; path = "Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch.release.xcconfig"; sourceTree = "<group>"; };
 		5AE5F5091E16563D006C328A /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		6C17510D07F6A4B1106F1552 /* JobSearchMapScreenInitializer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JobSearchMapScreenInitializer.swift; sourceTree = "<group>"; };
+		6E0C4969222E3F180010CC2E /* JobSearchListScreenView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JobSearchListScreenView.xib; sourceTree = "<group>"; };
+		6E0C496B222E40440010CC2E /* JobSearchMapScreenView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JobSearchMapScreenView.xib; sourceTree = "<group>"; };
+		6E0C496D222E4C1F0010CC2E /* TableViewUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewUtils.swift; sourceTree = "<group>"; };
+		6E0C496F222E4C2C0010CC2E /* CollectionViewUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewUtils.swift; sourceTree = "<group>"; };
+		6E0C4971222E4C5F0010CC2E /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		6E0C4972222E4C5F0010CC2E /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		6E0C4976222EA1D90010CC2E /* JobMapDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobMapDetailView.swift; sourceTree = "<group>"; };
+		6E0C4978222EA1E00010CC2E /* JobMapDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JobMapDetailView.xib; sourceTree = "<group>"; };
+		6E35FBE12200273700AB84A3 /* DMMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMMessages.swift; sourceTree = "<group>"; };
+		6E35FBE32200279800AB84A3 /* MessagesFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesFlowCoordinator.swift; sourceTree = "<group>"; };
+		6E35FBE52200292200AB84A3 /* DMEditProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMEditProfile.swift; sourceTree = "<group>"; };
+		6E35FBE72200297E00AB84A3 /* ProfileFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFlowCoordinator.swift; sourceTree = "<group>"; };
+		6E35FBE922002BBE00AB84A3 /* DMSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMSettings.swift; sourceTree = "<group>"; };
+		6E35FBEB2200310200AB84A3 /* DMChangePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMChangePassword.swift; sourceTree = "<group>"; };
+		6E35FBED2200346F00AB84A3 /* DMNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMNotifications.swift; sourceTree = "<group>"; };
+		6E35FBEF2200366500AB84A3 /* DMPublicProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMPublicProfile.swift; sourceTree = "<group>"; };
+		6E35FBF122003C1200AB84A3 /* DMWorkExperience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMWorkExperience.swift; sourceTree = "<group>"; };
+		6E35FBF322003E9700AB84A3 /* DMEditStudy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMEditStudy.swift; sourceTree = "<group>"; };
+		6E35FBF522005C3D00AB84A3 /* DMEditSkills.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMEditSkills.swift; sourceTree = "<group>"; };
+		6E35FBF722005CD500AB84A3 /* DMSelectSkills.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMSelectSkills.swift; sourceTree = "<group>"; };
+		6E35FBF922005F4800AB84A3 /* DMAffiliations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMAffiliations.swift; sourceTree = "<group>"; };
+		6E35FBFB220064AA00AB84A3 /* DMEditCertificate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMEditCertificate.swift; sourceTree = "<group>"; };
+		6E35FBFD22006CE700AB84A3 /* DMJobDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMJobDetail.swift; sourceTree = "<group>"; };
+		6E35FBFF2200792100AB84A3 /* DMChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMChat.swift; sourceTree = "<group>"; };
+		6E35FC0122007C6700AB84A3 /* DMCancelJob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMCancelJob.swift; sourceTree = "<group>"; };
+		6E35FC0322007FBC00AB84A3 /* DMJobSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMJobSearch.swift; sourceTree = "<group>"; };
+		6E35FC05220083AC00AB84A3 /* DMJobTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMJobTitle.swift; sourceTree = "<group>"; };
+		6E35FC07220091D300AB84A3 /* DMRegisterMaps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMRegisterMaps.swift; sourceTree = "<group>"; };
+		6E4D592F21FEC0F00008EDBA /* BaseFlowCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseFlowCoordinator.swift; sourceTree = "<group>"; };
+		6E4D593121FEC10E0008EDBA /* BaseFlowProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseFlowProtocol.swift; sourceTree = "<group>"; };
+		6E4D593321FEC1B30008EDBA /* RootFlowCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootFlowCoordinator.swift; sourceTree = "<group>"; };
+		6E4D593521FEC4A00008EDBA /* RootScreenView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RootScreenView.xib; sourceTree = "<group>"; };
+		6E4D593721FEC54C0008EDBA /* ViewInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewInput.swift; sourceTree = "<group>"; };
+		6E4D593821FEC54C0008EDBA /* ModuleInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModuleInput.swift; sourceTree = "<group>"; };
+		6E4D593921FEC54D0008EDBA /* ModuleOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModuleOutput.swift; sourceTree = "<group>"; };
+		6E4D593A21FEC54D0008EDBA /* ViewOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewOutput.swift; sourceTree = "<group>"; };
+		6E4D593F21FECB1F0008EDBA /* DMRegistrationContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMRegistrationContainer.swift; sourceTree = "<group>"; };
+		6E4D594121FECCA50008EDBA /* DMOnboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMOnboarding.swift; sourceTree = "<group>"; };
+		6E5F84BC2209288000AF54CF /* DMTrackPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMTrackPresenter.swift; sourceTree = "<group>"; };
+		6E5F84BE220949B900AF54CF /* DMCancelJobPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMCancelJobPresenter.swift; sourceTree = "<group>"; };
+		6E6F460522098B080023238B /* DMMessagesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMMessagesPresenter.swift; sourceTree = "<group>"; };
+		6E7A5B14222814DA007A916C /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		6E7A5B162228152E007A916C /* CalendarHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarHeaderView.xib; sourceTree = "<group>"; };
+		6E7A5B3C22282E4C007A916C /* EmptyJobsCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyJobsCalendarCell.swift; sourceTree = "<group>"; };
+		6E7A5B3E22282E56007A916C /* EmptyJobsCalendarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyJobsCalendarCell.xib; sourceTree = "<group>"; };
+		6E85B5622202FB4600CD2CCE /* DMRegistrationContainerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMRegistrationContainerPresenter.swift; sourceTree = "<group>"; };
+		6E85B56622030CEE00CD2CCE /* DMRegistrationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMRegistrationPresenter.swift; sourceTree = "<group>"; };
+		6E85B5682203188400CD2CCE /* MessageUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageUtils.swift; sourceTree = "<group>"; };
+		6E85B56A22032D4400CD2CCE /* DMLoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DMLoginPresenter.swift; path = "DMLoginVC.swift~refs/remotes/origin/DMLoginPresenter.swift"; sourceTree = "<group>"; };
+		6E85B56C2203330C00CD2CCE /* DMForgotPasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMForgotPasswordPresenter.swift; sourceTree = "<group>"; };
+		6E85B56E22033D8B00CD2CCE /* DMTermsAndConditionsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMTermsAndConditionsPresenter.swift; sourceTree = "<group>"; };
+		6E85B5702203423B00CD2CCE /* DMOnboardingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMOnboardingPresenter.swift; sourceTree = "<group>"; };
+		6E85B5722203476C00CD2CCE /* DMRegisterMapsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMRegisterMapsPresenter.swift; sourceTree = "<group>"; };
+		6E85B57422041E1400CD2CCE /* DMJobTitleSelectionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMJobTitleSelectionPresenter.swift; sourceTree = "<group>"; };
+		6E85B57622042B7000CD2CCE /* SearchStatePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStatePresenter.swift; sourceTree = "<group>"; };
+		6E85B5782204407A00CD2CCE /* DMProfileSuccessPendingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMProfileSuccessPendingPresenter.swift; sourceTree = "<group>"; };
+		6E85B57A2204521600CD2CCE /* DMCalendarSetAvailabillityPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMCalendarSetAvailabillityPresenter.swift; sourceTree = "<group>"; };
 		6E85B82621FAD9E700DB137F /* DMCalendarInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMCalendarInitializer.swift; sourceTree = "<group>"; };
 		6E85B82921FADA7400DB137F /* DMCalendarSetAvailabilityInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMCalendarSetAvailabilityInitializer.swift; sourceTree = "<group>"; };
 		6E85B82C21FADC2100DB137F /* DMMessagesInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMMessagesInitializer.swift; sourceTree = "<group>"; };
@@ -607,8 +713,46 @@
 		6E85B87621FB1C1800DB137F /* DMJobTitleSelectionInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMJobTitleSelectionInitializer.swift; sourceTree = "<group>"; };
 		6E85B87921FB1DAA00DB137F /* DMWorkExperienceStartInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMWorkExperienceStartInitializer.swift; sourceTree = "<group>"; };
 		6E85B87B21FB27F500DB137F /* NavigationControllerUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerUtils.swift; sourceTree = "<group>"; };
+		6E85B88421FB3DC500DB137F /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
+		6E85B88621FB406E00DB137F /* ChatListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListModel.swift; sourceTree = "<group>"; };
+		6E88699221FEDDEF00898925 /* AuthorizationFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationFlowCoordinator.swift; sourceTree = "<group>"; };
+		6E88699421FEE48A00898925 /* DMLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMLogin.swift; sourceTree = "<group>"; };
+		6E88699621FEE50100898925 /* DMRegistration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMRegistration.swift; sourceTree = "<group>"; };
+		6E90E5DC220A7A4900E04344 /* DMChatPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMChatPresenter.swift; sourceTree = "<group>"; };
+		6E90E5DE220A913000E04344 /* DMEditProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMEditProfilePresenter.swift; sourceTree = "<group>"; };
+		6E90E5E0220AA5A700E04344 /* DMSettingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMSettingPresenter.swift; sourceTree = "<group>"; };
+		6E90E5E2220AB1AF00E04344 /* DMPublicProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMPublicProfilePresenter.swift; sourceTree = "<group>"; };
+		6E90E5E4220AD9B000E04344 /* DMWorkExperiencePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMWorkExperiencePresenter.swift; sourceTree = "<group>"; };
+		6E95F796220C21F2001B7035 /* DMEditStudyPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMEditStudyPresenter.swift; sourceTree = "<group>"; };
+		6E95F798220C33AB001B7035 /* DMChangePasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMChangePasswordPresenter.swift; sourceTree = "<group>"; };
+		6E99690121FEE84A0007CF40 /* DMForgotPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMForgotPassword.swift; sourceTree = "<group>"; };
+		6E99690321FEEAE10007CF40 /* DMTermsAndConditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMTermsAndConditions.swift; sourceTree = "<group>"; };
+		6E99690521FEEFE40007CF40 /* DMJobTitleSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMJobTitleSelection.swift; sourceTree = "<group>"; };
+		6E99690721FEF13D0007CF40 /* TabBarFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarFlowCoordinator.swift; sourceTree = "<group>"; };
+		6E99690921FEF2C10007CF40 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		6E99690B21FEF7450007CF40 /* RegistrationFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationFlowCoordinator.swift; sourceTree = "<group>"; };
+		6E99690D21FF11170007CF40 /* SearchState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchState.swift; sourceTree = "<group>"; };
+		6E99690F21FF1A6C0007CF40 /* DMProfileSuccessPending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMProfileSuccessPending.swift; sourceTree = "<group>"; };
+		6E99691121FF213B0007CF40 /* DMCalendarSetAvailabillity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMCalendarSetAvailabillity.swift; sourceTree = "<group>"; };
+		6E99691321FF2BE90007CF40 /* DMJobSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMJobSearchResult.swift; sourceTree = "<group>"; };
+		6E99691521FF3F940007CF40 /* JobsFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobsFlowCoordinator.swift; sourceTree = "<group>"; };
+		6E99691721FF414E0007CF40 /* DMTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMTrack.swift; sourceTree = "<group>"; };
+		6E99691921FF42390007CF40 /* TrackFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackFlowCoordinator.swift; sourceTree = "<group>"; };
+		6E99691B21FF47E00007CF40 /* DMCalender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMCalender.swift; sourceTree = "<group>"; };
+		6E99691D21FF48E50007CF40 /* CalendarFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarFlowCoordinator.swift; sourceTree = "<group>"; };
 		6EA372E421F8BF16007BE373 /* ImageView+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageView+Additions.swift"; sourceTree = "<group>"; };
 		6EA372E621F8E1B7007BE373 /* UIButton+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Additions.swift"; sourceTree = "<group>"; };
+		6EA434FA2207D790001E64A0 /* DMJobSearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMJobSearchPresenter.swift; sourceTree = "<group>"; };
+		6EA434FC2207E00A001E64A0 /* DMJobSearchResultPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DMJobSearchResultPresenter.swift; path = "DMJobSearchResultVC.swift~refs/remotes/origin/DMJobSearchResultPresenter.swift"; sourceTree = "<group>"; };
+		6EA434FE2207F49B001E64A0 /* DMJobDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMJobDetailPresenter.swift; sourceTree = "<group>"; };
+		6EA435002208097C001E64A0 /* DMNotificationsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMNotificationsPresenter.swift; sourceTree = "<group>"; };
+		6EA4350222081D95001E64A0 /* DMJobTitlePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMJobTitlePresenter.swift; sourceTree = "<group>"; };
+		6ECBBE2B220D5389004A936A /* DMEditCertificatePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMEditCertificatePresenter.swift; sourceTree = "<group>"; };
+		6ECBBE2D220D601C004A936A /* DMAffiliationsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMAffiliationsPresenter.swift; sourceTree = "<group>"; };
+		6ECBBE2F220D6B20004A936A /* DMSelectSkillsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMSelectSkillsPresenter.swift; sourceTree = "<group>"; };
+		6ECBBE31220D8501004A936A /* DMEditSkillsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMEditSkillsPresenter.swift; sourceTree = "<group>"; };
+		6ED7FBB72228016100CEB64B /* DMCalenderPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMCalenderPresenter.swift; sourceTree = "<group>"; };
+		6ED7FBBA222813C400CEB64B /* CalendarHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHeaderView.swift; sourceTree = "<group>"; };
 		6EF2F1E421F9C82300F6F38D /* ContainerInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerInitializer.swift; sourceTree = "<group>"; };
 		6EF2F1EA21F9DBFF00F6F38D /* DMRegistrationContainerInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMRegistrationContainerInitializer.swift; sourceTree = "<group>"; };
 		6EF2F1EE21F9DD3400F6F38D /* DMRegistrationInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMRegistrationInitializer.swift; sourceTree = "<group>"; };
@@ -624,8 +768,16 @@
 		6EF2F20C21FA15A100F6F38D /* DMJobDetailInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMJobDetailInitializer.swift; sourceTree = "<group>"; };
 		6EF2F20F21FA1D0200F6F38D /* DMTrackInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMTrackInitializer.swift; sourceTree = "<group>"; };
 		6EF2F21321FA1E7900F6F38D /* DMCancelJobInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMCancelJobInitializer.swift; sourceTree = "<group>"; };
+		70EAA1B375B32E8EBF8FE401 /* RootScreenViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RootScreenViewController.swift; sourceTree = "<group>"; };
+		825B91B9AAE5E85278E8C292 /* JobSearchMapScreenViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JobSearchMapScreenViewController.swift; sourceTree = "<group>"; };
+		842E50D2071A67A9DEBB1509 /* JobSearchListScreenPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JobSearchListScreenPresenter.swift; sourceTree = "<group>"; };
+		87F2DF4A230301EEEA4DAA70 /* RootScreen.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RootScreen.swift; sourceTree = "<group>"; };
+		A3369D610C243D2DA1EEBAA7 /* RootScreenInitializer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RootScreenInitializer.swift; sourceTree = "<group>"; };
 		A69AB47303239A016127D8D8 /* Pods-DentaMatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DentaMatch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch.debug.xcconfig"; sourceTree = "<group>"; };
+		B09942F59C93A38EE2706350 /* JobSearchMapScreenView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JobSearchMapScreenView.swift; sourceTree = "<group>"; };
+		CD7F213BA39E0010C6490C39 /* JobSearchMapScreenPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JobSearchMapScreenPresenter.swift; sourceTree = "<group>"; };
 		D6FD70F6CEE32CA0ED0D2D7E /* Pods_DentaMatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DentaMatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D98819DFC0C5E131E0546C8A /* JobSearchMapScreen.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JobSearchMapScreen.swift; sourceTree = "<group>"; };
 		E50512BC1E82378700509328 /* WorkingHoursTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkingHoursTableCell.swift; sourceTree = "<group>"; };
 		E50512BD1E82378700509328 /* WorkingHoursTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkingHoursTableCell.xib; sourceTree = "<group>"; };
 		E506AE4F1FAC329400ABC7FA /* PreferredLocationPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferredLocationPickerView.swift; sourceTree = "<group>"; };
@@ -646,25 +798,19 @@
 		E51C4D3A1FB051C7009FC3A0 /* AboutMeJobSelectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutMeJobSelectionCell.xib; sourceTree = "<group>"; };
 		E51C4D3D1FB05591009FC3A0 /* DMJobTitleSelectionVC+TextFieldDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DMJobTitleSelectionVC+TextFieldDelegates.swift"; sourceTree = "<group>"; };
 		E51D4EF21E3AFCA700ACC631 /* DMEditStudyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMEditStudyVC.swift; sourceTree = "<group>"; };
-		E51D4EF41E3AFEA600ACC631 /* DMEditStudyVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMEditStudyVC+Services.swift"; sourceTree = "<group>"; };
 		E51D4EF61E3B029D00ACC631 /* DMEditStudyVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMEditStudyVC+TableViewExtension.swift"; sourceTree = "<group>"; };
 		E51D4EFB1E3B818400ACC631 /* CustomSegmentControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegmentControl.swift; sourceTree = "<group>"; };
 		E51D4EFF1E3F207F00ACC631 /* Notifications+Name.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Notifications+Name.swift"; sourceTree = "<group>"; };
 		E51D4F041E3FABA300ACC631 /* LoadMoreView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadMoreView.xib; sourceTree = "<group>"; };
 		E51D4F061E3FABB400ACC631 /* LoadMoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadMoreView.swift; sourceTree = "<group>"; };
-		E51D4F0A1E40744C00ACC631 /* DMTrackVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMTrackVC+Services.swift"; sourceTree = "<group>"; };
 		E51D4F0B1E40744C00ACC631 /* DMTrackVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMTrackVC+TableViewExtension.swift"; sourceTree = "<group>"; };
 		E51D4F0C1E40744C00ACC631 /* DMTrackVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMTrackVC.swift; sourceTree = "<group>"; };
 		E51D4F101E40745A00ACC631 /* DMCancelJobVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMCancelJobVC.swift; sourceTree = "<group>"; };
-		E51D4F121E4086BD00ACC631 /* DMCancelJobVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMCancelJobVC+Services.swift"; sourceTree = "<group>"; };
-		E51D4F141E41070700ACC631 /* DMRegisterMapsVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMRegisterMapsVC+Services.swift"; sourceTree = "<group>"; };
 		E5302CD51DFE7AB100984A0B /* DMForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMForgotPasswordVC.swift; sourceTree = "<group>"; };
-		E5310E0C1E4B2B3F004403A0 /* DMChatVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMChatVC+Services.swift"; sourceTree = "<group>"; };
-		E5310E0E1E4EDE71004403A0 /* DMChatVC+DBHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMChatVC+DBHandling.swift"; sourceTree = "<group>"; };
 		E53738F11DB373C200967876 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		E538FA7C1DFFD76000AECE26 /* DentaMatch-Dev.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DentaMatch-Dev.entitlements"; sourceTree = "<group>"; };
 		E540CBBF1FDE426E00A8A56E /* DMProfileSuccessPending+Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DMProfileSuccessPending+Services.swift"; sourceTree = "<group>"; };
-		E5433AF11FCD140800D152D9 /* DMProfileSuccessPending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMProfileSuccessPending.swift; sourceTree = "<group>"; };
+		E5433AF11FCD140800D152D9 /* DMProfileSuccessPendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMProfileSuccessPendingViewController.swift; sourceTree = "<group>"; };
 		E5496DFB1E25547300C54288 /* DMCertificationsVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMCertificationsVC+TableViewExtension.swift"; sourceTree = "<group>"; };
 		E5496E011E255A9E00C54288 /* DMExecutiveSummaryVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMExecutiveSummaryVC+TableViewExtension.swift"; sourceTree = "<group>"; };
 		E5496E071E25E4AA00C54288 /* DMSchoolListPopOverVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMSchoolListPopOverVC.swift; sourceTree = "<group>"; };
@@ -714,7 +860,7 @@
 		E558D9141E2EA47500A6DF95 /* AddProfileOptionTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddProfileOptionTableCell.xib; sourceTree = "<group>"; };
 		E56B209E1DBF7467000512F6 /* Registration.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Registration.storyboard; sourceTree = "<group>"; };
 		E56B20A11DBF749D000512F6 /* DMRegistrationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMRegistrationVC.swift; sourceTree = "<group>"; };
-		E56B20A31DC0526E000512F6 /* DMRegistrationContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMRegistrationContainer.swift; sourceTree = "<group>"; };
+		E56B20A31DC0526E000512F6 /* DMRegistrationContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMRegistrationContainerViewController.swift; sourceTree = "<group>"; };
 		E56C9F9D1DED4BD100EAA9DD /* Character+Addition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Character+Addition.swift"; sourceTree = "<group>"; };
 		E56C9FA71DED75D500EAA9DD /* CommonHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonHelper.swift; sourceTree = "<group>"; };
 		E56E315B1E3A8275009FF0FC /* EditProfileSchoolCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileSchoolCell.swift; sourceTree = "<group>"; };
@@ -723,23 +869,15 @@
 		E56E45C21DAE07C200AD4559 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E56E45C51DAE07C200AD4559 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E56E907F1DFF31740096A31B /* CameraGalleryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraGalleryManager.swift; sourceTree = "<group>"; };
-		E56F78551E1F602200F07814 /* DMForgotPasswordVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMForgotPasswordVC+Services.swift"; sourceTree = "<group>"; };
-		E57681951E38A1DA00D912EA /* DMPublicProfileVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMPublicProfileVC+Services.swift"; sourceTree = "<group>"; };
 		E57681981E3A234700D912EA /* DMEditSkillsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMEditSkillsVC.swift; sourceTree = "<group>"; };
-		E576819A1E3A25F100D912EA /* DMEditSkillsVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMEditSkillsVC+Services.swift"; sourceTree = "<group>"; };
 		E576819C1E3A289D00D912EA /* DMEditSkillsVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMEditSkillsVC+TableViewExtension.swift"; sourceTree = "<group>"; };
-		E576BA3A1E5C0CB40097B781 /* ChatList+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ChatList+CoreDataClass.swift"; sourceTree = "<group>"; };
-		E576BA3B1E5C0CB40097B781 /* ChatList+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ChatList+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		E57EE6C91E28EB440090434F /* DMAffiliationsVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMAffiliationsVC+Services.swift"; sourceTree = "<group>"; };
 		E57EE6CC1E28EBC00090434F /* Affiliation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Affiliation.swift; sourceTree = "<group>"; };
-		E57F29DB1E368D070025B9DE /* DMEditCertificateVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMEditCertificateVC+Services.swift"; sourceTree = "<group>"; };
 		E57F29DE1E3695060025B9DE /* DMEditDentalStateBoardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMEditDentalStateBoardVC.swift; sourceTree = "<group>"; };
 		E57F29E01E3696A60025B9DE /* DMEditDentalStateBoardVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMEditDentalStateBoardVC+Services.swift"; sourceTree = "<group>"; };
 		E58654FC1DEFEF7F006FEB2D /* ConfigurationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationManager.swift; sourceTree = "<group>"; };
 		E587D2CB1E23362C006B7F06 /* JobSelectionPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobSelectionPickerView.swift; sourceTree = "<group>"; };
 		E587D2CE1E23438B006B7F06 /* DMJobTitleSelectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMJobTitleSelectionVC.swift; sourceTree = "<group>"; };
 		E587D2D01E2343A5006B7F06 /* DMJobTitleSelectionVC+UIPickerViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMJobTitleSelectionVC+UIPickerViewExtension.swift"; sourceTree = "<group>"; };
-		E587D2D41E2357A9006B7F06 /* DMJobTitleSelectionVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMJobTitleSelectionVC+Services.swift"; sourceTree = "<group>"; };
 		E587D2D61E236B84006B7F06 /* DMRegisterMapsVC+GoogleMapsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMRegisterMapsVC+GoogleMapsExtension.swift"; sourceTree = "<group>"; };
 		E587D2D81E236EAE006B7F06 /* DMRegisterMapsVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMRegisterMapsVC+TableViewExtension.swift"; sourceTree = "<group>"; };
 		E587D2DC1E2396E9006B7F06 /* JobSelectionPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobSelectionPickerView.xib; sourceTree = "<group>"; };
@@ -764,12 +902,9 @@
 		E59073581FB02C4F007381E8 /* DMJobTitleSelectionVC+TableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DMJobTitleSelectionVC+TableExtension.swift"; sourceTree = "<group>"; };
 		E590735A1FB02D36007381E8 /* DMJobTitleSelectionVC+TextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DMJobTitleSelectionVC+TextFieldExtension.swift"; sourceTree = "<group>"; };
 		E59467261FD8FFE60009C18B /* Popover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Popover.swift; sourceTree = "<group>"; };
-		E594BE9C1E1DFF4400310AE5 /* DMRegistrationVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMRegistrationVC+TableViewExtension.swift"; sourceTree = "<group>"; };
 		E594BE9E1E1DFFA900310AE5 /* DMRegistrationVC+TextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMRegistrationVC+TextFieldExtension.swift"; sourceTree = "<group>"; };
 		E594BEA11E1E014F00310AE5 /* DMLoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMLoginVC.swift; sourceTree = "<group>"; };
 		E594BEA31E1E076D00310AE5 /* DMLoginVC+TextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMLoginVC+TextFieldExtension.swift"; sourceTree = "<group>"; };
-		E594BEA51E1E07C900310AE5 /* DMLoginVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMLoginVC+TableViewExtension.swift"; sourceTree = "<group>"; };
-		E594BEA71E1E07F500310AE5 /* DMLoginVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMLoginVC+Services.swift"; sourceTree = "<group>"; };
 		E597E55A1E150638001DDA78 /* dentamatch.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = dentamatch.ttf; sourceTree = "<group>"; };
 		E597E55D1E151A99001DDA78 /* SF-UI-Display-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Black.otf"; sourceTree = "<group>"; };
 		E597E55E1E151A99001DDA78 /* SF-UI-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Bold.otf"; sourceTree = "<group>"; };
@@ -819,48 +954,17 @@
 		E5AE37071E4897690001EC3C /* MessageSenderTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageSenderTableCell.xib; sourceTree = "<group>"; };
 		E5AE370A1E4897790001EC3C /* MessageReceiverTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageReceiverTableCell.swift; sourceTree = "<group>"; };
 		E5AE370B1E4897790001EC3C /* MessageReceiverTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageReceiverTableCell.xib; sourceTree = "<group>"; };
-		E5AE37471E4971CE0001EC3C /* SocketAckEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAckEmitter.swift; sourceTree = "<group>"; };
-		E5AE37481E4971CE0001EC3C /* SocketAckManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAckManager.swift; sourceTree = "<group>"; };
-		E5AE37491E4971CE0001EC3C /* SocketAnyEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAnyEvent.swift; sourceTree = "<group>"; };
-		E5AE374A1E4971CE0001EC3C /* SocketClientManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketClientManager.swift; sourceTree = "<group>"; };
-		E5AE374B1E4971CE0001EC3C /* SocketEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEngine.swift; sourceTree = "<group>"; };
-		E5AE374C1E4971CE0001EC3C /* SocketEngineClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEngineClient.swift; sourceTree = "<group>"; };
-		E5AE374D1E4971CE0001EC3C /* SocketEnginePacketType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEnginePacketType.swift; sourceTree = "<group>"; };
-		E5AE374E1E4971CE0001EC3C /* SocketEnginePollable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEnginePollable.swift; sourceTree = "<group>"; };
-		E5AE374F1E4971CE0001EC3C /* SocketEngineSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEngineSpec.swift; sourceTree = "<group>"; };
-		E5AE37501E4971CE0001EC3C /* SocketEngineWebsocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEngineWebsocket.swift; sourceTree = "<group>"; };
-		E5AE37511E4971CE0001EC3C /* SocketEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEventHandler.swift; sourceTree = "<group>"; };
-		E5AE37521E4971CE0001EC3C /* SocketExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketExtensions.swift; sourceTree = "<group>"; };
-		E5AE37531E4971CE0001EC3C /* SocketIOClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOClient.swift; sourceTree = "<group>"; };
-		E5AE37541E4971CE0001EC3C /* SocketIOClientConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOClientConfiguration.swift; sourceTree = "<group>"; };
-		E5AE37551E4971CE0001EC3C /* SocketIOClientOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOClientOption.swift; sourceTree = "<group>"; };
-		E5AE37561E4971CE0001EC3C /* SocketIOClientSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOClientSpec.swift; sourceTree = "<group>"; };
-		E5AE37571E4971CE0001EC3C /* SocketIOClientStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOClientStatus.swift; sourceTree = "<group>"; };
-		E5AE37581E4971CE0001EC3C /* SocketLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketLogger.swift; sourceTree = "<group>"; };
-		E5AE37591E4971CE0001EC3C /* SocketPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketPacket.swift; sourceTree = "<group>"; };
-		E5AE375A1E4971CE0001EC3C /* SocketParsable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketParsable.swift; sourceTree = "<group>"; };
-		E5AE375B1E4971CE0001EC3C /* SocketStringReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketStringReader.swift; sourceTree = "<group>"; };
-		E5AE375C1E4971CE0001EC3C /* SocketTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketTypes.swift; sourceTree = "<group>"; };
-		E5AE375D1E4971CE0001EC3C /* SSLSecurity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSLSecurity.swift; sourceTree = "<group>"; };
-		E5AE375E1E4971CE0001EC3C /* WebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSocket.swift; sourceTree = "<group>"; };
-		E5AE37781E49743C0001EC3C /* SocketManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketManager.swift; sourceTree = "<group>"; };
+		E5AE37781E49743C0001EC3C /* SocketIOManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
 		E5AE377C1E497D8D0001EC3C /* MessageListTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageListTableCell.swift; sourceTree = "<group>"; };
 		E5AE377D1E497D8D0001EC3C /* MessageListTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageListTableCell.xib; sourceTree = "<group>"; };
 		E5AE37811E4984420001EC3C /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
-		E5B84B351E9DF835009665D1 /* Chat+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Chat+CoreDataClass.swift"; sourceTree = "<group>"; };
-		E5B84B361E9DF835009665D1 /* Chat+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Chat+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E5BED54A1E49AB85003EC833 /* DMChatVC+TableViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMChatVC+TableViewExtensions.swift"; sourceTree = "<group>"; };
 		E5BED54B1E49AB85003EC833 /* DMChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMChatVC.swift; sourceTree = "<group>"; };
-		E5BED54D1E49AB85003EC833 /* DMMessages+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMMessages+Services.swift"; sourceTree = "<group>"; };
 		E5BED54E1E49AB85003EC833 /* DMMessagesVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMMessagesVC+TableViewExtension.swift"; sourceTree = "<group>"; };
 		E5BED54F1E49AB85003EC833 /* DMMessagesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMMessagesVC.swift; sourceTree = "<group>"; };
-		E5BED5651E49BA0B003EC833 /* DMMessagesVC+DBHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMMessagesVC+DBHandling.swift"; sourceTree = "<group>"; };
 		E5C5F3141DC0AACA001A5A3F /* DMRegisterMapsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMRegisterMapsVC.swift; sourceTree = "<group>"; };
 		E5C5F31A1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMTermsAndConditionsVC.swift; sourceTree = "<group>"; };
-		E5D2D8A71FE10B6E001EFA68 /* DMJobTitleVC+Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DMJobTitleVC+Services.swift"; sourceTree = "<group>"; };
 		E5D2D8AA1FE24305001EFA68 /* DMCommonSuccessFailureVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMCommonSuccessFailureVC.swift; sourceTree = "<group>"; };
-		E5DC3E721DAF2C45002DA20E /* DentaMatch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DentaMatch.xcdatamodel; sourceTree = "<group>"; };
-		E5E7CB421E2F39D500D4FB59 /* DMEditProfileVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMEditProfileVC+Services.swift"; sourceTree = "<group>"; };
 		E5E7CB481E2F8CDE00D4FB59 /* EditLicenseTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditLicenseTableCell.swift; sourceTree = "<group>"; };
 		E5E7CB491E2F8CDE00D4FB59 /* EditLicenseTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditLicenseTableCell.xib; sourceTree = "<group>"; };
 		E5E7CB541E2FA23200D4FB59 /* AboutMeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutMeCell.swift; sourceTree = "<group>"; };
@@ -934,15 +1038,13 @@
 		E5F9193C1E9DD4A30021F008 /* FSCalendarWeekdayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarWeekdayView.h; sourceTree = "<group>"; };
 		E5F9193D1E9DD4A30021F008 /* FSCalendarWeekdayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarWeekdayView.m; sourceTree = "<group>"; };
 		E5F9193E1E9DD4A30021F008 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E5FBE9D81E1CCF940025683C /* DMRegistration+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMRegistration+Services.swift"; sourceTree = "<group>"; };
+		E7D3BA0404AEA5A297113406 /* RootScreenPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RootScreenPresenter.swift; sourceTree = "<group>"; };
+		EB832692793607ACCBEA65F8 /* RootScreenView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RootScreenView.swift; sourceTree = "<group>"; };
 		F209C3401E435A43005C9594 /* SearchParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchParameters.swift; sourceTree = "<group>"; };
 		F22359141E3F351C00E984FC /* Job.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
 		F22359161E3F3E3300E984FC /* DMJobSearchVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMJobSearchVC+TableViewExtension.swift"; sourceTree = "<group>"; };
 		F22359181E3F3F2100E984FC /* DMJobSearchVC+TableViewCellDelegateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMJobSearchVC+TableViewCellDelegateExtension.swift"; sourceTree = "<group>"; };
-		F223591A1E3F5ED100E984FC /* DMJobSearchResultVC+GMSExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMJobSearchResultVC+GMSExtension.swift"; sourceTree = "<group>"; };
-		F223591C1E3F5F4900E984FC /* DMJobSearchResultVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMJobSearchResultVC+TableViewExtension.swift"; sourceTree = "<group>"; };
 		F223591E1E3F608900E984FC /* DMJobDetaiVC+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMJobDetaiVC+TableViewExtension.swift"; sourceTree = "<group>"; };
-		F22E13DB1E409B9D0076F61E /* DMJobSearchResultVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMJobSearchResultVC+Services.swift"; sourceTree = "<group>"; };
 		F239E2DF1E28D0890071909E /* JobMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobMarker.swift; sourceTree = "<group>"; };
 		F2540F481E23A81C004B0538 /* JobSeachTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobSeachTitleCell.swift; sourceTree = "<group>"; };
 		F2540F491E23A81C004B0538 /* JobSeachTitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobSeachTitleCell.xib; sourceTree = "<group>"; };
@@ -956,7 +1058,6 @@
 		F2540F5C1E274258004B0538 /* DMJobSearchResultVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMJobSearchResultVC.swift; sourceTree = "<group>"; };
 		F2540F5E1E274360004B0538 /* JobSearchResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobSearchResultCell.swift; sourceTree = "<group>"; };
 		F2540F5F1E274360004B0538 /* JobSearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobSearchResultCell.xib; sourceTree = "<group>"; };
-		F2CBC1091E41E9BE00345B9F /* DMJobDetailVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMJobDetailVC+Services.swift"; sourceTree = "<group>"; };
 		F2D03BA41E1F580C0005D3A4 /* JobSearch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = JobSearch.storyboard; sourceTree = "<group>"; };
 		F2D03BA71E1F67BA0005D3A4 /* DMJobSearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMJobSearchVC.swift; sourceTree = "<group>"; };
 		F2F5E0C91E2F292F0082187C /* DentistDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DentistDetailCell.swift; sourceTree = "<group>"; };
@@ -972,7 +1073,6 @@
 		F2F5E0DD1E31CE2A0082187C /* DMJobDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMJobDetailVC.swift; sourceTree = "<group>"; };
 		F2F5E0DF1E31D40E0082187C /* JobDetailHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobDetailHeaderView.swift; sourceTree = "<group>"; };
 		F2F5E0E11E31D43A0082187C /* JobDetailHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobDetailHeaderView.xib; sourceTree = "<group>"; };
-		F2F5E0E51E35DE390082187C /* DMJobSearchVC+Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DMJobSearchVC+Services.swift"; sourceTree = "<group>"; };
 		F2F9B9791E38978200639716 /* JobTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobTitleCell.swift; sourceTree = "<group>"; };
 		F2F9B97A1E38978200639716 /* JobTitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobTitleCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -989,6 +1089,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1BD0D08DB4A19D84F5563EE7 /* job_search_map */ = {
+			isa = PBXGroup;
+			children = (
+				D98819DFC0C5E131E0546C8A /* JobSearchMapScreen.swift */,
+				6C17510D07F6A4B1106F1552 /* JobSearchMapScreenInitializer.swift */,
+				CD7F213BA39E0010C6490C39 /* JobSearchMapScreenPresenter.swift */,
+				825B91B9AAE5E85278E8C292 /* JobSearchMapScreenViewController.swift */,
+				B09942F59C93A38EE2706350 /* JobSearchMapScreenView.swift */,
+				6E0C496B222E40440010CC2E /* JobSearchMapScreenView.xib */,
+			);
+			path = job_search_map;
+			sourceTree = "<group>";
+		};
 		1D0F67C370B8BE4002393BBB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1029,7 +1142,6 @@
 			isa = PBXGroup;
 			children = (
 				E5AE2AEE1DAF82F500C008BD /* Storyboards */,
-				4877D98720EDF46E00264422 /* Database */,
 				E5C5F30C1DC074C9001A5A3F /* fonts */,
 				4877D98620EDF07900264422 /* Storyboards */,
 				4877D98520EDF05300264422 /* Images */,
@@ -1051,14 +1163,6 @@
 				E56E45C41DAE07C200AD4559 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
-			sourceTree = "<group>";
-		};
-		4877D98720EDF46E00264422 /* Database */ = {
-			isa = PBXGroup;
-			children = (
-				E5DC3E711DAF2C45002DA20E /* DentaMatch.xcdatamodeld */,
-			);
-			path = Database;
 			sourceTree = "<group>";
 		};
 		4877D98820EDF4ED00264422 /* Reachability */ = {
@@ -1100,7 +1204,6 @@
 				484958FA218AD59C00096046 /* State */,
 				E506AE531FAC374C00ABC7FA /* PreferredLocation */,
 				5A5523ED1E4D97C0007D8C09 /* Notification */,
-				E5AE37831E4986E10001EC3C /* CoreDataModels */,
 				F209C33F1E435A26005C9594 /* JobSearchParameter */,
 				5A60A8571E43012A00789D14 /* Calendar */,
 				F22359131E3F346600E984FC /* Job */,
@@ -1208,6 +1311,8 @@
 				5A8F62A81E39EAB70037C4A2 /* TemporyJobCalenderCell.xib */,
 				5A8F62AB1E39F2550037C4A2 /* TemporyJobCell.swift */,
 				5A8F62AC1E39F2550037C4A2 /* TemporyJobCell.xib */,
+				6E7A5B3C22282E4C007A916C /* EmptyJobsCalendarCell.swift */,
+				6E7A5B3E22282E56007A916C /* EmptyJobsCalendarCell.xib */,
 			);
 			path = Calender;
 			sourceTree = "<group>";
@@ -1236,13 +1341,41 @@
 			path = BannerView;
 			sourceTree = "<group>";
 		};
+		6E0C4975222EA1BC0010CC2E /* job_map_detail */ = {
+			isa = PBXGroup;
+			children = (
+				6E0C4976222EA1D90010CC2E /* JobMapDetailView.swift */,
+				6E0C4978222EA1E00010CC2E /* JobMapDetailView.xib */,
+			);
+			path = job_map_detail;
+			sourceTree = "<group>";
+		};
+		6E4D592E21FEC0D40008EDBA /* flow_coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				6E4D593121FEC10E0008EDBA /* BaseFlowProtocol.swift */,
+				6E4D592F21FEC0F00008EDBA /* BaseFlowCoordinator.swift */,
+				6E4D593321FEC1B30008EDBA /* RootFlowCoordinator.swift */,
+				6E88699221FEDDEF00898925 /* AuthorizationFlowCoordinator.swift */,
+				6E99690B21FEF7450007CF40 /* RegistrationFlowCoordinator.swift */,
+				6E99690721FEF13D0007CF40 /* TabBarFlowCoordinator.swift */,
+				6E99691521FF3F940007CF40 /* JobsFlowCoordinator.swift */,
+				6E99691921FF42390007CF40 /* TrackFlowCoordinator.swift */,
+				6E99691D21FF48E50007CF40 /* CalendarFlowCoordinator.swift */,
+				6E35FBE32200279800AB84A3 /* MessagesFlowCoordinator.swift */,
+				6E35FBE72200297E00AB84A3 /* ProfileFlowCoordinator.swift */,
+			);
+			path = flow_coordinators;
+			sourceTree = "<group>";
+		};
 		6E85B82521FAD9BF00DB137F /* calendar */ = {
 			isa = PBXGroup;
 			children = (
+				6E99691B21FF47E00007CF40 /* DMCalender.swift */,
+				6E85B82621FAD9E700DB137F /* DMCalendarInitializer.swift */,
+				6ED7FBB72228016100CEB64B /* DMCalenderPresenter.swift */,
 				5AC714511E34ACD400E433C1 /* DMCalenderVC.swift */,
 				5A3525CC1E3F372A0018EB4A /* DMCalenderVC+TableViewExtension.swift */,
-				5A60A8551E42FF1800789D14 /* DMCalenderVC+Services.swift */,
-				6E85B82621FAD9E700DB137F /* DMCalendarInitializer.swift */,
 			);
 			path = calendar;
 			sourceTree = "<group>";
@@ -1250,10 +1383,12 @@
 		6E85B82821FADA4000DB137F /* calendar_set_availability */ = {
 			isa = PBXGroup;
 			children = (
+				6E99691121FF213B0007CF40 /* DMCalendarSetAvailabillity.swift */,
+				6E85B82921FADA7400DB137F /* DMCalendarSetAvailabilityInitializer.swift */,
+				6E85B57A2204521600CD2CCE /* DMCalendarSetAvailabillityPresenter.swift */,
 				5A8F62A21E399A080037C4A2 /* DMCalendarSetAvailabillityVC.swift */,
 				5A8F62A41E399A550037C4A2 /* DMCalendarSetAvailabillityVC+TableViewExtension.swift */,
 				5A2CEF4A1E3C2F9600836654 /* DMCalendarSetAvailabillityVC+Services.swift */,
-				6E85B82921FADA7400DB137F /* DMCalendarSetAvailabilityInitializer.swift */,
 			);
 			path = calendar_set_availability;
 			sourceTree = "<group>";
@@ -1261,11 +1396,11 @@
 		6E85B82B21FADBF800DB137F /* messages */ = {
 			isa = PBXGroup;
 			children = (
-				E5BED54F1E49AB85003EC833 /* DMMessagesVC.swift */,
-				E5BED54D1E49AB85003EC833 /* DMMessages+Services.swift */,
-				E5BED54E1E49AB85003EC833 /* DMMessagesVC+TableViewExtension.swift */,
-				E5BED5651E49BA0B003EC833 /* DMMessagesVC+DBHandling.swift */,
+				6E35FBE12200273700AB84A3 /* DMMessages.swift */,
 				6E85B82C21FADC2100DB137F /* DMMessagesInitializer.swift */,
+				6E6F460522098B080023238B /* DMMessagesPresenter.swift */,
+				E5BED54F1E49AB85003EC833 /* DMMessagesVC.swift */,
+				E5BED54E1E49AB85003EC833 /* DMMessagesVC+TableViewExtension.swift */,
 			);
 			path = messages;
 			sourceTree = "<group>";
@@ -1273,11 +1408,11 @@
 		6E85B82E21FADCF800DB137F /* chat */ = {
 			isa = PBXGroup;
 			children = (
+				6E35FBFF2200792100AB84A3 /* DMChat.swift */,
+				6E85B82F21FADD0F00DB137F /* DMChatInitializer.swift */,
+				6E90E5DC220A7A4900E04344 /* DMChatPresenter.swift */,
 				E5BED54B1E49AB85003EC833 /* DMChatVC.swift */,
 				E5BED54A1E49AB85003EC833 /* DMChatVC+TableViewExtensions.swift */,
-				E5310E0C1E4B2B3F004403A0 /* DMChatVC+Services.swift */,
-				E5310E0E1E4EDE71004403A0 /* DMChatVC+DBHandling.swift */,
-				6E85B82F21FADD0F00DB137F /* DMChatInitializer.swift */,
 			);
 			path = chat;
 			sourceTree = "<group>";
@@ -1285,10 +1420,11 @@
 		6E85B83121FADF1A00DB137F /* notification */ = {
 			isa = PBXGroup;
 			children = (
+				6E35FBED2200346F00AB84A3 /* DMNotifications.swift */,
+				6E85B83221FADF3C00DB137F /* DMNotificationInitializer.swift */,
+				6EA435002208097C001E64A0 /* DMNotificationsPresenter.swift */,
 				5A988BC31E4AE99800DECB49 /* DMNotificationVC.swift */,
 				5A988BC51E4AE9D200DECB49 /* DMNotificationVC+TableViewExtension.swift */,
-				5A988BC71E4AEA0E00DECB49 /* DMNotificationVC+Services.swift */,
-				6E85B83221FADF3C00DB137F /* DMNotificationInitializer.swift */,
 			);
 			path = notification;
 			sourceTree = "<group>";
@@ -1296,10 +1432,11 @@
 		6E85B83421FAE4F300DB137F /* settings */ = {
 			isa = PBXGroup;
 			children = (
+				6E35FBE922002BBE00AB84A3 /* DMSettings.swift */,
+				6E85B83521FAE54B00DB137F /* DMSettingsInitializer.swift */,
+				6E90E5E0220AA5A700E04344 /* DMSettingPresenter.swift */,
 				5A3B06CA1E3387DA00EFCA6E /* DMSettingVC.swift */,
 				5A3B06CC1E3387FF00EFCA6E /* DMSettingVC+TableViewExtension.swift */,
-				5AC714571E34F76900E433C1 /* DMSettingVC+Services.swift */,
-				6E85B83521FAE54B00DB137F /* DMSettingsInitializer.swift */,
 			);
 			path = settings;
 			sourceTree = "<group>";
@@ -1307,10 +1444,11 @@
 		6E85B83721FAE83400DB137F /* change_password */ = {
 			isa = PBXGroup;
 			children = (
+				6E35FBEB2200310200AB84A3 /* DMChangePassword.swift */,
+				6E85B83821FAE85700DB137F /* DMChangePasswordInitializer.swift */,
+				6E95F798220C33AB001B7035 /* DMChangePasswordPresenter.swift */,
 				5A3B06CE1E33881D00EFCA6E /* DMChangePasswordVC.swift */,
 				5A3B06D01E33883C00EFCA6E /* DMChangePasswordVC+TableViewExtension.swift */,
-				5A3B06D21E33885A00EFCA6E /* DMChangePasswordVC+Services.swift */,
-				6E85B83821FAE85700DB137F /* DMChangePasswordInitializer.swift */,
 			);
 			path = change_password;
 			sourceTree = "<group>";
@@ -1318,8 +1456,10 @@
 		6E85B83A21FAEAB200DB137F /* states */ = {
 			isa = PBXGroup;
 			children = (
-				484958F8218AC7AB00096046 /* SearchStateViewController.swift */,
+				6E99690D21FF11170007CF40 /* SearchState.swift */,
 				6E85B83B21FAEADC00DB137F /* SearchStateInitializer.swift */,
+				6E85B57622042B7000CD2CCE /* SearchStatePresenter.swift */,
+				484958F8218AC7AB00096046 /* SearchStateViewController.swift */,
 			);
 			path = states;
 			sourceTree = "<group>";
@@ -1336,10 +1476,11 @@
 		6E85B84021FAF0B900DB137F /* edit_study */ = {
 			isa = PBXGroup;
 			children = (
-				E51D4EF21E3AFCA700ACC631 /* DMEditStudyVC.swift */,
-				E51D4EF41E3AFEA600ACC631 /* DMEditStudyVC+Services.swift */,
-				E51D4EF61E3B029D00ACC631 /* DMEditStudyVC+TableViewExtension.swift */,
+				6E35FBF322003E9700AB84A3 /* DMEditStudy.swift */,
 				6E85B84121FAF12900DB137F /* DMEditStudyInitializer.swift */,
+				6E95F796220C21F2001B7035 /* DMEditStudyPresenter.swift */,
+				E51D4EF21E3AFCA700ACC631 /* DMEditStudyVC.swift */,
+				E51D4EF61E3B029D00ACC631 /* DMEditStudyVC+TableViewExtension.swift */,
 			);
 			path = edit_study;
 			sourceTree = "<group>";
@@ -1347,10 +1488,11 @@
 		6E85B84321FAF1ED00DB137F /* edit_skills */ = {
 			isa = PBXGroup;
 			children = (
-				E57681981E3A234700D912EA /* DMEditSkillsVC.swift */,
-				E576819A1E3A25F100D912EA /* DMEditSkillsVC+Services.swift */,
-				E576819C1E3A289D00D912EA /* DMEditSkillsVC+TableViewExtension.swift */,
+				6E35FBF522005C3D00AB84A3 /* DMEditSkills.swift */,
 				6E85B84421FAF24D00DB137F /* DMEditSkillsInitializer.swift */,
+				6ECBBE31220D8501004A936A /* DMEditSkillsPresenter.swift */,
+				E57681981E3A234700D912EA /* DMEditSkillsVC.swift */,
+				E576819C1E3A289D00D912EA /* DMEditSkillsVC+TableViewExtension.swift */,
 			);
 			path = edit_skills;
 			sourceTree = "<group>";
@@ -1368,9 +1510,10 @@
 		6E85B84921FAF61900DB137F /* edit_certificate */ = {
 			isa = PBXGroup;
 			children = (
-				E54B9A831E32870B00805D9C /* DMEditCertificateVC.swift */,
-				E57F29DB1E368D070025B9DE /* DMEditCertificateVC+Services.swift */,
+				6E35FBFB220064AA00AB84A3 /* DMEditCertificate.swift */,
 				6E85B84A21FAF64D00DB137F /* DMEditCertificateInitializer.swift */,
+				6ECBBE2B220D5389004A936A /* DMEditCertificatePresenter.swift */,
+				E54B9A831E32870B00805D9C /* DMEditCertificateVC.swift */,
 			);
 			path = edit_certificate;
 			sourceTree = "<group>";
@@ -1378,10 +1521,11 @@
 		6E85B84C21FAF73A00DB137F /* edit_public_profile */ = {
 			isa = PBXGroup;
 			children = (
+				6E35FBEF2200366500AB84A3 /* DMPublicProfile.swift */,
+				6E85B84D21FAF75200DB137F /* DMPublicProfileInitializer.swift */,
+				6E90E5E2220AB1AF00E04344 /* DMPublicProfilePresenter.swift */,
 				E5E7CBAB1E3099DF00D4FB59 /* DMPublicProfileVC.swift */,
 				E50FA8121E30A1DA00C20C93 /* DMPublicProfileVC+TableViewExtension.swift */,
-				E57681951E38A1DA00D912EA /* DMPublicProfileVC+Services.swift */,
-				6E85B84D21FAF75200DB137F /* DMPublicProfileInitializer.swift */,
 			);
 			path = edit_public_profile;
 			sourceTree = "<group>";
@@ -1399,10 +1543,11 @@
 		6E85B85221FAFAC600DB137F /* edit_profile */ = {
 			isa = PBXGroup;
 			children = (
+				6E35FBE52200292200AB84A3 /* DMEditProfile.swift */,
+				6E85B85321FAFAE400DB137F /* DMEditProfileInitializer.swift */,
+				6E90E5DE220A913000E04344 /* DMEditProfilePresenter.swift */,
 				E558D9071E2E6FE700A6DF95 /* DMEditProfileVC.swift */,
 				E558D9091E2E7A3200A6DF95 /* DMEditProfileVC+TableViewExtension.swift */,
-				E5E7CB421E2F39D500D4FB59 /* DMEditProfileVC+Services.swift */,
-				6E85B85321FAFAE400DB137F /* DMEditProfileInitializer.swift */,
 			);
 			path = edit_profile;
 			sourceTree = "<group>";
@@ -1410,9 +1555,11 @@
 		6E85B85521FAFC8900DB137F /* profile_success_failure */ = {
 			isa = PBXGroup;
 			children = (
-				E5433AF11FCD140800D152D9 /* DMProfileSuccessPending.swift */,
-				E540CBBF1FDE426E00A8A56E /* DMProfileSuccessPending+Services.swift */,
+				6E99690F21FF1A6C0007CF40 /* DMProfileSuccessPending.swift */,
 				6E85B85621FAFCB600DB137F /* DMProfileSuccessPendingInitializer.swift */,
+				6E85B5782204407A00CD2CCE /* DMProfileSuccessPendingPresenter.swift */,
+				E5433AF11FCD140800D152D9 /* DMProfileSuccessPendingViewController.swift */,
+				E540CBBF1FDE426E00A8A56E /* DMProfileSuccessPending+Services.swift */,
 			);
 			path = profile_success_failure;
 			sourceTree = "<group>";
@@ -1420,10 +1567,11 @@
 		6E85B85921FAFF0400DB137F /* affiliations */ = {
 			isa = PBXGroup;
 			children = (
+				6E35FBF922005F4800AB84A3 /* DMAffiliations.swift */,
+				6E85B85A21FAFF3D00DB137F /* DMAffiliationsInitializer.swift */,
+				6ECBBE2D220D601C004A936A /* DMAffiliationsPresenter.swift */,
 				E587D2F31E24C095006B7F06 /* DMAffiliationsVC.swift */,
 				E587D3071E253719006B7F06 /* DMAffiliationsVC+TableViewExtension.swift */,
-				E57EE6C91E28EB440090434F /* DMAffiliationsVC+Services.swift */,
-				6E85B85A21FAFF3D00DB137F /* DMAffiliationsInitializer.swift */,
 			);
 			path = affiliations;
 			sourceTree = "<group>";
@@ -1464,8 +1612,10 @@
 		6E85B86521FB166E00DB137F /* select_skills */ = {
 			isa = PBXGroup;
 			children = (
-				E587D2F71E24C0C0006B7F06 /* DMSelectSkillsVC.swift */,
+				6E35FBF722005CD500AB84A3 /* DMSelectSkills.swift */,
 				6E85B86621FB16A100DB137F /* DMSelectSkillsInitializer.swift */,
+				6ECBBE2F220D6B20004A936A /* DMSelectSkillsPresenter.swift */,
+				E587D2F71E24C0C0006B7F06 /* DMSelectSkillsVC.swift */,
 			);
 			path = select_skills;
 			sourceTree = "<group>";
@@ -1473,10 +1623,10 @@
 		6E85B86821FB177F00DB137F /* study */ = {
 			isa = PBXGroup;
 			children = (
+				6E85B86B21FB17B900DB137F /* DMStudyInitializer.swift */,
 				E587D2F91E24C102006B7F06 /* DMStudyVC.swift */,
 				E587D3011E24E97B006B7F06 /* DMStudy+TableViewExtension.swift */,
 				E5A0EB011E2A9C760092E21A /* DMStudy+Services.swift */,
-				6E85B86B21FB17B900DB137F /* DMStudyInitializer.swift */,
 			);
 			path = study;
 			sourceTree = "<group>";
@@ -1505,10 +1655,11 @@
 		6E85B87221FB19F100DB137F /* work_experience */ = {
 			isa = PBXGroup;
 			children = (
+				6E35FBF122003C1200AB84A3 /* DMWorkExperience.swift */,
+				6E85B87321FB1A0F00DB137F /* DMWorkExperienceInitializer.swift */,
+				6E90E5E4220AD9B000E04344 /* DMWorkExperiencePresenter.swift */,
 				E587D2E91E24C021006B7F06 /* DMWorkExperienceVC.swift */,
 				E587D2E81E24C021006B7F06 /* DMWorkExperienceVC+TableViewExtension.swift */,
-				5AD246901E272E92009350BF /* DMWorkExperienceVC+Services.swift */,
-				6E85B87321FB1A0F00DB137F /* DMWorkExperienceInitializer.swift */,
 			);
 			path = work_experience;
 			sourceTree = "<group>";
@@ -1516,13 +1667,14 @@
 		6E85B87521FB1BF700DB137F /* job_title_selection */ = {
 			isa = PBXGroup;
 			children = (
+				6E99690521FEEFE40007CF40 /* DMJobTitleSelection.swift */,
+				6E85B87621FB1C1800DB137F /* DMJobTitleSelectionInitializer.swift */,
+				6E85B57422041E1400CD2CCE /* DMJobTitleSelectionPresenter.swift */,
 				E587D2CE1E23438B006B7F06 /* DMJobTitleSelectionVC.swift */,
 				E587D2D01E2343A5006B7F06 /* DMJobTitleSelectionVC+UIPickerViewExtension.swift */,
-				E587D2D41E2357A9006B7F06 /* DMJobTitleSelectionVC+Services.swift */,
 				E59073581FB02C4F007381E8 /* DMJobTitleSelectionVC+TableExtension.swift */,
 				E590735A1FB02D36007381E8 /* DMJobTitleSelectionVC+TextFieldExtension.swift */,
 				E51C4D3D1FB05591009FC3A0 /* DMJobTitleSelectionVC+TextFieldDelegates.swift */,
-				6E85B87621FB1C1800DB137F /* DMJobTitleSelectionInitializer.swift */,
 			);
 			path = job_title_selection;
 			sourceTree = "<group>";
@@ -1537,9 +1689,30 @@
 			path = work_experience_start;
 			sourceTree = "<group>";
 		};
+		6E85B88321FB3DB700DB137F /* models */ = {
+			isa = PBXGroup;
+			children = (
+				6E85B88421FB3DC500DB137F /* ChatModel.swift */,
+				6E85B88621FB406E00DB137F /* ChatListModel.swift */,
+			);
+			name = models;
+			path = ../models;
+			sourceTree = "<group>";
+		};
+		6ED7FBB9222813A000CEB64B /* header_calendar */ = {
+			isa = PBXGroup;
+			children = (
+				6ED7FBBA222813C400CEB64B /* CalendarHeaderView.swift */,
+				6E7A5B162228152E007A916C /* CalendarHeaderView.xib */,
+			);
+			path = header_calendar;
+			sourceTree = "<group>";
+		};
 		6EF2F1E221F9C7AB00F6F38D /* src */ = {
 			isa = PBXGroup;
 			children = (
+				6E85B88321FB3DB700DB137F /* models */,
+				6E4D592E21FEC0D40008EDBA /* flow_coordinators */,
 				6EF2F1E721F9D82200F6F38D /* modules */,
 				6EF2F1E321F9C80F00F6F38D /* utils */,
 			);
@@ -1549,8 +1722,11 @@
 		6EF2F1E321F9C80F00F6F38D /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				6E0C496D222E4C1F0010CC2E /* TableViewUtils.swift */,
+				6E0C496F222E4C2C0010CC2E /* CollectionViewUtils.swift */,
 				6EF2F1E421F9C82300F6F38D /* ContainerInitializer.swift */,
 				6E85B87B21FB27F500DB137F /* NavigationControllerUtils.swift */,
+				6E85B5682203188400CD2CCE /* MessageUtils.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -1559,6 +1735,10 @@
 			isa = PBXGroup;
 			children = (
 				E55462FB1DAE4EA1004163B2 /* DMBaseVC.swift */,
+				6E4D593821FEC54C0008EDBA /* ModuleInput.swift */,
+				6E4D593921FEC54D0008EDBA /* ModuleOutput.swift */,
+				6E4D593721FEC54C0008EDBA /* ViewInput.swift */,
+				6E4D593A21FEC54D0008EDBA /* ViewOutput.swift */,
 				6E85B87521FB1BF700DB137F /* job_title_selection */,
 				6E85B87821FB1D6F00DB137F /* work_experience_start */,
 				6E85B87221FB19F100DB137F /* work_experience */,
@@ -1601,6 +1781,7 @@
 				6EF2F1F021F9DE7200F6F38D /* sign_in */,
 				6EF2F1ED21F9DCE400F6F38D /* sign_up */,
 				6EF2F1E821F9D82F00F6F38D /* registration_container */,
+				CFAB5F17BEDD4BC5C9596733 /* root */,
 			);
 			path = modules;
 			sourceTree = "<group>";
@@ -1608,8 +1789,10 @@
 		6EF2F1E821F9D82F00F6F38D /* registration_container */ = {
 			isa = PBXGroup;
 			children = (
-				E56B20A31DC0526E000512F6 /* DMRegistrationContainer.swift */,
+				6E4D593F21FECB1F0008EDBA /* DMRegistrationContainer.swift */,
 				6EF2F1EA21F9DBFF00F6F38D /* DMRegistrationContainerInitializer.swift */,
+				6E85B5622202FB4600CD2CCE /* DMRegistrationContainerPresenter.swift */,
+				E56B20A31DC0526E000512F6 /* DMRegistrationContainerViewController.swift */,
 			);
 			path = registration_container;
 			sourceTree = "<group>";
@@ -1617,11 +1800,11 @@
 		6EF2F1ED21F9DCE400F6F38D /* sign_up */ = {
 			isa = PBXGroup;
 			children = (
-				E56B20A11DBF749D000512F6 /* DMRegistrationVC.swift */,
-				E5FBE9D81E1CCF940025683C /* DMRegistration+Services.swift */,
-				E594BE9C1E1DFF4400310AE5 /* DMRegistrationVC+TableViewExtension.swift */,
-				E594BE9E1E1DFFA900310AE5 /* DMRegistrationVC+TextFieldExtension.swift */,
+				6E88699621FEE50100898925 /* DMRegistration.swift */,
 				6EF2F1EE21F9DD3400F6F38D /* DMRegistrationInitializer.swift */,
+				6E85B56622030CEE00CD2CCE /* DMRegistrationPresenter.swift */,
+				E56B20A11DBF749D000512F6 /* DMRegistrationVC.swift */,
+				E594BE9E1E1DFFA900310AE5 /* DMRegistrationVC+TextFieldExtension.swift */,
 			);
 			path = sign_up;
 			sourceTree = "<group>";
@@ -1629,11 +1812,11 @@
 		6EF2F1F021F9DE7200F6F38D /* sign_in */ = {
 			isa = PBXGroup;
 			children = (
+				6E88699421FEE48A00898925 /* DMLogin.swift */,
+				6EF2F1F121F9DEC200F6F38D /* DMLoginInitializer.swift */,
+				6E85B56A22032D4400CD2CCE /* DMLoginPresenter.swift */,
 				E594BEA11E1E014F00310AE5 /* DMLoginVC.swift */,
 				E594BEA31E1E076D00310AE5 /* DMLoginVC+TextFieldExtension.swift */,
-				E594BEA51E1E07C900310AE5 /* DMLoginVC+TableViewExtension.swift */,
-				E594BEA71E1E07F500310AE5 /* DMLoginVC+Services.swift */,
-				6EF2F1F121F9DEC200F6F38D /* DMLoginInitializer.swift */,
 			);
 			path = sign_in;
 			sourceTree = "<group>";
@@ -1641,9 +1824,10 @@
 		6EF2F1F321F9E11A00F6F38D /* forgot_password */ = {
 			isa = PBXGroup;
 			children = (
-				E5302CD51DFE7AB100984A0B /* DMForgotPasswordVC.swift */,
-				E56F78551E1F602200F07814 /* DMForgotPasswordVC+Services.swift */,
+				6E99690121FEE84A0007CF40 /* DMForgotPassword.swift */,
 				6EF2F1F421F9E14000F6F38D /* DMForgotPasswordInitializer.swift */,
+				6E85B56C2203330C00CD2CCE /* DMForgotPasswordPresenter.swift */,
+				E5302CD51DFE7AB100984A0B /* DMForgotPasswordVC.swift */,
 			);
 			path = forgot_password;
 			sourceTree = "<group>";
@@ -1651,8 +1835,10 @@
 		6EF2F1F621F9E22E00F6F38D /* terms_and_conditions */ = {
 			isa = PBXGroup;
 			children = (
-				E5C5F31A1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift */,
+				6E99690321FEEAE10007CF40 /* DMTermsAndConditions.swift */,
 				6EF2F1F721F9E26600F6F38D /* DMTermsAndConditionsInitializer.swift */,
+				6E85B56E22033D8B00CD2CCE /* DMTermsAndConditionsPresenter.swift */,
+				E5C5F31A1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift */,
 			);
 			path = terms_and_conditions;
 			sourceTree = "<group>";
@@ -1660,11 +1846,12 @@
 		6EF2F1F921F9EA2200F6F38D /* maps_registration */ = {
 			isa = PBXGroup;
 			children = (
+				6E35FC07220091D300AB84A3 /* DMRegisterMaps.swift */,
+				6EF2F1FA21F9EA4000F6F38D /* DMRegisterMapsInitializer.swift */,
+				6E85B5722203476C00CD2CCE /* DMRegisterMapsPresenter.swift */,
 				E5C5F3141DC0AACA001A5A3F /* DMRegisterMapsVC.swift */,
 				E587D2D61E236B84006B7F06 /* DMRegisterMapsVC+GoogleMapsExtension.swift */,
 				E587D2D81E236EAE006B7F06 /* DMRegisterMapsVC+TableViewExtension.swift */,
-				E51D4F141E41070700ACC631 /* DMRegisterMapsVC+Services.swift */,
-				6EF2F1FA21F9EA4000F6F38D /* DMRegisterMapsInitializer.swift */,
 			);
 			path = maps_registration;
 			sourceTree = "<group>";
@@ -1672,8 +1859,10 @@
 		6EF2F1FC21F9EE9A00F6F38D /* onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				E5AE2AF01DAF844C00C008BD /* DMOnboardingVC.swift */,
+				6E4D594121FECCA50008EDBA /* DMOnboarding.swift */,
 				6EF2F1FD21F9EED500F6F38D /* DMOnboardingInitializer.swift */,
+				6E85B5702203423B00CD2CCE /* DMOnboardingPresenter.swift */,
+				E5AE2AF01DAF844C00C008BD /* DMOnboardingVC.swift */,
 			);
 			path = onboarding;
 			sourceTree = "<group>";
@@ -1681,8 +1870,9 @@
 		6EF2F1FF21FA071600F6F38D /* tab_bar */ = {
 			isa = PBXGroup;
 			children = (
-				5A50A2B71E320F6E0010AA31 /* TabBarVC.swift */,
+				6E99690921FEF2C10007CF40 /* TabBar.swift */,
 				6EF2F20021FA072C00F6F38D /* TabBarInitializer.swift */,
+				5A50A2B71E320F6E0010AA31 /* TabBarVC.swift */,
 			);
 			path = tab_bar;
 			sourceTree = "<group>";
@@ -1690,11 +1880,12 @@
 		6EF2F20221FA090E00F6F38D /* job_search_result */ = {
 			isa = PBXGroup;
 			children = (
-				F2540F5C1E274258004B0538 /* DMJobSearchResultVC.swift */,
-				F223591C1E3F5F4900E984FC /* DMJobSearchResultVC+TableViewExtension.swift */,
-				F223591A1E3F5ED100E984FC /* DMJobSearchResultVC+GMSExtension.swift */,
-				F22E13DB1E409B9D0076F61E /* DMJobSearchResultVC+Services.swift */,
+				A020FCC92C000EDAA919D640 /* job_search_list */,
+				1BD0D08DB4A19D84F5563EE7 /* job_search_map */,
+				6E99691321FF2BE90007CF40 /* DMJobSearchResult.swift */,
 				6EF2F20321FA096100F6F38D /* DMJobSearchResultInitializer.swift */,
+				6EA434FC2207E00A001E64A0 /* DMJobSearchResultPresenter.swift */,
+				F2540F5C1E274258004B0538 /* DMJobSearchResultVC.swift */,
 			);
 			path = job_search_result;
 			sourceTree = "<group>";
@@ -1702,11 +1893,12 @@
 		6EF2F20521FA0D6D00F6F38D /* job_search */ = {
 			isa = PBXGroup;
 			children = (
+				6E35FC0322007FBC00AB84A3 /* DMJobSearch.swift */,
+				6EF2F20621FA0E3B00F6F38D /* DMJobSearchInitializer.swift */,
+				6EA434FA2207D790001E64A0 /* DMJobSearchPresenter.swift */,
 				F2D03BA71E1F67BA0005D3A4 /* DMJobSearchVC.swift */,
 				F22359181E3F3F2100E984FC /* DMJobSearchVC+TableViewCellDelegateExtension.swift */,
 				F22359161E3F3E3300E984FC /* DMJobSearchVC+TableViewExtension.swift */,
-				F2F5E0E51E35DE390082187C /* DMJobSearchVC+Services.swift */,
-				6EF2F20621FA0E3B00F6F38D /* DMJobSearchInitializer.swift */,
 			);
 			path = job_search;
 			sourceTree = "<group>";
@@ -1714,9 +1906,10 @@
 		6EF2F20821FA100C00F6F38D /* job_title */ = {
 			isa = PBXGroup;
 			children = (
-				F2540F581E263613004B0538 /* DMJobTitleVC.swift */,
-				E5D2D8A71FE10B6E001EFA68 /* DMJobTitleVC+Services.swift */,
+				6E35FC05220083AC00AB84A3 /* DMJobTitle.swift */,
 				6EF2F20921FA103C00F6F38D /* DMJobTitleInitializer.swift */,
+				6EA4350222081D95001E64A0 /* DMJobTitlePresenter.swift */,
+				F2540F581E263613004B0538 /* DMJobTitleVC.swift */,
 			);
 			path = job_title;
 			sourceTree = "<group>";
@@ -1724,10 +1917,11 @@
 		6EF2F20B21FA14BA00F6F38D /* job_detail */ = {
 			isa = PBXGroup;
 			children = (
+				6E35FBFD22006CE700AB84A3 /* DMJobDetail.swift */,
+				6EF2F20C21FA15A100F6F38D /* DMJobDetailInitializer.swift */,
+				6EA434FE2207F49B001E64A0 /* DMJobDetailPresenter.swift */,
 				F2F5E0DD1E31CE2A0082187C /* DMJobDetailVC.swift */,
 				F223591E1E3F608900E984FC /* DMJobDetaiVC+TableViewExtension.swift */,
-				F2CBC1091E41E9BE00345B9F /* DMJobDetailVC+Services.swift */,
-				6EF2F20C21FA15A100F6F38D /* DMJobDetailInitializer.swift */,
 			);
 			path = job_detail;
 			sourceTree = "<group>";
@@ -1735,10 +1929,11 @@
 		6EF2F20E21FA1CD600F6F38D /* track */ = {
 			isa = PBXGroup;
 			children = (
-				E51D4F0C1E40744C00ACC631 /* DMTrackVC.swift */,
-				E51D4F0A1E40744C00ACC631 /* DMTrackVC+Services.swift */,
-				E51D4F0B1E40744C00ACC631 /* DMTrackVC+TableViewExtension.swift */,
+				6E99691721FF414E0007CF40 /* DMTrack.swift */,
 				6EF2F20F21FA1D0200F6F38D /* DMTrackInitializer.swift */,
+				6E5F84BC2209288000AF54CF /* DMTrackPresenter.swift */,
+				E51D4F0C1E40744C00ACC631 /* DMTrackVC.swift */,
+				E51D4F0B1E40744C00ACC631 /* DMTrackVC+TableViewExtension.swift */,
 			);
 			path = track;
 			sourceTree = "<group>";
@@ -1746,11 +1941,38 @@
 		6EF2F21121FA1DB700F6F38D /* cancel_job */ = {
 			isa = PBXGroup;
 			children = (
-				E51D4F101E40745A00ACC631 /* DMCancelJobVC.swift */,
-				E51D4F121E4086BD00ACC631 /* DMCancelJobVC+Services.swift */,
+				6E35FC0122007C6700AB84A3 /* DMCancelJob.swift */,
 				6EF2F21321FA1E7900F6F38D /* DMCancelJobInitializer.swift */,
+				6E5F84BE220949B900AF54CF /* DMCancelJobPresenter.swift */,
+				E51D4F101E40745A00ACC631 /* DMCancelJobVC.swift */,
 			);
 			path = cancel_job;
+			sourceTree = "<group>";
+		};
+		A020FCC92C000EDAA919D640 /* job_search_list */ = {
+			isa = PBXGroup;
+			children = (
+				177AB987BBF7C00C0472C696 /* JobSearchListScreen.swift */,
+				45DEFE28DCF17B32C833D487 /* JobSearchListScreenInitializer.swift */,
+				842E50D2071A67A9DEBB1509 /* JobSearchListScreenPresenter.swift */,
+				0C39A77826110C77E6DAE6AE /* JobSearchListScreenViewController.swift */,
+				4554378ED6FEC5B025F5436E /* JobSearchListScreenView.swift */,
+				6E0C4969222E3F180010CC2E /* JobSearchListScreenView.xib */,
+			);
+			path = job_search_list;
+			sourceTree = "<group>";
+		};
+		CFAB5F17BEDD4BC5C9596733 /* root */ = {
+			isa = PBXGroup;
+			children = (
+				87F2DF4A230301EEEA4DAA70 /* RootScreen.swift */,
+				A3369D610C243D2DA1EEBAA7 /* RootScreenInitializer.swift */,
+				E7D3BA0404AEA5A297113406 /* RootScreenPresenter.swift */,
+				70EAA1B375B32E8EBF8FE401 /* RootScreenViewController.swift */,
+				EB832692793607ACCBEA65F8 /* RootScreenView.swift */,
+				6E4D593521FEC4A00008EDBA /* RootScreenView.xib */,
+			);
+			path = root;
 			sourceTree = "<group>";
 		};
 		E506AE531FAC374C00ABC7FA /* PreferredLocation */ = {
@@ -1890,6 +2112,11 @@
 		E55462DD1DAE31A1004163B2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6E0C4972222E4C5F0010CC2E /* BaseCollectionViewCell.swift */,
+				6E0C4971222E4C5F0010CC2E /* BaseTableViewCell.swift */,
+				6E7A5B14222814DA007A916C /* BaseView.swift */,
+				6E0C4975222EA1BC0010CC2E /* job_map_detail */,
+				6ED7FBB9222813A000CEB64B /* header_calendar */,
 				484958F0218AC29700096046 /* Search Field */,
 				5AAE74751E5C1D0100B28851 /* BannerView */,
 				F2D03BA61E1F67350005D3A4 /* JobSearch */,
@@ -1916,7 +2143,6 @@
 				5A1960FA1E208B4B002A5F7C /* PhoneNumber */,
 				E59467251FD8FFE60009C18B /* PopOverView */,
 				E5F9191F1E9DD4A30021F008 /* FSCalendar */,
-				E5AE37461E4971CE0001EC3C /* SocketIO */,
 				5A85D2051E2DFA5100AC4C89 /* TagView */,
 				E5A0EB071E2BE7C40092E21A /* ASJTagsView */,
 				E5A0EADC1E2944D50092E21A /* SSASideMenu */,
@@ -1943,7 +2169,6 @@
 				E55462D01DAE1419004163B2 /* Info.plist */,
 				E55462EB1DAE47F5004163B2 /* AppDelegate.swift */,
 				E590299E1DED25C400151E9B /* AppDelegate+Notifications.swift */,
-				4877D98220ECD54400264422 /* AppDelegate+InitialConfiguration.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -2308,41 +2533,10 @@
 			path = Messages;
 			sourceTree = "<group>";
 		};
-		E5AE37461E4971CE0001EC3C /* SocketIO */ = {
-			isa = PBXGroup;
-			children = (
-				E5AE37471E4971CE0001EC3C /* SocketAckEmitter.swift */,
-				E5AE37481E4971CE0001EC3C /* SocketAckManager.swift */,
-				E5AE37491E4971CE0001EC3C /* SocketAnyEvent.swift */,
-				E5AE374A1E4971CE0001EC3C /* SocketClientManager.swift */,
-				E5AE374B1E4971CE0001EC3C /* SocketEngine.swift */,
-				E5AE374C1E4971CE0001EC3C /* SocketEngineClient.swift */,
-				E5AE374D1E4971CE0001EC3C /* SocketEnginePacketType.swift */,
-				E5AE374E1E4971CE0001EC3C /* SocketEnginePollable.swift */,
-				E5AE374F1E4971CE0001EC3C /* SocketEngineSpec.swift */,
-				E5AE37501E4971CE0001EC3C /* SocketEngineWebsocket.swift */,
-				E5AE37511E4971CE0001EC3C /* SocketEventHandler.swift */,
-				E5AE37521E4971CE0001EC3C /* SocketExtensions.swift */,
-				E5AE37531E4971CE0001EC3C /* SocketIOClient.swift */,
-				E5AE37541E4971CE0001EC3C /* SocketIOClientConfiguration.swift */,
-				E5AE37551E4971CE0001EC3C /* SocketIOClientOption.swift */,
-				E5AE37561E4971CE0001EC3C /* SocketIOClientSpec.swift */,
-				E5AE37571E4971CE0001EC3C /* SocketIOClientStatus.swift */,
-				E5AE37581E4971CE0001EC3C /* SocketLogger.swift */,
-				E5AE37591E4971CE0001EC3C /* SocketPacket.swift */,
-				E5AE375A1E4971CE0001EC3C /* SocketParsable.swift */,
-				E5AE375B1E4971CE0001EC3C /* SocketStringReader.swift */,
-				E5AE375C1E4971CE0001EC3C /* SocketTypes.swift */,
-				E5AE375D1E4971CE0001EC3C /* SSLSecurity.swift */,
-				E5AE375E1E4971CE0001EC3C /* WebSocket.swift */,
-			);
-			path = SocketIO;
-			sourceTree = "<group>";
-		};
 		E5AE37771E49743C0001EC3C /* SocketManager */ = {
 			isa = PBXGroup;
 			children = (
-				E5AE37781E49743C0001EC3C /* SocketManager.swift */,
+				E5AE37781E49743C0001EC3C /* SocketIOManager.swift */,
 			);
 			path = SocketManager;
 			sourceTree = "<group>";
@@ -2353,17 +2547,6 @@
 				E5AE37811E4984420001EC3C /* DatabaseManager.swift */,
 			);
 			path = DatabaseManager;
-			sourceTree = "<group>";
-		};
-		E5AE37831E4986E10001EC3C /* CoreDataModels */ = {
-			isa = PBXGroup;
-			children = (
-				E5B84B351E9DF835009665D1 /* Chat+CoreDataClass.swift */,
-				E5B84B361E9DF835009665D1 /* Chat+CoreDataProperties.swift */,
-				E576BA3A1E5C0CB40097B781 /* ChatList+CoreDataClass.swift */,
-				E576BA3B1E5C0CB40097B781 /* ChatList+CoreDataProperties.swift */,
-			);
-			path = CoreDataModels;
 			sourceTree = "<group>";
 		};
 		E5C5F30C1DC074C9001A5A3F /* fonts */ = {
@@ -2701,11 +2884,13 @@
 				E51C4D361FB04FC5009FC3A0 /* TitleHeaderView.xib in Resources */,
 				E597E5841E151A99001DDA78 /* SF-UI-Text-Medium.otf in Resources */,
 				484958F3218AC2A400096046 /* SearchField.xib in Resources */,
+				6E0C496C222E40440010CC2E /* JobSearchMapScreenView.xib in Resources */,
 				F2F5E0E21E31D43A0082187C /* JobDetailHeaderView.xib in Resources */,
 				E597E57E1E151A99001DDA78 /* SF-UI-Text-Bold.otf in Resources */,
 				E5A0EB0F1E2BE7C40092E21A /* ASJTag.xib in Resources */,
 				5A3BD4B31E35FCBA00A607AC /* EditProfileExperienceCell.xib in Resources */,
 				E51C4D3C1FB051C7009FC3A0 /* AboutMeJobSelectionCell.xib in Resources */,
+				6E0C4979222EA1E00010CC2E /* JobMapDetailView.xib in Resources */,
 				5A3B06C91E3375ED00EFCA6E /* ChangePasswordTableCell.xib in Resources */,
 				E597E57A1E151A99001DDA78 /* SF-UI-Display-Regular.otf in Resources */,
 				48067D4A212E9E8F007F77E6 /* TagCell.xib in Resources */,
@@ -2753,9 +2938,11 @@
 				E597E58A1E151A99001DDA78 /* SF-UI-Text-Ultrathin.otf in Resources */,
 				E5E7CB7D1E2FA23200D4FB59 /* AffliliationsOthersCell.xib in Resources */,
 				E597E57F1E151A99001DDA78 /* SF-UI-Text-BoldItalic.otf in Resources */,
+				6E0C496A222E3F180010CC2E /* JobSearchListScreenView.xib in Resources */,
 				E5E7CB791E2FA23200D4FB59 /* AboutMeCell.xib in Resources */,
 				E597E5791E151A99001DDA78 /* SF-UI-Display-Medium.otf in Resources */,
 				E5E7CB941E2FA23300D4FB59 /* StudyCell.xib in Resources */,
+				6E7A5B3F22282E56007A916C /* EmptyJobsCalendarCell.xib in Resources */,
 				F2F9B97C1E38978200639716 /* JobTitleCell.xib in Resources */,
 				E597E5891E151A99001DDA78 /* SF-UI-Text-SemiboldItalic.otf in Resources */,
 				E5E7CB921E2FA23300D4FB59 /* AutoCompleteTableViewCell.xib in Resources */,
@@ -2780,6 +2967,8 @@
 				5A5523E41E4C40C1007D8C09 /* HiredJobNotificationTableCell.xib in Resources */,
 				F2540F611E274360004B0538 /* JobSearchResultCell.xib in Resources */,
 				F2F5E0D41E30CF310082187C /* JobDescriptionCell.xib in Resources */,
+				6E7A5B172228152E007A916C /* CalendarHeaderView.xib in Resources */,
+				6E4D593621FEC4A00008EDBA /* RootScreenView.xib in Resources */,
 				F2540F571E23A8AE004B0538 /* CurrentLocationCell.xib in Resources */,
 				F2F5E0CC1E2F292F0082187C /* DentistDetailCell.xib in Resources */,
 				E597E5811E151A99001DDA78 /* SF-UI-Text-HeavyItalic.otf in Resources */,
@@ -2835,7 +3024,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-DentaMatch/Pods-DentaMatch-resources.sh",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 			);
@@ -2846,7 +3035,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DentaMatch/Pods-DentaMatch-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D34E4DE8B9029F6121255E47 /* [CP] Embed Pods Frameworks */ = {
@@ -2855,7 +3044,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-DentaMatch/Pods-DentaMatch-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/IHProgressHUD/IHProgressHUD.framework",
@@ -2864,6 +3053,10 @@
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 				"${BUILT_PRODUCTS_DIR}/Mixpanel-swift/Mixpanel.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjcExceptionBridging/ObjcExceptionBridging.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
 				"${BUILT_PRODUCTS_DIR}/SwinjectStoryboard/SwinjectStoryboard.framework",
@@ -2879,6 +3072,10 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mixpanel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjcExceptionBridging.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwinjectStoryboard.framework",
@@ -2886,7 +3083,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DentaMatch/Pods-DentaMatch-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DentaMatch/Pods-DentaMatch-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E5302CD81DFE9CAB00984A0B /* ShellScript */ = {
@@ -2900,7 +3097,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" f35c373cc91e43b381c736551a325bdb3ff6c7bb 02e7963f305f40d64990aea0b2a7509bf3df3c8e341bec080141971b13929f9f";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" f35c373cc91e43b381c736551a325bdb3ff6c7bb 02e7963f305f40d64990aea0b2a7509bf3df3c8e341bec080141971b13929f9f\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -2911,40 +3108,42 @@
 			files = (
 				6E85B84821FAF34500DB137F /* DMEditDentalStateInitializer.swift in Sources */,
 				F2F5E0D31E30CF310082187C /* JobDescriptionCell.swift in Sources */,
-				5A60A8561E42FF1800789D14 /* DMCalenderVC+Services.swift in Sources */,
-				E56B20A41DC0526E000512F6 /* DMRegistrationContainer.swift in Sources */,
+				E56B20A41DC0526E000512F6 /* DMRegistrationContainerViewController.swift in Sources */,
 				F22359191E3F3F2100E984FC /* DMJobSearchVC+TableViewCellDelegateExtension.swift in Sources */,
 				5A3BD4AA1E35D3D800A607AC /* EditProfileAffiliationBrickCell.swift in Sources */,
-				E5AE37631E4971CE0001EC3C /* SocketEngine.swift in Sources */,
 				485DA9FD2183610C00CA8593 /* AnimatedPHToolTipCell.swift in Sources */,
 				E5BED5541E49AB85003EC833 /* DMMessagesVC.swift in Sources */,
-				E5AE37791E49743C0001EC3C /* SocketManager.swift in Sources */,
+				6E35FC06220083AC00AB84A3 /* DMJobTitle.swift in Sources */,
+				E5AE37791E49743C0001EC3C /* SocketIOManager.swift in Sources */,
+				6E99691C21FF47E00007CF40 /* DMCalender.swift in Sources */,
 				5A3B06CF1E33881D00EFCA6E /* DMChangePasswordVC.swift in Sources */,
-				F223591D1E3F5F4900E984FC /* DMJobSearchResultVC+TableViewExtension.swift in Sources */,
 				E5BED5531E49AB85003EC833 /* DMMessagesVC+TableViewExtension.swift in Sources */,
-				E5B84B381E9DF835009665D1 /* Chat+CoreDataProperties.swift in Sources */,
+				6E35FC0222007C6700AB84A3 /* DMCancelJob.swift in Sources */,
 				E5F9194B1E9DD4A30021F008 /* FSCalendarScopeHandle.m in Sources */,
+				6E95F797220C21F2001B7035 /* DMEditStudyPresenter.swift in Sources */,
 				484958F9218AC7AB00096046 /* SearchStateViewController.swift in Sources */,
 				6E85B85121FAF94500DB137F /* DMEditLiceseInitializer.swift in Sources */,
+				6ECBBE30220D6B20004A936A /* DMSelectSkillsPresenter.swift in Sources */,
 				E59467271FD8FFE70009C18B /* Popover.swift in Sources */,
 				E5E7CB781E2FA23200D4FB59 /* AboutMeCell.swift in Sources */,
+				6E99690C21FEF7450007CF40 /* RegistrationFlowCoordinator.swift in Sources */,
+				6E6F460622098B080023238B /* DMMessagesPresenter.swift in Sources */,
 				E50512BE1E82378700509328 /* WorkingHoursTableCell.swift in Sources */,
-				E5AE37741E4971CE0001EC3C /* SocketTypes.swift in Sources */,
 				E5A174C71E201DE40044B17E /* ProfileImageButton.swift in Sources */,
+				6E90E5DD220A7A4900E04344 /* DMChatPresenter.swift in Sources */,
 				E5A174C21E201D450044B17E /* CircleProgressBar.m in Sources */,
+				6E90E5E1220AA5A700E04344 /* DMSettingPresenter.swift in Sources */,
+				6E99691E21FF48E50007CF40 /* CalendarFlowCoordinator.swift in Sources */,
+				6E85B56F22033D8B00CD2CCE /* DMTermsAndConditionsPresenter.swift in Sources */,
 				E55462F91DAE4DD1004163B2 /* UIView+Additions.swift in Sources */,
-				E51D4F0D1E40744C00ACC631 /* DMTrackVC+Services.swift in Sources */,
-				E5310E0F1E4EDE71004403A0 /* DMChatVC+DBHandling.swift in Sources */,
-				E5AE376A1E4971CE0001EC3C /* SocketExtensions.swift in Sources */,
 				E5E7CB871E2FA23200D4FB59 /* SectionHeadingTableCell.swift in Sources */,
+				6E4D593C21FEC54D0008EDBA /* ModuleInput.swift in Sources */,
 				6E85B86121FB14C800DB137F /* DMLicenseSelectionInitializer.swift in Sources */,
 				E55462DF1DAE31EA004163B2 /* UIFont+Additions.swift in Sources */,
 				E587D2EA1E24C021006B7F06 /* DMLicenseSelectionVC.swift in Sources */,
 				E558D9151E2EA47500A6DF95 /* AddProfileOptionTableCell.swift in Sources */,
-				E5AE37751E4971CE0001EC3C /* SSLSecurity.swift in Sources */,
-				E587D2D51E2357A9006B7F06 /* DMJobTitleSelectionVC+Services.swift in Sources */,
 				6E85B82D21FADC2100DB137F /* DMMessagesInitializer.swift in Sources */,
-				E5AE37681E4971CE0001EC3C /* SocketEngineWebsocket.swift in Sources */,
+				6E5F84BF220949B900AF54CF /* DMCancelJobPresenter.swift in Sources */,
 				E5496E0C1E26435C00C54288 /* DMLicenseSelectionVC+TableViewExtension.swift in Sources */,
 				E587D2EC1E24C021006B7F06 /* DMWorkExperienceStart.swift in Sources */,
 				F209C3411E435A43005C9594 /* SearchParameters.swift in Sources */,
@@ -2966,84 +3165,87 @@
 				5A0138241E6EBBA900D15783 /* MixpanelOperations.swift in Sources */,
 				E587D2F41E24C095006B7F06 /* DMAffiliationsVC.swift in Sources */,
 				F2F5E0CB1E2F292F0082187C /* DentistDetailCell.swift in Sources */,
-				F22E13DC1E409B9D0076F61E /* DMJobSearchResultVC+Services.swift in Sources */,
-				E576819B1E3A25F100D912EA /* DMEditSkillsVC+Services.swift in Sources */,
-				E594BEA61E1E07C900310AE5 /* DMLoginVC+TableViewExtension.swift in Sources */,
 				E54976F01E28CEDD006F21E5 /* Certification.swift in Sources */,
 				6E85B84E21FAF75200DB137F /* DMPublicProfileInitializer.swift in Sources */,
 				5A5266BD1E26413400C5B7A1 /* DMLicenseSelectionVC+Services.swift in Sources */,
-				E57681961E38A1DA00D912EA /* DMPublicProfileVC+Services.swift in Sources */,
 				4846B87920F3564C00BAC18C /* Constants+AlertMessage.swift in Sources */,
 				E597E58F1E151CFF001DDA78 /* FloatLabelTextField.swift in Sources */,
-				E5AE37621E4971CE0001EC3C /* SocketClientManager.swift in Sources */,
 				E558D8E01E2C80C200A6DF95 /* SchoolCategory.swift in Sources */,
 				5A85D2101E2DFAD000AC4C89 /* Tag.swift in Sources */,
 				E5E7CB821E2FA23200D4FB59 /* ExperienceTableCell.swift in Sources */,
 				5A85D2111E2DFAD000AC4C89 /* TagContent.swift in Sources */,
-				E5D2D8A81FE10B6E001EFA68 /* DMJobTitleVC+Services.swift in Sources */,
+				6E85B5632202FB4600CD2CCE /* DMRegistrationContainerPresenter.swift in Sources */,
 				E558D9111E2E873700A6DF95 /* EditProfileHeaderTableCell.swift in Sources */,
 				6E85B87421FB1A0F00DB137F /* DMWorkExperienceInitializer.swift in Sources */,
+				6EA434FB2207D790001E64A0 /* DMJobSearchPresenter.swift in Sources */,
 				E5496DFC1E25547300C54288 /* DMCertificationsVC+TableViewExtension.swift in Sources */,
 				5AD246931E273CC9009350BF /* DatePickerView.swift in Sources */,
 				E59029A91DED2C7A00151E9B /* LogManager.swift in Sources */,
+				6E35FBF02200366500AB84A3 /* DMPublicProfile.swift in Sources */,
 				E5F9193F1E9DD4A30021F008 /* FSCalendar+Deprecated.m in Sources */,
 				5A3FD0751E1CC79700360B3C /* DMProfileHeaderView.swift in Sources */,
-				E5AE376F1E4971CE0001EC3C /* SocketIOClientStatus.swift in Sources */,
 				E5302CD61DFE7AB100984A0B /* DMForgotPasswordVC.swift in Sources */,
+				6E35FBFC220064AA00AB84A3 /* DMEditCertificate.swift in Sources */,
 				6E85B83F21FAECBC00DB137F /* DMCommonSuccessFailureInitializer.swift in Sources */,
 				F2540F601E274360004B0538 /* JobSearchResultCell.swift in Sources */,
-				E51D4EF51E3AFEA600ACC631 /* DMEditStudyVC+Services.swift in Sources */,
 				E5E7CB851E2FA23200D4FB59 /* PhotoNameCell.swift in Sources */,
 				5A3FD06E1E1BB0A000360B3C /* UINavigationBar+Awesome.m in Sources */,
-				E5AE37641E4971CE0001EC3C /* SocketEngineClient.swift in Sources */,
 				E587D2CF1E23438B006B7F06 /* DMJobTitleSelectionVC.swift in Sources */,
+				6E0C4977222EA1D90010CC2E /* JobMapDetailView.swift in Sources */,
 				4846B87720F3550000BAC18C /* Constants+Color.swift in Sources */,
 				E5A0EB051E2BDE680092E21A /* SubSkillCollectionCell.swift in Sources */,
+				6E85B88521FB3DC500DB137F /* ChatModel.swift in Sources */,
 				E5E7CBA31E3075A200D4FB59 /* DMEditLicenseVC.swift in Sources */,
+				6E0C4974222E4C5F0010CC2E /* BaseCollectionViewCell.swift in Sources */,
 				E56C9FA81DED75D500EAA9DD /* CommonHelper.swift in Sources */,
 				E51D4EFC1E3B818400ACC631 /* CustomSegmentControl.swift in Sources */,
 				E57F29E11E3696A60025B9DE /* DMEditDentalStateBoardVC+Services.swift in Sources */,
+				6ED7FBBB222813C400CEB64B /* CalendarHeaderView.swift in Sources */,
 				E5F919411E9DD4A30021F008 /* FSCalendarAnimator.m in Sources */,
 				5A2CEF4B1E3C2F9600836654 /* DMCalendarSetAvailabillityVC+Services.swift in Sources */,
 				5AAE74781E5C1D0E00B28851 /* ToastView.swift in Sources */,
-				4877D98320ECD54400264422 /* AppDelegate+InitialConfiguration.swift in Sources */,
 				E59029AA1DED2C7A00151E9B /* UserDefaultsManager.swift in Sources */,
 				6EF2F20121FA072C00F6F38D /* TabBarInitializer.swift in Sources */,
+				6E99690A21FEF2C10007CF40 /* TabBar.swift in Sources */,
 				5A5523EB1E4C419F007D8C09 /* CommonTextNotificationTableCell.swift in Sources */,
 				F2D03BA81E1F67BA0005D3A4 /* DMJobSearchVC.swift in Sources */,
 				F2540F561E23A8AE004B0538 /* CurrentLocationCell.swift in Sources */,
-				E594BE9D1E1DFF4400310AE5 /* DMRegistrationVC+TableViewExtension.swift in Sources */,
 				484958ED218AAF3900096046 /* UILabel + Addition.swift in Sources */,
 				5A8F62AD1E39F2550037C4A2 /* TemporyJobCell.swift in Sources */,
 				E5AE37081E4897690001EC3C /* MessageSenderTableCell.swift in Sources */,
-				E5BED5521E49AB85003EC833 /* DMMessages+Services.swift in Sources */,
 				E5E7CBA81E30970700D4FB59 /* EditPublicProfileTableCell.swift in Sources */,
 				6EF2F1F521F9E14000F6F38D /* DMForgotPasswordInitializer.swift in Sources */,
 				E55462DB1DAE312C004163B2 /* String+Additons.swift in Sources */,
 				6EF2F1FE21F9EED500F6F38D /* DMOnboardingInitializer.swift in Sources */,
 				5A85D2161E2DFAD000AC4C89 /* TagWrapper.swift in Sources */,
 				5A8F62A91E39EAB70037C4A2 /* TemporyJobCalenderCell.swift in Sources */,
+				6E4D594221FECCA50008EDBA /* DMOnboarding.swift in Sources */,
 				E54B9A8C1E3611A300805D9C /* YearPickerView.swift in Sources */,
+				6E4D593D21FEC54D0008EDBA /* ModuleOutput.swift in Sources */,
 				E55462D91DAE3104004163B2 /* Array+Additions.swift in Sources */,
 				E594BE9F1E1DFFA900310AE5 /* DMRegistrationVC+TextFieldExtension.swift in Sources */,
 				E57EE6CD1E28EBC00090434F /* Affiliation.swift in Sources */,
-				E5AE37701E4971CE0001EC3C /* SocketLogger.swift in Sources */,
-				E5FBE9D91E1CCF940025683C /* DMRegistration+Services.swift in Sources */,
+				6E99691421FF2BE90007CF40 /* DMJobSearchResult.swift in Sources */,
 				E58654FE1DEFEF7F006FEB2D /* ConfigurationManager.swift in Sources */,
+				6E90E5E3220AB1AF00E04344 /* DMPublicProfilePresenter.swift in Sources */,
 				E5AE2AF61DAF878900C008BD /* OnboardingCollectionViewCell.swift in Sources */,
 				6EA372E721F8E1B7007BE373 /* UIButton+Additions.swift in Sources */,
 				6E85B86C21FB17B900DB137F /* DMStudyInitializer.swift in Sources */,
+				6E4D593421FEC1B30008EDBA /* RootFlowCoordinator.swift in Sources */,
 				5A3B06D11E33883C00EFCA6E /* DMChangePasswordVC+TableViewExtension.swift in Sources */,
 				5A1960FD1E208B67002A5F7C /* PhoneNumberFormatter.swift in Sources */,
 				E5C5F3151DC0AACA001A5A3F /* DMRegisterMapsVC.swift in Sources */,
+				6E0C4973222E4C5F0010CC2E /* BaseTableViewCell.swift in Sources */,
 				E55462E11DAE41FB004163B2 /* Date+Additions.swift in Sources */,
 				E55462D71DAE2F49004163B2 /* UIColor+HexCode.swift in Sources */,
 				F2540F521E23A854004B0538 /* JobSearchPartTimeCell.swift in Sources */,
-				E5AE37651E4971CE0001EC3C /* SocketEnginePacketType.swift in Sources */,
 				E56B20A21DBF749D000512F6 /* DMRegistrationVC.swift in Sources */,
+				6E99691A21FF42390007CF40 /* TrackFlowCoordinator.swift in Sources */,
 				E57F29DF1E3695060025B9DE /* DMEditDentalStateBoardVC.swift in Sources */,
+				6E35FBE82200297E00AB84A3 /* ProfileFlowCoordinator.swift in Sources */,
 				E54976F51E28CEDD006F21E5 /* ExperienceModel.swift in Sources */,
 				E5E7CB981E2FA28000D4FB59 /* PhotoCell.swift in Sources */,
+				6E85B56D2203330C00CD2CCE /* DMForgotPasswordPresenter.swift in Sources */,
 				F2F5E0E01E31D40E0082187C /* JobDetailHeaderView.swift in Sources */,
 				E51D4F0F1E40744C00ACC631 /* DMTrackVC.swift in Sources */,
 				F2540F4E1E23A834004B0538 /* JobSearchTypeCell.swift in Sources */,
@@ -3053,81 +3255,86 @@
 				E51D4F071E3FABB400ACC631 /* LoadMoreView.swift in Sources */,
 				E50B3F531E194EDD004C5F32 /* AnimatedPHTextField.swift in Sources */,
 				5A988BC41E4AE99800DECB49 /* DMNotificationVC.swift in Sources */,
+				6E99690E21FF11170007CF40 /* SearchState.swift in Sources */,
+				6E88699521FEE48A00898925 /* DMLogin.swift in Sources */,
 				E5E7CB4A1E2F8CDE00D4FB59 /* EditLicenseTableCell.swift in Sources */,
+				6E35FBEA22002BBE00AB84A3 /* DMSettings.swift in Sources */,
+				6E4D593021FEC0F00008EDBA /* BaseFlowCoordinator.swift in Sources */,
+				6E4D593B21FEC54D0008EDBA /* ViewInput.swift in Sources */,
 				E514E5BA1E28B472005F6712 /* DMCertificationsVC+Services.swift in Sources */,
+				6ECBBE2E220D601C004A936A /* DMAffiliationsPresenter.swift in Sources */,
 				E587D2EE1E24C021006B7F06 /* DMWorkExperienceVC.swift in Sources */,
+				6E85B5712203423B00CD2CCE /* DMOnboardingPresenter.swift in Sources */,
 				E54976F41E28CEDD006F21E5 /* EmployeeReferenceModel.swift in Sources */,
 				E59029A81DED2C7A00151E9B /* APIManager.swift in Sources */,
 				483C6E71213D3AFE00A59AE9 /* UIDevice+Additions.swift in Sources */,
 				E51C4D3B1FB051C7009FC3A0 /* AboutMeJobSelectionCell.swift in Sources */,
+				6E35FBE62200292200AB84A3 /* DMEditProfile.swift in Sources */,
 				E5E7CBA51E3089B200D4FB59 /* DMEditLicenseVC+Services.swift in Sources */,
+				6E5F84BD2209288000AF54CF /* DMTrackPresenter.swift in Sources */,
 				5A5523E31E4C40C1007D8C09 /* HiredJobNotificationTableCell.swift in Sources */,
 				E5AE377E1E497D8D0001EC3C /* MessageListTableCell.swift in Sources */,
 				E506AE551FAC375700ABC7FA /* PreferredLocation.swift in Sources */,
 				E558D8FC1E2CB5D400A6DF95 /* AutoCompleteTable.swift in Sources */,
 				E50B3F4C1E194CD7004C5F32 /* AnimatedPHTableCell.swift in Sources */,
 				E55462E61DAE47A9004163B2 /* UIView+Toast.m in Sources */,
-				E5E7CB431E2F39D500D4FB59 /* DMEditProfileVC+Services.swift in Sources */,
 				E587D2D11E2343A5006B7F06 /* DMJobTitleSelectionVC+UIPickerViewExtension.swift in Sources */,
+				6E99690421FEEAE10007CF40 /* DMTermsAndConditions.swift in Sources */,
 				E558D90E1E2E871900A6DF95 /* GooglePlacesTableViewCell.swift in Sources */,
+				6E85B57522041E1400CD2CCE /* DMJobTitleSelectionPresenter.swift in Sources */,
 				E587D2D91E236EAE006B7F06 /* DMRegisterMapsVC+TableViewExtension.swift in Sources */,
 				5A85D2151E2DFAD000AC4C89 /* TagPresentables.swift in Sources */,
-				E5AE37731E4971CE0001EC3C /* SocketStringReader.swift in Sources */,
+				6ED7FBB82228016100CEB64B /* DMCalenderPresenter.swift in Sources */,
 				E55463001DAE510A004163B2 /* Utilities.swift in Sources */,
 				6EF2F20A21FA103C00F6F38D /* DMJobTitleInitializer.swift in Sources */,
 				6EF2F21421FA1E7900F6F38D /* DMCancelJobInitializer.swift in Sources */,
 				6E85B84521FAF24D00DB137F /* DMEditSkillsInitializer.swift in Sources */,
 				E56E90801DFF31740096A31B /* CameraGalleryManager.swift in Sources */,
 				E5E7CBAC1E3099DF00D4FB59 /* DMPublicProfileVC.swift in Sources */,
-				E576BA3C1E5C0CB40097B781 /* ChatList+CoreDataClass.swift in Sources */,
+				6E85B57B2204521600CD2CCE /* DMCalendarSetAvailabillityPresenter.swift in Sources */,
+				6E35FBF422003E9700AB84A3 /* DMEditStudy.swift in Sources */,
 				E5AE37821E4984420001EC3C /* DatabaseManager.swift in Sources */,
-				E5AE376C1E4971CE0001EC3C /* SocketIOClientConfiguration.swift in Sources */,
 				F2540F4A1E23A81C004B0538 /* JobSeachTitleCell.swift in Sources */,
 				F22359171E3F3E3300E984FC /* DMJobSearchVC+TableViewExtension.swift in Sources */,
 				F2F5E0DA1E31BDD00082187C /* MapCell.swift in Sources */,
 				E55462F71DAE4C6F004163B2 /* UITextField+ToolBar.swift in Sources */,
+				6E35FBF622005C3D00AB84A3 /* DMEditSkills.swift in Sources */,
 				5A5523EF1E4D97DF007D8C09 /* UserNotification.swift in Sources */,
 				E5AE37041E485D800001EC3C /* PlaceHolderJobsView.swift in Sources */,
-				E5AE37661E4971CE0001EC3C /* SocketEnginePollable.swift in Sources */,
 				6EF2F20721FA0E3B00F6F38D /* DMJobSearchInitializer.swift in Sources */,
-				E5AE376B1E4971CE0001EC3C /* SocketIOClient.swift in Sources */,
 				6E85B83921FAE85700DB137F /* DMChangePasswordInitializer.swift in Sources */,
+				6E7A5B15222814DA007A916C /* BaseView.swift in Sources */,
 				484958FC218AD5C400096046 /* State.swift in Sources */,
 				6E85B83C21FAEADC00DB137F /* SearchStateInitializer.swift in Sources */,
+				6E85B88721FB406E00DB137F /* ChatListModel.swift in Sources */,
 				F2F5E0CF1E2F62080082187C /* AboutCell.swift in Sources */,
 				E587D2D71E236B84006B7F06 /* DMRegisterMapsVC+GoogleMapsExtension.swift in Sources */,
 				5A3B06CD1E3387FF00EFCA6E /* DMSettingVC+TableViewExtension.swift in Sources */,
-				E5AE37691E4971CE0001EC3C /* SocketEventHandler.swift in Sources */,
 				5A5523F11E4DCDF3007D8C09 /* TimeAgo.swift in Sources */,
+				6E99691221FF213B0007CF40 /* DMCalendarSetAvailabillity.swift in Sources */,
 				5A60A85B1E43309100789D14 /* UserAvailability.swift in Sources */,
-				E5AE375F1E4971CE0001EC3C /* SocketAckEmitter.swift in Sources */,
 				E54976F31E28CEDD006F21E5 /* User.swift in Sources */,
 				6EF2F1EF21F9DD3400F6F38D /* DMRegistrationInitializer.swift in Sources */,
 				48067D49212E9E8F007F77E6 /* TagCell.swift in Sources */,
 				E5E7CB831E2FA23200D4FB59 /* ReferenceTableCell.swift in Sources */,
 				6EF2F20D21FA15A100F6F38D /* DMJobDetailInitializer.swift in Sources */,
-				E5AE37761E4971CE0001EC3C /* WebSocket.swift in Sources */,
-				E5AE37671E4971CE0001EC3C /* SocketEngineSpec.swift in Sources */,
 				6E85B82A21FADA7400DB137F /* DMCalendarSetAvailabilityInitializer.swift in Sources */,
 				6E85B86721FB16A100DB137F /* DMSelectSkillsInitializer.swift in Sources */,
-				E51D4F151E41070700ACC631 /* DMRegisterMapsVC+Services.swift in Sources */,
 				E5F919491E9DD4A30021F008 /* FSCalendarExtensions.m in Sources */,
-				E5B84B371E9DF835009665D1 /* Chat+CoreDataClass.swift in Sources */,
 				E56C9F9E1DED4BD100EAA9DD /* Character+Addition.swift in Sources */,
-				E5AE37601E4971CE0001EC3C /* SocketAckManager.swift in Sources */,
 				E5E7CB8D1E2FA23200D4FB59 /* SkillsTableCell.swift in Sources */,
 				E587D2F81E24C0C0006B7F06 /* DMSelectSkillsVC.swift in Sources */,
 				6EF2F1F221F9DEC200F6F38D /* DMLoginInitializer.swift in Sources */,
-				E57EE6CA1E28EB440090434F /* DMAffiliationsVC+Services.swift in Sources */,
 				E506AE501FAC329400ABC7FA /* PreferredLocationPickerView.swift in Sources */,
 				E54B9A7C1E326A6C00805D9C /* EditCertificateTableCell.swift in Sources */,
 				6E85B87721FB1C1800DB137F /* DMJobTitleSelectionInitializer.swift in Sources */,
-				5AD246911E272E92009350BF /* DMWorkExperienceVC+Services.swift in Sources */,
+				6ECBBE2C220D5389004A936A /* DMEditCertificatePresenter.swift in Sources */,
 				6E85B85721FAFCB600DB137F /* DMProfileSuccessPendingInitializer.swift in Sources */,
 				E5E7CB8F1E2FA23300D4FB59 /* SubSkillCell.swift in Sources */,
 				E5BED5511E49AB85003EC833 /* DMChatVC.swift in Sources */,
 				6E85B83021FADD0F00DB137F /* DMChatInitializer.swift in Sources */,
-				E5433AF21FCD140800D152D9 /* DMProfileSuccessPending.swift in Sources */,
+				E5433AF21FCD140800D152D9 /* DMProfileSuccessPendingViewController.swift in Sources */,
+				6E35FC08220091D300AB84A3 /* DMRegisterMaps.swift in Sources */,
 				E5F919421E9DD4A30021F008 /* FSCalendarAppearance.m in Sources */,
 				E5496E081E25E4AA00C54288 /* DMSchoolListPopOverVC.swift in Sources */,
 				5A85D2121E2DFAD000AC4C89 /* TagContents.swift in Sources */,
@@ -3135,7 +3342,9 @@
 				5A85D20F1E2DFAD000AC4C89 /* SeparatorWrapper.swift in Sources */,
 				6E85B85B21FAFF3D00DB137F /* DMAffiliationsInitializer.swift in Sources */,
 				E50FA8131E30A1DA00C20C93 /* DMPublicProfileVC+TableViewExtension.swift in Sources */,
+				6E4D593E21FEC54D0008EDBA /* ViewOutput.swift in Sources */,
 				5A50A2B81E320F6E0010AA31 /* TabBarVC.swift in Sources */,
+				6E90E5DF220A913000E04344 /* DMEditProfilePresenter.swift in Sources */,
 				E594BEA41E1E076D00310AE5 /* DMLoginVC+TextFieldExtension.swift in Sources */,
 				E5E7CB7A1E2FA23200D4FB59 /* AffiliationsCell.swift in Sources */,
 				E55462EC1DAE47F5004163B2 /* AppDelegate.swift in Sources */,
@@ -3146,85 +3355,95 @@
 				F223591F1E3F608900E984FC /* DMJobDetaiVC+TableViewExtension.swift in Sources */,
 				E51D4EF31E3AFCA700ACC631 /* DMEditStudyVC.swift in Sources */,
 				E558D90A1E2E7A3200A6DF95 /* DMEditProfileVC+TableViewExtension.swift in Sources */,
-				E5BED5661E49BA0B003EC833 /* DMMessagesVC+DBHandling.swift in Sources */,
-				5A3B06D31E33885A00EFCA6E /* DMChangePasswordVC+Services.swift in Sources */,
 				E5F919401E9DD4A30021F008 /* FSCalendar.m in Sources */,
-				5A988BC81E4AEA0E00DECB49 /* DMNotificationVC+Services.swift in Sources */,
 				E5F919431E9DD4A30021F008 /* FSCalendarCalculator.m in Sources */,
+				6E35FBEE2200346F00AB84A3 /* DMNotifications.swift in Sources */,
 				E5F9194A1E9DD4A30021F008 /* FSCalendarHeaderView.m in Sources */,
 				E5E7CB891E2FA23200D4FB59 /* OtherSkillCell.swift in Sources */,
 				E5D2D8AB1FE24305001EFA68 /* DMCommonSuccessFailureVC.swift in Sources */,
+				6E4D593221FEC10F0008EDBA /* BaseFlowProtocol.swift in Sources */,
 				E54976F71E28D243006F21E5 /* DMExecutiveSummaryVC+Services.swift in Sources */,
 				6E85B86E21FB17E300DB137F /* DMSchoolListPopOverInitializer.swift in Sources */,
-				E5AE37611E4971CE0001EC3C /* SocketAnyEvent.swift in Sources */,
+				6E35FBEC2200310200AB84A3 /* DMChangePassword.swift in Sources */,
 				E587D2CC1E23362C006B7F06 /* JobSelectionPickerView.swift in Sources */,
 				E5E7CB801E2FA23200D4FB59 /* AddDeleteExperienceCell.swift in Sources */,
+				6E35FBF222003C1200AB84A3 /* DMWorkExperience.swift in Sources */,
 				E587D3001E24E5C1006B7F06 /* ProfileTextField.swift in Sources */,
 				E5F47C941E0035B90051C4A1 /* UIImage+Rotations.swift in Sources */,
 				E576819D1E3A289D00D912EA /* DMEditSkillsVC+TableViewExtension.swift in Sources */,
 				5A8F62A51E399A550037C4A2 /* DMCalendarSetAvailabillityVC+TableViewExtension.swift in Sources */,
 				6E85B83621FAE54B00DB137F /* DMSettingsInitializer.swift in Sources */,
 				6EF2F1E521F9C82300F6F38D /* ContainerInitializer.swift in Sources */,
-				5AC714581E34F76900E433C1 /* DMSettingVC+Services.swift in Sources */,
 				5A737D091E56B040002472D4 /* NotificationHandler.swift in Sources */,
 				48CD1505212D75F600E4B80E /* TempJobDetailCell.swift in Sources */,
 				E587D2F61E24C0B0006B7F06 /* DMSkillsVC.swift in Sources */,
 				E50B3F501E194CD7004C5F32 /* RegistrationTableViewCell.swift in Sources */,
+				6E88699721FEE50100898925 /* DMRegistration.swift in Sources */,
 				6E85B85421FAFAE400DB137F /* DMEditProfileInitializer.swift in Sources */,
-				F2CBC10A1E41E9BE00345B9F /* DMJobDetailVC+Services.swift in Sources */,
 				E5F919461E9DD4A30021F008 /* FSCalendarCollectionViewLayout.m in Sources */,
-				E5AE376D1E4971CE0001EC3C /* SocketIOClientOption.swift in Sources */,
+				6E35FC002200792100AB84A3 /* DMChat.swift in Sources */,
 				5A85D2141E2DFAD000AC4C89 /* TagPresentable.swift in Sources */,
 				5A50A2CA1E32163D0010AA31 /* SettingTableCell.swift in Sources */,
+				6E85B5732203476C00CD2CCE /* DMRegisterMapsPresenter.swift in Sources */,
+				6E35FC0422007FBC00AB84A3 /* DMJobSearch.swift in Sources */,
+				6EA434FD2207E00A001E64A0 /* DMJobSearchResultPresenter.swift in Sources */,
 				484958F6218AC2F500096046 /* UITextField+Additions.swift in Sources */,
 				E558D9081E2E6FE700A6DF95 /* DMEditProfileVC.swift in Sources */,
 				E5F919451E9DD4A30021F008 /* FSCalendarCollectionView.m in Sources */,
+				6E85B57722042B7000CD2CCE /* SearchStatePresenter.swift in Sources */,
+				6E35FBFA22005F4800AB84A3 /* DMAffiliations.swift in Sources */,
 				4846B87D20F356CC00BAC18C /* Constants+Api.swift in Sources */,
 				484174CE212FF52B00C86818 /* UserDefaults+Additions.swift in Sources */,
 				6E85B85E21FB007300DB137F /* DMCertificationsInitializer.swift in Sources */,
+				6EA435012208097C001E64A0 /* DMNotificationsPresenter.swift in Sources */,
 				5AC714521E34ACD400E433C1 /* DMCalenderVC.swift in Sources */,
 				6E85B86421FB15C000DB137F /* DMSkillsInitializer.swift in Sources */,
 				E5A0EADE1E2944D50092E21A /* SSASideMenu.swift in Sources */,
 				E5496E0E1E273F1D00C54288 /* DMSkillsVC+Services.swift in Sources */,
 				5A3BD4B61E36065E00A607AC /* EditProfileReferenceCell.swift in Sources */,
 				5A8F62A31E399A080037C4A2 /* DMCalendarSetAvailabillityVC.swift in Sources */,
+				6E99691021FF1A6C0007CF40 /* DMProfileSuccessPending.swift in Sources */,
 				E54976F11E28CEDD006F21E5 /* JobTitle.swift in Sources */,
 				6E85B82721FAD9E700DB137F /* DMCalendarInitializer.swift in Sources */,
 				E59073591FB02C4F007381E8 /* DMJobTitleSelectionVC+TableExtension.swift in Sources */,
 				E5F919481E9DD4A30021F008 /* FSCalendarDelegateProxy.m in Sources */,
 				F2540F5D1E274258004B0538 /* DMJobSearchResultVC.swift in Sources */,
 				E53738F21DB373C200967876 /* Reachability.swift in Sources */,
+				6E85B56722030CEE00CD2CCE /* DMRegistrationPresenter.swift in Sources */,
 				6EA372E521F8BF16007BE373 /* ImageView+Additions.swift in Sources */,
-				E5AE37711E4971CE0001EC3C /* SocketPacket.swift in Sources */,
+				6E4D594021FECB1F0008EDBA /* DMRegistrationContainer.swift in Sources */,
 				E587D2EB1E24C021006B7F06 /* DMWorkExperienceStart+TableViewExtension.swift in Sources */,
 				E5E7CB931E2FA23300D4FB59 /* StudyCell.swift in Sources */,
 				6EF2F1FB21F9EA4000F6F38D /* DMRegisterMapsInitializer.swift in Sources */,
 				F239E2E01E28D0890071909E /* JobMarker.swift in Sources */,
 				E51D4F001E3F207F00ACC631 /* Notifications+Name.swift in Sources */,
+				6E0C4970222E4C2C0010CC2E /* CollectionViewUtils.swift in Sources */,
 				5AB876501E249B62007818D6 /* ExperiencePickerView.swift in Sources */,
 				E5F919471E9DD4A30021F008 /* FSCalendarConstants.m in Sources */,
 				F2F5E0DE1E31CE2A0082187C /* DMJobDetailVC.swift in Sources */,
 				E590735B1FB02D36007381E8 /* DMJobTitleSelectionVC+TextFieldExtension.swift in Sources */,
+				6E35FBE22200273700AB84A3 /* DMMessages.swift in Sources */,
 				6EF2F20421FA096100F6F38D /* DMJobSearchResultInitializer.swift in Sources */,
 				6E85B87121FB196000DB137F /* DMExecutiveSummaryInitializer.swift in Sources */,
 				6EF2F1EB21F9DBFF00F6F38D /* DMRegistrationContainerInitializer.swift in Sources */,
-				E5DC3E731DAF2C45002DA20E /* DentaMatch.xcdatamodeld in Sources */,
+				6E99690821FEF13D0007CF40 /* TabBarFlowCoordinator.swift in Sources */,
 				5A3B06C81E3375ED00EFCA6E /* ChangePasswordTableCell.swift in Sources */,
 				5A463EC81E5D9E4B00B119D6 /* InviteJobNotificationTableCell.swift in Sources */,
 				E590299F1DED25C400151E9B /* AppDelegate+Notifications.swift in Sources */,
 				E597E5901E151CFF001DDA78 /* FloatLabelTextView.swift in Sources */,
 				6E85B84B21FAF64D00DB137F /* DMEditCertificateInitializer.swift in Sources */,
 				E5F47C951E0035B90051C4A1 /* UIImageRotate.m in Sources */,
+				6EA4350322081D95001E64A0 /* DMJobTitlePresenter.swift in Sources */,
+				6E85B5692203188400CD2CCE /* MessageUtils.swift in Sources */,
 				E5C5F31B1DC1B369001A5A3F /* DMTermsAndConditionsVC.swift in Sources */,
 				484958FF218ADCC000096046 /* StateCell.swift in Sources */,
-				F223591B1E3F5ED100E984FC /* DMJobSearchResultVC+GMSExtension.swift in Sources */,
-				E5AE37721E4971CE0001EC3C /* SocketParsable.swift in Sources */,
 				484958F4218AC2A400096046 /* SearchField.swift in Sources */,
 				E5E7CB9F1E306E6300D4FB59 /* License.swift in Sources */,
 				E54976F21E28CEDD006F21E5 /* Skill.swift in Sources */,
 				F2F9B97B1E38978200639716 /* JobTitleCell.swift in Sources */,
 				E5F919441E9DD4A30021F008 /* FSCalendarCell.m in Sources */,
 				5A85D2131E2DFAD000AC4C89 /* TagList.swift in Sources */,
+				6ECBBE32220D8501004A936A /* DMEditSkillsPresenter.swift in Sources */,
 				E5A0EB0E1E2BE7C40092E21A /* ASJTag.m in Sources */,
 				F2540F591E263613004B0538 /* DMJobTitleVC.swift in Sources */,
 				E51D4EF71E3B029D00ACC631 /* DMEditStudyVC+TableViewExtension.swift in Sources */,
@@ -3232,39 +3451,61 @@
 				E57681991E3A234700D912EA /* DMEditSkillsVC.swift in Sources */,
 				E587D2F01E24C05D006B7F06 /* DMCertificationsVC.swift in Sources */,
 				E5F9194D1E9DD4A30021F008 /* FSCalendarWeekdayView.m in Sources */,
+				6E99690621FEEFE40007CF40 /* DMJobTitleSelection.swift in Sources */,
 				E55462FC1DAE4EA1004163B2 /* DMBaseVC.swift in Sources */,
 				E5A0EB021E2A9C760092E21A /* DMStudy+Services.swift in Sources */,
 				E51C4D3E1FB05591009FC3A0 /* DMJobTitleSelectionVC+TextFieldDelegates.swift in Sources */,
-				E5310E0D1E4B2B3F004403A0 /* DMChatVC+Services.swift in Sources */,
 				E5E7CB8B1E2FA23200D4FB59 /* OtherSubSkillTableCell.swift in Sources */,
-				F2F5E0E61E35DE390082187C /* DMJobSearchVC+Services.swift in Sources */,
 				E5A3E8EE1E160ABF00B10937 /* AnimatedLeftViewPHTextField.swift in Sources */,
-				E594BEA81E1E07F500310AE5 /* DMLoginVC+Services.swift in Sources */,
 				E5496E021E255A9E00C54288 /* DMExecutiveSummaryVC+TableViewExtension.swift in Sources */,
+				6E7A5B3D22282E4C007A916C /* EmptyJobsCalendarCell.swift in Sources */,
+				6E0C496E222E4C1F0010CC2E /* TableViewUtils.swift in Sources */,
 				E54B9A841E32870B00805D9C /* DMEditCertificateVC.swift in Sources */,
+				6E95F799220C33AB001B7035 /* DMChangePasswordPresenter.swift in Sources */,
+				6E85B56B22032D4400CD2CCE /* DMLoginPresenter.swift in Sources */,
 				5A5523E71E4C4136007D8C09 /* NotificationJobTypeTableCell.swift in Sources */,
-				E56F78561E1F602200F07814 /* DMForgotPasswordVC+Services.swift in Sources */,
 				6E85B84221FAF12900DB137F /* DMEditStudyInitializer.swift in Sources */,
+				6EA434FF2207F49B001E64A0 /* DMJobDetailPresenter.swift in Sources */,
 				E5BED5501E49AB85003EC833 /* DMChatVC+TableViewExtensions.swift in Sources */,
 				5A3B06CB1E3387DA00EFCA6E /* DMSettingVC.swift in Sources */,
 				E5496E161E2784D500C54288 /* DMSkillsVC+TableViewExtension.swift in Sources */,
-				E5AE376E1E4971CE0001EC3C /* SocketIOClientSpec.swift in Sources */,
-				E576BA3D1E5C0CB40097B781 /* ChatList+CoreDataProperties.swift in Sources */,
+				6E99691621FF3F940007CF40 /* JobsFlowCoordinator.swift in Sources */,
+				6E88699321FEDDEF00898925 /* AuthorizationFlowCoordinator.swift in Sources */,
 				E51D4F111E40745A00ACC631 /* DMCancelJobVC.swift in Sources */,
 				E587D2FA1E24C102006B7F06 /* DMStudyVC.swift in Sources */,
 				E587D3021E24E97B006B7F06 /* DMStudy+TableViewExtension.swift in Sources */,
 				5A3BD4AE1E35DB1E00A607AC /* EditProfileSkillBrickCell.swift in Sources */,
+				6E35FBFE22006CE700AB84A3 /* DMJobDetail.swift in Sources */,
+				6E99691821FF414E0007CF40 /* DMTrack.swift in Sources */,
 				6EF2F21021FA1D0200F6F38D /* DMTrackInitializer.swift in Sources */,
-				E57F29DC1E368D070025B9DE /* DMEditCertificateVC+Services.swift in Sources */,
+				6E99690221FEE84A0007CF40 /* DMForgotPassword.swift in Sources */,
 				E5AE2AF11DAF844C00C008BD /* DMOnboardingVC.swift in Sources */,
 				E55462F31DAE4A5D004163B2 /* Constants.swift in Sources */,
 				E56E315D1E3A8275009FF0FC /* EditProfileSchoolCell.swift in Sources */,
 				E540CBC01FDE426E00A8A56E /* DMProfileSuccessPending+Services.swift in Sources */,
 				E5AE370C1E4897790001EC3C /* MessageReceiverTableCell.swift in Sources */,
 				E5496E0A1E25E52600C54288 /* DMSchoolListPopOverVC+TableViewExtension.swift in Sources */,
-				E51D4F131E4086BD00ACC631 /* DMCancelJobVC+Services.swift in Sources */,
 				E50B3F4E1E194CD7004C5F32 /* LoginTableViewCell.swift in Sources */,
+				6E35FBE42200279800AB84A3 /* MessagesFlowCoordinator.swift in Sources */,
 				F22359151E3F351C00E984FC /* Job.swift in Sources */,
+				6E85B5792204407A00CD2CCE /* DMProfileSuccessPendingPresenter.swift in Sources */,
+				6E35FBF822005CD500AB84A3 /* DMSelectSkills.swift in Sources */,
+				6E90E5E5220AD9B000E04344 /* DMWorkExperiencePresenter.swift in Sources */,
+				63D32752915A935906D26086 /* RootScreen.swift in Sources */,
+				42E0DF7D801DEC5007372D27 /* RootScreenInitializer.swift in Sources */,
+				9ED2ECF22A285308E5F52DD1 /* RootScreenPresenter.swift in Sources */,
+				1C9D9A2BA48C3455C2759C79 /* RootScreenViewController.swift in Sources */,
+				B5EA6039623E49EE0194620C /* RootScreenView.swift in Sources */,
+				4745FF5432807C4E412074F1 /* JobSearchListScreen.swift in Sources */,
+				9B3FBE7B4A661382546852AF /* JobSearchListScreenInitializer.swift in Sources */,
+				1D63EC6BC4FD60560F7D3A5B /* JobSearchListScreenPresenter.swift in Sources */,
+				9E32717D03FB488265058F43 /* JobSearchListScreenViewController.swift in Sources */,
+				430E317029FD659F8A96BF1C /* JobSearchListScreenView.swift in Sources */,
+				79398CE80CD210E4C245A3DB /* JobSearchMapScreen.swift in Sources */,
+				FC760044811536DBE9D092DE /* JobSearchMapScreenInitializer.swift in Sources */,
+				28964A7AA4F471846C45B1F1 /* JobSearchMapScreenPresenter.swift in Sources */,
+				C7B31F961D207B490EFBD067 /* JobSearchMapScreenViewController.swift in Sources */,
+				1B93ABBB0289F31185016B81 /* JobSearchMapScreenView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3419,6 +3660,80 @@
 				INFOPLIST_FILE = DentaMatch/Application/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"Accelerate\"",
+					"-framework",
+					"\"Alamofire\"",
+					"-framework",
+					"\"AlamofireImage\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreImage\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreMedia\"",
+					"-framework",
+					"\"CoreMotion\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"CoreVideo\"",
+					"-framework",
+					"\"Crashlytics\"",
+					"-framework",
+					"\"Fabric\"",
+					"-framework",
+					"\"GLKit\"",
+					"-framework",
+					"\"GoogleMaps\"",
+					"-framework",
+					"\"GoogleMapsBase\"",
+					"-framework",
+					"\"GoogleMapsCore\"",
+					"-framework",
+					"\"GooglePlaces\"",
+					"-framework",
+					"\"IHProgressHUD\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"Instabug\"",
+					"-framework",
+					"\"KeychainAccess\"",
+					"-framework",
+					"\"Mixpanel\"",
+					"-framework",
+					"\"ObjcExceptionBridging\"",
+					"-framework",
+					"\"OpenGLES\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Realm\"",
+					"-framework",
+					"\"RealmSwift\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SwiftyJSON\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"XCGLogger\"",
+				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -DDEVELOPMENT";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appster.dentamatch;
 				PRODUCT_NAME = "$(TARGET_NAME)-Dev";
@@ -3444,6 +3759,80 @@
 				INFOPLIST_FILE = DentaMatch/Application/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"Accelerate\"",
+					"-framework",
+					"\"Alamofire\"",
+					"-framework",
+					"\"AlamofireImage\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreImage\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreMedia\"",
+					"-framework",
+					"\"CoreMotion\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"CoreVideo\"",
+					"-framework",
+					"\"Crashlytics\"",
+					"-framework",
+					"\"Fabric\"",
+					"-framework",
+					"\"GLKit\"",
+					"-framework",
+					"\"GoogleMaps\"",
+					"-framework",
+					"\"GoogleMapsBase\"",
+					"-framework",
+					"\"GoogleMapsCore\"",
+					"-framework",
+					"\"GooglePlaces\"",
+					"-framework",
+					"\"IHProgressHUD\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"Instabug\"",
+					"-framework",
+					"\"KeychainAccess\"",
+					"-framework",
+					"\"Mixpanel\"",
+					"-framework",
+					"\"ObjcExceptionBridging\"",
+					"-framework",
+					"\"OpenGLES\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Realm\"",
+					"-framework",
+					"\"RealmSwift\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SwiftyJSON\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"XCGLogger\"",
+				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -DPRODUCTION";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appster.dentamatch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3533,6 +3922,80 @@
 				INFOPLIST_FILE = DentaMatch/Application/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"Accelerate\"",
+					"-framework",
+					"\"Alamofire\"",
+					"-framework",
+					"\"AlamofireImage\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreImage\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreMedia\"",
+					"-framework",
+					"\"CoreMotion\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"CoreVideo\"",
+					"-framework",
+					"\"Crashlytics\"",
+					"-framework",
+					"\"Fabric\"",
+					"-framework",
+					"\"GLKit\"",
+					"-framework",
+					"\"GoogleMaps\"",
+					"-framework",
+					"\"GoogleMapsBase\"",
+					"-framework",
+					"\"GoogleMapsCore\"",
+					"-framework",
+					"\"GooglePlaces\"",
+					"-framework",
+					"\"IHProgressHUD\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"Instabug\"",
+					"-framework",
+					"\"KeychainAccess\"",
+					"-framework",
+					"\"Mixpanel\"",
+					"-framework",
+					"\"ObjcExceptionBridging\"",
+					"-framework",
+					"\"OpenGLES\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Realm\"",
+					"-framework",
+					"\"RealmSwift\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SwiftyJSON\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"XCGLogger\"",
+				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -DQA";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appster.dentamatch;
 				PRODUCT_NAME = "$(TARGET_NAME)-QA";
@@ -3617,6 +4080,80 @@
 				INFOPLIST_FILE = DentaMatch/Application/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"Accelerate\"",
+					"-framework",
+					"\"Alamofire\"",
+					"-framework",
+					"\"AlamofireImage\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreImage\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreMedia\"",
+					"-framework",
+					"\"CoreMotion\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"CoreVideo\"",
+					"-framework",
+					"\"Crashlytics\"",
+					"-framework",
+					"\"Fabric\"",
+					"-framework",
+					"\"GLKit\"",
+					"-framework",
+					"\"GoogleMaps\"",
+					"-framework",
+					"\"GoogleMapsBase\"",
+					"-framework",
+					"\"GoogleMapsCore\"",
+					"-framework",
+					"\"GooglePlaces\"",
+					"-framework",
+					"\"IHProgressHUD\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"Instabug\"",
+					"-framework",
+					"\"KeychainAccess\"",
+					"-framework",
+					"\"Mixpanel\"",
+					"-framework",
+					"\"ObjcExceptionBridging\"",
+					"-framework",
+					"\"OpenGLES\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Realm\"",
+					"-framework",
+					"\"RealmSwift\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SwiftyJSON\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"XCGLogger\"",
+				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -DSTAGING";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appster.dentamatch;
 				PRODUCT_NAME = "$(TARGET_NAME)-Staging";
@@ -3653,19 +4190,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		E5DC3E711DAF2C45002DA20E /* DentaMatch.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				E5DC3E721DAF2C45002DA20E /* DentaMatch.xcdatamodel */,
-			);
-			currentVersion = E5DC3E721DAF2C45002DA20E /* DentaMatch.xcdatamodel */;
-			path = DentaMatch.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = E56E45B01DAE07C200AD4559 /* Project object */;
 }

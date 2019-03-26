@@ -15,10 +15,9 @@ import UIKit
 class DMCancelJobVC: DMBaseVC {
     @IBOutlet var reasonTextView: UITextView!
 
-    var job: Job?
+    var viewOutput: DMCancelJobViewOutput?
+
     var placeHolderLabel: UILabel!
-    weak var delegate: CancelledJobDelegate?
-    var fromApplied = false
 
     // MARK: - View LifeCycle
 
@@ -88,13 +87,18 @@ class DMCancelJobVC: DMBaseVC {
         if reasonTextView.text!.isEmptyField {
             makeToast(toastString: Constants.AlertMessage.emptyCancelReason)
         } else {
-            alertMessage(title: "Confirm your cancellation", message: "\nAre you sure you want to cancel the job? (Multiple cancellations can result in suspension of your account)", leftButtonText: "Cancel", rightButtonText: "Ok", completionHandler: { (isLeftButton: Bool) in
+            alertMessage(title: "Confirm your cancellation", message: "\nAre you sure you want to cancel the job? (Multiple cancellations can result in suspension of your account)", leftButtonText: "Cancel", rightButtonText: "Ok", completionHandler: { [weak self] (isLeftButton: Bool) in
                 if !isLeftButton {
-                    self.cancelJobAPI()
+                    self?.viewOutput?.cancelJob(reason: self?.reasonTextView.text ?? "")
                 }
             })
         }
     }
+}
+
+extension DMCancelJobVC: DMCancelJobViewInput {
+    
+    
 }
 
 extension DMCancelJobVC: UITextViewDelegate {

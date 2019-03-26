@@ -147,8 +147,10 @@ class UserDefaultsManager: NSObject {
 
     func clearCache() {
         let tempDeviceToken = UserDefaultsManager.sharedInstance.deviceToken
+        let tempOnboardingCheck = UserDefaultsManager.sharedInstance.isOnBoardingDone
         UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
         UserDefaultsManager.sharedInstance.deviceToken = tempDeviceToken
+        UserDefaultsManager.sharedInstance.isOnBoardingDone = tempOnboardingCheck
     }
 
     // Load last searched parameter user data, if any

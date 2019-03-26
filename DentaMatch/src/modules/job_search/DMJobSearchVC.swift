@@ -1,11 +1,3 @@
-//
-//  DMJobSearchVC.swift
-//  DentaMatch
-//
-//  Created by Shailesh Tyagi on 06/01/17.
-//  Copyright © 2017 Appster. All rights reserved.
-//
-
 import CoreLocation
 import GoogleMaps
 import GooglePlaces
@@ -17,17 +9,17 @@ protocol SearchJobDelegate:class {
 
 class DMJobSearchVC: DMBaseVC {
     @IBOutlet var tblViewJobSearch: UITableView!
+    
     weak var delegate: SearchJobDelegate?
+    
     var isPartTimeDayShow: Bool = false
     var jobTitles = [JobTitle]()
     var preferredLocations = [PreferredLocation]()
-    var jobs = [Job]()
     var partTimeJobDays = [String]()
     var location: Location! = Location()
     var isJobTypeFullTime: String! = "0"
     var isJobTypePartTime: String! = "0"
     var searchParams = [String: Any]()
-    var totalJobsFromServer = 0
     var fromJobSearchResults = false
     var firstTime = false
 
@@ -40,10 +32,15 @@ class DMJobSearchVC: DMBaseVC {
         case jobType = 189.0
         case jobTypePartTime = 76.0
     }
+    
+    var viewOutput: DMJobSearchViewOutput?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         title = Constants.ScreenTitleNames.jobSearch
+        
+        viewOutput?.didLoad()
         setup()
     }
 
@@ -175,33 +172,18 @@ class DMJobSearchVC: DMBaseVC {
                 }
                 // debugPrint(lines.joined(separator: " "))
                 self.location.address = lines.joined(separator: " ")
-                DispatchQueue.main.async {
-                    if self.location.address != nil {
-                        self.tblViewJobSearch.beginUpdates()
-                        self.tblViewJobSearch.reloadRows(at: [IndexPath(row: 0, section: 2)], with: .bottom)
-                        self.tblViewJobSearch.endUpdates()
-                        self.tblViewJobSearch.scrollToRow(at: IndexPath(row: 0, section: 2), at: UITableView.ScrollPosition.none, animated: false)
+                DispatchQueue.main.async {  [weak self] in
+                    if self?.location.address != nil {
+                        self?.tblViewJobSearch.beginUpdates()
+                        self?.tblViewJobSearch.reloadRows(at: [IndexPath(row: 0, section: 2)], with: .bottom)
+                        self?.tblViewJobSearch.endUpdates()
+                        self?.tblViewJobSearch.scrollToRow(at: IndexPath(row: 0, section: 2), at: UITableView.ScrollPosition.none, animated: false)
                         // debugPrint(self.location.address ?? "Address not found")
                     } else {
                         // debugPrint("Address is empty")
                     }
                 }
             }
-        }
-    }
-
-    func goToSearchResult() {
-        UserDefaultsManager.sharedInstance.deleteSearchParameter()
-        UserDefaultsManager.sharedInstance.saveSearchParameter(seachParam: searchParams as Any)
-        if fromJobSearchResults {
-            if let delegate = delegate {
-                delegate.refreshJobList()
-            }
-            _ = navigationController?.popViewController(animated: true)
-        } else {
-            // open dashboard
-            let dashboardVC = TabBarInitializer.initialize()
-            kAppDelegate?.window?.rootViewController = dashboardVC
         }
     }
 
@@ -243,6 +225,14 @@ class DMJobSearchVC: DMBaseVC {
         searchParams["preferredJobLocations"] = preferredLocationsArray
         searchParams["preferredJobLocationId"] = preferredLocationIds
 
-        goToSearchResult()
+        viewOutput?.goToSearchResult(params: searchParams)
+    }
+}
+
+extension DMJobSearchVC: DMJobSearchViewInput {
+    
+    func configureView(fromJobSelection: Bool, delegate: SearchJobDelegate?) {
+        self.fromJobSearchResults = fromJobSelection
+        self.delegate = delegate
     }
 }

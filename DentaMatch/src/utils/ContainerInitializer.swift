@@ -11,6 +11,39 @@ func defaultContainer() -> Container {
     Container.loggingFunction = nil
     let container = Container()
     
+    container.register(AuthorizationFlowCoordinatorProtocol.self) { r, delegate in
+        return AuthorizationFlowCoordinator(delegate: delegate)
+    }
+    
+    container.register(RegistrationFlowCoordinatorProtocol.self) { r, delegate in
+        return RegistrationFlowCoordinator(delegate: delegate)
+    }
+    
+    container.register(TabBarFlowCoordinatorProtocol.self) { r, delegate in
+        return TabBarFlowCoordinator(delegate: delegate)
+    }
+    
+    container.register(JobsFlowCoordinatorProtocol.self) { r, delegate in
+        return JobsFlowCoordinator(delegate: delegate)
+    }
+    
+    container.register(TrackFlowCoordinatorProtocol.self) { r, delegate in
+        return TrackFlowCoordinator(delegate: delegate)
+    }
+    
+    container.register(CalendarFlowCoordinatorProtocol.self) { r, delegate in
+        return CalendarFlowCoordinator(delegate: delegate)
+    }
+    
+    container.register(MessagesFlowCoordinatorProtocol.self) { r, delegate in
+        return MessagesFlowCoordinator(delegate: delegate)
+    }
+    
+    container.register(ProfileFlowCoordinatorProtocol.self) { r, delegate in
+        return ProfileFlowCoordinator(delegate: delegate)
+    }
+    
+    RootScreenInitializer.register(for: container)
     DMRegistrationContainerInitializer.register(for: container)
     DMRegistrationInitializer.register(for: container)
     DMLoginInitializer.register(for: container)
@@ -53,6 +86,8 @@ func defaultContainer() -> Container {
     DMWorkExperienceInitializer.register(for: container)
     DMJobTitleSelectionInitializer.register(for: container)
     DMWorkExperienceStartInitializer.register(for: container)
+    JobSearchListScreenInitializer.register(for: container)
+    JobSearchMapScreenInitializer.register(for: container)
     
     return container
 }

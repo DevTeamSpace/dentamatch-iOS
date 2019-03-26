@@ -78,8 +78,9 @@ class DMCertificationsVC: DMBaseVC, DatePickerViewDelegate {
         if checkAllCertitficates() {
             uploadAllValidityDates(completionHandler: { _, _ in
                 
-                guard let vc = DMExecutiveSummaryInitializer.initialize() as? DMExecutiveSummaryVC else { return }
-                self.navigationController?.pushViewController(vc, animated: true)
+                assertionFailure("Implement")
+//                guard let vc = DMExecutiveSummaryInitializer.initialize() as? DMExecutiveSummaryVC else { return }
+//                self.navigationController?.pushViewController(vc, animated: true)
             })
         }
     }
@@ -92,7 +93,7 @@ class DMCertificationsVC: DMBaseVC, DatePickerViewDelegate {
             } else if isCameraButtonPressed {
                 CameraGalleryManager.shared.openCamera(viewController: self, allowsEditing: false, completionHandler: {[weak self] (image: UIImage?, error: NSError?) in
                     if error != nil {
-                        DispatchQueue.main.async {
+                        DispatchQueue.main.async { [weak self] in
                             self?.makeToast(toastString: (error?.localizedDescription)!)
                         }
                         return
@@ -102,7 +103,7 @@ class DMCertificationsVC: DMBaseVC, DatePickerViewDelegate {
                        return
                     }
                    certObj.certificateImage = image!
-                    DispatchQueue.main.async {
+                    DispatchQueue.main.async { [weak self] in
      
                         self?.uploadCetificatsImage(certObj: certObj, completionHandler: { response, _ in
                             if let response = response {
@@ -122,7 +123,7 @@ class DMCertificationsVC: DMBaseVC, DatePickerViewDelegate {
             } else {
                 CameraGalleryManager.shared.openGallery(viewController: self, allowsEditing: false, completionHandler: { [weak self] (image: UIImage?, error: NSError?) in
                     if error != nil {
-                        DispatchQueue.main.async {
+                        DispatchQueue.main.async { [weak self] in
                             self?.makeToast(toastString: (error?.localizedDescription)!)
                         }
                         return
@@ -132,7 +133,7 @@ class DMCertificationsVC: DMBaseVC, DatePickerViewDelegate {
                     }
                     certObj.certificateImage = image!
 //                    self.certicates[button!.tag] = certObj
-                    DispatchQueue.main.async {
+                    DispatchQueue.main.async { [weak self] in
                         self?.uploadCetificatsImage(certObj: certObj, completionHandler: { response, _ in
 
                             if let response = response {

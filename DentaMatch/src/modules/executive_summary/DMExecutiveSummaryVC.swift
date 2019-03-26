@@ -33,7 +33,8 @@ class DMExecutiveSummaryVC: DMBaseVC {
     }
 
     func openDashboard() {
-        kAppDelegate?.goToSearch()
+        assertionFailure("Implement")
+        //kAppDelegate?.goToSearch()
 
     }
 
@@ -100,8 +101,8 @@ extension DMExecutiveSummaryVC: UITextViewDelegate {
 
     func textViewDidBeginEditing(_ textView: UITextView) {
         executiveSummaryTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 200, right: 0)
-        DispatchQueue.main.async {
-            self.executiveSummaryTableView.scrollToRow(at: IndexPath(row: 0, section: 1), at: .bottom, animated: true)
+        DispatchQueue.main.async { [weak self] in
+            self?.executiveSummaryTableView.scrollToRow(at: IndexPath(row: 0, section: 1), at: .bottom, animated: true)
         }
 
         if let cell = self.executiveSummaryTableView.cellForRow(at: IndexPath(row: 0, section: 1)) as? AboutMeCell {

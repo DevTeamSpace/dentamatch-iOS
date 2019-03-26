@@ -8,6 +8,14 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-UI-Text-Bold.otf">
+            <string>SFUIText-Bold</string>
+        </array>
+        <array key="SF-UI-Text-Regular.otf">
+            <string>SFUIText-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--NotificationVC-->
         <scene sceneID="fjU-XH-Wp3">
@@ -29,17 +37,56 @@
                                     <outlet property="delegate" destination="waP-kD-Acz" id="aVd-gO-Hug"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xxf-8N-4WJ">
+                                <rect key="frame" x="0.0" y="607" width="375" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aBf-0e-yuS">
+                                        <rect key="frame" x="0.0" y="0.0" width="69" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="69" id="FkS-pb-9HL"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFUIText-Bold" family="SF UI Text" pointSize="15"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancelDeletionAction:" destination="waP-kD-Acz" eventType="touchUpInside" id="Pgf-D8-rdb"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SSK-Jk-mUA">
+                                        <rect key="frame" x="77" y="21" width="290" height="18"/>
+                                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.011764705882352941" green="0.44313725490196076" blue="0.75294117647058822" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="aBf-0e-yuS" secondAttribute="bottom" id="3HX-tU-eWg"/>
+                                    <constraint firstItem="SSK-Jk-mUA" firstAttribute="centerY" secondItem="Xxf-8N-4WJ" secondAttribute="centerY" id="GLz-64-cSy"/>
+                                    <constraint firstAttribute="trailing" secondItem="SSK-Jk-mUA" secondAttribute="trailing" constant="8" id="Sft-E4-p8l"/>
+                                    <constraint firstItem="aBf-0e-yuS" firstAttribute="leading" secondItem="Xxf-8N-4WJ" secondAttribute="leading" id="V2D-JE-g3D"/>
+                                    <constraint firstItem="SSK-Jk-mUA" firstAttribute="leading" secondItem="aBf-0e-yuS" secondAttribute="trailing" constant="8" id="fsG-G7-ol2"/>
+                                    <constraint firstItem="aBf-0e-yuS" firstAttribute="top" secondItem="Xxf-8N-4WJ" secondAttribute="top" id="kTP-OQ-m3K"/>
+                                    <constraint firstAttribute="height" constant="60" id="wmt-qJ-nyU"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="SVr-J4-VGw" secondAttribute="bottom" id="Lrn-UW-9iG"/>
+                            <constraint firstItem="Xxf-8N-4WJ" firstAttribute="leading" secondItem="NiP-dM-jbP" secondAttribute="leading" id="cJb-tT-aaa"/>
                             <constraint firstAttribute="trailing" secondItem="SVr-J4-VGw" secondAttribute="trailing" id="fVb-Xy-UeB"/>
                             <constraint firstItem="SVr-J4-VGw" firstAttribute="leading" secondItem="NiP-dM-jbP" secondAttribute="leading" id="pDv-6L-gFt"/>
                             <constraint firstItem="SVr-J4-VGw" firstAttribute="top" secondItem="ndq-RG-udw" secondAttribute="bottom" id="tbV-yY-vGo"/>
+                            <constraint firstAttribute="trailing" secondItem="Xxf-8N-4WJ" secondAttribute="trailing" id="vtb-Gh-by1"/>
+                            <constraint firstItem="6Wu-6d-WDi" firstAttribute="top" secondItem="Xxf-8N-4WJ" secondAttribute="bottom" id="zbg-4V-0wR"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="grx-vz-nbc"/>
                     <connections>
+                        <outlet property="deleteNotificationLabel" destination="SSK-Jk-mUA" id="JnK-hh-5Ks"/>
+                        <outlet property="deletingBarHeightConstraint" destination="wmt-qJ-nyU" id="2k1-rA-rFT"/>
                         <outlet property="notificationTableView" destination="SVr-J4-VGw" id="ubj-vz-wIX"/>
                     </connections>
                 </viewController>

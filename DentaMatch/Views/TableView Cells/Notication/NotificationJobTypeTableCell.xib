@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -23,13 +24,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="You have been hired for Dental Hygienists job" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="joy-ng-hJV">
-                        <rect key="frame" x="39" y="16" width="242" height="45"/>
+                        <rect key="frame" x="39" y="16" width="242" height="45.5"/>
                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="15"/>
                         <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oKG-fE-gXR">
-                        <rect key="frame" x="39" y="96" width="242" height="10"/>
+                        <rect key="frame" x="39" y="96.5" width="242" height="10"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="10" id="wZ7-5C-xZY"/>
                         </constraints>
@@ -38,21 +39,39 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IXd-zv-bgJ">
-                        <rect key="frame" x="39" y="67" width="242" height="21"/>
+                        <rect key="frame" x="39" y="67.5" width="231" height="21"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dwH-vA-3rc">
-                                <rect key="frame" x="1" y="0.0" width="61" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.94509803920000002" green="0.72156862749999995" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="10"/>
-                                <state key="normal" title="Temporary">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="AA3-o4-4mv">
+                                <rect key="frame" x="0.0" y="0.0" width="138" height="21"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dwH-vA-3rc">
+                                        <rect key="frame" x="0.0" y="0.0" width="61" height="21"/>
+                                        <color key="backgroundColor" red="0.94509803920000002" green="0.72156862749999995" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="61" id="R1m-gs-zld"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="10"/>
+                                        <state key="normal" title="Temporary">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fGj-3I-Ngq">
+                                        <rect key="frame" x="77" y="0.0" width="61" height="21"/>
+                                        <color key="backgroundColor" red="0.015975045040249825" green="0.43919795751571655" blue="0.75374877452850342" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <state key="normal" title="Message">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="1cu-3R-Vpv"/>
+                            <constraint firstAttribute="bottom" secondItem="AA3-o4-4mv" secondAttribute="bottom" id="DHA-nY-tu4"/>
+                            <constraint firstItem="AA3-o4-4mv" firstAttribute="leading" secondItem="IXd-zv-bgJ" secondAttribute="leading" id="HXO-12-eSN"/>
+                            <constraint firstItem="AA3-o4-4mv" firstAttribute="top" secondItem="IXd-zv-bgJ" secondAttribute="top" id="OXE-AH-UU3"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kg6-uk-dzt">
@@ -64,7 +83,7 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CT1-RL-p4G">
-                        <rect key="frame" x="0.0" y="113" width="320" height="1"/>
+                        <rect key="frame" x="0.0" y="113.5" width="320" height="1"/>
                         <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="R62-UD-vZL"/>
@@ -87,7 +106,7 @@
                     <constraint firstAttribute="trailing" secondItem="oKG-fE-gXR" secondAttribute="trailing" constant="39" id="IHW-cN-Bu8"/>
                     <constraint firstItem="raC-qf-ja0" firstAttribute="top" secondItem="m32-bl-P4e" secondAttribute="top" constant="22" id="ISM-tR-DvN"/>
                     <constraint firstItem="IXd-zv-bgJ" firstAttribute="top" secondItem="joy-ng-hJV" secondAttribute="bottom" constant="6" id="KK0-1j-Xbj"/>
-                    <constraint firstAttribute="trailing" secondItem="IXd-zv-bgJ" secondAttribute="trailing" constant="39" id="KqM-DB-rhO"/>
+                    <constraint firstAttribute="trailing" secondItem="IXd-zv-bgJ" secondAttribute="trailing" constant="50" id="KqM-DB-rhO"/>
                     <constraint firstItem="kg6-uk-dzt" firstAttribute="top" secondItem="m32-bl-P4e" secondAttribute="top" constant="21" id="Pqs-o1-P0g"/>
                     <constraint firstAttribute="bottom" secondItem="CT1-RL-p4G" secondAttribute="bottom" id="arK-Fz-c2J"/>
                     <constraint firstAttribute="bottom" secondItem="oKG-fE-gXR" secondAttribute="bottom" constant="8" id="diC-Nb-5HN"/>
@@ -101,12 +120,12 @@
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="btnJobType" destination="dwH-vA-3rc" id="L58-ej-tLZ"/>
+                <outlet property="messageButton" destination="fGj-3I-Ngq" id="Bna-XQ-VRq"/>
                 <outlet property="notificationTextLabel" destination="joy-ng-hJV" id="ROP-EO-Oiq"/>
                 <outlet property="notificationTimeLabel" destination="oKG-fE-gXR" id="cQ6-BF-Tk1"/>
                 <outlet property="unreadView" destination="kg6-uk-dzt" id="hRh-hS-esy"/>
-                <outlet property="viewForJobType" destination="IXd-zv-bgJ" id="f0F-bR-wJr"/>
             </connections>
-            <point key="canvasLocation" x="57" y="104.5"/>
+            <point key="canvasLocation" x="56" y="103.89805097451276"/>
         </tableViewCell>
     </objects>
     <resources>

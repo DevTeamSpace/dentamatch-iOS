@@ -1,21 +1,13 @@
-//
-//  DMForgotPasswordVC.swift
-//  DentaMatch
-//
-//  Created by Rajan Maheshwari on 12/12/16.
-//  Copyright © 2016 Appster. All rights reserved.
-//
-
 import UIKit
 
 class DMForgotPasswordVC: DMBaseVC {
     @IBOutlet var emailTextField: AnimatedLeftViewPHTextField!
+    
+    var viewOutput: DMForgotPasswordViewOutput?
 
     var forgotPasswordParams = [
         Constants.ServerKey.email: "",
     ]
-
-    // MARK: - View LifeCycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,27 +27,31 @@ class DMForgotPasswordVC: DMBaseVC {
     override func touchesBegan(_: Set<UITouch>, with _: UIEvent?) {
         view.endEditing(true)
     }
+}
 
-    // MARK: - Private Methods
+extension DMForgotPasswordVC: DMForgotPasswordViewInput {
+    
+    
+}
 
+extension DMForgotPasswordVC {
+    
     func setup() {
         emailTextField.leftViewLabel?.text = "f"
         title = Constants.ScreenTitleNames.forgotPassword
         navigationItem.leftBarButtonItem = backBarButton()
     }
-
-    // MARK: - IBActions
-
+    
     @IBAction func sendButtonPressed(_: Any) {
         view.endEditing(true)
-
+        
         if let emailtext = emailTextField.text, emailtext.isEmpty {
             makeToast(toastString: Constants.AlertMessage.emptyEmail)
             return
         }
         if emailTextField.text!.isValidEmail {
             forgotPasswordParams[Constants.ServerKey.email] = emailTextField.text!
-            forgotPasswordAPI(params: forgotPasswordParams)
+            viewOutput?.onSendButtonTap(params: forgotPasswordParams)
         } else {
             makeToast(toastString: Constants.AlertMessage.invalidEmail)
         }
@@ -63,8 +59,6 @@ class DMForgotPasswordVC: DMBaseVC {
 }
 
 extension DMForgotPasswordVC: UITextFieldDelegate {
-
-    // MARK: - TextField Delegates
 
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if let textField = textField as? AnimatedLeftViewPHTextField {

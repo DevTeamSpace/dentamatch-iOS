@@ -1,16 +1,6 @@
-//
-//  DMLoginVC+TextFieldExtension.swift
-//  DentaMatch
-//
-//  Created by Rajan Maheshwari on 05/01/17.
-//  Copyright © 2017 Appster. All rights reserved.
-//
-
 import Foundation
 
 extension DMLoginVC: UITextFieldDelegate {
-
-    // MARK: - TextField Delegates
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField.tag == 1 {

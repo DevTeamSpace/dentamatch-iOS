@@ -1,12 +1,5 @@
-//
-//  HiredJobNotificationTableCell.swift
-//  DentaMatch
-//
-//  Created by Sanjay Kumar Yadav on 09/02/17.
-//  Copyright © 2017 Appster. All rights reserved.
-//
-
 import UIKit
+import RealmSwift
 
 class HiredJobNotificationTableCell: UITableViewCell {
     @IBOutlet var notificationTextLabel: UILabel!
@@ -15,7 +8,15 @@ class HiredJobNotificationTableCell: UITableViewCell {
     @IBOutlet var jobTypeView: UIView!
     @IBOutlet var notificationTimeLabel: UILabel!
     @IBOutlet var notificationJobLocationLabel: UILabel!
+    @IBOutlet weak var messageButton: UIButton! {
+        didSet {
+            messageButton.addTarget(self, action: #selector(messageButtonAction), for: .touchUpInside)
+        }
+    }
 
+    weak var delegate: NotificationTableCellDelegate?
+    weak var userNotificationObject: UserNotification?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -31,6 +32,8 @@ class HiredJobNotificationTableCell: UITableViewCell {
     }
     
     func configureHiredJobNotificationTableCell(userNotificationObj:UserNotification) {
+        userNotificationObject = userNotificationObj
+        
         self.notificationTextLabel.text = userNotificationObj.message
         //let address = "\((userNotificationObj.jobdetail?.officeName)!), \((userNotificationObj.jobdetail?.address)!)"
         self.notificationJobLocationLabel.text = nil
@@ -72,5 +75,26 @@ class HiredJobNotificationTableCell: UITableViewCell {
             notificationTimeLabel.textColor = Constants.Color.notificationreadTimeLabelColor
             //notificationJobLocationLabel.textColor = Constants.Color.notificationreadTextColor
         }
+        
+        if let rawType = userNotificationObj.notificationType, let type =  UserNotificationType(rawValue: rawType),
+            type == .hired || type == .InviteJob {
+            
+            messageButton.isHidden = false
+        } else {
+            messageButton.isHidden = true
+        }
+    }
+}
+
+extension HiredJobNotificationTableCell {
+    
+    @objc private func messageButtonAction() {
+        guard let notify = userNotificationObject,
+            let recruiterId = notify.senderID,
+            let officeName = notify.jobdetail?.officeName else { return }
+
+        let chatObj = ChatObject(recruiterId: String(recruiterId), officeName: officeName)
+        
+        delegate?.onMessageButtonTapped(chatObject: chatObj)
     }
 }

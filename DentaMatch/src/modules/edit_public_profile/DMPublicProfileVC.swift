@@ -1,82 +1,43 @@
-//
-//  DMPublicProfileVC.swift
-//  DentaMatch
-//
-//  Created by Rajan Maheshwari on 19/01/17.
-//  Copyright © 2017 Appster. All rights reserved.
-//
-
 import CoreLocation
 import UIKit
 
+enum ProfileOptions: Int {
+    case firstName = 1
+    case lastName
+    case preferredJobLocation
+    case jobTitle
+    case license
+    case state
+}
+
 class DMPublicProfileVC: DMBaseVC {
-    enum ProfileOptions: Int {
-        case firstName = 1
-        case lastName
-        case preferredJobLocation
-        case jobTitle
-        case license
-        case state
-    }
+    
 
     @IBOutlet var publicProfileTableView: UITableView!
-
-    var originalParams = [String: String]()
-
-    var editProfileParams = [
-        Constants.ServerKey.firstName: "",
-        Constants.ServerKey.lastName: "",
-        Constants.ServerKey.preferredJobLocation: "",
-        Constants.ServerKey.preferredJobLocationId: "",
-        Constants.ServerKey.jobTitileId: "",
-        Constants.ServerKey.aboutMe: "",
-        Constants.ServerKey.licenseNumber: "",
-        Constants.ServerKey.state: "",
-    ]
-
-    var profileImage: UIImage?
+    
+    var viewOutput: DMPublicProfileViewOutput?
+    
     var jobSelectionPickerView: JobSelectionPickerView!
     var preferredJobLocationPickerView: PreferredLocationPickerView!
-    var jobTitles = [JobTitle]()
-    var selectedJob = JobTitle()
-    var preferredLocations = [PreferredLocation]()
-    var selectedLocation: PreferredLocation!
-    // var selectedLocationCoordinate:CLLocationCoordinate2D?
-    var licenseString: String?
-    var stateString: String?
     var activeField: UITextField?
     var activeView: UITextView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setup()
-        getPreferredLocations()
-        // Do any additional setup after loading the view.
+        viewOutput?.didLoad()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        adjustLicenseAndStateTextFields(job: selectedJob)
+        
+        adjustLicenseAndStateTextFields(job: viewOutput?.selectedJob)
     }
 
     func setup() {
-        licenseString = UserManager.shared().activeUser.licenseNumber
-        stateString = UserManager.shared().activeUser.state
-
-        editProfileParams[Constants.ServerKey.firstName] = UserManager.shared().activeUser.firstName
-        editProfileParams[Constants.ServerKey.lastName] = UserManager.shared().activeUser.lastName
-        editProfileParams[Constants.ServerKey.jobTitileId] = String(selectedJob.jobId)
-//        editProfileParams[Constants.ServerKey.latitude] = UserManager.shared().activeUser.latitude
-//        editProfileParams[Constants.ServerKey.longitude] = UserManager.shared().activeUser.longitude
-        editProfileParams[Constants.ServerKey.licenseNumber] = licenseString // UserManager.shared().activeUser.licenseNumber
-        editProfileParams[Constants.ServerKey.state] = stateString // UserManager.shared().activeUser.state
-
-        editProfileParams[Constants.ServerKey.preferredJobLocation] = UserManager.shared().activeUser.preferredJobLocation
-        editProfileParams[Constants.ServerKey.preferredJobLocationId] = UserManager.shared().activeUser.preferredLocationId
-
-        editProfileParams[Constants.ServerKey.aboutMe] = UserManager.shared().activeUser.aboutMe
-
-        // selectedLocationCoordinate = CLLocationCoordinate2D(latitude: Double(UserManager.shared().activeUser.latitude!)!, longitude: Double(UserManager.shared().activeUser.longitude!)!)
-        jobSelectionPickerView = JobSelectionPickerView.loadJobSelectionView(withJobTitles: jobTitles)
+        
+        jobSelectionPickerView = JobSelectionPickerView.loadJobSelectionView(withJobTitles: viewOutput?.jobTitles ?? [])
         jobSelectionPickerView.delegate = self
         jobSelectionPickerView.pickerView.reloadAllComponents()
 
@@ -92,12 +53,11 @@ class DMPublicProfileVC: DMBaseVC {
         publicProfileTableView.rowHeight = UITableView.automaticDimension
         publicProfileTableView.estimatedRowHeight = 650
         publicProfileTableView.register(UINib(nibName: "EditPublicProfileTableCell", bundle: nil), forCellReuseIdentifier: "EditPublicProfileTableCell")
-
-        originalParams = editProfileParams
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         navigationController?.setNavigationBarHidden(false, animated: true)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -155,80 +115,56 @@ class DMPublicProfileVC: DMBaseVC {
     }
 
     func validateFields() -> Bool {
-        if editProfileParams[Constants.ServerKey.firstName]!.isEmptyField {
-            makeToast(toastString: Constants.AlertMessage.emptyFirstName)
-            return false
-        }
-
-        if editProfileParams[Constants.ServerKey.lastName]!.isEmptyField {
-            makeToast(toastString: Constants.AlertMessage.emptyLastName)
-            return false
-        }
-
-        if editProfileParams[Constants.ServerKey.aboutMe]!.isEmptyField {
-            makeToast(toastString: Constants.AlertMessage.emptyAboutMe)
-            return false
-        }
-
-        if !selectedJob.isLicenseRequired {
-            editProfileParams[Constants.ServerKey.licenseNumber] = nil
-            editProfileParams[Constants.ServerKey.state] = nil
-        } else {
-            if editProfileParams[Constants.ServerKey.licenseNumber]!.isEmptyField {
-                makeToast(toastString: Constants.AlertMessage.emptyLicenseNumber)
-                return false
-            }
-            if editProfileParams[Constants.ServerKey.state]!.isEmptyField {
-                makeToast(toastString: Constants.AlertMessage.emptyState)
-                return false
-            }
-        }
-        return true
+        return viewOutput?.validateFields() == true
     }
 
     @IBAction func saveButtonPressed(_: Any) {
         view.endEditing(true)
+        
         if validateFields() {
-            // debugPrint("Edit Profile Params\n\(editProfileParams)")
-            updatePublicProfileAPI(params: editProfileParams)
+            viewOutput?.updatePublicProfile()
         }
     }
 
     @objc func addPhoto() {
-        cameraGalleryOptionActionSheet(title: "", message: "Please select", leftButtonText: "Take a Photo", rightButtonText: "Choose from Library") { isCameraButtonPressed, _, isCancelButtonPressed in
+        cameraGalleryOptionActionSheet(title: "", message: "Please select", leftButtonText: "Take a Photo", rightButtonText: "Choose from Library") { [weak self] isCameraButtonPressed, _, isCancelButtonPressed in
             if isCancelButtonPressed {
                 // cancel action
             } else if isCameraButtonPressed {
-                self.getPhotoFromCamera()
+                self?.getPhotoFromCamera()
             } else {
-                self.getPhotoFromGallery()
+                self?.getPhotoFromGallery()
             }
         }
     }
 
     func getPhotoFromCamera() {
-        CameraGalleryManager.shared.openCamera(viewController: self, allowsEditing: false, completionHandler: { [weak self](image: UIImage?, error: NSError?) in
+        CameraGalleryManager.shared.openCamera(viewController: self, allowsEditing: false, completionHandler: { [weak self] (image: UIImage?, error: NSError?) in
             if error != nil {
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [weak self] in
                     self?.makeToast(toastString: (error?.localizedDescription)!)
                 }
                 return
             }
-            self?.profileImage = image
-            self?.uploadProfileImageAPI()
+            
+            if let image = image {
+                self?.viewOutput?.uploadProfileImage(image)
+            }
         })
     }
 
     func getPhotoFromGallery() {
-        CameraGalleryManager.shared.openGallery(viewController: self, allowsEditing: false, completionHandler: { [weak self](image: UIImage?, error: NSError?) in
+        CameraGalleryManager.shared.openGallery(viewController: self, allowsEditing: false, completionHandler: { [weak self] (image: UIImage?, error: NSError?) in
             if error != nil {
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [weak self] in
                     self?.makeToast(toastString: (error?.localizedDescription)!)
                 }
                 return
             }
-            self?.profileImage = image
-            self?.uploadProfileImageAPI()
+            
+            if let image = image {
+                self?.viewOutput?.uploadProfileImage(image)
+            }
         })
     }
 
@@ -243,16 +179,25 @@ class DMPublicProfileVC: DMBaseVC {
     }
 
     func updateProfileScreen() {
-        // NotificationCenter.default.post(name: .updateProfileScreen, object: nil, userInfo: ["license":license!])
-
         NotificationCenter.default.post(name: .updateProfileScreen, object: nil, userInfo: nil)
     }
     
     func goToStates(_ text: String?) {
-        guard let searchVc = SearchStateInitializer.initialize() as? SearchStateViewController else { return }
-        searchVc.delegate = self
-        searchVc.preSelectedState = stateString
-        self.navigationController?.pushViewController(searchVc, animated: true)
+        viewOutput?.openStates(preselectedState: text, delegate: self)
+    }
+}
+
+extension DMPublicProfileVC: DMPublicProfileViewInput {
+    
+    func configureLocationPicker(locations: [PreferredLocation]) {
+        
+        self.preferredJobLocationPickerView.setup(preferredLocations: locations)
+        self.preferredJobLocationPickerView.pickerView.reloadAllComponents()
+        self.preferredJobLocationPickerView.backgroundColor = UIColor.white
+    }
+    
+    func reloadData() {
+        publicProfileTableView.reloadData()
     }
 }
 
@@ -360,24 +305,11 @@ extension DMPublicProfileVC: UITextFieldDelegate {
         activeField = nil
         let profileOptions = ProfileOptions(rawValue: textField.tag)!
 
-        switch profileOptions {
-        case .firstName:
-            editProfileParams[Constants.ServerKey.firstName] = textField.text!
-        case .lastName:
-            editProfileParams[Constants.ServerKey.lastName] = textField.text!
-        case .preferredJobLocation:
-            editProfileParams[Constants.ServerKey.preferredJobLocation] = textField.text!
-        case .jobTitle:
-            editProfileParams[Constants.ServerKey.jobTitle] = textField.text!
-        case .state:
-            editProfileParams[Constants.ServerKey.state] = textField.text!
-        case .license:
-            editProfileParams[Constants.ServerKey.licenseNumber] = textField.text!
-            licenseString = textField.text!
-        }
+        viewOutput?.textFieldDidEndEditins(type: profileOptions, text: textField.text ?? "")
     }
 
-    func adjustLicenseAndStateTextFields(job: JobTitle) {
+    func adjustLicenseAndStateTextFields(job: JobTitle?) {
+        guard let job = job, let viewOutput = viewOutput else { return }
         if let cell = self.publicProfileTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? EditPublicProfileTableCell {
             cell.jobTitleTextField.text = job.jobTitle
             if job.isLicenseRequired {
@@ -385,32 +317,26 @@ extension DMPublicProfileVC: UITextFieldDelegate {
                 cell.licenseNumberTextField.isHidden = false
                 cell.licenseStateConstraint.constant = 130
                 cell.licenseStateTopConstraint.constant = 20
-                cell.licenseNumberTextField.text = licenseString
-                cell.stateTextField.text = stateString
+                cell.licenseNumberTextField.text = viewOutput.licenseString
+                cell.stateTextField.text = viewOutput.stateString
             } else {
                 cell.stateTextField.isHidden = true
                 cell.licenseNumberTextField.isHidden = true
                 cell.licenseStateConstraint.constant = 0
                 cell.licenseStateTopConstraint.constant = 0
             }
-            editProfileParams[Constants.ServerKey.jobTitileId] = "\(selectedJob.jobId)"
+            
+            self.viewOutput?.editProfileParams[Constants.ServerKey.jobTitileId] = "\(viewOutput.selectedJob?.jobId ?? -1)"
         }
     }
 }
 
 extension DMPublicProfileVC: JobSelectionPickerViewDelegate {
     func jobPickerDoneButtonAction(job: JobTitle?) {
-        selectedJob = job!
-        if selectedJob.jobTitle != UserManager.shared().activeUser.jobTitle {
-            licenseString = nil
-            stateString = nil
-            editProfileParams[Constants.ServerKey.state] = ""
-            editProfileParams[Constants.ServerKey.licenseNumber] = ""
-        }
-
-        adjustLicenseAndStateTextFields(job: selectedJob)
+        
+        viewOutput?.onPickerDoneButtonTap(job: job)
+        adjustLicenseAndStateTextFields(job: viewOutput?.selectedJob)
         view.endEditing(true)
-//        publicProfileTableView.reloadData()
     }
 
     func jobPickerCancelButtonAction() {
@@ -424,10 +350,10 @@ extension DMPublicProfileVC: PreferredLocationPickerViewDelegate {
     }
 
     func preferredLocationPickerDoneButtonAction(preferredLocation: PreferredLocation?) {
-        editProfileParams[Constants.ServerKey.preferredJobLocationId] = preferredLocation?.id
+        viewOutput?.editProfileParams[Constants.ServerKey.preferredJobLocationId] = preferredLocation?.id
         if let cell = self.publicProfileTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? EditPublicProfileTableCell {
             cell.preferredJobLocationTextField.text = preferredLocation?.preferredLocationName
-            selectedLocation = preferredLocation
+            viewOutput?.selectedLocation = preferredLocation
         }
         view.endEditing(true)
     }
@@ -435,33 +361,9 @@ extension DMPublicProfileVC: PreferredLocationPickerViewDelegate {
 
 extension DMPublicProfileVC: SearchStateViewControllerDelegate {
     func selectedState(state: String?) {
-        stateString = state
-        editProfileParams[Constants.ServerKey.state] = state
+        
+        viewOutput?.stateString = state
+        viewOutput?.editProfileParams[Constants.ServerKey.state] = state
         self.publicProfileTableView.reloadData()
     }
 }
-
-// MARK: - LocationAddress Delegate
-
-// extension DMPublicProfileVC:LocationAddressDelegate {
-//    func locationAddress(location: Location) {
-//        //coordinateSelected = location.coordinateSelected
-//        if let address = location.address {
-//            if let cell = self.publicProfileTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as?
-//                EditPublicProfileTableCell {
-//                cell.locationTextField.text = address
-//                selectedLocationCoordinate = location.coordinateSelected
-//                editProfileParams[Constants.ServerKey.latitude] = "\(location.coordinateSelected!.latitude)"
-//                editProfileParams[Constants.ServerKey.longitude] = "\(location.coordinateSelected!.longitude)"
-//                editProfileParams[Constants.ServerKey.preferredJobLocation] = address
-//                editProfileParams["zipcode"] = location.postalCode
-//                editProfileParams["preferredCity"] = location.city
-//                editProfileParams["preferredState"] = location.state
-//                editProfileParams["preferredCountry"] = location.country
-//            }
-//            //debugPrint(address)
-//        } else {
-//            //debugPrint("Address is empty")
-//        }
-//    }
-// }

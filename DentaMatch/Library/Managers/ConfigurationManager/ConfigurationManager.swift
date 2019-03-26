@@ -90,13 +90,13 @@ final class ConfigurationManager: NSObject {
         case .staging:
             return stagingConfiguration()
         case .production:
-            return stagingConfiguration()
+            return productionConfiguration()
         }
     }
 
     private func debugConfiguration() -> AppConfiguration {
         return AppConfiguration(apiEndPoint: "https://dev.dentamatch.co/api/v1/",
-                                socketEndPoint: "http://dev.dentamatch.co:3000",
+                                socketEndPoint: "https://dev.dentamatch.co:3000",
                                 loggingEnabled: true,
                                 analyticsKey: "baeda2003ca1585a7828ce1d02833836",
                                 trackingEnabled: false,
@@ -127,8 +127,8 @@ final class ConfigurationManager: NSObject {
 
     // TODO: Please change the key values
     private func productionConfiguration() -> AppConfiguration {
-        return AppConfiguration(apiEndPoint: "https://production",
-                                socketEndPoint: "",
+        return AppConfiguration(apiEndPoint: "https://dentamatch.co/api/v1/",
+                                socketEndPoint: "https://dentamatch.co:8443",
                                 loggingEnabled: false,
                                 analyticsKey: "3fd78d535c8e6d65ade83460a9272f66",
                                 trackingEnabled: true,
