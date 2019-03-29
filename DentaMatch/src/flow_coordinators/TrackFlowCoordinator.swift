@@ -46,6 +46,10 @@ extension TrackFlowCoordinator: DMTrackModuleOutput {
 }
 
 extension TrackFlowCoordinator: DMJobDetailModuleOutput {
+    func showDaySelect(selectedDates: [Date], notificationId: Int) {
+        
+    }
+    
     func refreshNotificationList() {
         
     }

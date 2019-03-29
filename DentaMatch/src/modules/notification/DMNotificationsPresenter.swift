@@ -11,6 +11,13 @@ class DMNotificationsPresenter: DMNotificationsPresenterProtocol {
         self.moduleOutput = moduleOutput
     }
     
+    static let dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        return dateFormatter
+    }()
+    
     var loadingMoreNotifications = false
     var pageNumber = 1
     var totalNotificationOnServer = 0
@@ -116,7 +123,9 @@ extension DMNotificationsPresenter: DMNotificationsViewOutput {
     }
     
     func openJobDetails(job: Job?, recruiterId: String?, notificationId: String?) {
-        moduleOutput.showJobDetails(job: job, recruiterId: recruiterId, notificationId: notificationId)
+        let notification = notificationList.first(where: { $0.notificationID == Int(notificationId ?? "") })
+        let dates = notification?.currentAvailability.compactMap({ DMNotificationsPresenter.dateFormatter.date(from: $0) })
+        moduleOutput.showJobDetails(job: job, recruiterId: recruiterId, notificationId: notificationId, availableDates: dates)
     }
     
     func readNotificationToServer(_ notification: UserNotification) {
@@ -208,49 +217,49 @@ extension DMNotificationsPresenter: DMNotificationsViewOutput {
         
         // actionType 0 = reject ; 1 = accept
         
-        var testDates = [Date]()
-        let calendar = Calendar.current
-        
-        for i in 0..<10 {
-            if let date = calendar.date(byAdding: .day, value: i, to: Date()) {
-                testDates.append(date)
+        if actionType == 0 {
+            viewInput.showLoading()
+            APIManager.apiPost(serviceName: Constants.API.acceptRejectNotification, parameters: ["notificationId": notificationId, "acceptStatus": actionType]) { [weak self] (response: JSON?, error: NSError?) in
+                
+                self?.viewInput.hideLoading()
+                if let error = error {
+                    self?.viewInput.show(toastMessage: error.localizedDescription)
+                    return
+                }
+                
+                guard let response = response else {
+                    self?.viewInput.show(toastMessage: Constants.AlertMessage.somethingWentWrong)
+                    return
+                }
+                
+                if response[Constants.ServerKey.status].boolValue, let index = self?.notificationList.firstIndex(of: notification) {
+                    
+                    self?.notificationList[index].seen = 1
+                    NotificationCenter.default.post(name: .decreaseBadgeCount, object: nil, userInfo: nil)
+                    self?.viewInput.reloadData()
+                    if actionType == 1 {
+                        NotificationCenter.default.post(name: .refreshMessageList, object: nil)
+                    }
+                } else {
+                    
+                    if response[Constants.ServerKey.statusCode].intValue == 201 {
+                        
+                        self?.viewInput.showAlertMessage(title: "Change Availability", body: response[Constants.ServerKey.message].stringValue)
+                    } else {
+                        
+                        self?.viewInput.show(toastMessage: response[Constants.ServerKey.message].stringValue)
+                    }
+                }
+            }
+        } else if actionType == 1 {
+            let dates = notification.currentAvailability.compactMap({ DMNotificationsPresenter.dateFormatter.date(from: $0) })
+            
+            if dates.isEmpty {
+                viewInput.showAlertMessage(title: "Attention", body: "No available dates for this job, you can try update availability")
+            } else {
+                moduleOutput.showDaySelect(selectedDates: dates, notificationId: notificationId)
             }
         }
-        moduleOutput.showDaySelect(selectedDates: testDates)
-        
-//        viewInput.showLoading()
-//        APIManager.apiPost(serviceName: Constants.API.acceptRejectNotification, parameters: ["notificationId": notificationId, "acceptStatus": actionType]) { [weak self] (response: JSON?, error: NSError?) in
-//
-//            self?.viewInput.hideLoading()
-//            if let error = error {
-//                self?.viewInput.show(toastMessage: error.localizedDescription)
-//                return
-//            }
-//
-//            guard let response = response else {
-//                self?.viewInput.show(toastMessage: Constants.AlertMessage.somethingWentWrong)
-//                return
-//            }
-//
-//            if response[Constants.ServerKey.status].boolValue, let index = self?.notificationList.firstIndex(of: notification) {
-//
-//                self?.notificationList[index].seen = 1
-//                NotificationCenter.default.post(name: .decreaseBadgeCount, object: nil, userInfo: nil)
-//                self?.viewInput.reloadData()
-//                if actionType == 1 {
-//                    NotificationCenter.default.post(name: .refreshMessageList, object: nil)
-//                }
-//            } else {
-//
-//                if response[Constants.ServerKey.statusCode].intValue == 201 {
-//
-//                    self?.viewInput.showAlertMessage(title: "Change Availability", body: response[Constants.ServerKey.message].stringValue)
-//                } else {
-//
-//                    self?.viewInput.show(toastMessage: response[Constants.ServerKey.message].stringValue)
-//                }
-//            }
-//        }
     }
     
     func openChat(chatObject: ChatObject) {

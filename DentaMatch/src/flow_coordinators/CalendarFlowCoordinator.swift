@@ -60,6 +60,10 @@ extension CalendarFlowCoordinator: DMCalendarSetAvailabilityModuleOutput {
 }
 
 extension CalendarFlowCoordinator: DMJobDetailModuleOutput {
+    func showDaySelect(selectedDates: [Date], notificationId: Int) {
+        
+    }
+    
     func refreshNotificationList() {
         
     }

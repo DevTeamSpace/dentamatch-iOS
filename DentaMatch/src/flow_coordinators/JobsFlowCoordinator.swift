@@ -80,7 +80,7 @@ extension JobsFlowCoordinator: DMJobTitleModuleOutput {
 }
 
 extension JobsFlowCoordinator: DMNotificationsModuleOutput {
-    func showJobDetails(job: Job?, recruiterId: String?, notificationId: String?) {
+    func showJobDetails(job: Job?, recruiterId: String?, notificationId: String?, availableDates: [Date]?) {
         showJobDetail(job: job, delegate: nil)
     }
     
@@ -89,8 +89,8 @@ extension JobsFlowCoordinator: DMNotificationsModuleOutput {
         navigationController?.present(moduleInput.viewController(), animated: true)
     }
     
-    func showDaySelect(selectedDates: [Date]) {
-        let (mI, vC) = DaySelectScreenInitializer.initialize(selectedDates: selectedDates, moduleOutput: self)
+    func showDaySelect(selectedDates: [Date], notificationId: Int) {
+        let (mI, vC) = DaySelectScreenInitializer.initialize(selectedDates: selectedDates, notificationId: notificationId, moduleOutput: self)
         guard let moduleInput = mI, let vc = vC else { return }
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
@@ -102,5 +102,7 @@ extension JobsFlowCoordinator: DMChatModuleOutput {
 }
 
 extension JobsFlowCoordinator: DaySelectScreenModuleOutput {
-    
+    func updateAfterAcception() {
+        
+    }
 }

@@ -17,6 +17,7 @@ class ProfileFlowCoordinator: BaseFlowCoordinator, ProfileFlowCoordinatorProtoco
     unowned let delegate: ProfileFlowCoordinatorDelegate
     
     weak var notificationListModuleInput: DMNotificationsModuleInput?
+    weak var jobDetailModuleInput: DMJobDetailModuleInput?
     
     init(delegate: ProfileFlowCoordinatorDelegate) {
         self.delegate = delegate
@@ -132,15 +133,16 @@ extension ProfileFlowCoordinator: DMChangePasswordModuleOutput {
 
 extension ProfileFlowCoordinator: DMNotificationsModuleOutput {
     
-    func showDaySelect(selectedDates: [Date]) {
-        let (mI, vC) = DaySelectScreenInitializer.initialize(selectedDates: selectedDates, moduleOutput: self)
+    func showDaySelect(selectedDates: [Date], notificationId: Int) {
+        let (mI, vC) = DaySelectScreenInitializer.initialize(selectedDates: selectedDates, notificationId: notificationId, moduleOutput: self)
         guard let moduleInput = mI, let vc = vC else { return }
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    func showJobDetails(job: Job?, recruiterId: String?, notificationId: String?) {
-        guard let moduleInput = DMJobDetailInitializer.initialize(job: job, recruiterId: recruiterId, notificationId: notificationId, moduleOutput: self) else { return }
+    func showJobDetails(job: Job?, recruiterId: String?, notificationId: String?, availableDates: [Date]?) {
+        guard let moduleInput = DMJobDetailInitializer.initialize(job: job, recruiterId: recruiterId, notificationId: notificationId, availableDates: availableDates, moduleOutput: self) else { return }
+        jobDetailModuleInput = moduleInput
         let vc = moduleInput.viewController()
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
@@ -218,5 +220,8 @@ extension ProfileFlowCoordinator: DMRegisterMapsModuleOutput {
 
 extension ProfileFlowCoordinator: DaySelectScreenModuleOutput {
     
-    
+    func updateAfterAcception() {
+        notificationListModuleInput?.refreshData()
+        jobDetailModuleInput?.refreshData()
+    }
 }

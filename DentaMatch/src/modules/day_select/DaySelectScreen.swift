@@ -6,7 +6,7 @@ protocol DaySelectScreenModuleInput: BaseModuleInput {
 }
 
 protocol DaySelectScreenModuleOutput: BaseModuleOutput {
-    
+    func updateAfterAcception()
 }
 
 protocol DaySelectScreenViewInput: BaseViewInput {

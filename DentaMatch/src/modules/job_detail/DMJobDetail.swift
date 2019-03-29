@@ -2,13 +2,14 @@ import Foundation
 import SwiftyJSON
 
 protocol DMJobDetailModuleInput: BaseModuleInput {
-    
+    func refreshData()
 }
 
 protocol DMJobDetailModuleOutput: BaseModuleOutput {
     
     func presentChat(chatObject: ChatObject)
     func refreshNotificationList()
+    func showDaySelect(selectedDates: [Date], notificationId: Int)
 }
 
 protocol DMJobDetailViewInput: BaseViewInput {

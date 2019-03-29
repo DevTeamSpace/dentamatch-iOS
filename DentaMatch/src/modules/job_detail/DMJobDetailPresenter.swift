@@ -9,11 +9,13 @@ class DMJobDetailPresenter: DMJobDetailPresenterProtocol {
     var job: Job?
     var fromTrack: Bool
     var notificationId: String?
+    var availableDates: [Date]
     weak var delegate: JobSavedStatusUpdateDelegate?
     
-    init(job: Job?, notificationId: String?, fromTrack: Bool, delegate: JobSavedStatusUpdateDelegate?, viewInput: DMJobDetailViewInput, moduleOutput: DMJobDetailModuleOutput) {
+    init(job: Job?, notificationId: String?, availableDates: [Date]?, fromTrack: Bool, delegate: JobSavedStatusUpdateDelegate?, viewInput: DMJobDetailViewInput, moduleOutput: DMJobDetailModuleOutput) {
         self.job = job
         self.notificationId = notificationId
+        self.availableDates = availableDates ?? []
         self.fromTrack = fromTrack
         self.delegate = delegate
         self.viewInput = viewInput
@@ -27,6 +29,10 @@ extension DMJobDetailPresenter: DMJobDetailModuleInput {
     
     func viewController() -> UIViewController {
         return viewInput.viewController()
+    }
+    
+    func refreshData() {
+        fetchJob(params: jobDetailParams)
     }
 }
 
@@ -72,36 +78,10 @@ extension DMJobDetailPresenter: DMJobDetailViewOutput {
         
         if job.jobType == 3, let notificationId = notificationId {
             
-            viewInput.showLoading()
-            APIManager.apiPost(serviceName: Constants.API.acceptRejectNotification, parameters: ["notificationId": notificationId, "acceptStatus": 1]) { [weak self] (response: JSON?, error: NSError?) in
-                
-                self?.viewInput.hideLoading()
-                if let error = error {
-                    self?.viewInput.show(toastMessage: error.localizedDescription)
-                    return
-                }
-                
-                guard let response = response else {
-                    self?.viewInput.show(toastMessage: Constants.AlertMessage.somethingWentWrong)
-                    return
-                }
-                
-                if response[Constants.ServerKey.status].boolValue {
-                    self?.viewInput.showAlertMessage(title: Constants.AlertMessage.congratulations, body: Constants.AlertMessage.jobAccepted)
-                    self?.job?.isApplied = 4
-                    self?.viewInput.configureJobApply()
-                    self?.moduleOutput.refreshNotificationList()
-                    NotificationCenter.default.post(name: .decreaseBadgeCount, object: nil, userInfo: nil)
-                } else {
-                    
-                    if response[Constants.ServerKey.statusCode].intValue == 201 {
-                        
-                        self?.viewInput.showAlertMessage(title: "Change Availability", body: response[Constants.ServerKey.message].stringValue)
-                    } else {
-                        
-                        self?.viewInput.show(toastMessage: response[Constants.ServerKey.message].stringValue)
-                    }
-                }
+            if availableDates.isEmpty {
+                viewInput.showAlertMessage(title: "Attention", body: "No available dates for this job, you can try update availability")
+            } else {
+                moduleOutput.showDaySelect(selectedDates: availableDates, notificationId: Int(notificationId) ?? -1)
             }
         } else {
             
