@@ -137,7 +137,7 @@ class DMRegisterMapsVC: DMBaseVC {
         let placesClient = GMSPlacesClient()
         // let placesClient = GMSPlacesClient.shared()
         showLoader()
-        placesClient.lookUpPlaceID(prediction.placeID!) { (place: GMSPlace?, error: Error?) in
+        placesClient.lookUpPlaceID(prediction.placeID) { (place: GMSPlace?, error: Error?) in
             self.hideLoader()
             if error != nil {
                 return

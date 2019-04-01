@@ -321,7 +321,7 @@ extension DMCalendarSetAvailabillityVC: JobSearchTypeCellDelegate, TemporyJobCel
 
     func deSelectTempJobDate(deSelected: Date) {
         if (availablitytModel?.tempJobDates.contains(Date.dateToString(date: deSelected)))! {
-            availablitytModel?.tempJobDates.remove(at: (availablitytModel?.tempJobDates.index(of: Date.dateToString(date: deSelected))!)!)
+            availablitytModel?.tempJobDates.remove(at: (availablitytModel?.tempJobDates.firstIndex(of: Date.dateToString(date: deSelected))!)!)
         }
         // debugPrint(self.availablitytModel?.tempJobDates ?? "dates are not avail")
     }

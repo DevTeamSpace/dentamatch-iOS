@@ -2879,13 +2879,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = Appster;
 				TargetAttributes = {
 					E56E45B71DAE07C200AD4559 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 37YG7ABMG2;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -2903,7 +2903,6 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);
@@ -3580,6 +3579,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -3643,6 +3643,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -3793,7 +3794,7 @@
 				PROVISIONING_PROFILE = "35ac7f31-607c-4f0b-8566-8f60e995d36d";
 				PROVISIONING_PROFILE_SPECIFIER = "DentaMatch Developing";
 				SWIFT_OBJC_BRIDGING_HEADER = "DentaMatch/Application/DentaMatch-BridgingHeader.h";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -3892,7 +3893,7 @@
 				PROVISIONING_PROFILE = "979e1642-8e1f-472b-800f-488334cf4573";
 				PROVISIONING_PROFILE_SPECIFIER = "DentaMatch Developing";
 				SWIFT_OBJC_BRIDGING_HEADER = "DentaMatch/Application/DentaMatch-BridgingHeader.h";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -3900,6 +3901,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -4055,7 +4057,7 @@
 				PROVISIONING_PROFILE = "35ac7f31-607c-4f0b-8566-8f60e995d36d";
 				PROVISIONING_PROFILE_SPECIFIER = "DentaMatch Developing";
 				SWIFT_OBJC_BRIDGING_HEADER = "DentaMatch/Application/DentaMatch-BridgingHeader.h";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = QA;
 		};
@@ -4063,6 +4065,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -4213,7 +4216,7 @@
 				PROVISIONING_PROFILE = "c090df9e-bd0f-4096-8b55-3d092b58e375";
 				PROVISIONING_PROFILE_SPECIFIER = "DentaMatch Distribution";
 				SWIFT_OBJC_BRIDGING_HEADER = "DentaMatch/Application/DentaMatch-BridgingHeader.h";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Staging;
 		};

@@ -81,7 +81,7 @@ extension DMJobSearchVC: JobSearchTypeCellDelegate, JobSearchPartTimeCellDelegat
             }
         } else {
             if partTimeJobDays.contains(day) {
-                partTimeJobDays.remove(at: partTimeJobDays.index(of: day)!)
+                partTimeJobDays.remove(at: partTimeJobDays.firstIndex(of: day)!)
             }
         }
     }

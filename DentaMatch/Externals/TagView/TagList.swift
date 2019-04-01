@@ -256,7 +256,7 @@ open class TagList: UIView {
     }
     
     func index(of tag: Tag) -> Int? {
-        return tags.index(where: {
+        return tags.firstIndex(where: {
             $0 == tag
         })
     }

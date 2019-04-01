@@ -12,7 +12,7 @@ class BaseFlowCoordinator: NSObject {
     }
 
     func removeChildFlowCoordinator(_ flowCoordinator: BaseFlowProtocol) {
-        if let flowCoordinator = flowCoordinator as? BaseFlowCoordinator, let index = childCoordinators.index(of: flowCoordinator) {
+        if let flowCoordinator = flowCoordinator as? BaseFlowCoordinator, let index = childCoordinators.firstIndex(of: flowCoordinator) {
             childCoordinators.remove(at: index)
         }
     }

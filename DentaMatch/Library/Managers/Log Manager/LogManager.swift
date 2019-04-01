@@ -78,23 +78,23 @@ class LogManager: NSObject {
 
 extension LogManager {
     class func logDebug(_ closure: @autoclosure () -> String?, functionName: StaticString = #function, fileName: StaticString = #file, lineNumber: Int = #line) {
-        LogManager.sharedManager().writeLog(.debug, closure: closure, functionName: functionName, fileName: fileName, lineNumber: lineNumber)
+        LogManager.sharedManager().writeLog(.debug, closure: closure(), functionName: functionName, fileName: fileName, lineNumber: lineNumber)
     }
 
     class func logInfo(_ closure: @autoclosure () -> String?, functionName: StaticString = #function, fileName: StaticString = #file, lineNumber: Int = #line) {
-        LogManager.sharedManager().writeLog(.info, closure: closure, functionName: functionName, fileName: fileName, lineNumber: lineNumber)
+        LogManager.sharedManager().writeLog(.info, closure: closure(), functionName: functionName, fileName: fileName, lineNumber: lineNumber)
     }
 
     class func logWarning(_ closure: @autoclosure () -> String?, functionName: StaticString = #function, fileName: StaticString = #file, lineNumber: Int = #line) {
-        LogManager.sharedManager().writeLog(.warning, closure: closure, functionName: functionName, fileName: fileName, lineNumber: lineNumber)
+        LogManager.sharedManager().writeLog(.warning, closure: closure(), functionName: functionName, fileName: fileName, lineNumber: lineNumber)
     }
 
     class func logError(_ closure: @autoclosure () -> String?, functionName: StaticString = #function, fileName: StaticString = #file, lineNumber: Int = #line) {
-        LogManager.sharedManager().writeLog(.error, closure: closure, functionName: functionName, fileName: fileName, lineNumber: lineNumber)
+        LogManager.sharedManager().writeLog(.error, closure: closure(), functionName: functionName, fileName: fileName, lineNumber: lineNumber)
     }
 
     class func logSevere(_ closure: @autoclosure () -> String?, functionName: StaticString = #function, fileName: StaticString = #file, lineNumber: Int = #line) {
-        LogManager.sharedManager().writeLog(.severe, closure: closure, functionName: functionName, fileName: fileName, lineNumber: lineNumber)
+        LogManager.sharedManager().writeLog(.severe, closure: closure(), functionName: functionName, fileName: fileName, lineNumber: lineNumber)
     }
 
     class func logEntry(_ functionName: StaticString = #function, fileName: StaticString = #file, lineNumber: Int = #line) {
