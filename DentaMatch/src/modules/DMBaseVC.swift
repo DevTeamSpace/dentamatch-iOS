@@ -31,6 +31,18 @@ enum ToastPosition {
 }
 
 class DMBaseVC: UIViewController {
+
+    private var innerModalPresentationStyle: UIModalPresentationStyle = .fullScreen
+
+    override var modalPresentationStyle: UIModalPresentationStyle {
+        get {
+            innerModalPresentationStyle
+        }
+        set {
+            innerModalPresentationStyle = newValue
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // self.setUpControls()

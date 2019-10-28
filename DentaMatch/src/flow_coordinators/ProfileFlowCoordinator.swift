@@ -26,7 +26,7 @@ class ProfileFlowCoordinator: BaseFlowCoordinator, ProfileFlowCoordinatorProtoco
     func launchViewController() -> UIViewController? {
         guard let moduleInput = DMEditProfileInitializer.initialize(moduleOutput: self) else { return nil }
         
-        let navController = UINavigationController(rootViewController: moduleInput.viewController())
+        let navController = DMBaseNC(rootViewController: moduleInput.viewController())
         navigationController = navController
         return navController
     }
@@ -151,7 +151,7 @@ extension ProfileFlowCoordinator: DMNotificationsModuleOutput {
     func presentChat(chatObject: ChatObject) {
         guard let moduleInput = DMChatInitializer.initialize(chatObject: chatObject, moduleOutput: self) else { return }
         
-        let navCon = UINavigationController(rootViewController: moduleInput.viewController())
+        let navCon = DMBaseNC(rootViewController: moduleInput.viewController())
         navigationController?.present(navCon, animated: true)
     }
     

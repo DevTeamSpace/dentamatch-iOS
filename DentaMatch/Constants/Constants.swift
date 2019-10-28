@@ -30,7 +30,7 @@ struct Constants {
     static let kUnreadCount = "UnreadNotificationCount"
     static let kEmptyDate = "0000-00-00"
     static func apiBaseURL() -> String {
-        return ConfigurationManager.sharedManager().applicationEndPoint()
+        ConfigurationManager.sharedManager().applicationEndPoint()
     }
 
     struct Heading {

@@ -68,7 +68,7 @@ extension Constants {
         static let listStatesApi = Constants.API.apiURL("list-states")
         static let getChatList = Constants.API.apiURL("chat/init-chat")
         static func apiURL(_ methodName: String) -> String {
-            return BASE_URL + methodName
+            BASE_URL + methodName
         }
     }
 

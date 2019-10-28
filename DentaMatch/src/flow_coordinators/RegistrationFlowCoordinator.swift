@@ -23,7 +23,7 @@ class RegistrationFlowCoordinator: BaseFlowCoordinator, RegistrationFlowCoordina
     func launchViewController() -> UIViewController? {
         guard let moduleInput = DMJobTitleSelectionInitializer.initialize(moduleOutput: self) else { return nil }
         
-        let navController = UINavigationController(rootViewController: moduleInput.viewController())
+        let navController = DMBaseNC(rootViewController: moduleInput.viewController())
         navigationController = navController
         return navController
     }
@@ -31,7 +31,7 @@ class RegistrationFlowCoordinator: BaseFlowCoordinator, RegistrationFlowCoordina
     func launchViewControllerFromPending() -> UIViewController? {
         guard let moduleInput = DMProfileSuccessPendingInitializer.initialize(fromRoot: true, moduleOutput: self) else { return nil }
         
-        let navController = UINavigationController(rootViewController: moduleInput.viewController())
+        let navController = DMBaseNC(rootViewController: moduleInput.viewController())
         navigationController = navController
         return navController
     }

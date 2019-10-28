@@ -22,7 +22,7 @@ class AuthorizationFlowCoordinator: BaseFlowCoordinator, AuthorizationFlowCoordi
     func launchViewController() -> UIViewController? {
         guard let moduleInput = DMRegistrationContainerInitializer.initialize(moduleOutput: self) else { return nil }
         
-        let navController = UINavigationController(rootViewController: moduleInput.viewController())
+        let navController = DMBaseNC(rootViewController: moduleInput.viewController())
         navController.setNavigationBarHidden(true, animated: false)
         navigationController = navController
         return navController

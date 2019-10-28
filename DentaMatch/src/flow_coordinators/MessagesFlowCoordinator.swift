@@ -22,7 +22,7 @@ class MessagesFlowCoordinator: BaseFlowCoordinator, MessagesFlowCoordinatorProto
     func launchViewController() -> UIViewController? {
         guard let moduleInput = DMMessagesInitializer.initialize(moduleOutput: self) else { return nil }
         
-        let navController = UINavigationController(rootViewController: moduleInput.viewController())
+        let navController = DMBaseNC(rootViewController: moduleInput.viewController())
         navigationController = navController
         return navController
     }

@@ -1,4 +1,4 @@
-platform :ios, '9.0'
+platform :ios, '10.0'
 use_frameworks!
 
 target 'DentaMatch' do
@@ -15,7 +15,7 @@ pod 'XCGLogger'
 pod 'IHProgressHUD'
 pod 'Instabug'
 pod 'Mixpanel-swift'
-pod 'Swinject'
+pod 'Swinject', '~> 2.6.2'
 pod 'SwinjectStoryboard'
 pod 'RealmSwift'
 pod 'Socket.IO-Client-Swift'
